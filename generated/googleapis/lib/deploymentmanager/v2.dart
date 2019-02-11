@@ -47,8 +47,8 @@ class DeploymentmanagerApi {
   TypesResourceApi get types => new TypesResourceApi(_requester);
 
   DeploymentmanagerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "deploymentmanager/v2/projects/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "deploymentmanager/v2/projects/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -84,12 +84,12 @@ class DeploymentsResourceApi {
   async.Future<Operation> cancelPreview(DeploymentsCancelPreviewRequest request,
       core.String project, core.String deployment,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -145,12 +145,12 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String deployment,
       {core.String deletePolicy, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -201,12 +201,12 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Deployment> get(core.String project, core.String deployment,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -240,8 +240,9 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -255,12 +256,12 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -323,12 +324,12 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Deployment request, core.String project,
       {core.String createPolicy, core.bool preview, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -424,12 +425,12 @@ class DeploymentsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -512,12 +513,12 @@ class DeploymentsResourceApi {
       core.String deletePolicy,
       core.bool preview,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -565,8 +566,9 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -581,12 +583,12 @@ class DeploymentsResourceApi {
   async.Future<Policy> setIamPolicy(
       GlobalSetPolicyRequest request, core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -642,12 +644,12 @@ class DeploymentsResourceApi {
   async.Future<Operation> stop(DeploymentsStopRequest request,
       core.String project, core.String deployment,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -686,8 +688,9 @@ class DeploymentsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -702,12 +705,12 @@ class DeploymentsResourceApi {
   async.Future<TestPermissionsResponse> testIamPermissions(
       TestPermissionsRequest request, core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -787,12 +790,12 @@ class DeploymentsResourceApi {
       core.String deletePolicy,
       core.bool preview,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -862,12 +865,12 @@ class ManifestsResourceApi {
   async.Future<Manifest> get(
       core.String project, core.String deployment, core.String manifest,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -968,12 +971,12 @@ class ManifestsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1039,12 +1042,12 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String project, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1136,12 +1139,12 @@ class OperationsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1205,12 +1208,12 @@ class ResourcesResourceApi {
   async.Future<Resource> get(
       core.String project, core.String deployment, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1311,12 +1314,12 @@ class ResourcesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1427,12 +1430,12 @@ class TypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1596,10 +1599,10 @@ class AuthorizationLoggingOptions {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// The condition that is associated with this binding. NOTE: an unsatisfied
-  /// condition will not allow user access via current binding. Different
-  /// bindings, including their conditions, are examined independently. This
-  /// field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.
+  /// Unimplemented. The condition that is associated with this binding. NOTE:
+  /// an unsatisfied condition will not allow user access via current binding.
+  /// Different bindings, including their conditions, are examined
+  /// independently.
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -1771,16 +1774,14 @@ class Deployment {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// Output only. Timestamp when the deployment was created, in RFC3339 text
-  /// format .
+  /// Output only. Creation timestamp in RFC3339 text format.
   core.String insertTime;
 
   /// Map of labels; provided by the client when the resource is created or
@@ -1808,7 +1809,7 @@ class Deployment {
   /// running, on this deployment.
   Operation operation;
 
-  /// Output only. Self link for the deployment.
+  /// Output only. Server defined URL for the resource.
   core.String selfLink;
 
   /// [Input Only] The parameters that define your deployment, including the
@@ -1818,6 +1819,9 @@ class Deployment {
   /// Output only. If Deployment Manager is currently updating or previewing an
   /// update to this deployment, the updated configuration appears here.
   DeploymentUpdate update;
+
+  /// Output only. Update timestamp in RFC3339 text format.
+  core.String updateTime;
 
   Deployment();
 
@@ -1858,6 +1862,9 @@ class Deployment {
     if (_json.containsKey("update")) {
       update = new DeploymentUpdate.fromJson(_json["update"]);
     }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1895,6 +1902,9 @@ class Deployment {
     }
     if (update != null) {
       _json["update"] = (update).toJson();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -2022,7 +2032,7 @@ class DeploymentsCancelPreviewRequest {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2097,7 +2107,7 @@ class DeploymentsStopRequest {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2181,7 +2191,7 @@ class Expr {
 }
 
 class GlobalSetPolicyRequest {
-  /// Flatten Policy to create a backwacd compatible wire-format. Deprecated.
+  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
   /// Use 'policy' to specify bindings.
   core.List<Binding> bindings;
 
@@ -2192,7 +2202,7 @@ class GlobalSetPolicyRequest {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2349,17 +2359,19 @@ class LogConfigCloudAuditOptions {
 /// Field names correspond to IAM request parameters and field values are their
 /// respective values.
 ///
-/// At present the only supported field names are - "iam_principal",
-/// corresponding to IAMContext.principal; - "" (empty string), resulting in one
-/// aggretated counter with no field.
+/// Supported field names: - "authority", which is "[token]" if IAMContext.token
+/// is present, otherwise the value of IAMContext.authority_selector if present,
+/// and otherwise a representation of IAMContext.principal; or -
+/// "iam_principal", a representation of IAMContext.principal even if a token or
+/// authority selector is present; or - "" (empty string), resulting in a
+/// counter with no fields.
 ///
 /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
 /// ==> increment counter /iam/policy/backend_debug_access_count
 /// {iam_principal=[value of IAMContext.principal]}
 ///
-/// At this time we do not support: * multiple field names (though this may be
-/// supported in the future) * decrementing the counter * incrementing it by
-/// anything other than 1
+/// At this time we do not support multiple field names (though this may be
+/// supported in the future).
 class LogConfigCounterOptions {
   /// The field value to attribute.
   core.String field;
@@ -2395,6 +2407,11 @@ class LogConfigCounterOptions {
 class LogConfigDataAccessOptions {
   /// Whether Gin logging should happen in a fail-closed manner at the caller.
   /// This is relevant only in the LocalIAM implementation, for now.
+  ///
+  /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported
+  /// while work is being done to satisfy the requirements of go/345. Currently,
+  /// setting LOG_FAIL_CLOSED mode will have no effect, but still exists because
+  /// there is active work being done to support it (b/115874152).
   core.String logMode;
 
   LogConfigDataAccessOptions();
@@ -2422,15 +2439,12 @@ class Manifest {
   /// Output only. The fully-expanded configuration file, including any
   /// templates and references.
   core.String expandedConfig;
-
-  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
   /// Output only. The imported files for this manifest.
   core.List<ImportFile> imports;
 
-  /// Output only. Timestamp when the manifest was created, in RFC3339 text
-  /// format.
+  /// Output only. Creation timestamp in RFC3339 text format.
   core.String insertTime;
 
   /// Output only. The YAML layout for this manifest.
@@ -3037,7 +3051,7 @@ class Policy {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3201,12 +3215,9 @@ class Resource {
   /// Output only. The evaluated properties of the resource with references
   /// expanded. Returned as serialized YAML.
   core.String finalProperties;
-
-  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// Output only. Timestamp when the resource was created or acquired, in
-  /// RFC3339 text format .
+  /// Output only. Creation timestamp in RFC3339 text format.
   core.String insertTime;
 
   /// Output only. URL of the manifest representing the current configuration of
@@ -3228,8 +3239,7 @@ class Resource {
   /// update to this resource, the updated configuration appears here.
   ResourceUpdate update;
 
-  /// Output only. Timestamp when the resource was updated, in RFC3339 text
-  /// format .
+  /// Output only. Update timestamp in RFC3339 text format.
   core.String updateTime;
 
   /// Output only. The URL of the actual resource.
@@ -3804,10 +3814,9 @@ class TestPermissionsResponse {
 
 /// A resource type supported by Deployment Manager.
 class Type {
-  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// Output only. Timestamp when the type was created, in RFC3339 text format.
+  /// Output only. Creation timestamp in RFC3339 text format.
   core.String insertTime;
 
   /// Name of the type.
@@ -3817,7 +3826,7 @@ class Type {
   /// running, on this type.
   Operation operation;
 
-  /// Output only. Self link for the type.
+  /// Output only. Server defined URL for the resource.
   core.String selfLink;
 
   Type();

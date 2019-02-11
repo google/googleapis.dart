@@ -16,9 +16,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client adexchangebuyer2/v2beta1';
 
-/// Accesses the latest features for managing Ad Exchange accounts, Real-Time
-/// Bidding configurations and auction metrics, and Marketplace programmatic
-/// deals.
+/// Accesses the latest features for managing Authorized Buyers accounts,
+/// Real-Time Bidding configurations and auction metrics, and Marketplace
+/// programmatic deals.
 class Adexchangebuyer2Api {
   /// Manage your Ad Exchange buyer account configuration
   static const AdexchangeBuyerScope =
@@ -30,8 +30,8 @@ class Adexchangebuyer2Api {
   BiddersResourceApi get bidders => new BiddersResourceApi(_requester);
 
   Adexchangebuyer2Api(http.Client client,
-      {core.String rootUrl: "https://adexchangebuyer.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://adexchangebuyer.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -43,6 +43,14 @@ class AccountsResourceApi {
       new AccountsClientsResourceApi(_requester);
   AccountsCreativesResourceApi get creatives =>
       new AccountsCreativesResourceApi(_requester);
+  AccountsFinalizedProposalsResourceApi get finalizedProposals =>
+      new AccountsFinalizedProposalsResourceApi(_requester);
+  AccountsProductsResourceApi get products =>
+      new AccountsProductsResourceApi(_requester);
+  AccountsProposalsResourceApi get proposals =>
+      new AccountsProposalsResourceApi(_requester);
+  AccountsPublisherProfilesResourceApi get publisherProfiles =>
+      new AccountsPublisherProfilesResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -79,12 +87,12 @@ class AccountsClientsResourceApi {
   /// this method will complete with the same error.
   async.Future<Client> create(Client request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -131,12 +139,12 @@ class AccountsClientsResourceApi {
   /// this method will complete with the same error.
   async.Future<Client> get(core.String accountId, core.String clientAccountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -174,7 +182,8 @@ class AccountsClientsResourceApi {
   /// Typically, this is the value of
   /// ListClientsResponse.nextPageToken
   /// returned from the previous call to the
-  /// accounts.clients.list method.
+  /// accounts.clients.list
+  /// method.
   ///
   /// [partnerClientId] - Optional unique identifier (from the standpoint of an
   /// Ad Exchange sponsor
@@ -200,12 +209,12 @@ class AccountsClientsResourceApi {
       core.String partnerClientId,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -262,12 +271,12 @@ class AccountsClientsResourceApi {
   async.Future<Client> update(
       Client request, core.String accountId, core.String clientAccountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -329,12 +338,12 @@ class AccountsClientsInvitationsResourceApi {
   async.Future<ClientUserInvitation> create(ClientUserInvitation request,
       core.String accountId, core.String clientAccountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -391,12 +400,12 @@ class AccountsClientsInvitationsResourceApi {
   async.Future<ClientUserInvitation> get(core.String accountId,
       core.String clientAccountId, core.String invitationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -468,12 +477,12 @@ class AccountsClientsInvitationsResourceApi {
   async.Future<ListClientUserInvitationsResponse> list(
       core.String accountId, core.String clientAccountId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -539,12 +548,12 @@ class AccountsClientsUsersResourceApi {
   async.Future<ClientUser> get(
       core.String accountId, core.String clientAccountId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -615,12 +624,12 @@ class AccountsClientsUsersResourceApi {
   async.Future<ListClientUsersResponse> list(
       core.String accountId, core.String clientAccountId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -682,12 +691,12 @@ class AccountsClientsUsersResourceApi {
   async.Future<ClientUser> update(ClientUser request, core.String accountId,
       core.String clientAccountId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -761,12 +770,12 @@ class AccountsCreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> create(Creative request, core.String accountId,
       {core.String duplicateIdMode, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -814,12 +823,12 @@ class AccountsCreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> get(core.String accountId, core.String creativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -897,12 +906,12 @@ class AccountsCreativesResourceApi {
       core.int pageSize,
       core.String query,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -958,12 +967,12 @@ class AccountsCreativesResourceApi {
   async.Future<Empty> stopWatching(StopWatchingCreativeRequest request,
       core.String accountId, core.String creativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1022,12 +1031,12 @@ class AccountsCreativesResourceApi {
   async.Future<Creative> update(
       Creative request, core.String accountId, core.String creativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1084,12 +1093,12 @@ class AccountsCreativesResourceApi {
   async.Future<Empty> watch(WatchCreativeRequest request, core.String accountId,
       core.String creativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1149,12 +1158,12 @@ class AccountsCreativesDealAssociationsResourceApi {
   async.Future<Empty> add(AddDealAssociationRequest request,
       core.String accountId, core.String creativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1235,12 +1244,12 @@ class AccountsCreativesDealAssociationsResourceApi {
       core.int pageSize,
       core.String query,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1300,12 +1309,12 @@ class AccountsCreativesDealAssociationsResourceApi {
   async.Future<Empty> remove(RemoveDealAssociationRequest request,
       core.String accountId, core.String creativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1336,6 +1345,984 @@ class AccountsCreativesDealAssociationsResourceApi {
   }
 }
 
+class AccountsFinalizedProposalsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsFinalizedProposalsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List finalized proposals, regardless if a proposal is being renegotiated.
+  /// A filter expression (PQL query) may be specified to filter the results.
+  /// The notes will not be returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSyntax] - Syntax the filter is written in. Current implementation
+  /// defaults to PQL
+  /// but in the future it will be LIST_FILTER.
+  /// Possible string values are:
+  /// - "FILTER_SYNTAX_UNSPECIFIED" : A FILTER_SYNTAX_UNSPECIFIED.
+  /// - "PQL" : A PQL.
+  /// - "LIST_FILTER" : A LIST_FILTER.
+  ///
+  /// [filter] - An optional PQL filter query used to query for proposals.
+  ///
+  /// Nested repeated fields, such as proposal.deals.targetingCriterion,
+  /// cannot be filtered.
+  ///
+  /// [pageToken] - The page token as returned from ListProposalsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProposalsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProposalsResponse> list(core.String accountId,
+      {core.String filterSyntax,
+      core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filterSyntax != null) {
+      _queryParams["filterSyntax"] = [filterSyntax];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/finalizedProposals';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListProposalsResponse.fromJson(data));
+  }
+}
+
+class AccountsProductsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsProductsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested product by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [productId] - The ID for the product to get the head revision for.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Product> get(core.String accountId, core.String productId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/products/' +
+        commons.Escaper.ecapeVariable('$productId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Product.fromJson(data));
+  }
+
+  /// List all products visible to the buyer (optionally filtered by the
+  /// specified PQL query).
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filter] - An optional PQL query used to query for products. See
+  /// https://developers.google.com/ad-manager/docs/pqlreference
+  /// for documentation about PQL and examples.
+  ///
+  /// Nested repeated fields, such as product.targetingCriterion.inclusions,
+  /// cannot be filtered.
+  ///
+  /// [pageToken] - The page token as returned from ListProductsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProductsResponse> list(core.String accountId,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/products';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListProductsResponse.fromJson(data));
+  }
+}
+
+class AccountsProposalsResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsProposalsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Mark the proposal as accepted at the given revision number. If the number
+  /// does not match the server's revision number an `ABORTED` error message
+  /// will
+  /// be returned. This call updates the proposal_state from `PROPOSED` to
+  /// `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The ID of the proposal to accept.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> accept(AcceptProposalRequest request,
+      core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId') +
+        ':accept';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// Create a new note and attach it to the proposal. The note is assigned
+  /// a unique ID by the server.
+  /// The proposal revision number will not increase when associated with a
+  /// new note.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The ID of the proposal to attach the note to.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Note].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Note> addNote(
+      AddNoteRequest request, core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId') +
+        ':addNote';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Note.fromJson(data));
+  }
+
+  /// Cancel an ongoing negotiation on a proposal. This does not cancel or end
+  /// serving for the deals if the proposal has been finalized, but only cancels
+  /// a negotiation unilaterally.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The ID of the proposal to cancel negotiation for.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> cancelNegotiation(CancelNegotiationRequest request,
+      core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId') +
+        ':cancelNegotiation';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// Update the given proposal to indicate that setup has been completed.
+  /// This method is called by the buyer when the line items have been created
+  /// on their end for a finalized proposal and all the required creatives
+  /// have been uploaded using the creatives API. This call updates the
+  /// `is_setup_completed` bit on the proposal and also notifies the seller.
+  /// The server will advance the revision number of the most recent proposal.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The ID of the proposal to mark as setup completed.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> completeSetup(CompleteSetupRequest request,
+      core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId') +
+        ':completeSetup';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// Create the given proposal. Each created proposal and any deals it contains
+  /// are assigned a unique ID by the server.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> create(Proposal request, core.String accountId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// Gets a proposal given its ID. The proposal is returned at its head
+  /// revision.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The unique ID of the proposal
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> get(core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// List proposals. A filter expression (PQL query) may be specified to
+  /// filter the results. To retrieve all finalized proposals, regardless if a
+  /// proposal is being renegotiated, see the FinalizedProposals resource.
+  /// Note that Bidder/ChildSeat relationships differ from the usual behavior.
+  /// A Bidder account can only see its child seats' proposals by specifying
+  /// the ChildSeat's accountId in the request path.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [pageToken] - The page token as returned from ListProposalsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [filterSyntax] - Syntax the filter is written in. Current implementation
+  /// defaults to PQL
+  /// but in the future it will be LIST_FILTER.
+  /// Possible string values are:
+  /// - "FILTER_SYNTAX_UNSPECIFIED" : A FILTER_SYNTAX_UNSPECIFIED.
+  /// - "PQL" : A PQL.
+  /// - "LIST_FILTER" : A LIST_FILTER.
+  ///
+  /// [filter] - An optional PQL filter query used to query for proposals.
+  ///
+  /// Nested repeated fields, such as proposal.deals.targetingCriterion,
+  /// cannot be filtered.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProposalsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProposalsResponse> list(core.String accountId,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filterSyntax,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filterSyntax != null) {
+      _queryParams["filterSyntax"] = [filterSyntax];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListProposalsResponse.fromJson(data));
+  }
+
+  /// Update the given proposal to pause serving.
+  /// This method will set the
+  /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all
+  /// deals in the proposal.
+  ///
+  /// It is a no-op to pause an already-paused proposal.
+  /// It is an error to call PauseProposal for a proposal that is not
+  /// finalized or renegotiating.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The ID of the proposal to pause.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> pause(PauseProposalRequest request,
+      core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId') +
+        ':pause';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// Update the given proposal to resume serving.
+  /// This method will set the
+  /// `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for
+  /// all
+  /// deals in the proposal.
+  ///
+  /// Note that if the `has_seller_paused` bit is also set, serving will not
+  /// resume until the seller also resumes.
+  ///
+  /// It is a no-op to resume an already-running proposal.
+  /// It is an error to call ResumeProposal for a proposal that is not
+  /// finalized or renegotiating.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The ID of the proposal to resume.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> resume(ResumeProposalRequest request,
+      core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId') +
+        ':resume';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+
+  /// Update the given proposal at the client known revision number. If the
+  /// server revision has advanced since the passed-in
+  /// `proposal.proposal_revision`, an `ABORTED` error message will be returned.
+  /// Only the buyer-modifiable fields of the proposal will be updated.
+  ///
+  /// Note that the deals in the proposal will be updated to match the passed-in
+  /// copy.
+  /// If a passed-in deal does not have a `deal_id`, the server will assign a
+  /// new
+  /// unique ID and create the deal.
+  /// If passed-in deal has a `deal_id`, it will be updated to match the
+  /// passed-in copy.
+  /// Any existing deals not present in the passed-in proposal will be deleted.
+  /// It is an error to pass in a deal with a `deal_id` not present at head.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [proposalId] - The unique ID of the proposal.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Proposal].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Proposal> update(
+      Proposal request, core.String accountId, core.String proposalId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (proposalId == null) {
+      throw new core.ArgumentError("Parameter proposalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/proposals/' +
+        commons.Escaper.ecapeVariable('$proposalId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Proposal.fromJson(data));
+  }
+}
+
+class AccountsPublisherProfilesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsPublisherProfilesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested publisher profile by id.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [publisherProfileId] - The id for the publisher profile to get.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PublisherProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PublisherProfile> get(
+      core.String accountId, core.String publisherProfileId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (publisherProfileId == null) {
+      throw new core.ArgumentError("Parameter publisherProfileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/publisherProfiles/' +
+        commons.Escaper.ecapeVariable('$publisherProfileId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PublisherProfile.fromJson(data));
+  }
+
+  /// List all publisher profiles visible to the buyer
+  ///
+  /// Request parameters:
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [pageToken] - The page token as return from ListPublisherProfilesResponse.
+  ///
+  /// [pageSize] - Specify the number of results to include per page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPublisherProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPublisherProfilesResponse> list(core.String accountId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (accountId == null) {
+      throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/accounts/' +
+        commons.Escaper.ecapeVariable('$accountId') +
+        '/publisherProfiles';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListPublisherProfilesResponse.fromJson(data));
+  }
+}
+
 class BiddersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1350,10 +2337,83 @@ class BiddersResourceApi {
 class BiddersAccountsResourceApi {
   final commons.ApiRequester _requester;
 
+  BiddersAccountsCreativesResourceApi get creatives =>
+      new BiddersAccountsCreativesResourceApi(_requester);
   BiddersAccountsFilterSetsResourceApi get filterSets =>
       new BiddersAccountsFilterSetsResourceApi(_requester);
 
   BiddersAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class BiddersAccountsCreativesResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersAccountsCreativesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a single creative.
+  ///
+  /// A creative is deactivated upon deletion and does not count against active
+  /// snippet quota. A deleted creative should not be used in bidding (all bids
+  /// with that creative will be rejected).
+  ///
+  /// Request parameters:
+  ///
+  /// [ownerName] - Name of the owner (bidder or account) of the creative to be
+  /// deleted.
+  /// For example:
+  ///
+  /// - For an account-level creative for the buyer account representing bidder
+  ///   123: `bidders/123/accounts/123`
+  ///
+  /// - For an account-level creative for the child seat buyer account 456
+  ///   whose bidder is 123: `bidders/123/accounts/456`
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+$".
+  ///
+  /// [creativeId] - The ID of the creative to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String ownerName, core.String creativeId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (ownerName == null) {
+      throw new core.ArgumentError("Parameter ownerName is required.");
+    }
+    if (creativeId == null) {
+      throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$ownerName') +
+        '/creatives/' +
+        commons.Escaper.ecapeVariable('$creativeId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
 }
 
 class BiddersAccountsFilterSetsResourceApi {
@@ -1423,12 +2483,12 @@ class BiddersAccountsFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<FilterSet> create(FilterSet request, core.String ownerName,
       {core.bool isTransient, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1486,12 +2546,12 @@ class BiddersAccountsFilterSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1541,12 +2601,12 @@ class BiddersAccountsFilterSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FilterSet> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1608,12 +2668,12 @@ class BiddersAccountsFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilterSetsResponse> list(core.String ownerName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (ownerName == null) {
       throw new core.ArgumentError("Parameter ownerName is required.");
@@ -1690,12 +2750,12 @@ class BiddersAccountsFilterSetsBidMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -1774,12 +2834,12 @@ class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidResponseErrorsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -1863,12 +2923,12 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -1948,12 +3008,12 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2037,12 +3097,12 @@ class BiddersAccountsFilterSetsFilteredBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2103,7 +3163,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
   /// breakdown by
   /// creative.
   /// See
-  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
@@ -2129,12 +3189,12 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2199,7 +3259,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail.
   /// See
-  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
@@ -2227,12 +3287,12 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2316,12 +3376,12 @@ class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2400,12 +3460,12 @@ class BiddersAccountsFilterSetsLosingBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLosingBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2487,12 +3547,12 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2585,12 +3645,12 @@ class BiddersFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<FilterSet> create(FilterSet request, core.String ownerName,
       {core.bool isTransient, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2648,12 +3708,12 @@ class BiddersFilterSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2703,12 +3763,12 @@ class BiddersFilterSetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FilterSet> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2770,12 +3830,12 @@ class BiddersFilterSetsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilterSetsResponse> list(core.String ownerName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (ownerName == null) {
       throw new core.ArgumentError("Parameter ownerName is required.");
@@ -2852,12 +3912,12 @@ class BiddersFilterSetsBidMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -2935,12 +3995,12 @@ class BiddersFilterSetsBidResponseErrorsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBidResponseErrorsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3024,12 +4084,12 @@ class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3108,12 +4168,12 @@ class BiddersFilterSetsFilteredBidRequestsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3174,16 +4234,16 @@ class BiddersFilterSetsFilteredBidsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListFilteredBidsResponse.nextPageToken
   /// returned from the previous call to the filteredBids.list
   /// method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3196,22 +4256,22 @@ class BiddersFilterSetsFilteredBidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3262,7 +4322,7 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
   /// breakdown by
   /// creative.
   /// See
-  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
@@ -3288,12 +4348,12 @@ class BiddersFilterSetsFilteredBidsCreativesResourceApi {
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3357,7 +4417,7 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail.
   /// See
-  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
@@ -3385,12 +4445,12 @@ class BiddersFilterSetsFilteredBidsDetailsResourceApi {
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
       core.String filterSetName, core.int creativeStatusId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3473,12 +4533,12 @@ class BiddersFilterSetsImpressionMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3557,12 +4617,12 @@ class BiddersFilterSetsLosingBidsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLosingBidsResponse> list(core.String filterSetName,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3644,12 +4704,12 @@ class BiddersFilterSetsNonBillableWinningBidsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
@@ -3722,6 +4782,80 @@ class AbsoluteDateRange {
   }
 }
 
+/// Request to accept a proposal.
+class AcceptProposalRequest {
+  /// The last known client revision number of the proposal.
+  core.String proposalRevision;
+
+  AcceptProposalRequest();
+
+  AcceptProposalRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("proposalRevision")) {
+      proposalRevision = _json["proposalRevision"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (proposalRevision != null) {
+      _json["proposalRevision"] = proposalRevision;
+    }
+    return _json;
+  }
+}
+
+/// Represents size of a single ad slot, or a creative.
+class AdSize {
+  /// The height of the ad slot in pixels.
+  /// This field will be present only when size type is `PIXEL`.
+  core.String height;
+
+  /// The size type of the ad slot.
+  /// Possible string values are:
+  /// - "SIZE_TYPE_UNSPECIFIED" : A placeholder for an undefined size type.
+  /// - "PIXEL" : Ad slot with size specified by height and width in pixels.
+  /// - "INTERSTITIAL" : Special size to describe an interstitial ad slot.
+  /// - "NATIVE" : Native (mobile) ads rendered by the publisher.
+  /// - "FLUID" : Fluid size (i.e., responsive size) can be resized
+  /// automatically with the
+  /// change of outside environment.
+  core.String sizeType;
+
+  /// The width of the ad slot in pixels.
+  /// This field will be present only when size type is `PIXEL`.
+  core.String width;
+
+  AdSize();
+
+  AdSize.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("sizeType")) {
+      sizeType = _json["sizeType"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (sizeType != null) {
+      _json["sizeType"] = sizeType;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
 /// A request for associating a deal and a creative.
 class AddDealAssociationRequest {
   /// The association between a creative and a deal that should be added.
@@ -3740,6 +4874,29 @@ class AddDealAssociationRequest {
         new core.Map<core.String, core.Object>();
     if (association != null) {
       _json["association"] = (association).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request message for adding a note to a given proposal.
+class AddNoteRequest {
+  /// Details of the note to add.
+  Note note;
+
+  AddNoteRequest();
+
+  AddNoteRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("note")) {
+      note = new Note.fromJson(_json["note"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (note != null) {
+      _json["note"] = (note).toJson();
     }
     return _json;
   }
@@ -3929,6 +5086,30 @@ class BidResponseWithoutBidsStatusRow {
   }
 }
 
+/// Represents a buyer of inventory. Each buyer is identified by a unique
+/// Authorized Buyers account ID.
+class Buyer {
+  /// Authorized Buyers account ID of the buyer.
+  core.String accountId;
+
+  Buyer();
+
+  Buyer.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    return _json;
+  }
+}
+
 /// The number of impressions with the specified dimension values where the
 /// corresponding bid request or bid response was not successful, as described
 /// by
@@ -3936,7 +5117,7 @@ class BidResponseWithoutBidsStatusRow {
 class CalloutStatusRow {
   /// The ID of the callout status.
   /// See
-  /// [callout-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/callout-status-codes).
+  /// [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes).
   core.int calloutStatusId;
 
   /// The number of impressions for which there was a bid request or bid
@@ -3977,13 +5158,25 @@ class CalloutStatusRow {
   }
 }
 
-/// A client resource represents a client buyer&mdash;an agency,
-/// a brand, or an advertiser customer of the sponsor buyer.
-/// Users associated with the client buyer have restricted access to
-/// the Ad Exchange Marketplace and certain other sections
-/// of the Ad Exchange Buyer UI based on the role
-/// granted to the client buyer.
-/// All fields are required unless otherwise specified.
+/// Request to cancel an ongoing negotiation.
+class CancelNegotiationRequest {
+  CancelNegotiationRequest();
+
+  CancelNegotiationRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A client resource represents a client buyer&mdash;an agency, a brand, or an
+/// advertiser customer of the sponsor buyer. Users associated with the client
+/// buyer have restricted access to the Marketplace and certain other sections
+/// of
+/// the Authorized Buyers UI based on the role granted to the client buyer. All
+/// fields are required unless otherwise specified.
 class Client {
   /// The globally-unique numerical ID of the client.
   /// The value of this field is ignored in create and update operations.
@@ -4139,9 +5332,8 @@ class Client {
 }
 
 /// A client user is created under a client buyer and has restricted access to
-/// the Ad Exchange Marketplace and certain other sections
-/// of the Ad Exchange Buyer UI based on the role
-/// granted to the associated client buyer.
+/// the Marketplace and certain other sections of the Authorized Buyers UI based
+/// on the role granted to the associated client buyer.
 ///
 /// The only way a new client user can be created is via accepting an
 /// email invitation
@@ -4211,9 +5403,8 @@ class ClientUser {
   }
 }
 
-/// An invitation for a new client user to get access to the Ad Exchange
-/// Buyer UI.
-/// All fields are required unless otherwise specified.
+/// An invitation for a new client user to get access to the Authorized Buyers
+/// UI. All fields are required unless otherwise specified.
 class ClientUserInvitation {
   /// Numerical account ID of the client buyer
   /// that the invited user is associated with.
@@ -4254,6 +5445,51 @@ class ClientUserInvitation {
     }
     if (invitationId != null) {
       _json["invitationId"] = invitationId;
+    }
+    return _json;
+  }
+}
+
+/// Request message for indicating that the proposal's setup step is complete.
+class CompleteSetupRequest {
+  CompleteSetupRequest();
+
+  CompleteSetupRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Contains information on how a buyer or seller can be reached.
+class ContactInformation {
+  /// Email address for the contact.
+  core.String email;
+
+  /// The name of the contact.
+  core.String name;
+
+  ContactInformation();
+
+  ContactInformation.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -4337,7 +5573,7 @@ class Correction {
 
 /// A creative and its classification data.
 ///
-/// Next ID: 38
+/// Next ID: 39
 class Creative {
   /// The account that this creative belongs to.
   /// Can be used to filter the response of the
@@ -4698,6 +5934,212 @@ class CreativeDealAssociation {
   }
 }
 
+/// Represents creative restrictions associated to Programmatic Guaranteed/
+/// Preferred Deal in Ad Manager.
+/// This doesn't apply to Private Auction and AdX Preferred Deals.
+class CreativeRestrictions {
+  /// The format of the environment that the creatives will be displayed in.
+  /// Possible string values are:
+  /// - "CREATIVE_FORMAT_UNSPECIFIED" : A placeholder for an undefined creative
+  /// format.
+  /// - "DISPLAY" : A creative that will be displayed in environments such as a
+  /// browser.
+  /// - "VIDEO" : A video creative that will be displayed in environments such
+  /// as a video
+  /// player.
+  core.String creativeFormat;
+  core.List<CreativeSpecification> creativeSpecifications;
+
+  /// Skippable video ads allow viewers to skip ads after 5 seconds.
+  /// Possible string values are:
+  /// - "SKIPPABLE_AD_TYPE_UNSPECIFIED" : A placeholder for an undefined
+  /// skippable ad type.
+  /// - "SKIPPABLE" : This video ad can be skipped after 5 seconds.
+  /// - "INSTREAM_SELECT" : This video ad can be skipped after 5 seconds, and is
+  /// counted as
+  /// engaged view after 30 seconds. The creative is hosted on
+  /// YouTube only, and viewcount of the YouTube video increments
+  /// after the engaged view.
+  /// - "NOT_SKIPPABLE" : This video ad is not skippable.
+  core.String skippableAdType;
+
+  CreativeRestrictions();
+
+  CreativeRestrictions.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeFormat")) {
+      creativeFormat = _json["creativeFormat"];
+    }
+    if (_json.containsKey("creativeSpecifications")) {
+      creativeSpecifications = (_json["creativeSpecifications"] as core.List)
+          .map<CreativeSpecification>(
+              (value) => new CreativeSpecification.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("skippableAdType")) {
+      skippableAdType = _json["skippableAdType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creativeFormat != null) {
+      _json["creativeFormat"] = creativeFormat;
+    }
+    if (creativeSpecifications != null) {
+      _json["creativeSpecifications"] =
+          creativeSpecifications.map((value) => (value).toJson()).toList();
+    }
+    if (skippableAdType != null) {
+      _json["skippableAdType"] = skippableAdType;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the size of the creative.
+class CreativeSize {
+  /// What formats are allowed by the publisher.
+  /// If this repeated field is empty then all formats are allowed.
+  /// For example, if this field contains AllowedFormatType.AUDIO then the
+  /// publisher only allows an audio ad (without any video).
+  core.List<core.String> allowedFormats;
+
+  /// For video creatives specifies the sizes of companion ads (if present).
+  /// Companion sizes may be filled in only when creative_size_type = VIDEO
+  core.List<Size> companionSizes;
+
+  /// The creative size type.
+  /// Possible string values are:
+  /// - "CREATIVE_SIZE_TYPE_UNSPECIFIED" : A placeholder for an undefined
+  /// creative size type.
+  /// - "REGULAR" : The creative is a regular desktop creative.
+  /// - "INTERSTITIAL" : The creative is an interstitial creative.
+  /// - "VIDEO" : The creative is a video creative.
+  /// - "NATIVE" : The creative is a native (mobile) creative.
+  core.String creativeSizeType;
+
+  /// The native template for this creative. It will have a value only if
+  /// creative_size_type = CreativeSizeType.NATIVE.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "UNKNOWN_NATIVE_TEMPLATE" : A placeholder for an undefined native
+  /// template.
+  /// - "NATIVE_CONTENT_AD" : The creative is linked to native content ad.
+  /// - "NATIVE_APP_INSTALL_AD" : The creative is linked to native app install
+  /// ad.
+  /// - "NATIVE_VIDEO_CONTENT_AD" : The creative is linked to native video
+  /// content ad.
+  /// - "NATIVE_VIDEO_APP_INSTALL_AD" : The creative is linked to native video
+  /// app install ad.
+  core.String nativeTemplate;
+
+  /// For regular or video creative size type, specifies the size
+  /// of the creative
+  Size size;
+
+  /// The type of skippable ad for this creative. It will have a value only if
+  /// creative_size_type = CreativeSizeType.VIDEO.
+  /// Possible string values are:
+  /// - "SKIPPABLE_AD_TYPE_UNSPECIFIED" : A placeholder for an undefined
+  /// skippable ad type.
+  /// - "GENERIC" : This video ad can be skipped after 5 seconds.
+  /// - "INSTREAM_SELECT" : This video ad can be skipped after 5 seconds, and
+  /// count as
+  /// engaged view after 30 seconds. The creative is hosted on
+  /// YouTube only, and viewcount of the YouTube video increments
+  /// after the engaged view.
+  /// - "NOT_SKIPPABLE" : This video ad is not skippable.
+  core.String skippableAdType;
+
+  CreativeSize();
+
+  CreativeSize.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedFormats")) {
+      allowedFormats =
+          (_json["allowedFormats"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("companionSizes")) {
+      companionSizes = (_json["companionSizes"] as core.List)
+          .map<Size>((value) => new Size.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("creativeSizeType")) {
+      creativeSizeType = _json["creativeSizeType"];
+    }
+    if (_json.containsKey("nativeTemplate")) {
+      nativeTemplate = _json["nativeTemplate"];
+    }
+    if (_json.containsKey("size")) {
+      size = new Size.fromJson(_json["size"]);
+    }
+    if (_json.containsKey("skippableAdType")) {
+      skippableAdType = _json["skippableAdType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowedFormats != null) {
+      _json["allowedFormats"] = allowedFormats;
+    }
+    if (companionSizes != null) {
+      _json["companionSizes"] =
+          companionSizes.map((value) => (value).toJson()).toList();
+    }
+    if (creativeSizeType != null) {
+      _json["creativeSizeType"] = creativeSizeType;
+    }
+    if (nativeTemplate != null) {
+      _json["nativeTemplate"] = nativeTemplate;
+    }
+    if (size != null) {
+      _json["size"] = (size).toJson();
+    }
+    if (skippableAdType != null) {
+      _json["skippableAdType"] = skippableAdType;
+    }
+    return _json;
+  }
+}
+
+/// Represents information for a creative that is associated with a Programmatic
+/// Guaranteed/Preferred Deal in Ad Manager.
+class CreativeSpecification {
+  /// Companion sizes may be filled in only when this is a video creative.
+  core.List<AdSize> creativeCompanionSizes;
+
+  /// The size of the creative.
+  AdSize creativeSize;
+
+  CreativeSpecification();
+
+  CreativeSpecification.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeCompanionSizes")) {
+      creativeCompanionSizes = (_json["creativeCompanionSizes"] as core.List)
+          .map<AdSize>((value) => new AdSize.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("creativeSize")) {
+      creativeSize = new AdSize.fromJson(_json["creativeSize"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creativeCompanionSizes != null) {
+      _json["creativeCompanionSizes"] =
+          creativeCompanionSizes.map((value) => (value).toJson()).toList();
+    }
+    if (creativeSize != null) {
+      _json["creativeSize"] = (creativeSize).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The number of bids with the specified dimension values that did not win the
 /// auction (either were filtered pre-auction or lost the auction), as described
 /// by the specified creative status.
@@ -4707,7 +6149,7 @@ class CreativeStatusRow {
 
   /// The ID of the creative status.
   /// See
-  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   core.int creativeStatusId;
 
   /// The values of all dimensions associated with metric values in this row.
@@ -4743,21 +6185,62 @@ class CreativeStatusRow {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Generic targeting used for targeting dimensions that contains a list of
+/// included and excluded numeric IDs.
+class CriteriaTargeting {
+  /// A list of numeric IDs to be excluded.
+  core.List<core.String> excludedCriteriaIds;
+
+  /// A list of numeric IDs to be included.
+  core.List<core.String> targetedCriteriaIds;
+
+  CriteriaTargeting();
+
+  CriteriaTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedCriteriaIds")) {
+      excludedCriteriaIds =
+          (_json["excludedCriteriaIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("targetedCriteriaIds")) {
+      targetedCriteriaIds =
+          (_json["targetedCriteriaIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludedCriteriaIds != null) {
+      _json["excludedCriteriaIds"] = excludedCriteriaIds;
+    }
+    if (targetedCriteriaIds != null) {
+      _json["targetedCriteriaIds"] = targetedCriteriaIds;
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -4789,6 +6272,672 @@ class Date {
     }
     if (year != null) {
       _json["year"] = year;
+    }
+    return _json;
+  }
+}
+
+/// Daypart targeting message that specifies if the ad can be shown
+/// only during certain parts of a day/week.
+class DayPart {
+  /// The day of the week to target. If unspecified, applicable to all days.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : A placeholder for when the day of the week
+  /// is not specified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String dayOfWeek;
+
+  /// The ending time of the day for the ad to show (minute level granularity).
+  /// The end time is exclusive.
+  /// This field is not available for filtering in PQL queries.
+  TimeOfDay endTime;
+
+  /// The starting time of day for the ad to show (minute level granularity).
+  /// The start time is inclusive.
+  /// This field is not available for filtering in PQL queries.
+  TimeOfDay startTime;
+
+  DayPart();
+
+  DayPart.fromJson(core.Map _json) {
+    if (_json.containsKey("dayOfWeek")) {
+      dayOfWeek = _json["dayOfWeek"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = new TimeOfDay.fromJson(_json["endTime"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = new TimeOfDay.fromJson(_json["startTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dayOfWeek != null) {
+      _json["dayOfWeek"] = dayOfWeek;
+    }
+    if (endTime != null) {
+      _json["endTime"] = (endTime).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Specifies the day part targeting criteria.
+class DayPartTargeting {
+  /// A list of day part targeting criterion.
+  core.List<DayPart> dayParts;
+
+  /// The timezone to use for interpreting the day part targeting.
+  /// Possible string values are:
+  /// - "TIME_ZONE_SOURCE_UNSPECIFIED" : A placeholder for an undefined time
+  /// zone source.
+  /// - "PUBLISHER" : Use publisher's time zone setting.
+  /// - "USER" : Use the user's time zone setting.
+  core.String timeZoneType;
+
+  DayPartTargeting();
+
+  DayPartTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("dayParts")) {
+      dayParts = (_json["dayParts"] as core.List)
+          .map<DayPart>((value) => new DayPart.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("timeZoneType")) {
+      timeZoneType = _json["timeZoneType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dayParts != null) {
+      _json["dayParts"] = dayParts.map((value) => (value).toJson()).toList();
+    }
+    if (timeZoneType != null) {
+      _json["timeZoneType"] = timeZoneType;
+    }
+    return _json;
+  }
+}
+
+/// A deal represents a segment of inventory for displaying ads on.
+/// A proposal can contain multiple deals. A deal contains the terms and
+/// targeting information that
+/// is used for serving.
+class Deal {
+  /// Proposed flight end time of the deal.
+  /// This will generally be stored in a granularity of a second.
+  /// A value is not required for Private Auction deals or Preferred Deals.
+  core.String availableEndTime;
+
+  /// Optional proposed flight start time of the deal.
+  /// This will generally be stored in the granularity of one second since deal
+  /// serving
+  /// starts at seconds boundary. Any time specified with more granularity
+  /// (e.g., in milliseconds) will be truncated towards the start of time in
+  /// seconds.
+  core.String availableStartTime;
+
+  /// Buyer private data (hidden from seller).
+  PrivateData buyerPrivateData;
+
+  /// The product ID from which this deal was created.
+  ///
+  /// Note: This field may be set only when creating the resource. Modifying
+  /// this field while updating the resource will result in an error.
+  core.String createProductId;
+
+  /// Optional revision number of the product that the deal was created from.
+  /// If present on create, and the server `product_revision` has advanced
+  /// sinced
+  /// the passed-in `create_product_revision`, an `ABORTED` error will be
+  /// returned.
+  ///
+  /// Note: This field may be set only when creating the resource. Modifying
+  /// this field while updating the resource will result in an error.
+  core.String createProductRevision;
+
+  /// The time of the deal creation.
+  /// @OutputOnly
+  core.String createTime;
+
+  /// Specifies the creative pre-approval policy.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED" : A placeholder for an
+  /// undefined creative pre-approval policy.
+  /// - "SELLER_PRE_APPROVAL_REQUIRED" : The seller needs to approve each
+  /// creative before it can serve.
+  /// - "SELLER_PRE_APPROVAL_NOT_REQUIRED" : The seller does not need to approve
+  /// each creative before it can serve.
+  core.String creativePreApprovalPolicy;
+
+  /// Restricitions about the creatives associated with the deal (i.e., size)
+  /// This is available for Programmatic Guaranteed/Preferred Deals in Ad
+  /// Manager.
+  /// @OutputOnly
+  CreativeRestrictions creativeRestrictions;
+
+  /// Specifies whether the creative is safeFrame compatible.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED" : A placeholder for an
+  /// undefined creative safe-frame compatibility.
+  /// - "COMPATIBLE" : The creatives need to be compatible with the safe frame
+  /// option.
+  /// - "INCOMPATIBLE" : The creatives can be incompatible with the safe frame
+  /// option.
+  core.String creativeSafeFrameCompatibility;
+
+  /// A unique deal ID for the deal (server-assigned).
+  /// @OutputOnly
+  core.String dealId;
+
+  /// Metadata about the serving status of this deal.
+  /// @OutputOnly
+  DealServingMetadata dealServingMetadata;
+
+  /// The negotiable terms of the deal.
+  DealTerms dealTerms;
+
+  /// The set of fields around delivery control that are interesting for a buyer
+  /// to see but are non-negotiable. These are set by the publisher.
+  DeliveryControl deliveryControl;
+
+  /// Description for the deal terms.
+  core.String description;
+
+  /// The name of the deal.
+  core.String displayName;
+
+  /// The external deal ID assigned to this deal once the deal is finalized.
+  /// This is the deal ID that shows up in serving/reporting etc.
+  /// @OutputOnly
+  core.String externalDealId;
+
+  /// True, if the buyside inventory setup is complete for this deal.
+  /// @OutputOnly
+  core.bool isSetupComplete;
+
+  /// Specifies the creative source for programmatic deals. PUBLISHER means
+  /// creative is provided by seller and ADVERTISER means creative is
+  /// provided by buyer.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED" : A placeholder for an
+  /// undefined programmatic creative source.
+  /// - "ADVERTISER" : The advertiser provides the creatives.
+  /// - "PUBLISHER" : The publisher provides the creatives to be served.
+  core.String programmaticCreativeSource;
+
+  /// ID of the proposal that this deal is part of.
+  /// @OutputOnly
+  core.String proposalId;
+
+  /// Seller contact information for the deal.
+  /// @OutputOnly
+  core.List<ContactInformation> sellerContacts;
+
+  /// The syndication product associated with the deal.
+  ///
+  /// Note: This field may be set only when creating the resource. Modifying
+  /// this field while updating the resource will result in an error.
+  /// Possible string values are:
+  /// - "SYNDICATION_PRODUCT_UNSPECIFIED" : A placeholder for an undefined
+  /// syndication product.
+  /// - "CONTENT" : This typically represents a web page.
+  /// - "MOBILE" : This represents a mobile property.
+  /// - "VIDEO" : This represents video ad formats.
+  /// - "GAMES" : This represents ads shown within games.
+  core.String syndicationProduct;
+
+  /// Specifies the subset of inventory targeted by the deal.
+  /// @OutputOnly
+  MarketplaceTargeting targeting;
+
+  /// The shared targeting visible to buyers and sellers. Each shared
+  /// targeting entity is AND'd together.
+  core.List<TargetingCriteria> targetingCriterion;
+
+  /// The time when the deal was last updated.
+  /// @OutputOnly
+  core.String updateTime;
+
+  /// The web property code for the seller copied over from the product.
+  core.String webPropertyCode;
+
+  Deal();
+
+  Deal.fromJson(core.Map _json) {
+    if (_json.containsKey("availableEndTime")) {
+      availableEndTime = _json["availableEndTime"];
+    }
+    if (_json.containsKey("availableStartTime")) {
+      availableStartTime = _json["availableStartTime"];
+    }
+    if (_json.containsKey("buyerPrivateData")) {
+      buyerPrivateData = new PrivateData.fromJson(_json["buyerPrivateData"]);
+    }
+    if (_json.containsKey("createProductId")) {
+      createProductId = _json["createProductId"];
+    }
+    if (_json.containsKey("createProductRevision")) {
+      createProductRevision = _json["createProductRevision"];
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("creativePreApprovalPolicy")) {
+      creativePreApprovalPolicy = _json["creativePreApprovalPolicy"];
+    }
+    if (_json.containsKey("creativeRestrictions")) {
+      creativeRestrictions =
+          new CreativeRestrictions.fromJson(_json["creativeRestrictions"]);
+    }
+    if (_json.containsKey("creativeSafeFrameCompatibility")) {
+      creativeSafeFrameCompatibility = _json["creativeSafeFrameCompatibility"];
+    }
+    if (_json.containsKey("dealId")) {
+      dealId = _json["dealId"];
+    }
+    if (_json.containsKey("dealServingMetadata")) {
+      dealServingMetadata =
+          new DealServingMetadata.fromJson(_json["dealServingMetadata"]);
+    }
+    if (_json.containsKey("dealTerms")) {
+      dealTerms = new DealTerms.fromJson(_json["dealTerms"]);
+    }
+    if (_json.containsKey("deliveryControl")) {
+      deliveryControl = new DeliveryControl.fromJson(_json["deliveryControl"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("externalDealId")) {
+      externalDealId = _json["externalDealId"];
+    }
+    if (_json.containsKey("isSetupComplete")) {
+      isSetupComplete = _json["isSetupComplete"];
+    }
+    if (_json.containsKey("programmaticCreativeSource")) {
+      programmaticCreativeSource = _json["programmaticCreativeSource"];
+    }
+    if (_json.containsKey("proposalId")) {
+      proposalId = _json["proposalId"];
+    }
+    if (_json.containsKey("sellerContacts")) {
+      sellerContacts = (_json["sellerContacts"] as core.List)
+          .map<ContactInformation>(
+              (value) => new ContactInformation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("syndicationProduct")) {
+      syndicationProduct = _json["syndicationProduct"];
+    }
+    if (_json.containsKey("targeting")) {
+      targeting = new MarketplaceTargeting.fromJson(_json["targeting"]);
+    }
+    if (_json.containsKey("targetingCriterion")) {
+      targetingCriterion = (_json["targetingCriterion"] as core.List)
+          .map<TargetingCriteria>(
+              (value) => new TargetingCriteria.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+    if (_json.containsKey("webPropertyCode")) {
+      webPropertyCode = _json["webPropertyCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (availableEndTime != null) {
+      _json["availableEndTime"] = availableEndTime;
+    }
+    if (availableStartTime != null) {
+      _json["availableStartTime"] = availableStartTime;
+    }
+    if (buyerPrivateData != null) {
+      _json["buyerPrivateData"] = (buyerPrivateData).toJson();
+    }
+    if (createProductId != null) {
+      _json["createProductId"] = createProductId;
+    }
+    if (createProductRevision != null) {
+      _json["createProductRevision"] = createProductRevision;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (creativePreApprovalPolicy != null) {
+      _json["creativePreApprovalPolicy"] = creativePreApprovalPolicy;
+    }
+    if (creativeRestrictions != null) {
+      _json["creativeRestrictions"] = (creativeRestrictions).toJson();
+    }
+    if (creativeSafeFrameCompatibility != null) {
+      _json["creativeSafeFrameCompatibility"] = creativeSafeFrameCompatibility;
+    }
+    if (dealId != null) {
+      _json["dealId"] = dealId;
+    }
+    if (dealServingMetadata != null) {
+      _json["dealServingMetadata"] = (dealServingMetadata).toJson();
+    }
+    if (dealTerms != null) {
+      _json["dealTerms"] = (dealTerms).toJson();
+    }
+    if (deliveryControl != null) {
+      _json["deliveryControl"] = (deliveryControl).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (externalDealId != null) {
+      _json["externalDealId"] = externalDealId;
+    }
+    if (isSetupComplete != null) {
+      _json["isSetupComplete"] = isSetupComplete;
+    }
+    if (programmaticCreativeSource != null) {
+      _json["programmaticCreativeSource"] = programmaticCreativeSource;
+    }
+    if (proposalId != null) {
+      _json["proposalId"] = proposalId;
+    }
+    if (sellerContacts != null) {
+      _json["sellerContacts"] =
+          sellerContacts.map((value) => (value).toJson()).toList();
+    }
+    if (syndicationProduct != null) {
+      _json["syndicationProduct"] = syndicationProduct;
+    }
+    if (targeting != null) {
+      _json["targeting"] = (targeting).toJson();
+    }
+    if (targetingCriterion != null) {
+      _json["targetingCriterion"] =
+          targetingCriterion.map((value) => (value).toJson()).toList();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    if (webPropertyCode != null) {
+      _json["webPropertyCode"] = webPropertyCode;
+    }
+    return _json;
+  }
+}
+
+/// Tracks which parties (if any) have paused a deal.
+/// The deal is considered paused if either hasBuyerPaused or
+/// hasSellPaused is true.
+class DealPauseStatus {
+  /// The buyer's reason for pausing, if the buyer paused the deal.
+  core.String buyerPauseReason;
+
+  /// The role of the person who first paused this deal.
+  /// Possible string values are:
+  /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
+  /// buyer/seller role.
+  /// - "BUYER" : Specifies the role as buyer.
+  /// - "SELLER" : Specifies the role as seller.
+  core.String firstPausedBy;
+
+  /// True, if the buyer has paused the deal unilaterally.
+  core.bool hasBuyerPaused;
+
+  /// True, if the seller has paused the deal unilaterally.
+  core.bool hasSellerPaused;
+
+  /// The seller's reason for pausing, if the seller paused the deal.
+  core.String sellerPauseReason;
+
+  DealPauseStatus();
+
+  DealPauseStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("buyerPauseReason")) {
+      buyerPauseReason = _json["buyerPauseReason"];
+    }
+    if (_json.containsKey("firstPausedBy")) {
+      firstPausedBy = _json["firstPausedBy"];
+    }
+    if (_json.containsKey("hasBuyerPaused")) {
+      hasBuyerPaused = _json["hasBuyerPaused"];
+    }
+    if (_json.containsKey("hasSellerPaused")) {
+      hasSellerPaused = _json["hasSellerPaused"];
+    }
+    if (_json.containsKey("sellerPauseReason")) {
+      sellerPauseReason = _json["sellerPauseReason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buyerPauseReason != null) {
+      _json["buyerPauseReason"] = buyerPauseReason;
+    }
+    if (firstPausedBy != null) {
+      _json["firstPausedBy"] = firstPausedBy;
+    }
+    if (hasBuyerPaused != null) {
+      _json["hasBuyerPaused"] = hasBuyerPaused;
+    }
+    if (hasSellerPaused != null) {
+      _json["hasSellerPaused"] = hasSellerPaused;
+    }
+    if (sellerPauseReason != null) {
+      _json["sellerPauseReason"] = sellerPauseReason;
+    }
+    return _json;
+  }
+}
+
+/// Message captures metadata about the serving status of a deal.
+class DealServingMetadata {
+  /// Tracks which parties (if any) have paused a deal.
+  /// @OutputOnly
+  DealPauseStatus dealPauseStatus;
+
+  DealServingMetadata();
+
+  DealServingMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("dealPauseStatus")) {
+      dealPauseStatus = new DealPauseStatus.fromJson(_json["dealPauseStatus"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dealPauseStatus != null) {
+      _json["dealPauseStatus"] = (dealPauseStatus).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The deal terms specify the details of a Product/deal. They specify things
+/// like price per buyer, the type of pricing model (e.g., fixed price, auction)
+/// and expected impressions from the publisher.
+class DealTerms {
+  /// Visibility of the URL in bid requests. (default: BRANDED)
+  /// Possible string values are:
+  /// - "BRANDING_TYPE_UNSPECIFIED" : A placeholder for an undefined branding
+  /// type.
+  /// - "BRANDED" : Full URL is included in bid requests.
+  /// - "SEMI_TRANSPARENT" : A TopLevelDomain or masked URL is sent in bid
+  /// requests
+  /// rather than the full one.
+  core.String brandingType;
+
+  /// Publisher provided description for the terms.
+  core.String description;
+
+  /// Non-binding estimate of the estimated gross spend for this deal.
+  /// Can be set by buyer or seller.
+  Price estimatedGrossSpend;
+
+  /// Non-binding estimate of the impressions served per day.
+  /// Can be set by buyer or seller.
+  core.String estimatedImpressionsPerDay;
+
+  /// The terms for guaranteed fixed price deals.
+  GuaranteedFixedPriceTerms guaranteedFixedPriceTerms;
+
+  /// The terms for non-guaranteed auction deals.
+  NonGuaranteedAuctionTerms nonGuaranteedAuctionTerms;
+
+  /// The terms for non-guaranteed fixed price deals.
+  NonGuaranteedFixedPriceTerms nonGuaranteedFixedPriceTerms;
+
+  /// The time zone name. For deals with Cost Per Day billing, defines the
+  /// time zone used to mark the boundaries of a day. It should be an
+  /// IANA TZ name, such as "America/Los_Angeles". For more information,
+  /// see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones.
+  core.String sellerTimeZone;
+
+  DealTerms();
+
+  DealTerms.fromJson(core.Map _json) {
+    if (_json.containsKey("brandingType")) {
+      brandingType = _json["brandingType"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("estimatedGrossSpend")) {
+      estimatedGrossSpend = new Price.fromJson(_json["estimatedGrossSpend"]);
+    }
+    if (_json.containsKey("estimatedImpressionsPerDay")) {
+      estimatedImpressionsPerDay = _json["estimatedImpressionsPerDay"];
+    }
+    if (_json.containsKey("guaranteedFixedPriceTerms")) {
+      guaranteedFixedPriceTerms = new GuaranteedFixedPriceTerms.fromJson(
+          _json["guaranteedFixedPriceTerms"]);
+    }
+    if (_json.containsKey("nonGuaranteedAuctionTerms")) {
+      nonGuaranteedAuctionTerms = new NonGuaranteedAuctionTerms.fromJson(
+          _json["nonGuaranteedAuctionTerms"]);
+    }
+    if (_json.containsKey("nonGuaranteedFixedPriceTerms")) {
+      nonGuaranteedFixedPriceTerms = new NonGuaranteedFixedPriceTerms.fromJson(
+          _json["nonGuaranteedFixedPriceTerms"]);
+    }
+    if (_json.containsKey("sellerTimeZone")) {
+      sellerTimeZone = _json["sellerTimeZone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (brandingType != null) {
+      _json["brandingType"] = brandingType;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (estimatedGrossSpend != null) {
+      _json["estimatedGrossSpend"] = (estimatedGrossSpend).toJson();
+    }
+    if (estimatedImpressionsPerDay != null) {
+      _json["estimatedImpressionsPerDay"] = estimatedImpressionsPerDay;
+    }
+    if (guaranteedFixedPriceTerms != null) {
+      _json["guaranteedFixedPriceTerms"] = (guaranteedFixedPriceTerms).toJson();
+    }
+    if (nonGuaranteedAuctionTerms != null) {
+      _json["nonGuaranteedAuctionTerms"] = (nonGuaranteedAuctionTerms).toJson();
+    }
+    if (nonGuaranteedFixedPriceTerms != null) {
+      _json["nonGuaranteedFixedPriceTerms"] =
+          (nonGuaranteedFixedPriceTerms).toJson();
+    }
+    if (sellerTimeZone != null) {
+      _json["sellerTimeZone"] = sellerTimeZone;
+    }
+    return _json;
+  }
+}
+
+/// Message contains details about how the deals will be paced.
+class DeliveryControl {
+  /// Specified the creative blocking levels to be applied.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED" : A placeholder for an undefined
+  /// creative blocking level.
+  /// - "PUBLISHER_BLOCKING_RULES" : Publisher blocking rules will be applied.
+  /// - "ADX_POLICY_BLOCKING_ONLY" : The Ad Exchange policy blocking rules will
+  /// be applied.
+  core.String creativeBlockingLevel;
+
+  /// Specifies how the impression delivery will be paced.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "DELIVERY_RATE_TYPE_UNSPECIFIED" : A placeholder for an undefined
+  /// delivery rate type.
+  /// - "EVENLY" : Impressions are served uniformly over the life of the deal.
+  /// - "FRONT_LOADED" : Impressions are served front-loaded.
+  /// - "AS_FAST_AS_POSSIBLE" : Impressions are served as fast as possible.
+  core.String deliveryRateType;
+
+  /// Specifies any frequency caps.
+  /// @OutputOnly
+  core.List<FrequencyCap> frequencyCaps;
+
+  DeliveryControl();
+
+  DeliveryControl.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeBlockingLevel")) {
+      creativeBlockingLevel = _json["creativeBlockingLevel"];
+    }
+    if (_json.containsKey("deliveryRateType")) {
+      deliveryRateType = _json["deliveryRateType"];
+    }
+    if (_json.containsKey("frequencyCaps")) {
+      frequencyCaps = (_json["frequencyCaps"] as core.List)
+          .map<FrequencyCap>((value) => new FrequencyCap.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creativeBlockingLevel != null) {
+      _json["creativeBlockingLevel"] = creativeBlockingLevel;
+    }
+    if (deliveryRateType != null) {
+      _json["deliveryRateType"] = deliveryRateType;
+    }
+    if (frequencyCaps != null) {
+      _json["frequencyCaps"] =
+          frequencyCaps.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4955,6 +7104,8 @@ class Disapproval {
   /// - "DESTINATION_EXPERIENCE" : Unacceptable landing page.
   /// - "UNSUPPORTED_LANGUAGE" : Unsupported language.
   /// - "NON_SSL_COMPLIANT" : Non-SSL compliant.
+  /// - "TEMPORARY_PAUSE" : Temporary pausing of creative.
+  /// - "BAIL_BONDS" : Promotes services related to bail bonds.
   core.String reason;
 
   Disapproval();
@@ -5005,25 +7156,31 @@ class Empty {
 /// A set of filters that is applied to a request for data.
 /// Within a filter set, an AND operation is performed across the filters
 /// represented by each field. An OR operation is performed across the filters
-/// represented by the multiple values of a repeated field. E.g.
+/// represented by the multiple values of a repeated field, e.g.,
 /// "format=VIDEO AND deal_id=12 AND (seller_network_id=34 OR
-/// seller_network_id=56)"
+/// seller_network_id=56)".
 class FilterSet {
   /// An absolute date range, defined by a start date and an end date.
   /// Interpreted relative to Pacific time zone.
   AbsoluteDateRange absoluteDateRange;
 
+  /// The set of dimensions along which to break down the response; may be
+  /// empty.
+  /// If multiple dimensions are requested, the breakdown is along the Cartesian
+  /// product of the requested dimensions.
+  core.List<core.String> breakdownDimensions;
+
   /// The ID of the creative on which to filter; optional. This field may be set
   /// only for a filter set that accesses account-level troubleshooting data,
-  /// i.e. one whose name matches the `bidders / * /accounts / * /filterSets / *
-  /// `
+  /// i.e., one whose name matches the `bidders / * /accounts / * /filterSets /
+  /// * `
   /// pattern.
   core.String creativeId;
 
   /// The ID of the deal on which to filter; optional. This field may be set
   /// only for a filter set that accesses account-level troubleshooting data,
-  /// i.e. one whose name matches the `bidders / * /accounts / * /filterSets / *
-  /// `
+  /// i.e., one whose name matches the `bidders / * /accounts / * /filterSets /
+  /// * `
   /// pattern.
   core.String dealId;
 
@@ -5037,7 +7194,7 @@ class FilterSet {
   core.String environment;
 
   /// The list of formats on which to filter; may be empty. The filters
-  /// represented by multiple formats are ORed together (i.e. if non-empty,
+  /// represented by multiple formats are ORed together (i.e., if non-empty,
   /// results must match any one of the formats).
   core.List<core.String> formats;
 
@@ -5055,11 +7212,11 @@ class FilterSet {
   core.String name;
 
   /// The list of platforms on which to filter; may be empty. The filters
-  /// represented by multiple platforms are ORed together (i.e. if non-empty,
+  /// represented by multiple platforms are ORed together (i.e., if non-empty,
   /// results must match any one of the platforms).
   core.List<core.String> platforms;
 
-  /// For Exchange Bidding buyers only.
+  /// For Open Bidding partners only.
   /// The list of publisher identifiers on which to filter; may be empty.
   /// The filters represented by multiple publisher identifiers are ORed
   /// together.
@@ -5073,13 +7230,12 @@ class FilterSet {
   /// Interpreted relative to Pacific time zone.
   RelativeDateRange relativeDateRange;
 
-  /// For Ad Exchange buyers only.
+  /// For Authorized Buyers only.
   /// The list of IDs of the seller (publisher) networks on which to filter;
   /// may be empty. The filters represented by multiple seller network IDs are
-  /// ORed together (i.e. if non-empty, results must match any one of the
-  /// publisher networks).
-  /// See
-  /// [seller-network-ids](https://developers.google.com/ad-exchange/rtb/downloads/seller-network-ids)
+  /// ORed together (i.e., if non-empty, results must match any one of the
+  /// publisher networks). See
+  /// [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
   /// file for the set of existing seller network IDs.
   core.List<core.int> sellerNetworkIds;
 
@@ -5100,6 +7256,10 @@ class FilterSet {
     if (_json.containsKey("absoluteDateRange")) {
       absoluteDateRange =
           new AbsoluteDateRange.fromJson(_json["absoluteDateRange"]);
+    }
+    if (_json.containsKey("breakdownDimensions")) {
+      breakdownDimensions =
+          (_json["breakdownDimensions"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("creativeId")) {
       creativeId = _json["creativeId"];
@@ -5145,6 +7305,9 @@ class FilterSet {
         new core.Map<core.String, core.Object>();
     if (absoluteDateRange != null) {
       _json["absoluteDateRange"] = (absoluteDateRange).toJson();
+    }
+    if (breakdownDimensions != null) {
+      _json["breakdownDimensions"] = breakdownDimensions;
     }
     if (creativeId != null) {
       _json["creativeId"] = creativeId;
@@ -5308,6 +7471,154 @@ class FilteringStats {
   }
 }
 
+/// Represents a list of targeted and excluded mobile application IDs that
+/// publishers own.
+/// Mobile application IDs are from App Store and Google Play Store.
+/// Android App ID, for example, com.google.android.apps.maps, can be found in
+/// Google Play Store URL.
+/// iOS App ID (which is a number) can be found at the end of iTunes store URL.
+/// First party mobile applications is either included or excluded.
+class FirstPartyMobileApplicationTargeting {
+  /// A list of application IDs to be excluded.
+  core.List<core.String> excludedAppIds;
+
+  /// A list of application IDs to be included.
+  core.List<core.String> targetedAppIds;
+
+  FirstPartyMobileApplicationTargeting();
+
+  FirstPartyMobileApplicationTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedAppIds")) {
+      excludedAppIds =
+          (_json["excludedAppIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("targetedAppIds")) {
+      targetedAppIds =
+          (_json["targetedAppIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludedAppIds != null) {
+      _json["excludedAppIds"] = excludedAppIds;
+    }
+    if (targetedAppIds != null) {
+      _json["targetedAppIds"] = targetedAppIds;
+    }
+    return _json;
+  }
+}
+
+/// Frequency cap.
+class FrequencyCap {
+  /// The maximum number of impressions that can be served to a user within the
+  /// specified time period.
+  core.int maxImpressions;
+
+  /// The amount of time, in the units specified by time_unit_type. Defines the
+  /// amount of time over which impressions per user are counted and capped.
+  core.int numTimeUnits;
+
+  /// The time unit. Along with num_time_units defines the amount of time over
+  /// which impressions per user are counted and capped.
+  /// Possible string values are:
+  /// - "TIME_UNIT_TYPE_UNSPECIFIED" : A placeholder for an undefined time unit
+  /// type. This just indicates the
+  /// variable with this value hasn't been initialized.
+  /// - "MINUTE" : Minute
+  /// - "HOUR" : Hour
+  /// - "DAY" : Day
+  /// - "WEEK" : Week
+  /// - "MONTH" : Month
+  /// - "LIFETIME" : Lifetime
+  core.String timeUnitType;
+
+  FrequencyCap();
+
+  FrequencyCap.fromJson(core.Map _json) {
+    if (_json.containsKey("maxImpressions")) {
+      maxImpressions = _json["maxImpressions"];
+    }
+    if (_json.containsKey("numTimeUnits")) {
+      numTimeUnits = _json["numTimeUnits"];
+    }
+    if (_json.containsKey("timeUnitType")) {
+      timeUnitType = _json["timeUnitType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxImpressions != null) {
+      _json["maxImpressions"] = maxImpressions;
+    }
+    if (numTimeUnits != null) {
+      _json["numTimeUnits"] = numTimeUnits;
+    }
+    if (timeUnitType != null) {
+      _json["timeUnitType"] = timeUnitType;
+    }
+    return _json;
+  }
+}
+
+/// Terms for Programmatic Guaranteed Deals.
+class GuaranteedFixedPriceTerms {
+  /// Fixed price for the specified buyer.
+  core.List<PricePerBuyer> fixedPrices;
+
+  /// Guaranteed impressions as a percentage. This is the percentage
+  /// of guaranteed looks that the buyer is guaranteeing to buy.
+  core.String guaranteedImpressions;
+
+  /// Count of guaranteed looks. Required for deal, optional for product.
+  core.String guaranteedLooks;
+
+  /// Daily minimum looks for CPD deal types.
+  core.String minimumDailyLooks;
+
+  GuaranteedFixedPriceTerms();
+
+  GuaranteedFixedPriceTerms.fromJson(core.Map _json) {
+    if (_json.containsKey("fixedPrices")) {
+      fixedPrices = (_json["fixedPrices"] as core.List)
+          .map<PricePerBuyer>((value) => new PricePerBuyer.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("guaranteedImpressions")) {
+      guaranteedImpressions = _json["guaranteedImpressions"];
+    }
+    if (_json.containsKey("guaranteedLooks")) {
+      guaranteedLooks = _json["guaranteedLooks"];
+    }
+    if (_json.containsKey("minimumDailyLooks")) {
+      minimumDailyLooks = _json["minimumDailyLooks"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fixedPrices != null) {
+      _json["fixedPrices"] =
+          fixedPrices.map((value) => (value).toJson()).toList();
+    }
+    if (guaranteedImpressions != null) {
+      _json["guaranteedImpressions"] = guaranteedImpressions;
+    }
+    if (guaranteedLooks != null) {
+      _json["guaranteedLooks"] = guaranteedLooks;
+    }
+    if (minimumDailyLooks != null) {
+      _json["minimumDailyLooks"] = minimumDailyLooks;
+    }
+    return _json;
+  }
+}
+
 /// HTML content for a creative.
 class HtmlContent {
   /// The height of the HTML snippet in pixels.
@@ -5462,6 +7773,47 @@ class ImpressionMetricsRow {
     }
     if (successfulResponses != null) {
       _json["successfulResponses"] = (successfulResponses).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents the size of an ad unit that can be targeted on an ad
+/// request. It only applies to Private Auction, AdX Preferred Deals and
+/// Auction Packages. This targeting does not apply to Programmatic Guaranteed
+/// and Preferred Deals in Ad Manager.
+class InventorySizeTargeting {
+  /// A list of inventory sizes to be excluded.
+  core.List<AdSize> excludedInventorySizes;
+
+  /// A list of inventory sizes to be included.
+  core.List<AdSize> targetedInventorySizes;
+
+  InventorySizeTargeting();
+
+  InventorySizeTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedInventorySizes")) {
+      excludedInventorySizes = (_json["excludedInventorySizes"] as core.List)
+          .map<AdSize>((value) => new AdSize.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("targetedInventorySizes")) {
+      targetedInventorySizes = (_json["targetedInventorySizes"] as core.List)
+          .map<AdSize>((value) => new AdSize.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludedInventorySizes != null) {
+      _json["excludedInventorySizes"] =
+          excludedInventorySizes.map((value) => (value).toJson()).toList();
+    }
+    if (targetedInventorySizes != null) {
+      _json["targetedInventorySizes"] =
+          targetedInventorySizes.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5681,8 +8033,8 @@ class ListClientsResponse {
   /// Pass this value in the
   /// ListClientsRequest.pageToken
   /// field in the subsequent call to the
-  /// accounts.clients.list method
-  /// to retrieve the next page of results.
+  /// accounts.clients.list
+  /// method to retrieve the next page of results.
   core.String nextPageToken;
 
   ListClientsResponse();
@@ -5763,19 +8115,19 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// This value will never be returned in responses.
   /// - "CREATIVE_ATTRIBUTE" : Indicates that the detail ID refers to a creative
   /// attribute; see
-  /// [publisher-excludable-creative-attributes](https://developers.google.com/ad-exchange/rtb/downloads/publisher-excludable-creative-attributes).
+  /// [publisher-excludable-creative-attributes](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes).
   /// - "VENDOR" : Indicates that the detail ID refers to a vendor; see
-  /// [vendors](https://developers.google.com/ad-exchange/rtb/downloads/vendors).
+  /// [vendors](https://developers.google.com/authorized-buyers/rtb/downloads/vendors).
   /// - "SENSITIVE_CATEGORY" : Indicates that the detail ID refers to a
   /// sensitive category; see
-  /// [ad-sensitive-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-sensitive-categories).
+  /// [ad-sensitive-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-sensitive-categories).
   /// - "PRODUCT_CATEGORY" : Indicates that the detail ID refers to a product
   /// category; see
-  /// [ad-product-categories](https://developers.google.com/ad-exchange/rtb/downloads/ad-product-categories).
+  /// [ad-product-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-product-categories).
   /// - "DISAPPROVAL_REASON" : Indicates that the detail ID refers to a
   /// disapproval reason; see
   /// DisapprovalReason enum in
-  /// [snippet-status-report-proto](https://developers.google.com/ad-exchange/rtb/downloads/snippet-status-report-proto).
+  /// [snippet-status-report-proto](https://developers.google.com/authorized-buyers/rtb/downloads/snippet-status-report-proto).
   core.String detailType;
 
   /// List of rows, with counts of bids with a given creative status aggregated
@@ -6152,6 +8504,110 @@ class ListNonBillableWinningBidsResponse {
   }
 }
 
+/// Response message for listing products visible to the buyer.
+class ListProductsResponse {
+  /// List pagination support.
+  core.String nextPageToken;
+
+  /// The list of matching products at their head revision number.
+  core.List<Product> products;
+
+  ListProductsResponse();
+
+  ListProductsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("products")) {
+      products = (_json["products"] as core.List)
+          .map<Product>((value) => new Product.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (products != null) {
+      _json["products"] = products.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for listing proposals.
+class ListProposalsResponse {
+  /// Continuation token for fetching the next page of results.
+  core.String nextPageToken;
+
+  /// The list of proposals.
+  core.List<Proposal> proposals;
+
+  ListProposalsResponse();
+
+  ListProposalsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("proposals")) {
+      proposals = (_json["proposals"] as core.List)
+          .map<Proposal>((value) => new Proposal.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (proposals != null) {
+      _json["proposals"] = proposals.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for profiles visible to the buyer.
+class ListPublisherProfilesResponse {
+  /// List pagination support
+  core.String nextPageToken;
+
+  /// The list of matching publisher profiles.
+  core.List<PublisherProfile> publisherProfiles;
+
+  ListPublisherProfilesResponse();
+
+  ListPublisherProfilesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("publisherProfiles")) {
+      publisherProfiles = (_json["publisherProfiles"] as core.List)
+          .map<PublisherProfile>(
+              (value) => new PublisherProfile.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (publisherProfiles != null) {
+      _json["publisherProfiles"] =
+          publisherProfiles.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// @OutputOnly The Geo criteria the restriction applies to.
 class LocationContext {
   /// IDs representing the geo location for this context.
@@ -6173,6 +8629,73 @@ class LocationContext {
         new core.Map<core.String, core.Object>();
     if (geoCriteriaIds != null) {
       _json["geoCriteriaIds"] = geoCriteriaIds;
+    }
+    return _json;
+  }
+}
+
+/// Targeting represents different criteria that can be used by advertisers to
+/// target ad inventory. For example, they can choose to target ad requests only
+/// if the user is in the US.
+/// Multiple types of targeting are always applied as a logical AND, unless
+/// noted
+/// otherwise.
+class MarketplaceTargeting {
+  /// Geo criteria IDs to be included/excluded.
+  CriteriaTargeting geoTargeting;
+
+  /// Inventory sizes to be included/excluded.
+  InventorySizeTargeting inventorySizeTargeting;
+
+  /// Placement targeting information, e.g., URL, mobile applications.
+  PlacementTargeting placementTargeting;
+
+  /// Technology targeting information, e.g., operating system, device category.
+  TechnologyTargeting technologyTargeting;
+
+  /// Video targeting information.
+  VideoTargeting videoTargeting;
+
+  MarketplaceTargeting();
+
+  MarketplaceTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("geoTargeting")) {
+      geoTargeting = new CriteriaTargeting.fromJson(_json["geoTargeting"]);
+    }
+    if (_json.containsKey("inventorySizeTargeting")) {
+      inventorySizeTargeting =
+          new InventorySizeTargeting.fromJson(_json["inventorySizeTargeting"]);
+    }
+    if (_json.containsKey("placementTargeting")) {
+      placementTargeting =
+          new PlacementTargeting.fromJson(_json["placementTargeting"]);
+    }
+    if (_json.containsKey("technologyTargeting")) {
+      technologyTargeting =
+          new TechnologyTargeting.fromJson(_json["technologyTargeting"]);
+    }
+    if (_json.containsKey("videoTargeting")) {
+      videoTargeting = new VideoTargeting.fromJson(_json["videoTargeting"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (geoTargeting != null) {
+      _json["geoTargeting"] = (geoTargeting).toJson();
+    }
+    if (inventorySizeTargeting != null) {
+      _json["inventorySizeTargeting"] = (inventorySizeTargeting).toJson();
+    }
+    if (placementTargeting != null) {
+      _json["placementTargeting"] = (placementTargeting).toJson();
+    }
+    if (technologyTargeting != null) {
+      _json["technologyTargeting"] = (technologyTargeting).toJson();
+    }
+    if (videoTargeting != null) {
+      _json["videoTargeting"] = (videoTargeting).toJson();
     }
     return _json;
   }
@@ -6214,6 +8737,78 @@ class MetricValue {
     }
     if (variance != null) {
       _json["variance"] = variance;
+    }
+    return _json;
+  }
+}
+
+/// Mobile application targeting settings.
+class MobileApplicationTargeting {
+  /// Publisher owned apps to be targeted or excluded by the publisher to
+  /// display the ads in.
+  FirstPartyMobileApplicationTargeting firstPartyTargeting;
+
+  MobileApplicationTargeting();
+
+  MobileApplicationTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("firstPartyTargeting")) {
+      firstPartyTargeting = new FirstPartyMobileApplicationTargeting.fromJson(
+          _json["firstPartyTargeting"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (firstPartyTargeting != null) {
+      _json["firstPartyTargeting"] = (firstPartyTargeting).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents an amount of money with its currency type.
+class Money {
+  /// The 3-letter currency code defined in ISO 4217.
+  core.String currencyCode;
+
+  /// Number of nano (10^-9) units of the amount.
+  /// The value must be between -999,999,999 and +999,999,999 inclusive.
+  /// If `units` is positive, `nanos` must be positive or zero.
+  /// If `units` is zero, `nanos` can be positive, zero, or negative.
+  /// If `units` is negative, `nanos` must be negative or zero.
+  /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+  core.int nanos;
+
+  /// The whole units of the amount.
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  core.String units;
+
+  Money();
+
+  Money.fromJson(core.Map _json) {
+    if (_json.containsKey("currencyCode")) {
+      currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("nanos")) {
+      nanos = _json["nanos"];
+    }
+    if (_json.containsKey("units")) {
+      units = _json["units"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (currencyCode != null) {
+      _json["currencyCode"] = currencyCode;
+    }
+    if (nanos != null) {
+      _json["nanos"] = nanos;
+    }
+    if (units != null) {
+      _json["units"] = units;
     }
     return _json;
   }
@@ -6401,6 +8996,239 @@ class NonBillableWinningBidStatusRow {
   }
 }
 
+/// Terms for Private Auctions. Note that Private Auctions can be created only
+/// by the seller, but they can be returned in a get or list request.
+class NonGuaranteedAuctionTerms {
+  /// True if open auction buyers are allowed to compete with invited buyers
+  /// in this private auction.
+  core.bool autoOptimizePrivateAuction;
+
+  /// Reserve price for the specified buyer.
+  core.List<PricePerBuyer> reservePricesPerBuyer;
+
+  NonGuaranteedAuctionTerms();
+
+  NonGuaranteedAuctionTerms.fromJson(core.Map _json) {
+    if (_json.containsKey("autoOptimizePrivateAuction")) {
+      autoOptimizePrivateAuction = _json["autoOptimizePrivateAuction"];
+    }
+    if (_json.containsKey("reservePricesPerBuyer")) {
+      reservePricesPerBuyer = (_json["reservePricesPerBuyer"] as core.List)
+          .map<PricePerBuyer>((value) => new PricePerBuyer.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoOptimizePrivateAuction != null) {
+      _json["autoOptimizePrivateAuction"] = autoOptimizePrivateAuction;
+    }
+    if (reservePricesPerBuyer != null) {
+      _json["reservePricesPerBuyer"] =
+          reservePricesPerBuyer.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Terms for Preferred Deals. Note that Preferred Deals cannot be created via
+/// the API at this time, but can be returned in a get or list request.
+class NonGuaranteedFixedPriceTerms {
+  /// Fixed price for the specified buyer.
+  core.List<PricePerBuyer> fixedPrices;
+
+  NonGuaranteedFixedPriceTerms();
+
+  NonGuaranteedFixedPriceTerms.fromJson(core.Map _json) {
+    if (_json.containsKey("fixedPrices")) {
+      fixedPrices = (_json["fixedPrices"] as core.List)
+          .map<PricePerBuyer>((value) => new PricePerBuyer.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fixedPrices != null) {
+      _json["fixedPrices"] =
+          fixedPrices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A proposal may be associated to several notes.
+class Note {
+  /// The timestamp for when this note was created.
+  /// @OutputOnly
+  core.String createTime;
+
+  /// The role of the person (buyer/seller) creating the note.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
+  /// buyer/seller role.
+  /// - "BUYER" : Specifies the role as buyer.
+  /// - "SELLER" : Specifies the role as seller.
+  core.String creatorRole;
+
+  /// The actual note to attach.
+  /// (max-length: 1024 unicode code units)
+  ///
+  /// Note: This field may be set only when creating the resource. Modifying
+  /// this field while updating the resource will result in an error.
+  core.String note;
+
+  /// The unique ID for the note.
+  /// @OutputOnly
+  core.String noteId;
+
+  /// The revision number of the proposal when the note is created.
+  /// @OutputOnly
+  core.String proposalRevision;
+
+  Note();
+
+  Note.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("creatorRole")) {
+      creatorRole = _json["creatorRole"];
+    }
+    if (_json.containsKey("note")) {
+      note = _json["note"];
+    }
+    if (_json.containsKey("noteId")) {
+      noteId = _json["noteId"];
+    }
+    if (_json.containsKey("proposalRevision")) {
+      proposalRevision = _json["proposalRevision"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (creatorRole != null) {
+      _json["creatorRole"] = creatorRole;
+    }
+    if (note != null) {
+      _json["note"] = note;
+    }
+    if (noteId != null) {
+      _json["noteId"] = noteId;
+    }
+    if (proposalRevision != null) {
+      _json["proposalRevision"] = proposalRevision;
+    }
+    return _json;
+  }
+}
+
+/// Represents targeting information for operating systems.
+class OperatingSystemTargeting {
+  /// IDs of operating systems to be included/excluded.
+  CriteriaTargeting operatingSystemCriteria;
+
+  /// IDs of operating system versions to be included/excluded.
+  CriteriaTargeting operatingSystemVersionCriteria;
+
+  OperatingSystemTargeting();
+
+  OperatingSystemTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("operatingSystemCriteria")) {
+      operatingSystemCriteria =
+          new CriteriaTargeting.fromJson(_json["operatingSystemCriteria"]);
+    }
+    if (_json.containsKey("operatingSystemVersionCriteria")) {
+      operatingSystemVersionCriteria = new CriteriaTargeting.fromJson(
+          _json["operatingSystemVersionCriteria"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (operatingSystemCriteria != null) {
+      _json["operatingSystemCriteria"] = (operatingSystemCriteria).toJson();
+    }
+    if (operatingSystemVersionCriteria != null) {
+      _json["operatingSystemVersionCriteria"] =
+          (operatingSystemVersionCriteria).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request message to pause serving for an already-finalized proposal.
+class PauseProposalRequest {
+  /// The reason why the proposal is being paused.
+  /// This human readable message will be displayed in the seller's UI.
+  /// (Max length: 100 unicode code units.)
+  core.String reason;
+
+  PauseProposalRequest();
+
+  PauseProposalRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reason != null) {
+      _json["reason"] = reason;
+    }
+    return _json;
+  }
+}
+
+/// Represents targeting about where the ads can appear, e.g., certain sites or
+/// mobile applications.
+/// Different placement targeting types will be logically OR'ed.
+class PlacementTargeting {
+  /// Mobile application targeting information in a deal.
+  /// This doesn't apply to Auction Packages.
+  MobileApplicationTargeting mobileApplicationTargeting;
+
+  /// URLs to be included/excluded.
+  UrlTargeting urlTargeting;
+
+  PlacementTargeting();
+
+  PlacementTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("mobileApplicationTargeting")) {
+      mobileApplicationTargeting = new MobileApplicationTargeting.fromJson(
+          _json["mobileApplicationTargeting"]);
+    }
+    if (_json.containsKey("urlTargeting")) {
+      urlTargeting = new UrlTargeting.fromJson(_json["urlTargeting"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (mobileApplicationTargeting != null) {
+      _json["mobileApplicationTargeting"] =
+          (mobileApplicationTargeting).toJson();
+    }
+    if (urlTargeting != null) {
+      _json["urlTargeting"] = (urlTargeting).toJson();
+    }
+    return _json;
+  }
+}
+
 /// @OutputOnly The type of platform the restriction applies to.
 class PlatformContext {
   /// The platforms this restriction applies to.
@@ -6419,6 +9247,719 @@ class PlatformContext {
         new core.Map<core.String, core.Object>();
     if (platforms != null) {
       _json["platforms"] = platforms;
+    }
+    return _json;
+  }
+}
+
+/// Represents a price and a pricing type for a product / deal.
+class Price {
+  /// The actual price with currency specified.
+  Money amount;
+
+  /// The pricing type for the deal/product. (default: CPM)
+  /// Possible string values are:
+  /// - "PRICING_TYPE_UNSPECIFIED" : A placeholder for an undefined pricing
+  /// type. If the pricing type is
+  /// unpsecified, `COST_PER_MILLE` will be used instead.
+  /// - "COST_PER_MILLE" : Cost per thousand impressions.
+  /// - "COST_PER_DAY" : Cost per day
+  core.String pricingType;
+
+  Price();
+
+  Price.fromJson(core.Map _json) {
+    if (_json.containsKey("amount")) {
+      amount = new Money.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("pricingType")) {
+      pricingType = _json["pricingType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amount != null) {
+      _json["amount"] = (amount).toJson();
+    }
+    if (pricingType != null) {
+      _json["pricingType"] = pricingType;
+    }
+    return _json;
+  }
+}
+
+/// Used to specify pricing rules for buyers/advertisers. Each PricePerBuyer in
+/// a product can become 0 or 1 deals. To check if there is a PricePerBuyer for
+/// a particular buyer or buyer/advertiser pair, we look for the most specific
+/// matching rule - we first look for a rule matching the buyer and advertiser,
+/// next a rule with the buyer but an empty advertiser list, and otherwise look
+/// for a matching rule where no buyer is set.
+class PricePerBuyer {
+  /// The list of advertisers for this price when associated with this buyer.
+  /// If empty, all advertisers with this buyer pay this price.
+  core.List<core.String> advertiserIds;
+
+  /// The buyer who will pay this price. If unset, all buyers can pay this price
+  /// (if the
+  /// advertisers match, and there's no more specific rule matching the buyer).
+  Buyer buyer;
+
+  /// The specified price.
+  Price price;
+
+  PricePerBuyer();
+
+  PricePerBuyer.fromJson(core.Map _json) {
+    if (_json.containsKey("advertiserIds")) {
+      advertiserIds = (_json["advertiserIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("buyer")) {
+      buyer = new Buyer.fromJson(_json["buyer"]);
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (advertiserIds != null) {
+      _json["advertiserIds"] = advertiserIds;
+    }
+    if (buyer != null) {
+      _json["buyer"] = (buyer).toJson();
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Buyers are allowed to store certain types of private data in a
+/// proposal/deal.
+class PrivateData {
+  /// A buyer or seller specified reference ID. This can be queried in the list
+  /// operations (max-length: 1024 unicode code units).
+  core.String referenceId;
+
+  PrivateData();
+
+  PrivateData.fromJson(core.Map _json) {
+    if (_json.containsKey("referenceId")) {
+      referenceId = _json["referenceId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (referenceId != null) {
+      _json["referenceId"] = referenceId;
+    }
+    return _json;
+  }
+}
+
+/// Note: this resource requires whitelisting for access. Please contact your
+/// account manager for access to Marketplace resources.
+///
+/// A product is a segment of inventory that a seller wishes to sell. It is
+/// associated with certain terms and targeting information which helps the
+/// buyer
+/// know more about the inventory.
+class Product {
+  /// The proposed end time for the deal. The field will be truncated to the
+  /// order of
+  /// seconds during serving.
+  core.String availableEndTime;
+
+  /// Inventory availability dates. The start time will be truncated to seconds
+  /// during serving.
+  /// Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to
+  /// 3:23:34
+  /// when serving.
+  core.String availableStartTime;
+
+  /// Creation time.
+  core.String createTime;
+
+  /// Optional contact information for the creator of this product.
+  core.List<ContactInformation> creatorContacts;
+
+  /// The display name for this product as set by the seller.
+  core.String displayName;
+
+  /// If the creator has already signed off on the product, then the buyer can
+  /// finalize the deal by accepting the product as is. When copying to a
+  /// proposal, if any of the terms are changed, then auto_finalize is
+  /// automatically set to false.
+  core.bool hasCreatorSignedOff;
+
+  /// The unique ID for the product.
+  core.String productId;
+
+  /// The revision number of the product (auto-assigned by Marketplace).
+  core.String productRevision;
+
+  /// An ID which can be used by the Publisher Profile API to get more
+  /// information about the seller that created this product.
+  core.String publisherProfileId;
+
+  /// Information about the seller that created this product.
+  Seller seller;
+
+  /// The syndication product associated with the deal.
+  /// Possible string values are:
+  /// - "SYNDICATION_PRODUCT_UNSPECIFIED" : A placeholder for an undefined
+  /// syndication product.
+  /// - "CONTENT" : This typically represents a web page.
+  /// - "MOBILE" : This represents a mobile property.
+  /// - "VIDEO" : This represents video ad formats.
+  /// - "GAMES" : This represents ads shown within games.
+  core.String syndicationProduct;
+
+  /// Targeting that is shared between the buyer and the seller. Each targeting
+  /// criterion has a specified key and for each key there is a list of
+  /// inclusion
+  /// value or exclusion values.
+  core.List<TargetingCriteria> targetingCriterion;
+
+  /// The negotiable terms of the deal.
+  DealTerms terms;
+
+  /// Time of last update.
+  core.String updateTime;
+
+  /// The web-property code for the seller. This needs to be copied as is when
+  /// adding a new deal to a proposal.
+  core.String webPropertyCode;
+
+  Product();
+
+  Product.fromJson(core.Map _json) {
+    if (_json.containsKey("availableEndTime")) {
+      availableEndTime = _json["availableEndTime"];
+    }
+    if (_json.containsKey("availableStartTime")) {
+      availableStartTime = _json["availableStartTime"];
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("creatorContacts")) {
+      creatorContacts = (_json["creatorContacts"] as core.List)
+          .map<ContactInformation>(
+              (value) => new ContactInformation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("hasCreatorSignedOff")) {
+      hasCreatorSignedOff = _json["hasCreatorSignedOff"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("productRevision")) {
+      productRevision = _json["productRevision"];
+    }
+    if (_json.containsKey("publisherProfileId")) {
+      publisherProfileId = _json["publisherProfileId"];
+    }
+    if (_json.containsKey("seller")) {
+      seller = new Seller.fromJson(_json["seller"]);
+    }
+    if (_json.containsKey("syndicationProduct")) {
+      syndicationProduct = _json["syndicationProduct"];
+    }
+    if (_json.containsKey("targetingCriterion")) {
+      targetingCriterion = (_json["targetingCriterion"] as core.List)
+          .map<TargetingCriteria>(
+              (value) => new TargetingCriteria.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("terms")) {
+      terms = new DealTerms.fromJson(_json["terms"]);
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+    if (_json.containsKey("webPropertyCode")) {
+      webPropertyCode = _json["webPropertyCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (availableEndTime != null) {
+      _json["availableEndTime"] = availableEndTime;
+    }
+    if (availableStartTime != null) {
+      _json["availableStartTime"] = availableStartTime;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (creatorContacts != null) {
+      _json["creatorContacts"] =
+          creatorContacts.map((value) => (value).toJson()).toList();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (hasCreatorSignedOff != null) {
+      _json["hasCreatorSignedOff"] = hasCreatorSignedOff;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (productRevision != null) {
+      _json["productRevision"] = productRevision;
+    }
+    if (publisherProfileId != null) {
+      _json["publisherProfileId"] = publisherProfileId;
+    }
+    if (seller != null) {
+      _json["seller"] = (seller).toJson();
+    }
+    if (syndicationProduct != null) {
+      _json["syndicationProduct"] = syndicationProduct;
+    }
+    if (targetingCriterion != null) {
+      _json["targetingCriterion"] =
+          targetingCriterion.map((value) => (value).toJson()).toList();
+    }
+    if (terms != null) {
+      _json["terms"] = (terms).toJson();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    if (webPropertyCode != null) {
+      _json["webPropertyCode"] = webPropertyCode;
+    }
+    return _json;
+  }
+}
+
+/// Note: this resource requires whitelisting for access. Please contact your
+/// account manager for access to Marketplace resources.
+///
+/// Represents a proposal in the Marketplace. A proposal is the unit of
+/// negotiation between a seller and a buyer and contains deals which
+/// are served.
+///
+/// Note: you can not update, create, or otherwise modify Private
+/// Auction or Preferred Deals deals through the API.
+///
+/// Fields are updatable unless noted otherwise.
+class Proposal {
+  /// Reference to the buyer that will get billed for this proposal.
+  /// @OutputOnly
+  Buyer billedBuyer;
+
+  /// Reference to the buyer on the proposal.
+  ///
+  /// Note: This field may be set only when creating the resource. Modifying
+  /// this field while updating the resource will result in an error.
+  Buyer buyer;
+
+  /// Contact information for the buyer.
+  core.List<ContactInformation> buyerContacts;
+
+  /// Private data for buyer. (hidden from seller).
+  PrivateData buyerPrivateData;
+
+  /// The deals associated with this proposal. For Private Auction proposals
+  /// (whose deals have
+  /// NonGuaranteedAuctionTerms), there will only be one deal.
+  core.List<Deal> deals;
+
+  /// The name for the proposal.
+  core.String displayName;
+
+  /// True if the proposal is being renegotiated.
+  /// @OutputOnly
+  core.bool isRenegotiating;
+
+  /// True, if the buyside inventory setup is complete for this proposal.
+  /// @OutputOnly
+  core.bool isSetupComplete;
+
+  /// The role of the last user that either updated the proposal or left a
+  /// comment.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
+  /// buyer/seller role.
+  /// - "BUYER" : Specifies the role as buyer.
+  /// - "SELLER" : Specifies the role as seller.
+  core.String lastUpdaterOrCommentorRole;
+
+  /// The notes associated with this proposal.
+  /// @OutputOnly
+  core.List<Note> notes;
+
+  /// Indicates whether the buyer/seller created the proposal.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
+  /// buyer/seller role.
+  /// - "BUYER" : Specifies the role as buyer.
+  /// - "SELLER" : Specifies the role as seller.
+  core.String originatorRole;
+
+  /// Private auction ID if this proposal is a private auction proposal.
+  /// @OutputOnly
+  core.String privateAuctionId;
+
+  /// The unique ID of the proposal.
+  /// @OutputOnly
+  core.String proposalId;
+
+  /// The revision number for the proposal.
+  /// Each update to the proposal or the deal causes the proposal revision
+  /// number
+  /// to auto-increment. The buyer keeps track of the last revision number they
+  /// know of and pass it in when making an update. If the head revision number
+  /// on the server has since incremented, then an ABORTED error is returned
+  /// during the update operation to let the buyer know that a subsequent update
+  /// was made.
+  /// @OutputOnly
+  core.String proposalRevision;
+
+  /// The current state of the proposal.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "PROPOSAL_STATE_UNSPECIFIED" : A placeholder for an undefined proposal
+  /// state.
+  /// - "PROPOSED" : The proposal is under negotiation or renegotiation.
+  /// - "BUYER_ACCEPTED" : The proposal has been accepted by the buyer.
+  /// - "SELLER_ACCEPTED" : The proposal has been accepted by the seller.
+  /// - "CANCELED" : The negotiations on the proposal were canceled and the
+  /// proposal was never
+  /// finalized.
+  /// - "FINALIZED" : The proposal is finalized. During renegotiation, the
+  /// proposal may
+  /// not be in this state.
+  core.String proposalState;
+
+  /// Reference to the seller on the proposal.
+  ///
+  /// Note: This field may be set only when creating the resource. Modifying
+  /// this field while updating the resource will result in an error.
+  Seller seller;
+
+  /// Contact information for the seller.
+  /// @OutputOnly
+  core.List<ContactInformation> sellerContacts;
+
+  /// The time when the proposal was last revised.
+  /// @OutputOnly
+  core.String updateTime;
+
+  Proposal();
+
+  Proposal.fromJson(core.Map _json) {
+    if (_json.containsKey("billedBuyer")) {
+      billedBuyer = new Buyer.fromJson(_json["billedBuyer"]);
+    }
+    if (_json.containsKey("buyer")) {
+      buyer = new Buyer.fromJson(_json["buyer"]);
+    }
+    if (_json.containsKey("buyerContacts")) {
+      buyerContacts = (_json["buyerContacts"] as core.List)
+          .map<ContactInformation>(
+              (value) => new ContactInformation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("buyerPrivateData")) {
+      buyerPrivateData = new PrivateData.fromJson(_json["buyerPrivateData"]);
+    }
+    if (_json.containsKey("deals")) {
+      deals = (_json["deals"] as core.List)
+          .map<Deal>((value) => new Deal.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("isRenegotiating")) {
+      isRenegotiating = _json["isRenegotiating"];
+    }
+    if (_json.containsKey("isSetupComplete")) {
+      isSetupComplete = _json["isSetupComplete"];
+    }
+    if (_json.containsKey("lastUpdaterOrCommentorRole")) {
+      lastUpdaterOrCommentorRole = _json["lastUpdaterOrCommentorRole"];
+    }
+    if (_json.containsKey("notes")) {
+      notes = (_json["notes"] as core.List)
+          .map<Note>((value) => new Note.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("originatorRole")) {
+      originatorRole = _json["originatorRole"];
+    }
+    if (_json.containsKey("privateAuctionId")) {
+      privateAuctionId = _json["privateAuctionId"];
+    }
+    if (_json.containsKey("proposalId")) {
+      proposalId = _json["proposalId"];
+    }
+    if (_json.containsKey("proposalRevision")) {
+      proposalRevision = _json["proposalRevision"];
+    }
+    if (_json.containsKey("proposalState")) {
+      proposalState = _json["proposalState"];
+    }
+    if (_json.containsKey("seller")) {
+      seller = new Seller.fromJson(_json["seller"]);
+    }
+    if (_json.containsKey("sellerContacts")) {
+      sellerContacts = (_json["sellerContacts"] as core.List)
+          .map<ContactInformation>(
+              (value) => new ContactInformation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (billedBuyer != null) {
+      _json["billedBuyer"] = (billedBuyer).toJson();
+    }
+    if (buyer != null) {
+      _json["buyer"] = (buyer).toJson();
+    }
+    if (buyerContacts != null) {
+      _json["buyerContacts"] =
+          buyerContacts.map((value) => (value).toJson()).toList();
+    }
+    if (buyerPrivateData != null) {
+      _json["buyerPrivateData"] = (buyerPrivateData).toJson();
+    }
+    if (deals != null) {
+      _json["deals"] = deals.map((value) => (value).toJson()).toList();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (isRenegotiating != null) {
+      _json["isRenegotiating"] = isRenegotiating;
+    }
+    if (isSetupComplete != null) {
+      _json["isSetupComplete"] = isSetupComplete;
+    }
+    if (lastUpdaterOrCommentorRole != null) {
+      _json["lastUpdaterOrCommentorRole"] = lastUpdaterOrCommentorRole;
+    }
+    if (notes != null) {
+      _json["notes"] = notes.map((value) => (value).toJson()).toList();
+    }
+    if (originatorRole != null) {
+      _json["originatorRole"] = originatorRole;
+    }
+    if (privateAuctionId != null) {
+      _json["privateAuctionId"] = privateAuctionId;
+    }
+    if (proposalId != null) {
+      _json["proposalId"] = proposalId;
+    }
+    if (proposalRevision != null) {
+      _json["proposalRevision"] = proposalRevision;
+    }
+    if (proposalState != null) {
+      _json["proposalState"] = proposalState;
+    }
+    if (seller != null) {
+      _json["seller"] = (seller).toJson();
+    }
+    if (sellerContacts != null) {
+      _json["sellerContacts"] =
+          sellerContacts.map((value) => (value).toJson()).toList();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Note: this resource requires whitelisting for access. Please contact your
+/// account manager for access to Marketplace resources.
+///
+/// Represents a publisher profile in Marketplace.
+///
+/// All fields are read only. All string fields are free-form text entered by
+/// the publisher
+/// unless noted otherwise.
+class PublisherProfile {
+  /// Description on the publisher's audience.
+  core.String audienceDescription;
+
+  /// Statement explaining what's unique about publisher's business, and why
+  /// buyers should
+  /// partner with the publisher.
+  core.String buyerPitchStatement;
+
+  /// Contact information for direct reservation deals. This is free text
+  /// entered by the publisher
+  /// and may include information like names, phone numbers and email addresses.
+  core.String directDealsContact;
+
+  /// Name of the publisher profile.
+  core.String displayName;
+
+  /// The list of domains represented in this publisher profile. Empty if this
+  /// is a parent profile.
+  /// These are top private domains, meaning that these will not contain a
+  /// string like
+  /// "photos.google.co.uk/123", but will instead contain "google.co.uk".
+  core.List<core.String> domains;
+
+  /// URL to publisher's Google+ page.
+  core.String googlePlusUrl;
+
+  /// A Google public URL to the logo for this publisher profile. The logo is
+  /// stored as
+  /// a PNG, JPG, or GIF image.
+  core.String logoUrl;
+
+  /// URL to additional marketing and sales materials.
+  core.String mediaKitUrl;
+
+  /// Overview of the publisher.
+  core.String overview;
+
+  /// Contact information for programmatic deals. This is free text entered by
+  /// the publisher
+  /// and may include information like names, phone numbers and email addresses.
+  core.String programmaticDealsContact;
+
+  /// Unique ID for publisher profile.
+  core.String publisherProfileId;
+
+  /// URL to a publisher rate card.
+  core.String rateCardInfoUrl;
+
+  /// URL to a sample content page.
+  core.String samplePageUrl;
+
+  /// Seller of the publisher profile.
+  Seller seller;
+
+  /// Up to three key metrics and rankings. Max 100 characters each.
+  /// For example "#1 Mobile News Site for 20 Straight Months".
+  core.List<core.String> topHeadlines;
+
+  PublisherProfile();
+
+  PublisherProfile.fromJson(core.Map _json) {
+    if (_json.containsKey("audienceDescription")) {
+      audienceDescription = _json["audienceDescription"];
+    }
+    if (_json.containsKey("buyerPitchStatement")) {
+      buyerPitchStatement = _json["buyerPitchStatement"];
+    }
+    if (_json.containsKey("directDealsContact")) {
+      directDealsContact = _json["directDealsContact"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("domains")) {
+      domains = (_json["domains"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("googlePlusUrl")) {
+      googlePlusUrl = _json["googlePlusUrl"];
+    }
+    if (_json.containsKey("logoUrl")) {
+      logoUrl = _json["logoUrl"];
+    }
+    if (_json.containsKey("mediaKitUrl")) {
+      mediaKitUrl = _json["mediaKitUrl"];
+    }
+    if (_json.containsKey("overview")) {
+      overview = _json["overview"];
+    }
+    if (_json.containsKey("programmaticDealsContact")) {
+      programmaticDealsContact = _json["programmaticDealsContact"];
+    }
+    if (_json.containsKey("publisherProfileId")) {
+      publisherProfileId = _json["publisherProfileId"];
+    }
+    if (_json.containsKey("rateCardInfoUrl")) {
+      rateCardInfoUrl = _json["rateCardInfoUrl"];
+    }
+    if (_json.containsKey("samplePageUrl")) {
+      samplePageUrl = _json["samplePageUrl"];
+    }
+    if (_json.containsKey("seller")) {
+      seller = new Seller.fromJson(_json["seller"]);
+    }
+    if (_json.containsKey("topHeadlines")) {
+      topHeadlines = (_json["topHeadlines"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (audienceDescription != null) {
+      _json["audienceDescription"] = audienceDescription;
+    }
+    if (buyerPitchStatement != null) {
+      _json["buyerPitchStatement"] = buyerPitchStatement;
+    }
+    if (directDealsContact != null) {
+      _json["directDealsContact"] = directDealsContact;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (domains != null) {
+      _json["domains"] = domains;
+    }
+    if (googlePlusUrl != null) {
+      _json["googlePlusUrl"] = googlePlusUrl;
+    }
+    if (logoUrl != null) {
+      _json["logoUrl"] = logoUrl;
+    }
+    if (mediaKitUrl != null) {
+      _json["mediaKitUrl"] = mediaKitUrl;
+    }
+    if (overview != null) {
+      _json["overview"] = overview;
+    }
+    if (programmaticDealsContact != null) {
+      _json["programmaticDealsContact"] = programmaticDealsContact;
+    }
+    if (publisherProfileId != null) {
+      _json["publisherProfileId"] = publisherProfileId;
+    }
+    if (rateCardInfoUrl != null) {
+      _json["rateCardInfoUrl"] = rateCardInfoUrl;
+    }
+    if (samplePageUrl != null) {
+      _json["samplePageUrl"] = samplePageUrl;
+    }
+    if (seller != null) {
+      _json["seller"] = (seller).toJson();
+    }
+    if (topHeadlines != null) {
+      _json["topHeadlines"] = topHeadlines;
     }
     return _json;
   }
@@ -6485,18 +10026,18 @@ class Reason {
 }
 
 /// A relative date range, specified by an offset and a duration.
-/// The supported range of dates begins 30 days before today and ends today.
-/// I.e. the limits for these values are:
+/// The supported range of dates begins 30 days before today and ends today,
+/// i.e., the limits for these values are:
 /// offset_days >= 0
 /// duration_days >= 1
 /// offset_days + duration_days <= 30
 class RelativeDateRange {
-  /// The number of days in the requested date range. E.g. for a range spanning
-  /// today, 1. For a range spanning the last 7 days, 7.
+  /// The number of days in the requested date range, e.g., for a range spanning
+  /// today: 1. For a range spanning the last 7 days: 7.
   core.int durationDays;
 
   /// The end date of the filter set, specified as the number of days before
-  /// today. E.g. for a range where the last date is today, 0.
+  /// today, e.g., for a range where the last date is today: 0.
   core.int offsetDays;
 
   RelativeDateRange();
@@ -6546,16 +10087,38 @@ class RemoveDealAssociationRequest {
   }
 }
 
+/// Request message to resume (unpause) serving for an already-finalized
+/// proposal.
+class ResumeProposalRequest {
+  ResumeProposalRequest();
+
+  ResumeProposalRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// A response may include multiple rows, breaking down along various
 /// dimensions.
 /// Encapsulates the values of all dimensions for a given row.
 class RowDimensions {
+  /// The publisher identifier for this row, if a breakdown by
+  /// [BreakdownDimension.PUBLISHER_IDENTIFIER](https://developers.google.com/authorized-buyers/apis/reference/rest/v2beta1/bidders.accounts.filterSets#FilterSet.BreakdownDimension)
+  /// was requested.
+  core.String publisherIdentifier;
+
   /// The time interval that this row represents.
   TimeInterval timeInterval;
 
   RowDimensions();
 
   RowDimensions.fromJson(core.Map _json) {
+    if (_json.containsKey("publisherIdentifier")) {
+      publisherIdentifier = _json["publisherIdentifier"];
+    }
     if (_json.containsKey("timeInterval")) {
       timeInterval = new TimeInterval.fromJson(_json["timeInterval"]);
     }
@@ -6564,6 +10127,9 @@ class RowDimensions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (publisherIdentifier != null) {
+      _json["publisherIdentifier"] = publisherIdentifier;
+    }
     if (timeInterval != null) {
       _json["timeInterval"] = (timeInterval).toJson();
     }
@@ -6589,6 +10155,40 @@ class SecurityContext {
         new core.Map<core.String, core.Object>();
     if (securities != null) {
       _json["securities"] = securities;
+    }
+    return _json;
+  }
+}
+
+/// Represents a seller of inventory. Each seller is identified by a unique
+/// Ad Manager account ID.
+class Seller {
+  /// The unique ID for the seller. The seller fills in this field.
+  /// The seller account ID is then available to buyer in the product.
+  core.String accountId;
+
+  /// Optional sub-account ID for the seller.
+  core.String subAccountId;
+
+  Seller();
+
+  Seller.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("subAccountId")) {
+      subAccountId = _json["subAccountId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (subAccountId != null) {
+      _json["subAccountId"] = subAccountId;
     }
     return _json;
   }
@@ -6740,6 +10340,39 @@ class ServingRestriction {
   }
 }
 
+/// Message depicting the size of the creative. The units of width and
+/// height depend on the type of the targeting.
+class Size {
+  /// The height of the creative.
+  core.int height;
+
+  /// The width of the creative
+  core.int width;
+
+  Size();
+
+  Size.fromJson(core.Map _json) {
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    return _json;
+  }
+}
+
 /// A request for stopping notifications for changes to creative Status.
 class StopWatchingCreativeRequest {
   StopWatchingCreativeRequest();
@@ -6749,6 +10382,160 @@ class StopWatchingCreativeRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Advertisers can target different attributes of an ad slot. For example,
+/// they can choose to show ads only if the user is in the U.S. Such
+/// targeting criteria can be specified as part of Shared Targeting.
+class TargetingCriteria {
+  /// The list of values to exclude from targeting. Each value is AND'd
+  /// together.
+  core.List<TargetingValue> exclusions;
+
+  /// The list of value to include as part of the targeting. Each value is OR'd
+  /// together.
+  core.List<TargetingValue> inclusions;
+
+  /// The key representing the shared targeting criterion.
+  /// Targeting criteria defined by Google ad servers will begin with GOOG_.
+  /// Third parties may define their own keys.
+  /// A list of permissible keys along with the acceptable values will be
+  /// provided as part of the external documentation.
+  core.String key;
+
+  TargetingCriteria();
+
+  TargetingCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("exclusions")) {
+      exclusions = (_json["exclusions"] as core.List)
+          .map<TargetingValue>((value) => new TargetingValue.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("inclusions")) {
+      inclusions = (_json["inclusions"] as core.List)
+          .map<TargetingValue>((value) => new TargetingValue.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exclusions != null) {
+      _json["exclusions"] =
+          exclusions.map((value) => (value).toJson()).toList();
+    }
+    if (inclusions != null) {
+      _json["inclusions"] =
+          inclusions.map((value) => (value).toJson()).toList();
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    return _json;
+  }
+}
+
+/// A polymorphic targeting value used as part of Shared Targeting.
+class TargetingValue {
+  /// The creative size value to include/exclude.
+  /// Filled in when key = GOOG_CREATIVE_SIZE
+  CreativeSize creativeSizeValue;
+
+  /// The daypart targeting to include / exclude.
+  /// Filled in when the key is GOOG_DAYPART_TARGETING.
+  /// The definition of this targeting is derived from the structure
+  /// used by Ad Manager.
+  DayPartTargeting dayPartTargetingValue;
+
+  /// The long value to include/exclude.
+  core.String longValue;
+
+  /// The string value to include/exclude.
+  core.String stringValue;
+
+  TargetingValue();
+
+  TargetingValue.fromJson(core.Map _json) {
+    if (_json.containsKey("creativeSizeValue")) {
+      creativeSizeValue = new CreativeSize.fromJson(_json["creativeSizeValue"]);
+    }
+    if (_json.containsKey("dayPartTargetingValue")) {
+      dayPartTargetingValue =
+          new DayPartTargeting.fromJson(_json["dayPartTargetingValue"]);
+    }
+    if (_json.containsKey("longValue")) {
+      longValue = _json["longValue"];
+    }
+    if (_json.containsKey("stringValue")) {
+      stringValue = _json["stringValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creativeSizeValue != null) {
+      _json["creativeSizeValue"] = (creativeSizeValue).toJson();
+    }
+    if (dayPartTargetingValue != null) {
+      _json["dayPartTargetingValue"] = (dayPartTargetingValue).toJson();
+    }
+    if (longValue != null) {
+      _json["longValue"] = longValue;
+    }
+    if (stringValue != null) {
+      _json["stringValue"] = stringValue;
+    }
+    return _json;
+  }
+}
+
+/// Represents targeting about various types of technology.
+class TechnologyTargeting {
+  /// IDs of device capabilities to be included/excluded.
+  CriteriaTargeting deviceCapabilityTargeting;
+
+  /// IDs of device categories to be included/excluded.
+  CriteriaTargeting deviceCategoryTargeting;
+
+  /// Operating system related targeting information.
+  OperatingSystemTargeting operatingSystemTargeting;
+
+  TechnologyTargeting();
+
+  TechnologyTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceCapabilityTargeting")) {
+      deviceCapabilityTargeting =
+          new CriteriaTargeting.fromJson(_json["deviceCapabilityTargeting"]);
+    }
+    if (_json.containsKey("deviceCategoryTargeting")) {
+      deviceCategoryTargeting =
+          new CriteriaTargeting.fromJson(_json["deviceCategoryTargeting"]);
+    }
+    if (_json.containsKey("operatingSystemTargeting")) {
+      operatingSystemTargeting = new OperatingSystemTargeting.fromJson(
+          _json["operatingSystemTargeting"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceCapabilityTargeting != null) {
+      _json["deviceCapabilityTargeting"] = (deviceCapabilityTargeting).toJson();
+    }
+    if (deviceCategoryTargeting != null) {
+      _json["deviceCategoryTargeting"] = (deviceCategoryTargeting).toJson();
+    }
+    if (operatingSystemTargeting != null) {
+      _json["operatingSystemTargeting"] = (operatingSystemTargeting).toJson();
+    }
     return _json;
   }
 }
@@ -6787,6 +10574,96 @@ class TimeInterval {
   }
 }
 
+/// Represents a time of day. The date and time zone are either not significant
+/// or are specified elsewhere. An API may choose to allow leap seconds. Related
+/// types are google.type.Date and `google.protobuf.Timestamp`.
+class TimeOfDay {
+  /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+  /// to allow the value "24:00:00" for scenarios like business closing time.
+  core.int hours;
+
+  /// Minutes of hour of day. Must be from 0 to 59.
+  core.int minutes;
+
+  /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+  core.int nanos;
+
+  /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+  /// allow the value 60 if it allows leap-seconds.
+  core.int seconds;
+
+  TimeOfDay();
+
+  TimeOfDay.fromJson(core.Map _json) {
+    if (_json.containsKey("hours")) {
+      hours = _json["hours"];
+    }
+    if (_json.containsKey("minutes")) {
+      minutes = _json["minutes"];
+    }
+    if (_json.containsKey("nanos")) {
+      nanos = _json["nanos"];
+    }
+    if (_json.containsKey("seconds")) {
+      seconds = _json["seconds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hours != null) {
+      _json["hours"] = hours;
+    }
+    if (minutes != null) {
+      _json["minutes"] = minutes;
+    }
+    if (nanos != null) {
+      _json["nanos"] = nanos;
+    }
+    if (seconds != null) {
+      _json["seconds"] = seconds;
+    }
+    return _json;
+  }
+}
+
+/// Represents a list of targeted and excluded URLs (e.g., google.com).
+/// For Private Auction and AdX Preferred Deals, URLs are either included or
+/// excluded.
+/// For Programmatic Guaranteed and Preferred Deals, this doesn't
+/// apply.
+class UrlTargeting {
+  /// A list of URLs to be excluded.
+  core.List<core.String> excludedUrls;
+
+  /// A list of URLs to be included.
+  core.List<core.String> targetedUrls;
+
+  UrlTargeting();
+
+  UrlTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedUrls")) {
+      excludedUrls = (_json["excludedUrls"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("targetedUrls")) {
+      targetedUrls = (_json["targetedUrls"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludedUrls != null) {
+      _json["excludedUrls"] = excludedUrls;
+    }
+    if (targetedUrls != null) {
+      _json["targetedUrls"] = targetedUrls;
+    }
+    return _json;
+  }
+}
+
 /// Video content for a creative.
 class VideoContent {
   /// The URL to fetch a video ad.
@@ -6815,6 +10692,43 @@ class VideoContent {
     }
     if (videoVastXml != null) {
       _json["videoVastXml"] = videoVastXml;
+    }
+    return _json;
+  }
+}
+
+/// Represents targeting information about video.
+class VideoTargeting {
+  /// A list of video positions to be excluded.
+  /// Position types can either be included or excluded (XOR).
+  core.List<core.String> excludedPositionTypes;
+
+  /// A list of video positions to be included.
+  /// When the included list is present, the excluded list must be empty.
+  /// When the excluded list is present, the included list must be empty.
+  core.List<core.String> targetedPositionTypes;
+
+  VideoTargeting();
+
+  VideoTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedPositionTypes")) {
+      excludedPositionTypes =
+          (_json["excludedPositionTypes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("targetedPositionTypes")) {
+      targetedPositionTypes =
+          (_json["targetedPositionTypes"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludedPositionTypes != null) {
+      _json["excludedPositionTypes"] = excludedPositionTypes;
+    }
+    if (targetedPositionTypes != null) {
+      _json["targetedPositionTypes"] = targetedPositionTypes;
     }
     return _json;
   }

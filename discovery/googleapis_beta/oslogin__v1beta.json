@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
                 "https://www.googleapis.com/auth/compute.readonly": {
                     "description": "View your Google Compute Engine resources"
                 },
@@ -10,9 +13,6 @@
                 },
                 "https://www.googleapis.com/auth/cloud-platform.read-only": {
                     "description": "View your data across Google Cloud Platform services"
-                },
-                "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
                 }
             }
         }
@@ -23,7 +23,7 @@
     "canonicalName": "Cloud OS Login",
     "description": "Manages OS login configuration for Google account users.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://cloud.google.com/compute/docs/oslogin/rest/",
+    "documentationLink": "https://cloud.google.com/compute/docs/oslogin/",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -34,6 +34,32 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
@@ -41,16 +67,6 @@
         },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -64,6 +80,16 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -82,32 +108,6 @@
             ],
             "location": "query",
             "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -122,16 +122,16 @@
                         "parent"
                     ],
                     "parameters": {
-                        "projectId": {
-                            "description": "The project ID of the Google Cloud Platform project.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "parent": {
                             "description": "The unique ID for the user in format `users/{user}`.",
                             "location": "path",
                             "pattern": "^users/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project ID of the Google Cloud Platform project.",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -155,6 +155,16 @@
                         "name"
                     ],
                     "parameters": {
+                        "projectId": {
+                            "description": "The project ID of the Google Cloud Platform project.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "systemId": {
+                            "description": "A system ID for filtering the results of the request.",
+                            "location": "query",
+                            "type": "string"
+                        },
                         "name": {
                             "description": "The unique ID for the user in format `users/{user}`.",
                             "location": "path",
@@ -265,17 +275,17 @@
                                 "name"
                             ],
                             "parameters": {
-                                "updateMask": {
-                                    "description": "Mask to control which fields get updated. Updates all if not present.",
-                                    "format": "google-fieldmask",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "name": {
                                     "description": "The fingerprint of the public key to update. Public keys are identified by\ntheir SHA-256 fingerprint. The fingerprint of the public key is in format\n`users/{user}/sshPublicKeys/{fingerprint}`.",
                                     "location": "path",
                                     "pattern": "^users/[^/]+/sshPublicKeys/[^/]+$",
                                     "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Mask to control which fields get updated. Updates all if not present.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
                                     "type": "string"
                                 }
                             },
@@ -296,93 +306,9 @@
             }
         }
     },
-    "revision": "20180822",
+    "revision": "20190107",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
-        "PosixAccount": {
-            "description": "The POSIX account information associated with a Google account.",
-            "id": "PosixAccount",
-            "properties": {
-                "uid": {
-                    "description": "The user ID.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "username": {
-                    "description": "The username of the POSIX account.",
-                    "type": "string"
-                },
-                "shell": {
-                    "description": "The path to the logic shell for this account.",
-                    "type": "string"
-                },
-                "homeDirectory": {
-                    "description": "The path to the home directory for this account.",
-                    "type": "string"
-                },
-                "gecos": {
-                    "description": "The GECOS (user information) entry for this account.",
-                    "type": "string"
-                },
-                "systemId": {
-                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
-                    "type": "string"
-                },
-                "primary": {
-                    "description": "Only one POSIX account can be marked as primary.",
-                    "type": "boolean"
-                },
-                "accountId": {
-                    "description": "Output only. A POSIX account identifier.",
-                    "type": "string"
-                },
-                "operatingSystemType": {
-                    "description": "The operating system type where this account applies.",
-                    "enum": [
-                        "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
-                        "LINUX",
-                        "WINDOWS"
-                    ],
-                    "enumDescriptions": [
-                        "The operating system type associated with the user account information is\nunspecified.",
-                        "Linux user account information.",
-                        "Windows user account information."
-                    ],
-                    "type": "string"
-                },
-                "gid": {
-                    "description": "The default group ID.",
-                    "format": "int64",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LoginProfile": {
-            "description": "The user profile information used for logging in to a virtual machine on\nGoogle Compute Engine.",
-            "id": "LoginProfile",
-            "properties": {
-                "name": {
-                    "description": "A unique user ID.",
-                    "type": "string"
-                },
-                "posixAccounts": {
-                    "description": "The list of POSIX accounts associated with the user.",
-                    "items": {
-                        "$ref": "PosixAccount"
-                    },
-                    "type": "array"
-                },
-                "sshPublicKeys": {
-                    "additionalProperties": {
-                        "$ref": "SshPublicKey"
-                    },
-                    "description": "A map from SSH public key fingerprint to the associated key object.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "Empty": {
             "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
             "id": "Empty",
@@ -416,6 +342,90 @@
                 "loginProfile": {
                     "$ref": "LoginProfile",
                     "description": "The login profile information for the user."
+                }
+            },
+            "type": "object"
+        },
+        "PosixAccount": {
+            "description": "The POSIX account information associated with a Google account.",
+            "id": "PosixAccount",
+            "properties": {
+                "primary": {
+                    "description": "Only one POSIX account can be marked as primary.",
+                    "type": "boolean"
+                },
+                "accountId": {
+                    "description": "Output only. A POSIX account identifier.",
+                    "type": "string"
+                },
+                "operatingSystemType": {
+                    "description": "The operating system type where this account applies.",
+                    "enum": [
+                        "OPERATING_SYSTEM_TYPE_UNSPECIFIED",
+                        "LINUX",
+                        "WINDOWS"
+                    ],
+                    "enumDescriptions": [
+                        "The operating system type associated with the user account information is\nunspecified.",
+                        "Linux user account information.",
+                        "Windows user account information."
+                    ],
+                    "type": "string"
+                },
+                "gid": {
+                    "description": "The default group ID.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "uid": {
+                    "description": "The user ID.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "The username of the POSIX account.",
+                    "type": "string"
+                },
+                "shell": {
+                    "description": "The path to the logic shell for this account.",
+                    "type": "string"
+                },
+                "homeDirectory": {
+                    "description": "The path to the home directory for this account.",
+                    "type": "string"
+                },
+                "gecos": {
+                    "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
+                },
+                "systemId": {
+                    "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LoginProfile": {
+            "description": "The user profile information used for logging in to a virtual machine on\nGoogle Compute Engine.",
+            "id": "LoginProfile",
+            "properties": {
+                "sshPublicKeys": {
+                    "additionalProperties": {
+                        "$ref": "SshPublicKey"
+                    },
+                    "description": "A map from SSH public key fingerprint to the associated key object.",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "A unique user ID.",
+                    "type": "string"
+                },
+                "posixAccounts": {
+                    "description": "The list of POSIX accounts associated with the user.",
+                    "items": {
+                        "$ref": "PosixAccount"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

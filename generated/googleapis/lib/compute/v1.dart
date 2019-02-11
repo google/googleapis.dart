@@ -113,6 +113,8 @@ class ComputeApi {
   RegionsResourceApi get regions => new RegionsResourceApi(_requester);
   RoutersResourceApi get routers => new RoutersResourceApi(_requester);
   RoutesResourceApi get routes => new RoutesResourceApi(_requester);
+  SecurityPoliciesResourceApi get securityPolicies =>
+      new SecurityPoliciesResourceApi(_requester);
   SnapshotsResourceApi get snapshots => new SnapshotsResourceApi(_requester);
   SslCertificatesResourceApi get sslCertificates =>
       new SslCertificatesResourceApi(_requester);
@@ -141,8 +143,8 @@ class ComputeApi {
   ZonesResourceApi get zones => new ZonesResourceApi(_requester);
 
   ComputeApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "compute/v1/projects/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "compute/v1/projects/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -221,12 +223,12 @@ class AcceleratorTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -272,7 +274,8 @@ class AcceleratorTypesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [acceleratorType] - Name of the accelerator type to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -287,12 +290,12 @@ class AcceleratorTypesResourceApi {
   async.Future<AcceleratorType> get(
       core.String project, core.String zone, core.String acceleratorType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -392,12 +395,12 @@ class AcceleratorTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -508,12 +511,12 @@ class AddressesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -557,7 +560,8 @@ class AddressesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [address] - Name of the address resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -585,12 +589,12 @@ class AddressesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String address,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -635,7 +639,8 @@ class AddressesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [address] - Name of the address resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -650,12 +655,12 @@ class AddressesResourceApi {
   async.Future<Address> get(
       core.String project, core.String region, core.String address,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -725,12 +730,12 @@ class AddressesResourceApi {
   async.Future<Operation> insert(
       Address request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -832,12 +837,12 @@ class AddressesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -948,12 +953,12 @@ class AutoscalersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -999,7 +1004,8 @@ class AutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1027,12 +1033,12 @@ class AutoscalersResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String autoscaler,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1078,7 +1084,8 @@ class AutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1093,12 +1100,12 @@ class AutoscalersResourceApi {
   async.Future<Autoscaler> get(
       core.String project, core.String zone, core.String autoscaler,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1168,12 +1175,12 @@ class AutoscalersResourceApi {
   async.Future<Operation> insert(
       Autoscaler request, core.String project, core.String zone,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1275,12 +1282,12 @@ class AutoscalersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1334,7 +1341,8 @@ class AutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1362,12 +1370,12 @@ class AutoscalersResourceApi {
   async.Future<Operation> patch(
       Autoscaler request, core.String project, core.String zone,
       {core.String autoscaler, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1417,7 +1425,8 @@ class AutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1445,12 +1454,12 @@ class AutoscalersResourceApi {
   async.Future<Operation> update(
       Autoscaler request, core.String project, core.String zone,
       {core.String autoscaler, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1531,12 +1540,12 @@ class BackendBucketsResourceApi {
   async.Future<Operation> addSignedUrlKey(
       SignedUrlKey request, core.String project, core.String backendBucket,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1577,7 +1586,8 @@ class BackendBucketsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendBucket] - Name of the BackendBucket resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1604,12 +1614,12 @@ class BackendBucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String backendBucket,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1677,12 +1687,12 @@ class BackendBucketsResourceApi {
   async.Future<Operation> deleteSignedUrlKey(
       core.String project, core.String backendBucket, core.String keyName,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1725,7 +1735,8 @@ class BackendBucketsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendBucket] - Name of the BackendBucket resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1740,12 +1751,12 @@ class BackendBucketsResourceApi {
   async.Future<BackendBucket> get(
       core.String project, core.String backendBucket,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1806,12 +1817,12 @@ class BackendBucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(BackendBucket request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1905,12 +1916,12 @@ class BackendBucketsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1955,7 +1966,8 @@ class BackendBucketsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendBucket] - Name of the BackendBucket resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -1983,12 +1995,12 @@ class BackendBucketsResourceApi {
   async.Future<Operation> patch(
       BackendBucket request, core.String project, core.String backendBucket,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2031,7 +2043,8 @@ class BackendBucketsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendBucket] - Name of the BackendBucket resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2059,12 +2072,12 @@ class BackendBucketsResourceApi {
   async.Future<Operation> update(
       BackendBucket request, core.String project, core.String backendBucket,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2141,12 +2154,12 @@ class BackendServicesResourceApi {
   async.Future<Operation> addSignedUrlKey(
       SignedUrlKey request, core.String project, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2246,12 +2259,12 @@ class BackendServicesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2294,7 +2307,8 @@ class BackendServicesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendService] - Name of the BackendService resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2322,12 +2336,12 @@ class BackendServicesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2395,12 +2409,12 @@ class BackendServicesResourceApi {
   async.Future<Operation> deleteSignedUrlKey(
       core.String project, core.String backendService, core.String keyName,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2434,7 +2448,7 @@ class BackendServicesResourceApi {
   }
 
   /// Returns the specified BackendService resource. Gets a list of available
-  /// backend services by making a list() request.
+  /// backend services.
   ///
   /// Request parameters:
   ///
@@ -2443,7 +2457,8 @@ class BackendServicesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendService] - Name of the BackendService resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2458,12 +2473,12 @@ class BackendServicesResourceApi {
   async.Future<BackendService> get(
       core.String project, core.String backendService,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2500,7 +2515,8 @@ class BackendServicesResourceApi {
   ///
   /// [backendService] - Name of the BackendService resource to which the
   /// queried instance belongs.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2517,12 +2533,12 @@ class BackendServicesResourceApi {
       core.String project,
       core.String backendService,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2590,12 +2606,12 @@ class BackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(BackendService request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2690,12 +2706,12 @@ class BackendServicesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -2743,7 +2759,8 @@ class BackendServicesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendService] - Name of the BackendService resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2771,12 +2788,12 @@ class BackendServicesResourceApi {
   async.Future<Operation> patch(
       BackendService request, core.String project, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2807,6 +2824,82 @@ class BackendServicesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the security policy for the specified backend service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [backendService] - Name of the BackendService resource to which the
+  /// security policy should be set. The name should conform to RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setSecurityPolicy(SecurityPolicyReference request,
+      core.String project, core.String backendService,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (backendService == null) {
+      throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices/' +
+        commons.Escaper.ecapeVariable('$backendService') +
+        '/setSecurityPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Updates the specified BackendService resource with the data included in
   /// the request. There are several restrictions and guidelines to keep in mind
   /// when updating a backend service. Read  Restrictions and Guidelines for
@@ -2821,7 +2914,8 @@ class BackendServicesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [backendService] - Name of the BackendService resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -2849,12 +2943,12 @@ class BackendServicesResourceApi {
   async.Future<Operation> update(
       BackendService request, core.String project, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2958,12 +3052,12 @@ class DiskTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3008,7 +3102,8 @@ class DiskTypesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [diskType] - Name of the disk type to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3023,12 +3118,12 @@ class DiskTypesResourceApi {
   async.Future<DiskType> get(
       core.String project, core.String zone, core.String diskType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3128,12 +3223,12 @@ class DiskTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3244,12 +3339,12 @@ class DisksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3295,7 +3390,8 @@ class DisksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [disk] - Name of the persistent disk to snapshot.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [guestFlush] - null
   ///
@@ -3325,12 +3421,12 @@ class DisksResourceApi {
   async.Future<Operation> createSnapshot(
       Snapshot request, core.String project, core.String zone, core.String disk,
       {core.bool guestFlush, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3412,12 +3508,12 @@ class DisksResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String disk,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3463,7 +3559,8 @@ class DisksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [disk] - Name of the persistent disk to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3478,12 +3575,12 @@ class DisksResourceApi {
   async.Future<Disk> get(
       core.String project, core.String zone, core.String disk,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3511,6 +3608,71 @@ class DisksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Disk.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Creates a persistent disk in the specified project using the data in the
@@ -3558,12 +3720,12 @@ class DisksResourceApi {
   async.Future<Operation> insert(
       Disk request, core.String project, core.String zone,
       {core.String requestId, core.String sourceImage, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3668,12 +3830,12 @@ class DisksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3726,7 +3888,8 @@ class DisksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [disk] - The name of the persistent disk.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3754,12 +3917,12 @@ class DisksResourceApi {
   async.Future<Operation> resize(DisksResizeRequest request,
       core.String project, core.String zone, core.String disk,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3796,6 +3959,76 @@ class DisksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(ZoneSetPolicyRequest request,
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Sets the labels on a disk. To learn more about labels, read the Labeling
   /// Resources documentation.
   ///
@@ -3810,8 +4043,9 @@ class DisksResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3839,12 +4073,12 @@ class DisksResourceApi {
   async.Future<Operation> setLabels(ZoneSetLabelsRequest request,
       core.String project, core.String zone, core.String resource,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3880,6 +4114,78 @@ class DisksResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String zone,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
 }
 
 class FirewallsResourceApi {
@@ -3896,7 +4202,8 @@ class FirewallsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [firewall] - Name of the firewall rule to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3923,12 +4230,12 @@ class FirewallsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String firewall,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -3965,7 +4272,8 @@ class FirewallsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [firewall] - Name of the firewall rule to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3979,12 +4287,12 @@ class FirewallsResourceApi {
   /// this method will complete with the same error.
   async.Future<Firewall> get(core.String project, core.String firewall,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4045,12 +4353,12 @@ class FirewallsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Firewall request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4143,12 +4451,12 @@ class FirewallsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4193,7 +4501,8 @@ class FirewallsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [firewall] - Name of the firewall rule to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4221,12 +4530,12 @@ class FirewallsResourceApi {
   async.Future<Operation> patch(
       Firewall request, core.String project, core.String firewall,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4270,7 +4579,8 @@ class FirewallsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [firewall] - Name of the firewall rule to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4298,12 +4608,12 @@ class FirewallsResourceApi {
   async.Future<Operation> update(
       Firewall request, core.String project, core.String firewall,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4407,12 +4717,12 @@ class ForwardingRulesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4458,7 +4768,8 @@ class ForwardingRulesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4486,12 +4797,12 @@ class ForwardingRulesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String forwardingRule,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4536,7 +4847,8 @@ class ForwardingRulesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4551,12 +4863,12 @@ class ForwardingRulesResourceApi {
   async.Future<ForwardingRule> get(
       core.String project, core.String region, core.String forwardingRule,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4626,12 +4938,12 @@ class ForwardingRulesResourceApi {
   async.Future<Operation> insert(
       ForwardingRule request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4734,12 +5046,12 @@ class ForwardingRulesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4793,7 +5105,8 @@ class ForwardingRulesResourceApi {
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource in which target is
   /// to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4821,12 +5134,12 @@ class ForwardingRulesResourceApi {
   async.Future<Operation> setTarget(TargetReference request,
       core.String project, core.String region, core.String forwardingRule,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4878,7 +5191,8 @@ class GlobalAddressesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [address] - Name of the address resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -4905,12 +5219,12 @@ class GlobalAddressesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String address,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -4948,7 +5262,8 @@ class GlobalAddressesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [address] - Name of the address resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4962,12 +5277,12 @@ class GlobalAddressesResourceApi {
   /// this method will complete with the same error.
   async.Future<Address> get(core.String project, core.String address,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5028,12 +5343,12 @@ class GlobalAddressesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Address request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5126,12 +5441,12 @@ class GlobalAddressesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5179,7 +5494,8 @@ class GlobalForwardingRulesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5207,12 +5523,12 @@ class GlobalForwardingRulesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String forwardingRule,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5250,7 +5566,8 @@ class GlobalForwardingRulesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5265,12 +5582,12 @@ class GlobalForwardingRulesResourceApi {
   async.Future<ForwardingRule> get(
       core.String project, core.String forwardingRule,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5331,12 +5648,12 @@ class GlobalForwardingRulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(ForwardingRule request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5431,12 +5748,12 @@ class GlobalForwardingRulesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5482,7 +5799,8 @@ class GlobalForwardingRulesResourceApi {
   ///
   /// [forwardingRule] - Name of the ForwardingRule resource in which target is
   /// to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5510,12 +5828,12 @@ class GlobalForwardingRulesResourceApi {
   async.Future<Operation> setTarget(
       TargetReference request, core.String project, core.String forwardingRule,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5621,12 +5939,12 @@ class GlobalOperationsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5667,7 +5985,8 @@ class GlobalOperationsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [operation] - Name of the Operations resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5679,12 +5998,12 @@ class GlobalOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String project, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5721,7 +6040,8 @@ class GlobalOperationsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [operation] - Name of the Operations resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5735,12 +6055,12 @@ class GlobalOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String project, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5833,12 +6153,12 @@ class GlobalOperationsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5885,7 +6205,8 @@ class HealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [healthCheck] - Name of the HealthCheck resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -5912,12 +6233,12 @@ class HealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String healthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -5955,7 +6276,8 @@ class HealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [healthCheck] - Name of the HealthCheck resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5969,12 +6291,12 @@ class HealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<HealthCheck> get(core.String project, core.String healthCheck,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6035,12 +6357,12 @@ class HealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(HealthCheck request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6134,12 +6456,12 @@ class HealthChecksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6184,7 +6506,8 @@ class HealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [healthCheck] - Name of the HealthCheck resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6212,12 +6535,12 @@ class HealthChecksResourceApi {
   async.Future<Operation> patch(
       HealthCheck request, core.String project, core.String healthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6260,7 +6583,8 @@ class HealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [healthCheck] - Name of the HealthCheck resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6288,12 +6612,12 @@ class HealthChecksResourceApi {
   async.Future<Operation> update(
       HealthCheck request, core.String project, core.String healthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6340,7 +6664,8 @@ class HttpHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6368,12 +6693,12 @@ class HttpHealthChecksResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String httpHealthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6411,7 +6736,8 @@ class HttpHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6426,12 +6752,12 @@ class HttpHealthChecksResourceApi {
   async.Future<HttpHealthCheck> get(
       core.String project, core.String httpHealthCheck,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6492,12 +6818,12 @@ class HttpHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(HttpHealthCheck request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6592,12 +6918,12 @@ class HttpHealthChecksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6643,7 +6969,8 @@ class HttpHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6671,12 +6998,12 @@ class HttpHealthChecksResourceApi {
   async.Future<Operation> patch(
       HttpHealthCheck request, core.String project, core.String httpHealthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6719,7 +7046,8 @@ class HttpHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6747,12 +7075,12 @@ class HttpHealthChecksResourceApi {
   async.Future<Operation> update(
       HttpHealthCheck request, core.String project, core.String httpHealthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6799,7 +7127,8 @@ class HttpsHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -6827,12 +7156,12 @@ class HttpsHealthChecksResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String httpsHealthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6870,7 +7199,8 @@ class HttpsHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6885,12 +7215,12 @@ class HttpsHealthChecksResourceApi {
   async.Future<HttpsHealthCheck> get(
       core.String project, core.String httpsHealthCheck,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -6951,12 +7281,12 @@ class HttpsHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(HttpsHealthCheck request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7051,12 +7381,12 @@ class HttpsHealthChecksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7102,7 +7432,8 @@ class HttpsHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7130,12 +7461,12 @@ class HttpsHealthChecksResourceApi {
   async.Future<Operation> patch(HttpsHealthCheck request, core.String project,
       core.String httpsHealthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7178,7 +7509,8 @@ class HttpsHealthChecksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7206,12 +7538,12 @@ class HttpsHealthChecksResourceApi {
   async.Future<Operation> update(HttpsHealthCheck request, core.String project,
       core.String httpsHealthCheck,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7257,7 +7589,8 @@ class ImagesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [image] - Name of the image resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7284,12 +7617,12 @@ class ImagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String image,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7330,7 +7663,8 @@ class ImagesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [image] - Image name.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -7358,12 +7692,12 @@ class ImagesResourceApi {
   async.Future<Operation> deprecate(
       DeprecationStatus request, core.String project, core.String image,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7405,7 +7739,8 @@ class ImagesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [image] - Name of the image resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7419,12 +7754,12 @@ class ImagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Image> get(core.String project, core.String image,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7459,7 +7794,8 @@ class ImagesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [family] - Name of the image family to search for.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7473,12 +7809,12 @@ class ImagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Image> getFromFamily(core.String project, core.String family,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7501,6 +7837,62 @@ class ImagesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Image.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/images/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Creates an image in the specified project using the data included in the
@@ -7541,12 +7933,12 @@ class ImagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Image request, core.String project,
       {core.bool forceCreate, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7647,12 +8039,12 @@ class ImagesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -7684,6 +8076,68 @@ class ImagesResourceApi {
     return _response.then((data) => new ImageList.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      GlobalSetPolicyRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/images/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Sets the labels on an image. To learn more about labels, read the Labeling
   /// Resources documentation.
   ///
@@ -7695,8 +8149,9 @@ class ImagesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7711,12 +8166,12 @@ class ImagesResourceApi {
   async.Future<Operation> setLabels(
       GlobalSetLabelsRequest request, core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7744,6 +8199,67 @@ class ImagesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/images/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
 }
 
 class InstanceGroupManagersResourceApi {
@@ -7752,15 +8268,14 @@ class InstanceGroupManagersResourceApi {
   InstanceGroupManagersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Schedules a group action to remove the specified instances from the
-  /// managed instance group. Abandoning an instance does not delete the
-  /// instance, but it does remove the instance from any target pools that are
-  /// applied by the managed instance group. This method reduces the targetSize
-  /// of the managed instance group by the number of instances that you abandon.
-  /// This operation is marked as DONE when the action is scheduled even if the
-  /// instances have not yet been removed from the group. You must separately
-  /// verify the status of the abandoning action with the listmanagedinstances
-  /// method.
+  /// Flags the specified instances to be removed from the managed instance
+  /// group. Abandoning an instance does not delete the instance, but it does
+  /// remove the instance from any target pools that are applied by the managed
+  /// instance group. This method reduces the targetSize of the managed instance
+  /// group by the number of instances that you abandon. This operation is
+  /// marked as DONE when the action is scheduled even if the instances have not
+  /// yet been removed from the group. You must separately verify the status of
+  /// the abandoning action with the listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -7810,12 +8325,12 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -7921,12 +8436,12 @@ class InstanceGroupManagersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8000,12 +8515,12 @@ class InstanceGroupManagersResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String instanceGroupManager,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8039,13 +8554,13 @@ class InstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Schedules a group action to delete the specified instances in the managed
-  /// instance group. The instances are also removed from any target pools of
-  /// which they were a member. This method reduces the targetSize of the
-  /// managed instance group by the number of instances that you delete. This
-  /// operation is marked as DONE when the action is scheduled even if the
-  /// instances are still being deleted. You must separately verify the status
-  /// of the deleting action with the listmanagedinstances method.
+  /// Flags the specified instances in the managed instance group for immediate
+  /// deletion. The instances are also removed from any target pools of which
+  /// they were a member. This method reduces the targetSize of the managed
+  /// instance group by the number of instances that you delete. This operation
+  /// is marked as DONE when the action is scheduled even if the instances are
+  /// still being deleted. You must separately verify the status of the deleting
+  /// action with the listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -8095,12 +8610,12 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -8165,12 +8680,12 @@ class InstanceGroupManagersResourceApi {
   async.Future<InstanceGroupManager> get(
       core.String project, core.String zone, core.String instanceGroupManager,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8202,12 +8717,11 @@ class InstanceGroupManagersResourceApi {
   }
 
   /// Creates a managed instance group using the information that you specify in
-  /// the request. After the group is created, it schedules an action to create
-  /// instances in the group using the specified instance template. This
-  /// operation is marked as DONE when the group is created even if the
-  /// instances in the group have not yet been created. You must separately
-  /// verify the status of the individual instances with the
-  /// listmanagedinstances method.
+  /// the request. After the group is created, instances in the group are
+  /// created using the specified instance template. This operation is marked as
+  /// DONE when the group is created even if the instances in the group have not
+  /// yet been created. You must separately verify the status of the individual
+  /// instances with the listmanagedinstances method.
   ///
   /// A managed instance group can have up to 1000 VM instances per group.
   /// Please contact Cloud Support if you need an increase in this limit.
@@ -8249,12 +8763,12 @@ class InstanceGroupManagersResourceApi {
   async.Future<Operation> insert(
       InstanceGroupManager request, core.String project, core.String zone,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -8357,12 +8871,12 @@ class InstanceGroupManagersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8478,12 +8992,12 @@ class InstanceGroupManagersResourceApi {
           core.String orderBy,
           core.String pageToken,
           core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8528,12 +9042,100 @@ class InstanceGroupManagersResourceApi {
         new InstanceGroupManagersListManagedInstancesResponse.fromJson(data));
   }
 
-  /// Schedules a group action to recreate the specified instances in the
-  /// managed instance group. The instances are deleted and recreated using the
+  /// Updates a managed instance group using the information that you specify in
+  /// the request. This operation is marked as DONE when the group is patched
+  /// even if the instances in the group are still in the process of being
+  /// patched. You must separately verify the status of the individual instances
+  /// with the listManagedInstances method. This method supports PATCH semantics
+  /// and uses the JSON merge patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where you want to create the managed
+  /// instance group.
+  ///
+  /// [instanceGroupManager] - The name of the instance group manager.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(InstanceGroupManager request,
+      core.String project, core.String zone, core.String instanceGroupManager,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Flags the specified instances in the managed instance group to be
+  /// immediately recreated. The instances are deleted and recreated using the
   /// current instance template for the managed instance group. This operation
-  /// is marked as DONE when the action is scheduled even if the instances have
-  /// not yet been recreated. You must separately verify the status of the
-  /// recreating action with the listmanagedinstances method.
+  /// is marked as DONE when the flag is set even if the instances have not yet
+  /// been recreated. You must separately verify the status of the recreating
+  /// action with the listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -8583,12 +9185,12 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -8632,6 +9234,16 @@ class InstanceGroupManagersResourceApi {
   /// when the resize actions are scheduled even if the group has not yet added
   /// or deleted any instances. You must separately verify the status of the
   /// creating or deleting actions with the listmanagedinstances method.
+  ///
+  /// When resizing down, the instance group arbitrarily chooses the order in
+  /// which VMs are deleted. The group takes into account some VM attributes
+  /// when making the selection including:
+  ///
+  /// + The status of the VM instance. + The health of the VM instance. + The
+  /// instance template version the VM is based on. + For regional managed
+  /// instance groups, the location of the VM instance.
+  ///
+  /// This list is subject to change.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -8677,12 +9289,12 @@ class InstanceGroupManagersResourceApi {
   async.Future<Operation> resize(core.String project, core.String zone,
       core.String instanceGroupManager, core.int size,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -8767,12 +9379,12 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -8859,12 +9471,12 @@ class InstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -8955,12 +9567,12 @@ class InstanceGroupsResourceApi {
       core.String instanceGroup,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9064,12 +9676,12 @@ class InstanceGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9143,12 +9755,12 @@ class InstanceGroupsResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String instanceGroup,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9207,12 +9819,12 @@ class InstanceGroupsResourceApi {
   async.Future<InstanceGroup> get(
       core.String project, core.String zone, core.String instanceGroup,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9281,12 +9893,12 @@ class InstanceGroupsResourceApi {
   async.Future<Operation> insert(
       InstanceGroup request, core.String project, core.String zone,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9388,12 +10000,12 @@ class InstanceGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9509,12 +10121,12 @@ class InstanceGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9611,12 +10223,12 @@ class InstanceGroupsResourceApi {
       core.String instanceGroup,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9698,12 +10310,12 @@ class InstanceGroupsResourceApi {
       core.String instanceGroup,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9748,8 +10360,8 @@ class InstanceTemplatesResourceApi {
       : _requester = client;
 
   /// Deletes the specified instance template. Deleting an instance template is
-  /// permanent and cannot be undone. It's not possible to delete templates
-  /// which are in use by an instance group.
+  /// permanent and cannot be undone. It is not possible to delete templates
+  /// that are already in use by a managed instance group.
   ///
   /// Request parameters:
   ///
@@ -9758,7 +10370,8 @@ class InstanceTemplatesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [instanceTemplate] - The name of the instance template to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -9786,12 +10399,12 @@ class InstanceTemplatesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String instanceTemplate,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9829,7 +10442,8 @@ class InstanceTemplatesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [instanceTemplate] - The name of the instance template.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9844,12 +10458,12 @@ class InstanceTemplatesResourceApi {
   async.Future<InstanceTemplate> get(
       core.String project, core.String instanceTemplate,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -9872,6 +10486,62 @@ class InstanceTemplatesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new InstanceTemplate.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Creates an instance template in the specified project using the data that
@@ -9912,12 +10582,12 @@ class InstanceTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(InstanceTemplate request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -9945,7 +10615,7 @@ class InstanceTemplatesResourceApi {
   }
 
   /// Retrieves a list of instance templates that are contained within the
-  /// specified project and zone.
+  /// specified project.
   ///
   /// Request parameters:
   ///
@@ -10012,12 +10682,12 @@ class InstanceTemplatesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10049,6 +10719,129 @@ class InstanceTemplatesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new InstanceTemplateList.fromJson(data));
   }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      GlobalSetPolicyRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
 }
 
 class InstancesResourceApi {
@@ -10070,7 +10863,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - The instance name for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [networkInterface] - The name of the network interface to add to this
   /// instance.
@@ -10106,12 +10900,12 @@ class InstancesResourceApi {
       core.String networkInterface,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10152,7 +10946,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves aggregated list of instances.
+  /// Retrieves aggregated list of all of the instances in your project across
+  /// all regions and zones.
   ///
   /// Request parameters:
   ///
@@ -10219,12 +11014,12 @@ class InstancesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10273,7 +11068,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - The instance name for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [forceAttach] - Whether to force attach the disk even if it's currently
   /// attached to another instance. This is only available for regional disks.
@@ -10304,12 +11100,12 @@ class InstancesResourceApi {
   async.Future<Operation> attachDisk(AttachedDisk request, core.String project,
       core.String zone, core.String instance,
       {core.bool forceAttach, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10362,7 +11158,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10390,12 +11187,12 @@ class InstancesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10440,7 +11237,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - The instance name for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [accessConfig] - The name of the access config to delete.
   ///
@@ -10477,12 +11275,12 @@ class InstancesResourceApi {
       core.String networkInterface,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10535,10 +11333,12 @@ class InstancesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [instance] - Instance name.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [instance] - Instance name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
-  /// [deviceName] - Disk device name to detach.
+  /// [deviceName] - The device name of the disk to detach. Make a get() request
+  /// on the instance to view currently attached disks and device names.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -10566,12 +11366,12 @@ class InstancesResourceApi {
   async.Future<Operation> detachDisk(core.String project, core.String zone,
       core.String instance, core.String deviceName,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10622,7 +11422,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10637,12 +11438,12 @@ class InstancesResourceApi {
   async.Future<Instance> get(
       core.String project, core.String zone, core.String instance,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10672,7 +11473,72 @@ class InstancesResourceApi {
     return _response.then((data) => new Instance.fromJson(data));
   }
 
-  /// Returns the specified instance's serial port output.
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns the last 1 MB of serial port output from the specified instance.
   ///
   /// Request parameters:
   ///
@@ -10684,7 +11550,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [port] - Specifies which COM or serial port to retrieve data from.
   /// Value must be between "1" and "4".
@@ -10708,12 +11575,12 @@ class InstancesResourceApi {
   async.Future<SerialPortOutput> getSerialPortOutput(
       core.String project, core.String zone, core.String instance,
       {core.int port, core.String start_1, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10783,9 +11650,9 @@ class InstancesResourceApi {
   /// This field is optional. It can be a full or partial URL. For example, the
   /// following are all valid URLs to an instance template:
   /// -
-  /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
-  /// - projects/project/global/global/instanceTemplates/instanceTemplate
-  /// - global/instancesTemplates/instanceTemplate
+  /// https://www.googleapis.com/compute/v1/projects/project/global/instanceTemplates/instanceTemplate
+  /// - projects/project/global/instanceTemplates/instanceTemplate
+  /// - global/instanceTemplates/instanceTemplate
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10802,12 +11669,12 @@ class InstancesResourceApi {
       {core.String requestId,
       core.String sourceInstanceTemplate,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -10912,12 +11779,12 @@ class InstancesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -10956,7 +11823,8 @@ class InstancesResourceApi {
   }
 
   /// Retrieves the list of referrers to instances contained within the
-  /// specified zone.
+  /// specified zone. For more information, read Viewing Referrers to VM
+  /// Instances.
   ///
   /// Request parameters:
   ///
@@ -10969,7 +11837,8 @@ class InstancesResourceApi {
   ///
   /// [instance] - Name of the target instance scoping this request, or '-' if
   /// the request should span over all instances in the container.
-  /// Value must have pattern "-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "-|[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -11031,12 +11900,12 @@ class InstancesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11079,8 +11948,8 @@ class InstancesResourceApi {
     return _response.then((data) => new InstanceListReferrers.fromJson(data));
   }
 
-  /// Performs a reset on the instance. For more information, see Resetting an
-  /// instance.
+  /// Performs a reset on the instance. This is a hard reset; the VM does not do
+  /// a graceful shutdown. For more information, see Resetting an instance.
   ///
   /// Request parameters:
   ///
@@ -11092,7 +11961,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11120,12 +11990,12 @@ class InstancesResourceApi {
   async.Future<Operation> reset(
       core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11170,8 +12040,9 @@ class InstancesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [deletionProtection] - Whether the resource should be protected against
   /// deletion.
@@ -11204,12 +12075,12 @@ class InstancesResourceApi {
       {core.bool deletionProtection,
       core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11257,13 +12128,15 @@ class InstancesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [instance] - The instance name.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [instance] - The instance name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [autoDelete] - Whether to auto-delete the disk when the instance is
   /// deleted.
   ///
-  /// [deviceName] - The device name of the disk to modify.
+  /// [deviceName] - The device name of the disk to modify. Make a get() request
+  /// on the instance to view currently attached disks and device names.
   /// Value must have pattern "\w[\w.-]{0,254}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
@@ -11297,12 +12170,12 @@ class InstancesResourceApi {
       core.String deviceName,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -11344,6 +12217,76 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(ZoneSetPolicyRequest request,
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Sets labels on an instance. To learn more about labels, read the Labeling
   /// Resources documentation.
   ///
@@ -11359,7 +12302,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11387,12 +12331,12 @@ class InstancesResourceApi {
   async.Future<Operation> setLabels(InstancesSetLabelsRequest request,
       core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11444,7 +12388,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11476,12 +12421,12 @@ class InstancesResourceApi {
       core.String instance,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11533,7 +12478,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11561,12 +12507,12 @@ class InstancesResourceApi {
   async.Future<Operation> setMachineType(InstancesSetMachineTypeRequest request,
       core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11618,7 +12564,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11646,12 +12593,12 @@ class InstancesResourceApi {
   async.Future<Operation> setMetadata(Metadata request, core.String project,
       core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11704,7 +12651,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11736,12 +12684,12 @@ class InstancesResourceApi {
       core.String instance,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11791,8 +12739,9 @@ class InstancesResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [instance] - Instance name.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [instance] - Instance name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11820,12 +12769,12 @@ class InstancesResourceApi {
   async.Future<Operation> setScheduling(Scheduling request, core.String project,
       core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11877,7 +12826,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance resource to start.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11909,12 +12859,12 @@ class InstancesResourceApi {
       core.String instance,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -11951,7 +12901,8 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets tags for the specified instance to the data included in the request.
+  /// Sets network tags for the specified instance to the data included in the
+  /// request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11965,7 +12916,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11993,12 +12945,12 @@ class InstancesResourceApi {
   async.Future<Operation> setTags(
       Tags request, core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12047,7 +12999,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12062,12 +13015,12 @@ class InstancesResourceApi {
   async.Future<Operation> simulateMaintenanceEvent(
       core.String project, core.String zone, core.String instance,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12111,7 +13064,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance resource to start.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -12139,12 +13093,12 @@ class InstancesResourceApi {
   async.Future<Operation> start(
       core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12193,7 +13147,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance resource to start.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -12225,12 +13180,12 @@ class InstancesResourceApi {
       core.String instance,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12284,7 +13239,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - Name of the instance resource to stop.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -12312,12 +13268,12 @@ class InstancesResourceApi {
   async.Future<Operation> stop(
       core.String project, core.String zone, core.String instance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12351,6 +13307,78 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String zone,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
+
   /// Updates the specified access config from an instance's network interface
   /// with the data included in the request. This method supports PATCH
   /// semantics and uses the JSON merge patch format and processing rules.
@@ -12367,7 +13395,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - The instance name for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [networkInterface] - The name of the network interface where the access
   /// config is attached.
@@ -12403,12 +13432,12 @@ class InstancesResourceApi {
       core.String networkInterface,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12464,7 +13493,8 @@ class InstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [instance] - The instance name for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [networkInterface] - The name of the network interface to update.
   ///
@@ -12499,12 +13529,12 @@ class InstancesResourceApi {
       core.String networkInterface,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12620,12 +13650,12 @@ class InterconnectAttachmentsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12671,7 +13701,8 @@ class InterconnectAttachmentsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [interconnectAttachment] - Name of the interconnect attachment to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -12699,12 +13730,12 @@ class InterconnectAttachmentsResourceApi {
   async.Future<Operation> delete(core.String project, core.String region,
       core.String interconnectAttachment,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12750,7 +13781,8 @@ class InterconnectAttachmentsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [interconnectAttachment] - Name of the interconnect attachment to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12765,12 +13797,12 @@ class InterconnectAttachmentsResourceApi {
   async.Future<InterconnectAttachment> get(core.String project,
       core.String region, core.String interconnectAttachment,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -12841,12 +13873,12 @@ class InterconnectAttachmentsResourceApi {
   async.Future<Operation> insert(
       InterconnectAttachment request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -12950,12 +13982,12 @@ class InterconnectAttachmentsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13010,7 +14042,8 @@ class InterconnectAttachmentsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [interconnectAttachment] - Name of the interconnect attachment to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -13042,12 +14075,12 @@ class InterconnectAttachmentsResourceApi {
       core.String interconnectAttachment,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13101,7 +14134,8 @@ class InterconnectLocationsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [interconnectLocation] - Name of the interconnect location to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13116,12 +14150,12 @@ class InterconnectLocationsResourceApi {
   async.Future<InterconnectLocation> get(
       core.String project, core.String interconnectLocation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13215,12 +14249,12 @@ class InterconnectLocationsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13269,7 +14303,8 @@ class InterconnectsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [interconnect] - Name of the interconnect to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -13296,12 +14331,12 @@ class InterconnectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String interconnect,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13339,7 +14374,8 @@ class InterconnectsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [interconnect] - Name of the interconnect to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13353,12 +14389,12 @@ class InterconnectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Interconnect> get(core.String project, core.String interconnect,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13381,6 +14417,63 @@ class InterconnectsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Interconnect.fromJson(data));
+  }
+
+  /// Returns the interconnectDiagnostics for the specified interconnect.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [interconnect] - Name of the interconnect resource to query.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectsGetDiagnosticsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectsGetDiagnosticsResponse> getDiagnostics(
+      core.String project, core.String interconnect,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (interconnect == null) {
+      throw new core.ArgumentError("Parameter interconnect is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects/' +
+        commons.Escaper.ecapeVariable('$interconnect') +
+        '/getDiagnostics';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InterconnectsGetDiagnosticsResponse.fromJson(data));
   }
 
   /// Creates a Interconnect in the specified project using the data included in
@@ -13419,12 +14512,12 @@ class InterconnectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Interconnect request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13517,12 +14610,12 @@ class InterconnectsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13567,7 +14660,8 @@ class InterconnectsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [interconnect] - Name of the interconnect to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -13595,12 +14689,12 @@ class InterconnectsResourceApi {
   async.Future<Operation> patch(
       Interconnect request, core.String project, core.String interconnect,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13662,12 +14756,12 @@ class LicenseCodesResourceApi {
   /// this method will complete with the same error.
   async.Future<LicenseCode> get(core.String project, core.String licenseCode,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13702,8 +14796,9 @@ class LicenseCodesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13718,12 +14813,12 @@ class LicenseCodesResourceApi {
   async.Future<TestPermissionsResponse> testIamPermissions(
       TestPermissionsRequest request, core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -13767,7 +14862,8 @@ class LicensesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [license] - Name of the license resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -13794,12 +14890,12 @@ class LicensesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String license,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13836,7 +14932,8 @@ class LicensesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [license] - Name of the License resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13850,12 +14947,12 @@ class LicensesResourceApi {
   /// this method will complete with the same error.
   async.Future<License> get(core.String project, core.String license,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -13878,6 +14975,62 @@ class LicensesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new License.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Create a License resource in the specified project.
@@ -13915,12 +15068,12 @@ class LicensesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(License request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -14018,12 +15171,12 @@ class LicensesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14055,6 +15208,68 @@ class LicensesResourceApi {
     return _response.then((data) => new LicensesListResponse.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      GlobalSetPolicyRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Returns permissions that a caller has on the specified resource.
   ///
   /// [request] - The metadata request object.
@@ -14065,8 +15280,9 @@ class LicensesResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14081,12 +15297,12 @@ class LicensesResourceApi {
   async.Future<TestPermissionsResponse> testIamPermissions(
       TestPermissionsRequest request, core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -14188,12 +15404,12 @@ class MachineTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14240,7 +15456,8 @@ class MachineTypesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [machineType] - Name of the machine type to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14255,12 +15472,12 @@ class MachineTypesResourceApi {
   async.Future<MachineType> get(
       core.String project, core.String zone, core.String machineType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14360,12 +15577,12 @@ class MachineTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14420,7 +15637,8 @@ class NetworksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [network] - Name of the network resource to add peering to.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14448,12 +15666,12 @@ class NetworksResourceApi {
   async.Future<Operation> addPeering(NetworksAddPeeringRequest request,
       core.String project, core.String network,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -14494,7 +15712,8 @@ class NetworksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [network] - Name of the network to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14521,12 +15740,12 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String network,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14564,7 +15783,8 @@ class NetworksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [network] - Name of the network to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14578,12 +15798,12 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Network> get(core.String project, core.String network,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14644,12 +15864,12 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Network request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -14742,12 +15962,12 @@ class NetworksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -14791,7 +16011,8 @@ class NetworksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [network] - Name of the network to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14819,12 +16040,12 @@ class NetworksResourceApi {
   async.Future<Operation> patch(
       Network request, core.String project, core.String network,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -14866,7 +16087,8 @@ class NetworksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [network] - Name of the network resource to remove peering from.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14894,12 +16116,12 @@ class NetworksResourceApi {
   async.Future<Operation> removePeering(NetworksRemovePeeringRequest request,
       core.String project, core.String network,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -14940,7 +16162,8 @@ class NetworksResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [network] - Name of the network to be updated.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -14968,12 +16191,12 @@ class NetworksResourceApi {
   async.Future<Operation> switchToCustomMode(
       core.String project, core.String network,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15021,8 +16244,9 @@ class NodeGroupsResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [nodeGroup] - Name of the NodeGroup resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [nodeGroup] - Name of the NodeGroup resource.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15050,12 +16274,12 @@ class NodeGroupsResourceApi {
   async.Future<Operation> addNodes(NodeGroupsAddNodesRequest request,
       core.String project, core.String zone, core.String nodeGroup,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -15160,12 +16384,12 @@ class NodeGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15209,7 +16433,8 @@ class NodeGroupsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeGroup] - Name of the NodeGroup resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15237,12 +16462,12 @@ class NodeGroupsResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String nodeGroup,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15289,7 +16514,8 @@ class NodeGroupsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeGroup] - Name of the NodeGroup resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15317,12 +16543,12 @@ class NodeGroupsResourceApi {
   async.Future<Operation> deleteNodes(NodeGroupsDeleteNodesRequest request,
       core.String project, core.String zone, core.String nodeGroup,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -15373,7 +16599,8 @@ class NodeGroupsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeGroup] - Name of the node group to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -15388,12 +16615,12 @@ class NodeGroupsResourceApi {
   async.Future<NodeGroup> get(
       core.String project, core.String zone, core.String nodeGroup,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15421,6 +16648,71 @@ class NodeGroupsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new NodeGroup.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Creates a NodeGroup resource in the specified project using the data
@@ -15465,12 +16757,12 @@ class NodeGroupsResourceApi {
   async.Future<Operation> insert(NodeGroup request, core.String project,
       core.String zone, core.int initialNodeCount,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -15577,12 +16869,12 @@ class NodeGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15632,7 +16924,8 @@ class NodeGroupsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeGroup] - Name of the NodeGroup resource whose nodes you want to list.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -15694,12 +16987,12 @@ class NodeGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15742,6 +17035,76 @@ class NodeGroupsResourceApi {
     return _response.then((data) => new NodeGroupsListNodes.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(ZoneSetPolicyRequest request,
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Updates the node template of the node group.
   ///
   /// [request] - The metadata request object.
@@ -15755,8 +17118,9 @@ class NodeGroupsResourceApi {
   /// [zone] - The name of the zone for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [nodeGroup] - Name of the NodeGroup resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [nodeGroup] - Name of the NodeGroup resource to update.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15788,12 +17152,12 @@ class NodeGroupsResourceApi {
       core.String nodeGroup,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -15828,6 +17192,78 @@ class NodeGroupsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String zone,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/nodeGroups/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
   }
 }
 
@@ -15903,12 +17339,12 @@ class NodeTemplatesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -15954,7 +17390,8 @@ class NodeTemplatesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeTemplate] - Name of the NodeTemplate resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -15982,12 +17419,12 @@ class NodeTemplatesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String nodeTemplate,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16033,7 +17470,8 @@ class NodeTemplatesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeTemplate] - Name of the node template to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -16048,12 +17486,12 @@ class NodeTemplatesResourceApi {
   async.Future<NodeTemplate> get(
       core.String project, core.String region, core.String nodeTemplate,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16081,6 +17519,71 @@ class NodeTemplatesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new NodeTemplate.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Creates a NodeTemplate resource in the specified project using the data
@@ -16123,12 +17626,12 @@ class NodeTemplatesResourceApi {
   async.Future<Operation> insert(
       NodeTemplate request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -16230,12 +17733,12 @@ class NodeTemplatesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16271,6 +17774,148 @@ class NodeTemplatesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new NodeTemplateList.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(RegionSetPolicyRequest request,
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String region,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/nodeTemplates/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
   }
 }
 
@@ -16346,12 +17991,12 @@ class NodeTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16396,7 +18041,8 @@ class NodeTypesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [nodeType] - Name of the node type to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -16411,12 +18057,12 @@ class NodeTypesResourceApi {
   async.Future<NodeType> get(
       core.String project, core.String zone, core.String nodeType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16516,12 +18162,12 @@ class NodeTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16598,12 +18244,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> disableXpnHost(core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16663,12 +18309,12 @@ class ProjectsResourceApi {
   async.Future<Operation> disableXpnResource(
       ProjectsDisableXpnResourceRequest request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -16727,12 +18373,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> enableXpnHost(core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16793,12 +18439,12 @@ class ProjectsResourceApi {
   async.Future<Operation> enableXpnResource(
       ProjectsEnableXpnResourceRequest request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -16843,12 +18489,12 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Project> get(core.String project, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16888,12 +18534,12 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Project> getXpnHost(core.String project, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -16981,12 +18627,12 @@ class ProjectsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17088,12 +18734,12 @@ class ProjectsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17163,12 +18809,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> moveDisk(DiskMoveRequest request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17231,12 +18877,12 @@ class ProjectsResourceApi {
   async.Future<Operation> moveInstance(
       InstanceMoveRequest request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17299,12 +18945,12 @@ class ProjectsResourceApi {
   async.Future<Operation> setCommonInstanceMetadata(
       Metadata request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17369,12 +19015,12 @@ class ProjectsResourceApi {
   async.Future<Operation> setDefaultNetworkTier(
       ProjectsSetDefaultNetworkTierRequest request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17438,12 +19084,12 @@ class ProjectsResourceApi {
   async.Future<Operation> setUsageExportBucket(
       UsageExportLocation request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17488,7 +19134,8 @@ class RegionAutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17516,12 +19163,12 @@ class RegionAutoscalersResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String autoscaler,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17566,7 +19213,8 @@ class RegionAutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -17581,12 +19229,12 @@ class RegionAutoscalersResourceApi {
   async.Future<Autoscaler> get(
       core.String project, core.String region, core.String autoscaler,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17656,12 +19304,12 @@ class RegionAutoscalersResourceApi {
   async.Future<Operation> insert(
       Autoscaler request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17764,12 +19412,12 @@ class RegionAutoscalersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -17823,7 +19471,8 @@ class RegionAutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17851,12 +19500,12 @@ class RegionAutoscalersResourceApi {
   async.Future<Operation> patch(
       Autoscaler request, core.String project, core.String region,
       {core.String autoscaler, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17906,7 +19555,8 @@ class RegionAutoscalersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [autoscaler] - Name of the autoscaler to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -17934,12 +19584,12 @@ class RegionAutoscalersResourceApi {
   async.Future<Operation> update(
       Autoscaler request, core.String project, core.String region,
       {core.String autoscaler, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -17993,7 +19643,8 @@ class RegionBackendServicesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [backendService] - Name of the BackendService resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18021,12 +19672,12 @@ class RegionBackendServicesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18071,7 +19722,8 @@ class RegionBackendServicesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [backendService] - Name of the BackendService resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18086,12 +19738,12 @@ class RegionBackendServicesResourceApi {
   async.Future<BackendService> get(
       core.String project, core.String region, core.String backendService,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18137,7 +19789,8 @@ class RegionBackendServicesResourceApi {
   ///
   /// [backendService] - Name of the BackendService resource for which to get
   /// health.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18155,12 +19808,12 @@ class RegionBackendServicesResourceApi {
       core.String region,
       core.String backendService,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -18237,12 +19890,12 @@ class RegionBackendServicesResourceApi {
   async.Future<Operation> insert(
       BackendService request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -18345,12 +19998,12 @@ class RegionBackendServicesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18406,7 +20059,8 @@ class RegionBackendServicesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [backendService] - Name of the BackendService resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18434,12 +20088,12 @@ class RegionBackendServicesResourceApi {
   async.Future<Operation> patch(BackendService request, core.String project,
       core.String region, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -18492,7 +20146,8 @@ class RegionBackendServicesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [backendService] - Name of the BackendService resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -18520,12 +20175,12 @@ class RegionBackendServicesResourceApi {
   async.Future<Operation> update(BackendService request, core.String project,
       core.String region, core.String backendService,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -18635,12 +20290,12 @@ class RegionCommitmentsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18687,7 +20342,8 @@ class RegionCommitmentsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [commitment] - Name of the commitment to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18702,12 +20358,12 @@ class RegionCommitmentsResourceApi {
   async.Future<Commitment> get(
       core.String project, core.String region, core.String commitment,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18777,12 +20433,12 @@ class RegionCommitmentsResourceApi {
   async.Future<Operation> insert(
       Commitment request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -18884,12 +20540,12 @@ class RegionCommitmentsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -18946,7 +20602,8 @@ class RegionDiskTypesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [diskType] - Name of the disk type to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -18961,12 +20618,12 @@ class RegionDiskTypesResourceApi {
   async.Future<DiskType> get(
       core.String project, core.String region, core.String diskType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19067,12 +20724,12 @@ class RegionDiskTypesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19130,7 +20787,8 @@ class RegionDisksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [disk] - Name of the regional persistent disk to snapshot.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19158,12 +20816,12 @@ class RegionDisksResourceApi {
   async.Future<Operation> createSnapshot(Snapshot request, core.String project,
       core.String region, core.String disk,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -19242,12 +20900,12 @@ class RegionDisksResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String disk,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19292,7 +20950,8 @@ class RegionDisksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [disk] - Name of the regional persistent disk to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19307,12 +20966,12 @@ class RegionDisksResourceApi {
   async.Future<Disk> get(
       core.String project, core.String region, core.String disk,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19384,12 +21043,12 @@ class RegionDisksResourceApi {
   async.Future<Operation> insert(
       Disk request, core.String project, core.String region,
       {core.String requestId, core.String sourceImage, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -19495,12 +21154,12 @@ class RegionDisksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19552,7 +21211,8 @@ class RegionDisksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [disk] - Name of the regional persistent disk.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19580,12 +21240,12 @@ class RegionDisksResourceApi {
   async.Future<Operation> resize(RegionDisksResizeRequest request,
       core.String project, core.String region, core.String disk,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -19635,8 +21295,9 @@ class RegionDisksResourceApi {
   /// [region] - The region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -19664,12 +21325,12 @@ class RegionDisksResourceApi {
   async.Future<Operation> setLabels(RegionSetLabelsRequest request,
       core.String project, core.String region, core.String resource,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -19719,8 +21380,9 @@ class RegionDisksResourceApi {
   /// [region] - The name of the region for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -19738,12 +21400,12 @@ class RegionDisksResourceApi {
       core.String region,
       core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -19784,15 +21446,14 @@ class RegionInstanceGroupManagersResourceApi {
   RegionInstanceGroupManagersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Schedules a group action to remove the specified instances from the
-  /// managed instance group. Abandoning an instance does not delete the
-  /// instance, but it does remove the instance from any target pools that are
-  /// applied by the managed instance group. This method reduces the targetSize
-  /// of the managed instance group by the number of instances that you abandon.
-  /// This operation is marked as DONE when the action is scheduled even if the
-  /// instances have not yet been removed from the group. You must separately
-  /// verify the status of the abandoning action with the listmanagedinstances
-  /// method.
+  /// Flags the specified instances to be immediately removed from the managed
+  /// instance group. Abandoning an instance does not delete the instance, but
+  /// it does remove the instance from any target pools that are applied by the
+  /// managed instance group. This method reduces the targetSize of the managed
+  /// instance group by the number of instances that you abandon. This operation
+  /// is marked as DONE when the action is scheduled even if the instances have
+  /// not yet been removed from the group. You must separately verify the status
+  /// of the abandoning action with the listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -19842,12 +21503,12 @@ class RegionInstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -19924,12 +21585,12 @@ class RegionInstanceGroupManagersResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String instanceGroupManager,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -19963,13 +21624,14 @@ class RegionInstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Schedules a group action to delete the specified instances in the managed
-  /// instance group. The instances are also removed from any target pools of
-  /// which they were a member. This method reduces the targetSize of the
-  /// managed instance group by the number of instances that you delete. This
-  /// operation is marked as DONE when the action is scheduled even if the
-  /// instances are still being deleted. You must separately verify the status
-  /// of the deleting action with the listmanagedinstances method.
+  /// Flags the specified instances in the managed instance group to be
+  /// immediately deleted. The instances are also removed from any target pools
+  /// of which they were a member. This method reduces the targetSize of the
+  /// managed instance group by the number of instances that you delete. The
+  /// deleteInstances operation is marked DONE if the deleteInstances request is
+  /// successful. The underlying actions take additional time. You must
+  /// separately verify the status of the deleting action with the
+  /// listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -20019,12 +21681,12 @@ class RegionInstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -20087,12 +21749,12 @@ class RegionInstanceGroupManagersResourceApi {
   async.Future<InstanceGroupManager> get(
       core.String project, core.String region, core.String instanceGroupManager,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20124,12 +21786,11 @@ class RegionInstanceGroupManagersResourceApi {
   }
 
   /// Creates a managed instance group using the information that you specify in
-  /// the request. After the group is created, it schedules an action to create
-  /// instances in the group using the specified instance template. This
-  /// operation is marked as DONE when the group is created even if the
-  /// instances in the group have not yet been created. You must separately
-  /// verify the status of the individual instances with the
-  /// listmanagedinstances method.
+  /// the request. After the group is created, instances in the group are
+  /// created using the specified instance template. This operation is marked as
+  /// DONE when the group is created even if the instances in the group have not
+  /// yet been created. You must separately verify the status of the individual
+  /// instances with the listmanagedinstances method.
   ///
   /// A regional managed instance group can contain up to 2000 instances.
   ///
@@ -20169,12 +21830,12 @@ class RegionInstanceGroupManagersResourceApi {
   async.Future<Operation> insert(
       InstanceGroupManager request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -20277,12 +21938,12 @@ class RegionInstanceGroupManagersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20396,12 +22057,12 @@ class RegionInstanceGroupManagersResourceApi {
           core.String orderBy,
           core.String pageToken,
           core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20446,12 +22107,99 @@ class RegionInstanceGroupManagersResourceApi {
         new RegionInstanceGroupManagersListInstancesResponse.fromJson(data));
   }
 
-  /// Schedules a group action to recreate the specified instances in the
-  /// managed instance group. The instances are deleted and recreated using the
+  /// Updates a managed instance group using the information that you specify in
+  /// the request. This operation is marked as DONE when the group is patched
+  /// even if the instances in the group are still in the process of being
+  /// patched. You must separately verify the status of the individual instances
+  /// with the listmanagedinstances method. This method supports PATCH semantics
+  /// and uses the JSON merge patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region scoping this request.
+  ///
+  /// [instanceGroupManager] - The name of the instance group manager.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(InstanceGroupManager request,
+      core.String project, core.String region, core.String instanceGroupManager,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (instanceGroupManager == null) {
+      throw new core.ArgumentError(
+          "Parameter instanceGroupManager is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/instanceGroupManagers/' +
+        commons.Escaper.ecapeVariable('$instanceGroupManager');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Flags the specified instances in the managed instance group to be
+  /// immediately recreated. The instances are deleted and recreated using the
   /// current instance template for the managed instance group. This operation
-  /// is marked as DONE when the action is scheduled even if the instances have
-  /// not yet been recreated. You must separately verify the status of the
-  /// recreating action with the listmanagedinstances method.
+  /// is marked as DONE when the flag is set even if the instances have not yet
+  /// been recreated. You must separately verify the status of the recreating
+  /// action with the listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -20501,12 +22249,12 @@ class RegionInstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -20544,13 +22292,15 @@ class RegionInstanceGroupManagersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Changes the intended size for the managed instance group. If you increase
-  /// the size, the group schedules actions to create new instances using the
-  /// current instance template. If you decrease the size, the group schedules
-  /// delete actions on one or more instances. The resize operation is marked
-  /// DONE when the resize actions are scheduled even if the group has not yet
-  /// added or deleted any instances. You must separately verify the status of
-  /// the creating or deleting actions with the listmanagedinstances method.
+  /// Changes the intended size of the managed instance group. If you increase
+  /// the size, the group creates new instances using the current instance
+  /// template. If you decrease the size, the group deletes one or more
+  /// instances.
+  ///
+  /// The resize operation is marked DONE if the resize request is successful.
+  /// The underlying actions take additional time. You must separately verify
+  /// the status of the creating or deleting actions with the
+  /// listmanagedinstances method.
   ///
   /// If the group is part of a backend service that has enabled connection
   /// draining, it can take up to 60 seconds after the connection draining
@@ -20595,12 +22345,12 @@ class RegionInstanceGroupManagersResourceApi {
   async.Future<Operation> resize(core.String project, core.String region,
       core.String instanceGroupManager, core.int size,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20684,12 +22434,12 @@ class RegionInstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -20772,12 +22522,12 @@ class RegionInstanceGroupManagersResourceApi {
       core.String instanceGroupManager,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -20847,12 +22597,12 @@ class RegionInstanceGroupsResourceApi {
   async.Future<InstanceGroup> get(
       core.String project, core.String region, core.String instanceGroup,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -20953,12 +22703,12 @@ class RegionInstanceGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21076,12 +22826,12 @@ class RegionInstanceGroupsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -21173,12 +22923,12 @@ class RegionInstanceGroupsResourceApi {
       core.String instanceGroup,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -21234,7 +22984,8 @@ class RegionOperationsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [operation] - Name of the Operations resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21247,12 +22998,12 @@ class RegionOperationsResourceApi {
   async.Future delete(
       core.String project, core.String region, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21296,7 +23047,8 @@ class RegionOperationsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [operation] - Name of the Operations resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21311,12 +23063,12 @@ class RegionOperationsResourceApi {
   async.Future<Operation> get(
       core.String project, core.String region, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21417,12 +23169,12 @@ class RegionOperationsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21476,7 +23228,8 @@ class RegionsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [region] - Name of the region resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21490,12 +23243,12 @@ class RegionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Region> get(core.String project, core.String region,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21587,12 +23340,12 @@ class RegionsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21697,12 +23450,12 @@ class RoutersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21746,7 +23499,8 @@ class RoutersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [router] - Name of the Router resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -21774,12 +23528,12 @@ class RoutersResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String router,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21825,7 +23579,8 @@ class RoutersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [router] - Name of the Router resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21840,12 +23595,12 @@ class RoutersResourceApi {
   async.Future<Router> get(
       core.String project, core.String region, core.String router,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21875,6 +23630,131 @@ class RoutersResourceApi {
     return _response.then((data) => new Router.fromJson(data));
   }
 
+  /// Retrieves runtime Nat mapping information of VM endpoints.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [router] - Name of the Router resource to query for Nat Mapping
+  /// information of VM endpoints.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VmEndpointNatMappingsList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VmEndpointNatMappingsList> getNatMappingInfo(
+      core.String project, core.String region, core.String router,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (router == null) {
+      throw new core.ArgumentError("Parameter router is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/routers/' +
+        commons.Escaper.ecapeVariable('$router') +
+        '/getNatMappingInfo';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new VmEndpointNatMappingsList.fromJson(data));
+  }
+
   /// Retrieves runtime information of the specified router.
   ///
   /// Request parameters:
@@ -21887,7 +23767,8 @@ class RoutersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [router] - Name of the Router resource to query.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -21902,12 +23783,12 @@ class RoutersResourceApi {
   async.Future<RouterStatusResponse> getRouterStatus(
       core.String project, core.String region, core.String router,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -21978,12 +23859,12 @@ class RoutersResourceApi {
   async.Future<Operation> insert(
       Router request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -22085,12 +23966,12 @@ class RoutersResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22144,7 +24025,8 @@ class RoutersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [router] - Name of the Router resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22172,12 +24054,12 @@ class RoutersResourceApi {
   async.Future<Operation> patch(Router request, core.String project,
       core.String region, core.String router,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -22228,7 +24110,8 @@ class RoutersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [router] - Name of the Router resource to query.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22243,12 +24126,12 @@ class RoutersResourceApi {
   async.Future<RoutersPreviewResponse> preview(Router request,
       core.String project, core.String region, core.String router,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -22297,7 +24180,8 @@ class RoutersResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [router] - Name of the Router resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22325,12 +24209,12 @@ class RoutersResourceApi {
   async.Future<Operation> update(Router request, core.String project,
       core.String region, core.String router,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -22381,7 +24265,8 @@ class RoutesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [route] - Name of the Route resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22408,12 +24293,12 @@ class RoutesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String route,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22451,7 +24336,8 @@ class RoutesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [route] - Name of the Route resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22465,12 +24351,12 @@ class RoutesResourceApi {
   /// this method will complete with the same error.
   async.Future<Route> get(core.String project, core.String route,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22531,12 +24417,12 @@ class RoutesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(Route request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -22629,12 +24515,12 @@ class RoutesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22667,6 +24553,638 @@ class RoutesResourceApi {
   }
 }
 
+class SecurityPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  SecurityPoliciesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Inserts a rule into a security policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to update.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addRule(SecurityPolicyRule request,
+      core.String project, core.String securityPolicy,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy') +
+        '/addRule';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes the specified policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to delete.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String securityPolicy,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// List all of the ordered rules present in a single specified policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to get.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityPolicy> get(
+      core.String project, core.String securityPolicy,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SecurityPolicy.fromJson(data));
+  }
+
+  /// Gets a rule at the specified priority.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to which the queried rule
+  /// belongs.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [priority] - The priority of the rule to get from the security policy.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityPolicyRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityPolicyRule> getRule(
+      core.String project, core.String securityPolicy,
+      {core.int priority, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if (priority != null) {
+      _queryParams["priority"] = ["${priority}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy') +
+        '/getRule';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SecurityPolicyRule.fromJson(data));
+  }
+
+  /// Creates a new policy in the specified project using the data included in
+  /// the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(SecurityPolicy request, core.String project,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        commons.Escaper.ecapeVariable('$project') + '/global/securityPolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// List all the policies that have been configured for the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityPolicyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityPolicyList> list(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        commons.Escaper.ecapeVariable('$project') + '/global/securityPolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SecurityPolicyList.fromJson(data));
+  }
+
+  /// Patches the specified policy with the data included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to update.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      SecurityPolicy request, core.String project, core.String securityPolicy,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Patches a rule at the specified priority.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to update.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [priority] - The priority of the rule to patch.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patchRule(SecurityPolicyRule request,
+      core.String project, core.String securityPolicy,
+      {core.int priority, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if (priority != null) {
+      _queryParams["priority"] = ["${priority}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy') +
+        '/patchRule';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes a rule at the specified priority.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [securityPolicy] - Name of the security policy to update.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [priority] - The priority of the rule to remove from the security policy.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeRule(
+      core.String project, core.String securityPolicy,
+      {core.int priority, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (securityPolicy == null) {
+      throw new core.ArgumentError("Parameter securityPolicy is required.");
+    }
+    if (priority != null) {
+      _queryParams["priority"] = ["${priority}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies/' +
+        commons.Escaper.ecapeVariable('$securityPolicy') +
+        '/removeRule';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
 class SnapshotsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -22678,7 +25196,7 @@ class SnapshotsResourceApi {
   /// needed for subsequent snapshots, the data will be moved to the next
   /// corresponding snapshot.
   ///
-  /// For more information, see Deleting snaphots.
+  /// For more information, see Deleting snapshots.
   ///
   /// Request parameters:
   ///
@@ -22687,7 +25205,8 @@ class SnapshotsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [snapshot] - Name of the Snapshot resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -22714,12 +25233,12 @@ class SnapshotsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String snapshot,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22757,7 +25276,8 @@ class SnapshotsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [snapshot] - Name of the Snapshot resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22771,12 +25291,12 @@ class SnapshotsResourceApi {
   /// this method will complete with the same error.
   async.Future<Snapshot> get(core.String project, core.String snapshot,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22799,6 +25319,62 @@ class SnapshotsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Snapshot.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/snapshots/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Retrieves the list of Snapshot resources contained within the specified
@@ -22869,12 +25445,12 @@ class SnapshotsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -22906,6 +25482,68 @@ class SnapshotsResourceApi {
     return _response.then((data) => new SnapshotList.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      GlobalSetPolicyRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/snapshots/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Sets the labels on a snapshot. To learn more about labels, read the
   /// Labeling Resources documentation.
   ///
@@ -22917,8 +25555,9 @@ class SnapshotsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
-  /// [resource] - Name of the resource for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -22933,12 +25572,12 @@ class SnapshotsResourceApi {
   async.Future<Operation> setLabels(
       GlobalSetLabelsRequest request, core.String project, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -22966,6 +25605,67 @@ class SnapshotsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/snapshots/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
 }
 
 class SslCertificatesResourceApi {
@@ -22982,7 +25682,8 @@ class SslCertificatesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [sslCertificate] - Name of the SslCertificate resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23010,12 +25711,12 @@ class SslCertificatesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String sslCertificate,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23053,7 +25754,8 @@ class SslCertificatesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [sslCertificate] - Name of the SslCertificate resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -23068,12 +25770,12 @@ class SslCertificatesResourceApi {
   async.Future<SslCertificate> get(
       core.String project, core.String sslCertificate,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23134,12 +25836,12 @@ class SslCertificatesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(SslCertificate request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -23234,12 +25936,12 @@ class SslCertificatesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23316,12 +26018,12 @@ class SslPoliciesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String sslPolicy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23372,12 +26074,12 @@ class SslPoliciesResourceApi {
   /// this method will complete with the same error.
   async.Future<SslPolicy> get(core.String project, core.String sslPolicy,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23438,12 +26140,12 @@ class SslPoliciesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(SslPolicy request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -23537,12 +26239,12 @@ class SslPoliciesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23643,12 +26345,12 @@ class SslPoliciesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23721,12 +26423,12 @@ class SslPoliciesResourceApi {
   async.Future<Operation> patch(
       SslPolicy request, core.String project, core.String sslPolicy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -23830,12 +26532,12 @@ class SubnetworksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23881,7 +26583,8 @@ class SubnetworksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [subnetwork] - Name of the Subnetwork resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23909,12 +26612,12 @@ class SubnetworksResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String subnetwork,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -23961,7 +26664,8 @@ class SubnetworksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [subnetwork] - Name of the Subnetwork resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -23993,12 +26697,12 @@ class SubnetworksResourceApi {
       core.String subnetwork,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -24048,7 +26752,8 @@ class SubnetworksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [subnetwork] - Name of the Subnetwork resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24063,12 +26768,12 @@ class SubnetworksResourceApi {
   async.Future<Subnetwork> get(
       core.String project, core.String region, core.String subnetwork,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24096,6 +26801,71 @@ class SubnetworksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Subnetwork.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/subnetworks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
   }
 
   /// Creates a subnetwork in the specified project using the data included in
@@ -24138,12 +26908,12 @@ class SubnetworksResourceApi {
   async.Future<Operation> insert(
       Subnetwork request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -24245,12 +27015,12 @@ class SubnetworksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24355,12 +27125,12 @@ class SubnetworksResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24395,9 +27165,8 @@ class SubnetworksResourceApi {
   }
 
   /// Patches the specified subnetwork with the data included in the request.
-  /// Only the following fields within the subnetwork resource can be specified
-  /// in the request: secondary_ip_range, allow_subnet_cidr_routes_overlap and
-  /// role. It is also mandatory to specify the current fingeprint of the
+  /// Only certain fields can up updated with a patch request as indicated in
+  /// the field descriptions. You must specify the current fingeprint of the
   /// subnetwork resource being patched.
   ///
   /// [request] - The metadata request object.
@@ -24412,7 +27181,8 @@ class SubnetworksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [subnetwork] - Name of the Subnetwork resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24440,12 +27210,12 @@ class SubnetworksResourceApi {
   async.Future<Operation> patch(Subnetwork request, core.String project,
       core.String region, core.String subnetwork,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -24481,6 +27251,76 @@ class SubnetworksResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(RegionSetPolicyRequest request,
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/subnetworks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Set whether VMs in this subnet can access Google services without
   /// assigning external IP addresses through Private Google Access.
   ///
@@ -24496,7 +27336,8 @@ class SubnetworksResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [subnetwork] - Name of the Subnetwork resource.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24528,12 +27369,12 @@ class SubnetworksResourceApi {
       core.String subnetwork,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -24569,6 +27410,78 @@ class SubnetworksResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String region,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/subnetworks/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
 }
 
 class TargetHttpProxiesResourceApi {
@@ -24586,7 +27499,8 @@ class TargetHttpProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24614,12 +27528,12 @@ class TargetHttpProxiesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String targetHttpProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24657,7 +27571,8 @@ class TargetHttpProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -24672,12 +27587,12 @@ class TargetHttpProxiesResourceApi {
   async.Future<TargetHttpProxy> get(
       core.String project, core.String targetHttpProxy,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24738,12 +27653,12 @@ class TargetHttpProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetHttpProxy request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -24838,12 +27753,12 @@ class TargetHttpProxiesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -24887,7 +27802,8 @@ class TargetHttpProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetHttpProxy] - Name of the TargetHttpProxy to set a URL map for.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24915,12 +27831,12 @@ class TargetHttpProxiesResourceApi {
   async.Future<Operation> setUrlMap(
       UrlMapReference request, core.String project, core.String targetHttpProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -24968,7 +27884,8 @@ class TargetHttpsProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -24996,12 +27913,12 @@ class TargetHttpsProxiesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String targetHttpsProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25039,7 +27956,8 @@ class TargetHttpsProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25054,12 +27972,12 @@ class TargetHttpsProxiesResourceApi {
   async.Future<TargetHttpsProxy> get(
       core.String project, core.String targetHttpsProxy,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25120,12 +28038,12 @@ class TargetHttpsProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetHttpsProxy request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -25220,12 +28138,12 @@ class TargetHttpsProxiesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25300,12 +28218,12 @@ class TargetHttpsProxiesResourceApi {
       core.String targetHttpsProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -25349,7 +28267,8 @@ class TargetHttpsProxiesResourceApi {
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to set an
   /// SslCertificates resource for.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -25380,12 +28299,12 @@ class TargetHttpsProxiesResourceApi {
       core.String targetHttpsProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -25460,12 +28379,12 @@ class TargetHttpsProxiesResourceApi {
   async.Future<Operation> setSslPolicy(SslPolicyReference request,
       core.String project, core.String targetHttpsProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -25509,7 +28428,8 @@ class TargetHttpsProxiesResourceApi {
   ///
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource whose URL map
   /// is to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -25537,12 +28457,12 @@ class TargetHttpsProxiesResourceApi {
   async.Future<Operation> setUrlMap(UrlMapReference request,
       core.String project, core.String targetHttpsProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -25647,12 +28567,12 @@ class TargetInstancesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25698,7 +28618,8 @@ class TargetInstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetInstance] - Name of the TargetInstance resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -25726,12 +28647,12 @@ class TargetInstancesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String targetInstance,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25777,7 +28698,8 @@ class TargetInstancesResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetInstance] - Name of the TargetInstance resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -25792,12 +28714,12 @@ class TargetInstancesResourceApi {
   async.Future<TargetInstance> get(
       core.String project, core.String zone, core.String targetInstance,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -25867,12 +28789,12 @@ class TargetInstancesResourceApi {
   async.Future<Operation> insert(
       TargetInstance request, core.String project, core.String zone,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -25975,12 +28897,12 @@ class TargetInstancesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -26038,7 +28960,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the target pool to add a health check to.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26070,12 +28993,12 @@ class TargetPoolsResourceApi {
       core.String targetPool,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26126,7 +29049,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the TargetPool resource to add instances to.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26154,12 +29078,12 @@ class TargetPoolsResourceApi {
   async.Future<Operation> addInstance(TargetPoolsAddInstanceRequest request,
       core.String project, core.String region, core.String targetPool,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26263,12 +29187,12 @@ class TargetPoolsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -26314,7 +29238,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the TargetPool resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26342,12 +29267,12 @@ class TargetPoolsResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String targetPool,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -26393,7 +29318,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the TargetPool resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26408,12 +29334,12 @@ class TargetPoolsResourceApi {
   async.Future<TargetPool> get(
       core.String project, core.String region, core.String targetPool,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -26459,7 +29385,8 @@ class TargetPoolsResourceApi {
   ///
   /// [targetPool] - Name of the TargetPool resource to which the queried
   /// instance belongs.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -26474,12 +29401,12 @@ class TargetPoolsResourceApi {
   async.Future<TargetPoolInstanceHealth> getHealth(InstanceReference request,
       core.String project, core.String region, core.String targetPool,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26554,12 +29481,12 @@ class TargetPoolsResourceApi {
   async.Future<Operation> insert(
       TargetPool request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26662,12 +29589,12 @@ class TargetPoolsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -26719,7 +29646,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the target pool to remove health checks from.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26751,12 +29679,12 @@ class TargetPoolsResourceApi {
       core.String targetPool,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26807,7 +29735,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the TargetPool resource to remove instances from.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -26839,12 +29768,12 @@ class TargetPoolsResourceApi {
       core.String targetPool,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26895,7 +29824,8 @@ class TargetPoolsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetPool] - Name of the TargetPool resource to set a backup pool for.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [failoverRatio] - New failoverRatio value for the target pool.
   ///
@@ -26925,12 +29855,12 @@ class TargetPoolsResourceApi {
   async.Future<Operation> setBackup(TargetReference request,
       core.String project, core.String region, core.String targetPool,
       {core.double failoverRatio, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -26986,7 +29916,8 @@ class TargetSslProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27014,12 +29945,12 @@ class TargetSslProxiesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String targetSslProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -27057,7 +29988,8 @@ class TargetSslProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -27072,12 +30004,12 @@ class TargetSslProxiesResourceApi {
   async.Future<TargetSslProxy> get(
       core.String project, core.String targetSslProxy,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -27138,12 +30070,12 @@ class TargetSslProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetSslProxy request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27238,12 +30170,12 @@ class TargetSslProxiesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -27288,7 +30220,8 @@ class TargetSslProxiesResourceApi {
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose
   /// BackendService resource is to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27319,12 +30252,12 @@ class TargetSslProxiesResourceApi {
       core.String targetSslProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27368,7 +30301,8 @@ class TargetSslProxiesResourceApi {
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose ProxyHeader
   /// is to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27399,12 +30333,12 @@ class TargetSslProxiesResourceApi {
       core.String targetSslProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27448,7 +30382,8 @@ class TargetSslProxiesResourceApi {
   ///
   /// [targetSslProxy] - Name of the TargetSslProxy resource whose
   /// SslCertificate resource is to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27479,12 +30414,12 @@ class TargetSslProxiesResourceApi {
       core.String targetSslProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27558,12 +30493,12 @@ class TargetSslProxiesResourceApi {
   async.Future<Operation> setSslPolicy(SslPolicyReference request,
       core.String project, core.String targetSslProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27611,7 +30546,8 @@ class TargetTcpProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27639,12 +30575,12 @@ class TargetTcpProxiesResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String targetTcpProxy,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -27682,7 +30618,8 @@ class TargetTcpProxiesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -27697,12 +30634,12 @@ class TargetTcpProxiesResourceApi {
   async.Future<TargetTcpProxy> get(
       core.String project, core.String targetTcpProxy,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -27763,12 +30700,12 @@ class TargetTcpProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetTcpProxy request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27863,12 +30800,12 @@ class TargetTcpProxiesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -27913,7 +30850,8 @@ class TargetTcpProxiesResourceApi {
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource whose
   /// BackendService resource is to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -27944,12 +30882,12 @@ class TargetTcpProxiesResourceApi {
       core.String targetTcpProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -27993,7 +30931,8 @@ class TargetTcpProxiesResourceApi {
   ///
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource whose ProxyHeader
   /// is to be set.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28024,12 +30963,12 @@ class TargetTcpProxiesResourceApi {
       core.String targetTcpProxy,
       {core.String requestId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -28136,12 +31075,12 @@ class TargetVpnGatewaysResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28187,7 +31126,8 @@ class TargetVpnGatewaysResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetVpnGateway] - Name of the target VPN gateway to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28215,12 +31155,12 @@ class TargetVpnGatewaysResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String targetVpnGateway,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28266,7 +31206,8 @@ class TargetVpnGatewaysResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [targetVpnGateway] - Name of the target VPN gateway to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28281,12 +31222,12 @@ class TargetVpnGatewaysResourceApi {
   async.Future<TargetVpnGateway> get(
       core.String project, core.String region, core.String targetVpnGateway,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28356,12 +31297,12 @@ class TargetVpnGatewaysResourceApi {
   async.Future<Operation> insert(
       TargetVpnGateway request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -28465,12 +31406,12 @@ class TargetVpnGatewaysResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28523,7 +31464,8 @@ class UrlMapsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [urlMap] - Name of the UrlMap resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28550,12 +31492,12 @@ class UrlMapsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String urlMap,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28593,7 +31535,8 @@ class UrlMapsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [urlMap] - Name of the UrlMap resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -28607,12 +31550,12 @@ class UrlMapsResourceApi {
   /// this method will complete with the same error.
   async.Future<UrlMap> get(core.String project, core.String urlMap,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28673,12 +31616,12 @@ class UrlMapsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(UrlMap request, core.String project,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -28716,7 +31659,8 @@ class UrlMapsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [urlMap] - Name of the UrlMap scoping this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28744,12 +31688,12 @@ class UrlMapsResourceApi {
   async.Future<Operation> invalidateCache(
       CacheInvalidationRule request, core.String project, core.String urlMap,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -28848,12 +31792,12 @@ class UrlMapsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -28898,7 +31842,8 @@ class UrlMapsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [urlMap] - Name of the UrlMap resource to patch.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -28926,12 +31871,12 @@ class UrlMapsResourceApi {
   async.Future<Operation> patch(
       UrlMap request, core.String project, core.String urlMap,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -28974,7 +31919,8 @@ class UrlMapsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [urlMap] - Name of the UrlMap resource to update.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -29002,12 +31948,12 @@ class UrlMapsResourceApi {
   async.Future<Operation> update(
       UrlMap request, core.String project, core.String urlMap,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -29051,7 +31997,8 @@ class UrlMapsResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [urlMap] - Name of the UrlMap resource to be validated as.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29066,12 +32013,12 @@ class UrlMapsResourceApi {
   async.Future<UrlMapsValidateResponse> validate(
       UrlMapsValidateRequest request, core.String project, core.String urlMap,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -29173,12 +32120,12 @@ class VpnTunnelsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29222,7 +32169,8 @@ class VpnTunnelsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [vpnTunnel] - Name of the VpnTunnel resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -29250,12 +32198,12 @@ class VpnTunnelsResourceApi {
   async.Future<Operation> delete(
       core.String project, core.String region, core.String vpnTunnel,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29301,7 +32249,8 @@ class VpnTunnelsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [vpnTunnel] - Name of the VpnTunnel resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29316,12 +32265,12 @@ class VpnTunnelsResourceApi {
   async.Future<VpnTunnel> get(
       core.String project, core.String region, core.String vpnTunnel,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29391,12 +32340,12 @@ class VpnTunnelsResourceApi {
   async.Future<Operation> insert(
       VpnTunnel request, core.String project, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -29499,12 +32448,12 @@ class VpnTunnelsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29560,7 +32509,8 @@ class ZoneOperationsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [operation] - Name of the Operations resource to delete.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29573,12 +32523,12 @@ class ZoneOperationsResourceApi {
   async.Future delete(
       core.String project, core.String zone, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29622,7 +32572,8 @@ class ZoneOperationsResourceApi {
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
   /// [operation] - Name of the Operations resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29637,12 +32588,12 @@ class ZoneOperationsResourceApi {
   async.Future<Operation> get(
       core.String project, core.String zone, core.String operation,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29743,12 +32694,12 @@ class ZoneOperationsResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29802,7 +32753,8 @@ class ZonesResourceApi {
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
   /// [zone] - Name of the zone resource to return.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29816,12 +32768,12 @@ class ZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<Zone> get(core.String project, core.String zone,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29913,12 +32865,12 @@ class ZonesResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -29958,8 +32910,10 @@ class AcceleratorConfig {
   core.int acceleratorCount;
 
   /// Full or partial URL of the accelerator type resource to attach to this
-  /// instance. If you are creating an instance template, specify only the
-  /// accelerator name.
+  /// instance. For example:
+  /// projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100
+  /// If you are creating an instance template, specify only the accelerator
+  /// name. See GPUs on Compute Engine for a full list of accelerator types.
   core.String acceleratorType;
 
   AcceleratorConfig();
@@ -30747,14 +33701,33 @@ class Address {
   /// dash.
   core.String name;
 
+  /// The URL of the network in which to reserve the address. This field can
+  /// only be used with INTERNAL type with VPC_PEERING purpose.
+  core.String network;
+
   /// This signifies the networking tier used for configuring this Address and
-  /// can only take the following values: PREMIUM , STANDARD.
+  /// can only take the following values: PREMIUM, STANDARD. Global forwarding
+  /// rules can only be Premium Tier. Regional forwarding rules can be either
+  /// Premium or Standard Tier. Standard Tier addresses applied to regional
+  /// forwarding rules can be used with any external load balancer. Regional
+  /// forwarding rules in Premium Tier can only be used with a Network load
+  /// balancer.
   ///
   /// If this field is not specified, it is assumed to be PREMIUM.
   /// Possible string values are:
   /// - "PREMIUM"
   /// - "STANDARD"
   core.String networkTier;
+
+  /// The prefix length if the resource reprensents an IP range.
+  core.int prefixLength;
+
+  /// The purpose of resource, only used with INTERNAL type.
+  /// Possible string values are:
+  /// - "DNS_RESOLVER"
+  /// - "GCE_ENDPOINT"
+  /// - "VPC_PEERING"
+  core.String purpose;
 
   /// [Output Only] URL of the region where the regional address resides. This
   /// field is not applicable to global addresses. You must specify this field
@@ -30812,8 +33785,17 @@ class Address {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
     if (_json.containsKey("networkTier")) {
       networkTier = _json["networkTier"];
+    }
+    if (_json.containsKey("prefixLength")) {
+      prefixLength = _json["prefixLength"];
+    }
+    if (_json.containsKey("purpose")) {
+      purpose = _json["purpose"];
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -30859,8 +33841,17 @@ class Address {
     if (name != null) {
       _json["name"] = name;
     }
+    if (network != null) {
+      _json["network"] = network;
+    }
     if (networkTier != null) {
       _json["networkTier"] = networkTier;
+    }
+    if (prefixLength != null) {
+      _json["prefixLength"] = prefixLength;
+    }
+    if (purpose != null) {
+      _json["purpose"] = purpose;
     }
     if (region != null) {
       _json["region"] = region;
@@ -31445,7 +34436,7 @@ class AttachedDisk {
   /// resizing, and so on, from within the instance.
   ///
   /// If not specified, the server chooses a default device name to apply to
-  /// this disk, in the form persistent-disks-x, where x is a number assigned by
+  /// this disk, in the form persistent-disk-x, where x is a number assigned by
   /// Google Compute Engine. This field is only applicable for persistent disks.
   core.String deviceName;
 
@@ -31632,6 +34623,9 @@ class AttachedDisk {
 /// This property is mutually exclusive with the source property; you can only
 /// define one or the other, but not both.
 class AttachedDiskInitializeParams {
+  /// An optional description. Provide this property when creating the disk.
+  core.String description;
+
   /// Specifies the disk name. If not specified, the default is to use the name
   /// of the instance. If the disk with the instance name exists already in the
   /// given zone/region, a new name will be automatically generated.
@@ -31699,6 +34693,9 @@ class AttachedDiskInitializeParams {
   AttachedDiskInitializeParams();
 
   AttachedDiskInitializeParams.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("diskName")) {
       diskName = _json["diskName"];
     }
@@ -31723,6 +34720,9 @@ class AttachedDiskInitializeParams {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (diskName != null) {
       _json["diskName"] = diskName;
     }
@@ -31740,6 +34740,146 @@ class AttachedDiskInitializeParams {
     }
     if (sourceImageEncryptionKey != null) {
       _json["sourceImageEncryptionKey"] = (sourceImageEncryptionKey).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Specifies the audit configuration for a service. The configuration
+/// determines which permission types are logged, and what identities, if any,
+/// are exempted from logging. An AuditConfig must have one or more
+/// AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service, the
+/// union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditLogConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+/// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ {
+/// "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+/// "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, { "service":
+/// "fooservice.googleapis.com" "audit_log_configs": [ { "log_type":
+/// "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members": [
+/// "user:bar@gmail.com" ] } ] } ] }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
+class AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<AuditLogConfig> auditLogConfigs;
+  core.List<core.String> exemptedMembers;
+
+  /// Specifies a service that will be enabled for audit logging. For example,
+  /// `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a
+  /// special value that covers all services.
+  core.String service;
+
+  AuditConfig();
+
+  AuditConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auditLogConfigs")) {
+      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
+          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditLogConfigs != null) {
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Provides the configuration for logging a type of permissions. Example:
+///
+/// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
+/// "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", } ] }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
+class AuditLogConfig {
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission. Follows the same format of [Binding.members][].
+  core.List<core.String> exemptedMembers;
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "ADMIN_READ"
+  /// - "DATA_READ"
+  /// - "DATA_WRITE"
+  /// - "LOG_TYPE_UNSPECIFIED"
+  core.String logType;
+
+  AuditLogConfig();
+
+  AuditLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("exemptedMembers")) {
+      exemptedMembers =
+          (_json["exemptedMembers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("logType")) {
+      logType = _json["logType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exemptedMembers != null) {
+      _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (logType != null) {
+      _json["logType"] = logType;
+    }
+    return _json;
+  }
+}
+
+/// Authorization-related information used by Cloud Audit Logging.
+class AuthorizationLoggingOptions {
+  /// The type of the permission that was checked.
+  /// Possible string values are:
+  /// - "ADMIN_READ"
+  /// - "ADMIN_WRITE"
+  /// - "DATA_READ"
+  /// - "DATA_WRITE"
+  /// - "PERMISSION_TYPE_UNSPECIFIED"
+  core.String permissionType;
+
+  AuthorizationLoggingOptions();
+
+  AuthorizationLoggingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("permissionType")) {
+      permissionType = _json["permissionType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissionType != null) {
+      _json["permissionType"] = permissionType;
     }
     return _json;
   }
@@ -32600,8 +35740,7 @@ class AutoscalingPolicyCustomMetricUtilization {
   core.double utilizationTarget;
 
   /// Defines how target utilization value is expressed for a Stackdriver
-  /// Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE. If
-  /// not specified, the default is GAUGE.
+  /// Monitoring metric. Either GAUGE, DELTA_PER_SECOND, or DELTA_PER_MINUTE.
   /// Possible string values are:
   /// - "DELTA_PER_MINUTE"
   /// - "DELTA_PER_SECOND"
@@ -32640,7 +35779,7 @@ class AutoscalingPolicyCustomMetricUtilization {
 
 /// Configuration parameters of autoscaling based on load balancing.
 class AutoscalingPolicyLoadBalancingUtilization {
-  /// Fraction of backend capacity utilization (set in HTTP(s) load balancing
+  /// Fraction of backend capacity utilization (set in HTTP(S) load balancing
   /// configuration) that autoscaler should maintain. Must be a positive float
   /// value. If not defined, the default is 0.8.
   core.double utilizationTarget;
@@ -32690,17 +35829,26 @@ class Backend {
   /// create the resource.
   core.String description;
 
-  /// The fully-qualified URL of a Instance Group resource. This instance group
-  /// defines the list of instances that serve traffic. Member virtual machine
-  /// instances from each instance group must live in the same zone as the
-  /// instance group itself. No two backends in a backend service are allowed to
-  /// use same Instance Group resource.
+  /// The fully-qualified URL of an Instance Group or Network Endpoint Group
+  /// resource. In case of instance group this defines the list of instances
+  /// that serve traffic. Member virtual machine instances from each instance
+  /// group must live in the same zone as the instance group itself. No two
+  /// backends in a backend service are allowed to use same Instance Group
+  /// resource.
   ///
-  /// Note that you must specify an Instance Group resource using the
-  /// fully-qualified URL, rather than a partial URL.
+  /// For Network Endpoint Groups this defines list of endpoints. All endpoints
+  /// of Network Endpoint Group must be hosted on instances located in the same
+  /// zone as the Network Endpoint Group.
+  ///
+  /// Backend service can not contain mix of Instance Group and Network Endpoint
+  /// Group backends.
+  ///
+  /// Note that you must specify an Instance Group or Network Endpoint Group
+  /// resource using the fully-qualified URL, rather than a partial URL.
   ///
   /// When the BackendService has load balancing scheme INTERNAL, the instance
-  /// group must be within the same region as the BackendService.
+  /// group must be within the same region as the BackendService. Network
+  /// Endpoint Groups are not supported for INTERNAL load balancing scheme.
   core.String group;
 
   /// The max number of simultaneous connections for the group. Can be used with
@@ -32914,7 +36062,7 @@ class BackendBucketCdnPolicy {
   /// considered fresh. After this time period, the response will be revalidated
   /// before being served. Defaults to 1hr (3600s). When serving responses to
   /// signed URL requests, Cloud CDN will internally behave as though all
-  /// responses from this backend had a ?Cache-Control: public, max-age=[TTL]?
+  /// responses from this backend had a "Cache-Control: public, max-age=[TTL]"
   /// header, regardless of any existing Cache-Control header. The actual
   /// headers served in responses will not be altered.
   core.String signedUrlCacheMaxAgeSec;
@@ -33163,7 +36311,8 @@ class BackendService {
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a BackendService. An up-to-date fingerprint must be
-  /// provided in order to update the BackendService.
+  /// provided in order to update the BackendService, otherwise the request will
+  /// fail with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve a
   /// BackendService.
@@ -33172,7 +36321,7 @@ class BackendService {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -33247,6 +36396,10 @@ class BackendService {
   /// specify this field as part of the HTTP request URL. It is not settable as
   /// a field in the request body.
   core.String region;
+
+  /// [Output Only] The resource URL for the security policy associated with
+  /// this backend service.
+  core.String securityPolicy;
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
@@ -33332,6 +36485,9 @@ class BackendService {
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
+    if (_json.containsKey("securityPolicy")) {
+      securityPolicy = _json["securityPolicy"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -33399,6 +36555,9 @@ class BackendService {
     }
     if (region != null) {
       _json["region"] = region;
+    }
+    if (securityPolicy != null) {
+      _json["securityPolicy"] = securityPolicy;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -33607,7 +36766,7 @@ class BackendServiceCdnPolicy {
   /// considered fresh. After this time period, the response will be revalidated
   /// before being served. Defaults to 1hr (3600s). When serving responses to
   /// signed URL requests, Cloud CDN will internally behave as though all
-  /// responses from this backend had a ?Cache-Control: public, max-age=[TTL]?
+  /// responses from this backend had a "Cache-Control: public, max-age=[TTL]"
   /// header, regardless of any existing Cache-Control header. The actual
   /// headers served in responses will not be altered.
   core.String signedUrlCacheMaxAgeSec;
@@ -33647,6 +36806,8 @@ class BackendServiceCdnPolicy {
 }
 
 class BackendServiceGroupHealth {
+  /// Health state of the backend instances or endpoints in requested instance
+  /// or network endpoint group, determined based on configured health checks.
   core.List<HealthStatus> healthStatus;
 
   /// [Output Only] Type of resource. Always compute#backendServiceGroupHealth
@@ -34047,6 +37208,74 @@ class BackendServicesScopedList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Associates `members` with a `role`.
+class Binding {
+  /// Unimplemented. The condition that is associated with this binding. NOTE:
+  /// an unsatisfied condition will not allow user access via current binding.
+  /// Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
+  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// `members` can have the following values:
+  ///
+  /// * `allUsers`: A special identifier that represents anyone who is on the
+  /// internet; with or without a Google account.
+  ///
+  /// * `allAuthenticatedUsers`: A special identifier that represents anyone who
+  /// is authenticated with a Google account or a service account.
+  ///
+  /// * `user:{emailid}`: An email address that represents a specific Google
+  /// account. For example, `alice@gmail.com` .
+  ///
+  ///
+  ///
+  /// * `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  ///
+  /// * `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`.
+  ///
+  ///
+  ///
+  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// users of that domain. For example, `google.com` or `example.com`.
+  core.List<core.String> members;
+
+  /// Role that is assigned to `members`. For example, `roles/viewer`,
+  /// `roles/editor`, or `roles/owner`.
+  core.String role;
+
+  Binding();
+
+  Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
+    if (_json.containsKey("members")) {
+      members = (_json["members"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
     }
     return _json;
   }
@@ -34831,6 +38060,96 @@ class CommitmentsScopedList {
   }
 }
 
+/// A condition to be met.
+class Condition {
+  /// Trusted attributes supplied by the IAM system.
+  /// Possible string values are:
+  /// - "APPROVER"
+  /// - "ATTRIBUTION"
+  /// - "AUTHORITY"
+  /// - "CREDENTIALS_TYPE"
+  /// - "JUSTIFICATION_TYPE"
+  /// - "NO_ATTR"
+  /// - "SECURITY_REALM"
+  core.String iam;
+
+  /// An operator to apply the subject with.
+  /// Possible string values are:
+  /// - "DISCHARGED"
+  /// - "EQUALS"
+  /// - "IN"
+  /// - "NOT_EQUALS"
+  /// - "NOT_IN"
+  /// - "NO_OP"
+  core.String op;
+
+  /// Trusted attributes discharged by the service.
+  core.String svc;
+
+  /// Trusted attributes supplied by any service that owns resources and uses
+  /// the IAM system for access control.
+  /// Possible string values are:
+  /// - "IP"
+  /// - "NAME"
+  /// - "NO_ATTR"
+  /// - "REGION"
+  /// - "SERVICE"
+  core.String sys;
+
+  /// DEPRECATED. Use 'values' instead.
+  core.String value;
+
+  /// The objects of the condition. This is mutually exclusive with 'value'.
+  core.List<core.String> values;
+
+  Condition();
+
+  Condition.fromJson(core.Map _json) {
+    if (_json.containsKey("iam")) {
+      iam = _json["iam"];
+    }
+    if (_json.containsKey("op")) {
+      op = _json["op"];
+    }
+    if (_json.containsKey("svc")) {
+      svc = _json["svc"];
+    }
+    if (_json.containsKey("sys")) {
+      sys = _json["sys"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (iam != null) {
+      _json["iam"] = iam;
+    }
+    if (op != null) {
+      _json["op"] = op;
+    }
+    if (svc != null) {
+      _json["svc"] = svc;
+    }
+    if (sys != null) {
+      _json["sys"] = sys;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
 /// Message containing connection draining configuration.
 class ConnectionDraining {
   /// Time for which instance will be drained (not accept new connections, but
@@ -34857,6 +38176,9 @@ class ConnectionDraining {
 
 /// Represents a customer-supplied encryption key
 class CustomerEncryptionKey {
+  /// The name of the encryption key that is stored in Google Cloud KMS.
+  core.String kmsKeyName;
+
   /// Specifies a 256-bit customer-supplied encryption key, encoded in RFC 4648
   /// base64 to either encrypt or decrypt this resource.
   core.String rawKey;
@@ -34868,6 +38190,9 @@ class CustomerEncryptionKey {
   CustomerEncryptionKey();
 
   CustomerEncryptionKey.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
     if (_json.containsKey("rawKey")) {
       rawKey = _json["rawKey"];
     }
@@ -34879,6 +38204,9 @@ class CustomerEncryptionKey {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
     if (rawKey != null) {
       _json["rawKey"] = rawKey;
     }
@@ -35038,7 +38366,8 @@ class Disk {
   /// essentially a hash of the labels set used for optimistic locking. The
   /// fingerprint is initially generated by Compute Engine and changes after
   /// every request to modify or update labels. You must always provide an
-  /// up-to-date fingerprint hash in order to update or change labels.
+  /// up-to-date fingerprint hash in order to update or change labels, otherwise
+  /// the request will fail with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve a disk.
   core.String labelFingerprint;
@@ -35046,7 +38375,7 @@ class Disk {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -35078,6 +38407,13 @@ class Disk {
 
   /// Internal use only.
   core.String options;
+
+  /// Physical block size of the persistent disk, in bytes. If not present in a
+  /// request, a default value is used. Currently supported sizes are 4096 and
+  /// 16384, other sizes may be added in the future. If an unsupported value is
+  /// requested, the error message will list the supported values for the
+  /// caller's project.
+  core.String physicalBlockSizeBytes;
 
   /// [Output Only] URL of the region where the disk resides. Only applicable
   /// for regional resources. You must specify this field as part of the HTTP
@@ -35159,6 +38495,7 @@ class Disk {
   /// [Output Only] The status of disk creation.
   /// Possible string values are:
   /// - "CREATING"
+  /// - "DELETING"
   /// - "FAILED"
   /// - "READY"
   /// - "RESTORING"
@@ -35225,6 +38562,9 @@ class Disk {
     }
     if (_json.containsKey("options")) {
       options = _json["options"];
+    }
+    if (_json.containsKey("physicalBlockSizeBytes")) {
+      physicalBlockSizeBytes = _json["physicalBlockSizeBytes"];
     }
     if (_json.containsKey("region")) {
       region = _json["region"];
@@ -35317,6 +38657,9 @@ class Disk {
     }
     if (options != null) {
       _json["options"] = options;
+    }
+    if (physicalBlockSizeBytes != null) {
+      _json["physicalBlockSizeBytes"] = physicalBlockSizeBytes;
     }
     if (region != null) {
       _json["region"] = region;
@@ -36691,6 +40034,66 @@ class DistributionPolicyZoneConfiguration {
   }
 }
 
+/// Represents an expression text. Example:
+///
+/// title: "User account presence" description: "Determines whether the request
+/// has a user account" expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 class FirewallAllowed {
   /// The IP protocol to which this rule applies. The protocol type is required
   /// when creating a firewall rule. This value can either be one of the
@@ -36800,6 +40203,12 @@ class Firewall {
   /// - "INGRESS"
   core.String direction;
 
+  /// Denotes whether the firewall rule is disabled, i.e not applied to the
+  /// network it is associated with. When set to true, the firewall rule is not
+  /// enforced and the network behaves as if it did not exist. If this is
+  /// unspecified, the firewall rule will be enabled.
+  core.bool disabled;
+
   /// [Output Only] The unique identifier for the resource. This identifier is
   /// defined by the server.
   core.String id;
@@ -36807,6 +40216,10 @@ class Firewall {
   /// [Output Only] Type of the resource. Always compute#firewall for firewall
   /// rules.
   core.String kind;
+
+  /// This field denotes the logging options for a particular firewall rule. If
+  /// logging is enabled, logs will be exported to Stackdriver.
+  FirewallLogConfig logConfig;
 
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -36914,11 +40327,17 @@ class Firewall {
     if (_json.containsKey("direction")) {
       direction = _json["direction"];
     }
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("logConfig")) {
+      logConfig = new FirewallLogConfig.fromJson(_json["logConfig"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -36972,11 +40391,17 @@ class Firewall {
     if (direction != null) {
       _json["direction"] = direction;
     }
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
     if (id != null) {
       _json["id"] = id;
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (logConfig != null) {
+      _json["logConfig"] = (logConfig).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -37192,6 +40617,81 @@ class FirewallList {
   }
 }
 
+/// The available logging options for a firewall rule.
+class FirewallLogConfig {
+  /// This field denotes whether to enable logging for a particular firewall
+  /// rule.
+  core.bool enable;
+
+  FirewallLogConfig();
+
+  FirewallLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enable")) {
+      enable = _json["enable"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enable != null) {
+      _json["enable"] = enable;
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates numeric value that can be either absolute or relative.
+class FixedOrPercent {
+  /// [Output Only] Absolute value of VM instances calculated based on the
+  /// specific mode.
+  ///
+  ///
+  /// - If the value is fixed, then the caculated value is equal to the fixed
+  /// value.
+  /// - If the value is a percent, then the calculated value is percent/100 *
+  /// targetSize. For example, the calculated value of a 80% of a managed
+  /// instance group with 150 instances would be (80/100 * 150) = 120 VM
+  /// instances. If there is a remainder, the number is rounded up.
+  core.int calculated;
+
+  /// Specifies a fixed number of VM instances. This must be a positive integer.
+  core.int fixed;
+
+  /// Specifies a percentage of instances between 0 to 100%, inclusive. For
+  /// example, specify 80 for 80%.
+  core.int percent;
+
+  FixedOrPercent();
+
+  FixedOrPercent.fromJson(core.Map _json) {
+    if (_json.containsKey("calculated")) {
+      calculated = _json["calculated"];
+    }
+    if (_json.containsKey("fixed")) {
+      fixed = _json["fixed"];
+    }
+    if (_json.containsKey("percent")) {
+      percent = _json["percent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (calculated != null) {
+      _json["calculated"] = calculated;
+    }
+    if (fixed != null) {
+      _json["fixed"] = fixed;
+    }
+    if (percent != null) {
+      _json["percent"] = percent;
+    }
+    return _json;
+  }
+}
+
 /// A ForwardingRule resource. A ForwardingRule resource specifies which pool of
 /// target virtual machines to forward a packet to if it matches the given
 /// [IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules
@@ -37214,7 +40714,7 @@ class ForwardingRule {
   ///
   /// When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a
   /// URL reference to an existing Address resource ( internal regional static
-  /// IP address).
+  /// IP address), with a purpose of GCE_END_POINT and address_type of INTERNAL.
   ///
   /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918
   /// IP address belonging to the network/subnet configured for the forwarding
@@ -37343,10 +40843,10 @@ class ForwardingRule {
   /// This field is used along with the backend_service field for internal load
   /// balancing.
   ///
-  /// When the load balancing scheme is INTERNAL, a single port or a comma
-  /// separated list of ports can be configured. Only packets addressed to these
-  /// ports will be forwarded to the backends configured with this forwarding
-  /// rule.
+  /// When the load balancing scheme is INTERNAL, a list of ports can be
+  /// configured, for example, ['80'], ['8000','9000'] etc. Only packets
+  /// addressed to these ports will be forwarded to the backends configured with
+  /// this forwarding rule.
   ///
   /// You may specify a maximum of up to 5 ports.
   core.List<core.String> ports;
@@ -37359,6 +40859,25 @@ class ForwardingRule {
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
+
+  /// An optional prefix to the service name for this Forwarding Rule. If
+  /// specified, will be the first label of the fully qualified service name.
+  ///
+  /// The label must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the label must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  ///
+  /// This field is only used for internal load balancing.
+  core.String serviceLabel;
+
+  /// [Output Only] The internal fully qualified service name for this
+  /// Forwarding Rule.
+  ///
+  /// This field is only used for internal load balancing.
+  core.String serviceName;
 
   /// This field is only used for INTERNAL load balancing.
   ///
@@ -37429,6 +40948,12 @@ class ForwardingRule {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("serviceLabel")) {
+      serviceLabel = _json["serviceLabel"];
+    }
+    if (_json.containsKey("serviceName")) {
+      serviceName = _json["serviceName"];
+    }
     if (_json.containsKey("subnetwork")) {
       subnetwork = _json["subnetwork"];
     }
@@ -37487,6 +41012,12 @@ class ForwardingRule {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (serviceLabel != null) {
+      _json["serviceLabel"] = serviceLabel;
+    }
+    if (serviceName != null) {
+      _json["serviceName"] = serviceName;
     }
     if (subnetwork != null) {
       _json["subnetwork"] = subnetwork;
@@ -38014,14 +41545,14 @@ class GlobalSetLabelsRequest {
   /// detect conflicts. The fingerprint is initially generated by Compute Engine
   /// and changes after every request to modify or update labels. You must
   /// always provide an up-to-date fingerprint hash when updating or changing
-  /// labels. Make a get() request to the resource to get the latest
-  /// fingerprint.
+  /// labels, otherwise the request will fail with error 412 conditionNotMet.
+  /// Make a get() request to the resource to get the latest fingerprint.
   core.String labelFingerprint;
   core.List<core.int> get labelFingerprintAsBytes {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -38054,6 +41585,60 @@ class GlobalSetLabelsRequest {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+class GlobalSetPolicyRequest {
+  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
+  /// Use 'policy' to specify bindings.
+  core.List<Binding> bindings;
+
+  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
+  /// Use 'policy' to specify the etag.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// REQUIRED: The complete policy to be applied to the 'resource'. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is in general a
+  /// valid policy but certain services (like Projects) might reject them.
+  Policy policy;
+
+  GlobalSetPolicyRequest();
+
+  GlobalSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
     }
     return _json;
   }
@@ -38114,6 +41699,11 @@ class HTTPHealthCheck {
   /// The request path of the HTTP health check request. The default value is /.
   core.String requestPath;
 
+  /// The string to match anywhere in the first 1024 bytes of the response body.
+  /// If left empty (the default value), the status code determines health. The
+  /// response data can only be ASCII.
+  core.String response;
+
   HTTPHealthCheck();
 
   HTTPHealthCheck.fromJson(core.Map _json) {
@@ -38131,6 +41721,9 @@ class HTTPHealthCheck {
     }
     if (_json.containsKey("requestPath")) {
       requestPath = _json["requestPath"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
     }
   }
 
@@ -38151,6 +41744,9 @@ class HTTPHealthCheck {
     }
     if (requestPath != null) {
       _json["requestPath"] = requestPath;
+    }
+    if (response != null) {
+      _json["response"] = response;
     }
     return _json;
   }
@@ -38181,6 +41777,11 @@ class HTTPSHealthCheck {
   /// /.
   core.String requestPath;
 
+  /// The string to match anywhere in the first 1024 bytes of the response body.
+  /// If left empty (the default value), the status code determines health. The
+  /// response data can only be ASCII.
+  core.String response;
+
   HTTPSHealthCheck();
 
   HTTPSHealthCheck.fromJson(core.Map _json) {
@@ -38198,6 +41799,9 @@ class HTTPSHealthCheck {
     }
     if (_json.containsKey("requestPath")) {
       requestPath = _json["requestPath"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
     }
   }
 
@@ -38218,6 +41822,9 @@ class HTTPSHealthCheck {
     }
     if (requestPath != null) {
       _json["requestPath"] = requestPath;
+    }
+    if (response != null) {
+      _json["response"] = response;
     }
     return _json;
   }
@@ -39461,7 +43068,8 @@ class Image {
   /// essentially a hash of the labels used for optimistic locking. The
   /// fingerprint is initially generated by Compute Engine and changes after
   /// every request to modify or update labels. You must always provide an
-  /// up-to-date fingerprint hash in order to update or change labels.
+  /// up-to-date fingerprint hash in order to update or change labels, otherwise
+  /// the request will fail with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve an image.
   core.String labelFingerprint;
@@ -39469,7 +43077,7 @@ class Image {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -39563,6 +43171,7 @@ class Image {
   /// successfully created and the status is set to READY. Possible values are
   /// FAILED, PENDING, or READY.
   /// Possible string values are:
+  /// - "DELETING"
   /// - "FAILED"
   /// - "PENDING"
   /// - "READY"
@@ -39967,6 +43576,7 @@ class Instance {
   /// A list of the type and count of accelerator cards attached to the
   /// instance.
   core.List<AcceleratorConfig> guestAccelerators;
+  core.String hostname;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
   /// defined by the server.
@@ -39987,7 +43597,7 @@ class Instance {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -40117,6 +43727,9 @@ class Instance {
               (value) => new AcceleratorConfig.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("hostname")) {
+      hostname = _json["hostname"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -40199,6 +43812,9 @@ class Instance {
     if (guestAccelerators != null) {
       _json["guestAccelerators"] =
           guestAccelerators.map((value) => (value).toJson()).toList();
+    }
+    if (hostname != null) {
+      _json["hostname"] = hostname;
     }
     if (id != null) {
       _json["id"] = id;
@@ -40461,7 +44077,7 @@ class InstanceGroup {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -40977,6 +44593,10 @@ class InstanceGroupList {
 /// (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for
 /// v1.regionInstanceGroupManagers ==)
 class InstanceGroupManager {
+  /// The autohealing policy for this managed instance group. You can specify
+  /// only one value.
+  core.List<InstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
+
   /// The base instance name to use for instances in this group. The value must
   /// be 1-58 characters long. Instances are named by appending a hyphen and a
   /// random four-character string to the base instance name. The base instance
@@ -41002,7 +44622,8 @@ class InstanceGroupManager {
   /// Fingerprint of this resource. This field may be used in optimistic
   /// locking. It will be ignored when inserting an InstanceGroupManager. An
   /// up-to-date fingerprint must be provided in order to update the
-  /// InstanceGroupManager.
+  /// InstanceGroupManager, otherwise the request will fail with error 412
+  /// conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve an
   /// InstanceGroupManager.
@@ -41011,7 +44632,7 @@ class InstanceGroupManager {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -41048,6 +44669,9 @@ class InstanceGroupManager {
   /// this URL.
   core.String selfLink;
 
+  /// [Output Only] The status of this managed instance group.
+  InstanceGroupManagerStatus status;
+
   /// The URLs for all TargetPool resources to which instances in the
   /// instanceGroup field are added. The target pools automatically apply to all
   /// of the instances in the managed instance group.
@@ -41058,6 +44682,20 @@ class InstanceGroupManager {
   /// changes this number.
   core.int targetSize;
 
+  /// The update policy for this managed instance group.
+  InstanceGroupManagerUpdatePolicy updatePolicy;
+
+  /// Specifies the instance templates used by this managed instance group to
+  /// create instances.
+  ///
+  /// Each version is defined by an instanceTemplate. Every template can appear
+  /// at most once per instance group. This field overrides the top-level
+  /// instanceTemplate field. Read more about the relationships between these
+  /// fields. Exactly one version must leave the targetSize field unset. That
+  /// version will be applied to all remaining instances. For more information,
+  /// read about canary updates.
+  core.List<InstanceGroupManagerVersion> versions;
+
   /// [Output Only] The URL of the zone where the managed instance group is
   /// located (for zonal resources).
   core.String zone;
@@ -41065,6 +44703,12 @@ class InstanceGroupManager {
   InstanceGroupManager();
 
   InstanceGroupManager.fromJson(core.Map _json) {
+    if (_json.containsKey("autoHealingPolicies")) {
+      autoHealingPolicies = (_json["autoHealingPolicies"] as core.List)
+          .map<InstanceGroupManagerAutoHealingPolicy>((value) =>
+              new InstanceGroupManagerAutoHealingPolicy.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("baseInstanceName")) {
       baseInstanceName = _json["baseInstanceName"];
     }
@@ -41111,11 +44755,24 @@ class InstanceGroupManager {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("status")) {
+      status = new InstanceGroupManagerStatus.fromJson(_json["status"]);
+    }
     if (_json.containsKey("targetPools")) {
       targetPools = (_json["targetPools"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("targetSize")) {
       targetSize = _json["targetSize"];
+    }
+    if (_json.containsKey("updatePolicy")) {
+      updatePolicy =
+          new InstanceGroupManagerUpdatePolicy.fromJson(_json["updatePolicy"]);
+    }
+    if (_json.containsKey("versions")) {
+      versions = (_json["versions"] as core.List)
+          .map<InstanceGroupManagerVersion>(
+              (value) => new InstanceGroupManagerVersion.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -41125,6 +44782,10 @@ class InstanceGroupManager {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoHealingPolicies != null) {
+      _json["autoHealingPolicies"] =
+          autoHealingPolicies.map((value) => (value).toJson()).toList();
+    }
     if (baseInstanceName != null) {
       _json["baseInstanceName"] = baseInstanceName;
     }
@@ -41168,11 +44829,20 @@ class InstanceGroupManager {
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
     if (targetPools != null) {
       _json["targetPools"] = targetPools;
     }
     if (targetSize != null) {
       _json["targetSize"] = targetSize;
+    }
+    if (updatePolicy != null) {
+      _json["updatePolicy"] = (updatePolicy).toJson();
+    }
+    if (versions != null) {
+      _json["versions"] = versions.map((value) => (value).toJson()).toList();
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -41227,6 +44897,11 @@ class InstanceGroupManagerActionsSummary {
   /// are scheduled to be restarted or are currently being restarted.
   core.int restarting;
 
+  /// [Output Only] The number of instances in the managed instance group that
+  /// are being verified. See the managedInstances[].currentAction property in
+  /// the listManagedInstances method documentation.
+  core.int verifying;
+
   InstanceGroupManagerActionsSummary();
 
   InstanceGroupManagerActionsSummary.fromJson(core.Map _json) {
@@ -41253,6 +44928,9 @@ class InstanceGroupManagerActionsSummary {
     }
     if (_json.containsKey("restarting")) {
       restarting = _json["restarting"];
+    }
+    if (_json.containsKey("verifying")) {
+      verifying = _json["verifying"];
     }
   }
 
@@ -41282,6 +44960,9 @@ class InstanceGroupManagerActionsSummary {
     }
     if (restarting != null) {
       _json["restarting"] = restarting;
+    }
+    if (verifying != null) {
+      _json["verifying"] = verifying;
     }
     return _json;
   }
@@ -41474,6 +45155,42 @@ class InstanceGroupManagerAggregatedList {
   }
 }
 
+class InstanceGroupManagerAutoHealingPolicy {
+  /// The URL for the health check that signals autohealing.
+  core.String healthCheck;
+
+  /// The number of seconds that the managed instance group waits before it
+  /// applies autohealing policies to new instances or recently recreated
+  /// instances. This initial delay allows instances to initialize and run their
+  /// startup scripts before the instance group determines that they are
+  /// UNHEALTHY. This prevents the managed instance group from recreating its
+  /// instances prematurely. This value must be from range [0, 3600].
+  core.int initialDelaySec;
+
+  InstanceGroupManagerAutoHealingPolicy();
+
+  InstanceGroupManagerAutoHealingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("healthCheck")) {
+      healthCheck = _json["healthCheck"];
+    }
+    if (_json.containsKey("initialDelaySec")) {
+      initialDelaySec = _json["initialDelaySec"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (healthCheck != null) {
+      _json["healthCheck"] = healthCheck;
+    }
+    if (initialDelaySec != null) {
+      _json["initialDelaySec"] = initialDelaySec;
+    }
+    return _json;
+  }
+}
+
 class InstanceGroupManagerListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -41653,6 +45370,164 @@ class InstanceGroupManagerList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerStatus {
+  /// [Output Only] A bit indicating whether the managed instance group is in a
+  /// stable state. A stable state means that: none of the instances in the
+  /// managed instance group is currently undergoing any type of change (for
+  /// example, creation, restart, or deletion); no future changes are scheduled
+  /// for instances in the managed instance group; and the managed instance
+  /// group itself is not being modified.
+  core.bool isStable;
+
+  InstanceGroupManagerStatus();
+
+  InstanceGroupManagerStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("isStable")) {
+      isStable = _json["isStable"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (isStable != null) {
+      _json["isStable"] = isStable;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerUpdatePolicy {
+  /// The maximum number of instances that can be created above the specified
+  /// targetSize during the update process. By default, a fixed value of 1 is
+  /// used. This value can be either a fixed number or a percentage if the
+  /// instance group has 10 or more instances. If you set a percentage, the
+  /// number of instances will be rounded up if necessary.
+  ///
+  /// At least one of either maxSurge or maxUnavailable must be greater than 0.
+  /// Learn more about maxSurge.
+  FixedOrPercent maxSurge;
+
+  /// The maximum number of instances that can be unavailable during the update
+  /// process. An instance is considered available if all of the following
+  /// conditions are satisfied:
+  ///
+  ///
+  /// - The instance's status is RUNNING.
+  /// - If there is a health check on the instance group, the instance's
+  /// liveness health check result must be HEALTHY at least once. If there is no
+  /// health check on the group, then the instance only needs to have a status
+  /// of RUNNING to be considered available.  By default, a fixed value of 1 is
+  /// used. This value can be either a fixed number or a percentage if the
+  /// instance group has 10 or more instances. If you set a percentage, the
+  /// number of instances will be rounded up if necessary.
+  ///
+  /// At least one of either maxSurge or maxUnavailable must be greater than 0.
+  /// Learn more about maxUnavailable.
+  FixedOrPercent maxUnavailable;
+
+  /// Minimal action to be taken on an instance. You can specify either RESTART
+  /// to restart existing instances or REPLACE to delete and create new
+  /// instances from the target template. If you specify a RESTART, the Updater
+  /// will attempt to perform that action only. However, if the Updater
+  /// determines that the minimal action you specify is not enough to perform
+  /// the update, it might perform a more disruptive action.
+  /// Possible string values are:
+  /// - "REPLACE"
+  /// - "RESTART"
+  core.String minimalAction;
+
+  ///
+  /// Possible string values are:
+  /// - "OPPORTUNISTIC"
+  /// - "PROACTIVE"
+  core.String type;
+
+  InstanceGroupManagerUpdatePolicy();
+
+  InstanceGroupManagerUpdatePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("maxSurge")) {
+      maxSurge = new FixedOrPercent.fromJson(_json["maxSurge"]);
+    }
+    if (_json.containsKey("maxUnavailable")) {
+      maxUnavailable = new FixedOrPercent.fromJson(_json["maxUnavailable"]);
+    }
+    if (_json.containsKey("minimalAction")) {
+      minimalAction = _json["minimalAction"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxSurge != null) {
+      _json["maxSurge"] = (maxSurge).toJson();
+    }
+    if (maxUnavailable != null) {
+      _json["maxUnavailable"] = (maxUnavailable).toJson();
+    }
+    if (minimalAction != null) {
+      _json["minimalAction"] = minimalAction;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerVersion {
+  core.String instanceTemplate;
+
+  /// Name of the version. Unique among all versions in the scope of this
+  /// managed instance group.
+  core.String name;
+
+  /// Specifies the intended number of instances to be created from the
+  /// instanceTemplate. The final number of instances created from the template
+  /// will be equal to:
+  /// - If expressed as a fixed number, the minimum of either targetSize.fixed
+  /// or instanceGroupManager.targetSize is used.
+  /// - if expressed as a percent, the targetSize would be
+  /// (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a
+  /// remainder, the number is rounded up.  If unset, this version will update
+  /// any remaining instances not updated by another version. Read Starting a
+  /// canary update for more information.
+  FixedOrPercent targetSize;
+
+  InstanceGroupManagerVersion();
+
+  InstanceGroupManagerVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceTemplate")) {
+      instanceTemplate = _json["instanceTemplate"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("targetSize")) {
+      targetSize = new FixedOrPercent.fromJson(_json["targetSize"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instanceTemplate != null) {
+      _json["instanceTemplate"] = instanceTemplate;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (targetSize != null) {
+      _json["targetSize"] = (targetSize).toJson();
     }
     return _json;
   }
@@ -41935,7 +45810,7 @@ class InstanceGroupManagersSetTargetPoolsRequest {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -42383,13 +46258,14 @@ class InstanceGroupsSetNamedPortsRequest {
   /// the named ports settings concurrently. Obtain the fingerprint with the
   /// instanceGroups.get method. Then, include the fingerprint in your request
   /// to ensure that you do not overwrite changes that were applied from another
-  /// concurrent request.
+  /// concurrent request. A request with an incorrect fingerprint will fail with
+  /// error 412 conditionNotMet.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -43508,7 +47384,7 @@ class InstancesSetLabelsRequest {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -43733,8 +47609,7 @@ class Interconnect {
   core.String kind;
 
   /// Type of link requested. This field indicates speed of each of the links in
-  /// the bundle, not the entire bundle. Only 10G per link is allowed for a
-  /// dedicated interconnect. Options: Ethernet_10G_LR
+  /// the bundle, not the entire bundle.
   /// Possible string values are:
   /// - "LINK_TYPE_ETHERNET_10G_LR"
   core.String linkType;
@@ -43951,8 +47826,7 @@ class InterconnectAttachment {
 
   /// Provisioned bandwidth capacity for the interconnectAttachment. Can be set
   /// by the partner to update the customer's provisioned bandwidth. Output only
-  /// for for PARTNER type, mutable for PARTNER_PROVIDER, not available for
-  /// DEDICATED.
+  /// for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED.
   /// Possible string values are:
   /// - "BPS_100M"
   /// - "BPS_10G"
@@ -44061,7 +47935,7 @@ class InterconnectAttachment {
   /// is not settable as a field in the request body.
   core.String region;
 
-  /// URL of the cloud router to be used for dynamic routing. This router must
+  /// URL of the Cloud Router to be used for dynamic routing. This router must
   /// be in the same region as this InterconnectAttachment. The
   /// InterconnectAttachment will automatically connect the Interconnect to the
   /// network & region within which the Cloud Router is configured.
@@ -44088,9 +47962,8 @@ class InterconnectAttachment {
   /// - "PARTNER_PROVIDER"
   core.String type;
 
-  /// Available only for DEDICATED and PARTNER_PROVIDER. Desired VLAN tag for
-  /// this attachment, in the range 2-4094. This field refers to 802.1q VLAN
-  /// tag, also known as IEEE 802.1Q Only specified at creation time.
+  /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only
+  /// specified at creation time.
   core.int vlanTag8021q;
 
   InterconnectAttachment();
@@ -44631,7 +48504,7 @@ class InterconnectAttachmentList {
 /// their corresponding PARTNER attachments.
 class InterconnectAttachmentPartnerMetadata {
   /// Plain text name of the Interconnect this attachment is connected to, as
-  /// displayed in the Partner?s portal. For instance ?Chicago 1?. This value
+  /// displayed in the Partner?s portal. For instance "Chicago 1". This value
   /// may be validated to match approved Partner values.
   core.String interconnectName;
 
@@ -44889,6 +48762,243 @@ class InterconnectCircuitInfo {
   }
 }
 
+/// Diagnostics information about interconnect, contains detailed and current
+/// technical information about Google?s side of the connection.
+class InterconnectDiagnostics {
+  /// A list of InterconnectDiagnostics.ARPEntry objects, describing individual
+  /// neighbors currently seen by the Google router in the ARP cache for the
+  /// Interconnect. This will be empty when the Interconnect is not bundled.
+  core.List<InterconnectDiagnosticsARPEntry> arpCaches;
+
+  /// A list of InterconnectDiagnostics.LinkStatus objects, describing the
+  /// status for each link on the Interconnect.
+  core.List<InterconnectDiagnosticsLinkStatus> links;
+
+  /// The MAC address of the Interconnect's bundle interface.
+  core.String macAddress;
+
+  InterconnectDiagnostics();
+
+  InterconnectDiagnostics.fromJson(core.Map _json) {
+    if (_json.containsKey("arpCaches")) {
+      arpCaches = (_json["arpCaches"] as core.List)
+          .map<InterconnectDiagnosticsARPEntry>(
+              (value) => new InterconnectDiagnosticsARPEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("links")) {
+      links = (_json["links"] as core.List)
+          .map<InterconnectDiagnosticsLinkStatus>(
+              (value) => new InterconnectDiagnosticsLinkStatus.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("macAddress")) {
+      macAddress = _json["macAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (arpCaches != null) {
+      _json["arpCaches"] = arpCaches.map((value) => (value).toJson()).toList();
+    }
+    if (links != null) {
+      _json["links"] = links.map((value) => (value).toJson()).toList();
+    }
+    if (macAddress != null) {
+      _json["macAddress"] = macAddress;
+    }
+    return _json;
+  }
+}
+
+/// Describing the ARP neighbor entries seen on this link
+class InterconnectDiagnosticsARPEntry {
+  /// The IP address of this ARP neighbor.
+  core.String ipAddress;
+
+  /// The MAC address of this ARP neighbor.
+  core.String macAddress;
+
+  InterconnectDiagnosticsARPEntry();
+
+  InterconnectDiagnosticsARPEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("macAddress")) {
+      macAddress = _json["macAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (macAddress != null) {
+      _json["macAddress"] = macAddress;
+    }
+    return _json;
+  }
+}
+
+class InterconnectDiagnosticsLinkLACPStatus {
+  /// System ID of the port on Google?s side of the LACP exchange.
+  core.String googleSystemId;
+
+  /// System ID of the port on the neighbor?s side of the LACP exchange.
+  core.String neighborSystemId;
+
+  ///
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "DETACHED"
+  core.String state;
+
+  InterconnectDiagnosticsLinkLACPStatus();
+
+  InterconnectDiagnosticsLinkLACPStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("googleSystemId")) {
+      googleSystemId = _json["googleSystemId"];
+    }
+    if (_json.containsKey("neighborSystemId")) {
+      neighborSystemId = _json["neighborSystemId"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (googleSystemId != null) {
+      _json["googleSystemId"] = googleSystemId;
+    }
+    if (neighborSystemId != null) {
+      _json["neighborSystemId"] = neighborSystemId;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+class InterconnectDiagnosticsLinkOpticalPower {
+  ///
+  /// Possible string values are:
+  /// - "HIGH_ALARM"
+  /// - "HIGH_WARNING"
+  /// - "LOW_ALARM"
+  /// - "LOW_WARNING"
+  /// - "OK"
+  core.String state;
+
+  /// Value of the current optical power, read in dBm. Take a known good optical
+  /// value, give it a 10% margin and trigger warnings relative to that value.
+  /// In general, a -7dBm warning and a -11dBm alarm are good optical value
+  /// estimates for most links.
+  core.double value;
+
+  InterconnectDiagnosticsLinkOpticalPower();
+
+  InterconnectDiagnosticsLinkOpticalPower.fromJson(core.Map _json) {
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+class InterconnectDiagnosticsLinkStatus {
+  /// A list of InterconnectDiagnostics.ARPEntry objects, describing the ARP
+  /// neighbor entries seen on this link. This will be empty if the link is
+  /// bundled
+  core.List<InterconnectDiagnosticsARPEntry> arpCaches;
+
+  /// The unique ID for this link assigned during turn up by Google.
+  core.String circuitId;
+
+  /// The Demarc address assigned by Google and provided in the LoA.
+  core.String googleDemarc;
+  InterconnectDiagnosticsLinkLACPStatus lacpStatus;
+  InterconnectDiagnosticsLinkOpticalPower receivingOpticalPower;
+  InterconnectDiagnosticsLinkOpticalPower transmittingOpticalPower;
+
+  InterconnectDiagnosticsLinkStatus();
+
+  InterconnectDiagnosticsLinkStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("arpCaches")) {
+      arpCaches = (_json["arpCaches"] as core.List)
+          .map<InterconnectDiagnosticsARPEntry>(
+              (value) => new InterconnectDiagnosticsARPEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("circuitId")) {
+      circuitId = _json["circuitId"];
+    }
+    if (_json.containsKey("googleDemarc")) {
+      googleDemarc = _json["googleDemarc"];
+    }
+    if (_json.containsKey("lacpStatus")) {
+      lacpStatus = new InterconnectDiagnosticsLinkLACPStatus.fromJson(
+          _json["lacpStatus"]);
+    }
+    if (_json.containsKey("receivingOpticalPower")) {
+      receivingOpticalPower =
+          new InterconnectDiagnosticsLinkOpticalPower.fromJson(
+              _json["receivingOpticalPower"]);
+    }
+    if (_json.containsKey("transmittingOpticalPower")) {
+      transmittingOpticalPower =
+          new InterconnectDiagnosticsLinkOpticalPower.fromJson(
+              _json["transmittingOpticalPower"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (arpCaches != null) {
+      _json["arpCaches"] = arpCaches.map((value) => (value).toJson()).toList();
+    }
+    if (circuitId != null) {
+      _json["circuitId"] = circuitId;
+    }
+    if (googleDemarc != null) {
+      _json["googleDemarc"] = googleDemarc;
+    }
+    if (lacpStatus != null) {
+      _json["lacpStatus"] = (lacpStatus).toJson();
+    }
+    if (receivingOpticalPower != null) {
+      _json["receivingOpticalPower"] = (receivingOpticalPower).toJson();
+    }
+    if (transmittingOpticalPower != null) {
+      _json["transmittingOpticalPower"] = (transmittingOpticalPower).toJson();
+    }
+    return _json;
+  }
+}
+
 class InterconnectListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -45080,9 +49190,9 @@ class InterconnectLocation {
   /// the address is separated by a newline character.
   core.String address;
 
-  /// [Output Only] Availability zone for this location. Within a metropolitan
-  /// area (metro), maintenance will not be simultaneously scheduled in more
-  /// than one availability zone. Example: "zone1" or "zone2".
+  /// [Output Only] Availability zone for this InterconnectLocation. Within a
+  /// metropolitan area (metro), maintenance will not be simultaneously
+  /// scheduled in more than one availability zone. Example: "zone1" or "zone2".
   core.String availabilityZone;
 
   /// [Output Only] Metropolitan area designator that indicates which city an
@@ -45140,6 +49250,14 @@ class InterconnectLocation {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
+  /// [Output Only] The status of this InterconnectLocation. If the status is
+  /// AVAILABLE, new Interconnects may be provisioned in this
+  /// InterconnectLocation. Otherwise, no new Interconnects may be provisioned.
+  /// Possible string values are:
+  /// - "AVAILABLE"
+  /// - "CLOSED"
+  core.String status;
+
   InterconnectLocation();
 
   InterconnectLocation.fromJson(core.Map _json) {
@@ -45188,6 +49306,9 @@ class InterconnectLocation {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -45235,6 +49356,9 @@ class InterconnectLocation {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -45577,6 +49701,28 @@ class InterconnectOutageNotification {
   }
 }
 
+/// Response for the InterconnectsGetDiagnosticsRequest.
+class InterconnectsGetDiagnosticsResponse {
+  InterconnectDiagnostics result;
+
+  InterconnectsGetDiagnosticsResponse();
+
+  InterconnectsGetDiagnosticsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("result")) {
+      result = new InterconnectDiagnostics.fromJson(_json["result"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (result != null) {
+      _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A license resource.
 class License {
   /// [Output Only] Deprecated. This field no longer reflects whether a license
@@ -45601,8 +49747,8 @@ class License {
   /// snapshots, and disks.
   core.String licenseCode;
 
-  /// [Output Only] Name of the resource. The name is 1-63 characters long and
-  /// complies with RFC1035.
+  /// Name of the resource. The name must be 1-63 characters long and comply
+  /// with RFC1035.
   core.String name;
   LicenseResourceRequirements resourceRequirements;
 
@@ -46025,6 +50171,170 @@ class LicensesListResponse {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Specifies what kind of log the caller must write
+class LogConfig {
+  /// Cloud audit options.
+  LogConfigCloudAuditOptions cloudAudit;
+
+  /// Counter options.
+  LogConfigCounterOptions counter;
+
+  /// Data access options.
+  LogConfigDataAccessOptions dataAccess;
+
+  LogConfig();
+
+  LogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudAudit")) {
+      cloudAudit = new LogConfigCloudAuditOptions.fromJson(_json["cloudAudit"]);
+    }
+    if (_json.containsKey("counter")) {
+      counter = new LogConfigCounterOptions.fromJson(_json["counter"]);
+    }
+    if (_json.containsKey("dataAccess")) {
+      dataAccess = new LogConfigDataAccessOptions.fromJson(_json["dataAccess"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudAudit != null) {
+      _json["cloudAudit"] = (cloudAudit).toJson();
+    }
+    if (counter != null) {
+      _json["counter"] = (counter).toJson();
+    }
+    if (dataAccess != null) {
+      _json["dataAccess"] = (dataAccess).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Write a Cloud Audit log
+class LogConfigCloudAuditOptions {
+  /// Information used by the Cloud Audit Logging pipeline.
+  AuthorizationLoggingOptions authorizationLoggingOptions;
+
+  /// The log_name to populate in the Cloud Audit Record.
+  /// Possible string values are:
+  /// - "ADMIN_ACTIVITY"
+  /// - "DATA_ACCESS"
+  /// - "UNSPECIFIED_LOG_NAME"
+  core.String logName;
+
+  LogConfigCloudAuditOptions();
+
+  LogConfigCloudAuditOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("authorizationLoggingOptions")) {
+      authorizationLoggingOptions = new AuthorizationLoggingOptions.fromJson(
+          _json["authorizationLoggingOptions"]);
+    }
+    if (_json.containsKey("logName")) {
+      logName = _json["logName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (authorizationLoggingOptions != null) {
+      _json["authorizationLoggingOptions"] =
+          (authorizationLoggingOptions).toJson();
+    }
+    if (logName != null) {
+      _json["logName"] = logName;
+    }
+    return _json;
+  }
+}
+
+/// Increment a streamz counter with the specified metric and field names.
+///
+/// Metric names should start with a '/', generally be lowercase-only, and end
+/// in "_count". Field names should not contain an initial slash. The actual
+/// exported metric names will have "/iam/policy" prepended.
+///
+/// Field names correspond to IAM request parameters and field values are their
+/// respective values.
+///
+/// Supported field names: - "authority", which is "[token]" if IAMContext.token
+/// is present, otherwise the value of IAMContext.authority_selector if present,
+/// and otherwise a representation of IAMContext.principal; or -
+/// "iam_principal", a representation of IAMContext.principal even if a token or
+/// authority selector is present; or - "" (empty string), resulting in a
+/// counter with no fields.
+///
+/// Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
+/// ==> increment counter /iam/policy/backend_debug_access_count
+/// {iam_principal=[value of IAMContext.principal]}
+///
+/// At this time we do not support multiple field names (though this may be
+/// supported in the future).
+class LogConfigCounterOptions {
+  /// The field value to attribute.
+  core.String field;
+
+  /// The metric to update.
+  core.String metric;
+
+  LogConfigCounterOptions();
+
+  LogConfigCounterOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = _json["field"];
+    }
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = field;
+    }
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    return _json;
+  }
+}
+
+/// Write a Data Access (Gin) log
+class LogConfigDataAccessOptions {
+  /// Whether Gin logging should happen in a fail-closed manner at the caller.
+  /// This is relevant only in the LocalIAM implementation, for now.
+  ///
+  /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported
+  /// while work is being done to satisfy the requirements of go/345. Currently,
+  /// setting LOG_FAIL_CLOSED mode will have no effect, but still exists because
+  /// there is active work being done to support it (b/115874152).
+  /// Possible string values are:
+  /// - "LOG_FAIL_CLOSED"
+  /// - "LOG_MODE_UNSPECIFIED"
+  core.String logMode;
+
+  LogConfigDataAccessOptions();
+
+  LogConfigDataAccessOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logMode")) {
+      logMode = _json["logMode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (logMode != null) {
+      _json["logMode"] = logMode;
     }
     return _json;
   }
@@ -46758,6 +51068,7 @@ class ManagedInstance {
   /// - "RECREATING"
   /// - "REFRESHING"
   /// - "RESTARTING"
+  /// - "VERIFYING"
   core.String currentAction;
 
   /// [Output only] The unique identifier for this resource. This field is empty
@@ -46963,7 +51274,8 @@ class Metadata {
   /// the metadata's contents and used for optimistic locking. The fingerprint
   /// is initially generated by Compute Engine and changes after every request
   /// to modify or update metadata. You must always provide an up-to-date
-  /// fingerprint hash in order to update or change metadata.
+  /// fingerprint hash in order to update or change metadata, otherwise the
+  /// request will fail with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve the
   /// resource.
@@ -46972,7 +51284,7 @@ class Metadata {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -47049,21 +51361,20 @@ class NamedPort {
   }
 }
 
-/// Represents a Network resource. Read Networks and Firewalls for more
-/// information. (== resource_for v1.networks ==) (== resource_for beta.networks
-/// ==)
+/// Represents a Network resource. Read Virtual Private Cloud (VPC) Network
+/// Overview for more information. (== resource_for v1.networks ==) (==
+/// resource_for beta.networks ==)
 class Network {
   /// The range of internal addresses that are legal on this network. This range
   /// is a CIDR specification, for example: 192.168.0.0/16. Provided by the
   /// client when the network is created.
   core.String IPv4Range;
 
-  /// When set to true, the network is created in "auto subnet mode". When set
-  /// to false, the network is in "custom subnet mode".
+  /// When set to true, the VPC network is created in "auto" mode. When set to
+  /// false, the VPC network is created in "custom" mode.
   ///
-  /// In "auto subnet mode", a newly created network is assigned the default
-  /// CIDR of 10.128.0.0/9 and it automatically creates one subnetwork per
-  /// region.
+  /// An auto mode VPC network starts with one subnet per region. Each subnet
+  /// has a predetermined range as described in Auto mode VPC network IP ranges.
   core.bool autoCreateSubnetworks;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -47073,9 +51384,8 @@ class Network {
   /// create the resource.
   core.String description;
 
-  /// A gateway address for default routing to other networks. This value is
-  /// read only and is selected by the Google Compute Engine, typically as the
-  /// first usable address in the IPv4Range.
+  /// [Output Only] The gateway address for default routing out of the network.
+  /// This value is read only and is selected by GCP.
   core.String gatewayIPv4;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -47105,7 +51415,7 @@ class Network {
   core.String selfLink;
 
   /// [Output Only] Server-defined fully-qualified URLs for all subnetworks in
-  /// this network.
+  /// this VPC network.
   core.List<core.String> subnetworks;
 
   Network();
@@ -47208,13 +51518,14 @@ class NetworkInterface {
   /// Fingerprint hash of contents stored in this network interface. This field
   /// will be ignored when inserting an Instance or adding a NetworkInterface.
   /// An up-to-date fingerprint must be provided in order to update the
-  /// NetworkInterface.
+  /// NetworkInterface, otherwise the request will fail with error 412
+  /// conditionNotMet.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -47513,11 +51824,11 @@ class NetworkList {
 /// peering name, peer network, peering state, and a flag indicating whether
 /// Google Compute Engine should automatically create routes for the peering.
 class NetworkPeering {
-  /// Whether full mesh connectivity is created and managed automatically. When
-  /// it is set to true, Google Compute Engine will automatically create and
-  /// manage the routes between two networks when the state is ACTIVE.
-  /// Otherwise, user needs to create routes manually to route packets to peer
-  /// network.
+  /// Indicates whether full mesh connectivity is created and managed
+  /// automatically. When it is set to true, Google Compute Engine will
+  /// automatically create and manage the routes between two networks when the
+  /// state is ACTIVE. Otherwise, user needs to create routes manually to route
+  /// packets to peer network.
   core.bool autoCreateRoutes;
 
   /// Name of this peering. Provided by the client when the peering is created.
@@ -47590,9 +51901,9 @@ class NetworkPeering {
 /// type of routing behavior to enforce network-wide.
 class NetworkRoutingConfig {
   /// The network-wide routing mode to use. If set to REGIONAL, this network's
-  /// cloud routers will only advertise routes with subnetworks of this network
-  /// in the same region as the router. If set to GLOBAL, this network's cloud
-  /// routers will advertise routes with all subnetworks of this network, across
+  /// cloud routers will only advertise routes with subnets of this network in
+  /// the same region as the router. If set to GLOBAL, this network's cloud
+  /// routers will advertise routes with all subnets of this network, across
   /// regions.
   /// Possible string values are:
   /// - "GLOBAL"
@@ -48184,6 +52495,7 @@ class NodeGroupNode {
   /// - "DELETING"
   /// - "INVALID"
   /// - "READY"
+  /// - "REPAIRING"
   core.String status;
 
   NodeGroupNode();
@@ -48637,7 +52949,7 @@ class NodeTemplate {
   /// with RFC1035. Specifically, the name must be 1-63 characters long and
   /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
   /// first character must be a lowercase letter, and all following characters
-  /// must be a dash, lowercase letter, or digit, except the last charaicter,
+  /// must be a dash, lowercase letter, or digit, except the last character,
   /// which cannot be a dash.
   core.String name;
 
@@ -50900,13 +55212,24 @@ class OperationsScopedList {
 /// service will be used.
 class PathMatcher {
   /// The full or partial URL to the BackendService resource. This will be used
-  /// if none of the pathRules defined by this PathMatcher is matched by the
-  /// URL's path portion. For example, the following are all valid URLs to a
-  /// BackendService resource:
+  /// if none of the pathRules or routeRules defined by this PathMatcher are
+  /// matched. For example, the following are all valid URLs to a BackendService
+  /// resource:
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/global/backendServices/backendService
   /// - compute/v1/projects/project/global/backendServices/backendService
-  /// - global/backendServices/backendService
+  /// - global/backendServices/backendService  If defaultRouteAction is
+  /// additionally specified, advanced routing actions like URL Rewrites, etc.
+  /// take effect prior to sending the request to the backend. However, if
+  /// defaultService is specified, defaultRouteAction cannot contain any
+  /// weightedBackendServices. Conversely, if defaultRouteAction specifies any
+  /// weightedBackendServices, defaultService must not be specified.
+  /// Only one of defaultService, defaultUrlRedirect  or
+  /// defaultRouteAction.weightedBackendService must be set.
+  /// Authorization requires one or more of the following Google IAM permissions
+  /// on the specified resource default_service:
+  /// - compute.backendBuckets.use
+  /// - compute.backendServices.use
   core.String defaultService;
 
   /// An optional description of this resource. Provide this property when you
@@ -50916,7 +55239,13 @@ class PathMatcher {
   /// The name to which this PathMatcher is referred by the HostRule.
   core.String name;
 
-  /// The list of path rules.
+  /// The list of path rules. Use this list instead of routeRules when routing
+  /// based on simple path matching is all that's required. The order by which
+  /// path rules are specified does not matter. Matches are always done on the
+  /// longest-path-first basis.
+  /// For example: a pathRule with a path /a/b/c / *  will match before /a/b / *
+  /// irrespective of the order in which those paths appear in this list.
+  /// Only one of pathRules or routeRules must be set.
   core.List<PathRule> pathRules;
 
   PathMatcher();
@@ -50966,7 +55295,15 @@ class PathRule {
   /// chars are not allowed here.
   core.List<core.String> paths;
 
-  /// The URL of the BackendService resource if this rule is matched.
+  /// The full or partial URL of the backend service resource to which traffic
+  /// is directed if this rule is matched. If routeAction is additionally
+  /// specified, advanced routing actions like URL Rewrites, etc. take effect
+  /// prior to sending the request to the backend. However, if service is
+  /// specified, routeAction cannot contain any weightedBackendService s.
+  /// Conversely, if routeAction specifies any  weightedBackendServices, service
+  /// must not be specified.
+  /// Only one of urlRedirect, service or routeAction.weightedBackendService
+  /// must be set.
   core.String service;
 
   PathRule();
@@ -50988,6 +55325,131 @@ class PathRule {
     }
     if (service != null) {
       _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Defines an Identity and Access Management (IAM) policy. It is used to
+/// specify access control policies for Cloud Platform resources.
+///
+///
+///
+/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
+/// `members` to a `role`, where the members can be user accounts, Google
+/// groups, Google domains, and service accounts. A `role` is a named list of
+/// permissions defined by IAM.
+///
+/// **JSON Example**
+///
+/// { "bindings": [ { "role": "roles/owner", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/viewer", "members": ["user:sean@example.com"] } ] }
+///
+/// **YAML Example**
+///
+/// bindings: - members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
+/// role: roles/owner - members: - user:sean@example.com role: roles/viewer
+///
+///
+///
+/// For a description of IAM and its features, see the [IAM developer's
+/// guide](https://cloud.google.com/iam/docs).
+class Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<AuditConfig> auditConfigs;
+
+  /// Associates a list of `members` to a `role`. `bindings` with no members
+  /// will result in an error.
+  core.List<Binding> bindings;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy.
+  ///
+  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
+  /// policy is overwritten blindly.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  core.bool iamOwned;
+
+  /// If more than one rule is specified, the rules are applied in the following
+  /// manner: - All matching LOG rules are always applied. - If any
+  /// DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be
+  /// applied if one or more matching rule requires logging. - Otherwise, if any
+  /// ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be
+  /// applied if one or more matching rule requires logging. - Otherwise, if no
+  /// rule applies, permission is denied.
+  core.List<Rule> rules;
+
+  /// Deprecated.
+  core.int version;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("auditConfigs")) {
+      auditConfigs = (_json["auditConfigs"] as core.List)
+          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("iamOwned")) {
+      iamOwned = _json["iamOwned"];
+    }
+    if (_json.containsKey("rules")) {
+      rules = (_json["rules"] as core.List)
+          .map<Rule>((value) => new Rule.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auditConfigs != null) {
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (iamOwned != null) {
+      _json["iamOwned"] = iamOwned;
+    }
+    if (rules != null) {
+      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -51302,6 +55764,7 @@ class Quota {
   /// - "DISKS_TOTAL_GB"
   /// - "FIREWALLS"
   /// - "FORWARDING_RULES"
+  /// - "GLOBAL_INTERNAL_ADDRESSES"
   /// - "GPUS_ALL_REGIONS"
   /// - "HEALTH_CHECKS"
   /// - "IMAGES"
@@ -51315,6 +55778,7 @@ class Quota {
   /// - "INTERNAL_ADDRESSES"
   /// - "IN_USE_ADDRESSES"
   /// - "IN_USE_BACKUP_SCHEDULES"
+  /// - "IN_USE_SNAPSHOT_SCHEDULES"
   /// - "LOCAL_SSD_TOTAL_GB"
   /// - "NETWORKS"
   /// - "NVIDIA_K80_GPUS"
@@ -51322,6 +55786,8 @@ class Quota {
   /// - "NVIDIA_P100_VWS_GPUS"
   /// - "NVIDIA_P4_GPUS"
   /// - "NVIDIA_P4_VWS_GPUS"
+  /// - "NVIDIA_T4_GPUS"
+  /// - "NVIDIA_T4_VWS_GPUS"
   /// - "NVIDIA_V100_GPUS"
   /// - "PREEMPTIBLE_CPUS"
   /// - "PREEMPTIBLE_LOCAL_SSD_GB"
@@ -51330,6 +55796,8 @@ class Quota {
   /// - "PREEMPTIBLE_NVIDIA_P100_VWS_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_P4_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_P4_VWS_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_T4_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_T4_VWS_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
   /// - "REGIONAL_AUTOSCALERS"
   /// - "REGIONAL_INSTANCE_GROUP_MANAGERS"
@@ -51351,8 +55819,13 @@ class Quota {
   /// - "TARGET_TCP_PROXIES"
   /// - "TARGET_VPN_GATEWAYS"
   /// - "URL_MAPS"
+  /// - "VPN_GATEWAYS"
   /// - "VPN_TUNNELS"
   core.String metric;
+
+  /// [Output Only] Owning resource. This is the resource on which this quota is
+  /// applied.
+  core.String owner;
 
   /// [Output Only] Current usage of this metric.
   core.double usage;
@@ -51365,6 +55838,9 @@ class Quota {
     }
     if (_json.containsKey("metric")) {
       metric = _json["metric"];
+    }
+    if (_json.containsKey("owner")) {
+      owner = _json["owner"];
     }
     if (_json.containsKey("usage")) {
       usage = _json["usage"].toDouble();
@@ -51379,6 +55855,9 @@ class Quota {
     }
     if (metric != null) {
       _json["metric"] = metric;
+    }
+    if (owner != null) {
+      _json["owner"] = owner;
     }
     if (usage != null) {
       _json["usage"] = usage;
@@ -52409,7 +56888,7 @@ class RegionInstanceGroupManagersSetTargetPoolsRequest {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -52698,7 +57177,7 @@ class RegionInstanceGroupsSetNamedPortsRequest {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -52928,7 +57407,7 @@ class RegionSetLabelsRequest {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -52955,6 +57434,60 @@ class RegionSetLabelsRequest {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+class RegionSetPolicyRequest {
+  /// Flatten Policy to create a backwacd compatible wire-format. Deprecated.
+  /// Use 'policy' to specify bindings.
+  core.List<Binding> bindings;
+
+  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
+  /// Use 'policy' to specify the etag.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// REQUIRED: The complete policy to be applied to the 'resource'. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is in general a
+  /// valid policy but certain services (like Projects) might reject them.
+  Policy policy;
+
+  RegionSetPolicyRequest();
+
+  RegionSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
     }
     return _json;
   }
@@ -53002,8 +57535,8 @@ class ResourceCommitment {
 }
 
 class ResourceGroupReference {
-  /// A URI referencing one of the instance groups listed in the backend
-  /// service.
+  /// A URI referencing one of the instance groups or network endpoint groups
+  /// listed in the backend service.
   core.String group;
 
   ResourceGroupReference();
@@ -53556,6 +58089,9 @@ class Router {
   /// dash.
   core.String name;
 
+  /// A list of Nat services created in this router.
+  core.List<RouterNat> nats;
+
   /// URI of the network to which this router belongs.
   core.String network;
 
@@ -53598,6 +58134,11 @@ class Router {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("nats")) {
+      nats = (_json["nats"] as core.List)
+          .map<RouterNat>((value) => new RouterNat.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
@@ -53636,6 +58177,9 @@ class Router {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (nats != null) {
+      _json["nats"] = nats.map((value) => (value).toJson()).toList();
     }
     if (network != null) {
       _json["network"] = network;
@@ -53966,11 +58510,13 @@ class RouterBgpPeer {
   /// supported.
   core.String ipAddress;
 
-  /// [Output Only] Type of how the resource/configuration of the BGP peer is
-  /// managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
-  /// represents an BGP peer that is automatically created for PARTNER
-  /// interconnectAttachment, Google will automatically create/delete this type
-  /// of BGP peer when the PARTNER interconnectAttachment is created/deleted.
+  /// [Output Only] The resource that configures and manages this BGP peer.
+  /// MANAGED_BY_USER is the default value and can be managed by you or other
+  /// users; MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed
+  /// by Cloud Interconnect, specifically by an InterconnectAttachment of type
+  /// PARTNER. Google will automatically create, update, and delete this type of
+  /// BGP peer when the PARTNER InterconnectAttachment is created, updated, or
+  /// deleted.
   /// Possible string values are:
   /// - "MANAGED_BY_ATTACHMENT"
   /// - "MANAGED_BY_USER"
@@ -54082,12 +58628,13 @@ class RouterInterface {
   /// a VPN Tunnel or an interconnect attachment.
   core.String linkedVpnTunnel;
 
-  /// [Output Only] Type of how the resource/configuration of the interface is
-  /// managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT
-  /// represents an interface that is automatically created for PARTNER type
-  /// interconnectAttachment, Google will automatically create/update/delete
-  /// this type of interface when the PARTNER interconnectAttachment is
-  /// created/provisioned/deleted.
+  /// [Output Only] The resource that configures and manages this interface.
+  /// MANAGED_BY_USER is the default value and can be managed by you or other
+  /// users; MANAGED_BY_ATTACHMENT is an interface that is configured and
+  /// managed by Cloud Interconnect, specifically by an InterconnectAttachment
+  /// of type PARTNER. Google will automatically create, update, and delete this
+  /// type of interface when the PARTNER InterconnectAttachment is created,
+  /// updated, or deleted.
   /// Possible string values are:
   /// - "MANAGED_BY_ATTACHMENT"
   /// - "MANAGED_BY_USER"
@@ -54321,6 +58868,187 @@ class RouterList {
   }
 }
 
+/// Represents a Nat resource. It enables the VMs within the specified
+/// subnetworks to access Internet without external IP addresses. It specifies a
+/// list of subnetworks (and the ranges within) that want to use NAT. Customers
+/// can also provide the external IPs that would be used for NAT. GCP would
+/// auto-allocate ephemeral IPs if no external IPs are provided.
+class RouterNat {
+  /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+  core.int icmpIdleTimeoutSec;
+
+  /// Minimum number of ports allocated to a VM from this NAT config. If not
+  /// set, a default number of ports is allocated to a VM. This gets rounded up
+  /// to the nearest power of 2. Eg. if the value of this field is 50, at least
+  /// 64 ports will be allocated to a VM.
+  core.int minPortsPerVm;
+
+  /// Unique name of this Nat service. The name must be 1-63 characters long and
+  /// comply with RFC1035.
+  core.String name;
+
+  /// Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be
+  /// empty.
+  /// Possible string values are:
+  /// - "AUTO_ONLY"
+  /// - "MANUAL_ONLY"
+  core.String natIpAllocateOption;
+
+  /// A list of URLs of the IP resources used for this Nat service. These IPs
+  /// must be valid static external IP addresses assigned to the project.
+  /// max_length is subject to change post alpha.
+  core.List<core.String> natIps;
+
+  /// Specify the Nat option. If this field contains
+  /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES,
+  /// then there should not be any other Router.Nat section in any Router for
+  /// this network in this region.
+  /// Possible string values are:
+  /// - "ALL_SUBNETWORKS_ALL_IP_RANGES"
+  /// - "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"
+  /// - "LIST_OF_SUBNETWORKS"
+  core.String sourceSubnetworkIpRangesToNat;
+
+  /// A list of Subnetwork resources whose traffic should be translated by NAT
+  /// Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the
+  /// SubnetworkIpRangeToNatOption above.
+  core.List<RouterNatSubnetworkToNat> subnetworks;
+
+  /// Timeout (in seconds) for TCP established connections. Defaults to 1200s if
+  /// not set.
+  core.int tcpEstablishedIdleTimeoutSec;
+
+  /// Timeout (in seconds) for TCP transitory connections. Defaults to 30s if
+  /// not set.
+  core.int tcpTransitoryIdleTimeoutSec;
+
+  /// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
+  core.int udpIdleTimeoutSec;
+
+  RouterNat();
+
+  RouterNat.fromJson(core.Map _json) {
+    if (_json.containsKey("icmpIdleTimeoutSec")) {
+      icmpIdleTimeoutSec = _json["icmpIdleTimeoutSec"];
+    }
+    if (_json.containsKey("minPortsPerVm")) {
+      minPortsPerVm = _json["minPortsPerVm"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("natIpAllocateOption")) {
+      natIpAllocateOption = _json["natIpAllocateOption"];
+    }
+    if (_json.containsKey("natIps")) {
+      natIps = (_json["natIps"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("sourceSubnetworkIpRangesToNat")) {
+      sourceSubnetworkIpRangesToNat = _json["sourceSubnetworkIpRangesToNat"];
+    }
+    if (_json.containsKey("subnetworks")) {
+      subnetworks = (_json["subnetworks"] as core.List)
+          .map<RouterNatSubnetworkToNat>(
+              (value) => new RouterNatSubnetworkToNat.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("tcpEstablishedIdleTimeoutSec")) {
+      tcpEstablishedIdleTimeoutSec = _json["tcpEstablishedIdleTimeoutSec"];
+    }
+    if (_json.containsKey("tcpTransitoryIdleTimeoutSec")) {
+      tcpTransitoryIdleTimeoutSec = _json["tcpTransitoryIdleTimeoutSec"];
+    }
+    if (_json.containsKey("udpIdleTimeoutSec")) {
+      udpIdleTimeoutSec = _json["udpIdleTimeoutSec"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (icmpIdleTimeoutSec != null) {
+      _json["icmpIdleTimeoutSec"] = icmpIdleTimeoutSec;
+    }
+    if (minPortsPerVm != null) {
+      _json["minPortsPerVm"] = minPortsPerVm;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (natIpAllocateOption != null) {
+      _json["natIpAllocateOption"] = natIpAllocateOption;
+    }
+    if (natIps != null) {
+      _json["natIps"] = natIps;
+    }
+    if (sourceSubnetworkIpRangesToNat != null) {
+      _json["sourceSubnetworkIpRangesToNat"] = sourceSubnetworkIpRangesToNat;
+    }
+    if (subnetworks != null) {
+      _json["subnetworks"] =
+          subnetworks.map((value) => (value).toJson()).toList();
+    }
+    if (tcpEstablishedIdleTimeoutSec != null) {
+      _json["tcpEstablishedIdleTimeoutSec"] = tcpEstablishedIdleTimeoutSec;
+    }
+    if (tcpTransitoryIdleTimeoutSec != null) {
+      _json["tcpTransitoryIdleTimeoutSec"] = tcpTransitoryIdleTimeoutSec;
+    }
+    if (udpIdleTimeoutSec != null) {
+      _json["udpIdleTimeoutSec"] = udpIdleTimeoutSec;
+    }
+    return _json;
+  }
+}
+
+/// Defines the IP ranges that want to use NAT for a subnetwork.
+class RouterNatSubnetworkToNat {
+  /// URL for the subnetwork resource to use NAT.
+  core.String name;
+
+  /// A list of the secondary ranges of the Subnetwork that are allowed to use
+  /// NAT. This can be populated only if "LIST_OF_SECONDARY_IP_RANGES" is one of
+  /// the values in source_ip_ranges_to_nat.
+  core.List<core.String> secondaryIpRangeNames;
+
+  /// Specify the options for NAT ranges in the Subnetwork. All usages of single
+  /// value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid
+  /// option with multiple values is: ["PRIMARY_IP_RANGE",
+  /// "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]
+  core.List<core.String> sourceIpRangesToNat;
+
+  RouterNatSubnetworkToNat();
+
+  RouterNatSubnetworkToNat.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("secondaryIpRangeNames")) {
+      secondaryIpRangeNames =
+          (_json["secondaryIpRangeNames"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("sourceIpRangesToNat")) {
+      sourceIpRangesToNat =
+          (_json["sourceIpRangesToNat"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (secondaryIpRangeNames != null) {
+      _json["secondaryIpRangeNames"] = secondaryIpRangeNames;
+    }
+    if (sourceIpRangesToNat != null) {
+      _json["sourceIpRangesToNat"] = sourceIpRangesToNat;
+    }
+    return _json;
+  }
+}
+
 class RouterStatus {
   /// Best routes for this router's network.
   core.List<Route> bestRoutes;
@@ -54328,6 +59056,7 @@ class RouterStatus {
   /// Best routes learned by this router.
   core.List<Route> bestRoutesForRouter;
   core.List<RouterStatusBgpPeerStatus> bgpPeerStatus;
+  core.List<RouterStatusNatStatus> natStatus;
 
   /// URI of the network to which this router belongs.
   core.String network;
@@ -54351,6 +59080,12 @@ class RouterStatus {
               (value) => new RouterStatusBgpPeerStatus.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("natStatus")) {
+      natStatus = (_json["natStatus"] as core.List)
+          .map<RouterStatusNatStatus>(
+              (value) => new RouterStatusNatStatus.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
@@ -54370,6 +59105,9 @@ class RouterStatus {
     if (bgpPeerStatus != null) {
       _json["bgpPeerStatus"] =
           bgpPeerStatus.map((value) => (value).toJson()).toList();
+    }
+    if (natStatus != null) {
+      _json["natStatus"] = natStatus.map((value) => (value).toJson()).toList();
     }
     if (network != null) {
       _json["network"] = network;
@@ -54484,6 +59222,82 @@ class RouterStatusBgpPeerStatus {
     }
     if (uptimeSeconds != null) {
       _json["uptimeSeconds"] = uptimeSeconds;
+    }
+    return _json;
+  }
+}
+
+/// Status of a NAT contained in this router.
+class RouterStatusNatStatus {
+  /// A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]
+  core.List<core.String> autoAllocatedNatIps;
+
+  /// The number of extra IPs to allocate. This will be greater than 0 only if
+  /// user-specified IPs are NOT enough to allow all configured VMs to use NAT.
+  /// This value is meaningful only when auto-allocation of NAT IPs is *not*
+  /// used.
+  core.int minExtraNatIpsNeeded;
+
+  /// Unique name of this NAT.
+  core.String name;
+
+  /// Number of VM endpoints (i.e., Nics) that can use NAT.
+  core.int numVmEndpointsWithNatMappings;
+
+  /// A list of fully qualified URLs of reserved IP address resources.
+  core.List<core.String> userAllocatedNatIpResources;
+
+  /// A list of IPs user-allocated for NAT. They will be raw IP strings like
+  /// "179.12.26.133".
+  core.List<core.String> userAllocatedNatIps;
+
+  RouterStatusNatStatus();
+
+  RouterStatusNatStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("autoAllocatedNatIps")) {
+      autoAllocatedNatIps =
+          (_json["autoAllocatedNatIps"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("minExtraNatIpsNeeded")) {
+      minExtraNatIpsNeeded = _json["minExtraNatIpsNeeded"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("numVmEndpointsWithNatMappings")) {
+      numVmEndpointsWithNatMappings = _json["numVmEndpointsWithNatMappings"];
+    }
+    if (_json.containsKey("userAllocatedNatIpResources")) {
+      userAllocatedNatIpResources =
+          (_json["userAllocatedNatIpResources"] as core.List)
+              .cast<core.String>();
+    }
+    if (_json.containsKey("userAllocatedNatIps")) {
+      userAllocatedNatIps =
+          (_json["userAllocatedNatIps"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoAllocatedNatIps != null) {
+      _json["autoAllocatedNatIps"] = autoAllocatedNatIps;
+    }
+    if (minExtraNatIpsNeeded != null) {
+      _json["minExtraNatIpsNeeded"] = minExtraNatIpsNeeded;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (numVmEndpointsWithNatMappings != null) {
+      _json["numVmEndpointsWithNatMappings"] = numVmEndpointsWithNatMappings;
+    }
+    if (userAllocatedNatIpResources != null) {
+      _json["userAllocatedNatIpResources"] = userAllocatedNatIpResources;
+    }
+    if (userAllocatedNatIps != null) {
+      _json["userAllocatedNatIps"] = userAllocatedNatIps;
     }
     return _json;
   }
@@ -54683,6 +59497,102 @@ class RoutersScopedList {
   }
 }
 
+/// A rule to be applied in a Policy.
+class Rule {
+  /// Required
+  /// Possible string values are:
+  /// - "ALLOW"
+  /// - "ALLOW_WITH_LOG"
+  /// - "DENY"
+  /// - "DENY_WITH_LOG"
+  /// - "LOG"
+  /// - "NO_ACTION"
+  core.String action;
+
+  /// Additional restrictions that must be met. All conditions must pass for the
+  /// rule to match.
+  core.List<Condition> conditions;
+
+  /// Human-readable description of the rule.
+  core.String description;
+
+  /// If one or more 'in' clauses are specified, the rule matches if the
+  /// PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
+  core.List<core.String> ins;
+
+  /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+  /// that match the LOG action.
+  core.List<LogConfig> logConfigs;
+
+  /// If one or more 'not_in' clauses are specified, the rule matches if the
+  /// PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+  core.List<core.String> notIns;
+
+  /// A permission is a string of form '..' (e.g., 'storage.buckets.list'). A
+  /// value of '*' matches all permissions, and a verb part of '*' (e.g.,
+  /// 'storage.buckets.*') matches all verbs.
+  core.List<core.String> permissions;
+
+  Rule();
+
+  Rule.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("conditions")) {
+      conditions = (_json["conditions"] as core.List)
+          .map<Condition>((value) => new Condition.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("ins")) {
+      ins = (_json["ins"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("logConfigs")) {
+      logConfigs = (_json["logConfigs"] as core.List)
+          .map<LogConfig>((value) => new LogConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("notIns")) {
+      notIns = (_json["notIns"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (conditions != null) {
+      _json["conditions"] =
+          conditions.map((value) => (value).toJson()).toList();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (ins != null) {
+      _json["ins"] = ins;
+    }
+    if (logConfigs != null) {
+      _json["logConfigs"] =
+          logConfigs.map((value) => (value).toJson()).toList();
+    }
+    if (notIns != null) {
+      _json["notIns"] = notIns;
+    }
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
 class SSLHealthCheck {
   /// The TCP port number for the health check request. The default value is
   /// 443. Valid values are 1 through 65535.
@@ -54866,6 +59776,457 @@ class SchedulingNodeAffinity {
   }
 }
 
+/// A security policy is comprised of one or more rules. It can also be
+/// associated with one or more 'targets'. (== resource_for v1.securityPolicies
+/// ==) (== resource_for beta.securityPolicies ==)
+class SecurityPolicy {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// Specifies a fingerprint for this resource, which is essentially a hash of
+  /// the metadata's contents and used for optimistic locking. The fingerprint
+  /// is initially generated by Compute Engine and changes after every request
+  /// to modify or update metadata. You must always provide an up-to-date
+  /// fingerprint hash in order to update or change metadata, otherwise the
+  /// request will fail with error 412 conditionNotMet.
+  ///
+  /// To see the latest fingerprint, make get() request to the security policy.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes {
+    return convert.base64.decode(fingerprint);
+  }
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output only] Type of the resource. Always compute#securityPolicyfor
+  /// security policies
+  core.String kind;
+
+  /// Name of the resource. Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String name;
+
+  /// A list of rules that belong to this policy. There must always be a default
+  /// rule (rule with priority 2147483647 and match "*"). If no rules are
+  /// provided when creating a security policy, a default rule with action
+  /// "allow" will be added.
+  core.List<SecurityPolicyRule> rules;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  SecurityPolicy();
+
+  SecurityPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("rules")) {
+      rules = (_json["rules"] as core.List)
+          .map<SecurityPolicyRule>(
+              (value) => new SecurityPolicyRule.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (rules != null) {
+      _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class SecurityPolicyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SecurityPolicyListWarningData();
+
+  SecurityPolicyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class SecurityPolicyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SecurityPolicyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SecurityPolicyListWarning();
+
+  SecurityPolicyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<SecurityPolicyListWarningData>(
+              (value) => new SecurityPolicyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class SecurityPolicyList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of SecurityPolicy resources.
+  core.List<SecurityPolicy> items;
+
+  /// [Output Only] Type of resource. Always compute#securityPolicyList for
+  /// listsof securityPolicies
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Informational warning message.
+  SecurityPolicyListWarning warning;
+
+  SecurityPolicyList();
+
+  SecurityPolicyList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<SecurityPolicy>((value) => new SecurityPolicy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new SecurityPolicyListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class SecurityPolicyReference {
+  core.String securityPolicy;
+
+  SecurityPolicyReference();
+
+  SecurityPolicyReference.fromJson(core.Map _json) {
+    if (_json.containsKey("securityPolicy")) {
+      securityPolicy = _json["securityPolicy"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (securityPolicy != null) {
+      _json["securityPolicy"] = securityPolicy;
+    }
+    return _json;
+  }
+}
+
+/// Represents a rule that describes one or more match conditions along with the
+/// action to be taken when traffic matches this condition (allow or deny).
+class SecurityPolicyRule {
+  /// The Action to preform when the client connection triggers the rule. Can
+  /// currently be either "allow" or "deny()" where valid values for status are
+  /// 403, 404, and 502.
+  core.String action;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output only] Type of the resource. Always compute#securityPolicyRule for
+  /// security policy rules
+  core.String kind;
+
+  /// A match condition that incoming traffic is evaluated against. If it
+  /// evaluates to true, the corresponding ?action? is enforced.
+  SecurityPolicyRuleMatcher match;
+
+  /// If set to true, the specified action is not enforced.
+  core.bool preview;
+
+  /// An integer indicating the priority of a rule in the list. The priority
+  /// must be a positive value between 0 and 2147483647. Rules are evaluated
+  /// from highest to lowest priority where 0 is the highest priority and
+  /// 2147483647 is the lowest prority.
+  core.int priority;
+
+  SecurityPolicyRule();
+
+  SecurityPolicyRule.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("match")) {
+      match = new SecurityPolicyRuleMatcher.fromJson(_json["match"]);
+    }
+    if (_json.containsKey("preview")) {
+      preview = _json["preview"];
+    }
+    if (_json.containsKey("priority")) {
+      priority = _json["priority"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (match != null) {
+      _json["match"] = (match).toJson();
+    }
+    if (preview != null) {
+      _json["preview"] = preview;
+    }
+    if (priority != null) {
+      _json["priority"] = priority;
+    }
+    return _json;
+  }
+}
+
+/// Represents a match condition that incoming traffic is evaluated against.
+/// Exactly one field must be specified.
+class SecurityPolicyRuleMatcher {
+  /// The configuration options available when specifying versioned_expr. This
+  /// field must be specified if versioned_expr is specified and cannot be
+  /// specified if versioned_expr is not specified.
+  SecurityPolicyRuleMatcherConfig config;
+
+  /// Preconfigured versioned expression. If this field is specified, config
+  /// must also be specified. Available preconfigured expressions along with
+  /// their requirements are: SRC_IPS_V1 - must specify the corresponding
+  /// src_ip_range field in config.
+  /// Possible string values are:
+  /// - "SRC_IPS_V1"
+  core.String versionedExpr;
+
+  SecurityPolicyRuleMatcher();
+
+  SecurityPolicyRuleMatcher.fromJson(core.Map _json) {
+    if (_json.containsKey("config")) {
+      config = new SecurityPolicyRuleMatcherConfig.fromJson(_json["config"]);
+    }
+    if (_json.containsKey("versionedExpr")) {
+      versionedExpr = _json["versionedExpr"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (config != null) {
+      _json["config"] = (config).toJson();
+    }
+    if (versionedExpr != null) {
+      _json["versionedExpr"] = versionedExpr;
+    }
+    return _json;
+  }
+}
+
+class SecurityPolicyRuleMatcherConfig {
+  /// CIDR IP address range.
+  core.List<core.String> srcIpRanges;
+
+  SecurityPolicyRuleMatcherConfig();
+
+  SecurityPolicyRuleMatcherConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("srcIpRanges")) {
+      srcIpRanges = (_json["srcIpRanges"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (srcIpRanges != null) {
+      _json["srcIpRanges"] = srcIpRanges;
+    }
+    return _json;
+  }
+}
+
 /// An instance's serial console output.
 class SerialPortOutput {
   /// [Output Only] The contents of the console output.
@@ -55025,7 +60386,8 @@ class Snapshot {
   /// essentially a hash of the labels set used for optimistic locking. The
   /// fingerprint is initially generated by Compute Engine and changes after
   /// every request to modify or update labels. You must always provide an
-  /// up-to-date fingerprint hash in order to update or change labels.
+  /// up-to-date fingerprint hash in order to update or change labels, otherwise
+  /// the request will fail with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve a
   /// snapshot.
@@ -55034,7 +60396,7 @@ class Snapshot {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -56066,7 +61428,8 @@ class SslPolicy {
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a SslPolicy. An up-to-date fingerprint must be
-  /// provided in order to update the SslPolicy.
+  /// provided in order to update the SslPolicy, otherwise the request will fail
+  /// with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve an
   /// SslPolicy.
@@ -56075,7 +61438,7 @@ class SslPolicy {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -56245,13 +61608,16 @@ class Subnetwork {
   /// create the resource. This field can be set only at resource creation time.
   core.String description;
 
-  /// Whether to enable flow logging for this subnetwork.
+  /// Whether to enable flow logging for this subnetwork. If this field is not
+  /// explicitly set, it will not appear in get listings. If not set the default
+  /// behavior is to disable flow logging.
   core.bool enableFlowLogs;
 
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a Subnetwork. An up-to-date fingerprint must be
-  /// provided in order to update the Subnetwork.
+  /// provided in order to update the Subnetwork, otherwise the request will
+  /// fail with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve a
   /// Subnetwork.
@@ -56260,7 +61626,7 @@ class Subnetwork {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -56311,7 +61677,8 @@ class Subnetwork {
   /// An array of configurations for secondary IP ranges for VM instances
   /// contained in this subnetwork. The primary IP of such VM must belong to the
   /// primary ipCidrRange of the subnetwork. The alias IPs may belong to either
-  /// primary or secondary ranges.
+  /// primary or secondary ranges. This field can be updated with a patch
+  /// request.
   core.List<SubnetworkSecondaryRange> secondaryIpRanges;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -57092,7 +62459,7 @@ class Tags {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -57493,8 +62860,8 @@ class TargetHttpsProxy {
   core.String selfLink;
 
   /// URLs to SslCertificate resources that are used to authenticate connections
-  /// between users and the load balancer. Currently, exactly one SSL
-  /// certificate must be specified.
+  /// between users and the load balancer. At least one SSL certificate must be
+  /// specified. Currently, you may specify up to 15 SSL certificates.
   core.List<core.String> sslCertificates;
 
   /// URL of SslPolicy resource that will be associated with the
@@ -58471,7 +63838,7 @@ class TargetPool {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// Sesssion affinity option, must be one of the following values:
+  /// Session affinity option, must be one of the following values:
   /// NONE: Connections from the same client IP may go to any instance in the
   /// pool.
   /// CLIENT_IP: Connections from the same client IP will go to the same
@@ -59363,7 +64730,8 @@ class TargetSslProxy {
   core.String service;
 
   /// URLs to SslCertificate resources that are used to authenticate connections
-  /// to Backends. Currently exactly one SSL certificate must be specified.
+  /// to Backends. At least one SSL certificate must be specified. Currently,
+  /// you may specify up to 15 SSL certificates.
   core.List<core.String> sslCertificates;
 
   /// URL of SslPolicy resource that will be associated with the TargetSslProxy
@@ -60703,7 +66071,15 @@ class UrlMap {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
-  /// The URL of the BackendService resource if none of the hostRules match.
+  /// The full or partial URL of the defaultService resource to which traffic is
+  /// directed if none of the hostRules match. If defaultRouteAction is
+  /// additionally specified, advanced routing actions like URL Rewrites, etc.
+  /// take effect prior to sending the request to the backend. However, if
+  /// defaultService is specified, defaultRouteAction cannot contain any
+  /// weightedBackendServices. Conversely, if routeAction specifies any
+  /// weightedBackendServices, service must not be specified.
+  /// Only one of defaultService, defaultUrlRedirect  or
+  /// defaultRouteAction.weightedBackendService must be set.
   core.String defaultService;
 
   /// An optional description of this resource. Provide this property when you
@@ -60713,7 +66089,8 @@ class UrlMap {
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking. This field will be
   /// ignored when inserting a UrlMap. An up-to-date fingerprint must be
-  /// provided in order to update the UrlMap.
+  /// provided in order to update the UrlMap, otherwise the request will fail
+  /// with error 412 conditionNotMet.
   ///
   /// To see the latest fingerprint, make a get() request to retrieve a UrlMap.
   core.String fingerprint;
@@ -60721,7 +66098,7 @@ class UrlMap {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -61500,6 +66877,280 @@ class UsageExportLocation {
     }
     if (reportNamePrefix != null) {
       _json["reportNamePrefix"] = reportNamePrefix;
+    }
+    return _json;
+  }
+}
+
+/// Contain information of Nat mapping for a VM endpoint (i.e., NIC).
+class VmEndpointNatMappings {
+  /// Name of the VM instance which the endpoint belongs to
+  core.String instanceName;
+  core.List<VmEndpointNatMappingsInterfaceNatMappings> interfaceNatMappings;
+
+  VmEndpointNatMappings();
+
+  VmEndpointNatMappings.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceName")) {
+      instanceName = _json["instanceName"];
+    }
+    if (_json.containsKey("interfaceNatMappings")) {
+      interfaceNatMappings = (_json["interfaceNatMappings"] as core.List)
+          .map<VmEndpointNatMappingsInterfaceNatMappings>((value) =>
+              new VmEndpointNatMappingsInterfaceNatMappings.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instanceName != null) {
+      _json["instanceName"] = instanceName;
+    }
+    if (interfaceNatMappings != null) {
+      _json["interfaceNatMappings"] =
+          interfaceNatMappings.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Contain information of Nat mapping for an interface of this endpoint.
+class VmEndpointNatMappingsInterfaceNatMappings {
+  /// A list of all IP:port-range mappings assigned to this interface. These
+  /// ranges are inclusive, that is, both the first and the last ports can be
+  /// used for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+  core.List<core.String> natIpPortRanges;
+
+  /// Total number of ports across all NAT IPs allocated to this interface. It
+  /// equals to the aggregated port number in the field nat_ip_port_ranges.
+  core.int numTotalNatPorts;
+
+  /// Alias IP range for this interface endpoint. It will be a private (RFC
+  /// 1918) IP range. Examples: "10.33.4.55/32", or "192.168.5.0/24".
+  core.String sourceAliasIpRange;
+
+  /// Primary IP of the VM for this NIC.
+  core.String sourceVirtualIp;
+
+  VmEndpointNatMappingsInterfaceNatMappings();
+
+  VmEndpointNatMappingsInterfaceNatMappings.fromJson(core.Map _json) {
+    if (_json.containsKey("natIpPortRanges")) {
+      natIpPortRanges =
+          (_json["natIpPortRanges"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("numTotalNatPorts")) {
+      numTotalNatPorts = _json["numTotalNatPorts"];
+    }
+    if (_json.containsKey("sourceAliasIpRange")) {
+      sourceAliasIpRange = _json["sourceAliasIpRange"];
+    }
+    if (_json.containsKey("sourceVirtualIp")) {
+      sourceVirtualIp = _json["sourceVirtualIp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (natIpPortRanges != null) {
+      _json["natIpPortRanges"] = natIpPortRanges;
+    }
+    if (numTotalNatPorts != null) {
+      _json["numTotalNatPorts"] = numTotalNatPorts;
+    }
+    if (sourceAliasIpRange != null) {
+      _json["sourceAliasIpRange"] = sourceAliasIpRange;
+    }
+    if (sourceVirtualIp != null) {
+      _json["sourceVirtualIp"] = sourceVirtualIp;
+    }
+    return _json;
+  }
+}
+
+class VmEndpointNatMappingsListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  VmEndpointNatMappingsListWarningData();
+
+  VmEndpointNatMappingsListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class VmEndpointNatMappingsListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<VmEndpointNatMappingsListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  VmEndpointNatMappingsListWarning();
+
+  VmEndpointNatMappingsListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<VmEndpointNatMappingsListWarningData>((value) =>
+              new VmEndpointNatMappingsListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Contains a list of VmEndpointNatMappings.
+class VmEndpointNatMappingsList {
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] Type of resource. Always compute#vmEndpointNatMappingsList
+  /// for lists of Nat mappings of VM endpoints.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] A list of Nat mapping information of VM endpoints.
+  core.List<VmEndpointNatMappings> result;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  VmEndpointNatMappingsListWarning warning;
+
+  VmEndpointNatMappingsList();
+
+  VmEndpointNatMappingsList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("result")) {
+      result = (_json["result"] as core.List)
+          .map<VmEndpointNatMappings>(
+              (value) => new VmEndpointNatMappings.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new VmEndpointNatMappingsListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (result != null) {
+      _json["result"] = result.map((value) => (value).toJson()).toList();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -62399,7 +68050,7 @@ class XpnHostList {
 /// Service resource (a.k.a service project) ID.
 class XpnResourceId {
   /// The ID of the service resource. In the case of projects, this field
-  /// matches the project ID (e.g., my-project), not the project number (e.g.,
+  /// supports project id (e.g., my-project-123) and project number (e.g.
   /// 12345678).
   core.String id;
 
@@ -62737,7 +68388,7 @@ class ZoneSetLabelsRequest {
     return convert.base64.decode(labelFingerprint);
   }
 
-  void set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
     labelFingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -62764,6 +68415,60 @@ class ZoneSetLabelsRequest {
     }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+class ZoneSetPolicyRequest {
+  /// Flatten Policy to create a backwacd compatible wire-format. Deprecated.
+  /// Use 'policy' to specify bindings.
+  core.List<Binding> bindings;
+
+  /// Flatten Policy to create a backward compatible wire-format. Deprecated.
+  /// Use 'policy' to specify the etag.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// REQUIRED: The complete policy to be applied to the 'resource'. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is in general a
+  /// valid policy but certain services (like Projects) might reject them.
+  Policy policy;
+
+  ZoneSetPolicyRequest();
+
+  ZoneSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
     }
     return _json;
   }

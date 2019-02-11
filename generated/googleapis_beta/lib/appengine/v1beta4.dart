@@ -16,8 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client appengine/v1beta4';
 
-/// The App Engine Admin API enables developers to provision and manage their
-/// App Engine applications.
+/// Provisions and manages developers' App Engine applications.
 class AppengineApi {
   /// View and manage your applications deployed on Google App Engine
   static const AppengineAdminScope =
@@ -36,8 +35,8 @@ class AppengineApi {
   AppsResourceApi get apps => new AppsResourceApi(_requester);
 
   AppengineApi(http.Client client,
-      {core.String rootUrl: "https://appengine.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://appengine.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -76,12 +75,12 @@ class AppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(Application request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -126,12 +125,12 @@ class AppsResourceApi {
   /// this method will complete with the same error.
   async.Future<Application> get(core.String appsId,
       {core.bool ensureResourcesExist, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -182,12 +181,12 @@ class AppsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Application request, core.String appsId,
       {core.String mask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -239,12 +238,12 @@ class AppsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Location> get(core.String appsId, core.String locationsId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -298,12 +297,12 @@ class AppsLocationsResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -364,12 +363,12 @@ class AppsModulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String appsId, core.String modulesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -416,12 +415,12 @@ class AppsModulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Module> get(core.String appsId, core.String modulesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -470,12 +469,12 @@ class AppsModulesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListModulesResponse> list(core.String appsId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -542,12 +541,12 @@ class AppsModulesResourceApi {
   async.Future<Operation> patch(
       Module request, core.String appsId, core.String modulesId,
       {core.bool migrateTraffic, core.String mask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -616,12 +615,12 @@ class AppsModulesVersionsResourceApi {
   async.Future<Operation> create(
       Version request, core.String appsId, core.String modulesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -675,12 +674,12 @@ class AppsModulesVersionsResourceApi {
   async.Future<Operation> delete(
       core.String appsId, core.String modulesId, core.String versionsId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -741,12 +740,12 @@ class AppsModulesVersionsResourceApi {
   async.Future<Version> get(
       core.String appsId, core.String modulesId, core.String versionsId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -789,14 +788,14 @@ class AppsModulesVersionsResourceApi {
   ///
   /// [modulesId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -810,16 +809,16 @@ class AppsModulesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String modulesId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
+      core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -827,14 +826,14 @@ class AppsModulesVersionsResourceApi {
     if (modulesId == null) {
       throw new core.ArgumentError("Parameter modulesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -900,12 +899,12 @@ class AppsModulesVersionsResourceApi {
   async.Future<Operation> patch(Version request, core.String appsId,
       core.String modulesId, core.String versionsId,
       {core.String mask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -986,12 +985,12 @@ class AppsModulesVersionsInstancesResourceApi {
       core.String versionsId,
       core.String instancesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1057,12 +1056,12 @@ class AppsModulesVersionsInstancesResourceApi {
   async.Future<Operation> delete(core.String appsId, core.String modulesId,
       core.String versionsId, core.String instancesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -1124,12 +1123,12 @@ class AppsModulesVersionsInstancesResourceApi {
   async.Future<Instance> get(core.String appsId, core.String modulesId,
       core.String versionsId, core.String instancesId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -1178,9 +1177,9 @@ class AppsModulesVersionsInstancesResourceApi {
   ///
   /// [versionsId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1194,13 +1193,13 @@ class AppsModulesVersionsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
       core.String appsId, core.String modulesId, core.String versionsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -1211,11 +1210,11 @@ class AppsModulesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1266,12 +1265,12 @@ class AppsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String appsId, core.String operationsId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
@@ -1311,11 +1310,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1328,28 +1327,28 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1607,10 +1606,12 @@ class Application {
 /// Automatic scaling is based on request rate, response latencies, and other
 /// application metrics.
 class AutomaticScaling {
-  /// Amount of time that the Autoscaler
-  /// (https://cloud.google.com/compute/docs/autoscaler/) should wait between
-  /// changes to the number of virtual machines. Only applicable for VM
-  /// runtimes.
+  /// The time period that the Autoscaler
+  /// (https://cloud.google.com/compute/docs/autoscaler/) should wait before it
+  /// starts collecting information from a new instance. This prevents the
+  /// autoscaler from collecting information when the instance is initializing,
+  /// during which the collected usage would not be reliable. Only applicable in
+  /// the App Engine flexible environment.
   core.String coolDownPeriod;
 
   /// Target scaling by CPU usage.
@@ -4210,6 +4211,9 @@ class Version {
   /// https://cloud.google.com/appengine/docs/standard/<language>/config/appref
   core.String runtimeApiVersion;
 
+  /// The path or name of the app's main executable.
+  core.String runtimeMainExecutablePath;
+
   /// Current serving status of this version. Only the versions with a SERVING
   /// status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an
   /// invalid value. Defaults to SERVING.
@@ -4316,6 +4320,9 @@ class Version {
     if (_json.containsKey("runtimeApiVersion")) {
       runtimeApiVersion = _json["runtimeApiVersion"];
     }
+    if (_json.containsKey("runtimeMainExecutablePath")) {
+      runtimeMainExecutablePath = _json["runtimeMainExecutablePath"];
+    }
     if (_json.containsKey("servingStatus")) {
       servingStatus = _json["servingStatus"];
     }
@@ -4405,6 +4412,9 @@ class Version {
     }
     if (runtimeApiVersion != null) {
       _json["runtimeApiVersion"] = runtimeApiVersion;
+    }
+    if (runtimeMainExecutablePath != null) {
+      _json["runtimeMainExecutablePath"] = runtimeMainExecutablePath;
     }
     if (servingStatus != null) {
       _json["servingStatus"] = servingStatus;

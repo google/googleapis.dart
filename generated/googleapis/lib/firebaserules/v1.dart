@@ -35,8 +35,8 @@ class FirebaserulesApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   FirebaserulesApi(http.Client client,
-      {core.String rootUrl: "https://firebaserules.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://firebaserules.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -101,12 +101,12 @@ class ProjectsResourceApi {
   async.Future<TestRulesetResponse> test(
       TestRulesetRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -180,12 +180,12 @@ class ProjectsReleasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Release> create(Release request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -228,12 +228,12 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -273,12 +273,12 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Release> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -308,7 +308,7 @@ class ProjectsReleasesResourceApi {
   /// Value must have pattern "^projects/[^/]+/releases/.+$".
   ///
   /// [executableVersion] - The requested runtime executable version.
-  /// Defaults to FIREBASE_RULES_EXECUTABLE_V1
+  /// Defaults to FIREBASE_RULES_EXECUTABLE_V1.
   /// Possible string values are:
   /// - "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" : A
   /// RELEASE_EXECUTABLE_VERSION_UNSPECIFIED.
@@ -327,12 +327,12 @@ class ProjectsReleasesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetReleaseExecutableResponse> getExecutable(core.String name,
       {core.String executableVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -369,6 +369,8 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Next page token for the next batch of `Release` instances.
+  ///
   /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
   /// Note: `page_size` is just a hint and the service may choose to load fewer
   /// than `page_size` results due to the size of the output. To traverse all of
@@ -402,8 +404,6 @@ class ProjectsReleasesResourceApi {
   /// relative to the project. Fully qualified prefixed may also be used. e.g.
   /// `test_suite_name=projects/foo/testsuites/uuid1`
   ///
-  /// [pageToken] - Next page token for the next batch of `Release` instances.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -415,28 +415,28 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReleasesResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -480,12 +480,12 @@ class ProjectsReleasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Release> patch(UpdateReleaseRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -544,12 +544,12 @@ class ProjectsRulesetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Ruleset> create(Ruleset request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -594,12 +594,12 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -639,12 +639,12 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Ruleset> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -678,9 +678,6 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
   /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
   /// Note: `page_size` is just a hint and the service may choose to load less
   /// than `page_size` due to the size of the output. To traverse all of the
@@ -695,6 +692,9 @@ class ProjectsRulesetsResourceApi {
   ///
   /// Example: `create_time > date("2017-01-01") AND name=UUID-*`
   ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -706,28 +706,28 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -812,7 +812,7 @@ class File {
     return convert.base64.decode(fingerprint);
   }
 
-  void set fingerprintAsBytes(core.List<core.int> _bytes) {
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
     fingerprint =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -950,7 +950,7 @@ class GetReleaseExecutableResponse {
     return convert.base64.decode(executable);
   }
 
-  void set executableAsBytes(core.List<core.int> _bytes) {
+  set executableAsBytes(core.List<core.int> _bytes) {
     executable =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -978,6 +978,11 @@ class GetReleaseExecutableResponse {
   /// `Ruleset` name associated with the `Release` executable.
   core.String rulesetName;
 
+  /// Optional, indicates the freshness of the result. The response is
+  /// guaranteed to be the latest within an interval up to the
+  /// sync_time (inclusive).
+  core.String syncTime;
+
   /// Timestamp for the most recent `Release.update_time`.
   core.String updateTime;
 
@@ -995,6 +1000,9 @@ class GetReleaseExecutableResponse {
     }
     if (_json.containsKey("rulesetName")) {
       rulesetName = _json["rulesetName"];
+    }
+    if (_json.containsKey("syncTime")) {
+      syncTime = _json["syncTime"];
     }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
@@ -1015,6 +1023,9 @@ class GetReleaseExecutableResponse {
     }
     if (rulesetName != null) {
       _json["rulesetName"] = rulesetName;
+    }
+    if (syncTime != null) {
+      _json["syncTime"] = syncTime;
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;

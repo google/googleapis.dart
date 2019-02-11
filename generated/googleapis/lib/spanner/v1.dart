@@ -36,8 +36,8 @@ class SpannerApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   SpannerApi(http.Client client,
-      {core.String rootUrl: "https://spanner.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://spanner.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -79,12 +79,12 @@ class ProjectsInstanceConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstanceConfig> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -134,12 +134,12 @@ class ProjectsInstanceConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstanceConfigsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -237,12 +237,12 @@ class ProjectsInstancesResourceApi {
   async.Future<Operation> create(
       CreateInstanceRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -296,12 +296,12 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -341,12 +341,12 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Instance> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -395,12 +395,12 @@ class ProjectsInstancesResourceApi {
   async.Future<Policy> getIamPolicy(
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -434,6 +434,10 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -459,10 +463,6 @@ class ProjectsInstancesResourceApi {
   /// next_page_token from a
   /// previous ListInstancesResponse.
   ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -474,28 +474,28 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -577,12 +577,12 @@ class ProjectsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(UpdateInstanceRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -634,12 +634,12 @@ class ProjectsInstancesResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -695,12 +695,12 @@ class ProjectsInstancesResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -769,12 +769,12 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<Operation> create(
       CreateDatabaseRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -818,12 +818,12 @@ class ProjectsInstancesDatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> dropDatabase(core.String database,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -864,12 +864,12 @@ class ProjectsInstancesDatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Database> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -912,12 +912,12 @@ class ProjectsInstancesDatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetDatabaseDdlResponse> getDdl(core.String database,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -937,8 +937,9 @@ class ProjectsInstancesDatabasesResourceApi {
     return _response.then((data) => new GetDatabaseDdlResponse.fromJson(data));
   }
 
-  /// Gets the access control policy for a database resource. Returns an empty
-  /// policy if a database exists but does not have a policy set.
+  /// Gets the access control policy for a database resource.
+  /// Returns an empty policy if a database exists but does
+  /// not have a policy set.
   ///
   /// Authorization requires `spanner.databases.getIamPolicy` permission on
   /// resource.
@@ -967,12 +968,12 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<Policy> getIamPolicy(
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1025,12 +1026,12 @@ class ProjectsInstancesDatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDatabasesResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1057,11 +1058,11 @@ class ProjectsInstancesDatabasesResourceApi {
     return _response.then((data) => new ListDatabasesResponse.fromJson(data));
   }
 
-  /// Sets the access control policy on a database resource. Replaces any
-  /// existing policy.
+  /// Sets the access control policy on a database resource.
+  /// Replaces any existing policy.
   ///
-  /// Authorization requires `spanner.databases.setIamPolicy` permission on
-  /// resource.
+  /// Authorization requires `spanner.databases.setIamPolicy`
+  /// permission on resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1087,12 +1088,12 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1120,11 +1121,10 @@ class ProjectsInstancesDatabasesResourceApi {
   /// Returns permissions that the caller has on the specified database
   /// resource.
   ///
-  /// Attempting this RPC on a non-existent Cloud Spanner database will result
-  /// in
-  /// a NOT_FOUND error if the user has `spanner.databases.list` permission on
-  /// the containing Cloud Spanner instance. Otherwise returns an empty set of
-  /// permissions.
+  /// Attempting this RPC on a non-existent Cloud Spanner database will
+  /// result in a NOT_FOUND error if the user has
+  /// `spanner.databases.list` permission on the containing Cloud
+  /// Spanner instance. Otherwise returns an empty set of permissions.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1150,12 +1150,12 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1210,12 +1210,12 @@ class ProjectsInstancesDatabasesResourceApi {
   async.Future<Operation> updateDdl(
       UpdateDatabaseDdlRequest request, core.String database,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1273,12 +1273,12 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1320,12 +1320,12 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1366,12 +1366,12 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1430,12 +1430,12 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1497,12 +1497,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<Transaction> beginTransaction(
       BeginTransactionRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1558,12 +1558,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<CommitResponse> commit(
       CommitRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1629,12 +1629,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<Session> create(
       CreateSessionRequest request, core.String database,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1678,12 +1678,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1737,12 +1737,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<ResultSet> executeSql(
       ExecuteSqlRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1795,12 +1795,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<PartialResultSet> executeStreamingSql(
       ExecuteSqlRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1846,12 +1846,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Session> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1914,12 +1914,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
       core.String filter,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
@@ -1984,12 +1984,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<PartitionResponse> partitionQuery(
       PartitionQueryRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2050,12 +2050,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<PartitionResponse> partitionRead(
       PartitionReadRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2114,12 +2114,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ResultSet> read(ReadRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2172,12 +2172,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> rollback(RollbackRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2228,12 +2228,12 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   async.Future<PartialResultSet> streamingRead(
       ReadRequest request, core.String session,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2293,12 +2293,12 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2340,12 +2340,12 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2386,12 +2386,12 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2428,11 +2428,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2445,28 +2445,28 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2649,7 +2649,7 @@ class CommitRequest {
     return convert.base64.decode(transactionId);
   }
 
-  void set transactionIdAsBytes(core.List<core.int> _bytes) {
+  set transactionIdAsBytes(core.List<core.int> _bytes) {
     transactionId =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3025,7 +3025,7 @@ class ExecuteSqlRequest {
     return convert.base64.decode(partitionToken);
   }
 
-  void set partitionTokenAsBytes(core.List<core.int> _bytes) {
+  set partitionTokenAsBytes(core.List<core.int> _bytes) {
     partitionToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3053,16 +3053,40 @@ class ExecuteSqlRequest {
     return convert.base64.decode(resumeToken);
   }
 
-  void set resumeTokenAsBytes(core.List<core.int> _bytes) {
+  set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+
+  /// A per-transaction sequence number used to identify this request. This
+  /// makes each request idempotent such that if the request is received
+  /// multiple
+  /// times, at most one will succeed.
+  ///
+  /// The sequence number must be monotonically increasing within the
+  /// transaction. If a request arrives for the first time with an out-of-order
+  /// sequence number, the transaction may be aborted. Replays of previously
+  /// handled requests will yield the same response as the first execution.
+  ///
+  /// Required for DML statements. Ignored for queries.
+  core.String seqno;
 
   /// Required. The SQL string.
   core.String sql;
 
   /// The transaction to use. If none is provided, the default is a
   /// temporary read-only transaction with strong concurrency.
+  ///
+  /// The transaction to use.
+  ///
+  /// For queries, if none is provided, the default is a temporary read-only
+  /// transaction with strong concurrency.
+  ///
+  /// Standard DML statements require a ReadWrite transaction. Single-use
+  /// transactions are not supported (to avoid replay).  The caller must
+  /// either supply an existing transaction ID or begin a new transaction.
+  ///
+  /// Partitioned DML requires an existing PartitionedDml transaction ID.
   TransactionSelector transaction;
 
   ExecuteSqlRequest();
@@ -3084,6 +3108,9 @@ class ExecuteSqlRequest {
     }
     if (_json.containsKey("resumeToken")) {
       resumeToken = _json["resumeToken"];
+    }
+    if (_json.containsKey("seqno")) {
+      seqno = _json["seqno"];
     }
     if (_json.containsKey("sql")) {
       sql = _json["sql"];
@@ -3112,6 +3139,9 @@ class ExecuteSqlRequest {
     }
     if (resumeToken != null) {
       _json["resumeToken"] = resumeToken;
+    }
+    if (seqno != null) {
+      _json["seqno"] = seqno;
     }
     if (sql != null) {
       _json["sql"] = sql;
@@ -3974,7 +4004,7 @@ class PartialResultSet {
     return convert.base64.decode(resumeToken);
   }
 
-  void set resumeTokenAsBytes(core.List<core.int> _bytes) {
+  set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3983,6 +4013,8 @@ class PartialResultSet {
   /// streaming result set. These can be requested by setting
   /// ExecuteSqlRequest.query_mode and are sent
   /// only once with the last response in the stream.
+  /// This field will also be present in the last response for DML
+  /// statements.
   ResultSetStats stats;
 
   /// A streamed result set consists of a stream of values, which might
@@ -4117,7 +4149,7 @@ class Partition {
     return convert.base64.decode(partitionToken);
   }
 
-  void set partitionTokenAsBytes(core.List<core.int> _bytes) {
+  set partitionTokenAsBytes(core.List<core.int> _bytes) {
     partitionToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -4225,6 +4257,10 @@ class PartitionQueryRequest {
   /// union operator conceptually divides one or more tables into multiple
   /// splits, remotely evaluates a subquery independently on each split, and
   /// then unions all results.
+  ///
+  /// This must not contain DML commands, such as INSERT, UPDATE, or
+  /// DELETE. Use ExecuteStreamingSql with a
+  /// PartitionedDml transaction for large, partition-friendly DML operations.
   core.String sql;
 
   /// Read only snapshot transactions are supported, read/write and single use
@@ -4389,6 +4425,19 @@ class PartitionResponse {
     if (transaction != null) {
       _json["transaction"] = (transaction).toJson();
     }
+    return _json;
+  }
+}
+
+/// Message type to initiate a Partitioned DML transaction.
+class PartitionedDml {
+  PartitionedDml();
+
+  PartitionedDml.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -4575,7 +4624,7 @@ class Policy {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -4794,7 +4843,7 @@ class ReadRequest {
     return convert.base64.decode(partitionToken);
   }
 
-  void set partitionTokenAsBytes(core.List<core.int> _bytes) {
+  set partitionTokenAsBytes(core.List<core.int> _bytes) {
     partitionToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -4810,7 +4859,7 @@ class ReadRequest {
     return convert.base64.decode(resumeToken);
   }
 
-  void set resumeTokenAsBytes(core.List<core.int> _bytes) {
+  set resumeTokenAsBytes(core.List<core.int> _bytes) {
     resumeToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -4916,6 +4965,11 @@ class ResultSet {
   /// Query plan and execution statistics for the SQL statement that
   /// produced this result set. These can be requested by setting
   /// ExecuteSqlRequest.query_mode.
+  /// DML statements always produce stats containing the number of rows
+  /// modified, unless executed using the
+  /// ExecuteSqlRequest.QueryMode.PLAN ExecuteSqlRequest.query_mode.
+  /// Other fields may or may not be populated, based on the
+  /// ExecuteSqlRequest.query_mode.
   ResultSetStats stats;
 
   ResultSet();
@@ -5010,6 +5064,13 @@ class ResultSetStats {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> queryStats;
 
+  /// Standard DML returns an exact count of rows that were modified.
+  core.String rowCountExact;
+
+  /// Partitioned DML does not offer exactly-once semantics, so it
+  /// returns a lower bound of the rows modified.
+  core.String rowCountLowerBound;
+
   ResultSetStats();
 
   ResultSetStats.fromJson(core.Map _json) {
@@ -5019,6 +5080,12 @@ class ResultSetStats {
     if (_json.containsKey("queryStats")) {
       queryStats =
           (_json["queryStats"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("rowCountExact")) {
+      rowCountExact = _json["rowCountExact"];
+    }
+    if (_json.containsKey("rowCountLowerBound")) {
+      rowCountLowerBound = _json["rowCountLowerBound"];
     }
   }
 
@@ -5030,6 +5097,12 @@ class ResultSetStats {
     }
     if (queryStats != null) {
       _json["queryStats"] = queryStats;
+    }
+    if (rowCountExact != null) {
+      _json["rowCountExact"] = rowCountExact;
+    }
+    if (rowCountLowerBound != null) {
+      _json["rowCountLowerBound"] = rowCountLowerBound;
     }
     return _json;
   }
@@ -5043,7 +5116,7 @@ class RollbackRequest {
     return convert.base64.decode(transactionId);
   }
 
-  void set transactionIdAsBytes(core.List<core.int> _bytes) {
+  set transactionIdAsBytes(core.List<core.int> _bytes) {
     transactionId =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -5390,7 +5463,7 @@ class Transaction {
     return convert.base64.decode(id);
   }
 
-  void set idAsBytes(core.List<core.int> _bytes) {
+  set idAsBytes(core.List<core.int> _bytes) {
     id =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -5437,7 +5510,7 @@ class Transaction {
 ///
 /// # Transaction Modes
 ///
-/// Cloud Spanner supports two transaction modes:
+/// Cloud Spanner supports three transaction modes:
 ///
 ///   1. Locking read-write. This type of transaction is the only way
 ///      to write data into Cloud Spanner. These transactions rely on
@@ -5451,6 +5524,12 @@ class Transaction {
 ///      read at timestamps in the past. Snapshot read-only
 ///      transactions do not need to be committed.
 ///
+///   3. Partitioned DML. This type of transaction is used to execute
+///      a single Partitioned DML statement. Partitioned DML partitions
+///      the key space and runs the DML statement over each partition
+///      in parallel using separate, internal transactions that commit
+///      independently. Partitioned DML transactions do not need to be
+///      committed.
 ///
 /// For transactions that only read, snapshot read-only transactions
 /// provide simpler semantics and are almost always faster. In
@@ -5478,11 +5557,8 @@ class Transaction {
 /// inactivity at the client may cause Cloud Spanner to release a
 /// transaction's locks and abort it.
 ///
-/// Reads performed within a transaction acquire locks on the data
-/// being read. Writes can only be done at commit time, after all reads
-/// have been completed.
 /// Conceptually, a read-write transaction consists of zero or more
-/// reads or SQL queries followed by
+/// reads or SQL statements followed by
 /// Commit. At any time before
 /// Commit, the client can send a
 /// Rollback request to abort the
@@ -5646,8 +5722,70 @@ class Transaction {
 /// timestamp become too old while executing. Reads and SQL queries with
 /// too-old read timestamps fail with the error `FAILED_PRECONDITION`.
 ///
-/// ##
+/// ## Partitioned DML Transactions
+///
+/// Partitioned DML transactions are used to execute DML statements with a
+/// different execution strategy that provides different, and often better,
+/// scalability properties for large, table-wide operations than DML in a
+/// ReadWrite transaction. Smaller scoped statements, such as an OLTP workload,
+/// should prefer using ReadWrite transactions.
+///
+/// Partitioned DML partitions the keyspace and runs the DML statement on each
+/// partition in separate, internal transactions. These transactions commit
+/// automatically when complete, and run independently from one another.
+///
+/// To reduce lock contention, this execution strategy only acquires read locks
+/// on rows that match the WHERE clause of the statement. Additionally, the
+/// smaller per-partition transactions hold locks for less time.
+///
+/// That said, Partitioned DML is not a drop-in replacement for standard DML
+/// used
+/// in ReadWrite transactions.
+///
+/// - The DML statement must be fully-partitionable. Specifically, the statement
+/// must be expressible as the union of many statements which each access only
+///    a single row of the table.
+///
+/// - The statement is not applied atomically to all rows of the table. Rather,
+///    the statement is applied atomically to partitions of the table, in
+///    independent transactions. Secondary index rows are updated atomically
+///    with the base table rows.
+///
+///  - Partitioned DML does not guarantee exactly-once execution semantics
+///    against a partition. The statement will be applied at least once to each
+///    partition. It is strongly recommended that the DML statement should be
+///    idempotent to avoid unexpected results. For instance, it is potentially
+///    dangerous to run a statement such as
+///    `UPDATE table SET column = column + 1` as it could be run multiple times
+///    against some rows.
+///
+///  - The partitions are committed automatically - there is no support for
+/// Commit or Rollback. If the call returns an error, or if the client issuing
+/// the ExecuteSql call dies, it is possible that some rows had the statement
+///    executed on them successfully. It is also possible that statement was
+///    never executed against other rows.
+///
+///  - Partitioned DML transactions may only contain the execution of a single
+///    DML statement via ExecuteSql or ExecuteStreamingSql.
+///
+///  - If any error is encountered during the execution of the partitioned DML
+/// operation (for instance, a UNIQUE INDEX violation, division by zero, or a
+///    value that cannot be stored due to schema constraints), then the
+///    operation is stopped at that point and an error is returned. It is
+/// possible that at this point, some partitions have been committed (or even
+/// committed multiple times), and other partitions have not been run at all.
+///
+/// Given the above, Partitioned DML is good fit for large, database-wide,
+/// operations that are idempotent, such as deleting old rows from a very large
+/// table.
 class TransactionOptions {
+  /// Partitioned DML transaction.
+  ///
+  /// Authorization to begin a Partitioned DML transaction requires
+  /// `spanner.databases.beginPartitionedDmlTransaction` permission
+  /// on the `session` resource.
+  PartitionedDml partitionedDml;
+
   /// Transaction will not write.
   ///
   /// Authorization to begin a read-only transaction requires
@@ -5665,6 +5803,9 @@ class TransactionOptions {
   TransactionOptions();
 
   TransactionOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("partitionedDml")) {
+      partitionedDml = new PartitionedDml.fromJson(_json["partitionedDml"]);
+    }
     if (_json.containsKey("readOnly")) {
       readOnly = new ReadOnly.fromJson(_json["readOnly"]);
     }
@@ -5676,6 +5817,9 @@ class TransactionOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (partitionedDml != null) {
+      _json["partitionedDml"] = (partitionedDml).toJson();
+    }
     if (readOnly != null) {
       _json["readOnly"] = (readOnly).toJson();
     }
@@ -5703,7 +5847,7 @@ class TransactionSelector {
     return convert.base64.decode(id);
   }
 
-  void set idAsBytes(core.List<core.int> _bytes) {
+  set idAsBytes(core.List<core.int> _bytes) {
     id =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

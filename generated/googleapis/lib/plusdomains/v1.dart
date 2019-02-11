@@ -76,8 +76,8 @@ class PlusDomainsApi {
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PlusDomainsApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "plusDomains/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "plusDomains/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -104,12 +104,12 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Activity> get(core.String activityId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
@@ -154,12 +154,12 @@ class ActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Activity> insert(Activity request, core.String userId,
       {core.bool preview, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -219,12 +219,12 @@ class ActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future<ActivityFeed> list(core.String userId, core.String collection,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -290,12 +290,12 @@ class AudiencesResourceApi {
   /// this method will complete with the same error.
   async.Future<AudiencesFeed> list(core.String userId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -354,12 +354,12 @@ class CirclesResourceApi {
       {core.List<core.String> email,
       core.List<core.String> userId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
@@ -402,12 +402,12 @@ class CirclesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Circle> get(core.String circleId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
@@ -448,12 +448,12 @@ class CirclesResourceApi {
   /// this method will complete with the same error.
   async.Future<Circle> insert(Circle request, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -504,12 +504,12 @@ class CirclesResourceApi {
   /// this method will complete with the same error.
   async.Future<CircleFeed> list(core.String userId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -555,12 +555,12 @@ class CirclesResourceApi {
   /// this method will complete with the same error.
   async.Future<Circle> patch(Circle request, core.String circleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -598,12 +598,12 @@ class CirclesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future remove(core.String circleId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
@@ -649,12 +649,12 @@ class CirclesResourceApi {
       {core.List<core.String> email,
       core.List<core.String> userId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
@@ -702,12 +702,12 @@ class CirclesResourceApi {
   /// this method will complete with the same error.
   async.Future<Circle> update(Circle request, core.String circleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -753,12 +753,12 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> get(core.String commentId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
@@ -798,12 +798,12 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Comment> insert(Comment request, core.String activityId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -863,12 +863,12 @@ class CommentsResourceApi {
       core.String pageToken,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
@@ -939,14 +939,14 @@ class MediaResourceApi {
   async.Future<Media> insert(
       Media request, core.String userId, core.String collection,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1014,12 +1014,12 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> get(core.String userId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1080,12 +1080,12 @@ class PeopleResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1155,12 +1155,12 @@ class PeopleResourceApi {
   async.Future<PeopleFeed> listByActivity(
       core.String activityId, core.String collection,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
@@ -1219,12 +1219,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<PeopleFeed> listByCircle(core.String circleId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");

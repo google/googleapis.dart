@@ -31,8 +31,8 @@ class JobsApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   JobsApi(http.Client client,
-      {core.String rootUrl: "https://jobs.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://jobs.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -59,6 +59,28 @@ class ProjectsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [languageCode] - Deprecated. Use language_codes instead.
+  ///
+  /// Optional.
+  ///
+  /// The language of the query. This is
+  /// the BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+  ///
+  /// For CompletionType.JOB_TITLE type, only open jobs with the same
+  /// language_code are returned.
+  ///
+  /// For CompletionType.COMPANY_NAME type,
+  /// only companies having open jobs with the same language_code are
+  /// returned.
+  ///
+  /// For CompletionType.COMBINED type, only open jobs with the same
+  /// language_code or companies having open jobs with the same
+  /// language_code are returned.
+  ///
+  /// The maximum number of allowed characters is 255.
+  ///
   /// [type] - Optional.
   ///
   /// The completion topic. The default is CompletionType.COMBINED.
@@ -67,6 +89,26 @@ class ProjectsResourceApi {
   /// - "JOB_TITLE" : A JOB_TITLE.
   /// - "COMPANY_NAME" : A COMPANY_NAME.
   /// - "COMBINED" : A COMBINED.
+  ///
+  /// [languageCodes] - Optional.
+  ///
+  /// The list of languages of the query. This is
+  /// the BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+  ///
+  /// For CompletionType.JOB_TITLE type, only open jobs with the same
+  /// language_codes are returned.
+  ///
+  /// For CompletionType.COMPANY_NAME type,
+  /// only companies having open jobs with the same language_codes are
+  /// returned.
+  ///
+  /// For CompletionType.COMBINED type, only open jobs with the same
+  /// language_codes or companies having open jobs with the same
+  /// language_codes are returned.
+  ///
+  /// The maximum number of allowed characters is 255.
   ///
   /// [scope] - Optional.
   ///
@@ -95,26 +137,6 @@ class ProjectsResourceApi {
   ///
   /// The maximum number of allowed characters is 255.
   ///
-  /// [languageCode] - Required.
-  ///
-  /// The language of the query. This is
-  /// the BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
-  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-  ///
-  /// For CompletionType.JOB_TITLE type, only open jobs with same
-  /// language_code are returned.
-  ///
-  /// For CompletionType.COMPANY_NAME type,
-  /// only companies having open jobs with same language_code are
-  /// returned.
-  ///
-  /// For CompletionType.COMBINED type, only open jobs with same
-  /// language_code or companies having open jobs with same
-  /// language_code are returned.
-  ///
-  /// The maximum number of allowed characters is 255.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -126,25 +148,32 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(core.String name,
-      {core.String type,
+      {core.String languageCode,
+      core.String type,
+      core.List<core.String> languageCodes,
       core.String scope,
       core.String companyName,
       core.int pageSize,
       core.String query,
-      core.String languageCode,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if (languageCodes != null) {
+      _queryParams["languageCodes"] = languageCodes;
     }
     if (scope != null) {
       _queryParams["scope"] = [scope];
@@ -157,9 +186,6 @@ class ProjectsResourceApi {
     }
     if (query != null) {
       _queryParams["query"] = [query];
-    }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -209,12 +235,12 @@ class ProjectsCompaniesResourceApi {
   /// this method will complete with the same error.
   async.Future<Company> create(CreateCompanyRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -239,6 +265,7 @@ class ProjectsCompaniesResourceApi {
   }
 
   /// Deletes specified company.
+  /// Prerequisite: The company has no jobs associated with it.
   ///
   /// Request parameters:
   ///
@@ -261,12 +288,12 @@ class ProjectsCompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -309,12 +336,12 @@ class ProjectsCompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Company> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -346,6 +373,10 @@ class ProjectsCompaniesResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Optional.
+  ///
+  /// The starting indicator from which to return results.
+  ///
   /// [pageSize] - Optional.
   ///
   /// The maximum number of companies to be returned, at most 100.
@@ -360,10 +391,6 @@ class ProjectsCompaniesResourceApi {
   /// If true, at most page_size of companies are fetched, among which
   /// only those with open jobs are returned.
   ///
-  /// [pageToken] - Optional.
-  ///
-  /// The starting indicator from which to return results.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -375,28 +402,28 @@ class ProjectsCompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.bool requireOpenJobs,
-      core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (requireOpenJobs != null) {
       _queryParams["requireOpenJobs"] = ["${requireOpenJobs}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -443,12 +470,12 @@ class ProjectsCompaniesResourceApi {
   /// this method will complete with the same error.
   async.Future<Company> patch(UpdateCompanyRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -504,12 +531,12 @@ class ProjectsJobsResourceApi {
   async.Future<Empty> batchDelete(
       BatchDeleteJobsRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -563,12 +590,12 @@ class ProjectsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(CreateJobRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -617,12 +644,12 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -666,12 +693,12 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -702,15 +729,6 @@ class ProjectsJobsResourceApi {
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [pageSize] - Optional.
-  ///
-  /// The maximum number of jobs to be returned per page of results.
-  ///
-  /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed
-  /// page size is 1000. Otherwise, the maximum allowed page size is 100.
-  ///
-  /// Default is 100 if empty or a number < 1 is specified.
   ///
   /// [filter] - Required.
   ///
@@ -746,6 +764,15 @@ class ProjectsJobsResourceApi {
   ///
   /// The starting point of a query result.
   ///
+  /// [pageSize] - Optional.
+  ///
+  /// The maximum number of jobs to be returned per page of results.
+  ///
+  /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed
+  /// page size is 1000. Otherwise, the maximum allowed page size is 100.
+  ///
+  /// Default is 100 if empty or a number < 1 is specified.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -757,23 +784,20 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String jobView,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -783,6 +807,9 @@ class ProjectsJobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -833,12 +860,12 @@ class ProjectsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> patch(UpdateJobRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -892,12 +919,12 @@ class ProjectsJobsResourceApi {
   async.Future<SearchJobsResponse> search(
       SearchJobsRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -958,12 +985,12 @@ class ProjectsJobsResourceApi {
   async.Future<SearchJobsResponse> searchForAlert(
       SearchJobsRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1190,7 +1217,7 @@ class CommuteFilter {
 
   /// Optional.
   ///
-  /// Specifies the traffic density to use when caculating commute time.
+  /// Specifies the traffic density to use when calculating commute time.
   /// Possible string values are:
   /// - "ROAD_TRAFFIC_UNSPECIFIED" : Road traffic situation is not specified.
   /// - "TRAFFIC_FREE" : Optimal commute time without considering any traffic
@@ -1891,14 +1918,19 @@ class CompensationInfo {
 
 /// Compensation range.
 class CompensationRange {
-  /// Required.
+  /// Optional.
   ///
-  /// The maximum amount of compensation.
+  /// The maximum amount of compensation. If left empty, the value is set
+  /// to a maximal compensation value and the currency code is set to
+  /// match the currency code of
+  /// min_compensation.
   Money maxCompensation;
 
-  /// Required.
+  /// Optional.
   ///
-  /// The minimum amount of compensation.
+  /// The minimum amount of compensation. If left empty, the value is set
+  /// to zero and the currency code is set to match the
+  /// currency code of max_compensation.
   Money minCompensation;
 
   CompensationRange();
@@ -2322,9 +2354,10 @@ class HistogramFacets {
   /// allowed.
   core.List<CustomAttributeHistogramRequest> customAttributeHistogramFacets;
 
-  /// Optional. Specifies the simple type of histogram facets, for example,
-  /// `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. This field is equivalent to
-  /// GetHistogramRequest.
+  /// Optional.
+  ///
+  /// Specifies the simple type of histogram facets, for example,
+  /// `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc.
   core.List<core.String> simpleHistogramFacets;
 
   HistogramFacets();
@@ -2667,7 +2700,9 @@ class Job {
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
   /// class="external" target="_blank" }.
   ///
-  /// The default value is `en-US`.
+  /// If this field is unspecified and Job.description is present, detected
+  /// language code based on Job.description is assigned, otherwise
+  /// defaults to 'en_US'.
   core.String languageCode;
 
   /// Required during job update.
@@ -3137,25 +3172,27 @@ class JobQuery {
   /// This filter specifies a structured syntax to match against the
   /// Job.custom_attributes marked as `filterable`.
   ///
-  /// The syntax for this expression is a subset of Google SQL syntax.
+  /// The syntax for this expression is a subset of SQL syntax.
   ///
-  /// Supported operators are: =, !=, <, <=, >, >= where the left of the
-  /// operator
-  /// is a custom field key and the right of the operator is a number or string
-  /// (surrounded by quotes) value.
+  /// Supported operators are: `=`, `!=`, `<`, `<=`, `>`, and `>=` where the
+  /// left of the operator is a custom field key and the right of the operator
+  /// is a number or a quoted string. You must escape backslash (\\) and
+  /// quote (\") characters.
   ///
-  /// Supported functions are LOWER(<field_name>) to
-  /// perform case insensitive match and EMPTY(<field_name>) to filter on the
+  /// Supported functions are `LOWER([field_name])` to
+  /// perform a case insensitive match and `EMPTY([field_name])` to filter on
+  /// the
   /// existence of a key.
   ///
   /// Boolean expressions (AND/OR/NOT) are supported up to 3 levels of
-  /// nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of 50
-  /// comparisons/functions are allowed in the expression. The expression
-  /// must be < 2000 characters in length.
+  /// nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of
+  /// 100
+  /// comparisons or functions are allowed in the expression. The expression
+  /// must be < 3000 bytes in length.
   ///
   /// Sample Query:
-  /// (LOWER(driving_license)="class a" OR EMPTY(driving_license)) AND
-  /// driving_years > 10
+  /// `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND
+  /// driving_years > 10`
   core.String customAttributeFilter;
 
   /// Optional.
@@ -3215,9 +3252,9 @@ class JobQuery {
   /// criteria are retrieved regardless of where they're located.
   ///
   /// If multiple values are specified, jobs are retrieved from any of the
-  /// specified locations, and, if different values are specified
-  /// for the LocationFilter.distance_in_miles parameter, the maximum
-  /// provided distance is used for all locations.
+  /// specified locations. If different values are specified for the
+  /// LocationFilter.distance_in_miles parameter, the maximum provided
+  /// distance is used for all locations.
   ///
   /// At most 5 location filters are allowed.
   core.List<LocationFilter> locationFilters;
@@ -3495,9 +3532,9 @@ class Location {
   /// delivery location.
   PostalAddress postalAddress;
 
-  /// Radius in meters of the job location. This value is derived from the
+  /// Radius in miles of the job location. This value is derived from the
   /// location bounding box in which a circle with the specified radius
-  /// centered from LatLng coves the area associated with the job location.
+  /// centered from LatLng covers the area associated with the job location.
   /// For example, currently, "Mountain View, CA, USA" has a radius of
   /// 6.17 miles.
   core.double radiusInMiles;
@@ -4252,6 +4289,30 @@ class SearchJobsRequest {
 
   /// Optional.
   ///
+  /// Controls whether highly similar jobs are returned next to each other in
+  /// the search results. Jobs are identified as highly similar based on
+  /// their titles, job categories, and locations. Highly similar results are
+  /// clustered so that only one representative job of the cluster is
+  /// displayed to the job seeker higher up in the results, with the other jobs
+  /// being displayed lower down in the results.
+  ///
+  /// Defaults to DiversificationLevel.SIMPLE if no value
+  /// is specified.
+  /// Possible string values are:
+  /// - "DIVERSIFICATION_LEVEL_UNSPECIFIED" : The diversification level isn't
+  /// specified.
+  /// - "DISABLED" : Disables diversification. Jobs that would normally be
+  /// pushed to the last
+  /// page would not have their positions altered. This may result in highly
+  /// similar jobs appearing in sequence in the search results.
+  /// - "SIMPLE" : Default diversifying behavior. The result list is ordered so
+  /// that
+  /// highly similar results are pushed to the end of the last page of search
+  /// results.
+  core.String diversificationLevel;
+
+  /// Optional.
+  ///
   /// Controls whether to broaden the search when it produces sparse results.
   /// Broadened queries append results to the end of the matching results
   /// list.
@@ -4308,30 +4369,30 @@ class SearchJobsRequest {
   /// "relevance desc".
   ///
   /// Supported options are:
-  ///   * "relevance desc": By relevance descending, as determined by the API
-  ///     algorithms. Relevance thresholding of query results is only available
-  ///     with this ordering.
-  ///   * "posting_publish_time desc": By Job.posting_publish_time
-  ///     descending.
-  ///   * "posting_update_time desc": By Job.posting_update_time descending.
-  ///   * "title": By Job.title ascending.
-  ///   * "title desc": By Job.title descending.
-  ///   * "annualized_base_compensation": By job's
-  ///     CompensationInfo.annualized_base_compensation ascending. If job's
-  /// annualized base compensation is unspecified, they are put at the end of
-  ///     search result.
-  ///   * "annualized_base_compensation desc": By job's
-  ///     CompensationInfo.annualized_base_compensation descending. If job's
-  /// annualized base compensation is unspecified, they are put at the end of
-  ///     search result.
-  ///   * "annualized_total_compensation": By job's
-  ///     CompensationInfo.annualized_total_compensation ascending. If job's
-  ///     annualized total compensation is unspecified, they are put at the end
-  ///     of search result.
-  ///   * "annualized_total_compensation desc": By job's
-  ///     CompensationInfo.annualized_total_compensation descending. If job's
-  ///     annualized total compensation is unspecified, they are put at the end
-  ///     of search result.
+  ///
+  /// * "relevance desc": By relevance descending, as determined by the API
+  /// algorithms. Relevance thresholding of query results is only available
+  /// with this ordering.
+  /// * "posting`_`publish`_`time desc": By Job.posting_publish_time descending.
+  /// * "posting`_`update`_`time desc": By Job.posting_update_time descending.
+  /// * "title": By Job.title ascending.
+  /// * "title desc": By Job.title descending.
+  /// * "annualized`_`base`_`compensation": By job's
+  /// CompensationInfo.annualized_base_compensation_range ascending. Jobs
+  /// whose annualized base compensation is unspecified are put at the end of
+  /// search results.
+  /// * "annualized`_`base`_`compensation desc": By job's
+  /// CompensationInfo.annualized_base_compensation_range descending. Jobs
+  /// whose annualized base compensation is unspecified are put at the end of
+  /// search results.
+  /// * "annualized`_`total`_`compensation": By job's
+  /// CompensationInfo.annualized_total_compensation_range ascending. Jobs
+  /// whose annualized base compensation is unspecified are put at the end of
+  /// search results.
+  /// * "annualized`_`total`_`compensation desc": By job's
+  /// CompensationInfo.annualized_total_compensation_range descending. Jobs
+  /// whose annualized base compensation is unspecified are put at the end of
+  /// search results.
   core.String orderBy;
 
   /// Optional.
@@ -4394,6 +4455,9 @@ class SearchJobsRequest {
     if (_json.containsKey("disableKeywordMatch")) {
       disableKeywordMatch = _json["disableKeywordMatch"];
     }
+    if (_json.containsKey("diversificationLevel")) {
+      diversificationLevel = _json["diversificationLevel"];
+    }
     if (_json.containsKey("enableBroadening")) {
       enableBroadening = _json["enableBroadening"];
     }
@@ -4434,6 +4498,9 @@ class SearchJobsRequest {
         new core.Map<core.String, core.Object>();
     if (disableKeywordMatch != null) {
       _json["disableKeywordMatch"] = disableKeywordMatch;
+    }
+    if (diversificationLevel != null) {
+      _json["diversificationLevel"] = diversificationLevel;
     }
     if (enableBroadening != null) {
       _json["enableBroadening"] = enableBroadening;
@@ -4492,7 +4559,7 @@ class SearchJobsResponse {
   /// see enable_precise_result_size.
   core.int estimatedTotalSize;
 
-  /// The histogram results that match with specified
+  /// The histogram results that match specified
   /// SearchJobsRequest.histogram_facets.
   HistogramResults histogramResults;
 
@@ -4517,8 +4584,8 @@ class SearchJobsResponse {
   SpellingCorrection spellCorrection;
 
   /// The precise result count, which is available only if the client set
-  /// enable_precise_result_size to `true` or if the response
-  /// is the last page of results. Otherwise, the value will be `-1`.
+  /// enable_precise_result_size to `true`, or if the response
+  /// is the last page of results. Otherwise, the value is `-1`.
   core.int totalSize;
 
   SearchJobsResponse();

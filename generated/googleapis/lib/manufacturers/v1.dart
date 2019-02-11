@@ -27,8 +27,8 @@ class ManufacturersApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   ManufacturersApi(http.Client client,
-      {core.String rootUrl: "https://manufacturers.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://manufacturers.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -82,12 +82,12 @@ class AccountsProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String parent, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -145,11 +145,6 @@ class AccountsProductsResourceApi {
   /// listed here
   /// will be returned.
   ///
-  /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
-  /// This behavior is temporary and will be removed once all clients are ready
-  /// or at the latest end of July 2018. After that no sections will be
-  /// returned.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -162,12 +157,12 @@ class AccountsProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<Product> get(core.String parent, core.String name,
       {core.List<core.String> include, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -209,11 +204,6 @@ class AccountsProductsResourceApi {
   /// listed here
   /// will be returned.
   ///
-  /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned.
-  /// This behavior is temporary and will be removed once all clients are ready
-  /// or at the latest end of July 2018. After that no sections will be
-  /// returned.
-  ///
   /// [pageToken] - The token returned by the previous request.
   ///
   /// [pageSize] - Maximum number of product statuses to return in the response,
@@ -235,12 +225,12 @@ class AccountsProductsResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -321,12 +311,12 @@ class AccountsProductsResourceApi {
   async.Future<Empty> update(
       Attributes request, core.String parent, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1143,7 +1133,8 @@ class Price {
 
 /// Product data.
 class Product {
-  /// Attributes of the product uploaded to the Manufacturer Center.
+  /// Attributes of the product uploaded to the Manufacturer Center. Manually
+  /// edited attributes are taken into account.
   Attributes attributes;
 
   /// The content language of the product as a two-letter ISO 639-1 language
@@ -1154,32 +1145,8 @@ class Product {
   /// The status of the destinations.
   core.List<DestinationStatus> destinationStatuses;
 
-  /// Final attributes of the product. The final attributes are obtained by
-  /// overriding the uploaded attributes with the manually provided and deleted
-  /// attributes. Google systems only process, evaluate, review, and/or use
-  /// final
-  /// attributes.
-  ///
-  /// This field is deprecated and will be removed end of July 2018. Please use
-  /// attributes.
-  Attributes finalAttributes;
-
   /// A server-generated list of issues associated with the product.
   core.List<Issue> issues;
-
-  /// Names of the attributes of the product deleted manually via the
-  /// Manufacturer Center UI.
-  ///
-  /// This field is deprecated and will be removed end of July 2018. Please use
-  /// attributes.
-  core.List<core.String> manuallyDeletedAttributes;
-
-  /// Attributes of the product provided manually via the Manufacturer Center
-  /// UI.
-  ///
-  /// This field is deprecated and will be removed end of July 2018. Please use
-  /// attributes.
-  Attributes manuallyProvidedAttributes;
 
   /// Name in the format `{target_country}:{content_language}:{product_id}`.
   ///
@@ -1206,13 +1173,6 @@ class Product {
   /// US).
   core.String targetCountry;
 
-  /// Attributes of the product uploaded via the Manufacturer Center API or via
-  /// feeds.
-  ///
-  /// This field is deprecated and will be removed end of July 2018. Please use
-  /// attributes.
-  Attributes uploadedAttributes;
-
   Product();
 
   Product.fromJson(core.Map _json) {
@@ -1228,21 +1188,10 @@ class Product {
               (value) => new DestinationStatus.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("finalAttributes")) {
-      finalAttributes = new Attributes.fromJson(_json["finalAttributes"]);
-    }
     if (_json.containsKey("issues")) {
       issues = (_json["issues"] as core.List)
           .map<Issue>((value) => new Issue.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("manuallyDeletedAttributes")) {
-      manuallyDeletedAttributes =
-          (_json["manuallyDeletedAttributes"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("manuallyProvidedAttributes")) {
-      manuallyProvidedAttributes =
-          new Attributes.fromJson(_json["manuallyProvidedAttributes"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1255,9 +1204,6 @@ class Product {
     }
     if (_json.containsKey("targetCountry")) {
       targetCountry = _json["targetCountry"];
-    }
-    if (_json.containsKey("uploadedAttributes")) {
-      uploadedAttributes = new Attributes.fromJson(_json["uploadedAttributes"]);
     }
   }
 
@@ -1274,18 +1220,8 @@ class Product {
       _json["destinationStatuses"] =
           destinationStatuses.map((value) => (value).toJson()).toList();
     }
-    if (finalAttributes != null) {
-      _json["finalAttributes"] = (finalAttributes).toJson();
-    }
     if (issues != null) {
       _json["issues"] = issues.map((value) => (value).toJson()).toList();
-    }
-    if (manuallyDeletedAttributes != null) {
-      _json["manuallyDeletedAttributes"] = manuallyDeletedAttributes;
-    }
-    if (manuallyProvidedAttributes != null) {
-      _json["manuallyProvidedAttributes"] =
-          (manuallyProvidedAttributes).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1298,9 +1234,6 @@ class Product {
     }
     if (targetCountry != null) {
       _json["targetCountry"] = targetCountry;
-    }
-    if (uploadedAttributes != null) {
-      _json["uploadedAttributes"] = (uploadedAttributes).toJson();
     }
     return _json;
   }

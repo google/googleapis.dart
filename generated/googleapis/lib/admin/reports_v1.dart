@@ -39,8 +39,8 @@ class AdminApi {
       new UserUsageReportResourceApi(_requester);
 
   AdminApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "admin/reports/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "admin/reports/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -85,6 +85,10 @@ class ActivitiesResourceApi {
   /// [maxResults] - Number of activity records to be shown in each page.
   /// Value must be between "1" and "1000".
   ///
+  /// [orgUnitID] - the organizational unit's(OU) ID to filter activities from
+  /// users belonging to a specific OU or one of its sub-OU(s)
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
   /// [pageToken] - Token to specify next page.
   ///
   /// [startTime] - Return events which occurred at or after this time.
@@ -109,15 +113,16 @@ class ActivitiesResourceApi {
       core.String eventName,
       core.String filters,
       core.int maxResults,
+      core.String orgUnitID,
       core.String pageToken,
       core.String startTime,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -142,6 +147,9 @@ class ActivitiesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -204,6 +212,10 @@ class ActivitiesResourceApi {
   /// [maxResults] - Number of activity records to be shown in each page.
   /// Value must be between "1" and "1000".
   ///
+  /// [orgUnitID] - the organizational unit's(OU) ID to filter activities from
+  /// users belonging to a specific OU or one of its sub-OU(s)
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
   /// [pageToken] - Token to specify next page.
   ///
   /// [startTime] - Return events which occurred at or after this time.
@@ -228,15 +240,16 @@ class ActivitiesResourceApi {
       core.String eventName,
       core.String filters,
       core.int maxResults,
+      core.String orgUnitID,
       core.String pageToken,
       core.String startTime,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -264,6 +277,9 @@ class ActivitiesResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -311,12 +327,12 @@ class ChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future stop(Channel request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -380,12 +396,12 @@ class CustomerUsageReportsResourceApi {
       core.String pageToken,
       core.String parameters,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (date == null) {
       throw new core.ArgumentError("Parameter date is required.");
@@ -472,12 +488,12 @@ class EntityUsageReportsResourceApi {
       core.String pageToken,
       core.String parameters,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (entityType == null) {
       throw new core.ArgumentError("Parameter entityType is required.");
@@ -553,6 +569,10 @@ class UserUsageReportResourceApi {
   /// [maxResults] - Maximum number of results to return. Maximum allowed is
   /// 1000
   ///
+  /// [orgUnitID] - the organizational unit's ID to filter usage parameters from
+  /// users belonging to a specific OU or one of its sub-OU(s).
+  /// Value must have pattern "(id:[a-z0-9]+)".
+  ///
   /// [pageToken] - Token to specify next page.
   ///
   /// [parameters] - Represents the application name, parameter name pairs to
@@ -574,15 +594,16 @@ class UserUsageReportResourceApi {
       {core.String customerId,
       core.String filters,
       core.int maxResults,
+      core.String orgUnitID,
       core.String pageToken,
       core.String parameters,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -598,6 +619,9 @@ class UserUsageReportResourceApi {
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orgUnitID != null) {
+      _queryParams["orgUnitID"] = [orgUnitID];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];

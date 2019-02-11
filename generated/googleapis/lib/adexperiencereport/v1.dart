@@ -15,7 +15,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client adexperiencereport/v1';
 
-/// View Ad Experience Report data, and get a list of sites that have a
+/// Views Ad Experience Report data, and gets a list of sites that have a
 /// significant number of annoying ads.
 class AdexperiencereportApi {
   /// Test scope for access to the Zoo service
@@ -28,8 +28,8 @@ class AdexperiencereportApi {
       new ViolatingSitesResourceApi(_requester);
 
   AdexperiencereportApi(http.Client client,
-      {core.String rootUrl: "https://adexperiencereport.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://adexperiencereport.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -65,12 +65,12 @@ class SitesResourceApi {
   /// this method will complete with the same error.
   async.Future<SiteSummaryResponse> get(core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -111,12 +111,12 @@ class ViolatingSitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -223,7 +223,6 @@ class PlatformSummary {
 }
 
 /// Response message for GetSiteSummary.
-/// Do not confuse with same message in google.chrome.abusiveexperiencereport.v1
 class SiteSummaryResponse {
   /// Summary for the desktop review of the site.
   PlatformSummary desktopSummary;

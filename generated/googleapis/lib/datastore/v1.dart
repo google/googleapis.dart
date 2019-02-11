@@ -31,8 +31,8 @@ class DatastoreApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   DatastoreApi(http.Client client,
-      {core.String rootUrl: "https://datastore.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://datastore.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -70,12 +70,12 @@ class ProjectsResourceApi {
   async.Future<AllocateIdsResponse> allocateIds(
       AllocateIdsRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -121,12 +121,12 @@ class ProjectsResourceApi {
   async.Future<BeginTransactionResponse> beginTransaction(
       BeginTransactionRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -174,12 +174,12 @@ class ProjectsResourceApi {
   async.Future<CommitResponse> commit(
       CommitRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -233,12 +233,12 @@ class ProjectsResourceApi {
       GoogleDatastoreAdminV1ExportEntitiesRequest request,
       core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -290,12 +290,12 @@ class ProjectsResourceApi {
       GoogleDatastoreAdminV1ImportEntitiesRequest request,
       core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -342,12 +342,12 @@ class ProjectsResourceApi {
   async.Future<LookupResponse> lookup(
       LookupRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -394,12 +394,12 @@ class ProjectsResourceApi {
   async.Future<ReserveIdsResponse> reserveIds(
       ReserveIdsRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -445,12 +445,12 @@ class ProjectsResourceApi {
   async.Future<RollbackResponse> rollback(
       RollbackRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -496,12 +496,12 @@ class ProjectsResourceApi {
   async.Future<RunQueryResponse> runQuery(
       RunQueryRequest request, core.String projectId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -553,12 +553,12 @@ class ProjectsIndexesResourceApi {
   async.Future<GoogleDatastoreAdminV1Index> get(
       core.String projectId, core.String indexId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -593,14 +593,14 @@ class ProjectsIndexesResourceApi {
   ///
   /// [projectId] - Project ID against which to make the request.
   ///
+  /// [filter] - null
+  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [pageSize] - The maximum number of items to return.  If zero, then all
   /// results will be
   /// returned.
-  ///
-  /// [filter] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -614,28 +614,28 @@ class ProjectsIndexesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleDatastoreAdminV1ListIndexesResponse> list(
       core.String projectId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -689,12 +689,12 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -735,12 +735,12 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -781,12 +781,12 @@ class ProjectsOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -824,11 +824,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -841,28 +841,28 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -937,8 +937,8 @@ class AllocateIdsResponse {
 /// An array value.
 class ArrayValue {
   /// Values in the array.
-  /// The order of this array may not be preserved if it contains a mix of
-  /// indexed and unindexed values.
+  /// The order of values in an array is preserved as long as all values have
+  /// identical settings for 'exclude_from_indexes'.
   core.List<Value> values;
 
   ArrayValue();
@@ -993,7 +993,7 @@ class BeginTransactionResponse {
     return convert.base64.decode(transaction);
   }
 
-  void set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1052,7 +1052,7 @@ class CommitRequest {
     return convert.base64.decode(transaction);
   }
 
-  void set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1246,7 +1246,7 @@ class EntityResult {
     return convert.base64.decode(cursor);
   }
 
-  void set cursorAsBytes(core.List<core.int> _bytes) {
+  set cursorAsBytes(core.List<core.int> _bytes) {
     cursor =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1744,7 +1744,6 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
 }
 
 /// A minimal index definition.
-/// Next tag: 8
 class GoogleDatastoreAdminV1Index {
   /// The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
   /// Required.
@@ -1889,7 +1888,7 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
   }
 }
 
-/// Next tag: 3
+/// A property of an index.
 class GoogleDatastoreAdminV1IndexedProperty {
   /// The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
   /// Required.
@@ -2531,7 +2530,7 @@ class GqlQueryParameter {
     return convert.base64.decode(cursor);
   }
 
-  void set cursorAsBytes(core.List<core.int> _bytes) {
+  set cursorAsBytes(core.List<core.int> _bytes) {
     cursor =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3127,7 +3126,7 @@ class Query {
     return convert.base64.decode(endCursor);
   }
 
-  void set endCursorAsBytes(core.List<core.int> _bytes) {
+  set endCursorAsBytes(core.List<core.int> _bytes) {
     endCursor =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3164,7 +3163,7 @@ class Query {
     return convert.base64.decode(startCursor);
   }
 
-  void set startCursorAsBytes(core.List<core.int> _bytes) {
+  set startCursorAsBytes(core.List<core.int> _bytes) {
     startCursor =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3254,7 +3253,7 @@ class QueryResultBatch {
     return convert.base64.decode(endCursor);
   }
 
-  void set endCursorAsBytes(core.List<core.int> _bytes) {
+  set endCursorAsBytes(core.List<core.int> _bytes) {
     endCursor =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3292,7 +3291,7 @@ class QueryResultBatch {
     return convert.base64.decode(skippedCursor);
   }
 
-  void set skippedCursorAsBytes(core.List<core.int> _bytes) {
+  set skippedCursorAsBytes(core.List<core.int> _bytes) {
     skippedCursor =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3401,7 +3400,7 @@ class ReadOptions {
     return convert.base64.decode(transaction);
   }
 
-  void set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3438,7 +3437,7 @@ class ReadWrite {
     return convert.base64.decode(previousTransaction);
   }
 
-  void set previousTransactionAsBytes(core.List<core.int> _bytes) {
+  set previousTransactionAsBytes(core.List<core.int> _bytes) {
     previousTransaction =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3518,7 +3517,7 @@ class RollbackRequest {
     return convert.base64.decode(transaction);
   }
 
-  void set transactionAsBytes(core.List<core.int> _bytes) {
+  set transactionAsBytes(core.List<core.int> _bytes) {
     transaction =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -3799,7 +3798,7 @@ class Value {
     return convert.base64.decode(blobValue);
   }
 
-  void set blobValueAsBytes(core.List<core.int> _bytes) {
+  set blobValueAsBytes(core.List<core.int> _bytes) {
     blobValue =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

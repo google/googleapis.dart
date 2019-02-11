@@ -1,6 +1,29 @@
+## 0.53.0
+
+ * [api-added] bigtableadmin:v2
+ * [api-added] cloudidentity:v1
+ * [api-added] cloudsearch:v1
+ * [api-added] content:v2_1
+ * [api-added] driveactivity:v2
+ * [api-added] iap:v1
+ * [api-added] libraryagent:v1
+ * [api-added] pagespeedonline:v5
+ * [api-added] redis:v1
+ * [api-removed] adexchangeseller:v1_1
+ * [api-removed] adexchangeseller:v2_0
+ * [api-removed] cloudtrace:v1
+ * [api-removed] content:v2 
+ * [api-removed] content:v2sandbox
+ * [api-removed] dfareporting:v2_8
+ * [api-removed] dfareporting:v3_0
+ * [api-removed] dfareporting:v3_1
+ * [api-removed] firebaseremoteconfig:v1
+ * [api-removed] partners:v2
+ * [api-removed] serviceuser:v1
+
 ## 0.52.0+1
 
-* Regenerate package with widened constraint for `package:http`
+* Regenerate package with widened constraint for `package:http`.
 
 ## 0.52.0
 

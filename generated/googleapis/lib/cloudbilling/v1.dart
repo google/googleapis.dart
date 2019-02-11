@@ -31,8 +31,8 @@ class CloudbillingApi {
   ServicesResourceApi get services => new ServicesResourceApi(_requester);
 
   CloudbillingApi(http.Client client,
-      {core.String rootUrl: "https://cloudbilling.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://cloudbilling.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -72,12 +72,12 @@ class BillingAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<BillingAccount> create(BillingAccount request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -119,12 +119,12 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BillingAccount> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -168,12 +168,12 @@ class BillingAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -201,10 +201,6 @@ class BillingAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. The maximum page size is 100; this is
-  /// also the
-  /// default.
-  ///
   /// [filter] - Options for how to filter the returned billing accounts.
   /// Currently this only supports filtering for
   /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a
@@ -217,6 +213,10 @@ class BillingAccountsResourceApi {
   /// `next_page_token` value returned from a previous `ListBillingAccounts`
   /// call. If unspecified, the first page of results is returned.
   ///
+  /// [pageSize] - Requested page size. The maximum page size is 100; this is
+  /// also the
+  /// default.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -228,25 +228,25 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list(
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -293,12 +293,12 @@ class BillingAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<BillingAccount> patch(BillingAccount request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -353,12 +353,12 @@ class BillingAccountsResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -409,12 +409,12 @@ class BillingAccountsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -480,12 +480,12 @@ class BillingAccountsProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListProjectBillingInfoResponse> list(core.String name,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -541,12 +541,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<ProjectBillingInfo> getBillingInfo(core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -623,12 +623,12 @@ class ProjectsResourceApi {
   async.Future<ProjectBillingInfo> updateBillingInfo(
       ProjectBillingInfo request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -683,12 +683,12 @@ class ServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -770,12 +770,12 @@ class ServicesSkusResourceApi {
       core.int pageSize,
       core.String currencyCode,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1516,7 +1516,7 @@ class Policy {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1808,6 +1808,10 @@ class ProjectBillingInfo {
 
 /// Encapsulates a single service in Google Cloud Platform.
 class Service {
+  /// The business under which the service is offered.
+  /// Ex. "businessEntities/GCP", "businessEntities/Maps"
+  core.String businessEntityName;
+
   /// A human readable display name for this service.
   core.String displayName;
 
@@ -1822,6 +1826,9 @@ class Service {
   Service();
 
   Service.fromJson(core.Map _json) {
+    if (_json.containsKey("businessEntityName")) {
+      businessEntityName = _json["businessEntityName"];
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -1836,6 +1843,9 @@ class Service {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (businessEntityName != null) {
+      _json["businessEntityName"] = businessEntityName;
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

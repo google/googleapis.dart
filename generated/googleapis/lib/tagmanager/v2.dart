@@ -52,8 +52,8 @@ class TagmanagerApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "tagmanager/v2/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "tagmanager/v2/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -85,12 +85,12 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -128,12 +128,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list(
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -176,12 +176,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> update(Account request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -244,12 +244,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<Container> create(Container request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -288,12 +288,12 @@ class AccountsContainersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -333,12 +333,12 @@ class AccountsContainersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Container> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -379,12 +379,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListContainersResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -431,12 +431,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<Container> update(Container request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -490,12 +490,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Environment> create(Environment request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -534,12 +534,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -579,12 +579,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Environment> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -625,12 +625,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -678,12 +678,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Environment> patch(Environment request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -730,12 +730,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Environment> reauthorize(Environment request, core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -782,12 +782,12 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Environment> update(Environment request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -839,12 +839,12 @@ class AccountsContainersVersionHeadersResourceApi {
   /// this method will complete with the same error.
   async.Future<ContainerVersionHeader> latest(core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -888,12 +888,12 @@ class AccountsContainersVersionHeadersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListContainerVersionsResponse> list(core.String parent,
       {core.bool includeDeleted, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -944,12 +944,12 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -993,12 +993,12 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> get(core.String path,
       {core.String containerVersionId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1040,12 +1040,12 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> live(core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1087,12 +1087,12 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<PublishContainerVersionResponse> publish(core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1136,12 +1136,12 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> setLatest(core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1180,12 +1180,12 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> undelete(core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1230,12 +1230,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future<ContainerVersion> update(
       ContainerVersion request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1304,12 +1304,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<Workspace> create(Workspace request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1356,12 +1356,12 @@ class AccountsContainersWorkspacesResourceApi {
   async.Future<CreateContainerVersionResponse> createVersion(
       CreateContainerVersionRequestVersionOptions request, core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1401,12 +1401,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1446,12 +1446,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Workspace> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1490,12 +1490,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<WorkspaceProposal> getProposal(core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1534,12 +1534,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetWorkspaceStatusResponse> getStatus(core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1581,12 +1581,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListWorkspacesResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1629,12 +1629,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<QuickPreviewResponse> quickPreview(core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1677,12 +1677,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future resolveConflict(Entity request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1731,12 +1731,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<SyncWorkspaceResponse> sync(core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1780,12 +1780,12 @@ class AccountsContainersWorkspacesResourceApi {
   /// this method will complete with the same error.
   async.Future<Workspace> update(Workspace request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1833,12 +1833,12 @@ class AccountsContainersWorkspacesResourceApi {
   async.Future<WorkspaceProposal> updateProposal(
       UpdateWorkspaceProposalRequest request, core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1890,12 +1890,12 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<CreateBuiltInVariableResponse> create(core.String parent,
       {core.List<core.String> type, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1939,12 +1939,12 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String path,
       {core.List<core.String> type, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -1990,12 +1990,12 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListEnabledBuiltInVariablesResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2145,12 +2145,12 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<RevertBuiltInVariableResponse> revert(core.String path,
       {core.String type, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2203,12 +2203,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<Folder> create(Folder request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2247,12 +2247,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2295,12 +2295,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<FolderEntities> entities(core.String path,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2341,12 +2341,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Folder> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2387,12 +2387,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2443,12 +2443,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       core.List<core.String> triggerId,
       core.List<core.String> variableId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2505,12 +2505,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<RevertFolderResponse> revert(core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2557,12 +2557,12 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<Folder> update(Folder request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2617,12 +2617,12 @@ class AccountsContainersWorkspacesProposalResourceApi {
   async.Future<WorkspaceProposal> create(
       CreateWorkspaceProposalRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2661,12 +2661,12 @@ class AccountsContainersWorkspacesProposalResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2716,12 +2716,12 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<Tag> create(Tag request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2760,12 +2760,12 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2805,12 +2805,12 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tag> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2851,12 +2851,12 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTagsResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2901,12 +2901,12 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<RevertTagResponse> revert(core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -2953,12 +2953,12 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<Tag> update(Tag request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3012,12 +3012,12 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<Trigger> create(Trigger request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3056,12 +3056,12 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3101,12 +3101,12 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Trigger> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3147,12 +3147,12 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTriggersResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3197,12 +3197,12 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<RevertTriggerResponse> revert(core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3249,12 +3249,12 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<Trigger> update(Trigger request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3308,12 +3308,12 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> create(Variable request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3352,12 +3352,12 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3397,12 +3397,12 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variable> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3443,12 +3443,12 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3493,12 +3493,12 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<RevertVariableResponse> revert(core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3545,12 +3545,12 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> update(Variable request, core.String path,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3604,12 +3604,12 @@ class AccountsUserPermissionsResourceApi {
   async.Future<UserPermission> create(
       UserPermission request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3650,12 +3650,12 @@ class AccountsUserPermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3695,12 +3695,12 @@ class AccountsUserPermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserPermission> get(core.String path, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
@@ -3742,12 +3742,12 @@ class AccountsUserPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListUserPermissionsResponse> list(core.String parent,
       {core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3793,12 +3793,12 @@ class AccountsUserPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<UserPermission> update(UserPermission request, core.String path,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client genomics/v1';
 
-/// Upload, process, query, and search Genomics data in the cloud.
+/// Uploads, processes, queries, and searches Genomics data in the cloud.
 class GenomicsApi {
   /// View and manage your data in Google BigQuery
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
@@ -56,8 +56,8 @@ class GenomicsApi {
       new VariantsetsResourceApi(_requester);
 
   GenomicsApi(http.Client client,
-      {core.String rootUrl: "https://genomics.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://genomics.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -99,12 +99,12 @@ class AnnotationsResourceApi {
   async.Future<BatchCreateAnnotationsResponse> batchCreate(
       BatchCreateAnnotationsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -163,12 +163,12 @@ class AnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Annotation> create(Annotation request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -206,12 +206,12 @@ class AnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String annotationId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
@@ -250,12 +250,12 @@ class AnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Annotation> get(core.String annotationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
@@ -300,12 +300,12 @@ class AnnotationsResourceApi {
   async.Future<SearchAnnotationsResponse> search(
       SearchAnnotationsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -355,12 +355,12 @@ class AnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Annotation> update(Annotation request, core.String annotationId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -419,12 +419,12 @@ class AnnotationsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<AnnotationSet> create(AnnotationSet request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -463,12 +463,12 @@ class AnnotationsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String annotationSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
@@ -508,12 +508,12 @@ class AnnotationsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<AnnotationSet> get(core.String annotationSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
@@ -559,12 +559,12 @@ class AnnotationsetsResourceApi {
   async.Future<SearchAnnotationSetsResponse> search(
       SearchAnnotationSetsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -616,12 +616,12 @@ class AnnotationsetsResourceApi {
   async.Future<AnnotationSet> update(
       AnnotationSet request, core.String annotationSetId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -671,12 +671,12 @@ class CallsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CallSet> create(CallSet request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -713,12 +713,12 @@ class CallsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String callSetId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
@@ -755,12 +755,12 @@ class CallsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CallSet> get(core.String callSetId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
@@ -808,12 +808,12 @@ class CallsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<CallSet> patch(CallSet request, core.String callSetId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -860,12 +860,12 @@ class CallsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchCallSetsResponse> search(SearchCallSetsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -908,12 +908,12 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> create(Dataset request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -955,12 +955,12 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String datasetId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
@@ -997,12 +997,12 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> get(core.String datasetId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
@@ -1050,12 +1050,12 @@ class DatasetsResourceApi {
   async.Future<Policy> getIamPolicy(
       GetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1110,12 +1110,12 @@ class DatasetsResourceApi {
       core.int pageSize,
       core.String projectId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1169,12 +1169,12 @@ class DatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Dataset> patch(Dataset request, core.String datasetId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1228,12 +1228,12 @@ class DatasetsResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1284,12 +1284,12 @@ class DatasetsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1338,12 +1338,12 @@ class DatasetsResourceApi {
   async.Future<Dataset> undelete(
       UndeleteDatasetRequest request, core.String datasetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1374,11 +1374,16 @@ class OperationsResourceApi {
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation. The server
-  /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed. Clients may use Operations.GetOperation or
-  /// Operations.ListOperations to check whether the cancellation succeeded or
-  /// the operation completed despite cancellation.
+  /// Starts asynchronous cancellation on a long-running operation.
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. Clients may use Operations.GetOperation
+  /// or Operations.ListOperations
+  /// to check whether the cancellation succeeded or the operation completed
+  /// despite cancellation.
+  /// Authorization requires the following [Google
+  /// IAM](https://cloud.google.com/iam) permission&#58;
+  ///
+  /// * `genomics.operations.cancel`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1399,12 +1404,12 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1427,9 +1432,13 @@ class OperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the latest state of a long-running operation.  Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
+  /// Gets the latest state of a long-running operation.
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  /// Authorization requires the following [Google
+  /// IAM](https://cloud.google.com/iam) permission&#58;
+  ///
+  /// * `genomics.operations.get`
   ///
   /// Request parameters:
   ///
@@ -1447,12 +1456,12 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1473,6 +1482,10 @@ class OperationsResourceApi {
   }
 
   /// Lists operations that match the specified filter in the request.
+  /// Authorization requires the following [Google
+  /// IAM](https://cloud.google.com/iam) permission&#58;
+  ///
+  /// * `genomics.operations.list`
   ///
   /// Request parameters:
   ///
@@ -1532,12 +1545,12 @@ class OperationsResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1595,12 +1608,12 @@ class ReadgroupsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String readGroupSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
@@ -1649,12 +1662,12 @@ class ReadgroupsetsResourceApi {
   async.Future<Operation> export(
       ExportReadGroupSetRequest request, core.String readGroupSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1697,12 +1710,12 @@ class ReadgroupsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<ReadGroupSet> get(core.String readGroupSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
@@ -1755,12 +1768,12 @@ class ReadgroupsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> import(ImportReadGroupSetsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1814,12 +1827,12 @@ class ReadgroupsetsResourceApi {
   async.Future<ReadGroupSet> patch(
       ReadGroupSet request, core.String readGroupSetId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1868,12 +1881,12 @@ class ReadgroupsetsResourceApi {
   async.Future<SearchReadGroupSetsResponse> search(
       SearchReadGroupSetsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1916,10 +1929,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// [readGroupSetId] - Required. The ID of the read group set over which
   /// coverage is requested.
   ///
-  /// [referenceName] - The name of the reference to query, within the reference
-  /// set associated
-  /// with this query. Optional.
-  ///
   /// [end] - The end position of the range on the reference, 0-based exclusive.
   /// If
   /// specified, `referenceName` must also be specified. If unset or 0, defaults
@@ -1947,6 +1956,10 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// `bucketWidth` is currently 2048 base pairs; this is subject to
   /// change.
   ///
+  /// [referenceName] - The name of the reference to query, within the reference
+  /// set associated
+  /// with this query. Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1958,25 +1971,22 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId,
-      {core.String referenceName,
-      core.String end,
+      {core.String end,
       core.String pageToken,
       core.int pageSize,
       core.String start,
       core.String targetBucketWidth,
+      core.String referenceName,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
-    }
-    if (referenceName != null) {
-      _queryParams["referenceName"] = [referenceName];
     }
     if (end != null) {
       _queryParams["end"] = [end];
@@ -1992,6 +2002,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (targetBucketWidth != null) {
       _queryParams["targetBucketWidth"] = [targetBucketWidth];
+    }
+    if (referenceName != null) {
+      _queryParams["referenceName"] = [referenceName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2057,12 +2070,12 @@ class ReadsResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchReadsResponse> search(SearchReadsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2111,12 +2124,12 @@ class ReferencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Reference> get(core.String referenceId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
@@ -2157,12 +2170,12 @@ class ReferencesResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchReferencesResponse> search(SearchReferencesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2231,12 +2244,12 @@ class ReferencesBasesResourceApi {
       core.String start,
       core.String end,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
@@ -2297,12 +2310,12 @@ class ReferencesetsResourceApi {
   /// this method will complete with the same error.
   async.Future<ReferenceSet> get(core.String referenceSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (referenceSetId == null) {
       throw new core.ArgumentError("Parameter referenceSetId is required.");
@@ -2345,12 +2358,12 @@ class ReferencesetsResourceApi {
   async.Future<SearchReferenceSetsResponse> search(
       SearchReferenceSetsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2394,12 +2407,12 @@ class VariantsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variant> create(Variant request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2436,12 +2449,12 @@ class VariantsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String variantId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (variantId == null) {
       throw new core.ArgumentError("Parameter variantId is required.");
@@ -2478,12 +2491,12 @@ class VariantsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variant> get(core.String variantId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (variantId == null) {
       throw new core.ArgumentError("Parameter variantId is required.");
@@ -2536,12 +2549,12 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> import(ImportVariantsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2665,12 +2678,12 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> merge(MergeVariantsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2719,12 +2732,12 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<Variant> patch(Variant request, core.String variantId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2771,12 +2784,12 @@ class VariantsResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchVariantsResponse> search(SearchVariantsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2823,12 +2836,12 @@ class VariantsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VariantSet> create(VariantSet request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2866,12 +2879,12 @@ class VariantsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String variantSetId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
@@ -2914,12 +2927,12 @@ class VariantsetsResourceApi {
   async.Future<Operation> export(
       ExportVariantSetRequest request, core.String variantSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2962,12 +2975,12 @@ class VariantsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<VariantSet> get(core.String variantSetId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
@@ -3017,12 +3030,12 @@ class VariantsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<VariantSet> patch(VariantSet request, core.String variantSetId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3070,12 +3083,12 @@ class VariantsetsResourceApi {
   async.Future<SearchVariantSetsResponse> search(
       SearchVariantSetsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5418,7 +5431,7 @@ class Policy {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -6377,6 +6390,20 @@ class ReferenceSet {
     if (sourceUri != null) {
       _json["sourceUri"] = sourceUri;
     }
+    return _json;
+  }
+}
+
+/// The response to the RunPipeline method, returned in the operation's result
+/// field on success.
+class RunPipelineResponse {
+  RunPipelineResponse();
+
+  RunPipelineResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }

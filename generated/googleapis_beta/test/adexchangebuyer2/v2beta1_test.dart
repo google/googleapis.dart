@@ -71,6 +71,48 @@ checkAbsoluteDateRange(api.AbsoluteDateRange o) {
   buildCounterAbsoluteDateRange--;
 }
 
+core.int buildCounterAcceptProposalRequest = 0;
+buildAcceptProposalRequest() {
+  var o = new api.AcceptProposalRequest();
+  buildCounterAcceptProposalRequest++;
+  if (buildCounterAcceptProposalRequest < 3) {
+    o.proposalRevision = "foo";
+  }
+  buildCounterAcceptProposalRequest--;
+  return o;
+}
+
+checkAcceptProposalRequest(api.AcceptProposalRequest o) {
+  buildCounterAcceptProposalRequest++;
+  if (buildCounterAcceptProposalRequest < 3) {
+    unittest.expect(o.proposalRevision, unittest.equals('foo'));
+  }
+  buildCounterAcceptProposalRequest--;
+}
+
+core.int buildCounterAdSize = 0;
+buildAdSize() {
+  var o = new api.AdSize();
+  buildCounterAdSize++;
+  if (buildCounterAdSize < 3) {
+    o.height = "foo";
+    o.sizeType = "foo";
+    o.width = "foo";
+  }
+  buildCounterAdSize--;
+  return o;
+}
+
+checkAdSize(api.AdSize o) {
+  buildCounterAdSize++;
+  if (buildCounterAdSize < 3) {
+    unittest.expect(o.height, unittest.equals('foo'));
+    unittest.expect(o.sizeType, unittest.equals('foo'));
+    unittest.expect(o.width, unittest.equals('foo'));
+  }
+  buildCounterAdSize--;
+}
+
 core.int buildCounterAddDealAssociationRequest = 0;
 buildAddDealAssociationRequest() {
   var o = new api.AddDealAssociationRequest();
@@ -90,14 +132,33 @@ checkAddDealAssociationRequest(api.AddDealAssociationRequest o) {
   buildCounterAddDealAssociationRequest--;
 }
 
-buildUnnamed5286() {
+core.int buildCounterAddNoteRequest = 0;
+buildAddNoteRequest() {
+  var o = new api.AddNoteRequest();
+  buildCounterAddNoteRequest++;
+  if (buildCounterAddNoteRequest < 3) {
+    o.note = buildNote();
+  }
+  buildCounterAddNoteRequest--;
+  return o;
+}
+
+checkAddNoteRequest(api.AddNoteRequest o) {
+  buildCounterAddNoteRequest++;
+  if (buildCounterAddNoteRequest < 3) {
+    checkNote(o.note);
+  }
+  buildCounterAddNoteRequest--;
+}
+
+buildUnnamed4793() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5286(core.List<core.String> o) {
+checkUnnamed4793(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -108,7 +169,7 @@ buildAppContext() {
   var o = new api.AppContext();
   buildCounterAppContext++;
   if (buildCounterAppContext < 3) {
-    o.appTypes = buildUnnamed5286();
+    o.appTypes = buildUnnamed4793();
   }
   buildCounterAppContext--;
   return o;
@@ -117,19 +178,19 @@ buildAppContext() {
 checkAppContext(api.AppContext o) {
   buildCounterAppContext++;
   if (buildCounterAppContext < 3) {
-    checkUnnamed5286(o.appTypes);
+    checkUnnamed4793(o.appTypes);
   }
   buildCounterAppContext--;
 }
 
-buildUnnamed5287() {
+buildUnnamed4794() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5287(core.List<core.String> o) {
+checkUnnamed4794(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -140,7 +201,7 @@ buildAuctionContext() {
   var o = new api.AuctionContext();
   buildCounterAuctionContext++;
   if (buildCounterAuctionContext < 3) {
-    o.auctionTypes = buildUnnamed5287();
+    o.auctionTypes = buildUnnamed4794();
   }
   buildCounterAuctionContext--;
   return o;
@@ -149,7 +210,7 @@ buildAuctionContext() {
 checkAuctionContext(api.AuctionContext o) {
   buildCounterAuctionContext++;
   if (buildCounterAuctionContext < 3) {
-    checkUnnamed5287(o.auctionTypes);
+    checkUnnamed4794(o.auctionTypes);
   }
   buildCounterAuctionContext--;
 }
@@ -208,6 +269,25 @@ checkBidResponseWithoutBidsStatusRow(api.BidResponseWithoutBidsStatusRow o) {
   buildCounterBidResponseWithoutBidsStatusRow--;
 }
 
+core.int buildCounterBuyer = 0;
+buildBuyer() {
+  var o = new api.Buyer();
+  buildCounterBuyer++;
+  if (buildCounterBuyer < 3) {
+    o.accountId = "foo";
+  }
+  buildCounterBuyer--;
+  return o;
+}
+
+checkBuyer(api.Buyer o) {
+  buildCounterBuyer++;
+  if (buildCounterBuyer < 3) {
+    unittest.expect(o.accountId, unittest.equals('foo'));
+  }
+  buildCounterBuyer--;
+}
+
 core.int buildCounterCalloutStatusRow = 0;
 buildCalloutStatusRow() {
   var o = new api.CalloutStatusRow();
@@ -229,6 +309,21 @@ checkCalloutStatusRow(api.CalloutStatusRow o) {
     checkRowDimensions(o.rowDimensions);
   }
   buildCounterCalloutStatusRow--;
+}
+
+core.int buildCounterCancelNegotiationRequest = 0;
+buildCancelNegotiationRequest() {
+  var o = new api.CancelNegotiationRequest();
+  buildCounterCancelNegotiationRequest++;
+  if (buildCounterCancelNegotiationRequest < 3) {}
+  buildCounterCancelNegotiationRequest--;
+  return o;
+}
+
+checkCancelNegotiationRequest(api.CancelNegotiationRequest o) {
+  buildCounterCancelNegotiationRequest++;
+  if (buildCounterCancelNegotiationRequest < 3) {}
+  buildCounterCancelNegotiationRequest--;
 }
 
 core.int buildCounterClient = 0;
@@ -314,27 +409,63 @@ checkClientUserInvitation(api.ClientUserInvitation o) {
   buildCounterClientUserInvitation--;
 }
 
-buildUnnamed5288() {
+core.int buildCounterCompleteSetupRequest = 0;
+buildCompleteSetupRequest() {
+  var o = new api.CompleteSetupRequest();
+  buildCounterCompleteSetupRequest++;
+  if (buildCounterCompleteSetupRequest < 3) {}
+  buildCounterCompleteSetupRequest--;
+  return o;
+}
+
+checkCompleteSetupRequest(api.CompleteSetupRequest o) {
+  buildCounterCompleteSetupRequest++;
+  if (buildCounterCompleteSetupRequest < 3) {}
+  buildCounterCompleteSetupRequest--;
+}
+
+core.int buildCounterContactInformation = 0;
+buildContactInformation() {
+  var o = new api.ContactInformation();
+  buildCounterContactInformation++;
+  if (buildCounterContactInformation < 3) {
+    o.email = "foo";
+    o.name = "foo";
+  }
+  buildCounterContactInformation--;
+  return o;
+}
+
+checkContactInformation(api.ContactInformation o) {
+  buildCounterContactInformation++;
+  if (buildCounterContactInformation < 3) {
+    unittest.expect(o.email, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterContactInformation--;
+}
+
+buildUnnamed4795() {
   var o = new core.List<api.ServingContext>();
   o.add(buildServingContext());
   o.add(buildServingContext());
   return o;
 }
 
-checkUnnamed5288(core.List<api.ServingContext> o) {
+checkUnnamed4795(core.List<api.ServingContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServingContext(o[0]);
   checkServingContext(o[1]);
 }
 
-buildUnnamed5289() {
+buildUnnamed4796() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5289(core.List<core.String> o) {
+checkUnnamed4796(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -345,8 +476,8 @@ buildCorrection() {
   var o = new api.Correction();
   buildCounterCorrection++;
   if (buildCounterCorrection < 3) {
-    o.contexts = buildUnnamed5288();
-    o.details = buildUnnamed5289();
+    o.contexts = buildUnnamed4795();
+    o.details = buildUnnamed4796();
     o.type = "foo";
   }
   buildCounterCorrection--;
@@ -356,177 +487,177 @@ buildCorrection() {
 checkCorrection(api.Correction o) {
   buildCounterCorrection++;
   if (buildCounterCorrection < 3) {
-    checkUnnamed5288(o.contexts);
-    checkUnnamed5289(o.details);
+    checkUnnamed4795(o.contexts);
+    checkUnnamed4796(o.details);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCorrection--;
 }
 
-buildUnnamed5290() {
+buildUnnamed4797() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5290(core.List<core.String> o) {
+checkUnnamed4797(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5291() {
+buildUnnamed4798() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5291(core.List<core.String> o) {
+checkUnnamed4798(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5292() {
+buildUnnamed4799() {
   var o = new core.List<api.Correction>();
   o.add(buildCorrection());
   o.add(buildCorrection());
   return o;
 }
 
-checkUnnamed5292(core.List<api.Correction> o) {
+checkUnnamed4799(core.List<api.Correction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCorrection(o[0]);
   checkCorrection(o[1]);
 }
 
-buildUnnamed5293() {
+buildUnnamed4800() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5293(core.List<core.String> o) {
+checkUnnamed4800(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5294() {
+buildUnnamed4801() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5294(core.List<core.String> o) {
+checkUnnamed4801(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5295() {
+buildUnnamed4802() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5295(core.List<core.String> o) {
+checkUnnamed4802(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5296() {
+buildUnnamed4803() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5296(core.List<core.String> o) {
+checkUnnamed4803(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5297() {
+buildUnnamed4804() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed5297(core.List<core.int> o) {
+checkUnnamed4804(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed5298() {
+buildUnnamed4805() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed5298(core.List<core.int> o) {
+checkUnnamed4805(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
 }
 
-buildUnnamed5299() {
+buildUnnamed4806() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5299(core.List<core.String> o) {
+checkUnnamed4806(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5300() {
+buildUnnamed4807() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5300(core.List<core.String> o) {
+checkUnnamed4807(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5301() {
+buildUnnamed4808() {
   var o = new core.List<api.ServingRestriction>();
   o.add(buildServingRestriction());
   o.add(buildServingRestriction());
   return o;
 }
 
-checkUnnamed5301(core.List<api.ServingRestriction> o) {
+checkUnnamed4808(core.List<api.ServingRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServingRestriction(o[0]);
   checkServingRestriction(o[1]);
 }
 
-buildUnnamed5302() {
+buildUnnamed4809() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed5302(core.List<core.int> o) {
+checkUnnamed4809(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -542,25 +673,25 @@ buildCreative() {
     o.advertiserName = "foo";
     o.agencyId = "foo";
     o.apiUpdateTime = "foo";
-    o.attributes = buildUnnamed5290();
-    o.clickThroughUrls = buildUnnamed5291();
-    o.corrections = buildUnnamed5292();
+    o.attributes = buildUnnamed4797();
+    o.clickThroughUrls = buildUnnamed4798();
+    o.corrections = buildUnnamed4799();
     o.creativeId = "foo";
     o.dealsStatus = "foo";
-    o.declaredClickThroughUrls = buildUnnamed5293();
-    o.detectedAdvertiserIds = buildUnnamed5294();
-    o.detectedDomains = buildUnnamed5295();
-    o.detectedLanguages = buildUnnamed5296();
-    o.detectedProductCategories = buildUnnamed5297();
-    o.detectedSensitiveCategories = buildUnnamed5298();
+    o.declaredClickThroughUrls = buildUnnamed4800();
+    o.detectedAdvertiserIds = buildUnnamed4801();
+    o.detectedDomains = buildUnnamed4802();
+    o.detectedLanguages = buildUnnamed4803();
+    o.detectedProductCategories = buildUnnamed4804();
+    o.detectedSensitiveCategories = buildUnnamed4805();
     o.filteringStats = buildFilteringStats();
     o.html = buildHtmlContent();
-    o.impressionTrackingUrls = buildUnnamed5299();
+    o.impressionTrackingUrls = buildUnnamed4806();
     o.native = buildNativeContent();
     o.openAuctionStatus = "foo";
-    o.restrictedCategories = buildUnnamed5300();
-    o.servingRestrictions = buildUnnamed5301();
-    o.vendorIds = buildUnnamed5302();
+    o.restrictedCategories = buildUnnamed4807();
+    o.servingRestrictions = buildUnnamed4808();
+    o.vendorIds = buildUnnamed4809();
     o.version = 42;
     o.video = buildVideoContent();
   }
@@ -576,25 +707,25 @@ checkCreative(api.Creative o) {
     unittest.expect(o.advertiserName, unittest.equals('foo'));
     unittest.expect(o.agencyId, unittest.equals('foo'));
     unittest.expect(o.apiUpdateTime, unittest.equals('foo'));
-    checkUnnamed5290(o.attributes);
-    checkUnnamed5291(o.clickThroughUrls);
-    checkUnnamed5292(o.corrections);
+    checkUnnamed4797(o.attributes);
+    checkUnnamed4798(o.clickThroughUrls);
+    checkUnnamed4799(o.corrections);
     unittest.expect(o.creativeId, unittest.equals('foo'));
     unittest.expect(o.dealsStatus, unittest.equals('foo'));
-    checkUnnamed5293(o.declaredClickThroughUrls);
-    checkUnnamed5294(o.detectedAdvertiserIds);
-    checkUnnamed5295(o.detectedDomains);
-    checkUnnamed5296(o.detectedLanguages);
-    checkUnnamed5297(o.detectedProductCategories);
-    checkUnnamed5298(o.detectedSensitiveCategories);
+    checkUnnamed4800(o.declaredClickThroughUrls);
+    checkUnnamed4801(o.detectedAdvertiserIds);
+    checkUnnamed4802(o.detectedDomains);
+    checkUnnamed4803(o.detectedLanguages);
+    checkUnnamed4804(o.detectedProductCategories);
+    checkUnnamed4805(o.detectedSensitiveCategories);
     checkFilteringStats(o.filteringStats);
     checkHtmlContent(o.html);
-    checkUnnamed5299(o.impressionTrackingUrls);
+    checkUnnamed4806(o.impressionTrackingUrls);
     checkNativeContent(o.native);
     unittest.expect(o.openAuctionStatus, unittest.equals('foo'));
-    checkUnnamed5300(o.restrictedCategories);
-    checkUnnamed5301(o.servingRestrictions);
-    checkUnnamed5302(o.vendorIds);
+    checkUnnamed4807(o.restrictedCategories);
+    checkUnnamed4808(o.servingRestrictions);
+    checkUnnamed4809(o.vendorIds);
     unittest.expect(o.version, unittest.equals(42));
     checkVideoContent(o.video);
   }
@@ -624,6 +755,131 @@ checkCreativeDealAssociation(api.CreativeDealAssociation o) {
   buildCounterCreativeDealAssociation--;
 }
 
+buildUnnamed4810() {
+  var o = new core.List<api.CreativeSpecification>();
+  o.add(buildCreativeSpecification());
+  o.add(buildCreativeSpecification());
+  return o;
+}
+
+checkUnnamed4810(core.List<api.CreativeSpecification> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCreativeSpecification(o[0]);
+  checkCreativeSpecification(o[1]);
+}
+
+core.int buildCounterCreativeRestrictions = 0;
+buildCreativeRestrictions() {
+  var o = new api.CreativeRestrictions();
+  buildCounterCreativeRestrictions++;
+  if (buildCounterCreativeRestrictions < 3) {
+    o.creativeFormat = "foo";
+    o.creativeSpecifications = buildUnnamed4810();
+    o.skippableAdType = "foo";
+  }
+  buildCounterCreativeRestrictions--;
+  return o;
+}
+
+checkCreativeRestrictions(api.CreativeRestrictions o) {
+  buildCounterCreativeRestrictions++;
+  if (buildCounterCreativeRestrictions < 3) {
+    unittest.expect(o.creativeFormat, unittest.equals('foo'));
+    checkUnnamed4810(o.creativeSpecifications);
+    unittest.expect(o.skippableAdType, unittest.equals('foo'));
+  }
+  buildCounterCreativeRestrictions--;
+}
+
+buildUnnamed4811() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4811(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4812() {
+  var o = new core.List<api.Size>();
+  o.add(buildSize());
+  o.add(buildSize());
+  return o;
+}
+
+checkUnnamed4812(core.List<api.Size> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSize(o[0]);
+  checkSize(o[1]);
+}
+
+core.int buildCounterCreativeSize = 0;
+buildCreativeSize() {
+  var o = new api.CreativeSize();
+  buildCounterCreativeSize++;
+  if (buildCounterCreativeSize < 3) {
+    o.allowedFormats = buildUnnamed4811();
+    o.companionSizes = buildUnnamed4812();
+    o.creativeSizeType = "foo";
+    o.nativeTemplate = "foo";
+    o.size = buildSize();
+    o.skippableAdType = "foo";
+  }
+  buildCounterCreativeSize--;
+  return o;
+}
+
+checkCreativeSize(api.CreativeSize o) {
+  buildCounterCreativeSize++;
+  if (buildCounterCreativeSize < 3) {
+    checkUnnamed4811(o.allowedFormats);
+    checkUnnamed4812(o.companionSizes);
+    unittest.expect(o.creativeSizeType, unittest.equals('foo'));
+    unittest.expect(o.nativeTemplate, unittest.equals('foo'));
+    checkSize(o.size);
+    unittest.expect(o.skippableAdType, unittest.equals('foo'));
+  }
+  buildCounterCreativeSize--;
+}
+
+buildUnnamed4813() {
+  var o = new core.List<api.AdSize>();
+  o.add(buildAdSize());
+  o.add(buildAdSize());
+  return o;
+}
+
+checkUnnamed4813(core.List<api.AdSize> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdSize(o[0]);
+  checkAdSize(o[1]);
+}
+
+core.int buildCounterCreativeSpecification = 0;
+buildCreativeSpecification() {
+  var o = new api.CreativeSpecification();
+  buildCounterCreativeSpecification++;
+  if (buildCounterCreativeSpecification < 3) {
+    o.creativeCompanionSizes = buildUnnamed4813();
+    o.creativeSize = buildAdSize();
+  }
+  buildCounterCreativeSpecification--;
+  return o;
+}
+
+checkCreativeSpecification(api.CreativeSpecification o) {
+  buildCounterCreativeSpecification++;
+  if (buildCounterCreativeSpecification < 3) {
+    checkUnnamed4813(o.creativeCompanionSizes);
+    checkAdSize(o.creativeSize);
+  }
+  buildCounterCreativeSpecification--;
+}
+
 core.int buildCounterCreativeStatusRow = 0;
 buildCreativeStatusRow() {
   var o = new api.CreativeStatusRow();
@@ -645,6 +901,53 @@ checkCreativeStatusRow(api.CreativeStatusRow o) {
     checkRowDimensions(o.rowDimensions);
   }
   buildCounterCreativeStatusRow--;
+}
+
+buildUnnamed4814() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4814(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4815() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4815(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterCriteriaTargeting = 0;
+buildCriteriaTargeting() {
+  var o = new api.CriteriaTargeting();
+  buildCounterCriteriaTargeting++;
+  if (buildCounterCriteriaTargeting < 3) {
+    o.excludedCriteriaIds = buildUnnamed4814();
+    o.targetedCriteriaIds = buildUnnamed4815();
+  }
+  buildCounterCriteriaTargeting--;
+  return o;
+}
+
+checkCriteriaTargeting(api.CriteriaTargeting o) {
+  buildCounterCriteriaTargeting++;
+  if (buildCounterCriteriaTargeting < 3) {
+    checkUnnamed4814(o.excludedCriteriaIds);
+    checkUnnamed4815(o.targetedCriteriaIds);
+  }
+  buildCounterCriteriaTargeting--;
 }
 
 core.int buildCounterDate = 0;
@@ -670,14 +973,279 @@ checkDate(api.Date o) {
   buildCounterDate--;
 }
 
-buildUnnamed5303() {
+core.int buildCounterDayPart = 0;
+buildDayPart() {
+  var o = new api.DayPart();
+  buildCounterDayPart++;
+  if (buildCounterDayPart < 3) {
+    o.dayOfWeek = "foo";
+    o.endTime = buildTimeOfDay();
+    o.startTime = buildTimeOfDay();
+  }
+  buildCounterDayPart--;
+  return o;
+}
+
+checkDayPart(api.DayPart o) {
+  buildCounterDayPart++;
+  if (buildCounterDayPart < 3) {
+    unittest.expect(o.dayOfWeek, unittest.equals('foo'));
+    checkTimeOfDay(o.endTime);
+    checkTimeOfDay(o.startTime);
+  }
+  buildCounterDayPart--;
+}
+
+buildUnnamed4816() {
+  var o = new core.List<api.DayPart>();
+  o.add(buildDayPart());
+  o.add(buildDayPart());
+  return o;
+}
+
+checkUnnamed4816(core.List<api.DayPart> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDayPart(o[0]);
+  checkDayPart(o[1]);
+}
+
+core.int buildCounterDayPartTargeting = 0;
+buildDayPartTargeting() {
+  var o = new api.DayPartTargeting();
+  buildCounterDayPartTargeting++;
+  if (buildCounterDayPartTargeting < 3) {
+    o.dayParts = buildUnnamed4816();
+    o.timeZoneType = "foo";
+  }
+  buildCounterDayPartTargeting--;
+  return o;
+}
+
+checkDayPartTargeting(api.DayPartTargeting o) {
+  buildCounterDayPartTargeting++;
+  if (buildCounterDayPartTargeting < 3) {
+    checkUnnamed4816(o.dayParts);
+    unittest.expect(o.timeZoneType, unittest.equals('foo'));
+  }
+  buildCounterDayPartTargeting--;
+}
+
+buildUnnamed4817() {
+  var o = new core.List<api.ContactInformation>();
+  o.add(buildContactInformation());
+  o.add(buildContactInformation());
+  return o;
+}
+
+checkUnnamed4817(core.List<api.ContactInformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkContactInformation(o[0]);
+  checkContactInformation(o[1]);
+}
+
+buildUnnamed4818() {
+  var o = new core.List<api.TargetingCriteria>();
+  o.add(buildTargetingCriteria());
+  o.add(buildTargetingCriteria());
+  return o;
+}
+
+checkUnnamed4818(core.List<api.TargetingCriteria> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargetingCriteria(o[0]);
+  checkTargetingCriteria(o[1]);
+}
+
+core.int buildCounterDeal = 0;
+buildDeal() {
+  var o = new api.Deal();
+  buildCounterDeal++;
+  if (buildCounterDeal < 3) {
+    o.availableEndTime = "foo";
+    o.availableStartTime = "foo";
+    o.buyerPrivateData = buildPrivateData();
+    o.createProductId = "foo";
+    o.createProductRevision = "foo";
+    o.createTime = "foo";
+    o.creativePreApprovalPolicy = "foo";
+    o.creativeRestrictions = buildCreativeRestrictions();
+    o.creativeSafeFrameCompatibility = "foo";
+    o.dealId = "foo";
+    o.dealServingMetadata = buildDealServingMetadata();
+    o.dealTerms = buildDealTerms();
+    o.deliveryControl = buildDeliveryControl();
+    o.description = "foo";
+    o.displayName = "foo";
+    o.externalDealId = "foo";
+    o.isSetupComplete = true;
+    o.programmaticCreativeSource = "foo";
+    o.proposalId = "foo";
+    o.sellerContacts = buildUnnamed4817();
+    o.syndicationProduct = "foo";
+    o.targeting = buildMarketplaceTargeting();
+    o.targetingCriterion = buildUnnamed4818();
+    o.updateTime = "foo";
+    o.webPropertyCode = "foo";
+  }
+  buildCounterDeal--;
+  return o;
+}
+
+checkDeal(api.Deal o) {
+  buildCounterDeal++;
+  if (buildCounterDeal < 3) {
+    unittest.expect(o.availableEndTime, unittest.equals('foo'));
+    unittest.expect(o.availableStartTime, unittest.equals('foo'));
+    checkPrivateData(o.buyerPrivateData);
+    unittest.expect(o.createProductId, unittest.equals('foo'));
+    unittest.expect(o.createProductRevision, unittest.equals('foo'));
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.creativePreApprovalPolicy, unittest.equals('foo'));
+    checkCreativeRestrictions(o.creativeRestrictions);
+    unittest.expect(o.creativeSafeFrameCompatibility, unittest.equals('foo'));
+    unittest.expect(o.dealId, unittest.equals('foo'));
+    checkDealServingMetadata(o.dealServingMetadata);
+    checkDealTerms(o.dealTerms);
+    checkDeliveryControl(o.deliveryControl);
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.externalDealId, unittest.equals('foo'));
+    unittest.expect(o.isSetupComplete, unittest.isTrue);
+    unittest.expect(o.programmaticCreativeSource, unittest.equals('foo'));
+    unittest.expect(o.proposalId, unittest.equals('foo'));
+    checkUnnamed4817(o.sellerContacts);
+    unittest.expect(o.syndicationProduct, unittest.equals('foo'));
+    checkMarketplaceTargeting(o.targeting);
+    checkUnnamed4818(o.targetingCriterion);
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(o.webPropertyCode, unittest.equals('foo'));
+  }
+  buildCounterDeal--;
+}
+
+core.int buildCounterDealPauseStatus = 0;
+buildDealPauseStatus() {
+  var o = new api.DealPauseStatus();
+  buildCounterDealPauseStatus++;
+  if (buildCounterDealPauseStatus < 3) {
+    o.buyerPauseReason = "foo";
+    o.firstPausedBy = "foo";
+    o.hasBuyerPaused = true;
+    o.hasSellerPaused = true;
+    o.sellerPauseReason = "foo";
+  }
+  buildCounterDealPauseStatus--;
+  return o;
+}
+
+checkDealPauseStatus(api.DealPauseStatus o) {
+  buildCounterDealPauseStatus++;
+  if (buildCounterDealPauseStatus < 3) {
+    unittest.expect(o.buyerPauseReason, unittest.equals('foo'));
+    unittest.expect(o.firstPausedBy, unittest.equals('foo'));
+    unittest.expect(o.hasBuyerPaused, unittest.isTrue);
+    unittest.expect(o.hasSellerPaused, unittest.isTrue);
+    unittest.expect(o.sellerPauseReason, unittest.equals('foo'));
+  }
+  buildCounterDealPauseStatus--;
+}
+
+core.int buildCounterDealServingMetadata = 0;
+buildDealServingMetadata() {
+  var o = new api.DealServingMetadata();
+  buildCounterDealServingMetadata++;
+  if (buildCounterDealServingMetadata < 3) {
+    o.dealPauseStatus = buildDealPauseStatus();
+  }
+  buildCounterDealServingMetadata--;
+  return o;
+}
+
+checkDealServingMetadata(api.DealServingMetadata o) {
+  buildCounterDealServingMetadata++;
+  if (buildCounterDealServingMetadata < 3) {
+    checkDealPauseStatus(o.dealPauseStatus);
+  }
+  buildCounterDealServingMetadata--;
+}
+
+core.int buildCounterDealTerms = 0;
+buildDealTerms() {
+  var o = new api.DealTerms();
+  buildCounterDealTerms++;
+  if (buildCounterDealTerms < 3) {
+    o.brandingType = "foo";
+    o.description = "foo";
+    o.estimatedGrossSpend = buildPrice();
+    o.estimatedImpressionsPerDay = "foo";
+    o.guaranteedFixedPriceTerms = buildGuaranteedFixedPriceTerms();
+    o.nonGuaranteedAuctionTerms = buildNonGuaranteedAuctionTerms();
+    o.nonGuaranteedFixedPriceTerms = buildNonGuaranteedFixedPriceTerms();
+    o.sellerTimeZone = "foo";
+  }
+  buildCounterDealTerms--;
+  return o;
+}
+
+checkDealTerms(api.DealTerms o) {
+  buildCounterDealTerms++;
+  if (buildCounterDealTerms < 3) {
+    unittest.expect(o.brandingType, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    checkPrice(o.estimatedGrossSpend);
+    unittest.expect(o.estimatedImpressionsPerDay, unittest.equals('foo'));
+    checkGuaranteedFixedPriceTerms(o.guaranteedFixedPriceTerms);
+    checkNonGuaranteedAuctionTerms(o.nonGuaranteedAuctionTerms);
+    checkNonGuaranteedFixedPriceTerms(o.nonGuaranteedFixedPriceTerms);
+    unittest.expect(o.sellerTimeZone, unittest.equals('foo'));
+  }
+  buildCounterDealTerms--;
+}
+
+buildUnnamed4819() {
+  var o = new core.List<api.FrequencyCap>();
+  o.add(buildFrequencyCap());
+  o.add(buildFrequencyCap());
+  return o;
+}
+
+checkUnnamed4819(core.List<api.FrequencyCap> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkFrequencyCap(o[0]);
+  checkFrequencyCap(o[1]);
+}
+
+core.int buildCounterDeliveryControl = 0;
+buildDeliveryControl() {
+  var o = new api.DeliveryControl();
+  buildCounterDeliveryControl++;
+  if (buildCounterDeliveryControl < 3) {
+    o.creativeBlockingLevel = "foo";
+    o.deliveryRateType = "foo";
+    o.frequencyCaps = buildUnnamed4819();
+  }
+  buildCounterDeliveryControl--;
+  return o;
+}
+
+checkDeliveryControl(api.DeliveryControl o) {
+  buildCounterDeliveryControl++;
+  if (buildCounterDeliveryControl < 3) {
+    unittest.expect(o.creativeBlockingLevel, unittest.equals('foo'));
+    unittest.expect(o.deliveryRateType, unittest.equals('foo'));
+    checkUnnamed4819(o.frequencyCaps);
+  }
+  buildCounterDeliveryControl--;
+}
+
+buildUnnamed4820() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5303(core.List<core.String> o) {
+checkUnnamed4820(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -688,7 +1256,7 @@ buildDisapproval() {
   var o = new api.Disapproval();
   buildCounterDisapproval++;
   if (buildCounterDisapproval < 3) {
-    o.details = buildUnnamed5303();
+    o.details = buildUnnamed4820();
     o.reason = "foo";
   }
   buildCounterDisapproval--;
@@ -698,7 +1266,7 @@ buildDisapproval() {
 checkDisapproval(api.Disapproval o) {
   buildCounterDisapproval++;
   if (buildCounterDisapproval < 3) {
-    checkUnnamed5303(o.details);
+    checkUnnamed4820(o.details);
     unittest.expect(o.reason, unittest.equals('foo'));
   }
   buildCounterDisapproval--;
@@ -719,53 +1287,66 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed5304() {
+buildUnnamed4821() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5304(core.List<core.String> o) {
+checkUnnamed4821(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5305() {
+buildUnnamed4822() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5305(core.List<core.String> o) {
+checkUnnamed4822(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5306() {
+buildUnnamed4823() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5306(core.List<core.String> o) {
+checkUnnamed4823(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5307() {
+buildUnnamed4824() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4824(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4825() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed5307(core.List<core.int> o) {
+checkUnnamed4825(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -777,16 +1358,17 @@ buildFilterSet() {
   buildCounterFilterSet++;
   if (buildCounterFilterSet < 3) {
     o.absoluteDateRange = buildAbsoluteDateRange();
+    o.breakdownDimensions = buildUnnamed4821();
     o.creativeId = "foo";
     o.dealId = "foo";
     o.environment = "foo";
-    o.formats = buildUnnamed5304();
+    o.formats = buildUnnamed4822();
     o.name = "foo";
-    o.platforms = buildUnnamed5305();
-    o.publisherIdentifiers = buildUnnamed5306();
+    o.platforms = buildUnnamed4823();
+    o.publisherIdentifiers = buildUnnamed4824();
     o.realtimeTimeRange = buildRealtimeTimeRange();
     o.relativeDateRange = buildRelativeDateRange();
-    o.sellerNetworkIds = buildUnnamed5307();
+    o.sellerNetworkIds = buildUnnamed4825();
     o.timeSeriesGranularity = "foo";
   }
   buildCounterFilterSet--;
@@ -797,16 +1379,17 @@ checkFilterSet(api.FilterSet o) {
   buildCounterFilterSet++;
   if (buildCounterFilterSet < 3) {
     checkAbsoluteDateRange(o.absoluteDateRange);
+    checkUnnamed4821(o.breakdownDimensions);
     unittest.expect(o.creativeId, unittest.equals('foo'));
     unittest.expect(o.dealId, unittest.equals('foo'));
     unittest.expect(o.environment, unittest.equals('foo'));
-    checkUnnamed5304(o.formats);
+    checkUnnamed4822(o.formats);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5305(o.platforms);
-    checkUnnamed5306(o.publisherIdentifiers);
+    checkUnnamed4823(o.platforms);
+    checkUnnamed4824(o.publisherIdentifiers);
     checkRealtimeTimeRange(o.realtimeTimeRange);
     checkRelativeDateRange(o.relativeDateRange);
-    checkUnnamed5307(o.sellerNetworkIds);
+    checkUnnamed4825(o.sellerNetworkIds);
     unittest.expect(o.timeSeriesGranularity, unittest.equals('foo'));
   }
   buildCounterFilterSet--;
@@ -858,14 +1441,14 @@ checkFilteredBidDetailRow(api.FilteredBidDetailRow o) {
   buildCounterFilteredBidDetailRow--;
 }
 
-buildUnnamed5308() {
+buildUnnamed4826() {
   var o = new core.List<api.Reason>();
   o.add(buildReason());
   o.add(buildReason());
   return o;
 }
 
-checkUnnamed5308(core.List<api.Reason> o) {
+checkUnnamed4826(core.List<api.Reason> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReason(o[0]);
   checkReason(o[1]);
@@ -877,7 +1460,7 @@ buildFilteringStats() {
   buildCounterFilteringStats++;
   if (buildCounterFilteringStats < 3) {
     o.date = buildDate();
-    o.reasons = buildUnnamed5308();
+    o.reasons = buildUnnamed4826();
   }
   buildCounterFilteringStats--;
   return o;
@@ -887,9 +1470,118 @@ checkFilteringStats(api.FilteringStats o) {
   buildCounterFilteringStats++;
   if (buildCounterFilteringStats < 3) {
     checkDate(o.date);
-    checkUnnamed5308(o.reasons);
+    checkUnnamed4826(o.reasons);
   }
   buildCounterFilteringStats--;
+}
+
+buildUnnamed4827() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4827(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4828() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4828(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterFirstPartyMobileApplicationTargeting = 0;
+buildFirstPartyMobileApplicationTargeting() {
+  var o = new api.FirstPartyMobileApplicationTargeting();
+  buildCounterFirstPartyMobileApplicationTargeting++;
+  if (buildCounterFirstPartyMobileApplicationTargeting < 3) {
+    o.excludedAppIds = buildUnnamed4827();
+    o.targetedAppIds = buildUnnamed4828();
+  }
+  buildCounterFirstPartyMobileApplicationTargeting--;
+  return o;
+}
+
+checkFirstPartyMobileApplicationTargeting(
+    api.FirstPartyMobileApplicationTargeting o) {
+  buildCounterFirstPartyMobileApplicationTargeting++;
+  if (buildCounterFirstPartyMobileApplicationTargeting < 3) {
+    checkUnnamed4827(o.excludedAppIds);
+    checkUnnamed4828(o.targetedAppIds);
+  }
+  buildCounterFirstPartyMobileApplicationTargeting--;
+}
+
+core.int buildCounterFrequencyCap = 0;
+buildFrequencyCap() {
+  var o = new api.FrequencyCap();
+  buildCounterFrequencyCap++;
+  if (buildCounterFrequencyCap < 3) {
+    o.maxImpressions = 42;
+    o.numTimeUnits = 42;
+    o.timeUnitType = "foo";
+  }
+  buildCounterFrequencyCap--;
+  return o;
+}
+
+checkFrequencyCap(api.FrequencyCap o) {
+  buildCounterFrequencyCap++;
+  if (buildCounterFrequencyCap < 3) {
+    unittest.expect(o.maxImpressions, unittest.equals(42));
+    unittest.expect(o.numTimeUnits, unittest.equals(42));
+    unittest.expect(o.timeUnitType, unittest.equals('foo'));
+  }
+  buildCounterFrequencyCap--;
+}
+
+buildUnnamed4829() {
+  var o = new core.List<api.PricePerBuyer>();
+  o.add(buildPricePerBuyer());
+  o.add(buildPricePerBuyer());
+  return o;
+}
+
+checkUnnamed4829(core.List<api.PricePerBuyer> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPricePerBuyer(o[0]);
+  checkPricePerBuyer(o[1]);
+}
+
+core.int buildCounterGuaranteedFixedPriceTerms = 0;
+buildGuaranteedFixedPriceTerms() {
+  var o = new api.GuaranteedFixedPriceTerms();
+  buildCounterGuaranteedFixedPriceTerms++;
+  if (buildCounterGuaranteedFixedPriceTerms < 3) {
+    o.fixedPrices = buildUnnamed4829();
+    o.guaranteedImpressions = "foo";
+    o.guaranteedLooks = "foo";
+    o.minimumDailyLooks = "foo";
+  }
+  buildCounterGuaranteedFixedPriceTerms--;
+  return o;
+}
+
+checkGuaranteedFixedPriceTerms(api.GuaranteedFixedPriceTerms o) {
+  buildCounterGuaranteedFixedPriceTerms++;
+  if (buildCounterGuaranteedFixedPriceTerms < 3) {
+    checkUnnamed4829(o.fixedPrices);
+    unittest.expect(o.guaranteedImpressions, unittest.equals('foo'));
+    unittest.expect(o.guaranteedLooks, unittest.equals('foo'));
+    unittest.expect(o.minimumDailyLooks, unittest.equals('foo'));
+  }
+  buildCounterGuaranteedFixedPriceTerms--;
 }
 
 core.int buildCounterHtmlContent = 0;
@@ -967,14 +1659,61 @@ checkImpressionMetricsRow(api.ImpressionMetricsRow o) {
   buildCounterImpressionMetricsRow--;
 }
 
-buildUnnamed5309() {
+buildUnnamed4830() {
+  var o = new core.List<api.AdSize>();
+  o.add(buildAdSize());
+  o.add(buildAdSize());
+  return o;
+}
+
+checkUnnamed4830(core.List<api.AdSize> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdSize(o[0]);
+  checkAdSize(o[1]);
+}
+
+buildUnnamed4831() {
+  var o = new core.List<api.AdSize>();
+  o.add(buildAdSize());
+  o.add(buildAdSize());
+  return o;
+}
+
+checkUnnamed4831(core.List<api.AdSize> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAdSize(o[0]);
+  checkAdSize(o[1]);
+}
+
+core.int buildCounterInventorySizeTargeting = 0;
+buildInventorySizeTargeting() {
+  var o = new api.InventorySizeTargeting();
+  buildCounterInventorySizeTargeting++;
+  if (buildCounterInventorySizeTargeting < 3) {
+    o.excludedInventorySizes = buildUnnamed4830();
+    o.targetedInventorySizes = buildUnnamed4831();
+  }
+  buildCounterInventorySizeTargeting--;
+  return o;
+}
+
+checkInventorySizeTargeting(api.InventorySizeTargeting o) {
+  buildCounterInventorySizeTargeting++;
+  if (buildCounterInventorySizeTargeting < 3) {
+    checkUnnamed4830(o.excludedInventorySizes);
+    checkUnnamed4831(o.targetedInventorySizes);
+  }
+  buildCounterInventorySizeTargeting--;
+}
+
+buildUnnamed4832() {
   var o = new core.List<api.BidMetricsRow>();
   o.add(buildBidMetricsRow());
   o.add(buildBidMetricsRow());
   return o;
 }
 
-checkUnnamed5309(core.List<api.BidMetricsRow> o) {
+checkUnnamed4832(core.List<api.BidMetricsRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBidMetricsRow(o[0]);
   checkBidMetricsRow(o[1]);
@@ -985,7 +1724,7 @@ buildListBidMetricsResponse() {
   var o = new api.ListBidMetricsResponse();
   buildCounterListBidMetricsResponse++;
   if (buildCounterListBidMetricsResponse < 3) {
-    o.bidMetricsRows = buildUnnamed5309();
+    o.bidMetricsRows = buildUnnamed4832();
     o.nextPageToken = "foo";
   }
   buildCounterListBidMetricsResponse--;
@@ -995,20 +1734,20 @@ buildListBidMetricsResponse() {
 checkListBidMetricsResponse(api.ListBidMetricsResponse o) {
   buildCounterListBidMetricsResponse++;
   if (buildCounterListBidMetricsResponse < 3) {
-    checkUnnamed5309(o.bidMetricsRows);
+    checkUnnamed4832(o.bidMetricsRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBidMetricsResponse--;
 }
 
-buildUnnamed5310() {
+buildUnnamed4833() {
   var o = new core.List<api.CalloutStatusRow>();
   o.add(buildCalloutStatusRow());
   o.add(buildCalloutStatusRow());
   return o;
 }
 
-checkUnnamed5310(core.List<api.CalloutStatusRow> o) {
+checkUnnamed4833(core.List<api.CalloutStatusRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCalloutStatusRow(o[0]);
   checkCalloutStatusRow(o[1]);
@@ -1019,7 +1758,7 @@ buildListBidResponseErrorsResponse() {
   var o = new api.ListBidResponseErrorsResponse();
   buildCounterListBidResponseErrorsResponse++;
   if (buildCounterListBidResponseErrorsResponse < 3) {
-    o.calloutStatusRows = buildUnnamed5310();
+    o.calloutStatusRows = buildUnnamed4833();
     o.nextPageToken = "foo";
   }
   buildCounterListBidResponseErrorsResponse--;
@@ -1029,20 +1768,20 @@ buildListBidResponseErrorsResponse() {
 checkListBidResponseErrorsResponse(api.ListBidResponseErrorsResponse o) {
   buildCounterListBidResponseErrorsResponse++;
   if (buildCounterListBidResponseErrorsResponse < 3) {
-    checkUnnamed5310(o.calloutStatusRows);
+    checkUnnamed4833(o.calloutStatusRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBidResponseErrorsResponse--;
 }
 
-buildUnnamed5311() {
+buildUnnamed4834() {
   var o = new core.List<api.BidResponseWithoutBidsStatusRow>();
   o.add(buildBidResponseWithoutBidsStatusRow());
   o.add(buildBidResponseWithoutBidsStatusRow());
   return o;
 }
 
-checkUnnamed5311(core.List<api.BidResponseWithoutBidsStatusRow> o) {
+checkUnnamed4834(core.List<api.BidResponseWithoutBidsStatusRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBidResponseWithoutBidsStatusRow(o[0]);
   checkBidResponseWithoutBidsStatusRow(o[1]);
@@ -1053,7 +1792,7 @@ buildListBidResponsesWithoutBidsResponse() {
   var o = new api.ListBidResponsesWithoutBidsResponse();
   buildCounterListBidResponsesWithoutBidsResponse++;
   if (buildCounterListBidResponsesWithoutBidsResponse < 3) {
-    o.bidResponseWithoutBidsStatusRows = buildUnnamed5311();
+    o.bidResponseWithoutBidsStatusRows = buildUnnamed4834();
     o.nextPageToken = "foo";
   }
   buildCounterListBidResponsesWithoutBidsResponse--;
@@ -1064,20 +1803,20 @@ checkListBidResponsesWithoutBidsResponse(
     api.ListBidResponsesWithoutBidsResponse o) {
   buildCounterListBidResponsesWithoutBidsResponse++;
   if (buildCounterListBidResponsesWithoutBidsResponse < 3) {
-    checkUnnamed5311(o.bidResponseWithoutBidsStatusRows);
+    checkUnnamed4834(o.bidResponseWithoutBidsStatusRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBidResponsesWithoutBidsResponse--;
 }
 
-buildUnnamed5312() {
+buildUnnamed4835() {
   var o = new core.List<api.ClientUserInvitation>();
   o.add(buildClientUserInvitation());
   o.add(buildClientUserInvitation());
   return o;
 }
 
-checkUnnamed5312(core.List<api.ClientUserInvitation> o) {
+checkUnnamed4835(core.List<api.ClientUserInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClientUserInvitation(o[0]);
   checkClientUserInvitation(o[1]);
@@ -1088,7 +1827,7 @@ buildListClientUserInvitationsResponse() {
   var o = new api.ListClientUserInvitationsResponse();
   buildCounterListClientUserInvitationsResponse++;
   if (buildCounterListClientUserInvitationsResponse < 3) {
-    o.invitations = buildUnnamed5312();
+    o.invitations = buildUnnamed4835();
     o.nextPageToken = "foo";
   }
   buildCounterListClientUserInvitationsResponse--;
@@ -1099,20 +1838,20 @@ checkListClientUserInvitationsResponse(
     api.ListClientUserInvitationsResponse o) {
   buildCounterListClientUserInvitationsResponse++;
   if (buildCounterListClientUserInvitationsResponse < 3) {
-    checkUnnamed5312(o.invitations);
+    checkUnnamed4835(o.invitations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListClientUserInvitationsResponse--;
 }
 
-buildUnnamed5313() {
+buildUnnamed4836() {
   var o = new core.List<api.ClientUser>();
   o.add(buildClientUser());
   o.add(buildClientUser());
   return o;
 }
 
-checkUnnamed5313(core.List<api.ClientUser> o) {
+checkUnnamed4836(core.List<api.ClientUser> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClientUser(o[0]);
   checkClientUser(o[1]);
@@ -1124,7 +1863,7 @@ buildListClientUsersResponse() {
   buildCounterListClientUsersResponse++;
   if (buildCounterListClientUsersResponse < 3) {
     o.nextPageToken = "foo";
-    o.users = buildUnnamed5313();
+    o.users = buildUnnamed4836();
   }
   buildCounterListClientUsersResponse--;
   return o;
@@ -1134,19 +1873,19 @@ checkListClientUsersResponse(api.ListClientUsersResponse o) {
   buildCounterListClientUsersResponse++;
   if (buildCounterListClientUsersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5313(o.users);
+    checkUnnamed4836(o.users);
   }
   buildCounterListClientUsersResponse--;
 }
 
-buildUnnamed5314() {
+buildUnnamed4837() {
   var o = new core.List<api.Client>();
   o.add(buildClient());
   o.add(buildClient());
   return o;
 }
 
-checkUnnamed5314(core.List<api.Client> o) {
+checkUnnamed4837(core.List<api.Client> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkClient(o[0]);
   checkClient(o[1]);
@@ -1157,7 +1896,7 @@ buildListClientsResponse() {
   var o = new api.ListClientsResponse();
   buildCounterListClientsResponse++;
   if (buildCounterListClientsResponse < 3) {
-    o.clients = buildUnnamed5314();
+    o.clients = buildUnnamed4837();
     o.nextPageToken = "foo";
   }
   buildCounterListClientsResponse--;
@@ -1167,20 +1906,20 @@ buildListClientsResponse() {
 checkListClientsResponse(api.ListClientsResponse o) {
   buildCounterListClientsResponse++;
   if (buildCounterListClientsResponse < 3) {
-    checkUnnamed5314(o.clients);
+    checkUnnamed4837(o.clients);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListClientsResponse--;
 }
 
-buildUnnamed5315() {
+buildUnnamed4838() {
   var o = new core.List<api.FilteredBidCreativeRow>();
   o.add(buildFilteredBidCreativeRow());
   o.add(buildFilteredBidCreativeRow());
   return o;
 }
 
-checkUnnamed5315(core.List<api.FilteredBidCreativeRow> o) {
+checkUnnamed4838(core.List<api.FilteredBidCreativeRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilteredBidCreativeRow(o[0]);
   checkFilteredBidCreativeRow(o[1]);
@@ -1191,7 +1930,7 @@ buildListCreativeStatusBreakdownByCreativeResponse() {
   var o = new api.ListCreativeStatusBreakdownByCreativeResponse();
   buildCounterListCreativeStatusBreakdownByCreativeResponse++;
   if (buildCounterListCreativeStatusBreakdownByCreativeResponse < 3) {
-    o.filteredBidCreativeRows = buildUnnamed5315();
+    o.filteredBidCreativeRows = buildUnnamed4838();
     o.nextPageToken = "foo";
   }
   buildCounterListCreativeStatusBreakdownByCreativeResponse--;
@@ -1202,20 +1941,20 @@ checkListCreativeStatusBreakdownByCreativeResponse(
     api.ListCreativeStatusBreakdownByCreativeResponse o) {
   buildCounterListCreativeStatusBreakdownByCreativeResponse++;
   if (buildCounterListCreativeStatusBreakdownByCreativeResponse < 3) {
-    checkUnnamed5315(o.filteredBidCreativeRows);
+    checkUnnamed4838(o.filteredBidCreativeRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCreativeStatusBreakdownByCreativeResponse--;
 }
 
-buildUnnamed5316() {
+buildUnnamed4839() {
   var o = new core.List<api.FilteredBidDetailRow>();
   o.add(buildFilteredBidDetailRow());
   o.add(buildFilteredBidDetailRow());
   return o;
 }
 
-checkUnnamed5316(core.List<api.FilteredBidDetailRow> o) {
+checkUnnamed4839(core.List<api.FilteredBidDetailRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilteredBidDetailRow(o[0]);
   checkFilteredBidDetailRow(o[1]);
@@ -1227,7 +1966,7 @@ buildListCreativeStatusBreakdownByDetailResponse() {
   buildCounterListCreativeStatusBreakdownByDetailResponse++;
   if (buildCounterListCreativeStatusBreakdownByDetailResponse < 3) {
     o.detailType = "foo";
-    o.filteredBidDetailRows = buildUnnamed5316();
+    o.filteredBidDetailRows = buildUnnamed4839();
     o.nextPageToken = "foo";
   }
   buildCounterListCreativeStatusBreakdownByDetailResponse--;
@@ -1239,20 +1978,20 @@ checkListCreativeStatusBreakdownByDetailResponse(
   buildCounterListCreativeStatusBreakdownByDetailResponse++;
   if (buildCounterListCreativeStatusBreakdownByDetailResponse < 3) {
     unittest.expect(o.detailType, unittest.equals('foo'));
-    checkUnnamed5316(o.filteredBidDetailRows);
+    checkUnnamed4839(o.filteredBidDetailRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCreativeStatusBreakdownByDetailResponse--;
 }
 
-buildUnnamed5317() {
+buildUnnamed4840() {
   var o = new core.List<api.Creative>();
   o.add(buildCreative());
   o.add(buildCreative());
   return o;
 }
 
-checkUnnamed5317(core.List<api.Creative> o) {
+checkUnnamed4840(core.List<api.Creative> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreative(o[0]);
   checkCreative(o[1]);
@@ -1263,7 +2002,7 @@ buildListCreativesResponse() {
   var o = new api.ListCreativesResponse();
   buildCounterListCreativesResponse++;
   if (buildCounterListCreativesResponse < 3) {
-    o.creatives = buildUnnamed5317();
+    o.creatives = buildUnnamed4840();
     o.nextPageToken = "foo";
   }
   buildCounterListCreativesResponse--;
@@ -1273,20 +2012,20 @@ buildListCreativesResponse() {
 checkListCreativesResponse(api.ListCreativesResponse o) {
   buildCounterListCreativesResponse++;
   if (buildCounterListCreativesResponse < 3) {
-    checkUnnamed5317(o.creatives);
+    checkUnnamed4840(o.creatives);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCreativesResponse--;
 }
 
-buildUnnamed5318() {
+buildUnnamed4841() {
   var o = new core.List<api.CreativeDealAssociation>();
   o.add(buildCreativeDealAssociation());
   o.add(buildCreativeDealAssociation());
   return o;
 }
 
-checkUnnamed5318(core.List<api.CreativeDealAssociation> o) {
+checkUnnamed4841(core.List<api.CreativeDealAssociation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeDealAssociation(o[0]);
   checkCreativeDealAssociation(o[1]);
@@ -1297,7 +2036,7 @@ buildListDealAssociationsResponse() {
   var o = new api.ListDealAssociationsResponse();
   buildCounterListDealAssociationsResponse++;
   if (buildCounterListDealAssociationsResponse < 3) {
-    o.associations = buildUnnamed5318();
+    o.associations = buildUnnamed4841();
     o.nextPageToken = "foo";
   }
   buildCounterListDealAssociationsResponse--;
@@ -1307,20 +2046,20 @@ buildListDealAssociationsResponse() {
 checkListDealAssociationsResponse(api.ListDealAssociationsResponse o) {
   buildCounterListDealAssociationsResponse++;
   if (buildCounterListDealAssociationsResponse < 3) {
-    checkUnnamed5318(o.associations);
+    checkUnnamed4841(o.associations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDealAssociationsResponse--;
 }
 
-buildUnnamed5319() {
+buildUnnamed4842() {
   var o = new core.List<api.FilterSet>();
   o.add(buildFilterSet());
   o.add(buildFilterSet());
   return o;
 }
 
-checkUnnamed5319(core.List<api.FilterSet> o) {
+checkUnnamed4842(core.List<api.FilterSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilterSet(o[0]);
   checkFilterSet(o[1]);
@@ -1331,7 +2070,7 @@ buildListFilterSetsResponse() {
   var o = new api.ListFilterSetsResponse();
   buildCounterListFilterSetsResponse++;
   if (buildCounterListFilterSetsResponse < 3) {
-    o.filterSets = buildUnnamed5319();
+    o.filterSets = buildUnnamed4842();
     o.nextPageToken = "foo";
   }
   buildCounterListFilterSetsResponse--;
@@ -1341,20 +2080,20 @@ buildListFilterSetsResponse() {
 checkListFilterSetsResponse(api.ListFilterSetsResponse o) {
   buildCounterListFilterSetsResponse++;
   if (buildCounterListFilterSetsResponse < 3) {
-    checkUnnamed5319(o.filterSets);
+    checkUnnamed4842(o.filterSets);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListFilterSetsResponse--;
 }
 
-buildUnnamed5320() {
+buildUnnamed4843() {
   var o = new core.List<api.CalloutStatusRow>();
   o.add(buildCalloutStatusRow());
   o.add(buildCalloutStatusRow());
   return o;
 }
 
-checkUnnamed5320(core.List<api.CalloutStatusRow> o) {
+checkUnnamed4843(core.List<api.CalloutStatusRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCalloutStatusRow(o[0]);
   checkCalloutStatusRow(o[1]);
@@ -1365,7 +2104,7 @@ buildListFilteredBidRequestsResponse() {
   var o = new api.ListFilteredBidRequestsResponse();
   buildCounterListFilteredBidRequestsResponse++;
   if (buildCounterListFilteredBidRequestsResponse < 3) {
-    o.calloutStatusRows = buildUnnamed5320();
+    o.calloutStatusRows = buildUnnamed4843();
     o.nextPageToken = "foo";
   }
   buildCounterListFilteredBidRequestsResponse--;
@@ -1375,20 +2114,20 @@ buildListFilteredBidRequestsResponse() {
 checkListFilteredBidRequestsResponse(api.ListFilteredBidRequestsResponse o) {
   buildCounterListFilteredBidRequestsResponse++;
   if (buildCounterListFilteredBidRequestsResponse < 3) {
-    checkUnnamed5320(o.calloutStatusRows);
+    checkUnnamed4843(o.calloutStatusRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListFilteredBidRequestsResponse--;
 }
 
-buildUnnamed5321() {
+buildUnnamed4844() {
   var o = new core.List<api.CreativeStatusRow>();
   o.add(buildCreativeStatusRow());
   o.add(buildCreativeStatusRow());
   return o;
 }
 
-checkUnnamed5321(core.List<api.CreativeStatusRow> o) {
+checkUnnamed4844(core.List<api.CreativeStatusRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeStatusRow(o[0]);
   checkCreativeStatusRow(o[1]);
@@ -1399,7 +2138,7 @@ buildListFilteredBidsResponse() {
   var o = new api.ListFilteredBidsResponse();
   buildCounterListFilteredBidsResponse++;
   if (buildCounterListFilteredBidsResponse < 3) {
-    o.creativeStatusRows = buildUnnamed5321();
+    o.creativeStatusRows = buildUnnamed4844();
     o.nextPageToken = "foo";
   }
   buildCounterListFilteredBidsResponse--;
@@ -1409,20 +2148,20 @@ buildListFilteredBidsResponse() {
 checkListFilteredBidsResponse(api.ListFilteredBidsResponse o) {
   buildCounterListFilteredBidsResponse++;
   if (buildCounterListFilteredBidsResponse < 3) {
-    checkUnnamed5321(o.creativeStatusRows);
+    checkUnnamed4844(o.creativeStatusRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListFilteredBidsResponse--;
 }
 
-buildUnnamed5322() {
+buildUnnamed4845() {
   var o = new core.List<api.ImpressionMetricsRow>();
   o.add(buildImpressionMetricsRow());
   o.add(buildImpressionMetricsRow());
   return o;
 }
 
-checkUnnamed5322(core.List<api.ImpressionMetricsRow> o) {
+checkUnnamed4845(core.List<api.ImpressionMetricsRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImpressionMetricsRow(o[0]);
   checkImpressionMetricsRow(o[1]);
@@ -1433,7 +2172,7 @@ buildListImpressionMetricsResponse() {
   var o = new api.ListImpressionMetricsResponse();
   buildCounterListImpressionMetricsResponse++;
   if (buildCounterListImpressionMetricsResponse < 3) {
-    o.impressionMetricsRows = buildUnnamed5322();
+    o.impressionMetricsRows = buildUnnamed4845();
     o.nextPageToken = "foo";
   }
   buildCounterListImpressionMetricsResponse--;
@@ -1443,20 +2182,20 @@ buildListImpressionMetricsResponse() {
 checkListImpressionMetricsResponse(api.ListImpressionMetricsResponse o) {
   buildCounterListImpressionMetricsResponse++;
   if (buildCounterListImpressionMetricsResponse < 3) {
-    checkUnnamed5322(o.impressionMetricsRows);
+    checkUnnamed4845(o.impressionMetricsRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListImpressionMetricsResponse--;
 }
 
-buildUnnamed5323() {
+buildUnnamed4846() {
   var o = new core.List<api.CreativeStatusRow>();
   o.add(buildCreativeStatusRow());
   o.add(buildCreativeStatusRow());
   return o;
 }
 
-checkUnnamed5323(core.List<api.CreativeStatusRow> o) {
+checkUnnamed4846(core.List<api.CreativeStatusRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCreativeStatusRow(o[0]);
   checkCreativeStatusRow(o[1]);
@@ -1467,7 +2206,7 @@ buildListLosingBidsResponse() {
   var o = new api.ListLosingBidsResponse();
   buildCounterListLosingBidsResponse++;
   if (buildCounterListLosingBidsResponse < 3) {
-    o.creativeStatusRows = buildUnnamed5323();
+    o.creativeStatusRows = buildUnnamed4846();
     o.nextPageToken = "foo";
   }
   buildCounterListLosingBidsResponse--;
@@ -1477,20 +2216,20 @@ buildListLosingBidsResponse() {
 checkListLosingBidsResponse(api.ListLosingBidsResponse o) {
   buildCounterListLosingBidsResponse++;
   if (buildCounterListLosingBidsResponse < 3) {
-    checkUnnamed5323(o.creativeStatusRows);
+    checkUnnamed4846(o.creativeStatusRows);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLosingBidsResponse--;
 }
 
-buildUnnamed5324() {
+buildUnnamed4847() {
   var o = new core.List<api.NonBillableWinningBidStatusRow>();
   o.add(buildNonBillableWinningBidStatusRow());
   o.add(buildNonBillableWinningBidStatusRow());
   return o;
 }
 
-checkUnnamed5324(core.List<api.NonBillableWinningBidStatusRow> o) {
+checkUnnamed4847(core.List<api.NonBillableWinningBidStatusRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNonBillableWinningBidStatusRow(o[0]);
   checkNonBillableWinningBidStatusRow(o[1]);
@@ -1502,7 +2241,7 @@ buildListNonBillableWinningBidsResponse() {
   buildCounterListNonBillableWinningBidsResponse++;
   if (buildCounterListNonBillableWinningBidsResponse < 3) {
     o.nextPageToken = "foo";
-    o.nonBillableWinningBidStatusRows = buildUnnamed5324();
+    o.nonBillableWinningBidStatusRows = buildUnnamed4847();
   }
   buildCounterListNonBillableWinningBidsResponse--;
   return o;
@@ -1513,19 +2252,121 @@ checkListNonBillableWinningBidsResponse(
   buildCounterListNonBillableWinningBidsResponse++;
   if (buildCounterListNonBillableWinningBidsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5324(o.nonBillableWinningBidStatusRows);
+    checkUnnamed4847(o.nonBillableWinningBidStatusRows);
   }
   buildCounterListNonBillableWinningBidsResponse--;
 }
 
-buildUnnamed5325() {
+buildUnnamed4848() {
+  var o = new core.List<api.Product>();
+  o.add(buildProduct());
+  o.add(buildProduct());
+  return o;
+}
+
+checkUnnamed4848(core.List<api.Product> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProduct(o[0]);
+  checkProduct(o[1]);
+}
+
+core.int buildCounterListProductsResponse = 0;
+buildListProductsResponse() {
+  var o = new api.ListProductsResponse();
+  buildCounterListProductsResponse++;
+  if (buildCounterListProductsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.products = buildUnnamed4848();
+  }
+  buildCounterListProductsResponse--;
+  return o;
+}
+
+checkListProductsResponse(api.ListProductsResponse o) {
+  buildCounterListProductsResponse++;
+  if (buildCounterListProductsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4848(o.products);
+  }
+  buildCounterListProductsResponse--;
+}
+
+buildUnnamed4849() {
+  var o = new core.List<api.Proposal>();
+  o.add(buildProposal());
+  o.add(buildProposal());
+  return o;
+}
+
+checkUnnamed4849(core.List<api.Proposal> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkProposal(o[0]);
+  checkProposal(o[1]);
+}
+
+core.int buildCounterListProposalsResponse = 0;
+buildListProposalsResponse() {
+  var o = new api.ListProposalsResponse();
+  buildCounterListProposalsResponse++;
+  if (buildCounterListProposalsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.proposals = buildUnnamed4849();
+  }
+  buildCounterListProposalsResponse--;
+  return o;
+}
+
+checkListProposalsResponse(api.ListProposalsResponse o) {
+  buildCounterListProposalsResponse++;
+  if (buildCounterListProposalsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4849(o.proposals);
+  }
+  buildCounterListProposalsResponse--;
+}
+
+buildUnnamed4850() {
+  var o = new core.List<api.PublisherProfile>();
+  o.add(buildPublisherProfile());
+  o.add(buildPublisherProfile());
+  return o;
+}
+
+checkUnnamed4850(core.List<api.PublisherProfile> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPublisherProfile(o[0]);
+  checkPublisherProfile(o[1]);
+}
+
+core.int buildCounterListPublisherProfilesResponse = 0;
+buildListPublisherProfilesResponse() {
+  var o = new api.ListPublisherProfilesResponse();
+  buildCounterListPublisherProfilesResponse++;
+  if (buildCounterListPublisherProfilesResponse < 3) {
+    o.nextPageToken = "foo";
+    o.publisherProfiles = buildUnnamed4850();
+  }
+  buildCounterListPublisherProfilesResponse--;
+  return o;
+}
+
+checkListPublisherProfilesResponse(api.ListPublisherProfilesResponse o) {
+  buildCounterListPublisherProfilesResponse++;
+  if (buildCounterListPublisherProfilesResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed4850(o.publisherProfiles);
+  }
+  buildCounterListPublisherProfilesResponse--;
+}
+
+buildUnnamed4851() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed5325(core.List<core.int> o) {
+checkUnnamed4851(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -1536,7 +2377,7 @@ buildLocationContext() {
   var o = new api.LocationContext();
   buildCounterLocationContext++;
   if (buildCounterLocationContext < 3) {
-    o.geoCriteriaIds = buildUnnamed5325();
+    o.geoCriteriaIds = buildUnnamed4851();
   }
   buildCounterLocationContext--;
   return o;
@@ -1545,9 +2386,36 @@ buildLocationContext() {
 checkLocationContext(api.LocationContext o) {
   buildCounterLocationContext++;
   if (buildCounterLocationContext < 3) {
-    checkUnnamed5325(o.geoCriteriaIds);
+    checkUnnamed4851(o.geoCriteriaIds);
   }
   buildCounterLocationContext--;
+}
+
+core.int buildCounterMarketplaceTargeting = 0;
+buildMarketplaceTargeting() {
+  var o = new api.MarketplaceTargeting();
+  buildCounterMarketplaceTargeting++;
+  if (buildCounterMarketplaceTargeting < 3) {
+    o.geoTargeting = buildCriteriaTargeting();
+    o.inventorySizeTargeting = buildInventorySizeTargeting();
+    o.placementTargeting = buildPlacementTargeting();
+    o.technologyTargeting = buildTechnologyTargeting();
+    o.videoTargeting = buildVideoTargeting();
+  }
+  buildCounterMarketplaceTargeting--;
+  return o;
+}
+
+checkMarketplaceTargeting(api.MarketplaceTargeting o) {
+  buildCounterMarketplaceTargeting++;
+  if (buildCounterMarketplaceTargeting < 3) {
+    checkCriteriaTargeting(o.geoTargeting);
+    checkInventorySizeTargeting(o.inventorySizeTargeting);
+    checkPlacementTargeting(o.placementTargeting);
+    checkTechnologyTargeting(o.technologyTargeting);
+    checkVideoTargeting(o.videoTargeting);
+  }
+  buildCounterMarketplaceTargeting--;
 }
 
 core.int buildCounterMetricValue = 0;
@@ -1569,6 +2437,48 @@ checkMetricValue(api.MetricValue o) {
     unittest.expect(o.variance, unittest.equals('foo'));
   }
   buildCounterMetricValue--;
+}
+
+core.int buildCounterMobileApplicationTargeting = 0;
+buildMobileApplicationTargeting() {
+  var o = new api.MobileApplicationTargeting();
+  buildCounterMobileApplicationTargeting++;
+  if (buildCounterMobileApplicationTargeting < 3) {
+    o.firstPartyTargeting = buildFirstPartyMobileApplicationTargeting();
+  }
+  buildCounterMobileApplicationTargeting--;
+  return o;
+}
+
+checkMobileApplicationTargeting(api.MobileApplicationTargeting o) {
+  buildCounterMobileApplicationTargeting++;
+  if (buildCounterMobileApplicationTargeting < 3) {
+    checkFirstPartyMobileApplicationTargeting(o.firstPartyTargeting);
+  }
+  buildCounterMobileApplicationTargeting--;
+}
+
+core.int buildCounterMoney = 0;
+buildMoney() {
+  var o = new api.Money();
+  buildCounterMoney++;
+  if (buildCounterMoney < 3) {
+    o.currencyCode = "foo";
+    o.nanos = 42;
+    o.units = "foo";
+  }
+  buildCounterMoney--;
+  return o;
+}
+
+checkMoney(api.Money o) {
+  buildCounterMoney++;
+  if (buildCounterMoney < 3) {
+    unittest.expect(o.currencyCode, unittest.equals('foo'));
+    unittest.expect(o.nanos, unittest.equals(42));
+    unittest.expect(o.units, unittest.equals('foo'));
+  }
+  buildCounterMoney--;
 }
 
 core.int buildCounterNativeContent = 0;
@@ -1637,14 +2547,168 @@ checkNonBillableWinningBidStatusRow(api.NonBillableWinningBidStatusRow o) {
   buildCounterNonBillableWinningBidStatusRow--;
 }
 
-buildUnnamed5326() {
+buildUnnamed4852() {
+  var o = new core.List<api.PricePerBuyer>();
+  o.add(buildPricePerBuyer());
+  o.add(buildPricePerBuyer());
+  return o;
+}
+
+checkUnnamed4852(core.List<api.PricePerBuyer> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPricePerBuyer(o[0]);
+  checkPricePerBuyer(o[1]);
+}
+
+core.int buildCounterNonGuaranteedAuctionTerms = 0;
+buildNonGuaranteedAuctionTerms() {
+  var o = new api.NonGuaranteedAuctionTerms();
+  buildCounterNonGuaranteedAuctionTerms++;
+  if (buildCounterNonGuaranteedAuctionTerms < 3) {
+    o.autoOptimizePrivateAuction = true;
+    o.reservePricesPerBuyer = buildUnnamed4852();
+  }
+  buildCounterNonGuaranteedAuctionTerms--;
+  return o;
+}
+
+checkNonGuaranteedAuctionTerms(api.NonGuaranteedAuctionTerms o) {
+  buildCounterNonGuaranteedAuctionTerms++;
+  if (buildCounterNonGuaranteedAuctionTerms < 3) {
+    unittest.expect(o.autoOptimizePrivateAuction, unittest.isTrue);
+    checkUnnamed4852(o.reservePricesPerBuyer);
+  }
+  buildCounterNonGuaranteedAuctionTerms--;
+}
+
+buildUnnamed4853() {
+  var o = new core.List<api.PricePerBuyer>();
+  o.add(buildPricePerBuyer());
+  o.add(buildPricePerBuyer());
+  return o;
+}
+
+checkUnnamed4853(core.List<api.PricePerBuyer> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPricePerBuyer(o[0]);
+  checkPricePerBuyer(o[1]);
+}
+
+core.int buildCounterNonGuaranteedFixedPriceTerms = 0;
+buildNonGuaranteedFixedPriceTerms() {
+  var o = new api.NonGuaranteedFixedPriceTerms();
+  buildCounterNonGuaranteedFixedPriceTerms++;
+  if (buildCounterNonGuaranteedFixedPriceTerms < 3) {
+    o.fixedPrices = buildUnnamed4853();
+  }
+  buildCounterNonGuaranteedFixedPriceTerms--;
+  return o;
+}
+
+checkNonGuaranteedFixedPriceTerms(api.NonGuaranteedFixedPriceTerms o) {
+  buildCounterNonGuaranteedFixedPriceTerms++;
+  if (buildCounterNonGuaranteedFixedPriceTerms < 3) {
+    checkUnnamed4853(o.fixedPrices);
+  }
+  buildCounterNonGuaranteedFixedPriceTerms--;
+}
+
+core.int buildCounterNote = 0;
+buildNote() {
+  var o = new api.Note();
+  buildCounterNote++;
+  if (buildCounterNote < 3) {
+    o.createTime = "foo";
+    o.creatorRole = "foo";
+    o.note = "foo";
+    o.noteId = "foo";
+    o.proposalRevision = "foo";
+  }
+  buildCounterNote--;
+  return o;
+}
+
+checkNote(api.Note o) {
+  buildCounterNote++;
+  if (buildCounterNote < 3) {
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.creatorRole, unittest.equals('foo'));
+    unittest.expect(o.note, unittest.equals('foo'));
+    unittest.expect(o.noteId, unittest.equals('foo'));
+    unittest.expect(o.proposalRevision, unittest.equals('foo'));
+  }
+  buildCounterNote--;
+}
+
+core.int buildCounterOperatingSystemTargeting = 0;
+buildOperatingSystemTargeting() {
+  var o = new api.OperatingSystemTargeting();
+  buildCounterOperatingSystemTargeting++;
+  if (buildCounterOperatingSystemTargeting < 3) {
+    o.operatingSystemCriteria = buildCriteriaTargeting();
+    o.operatingSystemVersionCriteria = buildCriteriaTargeting();
+  }
+  buildCounterOperatingSystemTargeting--;
+  return o;
+}
+
+checkOperatingSystemTargeting(api.OperatingSystemTargeting o) {
+  buildCounterOperatingSystemTargeting++;
+  if (buildCounterOperatingSystemTargeting < 3) {
+    checkCriteriaTargeting(o.operatingSystemCriteria);
+    checkCriteriaTargeting(o.operatingSystemVersionCriteria);
+  }
+  buildCounterOperatingSystemTargeting--;
+}
+
+core.int buildCounterPauseProposalRequest = 0;
+buildPauseProposalRequest() {
+  var o = new api.PauseProposalRequest();
+  buildCounterPauseProposalRequest++;
+  if (buildCounterPauseProposalRequest < 3) {
+    o.reason = "foo";
+  }
+  buildCounterPauseProposalRequest--;
+  return o;
+}
+
+checkPauseProposalRequest(api.PauseProposalRequest o) {
+  buildCounterPauseProposalRequest++;
+  if (buildCounterPauseProposalRequest < 3) {
+    unittest.expect(o.reason, unittest.equals('foo'));
+  }
+  buildCounterPauseProposalRequest--;
+}
+
+core.int buildCounterPlacementTargeting = 0;
+buildPlacementTargeting() {
+  var o = new api.PlacementTargeting();
+  buildCounterPlacementTargeting++;
+  if (buildCounterPlacementTargeting < 3) {
+    o.mobileApplicationTargeting = buildMobileApplicationTargeting();
+    o.urlTargeting = buildUrlTargeting();
+  }
+  buildCounterPlacementTargeting--;
+  return o;
+}
+
+checkPlacementTargeting(api.PlacementTargeting o) {
+  buildCounterPlacementTargeting++;
+  if (buildCounterPlacementTargeting < 3) {
+    checkMobileApplicationTargeting(o.mobileApplicationTargeting);
+    checkUrlTargeting(o.urlTargeting);
+  }
+  buildCounterPlacementTargeting--;
+}
+
+buildUnnamed4854() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5326(core.List<core.String> o) {
+checkUnnamed4854(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1655,7 +2719,7 @@ buildPlatformContext() {
   var o = new api.PlatformContext();
   buildCounterPlatformContext++;
   if (buildCounterPlatformContext < 3) {
-    o.platforms = buildUnnamed5326();
+    o.platforms = buildUnnamed4854();
   }
   buildCounterPlatformContext--;
   return o;
@@ -1664,9 +2728,336 @@ buildPlatformContext() {
 checkPlatformContext(api.PlatformContext o) {
   buildCounterPlatformContext++;
   if (buildCounterPlatformContext < 3) {
-    checkUnnamed5326(o.platforms);
+    checkUnnamed4854(o.platforms);
   }
   buildCounterPlatformContext--;
+}
+
+core.int buildCounterPrice = 0;
+buildPrice() {
+  var o = new api.Price();
+  buildCounterPrice++;
+  if (buildCounterPrice < 3) {
+    o.amount = buildMoney();
+    o.pricingType = "foo";
+  }
+  buildCounterPrice--;
+  return o;
+}
+
+checkPrice(api.Price o) {
+  buildCounterPrice++;
+  if (buildCounterPrice < 3) {
+    checkMoney(o.amount);
+    unittest.expect(o.pricingType, unittest.equals('foo'));
+  }
+  buildCounterPrice--;
+}
+
+buildUnnamed4855() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4855(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPricePerBuyer = 0;
+buildPricePerBuyer() {
+  var o = new api.PricePerBuyer();
+  buildCounterPricePerBuyer++;
+  if (buildCounterPricePerBuyer < 3) {
+    o.advertiserIds = buildUnnamed4855();
+    o.buyer = buildBuyer();
+    o.price = buildPrice();
+  }
+  buildCounterPricePerBuyer--;
+  return o;
+}
+
+checkPricePerBuyer(api.PricePerBuyer o) {
+  buildCounterPricePerBuyer++;
+  if (buildCounterPricePerBuyer < 3) {
+    checkUnnamed4855(o.advertiserIds);
+    checkBuyer(o.buyer);
+    checkPrice(o.price);
+  }
+  buildCounterPricePerBuyer--;
+}
+
+core.int buildCounterPrivateData = 0;
+buildPrivateData() {
+  var o = new api.PrivateData();
+  buildCounterPrivateData++;
+  if (buildCounterPrivateData < 3) {
+    o.referenceId = "foo";
+  }
+  buildCounterPrivateData--;
+  return o;
+}
+
+checkPrivateData(api.PrivateData o) {
+  buildCounterPrivateData++;
+  if (buildCounterPrivateData < 3) {
+    unittest.expect(o.referenceId, unittest.equals('foo'));
+  }
+  buildCounterPrivateData--;
+}
+
+buildUnnamed4856() {
+  var o = new core.List<api.ContactInformation>();
+  o.add(buildContactInformation());
+  o.add(buildContactInformation());
+  return o;
+}
+
+checkUnnamed4856(core.List<api.ContactInformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkContactInformation(o[0]);
+  checkContactInformation(o[1]);
+}
+
+buildUnnamed4857() {
+  var o = new core.List<api.TargetingCriteria>();
+  o.add(buildTargetingCriteria());
+  o.add(buildTargetingCriteria());
+  return o;
+}
+
+checkUnnamed4857(core.List<api.TargetingCriteria> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargetingCriteria(o[0]);
+  checkTargetingCriteria(o[1]);
+}
+
+core.int buildCounterProduct = 0;
+buildProduct() {
+  var o = new api.Product();
+  buildCounterProduct++;
+  if (buildCounterProduct < 3) {
+    o.availableEndTime = "foo";
+    o.availableStartTime = "foo";
+    o.createTime = "foo";
+    o.creatorContacts = buildUnnamed4856();
+    o.displayName = "foo";
+    o.hasCreatorSignedOff = true;
+    o.productId = "foo";
+    o.productRevision = "foo";
+    o.publisherProfileId = "foo";
+    o.seller = buildSeller();
+    o.syndicationProduct = "foo";
+    o.targetingCriterion = buildUnnamed4857();
+    o.terms = buildDealTerms();
+    o.updateTime = "foo";
+    o.webPropertyCode = "foo";
+  }
+  buildCounterProduct--;
+  return o;
+}
+
+checkProduct(api.Product o) {
+  buildCounterProduct++;
+  if (buildCounterProduct < 3) {
+    unittest.expect(o.availableEndTime, unittest.equals('foo'));
+    unittest.expect(o.availableStartTime, unittest.equals('foo'));
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    checkUnnamed4856(o.creatorContacts);
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.hasCreatorSignedOff, unittest.isTrue);
+    unittest.expect(o.productId, unittest.equals('foo'));
+    unittest.expect(o.productRevision, unittest.equals('foo'));
+    unittest.expect(o.publisherProfileId, unittest.equals('foo'));
+    checkSeller(o.seller);
+    unittest.expect(o.syndicationProduct, unittest.equals('foo'));
+    checkUnnamed4857(o.targetingCriterion);
+    checkDealTerms(o.terms);
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+    unittest.expect(o.webPropertyCode, unittest.equals('foo'));
+  }
+  buildCounterProduct--;
+}
+
+buildUnnamed4858() {
+  var o = new core.List<api.ContactInformation>();
+  o.add(buildContactInformation());
+  o.add(buildContactInformation());
+  return o;
+}
+
+checkUnnamed4858(core.List<api.ContactInformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkContactInformation(o[0]);
+  checkContactInformation(o[1]);
+}
+
+buildUnnamed4859() {
+  var o = new core.List<api.Deal>();
+  o.add(buildDeal());
+  o.add(buildDeal());
+  return o;
+}
+
+checkUnnamed4859(core.List<api.Deal> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDeal(o[0]);
+  checkDeal(o[1]);
+}
+
+buildUnnamed4860() {
+  var o = new core.List<api.Note>();
+  o.add(buildNote());
+  o.add(buildNote());
+  return o;
+}
+
+checkUnnamed4860(core.List<api.Note> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNote(o[0]);
+  checkNote(o[1]);
+}
+
+buildUnnamed4861() {
+  var o = new core.List<api.ContactInformation>();
+  o.add(buildContactInformation());
+  o.add(buildContactInformation());
+  return o;
+}
+
+checkUnnamed4861(core.List<api.ContactInformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkContactInformation(o[0]);
+  checkContactInformation(o[1]);
+}
+
+core.int buildCounterProposal = 0;
+buildProposal() {
+  var o = new api.Proposal();
+  buildCounterProposal++;
+  if (buildCounterProposal < 3) {
+    o.billedBuyer = buildBuyer();
+    o.buyer = buildBuyer();
+    o.buyerContacts = buildUnnamed4858();
+    o.buyerPrivateData = buildPrivateData();
+    o.deals = buildUnnamed4859();
+    o.displayName = "foo";
+    o.isRenegotiating = true;
+    o.isSetupComplete = true;
+    o.lastUpdaterOrCommentorRole = "foo";
+    o.notes = buildUnnamed4860();
+    o.originatorRole = "foo";
+    o.privateAuctionId = "foo";
+    o.proposalId = "foo";
+    o.proposalRevision = "foo";
+    o.proposalState = "foo";
+    o.seller = buildSeller();
+    o.sellerContacts = buildUnnamed4861();
+    o.updateTime = "foo";
+  }
+  buildCounterProposal--;
+  return o;
+}
+
+checkProposal(api.Proposal o) {
+  buildCounterProposal++;
+  if (buildCounterProposal < 3) {
+    checkBuyer(o.billedBuyer);
+    checkBuyer(o.buyer);
+    checkUnnamed4858(o.buyerContacts);
+    checkPrivateData(o.buyerPrivateData);
+    checkUnnamed4859(o.deals);
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.isRenegotiating, unittest.isTrue);
+    unittest.expect(o.isSetupComplete, unittest.isTrue);
+    unittest.expect(o.lastUpdaterOrCommentorRole, unittest.equals('foo'));
+    checkUnnamed4860(o.notes);
+    unittest.expect(o.originatorRole, unittest.equals('foo'));
+    unittest.expect(o.privateAuctionId, unittest.equals('foo'));
+    unittest.expect(o.proposalId, unittest.equals('foo'));
+    unittest.expect(o.proposalRevision, unittest.equals('foo'));
+    unittest.expect(o.proposalState, unittest.equals('foo'));
+    checkSeller(o.seller);
+    checkUnnamed4861(o.sellerContacts);
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+  }
+  buildCounterProposal--;
+}
+
+buildUnnamed4862() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4862(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4863() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4863(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterPublisherProfile = 0;
+buildPublisherProfile() {
+  var o = new api.PublisherProfile();
+  buildCounterPublisherProfile++;
+  if (buildCounterPublisherProfile < 3) {
+    o.audienceDescription = "foo";
+    o.buyerPitchStatement = "foo";
+    o.directDealsContact = "foo";
+    o.displayName = "foo";
+    o.domains = buildUnnamed4862();
+    o.googlePlusUrl = "foo";
+    o.logoUrl = "foo";
+    o.mediaKitUrl = "foo";
+    o.overview = "foo";
+    o.programmaticDealsContact = "foo";
+    o.publisherProfileId = "foo";
+    o.rateCardInfoUrl = "foo";
+    o.samplePageUrl = "foo";
+    o.seller = buildSeller();
+    o.topHeadlines = buildUnnamed4863();
+  }
+  buildCounterPublisherProfile--;
+  return o;
+}
+
+checkPublisherProfile(api.PublisherProfile o) {
+  buildCounterPublisherProfile++;
+  if (buildCounterPublisherProfile < 3) {
+    unittest.expect(o.audienceDescription, unittest.equals('foo'));
+    unittest.expect(o.buyerPitchStatement, unittest.equals('foo'));
+    unittest.expect(o.directDealsContact, unittest.equals('foo'));
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    checkUnnamed4862(o.domains);
+    unittest.expect(o.googlePlusUrl, unittest.equals('foo'));
+    unittest.expect(o.logoUrl, unittest.equals('foo'));
+    unittest.expect(o.mediaKitUrl, unittest.equals('foo'));
+    unittest.expect(o.overview, unittest.equals('foo'));
+    unittest.expect(o.programmaticDealsContact, unittest.equals('foo'));
+    unittest.expect(o.publisherProfileId, unittest.equals('foo'));
+    unittest.expect(o.rateCardInfoUrl, unittest.equals('foo'));
+    unittest.expect(o.samplePageUrl, unittest.equals('foo'));
+    checkSeller(o.seller);
+    checkUnnamed4863(o.topHeadlines);
+  }
+  buildCounterPublisherProfile--;
 }
 
 core.int buildCounterRealtimeTimeRange = 0;
@@ -1749,11 +3140,27 @@ checkRemoveDealAssociationRequest(api.RemoveDealAssociationRequest o) {
   buildCounterRemoveDealAssociationRequest--;
 }
 
+core.int buildCounterResumeProposalRequest = 0;
+buildResumeProposalRequest() {
+  var o = new api.ResumeProposalRequest();
+  buildCounterResumeProposalRequest++;
+  if (buildCounterResumeProposalRequest < 3) {}
+  buildCounterResumeProposalRequest--;
+  return o;
+}
+
+checkResumeProposalRequest(api.ResumeProposalRequest o) {
+  buildCounterResumeProposalRequest++;
+  if (buildCounterResumeProposalRequest < 3) {}
+  buildCounterResumeProposalRequest--;
+}
+
 core.int buildCounterRowDimensions = 0;
 buildRowDimensions() {
   var o = new api.RowDimensions();
   buildCounterRowDimensions++;
   if (buildCounterRowDimensions < 3) {
+    o.publisherIdentifier = "foo";
     o.timeInterval = buildTimeInterval();
   }
   buildCounterRowDimensions--;
@@ -1763,19 +3170,20 @@ buildRowDimensions() {
 checkRowDimensions(api.RowDimensions o) {
   buildCounterRowDimensions++;
   if (buildCounterRowDimensions < 3) {
+    unittest.expect(o.publisherIdentifier, unittest.equals('foo'));
     checkTimeInterval(o.timeInterval);
   }
   buildCounterRowDimensions--;
 }
 
-buildUnnamed5327() {
+buildUnnamed4864() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5327(core.List<core.String> o) {
+checkUnnamed4864(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1786,7 +3194,7 @@ buildSecurityContext() {
   var o = new api.SecurityContext();
   buildCounterSecurityContext++;
   if (buildCounterSecurityContext < 3) {
-    o.securities = buildUnnamed5327();
+    o.securities = buildUnnamed4864();
   }
   buildCounterSecurityContext--;
   return o;
@@ -1795,9 +3203,30 @@ buildSecurityContext() {
 checkSecurityContext(api.SecurityContext o) {
   buildCounterSecurityContext++;
   if (buildCounterSecurityContext < 3) {
-    checkUnnamed5327(o.securities);
+    checkUnnamed4864(o.securities);
   }
   buildCounterSecurityContext--;
+}
+
+core.int buildCounterSeller = 0;
+buildSeller() {
+  var o = new api.Seller();
+  buildCounterSeller++;
+  if (buildCounterSeller < 3) {
+    o.accountId = "foo";
+    o.subAccountId = "foo";
+  }
+  buildCounterSeller--;
+  return o;
+}
+
+checkSeller(api.Seller o) {
+  buildCounterSeller++;
+  if (buildCounterSeller < 3) {
+    unittest.expect(o.accountId, unittest.equals('foo'));
+    unittest.expect(o.subAccountId, unittest.equals('foo'));
+  }
+  buildCounterSeller--;
 }
 
 core.int buildCounterServingContext = 0;
@@ -1829,27 +3258,27 @@ checkServingContext(api.ServingContext o) {
   buildCounterServingContext--;
 }
 
-buildUnnamed5328() {
+buildUnnamed4865() {
   var o = new core.List<api.ServingContext>();
   o.add(buildServingContext());
   o.add(buildServingContext());
   return o;
 }
 
-checkUnnamed5328(core.List<api.ServingContext> o) {
+checkUnnamed4865(core.List<api.ServingContext> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServingContext(o[0]);
   checkServingContext(o[1]);
 }
 
-buildUnnamed5329() {
+buildUnnamed4866() {
   var o = new core.List<api.Disapproval>();
   o.add(buildDisapproval());
   o.add(buildDisapproval());
   return o;
 }
 
-checkUnnamed5329(core.List<api.Disapproval> o) {
+checkUnnamed4866(core.List<api.Disapproval> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDisapproval(o[0]);
   checkDisapproval(o[1]);
@@ -1860,9 +3289,9 @@ buildServingRestriction() {
   var o = new api.ServingRestriction();
   buildCounterServingRestriction++;
   if (buildCounterServingRestriction < 3) {
-    o.contexts = buildUnnamed5328();
+    o.contexts = buildUnnamed4865();
     o.disapproval = buildDisapproval();
-    o.disapprovalReasons = buildUnnamed5329();
+    o.disapprovalReasons = buildUnnamed4866();
     o.status = "foo";
   }
   buildCounterServingRestriction--;
@@ -1872,12 +3301,33 @@ buildServingRestriction() {
 checkServingRestriction(api.ServingRestriction o) {
   buildCounterServingRestriction++;
   if (buildCounterServingRestriction < 3) {
-    checkUnnamed5328(o.contexts);
+    checkUnnamed4865(o.contexts);
     checkDisapproval(o.disapproval);
-    checkUnnamed5329(o.disapprovalReasons);
+    checkUnnamed4866(o.disapprovalReasons);
     unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterServingRestriction--;
+}
+
+core.int buildCounterSize = 0;
+buildSize() {
+  var o = new api.Size();
+  buildCounterSize++;
+  if (buildCounterSize < 3) {
+    o.height = 42;
+    o.width = 42;
+  }
+  buildCounterSize--;
+  return o;
+}
+
+checkSize(api.Size o) {
+  buildCounterSize++;
+  if (buildCounterSize < 3) {
+    unittest.expect(o.height, unittest.equals(42));
+    unittest.expect(o.width, unittest.equals(42));
+  }
+  buildCounterSize--;
 }
 
 core.int buildCounterStopWatchingCreativeRequest = 0;
@@ -1893,6 +3343,103 @@ checkStopWatchingCreativeRequest(api.StopWatchingCreativeRequest o) {
   buildCounterStopWatchingCreativeRequest++;
   if (buildCounterStopWatchingCreativeRequest < 3) {}
   buildCounterStopWatchingCreativeRequest--;
+}
+
+buildUnnamed4867() {
+  var o = new core.List<api.TargetingValue>();
+  o.add(buildTargetingValue());
+  o.add(buildTargetingValue());
+  return o;
+}
+
+checkUnnamed4867(core.List<api.TargetingValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargetingValue(o[0]);
+  checkTargetingValue(o[1]);
+}
+
+buildUnnamed4868() {
+  var o = new core.List<api.TargetingValue>();
+  o.add(buildTargetingValue());
+  o.add(buildTargetingValue());
+  return o;
+}
+
+checkUnnamed4868(core.List<api.TargetingValue> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargetingValue(o[0]);
+  checkTargetingValue(o[1]);
+}
+
+core.int buildCounterTargetingCriteria = 0;
+buildTargetingCriteria() {
+  var o = new api.TargetingCriteria();
+  buildCounterTargetingCriteria++;
+  if (buildCounterTargetingCriteria < 3) {
+    o.exclusions = buildUnnamed4867();
+    o.inclusions = buildUnnamed4868();
+    o.key = "foo";
+  }
+  buildCounterTargetingCriteria--;
+  return o;
+}
+
+checkTargetingCriteria(api.TargetingCriteria o) {
+  buildCounterTargetingCriteria++;
+  if (buildCounterTargetingCriteria < 3) {
+    checkUnnamed4867(o.exclusions);
+    checkUnnamed4868(o.inclusions);
+    unittest.expect(o.key, unittest.equals('foo'));
+  }
+  buildCounterTargetingCriteria--;
+}
+
+core.int buildCounterTargetingValue = 0;
+buildTargetingValue() {
+  var o = new api.TargetingValue();
+  buildCounterTargetingValue++;
+  if (buildCounterTargetingValue < 3) {
+    o.creativeSizeValue = buildCreativeSize();
+    o.dayPartTargetingValue = buildDayPartTargeting();
+    o.longValue = "foo";
+    o.stringValue = "foo";
+  }
+  buildCounterTargetingValue--;
+  return o;
+}
+
+checkTargetingValue(api.TargetingValue o) {
+  buildCounterTargetingValue++;
+  if (buildCounterTargetingValue < 3) {
+    checkCreativeSize(o.creativeSizeValue);
+    checkDayPartTargeting(o.dayPartTargetingValue);
+    unittest.expect(o.longValue, unittest.equals('foo'));
+    unittest.expect(o.stringValue, unittest.equals('foo'));
+  }
+  buildCounterTargetingValue--;
+}
+
+core.int buildCounterTechnologyTargeting = 0;
+buildTechnologyTargeting() {
+  var o = new api.TechnologyTargeting();
+  buildCounterTechnologyTargeting++;
+  if (buildCounterTechnologyTargeting < 3) {
+    o.deviceCapabilityTargeting = buildCriteriaTargeting();
+    o.deviceCategoryTargeting = buildCriteriaTargeting();
+    o.operatingSystemTargeting = buildOperatingSystemTargeting();
+  }
+  buildCounterTechnologyTargeting--;
+  return o;
+}
+
+checkTechnologyTargeting(api.TechnologyTargeting o) {
+  buildCounterTechnologyTargeting++;
+  if (buildCounterTechnologyTargeting < 3) {
+    checkCriteriaTargeting(o.deviceCapabilityTargeting);
+    checkCriteriaTargeting(o.deviceCategoryTargeting);
+    checkOperatingSystemTargeting(o.operatingSystemTargeting);
+  }
+  buildCounterTechnologyTargeting--;
 }
 
 core.int buildCounterTimeInterval = 0;
@@ -1916,6 +3463,78 @@ checkTimeInterval(api.TimeInterval o) {
   buildCounterTimeInterval--;
 }
 
+core.int buildCounterTimeOfDay = 0;
+buildTimeOfDay() {
+  var o = new api.TimeOfDay();
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    o.hours = 42;
+    o.minutes = 42;
+    o.nanos = 42;
+    o.seconds = 42;
+  }
+  buildCounterTimeOfDay--;
+  return o;
+}
+
+checkTimeOfDay(api.TimeOfDay o) {
+  buildCounterTimeOfDay++;
+  if (buildCounterTimeOfDay < 3) {
+    unittest.expect(o.hours, unittest.equals(42));
+    unittest.expect(o.minutes, unittest.equals(42));
+    unittest.expect(o.nanos, unittest.equals(42));
+    unittest.expect(o.seconds, unittest.equals(42));
+  }
+  buildCounterTimeOfDay--;
+}
+
+buildUnnamed4869() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4869(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4870() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4870(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterUrlTargeting = 0;
+buildUrlTargeting() {
+  var o = new api.UrlTargeting();
+  buildCounterUrlTargeting++;
+  if (buildCounterUrlTargeting < 3) {
+    o.excludedUrls = buildUnnamed4869();
+    o.targetedUrls = buildUnnamed4870();
+  }
+  buildCounterUrlTargeting--;
+  return o;
+}
+
+checkUrlTargeting(api.UrlTargeting o) {
+  buildCounterUrlTargeting++;
+  if (buildCounterUrlTargeting < 3) {
+    checkUnnamed4869(o.excludedUrls);
+    checkUnnamed4870(o.targetedUrls);
+  }
+  buildCounterUrlTargeting--;
+}
+
 core.int buildCounterVideoContent = 0;
 buildVideoContent() {
   var o = new api.VideoContent();
@@ -1935,6 +3554,53 @@ checkVideoContent(api.VideoContent o) {
     unittest.expect(o.videoVastXml, unittest.equals('foo'));
   }
   buildCounterVideoContent--;
+}
+
+buildUnnamed4871() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4871(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed4872() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed4872(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterVideoTargeting = 0;
+buildVideoTargeting() {
+  var o = new api.VideoTargeting();
+  buildCounterVideoTargeting++;
+  if (buildCounterVideoTargeting < 3) {
+    o.excludedPositionTypes = buildUnnamed4871();
+    o.targetedPositionTypes = buildUnnamed4872();
+  }
+  buildCounterVideoTargeting--;
+  return o;
+}
+
+checkVideoTargeting(api.VideoTargeting o) {
+  buildCounterVideoTargeting++;
+  if (buildCounterVideoTargeting < 3) {
+    checkUnnamed4871(o.excludedPositionTypes);
+    checkUnnamed4872(o.targetedPositionTypes);
+  }
+  buildCounterVideoTargeting--;
 }
 
 core.int buildCounterWatchCreativeRequest = 0;
@@ -1965,11 +3631,35 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-AcceptProposalRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAcceptProposalRequest();
+      var od = new api.AcceptProposalRequest.fromJson(o.toJson());
+      checkAcceptProposalRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-AdSize", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAdSize();
+      var od = new api.AdSize.fromJson(o.toJson());
+      checkAdSize(od);
+    });
+  });
+
   unittest.group("obj-schema-AddDealAssociationRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildAddDealAssociationRequest();
       var od = new api.AddDealAssociationRequest.fromJson(o.toJson());
       checkAddDealAssociationRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-AddNoteRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAddNoteRequest();
+      var od = new api.AddNoteRequest.fromJson(o.toJson());
+      checkAddNoteRequest(od);
     });
   });
 
@@ -2005,11 +3695,27 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Buyer", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBuyer();
+      var od = new api.Buyer.fromJson(o.toJson());
+      checkBuyer(od);
+    });
+  });
+
   unittest.group("obj-schema-CalloutStatusRow", () {
     unittest.test("to-json--from-json", () {
       var o = buildCalloutStatusRow();
       var od = new api.CalloutStatusRow.fromJson(o.toJson());
       checkCalloutStatusRow(od);
+    });
+  });
+
+  unittest.group("obj-schema-CancelNegotiationRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCancelNegotiationRequest();
+      var od = new api.CancelNegotiationRequest.fromJson(o.toJson());
+      checkCancelNegotiationRequest(od);
     });
   });
 
@@ -2037,6 +3743,22 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-CompleteSetupRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCompleteSetupRequest();
+      var od = new api.CompleteSetupRequest.fromJson(o.toJson());
+      checkCompleteSetupRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-ContactInformation", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildContactInformation();
+      var od = new api.ContactInformation.fromJson(o.toJson());
+      checkContactInformation(od);
+    });
+  });
+
   unittest.group("obj-schema-Correction", () {
     unittest.test("to-json--from-json", () {
       var o = buildCorrection();
@@ -2061,6 +3783,30 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-CreativeRestrictions", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreativeRestrictions();
+      var od = new api.CreativeRestrictions.fromJson(o.toJson());
+      checkCreativeRestrictions(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreativeSize", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreativeSize();
+      var od = new api.CreativeSize.fromJson(o.toJson());
+      checkCreativeSize(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreativeSpecification", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreativeSpecification();
+      var od = new api.CreativeSpecification.fromJson(o.toJson());
+      checkCreativeSpecification(od);
+    });
+  });
+
   unittest.group("obj-schema-CreativeStatusRow", () {
     unittest.test("to-json--from-json", () {
       var o = buildCreativeStatusRow();
@@ -2069,11 +3815,75 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-CriteriaTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCriteriaTargeting();
+      var od = new api.CriteriaTargeting.fromJson(o.toJson());
+      checkCriteriaTargeting(od);
+    });
+  });
+
   unittest.group("obj-schema-Date", () {
     unittest.test("to-json--from-json", () {
       var o = buildDate();
       var od = new api.Date.fromJson(o.toJson());
       checkDate(od);
+    });
+  });
+
+  unittest.group("obj-schema-DayPart", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDayPart();
+      var od = new api.DayPart.fromJson(o.toJson());
+      checkDayPart(od);
+    });
+  });
+
+  unittest.group("obj-schema-DayPartTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDayPartTargeting();
+      var od = new api.DayPartTargeting.fromJson(o.toJson());
+      checkDayPartTargeting(od);
+    });
+  });
+
+  unittest.group("obj-schema-Deal", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDeal();
+      var od = new api.Deal.fromJson(o.toJson());
+      checkDeal(od);
+    });
+  });
+
+  unittest.group("obj-schema-DealPauseStatus", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDealPauseStatus();
+      var od = new api.DealPauseStatus.fromJson(o.toJson());
+      checkDealPauseStatus(od);
+    });
+  });
+
+  unittest.group("obj-schema-DealServingMetadata", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDealServingMetadata();
+      var od = new api.DealServingMetadata.fromJson(o.toJson());
+      checkDealServingMetadata(od);
+    });
+  });
+
+  unittest.group("obj-schema-DealTerms", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDealTerms();
+      var od = new api.DealTerms.fromJson(o.toJson());
+      checkDealTerms(od);
+    });
+  });
+
+  unittest.group("obj-schema-DeliveryControl", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDeliveryControl();
+      var od = new api.DeliveryControl.fromJson(o.toJson());
+      checkDeliveryControl(od);
     });
   });
 
@@ -2125,6 +3935,31 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-FirstPartyMobileApplicationTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFirstPartyMobileApplicationTargeting();
+      var od =
+          new api.FirstPartyMobileApplicationTargeting.fromJson(o.toJson());
+      checkFirstPartyMobileApplicationTargeting(od);
+    });
+  });
+
+  unittest.group("obj-schema-FrequencyCap", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildFrequencyCap();
+      var od = new api.FrequencyCap.fromJson(o.toJson());
+      checkFrequencyCap(od);
+    });
+  });
+
+  unittest.group("obj-schema-GuaranteedFixedPriceTerms", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGuaranteedFixedPriceTerms();
+      var od = new api.GuaranteedFixedPriceTerms.fromJson(o.toJson());
+      checkGuaranteedFixedPriceTerms(od);
+    });
+  });
+
   unittest.group("obj-schema-HtmlContent", () {
     unittest.test("to-json--from-json", () {
       var o = buildHtmlContent();
@@ -2146,6 +3981,14 @@ main() {
       var o = buildImpressionMetricsRow();
       var od = new api.ImpressionMetricsRow.fromJson(o.toJson());
       checkImpressionMetricsRow(od);
+    });
+  });
+
+  unittest.group("obj-schema-InventorySizeTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInventorySizeTargeting();
+      var od = new api.InventorySizeTargeting.fromJson(o.toJson());
+      checkInventorySizeTargeting(od);
     });
   });
 
@@ -2280,6 +4123,30 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-ListProductsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListProductsResponse();
+      var od = new api.ListProductsResponse.fromJson(o.toJson());
+      checkListProductsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-ListProposalsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListProposalsResponse();
+      var od = new api.ListProposalsResponse.fromJson(o.toJson());
+      checkListProposalsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-ListPublisherProfilesResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListPublisherProfilesResponse();
+      var od = new api.ListPublisherProfilesResponse.fromJson(o.toJson());
+      checkListPublisherProfilesResponse(od);
+    });
+  });
+
   unittest.group("obj-schema-LocationContext", () {
     unittest.test("to-json--from-json", () {
       var o = buildLocationContext();
@@ -2288,11 +4155,35 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-MarketplaceTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMarketplaceTargeting();
+      var od = new api.MarketplaceTargeting.fromJson(o.toJson());
+      checkMarketplaceTargeting(od);
+    });
+  });
+
   unittest.group("obj-schema-MetricValue", () {
     unittest.test("to-json--from-json", () {
       var o = buildMetricValue();
       var od = new api.MetricValue.fromJson(o.toJson());
       checkMetricValue(od);
+    });
+  });
+
+  unittest.group("obj-schema-MobileApplicationTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMobileApplicationTargeting();
+      var od = new api.MobileApplicationTargeting.fromJson(o.toJson());
+      checkMobileApplicationTargeting(od);
+    });
+  });
+
+  unittest.group("obj-schema-Money", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMoney();
+      var od = new api.Money.fromJson(o.toJson());
+      checkMoney(od);
     });
   });
 
@@ -2312,11 +4203,107 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-NonGuaranteedAuctionTerms", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildNonGuaranteedAuctionTerms();
+      var od = new api.NonGuaranteedAuctionTerms.fromJson(o.toJson());
+      checkNonGuaranteedAuctionTerms(od);
+    });
+  });
+
+  unittest.group("obj-schema-NonGuaranteedFixedPriceTerms", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildNonGuaranteedFixedPriceTerms();
+      var od = new api.NonGuaranteedFixedPriceTerms.fromJson(o.toJson());
+      checkNonGuaranteedFixedPriceTerms(od);
+    });
+  });
+
+  unittest.group("obj-schema-Note", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildNote();
+      var od = new api.Note.fromJson(o.toJson());
+      checkNote(od);
+    });
+  });
+
+  unittest.group("obj-schema-OperatingSystemTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildOperatingSystemTargeting();
+      var od = new api.OperatingSystemTargeting.fromJson(o.toJson());
+      checkOperatingSystemTargeting(od);
+    });
+  });
+
+  unittest.group("obj-schema-PauseProposalRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPauseProposalRequest();
+      var od = new api.PauseProposalRequest.fromJson(o.toJson());
+      checkPauseProposalRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-PlacementTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPlacementTargeting();
+      var od = new api.PlacementTargeting.fromJson(o.toJson());
+      checkPlacementTargeting(od);
+    });
+  });
+
   unittest.group("obj-schema-PlatformContext", () {
     unittest.test("to-json--from-json", () {
       var o = buildPlatformContext();
       var od = new api.PlatformContext.fromJson(o.toJson());
       checkPlatformContext(od);
+    });
+  });
+
+  unittest.group("obj-schema-Price", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPrice();
+      var od = new api.Price.fromJson(o.toJson());
+      checkPrice(od);
+    });
+  });
+
+  unittest.group("obj-schema-PricePerBuyer", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPricePerBuyer();
+      var od = new api.PricePerBuyer.fromJson(o.toJson());
+      checkPricePerBuyer(od);
+    });
+  });
+
+  unittest.group("obj-schema-PrivateData", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPrivateData();
+      var od = new api.PrivateData.fromJson(o.toJson());
+      checkPrivateData(od);
+    });
+  });
+
+  unittest.group("obj-schema-Product", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildProduct();
+      var od = new api.Product.fromJson(o.toJson());
+      checkProduct(od);
+    });
+  });
+
+  unittest.group("obj-schema-Proposal", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildProposal();
+      var od = new api.Proposal.fromJson(o.toJson());
+      checkProposal(od);
+    });
+  });
+
+  unittest.group("obj-schema-PublisherProfile", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPublisherProfile();
+      var od = new api.PublisherProfile.fromJson(o.toJson());
+      checkPublisherProfile(od);
     });
   });
 
@@ -2352,6 +4339,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-ResumeProposalRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildResumeProposalRequest();
+      var od = new api.ResumeProposalRequest.fromJson(o.toJson());
+      checkResumeProposalRequest(od);
+    });
+  });
+
   unittest.group("obj-schema-RowDimensions", () {
     unittest.test("to-json--from-json", () {
       var o = buildRowDimensions();
@@ -2365,6 +4360,14 @@ main() {
       var o = buildSecurityContext();
       var od = new api.SecurityContext.fromJson(o.toJson());
       checkSecurityContext(od);
+    });
+  });
+
+  unittest.group("obj-schema-Seller", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSeller();
+      var od = new api.Seller.fromJson(o.toJson());
+      checkSeller(od);
     });
   });
 
@@ -2384,11 +4387,43 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Size", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSize();
+      var od = new api.Size.fromJson(o.toJson());
+      checkSize(od);
+    });
+  });
+
   unittest.group("obj-schema-StopWatchingCreativeRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildStopWatchingCreativeRequest();
       var od = new api.StopWatchingCreativeRequest.fromJson(o.toJson());
       checkStopWatchingCreativeRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-TargetingCriteria", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTargetingCriteria();
+      var od = new api.TargetingCriteria.fromJson(o.toJson());
+      checkTargetingCriteria(od);
+    });
+  });
+
+  unittest.group("obj-schema-TargetingValue", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTargetingValue();
+      var od = new api.TargetingValue.fromJson(o.toJson());
+      checkTargetingValue(od);
+    });
+  });
+
+  unittest.group("obj-schema-TechnologyTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTechnologyTargeting();
+      var od = new api.TechnologyTargeting.fromJson(o.toJson());
+      checkTechnologyTargeting(od);
     });
   });
 
@@ -2400,11 +4435,35 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-TimeOfDay", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTimeOfDay();
+      var od = new api.TimeOfDay.fromJson(o.toJson());
+      checkTimeOfDay(od);
+    });
+  });
+
+  unittest.group("obj-schema-UrlTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUrlTargeting();
+      var od = new api.UrlTargeting.fromJson(o.toJson());
+      checkUrlTargeting(od);
+    });
+  });
+
   unittest.group("obj-schema-VideoContent", () {
     unittest.test("to-json--from-json", () {
       var o = buildVideoContent();
       var od = new api.VideoContent.fromJson(o.toJson());
       checkVideoContent(od);
+    });
+  });
+
+  unittest.group("obj-schema-VideoTargeting", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildVideoTargeting();
+      var od = new api.VideoTargeting.fromJson(o.toJson());
+      checkVideoTargeting(od);
     });
   });
 
@@ -3807,6 +5866,1137 @@ main() {
       res
           .remove(arg_request, arg_accountId, arg_creativeId,
               $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkEmpty(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-AccountsFinalizedProposalsResourceApi", () {
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.AccountsFinalizedProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.finalizedProposals;
+      var arg_accountId = "foo";
+      var arg_filterSyntax = "foo";
+      var arg_filter = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/finalizedProposals", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/finalizedProposals"));
+        pathOffset += 19;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["filterSyntax"].first, unittest.equals(arg_filterSyntax));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildListProposalsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_accountId,
+              filterSyntax: arg_filterSyntax,
+              filter: arg_filter,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListProposalsResponse(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-AccountsProductsResourceApi", () {
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.AccountsProductsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.products;
+      var arg_accountId = "foo";
+      var arg_productId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/products/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_productId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProduct());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_accountId, arg_productId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProduct(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.AccountsProductsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.products;
+      var arg_accountId = "foo";
+      var arg_filter = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/products", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/products"));
+        pathOffset += 9;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildListProductsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_accountId,
+              filter: arg_filter,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListProductsResponse(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-AccountsProposalsResourceApi", () {
+    unittest.test("method--accept", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildAcceptProposalRequest();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.AcceptProposalRequest.fromJson(json);
+        checkAcceptProposalRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        index = path.indexOf(":accept", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":accept"));
+        pathOffset += 7;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .accept(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--addNote", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildAddNoteRequest();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.AddNoteRequest.fromJson(json);
+        checkAddNoteRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        index = path.indexOf(":addNote", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals(":addNote"));
+        pathOffset += 8;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildNote());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .addNote(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkNote(response);
+      })));
+    });
+
+    unittest.test("method--cancelNegotiation", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildCancelNegotiationRequest();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.CancelNegotiationRequest.fromJson(json);
+        checkCancelNegotiationRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        index = path.indexOf(":cancelNegotiation", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals(":cancelNegotiation"));
+        pathOffset += 18;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .cancelNegotiation(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--completeSetup", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildCompleteSetupRequest();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.CompleteSetupRequest.fromJson(json);
+        checkCompleteSetupRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        index = path.indexOf(":completeSetup", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals(":completeSetup"));
+        pathOffset += 14;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .completeSetup(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildProposal();
+      var arg_accountId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Proposal.fromJson(json);
+        checkProposal(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/proposals"));
+        pathOffset += 10;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_accountId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_accountId, arg_proposalId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_accountId = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_filterSyntax = "foo";
+      var arg_filter = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/proposals"));
+        pathOffset += 10;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["filterSyntax"].first, unittest.equals(arg_filterSyntax));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildListProposalsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_accountId,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              filterSyntax: arg_filterSyntax,
+              filter: arg_filter,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListProposalsResponse(response);
+      })));
+    });
+
+    unittest.test("method--pause", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildPauseProposalRequest();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.PauseProposalRequest.fromJson(json);
+        checkPauseProposalRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        index = path.indexOf(":pause", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals(":pause"));
+        pathOffset += 6;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .pause(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--resume", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildResumeProposalRequest();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.ResumeProposalRequest.fromJson(json);
+        checkResumeProposalRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        index = path.indexOf(":resume", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(":resume"));
+        pathOffset += 7;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .resume(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+      var mock = new HttpServerMock();
+      api.AccountsProposalsResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.proposals;
+      var arg_request = buildProposal();
+      var arg_accountId = "foo";
+      var arg_proposalId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Proposal.fromJson(json);
+        checkProposal(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/proposals/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/proposals/"));
+        pathOffset += 11;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_proposalId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildProposal());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .update(arg_request, arg_accountId, arg_proposalId,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkProposal(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-AccountsPublisherProfilesResourceApi", () {
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.AccountsPublisherProfilesResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.publisherProfiles;
+      var arg_accountId = "foo";
+      var arg_publisherProfileId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/publisherProfiles/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/publisherProfiles/"));
+        pathOffset += 19;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_publisherProfileId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildPublisherProfile());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_accountId, arg_publisherProfileId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkPublisherProfile(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.AccountsPublisherProfilesResourceApi res =
+          new api.Adexchangebuyer2Api(mock).accounts.publisherProfiles;
+      var arg_accountId = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v2beta1/accounts/"));
+        pathOffset += 17;
+        index = path.indexOf("/publisherProfiles", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_accountId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals("/publisherProfiles"));
+        pathOffset += 18;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildListPublisherProfilesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_accountId,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListPublisherProfilesResponse(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-BiddersAccountsCreativesResourceApi", () {
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.BiddersAccountsCreativesResourceApi res =
+          new api.Adexchangebuyer2Api(mock).bidders.accounts.creatives;
+      var arg_ownerName = "foo";
+      var arg_creativeId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_ownerName, arg_creativeId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkEmpty(response);
       })));
@@ -5225,8 +8415,8 @@ main() {
       api.BiddersFilterSetsFilteredBidsResourceApi res =
           new api.Adexchangebuyer2Api(mock).bidders.filterSets.filteredBids;
       var arg_filterSetName = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -5259,10 +8449,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -5273,8 +8463,8 @@ main() {
       }), true);
       res
           .list(arg_filterSetName,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListFilteredBidsResponse(response);

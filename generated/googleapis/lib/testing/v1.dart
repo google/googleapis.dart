@@ -36,8 +36,8 @@ class TestingApi {
       new TestEnvironmentCatalogResourceApi(_requester);
 
   TestingApi(http.Client client,
-      {core.String rootUrl: "https://testing.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://testing.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -48,7 +48,7 @@ class ApplicationDetailServiceResourceApi {
   ApplicationDetailServiceResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Request the details of an Android application APK.
+  /// Gets the details of an Android application APK.
   ///
   /// [request] - The metadata request object.
   ///
@@ -66,12 +66,12 @@ class ApplicationDetailServiceResourceApi {
   /// this method will complete with the same error.
   async.Future<GetApkDetailsResponse> getApkDetails(FileReference request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -136,12 +136,12 @@ class ProjectsTestMatricesResourceApi {
   async.Future<CancelTestMatrixResponse> cancel(
       core.String projectId, core.String testMatrixId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -169,7 +169,7 @@ class ProjectsTestMatricesResourceApi {
         .then((data) => new CancelTestMatrixResponse.fromJson(data));
   }
 
-  /// Request to run a matrix of tests according to the given specifications.
+  /// Creates and runs a matrix of tests according to the given specifications.
   /// Unsupported environments will be returned in the state UNSUPPORTED.
   /// Matrices are limited to at most 200 supported executions.
   ///
@@ -204,12 +204,12 @@ class ProjectsTestMatricesResourceApi {
   /// this method will complete with the same error.
   async.Future<TestMatrix> create(TestMatrix request, core.String projectId,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -237,7 +237,7 @@ class ProjectsTestMatricesResourceApi {
     return _response.then((data) => new TestMatrix.fromJson(data));
   }
 
-  /// Check the status of a test matrix.
+  /// Checks the status of a test matrix.
   ///
   /// May return any of the following canonical error codes:
   ///
@@ -263,12 +263,12 @@ class ProjectsTestMatricesResourceApi {
   /// this method will complete with the same error.
   async.Future<TestMatrix> get(core.String projectId, core.String testMatrixId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -301,7 +301,7 @@ class TestEnvironmentCatalogResourceApi {
   TestEnvironmentCatalogResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Get the catalog of supported test environments.
+  /// Gets the catalog of supported test environments.
   ///
   /// May return any of the following canonical error codes:
   ///
@@ -311,17 +311,17 @@ class TestEnvironmentCatalogResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [environmentType] - The type of environment that should be listed.
-  /// Required
+  /// [environmentType] - Required. The type of environment that should be
+  /// listed.
   /// Possible string values are:
   /// - "ENVIRONMENT_TYPE_UNSPECIFIED" : A ENVIRONMENT_TYPE_UNSPECIFIED.
   /// - "ANDROID" : A ANDROID.
+  /// - "IOS" : A IOS.
   /// - "NETWORK_CONFIGURATION" : A NETWORK_CONFIGURATION.
   /// - "PROVIDED_SOFTWARE" : A PROVIDED_SOFTWARE.
   ///
   /// [projectId] - For authorization, the cloud project requesting the
   /// TestEnvironmentCatalog.
-  /// Optional
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -335,12 +335,12 @@ class TestEnvironmentCatalogResourceApi {
   /// this method will complete with the same error.
   async.Future<TestEnvironmentCatalog> get(core.String environmentType,
       {core.String projectId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (environmentType == null) {
       throw new core.ArgumentError("Parameter environmentType is required.");
@@ -365,9 +365,9 @@ class TestEnvironmentCatalogResourceApi {
   }
 }
 
-/// Identifies an account and how to log into it
+/// Identifies an account and how to log into it.
 class Account {
-  /// An automatic google login account
+  /// An automatic google login account.
   GoogleAuto googleAuto;
 
   Account();
@@ -390,24 +390,20 @@ class Account {
 
 /// A single Android device.
 class AndroidDevice {
-  /// The id of the Android device to be used.
+  /// Required. The id of the Android device to be used.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.String androidModelId;
 
-  /// The id of the Android OS version to be used.
+  /// Required. The id of the Android OS version to be used.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.String androidVersionId;
 
-  /// The locale the test device used for testing.
+  /// Required. The locale the test device used for testing.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.String locale;
 
-  /// How the device is oriented during the test.
+  /// Required. How the device is oriented during the test.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.String orientation;
 
   AndroidDevice();
@@ -449,15 +445,12 @@ class AndroidDevice {
 /// The currently supported Android devices.
 class AndroidDeviceCatalog {
   /// The set of supported Android device models.
-  /// @OutputOnly
   core.List<AndroidModel> models;
 
   /// The set of supported runtime configurations.
-  /// @OutputOnly
   AndroidRuntimeConfiguration runtimeConfiguration;
 
   /// The set of supported Android OS versions.
-  /// @OutputOnly
   core.List<AndroidVersion> versions;
 
   AndroidDeviceCatalog();
@@ -497,8 +490,7 @@ class AndroidDeviceCatalog {
 
 /// A list of Android device configurations in which the test is to be executed.
 class AndroidDeviceList {
-  /// A list of Android devices
-  /// Required
+  /// Required. A list of Android devices.
   core.List<AndroidDevice> androidDevices;
 
   AndroidDeviceList();
@@ -535,8 +527,11 @@ class AndroidInstrumentationTest {
   /// The APK for the application under test.
   FileReference appApk;
 
+  /// A multi-apk app bundle for the application under test.
+  AppBundle appBundle;
+
   /// The java package for the application under test.
-  /// Optional, default is determined by examining the application's manifest.
+  /// The default value is determined by examining the application's manifest.
   core.String appPackageId;
 
   /// The option of whether running each test within its own invocation of
@@ -552,7 +547,7 @@ class AndroidInstrumentationTest {
   /// <https://developer.android.com/training/testing/junit-runner.html#using-android-test-orchestrator>
   /// for more information about Android Test Orchestrator.
   ///
-  /// Optional. If not set, the test will be run without the orchestrator.
+  /// If not set, the test will be run without the orchestrator.
   /// Possible string values are:
   /// - "ORCHESTRATOR_OPTION_UNSPECIFIED" : Default value: the server will
   /// choose the mode. Currently implies that
@@ -566,16 +561,15 @@ class AndroidInstrumentationTest {
   /// - "DO_NOT_USE_ORCHESTRATOR" : Run test without using orchestrator.
   core.String orchestratorOption;
 
-  /// The APK containing the test code to be executed.
-  /// Required
+  /// Required. The APK containing the test code to be executed.
   FileReference testApk;
 
   /// The java package for the test to be executed.
-  /// Optional, default is determined by examining the application's manifest.
+  /// The default value is determined by examining the application's manifest.
   core.String testPackageId;
 
   /// The InstrumentationTestRunner class.
-  /// Optional, default is determined by examining the application's manifest.
+  /// The default value is determined by examining the application's manifest.
   core.String testRunnerClass;
 
   /// Each target must be fully qualified with the package name or class name,
@@ -584,7 +578,7 @@ class AndroidInstrumentationTest {
   ///  - "class package_name.class_name"
   ///  - "class package_name.class_name#method_name"
   ///
-  /// Optional, if empty, all targets in the module will be run.
+  /// If empty, all targets in the module will be run.
   core.List<core.String> testTargets;
 
   AndroidInstrumentationTest();
@@ -592,6 +586,9 @@ class AndroidInstrumentationTest {
   AndroidInstrumentationTest.fromJson(core.Map _json) {
     if (_json.containsKey("appApk")) {
       appApk = new FileReference.fromJson(_json["appApk"]);
+    }
+    if (_json.containsKey("appBundle")) {
+      appBundle = new AppBundle.fromJson(_json["appBundle"]);
     }
     if (_json.containsKey("appPackageId")) {
       appPackageId = _json["appPackageId"];
@@ -619,6 +616,9 @@ class AndroidInstrumentationTest {
     if (appApk != null) {
       _json["appApk"] = (appApk).toJson();
     }
+    if (appBundle != null) {
+      _json["appBundle"] = (appBundle).toJson();
+    }
     if (appPackageId != null) {
       _json["appPackageId"] = appPackageId;
     }
@@ -642,30 +642,26 @@ class AndroidInstrumentationTest {
 }
 
 /// A set of Android device configuration permutations is defined by the
-/// the cross-product of the given axes.  Internally, the given AndroidMatrix
+/// the cross-product of the given axes. Internally, the given AndroidMatrix
 /// will be expanded into a set of AndroidDevices.
 ///
 /// Only supported permutations will be instantiated.  Invalid permutations
 /// (e.g., incompatible models/versions) are ignored.
 class AndroidMatrix {
-  /// The ids of the set of Android device to be used.
+  /// Required. The ids of the set of Android device to be used.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.List<core.String> androidModelIds;
 
-  /// The ids of the set of Android OS version to be used.
+  /// Required. The ids of the set of Android OS version to be used.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.List<core.String> androidVersionIds;
 
-  /// The set of locales the test device will enable for testing.
+  /// Required. The set of locales the test device will enable for testing.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.List<core.String> locales;
 
-  /// The set of orientations to test with.
+  /// Required. The set of orientations to test with.
   /// Use the EnvironmentDiscoveryService to get supported options.
-  /// Required
   core.List<core.String> orientations;
 
   AndroidMatrix();
@@ -709,58 +705,52 @@ class AndroidMatrix {
 /// A description of an Android device tests may be run on.
 class AndroidModel {
   /// The company that this device is branded with.
-  /// Example: "Google", "Samsung"
-  /// @OutputOnly
+  /// Example: "Google", "Samsung".
   core.String brand;
 
   /// The name of the industrial design.
-  /// This corresponds to android.os.Build.DEVICE
-  /// @OutputOnly
+  /// This corresponds to android.os.Build.DEVICE.
   core.String codename;
 
   /// Whether this device is virtual or physical.
-  /// @OutputOnly
   /// Possible string values are:
   /// - "DEVICE_FORM_UNSPECIFIED" : Do not use.  For proto versioning only.
-  /// - "VIRTUAL" : A software stack that simulates the device
-  /// - "PHYSICAL" : Actual hardware
+  /// - "VIRTUAL" : A software stack that simulates the device.
+  /// - "PHYSICAL" : Actual hardware.
   core.String form;
 
-  /// Whther this device is a phone, tablet, wearable, etc.
-  /// @OutputOnly
+  /// Whether this device is a phone, tablet, wearable, etc.
   /// Possible string values are:
   /// - "DEVICE_FORM_FACTOR_UNSPECIFIED" : Do not use. For proto versioning
   /// only.
-  /// - "PHONE" : This device has the shape of a phone
-  /// - "TABLET" : This device has the shape of a tablet
-  /// - "WEARABLE" : This device has the shape of a watch or other wearable
+  /// - "PHONE" : This device has the shape of a phone.
+  /// - "TABLET" : This device has the shape of a tablet.
+  /// - "WEARABLE" : This device has the shape of a watch or other wearable.
   core.String formFactor;
 
   /// The unique opaque id for this model.
   /// Use this for invoking the TestExecutionService.
-  /// @OutputOnly
   core.String id;
 
+  /// True if and only if tests with this model are recorded by stitching
+  /// together screenshots. See use_low_spec_video_recording in device config.
+  core.bool lowFpsVideoRecording;
+
   /// The manufacturer of this device.
-  /// @OutputOnly
   core.String manufacturer;
 
   /// The human-readable marketing name for this device model.
-  /// Examples: "Nexus 5", "Galaxy S5"
-  /// @OutputOnly
+  /// Examples: "Nexus 5", "Galaxy S5".
   core.String name;
 
   /// Screen density in DPI.
   /// This corresponds to ro.sf.lcd_density
-  /// @OutputOnly
   core.int screenDensity;
 
   /// Screen size in the horizontal (X) dimension measured in pixels.
-  /// @OutputOnly
   core.int screenX;
 
   /// Screen size in the vertical (Y) dimension measured in pixels.
-  /// @OutputOnly
   core.int screenY;
 
   /// The list of supported ABIs for this device.
@@ -771,21 +761,14 @@ class AndroidModel {
   /// Elements are optionally prefixed by "version_id:" (where version_id is
   /// the id of an AndroidVersion), denoting an ABI that is supported only on
   /// a particular version.
-  /// @OutputOnly
   core.List<core.String> supportedAbis;
 
   /// The set of Android versions this device supports.
-  /// @OutputOnly
   core.List<core.String> supportedVersionIds;
 
   /// Tags for this dimension.
-  /// Examples: "default", "preview", "deprecated"
+  /// Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
-
-  /// True if and only if tests with this model DO NOT have video output.
-  /// See also TestSpecification.disable_video_recording
-  /// @OutputOnly
-  core.bool videoRecordingNotSupported;
 
   AndroidModel();
 
@@ -804,6 +787,9 @@ class AndroidModel {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
+    }
+    if (_json.containsKey("lowFpsVideoRecording")) {
+      lowFpsVideoRecording = _json["lowFpsVideoRecording"];
     }
     if (_json.containsKey("manufacturer")) {
       manufacturer = _json["manufacturer"];
@@ -830,9 +816,6 @@ class AndroidModel {
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
     }
-    if (_json.containsKey("videoRecordingNotSupported")) {
-      videoRecordingNotSupported = _json["videoRecordingNotSupported"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -852,6 +835,9 @@ class AndroidModel {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (lowFpsVideoRecording != null) {
+      _json["lowFpsVideoRecording"] = lowFpsVideoRecording;
     }
     if (manufacturer != null) {
       _json["manufacturer"] = manufacturer;
@@ -877,9 +863,6 @@ class AndroidModel {
     if (tags != null) {
       _json["tags"] = tags;
     }
-    if (videoRecordingNotSupported != null) {
-      _json["videoRecordingNotSupported"] = videoRecordingNotSupported;
-    }
     return _json;
   }
 }
@@ -890,35 +873,33 @@ class AndroidRoboTest {
   /// The APK for the application under test.
   FileReference appApk;
 
+  /// A multi-apk app bundle for the application under test.
+  AppBundle appBundle;
+
   /// The initial activity that should be used to start the app.
-  /// Optional
   core.String appInitialActivity;
 
   /// The java package for the application under test.
-  /// Optional, default is determined by examining the application's manifest.
+  /// The default value is determined by examining the application's manifest.
   core.String appPackageId;
 
   /// The max depth of the traversal stack Robo can explore. Needs to be at
   /// least
   /// 2 to make Robo explore the app beyond the first activity.
   /// Default is 50.
-  /// Optional
   core.int maxDepth;
 
   /// The max number of steps Robo can execute.
   /// Default is no limit.
-  /// Optional
   core.int maxSteps;
 
   /// A set of directives Robo should apply during the crawl.
   /// This allows users to customize the crawl. For example, the username and
   /// password for a test account can be provided.
-  /// Optional
   core.List<RoboDirective> roboDirectives;
 
   /// A JSON file with a sequence of actions Robo should perform as a prologue
   /// for the crawl.
-  /// Optional
   FileReference roboScript;
 
   /// The intents used to launch the app for the crawl.
@@ -932,6 +913,9 @@ class AndroidRoboTest {
   AndroidRoboTest.fromJson(core.Map _json) {
     if (_json.containsKey("appApk")) {
       appApk = new FileReference.fromJson(_json["appApk"]);
+    }
+    if (_json.containsKey("appBundle")) {
+      appBundle = new AppBundle.fromJson(_json["appBundle"]);
     }
     if (_json.containsKey("appInitialActivity")) {
       appInitialActivity = _json["appInitialActivity"];
@@ -967,6 +951,9 @@ class AndroidRoboTest {
     if (appApk != null) {
       _json["appApk"] = (appApk).toJson();
     }
+    if (appBundle != null) {
+      _json["appBundle"] = (appBundle).toJson();
+    }
     if (appInitialActivity != null) {
       _json["appInitialActivity"] = appInitialActivity;
     }
@@ -997,11 +984,9 @@ class AndroidRoboTest {
 /// Android configuration that can be selected at the time a test is run.
 class AndroidRuntimeConfiguration {
   /// The set of available locales.
-  /// @OutputOnly
   core.List<Locale> locales;
 
   /// The set of available orientations.
-  /// @OutputOnly
   core.List<Orientation> orientations;
 
   AndroidRuntimeConfiguration();
@@ -1034,14 +1019,17 @@ class AndroidRuntimeConfiguration {
 }
 
 /// A test of an Android Application with a Test Loop.
-/// The intent <intent-name> will be implicitly added, since Games is the only
+/// The intent \<intent-name\> will be implicitly added, since Games is the only
 /// user of this api, for the time being.
 class AndroidTestLoop {
   /// The APK for the application under test.
   FileReference appApk;
 
+  /// A multi-apk app bundle for the application under test.
+  AppBundle appBundle;
+
   /// The java package for the application under test.
-  /// Optional, default is determined by examining the application's manifest.
+  /// The default is determined by examining the application's manifest.
   core.String appPackageId;
 
   /// The list of scenario labels that should be run during the test.
@@ -1051,11 +1039,11 @@ class AndroidTestLoop {
   /// the
   /// manifest with the com.google.test.loops.player_experience name to the
   /// execution.
-  /// Optional. Scenarios can also be specified in the scenarios field.
+  /// Scenarios can also be specified in the scenarios field.
   core.List<core.String> scenarioLabels;
 
   /// The list of scenarios that should be run during the test.
-  /// Optional, default is all test loops, derived from the application's
+  /// The default is all test loops, derived from the application's
   /// manifest.
   core.List<core.int> scenarios;
 
@@ -1064,6 +1052,9 @@ class AndroidTestLoop {
   AndroidTestLoop.fromJson(core.Map _json) {
     if (_json.containsKey("appApk")) {
       appApk = new FileReference.fromJson(_json["appApk"]);
+    }
+    if (_json.containsKey("appBundle")) {
+      appBundle = new AppBundle.fromJson(_json["appBundle"]);
     }
     if (_json.containsKey("appPackageId")) {
       appPackageId = _json["appPackageId"];
@@ -1083,6 +1074,9 @@ class AndroidTestLoop {
     if (appApk != null) {
       _json["appApk"] = (appApk).toJson();
     }
+    if (appBundle != null) {
+      _json["appBundle"] = (appBundle).toJson();
+    }
     if (appPackageId != null) {
       _json["appPackageId"] = appPackageId;
     }
@@ -1096,38 +1090,32 @@ class AndroidTestLoop {
   }
 }
 
-/// A version of the Android OS
+/// A version of the Android OS.
 class AndroidVersion {
   /// The API level for this Android version.
-  /// Examples: 18, 19
-  /// @OutputOnly
+  /// Examples: 18, 19.
   core.int apiLevel;
 
   /// The code name for this Android version.
-  /// Examples: "JellyBean", "KitKat"
-  /// @OutputOnly
+  /// Examples: "JellyBean", "KitKat".
   core.String codeName;
 
   /// Market share for this version.
-  /// @OutputOnly
   Distribution distribution;
 
   /// An opaque id for this Android version.
   /// Use this id to invoke the TestExecutionService.
-  /// @OutputOnly
   core.String id;
 
   /// The date this Android version became available in the market.
-  /// @OutputOnly
   Date releaseDate;
 
   /// Tags for this dimension.
-  /// Examples: "default", "preview", "deprecated"
+  /// Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
 
   /// A string representing this version of the Android OS.
-  /// Examples: "4.3", "4.4"
-  /// @OutputOnly
+  /// Examples: "4.3", "4.4".
   core.String versionString;
 
   AndroidVersion();
@@ -1187,11 +1175,10 @@ class AndroidVersion {
 /// An Android package file to install.
 class Apk {
   /// The path to an APK to be installed on the device before the test begins.
-  /// Optional
   FileReference location;
 
   /// The java package for the APK to be installed.
-  /// Optional, value is determined by examining the application's manifest.
+  /// Value is determined by examining the application's manifest.
   core.String packageName;
 
   Apk();
@@ -1219,7 +1206,7 @@ class Apk {
 }
 
 /// Android application details based on application manifest and apk archive
-/// contents
+/// contents.
 class ApkDetail {
   ApkManifest apkManifest;
 
@@ -1303,6 +1290,32 @@ class ApkManifest {
   }
 }
 
+/// An Android App Bundle file format, containing a BundleConfig.pb file,
+/// a base module directory, zero or more dynamic feature module directories.
+/// <p>See https://developer.android.com/guide/app-bundle/build for guidance on
+/// building App Bundles.
+class AppBundle {
+  /// .aab file representing the app bundle under test.
+  FileReference bundleLocation;
+
+  AppBundle();
+
+  AppBundle.fromJson(core.Map _json) {
+    if (_json.containsKey("bundleLocation")) {
+      bundleLocation = new FileReference.fromJson(_json["bundleLocation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bundleLocation != null) {
+      _json["bundleLocation"] = (bundleLocation).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Response containing the current state of the specified test matrix.
 class CancelTestMatrixResponse {
   /// The current rolled-up state of the test matrix.
@@ -1377,8 +1390,7 @@ class ClientInfo {
   /// The list of detailed information about client.
   core.List<ClientInfoDetail> clientInfoDetails;
 
-  /// Client name, such as gcloud.
-  /// Required
+  /// Required. Client name, such as gcloud.
   core.String name;
 
   ClientInfo();
@@ -1410,14 +1422,12 @@ class ClientInfo {
 }
 
 /// Key-value pair of detailed information about the client which invoked the
-/// test. For example {'Version', '1.0'}, {'Release Track', 'BETA'}
+/// test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 class ClientInfoDetail {
-  /// The key of detailed client information.
-  /// Required
+  /// Required. The key of detailed client information.
   core.String key;
 
-  /// The value of detailed client information.
-  /// Required
+  /// Required. The value of detailed client information.
   core.String value;
 
   ClientInfoDetail();
@@ -1444,21 +1454,27 @@ class ClientInfoDetail {
   }
 }
 
-/// Represents a whole calendar date, e.g. date of birth. The time of day and
-/// time zone are either specified elsewhere or are not significant. The date
-/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
-/// represent a year and month where the day is not significant, e.g. credit
-/// card
-/// expiration date. The year may be 0 to represent a month and day independent
-/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
-/// and `google.protobuf.Timestamp`.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
@@ -1530,12 +1546,11 @@ class DeviceFile {
 /// Data about the relative number of devices running a
 /// given configuration of the Android platform.
 class Distribution {
-  /// The estimated fraction (0-1) of the total market with this configuration.
-  /// @OutputOnly
+  /// Output only. The estimated fraction (0-1) of the total market with this
+  /// configuration.
   core.double marketShare;
 
-  /// The time this distribution was measured.
-  /// @OutputOnly
+  /// Output only. The time this distribution was measured.
   core.String measurementTime;
 
   Distribution();
@@ -1567,11 +1582,17 @@ class Environment {
   /// An Android device which must be used with an Android test.
   AndroidDevice androidDevice;
 
+  /// An iOS device which must be used with an iOS test.
+  IosDevice iosDevice;
+
   Environment();
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey("androidDevice")) {
       androidDevice = new AndroidDevice.fromJson(_json["androidDevice"]);
+    }
+    if (_json.containsKey("iosDevice")) {
+      iosDevice = new IosDevice.fromJson(_json["iosDevice"]);
     }
   }
 
@@ -1580,6 +1601,9 @@ class Environment {
         new core.Map<core.String, core.Object>();
     if (androidDevice != null) {
       _json["androidDevice"] = (androidDevice).toJson();
+    }
+    if (iosDevice != null) {
+      _json["iosDevice"] = (iosDevice).toJson();
     }
     return _json;
   }
@@ -1594,6 +1618,9 @@ class EnvironmentMatrix {
   /// A matrix of Android devices.
   AndroidMatrix androidMatrix;
 
+  /// A list of iOS devices.
+  IosDeviceList iosDeviceList;
+
   EnvironmentMatrix();
 
   EnvironmentMatrix.fromJson(core.Map _json) {
@@ -1603,6 +1630,9 @@ class EnvironmentMatrix {
     }
     if (_json.containsKey("androidMatrix")) {
       androidMatrix = new AndroidMatrix.fromJson(_json["androidMatrix"]);
+    }
+    if (_json.containsKey("iosDeviceList")) {
+      iosDeviceList = new IosDeviceList.fromJson(_json["iosDeviceList"]);
     }
   }
 
@@ -1615,16 +1645,19 @@ class EnvironmentMatrix {
     if (androidMatrix != null) {
       _json["androidMatrix"] = (androidMatrix).toJson();
     }
+    if (iosDeviceList != null) {
+      _json["iosDeviceList"] = (iosDeviceList).toJson();
+    }
     return _json;
   }
 }
 
-/// A key-value pair passed as an environment variable to the test
+/// A key-value pair passed as an environment variable to the test.
 class EnvironmentVariable {
-  /// Key for the environment variable
+  /// Key for the environment variable.
   core.String key;
 
-  /// Value for the environment variable
+  /// Value for the environment variable.
   core.String value;
 
   EnvironmentVariable();
@@ -1721,11 +1754,10 @@ class GoogleAuto {
 
 /// A storage location within Google cloud storage (GCS).
 class GoogleCloudStorage {
-  /// The path to a directory in GCS that will
+  /// Required. The path to a directory in GCS that will
   /// eventually contain the results for this test.
   /// The requesting user must have write access on the bucket in the supplied
   /// path.
-  /// Required
   core.String gcsPath;
 
   GoogleCloudStorage();
@@ -1749,13 +1781,13 @@ class GoogleCloudStorage {
 /// The <intent-filter> section of an <activity> tag.
 /// https://developer.android.com/guide/topics/manifest/intent-filter-element.html
 class IntentFilter {
-  /// The android:name value of the <action> tag
+  /// The android:name value of the <action> tag.
   core.List<core.String> actionNames;
 
-  /// The android:name value of the <category> tag
+  /// The android:name value of the <category> tag.
   core.List<core.String> categoryNames;
 
-  /// The android:mimeType value of the <data> tag
+  /// The android:mimeType value of the <data> tag.
   core.String mimeType;
 
   IntentFilter();
@@ -1788,6 +1820,416 @@ class IntentFilter {
   }
 }
 
+/// A single iOS device.
+class IosDevice {
+  /// Required. The id of the iOS device to be used.
+  /// Use the EnvironmentDiscoveryService to get supported options.
+  core.String iosModelId;
+
+  /// Required. The id of the iOS major software version to be used.
+  /// Use the EnvironmentDiscoveryService to get supported options.
+  core.String iosVersionId;
+
+  /// Required. The locale the test device used for testing.
+  /// Use the EnvironmentDiscoveryService to get supported options.
+  core.String locale;
+
+  /// Required. How the device is oriented during the test.
+  /// Use the EnvironmentDiscoveryService to get supported options.
+  core.String orientation;
+
+  IosDevice();
+
+  IosDevice.fromJson(core.Map _json) {
+    if (_json.containsKey("iosModelId")) {
+      iosModelId = _json["iosModelId"];
+    }
+    if (_json.containsKey("iosVersionId")) {
+      iosVersionId = _json["iosVersionId"];
+    }
+    if (_json.containsKey("locale")) {
+      locale = _json["locale"];
+    }
+    if (_json.containsKey("orientation")) {
+      orientation = _json["orientation"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (iosModelId != null) {
+      _json["iosModelId"] = iosModelId;
+    }
+    if (iosVersionId != null) {
+      _json["iosVersionId"] = iosVersionId;
+    }
+    if (locale != null) {
+      _json["locale"] = locale;
+    }
+    if (orientation != null) {
+      _json["orientation"] = orientation;
+    }
+    return _json;
+  }
+}
+
+/// The currently supported iOS devices.
+class IosDeviceCatalog {
+  /// The set of supported iOS device models.
+  core.List<IosModel> models;
+
+  /// The set of supported runtime configurations.
+  IosRuntimeConfiguration runtimeConfiguration;
+
+  /// The set of supported iOS software versions.
+  core.List<IosVersion> versions;
+
+  /// The set of supported Xcode versions.
+  core.List<XcodeVersion> xcodeVersions;
+
+  IosDeviceCatalog();
+
+  IosDeviceCatalog.fromJson(core.Map _json) {
+    if (_json.containsKey("models")) {
+      models = (_json["models"] as core.List)
+          .map<IosModel>((value) => new IosModel.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("runtimeConfiguration")) {
+      runtimeConfiguration =
+          new IosRuntimeConfiguration.fromJson(_json["runtimeConfiguration"]);
+    }
+    if (_json.containsKey("versions")) {
+      versions = (_json["versions"] as core.List)
+          .map<IosVersion>((value) => new IosVersion.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("xcodeVersions")) {
+      xcodeVersions = (_json["xcodeVersions"] as core.List)
+          .map<XcodeVersion>((value) => new XcodeVersion.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (models != null) {
+      _json["models"] = models.map((value) => (value).toJson()).toList();
+    }
+    if (runtimeConfiguration != null) {
+      _json["runtimeConfiguration"] = (runtimeConfiguration).toJson();
+    }
+    if (versions != null) {
+      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    if (xcodeVersions != null) {
+      _json["xcodeVersions"] =
+          xcodeVersions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A list of iOS device configurations in which the test is to be executed.
+class IosDeviceList {
+  /// Required. A list of iOS devices.
+  core.List<IosDevice> iosDevices;
+
+  IosDeviceList();
+
+  IosDeviceList.fromJson(core.Map _json) {
+    if (_json.containsKey("iosDevices")) {
+      iosDevices = (_json["iosDevices"] as core.List)
+          .map<IosDevice>((value) => new IosDevice.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (iosDevices != null) {
+      _json["iosDevices"] =
+          iosDevices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A description of an iOS device tests may be run on.
+class IosModel {
+  /// Device capabilities.
+  /// Copied from
+  /// https://developer.apple.com/library/archive/documentation/DeviceInformation/Reference/iOSDeviceCompatibility/DeviceCompatibilityMatrix/DeviceCompatibilityMatrix.html
+  core.List<core.String> deviceCapabilities;
+
+  /// Whether this device is a phone, tablet, wearable, etc.
+  /// Possible string values are:
+  /// - "DEVICE_FORM_FACTOR_UNSPECIFIED" : Do not use. For proto versioning
+  /// only.
+  /// - "PHONE" : This device has the shape of a phone.
+  /// - "TABLET" : This device has the shape of a tablet.
+  /// - "WEARABLE" : This device has the shape of a watch or other wearable.
+  core.String formFactor;
+
+  /// The unique opaque id for this model.
+  /// Use this for invoking the TestExecutionService.
+  core.String id;
+
+  /// The human-readable name for this device model.
+  /// Examples: "iPhone 4s", "iPad Mini 2".
+  core.String name;
+
+  /// The set of iOS major software versions this device supports.
+  core.List<core.String> supportedVersionIds;
+
+  /// Tags for this dimension.
+  /// Examples: "default", "preview", "deprecated".
+  core.List<core.String> tags;
+
+  IosModel();
+
+  IosModel.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceCapabilities")) {
+      deviceCapabilities =
+          (_json["deviceCapabilities"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("formFactor")) {
+      formFactor = _json["formFactor"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("supportedVersionIds")) {
+      supportedVersionIds =
+          (_json["supportedVersionIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("tags")) {
+      tags = (_json["tags"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceCapabilities != null) {
+      _json["deviceCapabilities"] = deviceCapabilities;
+    }
+    if (formFactor != null) {
+      _json["formFactor"] = formFactor;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (supportedVersionIds != null) {
+      _json["supportedVersionIds"] = supportedVersionIds;
+    }
+    if (tags != null) {
+      _json["tags"] = tags;
+    }
+    return _json;
+  }
+}
+
+/// iOS configuration that can be selected at the time a test is run.
+class IosRuntimeConfiguration {
+  /// The set of available locales.
+  core.List<Locale> locales;
+
+  /// The set of available orientations.
+  core.List<Orientation> orientations;
+
+  IosRuntimeConfiguration();
+
+  IosRuntimeConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("locales")) {
+      locales = (_json["locales"] as core.List)
+          .map<Locale>((value) => new Locale.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("orientations")) {
+      orientations = (_json["orientations"] as core.List)
+          .map<Orientation>((value) => new Orientation.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locales != null) {
+      _json["locales"] = locales.map((value) => (value).toJson()).toList();
+    }
+    if (orientations != null) {
+      _json["orientations"] =
+          orientations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A description of how to set up an iOS device prior to a test.
+class IosTestSetup {
+  /// The network traffic profile used for running the test.
+  /// Available network profiles can be queried by using the
+  /// NETWORK_CONFIGURATION environment type when calling
+  /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
+  core.String networkProfile;
+
+  IosTestSetup();
+
+  IosTestSetup.fromJson(core.Map _json) {
+    if (_json.containsKey("networkProfile")) {
+      networkProfile = _json["networkProfile"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (networkProfile != null) {
+      _json["networkProfile"] = networkProfile;
+    }
+    return _json;
+  }
+}
+
+/// An iOS version.
+class IosVersion {
+  /// An opaque id for this iOS version.
+  /// Use this id to invoke the TestExecutionService.
+  core.String id;
+
+  /// An integer representing the major iOS version.
+  /// Examples: "8", "9".
+  core.int majorVersion;
+
+  /// An integer representing the minor iOS version.
+  /// Examples: "1", "2".
+  core.int minorVersion;
+
+  /// The available Xcode versions for this version.
+  core.List<core.String> supportedXcodeVersionIds;
+
+  /// Tags for this dimension.
+  /// Examples: "default", "preview", "deprecated".
+  core.List<core.String> tags;
+
+  IosVersion();
+
+  IosVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("majorVersion")) {
+      majorVersion = _json["majorVersion"];
+    }
+    if (_json.containsKey("minorVersion")) {
+      minorVersion = _json["minorVersion"];
+    }
+    if (_json.containsKey("supportedXcodeVersionIds")) {
+      supportedXcodeVersionIds =
+          (_json["supportedXcodeVersionIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("tags")) {
+      tags = (_json["tags"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (majorVersion != null) {
+      _json["majorVersion"] = majorVersion;
+    }
+    if (minorVersion != null) {
+      _json["minorVersion"] = minorVersion;
+    }
+    if (supportedXcodeVersionIds != null) {
+      _json["supportedXcodeVersionIds"] = supportedXcodeVersionIds;
+    }
+    if (tags != null) {
+      _json["tags"] = tags;
+    }
+    return _json;
+  }
+}
+
+/// A test of an iOS application that uses the XCTest framework.
+/// Xcode supports the option to "build for testing", which generates an
+/// .xctestrun file that contains a test specification (arguments, test methods,
+/// etc). This test type accepts a zip file containing the .xctestrun file and
+/// the corresponding contents of the Build/Products directory that contains all
+/// the binaries needed to run the tests.
+class IosXcTest {
+  /// Output only. The bundle id for the application under test.
+  core.String appBundleId;
+
+  /// Required. The .zip containing the .xctestrun file and the contents of the
+  /// DerivedData/Build/Products directory.
+  /// The .xctestrun file in this zip is ignored if the xctestrun field is
+  /// specified.
+  FileReference testsZip;
+
+  /// The Xcode version that should be used for the test.
+  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Defaults to the latest Xcode version Firebase Test Lab supports.
+  core.String xcodeVersion;
+
+  /// An .xctestrun file that will override the .xctestrun file in the
+  /// tests zip. Because the .xctestrun file contains environment variables
+  /// along
+  /// with test methods to run and/or ignore, this can be useful for sharding
+  /// tests. Default is taken from the tests zip.
+  FileReference xctestrun;
+
+  IosXcTest();
+
+  IosXcTest.fromJson(core.Map _json) {
+    if (_json.containsKey("appBundleId")) {
+      appBundleId = _json["appBundleId"];
+    }
+    if (_json.containsKey("testsZip")) {
+      testsZip = new FileReference.fromJson(_json["testsZip"]);
+    }
+    if (_json.containsKey("xcodeVersion")) {
+      xcodeVersion = _json["xcodeVersion"];
+    }
+    if (_json.containsKey("xctestrun")) {
+      xctestrun = new FileReference.fromJson(_json["xctestrun"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appBundleId != null) {
+      _json["appBundleId"] = appBundleId;
+    }
+    if (testsZip != null) {
+      _json["testsZip"] = (testsZip).toJson();
+    }
+    if (xcodeVersion != null) {
+      _json["xcodeVersion"] = xcodeVersion;
+    }
+    if (xctestrun != null) {
+      _json["xctestrun"] = (xctestrun).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Specifies an intent that starts the main launcher activity.
 class LauncherActivityIntent {
   LauncherActivityIntent();
@@ -1804,23 +2246,19 @@ class LauncherActivityIntent {
 /// A location/region designation for language.
 class Locale {
   /// The id for this locale.
-  /// Example: "en_US"
-  /// @OutputOnly
+  /// Example: "en_US".
   core.String id;
 
   /// A human-friendly name for this language/locale.
-  /// Example: "English"
-  /// @OutputOnly
+  /// Example: "English".
   core.String name;
 
-  /// A human-friendly string representing the region for this locale.
-  /// Example: "United States"
-  /// Not present for every locale.
-  /// @OutputOnly
+  /// A human-friendly string representing the region for this
+  /// locale. Example: "United States". Not present for every locale.
   core.String region;
 
   /// Tags for this dimension.
-  /// Examples: "default"
+  /// Example: "default".
   core.List<core.String> tags;
 
   Locale();
@@ -1860,14 +2298,13 @@ class Locale {
 }
 
 class NetworkConfiguration {
-  /// The emulation rule applying to the download traffic
+  /// The emulation rule applying to the download traffic.
   TrafficRule downRule;
 
-  /// The unique opaque id for this network traffic configuration
-  /// @OutputOnly
+  /// The unique opaque id for this network traffic configuration.
   core.String id;
 
-  /// The emulation rule applying to the upload traffic
+  /// The emulation rule applying to the upload traffic.
   TrafficRule upRule;
 
   NetworkConfiguration();
@@ -1925,19 +2362,17 @@ class NetworkConfigurationCatalog {
   }
 }
 
-/// An opaque binary blob file to install on the device before the test starts
+/// An opaque binary blob file to install on the device before the test starts.
 class ObbFile {
-  /// Opaque Binary Blob (OBB) file(s) to install on the device
-  /// Required
+  /// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
   FileReference obb;
 
-  /// OBB file name which must conform to the format as specified by
+  /// Required. OBB file name which must conform to the format as specified by
   /// Android
   /// e.g. [main|patch].0300110.com.example.android.obb
   /// which will be installed into
-  ///   <shared-storage>/Android/obb/<package-name>/
-  /// on the device
-  /// Required
+  ///   \<shared-storage\>/Android/obb/\<package-name\>/
+  /// on the device.
   core.String obbFileName;
 
   ObbFile();
@@ -1967,17 +2402,15 @@ class ObbFile {
 /// Screen orientation of the device.
 class Orientation {
   /// The id for this orientation.
-  /// Example: "portrait"
-  /// @OutputOnly
+  /// Example: "portrait".
   core.String id;
 
   /// A human-friendly name for this orientation.
-  /// Example: "portrait"
-  /// @OutputOnly
+  /// Example: "portrait".
   core.String name;
 
   /// Tags for this dimension.
-  /// Examples: "default"
+  /// Example: "default".
   core.List<core.String> tags;
 
   Orientation();
@@ -2012,9 +2445,9 @@ class Orientation {
 
 /// The currently provided software environment on the devices under test.
 class ProvidedSoftwareCatalog {
-  /// A string representing the current version of Android Test Orchestrator
-  /// that
-  /// is provided by TestExecutionService. Example: "1.0.2 beta"
+  /// A string representing the current version of Android Test
+  /// Orchestrator that is provided by TestExecutionService.
+  /// Example: "1.0.2 beta".
   core.String orchestratorVersion;
 
   ProvidedSoftwareCatalog();
@@ -2035,13 +2468,13 @@ class ProvidedSoftwareCatalog {
   }
 }
 
-/// A file or directory to install on the device before the test starts
+/// A file or directory to install on the device before the test starts.
 class RegularFile {
-  /// Required
+  /// Required. The source file.
   FileReference content;
 
-  /// Where to put the content on the device. Must be an absolute, whitelisted
-  /// path. If the file exists, it will be replaced.
+  /// Required. Where to put the content on the device. Must be an absolute,
+  /// whitelisted path. If the file exists, it will be replaced.
   /// The following device-side directories and any of their subdirectories are
   /// whitelisted:
   /// <p>${EXTERNAL_STORAGE}, or /sdcard</p>
@@ -2058,7 +2491,6 @@ class RegularFile {
   /// Environment API</a> in app and test code to access files on the device in
   /// a
   /// portable way.
-  /// Required
   core.String devicePath;
 
   RegularFile();
@@ -2090,14 +2522,13 @@ class ResultStorage {
   /// Required.
   GoogleCloudStorage googleCloudStorage;
 
-  /// The tool results execution that results are written to.
-  /// @OutputOnly
+  /// Output only. The tool results execution that results are written to.
   ToolResultsExecution toolResultsExecution;
 
   /// The tool results history that contains the tool results execution that
   /// results are written to.
   ///
-  /// Optional, if not provided the service will choose an appropriate value.
+  /// If not provided, the service will choose an appropriate value.
   ToolResultsHistory toolResultsHistory;
 
   ResultStorage();
@@ -2136,8 +2567,8 @@ class ResultStorage {
 /// Directs Robo to interact with a specific UI element if it is encountered
 /// during the crawl. Currently, Robo can perform text entry or element click.
 class RoboDirective {
-  /// The type of action that Robo should perform on the specified element.
-  /// Required.
+  /// Required. The type of action that Robo should perform on the specified
+  /// element.
   /// Possible string values are:
   /// - "ACTION_TYPE_UNSPECIFIED" : DO NOT USE. For proto versioning only.
   /// - "SINGLE_CLICK" : Direct Robo to click on the specified element. No-op if
@@ -2151,17 +2582,15 @@ class RoboDirective {
   /// The text that Robo is directed to set. If left empty, the directive will
   /// be
   /// treated as a CLICK on the element matching the resource_name.
-  /// Optional
   core.String inputText;
 
-  /// The android resource name of the target UI element
+  /// Required. The android resource name of the target UI element.
   /// For example,
   ///    in Java: R.string.foo
   ///    in xml: @string/foo
-  /// Only the “foo” part is needed.
+  /// Only the "foo" part is needed.
   /// Reference doc:
   /// https://developer.android.com/guide/topics/resources/accessing-resources.html
-  /// Required
   core.String resourceName;
 
   RoboDirective();
@@ -2194,7 +2623,7 @@ class RoboDirective {
   }
 }
 
-/// Message for specifying the start activities to crawl
+/// Message for specifying the start activities to crawl.
 class RoboStartingIntent {
   LauncherActivityIntent launcherActivity;
   StartActivityIntent startActivity;
@@ -2231,11 +2660,9 @@ class StartActivityIntent {
   core.String action;
 
   /// Intent categories to set on the intent.
-  /// Optional.
   core.List<core.String> categories;
 
   /// URI for the action.
-  /// Optional.
   core.String uri;
 
   StartActivityIntent();
@@ -2270,25 +2697,16 @@ class StartActivityIntent {
 
 /// Additional details about the progress of the running test.
 class TestDetails {
-  /// If the TestState is ERROR, then this string will contain human-readable
-  /// details about the error.
-  /// @OutputOnly
+  /// Output only. If the TestState is ERROR, then this string will contain
+  /// human-readable details about the error.
   core.String errorMessage;
 
-  /// Human-readable, detailed descriptions of the test's progress.
+  /// Output only. Human-readable, detailed descriptions of the test's progress.
   /// For example: "Provisioning a device", "Starting Test".
   ///
   /// During the course of execution new data may be appended
   /// to the end of progress_messages.
-  /// @OutputOnly
   core.List<core.String> progressMessages;
-
-  /// Indicates that video will not be recorded for this execution either
-  /// because
-  /// the user chose to disable it or the device does not support it.
-  /// See AndroidModel.video_recording_not_supported
-  /// @OutputOnly
-  core.bool videoRecordingDisabled;
 
   TestDetails();
 
@@ -2299,9 +2717,6 @@ class TestDetails {
     if (_json.containsKey("progressMessages")) {
       progressMessages =
           (_json["progressMessages"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("videoRecordingDisabled")) {
-      videoRecordingDisabled = _json["videoRecordingDisabled"];
     }
   }
 
@@ -2314,19 +2729,19 @@ class TestDetails {
     if (progressMessages != null) {
       _json["progressMessages"] = progressMessages;
     }
-    if (videoRecordingDisabled != null) {
-      _json["videoRecordingDisabled"] = videoRecordingDisabled;
-    }
     return _json;
   }
 }
 
 /// A description of a test environment.
 class TestEnvironmentCatalog {
-  /// Android devices suitable for running Android Instrumentation Tests.
+  /// Supported Android devices.
   AndroidDeviceCatalog androidDeviceCatalog;
 
-  /// Supported network configurations
+  /// Supported iOS devices.
+  IosDeviceCatalog iosDeviceCatalog;
+
+  /// Supported network configurations.
   NetworkConfigurationCatalog networkConfigurationCatalog;
 
   /// The software test environment provided by TestExecutionService.
@@ -2338,6 +2753,10 @@ class TestEnvironmentCatalog {
     if (_json.containsKey("androidDeviceCatalog")) {
       androidDeviceCatalog =
           new AndroidDeviceCatalog.fromJson(_json["androidDeviceCatalog"]);
+    }
+    if (_json.containsKey("iosDeviceCatalog")) {
+      iosDeviceCatalog =
+          new IosDeviceCatalog.fromJson(_json["iosDeviceCatalog"]);
     }
     if (_json.containsKey("networkConfigurationCatalog")) {
       networkConfigurationCatalog = new NetworkConfigurationCatalog.fromJson(
@@ -2355,6 +2774,9 @@ class TestEnvironmentCatalog {
     if (androidDeviceCatalog != null) {
       _json["androidDeviceCatalog"] = (androidDeviceCatalog).toJson();
     }
+    if (iosDeviceCatalog != null) {
+      _json["iosDeviceCatalog"] = (iosDeviceCatalog).toJson();
+    }
     if (networkConfigurationCatalog != null) {
       _json["networkConfigurationCatalog"] =
           (networkConfigurationCatalog).toJson();
@@ -2368,24 +2790,20 @@ class TestEnvironmentCatalog {
 
 /// Specifies a single test to be executed in a single environment.
 class TestExecution {
-  /// How the host machine(s) are configured.
-  /// @OutputOnly
+  /// Output only. How the host machine(s) are configured.
   Environment environment;
 
-  /// Unique id set by the backend.
-  /// @OutputOnly
+  /// Output only. Unique id set by the backend.
   core.String id;
 
-  /// Id of the containing TestMatrix.
-  /// @OutputOnly
+  /// Output only. Id of the containing TestMatrix.
   core.String matrixId;
 
-  /// The cloud project that owns the test execution.
-  /// @OutputOnly
+  /// Output only. The cloud project that owns the test execution.
   core.String projectId;
 
-  /// Indicates the current progress of the test execution (e.g., FINISHED).
-  /// @OutputOnly
+  /// Output only. Indicates the current progress of the test execution
+  /// (e.g., FINISHED).
   /// Possible string values are:
   /// - "TEST_STATE_UNSPECIFIED" : Do not use.  For proto versioning only.
   /// - "VALIDATING" : The execution or matrix is being validated.
@@ -2432,20 +2850,16 @@ class TestExecution {
   /// was flagged as malware
   core.String state;
 
-  /// Additional details about the running test.
-  /// @OutputOnly
+  /// Output only. Additional details about the running test.
   TestDetails testDetails;
 
-  /// How to run the test.
-  /// @OutputOnly
+  /// Output only. How to run the test.
   TestSpecification testSpecification;
 
-  /// The time this test execution was initially created.
-  /// @OutputOnly
+  /// Output only. The time this test execution was initially created.
   core.String timestamp;
 
-  /// Where the results for this execution are written.
-  /// @OutputOnly
+  /// Output only. Where the results for this execution are written.
   ToolResultsStep toolResultsStep;
 
   TestExecution();
@@ -2519,16 +2933,20 @@ class TestExecution {
 /// product of values over a pre-defined set of axes.
 class TestMatrix {
   /// Information about the client which invoked the test.
-  /// Optional
   ClientInfo clientInfo;
 
-  /// How the host machine(s) are configured.
-  /// Required
+  /// Required. How the host machine(s) are configured.
   EnvironmentMatrix environmentMatrix;
 
-  /// Describes why the matrix is considered invalid.
+  /// The number of times a TestExecution should be re-attempted if one or more
+  /// of its test cases fail for any reason.
+  /// The maximum number of reruns allowed is 10.
+  ///
+  /// Default is 0, which implies no reruns.
+  core.int flakyTestAttempts;
+
+  /// Output only. Describes why the matrix is considered invalid.
   /// Only useful for matrices in the INVALID state.
-  /// @OutputOnly
   /// Possible string values are:
   /// - "INVALID_MATRIX_DETAILS_UNSPECIFIED" : Do not use. For proto versioning
   /// only.
@@ -2573,28 +2991,44 @@ class TestMatrix {
   /// manifest.
   /// - "DEVICE_ADMIN_RECEIVER" : Device administrator applications are not
   /// allowed.
+  /// - "MALFORMED_XC_TEST_ZIP" : The zipped XCTest was malformed. The zip did
+  /// not contain a single
+  /// .xctestrun file and the contents of the DerivedData/Build/Products
+  /// directory.
+  /// - "BUILT_FOR_IOS_SIMULATOR" : The zipped XCTest was built for the iOS
+  /// simulator rather than for a
+  /// physical device.
+  /// - "NO_TESTS_IN_XC_TEST_ZIP" : The .xctestrun file did not specify any test
+  /// targets.
+  /// - "USE_DESTINATION_ARTIFACTS" : One or more of the test targets defined in
+  /// the .xctestrun file specifies
+  /// "UseDestinationArtifacts", which is disallowed.
+  /// - "TEST_NOT_APP_HOSTED" : XC tests which run on physical devices must have
+  /// "IsAppHostedTestBundle" == "true" in the xctestrun file.
+  /// - "PLIST_CANNOT_BE_PARSED" : An Info.plist file in the XCTest zip could
+  /// not be parsed.
   /// - "TEST_ONLY_APK" : The APK is marked as "testOnly".
-  /// NOT USED
+  /// Deprecated and not currently used.
   /// - "MALFORMED_IPA" : The input IPA could not be parsed.
-  /// NOT USED
+  /// Deprecated and not currently used.
   /// - "NO_CODE_APK" : APK contains no code.
   /// See also
   /// https://developer.android.com/guide/topics/manifest/application-element.html#code
   /// - "INVALID_INPUT_APK" : Either the provided input APK path was malformed,
   /// the APK file does not exist, or the user does not have permission to
   /// access the APK file.
+  /// - "INVALID_APK_PREVIEW_SDK" : APK is built for a preview SDK which is
+  /// unsupported
   core.String invalidMatrixDetails;
 
   /// The cloud project that owns the test matrix.
-  /// @OutputOnly
   core.String projectId;
 
-  /// Where the results for the matrix are written.
-  /// Required
+  /// Required. Where the results for the matrix are written.
   ResultStorage resultStorage;
 
-  /// Indicates the current progress of the test matrix (e.g., FINISHED)
-  /// @OutputOnly
+  /// Output only. Indicates the current progress of the test matrix
+  /// (e.g., FINISHED).
   /// Possible string values are:
   /// - "TEST_STATE_UNSPECIFIED" : Do not use.  For proto versioning only.
   /// - "VALIDATING" : The execution or matrix is being validated.
@@ -2641,20 +3075,17 @@ class TestMatrix {
   /// was flagged as malware
   core.String state;
 
-  /// The list of test executions that the service creates for this matrix.
-  /// @OutputOnly
+  /// Output only. The list of test executions that the service creates for
+  /// this matrix.
   core.List<TestExecution> testExecutions;
 
-  /// Unique id set by the service.
-  /// @OutputOnly
+  /// Output only. Unique id set by the service.
   core.String testMatrixId;
 
-  /// How to run the test.
-  /// Required
+  /// Required. How to run the test.
   TestSpecification testSpecification;
 
-  /// The time this test matrix was initially created.
-  /// @OutputOnly
+  /// Output only. The time this test matrix was initially created.
   core.String timestamp;
 
   TestMatrix();
@@ -2666,6 +3097,9 @@ class TestMatrix {
     if (_json.containsKey("environmentMatrix")) {
       environmentMatrix =
           new EnvironmentMatrix.fromJson(_json["environmentMatrix"]);
+    }
+    if (_json.containsKey("flakyTestAttempts")) {
+      flakyTestAttempts = _json["flakyTestAttempts"];
     }
     if (_json.containsKey("invalidMatrixDetails")) {
       invalidMatrixDetails = _json["invalidMatrixDetails"];
@@ -2705,6 +3139,9 @@ class TestMatrix {
     if (environmentMatrix != null) {
       _json["environmentMatrix"] = (environmentMatrix).toJson();
     }
+    if (flakyTestAttempts != null) {
+      _json["flakyTestAttempts"] = flakyTestAttempts;
+    }
     if (invalidMatrixDetails != null) {
       _json["invalidMatrixDetails"] = invalidMatrixDetails;
     }
@@ -2737,12 +3174,10 @@ class TestMatrix {
 /// A description of how to set up the Android device prior to running the test.
 class TestSetup {
   /// The device will be logged in on this account for the duration of the test.
-  /// Optional
   Account account;
 
   /// APKs to install in addition to those being directly tested.
   /// Currently capped at 100.
-  /// Optional
   core.List<Apk> additionalApks;
 
   /// List of directories on the device to upload to GCS at the end of the test;
@@ -2753,8 +3188,6 @@ class TestSetup {
   /// implicit path substitutions. E.g. if /sdcard on a particular device does
   /// not map to external storage, the system will replace it with the external
   /// storage path prefix for that device.
-  ///
-  /// Optional
   core.List<core.String> directoriesToPull;
 
   /// Environment variables to set for the test (only applicable for
@@ -2762,12 +3195,12 @@ class TestSetup {
   core.List<EnvironmentVariable> environmentVariables;
 
   /// List of files to push to the device before starting the test.
-  ///
-  /// Optional
   core.List<DeviceFile> filesToPush;
 
   /// The network traffic profile used for running the test.
-  /// Optional
+  /// Available network profiles can be queried by using the
+  /// NETWORK_CONFIGURATION environment type when calling
+  /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String networkProfile;
 
   TestSetup();
@@ -2837,7 +3270,7 @@ class TestSpecification {
   /// An Android robo test.
   AndroidRoboTest androidRoboTest;
 
-  /// An Android Application with a Test Loop
+  /// An Android Application with a Test Loop.
   AndroidTestLoop androidTestLoop;
 
   /// Enables automatic Google account login.
@@ -2849,7 +3282,6 @@ class TestSpecification {
   /// present on the device. Logging into the device with these generated
   /// accounts allows testing more functionalities.
   /// Default is false.
-  /// Optional
   core.bool autoGoogleLogin;
 
   /// Disables performance metrics recording; may reduce test latency.
@@ -2858,14 +3290,19 @@ class TestSpecification {
   /// Disables video recording; may reduce test latency.
   core.bool disableVideoRecording;
 
+  /// Test setup requirements for iOS.
+  IosTestSetup iosTestSetup;
+
+  /// An iOS XCTest, via an .xctestrun file.
+  IosXcTest iosXcTest;
+
   /// Test setup requirements for Android e.g. files to install, bootstrap
   /// scripts.
-  /// Optional
   TestSetup testSetup;
 
   /// Max time a test execution is allowed to run before it is
   /// automatically cancelled.
-  /// Optional, default is 5 min.
+  /// The default value is 5 min.
   core.String testTimeout;
 
   TestSpecification();
@@ -2889,6 +3326,12 @@ class TestSpecification {
     }
     if (_json.containsKey("disableVideoRecording")) {
       disableVideoRecording = _json["disableVideoRecording"];
+    }
+    if (_json.containsKey("iosTestSetup")) {
+      iosTestSetup = new IosTestSetup.fromJson(_json["iosTestSetup"]);
+    }
+    if (_json.containsKey("iosXcTest")) {
+      iosXcTest = new IosXcTest.fromJson(_json["iosXcTest"]);
     }
     if (_json.containsKey("testSetup")) {
       testSetup = new TestSetup.fromJson(_json["testSetup"]);
@@ -2920,6 +3363,12 @@ class TestSpecification {
     if (disableVideoRecording != null) {
       _json["disableVideoRecording"] = disableVideoRecording;
     }
+    if (iosTestSetup != null) {
+      _json["iosTestSetup"] = (iosTestSetup).toJson();
+    }
+    if (iosXcTest != null) {
+      _json["iosXcTest"] = (iosXcTest).toJson();
+    }
     if (testSetup != null) {
       _json["testSetup"] = (testSetup).toJson();
     }
@@ -2934,16 +3383,13 @@ class TestSpecification {
 ///
 /// This has the results of a TestMatrix.
 class ToolResultsExecution {
-  /// A tool results execution ID.
-  /// @OutputOnly
+  /// Output only. A tool results execution ID.
   core.String executionId;
 
-  /// A tool results history ID.
-  /// @OutputOnly
+  /// Output only. A tool results history ID.
   core.String historyId;
 
-  /// The cloud project that owns the tool results execution.
-  /// @OutputOnly
+  /// Output only. The cloud project that owns the tool results execution.
   core.String projectId;
 
   ToolResultsExecution();
@@ -2978,12 +3424,10 @@ class ToolResultsExecution {
 
 /// Represents a tool results history resource.
 class ToolResultsHistory {
-  /// A tool results history ID.
-  /// Required
+  /// Required. A tool results history ID.
   core.String historyId;
 
-  /// The cloud project that owns the tool results history.
-  /// Required
+  /// Required. The cloud project that owns the tool results history.
   core.String projectId;
 
   ToolResultsHistory();
@@ -3014,20 +3458,16 @@ class ToolResultsHistory {
 ///
 /// This has the results of a TestExecution.
 class ToolResultsStep {
-  /// A tool results execution ID.
-  /// @OutputOnly
+  /// Output only. A tool results execution ID.
   core.String executionId;
 
-  /// A tool results history ID.
-  /// @OutputOnly
+  /// Output only. A tool results history ID.
   core.String historyId;
 
-  /// The cloud project that owns the tool results step.
-  /// @OutputOnly
+  /// Output only. The cloud project that owns the tool results step.
   core.String projectId;
 
-  /// A tool results step ID.
-  /// @OutputOnly
+  /// Output only. A tool results step ID.
   core.String stepId;
 
   ToolResultsStep();
@@ -3066,21 +3506,21 @@ class ToolResultsStep {
   }
 }
 
-/// Network emulation parameters
+/// Network emulation parameters.
 class TrafficRule {
-  /// Bandwidth in kbits/second
+  /// Bandwidth in kbits/second.
   core.double bandwidth;
 
-  /// Burst size in kbits
+  /// Burst size in kbits.
   core.double burst;
 
-  /// Packet delay, must be >= 0
+  /// Packet delay, must be >= 0.
   core.String delay;
 
-  /// Packet duplication ratio (0.0 - 1.0)
+  /// Packet duplication ratio (0.0 - 1.0).
   core.double packetDuplicationRatio;
 
-  /// Packet loss ratio (0.0 - 1.0)
+  /// Packet loss ratio (0.0 - 1.0).
   core.double packetLossRatio;
 
   TrafficRule();
@@ -3120,6 +3560,40 @@ class TrafficRule {
     }
     if (packetLossRatio != null) {
       _json["packetLossRatio"] = packetLossRatio;
+    }
+    return _json;
+  }
+}
+
+/// An Xcode version that an iOS version is compatible with.
+class XcodeVersion {
+  /// Tags for this Xcode version.
+  /// Example: "default".
+  core.List<core.String> tags;
+
+  /// The id for this version.
+  /// Example: "9.2".
+  core.String version;
+
+  XcodeVersion();
+
+  XcodeVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("tags")) {
+      tags = (_json["tags"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tags != null) {
+      _json["tags"] = tags;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }

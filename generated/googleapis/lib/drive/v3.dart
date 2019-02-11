@@ -27,7 +27,7 @@ const core.String USER_AGENT = 'dart-api-client drive/v3';
 /// Manages files in Drive including uploading, downloading, searching,
 /// detecting changes, and updating sharing permissions.
 class DriveApi {
-  /// View and manage the files in your Google Drive
+  /// See, edit, create, and delete all of your Google Drive files
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /// View and manage its own configuration data in your Google Drive
@@ -50,7 +50,7 @@ class DriveApi {
   static const DrivePhotosReadonlyScope =
       "https://www.googleapis.com/auth/drive.photos.readonly";
 
-  /// View the files in your Google Drive
+  /// See and download all your Google Drive files
   static const DriveReadonlyScope =
       "https://www.googleapis.com/auth/drive.readonly";
 
@@ -72,8 +72,8 @@ class DriveApi {
   TeamdrivesResourceApi get teamdrives => new TeamdrivesResourceApi(_requester);
 
   DriveApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "drive/v3/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "drive/v3/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -99,12 +99,12 @@ class AboutResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<About> get({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -151,12 +151,12 @@ class ChangesResourceApi {
       {core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -237,12 +237,12 @@ class ChangesResourceApi {
       core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageToken == null) {
       throw new core.ArgumentError("Parameter pageToken is required.");
@@ -347,12 +347,12 @@ class ChangesResourceApi {
       core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -421,12 +421,12 @@ class ChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future stop(Channel request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -474,12 +474,12 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Comment> create(Comment request, core.String fileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -520,12 +520,12 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -576,12 +576,12 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Comment> get(core.String fileId, core.String commentId,
       {core.bool includeDeleted, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -645,12 +645,12 @@ class CommentsResourceApi {
       core.String pageToken,
       core.String startModifiedTime,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -705,12 +705,12 @@ class CommentsResourceApi {
   async.Future<Comment> update(
       Comment request, core.String fileId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -786,12 +786,12 @@ class FilesResourceApi {
       core.String ocrLanguage,
       core.bool supportsTeamDrives,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -874,14 +874,14 @@ class FilesResourceApi {
       core.bool supportsTeamDrives,
       core.bool useContentAsIndexableText,
       core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -949,12 +949,12 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String fileId,
       {core.bool supportsTeamDrives, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -992,12 +992,12 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future emptyTrash({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1039,14 +1039,14 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future export(core.String fileId, core.String mimeType,
       {core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1099,12 +1099,12 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future<GeneratedIds> generateIds(
       {core.int count, core.String space, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (count != null) {
       _queryParams["count"] = ["${count}"];
@@ -1162,14 +1162,14 @@ class FilesResourceApi {
       {core.bool acknowledgeAbuse,
       core.bool supportsTeamDrives,
       core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1271,12 +1271,12 @@ class FilesResourceApi {
       core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (corpora != null) {
       _queryParams["corpora"] = [corpora];
@@ -1372,14 +1372,14 @@ class FilesResourceApi {
       core.bool supportsTeamDrives,
       core.bool useContentAsIndexableText,
       core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1470,14 +1470,14 @@ class FilesResourceApi {
       {core.bool acknowledgeAbuse,
       core.bool supportsTeamDrives,
       core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1563,12 +1563,12 @@ class PermissionsResourceApi {
       core.bool transferOwnership,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1633,12 +1633,12 @@ class PermissionsResourceApi {
       {core.bool supportsTeamDrives,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1701,12 +1701,12 @@ class PermissionsResourceApi {
       {core.bool supportsTeamDrives,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1777,12 +1777,12 @@ class PermissionsResourceApi {
       core.bool supportsTeamDrives,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -1854,12 +1854,12 @@ class PermissionsResourceApi {
       core.bool transferOwnership,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1929,12 +1929,12 @@ class RepliesResourceApi {
   async.Future<Reply> create(
       Reply request, core.String fileId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1985,12 +1985,12 @@ class RepliesResourceApi {
   async.Future delete(
       core.String fileId, core.String commentId, core.String replyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2049,12 +2049,12 @@ class RepliesResourceApi {
   async.Future<Reply> get(
       core.String fileId, core.String commentId, core.String replyId,
       {core.bool includeDeleted, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2121,12 +2121,12 @@ class RepliesResourceApi {
       core.int pageSize,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2187,12 +2187,12 @@ class RepliesResourceApi {
   async.Future<Reply> update(Reply request, core.String fileId,
       core.String commentId, core.String replyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2251,12 +2251,12 @@ class RevisionsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String revisionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2317,14 +2317,14 @@ class RevisionsResourceApi {
   async.Future get(core.String fileId, core.String revisionId,
       {core.bool acknowledgeAbuse,
       core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2385,12 +2385,12 @@ class RevisionsResourceApi {
   /// this method will complete with the same error.
   async.Future<RevisionList> list(core.String fileId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
@@ -2439,12 +2439,12 @@ class RevisionsResourceApi {
   async.Future<Revision> update(
       Revision request, core.String fileId, core.String revisionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2503,12 +2503,12 @@ class TeamdrivesResourceApi {
   /// this method will complete with the same error.
   async.Future<TeamDrive> create(TeamDrive request, core.String requestId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2548,12 +2548,12 @@ class TeamdrivesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String teamDriveId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
@@ -2597,12 +2597,12 @@ class TeamdrivesResourceApi {
   /// this method will complete with the same error.
   async.Future<TeamDrive> get(core.String teamDriveId,
       {core.bool useDomainAdminAccess, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
@@ -2656,12 +2656,12 @@ class TeamdrivesResourceApi {
       core.String q,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -2714,12 +2714,12 @@ class TeamdrivesResourceApi {
   /// this method will complete with the same error.
   async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId,
       {core.bool useDomainAdminAccess, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3700,7 +3700,7 @@ class FileContentHintsThumbnail {
     return convert.base64.decode(image);
   }
 
-  void set imageAsBytes(core.List<core.int> _bytes) {
+  set imageAsBytes(core.List<core.int> _bytes) {
     image =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -4083,6 +4083,9 @@ class File {
   /// trashed from a parent folder.
   core.bool explicitlyTrashed;
 
+  /// Links for exporting Google Docs to specific formats.
+  core.Map<core.String, core.String> exportLinks;
+
   /// The final component of fullFileExtension. This is only available for files
   /// with binary content in Drive.
   core.String fileExtension;
@@ -4296,6 +4299,10 @@ class File {
     if (_json.containsKey("explicitlyTrashed")) {
       explicitlyTrashed = _json["explicitlyTrashed"];
     }
+    if (_json.containsKey("exportLinks")) {
+      exportLinks =
+          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("fileExtension")) {
       fileExtension = _json["fileExtension"];
     }
@@ -4466,6 +4473,9 @@ class File {
     }
     if (explicitlyTrashed != null) {
       _json["explicitlyTrashed"] = explicitlyTrashed;
+    }
+    if (exportLinks != null) {
+      _json["exportLinks"] = exportLinks;
     }
     if (fileExtension != null) {
       _json["fileExtension"] = fileExtension;
@@ -4726,6 +4736,7 @@ class PermissionTeamDrivePermissionDetails {
   /// The primary role for this user. While new values may be added in the
   /// future, the following are currently possible:
   /// - organizer
+  /// - fileOrganizer
   /// - writer
   /// - commenter
   /// - reader
@@ -4813,8 +4824,9 @@ class Permission {
 
   /// The role granted by this permission. While new values may be supported in
   /// the future, the following are currently allowed:
-  /// - organizer
   /// - owner
+  /// - organizer
+  /// - fileOrganizer
   /// - writer
   /// - commenter
   /// - reader
@@ -5120,6 +5132,9 @@ class ReplyList {
 
 /// The metadata for a revision to a file.
 class Revision {
+  /// Links for exporting Google Docs to specific formats.
+  core.Map<core.String, core.String> exportLinks;
+
   /// The ID of the revision.
   core.String id;
 
@@ -5170,6 +5185,10 @@ class Revision {
   Revision();
 
   Revision.fromJson(core.Map _json) {
+    if (_json.containsKey("exportLinks")) {
+      exportLinks =
+          (_json["exportLinks"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -5211,6 +5230,9 @@ class Revision {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (exportLinks != null) {
+      _json["exportLinks"] = exportLinks;
+    }
     if (id != null) {
       _json["id"] = id;
     }

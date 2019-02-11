@@ -34,8 +34,8 @@ class RuntimeconfigApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   RuntimeconfigApi(http.Client client,
-      {core.String rootUrl: "https://runtimeconfig.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://runtimeconfig.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -97,12 +97,12 @@ class ProjectsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<RuntimeConfig> create(RuntimeConfig request, core.String parent,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -150,12 +150,12 @@ class ProjectsConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -196,12 +196,12 @@ class ProjectsConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RuntimeConfig> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -244,12 +244,12 @@ class ProjectsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -300,12 +300,12 @@ class ProjectsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListConfigsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -358,12 +358,12 @@ class ProjectsConfigsResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -418,12 +418,12 @@ class ProjectsConfigsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -472,12 +472,12 @@ class ProjectsConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<RuntimeConfig> update(RuntimeConfig request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -527,12 +527,12 @@ class ProjectsConfigsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -582,12 +582,12 @@ class ProjectsConfigsOperationsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -664,12 +664,12 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> create(Variable request, core.String parent,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -727,12 +727,12 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
       {core.bool recursive, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -775,12 +775,12 @@ class ProjectsConfigsVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variable> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -816,11 +816,6 @@ class ProjectsConfigsVariablesResourceApi {
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
   /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
   ///
-  /// [filter] - Filters variables by matching the specified filter. For
-  /// example:
-  ///
-  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
-  ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken`
   /// returned by a previous list request to get the next page of results.
@@ -835,6 +830,11 @@ class ProjectsConfigsVariablesResourceApi {
   /// are fewer
   /// elements than the specified number, returns all elements.
   ///
+  /// [filter] - Filters variables by matching the specified filter. For
+  /// example:
+  ///
+  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -846,23 +846,20 @@ class ProjectsConfigsVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.bool returnValues,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -872,6 +869,9 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -920,12 +920,12 @@ class ProjectsConfigsVariablesResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -974,12 +974,12 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> update(Variable request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1039,12 +1039,12 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> watch(WatchVariableRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1115,12 +1115,12 @@ class ProjectsConfigsWaitersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> create(Waiter request, core.String parent,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1168,12 +1168,12 @@ class ProjectsConfigsWaitersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1215,12 +1215,12 @@ class ProjectsConfigsWaitersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Waiter> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1271,12 +1271,12 @@ class ProjectsConfigsWaitersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListWaitersResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1334,12 +1334,12 @@ class ProjectsConfigsWaitersResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1435,15 +1435,15 @@ class Binding {
 /// A Cardinality condition for the Waiter resource. A cardinality condition is
 /// met when the number of variables under a specified path prefix reaches a
 /// predefined number. For example, if you set a Cardinality condition where
-/// the `path` is set to `/foo` and the number of paths is set to 2, the
+/// the `path` is set to `/foo` and the number of paths is set to `2`, the
 /// following variables would meet the condition in a RuntimeConfig resource:
 ///
 /// + `/foo/variable1 = "value1"`
 /// + `/foo/variable2 = "value2"`
 /// + `/bar/variable3 = "value3"`
 ///
-/// It would not would not satisify the same condition with the `number` set to
-/// 3, however, because there is only 2 paths that start with `/foo`.
+/// It would not satisfy the same condition with the `number` set to
+/// `3`, however, because there is only 2 paths that start with `/foo`.
 /// Cardinality conditions are recursive; all subtrees under the specific
 /// path prefix are counted.
 class Cardinality {
@@ -1856,7 +1856,7 @@ class Policy {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2134,7 +2134,8 @@ class Variable {
   ///     projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]
   ///
   /// The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a
-  /// valid RuntimeConfig reource and `[VARIABLE_NAME]` follows Unix file system
+  /// valid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file
+  /// system
   /// file path naming.
   ///
   /// The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and
@@ -2149,7 +2150,7 @@ class Variable {
   /// Once you create a variable, you cannot change the variable name.
   core.String name;
 
-  /// [Ouput only] The current state of the variable. The variable state
+  /// Output only. The current state of the variable. The variable state
   /// indicates
   /// the outcome of the `variables().watch` call and is visible through the
   /// `get` and `list` calls.
@@ -2167,17 +2168,20 @@ class Variable {
   core.String text;
 
   /// Output only. The time of the last variable update.
+  /// Timestamp will be UTC timestamp.
   core.String updateTime;
 
   /// The binary value of the variable. The length of the value must be less
   /// than 4096 bytes. Empty values are also accepted. The value must be
-  /// base64 encoded. Only one of `value` or `text` can be set.
+  /// base64 encoded, and must comply with IETF RFC4648
+  /// (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text`
+  /// can be set.
   core.String value;
   core.List<core.int> get valueAsBytes {
     return convert.base64.decode(value);
   }
 
-  void set valueAsBytes(core.List<core.int> _bytes) {
+  set valueAsBytes(core.List<core.int> _bytes) {
     value =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

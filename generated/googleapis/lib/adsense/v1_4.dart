@@ -49,8 +49,8 @@ class AdsenseApi {
       new UrlchannelsResourceApi(_requester);
 
   AdsenseApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "adsense/v1.4/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "adsense/v1.4/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -97,12 +97,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> get(core.String accountId,
       {core.bool tree, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -149,12 +149,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Accounts> list(
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -204,12 +204,12 @@ class AccountsAdclientsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdCode> getAdCode(core.String accountId, core.String adClientId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -262,12 +262,12 @@ class AccountsAdclientsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdClients> list(core.String accountId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -328,12 +328,12 @@ class AccountsAdunitsResourceApi {
   async.Future<AdUnit> get(
       core.String accountId, core.String adClientId, core.String adUnitId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -387,12 +387,12 @@ class AccountsAdunitsResourceApi {
   async.Future<AdCode> getAdCode(
       core.String accountId, core.String adClientId, core.String adUnitId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -457,12 +457,12 @@ class AccountsAdunitsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -536,12 +536,12 @@ class AccountsAdunitsCustomchannelsResourceApi {
   async.Future<CustomChannels> list(
       core.String accountId, core.String adClientId, core.String adUnitId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -604,12 +604,12 @@ class AccountsAlertsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String alertId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -659,12 +659,12 @@ class AccountsAlertsResourceApi {
   /// this method will complete with the same error.
   async.Future<Alerts> list(core.String accountId,
       {core.String locale, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -722,12 +722,12 @@ class AccountsCustomchannelsResourceApi {
   async.Future<CustomChannel> get(core.String accountId, core.String adClientId,
       core.String customChannelId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -788,12 +788,12 @@ class AccountsCustomchannelsResourceApi {
   async.Future<CustomChannels> list(
       core.String accountId, core.String adClientId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -869,12 +869,12 @@ class AccountsCustomchannelsAdunitsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -939,12 +939,12 @@ class AccountsPaymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Payments> list(core.String accountId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1055,14 +1055,14 @@ class AccountsReportsResourceApi {
       core.int startIndex,
       core.bool useTimezoneReporting,
       core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1168,12 +1168,12 @@ class AccountsReportsSavedResourceApi {
       core.int maxResults,
       core.int startIndex,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1235,12 +1235,12 @@ class AccountsReportsSavedResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedReports> list(core.String accountId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1296,12 +1296,12 @@ class AccountsSavedadstylesResourceApi {
   async.Future<SavedAdStyle> get(
       core.String accountId, core.String savedAdStyleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1353,12 +1353,12 @@ class AccountsSavedadstylesResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedAdStyles> list(core.String accountId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1422,12 +1422,12 @@ class AccountsUrlchannelsResourceApi {
   /// this method will complete with the same error.
   async.Future<UrlChannels> list(core.String accountId, core.String adClientId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1490,12 +1490,12 @@ class AdclientsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdClients> list(
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -1547,12 +1547,12 @@ class AdunitsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdUnit> get(core.String adClientId, core.String adUnitId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -1598,12 +1598,12 @@ class AdunitsResourceApi {
   /// this method will complete with the same error.
   async.Future<AdCode> getAdCode(core.String adClientId, core.String adUnitId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -1661,12 +1661,12 @@ class AdunitsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -1733,12 +1733,12 @@ class AdunitsCustomchannelsResourceApi {
   async.Future<CustomChannels> list(
       core.String adClientId, core.String adUnitId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -1792,12 +1792,12 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String alertId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
@@ -1838,12 +1838,12 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Alerts> list({core.String locale, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (locale != null) {
       _queryParams["locale"] = [locale];
@@ -1893,12 +1893,12 @@ class CustomchannelsResourceApi {
   async.Future<CustomChannel> get(
       core.String adClientId, core.String customChannelId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -1951,12 +1951,12 @@ class CustomchannelsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomChannels> list(core.String adClientId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -2025,12 +2025,12 @@ class CustomchannelsAdunitsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");
@@ -2099,12 +2099,12 @@ class MetadataDimensionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Metadata> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2142,12 +2142,12 @@ class MetadataMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Metadata> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2185,12 +2185,12 @@ class PaymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Payments> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2296,14 +2296,14 @@ class ReportsResourceApi {
       core.int startIndex,
       core.bool useTimezoneReporting,
       core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (startDate == null) {
       throw new core.ArgumentError("Parameter startDate is required.");
@@ -2405,12 +2405,12 @@ class ReportsSavedResourceApi {
       core.int maxResults,
       core.int startIndex,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (savedReportId == null) {
       throw new core.ArgumentError("Parameter savedReportId is required.");
@@ -2464,12 +2464,12 @@ class ReportsSavedResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedReports> list(
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2516,12 +2516,12 @@ class SavedadstylesResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedAdStyle> get(core.String savedAdStyleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (savedAdStyleId == null) {
       throw new core.ArgumentError("Parameter savedAdStyleId is required.");
@@ -2565,12 +2565,12 @@ class SavedadstylesResourceApi {
   /// this method will complete with the same error.
   async.Future<SavedAdStyles> list(
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2625,12 +2625,12 @@ class UrlchannelsResourceApi {
   /// this method will complete with the same error.
   async.Future<UrlChannels> list(core.String adClientId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (adClientId == null) {
       throw new core.ArgumentError("Parameter adClientId is required.");

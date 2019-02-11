@@ -20,9 +20,10 @@ class Package {
   final String readme;
   final String license;
   final String changelog;
+  final String example;
 
   Package(this.name, this.apis, this.pubspec, this.readme, this.license,
-      this.changelog);
+      this.changelog, this.example);
 }
 
 /**
@@ -161,6 +162,11 @@ class DiscoveryPackagesConfiguration {
         new File('$generatedApisDir/$name/CHANGELOG.md')
             .writeAsStringSync(package.changelog);
       }
+      if (package.example != null) {
+        Directory('$generatedApisDir/$name/example').createSync();
+        File('$generatedApisDir/$name/example/main.dart')
+            .writeAsStringSync(package.example);
+      }
     });
   }
 
@@ -194,7 +200,9 @@ package.
 ''');
     for (RestDescription item in items) {
       sb.write("#### ");
-      if (item.icons != null && item.icons.x16 != null) {
+      if (item.icons != null &&
+          item.icons.x16 != null &&
+          item.icons.x16.startsWith('https://')) {
         sb.write("![Logo](${item.icons.x16}) ");
       }
       sb
@@ -249,22 +257,21 @@ package.
     if (values['changelog'] != null) {
       changelogFile = configUri.resolve(values['changelog']).path;
     }
+    var example;
+    if (values['example'] != null) {
+      final exampleFile = configUri.resolve(values['example']).path;
+      example = File(exampleFile).readAsStringSync();
+    }
 
     // Generate package description.
     var apiDescriptions = <RestDescription>[];
-    var sb = new StringBuffer()
-      ..write('"Auto-generated client libraries for accessing '
-          'the following APIs:');
-    bool first = true;
+    final description = 'Auto-generated client libraries for accessing Google '
+        'APIs described through the API discovery service.';
     allApis.forEach((RestDescription apiDescription) {
       if (apis.contains(apiDescription.id)) {
-        if (!first) sb.write(', ');
-        sb.write(apiDescription.id);
         apiDescriptions.add(apiDescription);
-        first = false;
       }
     });
-    sb.write('"');
 
     // Generate the README.md file content.
     var readme = _generateReadme(readmeFile, apiDescriptions);
@@ -276,10 +283,17 @@ package.
     var changelog = new File(changelogFile).readAsStringSync();
 
     // Create package description with pubspec.yaml information.
-    var pubspec = new Pubspec(name, version, sb.toString(),
+    var pubspec = new Pubspec(name, version, description,
         author: author, homepage: homepage);
     return new Package(
-        name, new List<String>.from(apis), pubspec, readme, license, changelog);
+      name,
+      new List<String>.from(apis),
+      pubspec,
+      readme,
+      license,
+      changelog,
+      example,
+    );
   }
 
   /// The known APIs are the APis mentioned in each package together with

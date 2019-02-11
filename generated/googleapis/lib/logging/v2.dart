@@ -54,8 +54,8 @@ class LoggingApi {
   SinksResourceApi get sinks => new SinksResourceApi(_requester);
 
   LoggingApi(http.Client client,
-      {core.String rootUrl: "https://logging.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://logging.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -107,12 +107,12 @@ class BillingAccountsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -160,12 +160,12 @@ class BillingAccountsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -208,12 +208,12 @@ class BillingAccountsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -267,12 +267,12 @@ class BillingAccountsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -333,12 +333,12 @@ class BillingAccountsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -399,12 +399,12 @@ class BillingAccountsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
@@ -458,12 +458,12 @@ class BillingAccountsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -536,12 +536,12 @@ class BillingAccountsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -592,12 +592,12 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -640,12 +640,12 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -698,12 +698,12 @@ class BillingAccountsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -730,7 +730,7 @@ class BillingAccountsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -765,7 +765,7 @@ class BillingAccountsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -782,12 +782,12 @@ class BillingAccountsSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -817,7 +817,7 @@ class BillingAccountsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -852,7 +852,7 @@ class BillingAccountsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -869,12 +869,12 @@ class BillingAccountsSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -909,8 +909,9 @@ class EntriesResourceApi {
 
   EntriesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists log entries. Use this method to retrieve log entries from Logging.
-  /// For ways to export log entries, see Exporting Logs.
+  /// Lists log entries. Use this method to retrieve log entries that originated
+  /// from a project/folder/organization/billing account. For ways to export log
+  /// entries, see Exporting Logs.
   ///
   /// [request] - The metadata request object.
   ///
@@ -928,12 +929,12 @@ class EntriesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogEntriesResponse> list(ListLogEntriesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -975,12 +976,12 @@ class EntriesResourceApi {
   /// this method will complete with the same error.
   async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1034,12 +1035,12 @@ class ExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1087,12 +1088,12 @@ class ExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1135,12 +1136,12 @@ class ExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1194,12 +1195,12 @@ class ExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1260,12 +1261,12 @@ class ExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1337,12 +1338,12 @@ class FoldersExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1390,12 +1391,12 @@ class FoldersExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1438,12 +1439,12 @@ class FoldersExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1476,14 +1477,14 @@ class FoldersExclusionsResourceApi {
   ///
   /// Value must have pattern "^folders/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1496,22 +1497,22 @@ class FoldersExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1563,12 +1564,12 @@ class FoldersExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1628,12 +1629,12 @@ class FoldersLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
@@ -1687,12 +1688,12 @@ class FoldersLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1764,12 +1765,12 @@ class FoldersSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1820,12 +1821,12 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -1868,12 +1869,12 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -1926,12 +1927,12 @@ class FoldersSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1958,7 +1959,7 @@ class FoldersSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -1993,7 +1994,7 @@ class FoldersSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2010,12 +2011,12 @@ class FoldersSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2045,7 +2046,7 @@ class FoldersSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -2080,7 +2081,7 @@ class FoldersSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2097,12 +2098,12 @@ class FoldersSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2165,12 +2166,12 @@ class LogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
@@ -2224,12 +2225,12 @@ class LogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2266,14 +2267,14 @@ class MonitoredResourceDescriptorsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2286,19 +2287,19 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2364,12 +2365,12 @@ class OrganizationsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2417,12 +2418,12 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2465,12 +2466,12 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -2503,14 +2504,14 @@ class OrganizationsExclusionsResourceApi {
   ///
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2523,22 +2524,22 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2590,12 +2591,12 @@ class OrganizationsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2656,12 +2657,12 @@ class OrganizationsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
@@ -2715,12 +2716,12 @@ class OrganizationsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2793,12 +2794,12 @@ class OrganizationsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2849,12 +2850,12 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -2897,12 +2898,12 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -2955,12 +2956,12 @@ class OrganizationsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -2987,7 +2988,7 @@ class OrganizationsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -3022,7 +3023,7 @@ class OrganizationsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3039,12 +3040,12 @@ class OrganizationsSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3074,7 +3075,7 @@ class OrganizationsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -3109,7 +3110,7 @@ class OrganizationsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3126,12 +3127,12 @@ class OrganizationsSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3209,12 +3210,12 @@ class ProjectsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> create(LogExclusion request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3262,12 +3263,12 @@ class ProjectsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -3310,12 +3311,12 @@ class ProjectsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -3369,12 +3370,12 @@ class ProjectsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3435,12 +3436,12 @@ class ProjectsExclusionsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3500,12 +3501,12 @@ class ProjectsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String logName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
@@ -3559,12 +3560,12 @@ class ProjectsLogsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3619,12 +3620,12 @@ class ProjectsMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogMetric> create(LogMetric request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3668,12 +3669,12 @@ class ProjectsMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String metricName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
@@ -3713,12 +3714,12 @@ class ProjectsMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogMetric> get(core.String metricName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
@@ -3768,12 +3769,12 @@ class ProjectsMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLogMetricsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -3825,12 +3826,12 @@ class ProjectsMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<LogMetric> update(LogMetric request, core.String metricName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3899,12 +3900,12 @@ class ProjectsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3955,12 +3956,12 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4003,12 +4004,12 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4061,12 +4062,12 @@ class ProjectsSinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -4093,7 +4094,7 @@ class ProjectsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -4128,7 +4129,7 @@ class ProjectsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4145,12 +4146,12 @@ class ProjectsSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4180,7 +4181,7 @@ class ProjectsSinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -4215,7 +4216,7 @@ class ProjectsSinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4232,12 +4233,12 @@ class ProjectsSinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4312,12 +4313,12 @@ class SinksResourceApi {
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
       {core.bool uniqueWriterIdentity, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4368,12 +4369,12 @@ class SinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4416,12 +4417,12 @@ class SinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
@@ -4474,12 +4475,12 @@ class SinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -4506,7 +4507,7 @@ class SinksResourceApi {
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
-  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink with values from the new sink: destination, and filter.The updated
   /// sink might also have a new writer_identity; see the unique_writer_identity
   /// field.
   ///
@@ -4541,7 +4542,7 @@ class SinksResourceApi {
   /// backwards compatibility purposes:  destination,filter,includeChildren At
   /// some point in the future, behavior will be removed and specifying an empty
   /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
   /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4558,12 +4559,12 @@ class SinksResourceApi {
       {core.bool uniqueWriterIdentity,
       core.String updateMask,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5359,7 +5360,7 @@ class LogEntry {
   /// with a leading slash will never return any results.
   core.String logName;
 
-  /// Output only. Additional metadata about the monitored resource. Only
+  /// Output only. Additional metadata about the monitored resource.Only
   /// k8s_container, k8s_pod, and k8s_node MonitoredResources have this field
   /// populated.
   MonitoredResourceMetadata metadata;
@@ -5378,10 +5379,10 @@ class LogEntry {
   /// Output only. The time the log entry was received by Logging.
   core.String receiveTimestamp;
 
-  /// Required. The primary monitored resource associated with this log entry.
-  /// Example: a log entry that reports a database error would be associated
-  /// with the monitored resource designating the particular database that
-  /// reported the error.
+  /// Required. The primary monitored resource associated with this log
+  /// entry.Example: a log entry that reports a database error would be
+  /// associated with the monitored resource designating the particular database
+  /// that reported the error.
   MonitoredResource resource;
 
   /// Optional. The severity of the log entry. The default value is
@@ -5405,7 +5406,7 @@ class LogEntry {
   /// if any.
   LogEntrySourceLocation sourceLocation;
 
-  /// Optional. The span ID within the trace associated with the log entry. For
+  /// Optional. The span ID within the trace associated with the log entry.For
   /// Trace spans, this is the same format that the Trace API v2 uses: a
   /// 16-character hexadecimal encoding of an 8-byte array, such as
   /// <code>"000000000000004a"</code>.
@@ -5431,6 +5432,14 @@ class LogEntry {
   /// relative to //tracing.googleapis.com. Example:
   /// projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824
   core.String trace;
+
+  /// Optional. The sampling decision of the trace associated with the log
+  /// entry.True means that the trace resource name in the trace field was
+  /// sampled for storage in a trace backend. False means that the trace was not
+  /// sampled for storage when this log entry was written, or the sampling
+  /// decision was unknown at the time. A non-sampled trace value is still
+  /// useful as a request correlation identifier. The default is False.
+  core.bool traceSampled;
 
   LogEntry();
 
@@ -5486,6 +5495,9 @@ class LogEntry {
     if (_json.containsKey("trace")) {
       trace = _json["trace"];
     }
+    if (_json.containsKey("traceSampled")) {
+      traceSampled = _json["traceSampled"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5538,6 +5550,9 @@ class LogEntry {
     }
     if (trace != null) {
       _json["trace"] = trace;
+    }
+    if (traceSampled != null) {
+      _json["traceSampled"] = traceSampled;
     }
     return _json;
   }
@@ -5652,11 +5667,15 @@ class LogEntrySourceLocation {
 /// you can export log entries before they are excluded. Audit log entries and
 /// log entries from Amazon Web Services are never excluded.
 class LogExclusion {
+  /// Output only. The creation timestamp of the exclusion.This field may not be
+  /// present for older exclusions.
+  core.String createTime;
+
   /// Optional. A description of this exclusion.
   core.String description;
 
   /// Optional. If set to True, then this exclusion is disabled and it does not
-  /// exclude any log entries. You can use exclusions.patch to change the value
+  /// exclude any log entries. You can update an exclusion to change the value
   /// of this field.
   core.bool disabled;
 
@@ -5673,9 +5692,16 @@ class LogExclusion {
   /// digits, underscores, hyphens, and periods.
   core.String name;
 
+  /// Output only. The last update timestamp of the exclusion.This field may not
+  /// be present for older exclusions.
+  core.String updateTime;
+
   LogExclusion();
 
   LogExclusion.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -5688,11 +5714,17 @@ class LogExclusion {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -5704,6 +5736,9 @@ class LogExclusion {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -5784,7 +5819,12 @@ class LogMetric {
   /// used to create a histogram of the extracted values.
   BucketOptions bucketOptions;
 
+  /// Output only. The creation timestamp of the metric.This field may not be
+  /// present for older metrics.
+  core.String createTime;
+
   /// Optional. A description of this metric, which is used in documentation.
+  /// The maximum length of the description is 8000 characters.
   core.String description;
 
   /// Required. An advanced logs filter which is used to match log entries.
@@ -5834,6 +5874,10 @@ class LogMetric {
   /// "projects/my-project/metrics/nginx%2Frequests".
   core.String name;
 
+  /// Output only. The last update timestamp of the metric.This field may not be
+  /// present for older metrics.
+  core.String updateTime;
+
   /// Optional. A value_extractor is required when using a distribution
   /// logs-based metric to extract the values to record from a log entry. Two
   /// functions are supported for value extraction: EXTRACT(field) or
@@ -5864,6 +5908,9 @@ class LogMetric {
     if (_json.containsKey("bucketOptions")) {
       bucketOptions = new BucketOptions.fromJson(_json["bucketOptions"]);
     }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -5881,6 +5928,9 @@ class LogMetric {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
     if (_json.containsKey("valueExtractor")) {
       valueExtractor = _json["valueExtractor"];
     }
@@ -5894,6 +5944,9 @@ class LogMetric {
         new core.Map<core.String, core.Object>();
     if (bucketOptions != null) {
       _json["bucketOptions"] = (bucketOptions).toJson();
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
     }
     if (description != null) {
       _json["description"] = description;
@@ -5909,6 +5962,9 @@ class LogMetric {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     if (valueExtractor != null) {
       _json["valueExtractor"] = valueExtractor;
@@ -5926,17 +5982,18 @@ class LogMetric {
 /// exported. The sink must be created within a project, organization, billing
 /// account, or folder.
 class LogSink {
+  /// Output only. The creation timestamp of the sink.This field may not be
+  /// present for older sinks.
+  core.String createTime;
+
   /// Required. The export destination:
   /// "storage.googleapis.com/[GCS_BUCKET]"
   /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
   /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
   /// The sink's writer_identity, set when the sink is created, must have
   /// permission to write to the destination or else the log entries are not
-  /// exported. For more information, see Exporting Logs With Sinks.
+  /// exported. For more information, see Exporting Logs with Sinks.
   core.String destination;
-
-  /// Deprecated. This field is ignored when creating or updating sinks.
-  core.String endTime;
 
   /// Optional. An advanced logs filter. The only exported log entries are those
   /// that are in the resource owning the sink and that match the filter. For
@@ -5973,15 +6030,16 @@ class LogSink {
   /// - "V1" : LogEntry version 1 format.
   core.String outputVersionFormat;
 
-  /// Deprecated. This field is ignored when creating or updating sinks.
-  core.String startTime;
+  /// Output only. The last update timestamp of the sink.This field may not be
+  /// present for older sinks.
+  core.String updateTime;
 
   /// Output only. An IAM identity&mdash;a service account or group&mdash;under
   /// which Logging writes the exported log entries to the sink's destination.
-  /// This field is set by sinks.create and sinks.update, based on the setting
-  /// of unique_writer_identity in those methods.Until you grant this identity
+  /// This field is set by sinks.create and sinks.update based on the value of
+  /// unique_writer_identity in those methods.Until you grant this identity
   /// write-access to the destination, log entry exports from this sink will
-  /// fail. For more information, see Granting access for a resource. Consult
+  /// fail. For more information, see Granting Access for a Resource. Consult
   /// the destination service's documentation to determine the appropriate IAM
   /// roles to assign to the identity.
   core.String writerIdentity;
@@ -5989,11 +6047,11 @@ class LogSink {
   LogSink();
 
   LogSink.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
-    }
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
     }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
@@ -6007,8 +6065,8 @@ class LogSink {
     if (_json.containsKey("outputVersionFormat")) {
       outputVersionFormat = _json["outputVersionFormat"];
     }
-    if (_json.containsKey("startTime")) {
-      startTime = _json["startTime"];
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
     }
     if (_json.containsKey("writerIdentity")) {
       writerIdentity = _json["writerIdentity"];
@@ -6018,11 +6076,11 @@ class LogSink {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
     if (destination != null) {
       _json["destination"] = destination;
-    }
-    if (endTime != null) {
-      _json["endTime"] = endTime;
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -6036,8 +6094,8 @@ class LogSink {
     if (outputVersionFormat != null) {
       _json["outputVersionFormat"] = outputVersionFormat;
     }
-    if (startTime != null) {
-      _json["startTime"] = startTime;
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     if (writerIdentity != null) {
       _json["writerIdentity"] = writerIdentity;
@@ -6927,10 +6985,13 @@ class WriteLogEntriesRequest {
   /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
   /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
   /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
-  /// [LOG_ID] must be URL-encoded. For example,
-  /// "projects/my-project-id/logs/syslog" or
-  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// For more information about log names, see LogEntry.
+  /// [LOG_ID] must be URL-encoded. For example:
+  /// "projects/my-project-id/logs/syslog"
+  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
+  /// The permission <code>logging.logEntries.create</code> is needed on each
+  /// project, organization, billing account, or folder that is receiving new
+  /// log entries, whether the resource is specified in <code>logName</code> or
+  /// in an individual log entry.
   core.String logName;
 
   /// Optional. Whether valid entries should be written even if some other

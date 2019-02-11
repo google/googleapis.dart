@@ -47,8 +47,8 @@ class DnsApi {
       new ResourceRecordSetsResourceApi(_requester);
 
   DnsApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "dns/v2beta1/projects/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "dns/v2beta1/projects/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,12 +86,12 @@ class ChangesResourceApi {
   async.Future<Change> create(
       Change request, core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -152,12 +152,12 @@ class ChangesResourceApi {
   async.Future<Change> get(
       core.String project, core.String managedZone, core.String changeId,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -228,12 +228,12 @@ class ChangesResourceApi {
       core.String sortBy,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -311,12 +311,12 @@ class DnsKeysResourceApi {
       {core.String clientOperationId,
       core.String digestType,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -387,12 +387,12 @@ class DnsKeysResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -461,12 +461,12 @@ class ManagedZoneOperationsResourceApi {
   async.Future<Operation> get(
       core.String project, core.String managedZone, core.String operation,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -535,12 +535,12 @@ class ManagedZoneOperationsResourceApi {
       core.String pageToken,
       core.String sortBy,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -606,12 +606,12 @@ class ManagedZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<ManagedZone> create(ManagedZone request, core.String project,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -660,12 +660,12 @@ class ManagedZonesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -720,12 +720,12 @@ class ManagedZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<ManagedZone> get(core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -782,12 +782,12 @@ class ManagedZonesResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -845,12 +845,12 @@ class ManagedZonesResourceApi {
   async.Future<Operation> patch(
       ManagedZone request, core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -909,12 +909,12 @@ class ManagedZonesResourceApi {
   async.Future<Operation> update(
       ManagedZone request, core.String project, core.String managedZone,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -973,12 +973,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Project> get(core.String project,
       {core.String clientOperationId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1046,12 +1046,12 @@ class ResourceRecordSetsResourceApi {
       core.String pageToken,
       core.String type,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1091,7 +1091,13 @@ class ResourceRecordSetsResourceApi {
   }
 }
 
-/// An atomic update to a collection of ResourceRecordSets.
+/// A Change represents a set of ResourceRecordSet additions and deletions
+/// applied atomically to a ManagedZone. ResourceRecordSets within a ManagedZone
+/// are modified by creating a new Change element in the Changes collection. In
+/// turn the Changes collection also records the past modifications to the
+/// ResourceRecordSets in a ManagedZone. The current state of the ManagedZone is
+/// the sum effect of applying all Change elements in the Changes collection in
+/// sequence.
 class Change {
   /// Which ResourceRecordSets to add?
   core.List<ResourceRecordSet> additions;
@@ -1113,7 +1119,9 @@ class Change {
   /// is in RFC3339 text format.
   core.String startTime;
 
-  /// Status of the operation (output only).
+  /// Status of the operation (output only). A status of "done" means that the
+  /// request to update the authoritative servers has been sent, but the servers
+  /// might not be updated yet.
   /// Possible string values are:
   /// - "DONE"
   /// - "PENDING"
@@ -1431,11 +1439,11 @@ class DnsKeySpec {
   /// Length of the keys in bits.
   core.int keyLength;
 
-  /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
-  /// Secure Entry Point flag set and, when active, will be used to sign only
-  /// resource record sets of type DNSKEY. Otherwise, the Secure Entry Point
-  /// flag will be cleared and this key will be used to sign only resource
-  /// record sets of other types.
+  /// Specifies whether this is a key signing key (KSK) or a zone signing key
+  /// (ZSK). Key signing keys have the Secure Entry Point flag set and, when
+  /// active, will only be used to sign resource record sets of type DNSKEY.
+  /// Zone signing keys do not have the Secure Entry Point flag set and will be
+  /// used to sign all other types of resource record sets.
   /// Possible string values are:
   /// - "KEY_SIGNING"
   /// - "ZONE_SIGNING"
@@ -1860,7 +1868,9 @@ class Operation {
   core.String startTime;
 
   /// Status of the operation. Can be one of the following: "PENDING" or "DONE"
-  /// (output only).
+  /// (output only). A status of "DONE" means that the request to update the
+  /// authoritative servers has been sent, but the servers might not be updated
+  /// yet.
   /// Possible string values are:
   /// - "DONE"
   /// - "PENDING"
@@ -2176,8 +2186,8 @@ class ResourceRecordSet {
   /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
   core.int ttl;
 
-  /// The identifier of a supported record type, for example, A, AAAA, MX, TXT,
-  /// and so on.
+  /// The identifier of a supported record type. See the list of Supported DNS
+  /// record types.
   core.String type;
 
   ResourceRecordSet();

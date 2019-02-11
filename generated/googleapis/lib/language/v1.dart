@@ -16,9 +16,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client language/v1';
 
-/// Provides natural language understanding technologies to developers. Examples
-/// include sentiment analysis, entity recognition, entity sentiment analysis,
-/// and text annotations.
+/// Provides natural language understanding technologies, such as sentiment
+/// analysis, entity recognition, entity sentiment analysis, and other text
+/// annotations, to developers.
 class LanguageApi {
   /// Apply machine learning models to reveal the structure and meaning of text
   static const CloudLanguageScope =
@@ -33,8 +33,8 @@ class LanguageApi {
   DocumentsResourceApi get documents => new DocumentsResourceApi(_requester);
 
   LanguageApi(http.Client client,
-      {core.String rootUrl: "https://language.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://language.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -65,12 +65,12 @@ class DocumentsResourceApi {
   async.Future<AnalyzeEntitiesResponse> analyzeEntities(
       AnalyzeEntitiesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -110,12 +110,12 @@ class DocumentsResourceApi {
   async.Future<AnalyzeEntitySentimentResponse> analyzeEntitySentiment(
       AnalyzeEntitySentimentRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -155,12 +155,12 @@ class DocumentsResourceApi {
   async.Future<AnalyzeSentimentResponse> analyzeSentiment(
       AnalyzeSentimentRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -202,12 +202,12 @@ class DocumentsResourceApi {
   async.Future<AnalyzeSyntaxResponse> analyzeSyntax(
       AnalyzeSyntaxRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -246,12 +246,12 @@ class DocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<AnnotateTextResponse> annotateText(AnnotateTextRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -289,12 +289,12 @@ class DocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ClassifyTextResponse> classifyText(ClassifyTextRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

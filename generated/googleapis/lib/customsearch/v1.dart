@@ -22,8 +22,8 @@ class CustomsearchApi {
   CseResourceApi get cse => new CseResourceApi(_requester);
 
   CustomsearchApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "customsearch/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "customsearch/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -243,12 +243,12 @@ class CseResourceApi {
       core.String sort,
       core.int start,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null) {
       throw new core.ArgumentError("Parameter q is required.");
@@ -572,12 +572,12 @@ class CseSiterestrictResourceApi {
       core.String sort,
       core.int start,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null) {
       throw new core.ArgumentError("Parameter q is required.");

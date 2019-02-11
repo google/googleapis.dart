@@ -30,8 +30,8 @@ class AnalyticsreportingApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   AnalyticsreportingApi(http.Client client,
-      {core.String rootUrl: "https://analyticsreporting.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://analyticsreporting.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -59,12 +59,12 @@ class ReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetReportsResponse> batchGet(GetReportsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

@@ -16,17 +16,19 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client indexing/v3';
 
-/// The Indexing API allows developers to share the life cycle of a Web Document
-/// with Google.
+/// Notifies Google when your web pages change.
 class IndexingApi {
+  /// Submit data to Google for indexing
+  static const IndexingScope = "https://www.googleapis.com/auth/indexing";
+
   final commons.ApiRequester _requester;
 
   UrlNotificationsResourceApi get urlNotifications =>
       new UrlNotificationsResourceApi(_requester);
 
   IndexingApi(http.Client client,
-      {core.String rootUrl: "https://indexing.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://indexing.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -58,12 +60,12 @@ class UrlNotificationsResourceApi {
   /// this method will complete with the same error.
   async.Future<UrlNotificationMetadata> getMetadata(
       {core.String url, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (url != null) {
       _queryParams["url"] = [url];
@@ -101,12 +103,12 @@ class UrlNotificationsResourceApi {
   /// this method will complete with the same error.
   async.Future<PublishUrlNotificationResponse> publish(UrlNotification request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

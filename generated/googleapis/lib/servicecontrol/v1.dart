@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client servicecontrol/v1';
 
-/// Google Service Control provides control plane functionality to managed
-/// services, such as logging, monitoring, and status checks.
+/// Provides control plane functionality to managed services, such as logging,
+/// monitoring, and status checks.
 class ServicecontrolApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -32,8 +32,8 @@ class ServicecontrolApi {
   ServicesResourceApi get services => new ServicesResourceApi(_requester);
 
   ServicecontrolApi(http.Client client,
-      {core.String rootUrl: "https://servicecontrol.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://servicecontrol.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -78,12 +78,12 @@ class ServicesResourceApi {
   async.Future<AllocateQuotaResponse> allocateQuota(
       AllocateQuotaRequest request, core.String serviceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -151,12 +151,12 @@ class ServicesResourceApi {
   async.Future<CheckResponse> check(
       CheckRequest request, core.String serviceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -179,132 +179,6 @@ class ServicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new CheckResponse.fromJson(data));
-  }
-
-  /// Signals the quota controller that service ends the ongoing usage
-  /// reconciliation.
-  ///
-  /// This method requires the `servicemanagement.services.quota`
-  /// permission on the specified service. For more information, see
-  /// [Google Cloud IAM](https://cloud.google.com/iam).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [serviceName] - Name of the service as specified in the service
-  /// configuration. For example,
-  /// `"pubsub.googleapis.com"`.
-  ///
-  /// See google.api.Service for the definition of a service name.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [EndReconciliationResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<EndReconciliationResponse> endReconciliation(
-      EndReconciliationRequest request, core.String serviceName,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (serviceName == null) {
-      throw new core.ArgumentError("Parameter serviceName is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':endReconciliation';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new EndReconciliationResponse.fromJson(data));
-  }
-
-  /// Releases previously allocated quota done through AllocateQuota method.
-  ///
-  /// This method requires the `servicemanagement.services.quota`
-  /// permission on the specified service. For more information, see
-  /// [Cloud IAM](https://cloud.google.com/iam).
-  ///
-  ///
-  /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
-  /// `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
-  /// reliability, the server may inject these errors to prohibit any hard
-  /// dependency on the quota functionality.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [serviceName] - Name of the service as specified in the service
-  /// configuration. For example,
-  /// `"pubsub.googleapis.com"`.
-  ///
-  /// See google.api.Service for the definition of a service name.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ReleaseQuotaResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ReleaseQuotaResponse> releaseQuota(
-      ReleaseQuotaRequest request, core.String serviceName,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (serviceName == null) {
-      throw new core.ArgumentError("Parameter serviceName is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':releaseQuota';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ReleaseQuotaResponse.fromJson(data));
   }
 
   /// Reports operation results to Google Service Control, such as logs and
@@ -347,12 +221,12 @@ class ServicesResourceApi {
   async.Future<ReportResponse> report(
       ReportRequest request, core.String serviceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -375,87 +249,6 @@ class ServicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ReportResponse.fromJson(data));
-  }
-
-  /// Unlike rate quota, allocation quota does not get refilled periodically.
-  /// So, it is possible that the quota usage as seen by the service differs
-  /// from
-  /// what the One Platform considers the usage is. This is expected to happen
-  /// only rarely, but over time this can accumulate. Services can invoke
-  /// StartReconciliation and EndReconciliation to correct this usage drift, as
-  /// described below:
-  /// 1. Service sends StartReconciliation with a timestamp in future for each
-  /// metric that needs to be reconciled. The timestamp being in future allows
-  /// to account for in-flight AllocateQuota and ReleaseQuota requests for the
-  ///    same metric.
-  /// 2. One Platform records this timestamp and starts tracking subsequent
-  ///    AllocateQuota and ReleaseQuota requests until EndReconciliation is
-  ///    called.
-  /// 3. At or after the time specified in the StartReconciliation, service
-  ///    sends EndReconciliation with the usage that needs to be reconciled to.
-  /// 4. One Platform adjusts its own record of usage for that metric to the
-  ///    value specified in EndReconciliation by taking in to account any
-  /// allocation or release between StartReconciliation and EndReconciliation.
-  ///
-  /// Signals the quota controller that the service wants to perform a usage
-  /// reconciliation as specified in the request.
-  ///
-  /// This method requires the `servicemanagement.services.quota`
-  /// permission on the specified service. For more information, see
-  /// [Google Cloud IAM](https://cloud.google.com/iam).
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [serviceName] - Name of the service as specified in the service
-  /// configuration. For example,
-  /// `"pubsub.googleapis.com"`.
-  ///
-  /// See google.api.Service for the definition of a service name.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [StartReconciliationResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<StartReconciliationResponse> startReconciliation(
-      StartReconciliationRequest request, core.String serviceName,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (serviceName == null) {
-      throw new core.ArgumentError("Parameter serviceName is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/services/' +
-        commons.Escaper.ecapeVariable('$serviceName') +
-        ':startReconciliation';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new StartReconciliationResponse.fromJson(data));
   }
 }
 
@@ -650,6 +443,18 @@ class AuditLog {
   ///     "shelves/SHELF_ID/books/BOOK_ID"
   core.String resourceName;
 
+  /// The resource's original state before mutation. Present only for
+  /// operations which have successfully modified the targeted resource(s).
+  /// In general, this field should contain all changed fields, except those
+  /// that are already been included in `request`, `response`, `metadata` or
+  /// `service_data` fields.
+  /// When the JSON object represented here has a proto equivalent,
+  /// the proto name will be indicated in the `@type` property.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> resourceOriginalState;
+
   /// The operation response. This may not include all response elements,
   /// such as those that are too large, privacy-sensitive, or duplicated
   /// elsewhere in the log record.
@@ -712,6 +517,10 @@ class AuditLog {
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
     }
+    if (_json.containsKey("resourceOriginalState")) {
+      resourceOriginalState = (_json["resourceOriginalState"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
     if (_json.containsKey("response")) {
       response =
           (_json["response"] as core.Map).cast<core.String, core.Object>();
@@ -758,6 +567,9 @@ class AuditLog {
     }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
+    }
+    if (resourceOriginalState != null) {
+      _json["resourceOriginalState"] = resourceOriginalState;
     }
     if (response != null) {
       _json["response"] = response;
@@ -891,6 +703,13 @@ class AuthenticationInfo {
   /// with a "permission denied" error.
   core.String principalEmail;
 
+  /// The name of the service account key used to create or exchange
+  /// credentials for authenticating the service account making the request.
+  /// This is a scheme-less URI full resource name. For example:
+  ///
+  /// "//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}"
+  core.String serviceAccountKeyName;
+
   /// The third party identification (if any) of the authenticated user making
   /// the request.
   /// When the JSON object represented here has a proto equivalent, the proto
@@ -909,6 +728,9 @@ class AuthenticationInfo {
     if (_json.containsKey("principalEmail")) {
       principalEmail = _json["principalEmail"];
     }
+    if (_json.containsKey("serviceAccountKeyName")) {
+      serviceAccountKeyName = _json["serviceAccountKeyName"];
+    }
     if (_json.containsKey("thirdPartyPrincipal")) {
       thirdPartyPrincipal = (_json["thirdPartyPrincipal"] as core.Map)
           .cast<core.String, core.Object>();
@@ -923,6 +745,9 @@ class AuthenticationInfo {
     }
     if (principalEmail != null) {
       _json["principalEmail"] = principalEmail;
+    }
+    if (serviceAccountKeyName != null) {
+      _json["serviceAccountKeyName"] = serviceAccountKeyName;
     }
     if (thirdPartyPrincipal != null) {
       _json["thirdPartyPrincipal"] = thirdPartyPrincipal;
@@ -1019,6 +844,9 @@ class CheckError {
   /// (soft deletion).
   /// - "PROJECT_INVALID" : The consumer's project number or id does not
   /// represent a valid project.
+  /// - "CONSUMER_INVALID" : The input consumer info does not represent a valid
+  /// consumer folder or
+  /// organization.
   /// - "IP_ADDRESS_BLOCKED" : The IP address of the consumer is invalid for the
   /// specific consumer
   /// project.
@@ -1058,8 +886,12 @@ class CheckError {
   /// project is unavailable.
   /// - "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE" : Cloud Resource Manager
   /// backend server is unavailable.
-  /// - "SECURITY_POLICY_BACKEND_UNAVAILABLE" : Backend server for evaluating
-  /// security policy is unavailable.
+  /// - "SECURITY_POLICY_BACKEND_UNAVAILABLE" : NOTE: for customers in the scope
+  /// of Beta/GA of
+  /// https://cloud.google.com/vpc-service-controls, this error
+  /// is no longer returned. If the security backend is unavailable, rpc
+  /// UNAVAILABLE status will be returned instead. It should be ignored and
+  /// should not be used to reject client requests.
   /// - "LOCATION_POLICY_BACKEND_UNAVAILABLE" : Backend server for evaluating
   /// location policy is unavailable.
   core.String code;
@@ -1157,6 +989,7 @@ class CheckRequest {
 
   /// Indicates if service activation check should be skipped for this request.
   /// Default behavior is to perform the check and apply relevant quota.
+  /// WARNING: Setting this flag to "true" will disable quota enforcement.
   core.bool skipActivationCheck;
 
   CheckRequest();
@@ -1262,25 +1095,53 @@ class CheckResponse {
   }
 }
 
-/// `ConsumerInfo` provides information about the consumer project.
+/// `ConsumerInfo` provides information about the consumer.
 class ConsumerInfo {
+  /// The consumer identity number, can be Google cloud project number, folder
+  /// number or organization number e.g. 1234567890. A value of 0 indicates no
+  /// consumer number is found.
+  core.String consumerNumber;
+
   /// The Google cloud project number, e.g. 1234567890. A value of 0 indicates
   /// no project number is found.
+  ///
+  /// NOTE: This field is deprecated after Chemist support flexible consumer
+  /// id. New code should not depend on this field anymore.
   core.String projectNumber;
+
+  ///
+  /// Possible string values are:
+  /// - "CONSUMER_TYPE_UNSPECIFIED"
+  /// - "PROJECT"
+  /// - "FOLDER"
+  /// - "ORGANIZATION"
+  core.String type;
 
   ConsumerInfo();
 
   ConsumerInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerNumber")) {
+      consumerNumber = _json["consumerNumber"];
+    }
     if (_json.containsKey("projectNumber")) {
       projectNumber = _json["projectNumber"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (consumerNumber != null) {
+      _json["consumerNumber"] = consumerNumber;
+    }
     if (projectNumber != null) {
       _json["projectNumber"] = projectNumber;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -1403,120 +1264,6 @@ class Distribution {
   }
 }
 
-/// Request message for QuotaController.EndReconciliation.
-class EndReconciliationRequest {
-  /// Operation that describes the quota reconciliation.
-  QuotaOperation reconciliationOperation;
-
-  /// Specifies which version of service configuration should be used to process
-  /// the request. If unspecified or no matching version can be found, the
-  /// latest
-  /// one will be used.
-  core.String serviceConfigId;
-
-  EndReconciliationRequest();
-
-  EndReconciliationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("reconciliationOperation")) {
-      reconciliationOperation =
-          new QuotaOperation.fromJson(_json["reconciliationOperation"]);
-    }
-    if (_json.containsKey("serviceConfigId")) {
-      serviceConfigId = _json["serviceConfigId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (reconciliationOperation != null) {
-      _json["reconciliationOperation"] = (reconciliationOperation).toJson();
-    }
-    if (serviceConfigId != null) {
-      _json["serviceConfigId"] = serviceConfigId;
-    }
-    return _json;
-  }
-}
-
-/// Response message for QuotaController.EndReconciliation.
-class EndReconciliationResponse {
-  /// The same operation_id value used in the EndReconciliationRequest. Used for
-  /// logging and diagnostics purposes.
-  core.String operationId;
-
-  /// Metric values as tracked by One Platform before the adjustment was made.
-  /// The following metrics will be included:
-  ///
-  /// 1. Per quota metric total usage will be specified using the following
-  /// gauge
-  /// metric:
-  ///   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-  ///
-  /// 2. Value for each quota limit associated with the metrics will be
-  /// specified
-  /// using the following gauge metric:
-  ///   "serviceruntime.googleapis.com/quota/limit"
-  ///
-  /// 3. Delta value of the usage after the reconciliation for limits associated
-  /// with the metrics will be specified using the following metric:
-  ///   "serviceruntime.googleapis.com/allocation/reconciliation_delta"
-  /// The delta value is defined as:
-  ///   new_usage_from_client - existing_value_in_spanner.
-  /// This metric is not defined in serviceruntime.yaml or in Cloud Monarch.
-  /// This metric is meant for callers' use only. Since this metric is not
-  /// defined in the monitoring backend, reporting on this metric will result in
-  /// an error.
-  core.List<MetricValueSet> quotaMetrics;
-
-  /// Indicates the decision of the reconciliation end.
-  core.List<QuotaError> reconciliationErrors;
-
-  /// ID of the actual config used to process the request.
-  core.String serviceConfigId;
-
-  EndReconciliationResponse();
-
-  EndReconciliationResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("operationId")) {
-      operationId = _json["operationId"];
-    }
-    if (_json.containsKey("quotaMetrics")) {
-      quotaMetrics = (_json["quotaMetrics"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("reconciliationErrors")) {
-      reconciliationErrors = (_json["reconciliationErrors"] as core.List)
-          .map<QuotaError>((value) => new QuotaError.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("serviceConfigId")) {
-      serviceConfigId = _json["serviceConfigId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (operationId != null) {
-      _json["operationId"] = operationId;
-    }
-    if (quotaMetrics != null) {
-      _json["quotaMetrics"] =
-          quotaMetrics.map((value) => (value).toJson()).toList();
-    }
-    if (reconciliationErrors != null) {
-      _json["reconciliationErrors"] =
-          reconciliationErrors.map((value) => (value).toJson()).toList();
-    }
-    if (serviceConfigId != null) {
-      _json["serviceConfigId"] = serviceConfigId;
-    }
-    return _json;
-  }
-}
-
 /// Describing buckets with arbitrary user-provided width.
 class ExplicitBuckets {
   /// 'bound' is a list of strictly increasing boundaries between
@@ -1608,8 +1355,6 @@ class ExponentialBuckets {
 /// A common proto for logging HTTP requests. Only contains semantics
 /// defined by the HTTP specification. Product-specific logging
 /// information MUST be defined in a separate message.
-///
-/// This is an exact copy of HttpRequest message defined in Stackdriver.
 class HttpRequest {
   /// The number of HTTP response bytes inserted into cache. Set only when a
   /// cache fill was attempted.
@@ -1651,7 +1396,7 @@ class HttpRequest {
   /// headers and the request body.
   core.String requestSize;
 
-  /// The scheme (http, https), the host name, the path and the query
+  /// The scheme (http, https), the host name, the path, and the query
   /// portion of the URL that was requested.
   /// Example: `"http://example.com/some/info?color=red"`.
   core.String requestUrl;
@@ -1664,7 +1409,7 @@ class HttpRequest {
   /// sent to.
   core.String serverIp;
 
-  /// The response code indicating the status of response.
+  /// The response code indicating the status of the response.
   /// Examples: 200, 404.
   core.int status;
 
@@ -1887,9 +1632,9 @@ class LogEntry {
 
   /// Optional. Resource name of the trace associated with the log entry, if
   /// any.
-  /// If it contains a relative resource name, the name is assumed to be
-  /// relative
-  /// to `//tracing.googleapis.com`. Example:
+  /// If this field contains a relative resource name, you can assume the name
+  /// is
+  /// relative to `//tracing.googleapis.com`. Example:
   /// `projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824`
   core.String trace;
 
@@ -2696,6 +2441,8 @@ class QuotaOperation {
   /// the service configuration or specified using the quota metrics. If the
   /// amount is higher than the available quota, allocation error will be
   /// returned and no quota will be allocated.
+  /// If multiple quotas are part of the request, and one fails, none of the
+  /// quotas are allocated or released.
   /// - "BEST_EFFORT" : The operation allocates quota for the amount specified
   /// in the service
   /// configuration or specified using the quota metrics. If the amount is
@@ -2792,111 +2539,6 @@ class QuotaProperties {
         new core.Map<core.String, core.Object>();
     if (quotaMode != null) {
       _json["quotaMode"] = quotaMode;
-    }
-    return _json;
-  }
-}
-
-/// Request message for the ReleaseQuota method.
-class ReleaseQuotaRequest {
-  /// Operation that describes the quota release.
-  QuotaOperation releaseOperation;
-
-  /// Specifies which version of service configuration should be used to process
-  /// the request. If unspecified or no matching version can be found, the
-  /// latest
-  /// one will be used.
-  core.String serviceConfigId;
-
-  ReleaseQuotaRequest();
-
-  ReleaseQuotaRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("releaseOperation")) {
-      releaseOperation = new QuotaOperation.fromJson(_json["releaseOperation"]);
-    }
-    if (_json.containsKey("serviceConfigId")) {
-      serviceConfigId = _json["serviceConfigId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (releaseOperation != null) {
-      _json["releaseOperation"] = (releaseOperation).toJson();
-    }
-    if (serviceConfigId != null) {
-      _json["serviceConfigId"] = serviceConfigId;
-    }
-    return _json;
-  }
-}
-
-/// Response message for the ReleaseQuota method.
-class ReleaseQuotaResponse {
-  /// The same operation_id value used in the ReleaseQuotaRequest. Used for
-  /// logging and diagnostics purposes.
-  core.String operationId;
-
-  /// Quota metrics to indicate the result of release. Depending on the
-  /// request, one or more of the following metrics will be included:
-  ///
-  /// 1. For rate quota, per quota group or per quota metric released amount
-  /// will be specified using the following delta metric:
-  ///   "serviceruntime.googleapis.com/api/consumer/quota_refund_count"
-  ///
-  /// 2. For allocation quota, per quota metric total usage will be specified
-  /// using the following gauge metric:
-  ///   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-  ///
-  /// 3. For allocation quota, value for each quota limit associated with
-  /// the metrics will be specified using the following gauge metric:
-  ///   "serviceruntime.googleapis.com/quota/limit"
-  core.List<MetricValueSet> quotaMetrics;
-
-  /// Indicates the decision of the release.
-  core.List<QuotaError> releaseErrors;
-
-  /// ID of the actual config used to process the request.
-  core.String serviceConfigId;
-
-  ReleaseQuotaResponse();
-
-  ReleaseQuotaResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("operationId")) {
-      operationId = _json["operationId"];
-    }
-    if (_json.containsKey("quotaMetrics")) {
-      quotaMetrics = (_json["quotaMetrics"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("releaseErrors")) {
-      releaseErrors = (_json["releaseErrors"] as core.List)
-          .map<QuotaError>((value) => new QuotaError.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("serviceConfigId")) {
-      serviceConfigId = _json["serviceConfigId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (operationId != null) {
-      _json["operationId"] = operationId;
-    }
-    if (quotaMetrics != null) {
-      _json["quotaMetrics"] =
-          quotaMetrics.map((value) => (value).toJson()).toList();
-    }
-    if (releaseErrors != null) {
-      _json["releaseErrors"] =
-          releaseErrors.map((value) => (value).toJson()).toList();
-    }
-    if (serviceConfigId != null) {
-      _json["serviceConfigId"] = serviceConfigId;
     }
     return _json;
   }
@@ -3273,6 +2915,7 @@ class RequestMetadata {
   /// request attributes like request time and access levels associated with
   /// the request.
   ///
+  ///
   /// To get the whole view of the attributes used in IAM
   /// condition evaluation, the user must also look into
   /// `AuditLog.authentication_info.resource_attributes`.
@@ -3437,6 +3080,8 @@ class ResourceInfo {
 /// Location information about a resource.
 class ResourceLocation {
   /// The locations of a resource after the execution of the operation.
+  /// Requests to create or delete a location based resource must populate
+  /// the 'current_locations' field and not the 'original_locations' field.
   /// For example:
   ///
   ///     "europe-west1-a"
@@ -3444,12 +3089,26 @@ class ResourceLocation {
   ///     "nam3"
   core.List<core.String> currentLocations;
 
+  /// The locations of a resource prior to the execution of the operation.
+  /// Requests that mutate the resource's location must populate both the
+  /// 'original_locations' as well as the 'current_locations' fields.
+  /// For example:
+  ///
+  ///     "europe-west1-a"
+  ///     "us-east1"
+  ///     "nam3"
+  core.List<core.String> originalLocations;
+
   ResourceLocation();
 
   ResourceLocation.fromJson(core.Map _json) {
     if (_json.containsKey("currentLocations")) {
       currentLocations =
           (_json["currentLocations"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("originalLocations")) {
+      originalLocations =
+          (_json["originalLocations"] as core.List).cast<core.String>();
     }
   }
 
@@ -3459,109 +3118,8 @@ class ResourceLocation {
     if (currentLocations != null) {
       _json["currentLocations"] = currentLocations;
     }
-    return _json;
-  }
-}
-
-/// Request message for QuotaController.StartReconciliation.
-class StartReconciliationRequest {
-  /// Operation that describes the quota reconciliation.
-  QuotaOperation reconciliationOperation;
-
-  /// Specifies which version of service configuration should be used to process
-  /// the request. If unspecified or no matching version can be found, the
-  /// latest
-  /// one will be used.
-  core.String serviceConfigId;
-
-  StartReconciliationRequest();
-
-  StartReconciliationRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("reconciliationOperation")) {
-      reconciliationOperation =
-          new QuotaOperation.fromJson(_json["reconciliationOperation"]);
-    }
-    if (_json.containsKey("serviceConfigId")) {
-      serviceConfigId = _json["serviceConfigId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (reconciliationOperation != null) {
-      _json["reconciliationOperation"] = (reconciliationOperation).toJson();
-    }
-    if (serviceConfigId != null) {
-      _json["serviceConfigId"] = serviceConfigId;
-    }
-    return _json;
-  }
-}
-
-/// Response message for QuotaController.StartReconciliation.
-class StartReconciliationResponse {
-  /// The same operation_id value used in the StartReconciliationRequest. Used
-  /// for logging and diagnostics purposes.
-  core.String operationId;
-
-  /// Metric values as tracked by One Platform before the start of
-  /// reconciliation. The following metrics will be included:
-  ///
-  /// 1. Per quota metric total usage will be specified using the following
-  /// gauge
-  /// metric:
-  ///   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-  ///
-  /// 2. Value for each quota limit associated with the metrics will be
-  /// specified
-  /// using the following gauge metric:
-  ///   "serviceruntime.googleapis.com/quota/limit"
-  core.List<MetricValueSet> quotaMetrics;
-
-  /// Indicates the decision of the reconciliation start.
-  core.List<QuotaError> reconciliationErrors;
-
-  /// ID of the actual config used to process the request.
-  core.String serviceConfigId;
-
-  StartReconciliationResponse();
-
-  StartReconciliationResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("operationId")) {
-      operationId = _json["operationId"];
-    }
-    if (_json.containsKey("quotaMetrics")) {
-      quotaMetrics = (_json["quotaMetrics"] as core.List)
-          .map<MetricValueSet>((value) => new MetricValueSet.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("reconciliationErrors")) {
-      reconciliationErrors = (_json["reconciliationErrors"] as core.List)
-          .map<QuotaError>((value) => new QuotaError.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("serviceConfigId")) {
-      serviceConfigId = _json["serviceConfigId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (operationId != null) {
-      _json["operationId"] = operationId;
-    }
-    if (quotaMetrics != null) {
-      _json["quotaMetrics"] =
-          quotaMetrics.map((value) => (value).toJson()).toList();
-    }
-    if (reconciliationErrors != null) {
-      _json["reconciliationErrors"] =
-          reconciliationErrors.map((value) => (value).toJson()).toList();
-    }
-    if (serviceConfigId != null) {
-      _json["serviceConfigId"] = serviceConfigId;
+    if (originalLocations != null) {
+      _json["originalLocations"] = originalLocations;
     }
     return _json;
   }

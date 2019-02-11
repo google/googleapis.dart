@@ -44,8 +44,8 @@ class SurveysApi {
   SurveysResourceApi get surveys => new SurveysResourceApi(_requester);
 
   SurveysApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "surveys/v2/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "surveys/v2/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -85,14 +85,14 @@ class ResultsResourceApi {
   /// this method will complete with the same error.
   async.Future get(ResultsGetRequest request, core.String surveyUrlId,
       {core.String $fields,
-      commons.DownloadOptions downloadOptions:
+      commons.DownloadOptions downloadOptions =
           commons.DownloadOptions.Metadata}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -147,12 +147,12 @@ class SurveysResourceApi {
   /// this method will complete with the same error.
   async.Future<SurveysDeleteResponse> delete(core.String surveyUrlId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
@@ -189,12 +189,12 @@ class SurveysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Survey> get(core.String surveyUrlId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
@@ -231,12 +231,12 @@ class SurveysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Survey> insert(Survey request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -281,12 +281,12 @@ class SurveysResourceApi {
       core.int startIndex,
       core.String token,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -333,12 +333,12 @@ class SurveysResourceApi {
   async.Future<SurveysStartResponse> start(
       SurveysStartRequest request, core.String resourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -379,12 +379,12 @@ class SurveysResourceApi {
   /// this method will complete with the same error.
   async.Future<SurveysStopResponse> stop(core.String resourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
@@ -425,12 +425,12 @@ class SurveysResourceApi {
   /// this method will complete with the same error.
   async.Future<Survey> update(Survey request, core.String surveyUrlId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -586,7 +586,7 @@ class Survey {
     return convert.base64.decode(customerData);
   }
 
-  void set customerDataAsBytes(core.List<core.int> _bytes) {
+  set customerDataAsBytes(core.List<core.int> _bytes) {
     customerData =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -1053,7 +1053,7 @@ class SurveyQuestionImage {
     return convert.base64.decode(data);
   }
 
-  void set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> _bytes) {
     data =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

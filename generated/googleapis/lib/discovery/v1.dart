@@ -23,8 +23,8 @@ class DiscoveryApi {
   ApisResourceApi get apis => new ApisResourceApi(_requester);
 
   DiscoveryApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "discovery/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "discovery/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -54,12 +54,12 @@ class ApisResourceApi {
   /// this method will complete with the same error.
   async.Future<RestDescription> getRest(core.String api, core.String version,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (api == null) {
       throw new core.ArgumentError("Parameter api is required.");
@@ -106,12 +106,12 @@ class ApisResourceApi {
   /// this method will complete with the same error.
   async.Future<DirectoryList> list(
       {core.String name, core.bool preferred, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name != null) {
       _queryParams["name"] = [name];

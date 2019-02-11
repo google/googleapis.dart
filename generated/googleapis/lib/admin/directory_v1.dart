@@ -159,8 +159,8 @@ class AdminApi {
       new VerificationCodesResourceApi(_requester);
 
   AdminApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "admin/directory/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "admin/directory/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -189,12 +189,12 @@ class AspsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String userKey, core.int codeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -243,12 +243,12 @@ class AspsResourceApi {
   /// this method will complete with the same error.
   async.Future<Asp> get(core.String userKey, core.int codeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -292,12 +292,12 @@ class AspsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Asps> list(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -338,12 +338,12 @@ class ChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future stop(Channel request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -392,12 +392,12 @@ class ChromeosdevicesResourceApi {
   async.Future action(ChromeOsDeviceAction request, core.String customerId,
       core.String resourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -455,12 +455,12 @@ class ChromeosdevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ChromeOsDevice> get(core.String customerId, core.String deviceId,
       {core.String projection, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -546,12 +546,12 @@ class ChromeosdevicesResourceApi {
       core.String query,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -615,12 +615,12 @@ class ChromeosdevicesResourceApi {
   async.Future moveDevicesToOu(ChromeOsMoveDevicesToOu request,
       core.String customerId, core.String orgUnitPath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -680,12 +680,12 @@ class ChromeosdevicesResourceApi {
   async.Future<ChromeOsDevice> patch(
       ChromeOsDevice request, core.String customerId, core.String deviceId,
       {core.String projection, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -746,12 +746,12 @@ class ChromeosdevicesResourceApi {
   async.Future<ChromeOsDevice> update(
       ChromeOsDevice request, core.String customerId, core.String deviceId,
       {core.String projection, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -806,12 +806,12 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Customer> get(core.String customerKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerKey == null) {
       throw new core.ArgumentError("Parameter customerKey is required.");
@@ -851,12 +851,12 @@ class CustomersResourceApi {
   /// this method will complete with the same error.
   async.Future<Customer> patch(Customer request, core.String customerKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -899,12 +899,12 @@ class CustomersResourceApi {
   /// this method will complete with the same error.
   async.Future<Customer> update(Customer request, core.String customerKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -951,12 +951,12 @@ class DomainAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String domainAliasName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1005,12 +1005,12 @@ class DomainAliasesResourceApi {
   async.Future<DomainAlias> get(
       core.String customer, core.String domainAliasName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1056,12 +1056,12 @@ class DomainAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<DomainAlias> insert(DomainAlias request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1107,12 +1107,12 @@ class DomainAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<DomainAliases> list(core.String customer,
       {core.String parentDomainName, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1161,12 +1161,12 @@ class DomainsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String domainName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1214,12 +1214,12 @@ class DomainsResourceApi {
   /// this method will complete with the same error.
   async.Future<Domains> get(core.String customer, core.String domainName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1265,12 +1265,12 @@ class DomainsResourceApi {
   /// this method will complete with the same error.
   async.Future<Domains> insert(Domains request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1311,12 +1311,12 @@ class DomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Domains2> list(core.String customer, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -1361,12 +1361,12 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String groupKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1405,12 +1405,12 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Group> get(core.String groupKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1447,12 +1447,12 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Group> insert(Group request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1525,12 +1525,12 @@ class GroupsResourceApi {
       core.String sortOrder,
       core.String userKey,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer != null) {
       _queryParams["customer"] = [customer];
@@ -1592,12 +1592,12 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Group> patch(Group request, core.String groupKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1641,12 +1641,12 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Group> update(Group request, core.String groupKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1693,12 +1693,12 @@ class GroupsAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String groupKey, core.String alias,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1746,12 +1746,12 @@ class GroupsAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Alias> insert(Alias request, core.String groupKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1791,12 +1791,12 @@ class GroupsAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Aliases> list(core.String groupKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1840,12 +1840,12 @@ class MembersResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String groupKey, core.String memberKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1893,12 +1893,12 @@ class MembersResourceApi {
   /// this method will complete with the same error.
   async.Future<Member> get(core.String groupKey, core.String memberKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1948,12 +1948,12 @@ class MembersResourceApi {
   async.Future<MembersHasMember> hasMember(
       core.String groupKey, core.String memberKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -1999,12 +1999,12 @@ class MembersResourceApi {
   /// this method will complete with the same error.
   async.Future<Member> insert(Member request, core.String groupKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2058,12 +2058,12 @@ class MembersResourceApi {
       core.String pageToken,
       core.String roles,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
@@ -2123,12 +2123,12 @@ class MembersResourceApi {
   async.Future<Member> patch(
       Member request, core.String groupKey, core.String memberKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2182,12 +2182,12 @@ class MembersResourceApi {
   async.Future<Member> update(
       Member request, core.String groupKey, core.String memberKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2243,12 +2243,12 @@ class MobiledevicesResourceApi {
   async.Future action(MobileDeviceAction request, core.String customerId,
       core.String resourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2298,12 +2298,12 @@ class MobiledevicesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customerId, core.String resourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2357,12 +2357,12 @@ class MobiledevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<MobileDevice> get(core.String customerId, core.String resourceId,
       {core.String projection, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2445,12 +2445,12 @@ class MobiledevicesResourceApi {
       core.String query,
       core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2515,12 +2515,12 @@ class NotificationsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String notificationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -2570,12 +2570,12 @@ class NotificationsResourceApi {
   async.Future<Notification> get(
       core.String customer, core.String notificationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -2630,12 +2630,12 @@ class NotificationsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -2689,12 +2689,12 @@ class NotificationsResourceApi {
   async.Future<Notification> patch(
       Notification request, core.String customer, core.String notificationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2746,12 +2746,12 @@ class NotificationsResourceApi {
   async.Future<Notification> update(
       Notification request, core.String customer, core.String notificationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2805,12 +2805,12 @@ class OrgunitsResourceApi {
   async.Future delete(
       core.String customerId, core.List<core.String> orgUnitPath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2862,12 +2862,12 @@ class OrgunitsResourceApi {
   async.Future<OrgUnit> get(
       core.String customerId, core.List<core.String> orgUnitPath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -2916,12 +2916,12 @@ class OrgunitsResourceApi {
   /// this method will complete with the same error.
   async.Future<OrgUnit> insert(OrgUnit request, core.String customerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2972,12 +2972,12 @@ class OrgunitsResourceApi {
   /// this method will complete with the same error.
   async.Future<OrgUnits> list(core.String customerId,
       {core.String orgUnitPath, core.String type, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -3028,12 +3028,12 @@ class OrgunitsResourceApi {
   async.Future<OrgUnit> patch(OrgUnit request, core.String customerId,
       core.List<core.String> orgUnitPath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3088,12 +3088,12 @@ class OrgunitsResourceApi {
   async.Future<OrgUnit> update(OrgUnit request, core.String customerId,
       core.List<core.String> orgUnitPath,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3148,12 +3148,12 @@ class PrivilegesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Privileges> list(core.String customer, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3197,12 +3197,12 @@ class ResolvedAppAccessSettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AppAccessCollections> GetSettings({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3234,12 +3234,12 @@ class ResolvedAppAccessSettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TrustedApps> ListTrustedApps({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3296,12 +3296,12 @@ class ResourcesBuildingsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String buildingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3351,12 +3351,12 @@ class ResourcesBuildingsResourceApi {
   /// this method will complete with the same error.
   async.Future<Building> get(core.String customer, core.String buildingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3404,12 +3404,12 @@ class ResourcesBuildingsResourceApi {
   /// this method will complete with the same error.
   async.Future<Building> insert(Building request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3459,12 +3459,12 @@ class ResourcesBuildingsResourceApi {
   /// this method will complete with the same error.
   async.Future<Buildings> list(core.String customer,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3517,12 +3517,12 @@ class ResourcesBuildingsResourceApi {
   async.Future<Building> patch(
       Building request, core.String customer, core.String buildingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3576,12 +3576,12 @@ class ResourcesBuildingsResourceApi {
   async.Future<Building> update(
       Building request, core.String customer, core.String buildingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3637,12 +3637,12 @@ class ResourcesCalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String calendarResourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3693,12 +3693,12 @@ class ResourcesCalendarsResourceApi {
   async.Future<CalendarResource> get(
       core.String customer, core.String calendarResourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3747,12 +3747,12 @@ class ResourcesCalendarsResourceApi {
   async.Future<CalendarResource> insert(
       CalendarResource request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3823,12 +3823,12 @@ class ResourcesCalendarsResourceApi {
       core.String pageToken,
       core.String query,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -3891,12 +3891,12 @@ class ResourcesCalendarsResourceApi {
   async.Future<CalendarResource> patch(CalendarResource request,
       core.String customer, core.String calendarResourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3954,12 +3954,12 @@ class ResourcesCalendarsResourceApi {
   async.Future<CalendarResource> update(CalendarResource request,
       core.String customer, core.String calendarResourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4015,12 +4015,12 @@ class ResourcesFeaturesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String featureKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4070,12 +4070,12 @@ class ResourcesFeaturesResourceApi {
   /// this method will complete with the same error.
   async.Future<Feature> get(core.String customer, core.String featureKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4123,12 +4123,12 @@ class ResourcesFeaturesResourceApi {
   /// this method will complete with the same error.
   async.Future<Feature> insert(Feature request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4178,12 +4178,12 @@ class ResourcesFeaturesResourceApi {
   /// this method will complete with the same error.
   async.Future<Features> list(core.String customer,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4236,12 +4236,12 @@ class ResourcesFeaturesResourceApi {
   async.Future<Feature> patch(
       Feature request, core.String customer, core.String featureKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4293,12 +4293,12 @@ class ResourcesFeaturesResourceApi {
   async.Future rename(
       FeatureRename request, core.String customer, core.String oldName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4355,12 +4355,12 @@ class ResourcesFeaturesResourceApi {
   async.Future<Feature> update(
       Feature request, core.String customer, core.String featureKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4413,12 +4413,12 @@ class RoleAssignmentsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String roleAssignmentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4467,12 +4467,12 @@ class RoleAssignmentsResourceApi {
   async.Future<RoleAssignment> get(
       core.String customer, core.String roleAssignmentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4519,12 +4519,12 @@ class RoleAssignmentsResourceApi {
   async.Future<RoleAssignment> insert(
       RoleAssignment request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4583,12 +4583,12 @@ class RoleAssignmentsResourceApi {
       core.String roleId,
       core.String userKey,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4646,12 +4646,12 @@ class RolesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customer, core.String roleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4699,12 +4699,12 @@ class RolesResourceApi {
   /// this method will complete with the same error.
   async.Future<Role> get(core.String customer, core.String roleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4750,12 +4750,12 @@ class RolesResourceApi {
   /// this method will complete with the same error.
   async.Future<Role> insert(Role request, core.String customer,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4801,12 +4801,12 @@ class RolesResourceApi {
   /// this method will complete with the same error.
   async.Future<Roles> list(core.String customer,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
@@ -4855,12 +4855,12 @@ class RolesResourceApi {
   async.Future<Role> patch(
       Role request, core.String customer, core.String roleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4912,12 +4912,12 @@ class RolesResourceApi {
   async.Future<Role> update(
       Role request, core.String customer, core.String roleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4970,12 +4970,12 @@ class SchemasResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String customerId, core.String schemaKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -5023,12 +5023,12 @@ class SchemasResourceApi {
   /// this method will complete with the same error.
   async.Future<Schema> get(core.String customerId, core.String schemaKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -5074,12 +5074,12 @@ class SchemasResourceApi {
   /// this method will complete with the same error.
   async.Future<Schema> insert(Schema request, core.String customerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5120,12 +5120,12 @@ class SchemasResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Schemas> list(core.String customerId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -5169,12 +5169,12 @@ class SchemasResourceApi {
   async.Future<Schema> patch(
       Schema request, core.String customerId, core.String schemaKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5226,12 +5226,12 @@ class SchemasResourceApi {
   async.Future<Schema> update(
       Schema request, core.String customerId, core.String schemaKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5285,12 +5285,12 @@ class TokensResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String userKey, core.String clientId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5339,12 +5339,12 @@ class TokensResourceApi {
   /// this method will complete with the same error.
   async.Future<Token> get(core.String userKey, core.String clientId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5389,12 +5389,12 @@ class TokensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tokens> list(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5439,12 +5439,12 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5503,12 +5503,12 @@ class UsersResourceApi {
       core.String projection,
       core.String viewType,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -5554,12 +5554,12 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<User> insert(User request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5661,12 +5661,12 @@ class UsersResourceApi {
       core.String sortOrder,
       core.String viewType,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customFieldMask != null) {
       _queryParams["customFieldMask"] = [customFieldMask];
@@ -5737,12 +5737,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future makeAdmin(UserMakeAdmin request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5788,12 +5788,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<User> patch(User request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5834,12 +5834,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future undelete(UserUndelete request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5885,12 +5885,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<User> update(User request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5997,12 +5997,12 @@ class UsersResourceApi {
       core.String sortOrder,
       core.String viewType,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6082,12 +6082,12 @@ class UsersAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String userKey, core.String alias,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6135,12 +6135,12 @@ class UsersAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Alias> insert(Alias request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6186,12 +6186,12 @@ class UsersAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Aliases> list(core.String userKey,
       {core.String event, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6239,12 +6239,12 @@ class UsersAliasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request, core.String userKey,
       {core.String event, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6292,12 +6292,12 @@ class UsersPhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6338,12 +6338,12 @@ class UsersPhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserPhoto> get(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6385,12 +6385,12 @@ class UsersPhotosResourceApi {
   /// this method will complete with the same error.
   async.Future<UserPhoto> patch(UserPhoto request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6435,12 +6435,12 @@ class UsersPhotosResourceApi {
   /// this method will complete with the same error.
   async.Future<UserPhoto> update(UserPhoto request, core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6487,12 +6487,12 @@ class VerificationCodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future generate(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6531,12 +6531,12 @@ class VerificationCodesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future invalidate(core.String userKey, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -6580,12 +6580,12 @@ class VerificationCodesResourceApi {
   /// this method will complete with the same error.
   async.Future<VerificationCodes> list(core.String userKey,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
@@ -7441,6 +7441,82 @@ class ChromeOsDeviceActiveTimeRanges {
   }
 }
 
+class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
+  /// CPU label
+  core.String label;
+
+  /// Temperature in Celsius degrees.
+  core.int temperature;
+
+  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo();
+
+  ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("label")) {
+      label = _json["label"];
+    }
+    if (_json.containsKey("temperature")) {
+      temperature = _json["temperature"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (label != null) {
+      _json["label"] = label;
+    }
+    if (temperature != null) {
+      _json["temperature"] = temperature;
+    }
+    return _json;
+  }
+}
+
+class ChromeOsDeviceCpuStatusReports {
+  /// List of CPU temperature samples.
+  core.List<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>
+      cpuTemperatureInfo;
+  core.List<core.int> cpuUtilizationPercentageInfo;
+
+  /// Date and time the report was received.
+  core.DateTime reportTime;
+
+  ChromeOsDeviceCpuStatusReports();
+
+  ChromeOsDeviceCpuStatusReports.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuTemperatureInfo")) {
+      cpuTemperatureInfo = (_json["cpuTemperatureInfo"] as core.List)
+          .map<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>((value) =>
+              new ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("cpuUtilizationPercentageInfo")) {
+      cpuUtilizationPercentageInfo =
+          (_json["cpuUtilizationPercentageInfo"] as core.List).cast<core.int>();
+    }
+    if (_json.containsKey("reportTime")) {
+      reportTime = core.DateTime.parse(_json["reportTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cpuTemperatureInfo != null) {
+      _json["cpuTemperatureInfo"] =
+          cpuTemperatureInfo.map((value) => (value).toJson()).toList();
+    }
+    if (cpuUtilizationPercentageInfo != null) {
+      _json["cpuUtilizationPercentageInfo"] = cpuUtilizationPercentageInfo;
+    }
+    if (reportTime != null) {
+      _json["reportTime"] = (reportTime).toIso8601String();
+    }
+    return _json;
+  }
+}
+
 class ChromeOsDeviceDeviceFiles {
   /// Date and time the file was created
   core.DateTime createTime;
@@ -7490,6 +7566,72 @@ class ChromeOsDeviceDeviceFiles {
   }
 }
 
+class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
+  /// Free disk space [in bytes]
+  core.String storageFree;
+
+  /// Total disk space [in bytes]
+  core.String storageTotal;
+
+  /// Volume id
+  core.String volumeId;
+
+  ChromeOsDeviceDiskVolumeReportsVolumeInfo();
+
+  ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("storageFree")) {
+      storageFree = _json["storageFree"];
+    }
+    if (_json.containsKey("storageTotal")) {
+      storageTotal = _json["storageTotal"];
+    }
+    if (_json.containsKey("volumeId")) {
+      volumeId = _json["volumeId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (storageFree != null) {
+      _json["storageFree"] = storageFree;
+    }
+    if (storageTotal != null) {
+      _json["storageTotal"] = storageTotal;
+    }
+    if (volumeId != null) {
+      _json["volumeId"] = volumeId;
+    }
+    return _json;
+  }
+}
+
+class ChromeOsDeviceDiskVolumeReports {
+  /// Disk volumes
+  core.List<ChromeOsDeviceDiskVolumeReportsVolumeInfo> volumeInfo;
+
+  ChromeOsDeviceDiskVolumeReports();
+
+  ChromeOsDeviceDiskVolumeReports.fromJson(core.Map _json) {
+    if (_json.containsKey("volumeInfo")) {
+      volumeInfo = (_json["volumeInfo"] as core.List)
+          .map<ChromeOsDeviceDiskVolumeReportsVolumeInfo>((value) =>
+              new ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (volumeInfo != null) {
+      _json["volumeInfo"] =
+          volumeInfo.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class ChromeOsDeviceRecentUsers {
   /// Email address of the user. Present only if the user type is managed
   core.String email;
@@ -7516,6 +7658,36 @@ class ChromeOsDeviceRecentUsers {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+class ChromeOsDeviceSystemRamFreeReports {
+  /// Date and time the report was received.
+  core.DateTime reportTime;
+  core.List<core.String> systemRamFreeInfo;
+
+  ChromeOsDeviceSystemRamFreeReports();
+
+  ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map _json) {
+    if (_json.containsKey("reportTime")) {
+      reportTime = core.DateTime.parse(_json["reportTime"]);
+    }
+    if (_json.containsKey("systemRamFreeInfo")) {
+      systemRamFreeInfo =
+          (_json["systemRamFreeInfo"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reportTime != null) {
+      _json["reportTime"] = (reportTime).toIso8601String();
+    }
+    if (systemRamFreeInfo != null) {
+      _json["systemRamFreeInfo"] = systemRamFreeInfo;
     }
     return _json;
   }
@@ -7606,11 +7778,17 @@ class ChromeOsDevice {
   /// Chromebook boot mode (Read-only)
   core.String bootMode;
 
+  /// Reports of CPU utilization and temperature (Read-only)
+  core.List<ChromeOsDeviceCpuStatusReports> cpuStatusReports;
+
   /// List of device files to download (Read-only)
   core.List<ChromeOsDeviceDeviceFiles> deviceFiles;
 
   /// Unique identifier of Chrome OS Device (Read-only)
   core.String deviceId;
+
+  /// Reports of disk space and other info about mounted/connected volumes.
+  core.List<ChromeOsDeviceDiskVolumeReports> diskVolumeReports;
 
   /// ETag of the resource.
   core.String etag;
@@ -7669,6 +7847,12 @@ class ChromeOsDevice {
   /// Final date the device will be supported (Read-only)
   core.DateTime supportEndDate;
 
+  /// Reports of amounts of available RAM memory (Read-only)
+  core.List<ChromeOsDeviceSystemRamFreeReports> systemRamFreeReports;
+
+  /// Total RAM on the device [in bytes] (Read-only)
+  core.String systemRamTotal;
+
   /// Trusted Platform Module (TPM) (Read-only)
   ChromeOsDeviceTpmVersionInfo tpmVersionInfo;
 
@@ -7696,6 +7880,12 @@ class ChromeOsDevice {
     if (_json.containsKey("bootMode")) {
       bootMode = _json["bootMode"];
     }
+    if (_json.containsKey("cpuStatusReports")) {
+      cpuStatusReports = (_json["cpuStatusReports"] as core.List)
+          .map<ChromeOsDeviceCpuStatusReports>(
+              (value) => new ChromeOsDeviceCpuStatusReports.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("deviceFiles")) {
       deviceFiles = (_json["deviceFiles"] as core.List)
           .map<ChromeOsDeviceDeviceFiles>(
@@ -7704,6 +7894,12 @@ class ChromeOsDevice {
     }
     if (_json.containsKey("deviceId")) {
       deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("diskVolumeReports")) {
+      diskVolumeReports = (_json["diskVolumeReports"] as core.List)
+          .map<ChromeOsDeviceDiskVolumeReports>(
+              (value) => new ChromeOsDeviceDiskVolumeReports.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -7762,6 +7958,15 @@ class ChromeOsDevice {
     if (_json.containsKey("supportEndDate")) {
       supportEndDate = core.DateTime.parse(_json["supportEndDate"]);
     }
+    if (_json.containsKey("systemRamFreeReports")) {
+      systemRamFreeReports = (_json["systemRamFreeReports"] as core.List)
+          .map<ChromeOsDeviceSystemRamFreeReports>(
+              (value) => new ChromeOsDeviceSystemRamFreeReports.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("systemRamTotal")) {
+      systemRamTotal = _json["systemRamTotal"];
+    }
     if (_json.containsKey("tpmVersionInfo")) {
       tpmVersionInfo =
           new ChromeOsDeviceTpmVersionInfo.fromJson(_json["tpmVersionInfo"]);
@@ -7790,12 +7995,20 @@ class ChromeOsDevice {
     if (bootMode != null) {
       _json["bootMode"] = bootMode;
     }
+    if (cpuStatusReports != null) {
+      _json["cpuStatusReports"] =
+          cpuStatusReports.map((value) => (value).toJson()).toList();
+    }
     if (deviceFiles != null) {
       _json["deviceFiles"] =
           deviceFiles.map((value) => (value).toJson()).toList();
     }
     if (deviceId != null) {
       _json["deviceId"] = deviceId;
+    }
+    if (diskVolumeReports != null) {
+      _json["diskVolumeReports"] =
+          diskVolumeReports.map((value) => (value).toJson()).toList();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -7851,6 +8064,13 @@ class ChromeOsDevice {
     }
     if (supportEndDate != null) {
       _json["supportEndDate"] = (supportEndDate).toIso8601String();
+    }
+    if (systemRamFreeReports != null) {
+      _json["systemRamFreeReports"] =
+          systemRamFreeReports.map((value) => (value).toJson()).toList();
+    }
+    if (systemRamTotal != null) {
+      _json["systemRamTotal"] = systemRamTotal;
     }
     if (tpmVersionInfo != null) {
       _json["tpmVersionInfo"] = (tpmVersionInfo).toJson();
@@ -8706,6 +8926,9 @@ class Groups {
 
 /// JSON template for Member resource in Directory API.
 class Member {
+  /// Delivery settings of member
+  core.String deliverySettings;
+
   /// Email of member (Read-only)
   core.String email;
 
@@ -8731,6 +8954,9 @@ class Member {
   Member();
 
   Member.fromJson(core.Map _json) {
+    if (_json.containsKey("delivery_settings")) {
+      deliverySettings = _json["delivery_settings"];
+    }
     if (_json.containsKey("email")) {
       email = _json["email"];
     }
@@ -8757,6 +8983,9 @@ class Member {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (deliverySettings != null) {
+      _json["delivery_settings"] = deliverySettings;
+    }
     if (email != null) {
       _json["email"] = email;
     }
@@ -10600,7 +10829,7 @@ class User {
   /// List of aliases (Read-only)
   core.List<core.String> aliases;
 
-  /// Indicates if user is archived
+  /// Indicates if user is archived.
   core.bool archived;
 
   /// Boolean indicating if the user should change password in next login
@@ -10745,7 +10974,7 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object sshPublicKeys;
 
-  /// Indicates if user is suspended
+  /// Indicates if user is suspended.
   core.bool suspended;
 
   /// Suspension reason if user is suspended (Read-only)
@@ -11895,7 +12124,7 @@ class UserPhoto {
     return convert.base64.decode(photoData);
   }
 
-  void set photoDataAsBytes(core.List<core.int> _bytes) {
+  set photoDataAsBytes(core.List<core.int> _bytes) {
     photoData =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

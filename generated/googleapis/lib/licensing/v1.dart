@@ -28,8 +28,8 @@ class LicensingApi {
       new LicenseAssignmentsResourceApi(_requester);
 
   LicensingApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "apps/licensing/v1/product/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "apps/licensing/v1/product/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -61,12 +61,12 @@ class LicenseAssignmentsResourceApi {
   async.Future delete(
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -121,12 +121,12 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignment> get(
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -179,12 +179,12 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignment> insert(
       LicenseAssignmentInsert request, core.String productId, core.String skuId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -242,12 +242,12 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignmentList> listForProduct(
       core.String productId, core.String customerId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -308,12 +308,12 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignmentList> listForProductAndSku(
       core.String productId, core.String skuId, core.String customerId,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -374,12 +374,12 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignment> patch(LicenseAssignment request,
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -437,12 +437,12 @@ class LicenseAssignmentsResourceApi {
   async.Future<LicenseAssignment> update(LicenseAssignment request,
       core.String productId, core.String skuId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

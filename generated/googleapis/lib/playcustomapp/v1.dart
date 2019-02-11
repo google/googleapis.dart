@@ -35,8 +35,8 @@ class PlaycustomappApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   PlaycustomappApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "playcustomapp/v1/accounts/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "playcustomapp/v1/accounts/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -82,14 +82,14 @@ class AccountsCustomAppsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomApp> create(CustomApp request, core.String account,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

@@ -29,8 +29,8 @@ class TexttospeechApi {
   VoicesResourceApi get voices => new VoicesResourceApi(_requester);
 
   TexttospeechApi(http.Client client,
-      {core.String rootUrl: "https://texttospeech.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://texttospeech.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -60,12 +60,12 @@ class TextResourceApi {
   async.Future<SynthesizeSpeechResponse> synthesize(
       SynthesizeSpeechRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -117,12 +117,12 @@ class VoicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVoicesResponse> list(
       {core.String languageCode, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
@@ -159,6 +159,16 @@ class AudioConfig {
   /// Chrome and Firefox). The quality of the encoding is considerably higher
   /// than MP3 while using approximately the same bitrate.
   core.String audioEncoding;
+
+  /// An identifier which selects 'audio effects' profiles that are applied on
+  /// (post synthesized) text to speech.
+  /// Effects are applied on top of each other in the order they are given.
+  /// See
+  ///
+  /// [audio-profiles](https:
+  /// //cloud.google.com/text-to-speech/docs/audio-profiles)
+  /// for current supported profile ids.
+  core.List<core.String> effectsProfileId;
 
   /// Optional speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
   /// semitones from the original pitch. -20 means decrease 20 semitones from
@@ -197,6 +207,10 @@ class AudioConfig {
     if (_json.containsKey("audioEncoding")) {
       audioEncoding = _json["audioEncoding"];
     }
+    if (_json.containsKey("effectsProfileId")) {
+      effectsProfileId =
+          (_json["effectsProfileId"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("pitch")) {
       pitch = _json["pitch"].toDouble();
     }
@@ -216,6 +230,9 @@ class AudioConfig {
         new core.Map<core.String, core.Object>();
     if (audioEncoding != null) {
       _json["audioEncoding"] = audioEncoding;
+    }
+    if (effectsProfileId != null) {
+      _json["effectsProfileId"] = effectsProfileId;
     }
     if (pitch != null) {
       _json["pitch"] = pitch;
@@ -348,7 +365,7 @@ class SynthesizeSpeechResponse {
     return convert.base64.decode(audioContent);
   }
 
-  void set audioContentAsBytes(core.List<core.int> _bytes) {
+  set audioContentAsBytes(core.List<core.int> _bytes) {
     audioContent =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

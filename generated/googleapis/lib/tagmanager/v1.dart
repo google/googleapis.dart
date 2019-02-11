@@ -52,8 +52,8 @@ class TagmanagerApi {
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
   TagmanagerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "tagmanager/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "tagmanager/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -85,12 +85,12 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> get(core.String accountId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -125,12 +125,12 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -170,12 +170,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> update(Account request, core.String accountId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -246,12 +246,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<Container> create(Container request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -294,12 +294,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -347,12 +347,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<Container> get(core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -396,12 +396,12 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListContainersResponse> list(core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -449,12 +449,12 @@ class AccountsContainersResourceApi {
   async.Future<Container> update(
       Container request, core.String accountId, core.String containerId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -516,12 +516,12 @@ class AccountsContainersEnvironmentsResourceApi {
   async.Future<Environment> create(
       Environment request, core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -572,12 +572,12 @@ class AccountsContainersEnvironmentsResourceApi {
   async.Future delete(
       core.String accountId, core.String containerId, core.String environmentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -633,12 +633,12 @@ class AccountsContainersEnvironmentsResourceApi {
   async.Future<Environment> get(
       core.String accountId, core.String containerId, core.String environmentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -690,12 +690,12 @@ class AccountsContainersEnvironmentsResourceApi {
   async.Future<ListEnvironmentsResponse> list(
       core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -751,12 +751,12 @@ class AccountsContainersEnvironmentsResourceApi {
   async.Future<Environment> patch(Environment request, core.String accountId,
       core.String containerId, core.String environmentId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -821,12 +821,12 @@ class AccountsContainersEnvironmentsResourceApi {
   async.Future<Environment> update(Environment request, core.String accountId,
       core.String containerId, core.String environmentId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -896,12 +896,12 @@ class AccountsContainersFoldersResourceApi {
   async.Future<Folder> create(
       Folder request, core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -952,12 +952,12 @@ class AccountsContainersFoldersResourceApi {
   async.Future delete(
       core.String accountId, core.String containerId, core.String folderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1013,12 +1013,12 @@ class AccountsContainersFoldersResourceApi {
   async.Future<Folder> get(
       core.String accountId, core.String containerId, core.String folderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1070,12 +1070,12 @@ class AccountsContainersFoldersResourceApi {
   async.Future<ListFoldersResponse> list(
       core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1130,12 +1130,12 @@ class AccountsContainersFoldersResourceApi {
   async.Future<Folder> update(Folder request, core.String accountId,
       core.String containerId, core.String folderId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1202,12 +1202,12 @@ class AccountsContainersFoldersEntitiesResourceApi {
   async.Future<FolderEntities> list(
       core.String accountId, core.String containerId, core.String folderId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1278,12 +1278,12 @@ class AccountsContainersMoveFoldersResourceApi {
       core.List<core.String> triggerId,
       core.List<core.String> variableId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1361,12 +1361,12 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
   async.Future<Environment> update(Environment request, core.String accountId,
       core.String containerId, core.String environmentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1430,12 +1430,12 @@ class AccountsContainersTagsResourceApi {
   async.Future<Tag> create(
       Tag request, core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1486,12 +1486,12 @@ class AccountsContainersTagsResourceApi {
   async.Future delete(
       core.String accountId, core.String containerId, core.String tagId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1547,12 +1547,12 @@ class AccountsContainersTagsResourceApi {
   async.Future<Tag> get(
       core.String accountId, core.String containerId, core.String tagId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1604,12 +1604,12 @@ class AccountsContainersTagsResourceApi {
   async.Future<ListTagsResponse> list(
       core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1664,12 +1664,12 @@ class AccountsContainersTagsResourceApi {
   async.Future<Tag> update(Tag request, core.String accountId,
       core.String containerId, core.String tagId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1736,12 +1736,12 @@ class AccountsContainersTriggersResourceApi {
   async.Future<Trigger> create(
       Trigger request, core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1792,12 +1792,12 @@ class AccountsContainersTriggersResourceApi {
   async.Future delete(
       core.String accountId, core.String containerId, core.String triggerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1853,12 +1853,12 @@ class AccountsContainersTriggersResourceApi {
   async.Future<Trigger> get(
       core.String accountId, core.String containerId, core.String triggerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1910,12 +1910,12 @@ class AccountsContainersTriggersResourceApi {
   async.Future<ListTriggersResponse> list(
       core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1970,12 +1970,12 @@ class AccountsContainersTriggersResourceApi {
   async.Future<Trigger> update(Trigger request, core.String accountId,
       core.String containerId, core.String triggerId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2042,12 +2042,12 @@ class AccountsContainersVariablesResourceApi {
   async.Future<Variable> create(
       Variable request, core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2098,12 +2098,12 @@ class AccountsContainersVariablesResourceApi {
   async.Future delete(
       core.String accountId, core.String containerId, core.String variableId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2159,12 +2159,12 @@ class AccountsContainersVariablesResourceApi {
   async.Future<Variable> get(
       core.String accountId, core.String containerId, core.String variableId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2216,12 +2216,12 @@ class AccountsContainersVariablesResourceApi {
   async.Future<ListVariablesResponse> list(
       core.String accountId, core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2276,12 +2276,12 @@ class AccountsContainersVariablesResourceApi {
   async.Future<Variable> update(Variable request, core.String accountId,
       core.String containerId, core.String variableId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2350,12 +2350,12 @@ class AccountsContainersVersionsResourceApi {
       core.String accountId,
       core.String containerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2407,12 +2407,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future delete(core.String accountId, core.String containerId,
       core.String containerVersionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2469,12 +2469,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future<ContainerVersion> get(core.String accountId,
       core.String containerId, core.String containerVersionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2530,12 +2530,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future<ListContainerVersionsResponse> list(
       core.String accountId, core.String containerId,
       {core.bool headers, core.bool includeDeleted, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2595,12 +2595,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future<PublishContainerVersionResponse> publish(core.String accountId,
       core.String containerId, core.String containerVersionId,
       {core.String fingerprint, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2662,12 +2662,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future<ContainerVersion> restore(core.String accountId,
       core.String containerId, core.String containerVersionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2722,12 +2722,12 @@ class AccountsContainersVersionsResourceApi {
   async.Future<ContainerVersion> undelete(core.String accountId,
       core.String containerId, core.String containerVersionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2791,12 +2791,12 @@ class AccountsContainersVersionsResourceApi {
       core.String containerVersionId,
       {core.String fingerprint,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2860,12 +2860,12 @@ class AccountsPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<UserAccess> create(UserAccess request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2909,12 +2909,12 @@ class AccountsPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String permissionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2962,12 +2962,12 @@ class AccountsPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<UserAccess> get(core.String accountId, core.String permissionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3013,12 +3013,12 @@ class AccountsPermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListAccountUsersResponse> list(core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3064,12 +3064,12 @@ class AccountsPermissionsResourceApi {
   async.Future<UserAccess> update(
       UserAccess request, core.String accountId, core.String permissionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

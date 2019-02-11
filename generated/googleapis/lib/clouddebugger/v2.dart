@@ -33,8 +33,8 @@ class ClouddebuggerApi {
   DebuggerResourceApi get debugger => new DebuggerResourceApi(_requester);
 
   ClouddebuggerApi(http.Client client,
-      {core.String rootUrl: "https://clouddebugger.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://clouddebugger.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,12 +86,12 @@ class ControllerDebuggeesResourceApi {
   async.Future<RegisterDebuggeeResponse> register(
       RegisterDebuggeeRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -166,12 +166,12 @@ class ControllerDebuggeesBreakpointsResourceApi {
       {core.String waitToken,
       core.bool successOnTimeout,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -232,12 +232,12 @@ class ControllerDebuggeesBreakpointsResourceApi {
       core.String debuggeeId,
       core.String id,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -290,15 +290,15 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [project] - Project number of a Google Cloud project whose debuggees to
+  /// list.
+  ///
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [includeInactive] - When set to `true`, the result includes all debuggees.
   /// Otherwise, the
   /// result includes only debuggees that are active.
-  ///
-  /// [project] - Project number of a Google Cloud project whose debuggees to
-  /// list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -311,25 +311,25 @@ class DebuggerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list(
-      {core.String clientVersion,
+      {core.String project,
+      core.String clientVersion,
       core.bool includeInactive,
-      core.String project,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
+    if (project != null) {
+      _queryParams["project"] = [project];
+    }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
-    }
-    if (project != null) {
-      _queryParams["project"] = [project];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -376,12 +376,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId,
       {core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -434,12 +434,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   async.Future<GetBreakpointResponse> get(
       core.String debuggeeId, core.String breakpointId,
       {core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
@@ -474,10 +474,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// [debuggeeId] - ID of the debuggee whose breakpoints to list.
   ///
-  /// [stripResults] - This field is deprecated. The following fields are always
-  /// stripped out of
-  /// the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
-  ///
   /// [waitToken] - A wait token that, if specified, blocks the call until the
   /// breakpoints
   /// list has changed, or a server selected timeout has expired.  The value
@@ -485,22 +481,26 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
   /// should be called again with the same `wait_token`.
   ///
+  /// [clientVersion] - The client version making the call.
+  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  ///
   /// [action_value] - Only breakpoints with the specified action will pass the
   /// filter.
   /// Possible string values are:
   /// - "CAPTURE" : A CAPTURE.
   /// - "LOG" : A LOG.
   ///
-  /// [clientVersion] - The client version making the call.
-  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  /// [includeInactive] - When set to `true`, the response includes active and
+  /// inactive
+  /// breakpoints. Otherwise, it includes only active breakpoints.
   ///
   /// [includeAllUsers] - When set to `true`, the response includes the list of
   /// breakpoints set by
   /// any user. Otherwise, it includes only breakpoints set by the caller.
   ///
-  /// [includeInactive] - When set to `true`, the response includes active and
-  /// inactive
-  /// breakpoints. Otherwise, it includes only active breakpoints.
+  /// [stripResults] - This field is deprecated. The following fields are always
+  /// stripped out of
+  /// the result: `stack_frames`, `evaluated_expressions` and `variable_table`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -513,40 +513,40 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool stripResults,
-      core.String waitToken,
-      core.String action_value,
+      {core.String waitToken,
       core.String clientVersion,
-      core.bool includeAllUsers,
+      core.String action_value,
       core.bool includeInactive,
+      core.bool includeAllUsers,
+      core.bool stripResults,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
     }
-    if (stripResults != null) {
-      _queryParams["stripResults"] = ["${stripResults}"];
-    }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
-    }
-    if (action_value != null) {
-      _queryParams["action.value"] = [action_value];
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
     }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    if (action_value != null) {
+      _queryParams["action.value"] = [action_value];
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    }
+    if (stripResults != null) {
+      _queryParams["stripResults"] = ["${stripResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -589,12 +589,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   async.Future<SetBreakpointResponse> set(
       Breakpoint request, core.String debuggeeId,
       {core.String clientVersion, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1055,10 +1055,10 @@ class Debuggee {
   /// informational or an error status.
   StatusMessage status;
 
-  /// Uniquifier to further distiguish the application.
+  /// Uniquifier to further distinguish the application.
   /// It is possible that different applications might have identical values in
   /// the debuggee message, thus, incorrectly identified as a single application
-  /// by the Controller service. This field adds salt to further distiguish the
+  /// by the Controller service. This field adds salt to further distinguish the
   /// application. Agents should consider seeding this field with value that
   /// identifies the code, binary, configuration and environment.
   core.String uniquifier;
@@ -1540,7 +1540,7 @@ class RegisterDebuggeeRequest {
 /// Response for registering a debuggee.
 class RegisterDebuggeeResponse {
   /// Debuggee resource.
-  /// The field `id` is guranteed to be set (in addition to the echoed fields).
+  /// The field `id` is guaranteed to be set (in addition to the echoed fields).
   /// If the field `is_disabled` is set to `true`, the agent should disable
   /// itself by removing all breakpoints and detaching from the application.
   /// It should however continue to poll `RegisterDebuggee` until reenabled.

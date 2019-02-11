@@ -29,8 +29,8 @@ class ClouderrorreportingApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   ClouderrorreportingApi(http.Client client,
-      {core.String rootUrl: "https://clouderrorreporting.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://clouderrorreporting.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -71,12 +71,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<DeleteEventsResponse> deleteEvents(core.String projectName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -118,11 +118,11 @@ class ProjectsEventsResourceApi {
   ///
   /// [groupId] - [Required] The group for which events shall be returned.
   ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
-  /// response.
-  ///
   /// [serviceFilter_service] - [Optional] The exact value to match against
   /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+  ///
+  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// response.
   ///
   /// [pageSize] - [Optional] The maximum number of results to return per
   /// response.
@@ -154,19 +154,19 @@ class ProjectsEventsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListEventsResponse> list(core.String projectName,
       {core.String groupId,
-      core.String pageToken,
       core.String serviceFilter_service,
+      core.String pageToken,
       core.int pageSize,
       core.String serviceFilter_version,
       core.String serviceFilter_resourceType,
       core.String timeRange_period,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
@@ -174,11 +174,11 @@ class ProjectsEventsResourceApi {
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -245,12 +245,12 @@ class ProjectsEventsResourceApi {
   async.Future<ReportErrorEventResponse> report(
       ReportedErrorEvent request, core.String projectName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -295,6 +295,15 @@ class ProjectsGroupStatsResourceApi {
   ///
   /// Example: <code>projects/my-project-123</code>.
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [timedCountDuration] - [Optional] The preferred duration for a single
+  /// returned `TimedCount`.
+  /// If not set, no timed counts are returned.
+  ///
+  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// response. To view
+  /// additional results, pass this token along with the identical query
+  /// parameters as the first request.
   ///
   /// [timeRange_period] - Restricts the query to the specified time range.
   /// Possible string values are:
@@ -342,15 +351,6 @@ class ProjectsGroupStatsResourceApi {
   /// if rounded
   /// alignment is chosen. Default is 00:00 UTC.
   ///
-  /// [timedCountDuration] - [Optional] The preferred duration for a single
-  /// returned `TimedCount`.
-  /// If not set, no timed counts are returned.
-  ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
-  /// response. To view
-  /// additional results, pass this token along with the identical query
-  /// parameters as the first request.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -362,7 +362,9 @@ class ProjectsGroupStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupStatsResponse> list(core.String projectName,
-      {core.String timeRange_period,
+      {core.String timedCountDuration,
+      core.String pageToken,
+      core.String timeRange_period,
       core.String alignment,
       core.List<core.String> groupId,
       core.String serviceFilter_service,
@@ -371,18 +373,22 @@ class ProjectsGroupStatsResourceApi {
       core.String order,
       core.String serviceFilter_resourceType,
       core.String alignmentTime,
-      core.String timedCountDuration,
-      core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if (timedCountDuration != null) {
+      _queryParams["timedCountDuration"] = [timedCountDuration];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
@@ -410,12 +416,6 @@ class ProjectsGroupStatsResourceApi {
     }
     if (alignmentTime != null) {
       _queryParams["alignmentTime"] = [alignmentTime];
-    }
-    if (timedCountDuration != null) {
-      _queryParams["timedCountDuration"] = [timedCountDuration];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -466,12 +466,12 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ErrorGroup> get(core.String groupName, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
@@ -514,12 +514,12 @@ class ProjectsGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ErrorGroup> update(ErrorGroup request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

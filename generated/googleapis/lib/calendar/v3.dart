@@ -18,12 +18,25 @@ const core.String USER_AGENT = 'dart-api-client calendar/v3';
 
 /// Manipulates events and other calendar data.
 class CalendarApi {
-  /// Manage your calendars
+  /// See, edit, share, and permanently delete all the calendars you can access
+  /// using Google Calendar
   static const CalendarScope = "https://www.googleapis.com/auth/calendar";
+
+  /// View and edit events on all your calendars
+  static const CalendarEventsScope =
+      "https://www.googleapis.com/auth/calendar.events";
+
+  /// View events on all your calendars
+  static const CalendarEventsReadonlyScope =
+      "https://www.googleapis.com/auth/calendar.events.readonly";
 
   /// View your calendars
   static const CalendarReadonlyScope =
       "https://www.googleapis.com/auth/calendar.readonly";
+
+  /// View your Calendar settings
+  static const CalendarSettingsReadonlyScope =
+      "https://www.googleapis.com/auth/calendar.settings.readonly";
 
   final commons.ApiRequester _requester;
 
@@ -38,8 +51,8 @@ class CalendarApi {
   SettingsResourceApi get settings => new SettingsResourceApi(_requester);
 
   CalendarApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "calendar/v3/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "calendar/v3/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -69,12 +82,12 @@ class AclResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, core.String ruleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -124,12 +137,12 @@ class AclResourceApi {
   /// this method will complete with the same error.
   async.Future<AclRule> get(core.String calendarId, core.String ruleId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -180,12 +193,12 @@ class AclResourceApi {
   /// this method will complete with the same error.
   async.Future<AclRule> insert(AclRule request, core.String calendarId,
       {core.bool sendNotifications, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -256,12 +269,12 @@ class AclResourceApi {
       core.bool showDeleted,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -322,12 +335,12 @@ class AclResourceApi {
   async.Future<AclRule> patch(
       AclRule request, core.String calendarId, core.String ruleId,
       {core.bool sendNotifications, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -388,12 +401,12 @@ class AclResourceApi {
   async.Future<AclRule> update(
       AclRule request, core.String calendarId, core.String ruleId,
       {core.bool sendNotifications, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -472,12 +485,12 @@ class AclResourceApi {
       core.bool showDeleted,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -537,12 +550,12 @@ class CalendarListResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -585,12 +598,12 @@ class CalendarListResourceApi {
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> get(core.String calendarId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -634,12 +647,12 @@ class CalendarListResourceApi {
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> insert(CalendarListEntry request,
       {core.bool colorRgbFormat, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -719,12 +732,12 @@ class CalendarListResourceApi {
       core.bool showHidden,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -788,12 +801,12 @@ class CalendarListResourceApi {
   async.Future<CalendarListEntry> patch(
       CalendarListEntry request, core.String calendarId,
       {core.bool colorRgbFormat, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -848,12 +861,12 @@ class CalendarListResourceApi {
   async.Future<CalendarListEntry> update(
       CalendarListEntry request, core.String calendarId,
       {core.bool colorRgbFormat, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -939,12 +952,12 @@ class CalendarListResourceApi {
       core.bool showHidden,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1006,12 +1019,12 @@ class CalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future clear(core.String calendarId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1052,12 +1065,12 @@ class CalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1098,12 +1111,12 @@ class CalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Calendar> get(core.String calendarId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1140,12 +1153,12 @@ class CalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Calendar> insert(Calendar request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1187,12 +1200,12 @@ class CalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future<Calendar> patch(Calendar request, core.String calendarId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1237,12 +1250,12 @@ class CalendarsResourceApi {
   /// this method will complete with the same error.
   async.Future<Calendar> update(Calendar request, core.String calendarId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1286,12 +1299,12 @@ class ChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future stop(Channel request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1334,12 +1347,12 @@ class ColorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Colors> get({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1372,8 +1385,21 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
-  /// [sendNotifications] - Whether to send notifications about the deletion of
-  /// the event. Optional. The default is False.
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the deletion of the event. Note that
+  /// some emails might still be sent even if you set the value to false. The
+  /// default is false.
+  ///
+  /// [sendUpdates] - Guests who should receive notifications about the deletion
+  /// of the event.
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1384,13 +1410,15 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, core.String eventId,
-      {core.bool sendNotifications, core.String $fields}) {
-    var _url = null;
+      {core.bool sendNotifications,
+      core.String sendUpdates,
+      core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1400,6 +1428,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1460,12 +1491,12 @@ class EventsResourceApi {
       core.int maxAttendees,
       core.String timeZone,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1535,12 +1566,12 @@ class EventsResourceApi {
       {core.int conferenceDataVersion,
       core.bool supportsAttachments,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1592,8 +1623,22 @@ class EventsResourceApi {
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
   ///
-  /// [sendNotifications] - Whether to send notifications about the creation of
-  /// the new event. Optional. The default is False.
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the creation of the new event. Note
+  /// that some emails might still be sent even if you set the value to false.
+  /// The default is false.
+  ///
+  /// [sendUpdates] - Whether to send notifications about the creation of the
+  /// new event. Note that some emails might still be sent. The default is
+  /// false.
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
@@ -1612,14 +1657,15 @@ class EventsResourceApi {
       {core.int conferenceDataVersion,
       core.int maxAttendees,
       core.bool sendNotifications,
+      core.String sendUpdates,
       core.bool supportsAttachments,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1635,6 +1681,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
@@ -1722,12 +1771,12 @@ class EventsResourceApi {
       core.DateTime timeMin,
       core.String timeZone,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -1921,12 +1970,12 @@ class EventsResourceApi {
       core.String timeZone,
       core.DateTime updatedMin,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2010,8 +2059,21 @@ class EventsResourceApi {
   /// [destination] - Calendar identifier of the target calendar where the event
   /// is to be moved to.
   ///
-  /// [sendNotifications] - Whether to send notifications about the change of
-  /// the event's organizer. Optional. The default is False.
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the change of the event's organizer.
+  /// Note that some emails might still be sent even if you set the value to
+  /// false. The default is false.
+  ///
+  /// [sendUpdates] - Guests who should receive notifications about the change
+  /// of the event's organizer.
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2025,13 +2087,15 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<Event> move(
       core.String calendarId, core.String eventId, core.String destination,
-      {core.bool sendNotifications, core.String $fields}) {
-    var _url = null;
+      {core.bool sendNotifications,
+      core.String sendUpdates,
+      core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2045,6 +2109,9 @@ class EventsResourceApi {
     _queryParams["destination"] = [destination];
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2095,9 +2162,21 @@ class EventsResourceApi {
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
   ///
-  /// [sendNotifications] - Whether to send notifications about the event update
-  /// (e.g. attendee's responses, title changes, etc.). Optional. The default is
-  /// False.
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the event update (for example,
+  /// description changes, etc.). Note that some emails might still be sent even
+  /// if you set the value to false. The default is false.
+  ///
+  /// [sendUpdates] - Guests who should receive notifications about the event
+  /// update (for example, title changes, etc.).
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
@@ -2118,14 +2197,15 @@ class EventsResourceApi {
       core.int conferenceDataVersion,
       core.int maxAttendees,
       core.bool sendNotifications,
+      core.String sendUpdates,
       core.bool supportsAttachments,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2147,6 +2227,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
@@ -2179,8 +2262,21 @@ class EventsResourceApi {
   ///
   /// [text] - The text describing the event to be created.
   ///
-  /// [sendNotifications] - Whether to send notifications about the creation of
-  /// the event. Optional. The default is False.
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the creation of the event. Note that
+  /// some emails might still be sent even if you set the value to false. The
+  /// default is false.
+  ///
+  /// [sendUpdates] - Guests who should receive notifications about the creation
+  /// of the new event.
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2193,13 +2289,15 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> quickAdd(core.String calendarId, core.String text,
-      {core.bool sendNotifications, core.String $fields}) {
-    var _url = null;
+      {core.bool sendNotifications,
+      core.String sendUpdates,
+      core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
@@ -2210,6 +2308,9 @@ class EventsResourceApi {
     _queryParams["text"] = [text];
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2258,9 +2359,21 @@ class EventsResourceApi {
   /// response. If there are more than the specified number of attendees, only
   /// the participant is returned. Optional.
   ///
-  /// [sendNotifications] - Whether to send notifications about the event update
-  /// (e.g. attendee's responses, title changes, etc.). Optional. The default is
-  /// False.
+  /// [sendNotifications] - Deprecated. Please use sendUpdates instead.
+  ///
+  /// Whether to send notifications about the event update (for example,
+  /// description changes, etc.). Note that some emails might still be sent even
+  /// if you set the value to false. The default is false.
+  ///
+  /// [sendUpdates] - Guests who should receive notifications about the event
+  /// update (for example, title changes, etc.).
+  /// Possible string values are:
+  /// - "all" : Notifications are sent to all guests.
+  /// - "externalOnly" : Notifications are sent to non-Google Calendar guests
+  /// only.
+  /// - "none" : No notifications are sent. This value should only be used for
+  /// migration use cases (note that in most migration cases the import method
+  /// should be used).
   ///
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
@@ -2281,14 +2394,15 @@ class EventsResourceApi {
       core.int conferenceDataVersion,
       core.int maxAttendees,
       core.bool sendNotifications,
+      core.String sendUpdates,
       core.bool supportsAttachments,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2310,6 +2424,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if (sendUpdates != null) {
+      _queryParams["sendUpdates"] = [sendUpdates];
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
@@ -2474,12 +2591,12 @@ class EventsResourceApi {
       core.String timeZone,
       core.DateTime updatedMin,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2579,12 +2696,12 @@ class FreebusyResourceApi {
   /// this method will complete with the same error.
   async.Future<FreeBusyResponse> query(FreeBusyRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2627,12 +2744,12 @@ class SettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Setting> get(core.String setting, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (setting == null) {
       throw new core.ArgumentError("Parameter setting is required.");
@@ -2686,12 +2803,12 @@ class SettingsResourceApi {
       core.String pageToken,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
@@ -2753,12 +2870,12 @@ class SettingsResourceApi {
       core.String pageToken,
       core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3357,10 +3474,14 @@ class CalendarListEntry {
 
 class CalendarNotification {
   /// The method used to deliver the notification. Possible values are:
-  /// - "email" - Reminders are sent via email.
-  /// - "sms" - Reminders are sent via SMS. This value is read-only and is
-  /// ignored on inserts and updates. SMS reminders are only available for G
-  /// Suite customers.
+  /// - "email" - Notifications are sent via email.
+  /// - "sms" - Deprecated. Once this feature is shutdown, the API will no
+  /// longer return notifications using this method. Any newly added SMS
+  /// notifications will be ignored. See  Google Calendar SMS notifications to
+  /// be removed for more information.
+  /// Notifications are sent via SMS. This value is read-only and is ignored on
+  /// inserts and updates. SMS notifications are only available for G Suite
+  /// customers.
   /// Required when adding a notification.
   core.String method;
 
@@ -3932,6 +4053,11 @@ class EntryPoint {
   /// Optional.
   core.String accessCode;
 
+  /// Features of the entry point, such as being toll or toll-free. One entry
+  /// point can have multiple features. However, toll and toll-free cannot be
+  /// both set on the same entry point.
+  core.List<core.String> entryPointFeatures;
+
   /// The type of the conference entry point.
   /// Possible values are:
   /// - "video" - joining a conference over HTTP. A conference can have zero or
@@ -3989,6 +4115,11 @@ class EntryPoint {
   /// Optional.
   core.String pin;
 
+  /// The CLDR/ISO 3166 region code for the country associated with this phone
+  /// access. Example: "SE" for Sweden.
+  /// Calendar backend will populate this field only for EntryPointType.PHONE.
+  core.String regionCode;
+
   /// The URI of the entry point. The maximum length is 1300 characters.
   /// Format:
   /// - for video, http: or https: schema is required.
@@ -4003,6 +4134,10 @@ class EntryPoint {
   EntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey("accessCode")) {
       accessCode = _json["accessCode"];
+    }
+    if (_json.containsKey("entryPointFeatures")) {
+      entryPointFeatures =
+          (_json["entryPointFeatures"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("entryPointType")) {
       entryPointType = _json["entryPointType"];
@@ -4022,6 +4157,9 @@ class EntryPoint {
     if (_json.containsKey("pin")) {
       pin = _json["pin"];
     }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
     if (_json.containsKey("uri")) {
       uri = _json["uri"];
     }
@@ -4032,6 +4170,9 @@ class EntryPoint {
         new core.Map<core.String, core.Object>();
     if (accessCode != null) {
       _json["accessCode"] = accessCode;
+    }
+    if (entryPointFeatures != null) {
+      _json["entryPointFeatures"] = entryPointFeatures;
     }
     if (entryPointType != null) {
       _json["entryPointType"] = entryPointType;
@@ -4050,6 +4191,9 @@ class EntryPoint {
     }
     if (pin != null) {
       _json["pin"] = pin;
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
     }
     if (uri != null) {
       _json["uri"] = uri;
@@ -5091,7 +5235,11 @@ class EventDateTime {
 class EventReminder {
   /// The method used by this reminder. Possible values are:
   /// - "email" - Reminders are sent via email.
-  /// - "sms" - Reminders are sent via SMS. These are only available for G Suite
+  /// - "sms" - Deprecated. Once this feature is shutdown, the API will no
+  /// longer return reminders using this method. Any newly added SMS reminders
+  /// will be ignored. See  Google Calendar SMS notifications to be removed for
+  /// more information.
+  /// Reminders are sent via SMS. These are only available for G Suite
   /// customers. Requests to set SMS reminders for other account types are
   /// ignored.
   /// - "popup" - Reminders are sent via a UI popup.

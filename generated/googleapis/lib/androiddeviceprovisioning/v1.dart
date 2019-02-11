@@ -26,8 +26,9 @@ class AndroiddeviceprovisioningApi {
   PartnersResourceApi get partners => new PartnersResourceApi(_requester);
 
   AndroiddeviceprovisioningApi(http.Client client,
-      {core.String rootUrl: "https://androiddeviceprovisioning.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl =
+          "https://androiddeviceprovisioning.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -47,10 +48,10 @@ class CustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A token specifying which result page to return.
-  ///
   /// [pageSize] - The maximum number of customers to show in a page of results.
   /// A number between 1 and 100 (inclusive).
+  ///
+  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -63,19 +64,19 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListCustomersResponse> list(
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -124,12 +125,12 @@ class CustomersConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Configuration> create(Configuration request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -176,12 +177,12 @@ class CustomersConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -221,12 +222,12 @@ class CustomersConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Configuration> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -267,12 +268,12 @@ class CustomersConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomerListConfigurationsResponse> list(core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -324,12 +325,12 @@ class CustomersConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Configuration> patch(Configuration request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -389,12 +390,12 @@ class CustomersDevicesResourceApi {
   async.Future<Empty> applyConfiguration(
       CustomerApplyConfigurationRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -438,12 +439,12 @@ class CustomersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Device> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -472,10 +473,10 @@ class CustomersDevicesResourceApi {
   /// format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
-  /// [pageToken] - A token specifying which result page to return.
-  ///
   /// [pageSize] - The maximum number of devices to show in a page of results.
   /// Must be between 1 and 100 inclusive.
+  ///
+  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -488,22 +489,22 @@ class CustomersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListDevicesResponse> list(core.String parent,
-      {core.String pageToken, core.String pageSize, core.String $fields}) {
-    var _url = null;
+      {core.String pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = [pageSize];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -545,12 +546,12 @@ class CustomersDevicesResourceApi {
   async.Future<Empty> removeConfiguration(
       CustomerRemoveConfigurationRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -604,12 +605,12 @@ class CustomersDevicesResourceApi {
   async.Future<Empty> unclaim(
       CustomerUnclaimDeviceRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -662,12 +663,12 @@ class CustomersDpcsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomerListDpcsResponse> list(core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -714,12 +715,12 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -761,9 +762,9 @@ class PartnersCustomersResourceApi {
 
   /// Creates a customer for zero-touch enrollment. After the method returns
   /// successfully, admin and owner roles can manage devices and EMM configs
-  /// by calling API methods or using their zero-touch enrollment portal. The
-  /// API
-  /// doesn't notify the customer that they have access.
+  /// by calling API methods or using their zero-touch enrollment portal.
+  /// The customer receives an email that welcomes them to zero-touch enrollment
+  /// and explains how to sign into the portal.
   ///
   /// [request] - The metadata request object.
   ///
@@ -787,12 +788,12 @@ class PartnersCustomersResourceApi {
   async.Future<Company> create(
       CreateCustomerRequest request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -825,6 +826,13 @@ class PartnersCustomersResourceApi {
   /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results to be returned. If not
+  /// specified or 0, all
+  /// the records are returned.
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -836,16 +844,22 @@ class PartnersCustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCustomersResponse> list(core.String partnerId,
-      {core.String $fields}) {
-    var _url = null;
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -894,12 +908,12 @@ class PartnersDevicesResourceApi {
   async.Future<ClaimDeviceResponse> claim(
       ClaimDeviceRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -948,12 +962,12 @@ class PartnersDevicesResourceApi {
   async.Future<Operation> claimAsync(
       ClaimDevicesRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1000,12 +1014,12 @@ class PartnersDevicesResourceApi {
   async.Future<FindDevicesByDeviceIdentifierResponse> findByIdentifier(
       FindDevicesByDeviceIdentifierRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1056,12 +1070,12 @@ class PartnersDevicesResourceApi {
   async.Future<FindDevicesByOwnerResponse> findByOwner(
       FindDevicesByOwnerRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1106,12 +1120,12 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Device> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1141,7 +1155,7 @@ class PartnersDevicesResourceApi {
   /// this to the partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
-  /// [deviceId] - Required. The ID of the reseller partner.
+  /// [deviceId] - Required. The ID of the device.
   /// Value must have pattern "^[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1157,12 +1171,12 @@ class PartnersDevicesResourceApi {
   async.Future<DeviceMetadata> metadata(UpdateDeviceMetadataRequest request,
       core.String metadataOwnerId, core.String deviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1215,12 +1229,12 @@ class PartnersDevicesResourceApi {
   async.Future<Empty> unclaim(
       UnclaimDeviceRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1270,12 +1284,12 @@ class PartnersDevicesResourceApi {
   async.Future<Operation> unclaimAsync(
       UnclaimDevicesRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1325,12 +1339,12 @@ class PartnersDevicesResourceApi {
   async.Future<Operation> updateMetadataAsync(
       UpdateDeviceMetadataInBatchRequest request, core.String partnerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1389,12 +1403,12 @@ class PartnersVendorsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVendorsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1453,12 +1467,12 @@ class PartnersVendorsCustomersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVendorCustomersResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1495,6 +1509,9 @@ class ClaimDeviceRequest {
   /// Required. The device identifier of the device to claim.
   DeviceIdentifier deviceIdentifier;
 
+  /// Optional. The metadata to attach to the device.
+  DeviceMetadata deviceMetadata;
+
   /// Required. The section type of the device's provisioning record.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
@@ -1512,6 +1529,9 @@ class ClaimDeviceRequest {
       deviceIdentifier =
           new DeviceIdentifier.fromJson(_json["deviceIdentifier"]);
     }
+    if (_json.containsKey("deviceMetadata")) {
+      deviceMetadata = new DeviceMetadata.fromJson(_json["deviceMetadata"]);
+    }
     if (_json.containsKey("sectionType")) {
       sectionType = _json["sectionType"];
     }
@@ -1525,6 +1545,9 @@ class ClaimDeviceRequest {
     }
     if (deviceIdentifier != null) {
       _json["deviceIdentifier"] = (deviceIdentifier).toJson();
+    }
+    if (deviceMetadata != null) {
+      _json["deviceMetadata"] = (deviceMetadata).toJson();
     }
     if (sectionType != null) {
       _json["sectionType"] = sectionType;
@@ -2532,6 +2555,9 @@ class FindDevicesByDeviceIdentifierResponse {
   /// results are available.
   core.String nextPageToken;
 
+  /// The total count of items in the list irrespective of pagination.
+  core.int totalSize;
+
   FindDevicesByDeviceIdentifierResponse();
 
   FindDevicesByDeviceIdentifierResponse.fromJson(core.Map _json) {
@@ -2543,6 +2569,9 @@ class FindDevicesByDeviceIdentifierResponse {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2553,6 +2582,9 @@ class FindDevicesByDeviceIdentifierResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     return _json;
   }
@@ -2622,6 +2654,9 @@ class FindDevicesByOwnerResponse {
   /// Omitted if no further results are available.
   core.String nextPageToken;
 
+  /// The total count of items in the list irrespective of pagination.
+  core.int totalSize;
+
   FindDevicesByOwnerResponse();
 
   FindDevicesByOwnerResponse.fromJson(core.Map _json) {
@@ -2632,6 +2667,9 @@ class FindDevicesByOwnerResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
   }
 
@@ -2644,6 +2682,9 @@ class FindDevicesByOwnerResponse {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
     return _json;
   }
 }
@@ -2653,6 +2694,14 @@ class ListCustomersResponse {
   /// List of customers related to this reseller partner.
   core.List<Company> customers;
 
+  /// A token to retrieve the next page of results. Omitted if no further
+  /// results
+  /// are available.
+  core.String nextPageToken;
+
+  /// The total count of items in the list irrespective of pagination.
+  core.int totalSize;
+
   ListCustomersResponse();
 
   ListCustomersResponse.fromJson(core.Map _json) {
@@ -2661,6 +2710,12 @@ class ListCustomersResponse {
           .map<Company>((value) => new Company.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2668,6 +2723,12 @@ class ListCustomersResponse {
         new core.Map<core.String, core.Object>();
     if (customers != null) {
       _json["customers"] = customers.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     return _json;
   }
@@ -2683,6 +2744,9 @@ class ListVendorCustomersResponse {
   /// are available.
   core.String nextPageToken;
 
+  /// The total count of items in the list irrespective of pagination.
+  core.int totalSize;
+
   ListVendorCustomersResponse();
 
   ListVendorCustomersResponse.fromJson(core.Map _json) {
@@ -2693,6 +2757,9 @@ class ListVendorCustomersResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
   }
 
@@ -2705,6 +2772,9 @@ class ListVendorCustomersResponse {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
     return _json;
   }
 }
@@ -2716,6 +2786,9 @@ class ListVendorsResponse {
   /// are available.
   core.String nextPageToken;
 
+  /// The total count of items in the list irrespective of pagination.
+  core.int totalSize;
+
   /// List of vendors of the reseller partner. Fields `name`, `companyId` and
   /// `companyName` are populated to the Company object.
   core.List<Company> vendors;
@@ -2725,6 +2798,9 @@ class ListVendorsResponse {
   ListVendorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
     }
     if (_json.containsKey("vendors")) {
       vendors = (_json["vendors"] as core.List)
@@ -2738,6 +2814,9 @@ class ListVendorsResponse {
         new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
     }
     if (vendors != null) {
       _json["vendors"] = vendors.map((value) => (value).toJson()).toList();

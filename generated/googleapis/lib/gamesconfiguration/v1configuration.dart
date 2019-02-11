@@ -41,8 +41,8 @@ class GamesConfigurationApi {
       new LeaderboardConfigurationsResourceApi(_requester);
 
   GamesConfigurationApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "games/v1configuration/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "games/v1configuration/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -68,12 +68,12 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String achievementId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -113,12 +113,12 @@ class AchievementConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> get(core.String achievementId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -161,12 +161,12 @@ class AchievementConfigurationsResourceApi {
   async.Future<AchievementConfiguration> insert(
       AchievementConfiguration request, core.String applicationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -221,12 +221,12 @@ class AchievementConfigurationsResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -277,12 +277,12 @@ class AchievementConfigurationsResourceApi {
   async.Future<AchievementConfiguration> patch(
       AchievementConfiguration request, core.String achievementId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -327,12 +327,12 @@ class AchievementConfigurationsResourceApi {
   async.Future<AchievementConfiguration> update(
       AchievementConfiguration request, core.String achievementId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -393,14 +393,14 @@ class ImageConfigurationsResourceApi {
   async.Future<ImageConfiguration> upload(
       core.String resourceId, core.String imageType,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
@@ -463,12 +463,12 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String leaderboardId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -508,12 +508,12 @@ class LeaderboardConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> get(core.String leaderboardId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -556,12 +556,12 @@ class LeaderboardConfigurationsResourceApi {
   async.Future<LeaderboardConfiguration> insert(
       LeaderboardConfiguration request, core.String applicationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -616,12 +616,12 @@ class LeaderboardConfigurationsResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -672,12 +672,12 @@ class LeaderboardConfigurationsResourceApi {
   async.Future<LeaderboardConfiguration> patch(
       LeaderboardConfiguration request, core.String leaderboardId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -722,12 +722,12 @@ class LeaderboardConfigurationsResourceApi {
   async.Future<LeaderboardConfiguration> update(
       LeaderboardConfiguration request, core.String leaderboardId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());

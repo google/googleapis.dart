@@ -46,8 +46,8 @@ class AdexchangebuyerApi {
       new PubprofilesResourceApi(_requester);
 
   AdexchangebuyerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "adexchangebuyer/v1.4/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "adexchangebuyer/v1.4/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -74,12 +74,12 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> get(core.int id, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -114,12 +114,12 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsList> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -159,12 +159,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> patch(Account request, core.int id,
       {core.bool confirmUnsafeAccountChange, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -215,12 +215,12 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> update(Account request, core.int id,
       {core.bool confirmUnsafeAccountChange, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -271,12 +271,12 @@ class BillingInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BillingInfo> get(core.int accountId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -312,12 +312,12 @@ class BillingInfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BillingInfoList> list({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -361,12 +361,12 @@ class BudgetResourceApi {
   /// this method will complete with the same error.
   async.Future<Budget> get(core.String accountId, core.String billingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -417,12 +417,12 @@ class BudgetResourceApi {
   async.Future<Budget> patch(
       Budget request, core.String accountId, core.String billingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -475,12 +475,12 @@ class BudgetResourceApi {
   async.Future<Budget> update(
       Budget request, core.String accountId, core.String billingId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -536,12 +536,12 @@ class CreativesResourceApi {
   async.Future addDeal(
       core.int accountId, core.String buyerCreativeId, core.String dealId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -595,12 +595,12 @@ class CreativesResourceApi {
   /// this method will complete with the same error.
   async.Future<Creative> get(core.int accountId, core.String buyerCreativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -643,12 +643,12 @@ class CreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> insert(Creative request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -726,12 +726,12 @@ class CreativesResourceApi {
       core.String openAuctionStatusFilter,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId != null) {
       _queryParams["accountId"] = accountId.map((item) => "${item}").toList();
@@ -787,12 +787,12 @@ class CreativesResourceApi {
   async.Future<CreativeDealIds> listDeals(
       core.int accountId, core.String buyerCreativeId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -840,12 +840,12 @@ class CreativesResourceApi {
   async.Future removeDeal(
       core.int accountId, core.String buyerCreativeId, core.String dealId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -906,12 +906,12 @@ class MarketplacedealsResourceApi {
   async.Future<DeleteOrderDealsResponse> delete(
       DeleteOrderDealsRequest request, core.String proposalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -958,12 +958,12 @@ class MarketplacedealsResourceApi {
   async.Future<AddOrderDealsResponse> insert(
       AddOrderDealsRequest request, core.String proposalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1009,12 +1009,12 @@ class MarketplacedealsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetOrderDealsResponse> list(core.String proposalId,
       {core.String pqlQuery, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -1059,12 +1059,12 @@ class MarketplacedealsResourceApi {
   async.Future<EditAllOrderDealsResponse> update(
       EditAllOrderDealsRequest request, core.String proposalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1118,12 +1118,12 @@ class MarketplacenotesResourceApi {
   async.Future<AddOrderNotesResponse> insert(
       AddOrderNotesRequest request, core.String proposalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1171,12 +1171,12 @@ class MarketplacenotesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetOrderNotesResponse> list(core.String proposalId,
       {core.String pqlQuery, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -1226,12 +1226,12 @@ class MarketplaceprivateauctionResourceApi {
   async.Future updateproposal(
       UpdatePrivateAuctionProposalRequest request, core.String privateAuctionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1298,12 +1298,12 @@ class PerformanceReportResourceApi {
   async.Future<PerformanceReportList> list(
       core.String accountId, core.String endDateTime, core.String startDateTime,
       {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1363,12 +1363,12 @@ class PretargetingConfigResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String configId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1417,12 +1417,12 @@ class PretargetingConfigResourceApi {
   async.Future<PretargetingConfig> get(
       core.String accountId, core.String configId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1469,12 +1469,12 @@ class PretargetingConfigResourceApi {
   async.Future<PretargetingConfig> insert(
       PretargetingConfig request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1515,12 +1515,12 @@ class PretargetingConfigResourceApi {
   /// this method will complete with the same error.
   async.Future<PretargetingConfigList> list(core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1564,12 +1564,12 @@ class PretargetingConfigResourceApi {
   async.Future<PretargetingConfig> patch(
       PretargetingConfig request, core.String accountId, core.String configId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1621,12 +1621,12 @@ class PretargetingConfigResourceApi {
   async.Future<PretargetingConfig> update(
       PretargetingConfig request, core.String accountId, core.String configId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1678,12 +1678,12 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Product> get(core.String productId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
@@ -1721,12 +1721,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetOffersResponse> search(
       {core.String pqlQuery, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pqlQuery != null) {
       _queryParams["pqlQuery"] = [pqlQuery];
@@ -1769,12 +1769,12 @@ class ProposalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Proposal> get(core.String proposalId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -1812,12 +1812,12 @@ class ProposalsResourceApi {
   /// this method will complete with the same error.
   async.Future<CreateOrdersResponse> insert(CreateOrdersRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1873,12 +1873,12 @@ class ProposalsResourceApi {
   async.Future<Proposal> patch(Proposal request, core.String proposalId,
       core.String revisionNumber, core.String updateAction,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1930,12 +1930,12 @@ class ProposalsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetOrdersResponse> search(
       {core.String pqlQuery, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (pqlQuery != null) {
       _queryParams["pqlQuery"] = [pqlQuery];
@@ -1970,12 +1970,12 @@ class ProposalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future setupcomplete(core.String proposalId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (proposalId == null) {
       throw new core.ArgumentError("Parameter proposalId is required.");
@@ -2035,12 +2035,12 @@ class ProposalsResourceApi {
   async.Future<Proposal> update(Proposal request, core.String proposalId,
       core.String revisionNumber, core.String updateAction,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2098,12 +2098,12 @@ class PubprofilesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetPublisherProfilesByAccountIdResponse> list(core.int accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3321,6 +3321,16 @@ class Creative {
   /// field should not be set in requests.
   core.List<CreativeCorrections> corrections;
 
+  /// Creative status identity type that the creative item applies to. Ad
+  /// Exchange real-time bidding is migrating to the sizeless creative
+  /// verification. Originally, Ad Exchange assigned creative verification
+  /// status to a unique combination of a buyer creative ID and creative
+  /// dimensions. Post-migration, a single verification status will be assigned
+  /// at the buyer creative ID level. This field allows to distinguish whether a
+  /// given creative status applies to a unique combination of a buyer creative
+  /// ID and creative dimensions, or to a buyer creative ID as a whole.
+  core.String creativeStatusIdentityType;
+
   /// Top-level deals status. Read-only. This field should not be set in
   /// requests. If disapproved, an entry for auctionType=DIRECT_DEALS (or ALL)
   /// in servingRestrictions will also exist. Note that this may be nuanced with
@@ -3443,6 +3453,9 @@ class Creative {
               (value) => new CreativeCorrections.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("creativeStatusIdentityType")) {
+      creativeStatusIdentityType = _json["creativeStatusIdentityType"];
+    }
     if (_json.containsKey("dealsStatus")) {
       dealsStatus = _json["dealsStatus"];
     }
@@ -3544,6 +3557,9 @@ class Creative {
     if (corrections != null) {
       _json["corrections"] =
           corrections.map((value) => (value).toJson()).toList();
+    }
+    if (creativeStatusIdentityType != null) {
+      _json["creativeStatusIdentityType"] = creativeStatusIdentityType;
     }
     if (dealsStatus != null) {
       _json["dealsStatus"] = dealsStatus;
@@ -5880,7 +5896,7 @@ class PrivateData {
     return convert.base64.decode(referencePayload);
   }
 
-  void set referencePayloadAsBytes(core.List<core.int> _bytes) {
+  set referencePayloadAsBytes(core.List<core.int> _bytes) {
     referencePayload =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -6457,9 +6473,6 @@ class Proposal {
 }
 
 class PublisherProfileApiProto {
-  /// Deprecated: use the seller.account_id. The account id of the seller.
-  core.String accountId;
-
   /// Publisher provided info on its audience.
   core.String audience;
 
@@ -6531,9 +6544,6 @@ class PublisherProfileApiProto {
   PublisherProfileApiProto();
 
   PublisherProfileApiProto.fromJson(core.Map _json) {
-    if (_json.containsKey("accountId")) {
-      accountId = _json["accountId"];
-    }
     if (_json.containsKey("audience")) {
       audience = _json["audience"];
     }
@@ -6607,9 +6617,6 @@ class PublisherProfileApiProto {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (accountId != null) {
-      _json["accountId"] = accountId;
-    }
     if (audience != null) {
       _json["audience"] = audience;
     }

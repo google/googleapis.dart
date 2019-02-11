@@ -50,14 +50,50 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4812() {
+core.int buildCounterBindDeviceToGatewayRequest = 0;
+buildBindDeviceToGatewayRequest() {
+  var o = new api.BindDeviceToGatewayRequest();
+  buildCounterBindDeviceToGatewayRequest++;
+  if (buildCounterBindDeviceToGatewayRequest < 3) {
+    o.deviceId = "foo";
+    o.gatewayId = "foo";
+  }
+  buildCounterBindDeviceToGatewayRequest--;
+  return o;
+}
+
+checkBindDeviceToGatewayRequest(api.BindDeviceToGatewayRequest o) {
+  buildCounterBindDeviceToGatewayRequest++;
+  if (buildCounterBindDeviceToGatewayRequest < 3) {
+    unittest.expect(o.deviceId, unittest.equals('foo'));
+    unittest.expect(o.gatewayId, unittest.equals('foo'));
+  }
+  buildCounterBindDeviceToGatewayRequest--;
+}
+
+core.int buildCounterBindDeviceToGatewayResponse = 0;
+buildBindDeviceToGatewayResponse() {
+  var o = new api.BindDeviceToGatewayResponse();
+  buildCounterBindDeviceToGatewayResponse++;
+  if (buildCounterBindDeviceToGatewayResponse < 3) {}
+  buildCounterBindDeviceToGatewayResponse--;
+  return o;
+}
+
+checkBindDeviceToGatewayResponse(api.BindDeviceToGatewayResponse o) {
+  buildCounterBindDeviceToGatewayResponse++;
+  if (buildCounterBindDeviceToGatewayResponse < 3) {}
+  buildCounterBindDeviceToGatewayResponse--;
+}
+
+buildUnnamed3544() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4812(core.List<core.String> o) {
+checkUnnamed3544(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +105,7 @@ buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed4812();
+    o.members = buildUnnamed3544();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -80,33 +116,33 @@ checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition);
-    checkUnnamed4812(o.members);
+    checkUnnamed3544(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-buildUnnamed4813() {
+buildUnnamed3545() {
   var o = new core.List<api.DeviceCredential>();
   o.add(buildDeviceCredential());
   o.add(buildDeviceCredential());
   return o;
 }
 
-checkUnnamed4813(core.List<api.DeviceCredential> o) {
+checkUnnamed3545(core.List<api.DeviceCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceCredential(o[0]);
   checkDeviceCredential(o[1]);
 }
 
-buildUnnamed4814() {
+buildUnnamed3546() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4814(core.Map<core.String, core.String> o) {
+checkUnnamed3546(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -119,7 +155,8 @@ buildDevice() {
   if (buildCounterDevice < 3) {
     o.blocked = true;
     o.config = buildDeviceConfig();
-    o.credentials = buildUnnamed4813();
+    o.credentials = buildUnnamed3545();
+    o.gatewayConfig = buildGatewayConfig();
     o.id = "foo";
     o.lastConfigAckTime = "foo";
     o.lastConfigSendTime = "foo";
@@ -128,7 +165,8 @@ buildDevice() {
     o.lastEventTime = "foo";
     o.lastHeartbeatTime = "foo";
     o.lastStateTime = "foo";
-    o.metadata = buildUnnamed4814();
+    o.logLevel = "foo";
+    o.metadata = buildUnnamed3546();
     o.name = "foo";
     o.numId = "foo";
     o.state = buildDeviceState();
@@ -142,7 +180,8 @@ checkDevice(api.Device o) {
   if (buildCounterDevice < 3) {
     unittest.expect(o.blocked, unittest.isTrue);
     checkDeviceConfig(o.config);
-    checkUnnamed4813(o.credentials);
+    checkUnnamed3545(o.credentials);
+    checkGatewayConfig(o.gatewayConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastConfigAckTime, unittest.equals('foo'));
     unittest.expect(o.lastConfigSendTime, unittest.equals('foo'));
@@ -151,7 +190,8 @@ checkDevice(api.Device o) {
     unittest.expect(o.lastEventTime, unittest.equals('foo'));
     unittest.expect(o.lastHeartbeatTime, unittest.equals('foo'));
     unittest.expect(o.lastStateTime, unittest.equals('foo'));
-    checkUnnamed4814(o.metadata);
+    unittest.expect(o.logLevel, unittest.equals('foo'));
+    checkUnnamed3546(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numId, unittest.equals('foo'));
     checkDeviceState(o.state);
@@ -205,27 +245,27 @@ checkDeviceCredential(api.DeviceCredential o) {
   buildCounterDeviceCredential--;
 }
 
-buildUnnamed4815() {
+buildUnnamed3547() {
   var o = new core.List<api.RegistryCredential>();
   o.add(buildRegistryCredential());
   o.add(buildRegistryCredential());
   return o;
 }
 
-checkUnnamed4815(core.List<api.RegistryCredential> o) {
+checkUnnamed3547(core.List<api.RegistryCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRegistryCredential(o[0]);
   checkRegistryCredential(o[1]);
 }
 
-buildUnnamed4816() {
+buildUnnamed3548() {
   var o = new core.List<api.EventNotificationConfig>();
   o.add(buildEventNotificationConfig());
   o.add(buildEventNotificationConfig());
   return o;
 }
 
-checkUnnamed4816(core.List<api.EventNotificationConfig> o) {
+checkUnnamed3548(core.List<api.EventNotificationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEventNotificationConfig(o[0]);
   checkEventNotificationConfig(o[1]);
@@ -236,10 +276,11 @@ buildDeviceRegistry() {
   var o = new api.DeviceRegistry();
   buildCounterDeviceRegistry++;
   if (buildCounterDeviceRegistry < 3) {
-    o.credentials = buildUnnamed4815();
-    o.eventNotificationConfigs = buildUnnamed4816();
+    o.credentials = buildUnnamed3547();
+    o.eventNotificationConfigs = buildUnnamed3548();
     o.httpConfig = buildHttpConfig();
     o.id = "foo";
+    o.logLevel = "foo";
     o.mqttConfig = buildMqttConfig();
     o.name = "foo";
     o.stateNotificationConfig = buildStateNotificationConfig();
@@ -251,10 +292,11 @@ buildDeviceRegistry() {
 checkDeviceRegistry(api.DeviceRegistry o) {
   buildCounterDeviceRegistry++;
   if (buildCounterDeviceRegistry < 3) {
-    checkUnnamed4815(o.credentials);
-    checkUnnamed4816(o.eventNotificationConfigs);
+    checkUnnamed3547(o.credentials);
+    checkUnnamed3548(o.eventNotificationConfigs);
     checkHttpConfig(o.httpConfig);
     unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.logLevel, unittest.equals('foo'));
     checkMqttConfig(o.mqttConfig);
     unittest.expect(o.name, unittest.equals('foo'));
     checkStateNotificationConfig(o.stateNotificationConfig);
@@ -344,6 +386,31 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
+core.int buildCounterGatewayConfig = 0;
+buildGatewayConfig() {
+  var o = new api.GatewayConfig();
+  buildCounterGatewayConfig++;
+  if (buildCounterGatewayConfig < 3) {
+    o.gatewayAuthMethod = "foo";
+    o.gatewayType = "foo";
+    o.lastAccessedGatewayId = "foo";
+    o.lastAccessedGatewayTime = "foo";
+  }
+  buildCounterGatewayConfig--;
+  return o;
+}
+
+checkGatewayConfig(api.GatewayConfig o) {
+  buildCounterGatewayConfig++;
+  if (buildCounterGatewayConfig < 3) {
+    unittest.expect(o.gatewayAuthMethod, unittest.equals('foo'));
+    unittest.expect(o.gatewayType, unittest.equals('foo'));
+    unittest.expect(o.lastAccessedGatewayId, unittest.equals('foo'));
+    unittest.expect(o.lastAccessedGatewayTime, unittest.equals('foo'));
+  }
+  buildCounterGatewayConfig--;
+}
+
 core.int buildCounterGetIamPolicyRequest = 0;
 buildGetIamPolicyRequest() {
   var o = new api.GetIamPolicyRequest();
@@ -378,14 +445,14 @@ checkHttpConfig(api.HttpConfig o) {
   buildCounterHttpConfig--;
 }
 
-buildUnnamed4817() {
+buildUnnamed3549() {
   var o = new core.List<api.DeviceConfig>();
   o.add(buildDeviceConfig());
   o.add(buildDeviceConfig());
   return o;
 }
 
-checkUnnamed4817(core.List<api.DeviceConfig> o) {
+checkUnnamed3549(core.List<api.DeviceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceConfig(o[0]);
   checkDeviceConfig(o[1]);
@@ -396,7 +463,7 @@ buildListDeviceConfigVersionsResponse() {
   var o = new api.ListDeviceConfigVersionsResponse();
   buildCounterListDeviceConfigVersionsResponse++;
   if (buildCounterListDeviceConfigVersionsResponse < 3) {
-    o.deviceConfigs = buildUnnamed4817();
+    o.deviceConfigs = buildUnnamed3549();
   }
   buildCounterListDeviceConfigVersionsResponse--;
   return o;
@@ -405,19 +472,19 @@ buildListDeviceConfigVersionsResponse() {
 checkListDeviceConfigVersionsResponse(api.ListDeviceConfigVersionsResponse o) {
   buildCounterListDeviceConfigVersionsResponse++;
   if (buildCounterListDeviceConfigVersionsResponse < 3) {
-    checkUnnamed4817(o.deviceConfigs);
+    checkUnnamed3549(o.deviceConfigs);
   }
   buildCounterListDeviceConfigVersionsResponse--;
 }
 
-buildUnnamed4818() {
+buildUnnamed3550() {
   var o = new core.List<api.DeviceRegistry>();
   o.add(buildDeviceRegistry());
   o.add(buildDeviceRegistry());
   return o;
 }
 
-checkUnnamed4818(core.List<api.DeviceRegistry> o) {
+checkUnnamed3550(core.List<api.DeviceRegistry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceRegistry(o[0]);
   checkDeviceRegistry(o[1]);
@@ -428,7 +495,7 @@ buildListDeviceRegistriesResponse() {
   var o = new api.ListDeviceRegistriesResponse();
   buildCounterListDeviceRegistriesResponse++;
   if (buildCounterListDeviceRegistriesResponse < 3) {
-    o.deviceRegistries = buildUnnamed4818();
+    o.deviceRegistries = buildUnnamed3550();
     o.nextPageToken = "foo";
   }
   buildCounterListDeviceRegistriesResponse--;
@@ -438,20 +505,20 @@ buildListDeviceRegistriesResponse() {
 checkListDeviceRegistriesResponse(api.ListDeviceRegistriesResponse o) {
   buildCounterListDeviceRegistriesResponse++;
   if (buildCounterListDeviceRegistriesResponse < 3) {
-    checkUnnamed4818(o.deviceRegistries);
+    checkUnnamed3550(o.deviceRegistries);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDeviceRegistriesResponse--;
 }
 
-buildUnnamed4819() {
+buildUnnamed3551() {
   var o = new core.List<api.DeviceState>();
   o.add(buildDeviceState());
   o.add(buildDeviceState());
   return o;
 }
 
-checkUnnamed4819(core.List<api.DeviceState> o) {
+checkUnnamed3551(core.List<api.DeviceState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceState(o[0]);
   checkDeviceState(o[1]);
@@ -462,7 +529,7 @@ buildListDeviceStatesResponse() {
   var o = new api.ListDeviceStatesResponse();
   buildCounterListDeviceStatesResponse++;
   if (buildCounterListDeviceStatesResponse < 3) {
-    o.deviceStates = buildUnnamed4819();
+    o.deviceStates = buildUnnamed3551();
   }
   buildCounterListDeviceStatesResponse--;
   return o;
@@ -471,19 +538,19 @@ buildListDeviceStatesResponse() {
 checkListDeviceStatesResponse(api.ListDeviceStatesResponse o) {
   buildCounterListDeviceStatesResponse++;
   if (buildCounterListDeviceStatesResponse < 3) {
-    checkUnnamed4819(o.deviceStates);
+    checkUnnamed3551(o.deviceStates);
   }
   buildCounterListDeviceStatesResponse--;
 }
 
-buildUnnamed4820() {
+buildUnnamed3552() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed4820(core.List<api.Device> o) {
+checkUnnamed3552(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -494,7 +561,7 @@ buildListDevicesResponse() {
   var o = new api.ListDevicesResponse();
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    o.devices = buildUnnamed4820();
+    o.devices = buildUnnamed3552();
     o.nextPageToken = "foo";
   }
   buildCounterListDevicesResponse--;
@@ -504,7 +571,7 @@ buildListDevicesResponse() {
 checkListDevicesResponse(api.ListDevicesResponse o) {
   buildCounterListDevicesResponse++;
   if (buildCounterListDevicesResponse < 3) {
-    checkUnnamed4820(o.devices);
+    checkUnnamed3552(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDevicesResponse--;
@@ -550,14 +617,14 @@ checkMqttConfig(api.MqttConfig o) {
   buildCounterMqttConfig--;
 }
 
-buildUnnamed4821() {
+buildUnnamed3553() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed4821(core.List<api.Binding> o) {
+checkUnnamed3553(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -568,7 +635,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed4821();
+    o.bindings = buildUnnamed3553();
     o.etag = "foo";
     o.version = 42;
   }
@@ -579,7 +646,7 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4821(o.bindings);
+    checkUnnamed3553(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -649,6 +716,42 @@ checkRegistryCredential(api.RegistryCredential o) {
   buildCounterRegistryCredential--;
 }
 
+core.int buildCounterSendCommandToDeviceRequest = 0;
+buildSendCommandToDeviceRequest() {
+  var o = new api.SendCommandToDeviceRequest();
+  buildCounterSendCommandToDeviceRequest++;
+  if (buildCounterSendCommandToDeviceRequest < 3) {
+    o.binaryData = "foo";
+    o.subfolder = "foo";
+  }
+  buildCounterSendCommandToDeviceRequest--;
+  return o;
+}
+
+checkSendCommandToDeviceRequest(api.SendCommandToDeviceRequest o) {
+  buildCounterSendCommandToDeviceRequest++;
+  if (buildCounterSendCommandToDeviceRequest < 3) {
+    unittest.expect(o.binaryData, unittest.equals('foo'));
+    unittest.expect(o.subfolder, unittest.equals('foo'));
+  }
+  buildCounterSendCommandToDeviceRequest--;
+}
+
+core.int buildCounterSendCommandToDeviceResponse = 0;
+buildSendCommandToDeviceResponse() {
+  var o = new api.SendCommandToDeviceResponse();
+  buildCounterSendCommandToDeviceResponse++;
+  if (buildCounterSendCommandToDeviceResponse < 3) {}
+  buildCounterSendCommandToDeviceResponse--;
+  return o;
+}
+
+checkSendCommandToDeviceResponse(api.SendCommandToDeviceResponse o) {
+  buildCounterSendCommandToDeviceResponse++;
+  if (buildCounterSendCommandToDeviceResponse < 3) {}
+  buildCounterSendCommandToDeviceResponse--;
+}
+
 core.int buildCounterSetIamPolicyRequest = 0;
 buildSetIamPolicyRequest() {
   var o = new api.SetIamPolicyRequest();
@@ -687,7 +790,7 @@ checkStateNotificationConfig(api.StateNotificationConfig o) {
   buildCounterStateNotificationConfig--;
 }
 
-buildUnnamed4822() {
+buildUnnamed3554() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -702,7 +805,7 @@ buildUnnamed4822() {
   return o;
 }
 
-checkUnnamed4822(core.Map<core.String, core.Object> o) {
+checkUnnamed3554(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -716,17 +819,17 @@ checkUnnamed4822(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed4823() {
+buildUnnamed3555() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed4822());
-  o.add(buildUnnamed4822());
+  o.add(buildUnnamed3554());
+  o.add(buildUnnamed3554());
   return o;
 }
 
-checkUnnamed4823(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3555(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed4822(o[0]);
-  checkUnnamed4822(o[1]);
+  checkUnnamed3554(o[0]);
+  checkUnnamed3554(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -735,7 +838,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed4823();
+    o.details = buildUnnamed3555();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -746,20 +849,20 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed4823(o.details);
+    checkUnnamed3555(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-buildUnnamed4824() {
+buildUnnamed3556() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4824(core.List<core.String> o) {
+checkUnnamed3556(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -770,7 +873,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed4824();
+    o.permissions = buildUnnamed3556();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -779,19 +882,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed4824(o.permissions);
+    checkUnnamed3556(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed4825() {
+buildUnnamed3557() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4825(core.List<core.String> o) {
+checkUnnamed3557(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -802,7 +905,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed4825();
+    o.permissions = buildUnnamed3557();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -811,9 +914,45 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed4825(o.permissions);
+    checkUnnamed3557(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
+}
+
+core.int buildCounterUnbindDeviceFromGatewayRequest = 0;
+buildUnbindDeviceFromGatewayRequest() {
+  var o = new api.UnbindDeviceFromGatewayRequest();
+  buildCounterUnbindDeviceFromGatewayRequest++;
+  if (buildCounterUnbindDeviceFromGatewayRequest < 3) {
+    o.deviceId = "foo";
+    o.gatewayId = "foo";
+  }
+  buildCounterUnbindDeviceFromGatewayRequest--;
+  return o;
+}
+
+checkUnbindDeviceFromGatewayRequest(api.UnbindDeviceFromGatewayRequest o) {
+  buildCounterUnbindDeviceFromGatewayRequest++;
+  if (buildCounterUnbindDeviceFromGatewayRequest < 3) {
+    unittest.expect(o.deviceId, unittest.equals('foo'));
+    unittest.expect(o.gatewayId, unittest.equals('foo'));
+  }
+  buildCounterUnbindDeviceFromGatewayRequest--;
+}
+
+core.int buildCounterUnbindDeviceFromGatewayResponse = 0;
+buildUnbindDeviceFromGatewayResponse() {
+  var o = new api.UnbindDeviceFromGatewayResponse();
+  buildCounterUnbindDeviceFromGatewayResponse++;
+  if (buildCounterUnbindDeviceFromGatewayResponse < 3) {}
+  buildCounterUnbindDeviceFromGatewayResponse--;
+  return o;
+}
+
+checkUnbindDeviceFromGatewayResponse(api.UnbindDeviceFromGatewayResponse o) {
+  buildCounterUnbindDeviceFromGatewayResponse++;
+  if (buildCounterUnbindDeviceFromGatewayResponse < 3) {}
+  buildCounterUnbindDeviceFromGatewayResponse--;
 }
 
 core.int buildCounterX509CertificateDetails = 0;
@@ -845,59 +984,75 @@ checkX509CertificateDetails(api.X509CertificateDetails o) {
   buildCounterX509CertificateDetails--;
 }
 
-buildUnnamed4826() {
+buildUnnamed3558() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4826(core.List<core.String> o) {
+checkUnnamed3558(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4827() {
+buildUnnamed3559() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4827(core.List<core.String> o) {
+checkUnnamed3559(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4828() {
+buildUnnamed3560() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4828(core.List<core.String> o) {
+checkUnnamed3560(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4829() {
+buildUnnamed3561() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4829(core.List<core.String> o) {
+checkUnnamed3561(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 main() {
+  unittest.group("obj-schema-BindDeviceToGatewayRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBindDeviceToGatewayRequest();
+      var od = new api.BindDeviceToGatewayRequest.fromJson(o.toJson());
+      checkBindDeviceToGatewayRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-BindDeviceToGatewayResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBindDeviceToGatewayResponse();
+      var od = new api.BindDeviceToGatewayResponse.fromJson(o.toJson());
+      checkBindDeviceToGatewayResponse(od);
+    });
+  });
+
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
@@ -967,6 +1122,14 @@ main() {
       var o = buildExpr();
       var od = new api.Expr.fromJson(o.toJson());
       checkExpr(od);
+    });
+  });
+
+  unittest.group("obj-schema-GatewayConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGatewayConfig();
+      var od = new api.GatewayConfig.fromJson(o.toJson());
+      checkGatewayConfig(od);
     });
   });
 
@@ -1066,6 +1229,22 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-SendCommandToDeviceRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSendCommandToDeviceRequest();
+      var od = new api.SendCommandToDeviceRequest.fromJson(o.toJson());
+      checkSendCommandToDeviceRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-SendCommandToDeviceResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildSendCommandToDeviceResponse();
+      var od = new api.SendCommandToDeviceResponse.fromJson(o.toJson());
+      checkSendCommandToDeviceResponse(od);
+    });
+  });
+
   unittest.group("obj-schema-SetIamPolicyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSetIamPolicyRequest();
@@ -1106,6 +1285,22 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-UnbindDeviceFromGatewayRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUnbindDeviceFromGatewayRequest();
+      var od = new api.UnbindDeviceFromGatewayRequest.fromJson(o.toJson());
+      checkUnbindDeviceFromGatewayRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-UnbindDeviceFromGatewayResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUnbindDeviceFromGatewayResponse();
+      var od = new api.UnbindDeviceFromGatewayResponse.fromJson(o.toJson());
+      checkUnbindDeviceFromGatewayResponse(od);
+    });
+  });
+
   unittest.group("obj-schema-X509CertificateDetails", () {
     unittest.test("to-json--from-json", () {
       var o = buildX509CertificateDetails();
@@ -1115,6 +1310,62 @@ main() {
   });
 
   unittest.group("resource-ProjectsLocationsRegistriesResourceApi", () {
+    unittest.test("method--bindDeviceToGateway", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesResourceApi res =
+          new api.CloudiotApi(mock).projects.locations.registries;
+      var arg_request = buildBindDeviceToGatewayRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.BindDeviceToGatewayRequest.fromJson(json);
+        checkBindDeviceToGatewayRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildBindDeviceToGatewayResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .bindDeviceToGateway(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkBindDeviceToGatewayResponse(response);
+      })));
+    });
+
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsLocationsRegistriesResourceApi res =
@@ -1336,8 +1587,8 @@ main() {
       api.ProjectsLocationsRegistriesResourceApi res =
           new api.CloudiotApi(mock).projects.locations.registries;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1370,10 +1621,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1384,8 +1635,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDeviceRegistriesResponse(response);
@@ -1563,6 +1814,63 @@ main() {
         checkTestIamPermissionsResponse(response);
       })));
     });
+
+    unittest.test("method--unbindDeviceFromGateway", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesResourceApi res =
+          new api.CloudiotApi(mock).projects.locations.registries;
+      var arg_request = buildUnbindDeviceFromGatewayRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.UnbindDeviceFromGatewayRequest.fromJson(json);
+        checkUnbindDeviceFromGatewayRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildUnbindDeviceFromGatewayResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .unbindDeviceFromGateway(arg_request, arg_parent,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkUnbindDeviceFromGatewayResponse(response);
+      })));
+    });
   });
 
   unittest.group("resource-ProjectsLocationsRegistriesDevicesResourceApi", () {
@@ -1734,11 +2042,14 @@ main() {
       api.ProjectsLocationsRegistriesDevicesResourceApi res =
           new api.CloudiotApi(mock).projects.locations.registries.devices;
       var arg_parent = "foo";
-      var arg_deviceNumIds = buildUnnamed4826();
+      var arg_deviceIds = buildUnnamed3558();
+      var arg_deviceNumIds = buildUnnamed3559();
+      var arg_gatewayListOptions_associationsDeviceId = "foo";
+      var arg_gatewayListOptions_gatewayType = "foo";
+      var arg_gatewayListOptions_associationsGatewayId = "foo";
       var arg_pageToken = "foo";
       var arg_fieldMask = "foo";
       var arg_pageSize = 42;
-      var arg_deviceIds = buildUnnamed4827();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1771,15 +2082,23 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
         unittest.expect(
             queryMap["deviceNumIds"], unittest.equals(arg_deviceNumIds));
+        unittest.expect(
+            queryMap["gatewayListOptions.associationsDeviceId"].first,
+            unittest.equals(arg_gatewayListOptions_associationsDeviceId));
+        unittest.expect(queryMap["gatewayListOptions.gatewayType"].first,
+            unittest.equals(arg_gatewayListOptions_gatewayType));
+        unittest.expect(
+            queryMap["gatewayListOptions.associationsGatewayId"].first,
+            unittest.equals(arg_gatewayListOptions_associationsGatewayId));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(
             queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1790,11 +2109,17 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              deviceIds: arg_deviceIds,
               deviceNumIds: arg_deviceNumIds,
+              gatewayListOptions_associationsDeviceId:
+                  arg_gatewayListOptions_associationsDeviceId,
+              gatewayListOptions_gatewayType:
+                  arg_gatewayListOptions_gatewayType,
+              gatewayListOptions_associationsGatewayId:
+                  arg_gatewayListOptions_associationsGatewayId,
               pageToken: arg_pageToken,
               fieldMask: arg_fieldMask,
               pageSize: arg_pageSize,
-              deviceIds: arg_deviceIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListDevicesResponse(response);
@@ -1915,6 +2240,62 @@ main() {
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDevice(response);
+      })));
+    });
+
+    unittest.test("method--sendCommandToDevice", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesDevicesResourceApi res =
+          new api.CloudiotApi(mock).projects.locations.registries.devices;
+      var arg_request = buildSendCommandToDeviceRequest();
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.SendCommandToDeviceRequest.fromJson(json);
+        checkSendCommandToDeviceRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildSendCommandToDeviceResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .sendCommandToDevice(arg_request, arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkSendCommandToDeviceResponse(response);
       })));
     });
   });
@@ -2047,6 +2428,62 @@ main() {
   });
 
   unittest.group("resource-ProjectsLocationsRegistriesGroupsResourceApi", () {
+    unittest.test("method--bindDeviceToGateway", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesGroupsResourceApi res =
+          new api.CloudiotApi(mock).projects.locations.registries.groups;
+      var arg_request = buildBindDeviceToGatewayRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.BindDeviceToGatewayRequest.fromJson(json);
+        checkBindDeviceToGatewayRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildBindDeviceToGatewayResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .bindDeviceToGateway(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkBindDeviceToGatewayResponse(response);
+      })));
+    });
+
     unittest.test("method--getIamPolicy", () {
       var mock = new HttpServerMock();
       api.ProjectsLocationsRegistriesGroupsResourceApi res =
@@ -2214,6 +2651,63 @@ main() {
         checkTestIamPermissionsResponse(response);
       })));
     });
+
+    unittest.test("method--unbindDeviceFromGateway", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesGroupsResourceApi res =
+          new api.CloudiotApi(mock).projects.locations.registries.groups;
+      var arg_request = buildUnbindDeviceFromGatewayRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.UnbindDeviceFromGatewayRequest.fromJson(json);
+        checkUnbindDeviceFromGatewayRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildUnbindDeviceFromGatewayResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .unbindDeviceFromGateway(arg_request, arg_parent,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkUnbindDeviceFromGatewayResponse(response);
+      })));
+    });
   });
 
   unittest.group("resource-ProjectsLocationsRegistriesGroupsDevicesResourceApi",
@@ -2288,11 +2782,14 @@ main() {
               .groups
               .devices;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
+      var arg_gatewayListOptions_gatewayType = "foo";
+      var arg_gatewayListOptions_associationsGatewayId = "foo";
       var arg_fieldMask = "foo";
+      var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_deviceIds = buildUnnamed4828();
-      var arg_deviceNumIds = buildUnnamed4829();
+      var arg_deviceIds = buildUnnamed3560();
+      var arg_gatewayListOptions_associationsDeviceId = "foo";
+      var arg_deviceNumIds = buildUnnamed3561();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2325,13 +2822,21 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["gatewayListOptions.gatewayType"].first,
+            unittest.equals(arg_gatewayListOptions_gatewayType));
         unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+            queryMap["gatewayListOptions.associationsGatewayId"].first,
+            unittest.equals(arg_gatewayListOptions_associationsGatewayId));
         unittest.expect(
             queryMap["fieldMask"].first, unittest.equals(arg_fieldMask));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["deviceIds"], unittest.equals(arg_deviceIds));
+        unittest.expect(
+            queryMap["gatewayListOptions.associationsDeviceId"].first,
+            unittest.equals(arg_gatewayListOptions_associationsDeviceId));
         unittest.expect(
             queryMap["deviceNumIds"], unittest.equals(arg_deviceNumIds));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2344,10 +2849,16 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
+              gatewayListOptions_gatewayType:
+                  arg_gatewayListOptions_gatewayType,
+              gatewayListOptions_associationsGatewayId:
+                  arg_gatewayListOptions_associationsGatewayId,
               fieldMask: arg_fieldMask,
+              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               deviceIds: arg_deviceIds,
+              gatewayListOptions_associationsDeviceId:
+                  arg_gatewayListOptions_associationsDeviceId,
               deviceNumIds: arg_deviceNumIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2479,6 +2990,67 @@ main() {
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDevice(response);
+      })));
+    });
+
+    unittest.test("method--sendCommandToDevice", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsRegistriesGroupsDevicesResourceApi res =
+          new api.CloudiotApi(mock)
+              .projects
+              .locations
+              .registries
+              .groups
+              .devices;
+      var arg_request = buildSendCommandToDeviceRequest();
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.SendCommandToDeviceRequest.fromJson(json);
+        checkSendCommandToDeviceRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildSendCommandToDeviceResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .sendCommandToDevice(arg_request, arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkSendCommandToDeviceResponse(response);
       })));
     });
   });

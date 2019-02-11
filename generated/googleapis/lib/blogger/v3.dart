@@ -39,8 +39,8 @@ class BloggerApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   BloggerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "blogger/v3/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "blogger/v3/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -73,12 +73,12 @@ class BlogUserInfosResourceApi {
   /// this method will complete with the same error.
   async.Future<BlogUserInfo> get(core.String userId, core.String blogId,
       {core.int maxPosts, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -140,12 +140,12 @@ class BlogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Blog> get(core.String blogId,
       {core.int maxPosts, core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -196,12 +196,12 @@ class BlogsResourceApi {
   /// this method will complete with the same error.
   async.Future<Blog> getByUrl(core.String url,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (url == null) {
       throw new core.ArgumentError("Parameter url is required.");
@@ -265,12 +265,12 @@ class BlogsResourceApi {
       core.List<core.String> status,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -331,12 +331,12 @@ class CommentsResourceApi {
   async.Future<Comment> approve(
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -389,12 +389,12 @@ class CommentsResourceApi {
   async.Future delete(
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -459,12 +459,12 @@ class CommentsResourceApi {
   async.Future<Comment> get(
       core.String blogId, core.String postId, core.String commentId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -546,12 +546,12 @@ class CommentsResourceApi {
       core.List<core.String> status,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -637,12 +637,12 @@ class CommentsResourceApi {
       core.DateTime startDate,
       core.List<core.String> status,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -703,12 +703,12 @@ class CommentsResourceApi {
   async.Future<Comment> markAsSpam(
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -763,12 +763,12 @@ class CommentsResourceApi {
   async.Future<Comment> removeContent(
       core.String blogId, core.String postId, core.String commentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -826,12 +826,12 @@ class PageViewsResourceApi {
   /// this method will complete with the same error.
   async.Future<Pageviews> get(core.String blogId,
       {core.List<core.String> range, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -878,12 +878,12 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String blogId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -937,12 +937,12 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> get(core.String blogId, core.String pageId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -993,12 +993,12 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> insert(Page request, core.String blogId,
       {core.bool isDraft, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1062,12 +1062,12 @@ class PagesResourceApi {
       core.List<core.String> status,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1130,12 +1130,12 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> patch(Page request, core.String blogId, core.String pageId,
       {core.bool publish_1, core.bool revert_1, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1190,12 +1190,12 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> publish(core.String blogId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1242,12 +1242,12 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> revert(core.String blogId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1303,12 +1303,12 @@ class PagesResourceApi {
   async.Future<Page> update(
       Page request, core.String blogId, core.String pageId,
       {core.bool publish_1, core.bool revert_1, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1378,12 +1378,12 @@ class PostUserInfosResourceApi {
   async.Future<PostUserInfo> get(
       core.String userId, core.String blogId, core.String postId,
       {core.int maxComments, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1479,12 +1479,12 @@ class PostUserInfosResourceApi {
       core.List<core.String> status,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
@@ -1562,12 +1562,12 @@ class PostsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String blogId, core.String postId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1635,12 +1635,12 @@ class PostsResourceApi {
       core.int maxComments,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1707,12 +1707,12 @@ class PostsResourceApi {
   /// this method will complete with the same error.
   async.Future<Post> getByPath(core.String blogId, core.String path,
       {core.int maxComments, core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1774,12 +1774,12 @@ class PostsResourceApi {
       core.bool fetchImages,
       core.bool isDraft,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1871,12 +1871,12 @@ class PostsResourceApi {
       core.List<core.String> status,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -1968,12 +1968,12 @@ class PostsResourceApi {
       core.bool publish_1,
       core.bool revert_1,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2043,12 +2043,12 @@ class PostsResourceApi {
   /// this method will complete with the same error.
   async.Future<Post> publish(core.String blogId, core.String postId,
       {core.DateTime publishDate, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -2098,12 +2098,12 @@ class PostsResourceApi {
   /// this method will complete with the same error.
   async.Future<Post> revert(core.String blogId, core.String postId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -2159,12 +2159,12 @@ class PostsResourceApi {
   /// this method will complete with the same error.
   async.Future<PostList> search(core.String blogId, core.String q,
       {core.bool fetchBodies, core.String orderBy, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
@@ -2238,12 +2238,12 @@ class PostsResourceApi {
       core.bool publish_1,
       core.bool revert_1,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2310,12 +2310,12 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<User> get(core.String userId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");

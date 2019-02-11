@@ -30,8 +30,8 @@ class VaultApi {
   MattersResourceApi get matters => new MattersResourceApi(_requester);
 
   VaultApi(http.Client client,
-      {core.String rootUrl: "https://vault.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://vault.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -42,6 +42,8 @@ class MattersResourceApi {
   MattersExportsResourceApi get exports =>
       new MattersExportsResourceApi(_requester);
   MattersHoldsResourceApi get holds => new MattersHoldsResourceApi(_requester);
+  MattersSavedQueriesResourceApi get savedQueries =>
+      new MattersSavedQueriesResourceApi(_requester);
 
   MattersResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -66,12 +68,12 @@ class MattersResourceApi {
   async.Future<MatterPermission> addPermissions(
       AddMatterPermissionsRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -117,12 +119,12 @@ class MattersResourceApi {
   async.Future<CloseMatterResponse> close(
       CloseMatterRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -166,12 +168,12 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Matter> create(Matter request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -208,12 +210,12 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Matter> delete(core.String matterId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -257,12 +259,12 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<Matter> get(core.String matterId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -325,12 +327,12 @@ class MattersResourceApi {
       core.int pageSize,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (state != null) {
       _queryParams["state"] = [state];
@@ -380,12 +382,12 @@ class MattersResourceApi {
   async.Future<Empty> removePermissions(
       RemoveMatterPermissionsRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -431,12 +433,12 @@ class MattersResourceApi {
   async.Future<ReopenMatterResponse> reopen(
       ReopenMatterRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -481,12 +483,12 @@ class MattersResourceApi {
   async.Future<Matter> undelete(
       UndeleteMatterRequest request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -534,12 +536,12 @@ class MattersResourceApi {
   /// this method will complete with the same error.
   async.Future<Matter> update(Matter request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -588,12 +590,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Export> create(Export request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -637,12 +639,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String matterId, core.String exportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -688,12 +690,12 @@ class MattersExportsResourceApi {
   /// this method will complete with the same error.
   async.Future<Export> get(core.String matterId, core.String exportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -725,9 +727,9 @@ class MattersExportsResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
-  /// [pageSize] - The number of exports to return in the response.
-  ///
   /// [pageToken] - The pagination token as returned in the response.
+  ///
+  /// [pageSize] - The number of exports to return in the response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -740,22 +742,22 @@ class MattersExportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExportsResponse> list(core.String matterId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -808,12 +810,12 @@ class MattersHoldsResourceApi {
   async.Future<AddHeldAccountsResponse> addHeldAccounts(
       AddHeldAccountsRequest request, core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -863,12 +865,12 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<Hold> create(Hold request, core.String matterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -912,12 +914,12 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -969,12 +971,12 @@ class MattersHoldsResourceApi {
   /// this method will complete with the same error.
   async.Future<Hold> get(core.String matterId, core.String holdId,
       {core.String view, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1038,12 +1040,12 @@ class MattersHoldsResourceApi {
       core.int pageSize,
       core.String view,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1100,12 +1102,12 @@ class MattersHoldsResourceApi {
       core.String matterId,
       core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1161,12 +1163,12 @@ class MattersHoldsResourceApi {
   async.Future<Hold> update(
       Hold request, core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1227,12 +1229,12 @@ class MattersHoldsAccountsResourceApi {
   async.Future<HeldAccount> create(
       HeldAccount request, core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1286,12 +1288,12 @@ class MattersHoldsAccountsResourceApi {
   async.Future<Empty> delete(
       core.String matterId, core.String holdId, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1346,12 +1348,12 @@ class MattersHoldsAccountsResourceApi {
   async.Future<ListHeldAccountsResponse> list(
       core.String matterId, core.String holdId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
@@ -1377,6 +1379,231 @@ class MattersHoldsAccountsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ListHeldAccountsResponse.fromJson(data));
+  }
+}
+
+class MattersSavedQueriesResourceApi {
+  final commons.ApiRequester _requester;
+
+  MattersSavedQueriesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a saved query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter id of the parent matter for which the saved query
+  /// is to be
+  /// created.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> create(SavedQuery request, core.String matterId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/savedQueries';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SavedQuery.fromJson(data));
+  }
+
+  /// Deletes a saved query by Id.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter id of the parent matter for which the saved query
+  /// is to be
+  /// deleted.
+  ///
+  /// [savedQueryId] - Id of the saved query to be deleted.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String matterId, core.String savedQueryId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (savedQueryId == null) {
+      throw new core.ArgumentError("Parameter savedQueryId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/savedQueries/' +
+        commons.Escaper.ecapeVariable('$savedQueryId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves a saved query by Id.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter id of the parent matter for which the saved query
+  /// is to be
+  /// retrieved.
+  ///
+  /// [savedQueryId] - Id of the saved query to be retrieved.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SavedQuery].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedQuery> get(core.String matterId, core.String savedQueryId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (savedQueryId == null) {
+      throw new core.ArgumentError("Parameter savedQueryId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/savedQueries/' +
+        commons.Escaper.ecapeVariable('$savedQueryId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SavedQuery.fromJson(data));
+  }
+
+  /// Lists saved queries within a matter. An empty page token in
+  /// ListSavedQueriesResponse denotes no more saved queries to list.
+  ///
+  /// Request parameters:
+  ///
+  /// [matterId] - The matter id of the parent matter for which the saved
+  /// queries are to be
+  /// retrieved.
+  ///
+  /// [pageToken] - The pagination token as returned in the previous response.
+  /// An empty token means start from the beginning.
+  ///
+  /// [pageSize] - The maximum number of saved queries to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSavedQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSavedQueriesResponse> list(core.String matterId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (matterId == null) {
+      throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/matters/' +
+        commons.Escaper.ecapeVariable('$matterId') +
+        '/savedQueries';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListSavedQueriesResponse.fromJson(data));
   }
 }
 
@@ -1915,6 +2142,15 @@ class ExportOptions {
   /// Option available for mail export.
   MailExportOptions mailOptions;
 
+  /// The requested export location.
+  /// Possible string values are:
+  /// - "EXPORT_REGION_UNSPECIFIED" : The region is unspecified. Will be treated
+  /// the same as ANY.
+  /// - "ANY" : Any region.
+  /// - "US" : US region.
+  /// - "EUROPE" : Europe region.
+  core.String region;
+
   ExportOptions();
 
   ExportOptions.fromJson(core.Map _json) {
@@ -1930,6 +2166,9 @@ class ExportOptions {
     }
     if (_json.containsKey("mailOptions")) {
       mailOptions = new MailExportOptions.fromJson(_json["mailOptions"]);
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
     }
   }
 
@@ -1947,6 +2186,9 @@ class ExportOptions {
     }
     if (mailOptions != null) {
       _json["mailOptions"] = (mailOptions).toJson();
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     return _json;
   }
@@ -2512,6 +2754,42 @@ class ListMattersResponse {
   }
 }
 
+/// Definition of the response for method ListSaveQuery.
+class ListSavedQueriesResponse {
+  /// Page token to retrieve the next page of results in the list.
+  /// If this is empty, then there are no more saved queries to list.
+  core.String nextPageToken;
+
+  /// List of output saved queries.
+  core.List<SavedQuery> savedQueries;
+
+  ListSavedQueriesResponse();
+
+  ListSavedQueriesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("savedQueries")) {
+      savedQueries = (_json["savedQueries"] as core.List)
+          .map<SavedQuery>((value) => new SavedQuery.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (savedQueries != null) {
+      _json["savedQueries"] =
+          savedQueries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The options for mail export.
 class MailExportOptions {
   /// The export file format.
@@ -2980,6 +3258,71 @@ class ReopenMatterResponse {
         new core.Map<core.String, core.Object>();
     if (matter != null) {
       _json["matter"] = (matter).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Definition of the saved query.
+class SavedQuery {
+  /// Output only. The server generated timestamp at which saved query was
+  /// created.
+  core.String createTime;
+
+  /// Name of the saved query.
+  core.String displayName;
+
+  /// Output only. The matter id of the associated matter.
+  /// The server does not look at this field during create and always uses
+  /// matter
+  /// id in the URL.
+  core.String matterId;
+
+  /// The underlying Query object which contains all the information of the
+  /// saved
+  /// query.
+  Query query;
+
+  /// A unique identifier for the saved query.
+  core.String savedQueryId;
+
+  SavedQuery();
+
+  SavedQuery.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("matterId")) {
+      matterId = _json["matterId"];
+    }
+    if (_json.containsKey("query")) {
+      query = new Query.fromJson(_json["query"]);
+    }
+    if (_json.containsKey("savedQueryId")) {
+      savedQueryId = _json["savedQueryId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (matterId != null) {
+      _json["matterId"] = matterId;
+    }
+    if (query != null) {
+      _json["query"] = (query).toJson();
+    }
+    if (savedQueryId != null) {
+      _json["savedQueryId"] = savedQueryId;
     }
     return _json;
   }

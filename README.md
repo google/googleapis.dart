@@ -483,7 +483,8 @@ If you are only using this package, you can skip this section.
   $ pub upgrade
   ```
 
-* Download and generate the APIs using the `config.yaml` configuration.
+* Download and generate the APIs using the `config.yaml` configuration
+  (avoid doing this on corp network, use cloudshell instead).
 
   ```console
   $ dart bin/generate.dart run_config download

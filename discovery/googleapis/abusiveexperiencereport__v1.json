@@ -12,7 +12,7 @@
     "baseUrl": "https://abusiveexperiencereport.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Abusive Experience Report",
-    "description": "View Abusive Experience Report data, and get a list of sites that have a significant number of abusive experiences.",
+    "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/abusive-experience-report/",
     "icons": {
@@ -25,22 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
@@ -99,10 +83,44 @@
             "description": "JSONP",
             "location": "query",
             "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
+        "violatingSites": {
+            "methods": {
+                "list": {
+                    "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
+                    "httpMethod": "GET",
+                    "id": "abusiveexperiencereport.violatingSites.list",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/violatingSites",
+                    "response": {
+                        "$ref": "ViolatingSitesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/xapi.zoo"
+                    ]
+                }
+            }
+        },
         "sites": {
             "methods": {
                 "get": {
@@ -130,33 +148,34 @@
                     ]
                 }
             }
-        },
-        "violatingSites": {
-            "methods": {
-                "list": {
-                    "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
-                    "httpMethod": "GET",
-                    "id": "abusiveexperiencereport.violatingSites.list",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/violatingSites",
-                    "response": {
-                        "$ref": "ViolatingSitesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/xapi.zoo"
-                    ]
-                }
-            }
         }
     },
-    "revision": "20180821",
+    "revision": "20190108",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "schemas": {
+        "ViolatingSitesResponse": {
+            "description": "Response message for ListViolatingSites.",
+            "id": "ViolatingSitesResponse",
+            "properties": {
+                "violatingSites": {
+                    "description": "A list of summaries of violating sites.",
+                    "items": {
+                        "$ref": "SiteSummaryResponse"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "SiteSummaryResponse": {
-            "description": "Response message for GetSiteSummary.\nDo not confuse with same message in google.ads.experiencereport.v1",
+            "description": "Response message for GetSiteSummary.",
             "id": "SiteSummaryResponse",
             "properties": {
+                "enforcementTime": {
+                    "description": "The date on which enforcement begins.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "filterStatus": {
                     "description": "The abusive experience enforcement status of the site.",
                     "enum": [
@@ -183,13 +202,13 @@
                     "description": "A link that leads to a full abusive experience report.",
                     "type": "string"
                 },
+                "reviewedSite": {
+                    "description": "The name of the site reviewed.",
+                    "type": "string"
+                },
                 "lastChangeTime": {
                     "description": "The last time that the site changed status.",
                     "format": "google-datetime",
-                    "type": "string"
-                },
-                "reviewedSite": {
-                    "description": "The name of the site reviewed.",
                     "type": "string"
                 },
                 "abusiveStatus": {
@@ -205,25 +224,6 @@
                         "Failing."
                     ],
                     "type": "string"
-                },
-                "enforcementTime": {
-                    "description": "The date on which enforcement begins.",
-                    "format": "google-datetime",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ViolatingSitesResponse": {
-            "description": "Response message for ListViolatingSites.",
-            "id": "ViolatingSitesResponse",
-            "properties": {
-                "violatingSites": {
-                    "description": "A list of summaries of violating sites.",
-                    "items": {
-                        "$ref": "SiteSummaryResponse"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

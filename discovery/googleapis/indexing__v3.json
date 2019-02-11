@@ -1,9 +1,18 @@
 {
+    "auth": {
+        "oauth2": {
+            "scopes": {
+                "https://www.googleapis.com/auth/indexing": {
+                    "description": "Submit data to Google for indexing"
+                }
+            }
+        }
+    },
     "basePath": "",
     "baseUrl": "https://indexing.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Indexing",
-    "description": "The Indexing API allows developers to share the life cycle of a Web Document with Google.",
+    "description": "Notifies Google when your web pages change.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/search/apis/indexing-api/",
     "icons": {
@@ -16,29 +25,8 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -47,8 +35,13 @@
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -62,16 +55,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -90,6 +73,32 @@
             ],
             "location": "query",
             "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -108,7 +117,10 @@
                     },
                     "response": {
                         "$ref": "PublishUrlNotificationResponse"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/indexing"
+                    ]
                 },
                 "getMetadata": {
                     "description": "Gets metadata about a Web Document. This method can _only_ be used to query\nURLs that were previously seen in successful Indexing API notifications.\nIncludes the latest `UrlNotification` received via this API.",
@@ -125,12 +137,15 @@
                     "path": "v3/urlNotifications/metadata",
                     "response": {
                         "$ref": "UrlNotificationMetadata"
-                    }
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/indexing"
+                    ]
                 }
             }
         }
     },
-    "revision": "20180814",
+    "revision": "20190115",
     "rootUrl": "https://indexing.googleapis.com/",
     "schemas": {
         "UrlNotificationMetadata": {
@@ -156,6 +171,15 @@
             "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document.",
             "id": "UrlNotification",
             "properties": {
+                "url": {
+                    "description": "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google.",
+                    "type": "string"
+                },
+                "notifyTime": {
+                    "description": "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
                 "type": {
                     "description": "The URL life cycle event that Google is being notified about.",
                     "enum": [
@@ -168,15 +192,6 @@
                         "The given URL (Web document) has been updated.",
                         "The given URL (Web document) has been deleted."
                     ],
-                    "type": "string"
-                },
-                "url": {
-                    "description": "The object of this notification. The URL must be owned by the publisher\nof this notification and, in case of `URL_UPDATED` notifications, it _must_\nbe crawlable by Google.",
-                    "type": "string"
-                },
-                "notifyTime": {
-                    "description": "Creation timestamp for this notification.\nUsers should _not_ specify it, the field is ignored at the request time.",
-                    "format": "google-datetime",
                     "type": "string"
                 }
             },

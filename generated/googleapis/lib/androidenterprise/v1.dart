@@ -51,10 +51,11 @@ class AndroidenterpriseApi {
   StorelayoutpagesResourceApi get storelayoutpages =>
       new StorelayoutpagesResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
+  WebappsResourceApi get webapps => new WebappsResourceApi(_requester);
 
   AndroidenterpriseApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "androidenterprise/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "androidenterprise/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -87,12 +88,12 @@ class DevicesResourceApi {
   async.Future<Device> get(
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -150,12 +151,12 @@ class DevicesResourceApi {
   async.Future<DeviceState> getState(
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -208,12 +209,12 @@ class DevicesResourceApi {
   async.Future<DevicesListResponse> list(
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -271,12 +272,12 @@ class DevicesResourceApi {
   async.Future<Device> patch(Device request, core.String enterpriseId,
       core.String userId, core.String deviceId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -342,12 +343,12 @@ class DevicesResourceApi {
   async.Future<DeviceState> setState(DeviceState request,
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -413,12 +414,12 @@ class DevicesResourceApi {
   async.Future<Device> update(Device request, core.String enterpriseId,
       core.String userId, core.String deviceId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -480,12 +481,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future acknowledgeNotificationSet(
       {core.String notificationSetId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (notificationSetId != null) {
       _queryParams["notificationSetId"] = [notificationSetId];
@@ -532,12 +533,12 @@ class EnterprisesResourceApi {
       {core.String completionToken,
       core.String enterpriseToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (completionToken != null) {
       _queryParams["completionToken"] = [completionToken];
@@ -584,12 +585,12 @@ class EnterprisesResourceApi {
   async.Future<AdministratorWebToken> createWebToken(
       AdministratorWebTokenSpec request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -634,12 +635,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<Enterprise> enroll(Enterprise request, core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -689,12 +690,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<SignupInfo> generateSignupUrl(
       {core.String callbackUrl, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (callbackUrl != null) {
       _queryParams["callbackUrl"] = [callbackUrl];
@@ -732,12 +733,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<Enterprise> get(core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -755,53 +756,6 @@ class EnterprisesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Enterprise.fromJson(data));
-  }
-
-  /// Deprecated and unused.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [AndroidDevicePolicyConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<AndroidDevicePolicyConfig> getAndroidDevicePolicyConfig(
-      core.String enterpriseId,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/androidDevicePolicyConfig';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AndroidDevicePolicyConfig.fromJson(data));
   }
 
   /// Returns a service account and credentials. The service account can be
@@ -842,12 +796,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<ServiceAccount> getServiceAccount(core.String enterpriseId,
       {core.String keyType, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -891,12 +845,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<StoreLayout> getStoreLayout(core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -940,12 +894,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<EnterprisesListResponse> list(core.String domain,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (domain == null) {
       throw new core.ArgumentError("Parameter domain is required.");
@@ -1010,12 +964,12 @@ class EnterprisesResourceApi {
   /// this method will complete with the same error.
   async.Future<NotificationSet> pullNotificationSet(
       {core.String requestMode, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (requestMode != null) {
       _queryParams["requestMode"] = [requestMode];
@@ -1055,12 +1009,12 @@ class EnterprisesResourceApi {
   async.Future<EnterprisesSendTestPushNotificationResponse>
       sendTestPushNotification(core.String enterpriseId,
           {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1105,12 +1059,12 @@ class EnterprisesResourceApi {
   async.Future<EnterpriseAccount> setAccount(
       EnterpriseAccount request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1156,12 +1110,12 @@ class EnterprisesResourceApi {
   async.Future<AndroidDevicePolicyConfig> setAndroidDevicePolicyConfig(
       AndroidDevicePolicyConfig request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1214,12 +1168,12 @@ class EnterprisesResourceApi {
   async.Future<StoreLayout> setStoreLayout(
       StoreLayout request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1259,12 +1213,12 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future unenroll(core.String enterpriseId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1316,12 +1270,12 @@ class EntitlementsResourceApi {
   async.Future delete(
       core.String enterpriseId, core.String userId, core.String entitlementId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1378,12 +1332,12 @@ class EntitlementsResourceApi {
   async.Future<Entitlement> get(
       core.String enterpriseId, core.String userId, core.String entitlementId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1435,12 +1389,12 @@ class EntitlementsResourceApi {
   async.Future<EntitlementsListResponse> list(
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1500,12 +1454,12 @@ class EntitlementsResourceApi {
   async.Future<Entitlement> patch(Entitlement request, core.String enterpriseId,
       core.String userId, core.String entitlementId,
       {core.bool install, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1573,12 +1527,12 @@ class EntitlementsResourceApi {
   async.Future<Entitlement> update(Entitlement request,
       core.String enterpriseId, core.String userId, core.String entitlementId,
       {core.bool install, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1643,12 +1597,12 @@ class GrouplicensesResourceApi {
   async.Future<GroupLicense> get(
       core.String enterpriseId, core.String groupLicenseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1693,12 +1647,12 @@ class GrouplicensesResourceApi {
   /// this method will complete with the same error.
   async.Future<GroupLicensesListResponse> list(core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1751,12 +1705,12 @@ class GrouplicenseusersResourceApi {
   async.Future<GroupLicenseUsersListResponse> list(
       core.String enterpriseId, core.String groupLicenseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1815,12 +1769,12 @@ class InstallsResourceApi {
   async.Future delete(core.String enterpriseId, core.String userId,
       core.String deviceId, core.String installId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1884,12 +1838,12 @@ class InstallsResourceApi {
   async.Future<Install> get(core.String enterpriseId, core.String userId,
       core.String deviceId, core.String installId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -1948,12 +1902,12 @@ class InstallsResourceApi {
   async.Future<InstallsListResponse> list(
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2015,12 +1969,12 @@ class InstallsResourceApi {
   async.Future<Install> patch(Install request, core.String enterpriseId,
       core.String userId, core.String deviceId, core.String installId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2089,12 +2043,12 @@ class InstallsResourceApi {
   async.Future<Install> update(Install request, core.String enterpriseId,
       core.String userId, core.String deviceId, core.String installId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2165,12 +2119,12 @@ class ManagedconfigurationsfordeviceResourceApi {
   async.Future delete(core.String enterpriseId, core.String userId,
       core.String deviceId, core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2238,12 +2192,12 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String deviceId,
       core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2304,12 +2258,12 @@ class ManagedconfigurationsfordeviceResourceApi {
   async.Future<ManagedConfigurationsForDeviceListResponse> list(
       core.String enterpriseId, core.String userId, core.String deviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2375,12 +2329,12 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String deviceId,
       core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2453,12 +2407,12 @@ class ManagedconfigurationsfordeviceResourceApi {
       core.String deviceId,
       core.String managedConfigurationForDeviceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2528,12 +2482,12 @@ class ManagedconfigurationsforuserResourceApi {
   async.Future delete(core.String enterpriseId, core.String userId,
       core.String managedConfigurationForUserId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2592,12 +2546,12 @@ class ManagedconfigurationsforuserResourceApi {
   async.Future<ManagedConfiguration> get(core.String enterpriseId,
       core.String userId, core.String managedConfigurationForUserId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2651,12 +2605,12 @@ class ManagedconfigurationsforuserResourceApi {
   async.Future<ManagedConfigurationsForUserListResponse> list(
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2718,12 +2672,12 @@ class ManagedconfigurationsforuserResourceApi {
       core.String userId,
       core.String managedConfigurationForUserId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2792,12 +2746,12 @@ class ManagedconfigurationsforuserResourceApi {
       core.String userId,
       core.String managedConfigurationForUserId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2862,12 +2816,12 @@ class ManagedconfigurationssettingsResourceApi {
   async.Future<ManagedConfigurationsSettingsListResponse> list(
       core.String enterpriseId, core.String productId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -2923,12 +2877,12 @@ class PermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Permission> get(core.String permissionId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
@@ -2984,12 +2938,12 @@ class ProductsResourceApi {
   async.Future approve(ProductsApproveRequest request, core.String enterpriseId,
       core.String productId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3054,12 +3008,12 @@ class ProductsResourceApi {
   async.Future<ProductsGenerateApprovalUrlResponse> generateApprovalUrl(
       core.String enterpriseId, core.String productId,
       {core.String languageCode, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3113,12 +3067,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<Product> get(core.String enterpriseId, core.String productId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3176,12 +3130,12 @@ class ProductsResourceApi {
   async.Future<AppRestrictionsSchema> getAppRestrictionsSchema(
       core.String enterpriseId, core.String productId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3232,12 +3186,12 @@ class ProductsResourceApi {
   async.Future<ProductPermissions> getPermissions(
       core.String enterpriseId, core.String productId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3310,12 +3264,12 @@ class ProductsResourceApi {
       core.String query,
       core.String token,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3371,12 +3325,12 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future unapprove(core.String enterpriseId, core.String productId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3433,12 +3387,12 @@ class ServiceaccountkeysResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String enterpriseId, core.String keyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3493,12 +3447,12 @@ class ServiceaccountkeysResourceApi {
   async.Future<ServiceAccountKey> insert(
       ServiceAccountKey request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3545,12 +3499,12 @@ class ServiceaccountkeysResourceApi {
   /// this method will complete with the same error.
   async.Future<ServiceAccountKeysListResponse> list(core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3601,12 +3555,12 @@ class StorelayoutclustersResourceApi {
   async.Future delete(
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3662,12 +3616,12 @@ class StorelayoutclustersResourceApi {
   async.Future<StoreCluster> get(
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3721,12 +3675,12 @@ class StorelayoutclustersResourceApi {
   async.Future<StoreCluster> insert(
       StoreCluster request, core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3777,12 +3731,12 @@ class StorelayoutclustersResourceApi {
   async.Future<StoreLayoutClustersListResponse> list(
       core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -3835,12 +3789,12 @@ class StorelayoutclustersResourceApi {
   async.Future<StoreCluster> patch(StoreCluster request,
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3899,12 +3853,12 @@ class StorelayoutclustersResourceApi {
   async.Future<StoreCluster> update(StoreCluster request,
       core.String enterpriseId, core.String pageId, core.String clusterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3963,12 +3917,12 @@ class StorelayoutpagesResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4016,12 +3970,12 @@ class StorelayoutpagesResourceApi {
   /// this method will complete with the same error.
   async.Future<StorePage> get(core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4067,12 +4021,12 @@ class StorelayoutpagesResourceApi {
   /// this method will complete with the same error.
   async.Future<StorePage> insert(StorePage request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4115,12 +4069,12 @@ class StorelayoutpagesResourceApi {
   /// this method will complete with the same error.
   async.Future<StoreLayoutPagesListResponse> list(core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4166,12 +4120,12 @@ class StorelayoutpagesResourceApi {
   async.Future<StorePage> patch(
       StorePage request, core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4223,12 +4177,12 @@ class StorelayoutpagesResourceApi {
   async.Future<StorePage> update(
       StorePage request, core.String enterpriseId, core.String pageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4281,12 +4235,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4318,6 +4272,8 @@ class UsersResourceApi {
   /// to provision the given EMM-managed user account on a device. The generated
   /// token is single-use and expires after a few minutes.
   ///
+  /// You can provision a maximum of 10 devices per user.
+  ///
   /// This call only works with EMM-managed accounts.
   ///
   /// Request parameters:
@@ -4339,12 +4295,12 @@ class UsersResourceApi {
   async.Future<AuthenticationToken> generateAuthenticationToken(
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4396,12 +4352,12 @@ class UsersResourceApi {
   async.Future<UserToken> generateToken(
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4448,12 +4404,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<User> get(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4500,12 +4456,12 @@ class UsersResourceApi {
   async.Future<ProductSet> getAvailableProductSet(
       core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4558,12 +4514,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<User> insert(User request, core.String enterpriseId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4611,12 +4567,12 @@ class UsersResourceApi {
   async.Future<UsersListResponse> list(
       core.String enterpriseId, core.String email,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4670,12 +4626,12 @@ class UsersResourceApi {
   async.Future<User> patch(
       User request, core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4726,12 +4682,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future revokeDeviceAccess(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4778,12 +4734,12 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future revokeToken(core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (enterpriseId == null) {
       throw new core.ArgumentError("Parameter enterpriseId is required.");
@@ -4838,12 +4794,12 @@ class UsersResourceApi {
   async.Future<ProductSet> setAvailableProductSet(
       ProductSet request, core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4901,12 +4857,12 @@ class UsersResourceApi {
   async.Future<User> update(
       User request, core.String enterpriseId, core.String userId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4933,6 +4889,323 @@ class UsersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new User.fromJson(data));
+  }
+}
+
+class WebappsResourceApi {
+  final commons.ApiRequester _requester;
+
+  WebappsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes an existing web app.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [webAppId] - The ID of the web app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String enterpriseId, core.String webAppId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (webAppId == null) {
+      throw new core.ArgumentError("Parameter webAppId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/webApps/' +
+        commons.Escaper.ecapeVariable('$webAppId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets an existing web app.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [webAppId] - The ID of the web app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> get(core.String enterpriseId, core.String webAppId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (webAppId == null) {
+      throw new core.ArgumentError("Parameter webAppId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/webApps/' +
+        commons.Escaper.ecapeVariable('$webAppId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
+  }
+
+  /// Creates a new web app for the enterprise.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> insert(WebApp request, core.String enterpriseId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/webApps';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
+  }
+
+  /// Retrieves the details of all web apps for a given enterprise.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebAppsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebAppsListResponse> list(core.String enterpriseId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/webApps';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebAppsListResponse.fromJson(data));
+  }
+
+  /// Updates an existing web app. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [webAppId] - The ID of the web app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> patch(
+      WebApp request, core.String enterpriseId, core.String webAppId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (webAppId == null) {
+      throw new core.ArgumentError("Parameter webAppId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/webApps/' +
+        commons.Escaper.ecapeVariable('$webAppId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
+  }
+
+  /// Updates an existing web app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [webAppId] - The ID of the web app.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> update(
+      WebApp request, core.String enterpriseId, core.String webAppId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (webAppId == null) {
+      throw new core.ArgumentError("Parameter webAppId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/webApps/' +
+        commons.Escaper.ecapeVariable('$webAppId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
   }
 }
 
@@ -5005,11 +5278,20 @@ class AdministratorWebTokenSpec {
   /// may not be hosted at other URIs. This URI must be https.
   core.String parent;
 
-  /// The list of permissions the admin is granted within the iframe. The admin
-  /// will only be allowed to view an iframe if they have all of the permissions
-  /// associated with it. The only valid value is "approveApps" that will allow
-  /// the admin to access the iframe in "approve" mode.
+  /// Deprecated. Use PlaySearch.approveApps.
   core.List<core.String> permission;
+
+  /// Options for displaying the managed Play Search apps page.
+  AdministratorWebTokenSpecPlaySearch playSearch;
+
+  /// Options for displaying the Private Apps page.
+  AdministratorWebTokenSpecPrivateApps privateApps;
+
+  /// Options for displaying the Organize apps page.
+  AdministratorWebTokenSpecStoreBuilder storeBuilder;
+
+  /// Options for displaying the Web Apps page.
+  AdministratorWebTokenSpecWebApps webApps;
 
   AdministratorWebTokenSpec();
 
@@ -5022,6 +5304,21 @@ class AdministratorWebTokenSpec {
     }
     if (_json.containsKey("permission")) {
       permission = (_json["permission"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("playSearch")) {
+      playSearch =
+          new AdministratorWebTokenSpecPlaySearch.fromJson(_json["playSearch"]);
+    }
+    if (_json.containsKey("privateApps")) {
+      privateApps = new AdministratorWebTokenSpecPrivateApps.fromJson(
+          _json["privateApps"]);
+    }
+    if (_json.containsKey("storeBuilder")) {
+      storeBuilder = new AdministratorWebTokenSpecStoreBuilder.fromJson(
+          _json["storeBuilder"]);
+    }
+    if (_json.containsKey("webApps")) {
+      webApps = new AdministratorWebTokenSpecWebApps.fromJson(_json["webApps"]);
     }
   }
 
@@ -5036,6 +5333,115 @@ class AdministratorWebTokenSpec {
     }
     if (permission != null) {
       _json["permission"] = permission;
+    }
+    if (playSearch != null) {
+      _json["playSearch"] = (playSearch).toJson();
+    }
+    if (privateApps != null) {
+      _json["privateApps"] = (privateApps).toJson();
+    }
+    if (storeBuilder != null) {
+      _json["storeBuilder"] = (storeBuilder).toJson();
+    }
+    if (webApps != null) {
+      _json["webApps"] = (webApps).toJson();
+    }
+    return _json;
+  }
+}
+
+class AdministratorWebTokenSpecPlaySearch {
+  /// Allow access to the iframe in approve mode. Default is false.
+  core.bool approveApps;
+
+  /// Whether the managed Play Search apps page is displayed. Default is true.
+  core.bool enabled;
+
+  AdministratorWebTokenSpecPlaySearch();
+
+  AdministratorWebTokenSpecPlaySearch.fromJson(core.Map _json) {
+    if (_json.containsKey("approveApps")) {
+      approveApps = _json["approveApps"];
+    }
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (approveApps != null) {
+      _json["approveApps"] = approveApps;
+    }
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
+class AdministratorWebTokenSpecPrivateApps {
+  /// Whether the Private Apps page is displayed. Default is true.
+  core.bool enabled;
+
+  AdministratorWebTokenSpecPrivateApps();
+
+  AdministratorWebTokenSpecPrivateApps.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
+class AdministratorWebTokenSpecStoreBuilder {
+  /// Whether the Organize apps page is displayed. Default is true.
+  core.bool enabled;
+
+  AdministratorWebTokenSpecStoreBuilder();
+
+  AdministratorWebTokenSpecStoreBuilder.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
+class AdministratorWebTokenSpecWebApps {
+  /// Whether the Web Apps page is displayed. Default is true.
+  core.bool enabled;
+
+  AdministratorWebTokenSpecWebApps();
+
+  AdministratorWebTokenSpecWebApps.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
     }
     return _json;
   }
@@ -5331,9 +5737,16 @@ class AppUpdateEvent {
 
 /// This represents a single version of the app.
 class AppVersion {
-  /// The track that this app was published in. For example if track is "alpha",
-  /// this is an alpha version of the app.
+  /// True if this version is a production APK.
+  core.bool isProduction;
+
+  /// Deprecated, use trackId instead.
   core.String track;
+
+  /// Track ids that the app version is published in. Replaces the track field
+  /// (deprecated), but doesn't include the production track (see isProduction
+  /// instead).
+  core.List<core.String> trackId;
 
   /// Unique increasing identifier for the app version.
   core.int versionCode;
@@ -5346,8 +5759,14 @@ class AppVersion {
   AppVersion();
 
   AppVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("isProduction")) {
+      isProduction = _json["isProduction"];
+    }
     if (_json.containsKey("track")) {
       track = _json["track"];
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = (_json["trackId"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("versionCode")) {
       versionCode = _json["versionCode"];
@@ -5360,8 +5779,14 @@ class AppVersion {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (isProduction != null) {
+      _json["isProduction"] = isProduction;
+    }
     if (track != null) {
       _json["track"] = track;
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
     }
     if (versionCode != null) {
       _json["versionCode"] = versionCode;
@@ -5438,6 +5863,105 @@ class AuthenticationToken {
     }
     if (token != null) {
       _json["token"] = token;
+    }
+    return _json;
+  }
+}
+
+/// The Auto install constraint. Defines a set of restrictions for installation.
+/// At least one of the fields must be set.
+class AutoInstallConstraint {
+  /// Charging state to constrain on.
+  core.String chargingStateConstraint;
+
+  /// The idle state of the device to constrain on.
+  core.String deviceIdleStateConstraint;
+
+  /// Network type to constrain on.
+  core.String networkTypeConstraint;
+
+  AutoInstallConstraint();
+
+  AutoInstallConstraint.fromJson(core.Map _json) {
+    if (_json.containsKey("chargingStateConstraint")) {
+      chargingStateConstraint = _json["chargingStateConstraint"];
+    }
+    if (_json.containsKey("deviceIdleStateConstraint")) {
+      deviceIdleStateConstraint = _json["deviceIdleStateConstraint"];
+    }
+    if (_json.containsKey("networkTypeConstraint")) {
+      networkTypeConstraint = _json["networkTypeConstraint"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (chargingStateConstraint != null) {
+      _json["chargingStateConstraint"] = chargingStateConstraint;
+    }
+    if (deviceIdleStateConstraint != null) {
+      _json["deviceIdleStateConstraint"] = deviceIdleStateConstraint;
+    }
+    if (networkTypeConstraint != null) {
+      _json["networkTypeConstraint"] = networkTypeConstraint;
+    }
+    return _json;
+  }
+}
+
+class AutoInstallPolicy {
+  /// The constraints for the install. Currently there can be at most one
+  /// constraint.
+  core.List<AutoInstallConstraint> autoInstallConstraint;
+
+  /// The auto install mode. If unset defaults to "doNotAutoInstall".
+  core.String autoInstallMode;
+
+  /// The priority of the install, as an unsigned integer. Lower number means
+  /// higher priority.
+  core.int autoInstallPriority;
+
+  /// The minimum version of the app. If a lower version of the app is installed
+  /// then the app will be auto-updated according to the auto-install
+  /// constraints, instead of waiting for the regular auto-update.
+  core.int minimumVersionCode;
+
+  AutoInstallPolicy();
+
+  AutoInstallPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("autoInstallConstraint")) {
+      autoInstallConstraint = (_json["autoInstallConstraint"] as core.List)
+          .map<AutoInstallConstraint>(
+              (value) => new AutoInstallConstraint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("autoInstallMode")) {
+      autoInstallMode = _json["autoInstallMode"];
+    }
+    if (_json.containsKey("autoInstallPriority")) {
+      autoInstallPriority = _json["autoInstallPriority"];
+    }
+    if (_json.containsKey("minimumVersionCode")) {
+      minimumVersionCode = _json["minimumVersionCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoInstallConstraint != null) {
+      _json["autoInstallConstraint"] =
+          autoInstallConstraint.map((value) => (value).toJson()).toList();
+    }
+    if (autoInstallMode != null) {
+      _json["autoInstallMode"] = autoInstallMode;
+    }
+    if (autoInstallPriority != null) {
+      _json["autoInstallPriority"] = autoInstallPriority;
+    }
+    if (minimumVersionCode != null) {
+      _json["minimumVersionCode"] = minimumVersionCode;
     }
     return _json;
   }
@@ -7136,6 +7660,9 @@ class Policy {
 /// full Google Play details page) is intended to allow a basic representation
 /// of the product within an EMM user interface.
 class Product {
+  /// The tracks visible to the enterprise.
+  core.List<TrackInfo> appTracks;
+
   /// App versions currently available for this product.
   core.List<AppVersion> appVersion;
 
@@ -7145,7 +7672,7 @@ class Product {
   /// The countries which this app is available in.
   core.List<core.String> availableCountries;
 
-  /// The tracks that are visible to the enterprise.
+  /// Deprecated, use appTracks instead.
   core.List<core.String> availableTracks;
 
   /// The app category (e.g. RACING, SOCIAL, etc.)
@@ -7222,6 +7749,11 @@ class Product {
   Product();
 
   Product.fromJson(core.Map _json) {
+    if (_json.containsKey("appTracks")) {
+      appTracks = (_json["appTracks"] as core.List)
+          .map<TrackInfo>((value) => new TrackInfo.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("appVersion")) {
       appVersion = (_json["appVersion"] as core.List)
           .map<AppVersion>((value) => new AppVersion.fromJson(value))
@@ -7305,6 +7837,9 @@ class Product {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (appTracks != null) {
+      _json["appTracks"] = appTracks.map((value) => (value).toJson()).toList();
+    }
     if (appVersion != null) {
       _json["appVersion"] =
           appVersion.map((value) => (value).toJson()).toList();
@@ -7534,31 +8069,32 @@ class ProductPermissions {
 
 /// The policy for a product.
 class ProductPolicy {
+  /// The auto install policy for the product.
+  AutoInstallPolicy autoInstallPolicy;
+
   /// The ID of the product. For example, "app:com.google.android.gm".
   core.String productId;
 
-  /// Grants visibility to the specified track(s) of the product to the device.
-  /// The track available to the device is based on the following order of
-  /// preference: alpha, beta, production. For example, if an app has a prod
-  /// version, a beta version and an alpha version and the enterprise has been
-  /// granted visibility to both the alpha and beta tracks, if tracks is
-  /// {"beta", "production"} then the beta version of the app is made available
-  /// to the device. If there are no app versions in the specified track adding
-  /// the "alpha" and "beta" values to the list of tracks will have no effect.
-  /// Note that the enterprise requires access to alpha and/or beta tracks
-  /// before users can be granted visibility to apps in those tracks.
-  ///
-  /// The allowed sets are: {} (considered equivalent to {"production"})
-  /// {"production"} {"beta", "production"} {"alpha", "beta", "production"} The
-  /// order of elements is not relevant. Any other set of tracks will be
-  /// rejected with an error.
+  /// Grants the device visibility to the specified product release track(s),
+  /// identified by trackIds. The list of release tracks of a product can be
+  /// obtained by calling Products.Get.
+  core.List<core.String> trackIds;
+
+  /// Deprecated. Use trackIds instead.
   core.List<core.String> tracks;
 
   ProductPolicy();
 
   ProductPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("autoInstallPolicy")) {
+      autoInstallPolicy =
+          new AutoInstallPolicy.fromJson(_json["autoInstallPolicy"]);
+    }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
+    }
+    if (_json.containsKey("trackIds")) {
+      trackIds = (_json["trackIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tracks")) {
       tracks = (_json["tracks"] as core.List).cast<core.String>();
@@ -7568,8 +8104,14 @@ class ProductPolicy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoInstallPolicy != null) {
+      _json["autoInstallPolicy"] = (autoInstallPolicy).toJson();
+    }
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    if (trackIds != null) {
+      _json["trackIds"] = trackIds;
     }
     if (tracks != null) {
       _json["tracks"] = tracks;
@@ -7688,22 +8230,11 @@ class ProductVisibility {
   /// productVisibility list.
   core.String productId;
 
-  /// Grants visibility to the specified track(s) of the product to the user.
-  /// The track available to the user is based on the following order of
-  /// preference: alpha, beta, production. For example, if an app has a prod
-  /// version, a beta version and an alpha version and the enterprise has been
-  /// granted visibility to both the alpha and beta tracks, if tracks is
-  /// {"beta", "production"} the user will be able to install the app and they
-  /// will get the beta version of the app. If there are no app versions in the
-  /// specified track adding the "alpha" and "beta" values to the list of tracks
-  /// will have no effect. Note that the enterprise requires access to alpha
-  /// and/or beta tracks before users can be granted visibility to apps in those
-  /// tracks.
-  ///
-  /// The allowed sets are: {} (considered equivalent to {"production"})
-  /// {"production"} {"beta", "production"} {"alpha", "beta", "production"} The
-  /// order of elements is not relevant. Any other set of tracks will be
-  /// rejected with an error.
+  /// Grants the user visibility to the specified product track(s), identified
+  /// by trackIds.
+  core.List<core.String> trackIds;
+
+  /// Deprecated. Use trackIds instead.
   core.List<core.String> tracks;
 
   ProductVisibility();
@@ -7711,6 +8242,9 @@ class ProductVisibility {
   ProductVisibility.fromJson(core.Map _json) {
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
+    }
+    if (_json.containsKey("trackIds")) {
+      trackIds = (_json["trackIds"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("tracks")) {
       tracks = (_json["tracks"] as core.List).cast<core.String>();
@@ -7722,6 +8256,9 @@ class ProductVisibility {
         new core.Map<core.String, core.Object>();
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    if (trackIds != null) {
+      _json["trackIds"] = trackIds;
     }
     if (tracks != null) {
       _json["tracks"] = tracks;
@@ -8239,13 +8776,10 @@ class StorePage {
   core.String kind;
 
   /// Ordered list of pages a user should be able to reach from this page. The
-  /// pages must exist, must not be this page, and once a link is created the
-  /// page linked to cannot be deleted until all links to it are removed. It is
-  /// recommended that the basic pages are created first, before adding the
-  /// links between pages.
+  /// list can't include this page. It is recommended that the basic pages are
+  /// created first, before adding the links between pages.
   ///
-  /// No attempt is made to verify that all pages are reachable from the
-  /// homepage.
+  /// The API doesn't verify that the pages exist or the pages are reachable.
   core.List<core.String> link;
 
   /// Ordered list of localized strings giving the name of this page. The text
@@ -8314,6 +8848,41 @@ class TokenPagination {
     }
     if (previousPageToken != null) {
       _json["previousPageToken"] = previousPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Id to name association of a track.
+class TrackInfo {
+  /// A modifiable name for a track. This is the visible name in the play
+  /// developer console.
+  core.String trackAlias;
+
+  /// Unmodifiable, unique track identifier. This identifier is the
+  /// releaseTrackId in the url of the play developer console page that displays
+  /// the track information.
+  core.String trackId;
+
+  TrackInfo();
+
+  TrackInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("trackAlias")) {
+      trackAlias = _json["trackAlias"];
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = _json["trackId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (trackAlias != null) {
+      _json["trackAlias"] = trackAlias;
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
     }
     return _json;
   }
@@ -8540,6 +9109,155 @@ class VariableSet {
     }
     if (userValue != null) {
       _json["userValue"] = userValue;
+    }
+    return _json;
+  }
+}
+
+/// WebApp resource info.
+class WebApp {
+  /// The display mode of the web app.
+  core.String displayMode;
+
+  /// A list of icons representing this website. If absent, a default icon (for
+  /// create) or the current icon (for update) will be used.
+  core.List<WebAppIcon> icons;
+
+  /// A flag whether the app has been published to the Play store yet.
+  core.bool isPublished;
+
+  /// The start URL, i.e. the URL that should load when the user opens the
+  /// application.
+  core.String startUrl;
+
+  /// The title of the web application as displayed to the user (e.g., amongst a
+  /// list of other applications, or as a label for an icon).
+  core.String title;
+
+  /// The current version of the app.
+  ///
+  ///
+  /// Note that the version can automatically increase during the lifetime of
+  /// the web app, while Google does internal housekeeping to keep the web app
+  /// up-to-date.
+  core.String versionCode;
+
+  /// The ID of the application.
+  core.String webAppId;
+
+  WebApp();
+
+  WebApp.fromJson(core.Map _json) {
+    if (_json.containsKey("displayMode")) {
+      displayMode = _json["displayMode"];
+    }
+    if (_json.containsKey("icons")) {
+      icons = (_json["icons"] as core.List)
+          .map<WebAppIcon>((value) => new WebAppIcon.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("isPublished")) {
+      isPublished = _json["isPublished"];
+    }
+    if (_json.containsKey("startUrl")) {
+      startUrl = _json["startUrl"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+    if (_json.containsKey("webAppId")) {
+      webAppId = _json["webAppId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayMode != null) {
+      _json["displayMode"] = displayMode;
+    }
+    if (icons != null) {
+      _json["icons"] = icons.map((value) => (value).toJson()).toList();
+    }
+    if (isPublished != null) {
+      _json["isPublished"] = isPublished;
+    }
+    if (startUrl != null) {
+      _json["startUrl"] = startUrl;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    if (webAppId != null) {
+      _json["webAppId"] = webAppId;
+    }
+    return _json;
+  }
+}
+
+/// Icon for a web app.
+class WebAppIcon {
+  /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
+  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet").
+  /// - The image type can be png or jpg.
+  /// - The image should ideally be square.
+  /// - The image should ideally have a size of 512x512.
+  core.String imageData;
+
+  WebAppIcon();
+
+  WebAppIcon.fromJson(core.Map _json) {
+    if (_json.containsKey("imageData")) {
+      imageData = _json["imageData"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageData != null) {
+      _json["imageData"] = imageData;
+    }
+    return _json;
+  }
+}
+
+/// The web app details for an enterprise.
+class WebAppsListResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidenterprise#webAppsListResponse".
+  core.String kind;
+
+  /// The manifest describing a web app.
+  core.List<WebApp> webApp;
+
+  WebAppsListResponse();
+
+  WebAppsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("webApp")) {
+      webApp = (_json["webApp"] as core.List)
+          .map<WebApp>((value) => new WebApp.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (webApp != null) {
+      _json["webApp"] = webApp.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

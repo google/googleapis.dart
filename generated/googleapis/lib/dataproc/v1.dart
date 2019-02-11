@@ -27,8 +27,8 @@ class DataprocApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   DataprocApi(http.Client client,
-      {core.String rootUrl: "https://dataproc.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://dataproc.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -36,10 +36,615 @@ class DataprocApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
   ProjectsRegionsResourceApi get regions =>
       new ProjectsRegionsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkflowTemplatesResourceApi get workflowTemplates =>
+      new ProjectsLocationsWorkflowTemplatesResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkflowTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkflowTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates new workflow template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkflowTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkflowTemplate> create(
+      WorkflowTemplate request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workflowTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WorkflowTemplate.fromJson(data));
+  }
+
+  /// Deletes a workflow template. It does not cancel in-progress workflows.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names of the
+  /// form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [version] - Optional. The version of workflow template to delete. If
+  /// specified, will only delete the template if the current server version
+  /// matches specified version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name,
+      {core.int version, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (version != null) {
+      _queryParams["version"] = ["${version}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves the latest workflow template.Can retrieve previously
+  /// instantiated template by specifying optional version parameter.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names of the
+  /// form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [version] - Optional. The version of workflow template to retrieve. Only
+  /// previously instatiated versions can be retrieved.If unspecified, retrieves
+  /// the current version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkflowTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkflowTemplate> get(core.String name,
+      {core.int version, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (version != null) {
+      _queryParams["version"] = ["${version}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WorkflowTemplate.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Instantiates a template and begins execution.The returned Operation can be
+  /// used to track execution of workflow by polling operations.get. The
+  /// Operation will complete when entire workflow is finished.The running
+  /// workflow can be aborted via operations.cancel. This will cause any
+  /// inflight jobs to be cancelled and workflow-owned clusters to be
+  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
+  /// completion, Operation.response will be Empty.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names of the
+  /// form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> instantiate(
+      InstantiateWorkflowTemplateRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Instantiates a template and begins execution.This method is equivalent to
+  /// executing the sequence CreateWorkflowTemplate,
+  /// InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation
+  /// can be used to track execution of workflow by polling operations.get. The
+  /// Operation will complete when entire workflow is finished.The running
+  /// workflow can be aborted via operations.cancel. This will cause any
+  /// inflight jobs to be cancelled and workflow-owned clusters to be
+  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
+  /// completion, Operation.response will be Empty.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the workflow template region,
+  /// as described in https://cloud.google.com/apis/design/resource_names of the
+  /// form projects/{project_id}/regions/{region}
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [requestId] - Optional. A tag that prevents multiple concurrent workflow
+  /// instances with the same tag from running. This mitigates risk of
+  /// concurrent instances started due to retries.It is recommended to always
+  /// set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> instantiateInline(
+      WorkflowTemplate request, core.String parent,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workflowTemplates:instantiateInline';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists workflows that match the specified filter in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in each
+  /// response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkflowTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkflowTemplatesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workflowTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListWorkflowTemplatesResponse.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+
+  /// Updates (replaces) workflow template. The updated template must contain
+  /// version that matches the current server version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The "resource name" of the template, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkflowTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkflowTemplate> update(
+      WorkflowTemplate request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WorkflowTemplate.fromJson(data));
+  }
 }
 
 class ProjectsRegionsResourceApi {
@@ -51,6 +656,8 @@ class ProjectsRegionsResourceApi {
       new ProjectsRegionsJobsResourceApi(_requester);
   ProjectsRegionsOperationsResourceApi get operations =>
       new ProjectsRegionsOperationsResourceApi(_requester);
+  ProjectsRegionsWorkflowTemplatesResourceApi get workflowTemplates =>
+      new ProjectsRegionsWorkflowTemplatesResourceApi(_requester);
 
   ProjectsRegionsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -95,12 +702,12 @@ class ProjectsRegionsClustersResourceApi {
   async.Future<Operation> create(
       Cluster request, core.String projectId, core.String region,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -145,6 +752,9 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [clusterName] - Required. The cluster name.
   ///
+  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
+  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
+  ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two DeleteClusterRequest requests with the same id, then
   /// the second request will be ignored and the first
@@ -153,9 +763,6 @@ class ProjectsRegionsClustersResourceApi {
   /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
   /// hyphens (-). The maximum length is 40 characters.
-  ///
-  /// [clusterUuid] - Optional. Specifying the cluster_uuid means the RPC should
-  /// fail (with error NOT_FOUND) if cluster with specified UUID does not exist.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -169,13 +776,13 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String projectId, core.String region, core.String clusterName,
-      {core.String requestId, core.String clusterUuid, core.String $fields}) {
-    var _url = null;
+      {core.String clusterUuid, core.String requestId, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -186,11 +793,11 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
     if (clusterUuid != null) {
       _queryParams["clusterUuid"] = [clusterUuid];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -240,12 +847,12 @@ class ProjectsRegionsClustersResourceApi {
   async.Future<Operation> diagnose(DiagnoseClusterRequest request,
       core.String projectId, core.String region, core.String clusterName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -305,12 +912,12 @@ class ProjectsRegionsClustersResourceApi {
   async.Future<Cluster> get(
       core.String projectId, core.String region, core.String clusterName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -341,6 +948,61 @@ class ProjectsRegionsClustersResourceApi {
     return _response.then((data) => new Cluster.fromJson(data));
   }
 
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Lists all regions/{region}/clusters in a project.
   ///
   /// Request parameters:
@@ -350,6 +1012,10 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
+  ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
+  /// [pageSize] - Optional. The standard List page size.
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
@@ -363,10 +1029,6 @@ class ProjectsRegionsClustersResourceApi {
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
   ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
-  /// [pageSize] - Optional. The standard List page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -379,16 +1041,16 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -396,14 +1058,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -437,6 +1099,14 @@ class ProjectsRegionsClustersResourceApi {
   /// request.
   ///
   /// [clusterName] - Required. The cluster name.
+  ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
+  /// Dataproc image versions 1.2 and higher.
   ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two UpdateClusterRequest requests with the same id, then
@@ -480,14 +1150,6 @@ class ProjectsRegionsClustersResourceApi {
   /// <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>
   /// <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
   ///
-  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
-  /// cluster without interrupting jobs in progress. Timeout specifies how long
-  /// to wait for jobs in progress to finish before forcefully removing nodes
-  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
-  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
-  /// Dataproc image versions 1.2 and higher.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -500,16 +1162,16 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String requestId,
+      {core.String gracefulDecommissionTimeout,
+      core.String requestId,
       core.String updateMask,
-      core.String gracefulDecommissionTimeout,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -523,16 +1185,16 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
+    if (gracefulDecommissionTimeout != null) {
+      _queryParams["gracefulDecommissionTimeout"] = [
+        gracefulDecommissionTimeout
+      ];
+    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
-    }
-    if (gracefulDecommissionTimeout != null) {
-      _queryParams["gracefulDecommissionTimeout"] = [
-        gracefulDecommissionTimeout
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -552,6 +1214,120 @@ class ProjectsRegionsClustersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/clusters/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -590,12 +1366,12 @@ class ProjectsRegionsJobsResourceApi {
   async.Future<Job> cancel(CancelJobRequest request, core.String projectId,
       core.String region, core.String jobId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -656,12 +1432,12 @@ class ProjectsRegionsJobsResourceApi {
   async.Future<Empty> delete(
       core.String projectId, core.String region, core.String jobId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -717,12 +1493,12 @@ class ProjectsRegionsJobsResourceApi {
   async.Future<Job> get(
       core.String projectId, core.String region, core.String jobId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
@@ -753,6 +1529,61 @@ class ProjectsRegionsJobsResourceApi {
     return _response.then((data) => new Job.fromJson(data));
   }
 
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/jobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Lists regions/{region}/jobs in a project.
   ///
   /// Request parameters:
@@ -762,6 +1593,9 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
+  ///
+  /// [clusterName] - Optional. If set, the returned jobs list includes only
+  /// jobs that were submitted to the named cluster.
   ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
@@ -785,9 +1619,6 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [pageSize] - Optional. The number of results to return in each response.
   ///
-  /// [clusterName] - Optional. If set, the returned jobs list includes only
-  /// jobs that were submitted to the named cluster.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -799,24 +1630,27 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String filter,
+      {core.String clusterName,
+      core.String filter,
       core.String jobStateMatcher,
       core.String pageToken,
       core.int pageSize,
-      core.String clusterName,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -829,9 +1663,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -886,12 +1717,12 @@ class ProjectsRegionsJobsResourceApi {
   async.Future<Job> patch(
       Job request, core.String projectId, core.String region, core.String jobId,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -928,6 +1759,61 @@ class ProjectsRegionsJobsResourceApi {
     return _response.then((data) => new Job.fromJson(data));
   }
 
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/jobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Submits a job to a cluster.
   ///
   /// [request] - The metadata request object.
@@ -953,12 +1839,12 @@ class ProjectsRegionsJobsResourceApi {
   async.Future<Job> submit(
       SubmitJobRequest request, core.String projectId, core.String region,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -986,6 +1872,65 @@ class ProjectsRegionsJobsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/jobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 }
 
@@ -1021,12 +1966,12 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1067,12 +2012,12 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1112,12 +2057,12 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -1137,6 +2082,61 @@ class ProjectsRegionsOperationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Lists operations that match the specified filter in the request. If the
   /// server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the
   /// name binding allows API services to override the binding to use different
@@ -1152,11 +2152,11 @@ class ProjectsRegionsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1169,28 +2169,28 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1205,6 +2205,713 @@ class ProjectsRegionsOperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+}
+
+class ProjectsRegionsWorkflowTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsRegionsWorkflowTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates new workflow template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkflowTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkflowTemplate> create(
+      WorkflowTemplate request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workflowTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WorkflowTemplate.fromJson(data));
+  }
+
+  /// Deletes a workflow template. It does not cancel in-progress workflows.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names of the
+  /// form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [version] - Optional. The version of workflow template to delete. If
+  /// specified, will only delete the template if the current server version
+  /// matches specified version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name,
+      {core.int version, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (version != null) {
+      _queryParams["version"] = ["${version}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves the latest workflow template.Can retrieve previously
+  /// instantiated template by specifying optional version parameter.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names of the
+  /// form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [version] - Optional. The version of workflow template to retrieve. Only
+  /// previously instatiated versions can be retrieved.If unspecified, retrieves
+  /// the current version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkflowTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkflowTemplate> get(core.String name,
+      {core.int version, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (version != null) {
+      _queryParams["version"] = ["${version}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WorkflowTemplate.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Instantiates a template and begins execution.The returned Operation can be
+  /// used to track execution of workflow by polling operations.get. The
+  /// Operation will complete when entire workflow is finished.The running
+  /// workflow can be aborted via operations.cancel. This will cause any
+  /// inflight jobs to be cancelled and workflow-owned clusters to be
+  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
+  /// completion, Operation.response will be Empty.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names of the
+  /// form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> instantiate(
+      InstantiateWorkflowTemplateRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Instantiates a template and begins execution.This method is equivalent to
+  /// executing the sequence CreateWorkflowTemplate,
+  /// InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation
+  /// can be used to track execution of workflow by polling operations.get. The
+  /// Operation will complete when entire workflow is finished.The running
+  /// workflow can be aborted via operations.cancel. This will cause any
+  /// inflight jobs to be cancelled and workflow-owned clusters to be
+  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
+  /// completion, Operation.response will be Empty.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the workflow template region,
+  /// as described in https://cloud.google.com/apis/design/resource_names of the
+  /// form projects/{project_id}/regions/{region}
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  ///
+  /// [requestId] - Optional. A tag that prevents multiple concurrent workflow
+  /// instances with the same tag from running. This mitigates risk of
+  /// concurrent instances started due to retries.It is recommended to always
+  /// set this value to a UUID
+  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must
+  /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> instantiateInline(
+      WorkflowTemplate request, core.String parent,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workflowTemplates:instantiateInline';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists workflows that match the specified filter in the request.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in each
+  /// response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWorkflowTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWorkflowTemplatesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/workflowTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListWorkflowTemplatesResponse.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+
+  /// Updates (replaces) workflow template. The updated template must contain
+  /// version that matches the current server version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The "resource name" of the template, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkflowTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkflowTemplate> update(
+      WorkflowTemplate request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WorkflowTemplate.fromJson(data));
   }
 }
 
@@ -1242,6 +2949,64 @@ class AcceleratorConfig {
     }
     if (acceleratorTypeUri != null) {
       _json["acceleratorTypeUri"] = acceleratorTypeUri;
+    }
+    return _json;
+  }
+}
+
+/// Associates members with a role.
+class Binding {
+  /// Unimplemented. The condition that is associated with this binding. NOTE:
+  /// an unsatisfied condition will not allow user access via current binding.
+  /// Different bindings, including their conditions, are examined
+  /// independently.
+  Expr condition;
+
+  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// members can have the following values:
+  /// allUsers: A special identifier that represents anyone who is  on the
+  /// internet; with or without a Google account.
+  /// allAuthenticatedUsers: A special identifier that represents anyone  who is
+  /// authenticated with a Google account or a service account.
+  /// user:{emailid}: An email address that represents a specific Google
+  /// account. For example, alice@gmail.com .
+  /// serviceAccount:{emailid}: An email address that represents a service
+  /// account. For example, my-other-app@appspot.gserviceaccount.com.
+  /// group:{emailid}: An email address that represents a Google group.  For
+  /// example, admins@example.com.
+  /// domain:{domain}: A Google Apps domain name that represents all the  users
+  /// of that domain. For example, google.com or example.com.
+  core.List<core.String> members;
+
+  /// Role that is assigned to members. For example, roles/viewer, roles/editor,
+  /// or roles/owner.
+  core.String role;
+
+  Binding();
+
+  Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
+    if (_json.containsKey("members")) {
+      members = (_json["members"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
+    if (members != null) {
+      _json["members"] = members;
+    }
+    if (role != null) {
+      _json["role"] = role;
     }
     return _json;
   }
@@ -1371,6 +3136,9 @@ class ClusterConfig {
   /// project-level, per-location bucket for you.
   core.String configBucket;
 
+  /// Optional. Encryption settings for the cluster.
+  EncryptionConfig encryptionConfig;
+
   /// Required. The shared Compute Engine config settings for all instances in a
   /// cluster.
   GceClusterConfig gceClusterConfig;
@@ -1409,6 +3177,10 @@ class ClusterConfig {
     if (_json.containsKey("configBucket")) {
       configBucket = _json["configBucket"];
     }
+    if (_json.containsKey("encryptionConfig")) {
+      encryptionConfig =
+          new EncryptionConfig.fromJson(_json["encryptionConfig"]);
+    }
     if (_json.containsKey("gceClusterConfig")) {
       gceClusterConfig =
           new GceClusterConfig.fromJson(_json["gceClusterConfig"]);
@@ -1439,6 +3211,9 @@ class ClusterConfig {
         new core.Map<core.String, core.Object>();
     if (configBucket != null) {
       _json["configBucket"] = configBucket;
+    }
+    if (encryptionConfig != null) {
+      _json["encryptionConfig"] = (encryptionConfig).toJson();
     }
     if (gceClusterConfig != null) {
       _json["gceClusterConfig"] = (gceClusterConfig).toJson();
@@ -1685,6 +3460,41 @@ class ClusterOperationStatus {
   }
 }
 
+/// A selector that chooses target cluster for jobs based on metadata.
+class ClusterSelector {
+  /// Required. The cluster labels. Cluster must have all labels to match.
+  core.Map<core.String, core.String> clusterLabels;
+
+  /// Optional. The zone where workflow process executes. This parameter does
+  /// not affect the selection of the cluster.If unspecified, the zone of the
+  /// first cluster matching the selector is used.
+  core.String zone;
+
+  ClusterSelector();
+
+  ClusterSelector.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterLabels")) {
+      clusterLabels =
+          (_json["clusterLabels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterLabels != null) {
+      _json["clusterLabels"] = clusterLabels;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
 /// The status of a cluster and its instances.
 class ClusterStatus {
   /// Output only. Optional details of cluster's state.
@@ -1856,6 +3666,88 @@ class Empty {
   }
 }
 
+/// Encryption settings for the cluster.
+class EncryptionConfig {
+  /// Optional. The Cloud KMS key name to use for PD disk encryption for all
+  /// instances in the cluster.
+  core.String gcePdKmsKeyName;
+
+  EncryptionConfig();
+
+  EncryptionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("gcePdKmsKeyName")) {
+      gcePdKmsKeyName = _json["gcePdKmsKeyName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gcePdKmsKeyName != null) {
+      _json["gcePdKmsKeyName"] = gcePdKmsKeyName;
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+/// title: "User account presence"
+/// description: "Determines whether the request has a user account"
+/// expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 /// Common config settings for resources of Compute Engine cluster instances,
 /// applicable to all instances in the cluster.
 class GceClusterConfig {
@@ -1984,6 +3876,19 @@ class GceClusterConfig {
     if (zoneUri != null) {
       _json["zoneUri"] = zoneUri;
     }
+    return _json;
+  }
+}
+
+/// Request message for GetIamPolicy method.
+class GetIamPolicyRequest {
+  GetIamPolicyRequest();
+
+  GetIamPolicyRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2275,6 +4180,57 @@ class InstanceGroupConfig {
   }
 }
 
+/// A request to instantiate a workflow template.
+class InstantiateWorkflowTemplateRequest {
+  /// Optional. Map from parameter names to values that should be used for those
+  /// parameters. Values may not exceed 100 characters.
+  core.Map<core.String, core.String> parameters;
+
+  /// Optional. A tag that prevents multiple concurrent workflow instances with
+  /// the same tag from running. This mitigates risk of concurrent instances
+  /// started due to retries.It is recommended to always set this value to a
+  /// UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag
+  /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+  /// hyphens (-). The maximum length is 40 characters.
+  core.String requestId;
+
+  /// Optional. The version of workflow template to instantiate. If specified,
+  /// the workflow will be instantiated only if the current version of the
+  /// workflow template has the supplied version.This option cannot be used to
+  /// instantiate a previous version of workflow template.
+  core.int version;
+
+  InstantiateWorkflowTemplateRequest();
+
+  InstantiateWorkflowTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("parameters")) {
+      parameters =
+          (_json["parameters"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parameters != null) {
+      _json["parameters"] = parameters;
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
 /// A Cloud Dataproc job resource.
 class Job {
   /// Output only. If present, the location of miscellaneous control files which
@@ -2291,6 +4247,11 @@ class Job {
 
   /// Job is a Hive job.
   HiveJob hiveJob;
+
+  /// Output only. A UUID that uniquely identifies a job within the project over
+  /// time. This is in contrast to a user-settable reference.job_id that may be
+  /// reused over time.
+  core.String jobUuid;
 
   /// Optional. The labels to associate with this job. Label keys must contain 1
   /// to 63 characters, and must conform to RFC 1035
@@ -2352,6 +4313,9 @@ class Job {
     if (_json.containsKey("hiveJob")) {
       hiveJob = new HiveJob.fromJson(_json["hiveJob"]);
     }
+    if (_json.containsKey("jobUuid")) {
+      jobUuid = _json["jobUuid"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -2405,6 +4369,9 @@ class Job {
     }
     if (hiveJob != null) {
       _json["hiveJob"] = (hiveJob).toJson();
+    }
+    if (jobUuid != null) {
+      _json["jobUuid"] = jobUuid;
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -2727,6 +4694,43 @@ class ListOperationsResponse {
   }
 }
 
+/// A response to a request to list workflow templates in a project.
+class ListWorkflowTemplatesResponse {
+  /// Output only. This token is included in the response if there are more
+  /// results to fetch. To fetch additional results, provide this value as the
+  /// page_token in a subsequent <code>ListWorkflowTemplatesRequest</code>.
+  core.String nextPageToken;
+
+  /// Output only. WorkflowTemplates list.
+  core.List<WorkflowTemplate> templates;
+
+  ListWorkflowTemplatesResponse();
+
+  ListWorkflowTemplatesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("templates")) {
+      templates = (_json["templates"] as core.List)
+          .map<WorkflowTemplate>(
+              (value) => new WorkflowTemplate.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (templates != null) {
+      _json["templates"] = templates.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The runtime logging config of the job.
 class LoggingConfig {
   /// The per-package log levels for the driver. This may include "root" package
@@ -2748,6 +4752,55 @@ class LoggingConfig {
         new core.Map<core.String, core.Object>();
     if (driverLogLevels != null) {
       _json["driverLogLevels"] = driverLogLevels;
+    }
+    return _json;
+  }
+}
+
+/// Cluster that is managed by the workflow.
+class ManagedCluster {
+  /// Required. The cluster name prefix. A unique cluster name will be formed by
+  /// appending a random suffix.The name must contain only lower-case letters
+  /// (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot
+  /// begin or end with hyphen. Must consist of between 2 and 35 characters.
+  core.String clusterName;
+
+  /// Required. The cluster configuration.
+  ClusterConfig config;
+
+  /// Optional. The labels to associate with this cluster.Label keys must be
+  /// between 1 and 63 characters long, and must conform to the following PCRE
+  /// regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and
+  /// 63 characters long, and must conform to the following PCRE regular
+  /// expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be
+  /// associated with a given cluster.
+  core.Map<core.String, core.String> labels;
+
+  ManagedCluster();
+
+  ManagedCluster.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterName")) {
+      clusterName = _json["clusterName"];
+    }
+    if (_json.containsKey("config")) {
+      config = new ClusterConfig.fromJson(_json["config"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterName != null) {
+      _json["clusterName"] = clusterName;
+    }
+    if (config != null) {
+      _json["config"] = (config).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     return _json;
   }
@@ -2903,6 +4956,154 @@ class Operation {
   }
 }
 
+/// A job executed by the workflow.
+class OrderedJob {
+  /// Job is a Hadoop job.
+  HadoopJob hadoopJob;
+
+  /// Job is a Hive job.
+  HiveJob hiveJob;
+
+  /// Optional. The labels to associate with this job.Label keys must be between
+  /// 1 and 63 characters long, and must conform to the following regular
+  /// expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63
+  /// characters long, and must conform to the following regular expression:
+  /// \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a
+  /// given job.
+  core.Map<core.String, core.String> labels;
+
+  /// Job is a Pig job.
+  PigJob pigJob;
+
+  /// Optional. The optional list of prerequisite job step_ids. If not
+  /// specified, the job will start at the beginning of workflow.
+  core.List<core.String> prerequisiteStepIds;
+
+  /// Job is a Pyspark job.
+  PySparkJob pysparkJob;
+
+  /// Optional. Job scheduling configuration.
+  JobScheduling scheduling;
+
+  /// Job is a Spark job.
+  SparkJob sparkJob;
+
+  /// Job is a SparkSql job.
+  SparkSqlJob sparkSqlJob;
+
+  /// Required. The step id. The id must be unique among all jobs within the
+  /// template.The step id is used as prefix for job id, as job
+  /// goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field
+  /// from other steps.The id must contain only letters (a-z, A-Z), numbers
+  /// (0-9), underscores (_), and hyphens (-). Cannot begin or end with
+  /// underscore or hyphen. Must consist of between 3 and 50 characters.
+  core.String stepId;
+
+  OrderedJob();
+
+  OrderedJob.fromJson(core.Map _json) {
+    if (_json.containsKey("hadoopJob")) {
+      hadoopJob = new HadoopJob.fromJson(_json["hadoopJob"]);
+    }
+    if (_json.containsKey("hiveJob")) {
+      hiveJob = new HiveJob.fromJson(_json["hiveJob"]);
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("pigJob")) {
+      pigJob = new PigJob.fromJson(_json["pigJob"]);
+    }
+    if (_json.containsKey("prerequisiteStepIds")) {
+      prerequisiteStepIds =
+          (_json["prerequisiteStepIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("pysparkJob")) {
+      pysparkJob = new PySparkJob.fromJson(_json["pysparkJob"]);
+    }
+    if (_json.containsKey("scheduling")) {
+      scheduling = new JobScheduling.fromJson(_json["scheduling"]);
+    }
+    if (_json.containsKey("sparkJob")) {
+      sparkJob = new SparkJob.fromJson(_json["sparkJob"]);
+    }
+    if (_json.containsKey("sparkSqlJob")) {
+      sparkSqlJob = new SparkSqlJob.fromJson(_json["sparkSqlJob"]);
+    }
+    if (_json.containsKey("stepId")) {
+      stepId = _json["stepId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hadoopJob != null) {
+      _json["hadoopJob"] = (hadoopJob).toJson();
+    }
+    if (hiveJob != null) {
+      _json["hiveJob"] = (hiveJob).toJson();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (pigJob != null) {
+      _json["pigJob"] = (pigJob).toJson();
+    }
+    if (prerequisiteStepIds != null) {
+      _json["prerequisiteStepIds"] = prerequisiteStepIds;
+    }
+    if (pysparkJob != null) {
+      _json["pysparkJob"] = (pysparkJob).toJson();
+    }
+    if (scheduling != null) {
+      _json["scheduling"] = (scheduling).toJson();
+    }
+    if (sparkJob != null) {
+      _json["sparkJob"] = (sparkJob).toJson();
+    }
+    if (sparkSqlJob != null) {
+      _json["sparkSqlJob"] = (sparkSqlJob).toJson();
+    }
+    if (stepId != null) {
+      _json["stepId"] = stepId;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for parameter validation.
+class ParameterValidation {
+  /// Validation based on regular expressions.
+  RegexValidation regex;
+
+  /// Validation based on a list of allowed values.
+  ValueValidation values;
+
+  ParameterValidation();
+
+  ParameterValidation.fromJson(core.Map _json) {
+    if (_json.containsKey("regex")) {
+      regex = new RegexValidation.fromJson(_json["regex"]);
+    }
+    if (_json.containsKey("values")) {
+      values = new ValueValidation.fromJson(_json["values"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (regex != null) {
+      _json["regex"] = (regex).toJson();
+    }
+    if (values != null) {
+      _json["values"] = (values).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/)
 /// queries on YARN.
 class PigJob {
@@ -2985,6 +5186,101 @@ class PigJob {
     }
     if (scriptVariables != null) {
       _json["scriptVariables"] = scriptVariables;
+    }
+    return _json;
+  }
+}
+
+/// Defines an Identity and Access Management (IAM) policy. It is used to
+/// specify access control policies for Cloud Platform resources.A Policy
+/// consists of a list of bindings. A binding binds a list of members to a role,
+/// where the members can be user accounts, Google groups, Google domains, and
+/// service accounts. A role is a named list of permissions defined by IAM.JSON
+/// Example
+/// {
+///   "bindings": [
+///     {
+///       "role": "roles/owner",
+///       "members": [
+///         "user:mike@example.com",
+///         "group:admins@example.com",
+///         "domain:google.com",
+///         "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///       ]
+///     },
+///     {
+///       "role": "roles/viewer",
+///       "members": ["user:sean@example.com"]
+///     }
+///   ]
+/// }
+/// YAML Example
+/// bindings:
+/// - members:
+///   - user:mike@example.com
+///   - group:admins@example.com
+///   - domain:google.com
+///   - serviceAccount:my-other-app@appspot.gserviceaccount.com
+///   role: roles/owner
+/// - members:
+///   - user:sean@example.com
+///   role: roles/viewer
+/// For a description of IAM and its features, see the IAM developer's guide
+/// (https://cloud.google.com/iam/docs).
+class Policy {
+  /// Associates a list of members to a role. bindings with no members will
+  /// result in an error.
+  core.List<Binding> bindings;
+
+  /// etag is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other. It is
+  /// strongly suggested that systems make use of the etag in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An etag is returned in the response to getIamPolicy, and
+  /// systems are expected to put that etag in the request to setIamPolicy to
+  /// ensure that their change will be applied to the same version of the
+  /// policy.If no etag is provided in the call to setIamPolicy, then the
+  /// existing policy is overwritten blindly.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.base64.decode(etag);
+  }
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Deprecated.
+  core.int version;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("bindings")) {
+      bindings = (_json["bindings"] as core.List)
+          .map<Binding>((value) => new Binding.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bindings != null) {
+      _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -3120,6 +5416,57 @@ class QueryList {
         new core.Map<core.String, core.Object>();
     if (queries != null) {
       _json["queries"] = queries;
+    }
+    return _json;
+  }
+}
+
+/// Validation based on regular expressions.
+class RegexValidation {
+  /// Required. RE2 regular expressions used to validate the parameter's value.
+  /// The value must match the regex in its entirety (substring matches are not
+  /// sufficient).
+  core.List<core.String> regexes;
+
+  RegexValidation();
+
+  RegexValidation.fromJson(core.Map _json) {
+    if (_json.containsKey("regexes")) {
+      regexes = (_json["regexes"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (regexes != null) {
+      _json["regexes"] = regexes;
+    }
+    return _json;
+  }
+}
+
+/// Request message for SetIamPolicy method.
+class SetIamPolicyRequest {
+  /// REQUIRED: The complete policy to be applied to the resource. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is a valid
+  /// policy but certain Cloud Platform services (such as Projects) might reject
+  /// them.
+  Policy policy;
+
+  SetIamPolicyRequest();
+
+  SetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
     }
     return _json;
   }
@@ -3466,6 +5813,168 @@ class SubmitJobRequest {
   }
 }
 
+/// A configurable parameter that replaces one or more fields in the template.
+/// Parameterizable fields: - Labels - File uris - Job properties - Job
+/// arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone
+/// (in ClusterSelector)
+class TemplateParameter {
+  /// Optional. Brief description of the parameter. Must not exceed 1024
+  /// characters.
+  core.String description;
+
+  /// Required. Paths to all fields that the parameter replaces. A field is
+  /// allowed to appear in at most one parameter's list of field paths.A field
+  /// path is similar in syntax to a google.protobuf.FieldMask. For example, a
+  /// field path that references the zone field of a workflow template's cluster
+  /// selector would be specified as placement.clusterSelector.zone.Also, field
+  /// paths can reference fields using the following syntax:
+  /// Values in maps can be referenced by key:
+  /// labels'key'
+  /// placement.clusterSelector.clusterLabels'key'
+  /// placement.managedCluster.labels'key'
+  /// placement.clusterSelector.clusterLabels'key'
+  /// jobs'step-id'.labels'key'
+  /// Jobs in the jobs list can be referenced by step-id:
+  /// jobs'step-id'.hadoopJob.mainJarFileUri
+  /// jobs'step-id'.hiveJob.queryFileUri
+  /// jobs'step-id'.pySparkJob.mainPythonFileUri
+  /// jobs'step-id'.hadoopJob.jarFileUris0
+  /// jobs'step-id'.hadoopJob.archiveUris0
+  /// jobs'step-id'.hadoopJob.fileUris0
+  /// jobs'step-id'.pySparkJob.pythonFileUris0
+  /// Items in repeated fields can be referenced by a zero-based index:
+  /// jobs'step-id'.sparkJob.args0
+  /// Other examples:
+  /// jobs'step-id'.hadoopJob.properties'key'
+  /// jobs'step-id'.hadoopJob.args0
+  /// jobs'step-id'.hiveJob.scriptVariables'key'
+  /// jobs'step-id'.hadoopJob.mainJarFileUri
+  /// placement.clusterSelector.zoneIt may not be possible to parameterize maps
+  /// and repeated fields in their entirety since only individual map values and
+  /// individual items in repeated fields can be referenced. For example, the
+  /// following field paths are invalid:
+  /// placement.clusterSelector.clusterLabels
+  /// jobs'step-id'.sparkJob.args
+  core.List<core.String> fields;
+
+  /// Required. Parameter name. The parameter name is used as the key, and
+  /// paired with the parameter value, which are passed to the template when the
+  /// template is instantiated. The name must contain only capital letters
+  /// (A-Z), numbers (0-9), and underscores (_), and must not start with a
+  /// number. The maximum length is 40 characters.
+  core.String name;
+
+  /// Optional. Validation rules to be applied to this parameter's value.
+  ParameterValidation validation;
+
+  TemplateParameter();
+
+  TemplateParameter.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("fields")) {
+      fields = (_json["fields"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("validation")) {
+      validation = new ParameterValidation.fromJson(_json["validation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (validation != null) {
+      _json["validation"] = (validation).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request message for TestIamPermissions method.
+class TestIamPermissionsRequest {
+  /// The set of permissions to check for the resource. Permissions with
+  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
+  /// information see IAM Overview
+  /// (https://cloud.google.com/iam/docs/overview#permissions).
+  core.List<core.String> permissions;
+
+  TestIamPermissionsRequest();
+
+  TestIamPermissionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/// Response message for TestIamPermissions method.
+class TestIamPermissionsResponse {
+  /// A subset of TestPermissionsRequest.permissions that the caller is allowed.
+  core.List<core.String> permissions;
+
+  TestIamPermissionsResponse();
+
+  TestIamPermissionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("permissions")) {
+      permissions = (_json["permissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissions != null) {
+      _json["permissions"] = permissions;
+    }
+    return _json;
+  }
+}
+
+/// Validation based on a list of allowed values.
+class ValueValidation {
+  /// Required. List of allowed values for the parameter.
+  core.List<core.String> values;
+
+  ValueValidation();
+
+  ValueValidation.fromJson(core.Map _json) {
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
 /// The workflow graph.
 class WorkflowGraph {
   /// Output only. The workflow nodes.
@@ -3493,8 +6002,11 @@ class WorkflowGraph {
 
 /// A Cloud Dataproc workflow template resource.
 class WorkflowMetadata {
-  /// Output only. The name of the managed cluster.
+  /// Output only. The name of the target cluster.
   core.String clusterName;
+
+  /// Output only. The UUID of target cluster.
+  core.String clusterUuid;
 
   /// Output only. The create cluster operation metadata.
   ClusterOperation createCluster;
@@ -3502,11 +6014,17 @@ class WorkflowMetadata {
   /// Output only. The delete cluster operation metadata.
   ClusterOperation deleteCluster;
 
+  /// Output only. Workflow end time.
+  core.String endTime;
+
   /// Output only. The workflow graph.
   WorkflowGraph graph;
 
   /// Map from parameter names to values that were used for those parameters.
   core.Map<core.String, core.String> parameters;
+
+  /// Output only. Workflow start time.
+  core.String startTime;
 
   /// Output only. The workflow state.
   /// Possible string values are:
@@ -3529,11 +6047,17 @@ class WorkflowMetadata {
     if (_json.containsKey("clusterName")) {
       clusterName = _json["clusterName"];
     }
+    if (_json.containsKey("clusterUuid")) {
+      clusterUuid = _json["clusterUuid"];
+    }
     if (_json.containsKey("createCluster")) {
       createCluster = new ClusterOperation.fromJson(_json["createCluster"]);
     }
     if (_json.containsKey("deleteCluster")) {
       deleteCluster = new ClusterOperation.fromJson(_json["deleteCluster"]);
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
     }
     if (_json.containsKey("graph")) {
       graph = new WorkflowGraph.fromJson(_json["graph"]);
@@ -3541,6 +6065,9 @@ class WorkflowMetadata {
     if (_json.containsKey("parameters")) {
       parameters =
           (_json["parameters"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -3559,17 +6086,26 @@ class WorkflowMetadata {
     if (clusterName != null) {
       _json["clusterName"] = clusterName;
     }
+    if (clusterUuid != null) {
+      _json["clusterUuid"] = clusterUuid;
+    }
     if (createCluster != null) {
       _json["createCluster"] = (createCluster).toJson();
     }
     if (deleteCluster != null) {
       _json["deleteCluster"] = (deleteCluster).toJson();
     }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
     if (graph != null) {
       _json["graph"] = (graph).toJson();
     }
     if (parameters != null) {
       _json["parameters"] = parameters;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     if (state != null) {
       _json["state"] = state;
@@ -3647,6 +6183,160 @@ class WorkflowNode {
     }
     if (stepId != null) {
       _json["stepId"] = stepId;
+    }
+    return _json;
+  }
+}
+
+/// A Cloud Dataproc workflow template resource.
+class WorkflowTemplate {
+  /// Output only. The time template was created.
+  core.String createTime;
+
+  /// Required. The template id.The id must contain only letters (a-z, A-Z),
+  /// numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with
+  /// underscore or hyphen. Must consist of between 3 and 50 characters.
+  core.String id;
+
+  /// Required. The Directed Acyclic Graph of Jobs to submit.
+  core.List<OrderedJob> jobs;
+
+  /// Optional. The labels to associate with this template. These labels will be
+  /// propagated to all jobs and clusters created by the workflow instance.Label
+  /// keys must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if
+  /// present, must contain 1 to 63 characters, and must conform to RFC 1035
+  /// (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be
+  /// associated with a template.
+  core.Map<core.String, core.String> labels;
+
+  /// Output only. The "resource name" of the template, as described in
+  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  core.String name;
+
+  /// Optional. Template parameters whose values are substituted into the
+  /// template. Values for parameters must be provided when the template is
+  /// instantiated.
+  core.List<TemplateParameter> parameters;
+
+  /// Required. WorkflowTemplate scheduling information.
+  WorkflowTemplatePlacement placement;
+
+  /// Output only. The time template was last updated.
+  core.String updateTime;
+
+  /// Optional. Used to perform a consistent read-modify-write.This field should
+  /// be left blank for a CreateWorkflowTemplate request. It is required for an
+  /// UpdateWorkflowTemplate request, and must match the current server version.
+  /// A typical update template flow would fetch the current template with a
+  /// GetWorkflowTemplate request, which will return the current template with
+  /// the version field filled in with the current server version. The user
+  /// updates other fields in the template, then returns it as part of the
+  /// UpdateWorkflowTemplate request.
+  core.int version;
+
+  WorkflowTemplate();
+
+  WorkflowTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("jobs")) {
+      jobs = (_json["jobs"] as core.List)
+          .map<OrderedJob>((value) => new OrderedJob.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters = (_json["parameters"] as core.List)
+          .map<TemplateParameter>(
+              (value) => new TemplateParameter.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("placement")) {
+      placement = new WorkflowTemplatePlacement.fromJson(_json["placement"]);
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (jobs != null) {
+      _json["jobs"] = jobs.map((value) => (value).toJson()).toList();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parameters != null) {
+      _json["parameters"] =
+          parameters.map((value) => (value).toJson()).toList();
+    }
+    if (placement != null) {
+      _json["placement"] = (placement).toJson();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Specifies workflow execution target.Either managed_cluster or
+/// cluster_selector is required.
+class WorkflowTemplatePlacement {
+  /// Optional. A selector that chooses target cluster for jobs based on
+  /// metadata.The selector is evaluated at the time each job is submitted.
+  ClusterSelector clusterSelector;
+
+  /// Optional. A cluster that is managed by the workflow.
+  ManagedCluster managedCluster;
+
+  WorkflowTemplatePlacement();
+
+  WorkflowTemplatePlacement.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterSelector")) {
+      clusterSelector = new ClusterSelector.fromJson(_json["clusterSelector"]);
+    }
+    if (_json.containsKey("managedCluster")) {
+      managedCluster = new ManagedCluster.fromJson(_json["managedCluster"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterSelector != null) {
+      _json["clusterSelector"] = (clusterSelector).toJson();
+    }
+    if (managedCluster != null) {
+      _json["managedCluster"] = (managedCluster).toJson();
     }
     return _json;
   }

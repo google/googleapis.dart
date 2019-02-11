@@ -35,8 +35,8 @@ class CloudtraceApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   CloudtraceApi(http.Client client,
-      {core.String rootUrl: "https://cloudtrace.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://cloudtrace.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -83,12 +83,12 @@ class ProjectsTracesResourceApi {
   async.Future<Empty> batchWrite(
       BatchWriteSpansRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -148,12 +148,12 @@ class ProjectsTracesSpansResourceApi {
   /// this method will complete with the same error.
   async.Future<Span> createSpan(Span request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -255,8 +255,8 @@ class AttributeValue {
 /// A set of attributes, each in the format `[KEY]:[VALUE]`.
 class Attributes {
   /// The set of attributes. Each attribute's key can be up to 128 bytes
-  /// long. The value can be a string up to 256 bytes, an integer, or the
-  /// Boolean values `true` and `false`. For example:
+  /// long. The value can be a string up to 256 bytes, a signed 64-bit integer,
+  /// or the Boolean values `true` and `false`. For example:
   ///
   ///     "/instance_id": "my-instance"
   ///     "/http/user_agent": ""

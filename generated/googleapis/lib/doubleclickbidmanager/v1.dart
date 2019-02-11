@@ -30,8 +30,8 @@ class DoubleclickbidmanagerApi {
   SdfResourceApi get sdf => new SdfResourceApi(_requester);
 
   DoubleclickbidmanagerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "doubleclickbidmanager/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "doubleclickbidmanager/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -60,12 +60,12 @@ class LineitemsResourceApi {
   async.Future<DownloadLineItemsResponse> downloadlineitems(
       DownloadLineItemsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -105,12 +105,12 @@ class LineitemsResourceApi {
   async.Future<UploadLineItemsResponse> uploadlineitems(
       UploadLineItemsRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -153,12 +153,12 @@ class QueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Query> createquery(Query request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -193,12 +193,12 @@ class QueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future deletequery(core.String queryId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
@@ -237,12 +237,12 @@ class QueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Query> getquery(core.String queryId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
@@ -277,12 +277,12 @@ class QueriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueriesResponse> listqueries({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -317,12 +317,12 @@ class QueriesResourceApi {
   /// this method will complete with the same error.
   async.Future runquery(RunQueryRequest request, core.String queryId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -371,12 +371,12 @@ class ReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> listreports(core.String queryId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
@@ -420,12 +420,12 @@ class SdfResourceApi {
   /// this method will complete with the same error.
   async.Future<DownloadResponse> download(DownloadRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -530,28 +530,36 @@ class DownloadLineItemsResponse {
   }
 }
 
-/// Request to fetch stored insertion orders, line items, TrueView ad groups and
-/// ads.
+/// Request to fetch stored inventory sources, campaigns, insertion orders, line
+/// items, TrueView ad groups and ads.
 class DownloadRequest {
   /// File types that will be returned.
+  ///
+  /// Acceptable values are:
+  /// - "AD"
+  /// - "AD_GROUP"
+  /// - "CAMPAIGN"
+  /// - "INSERTION_ORDER"
+  /// - "LINE_ITEM"
+  /// - "INVENTORY_SOURCE"
   core.List<core.String> fileTypes;
 
   /// The IDs of the specified filter type. This is used to filter entities to
-  /// fetch. At least one ID must be specified. Only one ID is allowed for the
-  /// ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter
-  /// types, all IDs must be from the same Advertiser.
+  /// fetch. At least one ID must be specified.
   core.List<core.String> filterIds;
 
-  /// Filter type used to filter line items to fetch.
+  /// Filter type used to filter entities to fetch.
   /// Possible string values are:
   /// - "ADVERTISER_ID"
   /// - "CAMPAIGN_ID"
   /// - "INSERTION_ORDER_ID"
+  /// - "INVENTORY_SOURCE_ID"
   /// - "LINE_ITEM_ID"
+  /// - "PARTNER_ID"
   core.String filterType;
 
   /// SDF Version (column names, types, order) in which the entities will be
-  /// returned. Default to 3.
+  /// returned. Default to 3.1.
   core.String version;
 
   DownloadRequest();
@@ -603,6 +611,7 @@ class DownloadResponse {
 
   /// Retrieved insertion orders in SDF format.
   core.String insertionOrders;
+  core.String inventorySources;
 
   /// Retrieved line items in SDF format.
   core.String lineItems;
@@ -621,6 +630,9 @@ class DownloadResponse {
     }
     if (_json.containsKey("insertionOrders")) {
       insertionOrders = _json["insertionOrders"];
+    }
+    if (_json.containsKey("inventorySources")) {
+      inventorySources = _json["inventorySources"];
     }
     if (_json.containsKey("lineItems")) {
       lineItems = _json["lineItems"];
@@ -642,6 +654,9 @@ class DownloadResponse {
     if (insertionOrders != null) {
       _json["insertionOrders"] = insertionOrders;
     }
+    if (inventorySources != null) {
+      _json["inventorySources"] = inventorySources;
+    }
     if (lineItems != null) {
       _json["lineItems"] = lineItems;
     }
@@ -660,6 +675,7 @@ class FilterPair {
   /// - "FILTER_ADVERTISER_TIMEZONE"
   /// - "FILTER_AD_POSITION"
   /// - "FILTER_AGE"
+  /// - "FILTER_AUTHORIZED_SELLER_STATE_ID"
   /// - "FILTER_BRANDSAFE_CHANNEL_ID"
   /// - "FILTER_BROWSER"
   /// - "FILTER_BUDGET_SEGMENT_DESCRIPTION"
@@ -670,6 +686,7 @@ class FilterPair {
   /// - "FILTER_COMPANION_CREATIVE_ID"
   /// - "FILTER_CONVERSION_DELAY"
   /// - "FILTER_COUNTRY"
+  /// - "FILTER_CREATIVE_ATTRIBUTE"
   /// - "FILTER_CREATIVE_HEIGHT"
   /// - "FILTER_CREATIVE_ID"
   /// - "FILTER_CREATIVE_SIZE"
@@ -678,13 +695,21 @@ class FilterPair {
   /// - "FILTER_DATA_PROVIDER"
   /// - "FILTER_DATE"
   /// - "FILTER_DAY_OF_WEEK"
+  /// - "FILTER_DEVICE_MAKE"
+  /// - "FILTER_DEVICE_MODEL"
+  /// - "FILTER_DEVICE_TYPE"
   /// - "FILTER_DFP_ORDER_ID"
   /// - "FILTER_DMA"
+  /// - "FILTER_DV360_ACTIVITY_ID"
   /// - "FILTER_EXCHANGE_ID"
+  /// - "FILTER_FLOODLIGHT_ACTIVITY_ID"
   /// - "FILTER_FLOODLIGHT_PIXEL_ID"
   /// - "FILTER_GENDER"
   /// - "FILTER_INSERTION_ORDER"
+  /// - "FILTER_INVENTORY_COMMITMENT_TYPE"
+  /// - "FILTER_INVENTORY_DELIVERY_METHOD"
   /// - "FILTER_INVENTORY_FORMAT"
+  /// - "FILTER_INVENTORY_RATE_TYPE"
   /// - "FILTER_INVENTORY_SOURCE"
   /// - "FILTER_INVENTORY_SOURCE_TYPE"
   /// - "FILTER_KEYWORD"

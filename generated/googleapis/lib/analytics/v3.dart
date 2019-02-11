@@ -65,8 +65,8 @@ class AnalyticsApi {
       new UserDeletionResourceApi(_requester);
 
   AnalyticsApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "analytics/v3/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "analytics/v3/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -169,12 +169,12 @@ class DataGaResourceApi {
       core.String sort,
       core.int start_index,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (ids == null) {
       throw new core.ArgumentError("Parameter ids is required.");
@@ -309,12 +309,12 @@ class DataMcfResourceApi {
       core.String sort,
       core.int start_index,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (ids == null) {
       throw new core.ArgumentError("Parameter ids is required.");
@@ -413,12 +413,12 @@ class DataRealtimeResourceApi {
       core.int max_results,
       core.String sort,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (ids == null) {
       throw new core.ArgumentError("Parameter ids is required.");
@@ -532,12 +532,12 @@ class ManagementAccountSummariesResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountSummaries> list(
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (max_results != null) {
       _queryParams["max-results"] = ["${max_results}"];
@@ -585,12 +585,12 @@ class ManagementAccountUserLinksResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -639,12 +639,12 @@ class ManagementAccountUserLinksResourceApi {
   async.Future<EntityUserLink> insert(
       EntityUserLink request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -694,12 +694,12 @@ class ManagementAccountUserLinksResourceApi {
   /// this method will complete with the same error.
   async.Future<EntityUserLinks> list(core.String accountId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -750,12 +750,12 @@ class ManagementAccountUserLinksResourceApi {
   async.Future<EntityUserLink> update(
       EntityUserLink request, core.String accountId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -813,12 +813,12 @@ class ManagementAccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Accounts> list(
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (max_results != null) {
       _queryParams["max-results"] = ["${max_results}"];
@@ -866,12 +866,12 @@ class ManagementClientIdResourceApi {
   /// this method will complete with the same error.
   async.Future<HashClientIdResponse> hashClientId(HashClientIdRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -928,12 +928,12 @@ class ManagementCustomDataSourcesResourceApi {
   async.Future<CustomDataSources> list(
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -996,12 +996,12 @@ class ManagementCustomDimensionsResourceApi {
   async.Future<CustomDimension> get(core.String accountId,
       core.String webPropertyId, core.String customDimensionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1055,12 +1055,12 @@ class ManagementCustomDimensionsResourceApi {
   async.Future<CustomDimension> insert(
       CustomDimension request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1117,12 +1117,12 @@ class ManagementCustomDimensionsResourceApi {
   async.Future<CustomDimensions> list(
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1190,12 +1190,12 @@ class ManagementCustomDimensionsResourceApi {
       core.String customDimensionId,
       {core.bool ignoreCustomDataSourceLinks,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1268,12 +1268,12 @@ class ManagementCustomDimensionsResourceApi {
       core.String customDimensionId,
       {core.bool ignoreCustomDataSourceLinks,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1342,12 +1342,12 @@ class ManagementCustomMetricsResourceApi {
   async.Future<CustomMetric> get(core.String accountId,
       core.String webPropertyId, core.String customMetricId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1401,12 +1401,12 @@ class ManagementCustomMetricsResourceApi {
   async.Future<CustomMetric> insert(
       CustomMetric request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1463,12 +1463,12 @@ class ManagementCustomMetricsResourceApi {
   async.Future<CustomMetrics> list(
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1530,12 +1530,12 @@ class ManagementCustomMetricsResourceApi {
   async.Future<CustomMetric> patch(CustomMetric request, core.String accountId,
       core.String webPropertyId, core.String customMetricId,
       {core.bool ignoreCustomDataSourceLinks, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1603,12 +1603,12 @@ class ManagementCustomMetricsResourceApi {
   async.Future<CustomMetric> update(CustomMetric request, core.String accountId,
       core.String webPropertyId, core.String customMetricId,
       {core.bool ignoreCustomDataSourceLinks, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1677,12 +1677,12 @@ class ManagementExperimentsResourceApi {
   async.Future delete(core.String accountId, core.String webPropertyId,
       core.String profileId, core.String experimentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1745,12 +1745,12 @@ class ManagementExperimentsResourceApi {
   async.Future<Experiment> get(core.String accountId, core.String webPropertyId,
       core.String profileId, core.String experimentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1811,12 +1811,12 @@ class ManagementExperimentsResourceApi {
   async.Future<Experiment> insert(Experiment request, core.String accountId,
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1883,12 +1883,12 @@ class ManagementExperimentsResourceApi {
   async.Future<Experiments> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -1957,12 +1957,12 @@ class ManagementExperimentsResourceApi {
       core.String profileId,
       core.String experimentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2032,12 +2032,12 @@ class ManagementExperimentsResourceApi {
       core.String profileId,
       core.String experimentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2103,12 +2103,12 @@ class ManagementFiltersResourceApi {
   /// this method will complete with the same error.
   async.Future<Filter> delete(core.String accountId, core.String filterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2154,12 +2154,12 @@ class ManagementFiltersResourceApi {
   /// this method will complete with the same error.
   async.Future<Filter> get(core.String accountId, core.String filterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2205,12 +2205,12 @@ class ManagementFiltersResourceApi {
   /// this method will complete with the same error.
   async.Future<Filter> insert(Filter request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2259,12 +2259,12 @@ class ManagementFiltersResourceApi {
   /// this method will complete with the same error.
   async.Future<Filters> list(core.String accountId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2315,12 +2315,12 @@ class ManagementFiltersResourceApi {
   async.Future<Filter> patch(
       Filter request, core.String accountId, core.String filterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2372,12 +2372,12 @@ class ManagementFiltersResourceApi {
   async.Future<Filter> update(
       Filter request, core.String accountId, core.String filterId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2437,12 +2437,12 @@ class ManagementGoalsResourceApi {
   async.Future<Goal> get(core.String accountId, core.String webPropertyId,
       core.String profileId, core.String goalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2503,12 +2503,12 @@ class ManagementGoalsResourceApi {
   async.Future<Goal> insert(Goal request, core.String accountId,
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2577,12 +2577,12 @@ class ManagementGoalsResourceApi {
   async.Future<Goals> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2647,12 +2647,12 @@ class ManagementGoalsResourceApi {
   async.Future<Goal> patch(Goal request, core.String accountId,
       core.String webPropertyId, core.String profileId, core.String goalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2718,12 +2718,12 @@ class ManagementGoalsResourceApi {
   async.Future<Goal> update(Goal request, core.String accountId,
       core.String webPropertyId, core.String profileId, core.String goalId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2797,12 +2797,12 @@ class ManagementProfileFilterLinksResourceApi {
   async.Future delete(core.String accountId, core.String webPropertyId,
       core.String profileId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2869,12 +2869,12 @@ class ManagementProfileFilterLinksResourceApi {
   async.Future<ProfileFilterLink> get(core.String accountId,
       core.String webPropertyId, core.String profileId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -2938,12 +2938,12 @@ class ManagementProfileFilterLinksResourceApi {
   async.Future<ProfileFilterLink> insert(ProfileFilterLink request,
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3012,12 +3012,12 @@ class ManagementProfileFilterLinksResourceApi {
   async.Future<ProfileFilterLinks> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3091,12 +3091,12 @@ class ManagementProfileFilterLinksResourceApi {
       core.String profileId,
       core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3170,12 +3170,12 @@ class ManagementProfileFilterLinksResourceApi {
       core.String profileId,
       core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3244,12 +3244,12 @@ class ManagementProfileUserLinksResourceApi {
   async.Future delete(core.String accountId, core.String webPropertyId,
       core.String profileId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3312,12 +3312,12 @@ class ManagementProfileUserLinksResourceApi {
   async.Future<EntityUserLink> insert(EntityUserLink request,
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3386,12 +3386,12 @@ class ManagementProfileUserLinksResourceApi {
   async.Future<EntityUserLinks> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3460,12 +3460,12 @@ class ManagementProfileUserLinksResourceApi {
       core.String profileId,
       core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3532,12 +3532,12 @@ class ManagementProfilesResourceApi {
   async.Future delete(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3596,12 +3596,12 @@ class ManagementProfilesResourceApi {
   async.Future<Profile> get(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3655,12 +3655,12 @@ class ManagementProfilesResourceApi {
   async.Future<Profile> insert(
       Profile request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3720,12 +3720,12 @@ class ManagementProfilesResourceApi {
   /// this method will complete with the same error.
   async.Future<Profiles> list(core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3783,12 +3783,12 @@ class ManagementProfilesResourceApi {
   async.Future<Profile> patch(Profile request, core.String accountId,
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3847,12 +3847,12 @@ class ManagementProfilesResourceApi {
   async.Future<Profile> update(Profile request, core.String accountId,
       core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3915,12 +3915,12 @@ class ManagementRemarketingAudienceResourceApi {
   async.Future delete(core.String accountId, core.String webPropertyId,
       core.String remarketingAudienceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -3978,12 +3978,12 @@ class ManagementRemarketingAudienceResourceApi {
   async.Future<RemarketingAudience> get(core.String accountId,
       core.String webPropertyId, core.String remarketingAudienceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4039,12 +4039,12 @@ class ManagementRemarketingAudienceResourceApi {
   async.Future<RemarketingAudience> insert(RemarketingAudience request,
       core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4107,12 +4107,12 @@ class ManagementRemarketingAudienceResourceApi {
       core.int start_index,
       core.String type,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4178,12 +4178,12 @@ class ManagementRemarketingAudienceResourceApi {
       core.String webPropertyId,
       core.String remarketingAudienceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4247,12 +4247,12 @@ class ManagementRemarketingAudienceResourceApi {
       core.String webPropertyId,
       core.String remarketingAudienceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4316,12 +4316,12 @@ class ManagementSegmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Segments> list(
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (max_results != null) {
       _queryParams["max-results"] = ["${max_results}"];
@@ -4374,12 +4374,12 @@ class ManagementUnsampledReportsResourceApi {
   async.Future delete(core.String accountId, core.String webPropertyId,
       core.String profileId, core.String unsampledReportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4445,12 +4445,12 @@ class ManagementUnsampledReportsResourceApi {
       core.String profileId,
       core.String unsampledReportId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4511,12 +4511,12 @@ class ManagementUnsampledReportsResourceApi {
   async.Future<UnsampledReport> insert(UnsampledReport request,
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4584,12 +4584,12 @@ class ManagementUnsampledReportsResourceApi {
   async.Future<UnsampledReports> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4664,12 +4664,12 @@ class ManagementUploadsResourceApi {
       core.String webPropertyId,
       core.String customDataSourceId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4735,12 +4735,12 @@ class ManagementUploadsResourceApi {
   async.Future<Upload> get(core.String accountId, core.String webPropertyId,
       core.String customDataSourceId, core.String uploadId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4807,12 +4807,12 @@ class ManagementUploadsResourceApi {
   async.Future<Uploads> list(core.String accountId, core.String webPropertyId,
       core.String customDataSourceId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4882,14 +4882,14 @@ class ManagementUploadsResourceApi {
   async.Future<Upload> uploadData(core.String accountId,
       core.String webPropertyId, core.String customDataSourceId,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -4949,15 +4949,15 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ManagementWebPropertyAdWordsLinksResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Deletes a web property-AdWords link.
+  /// Deletes a web property-Google Ads link.
   ///
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to delete the AdWords link for.
+  /// [webPropertyId] - Web property ID to delete the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4970,12 +4970,12 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   async.Future delete(core.String accountId, core.String webPropertyId,
       core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5009,15 +5009,15 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Returns a web property-AdWords link to which the user has access.
+  /// Returns a web property-Google Ads link to which the user has access.
   ///
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords link for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property-Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5032,12 +5032,12 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   async.Future<EntityAdWordsLink> get(core.String accountId,
       core.String webPropertyId, core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5069,7 +5069,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLink.fromJson(data));
   }
 
-  /// Creates a webProperty-AdWords link.
+  /// Creates a webProperty-Google Ads link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5092,12 +5092,12 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   async.Future<EntityAdWordsLink> insert(EntityAdWordsLink request,
       core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5127,19 +5127,19 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLink.fromJson(data));
   }
 
-  /// Lists webProperty-AdWords links for a given web property.
+  /// Lists webProperty-Google Ads links for a given web property.
   ///
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   /// Value must have pattern "\d+".
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords links for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads links for.
   ///
-  /// [max_results] - The maximum number of webProperty-AdWords links to include
-  /// in this response.
+  /// [max_results] - The maximum number of webProperty-Google Ads links to
+  /// include in this response.
   ///
-  /// [start_index] - An index of the first webProperty-AdWords link to
+  /// [start_index] - An index of the first webProperty-Google Ads link to
   /// retrieve. Use this parameter as a pagination mechanism along with the
   /// max-results parameter.
   ///
@@ -5156,12 +5156,12 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   async.Future<EntityAdWordsLinks> list(
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5194,8 +5194,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLinks.fromJson(data));
   }
 
-  /// Updates an existing webProperty-AdWords link. This method supports patch
-  /// semantics.
+  /// Updates an existing webProperty-Google Ads link. This method supports
+  /// patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5203,9 +5203,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords link for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property-Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5223,12 +5223,12 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String webPropertyId,
       core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5263,7 +5263,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     return _response.then((data) => new EntityAdWordsLink.fromJson(data));
   }
 
-  /// Updates an existing webProperty-AdWords link.
+  /// Updates an existing webProperty-Google Ads link.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5271,9 +5271,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
   ///
-  /// [webPropertyId] - Web property ID to retrieve the AdWords link for.
+  /// [webPropertyId] - Web property ID to retrieve the Google Ads link for.
   ///
-  /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
+  /// [webPropertyAdWordsLinkId] - Web property-Google Ads link ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5291,12 +5291,12 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       core.String webPropertyId,
       core.String webPropertyAdWordsLinkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5361,12 +5361,12 @@ class ManagementWebpropertiesResourceApi {
   async.Future<Webproperty> get(
       core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5414,12 +5414,12 @@ class ManagementWebpropertiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Webproperty> insert(Webproperty request, core.String accountId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5470,12 +5470,12 @@ class ManagementWebpropertiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Webproperties> list(core.String accountId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5526,12 +5526,12 @@ class ManagementWebpropertiesResourceApi {
   async.Future<Webproperty> patch(
       Webproperty request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5583,12 +5583,12 @@ class ManagementWebpropertiesResourceApi {
   async.Future<Webproperty> update(
       Webproperty request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5645,12 +5645,12 @@ class ManagementWebpropertyUserLinksResourceApi {
   async.Future delete(
       core.String accountId, core.String webPropertyId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5706,12 +5706,12 @@ class ManagementWebpropertyUserLinksResourceApi {
   async.Future<EntityUserLink> insert(
       EntityUserLink request, core.String accountId, core.String webPropertyId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5771,12 +5771,12 @@ class ManagementWebpropertyUserLinksResourceApi {
   async.Future<EntityUserLinks> list(
       core.String accountId, core.String webPropertyId,
       {core.int max_results, core.int start_index, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
@@ -5834,12 +5834,12 @@ class ManagementWebpropertyUserLinksResourceApi {
   async.Future<EntityUserLink> update(EntityUserLink request,
       core.String accountId, core.String webPropertyId, core.String linkId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -5907,12 +5907,12 @@ class MetadataColumnsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Columns> list(core.String reportType, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (reportType == null) {
       throw new core.ArgumentError("Parameter reportType is required.");
@@ -5957,12 +5957,12 @@ class ProvisioningResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountTicket> createAccountTicket(AccountTicket request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6001,12 +6001,12 @@ class ProvisioningResourceApi {
   async.Future<AccountTreeResponse> createAccountTree(
       AccountTreeRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6060,12 +6060,12 @@ class UserDeletionUserDeletionRequestResourceApi {
   /// this method will complete with the same error.
   async.Future<UserDeletionRequest> upsert(UserDeletionRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6519,55 +6519,12 @@ class AccountTicket {
   }
 }
 
-class AccountTreeRequestAccountSettings {
-  core.bool shareAnonymouslyWithOthers;
-  core.bool shareWithGoogleProducts;
-  core.bool shareWithSpecialists;
-  core.bool shareWithSupport;
-
-  AccountTreeRequestAccountSettings();
-
-  AccountTreeRequestAccountSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("shareAnonymouslyWithOthers")) {
-      shareAnonymouslyWithOthers = _json["shareAnonymouslyWithOthers"];
-    }
-    if (_json.containsKey("shareWithGoogleProducts")) {
-      shareWithGoogleProducts = _json["shareWithGoogleProducts"];
-    }
-    if (_json.containsKey("shareWithSpecialists")) {
-      shareWithSpecialists = _json["shareWithSpecialists"];
-    }
-    if (_json.containsKey("shareWithSupport")) {
-      shareWithSupport = _json["shareWithSupport"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (shareAnonymouslyWithOthers != null) {
-      _json["shareAnonymouslyWithOthers"] = shareAnonymouslyWithOthers;
-    }
-    if (shareWithGoogleProducts != null) {
-      _json["shareWithGoogleProducts"] = shareWithGoogleProducts;
-    }
-    if (shareWithSpecialists != null) {
-      _json["shareWithSpecialists"] = shareWithSpecialists;
-    }
-    if (shareWithSupport != null) {
-      _json["shareWithSupport"] = shareWithSupport;
-    }
-    return _json;
-  }
-}
-
 /// JSON template for an Analytics account tree requests. The account tree
 /// request is used in the provisioning api to create an account, property, and
 /// view (profile). It contains the basic information required to make these
 /// fields.
 class AccountTreeRequest {
   core.String accountName;
-  AccountTreeRequestAccountSettings accountSettings;
 
   /// Resource type for account ticket.
   core.String kind;
@@ -6581,10 +6538,6 @@ class AccountTreeRequest {
   AccountTreeRequest.fromJson(core.Map _json) {
     if (_json.containsKey("accountName")) {
       accountName = _json["accountName"];
-    }
-    if (_json.containsKey("accountSettings")) {
-      accountSettings = new AccountTreeRequestAccountSettings.fromJson(
-          _json["accountSettings"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6609,9 +6562,6 @@ class AccountTreeRequest {
     if (accountName != null) {
       _json["accountName"] = accountName;
     }
-    if (accountSettings != null) {
-      _json["accountSettings"] = (accountSettings).toJson();
-    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6631,55 +6581,12 @@ class AccountTreeRequest {
   }
 }
 
-class AccountTreeResponseAccountSettings {
-  core.bool shareAnonymouslyWithOthers;
-  core.bool shareWithGoogleProducts;
-  core.bool shareWithSpecialists;
-  core.bool shareWithSupport;
-
-  AccountTreeResponseAccountSettings();
-
-  AccountTreeResponseAccountSettings.fromJson(core.Map _json) {
-    if (_json.containsKey("shareAnonymouslyWithOthers")) {
-      shareAnonymouslyWithOthers = _json["shareAnonymouslyWithOthers"];
-    }
-    if (_json.containsKey("shareWithGoogleProducts")) {
-      shareWithGoogleProducts = _json["shareWithGoogleProducts"];
-    }
-    if (_json.containsKey("shareWithSpecialists")) {
-      shareWithSpecialists = _json["shareWithSpecialists"];
-    }
-    if (_json.containsKey("shareWithSupport")) {
-      shareWithSupport = _json["shareWithSupport"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (shareAnonymouslyWithOthers != null) {
-      _json["shareAnonymouslyWithOthers"] = shareAnonymouslyWithOthers;
-    }
-    if (shareWithGoogleProducts != null) {
-      _json["shareWithGoogleProducts"] = shareWithGoogleProducts;
-    }
-    if (shareWithSpecialists != null) {
-      _json["shareWithSpecialists"] = shareWithSpecialists;
-    }
-    if (shareWithSupport != null) {
-      _json["shareWithSupport"] = shareWithSupport;
-    }
-    return _json;
-  }
-}
-
 /// JSON template for an Analytics account tree response. The account tree
 /// response is used in the provisioning api to return the result of creating an
 /// account, property, and view (profile).
 class AccountTreeResponse {
   /// The account created.
   Account account;
-  AccountTreeResponseAccountSettings accountSettings;
 
   /// Resource type for account ticket.
   core.String kind;
@@ -6695,10 +6602,6 @@ class AccountTreeResponse {
   AccountTreeResponse.fromJson(core.Map _json) {
     if (_json.containsKey("account")) {
       account = new Account.fromJson(_json["account"]);
-    }
-    if (_json.containsKey("accountSettings")) {
-      accountSettings = new AccountTreeResponseAccountSettings.fromJson(
-          _json["accountSettings"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -6716,9 +6619,6 @@ class AccountTreeResponse {
         new core.Map<core.String, core.Object>();
     if (account != null) {
       _json["account"] = (account).toJson();
-    }
-    if (accountSettings != null) {
-      _json["accountSettings"] = (accountSettings).toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -6829,16 +6729,16 @@ class Accounts {
   }
 }
 
-/// JSON template for an AdWords account.
+/// JSON template for an Google Ads account.
 class AdWordsAccount {
-  /// True if auto-tagging is enabled on the AdWords account. Read-only after
+  /// True if auto-tagging is enabled on the Google Ads account. Read-only after
   /// the insert operation.
   core.bool autoTaggingEnabled;
 
-  /// Customer ID. This field is required when creating an AdWords link.
+  /// Customer ID. This field is required when creating a Google Ads link.
   core.String customerId;
 
-  /// Resource type for AdWords account.
+  /// Resource type for Google Ads account.
   core.String kind;
 
   AdWordsAccount();
@@ -7871,28 +7771,28 @@ class EntityAdWordsLinkEntity {
   }
 }
 
-/// JSON template for Analytics Entity AdWords Link.
+/// JSON template for Analytics Entity Google Ads Link.
 class EntityAdWordsLink {
-  /// A list of AdWords client accounts. These cannot be MCC accounts. This
-  /// field is required when creating an AdWords link. It cannot be empty.
+  /// A list of Google Ads client accounts. These cannot be MCC accounts. This
+  /// field is required when creating a Google Ads link. It cannot be empty.
   core.List<AdWordsAccount> adWordsAccounts;
 
   /// Web property being linked.
   EntityAdWordsLinkEntity entity;
 
-  /// Entity AdWords link ID
+  /// Entity Google Ads link ID
   core.String id;
 
-  /// Resource type for entity AdWords link.
+  /// Resource type for entity Google Ads link.
   core.String kind;
 
-  /// Name of the link. This field is required when creating an AdWords link.
+  /// Name of the link. This field is required when creating a Google Ads link.
   core.String name;
 
   /// IDs of linked Views (Profiles) represented as strings.
   core.List<core.String> profileIds;
 
-  /// URL link for this Google Analytics - Google AdWords link.
+  /// URL link for this Google Analytics - Google Ads link.
   core.String selfLink;
 
   EntityAdWordsLink();
@@ -7952,10 +7852,10 @@ class EntityAdWordsLink {
   }
 }
 
-/// An entity AdWords link collection provides a list of GA-AdWords links Each
-/// resource in this collection corresponds to a single link.
+/// An entity Google Ads link collection provides a list of GA-Google Ads links
+/// Each resource in this collection corresponds to a single link.
 class EntityAdWordsLinks {
-  /// A list of entity AdWords links.
+  /// A list of entity Google Ads links.
   core.List<EntityAdWordsLink> items;
 
   /// The maximum number of entries the response can contain, regardless of the
@@ -7967,10 +7867,10 @@ class EntityAdWordsLinks {
   /// Collection type.
   core.String kind;
 
-  /// Next link for this AdWords link collection.
+  /// Next link for this Google Ads link collection.
   core.String nextLink;
 
-  /// Previous link for this AdWords link collection.
+  /// Previous link for this Google Ads link collection.
   core.String previousLink;
 
   /// The starting index of the entries, which is 1 by default or otherwise
@@ -10805,8 +10705,8 @@ class LinkedForeignAccount {
   /// Resource type for linked foreign account.
   core.String kind;
 
-  /// The foreign account ID. For example the an AdWords `linkedAccountId` has
-  /// the following format XXX-XXX-XXXX.
+  /// The foreign account ID. For example the an Google Ads `linkedAccountId`
+  /// has the following format XXX-XXX-XXXX.
   core.String linkedAccountId;
 
   /// Remarketing audience ID to which this linked foreign account belongs.

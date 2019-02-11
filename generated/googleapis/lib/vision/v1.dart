@@ -34,10 +34,11 @@ class VisionApi {
   ImagesResourceApi get images => new ImagesResourceApi(_requester);
   LocationsResourceApi get locations => new LocationsResourceApi(_requester);
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   VisionApi(http.Client client,
-      {core.String rootUrl: "https://vision.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://vision.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -71,12 +72,12 @@ class FilesResourceApi {
   async.Future<Operation> asyncBatchAnnotate(
       AsyncBatchAnnotateFilesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -121,12 +122,12 @@ class ImagesResourceApi {
   async.Future<BatchAnnotateImagesResponse> annotate(
       BatchAnnotateImagesRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -183,12 +184,12 @@ class LocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -244,12 +245,12 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -293,12 +294,12 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -338,12 +339,12 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -401,12 +402,12 @@ class OperationsResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -433,6 +434,1232 @@ class OperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
+
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProductSetsResourceApi get productSets =>
+      new ProjectsLocationsProductSetsResourceApi(_requester);
+  ProjectsLocationsProductsResourceApi get products =>
+      new ProjectsLocationsProductsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsProductSetsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProductSetsProductsResourceApi get products =>
+      new ProjectsLocationsProductSetsProductsResourceApi(_requester);
+
+  ProjectsLocationsProductSetsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Adds a Product to the specified ProductSet. If the Product is already
+  /// present, no change is made.
+  ///
+  /// One Product can be added to at most 100 ProductSets.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the ProductSet to modify.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> addProduct(
+      AddProductToProductSetRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':addProduct';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Creates and returns a new ProductSet resource.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns INVALID_ARGUMENT if display_name is missing, or is longer than
+  ///   4096 characters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project in which the ProductSet should be created.
+  ///
+  /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [productSetId] - A user-supplied resource id for this ProductSet. If set,
+  /// the server will
+  /// attempt to use this value as the resource id. If it is already in use, an
+  /// error is returned with code ALREADY_EXISTS. Must be at most 128 characters
+  /// long. It cannot contain the character `/`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductSet> create(ProductSet request, core.String parent,
+      {core.String productSetId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (productSetId != null) {
+      _queryParams["productSetId"] = [productSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/productSets';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductSet.fromJson(data));
+  }
+
+  /// Permanently deletes a ProductSet. Products and ReferenceImages in the
+  /// ProductSet are not deleted.
+  ///
+  /// The actual image files are not deleted from Google Cloud Storage.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the ProductSet does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the ProductSet to delete.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets information associated with a ProductSet.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the ProductSet does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the ProductSet to get.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductSet> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductSet.fromJson(data));
+  }
+
+  /// Asynchronous API that imports a list of reference images to specified
+  /// product sets based on a list of image information.
+  ///
+  /// The google.longrunning.Operation API can be used to keep track of the
+  /// progress and results of the request.
+  /// `Operation.metadata` contains `BatchOperationMetadata`. (progress)
+  /// `Operation.response` contains `ImportProductSetsResponse`. (results)
+  ///
+  /// The input source of this method is a csv file on Google Cloud Storage.
+  /// For the format of the csv file please see
+  /// ImportProductSetsGcsSource.csv_file_uri.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project in which the ProductSets should be imported.
+  ///
+  /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+      ImportProductSetsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/productSets:import';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists ProductSets in an unspecified order.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns INVALID_ARGUMENT if page_size is greater than 100, or less
+  ///   than 1.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project from which ProductSets should be listed.
+  ///
+  /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token returned from a previous List request,
+  /// if any.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default 10, maximum
+  /// 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProductSetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProductSetsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/productSets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListProductSetsResponse.fromJson(data));
+  }
+
+  /// Makes changes to a ProductSet resource.
+  /// Only display_name can be updated currently.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the ProductSet does not exist.
+  /// * Returns INVALID_ARGUMENT if display_name is present in update_mask but
+  ///   missing from the request or longer than 4096 characters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the ProductSet.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+  ///
+  /// This field is ignored when creating a ProductSet.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  ///
+  /// [updateMask] - The FieldMask that specifies which fields to
+  /// update.
+  /// If update_mask isn't specified, all mutable fields are to be updated.
+  /// Valid mask path is `display_name`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProductSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductSet> patch(ProductSet request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProductSet.fromJson(data));
+  }
+
+  /// Removes a Product from the specified ProductSet.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND If the Product is not found under the ProductSet.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name for the ProductSet to modify.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeProduct(
+      RemoveProductFromProductSetRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':removeProduct';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+}
+
+class ProjectsLocationsProductSetsProductsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProductSetsProductsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the Products in a ProductSet, in an unspecified order. If the
+  /// ProductSet does not exist, the products field of the response will be
+  /// empty.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than
+  /// 1.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The ProductSet resource for which to retrieve Products.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token returned from a previous List request,
+  /// if any.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default 10, maximum
+  /// 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProductsInProductSetResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProductsInProductSetResponse> list(core.String name,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/products';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListProductsInProductSetResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsProductsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProductsReferenceImagesResourceApi get referenceImages =>
+      new ProjectsLocationsProductsReferenceImagesResourceApi(_requester);
+
+  ProjectsLocationsProductsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates and returns a new product resource.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096
+  ///   characters.
+  /// * Returns INVALID_ARGUMENT if description is longer than 4096 characters.
+  /// * Returns INVALID_ARGUMENT if product_category is missing or invalid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project in which the Product should be created.
+  ///
+  /// Format is
+  /// `projects/PROJECT_ID/locations/LOC_ID`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [productId] - A user-supplied resource id for this Product. If set, the
+  /// server will
+  /// attempt to use this value as the resource id. If it is already in use, an
+  /// error is returned with code ALREADY_EXISTS. Must be at most 128 characters
+  /// long. It cannot contain the character `/`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Product> create(Product request, core.String parent,
+      {core.String productId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (productId != null) {
+      _queryParams["productId"] = [productId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Product.fromJson(data));
+  }
+
+  /// Permanently deletes a product and its reference images.
+  ///
+  /// Metadata of the product and all its images will be deleted right away, but
+  /// search queries against ProductSets containing the product may still work
+  /// until all related caches are refreshed.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the product does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of product to delete.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets information associated with a Product.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the Product does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the Product to get.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Product> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Product.fromJson(data));
+  }
+
+  /// Lists products in an unspecified order.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than
+  /// 1.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project OR ProductSet from which Products should be listed.
+  ///
+  /// Format:
+  /// `projects/PROJECT_ID/locations/LOC_ID`
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token returned from a previous List request,
+  /// if any.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default 10, maximum
+  /// 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProductsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListProductsResponse.fromJson(data));
+  }
+
+  /// Makes changes to a Product resource.
+  /// Only the `display_name`, `description`, and `labels` fields can be updated
+  /// right now.
+  ///
+  /// If labels are updated, the change will not be reflected in queries until
+  /// the next index time.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the Product does not exist.
+  /// * Returns INVALID_ARGUMENT if display_name is present in update_mask but
+  /// is
+  ///   missing from the request or longer than 4096 characters.
+  /// * Returns INVALID_ARGUMENT if description is present in update_mask but is
+  ///   longer than 4096 characters.
+  /// * Returns INVALID_ARGUMENT if product_category is present in update_mask.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the product.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+  ///
+  /// This field is ignored when creating a product.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  ///
+  /// [updateMask] - The FieldMask that specifies which fields
+  /// to update.
+  /// If update_mask isn't specified, all mutable fields are to be updated.
+  /// Valid mask paths include `product_labels`, `display_name`, and
+  /// `description`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Product> patch(Product request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Product.fromJson(data));
+  }
+}
+
+class ProjectsLocationsProductsReferenceImagesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsProductsReferenceImagesResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates and returns a new ReferenceImage resource.
+  ///
+  /// The `bounding_poly` field is optional. If `bounding_poly` is not
+  /// specified,
+  /// the system will try to detect regions of interest in the image that are
+  /// compatible with the product_category on the parent product. If it is
+  /// specified, detection is ALWAYS skipped. The system converts polygons into
+  /// non-rotated rectangles.
+  ///
+  /// Note that the pipeline will resize the image if the image resolution is
+  /// too
+  /// large to process (above 50MP).
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096
+  ///   characters.
+  /// * Returns INVALID_ARGUMENT if the product does not exist.
+  /// * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing
+  ///   compatible with the parent product's product_category is detected.
+  /// * Returns INVALID_ARGUMENT if bounding_poly contains more than 10
+  /// polygons.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Resource name of the product in which to create the reference
+  /// image.
+  ///
+  /// Format is
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  ///
+  /// [referenceImageId] - A user-supplied resource id for the ReferenceImage to
+  /// be added. If set,
+  /// the server will attempt to use this value as the resource id. If it is
+  /// already in use, an error is returned with code ALREADY_EXISTS. Must be at
+  /// most 128 characters long. It cannot contain the character `/`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReferenceImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReferenceImage> create(
+      ReferenceImage request, core.String parent,
+      {core.String referenceImageId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (referenceImageId != null) {
+      _queryParams["referenceImageId"] = [referenceImageId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/referenceImages';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReferenceImage.fromJson(data));
+  }
+
+  /// Permanently deletes a reference image.
+  ///
+  /// The image metadata will be deleted right away, but search queries
+  /// against ProductSets containing the image may still work until all related
+  /// caches are refreshed.
+  ///
+  /// The actual image files are not deleted from Google Cloud Storage.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the reference image does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the reference image to delete.
+  ///
+  /// Format is:
+  ///
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets information associated with a ReferenceImage.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the specified image does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the ReferenceImage to get.
+  ///
+  /// Format is:
+  ///
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReferenceImage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReferenceImage> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReferenceImage.fromJson(data));
+  }
+
+  /// Lists reference images.
+  ///
+  /// Possible errors:
+  ///
+  /// * Returns NOT_FOUND if the parent product does not exist.
+  /// * Returns INVALID_ARGUMENT if the page_size is greater than 100, or less
+  ///   than 1.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Resource name of the product containing the reference images.
+  ///
+  /// Format is
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results to be returned. This
+  /// is the value
+  /// of `nextPageToken` returned in a previous reference image list request.
+  ///
+  /// Defaults to the first page if not specified.
+  ///
+  /// [pageSize] - The maximum number of items to return. Default 10, maximum
+  /// 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReferenceImagesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReferenceImagesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/referenceImages';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListReferenceImagesResponse.fromJson(data));
+  }
+}
+
+/// Request message for the `AddProductToProductSet` method.
+class AddProductToProductSetRequest {
+  /// The resource name for the Product to be added to this ProductSet.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+  core.String product;
+
+  AddProductToProductSetRequest();
+
+  AddProductToProductSetRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("product")) {
+      product = _json["product"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (product != null) {
+      _json["product"] = product;
+    }
+    return _json;
   }
 }
 
@@ -549,8 +1776,15 @@ class AnnotateImageResponse {
   /// If present, landmark detection has completed successfully.
   core.List<EntityAnnotation> landmarkAnnotations;
 
+  /// If present, localized object detection has completed successfully.
+  /// This will be sorted descending by confidence score.
+  core.List<LocalizedObjectAnnotation> localizedObjectAnnotations;
+
   /// If present, logo detection has completed successfully.
   core.List<EntityAnnotation> logoAnnotations;
+
+  /// If present, product search has completed successfully.
+  ProductSearchResults productSearchResults;
 
   /// If present, safe-search annotation has completed successfully.
   SafeSearchAnnotation safeSearchAnnotation;
@@ -599,11 +1833,22 @@ class AnnotateImageResponse {
               (value) => new EntityAnnotation.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("localizedObjectAnnotations")) {
+      localizedObjectAnnotations =
+          (_json["localizedObjectAnnotations"] as core.List)
+              .map<LocalizedObjectAnnotation>(
+                  (value) => new LocalizedObjectAnnotation.fromJson(value))
+              .toList();
+    }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<EntityAnnotation>(
               (value) => new EntityAnnotation.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("productSearchResults")) {
+      productSearchResults =
+          new ProductSearchResults.fromJson(_json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
@@ -650,9 +1895,16 @@ class AnnotateImageResponse {
       _json["landmarkAnnotations"] =
           landmarkAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (localizedObjectAnnotations != null) {
+      _json["localizedObjectAnnotations"] =
+          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
           logoAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (productSearchResults != null) {
+      _json["productSearchResults"] = (productSearchResults).toJson();
     }
     if (safeSearchAnnotation != null) {
       _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
@@ -849,6 +2101,63 @@ class BatchAnnotateImagesResponse {
   }
 }
 
+/// Metadata for the batch operations such as the current state.
+///
+/// This is included in the `metadata` field of the `Operation` returned by the
+/// `GetOperation` call of the `google::longrunning::Operations` service.
+class BatchOperationMetadata {
+  /// The time when the batch request is finished and
+  /// google.longrunning.Operation.done is set to true.
+  core.String endTime;
+
+  /// The current state of the batch operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Invalid.
+  /// - "PROCESSING" : Request is actively being processed.
+  /// - "SUCCESSFUL" : The request is done and at least one item has been
+  /// successfully
+  /// processed.
+  /// - "FAILED" : The request is done and no item has been successfully
+  /// processed.
+  /// - "CANCELLED" : The request is done after the
+  /// longrunning.Operations.CancelOperation has
+  /// been called by the user.  Any records that were processed before the
+  /// cancel command are output as specified in the request.
+  core.String state;
+
+  /// The time when the batch request was submitted to the server.
+  core.String submitTime;
+
+  BatchOperationMetadata();
+
+  BatchOperationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("submitTime")) {
+      submitTime = _json["submitTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (submitTime != null) {
+      _json["submitTime"] = submitTime;
+    }
+    return _json;
+  }
+}
+
 /// Logical element on the page.
 class Block {
   /// Detected block type (text, image etc) for this block.
@@ -880,7 +2189,7 @@ class Block {
   ///         |    |
   ///         1----0
   ///
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
 
   /// Confidence of the OCR results on the block. Range [0, 1].
@@ -1207,7 +2516,7 @@ class ColorInfo {
 /// Single crop hint that is used to generate a new crop when serving an image.
 class CropHint {
   /// The bounding polygon for the crop region. The coordinates of the bounding
-  /// box are in the original image's scale, as returned in `ImageParams`.
+  /// box are in the original image's scale.
   BoundingPoly boundingPoly;
 
   /// Confidence of this being a salient region.  Range [0, 1].
@@ -1573,7 +2882,7 @@ class FaceAnnotation {
   core.String blurredLikelihood;
 
   /// The bounding polygon around the face. The coordinates of the bounding box
-  /// are in the original image's scale, as returned in `ImageParams`.
+  /// are in the original image's scale.
   /// The bounding box is computed to "frame" the face in accordance with human
   /// expectations. It is based on the landmarker results.
   /// Note that one or more x and/or y coordinates may not be generated in the
@@ -1825,6 +3134,8 @@ class Feature {
   /// image's dominant colors.
   /// - "CROP_HINTS" : Run crop hints.
   /// - "WEB_DETECTION" : Run web detection.
+  /// - "PRODUCT_SEARCH" : Run Product Search.
+  /// - "OBJECT_LOCALIZATION" : Run localizer for object detection.
   core.String type;
 
   Feature();
@@ -1989,8 +3300,16 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
   /// If present, landmark detection has completed successfully.
   core.List<GoogleCloudVisionV1p1beta1EntityAnnotation> landmarkAnnotations;
 
+  /// If present, localized object detection has completed successfully.
+  /// This will be sorted descending by confidence score.
+  core.List<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>
+      localizedObjectAnnotations;
+
   /// If present, logo detection has completed successfully.
   core.List<GoogleCloudVisionV1p1beta1EntityAnnotation> logoAnnotations;
+
+  /// If present, product search has completed successfully.
+  GoogleCloudVisionV1p1beta1ProductSearchResults productSearchResults;
 
   /// If present, safe-search annotation has completed successfully.
   GoogleCloudVisionV1p1beta1SafeSearchAnnotation safeSearchAnnotation;
@@ -2044,11 +3363,24 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
               new GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("localizedObjectAnnotations")) {
+      localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
+              as core.List)
+          .map<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>((value) =>
+              new GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
+                  value))
+          .toList();
+    }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
               new GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("productSearchResults")) {
+      productSearchResults =
+          new GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
+              _json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
@@ -2097,9 +3429,16 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
       _json["landmarkAnnotations"] =
           landmarkAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (localizedObjectAnnotations != null) {
+      _json["localizedObjectAnnotations"] =
+          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
           logoAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (productSearchResults != null) {
+      _json["productSearchResults"] = (productSearchResults).toJson();
     }
     if (safeSearchAnnotation != null) {
       _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
@@ -2199,7 +3538,7 @@ class GoogleCloudVisionV1p1beta1Block {
   ///         |    |
   ///         1----0
   ///
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p1beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results on the block. Range [0, 1].
@@ -2262,12 +3601,21 @@ class GoogleCloudVisionV1p1beta1Block {
 
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudVisionV1p1beta1BoundingPoly {
+  /// The bounding polygon normalized vertices.
+  core.List<GoogleCloudVisionV1p1beta1NormalizedVertex> normalizedVertices;
+
   /// The bounding polygon vertices.
   core.List<GoogleCloudVisionV1p1beta1Vertex> vertices;
 
   GoogleCloudVisionV1p1beta1BoundingPoly();
 
   GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedVertices")) {
+      normalizedVertices = (_json["normalizedVertices"] as core.List)
+          .map<GoogleCloudVisionV1p1beta1NormalizedVertex>((value) =>
+              new GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("vertices")) {
       vertices = (_json["vertices"] as core.List)
           .map<GoogleCloudVisionV1p1beta1Vertex>(
@@ -2279,6 +3627,10 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (normalizedVertices != null) {
+      _json["normalizedVertices"] =
+          normalizedVertices.map((value) => (value).toJson()).toList();
+    }
     if (vertices != null) {
       _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
     }
@@ -2332,7 +3684,7 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
 /// Single crop hint that is used to generate a new crop when serving an image.
 class GoogleCloudVisionV1p1beta1CropHint {
   /// The bounding polygon for the crop region. The coordinates of the bounding
-  /// box are in the original image's scale, as returned in `ImageParams`.
+  /// box are in the original image's scale.
   GoogleCloudVisionV1p1beta1BoundingPoly boundingPoly;
 
   /// Confidence of this being a salient region.  Range [0, 1].
@@ -2578,7 +3930,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
   core.String blurredLikelihood;
 
   /// The bounding polygon around the face. The coordinates of the bounding box
-  /// are in the original image's scale, as returned in `ImageParams`.
+  /// are in the original image's scale.
   /// The bounding box is computed to "frame" the face in accordance with human
   /// expectations. It is based on the landmarker results.
   /// Note that one or more x and/or y coordinates may not be generated in the
@@ -3025,6 +4377,68 @@ class GoogleCloudVisionV1p1beta1InputConfig {
   }
 }
 
+/// Set of detected objects with bounding boxes.
+class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
+  /// Image region to which this object belongs. This must be populated.
+  GoogleCloudVisionV1p1beta1BoundingPoly boundingPoly;
+
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String languageCode;
+
+  /// Object ID that should align with EntityAnnotation mid.
+  core.String mid;
+
+  /// Object name, expressed in its `language_code` language.
+  core.String name;
+
+  /// Score of the result. Range [0, 1].
+  core.double score;
+
+  GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
+
+  GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          _json["boundingPoly"]);
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("mid")) {
+      mid = _json["mid"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (mid != null) {
+      _json["mid"] = mid;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (score != null) {
+      _json["score"] = score;
+    }
+    return _json;
+  }
+}
+
 /// Detected entity location information.
 class GoogleCloudVisionV1p1beta1LocationInfo {
   /// lat/long location coordinates.
@@ -3043,6 +4457,40 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
         new core.Map<core.String, core.Object>();
     if (latLng != null) {
       _json["latLng"] = (latLng).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A vertex represents a 2D point in the image.
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
+class GoogleCloudVisionV1p1beta1NormalizedVertex {
+  /// X coordinate.
+  core.double x;
+
+  /// Y coordinate.
+  core.double y;
+
+  GoogleCloudVisionV1p1beta1NormalizedVertex();
+
+  GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(core.Map _json) {
+    if (_json.containsKey("x")) {
+      x = _json["x"].toDouble();
+    }
+    if (_json.containsKey("y")) {
+      y = _json["y"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (x != null) {
+      _json["x"] = x;
+    }
+    if (y != null) {
+      _json["y"] = y;
     }
     return _json;
   }
@@ -3221,7 +4669,7 @@ class GoogleCloudVisionV1p1beta1Paragraph {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p1beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the paragraph. Range [0, 1].
@@ -3313,6 +4761,266 @@ class GoogleCloudVisionV1p1beta1Position {
     }
     if (z != null) {
       _json["z"] = z;
+    }
+    return _json;
+  }
+}
+
+/// A Product contains ReferenceImages.
+class GoogleCloudVisionV1p1beta1Product {
+  /// User-provided metadata to be stored with this product. Must be at most
+  /// 4096
+  /// characters long.
+  core.String description;
+
+  /// The user-provided name for this Product. Must not be empty. Must be at
+  /// most
+  /// 4096 characters long.
+  core.String displayName;
+
+  /// The resource name of the product.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+  ///
+  /// This field is ignored when creating a product.
+  core.String name;
+
+  /// The category for the product identified by the reference image. This
+  /// should
+  /// be either "homegoods", "apparel", or "toys".
+  ///
+  /// This field is immutable.
+  core.String productCategory;
+
+  /// Key-value pairs that can be attached to a product. At query time,
+  /// constraints can be specified based on the product_labels.
+  ///
+  /// Note that integer values can be provided as strings, e.g. "1199". Only
+  /// strings with integer values can match a range-based restriction which is
+  /// to be supported soon.
+  ///
+  /// Multiple values can be assigned to the same key. One product may have up
+  /// to
+  /// 100 product_labels.
+  core.List<GoogleCloudVisionV1p1beta1ProductKeyValue> productLabels;
+
+  GoogleCloudVisionV1p1beta1Product();
+
+  GoogleCloudVisionV1p1beta1Product.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("productCategory")) {
+      productCategory = _json["productCategory"];
+    }
+    if (_json.containsKey("productLabels")) {
+      productLabels = (_json["productLabels"] as core.List)
+          .map<GoogleCloudVisionV1p1beta1ProductKeyValue>((value) =>
+              new GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (productCategory != null) {
+      _json["productCategory"] = productCategory;
+    }
+    if (productLabels != null) {
+      _json["productLabels"] =
+          productLabels.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A product label represented as a key-value pair.
+class GoogleCloudVisionV1p1beta1ProductKeyValue {
+  /// The key of the label attached to the product. Cannot be empty and cannot
+  /// exceed 128 bytes.
+  core.String key;
+
+  /// The value of the label attached to the product. Cannot be empty and
+  /// cannot exceed 128 bytes.
+  core.String value;
+
+  GoogleCloudVisionV1p1beta1ProductKeyValue();
+
+  GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Results for a product search request.
+class GoogleCloudVisionV1p1beta1ProductSearchResults {
+  /// Timestamp of the index which provided these results. Changes made after
+  /// this time are not reflected in the current results.
+  core.String indexTime;
+
+  /// List of results grouped by products detected in the query image. Each
+  /// entry
+  /// corresponds to one bounding polygon in the query image, and contains the
+  /// matching products specific to that region. There may be duplicate product
+  /// matches in the union of all the per-product results.
+  core.List<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>
+      productGroupedResults;
+
+  /// List of results, one for each product match.
+  core.List<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> results;
+
+  GoogleCloudVisionV1p1beta1ProductSearchResults();
+
+  GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(core.Map _json) {
+    if (_json.containsKey("indexTime")) {
+      indexTime = _json["indexTime"];
+    }
+    if (_json.containsKey("productGroupedResults")) {
+      productGroupedResults = (_json["productGroupedResults"] as core.List)
+          .map<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>(
+              (value) =>
+                  new GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
+              new GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (indexTime != null) {
+      _json["indexTime"] = indexTime;
+    }
+    if (productGroupedResults != null) {
+      _json["productGroupedResults"] =
+          productGroupedResults.map((value) => (value).toJson()).toList();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Information about the products similar to a single product in a query
+/// image.
+class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
+  /// The bounding polygon around the product detected in the query image.
+  GoogleCloudVisionV1p1beta1BoundingPoly boundingPoly;
+
+  /// List of results, one for each product match.
+  core.List<GoogleCloudVisionV1p1beta1ProductSearchResultsResult> results;
+
+  GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
+
+  GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          _json["boundingPoly"]);
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
+              new GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Information about a product.
+class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
+  /// The resource name of the image from the product that is the closest match
+  /// to the query.
+  core.String image;
+
+  /// The Product.
+  GoogleCloudVisionV1p1beta1Product product;
+
+  /// A confidence level on the match, ranging from 0 (no confidence) to
+  /// 1 (full confidence).
+  core.double score;
+
+  GoogleCloudVisionV1p1beta1ProductSearchResultsResult();
+
+  GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("image")) {
+      image = _json["image"];
+    }
+    if (_json.containsKey("product")) {
+      product =
+          new GoogleCloudVisionV1p1beta1Product.fromJson(_json["product"]);
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (image != null) {
+      _json["image"] = image;
+    }
+    if (product != null) {
+      _json["product"] = (product).toJson();
+    }
+    if (score != null) {
+      _json["score"] = score;
     }
     return _json;
   }
@@ -4050,7 +5758,7 @@ class GoogleCloudVisionV1p1beta1Word {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p1beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the word. Range [0, 1].
@@ -4176,8 +5884,16 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
   /// If present, landmark detection has completed successfully.
   core.List<GoogleCloudVisionV1p2beta1EntityAnnotation> landmarkAnnotations;
 
+  /// If present, localized object detection has completed successfully.
+  /// This will be sorted descending by confidence score.
+  core.List<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>
+      localizedObjectAnnotations;
+
   /// If present, logo detection has completed successfully.
   core.List<GoogleCloudVisionV1p2beta1EntityAnnotation> logoAnnotations;
+
+  /// If present, product search has completed successfully.
+  GoogleCloudVisionV1p2beta1ProductSearchResults productSearchResults;
 
   /// If present, safe-search annotation has completed successfully.
   GoogleCloudVisionV1p2beta1SafeSearchAnnotation safeSearchAnnotation;
@@ -4231,11 +5947,24 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
               new GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("localizedObjectAnnotations")) {
+      localizedObjectAnnotations = (_json["localizedObjectAnnotations"]
+              as core.List)
+          .map<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>((value) =>
+              new GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
+                  value))
+          .toList();
+    }
     if (_json.containsKey("logoAnnotations")) {
       logoAnnotations = (_json["logoAnnotations"] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
               new GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("productSearchResults")) {
+      productSearchResults =
+          new GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
+              _json["productSearchResults"]);
     }
     if (_json.containsKey("safeSearchAnnotation")) {
       safeSearchAnnotation =
@@ -4284,9 +6013,16 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
       _json["landmarkAnnotations"] =
           landmarkAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (localizedObjectAnnotations != null) {
+      _json["localizedObjectAnnotations"] =
+          localizedObjectAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (logoAnnotations != null) {
       _json["logoAnnotations"] =
           logoAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (productSearchResults != null) {
+      _json["productSearchResults"] = (productSearchResults).toJson();
     }
     if (safeSearchAnnotation != null) {
       _json["safeSearchAnnotation"] = (safeSearchAnnotation).toJson();
@@ -4386,7 +6122,7 @@ class GoogleCloudVisionV1p2beta1Block {
   ///         |    |
   ///         1----0
   ///
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p2beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results on the block. Range [0, 1].
@@ -4532,7 +6268,7 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
 /// Single crop hint that is used to generate a new crop when serving an image.
 class GoogleCloudVisionV1p2beta1CropHint {
   /// The bounding polygon for the crop region. The coordinates of the bounding
-  /// box are in the original image's scale, as returned in `ImageParams`.
+  /// box are in the original image's scale.
   GoogleCloudVisionV1p2beta1BoundingPoly boundingPoly;
 
   /// Confidence of this being a salient region.  Range [0, 1].
@@ -4778,7 +6514,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
   core.String blurredLikelihood;
 
   /// The bounding polygon around the face. The coordinates of the bounding box
-  /// are in the original image's scale, as returned in `ImageParams`.
+  /// are in the original image's scale.
   /// The bounding box is computed to "frame" the face in accordance with human
   /// expectations. It is based on the landmarker results.
   /// Note that one or more x and/or y coordinates may not be generated in the
@@ -5225,6 +6961,68 @@ class GoogleCloudVisionV1p2beta1InputConfig {
   }
 }
 
+/// Set of detected objects with bounding boxes.
+class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
+  /// Image region to which this object belongs. This must be populated.
+  GoogleCloudVisionV1p2beta1BoundingPoly boundingPoly;
+
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String languageCode;
+
+  /// Object ID that should align with EntityAnnotation mid.
+  core.String mid;
+
+  /// Object name, expressed in its `language_code` language.
+  core.String name;
+
+  /// Score of the result. Range [0, 1].
+  core.double score;
+
+  GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
+
+  GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          _json["boundingPoly"]);
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("mid")) {
+      mid = _json["mid"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (mid != null) {
+      _json["mid"] = mid;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (score != null) {
+      _json["score"] = score;
+    }
+    return _json;
+  }
+}
+
 /// Detected entity location information.
 class GoogleCloudVisionV1p2beta1LocationInfo {
   /// lat/long location coordinates.
@@ -5455,7 +7253,7 @@ class GoogleCloudVisionV1p2beta1Paragraph {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p2beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the paragraph. Range [0, 1].
@@ -5547,6 +7345,266 @@ class GoogleCloudVisionV1p2beta1Position {
     }
     if (z != null) {
       _json["z"] = z;
+    }
+    return _json;
+  }
+}
+
+/// A Product contains ReferenceImages.
+class GoogleCloudVisionV1p2beta1Product {
+  /// User-provided metadata to be stored with this product. Must be at most
+  /// 4096
+  /// characters long.
+  core.String description;
+
+  /// The user-provided name for this Product. Must not be empty. Must be at
+  /// most
+  /// 4096 characters long.
+  core.String displayName;
+
+  /// The resource name of the product.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+  ///
+  /// This field is ignored when creating a product.
+  core.String name;
+
+  /// The category for the product identified by the reference image. This
+  /// should
+  /// be either "homegoods", "apparel", or "toys".
+  ///
+  /// This field is immutable.
+  core.String productCategory;
+
+  /// Key-value pairs that can be attached to a product. At query time,
+  /// constraints can be specified based on the product_labels.
+  ///
+  /// Note that integer values can be provided as strings, e.g. "1199". Only
+  /// strings with integer values can match a range-based restriction which is
+  /// to be supported soon.
+  ///
+  /// Multiple values can be assigned to the same key. One product may have up
+  /// to
+  /// 100 product_labels.
+  core.List<GoogleCloudVisionV1p2beta1ProductKeyValue> productLabels;
+
+  GoogleCloudVisionV1p2beta1Product();
+
+  GoogleCloudVisionV1p2beta1Product.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("productCategory")) {
+      productCategory = _json["productCategory"];
+    }
+    if (_json.containsKey("productLabels")) {
+      productLabels = (_json["productLabels"] as core.List)
+          .map<GoogleCloudVisionV1p2beta1ProductKeyValue>((value) =>
+              new GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (productCategory != null) {
+      _json["productCategory"] = productCategory;
+    }
+    if (productLabels != null) {
+      _json["productLabels"] =
+          productLabels.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A product label represented as a key-value pair.
+class GoogleCloudVisionV1p2beta1ProductKeyValue {
+  /// The key of the label attached to the product. Cannot be empty and cannot
+  /// exceed 128 bytes.
+  core.String key;
+
+  /// The value of the label attached to the product. Cannot be empty and
+  /// cannot exceed 128 bytes.
+  core.String value;
+
+  GoogleCloudVisionV1p2beta1ProductKeyValue();
+
+  GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Results for a product search request.
+class GoogleCloudVisionV1p2beta1ProductSearchResults {
+  /// Timestamp of the index which provided these results. Changes made after
+  /// this time are not reflected in the current results.
+  core.String indexTime;
+
+  /// List of results grouped by products detected in the query image. Each
+  /// entry
+  /// corresponds to one bounding polygon in the query image, and contains the
+  /// matching products specific to that region. There may be duplicate product
+  /// matches in the union of all the per-product results.
+  core.List<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>
+      productGroupedResults;
+
+  /// List of results, one for each product match.
+  core.List<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> results;
+
+  GoogleCloudVisionV1p2beta1ProductSearchResults();
+
+  GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(core.Map _json) {
+    if (_json.containsKey("indexTime")) {
+      indexTime = _json["indexTime"];
+    }
+    if (_json.containsKey("productGroupedResults")) {
+      productGroupedResults = (_json["productGroupedResults"] as core.List)
+          .map<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>(
+              (value) =>
+                  new GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
+              new GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (indexTime != null) {
+      _json["indexTime"] = indexTime;
+    }
+    if (productGroupedResults != null) {
+      _json["productGroupedResults"] =
+          productGroupedResults.map((value) => (value).toJson()).toList();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Information about the products similar to a single product in a query
+/// image.
+class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
+  /// The bounding polygon around the product detected in the query image.
+  GoogleCloudVisionV1p2beta1BoundingPoly boundingPoly;
+
+  /// List of results, one for each product match.
+  core.List<GoogleCloudVisionV1p2beta1ProductSearchResultsResult> results;
+
+  GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
+
+  GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          _json["boundingPoly"]);
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
+              new GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Information about a product.
+class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
+  /// The resource name of the image from the product that is the closest match
+  /// to the query.
+  core.String image;
+
+  /// The Product.
+  GoogleCloudVisionV1p2beta1Product product;
+
+  /// A confidence level on the match, ranging from 0 (no confidence) to
+  /// 1 (full confidence).
+  core.double score;
+
+  GoogleCloudVisionV1p2beta1ProductSearchResultsResult();
+
+  GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("image")) {
+      image = _json["image"];
+    }
+    if (_json.containsKey("product")) {
+      product =
+          new GoogleCloudVisionV1p2beta1Product.fromJson(_json["product"]);
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (image != null) {
+      _json["image"] = image;
+    }
+    if (product != null) {
+      _json["product"] = (product).toJson();
+    }
+    if (score != null) {
+      _json["score"] = score;
     }
     return _json;
   }
@@ -6284,7 +8342,7 @@ class GoogleCloudVisionV1p2beta1Word {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p2beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the word. Range [0, 1].
@@ -6705,7 +8763,7 @@ class GoogleCloudVisionV1p3beta1Block {
   ///         |    |
   ///         1----0
   ///
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p3beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results on the block. Range [0, 1].
@@ -6851,7 +8909,7 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
 /// Single crop hint that is used to generate a new crop when serving an image.
 class GoogleCloudVisionV1p3beta1CropHint {
   /// The bounding polygon for the crop region. The coordinates of the bounding
-  /// box are in the original image's scale, as returned in `ImageParams`.
+  /// box are in the original image's scale.
   GoogleCloudVisionV1p3beta1BoundingPoly boundingPoly;
 
   /// Confidence of this being a salient region.  Range [0, 1].
@@ -7097,7 +9155,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
   core.String blurredLikelihood;
 
   /// The bounding polygon around the face. The coordinates of the bounding box
-  /// are in the original image's scale, as returned in `ImageParams`.
+  /// are in the original image's scale.
   /// The bounding box is computed to "frame" the face in accordance with human
   /// expectations. It is based on the landmarker results.
   /// Note that one or more x and/or y coordinates may not be generated in the
@@ -7884,7 +9942,7 @@ class GoogleCloudVisionV1p3beta1Paragraph {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p3beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the paragraph. Range [0, 1].
@@ -8003,7 +10061,7 @@ class GoogleCloudVisionV1p3beta1Product {
 
   /// The category for the product identified by the reference image. This
   /// should
-  /// be either "homegoods" or "apparel".
+  /// be either "homegoods", "apparel", or "toys".
   ///
   /// This field is immutable.
   core.String productCategory;
@@ -8106,6 +10164,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
   /// this time are not reflected in the current results.
   core.String indexTime;
 
+  /// List of results grouped by products detected in the query image. Each
+  /// entry
+  /// corresponds to one bounding polygon in the query image, and contains the
+  /// matching products specific to that region. There may be duplicate product
+  /// matches in the union of all the per-product results.
+  core.List<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>
+      productGroupedResults;
+
   /// List of results, one for each product match.
   core.List<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> results;
 
@@ -8114,6 +10180,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
   GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(core.Map _json) {
     if (_json.containsKey("indexTime")) {
       indexTime = _json["indexTime"];
+    }
+    if (_json.containsKey("productGroupedResults")) {
+      productGroupedResults = (_json["productGroupedResults"] as core.List)
+          .map<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>(
+              (value) =>
+                  new GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+                      .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("results")) {
       results = (_json["results"] as core.List)
@@ -8129,6 +10203,49 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
         new core.Map<core.String, core.Object>();
     if (indexTime != null) {
       _json["indexTime"] = indexTime;
+    }
+    if (productGroupedResults != null) {
+      _json["productGroupedResults"] =
+          productGroupedResults.map((value) => (value).toJson()).toList();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Information about the products similar to a single product in a query
+/// image.
+class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
+  /// The bounding polygon around the product detected in the query image.
+  GoogleCloudVisionV1p3beta1BoundingPoly boundingPoly;
+
+  /// List of results, one for each product match.
+  core.List<GoogleCloudVisionV1p3beta1ProductSearchResultsResult> results;
+
+  GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
+
+  GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+          _json["boundingPoly"]);
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
+              new GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
     }
     if (results != null) {
       _json["results"] = results.map((value) => (value).toJson()).toList();
@@ -8148,9 +10265,6 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
 
   /// A confidence level on the match, ranging from 0 (no confidence) to
   /// 1 (full confidence).
-  ///
-  /// This field is returned only if `view` is set to `FULL` in
-  /// the request.
   core.double score;
 
   GoogleCloudVisionV1p3beta1ProductSearchResultsResult();
@@ -8980,7 +11094,7 @@ class GoogleCloudVisionV1p3beta1Word {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   GoogleCloudVisionV1p3beta1BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the word. Range [0, 1].
@@ -9035,6 +11149,41 @@ class GoogleCloudVisionV1p3beta1Word {
   }
 }
 
+/// Information about the products similar to a single product in a query
+/// image.
+class GroupedResult {
+  /// The bounding polygon around the product detected in the query image.
+  BoundingPoly boundingPoly;
+
+  /// List of results, one for each product match.
+  core.List<Result> results;
+
+  GroupedResult();
+
+  GroupedResult.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<Result>((value) => new Result.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Client image to perform Google Cloud Vision API tasks over.
 class Image {
   /// Image content, represented as a stream of bytes.
@@ -9045,7 +11194,7 @@ class Image {
     return convert.base64.decode(content);
   }
 
-  void set contentAsBytes(core.List<core.int> _bytes) {
+  set contentAsBytes(core.List<core.int> _bytes) {
     content =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -9132,6 +11281,9 @@ class ImageContext {
   /// Not used.
   LatLongRect latLongRect;
 
+  /// Parameters for product search.
+  ProductSearchParams productSearchParams;
+
   /// Parameters for web detection.
   WebDetectionParams webDetectionParams;
 
@@ -9146,6 +11298,10 @@ class ImageContext {
     }
     if (_json.containsKey("latLongRect")) {
       latLongRect = new LatLongRect.fromJson(_json["latLongRect"]);
+    }
+    if (_json.containsKey("productSearchParams")) {
+      productSearchParams =
+          new ProductSearchParams.fromJson(_json["productSearchParams"]);
     }
     if (_json.containsKey("webDetectionParams")) {
       webDetectionParams =
@@ -9164,6 +11320,9 @@ class ImageContext {
     }
     if (latLongRect != null) {
       _json["latLongRect"] = (latLongRect).toJson();
+    }
+    if (productSearchParams != null) {
+      _json["productSearchParams"] = (productSearchParams).toJson();
     }
     if (webDetectionParams != null) {
       _json["webDetectionParams"] = (webDetectionParams).toJson();
@@ -9249,6 +11408,186 @@ class ImageSource {
   }
 }
 
+/// The Google Cloud Storage location for a csv file which preserves a list of
+/// ImportProductSetRequests in each line.
+class ImportProductSetsGcsSource {
+  /// The Google Cloud Storage URI of the input csv file.
+  ///
+  /// The URI must start with `gs://`.
+  ///
+  /// The format of the input csv file should be one image per line.
+  /// In each line, there are 8 columns.
+  ///
+  /// 1.  image-uri
+  /// 2.  image-id
+  /// 3.  product-set-id
+  /// 4.  product-id
+  /// 5.  product-category
+  /// 6.  product-display-name
+  /// 7.  labels
+  /// 8.  bounding-poly
+  ///
+  /// The `image-uri`, `product-set-id`, `product-id`, and `product-category`
+  /// columns are required. All other columns are optional.
+  ///
+  /// If the `ProductSet` or `Product` specified by the `product-set-id` and
+  /// `product-id` values does not exist, then the system will create a new
+  /// `ProductSet` or `Product` for the image. In this case, the
+  /// `product-display-name` column refers to
+  /// display_name, the
+  /// `product-category` column refers to
+  /// product_category, and the
+  /// `labels` column refers to product_labels.
+  ///
+  /// The `image-id` column is optional but must be unique if provided. If it is
+  /// empty, the system will automatically assign a unique id to the image.
+  ///
+  /// The `product-display-name` column is optional. If it is empty, the system
+  /// sets the display_name field for the product to a
+  /// space (" "). You can update the `display_name` later by using the API.
+  ///
+  /// If a `Product` with the specified `product-id` already exists, then the
+  /// system ignores the `product-display-name`, `product-category`, and
+  /// `labels`
+  /// columns.
+  ///
+  /// The `labels` column (optional) is a line containing a list of
+  /// comma-separated key-value pairs, in the following format:
+  ///
+  ///     "key_1=value_1,key_2=value_2,...,key_n=value_n"
+  ///
+  /// The `bounding-poly` column (optional) identifies one region of
+  /// interest from the image in the same manner as `CreateReferenceImage`. If
+  /// you do not specify the `bounding-poly` column, then the system will try to
+  /// detect regions of interest automatically.
+  ///
+  /// At most one `bounding-poly` column is allowed per line. If the image
+  /// contains multiple regions of interest, add a line to the CSV file that
+  /// includes the same product information, and the `bounding-poly` values for
+  /// each region of interest.
+  ///
+  /// The `bounding-poly` column must contain an even number of comma-separated
+  /// numbers, in the format "p1_x,p1_y,p2_x,p2_y,...,pn_x,pn_y". Use
+  /// non-negative integers for absolute bounding polygons, and float values
+  /// in [0, 1] for normalized bounding polygons.
+  ///
+  /// The system will resize the image if the image resolution is too
+  /// large to process (larger than 20MP).
+  core.String csvFileUri;
+
+  ImportProductSetsGcsSource();
+
+  ImportProductSetsGcsSource.fromJson(core.Map _json) {
+    if (_json.containsKey("csvFileUri")) {
+      csvFileUri = _json["csvFileUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (csvFileUri != null) {
+      _json["csvFileUri"] = csvFileUri;
+    }
+    return _json;
+  }
+}
+
+/// The input content for the `ImportProductSets` method.
+class ImportProductSetsInputConfig {
+  /// The Google Cloud Storage location for a csv file which preserves a list
+  /// of ImportProductSetRequests in each line.
+  ImportProductSetsGcsSource gcsSource;
+
+  ImportProductSetsInputConfig();
+
+  ImportProductSetsInputConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("gcsSource")) {
+      gcsSource = new ImportProductSetsGcsSource.fromJson(_json["gcsSource"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gcsSource != null) {
+      _json["gcsSource"] = (gcsSource).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request message for the `ImportProductSets` method.
+class ImportProductSetsRequest {
+  /// The input content for the list of requests.
+  ImportProductSetsInputConfig inputConfig;
+
+  ImportProductSetsRequest();
+
+  ImportProductSetsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("inputConfig")) {
+      inputConfig =
+          new ImportProductSetsInputConfig.fromJson(_json["inputConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (inputConfig != null) {
+      _json["inputConfig"] = (inputConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ImportProductSets` method.
+///
+/// This message is returned by the
+/// google.longrunning.Operations.GetOperation method in the returned
+/// google.longrunning.Operation.response field.
+class ImportProductSetsResponse {
+  /// The list of reference_images that are imported successfully.
+  core.List<ReferenceImage> referenceImages;
+
+  /// The rpc status for each ImportProductSet request, including both successes
+  /// and errors.
+  ///
+  /// The number of statuses here matches the number of lines in the csv file,
+  /// and statuses[i] stores the success or failure status of processing the
+  /// i-th
+  /// line of the csv, starting from line 0.
+  core.List<Status> statuses;
+
+  ImportProductSetsResponse();
+
+  ImportProductSetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("referenceImages")) {
+      referenceImages = (_json["referenceImages"] as core.List)
+          .map<ReferenceImage>((value) => new ReferenceImage.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("statuses")) {
+      statuses = (_json["statuses"] as core.List)
+          .map<Status>((value) => new Status.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (referenceImages != null) {
+      _json["referenceImages"] =
+          referenceImages.map((value) => (value).toJson()).toList();
+    }
+    if (statuses != null) {
+      _json["statuses"] = statuses.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The desired input location and metadata.
 class InputConfig {
   /// The Google Cloud Storage location to read the input from.
@@ -9277,6 +11616,40 @@ class InputConfig {
     }
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
+    }
+    return _json;
+  }
+}
+
+/// A product label represented as a key-value pair.
+class KeyValue {
+  /// The key of the label attached to the product. Cannot be empty and cannot
+  /// exceed 128 bytes.
+  core.String key;
+
+  /// The value of the label attached to the product. Cannot be empty and
+  /// cannot exceed 128 bytes.
+  core.String value;
+
+  KeyValue();
+
+  KeyValue.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -9450,6 +11823,217 @@ class ListOperationsResponse {
     if (operations != null) {
       _json["operations"] =
           operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ListProductSets` method.
+class ListProductSetsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String nextPageToken;
+
+  /// List of ProductSets.
+  core.List<ProductSet> productSets;
+
+  ListProductSetsResponse();
+
+  ListProductSetsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("productSets")) {
+      productSets = (_json["productSets"] as core.List)
+          .map<ProductSet>((value) => new ProductSet.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (productSets != null) {
+      _json["productSets"] =
+          productSets.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ListProductsInProductSet` method.
+class ListProductsInProductSetResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String nextPageToken;
+
+  /// The list of Products.
+  core.List<Product> products;
+
+  ListProductsInProductSetResponse();
+
+  ListProductsInProductSetResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("products")) {
+      products = (_json["products"] as core.List)
+          .map<Product>((value) => new Product.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (products != null) {
+      _json["products"] = products.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ListProducts` method.
+class ListProductsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
+  core.String nextPageToken;
+
+  /// List of products.
+  core.List<Product> products;
+
+  ListProductsResponse();
+
+  ListProductsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("products")) {
+      products = (_json["products"] as core.List)
+          .map<Product>((value) => new Product.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (products != null) {
+      _json["products"] = products.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `ListReferenceImages` method.
+class ListReferenceImagesResponse {
+  /// The next_page_token returned from a previous List request, if any.
+  core.String nextPageToken;
+
+  /// The maximum number of items to return. Default 10, maximum 100.
+  core.int pageSize;
+
+  /// The list of reference images.
+  core.List<ReferenceImage> referenceImages;
+
+  ListReferenceImagesResponse();
+
+  ListReferenceImagesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("referenceImages")) {
+      referenceImages = (_json["referenceImages"] as core.List)
+          .map<ReferenceImage>((value) => new ReferenceImage.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (referenceImages != null) {
+      _json["referenceImages"] =
+          referenceImages.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Set of detected objects with bounding boxes.
+class LocalizedObjectAnnotation {
+  /// Image region to which this object belongs. This must be populated.
+  BoundingPoly boundingPoly;
+
+  /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  core.String languageCode;
+
+  /// Object ID that should align with EntityAnnotation mid.
+  core.String mid;
+
+  /// Object name, expressed in its `language_code` language.
+  core.String name;
+
+  /// Score of the result. Range [0, 1].
+  core.double score;
+
+  LocalizedObjectAnnotation();
+
+  LocalizedObjectAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("mid")) {
+      mid = _json["mid"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (mid != null) {
+      _json["mid"] = mid;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (score != null) {
+      _json["score"] = score;
     }
     return _json;
   }
@@ -9764,7 +12348,7 @@ class Paragraph {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the paragraph. Range [0, 1].
@@ -9857,6 +12441,271 @@ class Position {
   }
 }
 
+/// A Product contains ReferenceImages.
+class Product {
+  /// User-provided metadata to be stored with this product. Must be at most
+  /// 4096
+  /// characters long.
+  core.String description;
+
+  /// The user-provided name for this Product. Must not be empty. Must be at
+  /// most
+  /// 4096 characters long.
+  core.String displayName;
+
+  /// The resource name of the product.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
+  ///
+  /// This field is ignored when creating a product.
+  core.String name;
+
+  /// The category for the product identified by the reference image. This
+  /// should
+  /// be either "homegoods", "apparel", or "toys".
+  ///
+  /// This field is immutable.
+  core.String productCategory;
+
+  /// Key-value pairs that can be attached to a product. At query time,
+  /// constraints can be specified based on the product_labels.
+  ///
+  /// Note that integer values can be provided as strings, e.g. "1199". Only
+  /// strings with integer values can match a range-based restriction which is
+  /// to be supported soon.
+  ///
+  /// Multiple values can be assigned to the same key. One product may have up
+  /// to
+  /// 100 product_labels.
+  core.List<KeyValue> productLabels;
+
+  Product();
+
+  Product.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("productCategory")) {
+      productCategory = _json["productCategory"];
+    }
+    if (_json.containsKey("productLabels")) {
+      productLabels = (_json["productLabels"] as core.List)
+          .map<KeyValue>((value) => new KeyValue.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (productCategory != null) {
+      _json["productCategory"] = productCategory;
+    }
+    if (productLabels != null) {
+      _json["productLabels"] =
+          productLabels.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Parameters for a product search request.
+class ProductSearchParams {
+  /// The bounding polygon around the area of interest in the image.
+  /// Optional. If it is not specified, system discretion will be applied.
+  BoundingPoly boundingPoly;
+
+  /// The filtering expression. This can be used to restrict search results
+  /// based
+  /// on Product labels. We currently support an AND of OR of key-value
+  /// expressions, where each expression within an OR must have the same key.
+  ///
+  /// For example, "(color = red OR color = blue) AND brand = Google" is
+  /// acceptable, but not "(color = red OR brand = Google)" or "color: red".
+  core.String filter;
+
+  /// The list of product categories to search in. Currently, we only consider
+  /// the first category, and either "homegoods", "apparel", or "toys" should be
+  /// specified.
+  core.List<core.String> productCategories;
+
+  /// The resource name of a ProductSet to be searched for similar images.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+  core.String productSet;
+
+  ProductSearchParams();
+
+  ProductSearchParams.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPoly")) {
+      boundingPoly = new BoundingPoly.fromJson(_json["boundingPoly"]);
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+    if (_json.containsKey("productCategories")) {
+      productCategories =
+          (_json["productCategories"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("productSet")) {
+      productSet = _json["productSet"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPoly != null) {
+      _json["boundingPoly"] = (boundingPoly).toJson();
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    if (productCategories != null) {
+      _json["productCategories"] = productCategories;
+    }
+    if (productSet != null) {
+      _json["productSet"] = productSet;
+    }
+    return _json;
+  }
+}
+
+/// Results for a product search request.
+class ProductSearchResults {
+  /// Timestamp of the index which provided these results. Changes made after
+  /// this time are not reflected in the current results.
+  core.String indexTime;
+
+  /// List of results grouped by products detected in the query image. Each
+  /// entry
+  /// corresponds to one bounding polygon in the query image, and contains the
+  /// matching products specific to that region. There may be duplicate product
+  /// matches in the union of all the per-product results.
+  core.List<GroupedResult> productGroupedResults;
+
+  /// List of results, one for each product match.
+  core.List<Result> results;
+
+  ProductSearchResults();
+
+  ProductSearchResults.fromJson(core.Map _json) {
+    if (_json.containsKey("indexTime")) {
+      indexTime = _json["indexTime"];
+    }
+    if (_json.containsKey("productGroupedResults")) {
+      productGroupedResults = (_json["productGroupedResults"] as core.List)
+          .map<GroupedResult>((value) => new GroupedResult.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
+          .map<Result>((value) => new Result.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (indexTime != null) {
+      _json["indexTime"] = indexTime;
+    }
+    if (productGroupedResults != null) {
+      _json["productGroupedResults"] =
+          productGroupedResults.map((value) => (value).toJson()).toList();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A ProductSet contains Products. A ProductSet can contain a maximum of 1
+/// million reference images. If the limit is exceeded, periodic indexing will
+/// fail.
+class ProductSet {
+  /// The user-provided name for this ProductSet. Must not be empty. Must be at
+  /// most 4096 characters long.
+  core.String displayName;
+
+  /// Output only. If there was an error with indexing the product set, the
+  /// field
+  /// is populated.
+  ///
+  /// This field is ignored when creating a ProductSet.
+  Status indexError;
+
+  /// Output only. The time at which this ProductSet was last indexed. Query
+  /// results will reflect all updates before this time. If this ProductSet has
+  /// never been indexed, this timestamp is the default value
+  /// "1970-01-01T00:00:00Z".
+  ///
+  /// This field is ignored when creating a ProductSet.
+  core.String indexTime;
+
+  /// The resource name of the ProductSet.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
+  ///
+  /// This field is ignored when creating a ProductSet.
+  core.String name;
+
+  ProductSet();
+
+  ProductSet.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("indexError")) {
+      indexError = new Status.fromJson(_json["indexError"]);
+    }
+    if (_json.containsKey("indexTime")) {
+      indexTime = _json["indexTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (indexError != null) {
+      _json["indexError"] = (indexError).toJson();
+    }
+    if (indexTime != null) {
+      _json["indexTime"] = indexTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// A `Property` consists of a user-supplied name/value pair.
 class Property {
   /// Name of the property.
@@ -9893,6 +12742,137 @@ class Property {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// A `ReferenceImage` represents a product image and its associated metadata,
+/// such as bounding boxes.
+class ReferenceImage {
+  /// Bounding polygons around the areas of interest in the reference image.
+  /// Optional. If this field is empty, the system will try to detect regions of
+  /// interest. At most 10 bounding polygons will be used.
+  ///
+  /// The provided shape is converted into a non-rotated rectangle. Once
+  /// converted, the small edge of the rectangle must be greater than or equal
+  /// to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5
+  /// is not).
+  core.List<BoundingPoly> boundingPolys;
+
+  /// The resource name of the reference image.
+  ///
+  /// Format is:
+  ///
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
+  ///
+  /// This field is ignored when creating a reference image.
+  core.String name;
+
+  /// The Google Cloud Storage URI of the reference image.
+  ///
+  /// The URI must start with `gs://`.
+  ///
+  /// Required.
+  core.String uri;
+
+  ReferenceImage();
+
+  ReferenceImage.fromJson(core.Map _json) {
+    if (_json.containsKey("boundingPolys")) {
+      boundingPolys = (_json["boundingPolys"] as core.List)
+          .map<BoundingPoly>((value) => new BoundingPoly.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boundingPolys != null) {
+      _json["boundingPolys"] =
+          boundingPolys.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+/// Request message for the `RemoveProductFromProductSet` method.
+class RemoveProductFromProductSetRequest {
+  /// The resource name for the Product to be removed from this ProductSet.
+  ///
+  /// Format is:
+  /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
+  core.String product;
+
+  RemoveProductFromProductSetRequest();
+
+  RemoveProductFromProductSetRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("product")) {
+      product = _json["product"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (product != null) {
+      _json["product"] = product;
+    }
+    return _json;
+  }
+}
+
+/// Information about a product.
+class Result {
+  /// The resource name of the image from the product that is the closest match
+  /// to the query.
+  core.String image;
+
+  /// The Product.
+  Product product;
+
+  /// A confidence level on the match, ranging from 0 (no confidence) to
+  /// 1 (full confidence).
+  core.double score;
+
+  Result();
+
+  Result.fromJson(core.Map _json) {
+    if (_json.containsKey("image")) {
+      image = _json["image"];
+    }
+    if (_json.containsKey("product")) {
+      product = new Product.fromJson(_json["product"]);
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (image != null) {
+      _json["image"] = image;
+    }
+    if (product != null) {
+      _json["product"] = (product).toJson();
+    }
+    if (score != null) {
+      _json["score"] = score;
     }
     return _json;
   }
@@ -10611,7 +13591,7 @@ class Word {
   ///      2----3
   ///      |    |
   ///      1----0
-  ///   and the vertice order will still be (0, 1, 2, 3).
+  ///   and the vertex order will still be (0, 1, 2, 3).
   BoundingPoly boundingBox;
 
   /// Confidence of the OCR results for the word. Range [0, 1].

@@ -45,8 +45,8 @@ class YoutubeAnalyticsApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
 
   YoutubeAnalyticsApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "youtube/analytics/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "youtube/analytics/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -86,12 +86,12 @@ class GroupItemsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -148,12 +148,12 @@ class GroupItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<GroupItem> insert(GroupItem request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -208,12 +208,12 @@ class GroupItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<GroupItemListResponse> list(core.String groupId,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (groupId == null) {
       throw new core.ArgumentError("Parameter groupId is required.");
@@ -273,12 +273,12 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String id,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
@@ -335,12 +335,12 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Group> insert(Group request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -409,12 +409,12 @@ class GroupsResourceApi {
       core.String onBehalfOfContentOwner,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (id != null) {
       _queryParams["id"] = [id];
@@ -474,12 +474,12 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Group> update(Group request,
       {core.String onBehalfOfContentOwner, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -593,12 +593,12 @@ class ReportsResourceApi {
       core.String sort,
       core.int start_index,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (ids == null) {
       throw new core.ArgumentError("Parameter ids is required.");

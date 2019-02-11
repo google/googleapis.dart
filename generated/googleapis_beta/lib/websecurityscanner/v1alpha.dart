@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client websecurityscanner/v1alpha';
 
-/// Web Security Scanner API (under development).
+/// Scans your Compute and App Engine apps for common web vulnerabilities.
 class WebsecurityscannerApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -27,8 +27,8 @@ class WebsecurityscannerApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   WebsecurityscannerApi(http.Client client,
-      {core.String rootUrl: "https://websecurityscanner.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://websecurityscanner.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -74,12 +74,12 @@ class ProjectsScanConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ScanConfig> create(ScanConfig request, core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -124,12 +124,12 @@ class ProjectsScanConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -169,12 +169,12 @@ class ProjectsScanConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ScanConfig> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -225,12 +225,12 @@ class ProjectsScanConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListScanConfigsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -287,12 +287,12 @@ class ProjectsScanConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ScanConfig> patch(ScanConfig request, core.String name,
       {core.String updateMask, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -341,12 +341,12 @@ class ProjectsScanConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<ScanRun> start(StartScanRunRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -406,12 +406,12 @@ class ProjectsScanConfigsScanRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ScanRun> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -441,15 +441,15 @@ class ProjectsScanConfigsScanRunsResourceApi {
   /// format 'projects/{projectId}/scanConfigs/{scanConfigId}'.
   /// Value must have pattern "^projects/[^/]+/scanConfigs/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of ScanRuns to return, can be limited by
-  /// server.
-  /// If not specified or not positive, the implementation will select a
-  /// reasonable value.
-  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a
   /// `next_page_token` value returned from a previous List request.
   /// If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - The maximum number of ScanRuns to return, can be limited by
+  /// server.
+  /// If not specified or not positive, the implementation will select a
+  /// reasonable value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -462,22 +462,22 @@ class ProjectsScanConfigsScanRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScanRunsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -521,12 +521,12 @@ class ProjectsScanConfigsScanRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<ScanRun> stop(StopScanRunRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -568,15 +568,15 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/scanConfigs/[^/]+/scanRuns/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of CrawledUrls to return, can be limited
-  /// by server.
-  /// If not specified or not positive, the implementation will select a
-  /// reasonable value.
-  ///
   /// [pageToken] - A token identifying a page of results to be returned. This
   /// should be a
   /// `next_page_token` value returned from a previous List request.
   /// If unspecified, the first page of results is returned.
+  ///
+  /// [pageSize] - The maximum number of CrawledUrls to return, can be limited
+  /// by server.
+  /// If not specified or not positive, the implementation will select a
+  /// reasonable value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,22 +589,22 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCrawledUrlsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -654,12 +654,12 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListFindingTypeStatsResponse> list(core.String parent,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -711,12 +711,12 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Finding> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -778,12 +778,12 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
       core.String filter,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
@@ -1021,6 +1021,10 @@ class Finding {
   /// - "XSS_ANGULAR_CALLBACK" : A cross-site scripting (XSS) vulnerability in
   /// AngularJS module that
   /// occurs when a user-provided string is interpolated by Angular.
+  /// - "INVALID_HEADER" : A malformed or invalid valued header.
+  /// - "MISSPELLED_SECURITY_HEADER_NAME" : Misspelled security header name.
+  /// - "MISMATCHING_SECURITY_HEADER_VALUES" : Mismatching values in a duplicate
+  /// security header.
   core.String findingType;
 
   /// Output only.
@@ -1234,6 +1238,10 @@ class FindingTypeStats {
   /// - "XSS_ANGULAR_CALLBACK" : A cross-site scripting (XSS) vulnerability in
   /// AngularJS module that
   /// occurs when a user-provided string is interpolated by Angular.
+  /// - "INVALID_HEADER" : A malformed or invalid valued header.
+  /// - "MISSPELLED_SECURITY_HEADER_NAME" : Misspelled security header name.
+  /// - "MISMATCHING_SECURITY_HEADER_VALUES" : Mismatching values in a duplicate
+  /// security header.
   core.String findingType;
 
   FindingTypeStats();
@@ -1539,6 +1547,7 @@ class OutdatedLibrary {
 }
 
 /// A ScanConfig resource contains the configurations to launch a scan.
+/// next id: 12
 class ScanConfig {
   /// The authentication configuration. If specified, service will use the
   /// authentication configuration during scanning.
@@ -1551,6 +1560,9 @@ class ScanConfig {
   /// Required.
   /// The user provided display name of the ScanConfig.
   core.String displayName;
+
+  /// Latest ScanRun if available.
+  ScanRun latestRun;
 
   /// The maximum QPS during scanning. A valid value ranges from 5 to 20
   /// inclusively. If the field is unspecified or its value is set 0, server
@@ -1598,6 +1610,9 @@ class ScanConfig {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("latestRun")) {
+      latestRun = new ScanRun.fromJson(_json["latestRun"]);
+    }
     if (_json.containsKey("maxQps")) {
       maxQps = _json["maxQps"];
     }
@@ -1630,6 +1645,9 @@ class ScanConfig {
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (latestRun != null) {
+      _json["latestRun"] = (latestRun).toJson();
     }
     if (maxQps != null) {
       _json["maxQps"] = maxQps;

@@ -16,16 +16,17 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client script/v1';
 
-/// An API for managing and executing Google Apps Script projects.
+/// Manages and executes Google Apps Script projects.
 class ScriptApi {
-  /// Read, send, delete, and manage your email
+  /// Read, compose, send, and permanently delete all your email from Gmail
   static const MailGoogleComScope = "https://mail.google.com/";
 
-  /// Manage your calendars
+  /// See, edit, share, and permanently delete all the calendars you can access
+  /// using Google Calendar
   static const WwwGoogleComCalendarFeedsScope =
       "https://www.google.com/calendar/feeds";
 
-  /// Manage your contacts
+  /// See, edit, download, and permanently delete your contacts
   static const WwwGoogleComM8FeedsScope = "https://www.google.com/m8/feeds";
 
   /// View and manage the provisioning of groups on your domain
@@ -39,7 +40,7 @@ class ScriptApi {
   /// View and manage your Google Docs documents
   static const DocumentsScope = "https://www.googleapis.com/auth/documents";
 
-  /// View and manage the files in your Google Drive
+  /// See, edit, create, and delete all of your Google Drive files
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
   /// View and manage your forms in Google Drive
@@ -52,7 +53,31 @@ class ScriptApi {
   /// View and manage your Google Groups
   static const GroupsScope = "https://www.googleapis.com/auth/groups";
 
-  /// View and manage your spreadsheets in Google Drive
+  /// Create and update Google Apps Script deployments
+  static const ScriptDeploymentsScope =
+      "https://www.googleapis.com/auth/script.deployments";
+
+  /// View Google Apps Script deployments
+  static const ScriptDeploymentsReadonlyScope =
+      "https://www.googleapis.com/auth/script.deployments.readonly";
+
+  /// View Google Apps Script project's metrics
+  static const ScriptMetricsScope =
+      "https://www.googleapis.com/auth/script.metrics";
+
+  /// View Google Apps Script processes
+  static const ScriptProcessesScope =
+      "https://www.googleapis.com/auth/script.processes";
+
+  /// Create and update Google Apps Script projects
+  static const ScriptProjectsScope =
+      "https://www.googleapis.com/auth/script.projects";
+
+  /// View Google Apps Script projects
+  static const ScriptProjectsReadonlyScope =
+      "https://www.googleapis.com/auth/script.projects.readonly";
+
+  /// See, edit, create, and delete your spreadsheets in Google Drive
   static const SpreadsheetsScope =
       "https://www.googleapis.com/auth/spreadsheets";
 
@@ -67,8 +92,8 @@ class ScriptApi {
   ScriptsResourceApi get scripts => new ScriptsResourceApi(_requester);
 
   ScriptApi(http.Client client,
-      {core.String rootUrl: "https://script.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://script.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -82,22 +107,6 @@ class ProcessesResourceApi {
   /// such as process type and current status.
   ///
   /// Request parameters:
-  ///
-  /// [userProcessFilter_deploymentId] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with a specific deployment ID.
-  ///
-  /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This
-  /// should be set to the value of `nextPageToken` from a previous response.
-  ///
-  /// [userProcessFilter_endTime] - Optional field used to limit returned
-  /// processes to those that completed
-  /// on or before the given timestamp.
-  ///
-  /// [pageSize] - The maximum number of returned processes per page of results.
-  /// Defaults to
-  /// 50.
   ///
   /// [userProcessFilter_startTime] - Optional field used to limit returned
   /// processes to those that were
@@ -127,6 +136,22 @@ class ProcessesResourceApi {
   /// processes to those having one of
   /// the specified process statuses.
   ///
+  /// [userProcessFilter_deploymentId] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with a specific deployment ID.
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This
+  /// should be set to the value of `nextPageToken` from a previous response.
+  ///
+  /// [userProcessFilter_endTime] - Optional field used to limit returned
+  /// processes to those that completed
+  /// on or before the given timestamp.
+  ///
+  /// [pageSize] - The maximum number of returned processes per page of results.
+  /// Defaults to
+  /// 50.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -138,39 +163,25 @@ class ProcessesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserProcessesResponse> list(
-      {core.String userProcessFilter_deploymentId,
-      core.String pageToken,
-      core.String userProcessFilter_endTime,
-      core.int pageSize,
-      core.String userProcessFilter_startTime,
+      {core.String userProcessFilter_startTime,
       core.String userProcessFilter_projectName,
       core.List<core.String> userProcessFilter_userAccessLevels,
       core.String userProcessFilter_functionName,
       core.String userProcessFilter_scriptId,
       core.List<core.String> userProcessFilter_types,
       core.List<core.String> userProcessFilter_statuses,
+      core.String userProcessFilter_deploymentId,
+      core.String pageToken,
+      core.String userProcessFilter_endTime,
+      core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
-    if (userProcessFilter_deploymentId != null) {
-      _queryParams["userProcessFilter.deploymentId"] = [
-        userProcessFilter_deploymentId
-      ];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (userProcessFilter_endTime != null) {
-      _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (userProcessFilter_startTime != null) {
       _queryParams["userProcessFilter.startTime"] = [
         userProcessFilter_startTime
@@ -199,6 +210,20 @@ class ProcessesResourceApi {
     if (userProcessFilter_statuses != null) {
       _queryParams["userProcessFilter.statuses"] = userProcessFilter_statuses;
     }
+    if (userProcessFilter_deploymentId != null) {
+      _queryParams["userProcessFilter.deploymentId"] = [
+        userProcessFilter_deploymentId
+      ];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (userProcessFilter_endTime != null) {
+      _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -220,6 +245,28 @@ class ProcessesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process statuses.
+  ///
+  /// [scriptProcessFilter_functionName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// a script function with the given function name.
+  ///
+  /// [scriptProcessFilter_startTime] - Optional field used to limit returned
+  /// processes to those that were
+  /// started on or after the given timestamp.
+  ///
+  /// [scriptProcessFilter_deploymentId] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with a specific deployment ID.
+  ///
+  /// [scriptId] - The script ID of the project whose processes are listed.
+  ///
+  /// [scriptProcessFilter_types] - Optional field used to limit returned
+  /// processes to those having one of
+  /// the specified process types.
+  ///
   /// [pageToken] - The token for continuing a previous list request on the next
   /// page. This
   /// should be set to the value of `nextPageToken` from a previous response.
@@ -236,28 +283,6 @@ class ProcessesResourceApi {
   /// returned processes to those having one of
   /// the specified user access levels.
   ///
-  /// [scriptProcessFilter_statuses] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process statuses.
-  ///
-  /// [scriptProcessFilter_startTime] - Optional field used to limit returned
-  /// processes to those that were
-  /// started on or after the given timestamp.
-  ///
-  /// [scriptProcessFilter_functionName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// a script function with the given function name.
-  ///
-  /// [scriptProcessFilter_deploymentId] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with a specific deployment ID.
-  ///
-  /// [scriptId] - The script ID of the project whose processes are listed.
-  ///
-  /// [scriptProcessFilter_types] - Optional field used to limit returned
-  /// processes to those having one of
-  /// the specified process types.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -269,24 +294,49 @@ class ProcessesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScriptProcessesResponse> listScriptProcesses(
-      {core.String pageToken,
-      core.int pageSize,
-      core.String scriptProcessFilter_endTime,
-      core.List<core.String> scriptProcessFilter_userAccessLevels,
-      core.List<core.String> scriptProcessFilter_statuses,
-      core.String scriptProcessFilter_startTime,
+      {core.List<core.String> scriptProcessFilter_statuses,
       core.String scriptProcessFilter_functionName,
+      core.String scriptProcessFilter_startTime,
       core.String scriptProcessFilter_deploymentId,
       core.String scriptId,
       core.List<core.String> scriptProcessFilter_types,
+      core.String pageToken,
+      core.int pageSize,
+      core.String scriptProcessFilter_endTime,
+      core.List<core.String> scriptProcessFilter_userAccessLevels,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
+    if (scriptProcessFilter_statuses != null) {
+      _queryParams["scriptProcessFilter.statuses"] =
+          scriptProcessFilter_statuses;
+    }
+    if (scriptProcessFilter_functionName != null) {
+      _queryParams["scriptProcessFilter.functionName"] = [
+        scriptProcessFilter_functionName
+      ];
+    }
+    if (scriptProcessFilter_startTime != null) {
+      _queryParams["scriptProcessFilter.startTime"] = [
+        scriptProcessFilter_startTime
+      ];
+    }
+    if (scriptProcessFilter_deploymentId != null) {
+      _queryParams["scriptProcessFilter.deploymentId"] = [
+        scriptProcessFilter_deploymentId
+      ];
+    }
+    if (scriptId != null) {
+      _queryParams["scriptId"] = [scriptId];
+    }
+    if (scriptProcessFilter_types != null) {
+      _queryParams["scriptProcessFilter.types"] = scriptProcessFilter_types;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -301,31 +351,6 @@ class ProcessesResourceApi {
     if (scriptProcessFilter_userAccessLevels != null) {
       _queryParams["scriptProcessFilter.userAccessLevels"] =
           scriptProcessFilter_userAccessLevels;
-    }
-    if (scriptProcessFilter_statuses != null) {
-      _queryParams["scriptProcessFilter.statuses"] =
-          scriptProcessFilter_statuses;
-    }
-    if (scriptProcessFilter_startTime != null) {
-      _queryParams["scriptProcessFilter.startTime"] = [
-        scriptProcessFilter_startTime
-      ];
-    }
-    if (scriptProcessFilter_functionName != null) {
-      _queryParams["scriptProcessFilter.functionName"] = [
-        scriptProcessFilter_functionName
-      ];
-    }
-    if (scriptProcessFilter_deploymentId != null) {
-      _queryParams["scriptProcessFilter.deploymentId"] = [
-        scriptProcessFilter_deploymentId
-      ];
-    }
-    if (scriptId != null) {
-      _queryParams["scriptId"] = [scriptId];
-    }
-    if (scriptProcessFilter_types != null) {
-      _queryParams["scriptProcessFilter.types"] = scriptProcessFilter_types;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -373,12 +398,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Project> create(CreateProjectRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -415,12 +440,12 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Project> get(core.String scriptId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -463,12 +488,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Content> getContent(core.String scriptId,
       {core.int versionNumber, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -500,15 +525,15 @@ class ProjectsResourceApi {
   ///
   /// [scriptId] - Required field indicating the script to get metrics for.
   ///
+  /// [metricsFilter_deploymentId] - Optional field indicating a specific
+  /// deployment to retrieve metrics from.
+  ///
   /// [metricsGranularity] - Required field indicating what granularity of
   /// metrics are returned.
   /// Possible string values are:
   /// - "UNSPECIFIED_GRANULARITY" : A UNSPECIFIED_GRANULARITY.
   /// - "WEEKLY" : A WEEKLY.
   /// - "DAILY" : A DAILY.
-  ///
-  /// [metricsFilter_deploymentId] - Optional field indicating a specific
-  /// deployment to retrieve metrics from.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -521,24 +546,24 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Metrics> getMetrics(core.String scriptId,
-      {core.String metricsGranularity,
-      core.String metricsFilter_deploymentId,
+      {core.String metricsFilter_deploymentId,
+      core.String metricsGranularity,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
     }
-    if (metricsGranularity != null) {
-      _queryParams["metricsGranularity"] = [metricsGranularity];
-    }
     if (metricsFilter_deploymentId != null) {
       _queryParams["metricsFilter.deploymentId"] = [metricsFilter_deploymentId];
+    }
+    if (metricsGranularity != null) {
+      _queryParams["metricsGranularity"] = [metricsGranularity];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -581,12 +606,12 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Content> updateContent(Content request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -639,12 +664,12 @@ class ProjectsDeploymentsResourceApi {
   async.Future<Deployment> create(
       DeploymentConfig request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -689,12 +714,12 @@ class ProjectsDeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -740,12 +765,12 @@ class ProjectsDeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Deployment> get(core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -796,12 +821,12 @@ class ProjectsDeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDeploymentsResponse> list(core.String scriptId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -852,12 +877,12 @@ class ProjectsDeploymentsResourceApi {
   async.Future<Deployment> update(UpdateDeploymentRequest request,
       core.String scriptId, core.String deploymentId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -914,12 +939,12 @@ class ProjectsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Version> create(Version request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -964,12 +989,12 @@ class ProjectsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Version> get(core.String scriptId, core.int versionNumber,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -1020,12 +1045,12 @@ class ProjectsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(core.String scriptId,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
@@ -1059,8 +1084,9 @@ class ScriptsResourceApi {
 
   ScriptsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Runs a function in an Apps Script project. The project must be deployed
-  /// for use with the Apps Script API.
+  /// Runs a function in an Apps Script project. The script project must be
+  /// deployed for use with the Apps Script API and the calling application must
+  /// share the same Cloud Platform project.
   ///
   /// This method requires authorization with an OAuth 2.0 token that includes
   /// at
@@ -1069,6 +1095,10 @@ class ScriptsResourceApi {
   /// executed through this API. To find the correct scopes to include in the
   /// authentication token, open the project in the script editor, then select
   /// **File > Project properties** and click the **Scopes** tab.
+  ///
+  /// The error `403, PERMISSION_DENIED: The caller does not have permission`
+  /// indicates that the Cloud Platform project used to authorize the request is
+  /// not the same as the one used by the script.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1090,12 +1120,12 @@ class ScriptsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> run(ExecutionRequest request, core.String scriptId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1439,7 +1469,8 @@ class ExecutionRequest {
   core.bool devMode;
 
   /// The name of the function to execute in the given script. The name does not
-  /// include parentheses or parameters.
+  /// include parentheses or parameters. It can reference a function in an
+  /// included library such as `Library.libFunction1`.
   core.String function;
 
   /// The parameters to be passed to the function being executed. The object
@@ -1853,6 +1884,7 @@ class GoogleAppsScriptTypeProcess {
   /// - "SIMPLE_TRIGGER" : The process was started from a G Suite simple
   /// trigger.
   /// - "MENU" : The process was started from a G Suite menu item.
+  /// - "BATCH_TASK" : The process was started as a task in a batch job.
   core.String processType;
 
   /// Name of the script being executed.

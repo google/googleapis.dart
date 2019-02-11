@@ -31,8 +31,8 @@ class PubsubApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   PubsubApi(http.Client client,
-      {core.String rootUrl: "https://pubsub.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://pubsub.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -56,11 +56,17 @@ class ProjectsSnapshotsResourceApi {
   ProjectsSnapshotsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a snapshot from the requested subscription.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// Creates a snapshot from the requested subscription. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow
+  /// you to manage message acknowledgments in bulk. That is, you can set the
+  /// acknowledgment state of messages in an existing subscription to the state
+  /// captured by a snapshot.
+  /// <br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
-  /// use. It is not subject to any SLA or deprecation policy.
+  /// use. It is not subject to any SLA or deprecation policy.<br><br>
   /// If the snapshot already exists, returns `ALREADY_EXISTS`.
   /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
   /// If the backlog in the subscription is too old -- and the resulting
@@ -70,11 +76,11 @@ class ProjectsSnapshotsResourceApi {
   /// See also the `Snapshot.expire_time` field. If the name is not provided in
   /// the request, the server will assign a random
   /// name for this snapshot on the same project as the subscription, conforming
-  /// to the [resource name
+  /// to the
+  /// [resource name
   /// format](https://cloud.google.com/pubsub/docs/overview#names).
-  /// The generated
-  /// name is populated in the returned Snapshot object. Note that for REST API
-  /// requests, you must specify a name in the request.
+  /// The generated name is populated in the returned Snapshot object. Note that
+  /// for REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -84,7 +90,9 @@ class ProjectsSnapshotsResourceApi {
   /// If the name is not provided in the request, the server will assign a
   /// random
   /// name for this snapshot on the same project as the subscription.
-  /// Note that for REST API requests, you must specify a name.
+  /// Note that for REST API requests, you must specify a name.  See the
+  /// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
+  /// resource name rules</a>.
   /// Format is `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
@@ -100,12 +108,12 @@ class ProjectsSnapshotsResourceApi {
   /// this method will complete with the same error.
   async.Future<Snapshot> create(CreateSnapshotRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -128,8 +136,13 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Snapshot.fromJson(data));
   }
 
-  /// Removes an existing snapshot. <br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// Removes an existing snapshot. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow
+  /// you to manage message acknowledgments in bulk. That is, you can set the
+  /// acknowledgment state of messages in an existing subscription to the state
+  /// captured by a snapshot.<br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -156,12 +169,12 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String snapshot, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (snapshot == null) {
       throw new core.ArgumentError("Parameter snapshot is required.");
@@ -181,8 +194,13 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the configuration details of a snapshot.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// Gets the configuration details of a snapshot. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow you to manage message acknowledgments in bulk.
+  /// That
+  /// is, you can set the acknowledgment state of messages in an existing
+  /// subscription to the state captured by a snapshot.<br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -204,12 +222,12 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Snapshot> get(core.String snapshot, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (snapshot == null) {
       throw new core.ArgumentError("Parameter snapshot is required.");
@@ -252,12 +270,12 @@ class ProjectsSnapshotsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -279,8 +297,13 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Lists the existing snapshots.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// Lists the existing snapshots. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow
+  /// you to manage message acknowledgments in bulk. That is, you can set the
+  /// acknowledgment state of messages in an existing subscription to the state
+  /// captured by a snapshot.<br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -291,12 +314,12 @@ class ProjectsSnapshotsResourceApi {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of snapshots to return.
-  ///
   /// [pageToken] - The value returned by the last `ListSnapshotsResponse`;
   /// indicates that this
   /// is a continuation of a prior `ListSnapshots` call, and that the system
   /// should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of snapshots to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,22 +332,22 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSnapshotsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -343,8 +366,13 @@ class ProjectsSnapshotsResourceApi {
     return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
   }
 
-  /// Updates an existing snapshot.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// Updates an existing snapshot. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow
+  /// you to manage message acknowledgments in bulk. That is, you can set the
+  /// acknowledgment state of messages in an existing subscription to the state
+  /// captured by a snapshot.<br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -369,12 +397,12 @@ class ProjectsSnapshotsResourceApi {
   /// this method will complete with the same error.
   async.Future<Snapshot> patch(UpdateSnapshotRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -422,12 +450,12 @@ class ProjectsSnapshotsResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -482,12 +510,12 @@ class ProjectsSnapshotsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -549,12 +577,12 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Empty> acknowledge(
       AcknowledgeRequest request, core.String subscription,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -580,7 +608,8 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Creates a subscription to a given topic. See the
-  /// <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
+  /// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
+  /// resource name rules</a>.
   /// If the subscription already exists, returns `ALREADY_EXISTS`.
   /// If the corresponding topic doesn't exist, returns `NOT_FOUND`.
   ///
@@ -617,12 +646,12 @@ class ProjectsSubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subscription> create(Subscription request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -670,12 +699,12 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String subscription, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -715,12 +744,12 @@ class ProjectsSubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subscription> get(core.String subscription,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (subscription == null) {
       throw new core.ArgumentError("Parameter subscription is required.");
@@ -763,12 +792,12 @@ class ProjectsSubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -798,12 +827,12 @@ class ProjectsSubscriptionsResourceApi {
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of subscriptions to return.
-  ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
   /// indicates that
   /// this is a continuation of a prior `ListSubscriptions` call, and that the
   /// system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -816,22 +845,22 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -878,12 +907,12 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Empty> modifyAckDeadline(
       ModifyAckDeadlineRequest request, core.String subscription,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -936,12 +965,12 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Empty> modifyPushConfig(
       ModifyPushConfigRequest request, core.String subscription,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -994,12 +1023,12 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Subscription> patch(
       UpdateSubscriptionRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1046,12 +1075,12 @@ class ProjectsSubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<PullResponse> pull(PullRequest request, core.String subscription,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1077,8 +1106,14 @@ class ProjectsSubscriptionsResourceApi {
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
-  /// whichever is provided in the request.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// whichever is provided in the request. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow
+  /// you to manage message acknowledgments in bulk. That is, you can set the
+  /// acknowledgment state of messages in an existing subscription to the state
+  /// captured by a snapshot. Note that both the subscription and the snapshot
+  /// must be on the same topic.<br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -1102,12 +1137,12 @@ class ProjectsSubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<SeekResponse> seek(SeekRequest request, core.String subscription,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1157,12 +1192,12 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1217,12 +1252,12 @@ class ProjectsSubscriptionsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1260,7 +1295,8 @@ class ProjectsTopicsResourceApi {
   ProjectsTopicsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates the given topic with the given name. See the
-  /// <a href="/pubsub/docs/admin#resource_names"> resource name rules</a>.
+  /// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
+  /// resource name rules</a>.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1286,12 +1322,12 @@ class ProjectsTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<Topic> create(Topic request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1337,12 +1373,12 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String topic, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
@@ -1381,12 +1417,12 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Topic> get(core.String topic, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
@@ -1429,12 +1465,12 @@ class ProjectsTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
@@ -1483,12 +1519,12 @@ class ProjectsTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTopicsResponse> list(core.String project,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
@@ -1542,12 +1578,12 @@ class ProjectsTopicsResourceApi {
   /// this method will complete with the same error.
   async.Future<Topic> patch(UpdateTopicRequest request, core.String name,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1594,12 +1630,12 @@ class ProjectsTopicsResourceApi {
   async.Future<PublishResponse> publish(
       PublishRequest request, core.String topic,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1647,12 +1683,12 @@ class ProjectsTopicsResourceApi {
   async.Future<Policy> setIamPolicy(
       SetIamPolicyRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1707,12 +1743,12 @@ class ProjectsTopicsResourceApi {
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       TestIamPermissionsRequest request, core.String resource,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1745,8 +1781,13 @@ class ProjectsTopicsSnapshotsResourceApi {
   ProjectsTopicsSnapshotsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the names of the snapshots on this topic.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// Lists the names of the snapshots on this topic. Snapshots are used in
+  /// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+  /// operations, which allow
+  /// you to manage message acknowledgments in bulk. That is, you can set the
+  /// acknowledgment state of messages in an existing subscription to the state
+  /// captured by a snapshot.<br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -1757,12 +1798,12 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of snapshot names to return.
-  ///
   /// [pageToken] - The value returned by the last `ListTopicSnapshotsResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListTopicSnapshots` call, and
   /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of snapshot names to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1775,22 +1816,22 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicSnapshotsResponse> list(core.String topic,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1824,12 +1865,12 @@ class ProjectsTopicsSubscriptionsResourceApi {
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of subscription names to return.
-  ///
   /// [pageToken] - The value returned by the last
   /// `ListTopicSubscriptionsResponse`; indicates
   /// that this is a continuation of a prior `ListTopicSubscriptions` call, and
   /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of subscription names to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1842,22 +1883,22 @@ class ProjectsTopicsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTopicSubscriptionsResponse> list(core.String topic,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url = null;
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (topic == null) {
       throw new core.ArgumentError("Parameter topic is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1970,12 +2011,13 @@ class Binding {
 }
 
 /// Request for the `CreateSnapshot` method.<br><br>
-/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// <b>BETA:</b> This feature is part of a beta release. This API might be
 /// changed in
 /// backward-incompatible ways and is not recommended for production use.
 /// It is not subject to any SLA or deprecation policy.
 class CreateSnapshotRequest {
-  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+  /// managing labels</a>.
   core.Map<core.String, core.String> labels;
 
   /// The subscription whose backlog the snapshot retains.
@@ -2030,6 +2072,35 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A policy that specifies the conditions for resource expiration (i.e.,
+/// automatic resource deletion).
+class ExpirationPolicy {
+  /// Specifies the "time-to-live" duration for an associated resource. The
+  /// resource expires if it is not active for a period of `ttl`. The definition
+  /// of "activity" depends on the type of the associated resource. The minimum
+  /// and maximum allowed values for `ttl` depend on the type of the associated
+  /// resource, as well. If `ttl` is not set, the associated resource never
+  /// expires.
+  core.String ttl;
+
+  ExpirationPolicy();
+
+  ExpirationPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("ttl")) {
+      ttl = _json["ttl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ttl != null) {
+      _json["ttl"] = ttl;
+    }
     return _json;
   }
 }
@@ -2097,7 +2168,7 @@ class Expr {
 }
 
 /// Response for the `ListSnapshots` method.<br><br>
-/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// <b>BETA:</b> This feature is part of a beta release. This API might be
 /// changed in backward-incompatible ways and is not recommended for production
 /// use. It is not subject to any SLA or deprecation policy.
 class ListSnapshotsResponse {
@@ -2172,7 +2243,7 @@ class ListSubscriptionsResponse {
 }
 
 /// Response for the `ListTopicSnapshots` method.<br><br>
-/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// <b>BETA:</b> This feature is part of a beta release. This API might be
 /// changed in backward-incompatible ways and is not recommended for production
 /// use. It is not subject to any SLA or deprecation policy.
 class ListTopicSnapshotsResponse {
@@ -2282,8 +2353,9 @@ class ModifyAckDeadlineRequest {
   /// The new ack deadline with respect to the time this request was sent to
   /// the Pub/Sub system. For example, if the value is 10, the new
   /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
-  /// was made. Specifying zero may immediately make the message available for
-  /// another pull request.
+  /// was made. Specifying zero might immediately make the message available for
+  /// delivery to another subscriber client. This typically results in an
+  /// increase in the rate of message redeliveries (that is, duplicates).
   /// The minimum deadline you can specify is 0 seconds.
   /// The maximum deadline you can specify is 600 seconds (10 minutes).
   core.int ackDeadlineSeconds;
@@ -2411,7 +2483,7 @@ class Policy {
     return convert.base64.decode(etag);
   }
 
-  void set etagAsBytes(core.List<core.int> _bytes) {
+  set etagAsBytes(core.List<core.int> _bytes) {
     etag =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2504,6 +2576,12 @@ class PublishResponse {
 /// A message that is published by publishers and consumed by subscribers. The
 /// message must contain either a non-empty data field or at least one
 /// attribute.
+/// Note that client libraries represent this object differently
+/// depending on the language. See the corresponding
+/// <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client
+/// library documentation</a> for more information. See
+/// <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
+/// for more information about message limits.
 class PubsubMessage {
   /// Optional attributes for this message.
   core.Map<core.String, core.String> attributes;
@@ -2515,7 +2593,7 @@ class PubsubMessage {
     return convert.base64.decode(data);
   }
 
-  void set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> _bytes) {
     data =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -2720,8 +2798,8 @@ class ReceivedMessage {
   }
 }
 
-/// Request for the `Seek` method.<br><br>
-/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// Request for the `Seek` method. <br><br>
+/// <b>BETA:</b> This feature is part of a beta release. This API might be
 /// changed in backward-incompatible ways and is not recommended for production
 /// use. It is not subject to any SLA or deprecation policy.
 class SeekRequest {
@@ -2767,6 +2845,7 @@ class SeekRequest {
   }
 }
 
+/// Response for the `Seek` method (this response is empty).
 class SeekResponse {
   SeekResponse();
 
@@ -2805,8 +2884,13 @@ class SetIamPolicyRequest {
   }
 }
 
-/// A snapshot resource.<br><br>
-/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// A snapshot resource. Snapshots are used in
+/// <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+/// operations, which allow
+/// you to manage message acknowledgments in bulk. That is, you can set the
+/// acknowledgment state of messages in an existing subscription to the state
+/// captured by a snapshot.<br><br>
+/// <b>BETA:</b> This feature is part of a beta release. This API might be
 /// changed in backward-incompatible ways and is not recommended for production
 /// use. It is not subject to any SLA or deprecation policy.
 class Snapshot {
@@ -2825,7 +2909,8 @@ class Snapshot {
   /// snapshot that would expire in less than 1 hour after creation.
   core.String expireTime;
 
-  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+  /// managing labels</a>.
   core.Map<core.String, core.String> labels;
 
   /// The name of the snapshot.
@@ -2872,11 +2957,11 @@ class Snapshot {
 
 /// A subscription resource.
 class Subscription {
-  /// This value is the maximum time after a subscriber receives a message
-  /// before the subscriber should acknowledge the message. After message
-  /// delivery but before the ack deadline expires and before the message is
-  /// acknowledged, it is an outstanding message and will not be delivered
-  /// again during that time (on a best-effort basis).
+  /// The approximate amount of time (on a best-effort basis) Pub/Sub waits for
+  /// the subscriber to acknowledge receipt before resending the message. In the
+  /// interval after the message is delivered and before it is acknowledged, it
+  /// is considered to be <i>outstanding</i>. During that time period, the
+  /// message will not be redelivered (on a best-effort basis).
   ///
   /// For pull subscriptions, this value is used as the initial value for the
   /// ack
@@ -2895,7 +2980,20 @@ class Subscription {
   /// system will eventually redeliver the message.
   core.int ackDeadlineSeconds;
 
-  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  /// A policy that specifies the conditions for this subscription's expiration.
+  /// A subscription is considered active as long as any connected subscriber is
+  /// successfully consuming messages from the subscription or is issuing
+  /// operations on the subscription. If `expiration_policy` is not set, a
+  /// *default policy* with `ttl` of 31 days will be used. The minimum allowed
+  /// value for `expiration_policy.ttl` is 1 day.
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
+  /// changed in backward-incompatible ways and is not recommended for
+  /// production
+  /// use. It is not subject to any SLA or deprecation policy.
+  ExpirationPolicy expirationPolicy;
+
+  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+  /// managing labels</a>.
   core.Map<core.String, core.String> labels;
 
   /// How long to retain unacknowledged messages in the subscription's backlog,
@@ -2907,7 +3005,7 @@ class Subscription {
   /// can be done. Defaults to 7 days. Cannot be more than 7 days or less than
   /// 10
   /// minutes.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -2930,8 +3028,12 @@ class Subscription {
   /// messages are not expunged from the subscription's backlog, even if they
   /// are
   /// acknowledged, until they fall out of the `message_retention_duration`
-  /// window.<br><br>
-  /// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+  /// window. This must be true if you would like to
+  /// <a
+  /// href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
+  /// Seek to a timestamp</a>.
+  /// <br><br>
+  /// <b>BETA:</b> This feature is part of a beta release. This API might be
   /// changed in backward-incompatible ways and is not recommended for
   /// production
   /// use. It is not subject to any SLA or deprecation policy.
@@ -2948,6 +3050,10 @@ class Subscription {
   Subscription.fromJson(core.Map _json) {
     if (_json.containsKey("ackDeadlineSeconds")) {
       ackDeadlineSeconds = _json["ackDeadlineSeconds"];
+    }
+    if (_json.containsKey("expirationPolicy")) {
+      expirationPolicy =
+          new ExpirationPolicy.fromJson(_json["expirationPolicy"]);
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -2974,6 +3080,9 @@ class Subscription {
         new core.Map<core.String, core.Object>();
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
+    }
+    if (expirationPolicy != null) {
+      _json["expirationPolicy"] = (expirationPolicy).toJson();
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -3049,7 +3158,8 @@ class TestIamPermissionsResponse {
 
 /// A topic resource.
 class Topic {
-  /// See <a href="/pubsub/docs/labels"> Creating and managing labels</a>.
+  /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
+  /// managing labels</a>.
   core.Map<core.String, core.String> labels;
 
   /// The name of the topic. It must have the format
@@ -3085,7 +3195,7 @@ class Topic {
 }
 
 /// Request for the UpdateSnapshot method.<br><br>
-/// <b>ALPHA:</b> This feature is part of an alpha release. This API might be
+/// <b>BETA:</b> This feature is part of a beta release. This API might be
 /// changed in backward-incompatible ways and is not recommended for production
 /// use. It is not subject to any SLA or deprecation policy.
 class UpdateSnapshotRequest {

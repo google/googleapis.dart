@@ -26,9 +26,6 @@ class GamesApi {
   /// activity
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
-  /// Know the list of people in your circles, your age range, and language
-  static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
-
   final commons.ApiRequester _requester;
 
   AchievementDefinitionsResourceApi get achievementDefinitions =>
@@ -54,8 +51,8 @@ class GamesApi {
       new TurnBasedMatchesResourceApi(_requester);
 
   GamesApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "games/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "games/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -95,12 +92,12 @@ class AchievementDefinitionsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (language != null) {
       _queryParams["language"] = [language];
@@ -159,12 +156,12 @@ class AchievementsResourceApi {
   async.Future<AchievementIncrementResponse> increment(
       core.String achievementId, core.int stepsToIncrement,
       {core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -236,12 +233,12 @@ class AchievementsResourceApi {
       core.String pageToken,
       core.String state,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
@@ -295,12 +292,12 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementRevealResponse> reveal(core.String achievementId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -347,12 +344,12 @@ class AchievementsResourceApi {
   async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(
       core.String achievementId, core.int steps,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
@@ -385,6 +382,9 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [builtinGameId] - Override used only by built-in games in Play Games
+  /// application.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -396,16 +396,19 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
-      {core.String $fields}) {
-    var _url = null;
+      {core.String builtinGameId, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if (builtinGameId != null) {
+      _queryParams["builtinGameId"] = [builtinGameId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -431,6 +434,9 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [builtinGameId] - Override used only by built-in games in Play Games
+  /// application.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -443,16 +449,20 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
       AchievementUpdateMultipleRequest request,
-      {core.String $fields}) {
-    var _url = null;
+      {core.String builtinGameId,
+      core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
+    }
+    if (builtinGameId != null) {
+      _queryParams["builtinGameId"] = [builtinGameId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -507,12 +517,12 @@ class ApplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Application> get(core.String applicationId,
       {core.String language, core.String platformType, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -543,6 +553,9 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [builtinGameId] - Override used only by built-in games in Play Games
+  /// application.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -551,14 +564,17 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({core.String $fields}) {
-    var _url = null;
+  async.Future played({core.String builtinGameId, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
+    if (builtinGameId != null) {
+      _queryParams["builtinGameId"] = [builtinGameId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -597,12 +613,12 @@ class ApplicationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ApplicationVerifyResponse> verify(core.String applicationId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
@@ -661,12 +677,12 @@ class EventsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (language != null) {
       _queryParams["language"] = [language];
@@ -721,12 +737,12 @@ class EventsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (language != null) {
       _queryParams["language"] = [language];
@@ -775,12 +791,12 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<EventUpdateResponse> record(EventRecordRequest request,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -830,12 +846,12 @@ class LeaderboardsResourceApi {
   /// this method will complete with the same error.
   async.Future<Leaderboard> get(core.String leaderboardId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -887,12 +903,12 @@ class LeaderboardsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (language != null) {
       _queryParams["language"] = [language];
@@ -939,12 +955,12 @@ class MetagameResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MetagameConfig> getMetagameConfig({core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1000,12 +1016,12 @@ class MetagameResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
@@ -1069,12 +1085,12 @@ class PlayersResourceApi {
   /// this method will complete with the same error.
   async.Future<Player> get(core.String playerId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
@@ -1138,12 +1154,12 @@ class PlayersResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
@@ -1194,12 +1210,12 @@ class PushtokensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future remove(PushTokenId request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1236,12 +1252,12 @@ class PushtokensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future update(PushToken request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1293,12 +1309,12 @@ class QuestMilestonesResourceApi {
   async.Future claim(
       core.String questId, core.String milestoneId, core.String requestId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (questId == null) {
       throw new core.ArgumentError("Parameter questId is required.");
@@ -1359,12 +1375,12 @@ class QuestsResourceApi {
   /// this method will complete with the same error.
   async.Future<Quest> accept(core.String questId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (questId == null) {
       throw new core.ArgumentError("Parameter questId is required.");
@@ -1421,12 +1437,12 @@ class QuestsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
@@ -1485,12 +1501,12 @@ class RevisionsResourceApi {
   /// this method will complete with the same error.
   async.Future<RevisionCheckResponse> check(core.String clientRevision,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (clientRevision == null) {
       throw new core.ArgumentError("Parameter clientRevision is required.");
@@ -1539,12 +1555,12 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<Room> create(RoomCreateRequest request,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1589,12 +1605,12 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<Room> decline(core.String roomId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
@@ -1633,12 +1649,12 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future dismiss(core.String roomId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
@@ -1681,12 +1697,12 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<Room> get(core.String roomId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (roomId == null) {
       throw new core.ArgumentError("Parameter roomId is required.");
@@ -1733,12 +1749,12 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<Room> join(RoomJoinRequest request, core.String roomId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1788,12 +1804,12 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<Room> leave(RoomLeaveRequest request, core.String roomId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1848,12 +1864,12 @@ class RoomsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (language != null) {
       _queryParams["language"] = [language];
@@ -1905,12 +1921,12 @@ class RoomsResourceApi {
   async.Future<RoomStatus> reportStatus(
       RoomP2PStatuses request, core.String roomId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2000,12 +2016,12 @@ class ScoresResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
@@ -2093,12 +2109,12 @@ class ScoresResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -2191,12 +2207,12 @@ class ScoresResourceApi {
       core.int resultsAbove,
       core.bool returnTopIfAbsent,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -2275,12 +2291,12 @@ class ScoresResourceApi {
   async.Future<PlayerScoreResponse> submit(
       core.String leaderboardId, core.String score,
       {core.String language, core.String scoreTag, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
@@ -2335,12 +2351,12 @@ class ScoresResourceApi {
       PlayerScoreSubmissionList request,
       {core.String language,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2390,12 +2406,12 @@ class SnapshotsResourceApi {
   /// this method will complete with the same error.
   async.Future<Snapshot> get(core.String snapshotId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (snapshotId == null) {
       throw new core.ArgumentError("Parameter snapshotId is required.");
@@ -2451,12 +2467,12 @@ class SnapshotsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
@@ -2508,12 +2524,12 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future cancel(core.String matchId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -2558,12 +2574,12 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2607,12 +2623,12 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> decline(core.String matchId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -2653,12 +2669,12 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future dismiss(core.String matchId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -2708,12 +2724,12 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> finish(
       TurnBasedMatchResults request, core.String matchId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2764,12 +2780,12 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> get(core.String matchId,
       {core.bool includeMatchData, core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -2816,12 +2832,12 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> join(core.String matchId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -2868,12 +2884,12 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> leave(core.String matchId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -2930,12 +2946,12 @@ class TurnBasedMatchesResourceApi {
       {core.String language,
       core.String pendingParticipantId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -3009,12 +3025,12 @@ class TurnBasedMatchesResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
@@ -3074,12 +3090,12 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatchRematch> rematch(core.String matchId,
       {core.String language, core.String requestId, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (matchId == null) {
       throw new core.ArgumentError("Parameter matchId is required.");
@@ -3152,12 +3168,12 @@ class TurnBasedMatchesResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (includeMatchData != null) {
       _queryParams["includeMatchData"] = ["${includeMatchData}"];
@@ -3213,12 +3229,12 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> takeTurn(
       TurnBasedMatchTurn request, core.String matchId,
       {core.String language, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -6930,7 +6946,7 @@ class PushTokenIdIos {
     return convert.base64.decode(apnsDeviceToken);
   }
 
-  void set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
+  set apnsDeviceTokenAsBytes(core.List<core.int> _bytes) {
     apnsDeviceToken =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -7346,7 +7362,7 @@ class QuestMilestone {
     return convert.base64.decode(completionRewardData);
   }
 
-  void set completionRewardDataAsBytes(core.List<core.int> _bytes) {
+  set completionRewardDataAsBytes(core.List<core.int> _bytes) {
     completionRewardData =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -9135,7 +9151,7 @@ class TurnBasedMatchData {
     return convert.base64.decode(data);
   }
 
-  void set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> _bytes) {
     data =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
@@ -9187,7 +9203,7 @@ class TurnBasedMatchDataRequest {
     return convert.base64.decode(data);
   }
 
-  void set dataAsBytes(core.List<core.int> _bytes) {
+  set dataAsBytes(core.List<core.int> _bytes) {
     data =
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }

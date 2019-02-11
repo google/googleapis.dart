@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/drive": {
-                    "description": "View and manage the files in your Google Drive"
+                    "description": "See, edit, create, and delete all of your Google Drive files"
                 },
                 "https://www.googleapis.com/auth/drive.appdata": {
                     "description": "View and manage its own configuration data in your Google Drive"
@@ -21,7 +21,7 @@
                     "description": "View the photos, videos and albums in your Google Photos"
                 },
                 "https://www.googleapis.com/auth/drive.readonly": {
-                    "description": "View the files in your Google Drive"
+                    "description": "See and download all your Google Drive files"
                 },
                 "https://www.googleapis.com/auth/drive.scripts": {
                     "description": "Modify your Google Apps Script scripts' behavior"
@@ -35,7 +35,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/yNSDT8GbE0Hi1bq_MfUpEIg4L9o\"",
+    "etag": "\"J3WqvAcMk4eQjJXvfSI4Yr8VouA/uiBCCkRoMX5_CfRs8ee5Hrx7JiQ\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1770,7 +1770,7 @@
             }
         }
     },
-    "revision": "20180816",
+    "revision": "20190110",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2260,6 +2260,14 @@
                     "description": "Whether the file has been explicitly trashed, as opposed to recursively trashed from a parent folder.",
                     "type": "boolean"
                 },
+                "exportLinks": {
+                    "additionalProperties": {
+                        "description": "A mapping from export format to URL",
+                        "type": "string"
+                    },
+                    "description": "Links for exporting Google Docs to specific formats.",
+                    "type": "object"
+                },
                 "fileExtension": {
                     "description": "The final component of fullFileExtension. This is only available for files with binary content in Drive.",
                     "type": "string"
@@ -2703,7 +2711,7 @@
                             "drive.permissions.create"
                         ]
                     },
-                    "description": "The role granted by this permission. While new values may be supported in the future, the following are currently allowed:  \n- organizer \n- owner \n- writer \n- commenter \n- reader",
+                    "description": "The role granted by this permission. While new values may be supported in the future, the following are currently allowed:  \n- owner \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader",
                     "type": "string"
                 },
                 "teamDrivePermissionDetails": {
@@ -2719,7 +2727,7 @@
                                 "type": "string"
                             },
                             "role": {
-                                "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- writer \n- commenter \n- reader",
+                                "description": "The primary role for this user. While new values may be added in the future, the following are currently possible:  \n- organizer \n- fileOrganizer \n- writer \n- commenter \n- reader",
                                 "type": "string"
                             },
                             "teamDrivePermissionType": {
@@ -2844,6 +2852,14 @@
             "description": "The metadata for a revision to a file.",
             "id": "Revision",
             "properties": {
+                "exportLinks": {
+                    "additionalProperties": {
+                        "description": "A mapping from export format to URL",
+                        "type": "string"
+                    },
+                    "description": "Links for exporting Google Docs to specific formats.",
+                    "type": "object"
+                },
                 "id": {
                     "description": "The ID of the revision.",
                     "type": "string"

@@ -4,7 +4,8 @@ environment:
   sdk: '>=2.0.0-dev.22.0 <3.0.0'
 
 dependencies:
-  discoveryapis_generator: '>=0.9.1 <0.10.0'
+  discoveryapis_generator: ^0.9.11
   io: ^0.3.3
   pool: ^1.4.0
   yaml: ^2.1.0
+

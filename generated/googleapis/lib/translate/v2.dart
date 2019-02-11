@@ -36,8 +36,8 @@ class TranslateApi {
       new TranslationsResourceApi(_requester);
 
   TranslateApi(http.Client client,
-      {core.String rootUrl: "https://translation.googleapis.com/",
-      core.String servicePath: "language/translate/"})
+      {core.String rootUrl = "https://translation.googleapis.com/",
+      core.String servicePath = "language/translate/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -65,12 +65,12 @@ class DetectionsResourceApi {
   /// this method will complete with the same error.
   async.Future<DetectionsListResponse> detect(DetectLanguageRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -110,12 +110,12 @@ class DetectionsResourceApi {
   /// this method will complete with the same error.
   async.Future<DetectionsListResponse> list(core.List<core.String> q,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null || q.isEmpty) {
       throw new core.ArgumentError("Parameter q is required.");
@@ -147,11 +147,11 @@ class LanguagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [model] - The model type for which supported languages should be returned.
-  ///
   /// [target] - The language to use to return localized, human readable names
   /// of supported
   /// languages.
+  ///
+  /// [model] - The model type for which supported languages should be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -164,19 +164,19 @@ class LanguagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(
-      {core.String model, core.String target, core.String $fields}) {
-    var _url = null;
+      {core.String target, core.String model, core.String $fields}) {
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
-    if (model != null) {
-      _queryParams["model"] = [model];
-    }
     if (target != null) {
       _queryParams["target"] = [target];
+    }
+    if (model != null) {
+      _queryParams["model"] = [model];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -212,12 +212,6 @@ class TranslationsResourceApi {
   /// one of the
   /// language codes listed in Language Support.
   ///
-  /// [source] - The language of the source text, set to one of the language
-  /// codes listed in
-  /// Language Support. If the source language is not specified, the API will
-  /// attempt to identify the source language automatically and return it within
-  /// the response.
-  ///
   /// [cid] - The customization id for translate
   ///
   /// [format] - The format of the source text, in either HTML (default) or
@@ -231,6 +225,12 @@ class TranslationsResourceApi {
   /// are
   /// listed in public documentation.
   ///
+  /// [source] - The language of the source text, set to one of the language
+  /// codes listed in
+  /// Language Support. If the source language is not specified, the API will
+  /// attempt to identify the source language automatically and return it within
+  /// the response.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -243,17 +243,17 @@ class TranslationsResourceApi {
   /// this method will complete with the same error.
   async.Future<TranslationsListResponse> list(
       core.List<core.String> q, core.String target,
-      {core.String source,
-      core.List<core.String> cid,
+      {core.List<core.String> cid,
       core.String format,
       core.String model,
+      core.String source,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (q == null || q.isEmpty) {
       throw new core.ArgumentError("Parameter q is required.");
@@ -263,9 +263,6 @@ class TranslationsResourceApi {
       throw new core.ArgumentError("Parameter target is required.");
     }
     _queryParams["target"] = [target];
-    if (source != null) {
-      _queryParams["source"] = [source];
-    }
     if (cid != null) {
       _queryParams["cid"] = cid;
     }
@@ -274,6 +271,9 @@ class TranslationsResourceApi {
     }
     if (model != null) {
       _queryParams["model"] = [model];
+    }
+    if (source != null) {
+      _queryParams["source"] = [source];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -309,12 +309,12 @@ class TranslationsResourceApi {
   /// this method will complete with the same error.
   async.Future<TranslationsListResponse> translate(TranslateTextRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -451,7 +451,7 @@ class DetectionsResource
 
   core.int get length => _inner.length;
 
-  void set length(core.int newLength) {
+  set length(core.int newLength) {
     _inner.length = newLength;
   }
 }

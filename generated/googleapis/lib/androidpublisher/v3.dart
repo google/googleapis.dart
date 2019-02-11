@@ -24,7 +24,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androidpublisher/v3';
 
-/// Lets Android application developers access their Google Play accounts.
+/// Accesses Android application developers' Google Play accounts.
 class AndroidpublisherApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
@@ -40,8 +40,8 @@ class AndroidpublisherApi {
   ReviewsResourceApi get reviews => new ReviewsResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "androidpublisher/v3/applications/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "androidpublisher/v3/applications/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -88,12 +88,12 @@ class EditsResourceApi {
   /// this method will complete with the same error.
   async.Future<AppEdit> commit(core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -140,12 +140,12 @@ class EditsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -194,12 +194,12 @@ class EditsResourceApi {
   /// this method will complete with the same error.
   async.Future<AppEdit> get(core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -245,12 +245,12 @@ class EditsResourceApi {
   /// this method will complete with the same error.
   async.Future<AppEdit> insert(AppEdit request, core.String packageName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -295,12 +295,12 @@ class EditsResourceApi {
   /// this method will complete with the same error.
   async.Future<AppEdit> validate(core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -361,12 +361,12 @@ class EditsApksResourceApi {
       core.String packageName,
       core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -416,12 +416,12 @@ class EditsApksResourceApi {
   async.Future<ApksListResponse> list(
       core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -472,14 +472,14 @@ class EditsApksResourceApi {
   /// this method will complete with the same error.
   async.Future<Apk> upload(core.String packageName, core.String editId,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -548,12 +548,12 @@ class EditsBundlesResourceApi {
   async.Future<BundlesListResponse> list(
       core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -592,6 +592,10 @@ class EditsBundlesResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [ackBundleInstallationWarning] - Must be set to true if the bundle
+  /// installation may trigger a warning on user devices (for example, if
+  /// installation size may be over a threshold, typically 100 MB).
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -609,21 +613,27 @@ class EditsBundlesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Bundle> upload(core.String packageName, core.String editId,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.bool ackBundleInstallationWarning,
+      core.String $fields,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if (ackBundleInstallationWarning != null) {
+      _queryParams["ackBundleInstallationWarning"] = [
+        "${ackBundleInstallationWarning}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -706,14 +716,14 @@ class EditsDeobfuscationfilesResourceApi {
       core.int apkVersionCode,
       core.String deobfuscationFileType,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -801,12 +811,12 @@ class EditsDetailsResourceApi {
   /// this method will complete with the same error.
   async.Future<AppDetails> get(core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -856,12 +866,12 @@ class EditsDetailsResourceApi {
   async.Future<AppDetails> patch(
       AppDetails request, core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -914,12 +924,12 @@ class EditsDetailsResourceApi {
   async.Future<AppDetails> update(
       AppDetails request, core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -985,12 +995,12 @@ class EditsExpansionfilesResourceApi {
   async.Future<ExpansionFile> get(core.String packageName, core.String editId,
       core.int apkVersionCode, core.String expansionFileType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1063,12 +1073,12 @@ class EditsExpansionfilesResourceApi {
       core.int apkVersionCode,
       core.String expansionFileType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1143,12 +1153,12 @@ class EditsExpansionfilesResourceApi {
       core.int apkVersionCode,
       core.String expansionFileType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1225,14 +1235,14 @@ class EditsExpansionfilesResourceApi {
       core.int apkVersionCode,
       core.String expansionFileType,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1336,12 +1346,12 @@ class EditsImagesResourceApi {
   async.Future delete(core.String packageName, core.String editId,
       core.String language, core.String imageType, core.String imageId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1421,12 +1431,12 @@ class EditsImagesResourceApi {
   async.Future<ImagesDeleteAllResponse> deleteall(core.String packageName,
       core.String editId, core.String language, core.String imageType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1499,12 +1509,12 @@ class EditsImagesResourceApi {
   async.Future<ImagesListResponse> list(core.String packageName,
       core.String editId, core.String language, core.String imageType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1584,14 +1594,14 @@ class EditsImagesResourceApi {
   async.Future<ImagesUploadResponse> upload(core.String packageName,
       core.String editId, core.String language, core.String imageType,
       {core.String $fields,
-      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1679,12 +1689,12 @@ class EditsListingsResourceApi {
   async.Future delete(
       core.String packageName, core.String editId, core.String language,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1735,12 +1745,12 @@ class EditsListingsResourceApi {
   /// this method will complete with the same error.
   async.Future deleteall(core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1794,12 +1804,12 @@ class EditsListingsResourceApi {
   async.Future<Listing> get(
       core.String packageName, core.String editId, core.String language,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1851,12 +1861,12 @@ class EditsListingsResourceApi {
   async.Future<ListingsListResponse> list(
       core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -1911,12 +1921,12 @@ class EditsListingsResourceApi {
   async.Future<Listing> patch(Listing request, core.String packageName,
       core.String editId, core.String language,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -1977,12 +1987,12 @@ class EditsListingsResourceApi {
   async.Future<Listing> update(Listing request, core.String packageName,
       core.String editId, core.String language,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2045,12 +2055,12 @@ class EditsTestersResourceApi {
   async.Future<Testers> get(
       core.String packageName, core.String editId, core.String track,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2106,12 +2116,12 @@ class EditsTestersResourceApi {
   async.Future<Testers> patch(Testers request, core.String packageName,
       core.String editId, core.String track,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2170,12 +2180,12 @@ class EditsTestersResourceApi {
   async.Future<Testers> update(Testers request, core.String packageName,
       core.String editId, core.String track,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2239,12 +2249,12 @@ class EditsTracksResourceApi {
   async.Future<Track> get(
       core.String packageName, core.String editId, core.String track,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2296,12 +2306,12 @@ class EditsTracksResourceApi {
   async.Future<TracksListResponse> list(
       core.String packageName, core.String editId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2355,12 +2365,12 @@ class EditsTracksResourceApi {
   async.Future<Track> patch(Track request, core.String packageName,
       core.String editId, core.String track,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2421,12 +2431,12 @@ class EditsTracksResourceApi {
   async.Future<Track> update(Track request, core.String packageName,
       core.String editId, core.String track,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2484,12 +2494,12 @@ class InappproductsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String packageName, core.String sku,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2536,12 +2546,12 @@ class InappproductsResourceApi {
   /// this method will complete with the same error.
   async.Future<InAppProduct> get(core.String packageName, core.String sku,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2593,12 +2603,12 @@ class InappproductsResourceApi {
   async.Future<InAppProduct> insert(
       InAppProduct request, core.String packageName,
       {core.bool autoConvertMissingPrices, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2655,12 +2665,12 @@ class InappproductsResourceApi {
       core.int startIndex,
       core.String token,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2720,12 +2730,12 @@ class InappproductsResourceApi {
   async.Future<InAppProduct> patch(
       InAppProduct request, core.String packageName, core.String sku,
       {core.bool autoConvertMissingPrices, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2787,12 +2797,12 @@ class InappproductsResourceApi {
   async.Future<InAppProduct> update(
       InAppProduct request, core.String packageName, core.String sku,
       {core.bool autoConvertMissingPrices, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -2857,12 +2867,12 @@ class OrdersResourceApi {
   /// this method will complete with the same error.
   async.Future refund(core.String packageName, core.String orderId,
       {core.bool revoke, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -2939,12 +2949,12 @@ class PurchasesProductsResourceApi {
   async.Future<ProductPurchase> get(
       core.String packageName, core.String productId, core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3006,12 +3016,12 @@ class PurchasesSubscriptionsResourceApi {
   async.Future cancel(
       core.String packageName, core.String subscriptionId, core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3076,12 +3086,12 @@ class PurchasesSubscriptionsResourceApi {
       core.String subscriptionId,
       core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -3143,12 +3153,12 @@ class PurchasesSubscriptionsResourceApi {
   async.Future<SubscriptionPurchase> get(
       core.String packageName, core.String subscriptionId, core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3203,12 +3213,12 @@ class PurchasesSubscriptionsResourceApi {
   async.Future refund(
       core.String packageName, core.String subscriptionId, core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3267,12 +3277,12 @@ class PurchasesSubscriptionsResourceApi {
   async.Future revoke(
       core.String packageName, core.String subscriptionId, core.String token,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3357,12 +3367,12 @@ class PurchasesVoidedpurchasesResourceApi {
       core.String startTime,
       core.String token,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3428,12 +3438,12 @@ class ReviewsResourceApi {
   /// this method will complete with the same error.
   async.Future<Review> get(core.String packageName, core.String reviewId,
       {core.String translationLanguage, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3492,12 +3502,12 @@ class ReviewsResourceApi {
       core.String token,
       core.String translationLanguage,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
@@ -3553,12 +3563,12 @@ class ReviewsResourceApi {
   async.Future<ReviewsReplyResponse> reply(ReviewsReplyRequest request,
       core.String packageName, core.String reviewId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -4931,6 +4941,7 @@ class ProductPurchase {
   /// values are:
   /// - Test (i.e. purchased from a license testing account)
   /// - Promo (i.e. purchased using a promo code)
+  /// - Rewarded (i.e. from watching a video ad instead of paying)
   core.int purchaseType;
 
   ProductPurchase();
@@ -5347,6 +5358,11 @@ class SubscriptionPurchase {
   /// current expiry time.
   core.bool autoRenewing;
 
+  /// Time at which the subscription will be automatically resumed, in
+  /// milliseconds since the Epoch. Only present if the user has requested to
+  /// pause the subscription.
+  core.String autoResumeTimeMillis;
+
   /// The reason why a subscription was canceled or is not auto-renewing.
   /// Possible values are:
   /// - User canceled the subscription
@@ -5409,6 +5425,7 @@ class SubscriptionPurchase {
   /// - Payment pending
   /// - Payment received
   /// - Free trial
+  /// - Pending deferred upgrade/downgrade
   core.int paymentState;
 
   /// Price of the subscription, not including tax. Price is expressed in
@@ -5456,6 +5473,9 @@ class SubscriptionPurchase {
   SubscriptionPurchase.fromJson(core.Map _json) {
     if (_json.containsKey("autoRenewing")) {
       autoRenewing = _json["autoRenewing"];
+    }
+    if (_json.containsKey("autoResumeTimeMillis")) {
+      autoResumeTimeMillis = _json["autoResumeTimeMillis"];
     }
     if (_json.containsKey("cancelReason")) {
       cancelReason = _json["cancelReason"];
@@ -5525,6 +5545,9 @@ class SubscriptionPurchase {
         new core.Map<core.String, core.Object>();
     if (autoRenewing != null) {
       _json["autoRenewing"] = autoRenewing;
+    }
+    if (autoResumeTimeMillis != null) {
+      _json["autoResumeTimeMillis"] = autoResumeTimeMillis;
     }
     if (cancelReason != null) {
       _json["cancelReason"] = cancelReason;

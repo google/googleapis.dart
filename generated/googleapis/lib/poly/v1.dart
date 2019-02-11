@@ -26,8 +26,8 @@ class PolyApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   PolyApi(http.Client client,
-      {core.String rootUrl: "https://poly.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://poly.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -58,12 +58,12 @@ class AssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Asset> get(core.String name, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
@@ -112,6 +112,11 @@ class AssetsResourceApi {
   /// `scenes`,
   /// `technology`, and `transport`.
   ///
+  /// [pageToken] - Specifies a continuation token from a previous search whose
+  /// results were
+  /// split into multiple pages. To get the next page, submit the same request
+  /// specifying the value from next_page_token.
+  ///
   /// [maxComplexity] - Returns assets that are of the specified complexity or
   /// less. Defaults to
   /// COMPLEX. For example, a request for
@@ -122,11 +127,6 @@ class AssetsResourceApi {
   /// - "COMPLEX" : A COMPLEX.
   /// - "MEDIUM" : A MEDIUM.
   /// - "SIMPLE" : A SIMPLE.
-  ///
-  /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from next_page_token.
   ///
   /// [pageSize] - The maximum number of assets to be returned. This value must
   /// be between `1`
@@ -148,16 +148,16 @@ class AssetsResourceApi {
       core.String format,
       core.bool curated,
       core.String category,
-      core.String maxComplexity,
       core.String pageToken,
+      core.String maxComplexity,
       core.int pageSize,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (keywords != null) {
       _queryParams["keywords"] = [keywords];
@@ -174,11 +174,11 @@ class AssetsResourceApi {
     if (category != null) {
       _queryParams["category"] = [category];
     }
-    if (maxComplexity != null) {
-      _queryParams["maxComplexity"] = [maxComplexity];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxComplexity != null) {
+      _queryParams["maxComplexity"] = [maxComplexity];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -229,13 +229,6 @@ class UsersAssetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [visibility] - The visibility of the assets to be returned.
-  /// Defaults to VISIBILITY_UNSPECIFIED which returns all assets.
-  /// Possible string values are:
-  /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
-  /// - "PUBLISHED" : A PUBLISHED.
-  /// - "PRIVATE" : A PRIVATE.
-  ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
   /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
   /// based on a combination of popularity and other features.
@@ -254,6 +247,13 @@ class UsersAssetsResourceApi {
   /// be between `1`
   /// and `100`. Defaults to `20`.
   ///
+  /// [visibility] - The visibility of the assets to be returned.
+  /// Defaults to VISIBILITY_UNSPECIFIED which returns all assets.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
+  /// - "PUBLISHED" : A PUBLISHED.
+  /// - "PRIVATE" : A PRIVATE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -265,24 +265,21 @@ class UsersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String visibility,
-      core.String orderBy,
+      {core.String orderBy,
       core.String format,
       core.String pageToken,
       core.int pageSize,
+      core.String visibility,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (visibility != null) {
-      _queryParams["visibility"] = [visibility];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -295,6 +292,9 @@ class UsersAssetsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (visibility != null) {
+      _queryParams["visibility"] = [visibility];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -364,12 +364,12 @@ class UsersLikedassetsResourceApi {
       core.int pageSize,
       core.String format,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");

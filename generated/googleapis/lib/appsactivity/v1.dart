@@ -25,8 +25,8 @@ class AppsactivityApi {
   ActivitiesResourceApi get activities => new ActivitiesResourceApi(_requester);
 
   AppsactivityApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "appsactivity/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "appsactivity/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -87,12 +87,12 @@ class ActivitiesResourceApi {
       core.String source,
       core.String userId,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (drive_ancestorId != null) {
       _queryParams["drive.ancestorId"] = [drive_ancestorId];

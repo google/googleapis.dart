@@ -18,10 +18,10 @@ const core.String USER_AGENT = 'dart-api-client people/v1';
 
 /// Provides access to information about profiles and contacts.
 class PeopleApi {
-  /// Manage your contacts
+  /// See, edit, download, and permanently delete your contacts
   static const ContactsScope = "https://www.googleapis.com/auth/contacts";
 
-  /// View your contacts
+  /// See and download your contacts
   static const ContactsReadonlyScope =
       "https://www.googleapis.com/auth/contacts.readonly";
 
@@ -59,8 +59,8 @@ class PeopleApi {
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
   PeopleApi(http.Client client,
-      {core.String rootUrl: "https://people.googleapis.com/",
-      core.String servicePath: ""})
+      {core.String rootUrl = "https://people.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -97,12 +97,12 @@ class ContactGroupsResourceApi {
       {core.int maxMembers,
       core.List<core.String> resourceNames,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
@@ -144,12 +144,12 @@ class ContactGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContactGroup> create(CreateContactGroupRequest request,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -192,12 +192,12 @@ class ContactGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String resourceName,
       {core.bool deleteContacts, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -242,12 +242,12 @@ class ContactGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContactGroup> get(core.String resourceName,
       {core.int maxMembers, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -275,15 +275,15 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [syncToken] - A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [pageSize] - The maximum number of resources to return.
+  ///
+  /// [syncToken] - A sync token, returned by a previous call to
+  /// `contactgroups.list`.
+  /// Only resources changed since the sync token was created will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,25 +296,25 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String syncToken,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String syncToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -357,12 +357,12 @@ class ContactGroupsResourceApi {
   async.Future<ContactGroup> update(
       UpdateContactGroupRequest request, core.String resourceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -414,12 +414,12 @@ class ContactGroupsMembersResourceApi {
   async.Future<ModifyContactGroupMembersResponse> modify(
       ModifyContactGroupMembersRequest request, core.String resourceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -474,12 +474,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<Person> createContact(Person request,
       {core.String parent, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -521,12 +521,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<Empty> deleteContact(core.String resourceName,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -620,12 +620,12 @@ class PeopleResourceApi {
       {core.String personFields,
       core.String requestMask_includeField,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
@@ -726,12 +726,12 @@ class PeopleResourceApi {
       core.String requestMask_includeField,
       core.List<core.String> resourceNames,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
@@ -817,12 +817,12 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<Person> updateContact(Person request, core.String resourceName,
       {core.String updatePersonFields, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -867,14 +867,6 @@ class PeopleConnectionsResourceApi {
   /// [resourceName] - The resource name to return connections for. Only
   /// `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
-  ///
-  /// [sortOrder] - The order in which the connections should be sorted.
-  /// Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
-  /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
   ///
   /// [requestSyncToken] - Whether the response should include a sync token,
   /// which can be used to get
@@ -933,6 +925,14 @@ class PeopleConnectionsResourceApi {
   /// * urls
   /// * userDefined
   ///
+  /// [sortOrder] - The order in which the connections should be sorted.
+  /// Defaults to
+  /// `LAST_MODIFIED_ASCENDING`.
+  /// Possible string values are:
+  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -944,26 +944,23 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.String sortOrder,
-      core.bool requestSyncToken,
+      {core.bool requestSyncToken,
       core.String pageToken,
       core.int pageSize,
       core.String requestMask_includeField,
       core.String syncToken,
       core.String personFields,
+      core.String sortOrder,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
-    }
-    if (sortOrder != null) {
-      _queryParams["sortOrder"] = [sortOrder];
     }
     if (requestSyncToken != null) {
       _queryParams["requestSyncToken"] = ["${requestSyncToken}"];
@@ -982,6 +979,9 @@ class PeopleConnectionsResourceApi {
     }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1595,11 +1595,12 @@ class CreateContactGroupRequest {
 /// of year; for example, anniversary date.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-  /// if specifying a year/month where the day is not significant.
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
   core.int day;
 
-  /// Month of year. Must be from 1 to 12, or 0 if specifying a date without a
-  /// month.
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
   core.int month;
 
   /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without

@@ -16,6 +16,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -42,16 +52,6 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -62,6 +62,16 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -78,16 +88,6 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         }
@@ -117,7 +117,7 @@
             }
         }
     },
-    "revision": "20180825",
+    "revision": "20190119",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "MobileFriendlyIssue": {
@@ -153,6 +153,17 @@
             "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
             "id": "RunMobileFriendlyTestResponse",
             "properties": {
+                "testStatus": {
+                    "$ref": "TestStatus",
+                    "description": "Final state of the test, can be either complete or an error."
+                },
+                "resourceIssues": {
+                    "description": "Information about embedded resources issues.",
+                    "items": {
+                        "$ref": "ResourceIssue"
+                    },
+                    "type": "array"
+                },
                 "mobileFriendliness": {
                     "description": "Test verdict, whether the page is mobile friendly or not.",
                     "enum": [
@@ -177,17 +188,6 @@
                 "screenshot": {
                     "$ref": "Image",
                     "description": "Screenshot of the requested URL."
-                },
-                "testStatus": {
-                    "$ref": "TestStatus",
-                    "description": "Final state of the test, can be either complete or an error."
-                },
-                "resourceIssues": {
-                    "description": "Information about embedded resources issues.",
-                    "items": {
-                        "$ref": "ResourceIssue"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -241,6 +241,21 @@
             },
             "type": "object"
         },
+        "RunMobileFriendlyTestRequest": {
+            "description": "Mobile-friendly test request.",
+            "id": "RunMobileFriendlyTestRequest",
+            "properties": {
+                "url": {
+                    "description": "URL for inspection.",
+                    "type": "string"
+                },
+                "requestScreenshot": {
+                    "description": "Whether or not screenshot is requested. Default is false.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "Image": {
             "description": "Describe image data.",
             "id": "Image",
@@ -253,21 +268,6 @@
                     "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
                     "format": "byte",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RunMobileFriendlyTestRequest": {
-            "description": "Mobile-friendly test request.",
-            "id": "RunMobileFriendlyTestRequest",
-            "properties": {
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
-                },
-                "requestScreenshot": {
-                    "description": "Whether or not screenshot is requested. Default is false.",
-                    "type": "boolean"
                 }
             },
             "type": "object"

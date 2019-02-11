@@ -34,8 +34,8 @@ class ResellerApi {
       new SubscriptionsResourceApi(_requester);
 
   ResellerApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "apps/reseller/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "apps/reseller/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -65,12 +65,12 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Customer> get(core.String customerId, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -115,12 +115,12 @@ class CustomersResourceApi {
   /// this method will complete with the same error.
   async.Future<Customer> insert(Customer request,
       {core.String customerAuthToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -167,12 +167,12 @@ class CustomersResourceApi {
   /// this method will complete with the same error.
   async.Future<Customer> patch(Customer request, core.String customerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -218,12 +218,12 @@ class CustomersResourceApi {
   /// this method will complete with the same error.
   async.Future<Customer> update(Customer request, core.String customerId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -268,12 +268,12 @@ class ResellernotifyResourceApi {
   /// this method will complete with the same error.
   async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails(
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -310,12 +310,12 @@ class ResellernotifyResourceApi {
   /// this method will complete with the same error.
   async.Future<ResellernotifyResource> register(
       {core.String serviceAccountEmailAddress, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (serviceAccountEmailAddress != null) {
       _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
@@ -354,12 +354,12 @@ class ResellernotifyResourceApi {
   /// this method will complete with the same error.
   async.Future<ResellernotifyResource> unregister(
       {core.String serviceAccountEmailAddress, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (serviceAccountEmailAddress != null) {
       _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
@@ -413,12 +413,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> activate(
       core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -477,12 +477,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> changePlan(ChangePlanRequest request,
       core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -543,12 +543,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> changeRenewalSettings(RenewalSettings request,
       core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -608,12 +608,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> changeSeats(
       Seats request, core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -702,12 +702,12 @@ class SubscriptionsResourceApi {
   async.Future delete(core.String customerId, core.String subscriptionId,
       core.String deletionType,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -767,12 +767,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> get(
       core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -829,12 +829,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> insert(
       Subscription request, core.String customerId,
       {core.String customerAuthToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -913,12 +913,12 @@ class SubscriptionsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
@@ -979,12 +979,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> startPaidService(
       core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
@@ -1039,12 +1039,12 @@ class SubscriptionsResourceApi {
   async.Future<Subscription> suspend(
       core.String customerId, core.String subscriptionId,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");

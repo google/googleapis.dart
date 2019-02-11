@@ -18,7 +18,7 @@ const core.String USER_AGENT = 'dart-api-client tasks/v1';
 
 /// Lets you manage your tasks and task lists.
 class TasksApi {
-  /// Manage your tasks
+  /// Create, edit, organize, and delete all your tasks
   static const TasksScope = "https://www.googleapis.com/auth/tasks";
 
   /// View your tasks
@@ -31,8 +31,8 @@ class TasksApi {
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
   TasksApi(http.Client client,
-      {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "tasks/v1/"})
+      {core.String rootUrl = "https://www.googleapis.com/",
+      core.String servicePath = "tasks/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -57,12 +57,12 @@ class TasklistsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String tasklist, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -101,12 +101,12 @@ class TasklistsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskList> get(core.String tasklist, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -144,12 +144,12 @@ class TasklistsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskList> insert(TaskList request, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -190,12 +190,12 @@ class TasklistsResourceApi {
   /// this method will complete with the same error.
   async.Future<TaskLists> list(
       {core.String maxResults, core.String pageToken, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (maxResults != null) {
       _queryParams["maxResults"] = [maxResults];
@@ -239,12 +239,12 @@ class TasklistsResourceApi {
   /// this method will complete with the same error.
   async.Future<TaskList> patch(TaskList request, core.String tasklist,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -287,12 +287,12 @@ class TasklistsResourceApi {
   /// this method will complete with the same error.
   async.Future<TaskList> update(TaskList request, core.String tasklist,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -338,12 +338,12 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future clear(core.String tasklist, {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -383,12 +383,12 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future delete(core.String tasklist, core.String task,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -436,12 +436,12 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Task> get(core.String tasklist, core.String task,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -494,12 +494,12 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Task> insert(Task request, core.String tasklist,
       {core.String parent, core.String previous, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -588,12 +588,12 @@ class TasksResourceApi {
       core.bool showHidden,
       core.String updatedMin,
       core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -672,12 +672,12 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Task> move(core.String tasklist, core.String task,
       {core.String parent, core.String previous, core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
@@ -732,12 +732,12 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Task> patch(Task request, core.String tasklist, core.String task,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
@@ -789,12 +789,12 @@ class TasksResourceApi {
   async.Future<Task> update(
       Task request, core.String tasklist, core.String task,
       {core.String $fields}) {
-    var _url = null;
+    var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
+    var _uploadMedia;
+    var _uploadOptions;
     var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
+    var _body;
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
