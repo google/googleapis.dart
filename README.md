@@ -1,4 +1,4 @@
-# Google APIs Client Libraries with Dart
+# Google API Client Libraries with Dart
 
 Google provides a large set of APIs that your applications can use
 to interact with Google products such as Google Drive, Gmail,
