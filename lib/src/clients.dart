@@ -267,11 +267,11 @@ class MultipartMediaUploader {
     // This guarantees us that [_body] cannot contain a valid multipart
     // boundary.
     var bodyHead = '--$_boundary\r\n'
-        'Content-Type: $CONTENT_TYPE_JSON_UTF8\r\n\r\n' +
+            'Content-Type: $CONTENT_TYPE_JSON_UTF8\r\n\r\n' +
         _body +
         '\r\n--$_boundary\r\n'
-        'Content-Type: ${_uploadMedia.contentType}\r\n'
-        'Content-Transfer-Encoding: base64\r\n\r\n';
+            'Content-Type: ${_uploadMedia.contentType}\r\n'
+            'Content-Transfer-Encoding: base64\r\n\r\n';
     var bodyTail = '\r\n--$_boundary--';
 
     var totalLength =
