@@ -12,7 +12,7 @@
  * [api-removed] adexchangeseller:v1_1
  * [api-removed] adexchangeseller:v2_0
  * [api-removed] cloudtrace:v1
- * [api-removed] content:v2 
+ * [api-removed] content:v2
  * [api-removed] content:v2sandbox
  * [api-removed] dfareporting:v2_8
  * [api-removed] dfareporting:v3_0
