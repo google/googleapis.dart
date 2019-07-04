@@ -25,13 +25,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -74,13 +74,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -89,16 +89,16 @@
             "location": "query",
             "type": "string"
         },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -145,28 +145,9 @@
             }
         }
     },
-    "revision": "20190115",
+    "revision": "20190627",
     "rootUrl": "https://indexing.googleapis.com/",
     "schemas": {
-        "UrlNotificationMetadata": {
-            "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL.",
-            "id": "UrlNotificationMetadata",
-            "properties": {
-                "latestUpdate": {
-                    "$ref": "UrlNotification",
-                    "description": "Latest notification received with type `URL_UPDATED`."
-                },
-                "url": {
-                    "description": "URL to which this metadata refers.",
-                    "type": "string"
-                },
-                "latestRemove": {
-                    "$ref": "UrlNotification",
-                    "description": "Latest notification received with type `URL_REMOVED`."
-                }
-            },
-            "type": "object"
-        },
         "UrlNotification": {
             "description": "`UrlNotification` is the resource used in all Indexing API calls.\nIt describes one event in the life cycle of a Web Document.",
             "id": "UrlNotification",
@@ -204,6 +185,25 @@
                 "urlNotificationMetadata": {
                     "$ref": "UrlNotificationMetadata",
                     "description": "Description of the notification events received for this URL."
+                }
+            },
+            "type": "object"
+        },
+        "UrlNotificationMetadata": {
+            "description": "Summary of the most recent Indexing API notifications successfully received,\nfor a given URL.",
+            "id": "UrlNotificationMetadata",
+            "properties": {
+                "latestRemove": {
+                    "$ref": "UrlNotification",
+                    "description": "Latest notification received with type `URL_REMOVED`."
+                },
+                "latestUpdate": {
+                    "$ref": "UrlNotification",
+                    "description": "Latest notification received with type `URL_UPDATED`."
+                },
+                "url": {
+                    "description": "URL to which this metadata refers.",
+                    "type": "string"
                 }
             },
             "type": "object"
