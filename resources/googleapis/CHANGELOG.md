@@ -1,14 +1,31 @@
+## 0.54.0
+
+ * [api-new] accesscontextmanager:v1
+ * [api-new] cloudasset:v1
+ * [api-new] cloudscheduler:v1
+ * [api-new] cloudtasks:v2
+ * [api-new] dfareporting:v3.3
+ * [api-new] docs:v1
+ * [api-new] fcm:v1
+ * [api-new] file:v1
+ * [api-new] remotebuildexecution:v2
+ * [api-new] run:v1
+ * [api-new] securitycenter:v1
+ * [api-new] servicenetworking:v1
+ * [api-new] websecurityscanner:v1
+ * [api-removed]dfareporting:v3.2
+
 ## 0.53.0
 
- * [api-added] bigtableadmin:v2
- * [api-added] cloudidentity:v1
- * [api-added] cloudsearch:v1
- * [api-added] content:v2_1
- * [api-added] driveactivity:v2
- * [api-added] iap:v1
- * [api-added] libraryagent:v1
- * [api-added] pagespeedonline:v5
- * [api-added] redis:v1
+ * [api-new] bigtableadmin:v2
+ * [api-new] cloudidentity:v1
+ * [api-new] cloudsearch:v1
+ * [api-new] content:v2_1
+ * [api-new] driveactivity:v2
+ * [api-new] iap:v1
+ * [api-new] libraryagent:v1
+ * [api-new] pagespeedonline:v5
+ * [api-new] redis:v1
  * [api-removed] adexchangeseller:v1_1
  * [api-removed] adexchangeseller:v2_0
  * [api-removed] cloudtrace:v1
