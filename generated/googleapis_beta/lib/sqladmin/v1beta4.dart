@@ -2723,6 +2723,9 @@ class BackupConfiguration {
   /// This is always sql#backupConfiguration.
   core.String kind;
 
+  /// The location of the backup.
+  core.String location;
+
   /// Reserved for future use.
   core.bool replicationLogArchivingEnabled;
 
@@ -2741,6 +2744,9 @@ class BackupConfiguration {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
     }
     if (_json.containsKey("replicationLogArchivingEnabled")) {
       replicationLogArchivingEnabled = _json["replicationLogArchivingEnabled"];
@@ -2761,6 +2767,9 @@ class BackupConfiguration {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (replicationLogArchivingEnabled != null) {
       _json["replicationLogArchivingEnabled"] = replicationLogArchivingEnabled;
@@ -2798,6 +2807,9 @@ class BackupRun {
 
   /// This is always sql#backupRun.
   core.String kind;
+
+  /// The location of the backup.
+  core.String location;
 
   /// The URI of this resource.
   core.String selfLink;
@@ -2840,6 +2852,9 @@ class BackupRun {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -2880,6 +2895,9 @@ class BackupRun {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (location != null) {
+      _json["location"] = location;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -3221,9 +3239,18 @@ class DatabaseInstance {
 
   /// The database engine type and version. The databaseVersion field can not be
   /// changed after instance creation. MySQL Second Generation instances:
-  /// MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6 MySQL
-  /// First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5
+  /// MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6
+  /// (default) or POSTGRES_11 Beta. MySQL First Generation instances: MYSQL_5_6
+  /// (default) or MYSQL_5_5
   core.String databaseVersion;
+
+  /// Disk encryption configuration specific to an instance. Applies only to
+  /// Second Generation instances.
+  DiskEncryptionConfiguration diskEncryptionConfiguration;
+
+  /// Disk encryption status specific to an instance. Applies only to Second
+  /// Generation instances.
+  DiskEncryptionStatus diskEncryptionStatus;
 
   /// This field is deprecated and will be removed from a future version of the
   /// API. Use the settings.settingsVersion field instead.
@@ -3286,6 +3313,9 @@ class DatabaseInstance {
   /// The replicas of the instance.
   core.List<core.String> replicaNames;
 
+  /// Initial root password. Use only on creation.
+  core.String rootPassword;
+
   /// The URI of this resource.
   core.String selfLink;
 
@@ -3327,6 +3357,14 @@ class DatabaseInstance {
     }
     if (_json.containsKey("databaseVersion")) {
       databaseVersion = _json["databaseVersion"];
+    }
+    if (_json.containsKey("diskEncryptionConfiguration")) {
+      diskEncryptionConfiguration = new DiskEncryptionConfiguration.fromJson(
+          _json["diskEncryptionConfiguration"]);
+    }
+    if (_json.containsKey("diskEncryptionStatus")) {
+      diskEncryptionStatus =
+          new DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -3378,6 +3416,9 @@ class DatabaseInstance {
     if (_json.containsKey("replicaNames")) {
       replicaNames = (_json["replicaNames"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("rootPassword")) {
+      rootPassword = _json["rootPassword"];
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -3413,6 +3454,13 @@ class DatabaseInstance {
     }
     if (databaseVersion != null) {
       _json["databaseVersion"] = databaseVersion;
+    }
+    if (diskEncryptionConfiguration != null) {
+      _json["diskEncryptionConfiguration"] =
+          (diskEncryptionConfiguration).toJson();
+    }
+    if (diskEncryptionStatus != null) {
+      _json["diskEncryptionStatus"] = (diskEncryptionStatus).toJson();
     }
     if (etag != null) {
       _json["etag"] = etag;
@@ -3459,6 +3507,9 @@ class DatabaseInstance {
     }
     if (replicaNames != null) {
       _json["replicaNames"] = replicaNames;
+    }
+    if (rootPassword != null) {
+      _json["rootPassword"] = rootPassword;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -3684,9 +3735,71 @@ class DemoteMasterMySqlReplicaConfiguration {
   }
 }
 
+/// Disk encryption configuration.
+class DiskEncryptionConfiguration {
+  /// This is always sql#diskEncryptionConfiguration.
+  core.String kind;
+
+  /// KMS key resource name
+  core.String kmsKeyName;
+
+  DiskEncryptionConfiguration();
+
+  DiskEncryptionConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
+    return _json;
+  }
+}
+
+/// Disk encryption status.
+class DiskEncryptionStatus {
+  /// This is always sql#diskEncryptionStatus.
+  core.String kind;
+
+  /// KMS key version used to encrypt the Cloud SQL instance disk
+  core.String kmsKeyVersionName;
+
+  DiskEncryptionStatus();
+
+  DiskEncryptionStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("kmsKeyVersionName")) {
+      kmsKeyVersionName = _json["kmsKeyVersionName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (kmsKeyVersionName != null) {
+      _json["kmsKeyVersionName"] = kmsKeyVersionName;
+    }
+    return _json;
+  }
+}
+
 /// Options for exporting data as CSV.
-/// Exporting in CSV format using the Cloud SQL Admin API is not supported for
-/// PostgreSQL instances.
 class ExportContextCsvExportOptions {
   /// The select query used to extract the data.
   core.String selectQuery;
@@ -3783,8 +3896,6 @@ class ExportContextSqlExportOptions {
 /// Database instance export context.
 class ExportContext {
   /// Options for exporting data as CSV.
-  /// Exporting in CSV format using the Cloud SQL Admin API is not supported for
-  /// PostgreSQL instances.
   ExportContextCsvExportOptions csvExportOptions;
 
   /// Databases to be exported.
@@ -3793,14 +3904,14 @@ class ExportContext {
   /// is CSV, you can specify one database, either by using this property or by
   /// using the csvExportOptions.selectQuery property, which takes precedence
   /// over this property.
-  /// PostgreSQL instances: If fileType is SQL, you must specify one database to
-  /// be exported. A fileType of CSV is not supported for PostgreSQL instances.
+  /// PostgreSQL instances: Specify exactly one database to be exported. If
+  /// fileType is CSV, this database must match the database used in the
+  /// csvExportOptions.selectQuery property.
   core.List<core.String> databases;
 
   /// The file type for the specified uri.
   /// SQL: The file contains SQL statements.
   /// CSV: The file contains CSV data.
-  /// CSV is not supported for PostgreSQL instances.
   core.String fileType;
 
   /// This is always sql#exportContext.
@@ -3908,6 +4019,9 @@ class Flag {
   /// MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances.
   core.List<core.String> appliesTo;
 
+  /// True if the flag is only released in Beta.
+  core.bool inBeta;
+
   /// This is always sql#flag.
   core.String kind;
 
@@ -3940,6 +4054,9 @@ class Flag {
     if (_json.containsKey("appliesTo")) {
       appliesTo = (_json["appliesTo"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("inBeta")) {
+      inBeta = _json["inBeta"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -3968,6 +4085,9 @@ class Flag {
     }
     if (appliesTo != null) {
       _json["appliesTo"] = appliesTo;
+    }
+    if (inBeta != null) {
+      _json["inBeta"] = inBeta;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4026,8 +4146,6 @@ class FlagsListResponse {
 }
 
 /// Options for importing data as CSV.
-/// Importing CSV data using the Cloud SQL Admin API is not supported for
-/// PostgreSQL instances.
 class ImportContextCsvImportOptions {
   /// The columns to which CSV data is imported. If not specified, all columns
   /// of the database table are loaded with CSV data.
@@ -4063,8 +4181,6 @@ class ImportContextCsvImportOptions {
 /// Database instance import context.
 class ImportContext {
   /// Options for importing data as CSV.
-  /// Importing CSV data using the Cloud SQL Admin API is not supported for
-  /// PostgreSQL instances.
   ImportContextCsvImportOptions csvImportOptions;
 
   /// The target database for the import. If fileType is SQL, this field is
@@ -4076,12 +4192,9 @@ class ImportContext {
   /// The file type for the specified uri.
   /// SQL: The file contains SQL statements.
   /// CSV: The file contains CSV data.
-  /// Importing CSV data using the Cloud SQL Admin API is not supported for
-  /// PostgreSQL instances.
   core.String fileType;
 
-  /// The PostgreSQL user for this import operation. Defaults to
-  /// cloudsqlsuperuser. PostgreSQL instances only.
+  /// The PostgreSQL user for this import operation. PostgreSQL instances only.
   core.String importUser;
 
   /// This is always sql#importContext.
@@ -4496,9 +4609,10 @@ class IpMapping {
   /// scheduled to be retired.
   core.DateTime timeToRetire;
 
-  /// The type of this IP address. A PRIMARY address is an address that can
-  /// accept incoming connections. An OUTGOING address is the source address of
-  /// connections originating from the instance, if supported.
+  /// The type of this IP address. A PRIMARY address is a public address that
+  /// can accept incoming connections. A PRIVATE address is a private address
+  /// that can accept incoming connections. An OUTGOING address is the source
+  /// address of connections originating from the instance, if supported.
   core.String type;
 
   IpMapping();
@@ -5122,6 +5236,9 @@ class RestoreBackupContext {
   /// This is always sql#restoreBackupContext.
   core.String kind;
 
+  /// The full project ID of the source instance.
+  core.String project;
+
   RestoreBackupContext();
 
   RestoreBackupContext.fromJson(core.Map _json) {
@@ -5133,6 +5250,9 @@ class RestoreBackupContext {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("project")) {
+      project = _json["project"];
     }
   }
 
@@ -5147,6 +5267,9 @@ class RestoreBackupContext {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (project != null) {
+      _json["project"] = project;
     }
     return _json;
   }

@@ -1949,6 +1949,50 @@ class UsersSettingsResourceApi {
     return _response.then((data) => new ImapSettings.fromJson(data));
   }
 
+  /// Gets language settings.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - User's email address. The special value "me" can be used to
+  /// indicate the authenticated user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LanguageSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LanguageSettings> getLanguage(core.String userId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/language';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LanguageSettings.fromJson(data));
+  }
+
   /// Gets POP settings.
   ///
   /// Request parameters:
@@ -2139,6 +2183,62 @@ class UsersSettingsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ImapSettings.fromJson(data));
+  }
+
+  /// Updates language settings.
+  ///
+  /// If successful, the return object contains the displayLanguage that was
+  /// saved for the user, which may differ from the value passed into the
+  /// request. This is because the requested displayLanguage may not be directly
+  /// supported by Gmail but have a close variant that is, and so the variant
+  /// may be chosen and saved instead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - User's email address. The special value "me" can be used to
+  /// indicate the authenticated user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LanguageSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LanguageSettings> updateLanguage(
+      LanguageSettings request, core.String userId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') + '/settings/language';
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LanguageSettings.fromJson(data));
   }
 
   /// Updates POP settings.
@@ -4766,6 +4866,11 @@ class LabelColor {
   /// #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798,
   /// #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775,
   /// #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c
+  /// #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff,
+  /// #711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5,
+  /// #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1,
+  /// #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46,
+  /// #662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
   core.String backgroundColor;
 
   /// The text color of the label, represented as hex string. This field is
@@ -4779,6 +4884,11 @@ class LabelColor {
   /// #cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798,
   /// #ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775,
   /// #822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c
+  /// #464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff,
+  /// #711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5,
+  /// #594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1,
+  /// #c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46,
+  /// #662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765
   core.String textColor;
 
   LabelColor();
@@ -4800,6 +4910,42 @@ class LabelColor {
     }
     if (textColor != null) {
       _json["textColor"] = textColor;
+    }
+    return _json;
+  }
+}
+
+/// Language settings for an account. These settings correspond to the "Language
+/// settings" feature in the web interface.
+class LanguageSettings {
+  /// The language to display Gmail in, formatted as an RFC 3066 Language Tag
+  /// (for example en-GB, fr or ja for British English, French, or Japanese
+  /// respectively).
+  ///
+  /// The set of languages supported by Gmail evolves over time, so please refer
+  /// to the "Language" dropdown in the Gmail settings  for all available
+  /// options, as described in the language settings help article. A table of
+  /// sample values is also provided in the Managing Language Settings guide
+  ///
+  /// Not all Gmail clients can display the same set of languages. In the case
+  /// that a user's display language is not available for use on a particular
+  /// client, said client automatically chooses to display in the closest
+  /// supported variant (or a reasonable default).
+  core.String displayLanguage;
+
+  LanguageSettings();
+
+  LanguageSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("displayLanguage")) {
+      displayLanguage = _json["displayLanguage"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayLanguage != null) {
+      _json["displayLanguage"] = displayLanguage;
     }
     return _json;
   }

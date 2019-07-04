@@ -47,11 +47,192 @@ class ProjectsResourceApi {
 class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAutoscalingPoliciesResourceApi get autoscalingPolicies =>
+      new ProjectsLocationsAutoscalingPoliciesResourceApi(_requester);
   ProjectsLocationsWorkflowTemplatesResourceApi get workflowTemplates =>
       new ProjectsLocationsWorkflowTemplatesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
+}
+
+class ProjectsLocationsAutoscalingPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAutoscalingPoliciesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsWorkflowTemplatesResourceApi {
@@ -650,6 +831,8 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
 class ProjectsRegionsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsRegionsAutoscalingPoliciesResourceApi get autoscalingPolicies =>
+      new ProjectsRegionsAutoscalingPoliciesResourceApi(_requester);
   ProjectsRegionsClustersResourceApi get clusters =>
       new ProjectsRegionsClustersResourceApi(_requester);
   ProjectsRegionsJobsResourceApi get jobs =>
@@ -660,6 +843,185 @@ class ProjectsRegionsResourceApi {
       new ProjectsRegionsWorkflowTemplatesResourceApi(_requester);
 
   ProjectsRegionsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsRegionsAutoscalingPoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsRegionsAutoscalingPoliciesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource. Returns an empty policy if
+  /// the resource exists and does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource. If the
+  /// resource does not exist, this will return an empty set of permissions, not
+  /// a NOT_FOUND error.Note: This operation is designed to be used for building
+  /// permission-aware UIs and command-line tools, not for authorization
+  /// checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
 }
 
 class ProjectsRegionsClustersResourceApi {
@@ -2956,10 +3318,9 @@ class AcceleratorConfig {
 
 /// Associates members with a role.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding. NOTE:
-  /// an unsatisfied condition will not allow user access via current binding.
-  /// Different bindings, including their conditions, are examined
-  /// independently.
+  /// The condition that is associated with this binding. NOTE: An unsatisfied
+  /// condition will not allow user access via current binding. Different
+  /// bindings, including their conditions, are examined independently.
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -2974,8 +3335,8 @@ class Binding {
   /// account. For example, my-other-app@appspot.gserviceaccount.com.
   /// group:{emailid}: An email address that represents a Google group.  For
   /// example, admins@example.com.
-  /// domain:{domain}: A Google Apps domain name that represents all the  users
-  /// of that domain. For example, google.com or example.com.
+  /// domain:{domain}: The G Suite domain (primary) that represents all the
+  /// users of that domain. For example, google.com or example.com.
   core.List<core.String> members;
 
   /// Role that is assigned to members. For example, roles/viewer, roles/editor,
@@ -3128,18 +3489,19 @@ class Cluster {
 
 /// The cluster config.
 class ClusterConfig {
-  /// Optional. A Cloud Storage staging bucket used for sharing generated SSH
-  /// keys and config. If you do not specify a staging bucket, Cloud Dataproc
-  /// will determine an appropriate Cloud Storage location (US, ASIA, or EU) for
-  /// your cluster's staging bucket according to the Google Compute Engine zone
-  /// where your cluster is deployed, and then it will create and manage this
-  /// project-level, per-location bucket for you.
+  /// Optional. A Google Cloud Storage bucket used to stage job dependencies,
+  /// config files, and job driver console output. If you do not specify a
+  /// staging bucket, Cloud Dataproc will determine a Cloud Storage location
+  /// (US, ASIA, or EU) for your cluster's staging bucket according to the
+  /// Google Compute Engine zone where your cluster is deployed, and then create
+  /// and manage this project-level, per-location bucket (see Cloud Dataproc
+  /// staging bucket).
   core.String configBucket;
 
   /// Optional. Encryption settings for the cluster.
   EncryptionConfig encryptionConfig;
 
-  /// Required. The shared Compute Engine config settings for all instances in a
+  /// Optional. The shared Compute Engine config settings for all instances in a
   /// cluster.
   GceClusterConfig gceClusterConfig;
 
@@ -3163,6 +3525,9 @@ class ClusterConfig {
   /// Optional. The Compute Engine config settings for additional worker
   /// instances in a cluster.
   InstanceGroupConfig secondaryWorkerConfig;
+
+  /// Optional. Security settings for the cluster.
+  SecurityConfig securityConfig;
 
   /// Optional. The config settings for software inside the cluster.
   SoftwareConfig softwareConfig;
@@ -3198,6 +3563,9 @@ class ClusterConfig {
       secondaryWorkerConfig =
           new InstanceGroupConfig.fromJson(_json["secondaryWorkerConfig"]);
     }
+    if (_json.containsKey("securityConfig")) {
+      securityConfig = new SecurityConfig.fromJson(_json["securityConfig"]);
+    }
     if (_json.containsKey("softwareConfig")) {
       softwareConfig = new SoftwareConfig.fromJson(_json["softwareConfig"]);
     }
@@ -3227,6 +3595,9 @@ class ClusterConfig {
     }
     if (secondaryWorkerConfig != null) {
       _json["secondaryWorkerConfig"] = (secondaryWorkerConfig).toJson();
+    }
+    if (securityConfig != null) {
+      _json["securityConfig"] = (securityConfig).toJson();
     }
     if (softwareConfig != null) {
       _json["softwareConfig"] = (softwareConfig).toJson();
@@ -3800,8 +4171,8 @@ class GceClusterConfig {
   /// Optional. The Compute Engine subnetwork to be used for machine
   /// communications. Cannot be specified with network_uri.A full URL, partial
   /// URI, or short name are valid. Examples:
-  /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0
-  /// projects/[project_id]/regions/us-east1/sub0
+  /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
+  /// projects/[project_id]/regions/us-east1/subnetworks/sub0
   /// sub0
   core.String subnetworkUri;
 
@@ -4447,11 +4818,10 @@ class JobPlacement {
 
 /// Encapsulates the full scoping used to reference a job.
 class JobReference {
-  /// Optional. The job ID, which must be unique within the project. The job ID
-  /// is generated by the server upon job submission or provided by the user as
-  /// a means to perform retries without creating duplicate jobs. The ID must
+  /// Optional. The job ID, which must be unique within the project.The ID must
   /// contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or
-  /// hyphens (-). The maximum length is 100 characters.
+  /// hyphens (-). The maximum length is 100 characters.If not specified by the
+  /// caller, the job ID will be provided by the server.
   core.String jobId;
 
   /// Required. The ID of the Google Cloud Platform project that the job belongs
@@ -4582,6 +4952,166 @@ class JobStatus {
     }
     if (substate != null) {
       _json["substate"] = substate;
+    }
+    return _json;
+  }
+}
+
+/// Specifies Kerberos related configuration.
+class KerberosConfig {
+  /// Optional. The admin server (IP or hostname) for the remote trusted realm
+  /// in a cross realm trust relationship.
+  core.String crossRealmTrustAdminServer;
+
+  /// Optional. The KDC (IP or hostname) for the remote trusted realm in a cross
+  /// realm trust relationship.
+  core.String crossRealmTrustKdc;
+
+  /// Optional. The remote realm the Dataproc on-cluster KDC will trust, should
+  /// the user enable cross realm trust.
+  core.String crossRealmTrustRealm;
+
+  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
+  /// shared password between the on-cluster Kerberos realm and the remote
+  /// trusted realm, in a cross realm trust relationship.
+  core.String crossRealmTrustSharedPasswordUri;
+
+  /// Optional. Flag to indicate whether to Kerberize the cluster.
+  core.bool enableKerberos;
+
+  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
+  /// master key of the KDC database.
+  core.String kdcDbKeyUri;
+
+  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
+  /// password to the user provided key. For the self-signed certificate, this
+  /// password is generated by Dataproc.
+  core.String keyPasswordUri;
+
+  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
+  /// password to the user provided keystore. For the self-signed certificate,
+  /// this password is generated by Dataproc.
+  core.String keystorePasswordUri;
+
+  /// Optional. The Cloud Storage URI of the keystore file used for SSL
+  /// encryption. If not provided, Dataproc will provide a self-signed
+  /// certificate.
+  core.String keystoreUri;
+
+  /// Required. The uri of the KMS key used to encrypt various sensitive files.
+  core.String kmsKeyUri;
+
+  /// Required. The Cloud Storage URI of a KMS encrypted file containing the
+  /// root principal password.
+  core.String rootPrincipalPasswordUri;
+
+  /// Optional. The lifetime of the ticket granting ticket, in hours. If not
+  /// specified, or user specifies 0, then default value 10 will be used.
+  core.int tgtLifetimeHours;
+
+  /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
+  /// password to the user provided truststore. For the self-signed certificate,
+  /// this password is generated by Dataproc.
+  core.String truststorePasswordUri;
+
+  /// Optional. The Cloud Storage URI of the truststore file used for SSL
+  /// encryption. If not provided, Dataproc will provide a self-signed
+  /// certificate.
+  core.String truststoreUri;
+
+  KerberosConfig();
+
+  KerberosConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("crossRealmTrustAdminServer")) {
+      crossRealmTrustAdminServer = _json["crossRealmTrustAdminServer"];
+    }
+    if (_json.containsKey("crossRealmTrustKdc")) {
+      crossRealmTrustKdc = _json["crossRealmTrustKdc"];
+    }
+    if (_json.containsKey("crossRealmTrustRealm")) {
+      crossRealmTrustRealm = _json["crossRealmTrustRealm"];
+    }
+    if (_json.containsKey("crossRealmTrustSharedPasswordUri")) {
+      crossRealmTrustSharedPasswordUri =
+          _json["crossRealmTrustSharedPasswordUri"];
+    }
+    if (_json.containsKey("enableKerberos")) {
+      enableKerberos = _json["enableKerberos"];
+    }
+    if (_json.containsKey("kdcDbKeyUri")) {
+      kdcDbKeyUri = _json["kdcDbKeyUri"];
+    }
+    if (_json.containsKey("keyPasswordUri")) {
+      keyPasswordUri = _json["keyPasswordUri"];
+    }
+    if (_json.containsKey("keystorePasswordUri")) {
+      keystorePasswordUri = _json["keystorePasswordUri"];
+    }
+    if (_json.containsKey("keystoreUri")) {
+      keystoreUri = _json["keystoreUri"];
+    }
+    if (_json.containsKey("kmsKeyUri")) {
+      kmsKeyUri = _json["kmsKeyUri"];
+    }
+    if (_json.containsKey("rootPrincipalPasswordUri")) {
+      rootPrincipalPasswordUri = _json["rootPrincipalPasswordUri"];
+    }
+    if (_json.containsKey("tgtLifetimeHours")) {
+      tgtLifetimeHours = _json["tgtLifetimeHours"];
+    }
+    if (_json.containsKey("truststorePasswordUri")) {
+      truststorePasswordUri = _json["truststorePasswordUri"];
+    }
+    if (_json.containsKey("truststoreUri")) {
+      truststoreUri = _json["truststoreUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (crossRealmTrustAdminServer != null) {
+      _json["crossRealmTrustAdminServer"] = crossRealmTrustAdminServer;
+    }
+    if (crossRealmTrustKdc != null) {
+      _json["crossRealmTrustKdc"] = crossRealmTrustKdc;
+    }
+    if (crossRealmTrustRealm != null) {
+      _json["crossRealmTrustRealm"] = crossRealmTrustRealm;
+    }
+    if (crossRealmTrustSharedPasswordUri != null) {
+      _json["crossRealmTrustSharedPasswordUri"] =
+          crossRealmTrustSharedPasswordUri;
+    }
+    if (enableKerberos != null) {
+      _json["enableKerberos"] = enableKerberos;
+    }
+    if (kdcDbKeyUri != null) {
+      _json["kdcDbKeyUri"] = kdcDbKeyUri;
+    }
+    if (keyPasswordUri != null) {
+      _json["keyPasswordUri"] = keyPasswordUri;
+    }
+    if (keystorePasswordUri != null) {
+      _json["keystorePasswordUri"] = keystorePasswordUri;
+    }
+    if (keystoreUri != null) {
+      _json["keystoreUri"] = keystoreUri;
+    }
+    if (kmsKeyUri != null) {
+      _json["kmsKeyUri"] = kmsKeyUri;
+    }
+    if (rootPrincipalPasswordUri != null) {
+      _json["rootPrincipalPasswordUri"] = rootPrincipalPasswordUri;
+    }
+    if (tgtLifetimeHours != null) {
+      _json["tgtLifetimeHours"] = tgtLifetimeHours;
+    }
+    if (truststorePasswordUri != null) {
+      _json["truststorePasswordUri"] = truststorePasswordUri;
+    }
+    if (truststoreUri != null) {
+      _json["truststoreUri"] = truststoreUri;
     }
     return _json;
   }
@@ -4897,7 +5427,7 @@ class Operation {
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it. If you use the default HTTP mapping, the name
-  /// should have the format of operations/some/unique/name.
+  /// should be a resource name ending with operations/{unique_id}.
   core.String name;
 
   /// The normal response of the operation in case of success. If the original
@@ -5446,6 +5976,29 @@ class RegexValidation {
   }
 }
 
+/// Security related configuration, including Kerberos.
+class SecurityConfig {
+  /// Kerberos related configuration.
+  KerberosConfig kerberosConfig;
+
+  SecurityConfig();
+
+  SecurityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kerberosConfig")) {
+      kerberosConfig = new KerberosConfig.fromJson(_json["kerberosConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kerberosConfig != null) {
+      _json["kerberosConfig"] = (kerberosConfig).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Request message for SetIamPolicy method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the resource. The size of
@@ -5477,11 +6030,14 @@ class SoftwareConfig {
   /// Optional. The version of software inside the cluster. It must be one of
   /// the supported Cloud Dataproc Versions, such as "1.2" (including a subminor
   /// version, such as "1.2.29"), or the "preview" version. If unspecified, it
-  /// defaults to the latest version.
+  /// defaults to the latest Debian version.
   core.String imageVersion;
 
+  /// The set of optional components to activate on the cluster.
+  core.List<core.String> optionalComponents;
+
   /// Optional. The properties to set on daemon config files.Property keys are
-  /// specified in prefix:property format, such as core:fs.defaultFS. The
+  /// specified in prefix:property format, for example core:hadoop.tmp.dir. The
   /// following are supported prefixes and their mappings:
   /// capacity-scheduler: capacity-scheduler.xml
   /// core: core-site.xml
@@ -5500,6 +6056,10 @@ class SoftwareConfig {
     if (_json.containsKey("imageVersion")) {
       imageVersion = _json["imageVersion"];
     }
+    if (_json.containsKey("optionalComponents")) {
+      optionalComponents =
+          (_json["optionalComponents"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("properties")) {
       properties =
           (_json["properties"] as core.Map).cast<core.String, core.String>();
@@ -5511,6 +6071,9 @@ class SoftwareConfig {
         new core.Map<core.String, core.Object>();
     if (imageVersion != null) {
       _json["imageVersion"] = imageVersion;
+    }
+    if (optionalComponents != null) {
+      _json["optionalComponents"] = optionalComponents;
     }
     if (properties != null) {
       _json["properties"] = properties;
@@ -5693,39 +6256,10 @@ class SparkSqlJob {
 
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs. It is used by
-/// gRPC (https://github.com/grpc). The error model is designed to be:
-/// Simple to use and understand for most users
-/// Flexible enough to meet unexpected needsOverviewThe Status message contains
-/// three pieces of data: error code, error message, and error details. The
-/// error code should be an enum value of google.rpc.Code, but it may accept
-/// additional error codes if needed. The error message should be a
-/// developer-facing English message that helps developers understand and
-/// resolve the error. If a localized user-facing error message is needed, put
-/// the localized message in the error details or localize it in the client. The
-/// optional error details may contain arbitrary information about the error.
-/// There is a predefined set of error detail types in the package google.rpc
-/// that can be used for common error conditions.Language mappingThe Status
-/// message is the logical representation of the error model, but it is not
-/// necessarily the actual wire format. When the Status message is exposed in
-/// different client libraries and different wire protocols, it can be mapped
-/// differently. For example, it will likely be mapped to some exceptions in
-/// Java, but more likely mapped to some error codes in C.Other usesThe error
-/// model and the Status message can be used in a variety of environments,
-/// either with or without APIs, to provide a consistent developer experience
-/// across different environments.Example uses of this error model include:
-/// Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the Status in the normal response to indicate the partial
-/// errors.
-/// Workflow errors. A typical workflow has multiple steps. Each step may have a
-/// Status message for error reporting.
-/// Batch operations. If a client uses batch request and batch response, the
-/// Status message should be used directly inside batch response, one for each
-/// error sub-response.
-/// Asynchronous operations. If an API call embeds asynchronous operation
-/// results in its response, the status of those operations should be
-/// represented directly using the Status message.
-/// Logging. If some API errors are stored in logs, the message Status could be
-/// used directly after any stripping needed for security/privacy reasons.
+/// gRPC (https://github.com/grpc). Each Status message contains three pieces of
+/// data: error code, error message, and error details.You can find out more
+/// about this error model and how to work with it in the API Design Guide
+/// (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

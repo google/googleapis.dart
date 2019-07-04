@@ -48,10 +48,10 @@ class CustomersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - A token specifying which result page to return.
+  ///
   /// [pageSize] - The maximum number of customers to show in a page of results.
   /// A number between 1 and 100 (inclusive).
-  ///
-  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -64,7 +64,7 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListCustomersResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -72,11 +72,11 @@ class CustomersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -473,10 +473,10 @@ class CustomersDevicesResourceApi {
   /// format `customers/[CUSTOMER_ID]`.
   /// Value must have pattern "^customers/[^/]+$".
   ///
+  /// [pageToken] - A token specifying which result page to return.
+  ///
   /// [pageSize] - The maximum number of devices to show in a page of results.
   /// Must be between 1 and 100 inclusive.
-  ///
-  /// [pageToken] - A token specifying which result page to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -489,7 +489,7 @@ class CustomersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomerListDevicesResponse> list(core.String parent,
-      {core.String pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.String pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -500,11 +500,11 @@ class CustomersDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = [pageSize];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = [pageSize];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -826,12 +826,12 @@ class PartnersCustomersResourceApi {
   /// [partnerId] - Required. The ID of the reseller partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
+  ///
   /// [pageSize] - The maximum number of results to be returned. If not
   /// specified or 0, all
   /// the records are returned.
-  ///
-  /// [pageToken] - A token identifying a page of results returned by the
-  /// server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -844,7 +844,7 @@ class PartnersCustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCustomersResponse> list(core.String partnerId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -855,11 +855,11 @@ class PartnersCustomersResourceApi {
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2171,6 +2171,14 @@ class DeviceClaim {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
+  /// The timestamp when the device will exit ‘vacation mode’. This value is
+  /// present iff the device is in 'vacation mode'.
+  core.String vacationModeExpireTime;
+
+  /// The timestamp when the device was put into ‘vacation mode’. This value is
+  /// present iff the device is in 'vacation mode'.
+  core.String vacationModeStartTime;
+
   DeviceClaim();
 
   DeviceClaim.fromJson(core.Map _json) {
@@ -2182,6 +2190,12 @@ class DeviceClaim {
     }
     if (_json.containsKey("sectionType")) {
       sectionType = _json["sectionType"];
+    }
+    if (_json.containsKey("vacationModeExpireTime")) {
+      vacationModeExpireTime = _json["vacationModeExpireTime"];
+    }
+    if (_json.containsKey("vacationModeStartTime")) {
+      vacationModeStartTime = _json["vacationModeStartTime"];
     }
   }
 
@@ -2196,6 +2210,12 @@ class DeviceClaim {
     }
     if (sectionType != null) {
       _json["sectionType"] = sectionType;
+    }
+    if (vacationModeExpireTime != null) {
+      _json["vacationModeExpireTime"] = vacationModeExpireTime;
+    }
+    if (vacationModeStartTime != null) {
+      _json["vacationModeStartTime"] = vacationModeStartTime;
     }
     return _json;
   }
@@ -2850,7 +2870,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// This field will contain a `DevicesLongRunningOperationResponse` object if
@@ -3027,6 +3047,13 @@ class PartnerUnclaim {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
+  /// The duration of the vacation unlock starting from when the request is
+  /// processed. (1 day is treated as 24 hours)
+  core.int vacationModeDays;
+
+  /// The expiration time of the vacation unlock.
+  core.String vacationModeExpireTime;
+
   PartnerUnclaim();
 
   PartnerUnclaim.fromJson(core.Map _json) {
@@ -3039,6 +3066,12 @@ class PartnerUnclaim {
     }
     if (_json.containsKey("sectionType")) {
       sectionType = _json["sectionType"];
+    }
+    if (_json.containsKey("vacationModeDays")) {
+      vacationModeDays = _json["vacationModeDays"];
+    }
+    if (_json.containsKey("vacationModeExpireTime")) {
+      vacationModeExpireTime = _json["vacationModeExpireTime"];
     }
   }
 
@@ -3053,6 +3086,12 @@ class PartnerUnclaim {
     }
     if (sectionType != null) {
       _json["sectionType"] = sectionType;
+    }
+    if (vacationModeDays != null) {
+      _json["vacationModeDays"] = vacationModeDays;
+    }
+    if (vacationModeExpireTime != null) {
+      _json["vacationModeExpireTime"] = vacationModeExpireTime;
     }
     return _json;
   }
@@ -3123,61 +3162,12 @@ class PerDeviceStatusInBatch {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -3242,6 +3232,13 @@ class UnclaimDeviceRequest {
   /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
+  /// The duration of the vacation unlock starting from when the request is
+  /// processed. (1 day is treated as 24 hours)
+  core.int vacationModeDays;
+
+  /// The expiration time of the vacation unlock.
+  core.String vacationModeExpireTime;
+
   UnclaimDeviceRequest();
 
   UnclaimDeviceRequest.fromJson(core.Map _json) {
@@ -3254,6 +3251,12 @@ class UnclaimDeviceRequest {
     }
     if (_json.containsKey("sectionType")) {
       sectionType = _json["sectionType"];
+    }
+    if (_json.containsKey("vacationModeDays")) {
+      vacationModeDays = _json["vacationModeDays"];
+    }
+    if (_json.containsKey("vacationModeExpireTime")) {
+      vacationModeExpireTime = _json["vacationModeExpireTime"];
     }
   }
 
@@ -3268,6 +3271,12 @@ class UnclaimDeviceRequest {
     }
     if (sectionType != null) {
       _json["sectionType"] = sectionType;
+    }
+    if (vacationModeDays != null) {
+      _json["vacationModeDays"] = vacationModeDays;
+    }
+    if (vacationModeExpireTime != null) {
+      _json["vacationModeExpireTime"] = vacationModeExpireTime;
     }
     return _json;
   }

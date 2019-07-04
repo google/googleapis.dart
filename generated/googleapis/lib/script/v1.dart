@@ -108,22 +108,6 @@ class ProcessesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userProcessFilter_startTime] - Optional field used to limit returned
-  /// processes to those that were
-  /// started on or after the given timestamp.
-  ///
-  /// [userProcessFilter_projectName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// projects with project names containing a specific string.
-  ///
-  /// [userProcessFilter_userAccessLevels] - Optional field used to limit
-  /// returned processes to those having one of
-  /// the specified user access levels.
-  ///
-  /// [userProcessFilter_functionName] - Optional field used to limit returned
-  /// processes to those originating from
-  /// a script function with the given function name.
-  ///
   /// [userProcessFilter_scriptId] - Optional field used to limit returned
   /// processes to those originating from
   /// projects with a specific script ID.
@@ -140,17 +124,33 @@ class ProcessesResourceApi {
   /// processes to those originating from
   /// projects with a specific deployment ID.
   ///
-  /// [pageToken] - The token for continuing a previous list request on the next
-  /// page. This
-  /// should be set to the value of `nextPageToken` from a previous response.
-  ///
   /// [userProcessFilter_endTime] - Optional field used to limit returned
   /// processes to those that completed
   /// on or before the given timestamp.
   ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This
+  /// should be set to the value of `nextPageToken` from a previous response.
+  ///
   /// [pageSize] - The maximum number of returned processes per page of results.
   /// Defaults to
   /// 50.
+  ///
+  /// [userProcessFilter_startTime] - Optional field used to limit returned
+  /// processes to those that were
+  /// started on or after the given timestamp.
+  ///
+  /// [userProcessFilter_userAccessLevels] - Optional field used to limit
+  /// returned processes to those having one of
+  /// the specified user access levels.
+  ///
+  /// [userProcessFilter_projectName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// projects with project names containing a specific string.
+  ///
+  /// [userProcessFilter_functionName] - Optional field used to limit returned
+  /// processes to those originating from
+  /// a script function with the given function name.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -163,17 +163,17 @@ class ProcessesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserProcessesResponse> list(
-      {core.String userProcessFilter_startTime,
-      core.String userProcessFilter_projectName,
-      core.List<core.String> userProcessFilter_userAccessLevels,
-      core.String userProcessFilter_functionName,
-      core.String userProcessFilter_scriptId,
+      {core.String userProcessFilter_scriptId,
       core.List<core.String> userProcessFilter_types,
       core.List<core.String> userProcessFilter_statuses,
       core.String userProcessFilter_deploymentId,
-      core.String pageToken,
       core.String userProcessFilter_endTime,
+      core.String pageToken,
       core.int pageSize,
+      core.String userProcessFilter_startTime,
+      core.List<core.String> userProcessFilter_userAccessLevels,
+      core.String userProcessFilter_projectName,
+      core.String userProcessFilter_functionName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -182,25 +182,6 @@ class ProcessesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (userProcessFilter_startTime != null) {
-      _queryParams["userProcessFilter.startTime"] = [
-        userProcessFilter_startTime
-      ];
-    }
-    if (userProcessFilter_projectName != null) {
-      _queryParams["userProcessFilter.projectName"] = [
-        userProcessFilter_projectName
-      ];
-    }
-    if (userProcessFilter_userAccessLevels != null) {
-      _queryParams["userProcessFilter.userAccessLevels"] =
-          userProcessFilter_userAccessLevels;
-    }
-    if (userProcessFilter_functionName != null) {
-      _queryParams["userProcessFilter.functionName"] = [
-        userProcessFilter_functionName
-      ];
-    }
     if (userProcessFilter_scriptId != null) {
       _queryParams["userProcessFilter.scriptId"] = [userProcessFilter_scriptId];
     }
@@ -215,14 +196,33 @@ class ProcessesResourceApi {
         userProcessFilter_deploymentId
       ];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (userProcessFilter_endTime != null) {
       _queryParams["userProcessFilter.endTime"] = [userProcessFilter_endTime];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (userProcessFilter_startTime != null) {
+      _queryParams["userProcessFilter.startTime"] = [
+        userProcessFilter_startTime
+      ];
+    }
+    if (userProcessFilter_userAccessLevels != null) {
+      _queryParams["userProcessFilter.userAccessLevels"] =
+          userProcessFilter_userAccessLevels;
+    }
+    if (userProcessFilter_projectName != null) {
+      _queryParams["userProcessFilter.projectName"] = [
+        userProcessFilter_projectName
+      ];
+    }
+    if (userProcessFilter_functionName != null) {
+      _queryParams["userProcessFilter.functionName"] = [
+        userProcessFilter_functionName
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -244,6 +244,14 @@ class ProcessesResourceApi {
   /// and current status.
   ///
   /// Request parameters:
+  ///
+  /// [scriptProcessFilter_endTime] - Optional field used to limit returned
+  /// processes to those that completed
+  /// on or before the given timestamp.
+  ///
+  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
+  /// returned processes to those having one of
+  /// the specified user access levels.
   ///
   /// [scriptProcessFilter_statuses] - Optional field used to limit returned
   /// processes to those having one of
@@ -275,14 +283,6 @@ class ProcessesResourceApi {
   /// Defaults to
   /// 50.
   ///
-  /// [scriptProcessFilter_endTime] - Optional field used to limit returned
-  /// processes to those that completed
-  /// on or before the given timestamp.
-  ///
-  /// [scriptProcessFilter_userAccessLevels] - Optional field used to limit
-  /// returned processes to those having one of
-  /// the specified user access levels.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -294,7 +294,9 @@ class ProcessesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScriptProcessesResponse> listScriptProcesses(
-      {core.List<core.String> scriptProcessFilter_statuses,
+      {core.String scriptProcessFilter_endTime,
+      core.List<core.String> scriptProcessFilter_userAccessLevels,
+      core.List<core.String> scriptProcessFilter_statuses,
       core.String scriptProcessFilter_functionName,
       core.String scriptProcessFilter_startTime,
       core.String scriptProcessFilter_deploymentId,
@@ -302,8 +304,6 @@ class ProcessesResourceApi {
       core.List<core.String> scriptProcessFilter_types,
       core.String pageToken,
       core.int pageSize,
-      core.String scriptProcessFilter_endTime,
-      core.List<core.String> scriptProcessFilter_userAccessLevels,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -312,6 +312,15 @@ class ProcessesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (scriptProcessFilter_endTime != null) {
+      _queryParams["scriptProcessFilter.endTime"] = [
+        scriptProcessFilter_endTime
+      ];
+    }
+    if (scriptProcessFilter_userAccessLevels != null) {
+      _queryParams["scriptProcessFilter.userAccessLevels"] =
+          scriptProcessFilter_userAccessLevels;
+    }
     if (scriptProcessFilter_statuses != null) {
       _queryParams["scriptProcessFilter.statuses"] =
           scriptProcessFilter_statuses;
@@ -342,15 +351,6 @@ class ProcessesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (scriptProcessFilter_endTime != null) {
-      _queryParams["scriptProcessFilter.endTime"] = [
-        scriptProcessFilter_endTime
-      ];
-    }
-    if (scriptProcessFilter_userAccessLevels != null) {
-      _queryParams["scriptProcessFilter.userAccessLevels"] =
-          scriptProcessFilter_userAccessLevels;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1402,6 +1402,31 @@ class EntryPoint {
   }
 }
 
+/// The response for executing or debugging a function in an Apps Script
+/// project.
+class ExecuteStreamResponse {
+  /// The result of the execution.
+  /// TODO (johnlattin): Add debugging and logging.
+  ScriptExecutionResult result;
+
+  ExecuteStreamResponse();
+
+  ExecuteStreamResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("result")) {
+      result = new ScriptExecutionResult.fromJson(_json["result"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (result != null) {
+      _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
 /// An object that provides information about the nature of an error resulting
 /// from an attempted execution of a script function using the Apps Script API.
 /// If a run call
@@ -1484,9 +1509,10 @@ class ExecutionRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> parameters;
 
-  /// For Android add-ons only. An ID that represents the user's current session
-  /// in the Android app for Google Docs or Sheets, included as extra data in
-  /// the
+  /// <b>Deprecated</b>. For use with Android add-ons only. An ID that
+  /// represents
+  /// the user's current session in the Android app for Google Docs or Sheets,
+  /// included as extra data in the
   /// [Intent](https://developer.android.com/guide/components/intents-filters.html)
   /// that launches the add-on. When an Android add-on is run with a session
   /// state, it gains the privileges of a
@@ -1853,9 +1879,6 @@ class GoogleAppsScriptTypeProcess {
   /// Duration the execution spent executing.
   core.String duration;
 
-  /// User-facing name for the user executing the script.
-  core.String executingUser;
-
   /// Name of the function the started the execution.
   core.String functionName;
 
@@ -1908,9 +1931,6 @@ class GoogleAppsScriptTypeProcess {
     if (_json.containsKey("duration")) {
       duration = _json["duration"];
     }
-    if (_json.containsKey("executingUser")) {
-      executingUser = _json["executingUser"];
-    }
     if (_json.containsKey("functionName")) {
       functionName = _json["functionName"];
     }
@@ -1936,9 +1956,6 @@ class GoogleAppsScriptTypeProcess {
         new core.Map<core.String, core.Object>();
     if (duration != null) {
       _json["duration"] = duration;
-    }
-    if (executingUser != null) {
-      _json["executingUser"] = executingUser;
     }
     if (functionName != null) {
       _json["functionName"] = functionName;
@@ -2199,6 +2216,33 @@ class ListUserProcessesResponse {
     }
     if (processes != null) {
       _json["processes"] = processes.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// `ListValue` is a wrapper around a repeated field of values.
+/// Based on LustValue at:
+/// google3/apps/maestro/api/struct.proto?q=message%5c%20ListValue
+class ListValue {
+  /// Repeated field of dynamically typed values.
+  core.List<Value> values;
+
+  ListValue();
+
+  ListValue.fromJson(core.Map _json) {
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List)
+          .map<Value>((value) => new Value.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (values != null) {
+      _json["values"] = values.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2485,6 +2529,34 @@ class Project {
   }
 }
 
+/// The result of an execution
+/// Based on ScriptExecutionResult at:
+/// google3/apps/maestro/api/frontend_execution_common.proto?q=message%5c%20ScriptExecutionResult
+class ScriptExecutionResult {
+  /// The returned value of the execution.
+  /// TODO (johnlattin): Add HtmlResponse
+  /// TODO (johnlattin): Add ExceptionResponse
+  /// TODO (johlnattin): Add TextResponse
+  Value returnValue;
+
+  ScriptExecutionResult();
+
+  ScriptExecutionResult.fromJson(core.Map _json) {
+    if (_json.containsKey("returnValue")) {
+      returnValue = new Value.fromJson(_json["returnValue"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (returnValue != null) {
+      _json["returnValue"] = (returnValue).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A stack trace through the script that shows where the execution failed.
 class ScriptStackTraceElement {
   /// The name of the function that failed.
@@ -2571,6 +2643,36 @@ class Status {
   }
 }
 
+/// `Struct` represents a structured data value, consisting of fields which map
+/// to dynamically typed values.
+/// Based on Struct at:
+/// google3/apps/maestro/api/struct.proto?q=message%5c%20Struct
+class Struct {
+  /// Unordered map of dynamically typed values.
+  core.Map<core.String, Value> fields;
+
+  Struct();
+
+  Struct.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = commons.mapMap<core.Map, Value>(
+          _json["fields"].cast<core.String, core.Map>(),
+          (core.Map item) => new Value.fromJson(item));
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] =
+          commons.mapMap<Value, core.Map<core.String, core.Object>>(
+              fields, (Value item) => (item).toJson());
+    }
+    return _json;
+  }
+}
+
 /// Request with deployment information to update an existing deployment.
 class UpdateDeploymentRequest {
   /// The deployment configuration.
@@ -2590,6 +2692,118 @@ class UpdateDeploymentRequest {
         new core.Map<core.String, core.Object>();
     if (deploymentConfig != null) {
       _json["deploymentConfig"] = (deploymentConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// `Value` represents a dynamically typed value which is the outcome of an
+/// executed script
+/// Based on Value at:
+/// google3/apps/maestro/api/struct.proto?q=message%5c%20Value
+class Value {
+  /// Represents a boolean value.
+  core.bool boolValue;
+
+  /// Represents raw byte values.
+  core.String bytesValue;
+  core.List<core.int> get bytesValueAsBytes {
+    return convert.base64.decode(bytesValue);
+  }
+
+  set bytesValueAsBytes(core.List<core.int> _bytes) {
+    bytesValue =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Represents a date in ms since the epoch.
+  core.String dateValue;
+
+  /// Represents a repeated `Value`.
+  ListValue listValue;
+
+  /// Represents a null value.
+  /// Possible string values are:
+  /// - "NULL_VALUE" : Null value.
+  core.String nullValue;
+
+  /// Represents a double value.
+  core.double numberValue;
+
+  /// Represents a structured proto value.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> protoValue;
+
+  /// Represents a string value.
+  core.String stringValue;
+
+  /// Represents a structured value.
+  Struct structValue;
+
+  Value();
+
+  Value.fromJson(core.Map _json) {
+    if (_json.containsKey("boolValue")) {
+      boolValue = _json["boolValue"];
+    }
+    if (_json.containsKey("bytesValue")) {
+      bytesValue = _json["bytesValue"];
+    }
+    if (_json.containsKey("dateValue")) {
+      dateValue = _json["dateValue"];
+    }
+    if (_json.containsKey("listValue")) {
+      listValue = new ListValue.fromJson(_json["listValue"]);
+    }
+    if (_json.containsKey("nullValue")) {
+      nullValue = _json["nullValue"];
+    }
+    if (_json.containsKey("numberValue")) {
+      numberValue = _json["numberValue"].toDouble();
+    }
+    if (_json.containsKey("protoValue")) {
+      protoValue =
+          (_json["protoValue"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("stringValue")) {
+      stringValue = _json["stringValue"];
+    }
+    if (_json.containsKey("structValue")) {
+      structValue = new Struct.fromJson(_json["structValue"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boolValue != null) {
+      _json["boolValue"] = boolValue;
+    }
+    if (bytesValue != null) {
+      _json["bytesValue"] = bytesValue;
+    }
+    if (dateValue != null) {
+      _json["dateValue"] = dateValue;
+    }
+    if (listValue != null) {
+      _json["listValue"] = (listValue).toJson();
+    }
+    if (nullValue != null) {
+      _json["nullValue"] = nullValue;
+    }
+    if (numberValue != null) {
+      _json["numberValue"] = numberValue;
+    }
+    if (protoValue != null) {
+      _json["protoValue"] = protoValue;
+    }
+    if (stringValue != null) {
+      _json["stringValue"] = stringValue;
+    }
+    if (structValue != null) {
+      _json["structValue"] = (structValue).toJson();
     }
     return _json;
   }

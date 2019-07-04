@@ -96,12 +96,12 @@ class AlertsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets the specified alert.
+  /// Gets the specified alert. Attempting to get a nonexistent alert returns
+  /// `NOT_FOUND` error.
   ///
   /// Request parameters:
   ///
   /// [alertId] - Required. The identifier of the alert to retrieve.
-  /// Returns a NOT_FOUND error if no such alert.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
   /// account of the
@@ -152,12 +152,6 @@ class AlertsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Optional. A query string for filtering alert results.
-  /// For more details, see [Query
-  /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
-  /// query filter
-  /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
-  ///
   /// [pageToken] - Optional. A token identifying a page of results the server
   /// should return.
   /// If empty, a new iteration is started. To continue an iteration, pass in
@@ -168,7 +162,8 @@ class AlertsResourceApi {
   /// If not specified results may be returned in arbitrary order.
   /// You can sort the results in descending order based on the creation
   /// timestamp using `order_by="create_time desc"`.
-  /// Currently, only sorting by `create_time desc` is supported.
+  /// Currently, supported sorting are `create_time asc`, `create_time desc`,
+  /// `update_time desc`
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
   /// account of the
@@ -178,6 +173,12 @@ class AlertsResourceApi {
   /// [pageSize] - Optional. The requested page size. Server may return fewer
   /// items than
   /// requested. If unspecified, server picks an appropriate default.
+  ///
+  /// [filter] - Optional. A query string for filtering alert results.
+  /// For more details, see [Query
+  /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
+  /// query filter
+  /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -190,11 +191,11 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.String orderBy,
       core.String customerId,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -203,9 +204,6 @@ class AlertsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -217,6 +215,9 @@ class AlertsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -296,7 +297,8 @@ class AlertsFeedbackResourceApi {
 
   AlertsFeedbackResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates new feedback for an alert.
+  /// Creates new feedback for an alert. Attempting to create a feedback for
+  /// a non-existent alert returns `NOT_FOUND` error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -304,7 +306,6 @@ class AlertsFeedbackResourceApi {
   ///
   /// [alertId] - Required. The identifier of the alert this feedback belongs
   /// to.
-  /// Returns a `NOT_FOUND` error if no such alert.
   ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
   /// account of the
@@ -356,24 +357,24 @@ class AlertsFeedbackResourceApi {
     return _response.then((data) => new AlertFeedback.fromJson(data));
   }
 
-  /// Lists all the feedback for an alert.
+  /// Lists all the feedback for an alert. Attempting to list feedbacks for
+  /// a non-existent alert returns `NOT_FOUND` error.
   ///
   /// Request parameters:
   ///
   /// [alertId] - Required. The alert identifier.
   /// The "-" wildcard could be used to represent all alerts.
-  /// If alert does not exist returns a `NOT_FOUND` error.
-  ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert feedback are associated with.
-  /// Inferred from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see [Query
   /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
   /// query filter
   /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+  ///
+  /// [customerId] - Optional. The unique identifier of the G Suite organization
+  /// account of the
+  /// customer the alert feedback are associated with.
+  /// Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -386,7 +387,7 @@ class AlertsFeedbackResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertFeedbackResponse> list(core.String alertId,
-      {core.String customerId, core.String filter, core.String $fields}) {
+      {core.String filter, core.String customerId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -397,11 +398,11 @@ class AlertsFeedbackResourceApi {
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
     }
-    if (customerId != null) {
-      _queryParams["customerId"] = [customerId];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -473,7 +474,7 @@ class V1beta1ResourceApi {
     return _response.then((data) => new Settings.fromJson(data));
   }
 
-  /// Update the customer-level settings.
+  /// Updates the customer-level settings.
   ///
   /// [request] - The metadata request object.
   ///
@@ -563,8 +564,138 @@ class AccountWarning {
   }
 }
 
+/// Alerts from G Suite Security Center rules service configured by admin.
+class ActivityRule {
+  /// List of action names associated with the rule threshold.
+  core.List<core.String> actionNames;
+
+  /// Rule create timestamp.
+  core.String createTime;
+
+  /// Description of the rule.
+  core.String description;
+
+  /// Alert display name.
+  core.String displayName;
+
+  /// Rule name.
+  core.String name;
+
+  /// Query that is used to get the data from the associated source.
+  core.String query;
+
+  /// List of alert ids superseded by this alert. It is used to indicate that
+  /// this alert is essentially extension of superseded alerts and we found the
+  /// relationship after creating these alerts.
+  core.List<core.String> supersededAlerts;
+
+  /// Alert id superseding this alert. It is used to indicate that superseding
+  /// alert is essentially extension of this alert and we found the relationship
+  /// after creating both alerts.
+  core.String supersedingAlert;
+
+  /// Alert threshold is for example “COUNT > 5”.
+  core.String threshold;
+
+  /// The trigger sources for this rule.
+  ///
+  /// * GMAIL_EVENTS
+  /// * DEVICE_EVENTS
+  /// * USER_EVENTS
+  core.String triggerSource;
+
+  /// The timestamp of the last update to the rule.
+  core.String updateTime;
+
+  /// Rule window size. Possible values are 1 hour or 24 hours.
+  core.String windowSize;
+
+  ActivityRule();
+
+  ActivityRule.fromJson(core.Map _json) {
+    if (_json.containsKey("actionNames")) {
+      actionNames = (_json["actionNames"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("query")) {
+      query = _json["query"];
+    }
+    if (_json.containsKey("supersededAlerts")) {
+      supersededAlerts =
+          (_json["supersededAlerts"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("supersedingAlert")) {
+      supersedingAlert = _json["supersedingAlert"];
+    }
+    if (_json.containsKey("threshold")) {
+      threshold = _json["threshold"];
+    }
+    if (_json.containsKey("triggerSource")) {
+      triggerSource = _json["triggerSource"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+    if (_json.containsKey("windowSize")) {
+      windowSize = _json["windowSize"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actionNames != null) {
+      _json["actionNames"] = actionNames;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (query != null) {
+      _json["query"] = query;
+    }
+    if (supersededAlerts != null) {
+      _json["supersededAlerts"] = supersededAlerts;
+    }
+    if (supersedingAlert != null) {
+      _json["supersedingAlert"] = supersedingAlert;
+    }
+    if (threshold != null) {
+      _json["threshold"] = threshold;
+    }
+    if (triggerSource != null) {
+      _json["triggerSource"] = triggerSource;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    if (windowSize != null) {
+      _json["windowSize"] = windowSize;
+    }
+    return _json;
+  }
+}
+
 /// An alert affecting a customer.
-/// All fields are read-only once created.
 class Alert {
   /// Output only. The unique identifier for the alert.
   core.String alertId;
@@ -587,7 +718,7 @@ class Alert {
 
   /// Optional. The time the event that caused this alert ceased being active.
   /// If provided, the end time must not be earlier than the start time.
-  /// If not provided, the end time defaults to the start time.
+  /// If not provided, it indicates an ongoing alert.
   core.String endTime;
 
   /// Output only. An optional
@@ -596,6 +727,7 @@ class Alert {
   core.String securityInvestigationToolLink;
 
   /// Required. A unique identifier for the system that reported the alert.
+  /// This is output only after alert is created.
   ///
   /// Supported sources are any of the following:
   ///
@@ -612,9 +744,13 @@ class Alert {
   core.String startTime;
 
   /// Required. The type of the alert.
+  /// This is output only after alert is created.
   /// For a list of available alert types see
   /// [G Suite Alert types](/admin-sdk/alertcenter/reference/alert-types).
   core.String type;
+
+  /// Output only. The time this alert was last updated.
+  core.String updateTime;
 
   Alert();
 
@@ -648,6 +784,9 @@ class Alert {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
     }
   }
 
@@ -683,6 +822,9 @@ class Alert {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -1432,12 +1574,18 @@ class MailPhishing {
 
 /// Entity whose actions triggered a Gmail phishing alert.
 class MaliciousEntity {
+  /// The header from display name.
+  core.String displayName;
+
   /// The sender email address.
   core.String fromHeader;
 
   MaliciousEntity();
 
   MaliciousEntity.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
     if (_json.containsKey("fromHeader")) {
       fromHeader = _json["fromHeader"];
     }
@@ -1446,6 +1594,9 @@ class MaliciousEntity {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
     if (fromHeader != null) {
       _json["fromHeader"] = fromHeader;
     }

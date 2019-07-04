@@ -57,7 +57,8 @@ class ProjectsServiceAccountsResourceApi {
   /// [name] - The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`.
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -113,7 +114,8 @@ class ProjectsServiceAccountsResourceApi {
   /// [name] - The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`.
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -166,7 +168,8 @@ class ProjectsServiceAccountsResourceApi {
   /// [name] - The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`.
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -223,7 +226,8 @@ class ProjectsServiceAccountsResourceApi {
   /// [name] - The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`.
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -276,7 +280,8 @@ class ProjectsServiceAccountsResourceApi {
   /// [name] - The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`.
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -330,7 +335,8 @@ class GenerateAccessTokenRequest {
   /// request.
   ///
   /// The delegates must have the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   core.List<core.String> delegates;
 
   /// The desired lifetime duration of the access token in seconds.
@@ -420,7 +426,8 @@ class GenerateIdTokenRequest {
   /// request.
   ///
   /// The delegates must have the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   core.List<core.String> delegates;
 
   /// Include the service account email in the token. If set to `true`, the
@@ -519,7 +526,7 @@ class GenerateIdentityBindingAccessTokenRequest {
   ///   "iss": "https://accounts.google.com",
   ///   "iat": 1517963104,
   ///   "exp": 1517966704,
-  /// "aud":
+  ///   "aud":
   /// "https://iamcredentials.googleapis.com/google.iam.credentials.v1.CloudGaia",
   ///   "sub": "113475438248934895348",
   ///   "my_claims": {
@@ -599,7 +606,8 @@ class SignBlobRequest {
   /// request.
   ///
   /// The delegates must have the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   core.List<core.String> delegates;
 
   /// The bytes to sign.
@@ -685,7 +693,8 @@ class SignJwtRequest {
   /// request.
   ///
   /// The delegates must have the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`
+  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
+  /// character is required; replacing it with a project ID is invalid.
   core.List<core.String> delegates;
 
   /// The JWT payload to sign: a JSON object that contains a JWT Claims Set.

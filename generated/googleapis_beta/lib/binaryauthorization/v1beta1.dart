@@ -44,6 +44,11 @@ class ProjectsResourceApi {
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// A policy specifies the attestors that must attest to
+  /// a container image, before the project is allowed to deploy that
+  /// image. There is at most one policy per project. All image admission
+  /// requests are permitted if a project has no policy.
+  ///
   /// Gets the policy for this project. Returns a default
   /// policy if the project does not have one.
   ///
@@ -312,6 +317,13 @@ class ProjectsAttestorsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/attestors/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  /// Acceptable values are 0 and 1.
+  /// If the value is 0, or the field is omitted, policy format version 1 will
+  /// be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -323,7 +335,7 @@ class ProjectsAttestorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IamPolicy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -333,6 +345,11 @@ class ProjectsAttestorsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -598,6 +615,13 @@ class ProjectsPolicyResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/policy$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  /// Acceptable values are 0 and 1.
+  /// If the value is 0, or the field is omitted, policy format version 1 will
+  /// be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -609,7 +633,7 @@ class ProjectsPolicyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IamPolicy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -619,6 +643,11 @@ class ProjectsPolicyResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -764,14 +793,17 @@ class ProjectsPolicyResourceApi {
 class AdmissionRule {
   /// Required. The action when a pod creation is denied by the admission rule.
   /// Possible string values are:
-  /// - "ENFORCEMENT_MODE_UNSPECIFIED" : Mandatory.
+  /// - "ENFORCEMENT_MODE_UNSPECIFIED" : Do not use.
   /// - "ENFORCED_BLOCK_AND_AUDIT_LOG" : Enforce the admission rule by blocking
   /// the pod creation.
+  /// - "DRYRUN_AUDIT_LOG_ONLY" : Dryrun mode: Audit logging only.  This will
+  /// allow the pod creation as if
+  /// the admission request had specified break-glass.
   core.String enforcementMode;
 
   /// Required. How this admission rule will be evaluated.
   /// Possible string values are:
-  /// - "EVALUATION_MODE_UNSPECIFIED" : Mandatory.
+  /// - "EVALUATION_MODE_UNSPECIFIED" : Do not use.
   /// - "ALWAYS_ALLOW" : This rule allows all all pod creations.
   /// - "REQUIRE_ATTESTATION" : This rule allows a pod creation if all the
   /// attestors listed in
@@ -903,21 +935,39 @@ class Attestor {
   }
 }
 
-/// An attestator public key that will be used to
-/// verify attestations signed by this attestor.
+/// An attestor public key that will be used to verify
+/// attestations signed by this attestor.
 class AttestorPublicKey {
   /// ASCII-armored representation of a PGP public key, as the entire output by
   /// the command `gpg --export --armor foo@example.com` (either LF or CRLF
   /// line endings).
+  /// When using this field, `id` should be left blank.  The BinAuthz API
+  /// handlers will calculate the ID and fill it in automatically.  BinAuthz
+  /// computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as
+  /// upper-case hex.  If `id` is provided by the caller, it will be
+  /// overwritten by the API-calculated ID.
   core.String asciiArmoredPgpPublicKey;
 
   /// Optional. A descriptive comment. This field may be updated.
   core.String comment;
 
-  /// Output only. This field will be overwritten with key ID information, for
-  /// example, an identifier extracted from a PGP public key. This field may not
-  /// be updated.
+  /// The ID of this public key.
+  /// Signatures verified by BinAuthz must include the ID of the public key that
+  /// can be used to verify them, and that ID must match the contents of this
+  /// field exactly.
+  /// Additional restrictions on this field can be imposed based on which public
+  /// key type is encapsulated. See the documentation on `public_key` cases
+  /// below
+  /// for details.
   core.String id;
+
+  /// A raw PKIX SubjectPublicKeyInfo format public key.
+  ///
+  /// NOTE: `id` may be explicitly provided by the caller when using this
+  /// type of public key, but it MUST be a valid RFC3986 URI. If `id` is left
+  /// blank, a default one will be computed based on the digest of the DER
+  /// encoding of the public key.
+  PkixPublicKey pkixPublicKey;
 
   AttestorPublicKey();
 
@@ -930,6 +980,9 @@ class AttestorPublicKey {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
+    }
+    if (_json.containsKey("pkixPublicKey")) {
+      pkixPublicKey = new PkixPublicKey.fromJson(_json["pkixPublicKey"]);
     }
   }
 
@@ -945,14 +998,17 @@ class AttestorPublicKey {
     if (id != null) {
       _json["id"] = id;
     }
+    if (pkixPublicKey != null) {
+      _json["pkixPublicKey"] = (pkixPublicKey).toJson();
+    }
     return _json;
   }
 }
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -977,7 +1033,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -1242,6 +1298,66 @@ class ListAttestorsResponse {
   }
 }
 
+/// A public key in the PkixPublicKey format (see
+/// https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details).
+/// Public keys of this type are typically textually encoded using the PEM
+/// format.
+class PkixPublicKey {
+  /// A PEM-encoded public key, as described in
+  /// https://tools.ietf.org/html/rfc7468#section-13
+  core.String publicKeyPem;
+
+  /// The signature algorithm used to verify a message against a signature using
+  /// this key.
+  /// These signature algorithm must match the structure and any object
+  /// identifiers encoded in `public_key_pem` (i.e. this algorithm must match
+  /// that of the public key).
+  /// Possible string values are:
+  /// - "SIGNATURE_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "RSA_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256 digest.
+  /// - "RSA_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256 digest.
+  /// - "RSA_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256 digest.
+  /// - "RSA_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512 digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "ECDSA_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest.
+  /// - "ECDSA_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest.
+  /// - "ECDSA_P521_SHA512" : ECDSA on the NIST P-521 curve with a SHA512
+  /// digest.
+  core.String signatureAlgorithm;
+
+  PkixPublicKey();
+
+  PkixPublicKey.fromJson(core.Map _json) {
+    if (_json.containsKey("publicKeyPem")) {
+      publicKeyPem = _json["publicKeyPem"];
+    }
+    if (_json.containsKey("signatureAlgorithm")) {
+      signatureAlgorithm = _json["signatureAlgorithm"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (publicKeyPem != null) {
+      _json["publicKeyPem"] = publicKeyPem;
+    }
+    if (signatureAlgorithm != null) {
+      _json["signatureAlgorithm"] = signatureAlgorithm;
+    }
+    return _json;
+  }
+}
+
 /// A policy for container image binary authorization.
 class Policy {
   /// Optional. Admission policy whitelisting. A matching admission request will
@@ -1258,12 +1374,23 @@ class Policy {
   /// https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters.
   core.Map<core.String, AdmissionRule> clusterAdmissionRules;
 
-  /// Required. Default admission rule for a cluster without a per-cluster
-  /// admission rule.
+  /// Required. Default admission rule for a cluster without a per-cluster, per-
+  /// kubernetes-service-account, or per-istio-service-identity admission rule.
   AdmissionRule defaultAdmissionRule;
 
   /// Optional. A descriptive comment.
   core.String description;
+
+  /// Optional. Controls the evaluation of a Google-maintained global admission
+  /// policy for common system-level images. Images not covered by the global
+  /// policy will be subject to the project admission policy. This setting
+  /// has no effect when specified inside a global admission policy.
+  /// Possible string values are:
+  /// - "GLOBAL_POLICY_EVALUATION_MODE_UNSPECIFIED" : Not specified: DISABLE is
+  /// assumed.
+  /// - "ENABLE" : Enables global policy evaluation.
+  /// - "DISABLE" : Disables global policy evaluation.
+  core.String globalPolicyEvaluationMode;
 
   /// Output only. The resource name, in the format `projects / * /policy`.
   /// There is
@@ -1295,6 +1422,9 @@ class Policy {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("globalPolicyEvaluationMode")) {
+      globalPolicyEvaluationMode = _json["globalPolicyEvaluationMode"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1320,6 +1450,9 @@ class Policy {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    if (globalPolicyEvaluationMode != null) {
+      _json["globalPolicyEvaluationMode"] = globalPolicyEvaluationMode;
     }
     if (name != null) {
       _json["name"] = name;

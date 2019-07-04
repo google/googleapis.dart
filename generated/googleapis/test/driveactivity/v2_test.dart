@@ -226,14 +226,14 @@ checkAssignment(api.Assignment o) {
   buildCounterAssignment--;
 }
 
-buildUnnamed4201() {
+buildUnnamed3638() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed4201(core.List<api.User> o) {
+checkUnnamed3638(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -245,7 +245,7 @@ buildComment() {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     o.assignment = buildAssignment();
-    o.mentionedUsers = buildUnnamed4201();
+    o.mentionedUsers = buildUnnamed3638();
     o.post = buildPost();
     o.suggestion = buildSuggestion();
   }
@@ -257,7 +257,7 @@ checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     checkAssignment(o.assignment);
-    checkUnnamed4201(o.mentionedUsers);
+    checkUnnamed3638(o.mentionedUsers);
     checkPost(o.post);
     checkSuggestion(o.suggestion);
   }
@@ -401,40 +401,63 @@ checkDomain(api.Domain o) {
   buildCounterDomain--;
 }
 
-buildUnnamed4202() {
+core.int buildCounterDrive = 0;
+buildDrive() {
+  var o = new api.Drive();
+  buildCounterDrive++;
+  if (buildCounterDrive < 3) {
+    o.name = "foo";
+    o.root = buildDriveItem();
+    o.title = "foo";
+  }
+  buildCounterDrive--;
+  return o;
+}
+
+checkDrive(api.Drive o) {
+  buildCounterDrive++;
+  if (buildCounterDrive < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+    checkDriveItem(o.root);
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterDrive--;
+}
+
+buildUnnamed3639() {
   var o = new core.List<api.Action>();
   o.add(buildAction());
   o.add(buildAction());
   return o;
 }
 
-checkUnnamed4202(core.List<api.Action> o) {
+checkUnnamed3639(core.List<api.Action> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAction(o[0]);
   checkAction(o[1]);
 }
 
-buildUnnamed4203() {
+buildUnnamed3640() {
   var o = new core.List<api.Actor>();
   o.add(buildActor());
   o.add(buildActor());
   return o;
 }
 
-checkUnnamed4203(core.List<api.Actor> o) {
+checkUnnamed3640(core.List<api.Actor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActor(o[0]);
   checkActor(o[1]);
 }
 
-buildUnnamed4204() {
+buildUnnamed3641() {
   var o = new core.List<api.Target>();
   o.add(buildTarget());
   o.add(buildTarget());
   return o;
 }
 
-checkUnnamed4204(core.List<api.Target> o) {
+checkUnnamed3641(core.List<api.Target> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTarget(o[0]);
   checkTarget(o[1]);
@@ -445,10 +468,10 @@ buildDriveActivity() {
   var o = new api.DriveActivity();
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    o.actions = buildUnnamed4202();
-    o.actors = buildUnnamed4203();
+    o.actions = buildUnnamed3639();
+    o.actors = buildUnnamed3640();
     o.primaryActionDetail = buildActionDetail();
-    o.targets = buildUnnamed4204();
+    o.targets = buildUnnamed3641();
     o.timeRange = buildTimeRange();
     o.timestamp = "foo";
   }
@@ -459,14 +482,48 @@ buildDriveActivity() {
 checkDriveActivity(api.DriveActivity o) {
   buildCounterDriveActivity++;
   if (buildCounterDriveActivity < 3) {
-    checkUnnamed4202(o.actions);
-    checkUnnamed4203(o.actors);
+    checkUnnamed3639(o.actions);
+    checkUnnamed3640(o.actors);
     checkActionDetail(o.primaryActionDetail);
-    checkUnnamed4204(o.targets);
+    checkUnnamed3641(o.targets);
     checkTimeRange(o.timeRange);
     unittest.expect(o.timestamp, unittest.equals('foo'));
   }
   buildCounterDriveActivity--;
+}
+
+core.int buildCounterDriveFile = 0;
+buildDriveFile() {
+  var o = new api.DriveFile();
+  buildCounterDriveFile++;
+  if (buildCounterDriveFile < 3) {}
+  buildCounterDriveFile--;
+  return o;
+}
+
+checkDriveFile(api.DriveFile o) {
+  buildCounterDriveFile++;
+  if (buildCounterDriveFile < 3) {}
+  buildCounterDriveFile--;
+}
+
+core.int buildCounterDriveFolder = 0;
+buildDriveFolder() {
+  var o = new api.DriveFolder();
+  buildCounterDriveFolder++;
+  if (buildCounterDriveFolder < 3) {
+    o.type = "foo";
+  }
+  buildCounterDriveFolder--;
+  return o;
+}
+
+checkDriveFolder(api.DriveFolder o) {
+  buildCounterDriveFolder++;
+  if (buildCounterDriveFolder < 3) {
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterDriveFolder--;
 }
 
 core.int buildCounterDriveItem = 0;
@@ -474,6 +531,8 @@ buildDriveItem() {
   var o = new api.DriveItem();
   buildCounterDriveItem++;
   if (buildCounterDriveItem < 3) {
+    o.driveFile = buildDriveFile();
+    o.driveFolder = buildDriveFolder();
     o.file = buildFile();
     o.folder = buildFolder();
     o.mimeType = "foo";
@@ -488,6 +547,8 @@ buildDriveItem() {
 checkDriveItem(api.DriveItem o) {
   buildCounterDriveItem++;
   if (buildCounterDriveItem < 3) {
+    checkDriveFile(o.driveFile);
+    checkDriveFolder(o.driveFolder);
     checkFile(o.file);
     checkFolder(o.folder);
     unittest.expect(o.mimeType, unittest.equals('foo'));
@@ -503,6 +564,8 @@ buildDriveItemReference() {
   var o = new api.DriveItemReference();
   buildCounterDriveItemReference++;
   if (buildCounterDriveItemReference < 3) {
+    o.driveFile = buildDriveFile();
+    o.driveFolder = buildDriveFolder();
     o.file = buildFile();
     o.folder = buildFolder();
     o.name = "foo";
@@ -515,12 +578,35 @@ buildDriveItemReference() {
 checkDriveItemReference(api.DriveItemReference o) {
   buildCounterDriveItemReference++;
   if (buildCounterDriveItemReference < 3) {
+    checkDriveFile(o.driveFile);
+    checkDriveFolder(o.driveFolder);
     checkFile(o.file);
     checkFolder(o.folder);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterDriveItemReference--;
+}
+
+core.int buildCounterDriveReference = 0;
+buildDriveReference() {
+  var o = new api.DriveReference();
+  buildCounterDriveReference++;
+  if (buildCounterDriveReference < 3) {
+    o.name = "foo";
+    o.title = "foo";
+  }
+  buildCounterDriveReference--;
+  return o;
+}
+
+checkDriveReference(api.DriveReference o) {
+  buildCounterDriveReference++;
+  if (buildCounterDriveReference < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterDriveReference--;
 }
 
 core.int buildCounterEdit = 0;
@@ -673,27 +759,27 @@ checkLegacy(api.Legacy o) {
   buildCounterLegacy--;
 }
 
-buildUnnamed4205() {
+buildUnnamed3642() {
   var o = new core.List<api.TargetReference>();
   o.add(buildTargetReference());
   o.add(buildTargetReference());
   return o;
 }
 
-checkUnnamed4205(core.List<api.TargetReference> o) {
+checkUnnamed3642(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetReference(o[0]);
   checkTargetReference(o[1]);
 }
 
-buildUnnamed4206() {
+buildUnnamed3643() {
   var o = new core.List<api.TargetReference>();
   o.add(buildTargetReference());
   o.add(buildTargetReference());
   return o;
 }
 
-checkUnnamed4206(core.List<api.TargetReference> o) {
+checkUnnamed3643(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTargetReference(o[0]);
   checkTargetReference(o[1]);
@@ -704,8 +790,8 @@ buildMove() {
   var o = new api.Move();
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    o.addedParents = buildUnnamed4205();
-    o.removedParents = buildUnnamed4206();
+    o.addedParents = buildUnnamed3642();
+    o.removedParents = buildUnnamed3643();
   }
   buildCounterMove--;
   return o;
@@ -714,8 +800,8 @@ buildMove() {
 checkMove(api.Move o) {
   buildCounterMove++;
   if (buildCounterMove < 3) {
-    checkUnnamed4205(o.addedParents);
-    checkUnnamed4206(o.removedParents);
+    checkUnnamed3642(o.addedParents);
+    checkUnnamed3643(o.removedParents);
   }
   buildCounterMove--;
 }
@@ -756,6 +842,7 @@ buildOwner() {
   buildCounterOwner++;
   if (buildCounterOwner < 3) {
     o.domain = buildDomain();
+    o.drive = buildDriveReference();
     o.teamDrive = buildTeamDriveReference();
     o.user = buildUser();
   }
@@ -767,6 +854,7 @@ checkOwner(api.Owner o) {
   buildCounterOwner++;
   if (buildCounterOwner < 3) {
     checkDomain(o.domain);
+    checkDriveReference(o.drive);
     checkTeamDriveReference(o.teamDrive);
     checkUser(o.user);
   }
@@ -802,27 +890,27 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed4207() {
+buildUnnamed3644() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed4207(core.List<api.Permission> o) {
+checkUnnamed3644(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-buildUnnamed4208() {
+buildUnnamed3645() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed4208(core.List<api.Permission> o) {
+checkUnnamed3645(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -833,8 +921,8 @@ buildPermissionChange() {
   var o = new api.PermissionChange();
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    o.addedPermissions = buildUnnamed4207();
-    o.removedPermissions = buildUnnamed4208();
+    o.addedPermissions = buildUnnamed3644();
+    o.removedPermissions = buildUnnamed3645();
   }
   buildCounterPermissionChange--;
   return o;
@@ -843,8 +931,8 @@ buildPermissionChange() {
 checkPermissionChange(api.PermissionChange o) {
   buildCounterPermissionChange++;
   if (buildCounterPermissionChange < 3) {
-    checkUnnamed4207(o.addedPermissions);
-    checkUnnamed4208(o.removedPermissions);
+    checkUnnamed3644(o.addedPermissions);
+    checkUnnamed3645(o.removedPermissions);
   }
   buildCounterPermissionChange--;
 }
@@ -897,14 +985,14 @@ checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
   buildCounterQueryDriveActivityRequest--;
 }
 
-buildUnnamed4209() {
+buildUnnamed3646() {
   var o = new core.List<api.DriveActivity>();
   o.add(buildDriveActivity());
   o.add(buildDriveActivity());
   return o;
 }
 
-checkUnnamed4209(core.List<api.DriveActivity> o) {
+checkUnnamed3646(core.List<api.DriveActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDriveActivity(o[0]);
   checkDriveActivity(o[1]);
@@ -915,7 +1003,7 @@ buildQueryDriveActivityResponse() {
   var o = new api.QueryDriveActivityResponse();
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    o.activities = buildUnnamed4209();
+    o.activities = buildUnnamed3646();
     o.nextPageToken = "foo";
   }
   buildCounterQueryDriveActivityResponse--;
@@ -925,7 +1013,7 @@ buildQueryDriveActivityResponse() {
 checkQueryDriveActivityResponse(api.QueryDriveActivityResponse o) {
   buildCounterQueryDriveActivityResponse++;
   if (buildCounterQueryDriveActivityResponse < 3) {
-    checkUnnamed4209(o.activities);
+    checkUnnamed3646(o.activities);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterQueryDriveActivityResponse--;
@@ -992,14 +1080,14 @@ checkRestrictionChange(api.RestrictionChange o) {
   buildCounterRestrictionChange--;
 }
 
-buildUnnamed4210() {
+buildUnnamed3647() {
   var o = new core.List<api.RestrictionChange>();
   o.add(buildRestrictionChange());
   o.add(buildRestrictionChange());
   return o;
 }
 
-checkUnnamed4210(core.List<api.RestrictionChange> o) {
+checkUnnamed3647(core.List<api.RestrictionChange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRestrictionChange(o[0]);
   checkRestrictionChange(o[1]);
@@ -1010,7 +1098,7 @@ buildSettingsChange() {
   var o = new api.SettingsChange();
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    o.restrictionChanges = buildUnnamed4210();
+    o.restrictionChanges = buildUnnamed3647();
   }
   buildCounterSettingsChange--;
   return o;
@@ -1019,7 +1107,7 @@ buildSettingsChange() {
 checkSettingsChange(api.SettingsChange o) {
   buildCounterSettingsChange++;
   if (buildCounterSettingsChange < 3) {
-    checkUnnamed4210(o.restrictionChanges);
+    checkUnnamed3647(o.restrictionChanges);
   }
   buildCounterSettingsChange--;
 }
@@ -1067,6 +1155,7 @@ buildTarget() {
   var o = new api.Target();
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
+    o.drive = buildDrive();
     o.driveItem = buildDriveItem();
     o.fileComment = buildFileComment();
     o.teamDrive = buildTeamDrive();
@@ -1078,6 +1167,7 @@ buildTarget() {
 checkTarget(api.Target o) {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
+    checkDrive(o.drive);
     checkDriveItem(o.driveItem);
     checkFileComment(o.fileComment);
     checkTeamDrive(o.teamDrive);
@@ -1090,6 +1180,7 @@ buildTargetReference() {
   var o = new api.TargetReference();
   buildCounterTargetReference++;
   if (buildCounterTargetReference < 3) {
+    o.drive = buildDriveReference();
     o.driveItem = buildDriveItemReference();
     o.teamDrive = buildTeamDriveReference();
   }
@@ -1100,6 +1191,7 @@ buildTargetReference() {
 checkTargetReference(api.TargetReference o) {
   buildCounterTargetReference++;
   if (buildCounterTargetReference < 3) {
+    checkDriveReference(o.drive);
     checkDriveItemReference(o.driveItem);
     checkTeamDriveReference(o.teamDrive);
   }
@@ -1353,11 +1445,35 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Drive", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDrive();
+      var od = new api.Drive.fromJson(o.toJson());
+      checkDrive(od);
+    });
+  });
+
   unittest.group("obj-schema-DriveActivity", () {
     unittest.test("to-json--from-json", () {
       var o = buildDriveActivity();
       var od = new api.DriveActivity.fromJson(o.toJson());
       checkDriveActivity(od);
+    });
+  });
+
+  unittest.group("obj-schema-DriveFile", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveFile();
+      var od = new api.DriveFile.fromJson(o.toJson());
+      checkDriveFile(od);
+    });
+  });
+
+  unittest.group("obj-schema-DriveFolder", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveFolder();
+      var od = new api.DriveFolder.fromJson(o.toJson());
+      checkDriveFolder(od);
     });
   });
 
@@ -1374,6 +1490,14 @@ main() {
       var o = buildDriveItemReference();
       var od = new api.DriveItemReference.fromJson(o.toJson());
       checkDriveItemReference(od);
+    });
+  });
+
+  unittest.group("obj-schema-DriveReference", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveReference();
+      var od = new api.DriveReference.fromJson(o.toJson());
+      checkDriveReference(od);
     });
   });
 

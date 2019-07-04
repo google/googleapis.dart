@@ -68,11 +68,11 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
-#### Access Context Manager API - accesscontextmanager v1beta
+#### Access Approval API - accessapproval v1beta1
 
-An API for setting attribute based access control to requests to GCP services.
+An API for controlling access to data by Google personnel.
 
-Official API documentation: https://cloud.google.com/access-context-manager/docs/reference/rest/
+Official API documentation: https://cloud.google.com/access-approval/docs
 
 #### Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
 
@@ -92,30 +92,12 @@ Provisions and manages developers' App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### App Engine Admin API - appengine v1beta4
-
-Provisions and manages developers' App Engine applications.
-
-Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
-
-#### App Engine Admin API - appengine v1beta5
-
-Provisions and manages developers' App Engine applications.
-
-Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
-
 #### Binary Authorization API - binaryauthorization v1beta1
 
 The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.
 
 
 Official API documentation: https://cloud.google.com/binary-authorization/
-
-#### Cloud Asset API - cloudasset v1beta1
-
-The cloud asset API manages the history and inventory of cloud resources.
-
-Official API documentation: https://console.cloud.google.com/apis/api/cloudasset.googleapis.com/overview
 
 #### Stackdriver Error Reporting API - clouderrorreporting v1beta1
 
@@ -124,23 +106,29 @@ Groups and counts similar errors from cloud services and applications, reports n
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
+#### Cloud Private Catalog API - cloudprivatecatalog v1beta1
+
+Enable cloud users to discover enterprise catalogs and products in their organizations.
+
+Official API documentation: https://cloud.google.com/private-catalog/
+
+#### Cloud Private Catalog Producer API - cloudprivatecatalogproducer v1beta1
+
+Enables cloud users to manage and share enterprise catalogs intheir organizations.
+
+Official API documentation: https://cloud.google.com/private-catalog/
+
 #### Cloud Resource Manager API - cloudresourcemanager v1beta1
 
 Creates, reads, and updates metadata for Google Cloud Platform resource containers.
 
 Official API documentation: https://cloud.google.com/resource-manager
 
-#### Cloud Scheduler API - cloudscheduler v1beta1
+#### Perspective Comment Analyzer API - commentanalyzer v1alpha1
 
-Creates and manages jobs run on a regular recurring schedule.
+The Perspective Comment Analyzer API provides information about the potential impact of a comment on a conversation (e.g. it can provide a score for the "toxicity" of a comment). Users can leverage the "SuggestCommentScore" method to submit corrections to improve Perspective over time. Users can set the "doNotStore" flag to ensure that all submitted comments are automatically deleted after scores are returned.
 
-Official API documentation: https://cloud.google.com/scheduler/
-
-#### Cloud Tasks API - cloudtasks v2beta3
-
-Manages the execution of large numbers of distributed requests.
-
-Official API documentation: https://cloud.google.com/tasks/
+Official API documentation: https://github.com/conversationai/perspectiveapi/blob/master/README.md
 
 #### Container Analysis API - containeranalysis v1beta1
 
@@ -154,11 +142,21 @@ Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataflow
 
+#### Cloud Data Fusion API - datafusion v1beta1
+
+Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for
+    quickly building and managing data pipelines. It provides a graphical interface to increase
+    time efficiency and reduce complexity, and allows business users, developers, and data
+    scientists to easily and reliably build scalable data integration solutions to cleanse,
+    prepare, blend, transfer and transform data without having to wrestle with infrastructure.
+
+Official API documentation: https://cloud.google.com/data-fusion/docs
+
 #### Dialogflow API - dialogflow v2beta1
 
 Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).
 
-Official API documentation: https://cloud.google.com/dialogflow-enterprise/
+Official API documentation: https://cloud.google.com/dialogflow/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Cloud DNS API - dns v2beta1
 
@@ -166,17 +164,29 @@ Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
 
-#### Cloud Filestore API - file v1beta1
+#### Fact Check Tools API - factchecktools v1alpha1
 
-The Cloud Filestore API is used for creating and managing cloud file servers.
 
-Official API documentation: https://cloud.google.com/filestore/
+
+Official API documentation: https://developers.google.com/fact-check/tools/api/
+
+#### Firebase Management API - firebase v1beta1
+
+The Firebase Management API enables programmatic setup and management of Firebase projects, including a project's Firebase resources and Firebase apps.
+
+Official API documentation: https://firebase.google.com
 
 #### Firebase Hosting API - firebasehosting v1beta1
 
 The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.
 
 Official API documentation: https://firebase.google.com/docs/hosting/
+
+#### Cloud Healthcare API - healthcare v1beta1
+
+Manage, store, and access healthcare data in Google Cloud Platform.
+
+Official API documentation: https://cloud.google.com/healthcare
 
 #### Cloud Natural Language API - language v1beta1
 
@@ -190,21 +200,15 @@ Provides natural language understanding technologies, such as sentiment analysis
 
 Official API documentation: https://cloud.google.com/natural-language/
 
-#### Stackdriver Logging API - logging v2beta1
-
-Writes log entries and manages your Logging configuration.
-
-Official API documentation: https://cloud.google.com/logging/docs/
-
 #### Cloud OS Login API - oslogin v1alpha
 
-Manages OS login configuration for Google account users.
+You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
 #### Cloud OS Login API - oslogin v1beta
 
-Manages OS login configuration for Google account users.
+You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
@@ -233,12 +237,6 @@ The Runtime Configurator allows you to dynamically configure and expose variable
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
-#### Service Networking API - servicenetworking v1beta
-
-Provides automatic management of network configurations necessary for certain services.
-
-Official API documentation: https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
-
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Admin API - sqladmin v1beta4
 
 Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.
@@ -256,10 +254,4 @@ Official API documentation: https://firebase.google.com/docs/test-lab/
 TPU API provides customers with access to Google TPU technology.
 
 Official API documentation: https://cloud.google.com/tpu/
-
-#### Web Security Scanner API - websecurityscanner v1alpha
-
-Scans your Compute and App Engine apps for common web vulnerabilities.
-
-Official API documentation: https://cloud.google.com/security-scanner/
 

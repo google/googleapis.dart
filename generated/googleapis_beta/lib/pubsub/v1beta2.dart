@@ -322,12 +322,12 @@ class ProjectsSubscriptionsResourceApi {
   /// [project] - The name of the cloud project that subscriptions belong to.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of subscriptions to return.
-  ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
   /// indicates that
   /// this is a continuation of a prior `ListSubscriptions` call, and that the
   /// system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -340,7 +340,7 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -351,11 +351,11 @@ class ProjectsSubscriptionsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1185,8 +1185,8 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -1211,7 +1211,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -1507,6 +1507,49 @@ class ModifyPushConfigRequest {
         new core.Map<core.String, core.Object>();
     if (pushConfig != null) {
       _json["pushConfig"] = (pushConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Contains information needed for generating an
+/// [OpenID Connect
+/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+class OidcToken {
+  /// Audience to be used when generating OIDC token. The audience claim
+  /// identifies the recipients that the JWT is intended for. The audience
+  /// value is a single case-sensitive string. Having multiple values (array)
+  /// for the audience field is not supported. More info about the OIDC JWT
+  /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+  /// Note: if not specified, the Push endpoint URL will be used.
+  core.String audience;
+
+  /// [Service account
+  /// email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating the OIDC token. The caller (for
+  /// CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
+  /// have the iam.serviceAccounts.actAs permission for the service account.
+  core.String serviceAccountEmail;
+
+  OidcToken();
+
+  OidcToken.fromJson(core.Map _json) {
+    if (_json.containsKey("audience")) {
+      audience = _json["audience"];
+    }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (audience != null) {
+      _json["audience"] = audience;
+    }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
     }
     return _json;
   }
@@ -1828,6 +1871,10 @@ class PushConfig {
   /// * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
   core.Map<core.String, core.String> attributes;
 
+  /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+  /// `Authorization` header in the HTTP request for every pushed message.
+  OidcToken oidcToken;
+
   /// A URL locating the endpoint to which messages should be pushed.
   /// For example, a Webhook endpoint might use "https://example.com/push".
   core.String pushEndpoint;
@@ -1839,6 +1886,9 @@ class PushConfig {
       attributes =
           (_json["attributes"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("oidcToken")) {
+      oidcToken = new OidcToken.fromJson(_json["oidcToken"]);
+    }
     if (_json.containsKey("pushEndpoint")) {
       pushEndpoint = _json["pushEndpoint"];
     }
@@ -1849,6 +1899,9 @@ class PushConfig {
         new core.Map<core.String, core.Object>();
     if (attributes != null) {
       _json["attributes"] = attributes;
+    }
+    if (oidcToken != null) {
+      _json["oidcToken"] = (oidcToken).toJson();
     }
     if (pushEndpoint != null) {
       _json["pushEndpoint"] = pushEndpoint;

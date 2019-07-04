@@ -2459,9 +2459,7 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production", "rollout" or "internal".
-  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2520,9 +2518,7 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production", "rollout" or "internal".
-  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2584,9 +2580,7 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production", "rollout" or "internal".
-  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2758,9 +2752,8 @@ class EditsTracksResourceApi {
     return _response.then((data) => new TracksListResponse.fromJson(data));
   }
 
-  /// Updates the track configuration for the specified track type. When halted,
-  /// the rollout track cannot be updated without adding new APKs, and adding
-  /// new APKs will cause it to resume. This method supports patch semantics.
+  /// Updates the track configuration for the specified track type. This method
+  /// supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2824,9 +2817,7 @@ class EditsTracksResourceApi {
     return _response.then((data) => new Track.fromJson(data));
   }
 
-  /// Updates the track configuration for the specified track type. When halted,
-  /// the rollout track cannot be updated without adding new APKs, and adding
-  /// new APKs will cause it to resume.
+  /// Updates the track configuration for the specified track type.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5383,6 +5374,7 @@ class ProductPurchase {
   /// The purchase state of the order. Possible values are:
   /// - Purchased
   /// - Canceled
+  /// - Pending
   core.int purchaseState;
 
   /// The time the product was purchased, in milliseconds since the epoch (Jan
@@ -5894,8 +5886,8 @@ class SubscriptionPurchase {
   /// "GBP".
   core.String priceCurrencyCode;
 
-  /// The profile id of the user when the subscription was purchased. Only
-  /// present for purchases made with 'Subscribe with Google'.
+  /// The Google profile id of the user when the subscription was purchased.
+  /// Only present for purchases made with 'Subscribe with Google'.
   core.String profileId;
 
   /// The profile name of the user when the subscription was purchased. Only
@@ -6101,7 +6093,12 @@ class SubscriptionPurchasesDeferResponse {
 }
 
 class Testers {
+  /// A list of all Google Groups, as email addresses, that define testers for
+  /// this track.
   core.List<core.String> googleGroups;
+
+  /// A list of all Google+ Communities, as URLs, that define testers for this
+  /// track.
   core.List<core.String> googlePlusCommunities;
 
   Testers();

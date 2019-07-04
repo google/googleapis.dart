@@ -50,9 +50,8 @@ class PhotoResourceApi {
   /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is
   /// through the [Photo Sphere XMP
   /// metadata](https://developers.google.com/streetview/spherical-metadata) in
-  /// the photo bytes. The `pose.heading`, `pose.pitch`, `pose.roll`,
-  /// `pose.altitude`, and `pose.level` fields in Pose are ignored for
-  /// CreatePhoto.
+  /// the photo bytes. CreatePhoto ignores the  `pose.heading`, `pose.pitch`,
+  /// `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose.
   ///
   /// This method returns the following error codes:
   ///
@@ -178,7 +177,7 @@ class PhotoResourceApi {
   /// information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   /// If language_code is unspecified, the user's language preference for Google
-  /// services will be used.
+  /// services is used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -223,14 +222,14 @@ class PhotoResourceApi {
     return _response.then((data) => new Photo.fromJson(data));
   }
 
-  /// Creates an upload session to start uploading photo bytes. The upload URL
-  /// of
-  /// the returned UploadRef is used to
-  /// upload the bytes for the Photo.
+  /// Creates an upload session to start uploading photo bytes.  The method uses
+  /// the upload URL of the returned
+  /// UploadRef to upload the bytes for
+  /// the Photo.
   ///
   /// In addition to the photo requirements shown in
   /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
-  /// the photo must also meet the following requirements:
+  /// the photo must meet the following requirements:
   ///
   /// * Photo Sphere XMP metadata must be included in the photo medadata. See
   /// https://developers.google.com/streetview/spherical-metadata for the
@@ -240,8 +239,8 @@ class PhotoResourceApi {
   /// and
   /// the photo must be a full 360 horizontally.
   ///
-  /// After the upload is complete, the
-  /// UploadRef is used with
+  /// After the upload completes, the method uses
+  /// UploadRef with
   /// CreatePhoto
   /// to create the Photo object entry.
   ///
@@ -294,11 +293,6 @@ class PhotoResourceApi {
   /// field are used. If `updateMask` is not present, the update applies to all
   /// fields.
   ///
-  /// <aside class="note"><b>Note:</b> To update
-  /// Pose.altitude,
-  /// Pose.latLngPair has to be
-  /// filled as well. Otherwise, the request will fail.</aside>
-  ///
   /// This method returns the following error codes:
   ///
   /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
@@ -317,7 +311,7 @@ class PhotoResourceApi {
   /// [updateMask] - Mask that identifies fields on the photo metadata to
   /// update.
   /// If not present, the old Photo
-  /// metadata will be entirely replaced with the
+  /// metadata is entirely replaced with the
   /// new Photo metadata in this request.
   /// The update fails if invalid fields are specified. Multiple fields can be
   /// specified in a comma-delimited list.
@@ -334,14 +328,14 @@ class PhotoResourceApi {
   /// * `places`
   ///
   ///
-  /// <aside class="note"><b>Note:</b> Repeated fields in
+  /// <aside class="note"><b>Note:</b> When
   /// updateMask
-  /// mean the entire set of repeated values will be replaced with the new
-  /// contents. For example, if
+  /// contains repeated fields, the entire set of repeated values get replaced
+  /// with the new contents. For example, if
   /// updateMask
   /// contains `connections` and `UpdatePhotoRequest.photo.connections` is
   /// empty,
-  /// all connections will be removed.</aside>
+  /// all connections are removed.</aside>
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -397,11 +391,11 @@ class PhotosResourceApi {
   ///
   /// Note that if
   /// BatchDeletePhotos
-  /// fails, either critical fields are missing or there was an authentication
+  /// fails, either critical fields are missing or there is an authentication
   /// error. Even if
   /// BatchDeletePhotos
-  /// succeeds, there may have been failures for single photos in the batch.
-  /// These failures will be specified in each
+  /// succeeds, individual photos in the batch may have failures.
+  /// These failures are specified in each
   /// PhotoResponse.status
   /// in
   /// BatchDeletePhotosResponse.results.
@@ -457,11 +451,11 @@ class PhotosResourceApi {
   ///
   /// Note that if
   /// BatchGetPhotos
-  /// fails, either critical fields are missing or there was an authentication
+  /// fails, either critical fields are missing or there is an authentication
   /// error. Even if
   /// BatchGetPhotos
-  /// succeeds, there may have been failures for single photos in the batch.
-  /// These failures will be specified in each
+  /// succeeds, individual photos in the batch may have failures.
+  /// These failures are specified in each
   /// PhotoResponse.status
   /// in
   /// BatchGetPhotosResponse.results.
@@ -483,7 +477,7 @@ class PhotosResourceApi {
   /// information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   /// If language_code is unspecified, the user's language preference for Google
-  /// services will be used.
+  /// services is used.
   ///
   /// [photoIds] - Required. IDs of the Photos. For HTTP
   /// GET requests, the URL query parameter should be
@@ -542,11 +536,11 @@ class PhotosResourceApi {
   ///
   /// Note that if
   /// BatchUpdatePhotos
-  /// fails, either critical fields are missing or there was an authentication
+  /// fails, either critical fields are missing or there is an authentication
   /// error. Even if
   /// BatchUpdatePhotos
-  /// succeeds, there may have been failures for single photos in the batch.
-  /// These failures will be specified in each
+  /// succeeds, individual photos in the batch may have failures.
+  /// These failures are specified in each
   /// PhotoResponse.status
   /// in
   /// BatchUpdatePhotosResponse.results.
@@ -621,18 +615,6 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The
-  /// nextPageToken
-  /// value returned from a previous
-  /// ListPhotos
-  /// request, if any.
-  ///
-  /// [pageSize] - The maximum number of photos to return.
-  /// `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
-  /// the default page size of 100 will be used.
-  /// The number of photos returned in the response may be less than `pageSize`
-  /// if the number of photos that belong to the user is less than `pageSize`.
-  ///
   /// [view] - Specifies if a download URL for the photos bytes should be
   /// returned in the
   /// Photos response.
@@ -650,7 +632,19 @@ class PhotosResourceApi {
   /// information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   /// If language_code is unspecified, the user's language preference for Google
-  /// services will be used.
+  /// services is used.
+  ///
+  /// [pageToken] - The
+  /// nextPageToken
+  /// value returned from a previous
+  /// ListPhotos
+  /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of photos to return.
+  /// `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
+  /// the default page size of 100 is used.
+  /// The number of photos returned in the response may be less than `pageSize`
+  /// if the number of photos that belong to the user is less than `pageSize`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -663,11 +657,11 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
-      core.String view,
+      {core.String view,
       core.String filter,
       core.String languageCode,
+      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -676,12 +670,6 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
@@ -690,6 +678,12 @@ class PhotosResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -709,8 +703,8 @@ class PhotosResourceApi {
 
 /// Request to delete multiple Photos.
 class BatchDeletePhotosRequest {
-  /// Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
+  /// Required. IDs of the Photos. HTTP
+  /// GET requests require the following syntax for the URL query parameter:
   /// `photoIds=<id1>&photoIds=<id2>&...`.
   core.List<core.String> photoIds;
 
@@ -968,9 +962,9 @@ class ListPhotosResponse {
   /// results in the list.
   core.String nextPageToken;
 
-  /// List of photos. The maximum number of items returned is based on the
+  /// List of photos. The
   /// pageSize field
-  /// in the request.
+  /// in the request determines the number of items returned.
   core.List<Photo> photos;
 
   ListPhotosResponse();
@@ -1022,7 +1016,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -1100,8 +1094,8 @@ class Photo {
   /// PhotoView.INCLUDE_DOWNLOAD_URL.
   core.String downloadUrl;
 
-  /// Output only. Status in Google Maps, whether this photo was published, or
-  /// rejected for a possibly specified reason.
+  /// Output only. Status in Google Maps, whether this photo was published or
+  /// rejected.
   /// Possible string values are:
   /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
   /// - "PUBLISHED" : The photo is published to the public through Google Maps.
@@ -1368,11 +1362,9 @@ class Pose {
   /// Latitude and longitude pair of the pose, as explained here:
   /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng
   /// When creating a Photo, if the
-  /// latitude and longitude pair are not provided here, the geolocation from
-  /// the
-  /// exif header will be used. If the latitude and longitude pair is not
-  /// provided and cannot be found in the exif header, the create photo process
-  /// will fail.
+  /// latitude and longitude pair are not provided, the geolocation from the
+  /// exif header is used. A latitude and longitude pair not provided in the
+  /// photo or exif header causes the photo process to fail.
   LatLng latLngPair;
 
   /// Level (the floor in a building) used to configure vertical navigation.
@@ -1444,61 +1436,12 @@ class Pose {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -1558,7 +1501,7 @@ class UpdatePhotoRequest {
 
   /// Mask that identifies fields on the photo metadata to update.
   /// If not present, the old Photo
-  /// metadata will be entirely replaced with the
+  /// metadata is entirely replaced with the
   /// new Photo metadata in this request.
   /// The update fails if invalid fields are specified. Multiple fields can be
   /// specified in a comma-delimited list.
@@ -1575,14 +1518,14 @@ class UpdatePhotoRequest {
   /// * `places`
   ///
   ///
-  /// <aside class="note"><b>Note:</b> Repeated fields in
+  /// <aside class="note"><b>Note:</b> When
   /// updateMask
-  /// mean the entire set of repeated values will be replaced with the new
-  /// contents. For example, if
+  /// contains repeated fields, the entire set of repeated values get replaced
+  /// with the new contents. For example, if
   /// updateMask
   /// contains `connections` and `UpdatePhotoRequest.photo.connections` is
   /// empty,
-  /// all connections will be removed.</aside>
+  /// all connections are removed.</aside>
   core.String updateMask;
 
   UpdatePhotoRequest();

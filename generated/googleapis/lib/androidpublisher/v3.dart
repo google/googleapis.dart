@@ -35,6 +35,8 @@ class AndroidpublisherApi {
   EditsResourceApi get edits => new EditsResourceApi(_requester);
   InappproductsResourceApi get inappproducts =>
       new InappproductsResourceApi(_requester);
+  InternalappsharingartifactsResourceApi get internalappsharingartifacts =>
+      new InternalappsharingartifactsResourceApi(_requester);
   OrdersResourceApi get orders => new OrdersResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
   ReviewsResourceApi get reviews => new ReviewsResourceApi(_requester);
@@ -2038,9 +2040,7 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production", "rollout" or "internal".
-  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2099,9 +2099,7 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production", "rollout" or "internal".
-  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2163,9 +2161,7 @@ class EditsTestersResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
-  /// [track] - The track to read or modify. Acceptable values are: "alpha",
-  /// "beta", "production", "rollout" or "internal".
-  /// Value must have pattern "(alpha|beta|production|rollout|internal)".
+  /// [track] - The track to read or modify.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2337,9 +2333,8 @@ class EditsTracksResourceApi {
     return _response.then((data) => new TracksListResponse.fromJson(data));
   }
 
-  /// Updates the track configuration for the specified track type. When halted,
-  /// the rollout track cannot be updated without adding new APKs, and adding
-  /// new APKs will cause it to resume. This method supports patch semantics.
+  /// Updates the track configuration for the specified track type. This method
+  /// supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2403,9 +2398,7 @@ class EditsTracksResourceApi {
     return _response.then((data) => new Track.fromJson(data));
   }
 
-  /// Updates the track configuration for the specified track type. When halted,
-  /// the rollout track cannot be updated without adding new APKs, and adding
-  /// new APKs will cause it to resume.
+  /// Updates the track configuration for the specified track type.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2836,6 +2829,159 @@ class InappproductsResourceApi {
   }
 }
 
+class InternalappsharingartifactsResourceApi {
+  final commons.ApiRequester _requester;
+
+  InternalappsharingartifactsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Uploads an APK to internal app sharing. If you are using the Google API
+  /// client libraries, please increase the timeout of the http request before
+  /// calling this endpoint (a timeout of 2 minutes is recommended). See:
+  /// https://developers.google.com/api-client-library/java/google-api-java-client/errors
+  /// for an example in java.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [InternalAppSharingArtifact].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InternalAppSharingArtifact> uploadapk(core.String packageName,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = 'internalappsharing/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/artifacts/apk';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url =
+          '/resumable/upload/androidpublisher/v3/applications/internalappsharing/' +
+              commons.Escaper.ecapeVariable('$packageName') +
+              '/artifacts/apk';
+    } else {
+      _url = '/upload/androidpublisher/v3/applications/internalappsharing/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/artifacts/apk';
+    }
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InternalAppSharingArtifact.fromJson(data));
+  }
+
+  /// Uploads an app bundle to internal app sharing. If you are using the Google
+  /// API client libraries, please increase the timeout of the http request
+  /// before calling this endpoint (a timeout of 2 minutes is recommended). See:
+  /// https://developers.google.com/api-client-library/java/google-api-java-client/errors
+  /// for an example in java.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [InternalAppSharingArtifact].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InternalAppSharingArtifact> uploadbundle(core.String packageName,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
+
+    if (_uploadMedia == null) {
+      _url = 'internalappsharing/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/artifacts/bundle';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url =
+          '/resumable/upload/androidpublisher/v3/applications/internalappsharing/' +
+              commons.Escaper.ecapeVariable('$packageName') +
+              '/artifacts/bundle';
+    } else {
+      _url = '/upload/androidpublisher/v3/applications/internalappsharing/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/artifacts/bundle';
+    }
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InternalAppSharingArtifact.fromJson(data));
+  }
+}
+
 class OrdersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2923,6 +3069,73 @@ class PurchasesProductsResourceApi {
   PurchasesProductsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Acknowledges a purchase of an inapp item.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application the inapp product was
+  /// sold in (for example, 'com.some.thing').
+  ///
+  /// [productId] - The inapp product SKU (for example,
+  /// 'com.some.thing.inapp1').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future acknowledge(ProductPurchasesAcknowledgeRequest request,
+      core.String packageName, core.String productId, core.String token,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (token == null) {
+      throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/products/' +
+        commons.Escaper.ecapeVariable('$productId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token') +
+        ':acknowledge';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
   /// Checks the purchase and consumption status of an inapp item.
   ///
   /// Request parameters:
@@ -2990,6 +3203,73 @@ class PurchasesSubscriptionsResourceApi {
 
   PurchasesSubscriptionsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Acknowledges a subscription purchase.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future acknowledge(SubscriptionPurchasesAcknowledgeRequest request,
+      core.String packageName, core.String subscriptionId, core.String token,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (subscriptionId == null) {
+      throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if (token == null) {
+      throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token') +
+        ':acknowledge';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
 
   /// Cancels a user's subscription purchase. The subscription remains valid
   /// until its expiration time.
@@ -3933,6 +4213,34 @@ class Comment {
   }
 }
 
+class CountryTargeting {
+  core.List<core.String> countries;
+  core.bool includeRestOfWorld;
+
+  CountryTargeting();
+
+  CountryTargeting.fromJson(core.Map _json) {
+    if (_json.containsKey("countries")) {
+      countries = (_json["countries"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("includeRestOfWorld")) {
+      includeRestOfWorld = _json["includeRestOfWorld"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (countries != null) {
+      _json["countries"] = countries;
+    }
+    if (includeRestOfWorld != null) {
+      _json["includeRestOfWorld"] = includeRestOfWorld;
+    }
+    return _json;
+  }
+}
+
 /// Represents a deobfuscation file.
 class DeobfuscationFile {
   /// The type of the deobfuscation file.
@@ -4688,6 +4996,109 @@ class InappproductsListResponse {
   }
 }
 
+/// An artifact resource which gets created when uploading an APK or Android App
+/// Bundle through internal app sharing.
+class InternalAppSharingArtifact {
+  /// The SHA256 fingerprint of the certificate used to signed the generated
+  /// artifact.
+  core.String certificateFingerprint;
+
+  /// The download URL generated for the uploaded artifact. Users that are
+  /// authorized to download can follow the link to the Play Store app to
+  /// install it.
+  core.String downloadUrl;
+
+  /// The SHA-256 hash of the artifact represented as a lowercase hexadecimal
+  /// number, matching the output of the sha256sum command.
+  core.String sha256;
+
+  InternalAppSharingArtifact();
+
+  InternalAppSharingArtifact.fromJson(core.Map _json) {
+    if (_json.containsKey("certificateFingerprint")) {
+      certificateFingerprint = _json["certificateFingerprint"];
+    }
+    if (_json.containsKey("downloadUrl")) {
+      downloadUrl = _json["downloadUrl"];
+    }
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (certificateFingerprint != null) {
+      _json["certificateFingerprint"] = certificateFingerprint;
+    }
+    if (downloadUrl != null) {
+      _json["downloadUrl"] = downloadUrl;
+    }
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
+    }
+    return _json;
+  }
+}
+
+/// Contains the introductory price information for a subscription.
+class IntroductoryPriceInfo {
+  /// Introductory price of the subscription, not including tax. The currency is
+  /// the same as price_currency_code. Price is expressed in micro-units, where
+  /// 1,000,000 micro-units represents one unit of the currency. For example, if
+  /// the subscription price is €1.99, price_amount_micros is 1990000.
+  core.String introductoryPriceAmountMicros;
+
+  /// ISO 4217 currency code for the introductory subscription price. For
+  /// example, if the price is specified in British pounds sterling,
+  /// price_currency_code is "GBP".
+  core.String introductoryPriceCurrencyCode;
+
+  /// The number of billing period to offer introductory pricing.
+  core.int introductoryPriceCycles;
+
+  /// Introductory price period, specified in ISO 8601 format. Common values are
+  /// (but not limited to) "P1W" (one week), "P1M" (one month), "P3M" (three
+  /// months), "P6M" (six months), and "P1Y" (one year).
+  core.String introductoryPricePeriod;
+
+  IntroductoryPriceInfo();
+
+  IntroductoryPriceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("introductoryPriceAmountMicros")) {
+      introductoryPriceAmountMicros = _json["introductoryPriceAmountMicros"];
+    }
+    if (_json.containsKey("introductoryPriceCurrencyCode")) {
+      introductoryPriceCurrencyCode = _json["introductoryPriceCurrencyCode"];
+    }
+    if (_json.containsKey("introductoryPriceCycles")) {
+      introductoryPriceCycles = _json["introductoryPriceCycles"];
+    }
+    if (_json.containsKey("introductoryPricePeriod")) {
+      introductoryPricePeriod = _json["introductoryPricePeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (introductoryPriceAmountMicros != null) {
+      _json["introductoryPriceAmountMicros"] = introductoryPriceAmountMicros;
+    }
+    if (introductoryPriceCurrencyCode != null) {
+      _json["introductoryPriceCurrencyCode"] = introductoryPriceCurrencyCode;
+    }
+    if (introductoryPriceCycles != null) {
+      _json["introductoryPriceCycles"] = introductoryPriceCycles;
+    }
+    if (introductoryPricePeriod != null) {
+      _json["introductoryPricePeriod"] = introductoryPricePeriod;
+    }
+    return _json;
+  }
+}
+
 class Listing {
   /// Full description of the app; this may be up to 4000 characters in length.
   core.String fullDescription;
@@ -4911,6 +5322,11 @@ class Price {
 /// A ProductPurchase resource indicates the status of a user's inapp product
 /// purchase.
 class ProductPurchase {
+  /// The acknowledgement state of the inapp product. Possible values are:
+  /// - Yet to be acknowledged
+  /// - Acknowledged
+  core.int acknowledgementState;
+
   /// The consumption state of the inapp product. Possible values are:
   /// - Yet to be consumed
   /// - Consumed
@@ -4930,6 +5346,7 @@ class ProductPurchase {
   /// The purchase state of the order. Possible values are:
   /// - Purchased
   /// - Canceled
+  /// - Pending
   core.int purchaseState;
 
   /// The time the product was purchased, in milliseconds since the epoch (Jan
@@ -4947,6 +5364,9 @@ class ProductPurchase {
   ProductPurchase();
 
   ProductPurchase.fromJson(core.Map _json) {
+    if (_json.containsKey("acknowledgementState")) {
+      acknowledgementState = _json["acknowledgementState"];
+    }
     if (_json.containsKey("consumptionState")) {
       consumptionState = _json["consumptionState"];
     }
@@ -4973,6 +5393,9 @@ class ProductPurchase {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (acknowledgementState != null) {
+      _json["acknowledgementState"] = acknowledgementState;
+    }
     if (consumptionState != null) {
       _json["consumptionState"] = consumptionState;
     }
@@ -4993,6 +5416,28 @@ class ProductPurchase {
     }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
+    }
+    return _json;
+  }
+}
+
+class ProductPurchasesAcknowledgeRequest {
+  /// Payload to attach to the purchase.
+  core.String developerPayload;
+
+  ProductPurchasesAcknowledgeRequest();
+
+  ProductPurchasesAcknowledgeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("developerPayload")) {
+      developerPayload = _json["developerPayload"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (developerPayload != null) {
+      _json["developerPayload"] = developerPayload;
     }
     return _json;
   }
@@ -5354,6 +5799,12 @@ class SubscriptionPriceChange {
 /// A SubscriptionPurchase resource indicates the status of a user's
 /// subscription purchase.
 class SubscriptionPurchase {
+  /// The acknowledgement state of the subscription product. Possible values
+  /// are:
+  /// - Yet to be acknowledged
+  /// - Acknowledged
+  core.int acknowledgementState;
+
   /// Whether the subscription will automatically be renewed when it reaches its
   /// current expiry time.
   core.bool autoRenewing;
@@ -5399,6 +5850,13 @@ class SubscriptionPurchase {
   /// The given name of the user when the subscription was purchased. Only
   /// present for purchases made with 'Subscribe with Google'.
   core.String givenName;
+
+  /// Introductory price information of the subscription. This is only present
+  /// when the subscription was purchased with an introductory price.
+  ///
+  /// This field does not indicate the subscription is currently in introductory
+  /// price period.
+  IntroductoryPriceInfo introductoryPriceInfo;
 
   /// This kind represents a subscriptionPurchase object in the androidpublisher
   /// service.
@@ -5446,8 +5904,8 @@ class SubscriptionPurchase {
   /// "GBP".
   core.String priceCurrencyCode;
 
-  /// The profile id of the user when the subscription was purchased. Only
-  /// present for purchases made with 'Subscribe with Google'.
+  /// The Google profile id of the user when the subscription was purchased.
+  /// Only present for purchases made with 'Subscribe with Google'.
   core.String profileId;
 
   /// The profile name of the user when the subscription was purchased. Only
@@ -5471,6 +5929,9 @@ class SubscriptionPurchase {
   SubscriptionPurchase();
 
   SubscriptionPurchase.fromJson(core.Map _json) {
+    if (_json.containsKey("acknowledgementState")) {
+      acknowledgementState = _json["acknowledgementState"];
+    }
     if (_json.containsKey("autoRenewing")) {
       autoRenewing = _json["autoRenewing"];
     }
@@ -5501,6 +5962,10 @@ class SubscriptionPurchase {
     }
     if (_json.containsKey("givenName")) {
       givenName = _json["givenName"];
+    }
+    if (_json.containsKey("introductoryPriceInfo")) {
+      introductoryPriceInfo =
+          new IntroductoryPriceInfo.fromJson(_json["introductoryPriceInfo"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5543,6 +6008,9 @@ class SubscriptionPurchase {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (acknowledgementState != null) {
+      _json["acknowledgementState"] = acknowledgementState;
+    }
     if (autoRenewing != null) {
       _json["autoRenewing"] = autoRenewing;
     }
@@ -5572,6 +6040,9 @@ class SubscriptionPurchase {
     }
     if (givenName != null) {
       _json["givenName"] = givenName;
+    }
+    if (introductoryPriceInfo != null) {
+      _json["introductoryPriceInfo"] = (introductoryPriceInfo).toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5608,6 +6079,28 @@ class SubscriptionPurchase {
     }
     if (userCancellationTimeMillis != null) {
       _json["userCancellationTimeMillis"] = userCancellationTimeMillis;
+    }
+    return _json;
+  }
+}
+
+class SubscriptionPurchasesAcknowledgeRequest {
+  /// Payload to attach to the purchase.
+  core.String developerPayload;
+
+  SubscriptionPurchasesAcknowledgeRequest();
+
+  SubscriptionPurchasesAcknowledgeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("developerPayload")) {
+      developerPayload = _json["developerPayload"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (developerPayload != null) {
+      _json["developerPayload"] = developerPayload;
     }
     return _json;
   }
@@ -5659,7 +6152,12 @@ class SubscriptionPurchasesDeferResponse {
 }
 
 class Testers {
+  /// A list of all Google Groups, as email addresses, that define testers for
+  /// this track.
   core.List<core.String> googleGroups;
+
+  /// A list of all Google+ Communities, as URLs, that define testers for this
+  /// track.
   core.List<core.String> googlePlusCommunities;
 
   Testers();
@@ -5778,6 +6276,8 @@ class Track {
 }
 
 class TrackRelease {
+  CountryTargeting countryTargeting;
+
   /// The release name, used to identify this release in the Play Console UI.
   /// Not required to be unique. This is optional, if not set it will be
   /// generated from the version_name in the APKs.
@@ -5802,6 +6302,10 @@ class TrackRelease {
   TrackRelease();
 
   TrackRelease.fromJson(core.Map _json) {
+    if (_json.containsKey("countryTargeting")) {
+      countryTargeting =
+          new CountryTargeting.fromJson(_json["countryTargeting"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -5824,6 +6328,9 @@ class TrackRelease {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (countryTargeting != null) {
+      _json["countryTargeting"] = (countryTargeting).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
     }

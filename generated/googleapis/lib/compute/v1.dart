@@ -88,6 +88,8 @@ class ComputeApi {
   LicensesResourceApi get licenses => new LicensesResourceApi(_requester);
   MachineTypesResourceApi get machineTypes =>
       new MachineTypesResourceApi(_requester);
+  NetworkEndpointGroupsResourceApi get networkEndpointGroups =>
+      new NetworkEndpointGroupsResourceApi(_requester);
   NetworksResourceApi get networks => new NetworksResourceApi(_requester);
   NodeGroupsResourceApi get nodeGroups => new NodeGroupsResourceApi(_requester);
   NodeTemplatesResourceApi get nodeTemplates =>
@@ -111,6 +113,10 @@ class ComputeApi {
   RegionOperationsResourceApi get regionOperations =>
       new RegionOperationsResourceApi(_requester);
   RegionsResourceApi get regions => new RegionsResourceApi(_requester);
+  ReservationsResourceApi get reservations =>
+      new ReservationsResourceApi(_requester);
+  ResourcePoliciesResourceApi get resourcePolicies =>
+      new ResourcePoliciesResourceApi(_requester);
   RoutersResourceApi get routers => new RoutersResourceApi(_requester);
   RoutesResourceApi get routes => new RoutesResourceApi(_requester);
   SecurityPoliciesResourceApi get securityPolicies =>
@@ -690,7 +696,7 @@ class AddressesResourceApi {
     return _response.then((data) => new Address.fromJson(data));
   }
 
-  /// Creates an address resource in the specified project using the data
+  /// Creates an address resource in the specified project by using the data
   /// included in the request.
   ///
   /// [request] - The metadata request object.
@@ -3272,6 +3278,96 @@ class DisksResourceApi {
 
   DisksResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Adds existing resource policies to a disk. You can only add one policy
+  /// which will be applied to this disk for scheduling snapshot creation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - The disk name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addResourcePolicies(
+      DisksAddResourcePoliciesRequest request,
+      core.String project,
+      core.String zone,
+      core.String disk,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk') +
+        '/addResourcePolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Retrieves an aggregated list of persistent disks.
   ///
   /// Request parameters:
@@ -3393,7 +3489,10 @@ class DisksResourceApi {
   /// Value must have pattern
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
-  /// [guestFlush] - null
+  /// [guestFlush] - [Input Only] Specifies to create an application consistent
+  /// snapshot by informing the OS to prepare for the snapshot process.
+  /// Currently only supported on Windows instances using the Volume Shadow Copy
+  /// Service (VSS).
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -3871,6 +3970,95 @@ class DisksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new DiskList.fromJson(data));
+  }
+
+  /// Removes resource policies from a disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - The disk name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeResourcePolicies(
+      DisksRemoveResourcePoliciesRequest request,
+      core.String project,
+      core.String zone,
+      core.String disk,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk') +
+        '/removeResourcePolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Resizes the specified persistent disk. You can only increase the size of
@@ -5307,7 +5495,7 @@ class GlobalAddressesResourceApi {
     return _response.then((data) => new Address.fromJson(data));
   }
 
-  /// Creates an address resource in the specified project using the data
+  /// Creates an address resource in the specified project by using the data
   /// included in the request.
   ///
   /// [request] - The metadata request object.
@@ -11072,7 +11260,7 @@ class InstancesResourceApi {
   /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
   ///
   /// [forceAttach] - Whether to force attach the disk even if it's currently
-  /// attached to another instance. This is only available for regional disks.
+  /// attached to another instance.
   ///
   /// [requestId] - An optional request ID to identify requests. Specify a
   /// unique request ID so that if you must retry your request, the server will
@@ -11473,6 +11661,80 @@ class InstancesResourceApi {
     return _response.then((data) => new Instance.fromJson(data));
   }
 
+  /// Returns the specified guest attributes entry.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name of the instance scoping this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [queryPath] - Specifies the guest attributes path to be queried.
+  ///
+  /// [variableKey] - Specifies the key for the guest attributes entry.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GuestAttributes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GuestAttributes> getGuestAttributes(
+      core.String project, core.String zone, core.String instance,
+      {core.String queryPath, core.String variableKey, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (queryPath != null) {
+      _queryParams["queryPath"] = [queryPath];
+    }
+    if (variableKey != null) {
+      _queryParams["variableKey"] = [variableKey];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/getGuestAttributes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GuestAttributes.fromJson(data));
+  }
+
   /// Gets the access control policy for a resource. May be empty if no such
   /// policy or resource exists.
   ///
@@ -11615,6 +11877,71 @@ class InstancesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SerialPortOutput.fromJson(data));
+  }
+
+  /// Returns the Shielded Instance Identity of an instance
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name or id of the instance scoping this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShieldedInstanceIdentity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShieldedInstanceIdentity> getShieldedInstanceIdentity(
+      core.String project, core.String zone, core.String instance,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/getShieldedInstanceIdentity';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ShieldedInstanceIdentity.fromJson(data));
   }
 
   /// Creates an instance resource in the specified project using the data
@@ -11948,7 +12275,7 @@ class InstancesResourceApi {
     return _response.then((data) => new InstanceListReferrers.fromJson(data));
   }
 
-  /// Performs a reset on the instance. This is a hard reset; the VM does not do
+  /// Performs a reset on the instance. This is a hard reset the VM does not do
   /// a graceful shutdown. For more information, see Resetting an instance.
   ///
   /// Request parameters:
@@ -12901,6 +13228,97 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the Shielded Instance integrity policy for an instance. You can only
+  /// use this method on a running instance. This method supports PATCH
+  /// semantics and uses the JSON merge patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name or id of the instance scoping this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setShieldedInstanceIntegrityPolicy(
+      ShieldedInstanceIntegrityPolicy request,
+      core.String project,
+      core.String zone,
+      core.String instance,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/setShieldedInstanceIntegrityPolicy';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Sets network tags for the specified instance to the data included in the
   /// request.
   ///
@@ -13565,6 +13983,97 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
         '/updateNetworkInterface';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Updates the Shielded Instance config for an instance. You can only use
+  /// this method on a stopped instance. This method supports PATCH semantics
+  /// and uses the JSON merge patch format and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name or id of the instance scoping this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateShieldedInstanceConfig(
+      ShieldedInstanceConfig request,
+      core.String project,
+      core.String zone,
+      core.String instance,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/updateShieldedInstanceConfig';
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -15618,6 +16127,844 @@ class MachineTypesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new MachineTypeList.fromJson(data));
+  }
+}
+
+class NetworkEndpointGroupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  NetworkEndpointGroupsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves the list of network endpoint groups and sorts them by zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkEndpointGroupAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkEndpointGroupAggregatedList> aggregatedList(
+      core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/networkEndpointGroups';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new NetworkEndpointGroupAggregatedList.fromJson(data));
+  }
+
+  /// Attach a list of network endpoints to the specified network endpoint
+  /// group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the network endpoint group is located.
+  /// It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group where you
+  /// are attaching network endpoints to. It should comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> attachNetworkEndpoints(
+      NetworkEndpointGroupsAttachEndpointsRequest request,
+      core.String project,
+      core.String zone,
+      core.String networkEndpointGroup,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        '/attachNetworkEndpoints';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Deletes the specified network endpoint group. The network endpoints in the
+  /// NEG and the VM instances they belong to are not terminated when the NEG is
+  /// deleted. Note that the NEG cannot be deleted if there are backend services
+  /// referencing it.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the network endpoint group is located.
+  /// It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group to delete.
+  /// It should comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String zone, core.String networkEndpointGroup,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Detach a list of network endpoints from the specified network endpoint
+  /// group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the network endpoint group is located.
+  /// It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group where you
+  /// are removing network endpoints. It should comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> detachNetworkEndpoints(
+      NetworkEndpointGroupsDetachEndpointsRequest request,
+      core.String project,
+      core.String zone,
+      core.String networkEndpointGroup,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        '/detachNetworkEndpoints';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified network endpoint group. Gets a list of available
+  /// network endpoint groups by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the network endpoint group is located.
+  /// It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group. It should
+  /// comply with RFC1035.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkEndpointGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkEndpointGroup> get(
+      core.String project, core.String zone, core.String networkEndpointGroup,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NetworkEndpointGroup.fromJson(data));
+  }
+
+  /// Creates a network endpoint group in the specified project using the
+  /// parameters that are included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where you want to create the network
+  /// endpoint group. It should comply with RFC1035.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      NetworkEndpointGroup request, core.String project, core.String zone,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the list of network endpoint groups that are located in the
+  /// specified project and zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the network endpoint group is located.
+  /// It should comply with RFC1035.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkEndpointGroupList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkEndpointGroupList> list(
+      core.String project, core.String zone,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new NetworkEndpointGroupList.fromJson(data));
+  }
+
+  /// Lists the network endpoints in the specified network endpoint group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone where the network endpoint group is located.
+  /// It should comply with RFC1035.
+  ///
+  /// [networkEndpointGroup] - The name of the network endpoint group from which
+  /// you want to generate a list of included network endpoints. It should
+  /// comply with RFC1035.
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NetworkEndpointGroupsListNetworkEndpoints].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NetworkEndpointGroupsListNetworkEndpoints> listNetworkEndpoints(
+      NetworkEndpointGroupsListEndpointsRequest request,
+      core.String project,
+      core.String zone,
+      core.String networkEndpointGroup,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (networkEndpointGroup == null) {
+      throw new core.ArgumentError(
+          "Parameter networkEndpointGroup is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$networkEndpointGroup') +
+        '/listNetworkEndpoints';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new NetworkEndpointGroupsListNetworkEndpoints.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String zone,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/networkEndpointGroups/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
   }
 }
 
@@ -18272,8 +19619,8 @@ class ProjectsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Disable a serivce resource (a.k.a service project) associated with this
-  /// host project.
+  /// Disable a service resource (also known as service project) associated with
+  /// this host project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -20773,6 +22120,97 @@ class RegionDisksResourceApi {
 
   RegionDisksResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Adds existing resource policies to a regional disk. You can only add one
+  /// policy which will be applied to this disk for scheduling snapshot
+  /// creation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - The disk name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addResourcePolicies(
+      RegionDisksAddResourcePoliciesRequest request,
+      core.String project,
+      core.String region,
+      core.String disk,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk') +
+        '/addResourcePolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Creates a snapshot of this regional disk.
   ///
   /// [request] - The metadata request object.
@@ -21195,6 +22633,95 @@ class RegionDisksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new DiskList.fromJson(data));
+  }
+
+  /// Removes resource policies from a regional disk.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [disk] - The disk name for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeResourcePolicies(
+      RegionDisksRemoveResourcePoliciesRequest request,
+      core.String project,
+      core.String region,
+      core.String disk,
+      {core.String requestId,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (disk == null) {
+      throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/disks/' +
+        commons.Escaper.ecapeVariable('$disk') +
+        '/removeResourcePolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Resizes the specified regional persistent disk.
@@ -23378,6 +24905,1394 @@ class RegionsResourceApi {
   }
 }
 
+class ReservationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ReservationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves an aggregated list of reservations.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReservationAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReservationAggregatedList> aggregatedList(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        commons.Escaper.ecapeVariable('$project') + '/aggregated/reservations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ReservationAggregatedList.fromJson(data));
+  }
+
+  /// Deletes the specified reservation.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [reservation] - Name of the reservation to delete.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String zone, core.String reservation,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (reservation == null) {
+      throw new core.ArgumentError("Parameter reservation is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations/' +
+        commons.Escaper.ecapeVariable('$reservation');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves all information of the specified reservation.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [reservation] - Name of the reservation to retrieve.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Reservation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reservation> get(
+      core.String project, core.String zone, core.String reservation,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (reservation == null) {
+      throw new core.ArgumentError("Parameter reservation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations/' +
+        commons.Escaper.ecapeVariable('$reservation');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Reservation.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Creates a new reservation. For more information, read Reserving zonal
+  /// resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      Reservation request, core.String project, core.String zone,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// A list all the reservations that have been configured for the specified
+  /// project in specified zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReservationList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReservationList> list(core.String project, core.String zone,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReservationList.fromJson(data));
+  }
+
+  /// Resizes the reservation (applicable to standalone reservations only)
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - Name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [reservation] - Name of the reservation to update.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resize(ReservationsResizeRequest request,
+      core.String project, core.String zone, core.String reservation,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (reservation == null) {
+      throw new core.ArgumentError("Parameter reservation is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations/' +
+        commons.Escaper.ecapeVariable('$reservation') +
+        '/resize';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(ZoneSetPolicyRequest request,
+      core.String project, core.String zone, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String zone,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/reservations/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
+}
+
+class ResourcePoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ResourcePoliciesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves an aggregated list of resource policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourcePolicyAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourcePolicyAggregatedList> aggregatedList(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/resourcePolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ResourcePolicyAggregatedList.fromJson(data));
+  }
+
+  /// Deletes the specified resource policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resourcePolicy] - Name of the resource policy to delete.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+      core.String project, core.String region, core.String resourcePolicy,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resourcePolicy == null) {
+      throw new core.ArgumentError("Parameter resourcePolicy is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies/' +
+        commons.Escaper.ecapeVariable('$resourcePolicy');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves all information of the specified resource policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resourcePolicy] - Name of the resource policy to retrieve.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourcePolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourcePolicy> get(
+      core.String project, core.String region, core.String resourcePolicy,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resourcePolicy == null) {
+      throw new core.ArgumentError("Parameter resourcePolicy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies/' +
+        commons.Escaper.ecapeVariable('$resourcePolicy');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ResourcePolicy.fromJson(data));
+  }
+
+  /// Gets the access control policy for a resource. May be empty if no such
+  /// policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Creates a new resource policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      ResourcePolicy request, core.String project, core.String region,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// A list all the resource policies that have been configured for the
+  /// specified project in specified region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either =, !=, >, or <.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named example-instance by specifying name !=
+  /// example-instance.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// scheduling.automaticRestart = false to include instances only if they are
+  /// not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake"). By default, each expression is an AND
+  /// expression. However, you can include AND and OR expressions explicitly.
+  /// For example, (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+  /// Broadwell") AND (scheduling.automaticRestart = true).
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ResourcePolicyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourcePolicyList> list(core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ResourcePolicyList.fromJson(data));
+  }
+
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(RegionSetPolicyRequest request,
+      core.String project, core.String region, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - The name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+      TestPermissionsRequest request,
+      core.String project,
+      core.String region,
+      core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/resourcePolicies/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestPermissionsResponse.fromJson(data));
+  }
+}
+
 class RoutersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -24166,7 +27081,9 @@ class RoutersResourceApi {
   }
 
   /// Updates the specified Router resource with the data included in the
-  /// request.
+  /// request. This method conforms to PUT semantics, which requests that the
+  /// state of the target resource be created or replaced with the state defined
+  /// by the representation enclosed in the request message payload.
   ///
   /// [request] - The metadata request object.
   ///
@@ -32940,8 +35857,13 @@ class AcceleratorConfig {
   }
 }
 
-/// An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (==
-/// resource_for v1.acceleratorTypes ==)
+/// Represents an Accelerator Type resource.
+///
+/// Google Cloud Platform provides graphics processing units (accelerators) that
+/// you can add to VM instances to improve or accelerate performance when
+/// working with intensive workloads. For more information, read GPUs on Compute
+/// Engine. (== resource_for beta.acceleratorTypes ==) (== resource_for
+/// v1.acceleratorTypes ==)
 class AcceleratorType {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -33563,8 +36485,8 @@ class AccessConfig {
   core.String kind;
 
   /// The name of this access configuration. The default and recommended name is
-  /// External NAT but you can use any arbitrary string you would like. For
-  /// example, My external IP or Network Access.
+  /// External NAT, but you can use any arbitrary string, such as My external IP
+  /// or Network Access.
   core.String name;
 
   /// An external IP address associated with this instance. Specify an unused
@@ -33588,11 +36510,11 @@ class AccessConfig {
   /// - "STANDARD"
   core.String networkTier;
 
-  /// The DNS domain name for the public PTR record. This field can only be set
-  /// when the set_public_ptr field is enabled.
+  /// The DNS domain name for the public PTR record. You can set this field only
+  /// if the `setPublicPtr` field is enabled.
   core.String publicPtrDomainName;
 
-  /// Specifies whether a public DNS ?PTR? record should be created to map the
+  /// Specifies whether a public DNS 'PTR' record should be created to map the
   /// external IP address of the instance to a DNS domain name.
   core.bool setPublicPtr;
 
@@ -33655,9 +36577,24 @@ class AccessConfig {
   }
 }
 
-/// A reserved address resource. (== resource_for beta.addresses ==) (==
-/// resource_for v1.addresses ==) (== resource_for beta.globalAddresses ==) (==
-/// resource_for v1.globalAddresses ==)
+/// Represents an IP Address resource.
+///
+/// An address resource represents a regional internal IP address. Regional
+/// internal IP addresses are RFC 1918 addresses that come from either a primary
+/// or secondary IP range of a subnet in a VPC network. Regional external IP
+/// addresses can be assigned to GCP VM instances, Cloud VPN gateways, regional
+/// external forwarding rules for network load balancers (in either Standard or
+/// Premium Tier), and regional external forwarding rules for HTTP(S), SSL
+/// Proxy, and TCP Proxy load balancers in Standard Tier. For more information,
+/// read IP addresses.
+///
+/// A globalAddresses resource represent a global external IP address. Global
+/// external IP addresses are IPv4 or IPv6 addresses. They can only be assigned
+/// to global forwarding rules for HTTP(S), SSL Proxy, or TCP Proxy load
+/// balancers in Premium Tier. For more information, read Global resources. (==
+/// resource_for beta.addresses ==) (== resource_for v1.addresses ==) (==
+/// resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses
+/// ==)
 class Address {
   /// The static IP address represented by this resource.
   core.String address;
@@ -33673,7 +36610,7 @@ class Address {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
-  /// An optional description of this resource. Provide this property when you
+  /// An optional description of this resource. Provide this field when you
   /// create the resource.
   core.String description;
 
@@ -33681,7 +36618,7 @@ class Address {
   /// defined by the server.
   core.String id;
 
-  /// The IP Version that will be used by this address. Valid options are IPV4
+  /// The IP version that will be used by this address. Valid options are IPV4
   /// or IPV6. This can only be specified for a global address.
   /// Possible string values are:
   /// - "IPV4"
@@ -33695,22 +36632,22 @@ class Address {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
-  /// must be a lowercase letter, and all following characters must be a dash,
-  /// lowercase letter, or digit, except the last character, which cannot be a
-  /// dash.
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a
+  /// lowercase letter, and all following characters (except for the last
+  /// character) must be a dash, lowercase letter, or digit. The last character
+  /// must be a lowercase letter or digit.
   core.String name;
 
   /// The URL of the network in which to reserve the address. This field can
-  /// only be used with INTERNAL type with VPC_PEERING purpose.
+  /// only be used with INTERNAL type with the VPC_PEERING purpose.
   core.String network;
 
-  /// This signifies the networking tier used for configuring this Address and
-  /// can only take the following values: PREMIUM, STANDARD. Global forwarding
+  /// This signifies the networking tier used for configuring this address and
+  /// can only take the following values: PREMIUM or STANDARD. Global forwarding
   /// rules can only be Premium Tier. Regional forwarding rules can be either
   /// Premium or Standard Tier. Standard Tier addresses applied to regional
   /// forwarding rules can be used with any external load balancer. Regional
-  /// forwarding rules in Premium Tier can only be used with a Network load
+  /// forwarding rules in Premium Tier can only be used with a network load
   /// balancer.
   ///
   /// If this field is not specified, it is assumed to be PREMIUM.
@@ -33722,17 +36659,23 @@ class Address {
   /// The prefix length if the resource reprensents an IP range.
   core.int prefixLength;
 
-  /// The purpose of resource, only used with INTERNAL type.
+  /// The purpose of this resource, which can be one of the following values:
+  /// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP
+  /// ranges, internal load balancers, and similar resources.
+  /// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
+  /// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
+  /// - `NAT_AUTO` for addresses that are external IP addresses automatically
+  /// reserved for Cloud NAT.
   /// Possible string values are:
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
+  /// - "NAT_AUTO"
   /// - "VPC_PEERING"
   core.String purpose;
 
-  /// [Output Only] URL of the region where the regional address resides. This
-  /// field is not applicable to global addresses. You must specify this field
-  /// as part of the HTTP request URL. You cannot set this field in the request
-  /// body.
+  /// [Output Only] The URL of the region where the regional address resides.
+  /// This field is not applicable to global addresses. You must specify this
+  /// field as part of the HTTP request URL.
   core.String region;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -33751,8 +36694,8 @@ class Address {
 
   /// The URL of the subnetwork in which to reserve the address. If an IP
   /// address is specified, it must be within the subnetwork's IP range. This
-  /// field can only be used with INTERNAL type with GCE_ENDPOINT/DNS_RESOLVER
-  /// purposes.
+  /// field can only be used with INTERNAL type with a GCE_ENDPOINT or
+  /// DNS_RESOLVER purpose.
   core.String subnetwork;
 
   /// [Output Only] The URLs of the resources that are using this address.
@@ -34384,16 +37327,16 @@ class AddressesScopedList {
 
 /// An alias IP range attached to an instance's network interface.
 class AliasIpRange {
-  /// The IP CIDR range represented by this alias IP range. This IP CIDR range
+  /// The IP alias ranges to allocate for this interface. This IP CIDR range
   /// must belong to the specified subnetwork and cannot contain IP addresses
   /// reserved by system or used by other network interfaces. This range may be
-  /// a single IP address (e.g. 10.2.3.4), a netmask (e.g. /24) or a CIDR format
-  /// string (e.g. 10.1.2.0/24).
+  /// a single IP address (such as 10.2.3.4), a netmask (such as /24) or a
+  /// CIDR-formatted string (such as 10.1.2.0/24).
   core.String ipCidrRange;
 
-  /// Optional subnetwork secondary range name specifying the secondary range
-  /// from which to allocate the IP CIDR range for this alias IP range. If left
-  /// unspecified, the primary range of the subnetwork will be used.
+  /// The name of a subnetwork secondary IP range from which to allocate an IP
+  /// alias range. If not specified, the primary range of the subnetwork is
+  /// used.
   core.String subnetworkRangeName;
 
   AliasIpRange();
@@ -34415,6 +37358,152 @@ class AliasIpRange {
     }
     if (subnetworkRangeName != null) {
       _json["subnetworkRangeName"] = subnetworkRangeName;
+    }
+    return _json;
+  }
+}
+
+class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk {
+  /// Specifies the size of the disk in base-2 GB.
+  core.String diskSizeGb;
+
+  /// Specifies the disk interface to use for attaching this disk, which is
+  /// either SCSI or NVME. The default is SCSI. For performance characteristics
+  /// of SCSI over NVMe, see Local SSD performance.
+  /// Possible string values are:
+  /// - "NVME"
+  /// - "SCSI"
+  core.String interface;
+
+  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk();
+
+  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("diskSizeGb")) {
+      diskSizeGb = _json["diskSizeGb"];
+    }
+    if (_json.containsKey("interface")) {
+      interface = _json["interface"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (diskSizeGb != null) {
+      _json["diskSizeGb"] = diskSizeGb;
+    }
+    if (interface != null) {
+      _json["interface"] = interface;
+    }
+    return _json;
+  }
+}
+
+/// Properties of the SKU instances being reserved.
+class AllocationSpecificSKUAllocationReservedInstanceProperties {
+  /// Specifies accelerator type and count.
+  core.List<AcceleratorConfig> guestAccelerators;
+
+  /// Specifies amount of local ssd to reserve with each instance. The type of
+  /// disk is local-ssd.
+  core.List<
+          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>
+      localSsds;
+
+  /// Specifies type of machine (name only) which has fixed number of vCPUs and
+  /// fixed amount of memory. This also includes specifying custom machine type
+  /// following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
+  core.String machineType;
+
+  /// Minimum cpu platform the reservation.
+  core.String minCpuPlatform;
+
+  AllocationSpecificSKUAllocationReservedInstanceProperties();
+
+  AllocationSpecificSKUAllocationReservedInstanceProperties.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("guestAccelerators")) {
+      guestAccelerators = (_json["guestAccelerators"] as core.List)
+          .map<AcceleratorConfig>(
+              (value) => new AcceleratorConfig.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("localSsds")) {
+      localSsds = (_json["localSsds"] as core.List)
+          .map<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(
+              (value) =>
+                  new AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
+    }
+    if (_json.containsKey("minCpuPlatform")) {
+      minCpuPlatform = _json["minCpuPlatform"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (guestAccelerators != null) {
+      _json["guestAccelerators"] =
+          guestAccelerators.map((value) => (value).toJson()).toList();
+    }
+    if (localSsds != null) {
+      _json["localSsds"] = localSsds.map((value) => (value).toJson()).toList();
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
+    }
+    if (minCpuPlatform != null) {
+      _json["minCpuPlatform"] = minCpuPlatform;
+    }
+    return _json;
+  }
+}
+
+/// This reservation type allows to pre allocate specific instance
+/// configuration.
+class AllocationSpecificSKUReservation {
+  /// Specifies number of resources that are allocated.
+  core.String count;
+
+  /// [OutputOnly] Indicates how many resource are in use.
+  core.String inUseCount;
+
+  /// The instance properties for this specific sku reservation.
+  AllocationSpecificSKUAllocationReservedInstanceProperties instanceProperties;
+
+  AllocationSpecificSKUReservation();
+
+  AllocationSpecificSKUReservation.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("inUseCount")) {
+      inUseCount = _json["inUseCount"];
+    }
+    if (_json.containsKey("instanceProperties")) {
+      instanceProperties =
+          new AllocationSpecificSKUAllocationReservedInstanceProperties
+              .fromJson(_json["instanceProperties"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (inUseCount != null) {
+      _json["inUseCount"] = inUseCount;
+    }
+    if (instanceProperties != null) {
+      _json["instanceProperties"] = (instanceProperties).toJson();
     }
     return _json;
   }
@@ -34483,6 +37572,7 @@ class AttachedDisk {
   /// SCSI and the request will fail if you attempt to attach a persistent disk
   /// in any other format than SCSI. Local SSDs can use either NVME or SCSI. For
   /// performance characteristics of SCSI over NVMe, see Local SSD performance.
+  /// TODO(b/131765817): Update documentation when NVME is supported.
   /// Possible string values are:
   /// - "NVME"
   /// - "SCSI"
@@ -34654,6 +37744,11 @@ class AttachedDiskInitializeParams {
   /// disks.
   core.Map<core.String, core.String> labels;
 
+  /// Resource policies applied to this disk for automatic snapshot creations.
+  /// Specified using the full or partial URL. For instance template, specify
+  /// only the resource policy name.
+  core.List<core.String> resourcePolicies;
+
   /// The source image to create this disk. When creating a new instance, one of
   /// initializeParams.sourceImage or disks.source is required except for local
   /// SSD.
@@ -34690,6 +37785,21 @@ class AttachedDiskInitializeParams {
   /// source images are encrypted with your own keys.
   CustomerEncryptionKey sourceImageEncryptionKey;
 
+  /// The source snapshot to create this disk. When creating a new instance, one
+  /// of initializeParams.sourceSnapshot or disks.source is required except for
+  /// local SSD.
+  ///
+  /// To create a disk with a snapshot that you created, specify the snapshot
+  /// name in the following format:
+  /// global/snapshots/my-backup
+  ///
+  ///
+  /// If the source snapshot is deleted later, this field will not be set.
+  core.String sourceSnapshot;
+
+  /// The customer-supplied encryption key of the source snapshot.
+  CustomerEncryptionKey sourceSnapshotEncryptionKey;
+
   AttachedDiskInitializeParams();
 
   AttachedDiskInitializeParams.fromJson(core.Map _json) {
@@ -34708,12 +37818,23 @@ class AttachedDiskInitializeParams {
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies =
+          (_json["resourcePolicies"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("sourceImage")) {
       sourceImage = _json["sourceImage"];
     }
     if (_json.containsKey("sourceImageEncryptionKey")) {
       sourceImageEncryptionKey =
           new CustomerEncryptionKey.fromJson(_json["sourceImageEncryptionKey"]);
+    }
+    if (_json.containsKey("sourceSnapshot")) {
+      sourceSnapshot = _json["sourceSnapshot"];
+    }
+    if (_json.containsKey("sourceSnapshotEncryptionKey")) {
+      sourceSnapshotEncryptionKey = new CustomerEncryptionKey.fromJson(
+          _json["sourceSnapshotEncryptionKey"]);
     }
   }
 
@@ -34735,11 +37856,21 @@ class AttachedDiskInitializeParams {
     if (labels != null) {
       _json["labels"] = labels;
     }
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] = resourcePolicies;
+    }
     if (sourceImage != null) {
       _json["sourceImage"] = sourceImage;
     }
     if (sourceImageEncryptionKey != null) {
       _json["sourceImageEncryptionKey"] = (sourceImageEncryptionKey).toJson();
+    }
+    if (sourceSnapshot != null) {
+      _json["sourceSnapshot"] = sourceSnapshot;
+    }
+    if (sourceSnapshotEncryptionKey != null) {
+      _json["sourceSnapshotEncryptionKey"] =
+          (sourceSnapshotEncryptionKey).toJson();
     }
     return _json;
   }
@@ -34885,12 +38016,20 @@ class AuthorizationLoggingOptions {
   }
 }
 
-/// Represents an Autoscaler resource. Autoscalers allow you to automatically
-/// scale virtual machine instances in managed instance groups according to an
-/// autoscaling policy that you define. For more information, read Autoscaling
-/// Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for
-/// v1.autoscalers ==) (== resource_for beta.regionAutoscalers ==) (==
-/// resource_for v1.regionAutoscalers ==)
+/// Represents an Autoscaler resource.
+///
+///
+///
+/// Use autoscalers to automatically add or delete instances from a managed
+/// instance group according to your defined autoscaling policy. For more
+/// information, read Autoscaling Groups of Instances.
+///
+/// For zonal managed instance groups resource, use the autoscaler resource.
+///
+/// For regional managed instance groups, use the regionAutoscalers resource.
+/// (== resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==)
+/// (== resource_for beta.regionAutoscalers ==) (== resource_for
+/// v1.regionAutoscalers ==)
 class Autoscaler {
   /// The configuration parameters for the autoscaling algorithm. You can define
   /// one or more of the policies for an autoscaler: cpuUtilization,
@@ -35858,6 +38997,15 @@ class Backend {
   /// This cannot be used for internal load balancing.
   core.int maxConnections;
 
+  /// The max number of simultaneous connections that a single backend network
+  /// endpoint can handle. This is used to calculate the capacity of the group.
+  /// Can be used in either CONNECTION or UTILIZATION balancing modes. For
+  /// CONNECTION mode, either maxConnections or maxConnectionsPerEndpoint must
+  /// be set.
+  ///
+  /// This cannot be used for internal load balancing.
+  core.int maxConnectionsPerEndpoint;
+
   /// The max number of simultaneous connections that a single backend instance
   /// can handle. This is used to calculate the capacity of the group. Can be
   /// used in either CONNECTION or UTILIZATION balancing modes. For CONNECTION
@@ -35872,6 +39020,14 @@ class Backend {
   ///
   /// This cannot be used for internal load balancing.
   core.int maxRate;
+
+  /// The max requests per second (RPS) that a single backend network endpoint
+  /// can handle. This is used to calculate the capacity of the group. Can be
+  /// used in either balancing mode. For RATE mode, either maxRate or
+  /// maxRatePerEndpoint must be set.
+  ///
+  /// This cannot be used for internal load balancing.
+  core.double maxRatePerEndpoint;
 
   /// The max requests per second (RPS) that a single backend instance can
   /// handle. This is used to calculate the capacity of the group. Can be used
@@ -35906,11 +39062,17 @@ class Backend {
     if (_json.containsKey("maxConnections")) {
       maxConnections = _json["maxConnections"];
     }
+    if (_json.containsKey("maxConnectionsPerEndpoint")) {
+      maxConnectionsPerEndpoint = _json["maxConnectionsPerEndpoint"];
+    }
     if (_json.containsKey("maxConnectionsPerInstance")) {
       maxConnectionsPerInstance = _json["maxConnectionsPerInstance"];
     }
     if (_json.containsKey("maxRate")) {
       maxRate = _json["maxRate"];
+    }
+    if (_json.containsKey("maxRatePerEndpoint")) {
+      maxRatePerEndpoint = _json["maxRatePerEndpoint"].toDouble();
     }
     if (_json.containsKey("maxRatePerInstance")) {
       maxRatePerInstance = _json["maxRatePerInstance"].toDouble();
@@ -35938,11 +39100,17 @@ class Backend {
     if (maxConnections != null) {
       _json["maxConnections"] = maxConnections;
     }
+    if (maxConnectionsPerEndpoint != null) {
+      _json["maxConnectionsPerEndpoint"] = maxConnectionsPerEndpoint;
+    }
     if (maxConnectionsPerInstance != null) {
       _json["maxConnectionsPerInstance"] = maxConnectionsPerInstance;
     }
     if (maxRate != null) {
       _json["maxRate"] = maxRate;
+    }
+    if (maxRatePerEndpoint != null) {
+      _json["maxRatePerEndpoint"] = maxRatePerEndpoint;
     }
     if (maxRatePerInstance != null) {
       _json["maxRatePerInstance"] = maxRatePerInstance;
@@ -36299,6 +39467,9 @@ class BackendService {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
+  /// Headers that the HTTP/S load balancer should add to proxied requests.
+  core.List<core.String> customRequestHeaders;
+
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   core.String description;
@@ -36352,6 +39523,7 @@ class BackendService {
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "INTERNAL"
+  /// - "INTERNAL_SELF_MANAGED"
   /// - "INVALID_LOAD_BALANCING_SCHEME"
   core.String loadBalancingScheme;
 
@@ -36385,6 +39557,7 @@ class BackendService {
   /// default is TCP.
   /// Possible string values are:
   /// - "HTTP"
+  /// - "HTTP2"
   /// - "HTTPS"
   /// - "SSL"
   /// - "TCP"
@@ -36445,6 +39618,10 @@ class BackendService {
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("customRequestHeaders")) {
+      customRequestHeaders =
+          (_json["customRequestHeaders"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -36516,6 +39693,9 @@ class BackendService {
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (customRequestHeaders != null) {
+      _json["customRequestHeaders"] = customRequestHeaders;
     }
     if (description != null) {
       _json["description"] = description;
@@ -37069,6 +40249,27 @@ class BackendServiceList {
   }
 }
 
+class BackendServiceReference {
+  core.String backendService;
+
+  BackendServiceReference();
+
+  BackendServiceReference.fromJson(core.Map _json) {
+    if (_json.containsKey("backendService")) {
+      backendService = _json["backendService"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backendService != null) {
+      _json["backendService"] = backendService;
+    }
+    return _json;
+  }
+}
+
 class BackendServicesScopedListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -37215,10 +40416,9 @@ class BackendServicesScopedList {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding. NOTE:
-  /// an unsatisfied condition will not allow user access via current binding.
-  /// Different bindings, including their conditions, are examined
-  /// independently.
+  /// The condition that is associated with this binding. NOTE: An unsatisfied
+  /// condition will not allow user access via current binding. Different
+  /// bindings, including their conditions, are examined independently.
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -37243,7 +40443,7 @@ class Binding {
   ///
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   /// users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -37382,17 +40582,13 @@ class CacheKeyPolicy {
   }
 }
 
-/// Represents a Commitment resource. Creating a Commitment resource means that
-/// you are purchasing a committed use contract with an explicit start and end
-/// time. You can create commitments based on vCPUs and memory usage and receive
-/// discounted rates. For full details, read Signing Up for Committed Use
-/// Discounts.
+/// Represents a regional Commitment resource.
 ///
-/// Committed use discounts are subject to Google Cloud Platform's Service
-/// Specific Terms. By purchasing a committed use discount, you agree to these
-/// terms. Committed use discounts will not renew, so you must purchase a new
-/// commitment to continue receiving discounts. (== resource_for
-/// beta.commitments ==) (== resource_for v1.commitments ==)
+/// Creating a commitment resource means that you are purchasing a committed use
+/// contract with an explicit start and end time. You can create commitments
+/// based on vCPUs and memory usage and receive discounted rates. For full
+/// details, read Signing Up for Committed Use Discounts. (== resource_for
+/// beta.regionCommitments ==) (== resource_for v1.regionCommitments ==)
 class Commitment {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -37432,6 +40628,9 @@ class Commitment {
 
   /// [Output Only] URL of the region where this commitment may be used.
   core.String region;
+
+  /// List of reservations for this commitment.
+  core.List<Reservation> reservations;
 
   /// A list of commitment amounts for particular resources. Note that VCPU and
   /// MEMORY resource commitments must occur together.
@@ -37483,6 +40682,11 @@ class Commitment {
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
+    if (_json.containsKey("reservations")) {
+      reservations = (_json["reservations"] as core.List)
+          .map<Reservation>((value) => new Reservation.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
           .map<ResourceCommitment>(
@@ -37529,6 +40733,10 @@ class Commitment {
     }
     if (region != null) {
       _json["region"] = region;
+    }
+    if (reservations != null) {
+      _json["reservations"] =
+          reservations.map((value) => (value).toJson()).toList();
     }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
@@ -38096,10 +41304,7 @@ class Condition {
   /// - "SERVICE"
   core.String sys;
 
-  /// DEPRECATED. Use 'values' instead.
-  core.String value;
-
-  /// The objects of the condition. This is mutually exclusive with 'value'.
+  /// The objects of the condition.
   core.List<core.String> values;
 
   Condition();
@@ -38116,9 +41321,6 @@ class Condition {
     }
     if (_json.containsKey("sys")) {
       sys = _json["sys"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
     }
     if (_json.containsKey("values")) {
       values = (_json["values"] as core.List).cast<core.String>();
@@ -38139,9 +41341,6 @@ class Condition {
     }
     if (sys != null) {
       _json["sys"] = sys;
-    }
-    if (value != null) {
-      _json["value"] = value;
     }
     if (values != null) {
       _json["values"] = values;
@@ -38273,12 +41472,15 @@ class DeprecationStatus {
   /// deprecated resource.
   core.String replacement;
 
-  /// The deprecation state of this resource. This can be DEPRECATED, OBSOLETE,
-  /// or DELETED. Operations which create a new resource using a DEPRECATED
-  /// resource will return successfully, but with a warning indicating the
-  /// deprecated resource and recommending its replacement. Operations which use
-  /// OBSOLETE or DELETED resources will be rejected and result in an error.
+  /// The deprecation state of this resource. This can be ACTIVE, DEPRECATED,
+  /// OBSOLETE, or DELETED. Operations which communicate the end of life date
+  /// for an image, can use ACTIVE. Operations which create a new resource using
+  /// a DEPRECATED resource will return successfully, but with a warning
+  /// indicating the deprecated resource and recommending its replacement.
+  /// Operations which use OBSOLETE or DELETED resources will be rejected and
+  /// result in an error.
   /// Possible string values are:
+  /// - "ACTIVE"
   /// - "DELETED"
   /// - "DEPRECATED"
   /// - "OBSOLETE"
@@ -38326,8 +41528,19 @@ class DeprecationStatus {
   }
 }
 
-/// A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks
-/// ==)
+/// Represents a Persistent Disk resource.
+///
+/// Persistent disks are required for running your VM instances. Create both
+/// boot and non-boot (data) persistent disks. For more information, read
+/// Persistent Disks. For more storage options, read Storage options.
+///
+/// The disks resource represents a zonal persistent disk. For more information,
+/// read Zonal persistent disks.
+///
+/// The regionDisks resource represents a regional persistent disk. For more
+/// information, read  Regional resources. (== resource_for beta.disks ==) (==
+/// resource_for v1.disks ==) (== resource_for v1.regionDisks ==) (==
+/// resource_for beta.regionDisks ==)
 class Disk {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -38339,8 +41552,9 @@ class Disk {
   /// Encrypts the disk using a customer-supplied encryption key.
   ///
   /// After you encrypt a disk with a customer-supplied key, you must provide
-  /// the same key if you use the disk later (e.g. to create a disk snapshot or
-  /// an image, or to attach the disk to a virtual machine).
+  /// the same key if you use the disk later (e.g. to create a disk snapshot, to
+  /// create a disk image, to create a machine image, or to attach the disk to a
+  /// virtual machine).
   ///
   /// Customer-supplied encryption keys do not protect access to metadata of the
   /// disk.
@@ -38424,6 +41638,9 @@ class Disk {
   /// for regional resources.
   core.List<core.String> replicaZones;
 
+  /// Resource policies applied to this disk for automatic snapshot creations.
+  core.List<core.String> resourcePolicies;
+
   /// [Output Only] Server-defined fully-qualified URL for this resource.
   core.String selfLink;
 
@@ -38503,11 +41720,11 @@ class Disk {
 
   /// URL of the disk type resource describing which disk type to use to create
   /// the disk. Provide this when creating the disk. For example:
-  /// project/zones/zone/diskTypes/pd-standard or pd-ssd
+  /// projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
   core.String type;
 
   /// [Output Only] Links to the users of the disk (attached instances) in form:
-  /// project/zones/zone/instances/instance
+  /// projects/project/zones/zone/instances/instance
   core.List<core.String> users;
 
   /// [Output Only] URL of the zone where the disk resides. You must specify
@@ -38571,6 +41788,10 @@ class Disk {
     }
     if (_json.containsKey("replicaZones")) {
       replicaZones = (_json["replicaZones"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies =
+          (_json["resourcePolicies"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -38666,6 +41887,9 @@ class Disk {
     }
     if (replicaZones != null) {
       _json["replicaZones"] = replicaZones;
+    }
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] = resourcePolicies;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -39190,8 +42414,18 @@ class DiskMoveRequest {
   }
 }
 
-/// A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for
-/// v1.diskTypes ==)
+/// Represents a Disk Type resource.
+///
+/// You can choose from a variety of disk types based on your needs. For more
+/// information, read Storage options.
+///
+/// The diskTypes resource represents disk types for a zonal persistent disk.
+/// For more information, read Zonal persistent disks.
+///
+/// The regionDiskTypes resource represents disk types for a regional persistent
+/// disk. For more information, read Regional persistent disks. (== resource_for
+/// beta.diskTypes ==) (== resource_for v1.diskTypes ==) (== resource_for
+/// v1.regionDiskTypes ==) (== resource_for beta.regionDiskTypes ==)
 class DiskType {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -39820,6 +43054,52 @@ class DiskTypesScopedList {
   }
 }
 
+class DisksAddResourcePoliciesRequest {
+  /// Resource policies to be added to this disk.
+  core.List<core.String> resourcePolicies;
+
+  DisksAddResourcePoliciesRequest();
+
+  DisksAddResourcePoliciesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies =
+          (_json["resourcePolicies"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] = resourcePolicies;
+    }
+    return _json;
+  }
+}
+
+class DisksRemoveResourcePoliciesRequest {
+  /// Resource policies to be removed from this disk.
+  core.List<core.String> resourcePolicies;
+
+  DisksRemoveResourcePoliciesRequest();
+
+  DisksRemoveResourcePoliciesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies =
+          (_json["resourcePolicies"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] = resourcePolicies;
+    }
+    return _json;
+  }
+}
+
 class DisksResizeRequest {
   /// The new size of the persistent disk, which is specified in GB.
   core.String sizeGb;
@@ -40098,13 +43378,13 @@ class FirewallAllowed {
   /// The IP protocol to which this rule applies. The protocol type is required
   /// when creating a firewall rule. This value can either be one of the
   /// following well known protocol strings (tcp, udp, icmp, esp, ah, ipip,
-  /// sctp), or the IP protocol number.
+  /// sctp) or the IP protocol number.
   core.String IPProtocol;
 
   /// An optional list of ports to which this rule applies. This field is only
-  /// applicable for UDP or TCP protocol. Each entry must be either an integer
-  /// or a range. If not specified, this rule applies to connections through any
-  /// port.
+  /// applicable for the UDP or TCP protocol. Each entry must be either an
+  /// integer or a range. If not specified, this rule applies to connections
+  /// through any port.
   ///
   /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
   core.List<core.String> ports;
@@ -40137,13 +43417,13 @@ class FirewallDenied {
   /// The IP protocol to which this rule applies. The protocol type is required
   /// when creating a firewall rule. This value can either be one of the
   /// following well known protocol strings (tcp, udp, icmp, esp, ah, ipip,
-  /// sctp), or the IP protocol number.
+  /// sctp) or the IP protocol number.
   core.String IPProtocol;
 
   /// An optional list of ports to which this rule applies. This field is only
-  /// applicable for UDP or TCP protocol. Each entry must be either an integer
-  /// or a range. If not specified, this rule applies to connections through any
-  /// port.
+  /// applicable for the UDP or TCP protocol. Each entry must be either an
+  /// integer or a range. If not specified, this rule applies to connections
+  /// through any port.
   ///
   /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
   core.List<core.String> ports;
@@ -40172,7 +43452,10 @@ class FirewallDenied {
   }
 }
 
-/// Represents a Firewall resource.
+/// Represents a Firewall Rule resource.
+///
+/// Firewall rules allow or deny ingress traffic to, and egress traffic from
+/// your instances. For more information, read Firewall rules.
 class Firewall {
   /// The list of ALLOW rules specified by this firewall. Each rule specifies a
   /// protocol and port-range tuple that describes a permitted connection.
@@ -40185,28 +43468,27 @@ class Firewall {
   /// protocol and port-range tuple that describes a denied connection.
   core.List<FirewallDenied> denied;
 
-  /// An optional description of this resource. Provide this property when you
+  /// An optional description of this resource. Provide this field when you
   /// create the resource.
   core.String description;
 
-  /// If destination ranges are specified, the firewall will apply only to
+  /// If destination ranges are specified, the firewall rule applies only to
   /// traffic that has destination IP address in these ranges. These ranges must
   /// be expressed in CIDR format. Only IPv4 is supported.
   core.List<core.String> destinationRanges;
 
-  /// Direction of traffic to which this firewall applies; default is INGRESS.
-  /// Note: For INGRESS traffic, it is NOT supported to specify
-  /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-  /// sourceRanges OR sourceTags.
+  /// Direction of traffic to which this firewall applies, either `INGRESS` or
+  /// `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot
+  /// specify the destinationRanges field, and for `EGRESS` traffic, you cannot
+  /// specify the sourceRanges or sourceTags fields.
   /// Possible string values are:
   /// - "EGRESS"
   /// - "INGRESS"
   core.String direction;
 
-  /// Denotes whether the firewall rule is disabled, i.e not applied to the
-  /// network it is associated with. When set to true, the firewall rule is not
-  /// enforced and the network behaves as if it did not exist. If this is
-  /// unspecified, the firewall rule will be enabled.
+  /// Denotes whether the firewall rule is disabled. When set to true, the
+  /// firewall rule is not enforced and the network behaves as if it did not
+  /// exist. If this is unspecified, the firewall rule will be enabled.
   core.bool disabled;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -40224,54 +43506,56 @@ class Firewall {
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
-  /// must be a lowercase letter, and all following characters must be a dash,
-  /// lowercase letter, or digit, except the last character, which cannot be a
-  /// dash.
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a
+  /// lowercase letter, and all following characters (except for the last
+  /// character) must be a dash, lowercase letter, or digit. The last character
+  /// must be a lowercase letter or digit.
   core.String name;
 
   /// URL of the network resource for this firewall rule. If not specified when
   /// creating a firewall rule, the default network is used:
   /// global/networks/default
-  /// If you choose to specify this property, you can specify the network as a
-  /// full or partial URL. For example, the following are all valid URLs:
+  /// If you choose to specify this field, you can specify the network as a full
+  /// or partial URL. For example, the following are all valid URLs:
   /// -
   /// https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
   /// - projects/myproject/global/networks/my-network
   /// - global/networks/default
   core.String network;
 
-  /// Priority for this rule. This is an integer between 0 and 65535, both
-  /// inclusive. When not specified, the value assumed is 1000. Relative
-  /// priorities determine precedence of conflicting rules. Lower value of
-  /// priority implies higher precedence (eg, a rule with priority 0 has higher
-  /// precedence than a rule with priority 1). DENY rules take precedence over
-  /// ALLOW rules having equal priority.
+  /// Priority for this rule. This is an integer between `0` and `65535`, both
+  /// inclusive. The default value is `1000`. Relative priorities determine
+  /// which rule takes effect if multiple rules apply. Lower values indicate
+  /// higher priority. For example, a rule with priority `0` has higher
+  /// precedence than a rule with priority `1`. DENY rules take precedence over
+  /// ALLOW rules if they have equal priority. Note that VPC networks have
+  /// implied rules with a priority of `65535`. To avoid conflicts with the
+  /// implied rules, use a priority number less than `65535`.
   core.int priority;
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// If source ranges are specified, the firewall will apply only to traffic
-  /// that has source IP address in these ranges. These ranges must be expressed
-  /// in CIDR format. One or both of sourceRanges and sourceTags may be set. If
-  /// both properties are set, the firewall will apply to traffic that has
-  /// source IP address within sourceRanges OR the source IP that belongs to a
-  /// tag listed in the sourceTags property. The connection does not need to
-  /// match both properties for the firewall to apply. Only IPv4 is supported.
+  /// If source ranges are specified, the firewall rule applies only to traffic
+  /// that has a source IP address in these ranges. These ranges must be
+  /// expressed in CIDR format. One or both of sourceRanges and sourceTags may
+  /// be set. If both fields are set, the rule applies to traffic that has a
+  /// source IP address within sourceRanges OR a source IP from a resource with
+  /// a matching tag listed in the sourceTags field. The connection does not
+  /// need to match both fields for the rule to apply. Only IPv4 is supported.
   core.List<core.String> sourceRanges;
 
-  /// If source service accounts are specified, the firewall will apply only to
+  /// If source service accounts are specified, the firewall rules apply only to
   /// traffic originating from an instance with a service account in this list.
   /// Source service accounts cannot be used to control traffic to an instance's
   /// external IP address because service accounts are associated with an
   /// instance, not an IP address. sourceRanges can be set at the same time as
-  /// sourceServiceAccounts. If both are set, the firewall will apply to traffic
-  /// that has source IP address within sourceRanges OR the source IP belongs to
-  /// an instance with service account listed in sourceServiceAccount. The
-  /// connection does not need to match both properties for the firewall to
-  /// apply. sourceServiceAccounts cannot be used at the same time as sourceTags
-  /// or targetTags.
+  /// sourceServiceAccounts. If both are set, the firewall applies to traffic
+  /// that has a source IP address within the sourceRanges OR a source IP that
+  /// belongs to an instance with service account listed in
+  /// sourceServiceAccount. The connection does not need to match both fields
+  /// for the firewall to apply. sourceServiceAccounts cannot be used at the
+  /// same time as sourceTags or targetTags.
   core.List<core.String> sourceServiceAccounts;
 
   /// If source tags are specified, the firewall rule applies only to traffic
@@ -40280,10 +43564,10 @@ class Firewall {
   /// used to control traffic to an instance's external IP address, it only
   /// applies to traffic between instances in the same virtual network. Because
   /// tags are associated with instances, not IP addresses. One or both of
-  /// sourceRanges and sourceTags may be set. If both properties are set, the
-  /// firewall will apply to traffic that has source IP address within
-  /// sourceRanges OR the source IP that belongs to a tag listed in the
-  /// sourceTags property. The connection does not need to match both properties
+  /// sourceRanges and sourceTags may be set. If both fields are set, the
+  /// firewall applies to traffic that has a source IP address within
+  /// sourceRanges OR a source IP from a resource with a matching tag listed in
+  /// the sourceTags field. The connection does not need to match both fields
   /// for the firewall to apply.
   core.List<core.String> sourceTags;
 
@@ -40647,7 +43931,7 @@ class FixedOrPercent {
   /// specific mode.
   ///
   ///
-  /// - If the value is fixed, then the caculated value is equal to the fixed
+  /// - If the value is fixed, then the calculated value is equal to the fixed
   /// value.
   /// - If the value is a percent, then the calculated value is percent/100 *
   /// targetSize. For example, the calculated value of a 80% of a managed
@@ -40748,6 +44032,15 @@ class ForwardingRule {
   /// - "UDP"
   core.String IPProtocol;
 
+  /// This field is used along with the backend_service field for internal load
+  /// balancing or with the target field for internal TargetInstance. This field
+  /// cannot be used with port or portRange fields.
+  ///
+  /// When the load balancing scheme is INTERNAL and protocol is TCP/UDP,
+  /// specify this field to allow packets addressed to any ports will be
+  /// forwarded to the backends configured with this forwarding rule.
+  core.bool allPorts;
+
   /// This field is only used for INTERNAL load balancing.
   ///
   /// For internal load balancing, this field identifies the BackendService
@@ -40788,6 +44081,7 @@ class ForwardingRule {
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "INTERNAL"
+  /// - "INTERNAL_SELF_MANAGED"
   /// - "INVALID"
   core.String loadBalancingScheme;
 
@@ -40893,7 +44187,7 @@ class ForwardingRule {
   /// regional forwarding rules, this target must live in the same region as the
   /// forwarding rule. For global forwarding rules, this target must be a global
   /// load balancing resource. The forwarded traffic must be of a type
-  /// appropriate to the target object. For INTERNAL_SELF_MANAGED" load
+  /// appropriate to the target object. For INTERNAL_SELF_MANAGED load
   /// balancing, only HTTP and HTTPS targets are valid.
   core.String target;
 
@@ -40905,6 +44199,9 @@ class ForwardingRule {
     }
     if (_json.containsKey("IPProtocol")) {
       IPProtocol = _json["IPProtocol"];
+    }
+    if (_json.containsKey("allPorts")) {
+      allPorts = _json["allPorts"];
     }
     if (_json.containsKey("backendService")) {
       backendService = _json["backendService"];
@@ -40970,6 +44267,9 @@ class ForwardingRule {
     }
     if (IPProtocol != null) {
       _json["IPProtocol"] = IPProtocol;
+    }
+    if (allPorts != null) {
+      _json["allPorts"] = allPorts;
     }
     if (backendService != null) {
       _json["backendService"] = backendService;
@@ -41396,6 +44696,27 @@ class ForwardingRuleList {
   }
 }
 
+class ForwardingRuleReference {
+  core.String forwardingRule;
+
+  ForwardingRuleReference();
+
+  ForwardingRuleReference.fromJson(core.Map _json) {
+    if (_json.containsKey("forwardingRule")) {
+      forwardingRule = _json["forwardingRule"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (forwardingRule != null) {
+      _json["forwardingRule"] = forwardingRule;
+    }
+    return _json;
+  }
+}
+
 class ForwardingRulesScopedListWarningData {
   /// [Output Only] A key that provides more detail on the warning being
   /// returned. For example, for warnings where there are no results in a list
@@ -41644,6 +44965,142 @@ class GlobalSetPolicyRequest {
   }
 }
 
+/// A guest attributes entry.
+class GuestAttributes {
+  /// [Output Only] Type of the resource. Always compute#guestAttributes for
+  /// guest attributes entry.
+  core.String kind;
+
+  /// The path to be queried. This can be the default namespace ('/') or a
+  /// nested namespace ('//') or a specified key ('//')
+  core.String queryPath;
+
+  /// [Output Only] The value of the requested queried path.
+  GuestAttributesValue queryValue;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// The key to search for.
+  core.String variableKey;
+
+  /// [Output Only] The value found for the requested key.
+  core.String variableValue;
+
+  GuestAttributes();
+
+  GuestAttributes.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("queryPath")) {
+      queryPath = _json["queryPath"];
+    }
+    if (_json.containsKey("queryValue")) {
+      queryValue = new GuestAttributesValue.fromJson(_json["queryValue"]);
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("variableKey")) {
+      variableKey = _json["variableKey"];
+    }
+    if (_json.containsKey("variableValue")) {
+      variableValue = _json["variableValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (queryPath != null) {
+      _json["queryPath"] = queryPath;
+    }
+    if (queryValue != null) {
+      _json["queryValue"] = (queryValue).toJson();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (variableKey != null) {
+      _json["variableKey"] = variableKey;
+    }
+    if (variableValue != null) {
+      _json["variableValue"] = variableValue;
+    }
+    return _json;
+  }
+}
+
+/// A guest attributes namespace/key/value entry.
+class GuestAttributesEntry {
+  /// Key for the guest attribute entry.
+  core.String key;
+
+  /// Namespace for the guest attribute entry.
+  core.String namespace;
+
+  /// Value for the guest attribute entry.
+  core.String value;
+
+  GuestAttributesEntry();
+
+  GuestAttributesEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("namespace")) {
+      namespace = _json["namespace"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (namespace != null) {
+      _json["namespace"] = namespace;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Array of guest attribute namespace/key/value tuples.
+class GuestAttributesValue {
+  core.List<GuestAttributesEntry> items;
+
+  GuestAttributesValue();
+
+  GuestAttributesValue.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<GuestAttributesEntry>(
+              (value) => new GuestAttributesEntry.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Guest OS features.
 class GuestOsFeature {
   /// The ID of a supported feature. Read  Enabling guest operating system
@@ -41675,6 +45132,115 @@ class GuestOsFeature {
   }
 }
 
+class HTTP2HealthCheck {
+  /// The value of the host header in the HTTP/2 health check request. If left
+  /// empty (default value), the IP on behalf of which this health check is
+  /// performed will be used.
+  core.String host;
+
+  /// The TCP port number for the health check request. The default value is
+  /// 443. Valid values are 1 through 65535.
+  core.int port;
+
+  /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+  /// port_name are defined, port takes precedence.
+  core.String portName;
+
+  /// Specifies how port is selected for health checking, can be one of
+  /// following values:
+  /// USE_FIXED_PORT: The port number in
+  /// port
+  /// is used for health checking.
+  /// USE_NAMED_PORT: The
+  /// portName
+  /// is used for health checking.
+  /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+  /// network endpoint is used for health checking. For other backends, the port
+  /// or named port specified in the Backend Service is used for health
+  /// checking.
+  ///
+  ///
+  /// If not specified, HTTP2 health check follows behavior specified in
+  /// port
+  /// and
+  /// portName
+  /// fields.
+  /// Possible string values are:
+  /// - "USE_FIXED_PORT"
+  /// - "USE_NAMED_PORT"
+  /// - "USE_SERVING_PORT"
+  core.String portSpecification;
+
+  /// Specifies the type of proxy header to append before sending data to the
+  /// backend, either NONE or PROXY_V1. The default is NONE.
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "PROXY_V1"
+  core.String proxyHeader;
+
+  /// The request path of the HTTP/2 health check request. The default value is
+  /// /.
+  core.String requestPath;
+
+  /// The string to match anywhere in the first 1024 bytes of the response body.
+  /// If left empty (the default value), the status code determines health. The
+  /// response data can only be ASCII.
+  core.String response;
+
+  HTTP2HealthCheck();
+
+  HTTP2HealthCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("portName")) {
+      portName = _json["portName"];
+    }
+    if (_json.containsKey("portSpecification")) {
+      portSpecification = _json["portSpecification"];
+    }
+    if (_json.containsKey("proxyHeader")) {
+      proxyHeader = _json["proxyHeader"];
+    }
+    if (_json.containsKey("requestPath")) {
+      requestPath = _json["requestPath"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (portName != null) {
+      _json["portName"] = portName;
+    }
+    if (portSpecification != null) {
+      _json["portSpecification"] = portSpecification;
+    }
+    if (proxyHeader != null) {
+      _json["proxyHeader"] = proxyHeader;
+    }
+    if (requestPath != null) {
+      _json["requestPath"] = requestPath;
+    }
+    if (response != null) {
+      _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
 class HTTPHealthCheck {
   /// The value of the host header in the HTTP health check request. If left
   /// empty (default value), the IP on behalf of which this health check is
@@ -41688,6 +45254,31 @@ class HTTPHealthCheck {
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
   core.String portName;
+
+  /// Specifies how port is selected for health checking, can be one of
+  /// following values:
+  /// USE_FIXED_PORT: The port number in
+  /// port
+  /// is used for health checking.
+  /// USE_NAMED_PORT: The
+  /// portName
+  /// is used for health checking.
+  /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+  /// network endpoint is used for health checking. For other backends, the port
+  /// or named port specified in the Backend Service is used for health
+  /// checking.
+  ///
+  ///
+  /// If not specified, HTTP health check follows behavior specified in
+  /// port
+  /// and
+  /// portName
+  /// fields.
+  /// Possible string values are:
+  /// - "USE_FIXED_PORT"
+  /// - "USE_NAMED_PORT"
+  /// - "USE_SERVING_PORT"
+  core.String portSpecification;
 
   /// Specifies the type of proxy header to append before sending data to the
   /// backend, either NONE or PROXY_V1. The default is NONE.
@@ -41716,6 +45307,9 @@ class HTTPHealthCheck {
     if (_json.containsKey("portName")) {
       portName = _json["portName"];
     }
+    if (_json.containsKey("portSpecification")) {
+      portSpecification = _json["portSpecification"];
+    }
     if (_json.containsKey("proxyHeader")) {
       proxyHeader = _json["proxyHeader"];
     }
@@ -41738,6 +45332,9 @@ class HTTPHealthCheck {
     }
     if (portName != null) {
       _json["portName"] = portName;
+    }
+    if (portSpecification != null) {
+      _json["portSpecification"] = portSpecification;
     }
     if (proxyHeader != null) {
       _json["proxyHeader"] = proxyHeader;
@@ -41765,6 +45362,31 @@ class HTTPSHealthCheck {
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// port_name are defined, port takes precedence.
   core.String portName;
+
+  /// Specifies how port is selected for health checking, can be one of
+  /// following values:
+  /// USE_FIXED_PORT: The port number in
+  /// port
+  /// is used for health checking.
+  /// USE_NAMED_PORT: The
+  /// portName
+  /// is used for health checking.
+  /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+  /// network endpoint is used for health checking. For other backends, the port
+  /// or named port specified in the Backend Service is used for health
+  /// checking.
+  ///
+  ///
+  /// If not specified, HTTPS health check follows behavior specified in
+  /// port
+  /// and
+  /// portName
+  /// fields.
+  /// Possible string values are:
+  /// - "USE_FIXED_PORT"
+  /// - "USE_NAMED_PORT"
+  /// - "USE_SERVING_PORT"
+  core.String portSpecification;
 
   /// Specifies the type of proxy header to append before sending data to the
   /// backend, either NONE or PROXY_V1. The default is NONE.
@@ -41794,6 +45416,9 @@ class HTTPSHealthCheck {
     if (_json.containsKey("portName")) {
       portName = _json["portName"];
     }
+    if (_json.containsKey("portSpecification")) {
+      portSpecification = _json["portSpecification"];
+    }
     if (_json.containsKey("proxyHeader")) {
       proxyHeader = _json["proxyHeader"];
     }
@@ -41816,6 +45441,9 @@ class HTTPSHealthCheck {
     }
     if (portName != null) {
       _json["portName"] = portName;
+    }
+    if (portSpecification != null) {
+      _json["portSpecification"] = portSpecification;
     }
     if (proxyHeader != null) {
       _json["proxyHeader"] = proxyHeader;
@@ -41848,6 +45476,7 @@ class HealthCheck {
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
   core.int healthyThreshold;
+  HTTP2HealthCheck http2HealthCheck;
   HTTPHealthCheck httpHealthCheck;
   HTTPSHealthCheck httpsHealthCheck;
 
@@ -41877,11 +45506,13 @@ class HealthCheck {
   /// checkIntervalSec.
   core.int timeoutSec;
 
-  /// Specifies the type of the healthCheck, either TCP, SSL, HTTP or HTTPS. If
-  /// not specified, the default is TCP. Exactly one of the protocol-specific
-  /// health check field must be specified, which must match type field.
+  /// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or
+  /// HTTP2. If not specified, the default is TCP. Exactly one of the
+  /// protocol-specific health check field must be specified, which must match
+  /// type field.
   /// Possible string values are:
   /// - "HTTP"
+  /// - "HTTP2"
   /// - "HTTPS"
   /// - "INVALID"
   /// - "SSL"
@@ -41906,6 +45537,10 @@ class HealthCheck {
     }
     if (_json.containsKey("healthyThreshold")) {
       healthyThreshold = _json["healthyThreshold"];
+    }
+    if (_json.containsKey("http2HealthCheck")) {
+      http2HealthCheck =
+          new HTTP2HealthCheck.fromJson(_json["http2HealthCheck"]);
     }
     if (_json.containsKey("httpHealthCheck")) {
       httpHealthCheck = new HTTPHealthCheck.fromJson(_json["httpHealthCheck"]);
@@ -41957,6 +45592,9 @@ class HealthCheck {
     }
     if (healthyThreshold != null) {
       _json["healthyThreshold"] = healthyThreshold;
+    }
+    if (http2HealthCheck != null) {
+      _json["http2HealthCheck"] = (http2HealthCheck).toJson();
     }
     if (httpHealthCheck != null) {
       _json["httpHealthCheck"] = (httpHealthCheck).toJson();
@@ -42251,6 +45889,66 @@ class HealthStatus {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    return _json;
+  }
+}
+
+class HealthStatusForNetworkEndpoint {
+  /// URL of the backend service associated with the health state of the network
+  /// endpoint.
+  BackendServiceReference backendService;
+
+  /// URL of the forwarding rule associated with the health state of the network
+  /// endpoint.
+  ForwardingRuleReference forwardingRule;
+
+  /// URL of the health check associated with the health state of the network
+  /// endpoint.
+  HealthCheckReference healthCheck;
+
+  /// Health state of the network endpoint determined based on the health checks
+  /// configured.
+  /// Possible string values are:
+  /// - "DRAINING"
+  /// - "HEALTHY"
+  /// - "UNHEALTHY"
+  /// - "UNKNOWN"
+  core.String healthState;
+
+  HealthStatusForNetworkEndpoint();
+
+  HealthStatusForNetworkEndpoint.fromJson(core.Map _json) {
+    if (_json.containsKey("backendService")) {
+      backendService =
+          new BackendServiceReference.fromJson(_json["backendService"]);
+    }
+    if (_json.containsKey("forwardingRule")) {
+      forwardingRule =
+          new ForwardingRuleReference.fromJson(_json["forwardingRule"]);
+    }
+    if (_json.containsKey("healthCheck")) {
+      healthCheck = new HealthCheckReference.fromJson(_json["healthCheck"]);
+    }
+    if (_json.containsKey("healthState")) {
+      healthState = _json["healthState"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backendService != null) {
+      _json["backendService"] = (backendService).toJson();
+    }
+    if (forwardingRule != null) {
+      _json["forwardingRule"] = (forwardingRule).toJson();
+    }
+    if (healthCheck != null) {
+      _json["healthCheck"] = (healthCheck).toJson();
+    }
+    if (healthState != null) {
+      _json["healthState"] = healthState;
     }
     return _json;
   }
@@ -42974,8 +46672,9 @@ class ImageRawDisk {
   /// - "TAR"
   core.String containerType;
 
-  /// An optional SHA1 checksum of the disk image before unpackaging; provided
-  /// by the client when the disk image is created.
+  /// [Deprecated] This field is deprecated. An optional SHA1 checksum of the
+  /// disk image before unpackaging provided by the client when the disk image
+  /// is created.
   core.String sha1Checksum;
 
   /// The full Google Cloud Storage URL where the disk image is stored. You must
@@ -43012,7 +46711,10 @@ class ImageRawDisk {
   }
 }
 
-/// An Image resource. (== resource_for beta.images ==) (== resource_for
+/// Represents an Image resource.
+///
+/// You can use images to create boot disks for your VM instances. For more
+/// information, read Images. (== resource_for beta.images ==) (== resource_for
 /// v1.images ==)
 class Image {
   /// Size of the image tar.gz archive stored in Google Cloud Storage (in
@@ -43547,8 +47249,11 @@ class ImageList {
   }
 }
 
-/// An Instance resource. (== resource_for beta.instances ==) (== resource_for
-/// v1.instances ==)
+/// Represents an Instance resource.
+///
+/// An instance is a virtual machine that is hosted on Google Cloud Platform.
+/// For more information, read Virtual Machine Instances. (== resource_for
+/// beta.instances ==) (== resource_for v1.instances ==)
 class Instance {
   /// Allows this instance to send and receive packets with non-matching
   /// destination or source IPs. This is required if you plan to use this
@@ -43651,6 +47356,9 @@ class Instance {
   /// instance.
   core.List<NetworkInterface> networkInterfaces;
 
+  /// Specifies the reservations that this instance can consume from.
+  ReservationAffinity reservationAffinity;
+
   /// Sets the scheduling options for this instance.
   Scheduling scheduling;
 
@@ -43664,6 +47372,8 @@ class Instance {
   /// metadata server and used to authenticate applications on the instance. See
   /// Service Accounts for more information.
   core.List<ServiceAccount> serviceAccounts;
+  ShieldedInstanceConfig shieldedInstanceConfig;
+  ShieldedInstanceIntegrityPolicy shieldedInstanceIntegrityPolicy;
 
   /// [Output Only] Whether a VM has been restricted for start because Compute
   /// Engine has detected suspicious activity.
@@ -43674,6 +47384,7 @@ class Instance {
   /// and TERMINATED.
   /// Possible string values are:
   /// - "PROVISIONING"
+  /// - "REPAIRING"
   /// - "RUNNING"
   /// - "STAGING"
   /// - "STOPPED"
@@ -43760,6 +47471,10 @@ class Instance {
               (value) => new NetworkInterface.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("reservationAffinity")) {
+      reservationAffinity =
+          new ReservationAffinity.fromJson(_json["reservationAffinity"]);
+    }
     if (_json.containsKey("scheduling")) {
       scheduling = new Scheduling.fromJson(_json["scheduling"]);
     }
@@ -43770,6 +47485,15 @@ class Instance {
       serviceAccounts = (_json["serviceAccounts"] as core.List)
           .map<ServiceAccount>((value) => new ServiceAccount.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("shieldedInstanceConfig")) {
+      shieldedInstanceConfig =
+          new ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
+    }
+    if (_json.containsKey("shieldedInstanceIntegrityPolicy")) {
+      shieldedInstanceIntegrityPolicy =
+          new ShieldedInstanceIntegrityPolicy.fromJson(
+              _json["shieldedInstanceIntegrityPolicy"]);
     }
     if (_json.containsKey("startRestricted")) {
       startRestricted = _json["startRestricted"];
@@ -43844,6 +47568,9 @@ class Instance {
       _json["networkInterfaces"] =
           networkInterfaces.map((value) => (value).toJson()).toList();
     }
+    if (reservationAffinity != null) {
+      _json["reservationAffinity"] = (reservationAffinity).toJson();
+    }
     if (scheduling != null) {
       _json["scheduling"] = (scheduling).toJson();
     }
@@ -43853,6 +47580,13 @@ class Instance {
     if (serviceAccounts != null) {
       _json["serviceAccounts"] =
           serviceAccounts.map((value) => (value).toJson()).toList();
+    }
+    if (shieldedInstanceConfig != null) {
+      _json["shieldedInstanceConfig"] = (shieldedInstanceConfig).toJson();
+    }
+    if (shieldedInstanceIntegrityPolicy != null) {
+      _json["shieldedInstanceIntegrityPolicy"] =
+          (shieldedInstanceIntegrityPolicy).toJson();
     }
     if (startRestricted != null) {
       _json["startRestricted"] = startRestricted;
@@ -43985,7 +47719,7 @@ class InstanceAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// A list of InstancesScopedList resources.
+  /// An object that contains a list of instances scoped by zone.
   core.Map<core.String, InstancesScopedList> items;
 
   /// [Output Only] Type of resource. Always compute#instanceAggregatedList for
@@ -44057,9 +47791,18 @@ class InstanceAggregatedList {
   }
 }
 
-/// InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for
-/// v1.instanceGroups ==) (== resource_for beta.regionInstanceGroups ==) (==
-/// resource_for v1.regionInstanceGroups ==)
+/// Represents an unmanaged Instance Group resource.
+///
+/// Use unmanaged instance groups if you need to apply load balancing to groups
+/// of heterogeneous instances or if you need to manage the instances yourself.
+/// For more information, read  Instance groups.
+///
+/// For zonal unmanaged Instance Group, use instanceGroups resource.
+///
+/// For regional unmanaged Instance Group, use regionInstanceGroups resource.
+/// (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups
+/// ==) (== resource_for beta.regionInstanceGroups ==) (== resource_for
+/// v1.regionInstanceGroups ==)
 class InstanceGroup {
   /// [Output Only] The creation timestamp for this instance group in RFC3339
   /// text format.
@@ -44588,9 +48331,17 @@ class InstanceGroupList {
   }
 }
 
-/// An Instance Group Manager resource. (== resource_for
-/// beta.instanceGroupManagers ==) (== resource_for v1.instanceGroupManagers ==)
-/// (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for
+/// Represents a Managed Instance Group resource.
+///
+/// An instance group is a collection of VM instances that you can manage as a
+/// single entity. For more information, read Instance groups.
+///
+/// For zonal Managed Instance Group, use the instanceGroupManagers resource.
+///
+/// For regional Managed Instance Group, use the regionInstanceGroupManagers
+/// resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for
+/// v1.instanceGroupManagers ==) (== resource_for
+/// beta.regionInstanceGroupManagers ==) (== resource_for
 /// v1.regionInstanceGroupManagers ==)
 class InstanceGroupManager {
   /// The autohealing policy for this managed instance group. You can specify
@@ -44688,12 +48439,12 @@ class InstanceGroupManager {
   /// Specifies the instance templates used by this managed instance group to
   /// create instances.
   ///
-  /// Each version is defined by an instanceTemplate. Every template can appear
-  /// at most once per instance group. This field overrides the top-level
-  /// instanceTemplate field. Read more about the relationships between these
-  /// fields. Exactly one version must leave the targetSize field unset. That
-  /// version will be applied to all remaining instances. For more information,
-  /// read about canary updates.
+  /// Each version is defined by an instanceTemplate and a name. Every version
+  /// can appear at most once per instance group. This field overrides the
+  /// top-level instanceTemplate field. Read more about the relationships
+  /// between these fields. Exactly one version must leave the targetSize field
+  /// unset. That version will be applied to all remaining instances. For more
+  /// information, read about canary updates.
   core.List<InstanceGroupManagerVersion> versions;
 
   /// [Output Only] The URL of the zone where the managed instance group is
@@ -45442,7 +49193,11 @@ class InstanceGroupManagerUpdatePolicy {
   /// - "RESTART"
   core.String minimalAction;
 
-  ///
+  /// The type of update process. You can specify either PROACTIVE so that the
+  /// instance group manager proactively executes actions in order to bring
+  /// instances to their target versions or OPPORTUNISTIC so that no action is
+  /// proactively executed but the update will be performed as part of other
+  /// actions (for example, resizes or recreateInstances calls).
   /// Possible string values are:
   /// - "OPPORTUNISTIC"
   /// - "PROACTIVE"
@@ -45485,6 +49240,10 @@ class InstanceGroupManagerUpdatePolicy {
 }
 
 class InstanceGroupManagerVersion {
+  /// The URL of the instance template that is specified for this managed
+  /// instance group. The group uses this template to create new instances in
+  /// the managed instance group until the `targetSize` for this version is
+  /// reached.
   core.String instanceTemplate;
 
   /// Name of the version. Unique among all versions in the scope of this
@@ -46748,6 +50507,9 @@ class InstanceProperties {
   /// An array of network access configurations for this interface.
   core.List<NetworkInterface> networkInterfaces;
 
+  /// Specifies the reservations that this instance can consume from.
+  ReservationAffinity reservationAffinity;
+
   /// Specifies the scheduling options for the instances that are created from
   /// this template.
   Scheduling scheduling;
@@ -46757,6 +50519,7 @@ class InstanceProperties {
   /// template. Use metadata queries to obtain the access tokens for these
   /// instances.
   core.List<ServiceAccount> serviceAccounts;
+  ShieldedInstanceConfig shieldedInstanceConfig;
 
   /// A list of tags to apply to the instances that are created from this
   /// template. The tags identify valid sources or targets for network
@@ -46802,6 +50565,10 @@ class InstanceProperties {
               (value) => new NetworkInterface.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("reservationAffinity")) {
+      reservationAffinity =
+          new ReservationAffinity.fromJson(_json["reservationAffinity"]);
+    }
     if (_json.containsKey("scheduling")) {
       scheduling = new Scheduling.fromJson(_json["scheduling"]);
     }
@@ -46809,6 +50576,10 @@ class InstanceProperties {
       serviceAccounts = (_json["serviceAccounts"] as core.List)
           .map<ServiceAccount>((value) => new ServiceAccount.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("shieldedInstanceConfig")) {
+      shieldedInstanceConfig =
+          new ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
     }
     if (_json.containsKey("tags")) {
       tags = new Tags.fromJson(_json["tags"]);
@@ -46847,12 +50618,18 @@ class InstanceProperties {
       _json["networkInterfaces"] =
           networkInterfaces.map((value) => (value).toJson()).toList();
     }
+    if (reservationAffinity != null) {
+      _json["reservationAffinity"] = (reservationAffinity).toJson();
+    }
     if (scheduling != null) {
       _json["scheduling"] = (scheduling).toJson();
     }
     if (serviceAccounts != null) {
       _json["serviceAccounts"] =
           serviceAccounts.map((value) => (value).toJson()).toList();
+    }
+    if (shieldedInstanceConfig != null) {
+      _json["shieldedInstanceConfig"] = (shieldedInstanceConfig).toJson();
     }
     if (tags != null) {
       _json["tags"] = (tags).toJson();
@@ -46883,8 +50660,11 @@ class InstanceReference {
   }
 }
 
-/// An Instance Template resource. (== resource_for beta.instanceTemplates ==)
-/// (== resource_for v1.instanceTemplates ==)
+/// Represents an Instance Template resource.
+///
+/// You can use instance templates to create VM instances and managed instance
+/// groups. For more information, read Instance Templates. (== resource_for
+/// beta.instanceTemplates ==) (== resource_for v1.instanceTemplates ==)
 class InstanceTemplate {
   /// [Output Only] The creation timestamp for this instance template in RFC3339
   /// text format.
@@ -47190,6 +50970,7 @@ class InstanceWithNamedPorts {
   /// [Output Only] The status of the instance.
   /// Possible string values are:
   /// - "PROVISIONING"
+  /// - "REPAIRING"
   /// - "RUNNING"
   /// - "STAGING"
   /// - "STOPPED"
@@ -47551,10 +51332,12 @@ class InstancesStartWithEncryptionKeyRequest {
   }
 }
 
-/// Represents an Interconnects resource. The Interconnects resource is a
-/// dedicated connection between Google's network and your on-premises network.
-/// For more information, see the  Dedicated overview page. (== resource_for
-/// v1.interconnects ==) (== resource_for beta.interconnects ==)
+/// Represents an Interconnect resource.
+///
+/// An Interconnect resource is a dedicated connection between the GCP network
+/// and your on-premises network. For more information, read the  Dedicated
+/// Interconnect Overview. (== resource_for v1.interconnects ==) (==
+/// resource_for beta.interconnects ==)
 class Interconnect {
   /// Administrative status of the interconnect. When this is set to true, the
   /// Interconnect is functional and can carry traffic. When set to false, no
@@ -47584,7 +51367,7 @@ class Interconnect {
   /// link. This can be used only for ping tests.
   core.String googleIpAddress;
 
-  /// [Output Only] Google reference ID; to be used when raising support tickets
+  /// [Output Only] Google reference ID to be used when raising support tickets
   /// with Google or otherwise to debug backend connectivity issues.
   core.String googleReferenceId;
 
@@ -47596,8 +51379,11 @@ class Interconnect {
   /// to use this Interconnect.
   core.List<core.String> interconnectAttachments;
 
-  /// Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor
-  /// of "DEDICATED"
+  /// Type of interconnect, which can take one of the following values:
+  /// - PARTNER: A partner-managed interconnection shared between customers
+  /// though a partner.
+  /// - DEDICATED: A dedicated physical interconnection with the customer. Note
+  /// that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
   /// Possible string values are:
   /// - "DEDICATED"
   /// - "IT_PRIVATE"
@@ -47608,8 +51394,11 @@ class Interconnect {
   /// interconnects.
   core.String kind;
 
-  /// Type of link requested. This field indicates speed of each of the links in
-  /// the bundle, not the entire bundle.
+  /// Type of link requested, which can take one of the following values:
+  /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
+  /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that
+  /// this field indicates the speed of each of the links in the bundle, not the
+  /// speed of the entire bundle.
   /// Possible string values are:
   /// - "LINK_TYPE_ETHERNET_10G_LR"
   core.String linkType;
@@ -47633,8 +51422,15 @@ class Interconnect {
   /// Stackdriver logs alerting and Cloud Notifications.
   core.String nocContactEmail;
 
-  /// [Output Only] The current status of whether or not this Interconnect is
-  /// functional.
+  /// [Output Only] The current status of this Interconnect's functionality,
+  /// which can take one of the following values:
+  /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use.
+  /// Attachments may be provisioned on this Interconnect.
+  /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No
+  /// attachments may be provisioned on this Interconnect.
+  /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal
+  /// maintenance. No attachments may be provisioned or updated on this
+  /// Interconnect.
   /// Possible string values are:
   /// - "OS_ACTIVE"
   /// - "OS_UNPROVISIONED"
@@ -47655,8 +51451,14 @@ class Interconnect {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// [Output Only] The current state of whether or not this Interconnect is
-  /// functional.
+  /// [Output Only] The current state of Interconnect functionality, which can
+  /// take one of the following values:
+  /// - ACTIVE: The Interconnect is valid, turned up and ready to use.
+  /// Attachments may be provisioned on this Interconnect.
+  /// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments
+  /// may be provisioned on this Interconnect.
+  /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance.
+  /// No attachments may be provisioned or updated on this Interconnect.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "UNPROVISIONED"
@@ -47815,8 +51617,11 @@ class Interconnect {
   }
 }
 
-/// Represents an InterconnectAttachment (VLAN attachment) resource. For more
-/// information, see  Creating VLAN Attachments. (== resource_for
+/// Represents an Interconnect Attachment (VLAN) resource.
+///
+/// You can use Interconnect attachments (VLANS) to connect your Virtual Private
+/// Cloud networks to your on-premises networks through an Interconnect. For
+/// more information, read  Creating VLAN Attachments. (== resource_for
 /// beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments
 /// ==)
 class InterconnectAttachment {
@@ -47824,9 +51629,22 @@ class InterconnectAttachment {
   /// PARTNER_PROVIDER.
   core.bool adminEnabled;
 
-  /// Provisioned bandwidth capacity for the interconnectAttachment. Can be set
-  /// by the partner to update the customer's provisioned bandwidth. Output only
-  /// for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED.
+  /// Provisioned bandwidth capacity for the interconnect attachment. For
+  /// attachments of type DEDICATED, the user can set the bandwidth. For
+  /// attachments of type PARTNER, the Google Partner that is operating the
+  /// interconnect must set the bandwidth. Output only for PARTNER type, mutable
+  /// for PARTNER_PROVIDER and DEDICATED, and can take one of the following
+  /// values:
+  /// - BPS_50M: 50 Mbit/s
+  /// - BPS_100M: 100 Mbit/s
+  /// - BPS_200M: 200 Mbit/s
+  /// - BPS_300M: 300 Mbit/s
+  /// - BPS_400M: 400 Mbit/s
+  /// - BPS_500M: 500 Mbit/s
+  /// - BPS_1G: 1 Gbit/s
+  /// - BPS_2G: 2 Gbit/s
+  /// - BPS_5G: 5 Gbit/s
+  /// - BPS_10G: 10 Gbit/s
   /// Possible string values are:
   /// - "BPS_100M"
   /// - "BPS_10G"
@@ -47864,12 +51682,14 @@ class InterconnectAttachment {
   core.String description;
 
   /// Desired availability domain for the attachment. Only available for type
-  /// PARTNER, at creation time. For improved reliability, customers should
-  /// configure a pair of attachments with one per availability domain. The
-  /// selected availability domain will be provided to the Partner via the
-  /// pairing key so that the provisioned circuit will lie in the specified
-  /// domain. If not specified, the value will default to
-  /// AVAILABILITY_DOMAIN_ANY.
+  /// PARTNER, at creation time, and can take one of the following values:
+  /// - AVAILABILITY_DOMAIN_ANY
+  /// - AVAILABILITY_DOMAIN_1
+  /// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should
+  /// configure a pair of attachments, one per availability domain. The selected
+  /// availability domain will be provided to the Partner via the pairing key,
+  /// so that the provisioned circuit will lie in the specified domain. If not
+  /// specified, the value will default to AVAILABILITY_DOMAIN_ANY.
   /// Possible string values are:
   /// - "AVAILABILITY_DOMAIN_1"
   /// - "AVAILABILITY_DOMAIN_2"
@@ -47878,6 +51698,7 @@ class InterconnectAttachment {
 
   /// [Output Only] Google reference ID, to be used when raising support tickets
   /// with Google or otherwise to debug backend connectivity issues.
+  /// [Deprecated] This field is not used.
   core.String googleReferenceId;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -47902,7 +51723,10 @@ class InterconnectAttachment {
   core.String name;
 
   /// [Output Only] The current status of whether or not this interconnect
-  /// attachment is functional.
+  /// attachment is functional, which can take one of the following values:
+  /// - OS_ACTIVE: The attachment has been turned up and is ready to use.
+  /// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup
+  /// is not complete.
   /// Possible string values are:
   /// - "OS_ACTIVE"
   /// - "OS_UNPROVISIONED"
@@ -47914,10 +51738,9 @@ class InterconnectAttachment {
   /// "XXXXX/region/domain"
   core.String pairingKey;
 
-  /// Optional BGP ASN for the router that should be supplied by a layer 3
-  /// Partner if they configured BGP on behalf of the customer. Output only for
-  /// PARTNER type, input only for PARTNER_PROVIDER, not available for
-  /// DEDICATED.
+  /// Optional BGP ASN for the router supplied by a Layer 3 Partner if they
+  /// configured BGP on behalf of the customer. Output only for PARTNER type,
+  /// input only for PARTNER_PROVIDER, not available for DEDICATED.
   core.String partnerAsn;
 
   /// Informational metadata about Partner attachments from Partners to display
@@ -47944,7 +51767,25 @@ class InterconnectAttachment {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// [Output Only] The current state of this attachment's functionality.
+  /// [Output Only] The current state of this attachment's functionality. Enum
+  /// values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER,
+  /// and PARTNER_PROVIDER interconnect attachments, while enum values
+  /// PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used
+  /// for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state
+  /// can take one of the following values:
+  /// - ACTIVE: The attachment has been turned up and is ready to use.
+  /// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is
+  /// not complete.
+  /// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet
+  /// been configured on the Partner side.
+  /// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of
+  /// provisioning after a PARTNER_PROVIDER attachment was created that
+  /// references it.
+  /// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is
+  /// waiting for a customer to activate it.
+  /// - DEFUNCT: The attachment was deleted externally and is no longer
+  /// functional. This could be because the associated Interconnect was removed,
+  /// or because the other side of a Partner attachment was deleted.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "DEFUNCT"
@@ -47955,7 +51796,13 @@ class InterconnectAttachment {
   /// - "UNPROVISIONED"
   core.String state;
 
-  ///
+  /// The type of interconnect attachment this is, which can take one of the
+  /// following values:
+  /// - DEDICATED: an attachment to a Dedicated Interconnect.
+  /// - PARTNER: an attachment to a Partner Interconnect, created by the
+  /// customer.
+  /// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by
+  /// the partner.
   /// Possible string values are:
   /// - "DEDICATED"
   /// - "PARTNER"
@@ -48513,7 +52360,7 @@ class InterconnectAttachmentPartnerMetadata {
   core.String partnerName;
 
   /// URL of the Partner?s portal for this Attachment. Partners may customise
-  /// this to be a deep-link to the specific resource on the Partner portal.
+  /// this to be a deep link to the specific resource on the Partner portal.
   /// This value may be validated to match approved Partner values.
   core.String portalUrl;
 
@@ -48852,7 +52699,10 @@ class InterconnectDiagnosticsLinkLACPStatus {
   /// System ID of the port on the neighbor?s side of the LACP exchange.
   core.String neighborSystemId;
 
-  ///
+  /// The state of a LACP link, which can take one of the following values:
+  /// - ACTIVE: The link is configured and active within the bundle.
+  /// - DETACHED: The link is not configured within the bundle. This means that
+  /// the rest of the object should be empty.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "DETACHED"
@@ -48889,7 +52739,14 @@ class InterconnectDiagnosticsLinkLACPStatus {
 }
 
 class InterconnectDiagnosticsLinkOpticalPower {
-  ///
+  /// The status of the current value when compared to the warning and alarm
+  /// levels for the receiving or transmitting transceiver. Possible states
+  /// include:
+  /// - OK: The value has not crossed a warning threshold.
+  /// - LOW_WARNING: The value has crossed below the low warning threshold.
+  /// - HIGH_WARNING: The value has crossed above the high warning threshold.
+  /// - LOW_ALARM: The value has crossed below the low alarm threshold.
+  /// - HIGH_ALARM: The value has crossed above the high alarm threshold.
   /// Possible string values are:
   /// - "HIGH_ALARM"
   /// - "HIGH_WARNING"
@@ -48898,10 +52755,10 @@ class InterconnectDiagnosticsLinkOpticalPower {
   /// - "OK"
   core.String state;
 
-  /// Value of the current optical power, read in dBm. Take a known good optical
-  /// value, give it a 10% margin and trigger warnings relative to that value.
-  /// In general, a -7dBm warning and a -11dBm alarm are good optical value
-  /// estimates for most links.
+  /// Value of the current receiving or transmitting optical power, read in dBm.
+  /// Take a known good optical value, give it a 10% margin and trigger warnings
+  /// relative to that value. In general, a -7dBm warning and a -11dBm alarm are
+  /// good optical value estimates for most links.
   core.double value;
 
   InterconnectDiagnosticsLinkOpticalPower();
@@ -48940,7 +52797,13 @@ class InterconnectDiagnosticsLinkStatus {
   /// The Demarc address assigned by Google and provided in the LoA.
   core.String googleDemarc;
   InterconnectDiagnosticsLinkLACPStatus lacpStatus;
+
+  /// An InterconnectDiagnostics.LinkOpticalPower object, describing the current
+  /// value and status of the received light level.
   InterconnectDiagnosticsLinkOpticalPower receivingOpticalPower;
+
+  /// An InterconnectDiagnostics.LinkOpticalPower object, describing the current
+  /// value and status of the transmitted light level.
   InterconnectDiagnosticsLinkOpticalPower transmittingOpticalPower;
 
   InterconnectDiagnosticsLinkStatus();
@@ -49182,9 +53045,11 @@ class InterconnectList {
   }
 }
 
-/// Represents an InterconnectLocations resource. The InterconnectLocations
-/// resource describes the locations where you can connect to Google's networks.
-/// For more information, see  Colocation Facilities.
+/// Represents an Interconnect Attachment (VLAN) Location resource.
+///
+/// You can use this resource to find location details about an Interconnect
+/// attachment (VLAN). For more information about interconnect attachments, read
+/// Creating VLAN Attachments.
 class InterconnectLocation {
   /// [Output Only] The postal address of the Point of Presence, each line in
   /// the address is separated by a newline character.
@@ -49200,7 +53065,13 @@ class InterconnectLocation {
   /// Netherlands".
   core.String city;
 
-  /// [Output Only] Continent for this location.
+  /// [Output Only] Continent for this location, which can take one of the
+  /// following values:
+  /// - AFRICA
+  /// - ASIA_PAC
+  /// - EUROPE
+  /// - NORTH_AMERICA
+  /// - SOUTH_AMERICA
   /// Possible string values are:
   /// - "AFRICA"
   /// - "ASIA_PAC"
@@ -49250,9 +53121,12 @@ class InterconnectLocation {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// [Output Only] The status of this InterconnectLocation. If the status is
-  /// AVAILABLE, new Interconnects may be provisioned in this
-  /// InterconnectLocation. Otherwise, no new Interconnects may be provisioned.
+  /// [Output Only] The status of this InterconnectLocation, which can take one
+  /// of the following values:
+  /// - CLOSED: The InterconnectLocation is closed and is unavailable for
+  /// provisioning new Interconnects.
+  /// - AVAILABLE: The InterconnectLocation is available for provisioning new
+  /// Interconnects.
   /// Possible string values are:
   /// - "AVAILABLE"
   /// - "CLOSED"
@@ -49609,8 +53483,14 @@ class InterconnectOutageNotification {
   /// Scheduled end time for the outage (milliseconds since Unix epoch).
   core.String endTime;
 
-  /// Form this outage is expected to take. Note that the "IT_" versions of this
-  /// enum have been deprecated in favor of the unprefixed values.
+  /// Form this outage is expected to take, which can take one of the following
+  /// values:
+  /// - OUTAGE: The Interconnect may be completely out of service for some or
+  /// all of the specified window.
+  /// - PARTIAL_OUTAGE: Some circuits comprising the Interconnect as a whole
+  /// should remain up, but with reduced bandwidth. Note that the versions of
+  /// this enum prefixed with "IT_" have been deprecated in favor of the
+  /// unprefixed values.
   /// Possible string values are:
   /// - "IT_OUTAGE"
   /// - "IT_PARTIAL_OUTAGE"
@@ -49621,8 +53501,10 @@ class InterconnectOutageNotification {
   /// Unique identifier for this outage notification.
   core.String name;
 
-  /// The party that generated this notification. Note that "NSRC_GOOGLE" has
-  /// been deprecated in favor of "GOOGLE"
+  /// The party that generated this notification, which can take the following
+  /// value:
+  /// - GOOGLE: this notification as generated by Google. Note that the value of
+  /// NSRC_GOOGLE has been deprecated in favor of GOOGLE.
   /// Possible string values are:
   /// - "GOOGLE"
   /// - "NSRC_GOOGLE"
@@ -49631,8 +53513,13 @@ class InterconnectOutageNotification {
   /// Scheduled start time for the outage (milliseconds since Unix epoch).
   core.String startTime;
 
-  /// State of this notification. Note that the "NS_" versions of this enum have
-  /// been deprecated in favor of the unprefixed values.
+  /// State of this notification, which can take one of the following values:
+  /// - ACTIVE: This outage notification is active. The event could be in the
+  /// past, present, or future. See start_time and end_time for scheduling.
+  /// - CANCELLED: The outage associated with this notification was cancelled
+  /// before the outage was due to start. Note that the versions of this enum
+  /// prefixed with "NS_" have been deprecated in favor of the unprefixed
+  /// values.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "CANCELLED"
@@ -50312,11 +54199,6 @@ class LogConfigCounterOptions {
 class LogConfigDataAccessOptions {
   /// Whether Gin logging should happen in a fail-closed manner at the caller.
   /// This is relevant only in the LocalIAM implementation, for now.
-  ///
-  /// NOTE: Logging to Gin in a fail-closed manner is currently unsupported
-  /// while work is being done to satisfy the requirements of go/345. Currently,
-  /// setting LOG_FAIL_CLOSED mode will have no effect, but still exists because
-  /// there is active work being done to support it (b/115874152).
   /// Possible string values are:
   /// - "LOG_FAIL_CLOSED"
   /// - "LOG_MODE_UNSPECIFIED"
@@ -50362,8 +54244,12 @@ class MachineTypeScratchDisks {
   }
 }
 
-/// A Machine Type resource. (== resource_for v1.machineTypes ==) (==
-/// resource_for beta.machineTypes ==)
+/// Represents a Machine Type resource.
+///
+/// You can use specific machine types for your VM instances based on
+/// performance and pricing requirements. For more information, read Machine
+/// Types. (== resource_for v1.machineTypes ==) (== resource_for
+/// beta.machineTypes ==)
 class MachineType {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -51083,6 +54969,7 @@ class ManagedInstance {
   /// instance does not exist.
   /// Possible string values are:
   /// - "PROVISIONING"
+  /// - "REPAIRING"
   /// - "RUNNING"
   /// - "STAGING"
   /// - "STOPPED"
@@ -51095,6 +54982,9 @@ class ManagedInstance {
   /// [Output Only] Information about the last attempt to create or delete the
   /// instance.
   ManagedInstanceLastAttempt lastAttempt;
+
+  /// [Output Only] Intended version of this instance.
+  ManagedInstanceVersion version;
 
   ManagedInstance();
 
@@ -51115,6 +55005,9 @@ class ManagedInstance {
       lastAttempt =
           new ManagedInstanceLastAttempt.fromJson(_json["lastAttempt"]);
     }
+    if (_json.containsKey("version")) {
+      version = new ManagedInstanceVersion.fromJson(_json["version"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -51134,6 +55027,9 @@ class ManagedInstance {
     }
     if (lastAttempt != null) {
       _json["lastAttempt"] = (lastAttempt).toJson();
+    }
+    if (version != null) {
+      _json["version"] = (version).toJson();
     }
     return _json;
   }
@@ -51226,6 +55122,38 @@ class ManagedInstanceLastAttempt {
         new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = (errors).toJson();
+    }
+    return _json;
+  }
+}
+
+class ManagedInstanceVersion {
+  /// [Output Only] The intended template of the instance. This field is empty
+  /// when current_action is one of { DELETING, ABANDONING }.
+  core.String instanceTemplate;
+
+  /// [Output Only] Name of the version.
+  core.String name;
+
+  ManagedInstanceVersion();
+
+  ManagedInstanceVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("instanceTemplate")) {
+      instanceTemplate = _json["instanceTemplate"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instanceTemplate != null) {
+      _json["instanceTemplate"] = instanceTemplate;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -51361,13 +55289,16 @@ class NamedPort {
   }
 }
 
-/// Represents a Network resource. Read Virtual Private Cloud (VPC) Network
-/// Overview for more information. (== resource_for v1.networks ==) (==
-/// resource_for beta.networks ==)
+/// Represents a VPC Network resource.
+///
+/// Networks connect resources to each other and to the internet. For more
+/// information, read Virtual Private Cloud (VPC) Network. (== resource_for
+/// v1.networks ==) (== resource_for beta.networks ==)
 class Network {
-  /// The range of internal addresses that are legal on this network. This range
-  /// is a CIDR specification, for example: 192.168.0.0/16. Provided by the
-  /// client when the network is created.
+  /// Deprecated in favor of subnet mode networks. The range of internal
+  /// addresses that are legal on this network. This range is a CIDR
+  /// specification, for example: 192.168.0.0/16. Provided by the client when
+  /// the network is created.
   core.String IPv4Range;
 
   /// When set to true, the VPC network is created in "auto" mode. When set to
@@ -51380,12 +55311,12 @@ class Network {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
-  /// An optional description of this resource. Provide this property when you
+  /// An optional description of this resource. Provide this field when you
   /// create the resource.
   core.String description;
 
-  /// [Output Only] The gateway address for default routing out of the network.
-  /// This value is read only and is selected by GCP.
+  /// [Output Only] The gateway address for default routing out of the network,
+  /// selected by GCP.
   core.String gatewayIPv4;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -51398,10 +55329,10 @@ class Network {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
-  /// must be a lowercase letter, and all following characters must be a dash,
-  /// lowercase letter, or digit, except the last character, which cannot be a
-  /// dash.
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a
+  /// lowercase letter, and all following characters (except for the last
+  /// character) must be a dash, lowercase letter, or digit. The last character
+  /// must be a lowercase letter or digit.
   core.String name;
 
   /// [Output Only] A list of network peerings for the resource.
@@ -51504,6 +55435,1001 @@ class Network {
   }
 }
 
+/// The network endpoint.
+class NetworkEndpoint {
+  /// The name for a specific VM instance that the IP address belongs to. This
+  /// is required for network endpoints of type GCE_VM_IP_PORT. The instance
+  /// must be in the same zone of network endpoint group.
+  ///
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  core.String instance;
+
+  /// Optional IPv4 address of network endpoint. The IP address must belong to a
+  /// VM in GCE (either the primary IP or as part of an aliased IP range). If
+  /// the IP address is not specified, then the primary IP address for the VM
+  /// instance in the network that the network endpoint group belongs to will be
+  /// used.
+  core.String ipAddress;
+
+  /// Optional port number of network endpoint. If not specified and the
+  /// NetworkEndpointGroup.network_endpoint_type is GCE_IP_PORT, the defaultPort
+  /// for the network endpoint group will be used.
+  core.int port;
+
+  NetworkEndpoint();
+
+  NetworkEndpoint.fromJson(core.Map _json) {
+    if (_json.containsKey("instance")) {
+      instance = _json["instance"];
+    }
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instance != null) {
+      _json["instance"] = instance;
+    }
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    return _json;
+  }
+}
+
+/// Represents a collection of network endpoints.
+class NetworkEndpointGroup {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// The default port used if the port number is not specified in the network
+  /// endpoint.
+  core.int defaultPort;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] Type of the resource. Always compute#networkEndpointGroup
+  /// for network endpoint group.
+  core.String kind;
+
+  /// Name of the resource; provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
+  /// must be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String name;
+
+  /// The URL of the network to which all network endpoints in the NEG belong.
+  /// Uses "default" project network if unspecified.
+  core.String network;
+
+  /// Type of network endpoints in this network endpoint group. Currently the
+  /// only supported value is GCE_VM_IP_PORT.
+  /// Possible string values are:
+  /// - "GCE_VM_IP_PORT"
+  core.String networkEndpointType;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  /// [Output only] Number of network endpoints in the network endpoint group.
+  core.int size;
+
+  /// Optional URL of the subnetwork to which all network endpoints in the NEG
+  /// belong.
+  core.String subnetwork;
+
+  /// [Output Only] The URL of the zone where the network endpoint group is
+  /// located.
+  core.String zone;
+
+  NetworkEndpointGroup();
+
+  NetworkEndpointGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("defaultPort")) {
+      defaultPort = _json["defaultPort"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("networkEndpointType")) {
+      networkEndpointType = _json["networkEndpointType"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (defaultPort != null) {
+      _json["defaultPort"] = defaultPort;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (networkEndpointType != null) {
+      _json["networkEndpointType"] = networkEndpointType;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (size != null) {
+      _json["size"] = size;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NetworkEndpointGroupAggregatedListWarningData();
+
+  NetworkEndpointGroupAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NetworkEndpointGroupAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NetworkEndpointGroupAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NetworkEndpointGroupAggregatedListWarning();
+
+  NetworkEndpointGroupAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NetworkEndpointGroupAggregatedListWarningData>((value) =>
+              new NetworkEndpointGroupAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupAggregatedList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NetworkEndpointGroupsScopedList resources.
+  core.Map<core.String, NetworkEndpointGroupsScopedList> items;
+
+  /// [Output Only] The resource type, which is always
+  /// compute#networkEndpointGroupAggregatedList for aggregated lists of network
+  /// endpoint groups.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NetworkEndpointGroupAggregatedListWarning warning;
+
+  NetworkEndpointGroupAggregatedList();
+
+  NetworkEndpointGroupAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map, NetworkEndpointGroupsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) =>
+              new NetworkEndpointGroupsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NetworkEndpointGroupAggregatedListWarning.fromJson(
+          _json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap<NetworkEndpointGroupsScopedList,
+              core.Map<core.String, core.Object>>(
+          items, (NetworkEndpointGroupsScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NetworkEndpointGroupListWarningData();
+
+  NetworkEndpointGroupListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NetworkEndpointGroupListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NetworkEndpointGroupListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NetworkEndpointGroupListWarning();
+
+  NetworkEndpointGroupListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NetworkEndpointGroupListWarningData>((value) =>
+              new NetworkEndpointGroupListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NetworkEndpointGroup resources.
+  core.List<NetworkEndpointGroup> items;
+
+  /// [Output Only] The resource type, which is always
+  /// compute#networkEndpointGroupList for network endpoint group lists.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  NetworkEndpointGroupListWarning warning;
+
+  NetworkEndpointGroupList();
+
+  NetworkEndpointGroupList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NetworkEndpointGroup>(
+              (value) => new NetworkEndpointGroup.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NetworkEndpointGroupListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsAttachEndpointsRequest {
+  /// The list of network endpoints to be attached.
+  core.List<NetworkEndpoint> networkEndpoints;
+
+  NetworkEndpointGroupsAttachEndpointsRequest();
+
+  NetworkEndpointGroupsAttachEndpointsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("networkEndpoints")) {
+      networkEndpoints = (_json["networkEndpoints"] as core.List)
+          .map<NetworkEndpoint>((value) => new NetworkEndpoint.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (networkEndpoints != null) {
+      _json["networkEndpoints"] =
+          networkEndpoints.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsDetachEndpointsRequest {
+  /// The list of network endpoints to be detached.
+  core.List<NetworkEndpoint> networkEndpoints;
+
+  NetworkEndpointGroupsDetachEndpointsRequest();
+
+  NetworkEndpointGroupsDetachEndpointsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("networkEndpoints")) {
+      networkEndpoints = (_json["networkEndpoints"] as core.List)
+          .map<NetworkEndpoint>((value) => new NetworkEndpoint.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (networkEndpoints != null) {
+      _json["networkEndpoints"] =
+          networkEndpoints.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsListEndpointsRequest {
+  /// Optional query parameter for showing the health status of each network
+  /// endpoint. Valid options are SKIP or SHOW. If you don't specifiy this
+  /// parameter, the health status of network endpoints will not be provided.
+  /// Possible string values are:
+  /// - "SHOW"
+  /// - "SKIP"
+  core.String healthStatus;
+
+  NetworkEndpointGroupsListEndpointsRequest();
+
+  NetworkEndpointGroupsListEndpointsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("healthStatus")) {
+      healthStatus = _json["healthStatus"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (healthStatus != null) {
+      _json["healthStatus"] = healthStatus;
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsListNetworkEndpointsWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NetworkEndpointGroupsListNetworkEndpointsWarningData();
+
+  NetworkEndpointGroupsListNetworkEndpointsWarningData.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NetworkEndpointGroupsListNetworkEndpointsWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NetworkEndpointGroupsListNetworkEndpointsWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NetworkEndpointGroupsListNetworkEndpointsWarning();
+
+  NetworkEndpointGroupsListNetworkEndpointsWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NetworkEndpointGroupsListNetworkEndpointsWarningData>((value) =>
+              new NetworkEndpointGroupsListNetworkEndpointsWarningData.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsListNetworkEndpoints {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of NetworkEndpointWithHealthStatus resources.
+  core.List<NetworkEndpointWithHealthStatus> items;
+
+  /// [Output Only] The resource type, which is always
+  /// compute#networkEndpointGroupsListNetworkEndpoints for the list of network
+  /// endpoints in the specified network endpoint group.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Informational warning message.
+  NetworkEndpointGroupsListNetworkEndpointsWarning warning;
+
+  NetworkEndpointGroupsListNetworkEndpoints();
+
+  NetworkEndpointGroupsListNetworkEndpoints.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<NetworkEndpointWithHealthStatus>(
+              (value) => new NetworkEndpointWithHealthStatus.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NetworkEndpointGroupsListNetworkEndpointsWarning.fromJson(
+          _json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NetworkEndpointGroupsScopedListWarningData();
+
+  NetworkEndpointGroupsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] An informational warning that replaces the list of network
+/// endpoint groups when the list is empty.
+class NetworkEndpointGroupsScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NetworkEndpointGroupsScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NetworkEndpointGroupsScopedListWarning();
+
+  NetworkEndpointGroupsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<NetworkEndpointGroupsScopedListWarningData>((value) =>
+              new NetworkEndpointGroupsScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointGroupsScopedList {
+  /// [Output Only] The list of network endpoint groups that are contained in
+  /// this scope.
+  core.List<NetworkEndpointGroup> networkEndpointGroups;
+
+  /// [Output Only] An informational warning that replaces the list of network
+  /// endpoint groups when the list is empty.
+  NetworkEndpointGroupsScopedListWarning warning;
+
+  NetworkEndpointGroupsScopedList();
+
+  NetworkEndpointGroupsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("networkEndpointGroups")) {
+      networkEndpointGroups = (_json["networkEndpointGroups"] as core.List)
+          .map<NetworkEndpointGroup>(
+              (value) => new NetworkEndpointGroup.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new NetworkEndpointGroupsScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (networkEndpointGroups != null) {
+      _json["networkEndpointGroups"] =
+          networkEndpointGroups.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class NetworkEndpointWithHealthStatus {
+  /// [Output only] The health status of network endpoint;
+  core.List<HealthStatusForNetworkEndpoint> healths;
+
+  /// [Output only] The network endpoint;
+  NetworkEndpoint networkEndpoint;
+
+  NetworkEndpointWithHealthStatus();
+
+  NetworkEndpointWithHealthStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("healths")) {
+      healths = (_json["healths"] as core.List)
+          .map<HealthStatusForNetworkEndpoint>(
+              (value) => new HealthStatusForNetworkEndpoint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("networkEndpoint")) {
+      networkEndpoint = new NetworkEndpoint.fromJson(_json["networkEndpoint"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (healths != null) {
+      _json["healths"] = healths.map((value) => (value).toJson()).toList();
+    }
+    if (networkEndpoint != null) {
+      _json["networkEndpoint"] = (networkEndpoint).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A network interface resource attached to an instance.
 class NetworkInterface {
   /// An array of configurations for this interface. Currently, only one access
@@ -51511,8 +56437,8 @@ class NetworkInterface {
   /// specified, then this instance will have no external internet access.
   core.List<AccessConfig> accessConfigs;
 
-  /// An array of alias IP ranges for this network interface. Can only be
-  /// specified for network interfaces on subnet-mode networks.
+  /// An array of alias IP ranges for this network interface. You can only
+  /// specify this field for network interfaces in VPC networks.
   core.List<AliasIpRange> aliasIpRanges;
 
   /// Fingerprint hash of contents stored in this network interface. This field
@@ -51534,18 +56460,14 @@ class NetworkInterface {
   /// network interfaces.
   core.String kind;
 
-  /// [Output Only] The name of the network interface, generated by the server.
-  /// For network devices, these are eth0, eth1, etc.
+  /// [Output Only] The name of the network interface, which is generated by the
+  /// server. For network devices, these are eth0, eth1, etc.
   core.String name;
 
   /// URL of the network resource for this instance. When creating an instance,
   /// if neither the network nor the subnetwork is specified, the default
   /// network global/networks/default is used; if the network is not specified
   /// but the subnetwork is specified, the network is inferred.
-  ///
-  /// This field is optional when creating a firewall rule. If not specified
-  /// when creating a firewall rule, the default network global/networks/default
-  /// is used.
   ///
   /// If you specify this property, you can specify the network as a full or
   /// partial URL. For example, the following are all valid URLs:
@@ -51555,17 +56477,17 @@ class NetworkInterface {
   /// - global/networks/default
   core.String network;
 
-  /// An IPv4 internal network address to assign to the instance for this
-  /// network interface. If not specified by the user, an unused internal IP is
-  /// assigned by the system.
+  /// An IPv4 internal IP address to assign to the instance for this network
+  /// interface. If not specified by the user, an unused internal IP is assigned
+  /// by the system.
   core.String networkIP;
 
   /// The URL of the Subnetwork resource for this instance. If the network
-  /// resource is in legacy mode, do not provide this property. If the network
-  /// is in auto subnet mode, providing the subnetwork is optional. If the
-  /// network is in custom subnet mode, then this field should be specified. If
-  /// you specify this property, you can specify the subnetwork as a full or
-  /// partial URL. For example, the following are all valid URLs:
+  /// resource is in legacy mode, do not specify this field. If the network is
+  /// in auto subnet mode, specifying the subnetwork is optional. If the network
+  /// is in custom subnet mode, specifying the subnetwork is required. If you
+  /// specify this field, you can specify the subnetwork as a full or partial
+  /// URL. For example, the following are all valid URLs:
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork
   /// - regions/region/subnetworks/subnetwork
@@ -51824,19 +56746,27 @@ class NetworkList {
 /// peering name, peer network, peering state, and a flag indicating whether
 /// Google Compute Engine should automatically create routes for the peering.
 class NetworkPeering {
-  /// Indicates whether full mesh connectivity is created and managed
+  /// This field will be deprecated soon. Use the exchange_subnet_routes field
+  /// instead. Indicates whether full mesh connectivity is created and managed
   /// automatically. When it is set to true, Google Compute Engine will
   /// automatically create and manage the routes between two networks when the
   /// state is ACTIVE. Otherwise, user needs to create routes manually to route
   /// packets to peer network.
   core.bool autoCreateRoutes;
 
+  /// Whether full mesh connectivity is created and managed automatically. When
+  /// it is set to true, Google Compute Engine will automatically create and
+  /// manage the routes between two networks when the peering state is ACTIVE.
+  /// Otherwise, user needs to create routes manually to route packets to peer
+  /// network.
+  core.bool exchangeSubnetRoutes;
+
   /// Name of this peering. Provided by the client when the peering is created.
   /// The name must comply with RFC1035. Specifically, the name must be 1-63
-  /// characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
-  /// which means the first character must be a lowercase letter, and all the
-  /// following characters must be a dash, lowercase letter, or digit, except
-  /// the last character, which cannot be a dash.
+  /// characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`.
+  /// The first character must be a lowercase letter, and all the following
+  /// characters must be a dash, lowercase letter, or digit, except the last
+  /// character, which cannot be a dash.
   core.String name;
 
   /// The URL of the peer network. It can be either full URL or partial URL. The
@@ -51845,7 +56775,9 @@ class NetworkPeering {
   /// project as the current network.
   core.String network;
 
-  /// [Output Only] State for the peering.
+  /// [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The
+  /// peering is `ACTIVE` when there's a matching configuration in the peer
+  /// network.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "INACTIVE"
@@ -51859,6 +56791,9 @@ class NetworkPeering {
   NetworkPeering.fromJson(core.Map _json) {
     if (_json.containsKey("autoCreateRoutes")) {
       autoCreateRoutes = _json["autoCreateRoutes"];
+    }
+    if (_json.containsKey("exchangeSubnetRoutes")) {
+      exchangeSubnetRoutes = _json["exchangeSubnetRoutes"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -51879,6 +56814,9 @@ class NetworkPeering {
         new core.Map<core.String, core.Object>();
     if (autoCreateRoutes != null) {
       _json["autoCreateRoutes"] = autoCreateRoutes;
+    }
+    if (exchangeSubnetRoutes != null) {
+      _json["exchangeSubnetRoutes"] = exchangeSubnetRoutes;
     }
     if (name != null) {
       _json["name"] = name;
@@ -51901,9 +56839,9 @@ class NetworkPeering {
 /// type of routing behavior to enforce network-wide.
 class NetworkRoutingConfig {
   /// The network-wide routing mode to use. If set to REGIONAL, this network's
-  /// cloud routers will only advertise routes with subnets of this network in
-  /// the same region as the router. If set to GLOBAL, this network's cloud
-  /// routers will advertise routes with all subnets of this network, across
+  /// Cloud Routers will only advertise routes with subnets of this network in
+  /// the same region as the router. If set to GLOBAL, this network's Cloud
+  /// Routers will advertise routes with all subnets of this network, across
   /// regions.
   /// Possible string values are:
   /// - "GLOBAL"
@@ -51929,11 +56867,20 @@ class NetworkRoutingConfig {
 }
 
 class NetworksAddPeeringRequest {
-  /// Whether Google Compute Engine manages the routes automatically.
+  /// This field will be deprecated soon. Use exchange_subnet_routes in
+  /// network_peering instead. Whether Google Compute Engine manages the routes
+  /// automatically.
   core.bool autoCreateRoutes;
 
   /// Name of the peering, which should conform to RFC1035.
   core.String name;
+
+  /// Network peering parameters. In order to specify route policies for peering
+  /// using import and export custom routes, you must specify all peering
+  /// related parameters (name, peer network, exchange_subnet_routes) in the
+  /// network_peering field. The corresponding fields in
+  /// NetworksAddPeeringRequest will be deprecated soon.
+  NetworkPeering networkPeering;
 
   /// URL of the peer network. It can be either full URL or partial URL. The
   /// peer network may belong to a different project. If the partial URL does
@@ -51950,6 +56897,9 @@ class NetworksAddPeeringRequest {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("networkPeering")) {
+      networkPeering = new NetworkPeering.fromJson(_json["networkPeering"]);
+    }
     if (_json.containsKey("peerNetwork")) {
       peerNetwork = _json["peerNetwork"];
     }
@@ -51963,6 +56913,9 @@ class NetworksAddPeeringRequest {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (networkPeering != null) {
+      _json["networkPeering"] = (networkPeering).toJson();
     }
     if (peerNetwork != null) {
       _json["peerNetwork"] = peerNetwork;
@@ -51993,7 +56946,14 @@ class NetworksRemovePeeringRequest {
   }
 }
 
-/// A NodeGroup resource.
+/// Represent a sole-tenant Node Group resource.
+///
+/// A sole-tenant node is a physical server that is dedicated to hosting VM
+/// instances only for your specific project. Use sole-tenant nodes to keep your
+/// instances physically separated from instances in other projects, or to group
+/// your instances together on the same host hardware. For more information,
+/// read Sole-tenant nodes. (== resource_for beta.nodeGroups ==) (==
+/// resource_for v1.nodeGroups ==) NextID: 15
 class NodeGroup {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -52489,6 +57449,9 @@ class NodeGroupNode {
   /// The type of this node.
   core.String nodeType;
 
+  /// Binding properties for the physical server.
+  ServerBinding serverBinding;
+
   ///
   /// Possible string values are:
   /// - "CREATING"
@@ -52510,6 +57473,9 @@ class NodeGroupNode {
     if (_json.containsKey("nodeType")) {
       nodeType = _json["nodeType"];
     }
+    if (_json.containsKey("serverBinding")) {
+      serverBinding = new ServerBinding.fromJson(_json["serverBinding"]);
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -52526,6 +57492,9 @@ class NodeGroupNode {
     }
     if (nodeType != null) {
       _json["nodeType"] = nodeType;
+    }
+    if (serverBinding != null) {
+      _json["serverBinding"] = (serverBinding).toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -52927,7 +57896,12 @@ class NodeGroupsSetNodeTemplateRequest {
   }
 }
 
-/// A Node Template resource.
+/// Represent a sole-tenant Node Template resource.
+///
+/// You can use a template to define properties for nodes in a node group. For
+/// more information, read Creating node groups and instances. (== resource_for
+/// beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID: 16
+/// ==)
 class NodeTemplate {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -52974,6 +57948,15 @@ class NodeTemplate {
 
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
+
+  /// Sets the binding properties for the physical server. Valid values include:
+  /// - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available
+  /// physical server
+  /// - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server
+  /// whenever possible
+  ///
+  /// See Sole-tenant node options for more information.
+  ServerBinding serverBinding;
 
   /// [Output Only] The status of the node template. One of the following
   /// values: CREATING, READY, and DELETING.
@@ -53022,6 +58005,9 @@ class NodeTemplate {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("serverBinding")) {
+      serverBinding = new ServerBinding.fromJson(_json["serverBinding"]);
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -53062,6 +58048,9 @@ class NodeTemplate {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (serverBinding != null) {
+      _json["serverBinding"] = (serverBinding).toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -53620,7 +58609,13 @@ class NodeTemplatesScopedList {
   }
 }
 
-/// A Node Type resource.
+/// Represent a sole-tenant Node Type resource.
+///
+/// Each node within a node group must have a node type. A node type specifies
+/// the total amount of cores and memory for that node. Currently, the only
+/// available node type is n1-node-96-624 node type that has 96 vCPUs and 624 GB
+/// of memory, available in multiple zones. For more information read Node
+/// types. (== resource_for beta.nodeTypes ==) (== resource_for v1.nodeTypes ==)
 class NodeType {
   /// [Output Only] The CPU platform used by this node type.
   core.String cpuPlatform;
@@ -54433,7 +59428,17 @@ class OperationWarnings {
   }
 }
 
-/// An Operation resource, used to manage asynchronous API requests. (==
+/// Represents an Operation resource.
+///
+/// You can use an operation resource to manage asynchronous API requests. For
+/// more information, read Handling API responses.
+///
+/// Operations can be global, regional or zonal.
+/// - For global operations, use the globalOperations resource.
+/// - For regional operations, use the regionOperations resource.
+/// - For zonal operations, use the zonalOperations resource.
+///
+/// For more information, read  Global, Regional, and Zonal Resources. (==
 /// resource_for v1.globalOperations ==) (== resource_for beta.globalOperations
 /// ==) (== resource_for v1.regionOperations ==) (== resource_for
 /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (==
@@ -54494,9 +59499,7 @@ class Operation {
   core.int progress;
 
   /// [Output Only] The URL of the region where the operation resides. Only
-  /// available when performing regional operations. You must specify this field
-  /// as part of the HTTP request URL. It is not settable as a field in the
-  /// request body.
+  /// applicable when performing regional operations.
   core.String region;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -54536,9 +59539,7 @@ class Operation {
   core.List<OperationWarnings> warnings;
 
   /// [Output Only] The URL of the zone where the operation resides. Only
-  /// available when performing per-zone operations. You must specify this field
-  /// as part of the HTTP request URL. It is not settable as a field in the
-  /// request body.
+  /// applicable when performing per-zone operations.
   core.String zone;
 
   Operation();
@@ -55455,9 +60456,11 @@ class Policy {
   }
 }
 
-/// A Project resource. For an overview of projects, see  Cloud Platform
-/// Resource Hierarchy. (== resource_for v1.projects ==) (== resource_for
-/// beta.projects ==)
+/// Represents a Project resource.
+///
+/// A project is used to organize resources in a Google Cloud Platform
+/// environment. For more information, read about the  Resource Hierarchy. (==
+/// resource_for v1.projects ==) (== resource_for beta.projects ==)
 class Project {
   /// Metadata key/value pairs available to all instances contained in this
   /// project. See Custom metadata for more information.
@@ -55758,10 +60761,19 @@ class Quota {
   /// - "AUTOSCALERS"
   /// - "BACKEND_BUCKETS"
   /// - "BACKEND_SERVICES"
+  /// - "C2_CPUS"
   /// - "COMMITMENTS"
+  /// - "COMMITTED_CPUS"
+  /// - "COMMITTED_LOCAL_SSD_TOTAL_GB"
+  /// - "COMMITTED_NVIDIA_K80_GPUS"
+  /// - "COMMITTED_NVIDIA_P100_GPUS"
+  /// - "COMMITTED_NVIDIA_P4_GPUS"
+  /// - "COMMITTED_NVIDIA_T4_GPUS"
+  /// - "COMMITTED_NVIDIA_V100_GPUS"
   /// - "CPUS"
   /// - "CPUS_ALL_REGIONS"
   /// - "DISKS_TOTAL_GB"
+  /// - "EXTERNAL_VPN_GATEWAYS"
   /// - "FIREWALLS"
   /// - "FORWARDING_RULES"
   /// - "GLOBAL_INTERNAL_ADDRESSES"
@@ -55780,7 +60792,9 @@ class Quota {
   /// - "IN_USE_BACKUP_SCHEDULES"
   /// - "IN_USE_SNAPSHOT_SCHEDULES"
   /// - "LOCAL_SSD_TOTAL_GB"
+  /// - "N2_CPUS"
   /// - "NETWORKS"
+  /// - "NETWORK_ENDPOINT_GROUPS"
   /// - "NVIDIA_K80_GPUS"
   /// - "NVIDIA_P100_GPUS"
   /// - "NVIDIA_P100_VWS_GPUS"
@@ -55801,6 +60815,7 @@ class Quota {
   /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
   /// - "REGIONAL_AUTOSCALERS"
   /// - "REGIONAL_INSTANCE_GROUP_MANAGERS"
+  /// - "RESERVATIONS"
   /// - "RESOURCE_POLICIES"
   /// - "ROUTERS"
   /// - "ROUTES"
@@ -55919,8 +60934,11 @@ class Reference {
   }
 }
 
-/// Region resource. (== resource_for beta.regions ==) (== resource_for
-/// v1.regions ==)
+/// Represents a Region resource.
+///
+/// A region is a geographical area where a resource is located. For more
+/// information, read Regions and Zones. (== resource_for beta.regions ==) (==
+/// resource_for v1.regions ==)
 class Region {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -56390,6 +61408,52 @@ class RegionDiskTypeList {
     }
     if (warning != null) {
       _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class RegionDisksAddResourcePoliciesRequest {
+  /// Resource policies to be added to this disk.
+  core.List<core.String> resourcePolicies;
+
+  RegionDisksAddResourcePoliciesRequest();
+
+  RegionDisksAddResourcePoliciesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies =
+          (_json["resourcePolicies"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] = resourcePolicies;
+    }
+    return _json;
+  }
+}
+
+class RegionDisksRemoveResourcePoliciesRequest {
+  /// Resource policies to be removed from this disk.
+  core.List<core.String> resourcePolicies;
+
+  RegionDisksRemoveResourcePoliciesRequest();
+
+  RegionDisksRemoveResourcePoliciesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies =
+          (_json["resourcePolicies"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] = resourcePolicies;
     }
     return _json;
   }
@@ -57493,9 +62557,734 @@ class RegionSetPolicyRequest {
   }
 }
 
+/// Represents a reservation resource. A reservation ensures that capacity is
+/// held in a specific zone even if the reserved VMs are not running. For more
+/// information, read  Reserving zonal resources. (== resource_for
+/// beta.reservations ==) (== resource_for v1.reservations ==) (== NextID: 13
+/// ==)
+class Reservation {
+  /// [OutputOnly] Full or partial url for parent commitment for reservations
+  /// which are tied to a commitment.
+  core.String commitment;
+
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] Type of the resource. Always compute#reservations for
+  /// reservations.
+  core.String kind;
+
+  /// The name of the resource, provided by the client when initially creating
+  /// the resource. The resource name must be 1-63 characters long, and comply
+  /// with RFC1035. Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last character,
+  /// which cannot be a dash.
+  core.String name;
+
+  /// [Output Only] Server-defined fully-qualified URL for this resource.
+  core.String selfLink;
+
+  /// Reservation for instances with specific machine shapes.
+  AllocationSpecificSKUReservation specificReservation;
+
+  /// Indicates whether the reservation can be consumed by VMs with affinity for
+  /// "any" reservation. If the field is set, then only VMs that target the
+  /// reservation by name can consume from this reservation.
+  core.bool specificReservationRequired;
+
+  /// [Output Only] The status of the reservation.
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "INVALID"
+  /// - "READY"
+  /// - "UPDATING"
+  core.String status;
+
+  /// Zone in which the reservation resides, must be provided if reservation is
+  /// created with commitment creation.
+  core.String zone;
+
+  Reservation();
+
+  Reservation.fromJson(core.Map _json) {
+    if (_json.containsKey("commitment")) {
+      commitment = _json["commitment"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("specificReservation")) {
+      specificReservation = new AllocationSpecificSKUReservation.fromJson(
+          _json["specificReservation"]);
+    }
+    if (_json.containsKey("specificReservationRequired")) {
+      specificReservationRequired = _json["specificReservationRequired"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commitment != null) {
+      _json["commitment"] = commitment;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (specificReservation != null) {
+      _json["specificReservation"] = (specificReservation).toJson();
+    }
+    if (specificReservationRequired != null) {
+      _json["specificReservationRequired"] = specificReservationRequired;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (zone != null) {
+      _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the reservations that this instance can consume from.
+class ReservationAffinity {
+  /// Specifies the type of reservation from which this instance can consume
+  /// resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or
+  /// NO_RESERVATION. See  Consuming reserved instances for examples.
+  /// Possible string values are:
+  /// - "ANY_RESERVATION"
+  /// - "NO_RESERVATION"
+  /// - "SPECIFIC_RESERVATION"
+  /// - "UNSPECIFIED"
+  core.String consumeReservationType;
+
+  /// Corresponds to the label key of a reservation resource. To target a
+  /// SPECIFIC_RESERVATION by name, specify googleapis.com/reservation-name as
+  /// the key and specify the name of your reservation as its value.
+  core.String key;
+
+  /// Corresponds to the label values of a reservation resource.
+  core.List<core.String> values;
+
+  ReservationAffinity();
+
+  ReservationAffinity.fromJson(core.Map _json) {
+    if (_json.containsKey("consumeReservationType")) {
+      consumeReservationType = _json["consumeReservationType"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumeReservationType != null) {
+      _json["consumeReservationType"] = consumeReservationType;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+class ReservationAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ReservationAggregatedListWarningData();
+
+  ReservationAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ReservationAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ReservationAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ReservationAggregatedListWarning();
+
+  ReservationAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<ReservationAggregatedListWarningData>((value) =>
+              new ReservationAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Contains a list of reservations.
+class ReservationAggregatedList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of Allocation resources.
+  core.Map<core.String, ReservationsScopedList> items;
+
+  /// Type of resource.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  ReservationAggregatedListWarning warning;
+
+  ReservationAggregatedList();
+
+  ReservationAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map, ReservationsScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new ReservationsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new ReservationAggregatedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons
+          .mapMap<ReservationsScopedList, core.Map<core.String, core.Object>>(
+              items, (ReservationsScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class ReservationListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ReservationListWarningData();
+
+  ReservationListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ReservationListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ReservationListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ReservationListWarning();
+
+  ReservationListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<ReservationListWarningData>(
+              (value) => new ReservationListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class ReservationList {
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] A list of Allocation resources.
+  core.List<Reservation> items;
+
+  /// [Output Only] Type of resource.Always compute#reservationsList for listsof
+  /// reservations
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  ReservationListWarning warning;
+
+  ReservationList();
+
+  ReservationList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<Reservation>((value) => new Reservation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new ReservationListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class ReservationsResizeRequest {
+  /// Number of allocated resources can be resized with minimum = 1 and maximum
+  /// = 1000.
+  core.String specificSkuCount;
+
+  ReservationsResizeRequest();
+
+  ReservationsResizeRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("specificSkuCount")) {
+      specificSkuCount = _json["specificSkuCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (specificSkuCount != null) {
+      _json["specificSkuCount"] = specificSkuCount;
+    }
+    return _json;
+  }
+}
+
+class ReservationsScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ReservationsScopedListWarningData();
+
+  ReservationsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Informational warning which replaces the list of reservations when the list
+/// is empty.
+class ReservationsScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ReservationsScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ReservationsScopedListWarning();
+
+  ReservationsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<ReservationsScopedListWarningData>(
+              (value) => new ReservationsScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class ReservationsScopedList {
+  /// A list of reservations contained in this scope.
+  core.List<Reservation> reservations;
+
+  /// Informational warning which replaces the list of reservations when the
+  /// list is empty.
+  ReservationsScopedListWarning warning;
+
+  ReservationsScopedList();
+
+  ReservationsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("reservations")) {
+      reservations = (_json["reservations"] as core.List)
+          .map<Reservation>((value) => new Reservation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new ReservationsScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reservations != null) {
+      _json["reservations"] =
+          reservations.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Commitment for a particular resource (a Commitment is composed of one or
 /// more of these).
 class ResourceCommitment {
+  /// Name of the accelerator type resource. Applicable only when the type is
+  /// ACCELERATOR.
+  core.String acceleratorType;
+
   /// The amount of the resource purchased (in a type-dependent unit, such as
   /// bytes). For vCPUs, this can just be an integer. For memory, this must be
   /// provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of
@@ -57505,6 +63294,8 @@ class ResourceCommitment {
   /// Type of resource for which this commitment applies. Possible values are
   /// VCPU and MEMORY
   /// Possible string values are:
+  /// - "ACCELERATOR"
+  /// - "LOCAL_SSD"
   /// - "MEMORY"
   /// - "UNSPECIFIED"
   /// - "VCPU"
@@ -57513,6 +63304,9 @@ class ResourceCommitment {
   ResourceCommitment();
 
   ResourceCommitment.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorType")) {
+      acceleratorType = _json["acceleratorType"];
+    }
     if (_json.containsKey("amount")) {
       amount = _json["amount"];
     }
@@ -57524,6 +63318,9 @@ class ResourceCommitment {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (acceleratorType != null) {
+      _json["acceleratorType"] = acceleratorType;
+    }
     if (amount != null) {
       _json["amount"] = amount;
     }
@@ -57552,6 +63349,978 @@ class ResourceGroupReference {
         new core.Map<core.String, core.Object>();
     if (group != null) {
       _json["group"] = group;
+    }
+    return _json;
+  }
+}
+
+class ResourcePoliciesScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ResourcePoliciesScopedListWarningData();
+
+  ResourcePoliciesScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Informational warning which replaces the list of resourcePolicies when the
+/// list is empty.
+class ResourcePoliciesScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ResourcePoliciesScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ResourcePoliciesScopedListWarning();
+
+  ResourcePoliciesScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<ResourcePoliciesScopedListWarningData>((value) =>
+              new ResourcePoliciesScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class ResourcePoliciesScopedList {
+  /// A list of resourcePolicies contained in this scope.
+  core.List<ResourcePolicy> resourcePolicies;
+
+  /// Informational warning which replaces the list of resourcePolicies when the
+  /// list is empty.
+  ResourcePoliciesScopedListWarning warning;
+
+  ResourcePoliciesScopedList();
+
+  ResourcePoliciesScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("resourcePolicies")) {
+      resourcePolicies = (_json["resourcePolicies"] as core.List)
+          .map<ResourcePolicy>((value) => new ResourcePolicy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new ResourcePoliciesScopedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourcePolicies != null) {
+      _json["resourcePolicies"] =
+          resourcePolicies.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class ResourcePolicy {
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+  core.String description;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] Type of the resource. Always compute#resource_policies for
+  /// resource policies.
+  core.String kind;
+
+  /// The name of the resource, provided by the client when initially creating
+  /// the resource. The resource name must be 1-63 characters long, and comply
+  /// with RFC1035. Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+  /// first character must be a lowercase letter, and all following characters
+  /// must be a dash, lowercase letter, or digit, except the last character,
+  /// which cannot be a dash.
+  core.String name;
+  core.String region;
+
+  /// [Output Only] Server-defined fully-qualified URL for this resource.
+  core.String selfLink;
+
+  /// Resource policy for persistent disks for creating snapshots.
+  ResourcePolicySnapshotSchedulePolicy snapshotSchedulePolicy;
+
+  /// [Output Only] The status of resource policy creation.
+  /// Possible string values are:
+  /// - "CREATING"
+  /// - "DELETING"
+  /// - "INVALID"
+  /// - "READY"
+  core.String status;
+
+  ResourcePolicy();
+
+  ResourcePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("snapshotSchedulePolicy")) {
+      snapshotSchedulePolicy =
+          new ResourcePolicySnapshotSchedulePolicy.fromJson(
+              _json["snapshotSchedulePolicy"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (snapshotSchedulePolicy != null) {
+      _json["snapshotSchedulePolicy"] = (snapshotSchedulePolicy).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+class ResourcePolicyAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ResourcePolicyAggregatedListWarningData();
+
+  ResourcePolicyAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ResourcePolicyAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ResourcePolicyAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ResourcePolicyAggregatedListWarning();
+
+  ResourcePolicyAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<ResourcePolicyAggregatedListWarningData>((value) =>
+              new ResourcePolicyAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Contains a list of resourcePolicies.
+class ResourcePolicyAggregatedList {
+  core.String etag;
+
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of ResourcePolicy resources.
+  core.Map<core.String, ResourcePoliciesScopedList> items;
+
+  /// Type of resource.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  ResourcePolicyAggregatedListWarning warning;
+
+  ResourcePolicyAggregatedList();
+
+  ResourcePolicyAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map, ResourcePoliciesScopedList>(
+          _json["items"].cast<core.String, core.Map>(),
+          (core.Map item) => new ResourcePoliciesScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new ResourcePolicyAggregatedListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap<ResourcePoliciesScopedList,
+              core.Map<core.String, core.Object>>(
+          items, (ResourcePoliciesScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Time window specified for daily operations.
+class ResourcePolicyDailyCycle {
+  /// Defines a schedule that runs every nth day of the month.
+  core.int daysInCycle;
+
+  /// [Output only] A predetermined duration for the window, automatically
+  /// chosen to be the smallest possible in the given scenario.
+  core.String duration;
+
+  /// Start time of the window. This must be in UTC format that resolves to one
+  /// of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5
+  /// and 08:00 are valid.
+  core.String startTime;
+
+  ResourcePolicyDailyCycle();
+
+  ResourcePolicyDailyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey("daysInCycle")) {
+      daysInCycle = _json["daysInCycle"];
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (daysInCycle != null) {
+      _json["daysInCycle"] = daysInCycle;
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// Time window specified for hourly operations.
+class ResourcePolicyHourlyCycle {
+  /// [Output only] Duration of the time window, automatically chosen to be
+  /// smallest possible in the given scenario.
+  core.String duration;
+
+  /// Allows to define schedule that runs every nth hour.
+  core.int hoursInCycle;
+
+  /// Time within the window to start the operations. It must be in format
+  /// "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+  core.String startTime;
+
+  ResourcePolicyHourlyCycle();
+
+  ResourcePolicyHourlyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("hoursInCycle")) {
+      hoursInCycle = _json["hoursInCycle"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (hoursInCycle != null) {
+      _json["hoursInCycle"] = hoursInCycle;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+class ResourcePolicyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ResourcePolicyListWarningData();
+
+  ResourcePolicyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ResourcePolicyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ResourcePolicyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ResourcePolicyListWarning();
+
+  ResourcePolicyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = (_json["data"] as core.List)
+          .map<ResourcePolicyListWarningData>(
+              (value) => new ResourcePolicyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class ResourcePolicyList {
+  core.String etag;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] A list of ResourcePolicy resources.
+  core.List<ResourcePolicy> items;
+
+  /// [Output Only] Type of resource.Always compute#resourcePoliciesList for
+  /// listsof resourcePolicies
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  ResourcePolicyListWarning warning;
+
+  ResourcePolicyList();
+
+  ResourcePolicyList.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<ResourcePolicy>((value) => new ResourcePolicy.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new ResourcePolicyListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A snapshot schedule policy specifies when and how frequently snapshots are
+/// to be created for the target disk. Also specifies how many and how long
+/// these scheduled snapshots should be retained.
+class ResourcePolicySnapshotSchedulePolicy {
+  /// Retention policy applied to snapshots created by this resource policy.
+  ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy;
+
+  /// A Vm Maintenance Policy specifies what kind of infrastructure maintenance
+  /// we are allowed to perform on this VM and when. Schedule that is applied to
+  /// disks covered by this policy.
+  ResourcePolicySnapshotSchedulePolicySchedule schedule;
+
+  /// Properties with which snapshots are created such as labels, encryption
+  /// keys.
+  ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties;
+
+  ResourcePolicySnapshotSchedulePolicy();
+
+  ResourcePolicySnapshotSchedulePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("retentionPolicy")) {
+      retentionPolicy =
+          new ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromJson(
+              _json["retentionPolicy"]);
+    }
+    if (_json.containsKey("schedule")) {
+      schedule = new ResourcePolicySnapshotSchedulePolicySchedule.fromJson(
+          _json["schedule"]);
+    }
+    if (_json.containsKey("snapshotProperties")) {
+      snapshotProperties =
+          new ResourcePolicySnapshotSchedulePolicySnapshotProperties.fromJson(
+              _json["snapshotProperties"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (retentionPolicy != null) {
+      _json["retentionPolicy"] = (retentionPolicy).toJson();
+    }
+    if (schedule != null) {
+      _json["schedule"] = (schedule).toJson();
+    }
+    if (snapshotProperties != null) {
+      _json["snapshotProperties"] = (snapshotProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Policy for retention of scheduled snapshots.
+class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+  /// Maximum age of the snapshot that is allowed to be kept.
+  core.int maxRetentionDays;
+
+  /// Specifies the behavior to apply to scheduled snapshots when the source
+  /// disk is deleted.
+  /// Possible string values are:
+  /// - "APPLY_RETENTION_POLICY"
+  /// - "KEEP_AUTO_SNAPSHOTS"
+  /// - "UNSPECIFIED_ON_SOURCE_DISK_DELETE"
+  core.String onSourceDiskDelete;
+
+  ResourcePolicySnapshotSchedulePolicyRetentionPolicy();
+
+  ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("maxRetentionDays")) {
+      maxRetentionDays = _json["maxRetentionDays"];
+    }
+    if (_json.containsKey("onSourceDiskDelete")) {
+      onSourceDiskDelete = _json["onSourceDiskDelete"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxRetentionDays != null) {
+      _json["maxRetentionDays"] = maxRetentionDays;
+    }
+    if (onSourceDiskDelete != null) {
+      _json["onSourceDiskDelete"] = onSourceDiskDelete;
+    }
+    return _json;
+  }
+}
+
+/// A schedule for disks where the schedueled operations are performed.
+class ResourcePolicySnapshotSchedulePolicySchedule {
+  ResourcePolicyDailyCycle dailySchedule;
+  ResourcePolicyHourlyCycle hourlySchedule;
+  ResourcePolicyWeeklyCycle weeklySchedule;
+
+  ResourcePolicySnapshotSchedulePolicySchedule();
+
+  ResourcePolicySnapshotSchedulePolicySchedule.fromJson(core.Map _json) {
+    if (_json.containsKey("dailySchedule")) {
+      dailySchedule =
+          new ResourcePolicyDailyCycle.fromJson(_json["dailySchedule"]);
+    }
+    if (_json.containsKey("hourlySchedule")) {
+      hourlySchedule =
+          new ResourcePolicyHourlyCycle.fromJson(_json["hourlySchedule"]);
+    }
+    if (_json.containsKey("weeklySchedule")) {
+      weeklySchedule =
+          new ResourcePolicyWeeklyCycle.fromJson(_json["weeklySchedule"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dailySchedule != null) {
+      _json["dailySchedule"] = (dailySchedule).toJson();
+    }
+    if (hourlySchedule != null) {
+      _json["hourlySchedule"] = (hourlySchedule).toJson();
+    }
+    if (weeklySchedule != null) {
+      _json["weeklySchedule"] = (weeklySchedule).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Specified snapshot properties for scheduled snapshots created by this
+/// policy.
+class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
+  /// Indication to perform a ?guest aware? snapshot.
+  core.bool guestFlush;
+
+  /// Labels to apply to scheduled snapshots. These can be later modified by the
+  /// setLabels method. Label values may be empty.
+  core.Map<core.String, core.String> labels;
+
+  /// GCS bucket storage location of the auto snapshot (regional or
+  /// multi-regional).
+  core.List<core.String> storageLocations;
+
+  ResourcePolicySnapshotSchedulePolicySnapshotProperties();
+
+  ResourcePolicySnapshotSchedulePolicySnapshotProperties.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("guestFlush")) {
+      guestFlush = _json["guestFlush"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("storageLocations")) {
+      storageLocations =
+          (_json["storageLocations"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (guestFlush != null) {
+      _json["guestFlush"] = guestFlush;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (storageLocations != null) {
+      _json["storageLocations"] = storageLocations;
+    }
+    return _json;
+  }
+}
+
+/// Time window specified for weekly operations.
+class ResourcePolicyWeeklyCycle {
+  /// Up to 7 intervals/windows, one for each day of the week.
+  core.List<ResourcePolicyWeeklyCycleDayOfWeek> dayOfWeeks;
+
+  ResourcePolicyWeeklyCycle();
+
+  ResourcePolicyWeeklyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey("dayOfWeeks")) {
+      dayOfWeeks = (_json["dayOfWeeks"] as core.List)
+          .map<ResourcePolicyWeeklyCycleDayOfWeek>(
+              (value) => new ResourcePolicyWeeklyCycleDayOfWeek.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dayOfWeeks != null) {
+      _json["dayOfWeeks"] =
+          dayOfWeeks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ResourcePolicyWeeklyCycleDayOfWeek {
+  /// Allows to define schedule that runs specified day of the week.
+  /// Possible string values are:
+  /// - "FRIDAY"
+  /// - "INVALID"
+  /// - "MONDAY"
+  /// - "SATURDAY"
+  /// - "SUNDAY"
+  /// - "THURSDAY"
+  /// - "TUESDAY"
+  /// - "WEDNESDAY"
+  core.String day;
+
+  /// [Output only] Duration of the time window, automatically chosen to be
+  /// smallest possible in the given scenario.
+  core.String duration;
+
+  /// Time within the window to start the operations. It must be in format
+  /// "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+  core.String startTime;
+
+  ResourcePolicyWeeklyCycleDayOfWeek();
+
+  ResourcePolicyWeeklyCycleDayOfWeek.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }
@@ -57664,27 +64433,17 @@ class RouteWarnings {
   }
 }
 
-/// Represents a Route resource. A route specifies how certain packets should be
-/// handled by the network. Routes are associated with instances by tags and the
-/// set of routes for a particular instance is called its routing table.
+/// Represents a Route resource.
 ///
-/// For each packet leaving an instance, the system searches that instance's
-/// routing table for a single best matching route. Routes match packets by
-/// destination IP address, preferring smaller or more specific ranges over
-/// larger ones. If there is a tie, the system selects the route with the
-/// smallest priority value. If there is still a tie, it uses the layer three
-/// and four packet headers to select just one of the remaining matching routes.
-/// The packet is then forwarded as specified by the nextHop field of the
-/// winning route - either to another instance destination, an instance gateway,
-/// or a Google Compute Engine-operated gateway.
-///
-/// Packets that do not match any route in the sending instance's routing table
-/// are dropped. (== resource_for beta.routes ==) (== resource_for v1.routes ==)
+/// A route defines a path from VM instances in the VPC network to a specific
+/// destination. This destination can be inside or outside the VPC network. For
+/// more information, read the Routes overview. (== resource_for beta.routes ==)
+/// (== resource_for v1.routes ==)
 class Route {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
-  /// An optional description of this resource. Provide this property when you
+  /// An optional description of this resource. Provide this field when you
   /// create the resource.
   core.String description;
 
@@ -57703,10 +64462,10 @@ class Route {
   /// Name of the resource. Provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with RFC1035.
   /// Specifically, the name must be 1-63 characters long and match the regular
-  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character
-  /// must be a lowercase letter, and all following characters must be a dash,
-  /// lowercase letter, or digit, except the last character, which cannot be a
-  /// dash.
+  /// expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a
+  /// lowercase letter, and all following characters (except for the last
+  /// character) must be a dash, lowercase letter, or digit. The last character
+  /// must be a lowercase letter or digit.
   core.String name;
 
   /// Fully-qualified URL of the network that this route applies to.
@@ -57714,7 +64473,7 @@ class Route {
 
   /// The URL to a gateway that should handle matching packets. You can only
   /// specify the internet gateway using a full or partial valid URL:
-  /// projects/<project-id>/global/gateways/default-internet-gateway
+  /// projects/project/global/gateways/default-internet-gateway
   core.String nextHopGateway;
 
   /// The URL to an instance that should handle matching packets. You can
@@ -57737,10 +64496,10 @@ class Route {
   core.String nextHopVpnTunnel;
 
   /// The priority of this route. Priority is used to break ties in cases where
-  /// there is more than one matching route of equal prefix length. In the case
-  /// of two routes with equal prefix length, the one with the lowest-numbered
-  /// priority value wins. Default value is 1000. Valid range is 0 through
-  /// 65535.
+  /// there is more than one matching route of equal prefix length. In cases
+  /// where multiple routes have equal prefix length, the one with the
+  /// lowest-numbered priority value wins. The default value is `1000`. The
+  /// priority value must be from `0` to `65535`, inclusive.
   core.int priority;
 
   /// [Output Only] Server-defined fully-qualified URL for this resource.
@@ -58051,14 +64810,17 @@ class RouteList {
   }
 }
 
-/// Router resource.
+/// Represents a Cloud Router resource.
+///
+/// For more information about Cloud Router, read the the Cloud Router overview.
 class Router {
   /// BGP information specific to this router.
   RouterBgp bgp;
 
-  /// BGP information that needs to be configured into the routing stack to
-  /// establish the BGP peering. It must specify peer ASN and either interface
-  /// name, IP, or peer IP. Please refer to RFC4273.
+  /// BGP information that must be configured into the routing stack to
+  /// establish BGP peering. This information must specify the peer ASN and
+  /// either the interface name, IP address, or peer IP address. Please refer to
+  /// RFC4273.
   core.List<RouterBgpPeer> bgpPeers;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -58072,9 +64834,9 @@ class Router {
   /// defined by the server.
   core.String id;
 
-  /// Router interfaces. Each interface requires either one linked resource
-  /// (e.g. linkedVpnTunnel), or IP address and IP address range (e.g. ipRange),
-  /// or both.
+  /// Router interfaces. Each interface requires either one linked resource,
+  /// (for example, linkedVpnTunnel), or IP address and IP address range (for
+  /// example, ipRange), or both.
   core.List<RouterInterface> interfaces;
 
   /// [Output Only] Type of resource. Always compute#router for routers.
@@ -58089,7 +64851,7 @@ class Router {
   /// dash.
   core.String name;
 
-  /// A list of Nat services created in this router.
+  /// A list of NAT services created in this router.
   core.List<RouterNat> nats;
 
   /// URI of the network to which this router belongs.
@@ -58411,7 +65173,8 @@ class RouterAggregatedList {
 }
 
 class RouterBgp {
-  /// User-specified flag to indicate which mode to use for advertisement.
+  /// User-specified flag to indicate which mode to use for advertisement. The
+  /// options are DEFAULT or CUSTOM.
   /// Possible string values are:
   /// - "CUSTOM"
   /// - "DEFAULT"
@@ -58484,23 +65247,28 @@ class RouterBgpPeer {
   /// - "DEFAULT"
   core.String advertiseMode;
 
-  /// User-specified list of prefix groups to advertise in custom mode. This
-  /// field can only be populated if advertise_mode is CUSTOM and overrides the
-  /// list defined for the router (in Bgp message). These groups will be
-  /// advertised in addition to any specified prefixes. Leave this field blank
-  /// to advertise no custom groups.
+  /// User-specified list of prefix groups to advertise in custom mode, which
+  /// can take one of the following options:
+  /// - ALL_SUBNETS: Advertises all available subnets, including peer VPC
+  /// subnets.
+  /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets.
+  /// - ALL_PEER_VPC_SUBNETS: Advertises peer subnets of the router's VPC
+  /// network. Note that this field can only be populated if advertise_mode is
+  /// CUSTOM and overrides the list defined for the router (in the "bgp"
+  /// message). These groups are advertised in addition to any specified
+  /// prefixes. Leave this field blank to advertise no custom groups.
   core.List<core.String> advertisedGroups;
 
   /// User-specified list of individual IP ranges to advertise in custom mode.
   /// This field can only be populated if advertise_mode is CUSTOM and overrides
-  /// the list defined for the router (in Bgp message). These IP ranges will be
-  /// advertised in addition to any specified groups. Leave this field blank to
-  /// advertise no custom IP ranges.
+  /// the list defined for the router (in the "bgp" message). These IP ranges
+  /// are advertised in addition to any specified groups. Leave this field blank
+  /// to advertise no custom IP ranges.
   core.List<RouterAdvertisedIpRange> advertisedIpRanges;
 
-  /// The priority of routes advertised to this BGP peer. In the case where
-  /// there is more than one matching route of maximum length, the routes with
-  /// lowest priority value win.
+  /// The priority of routes advertised to this BGP peer. Where there is more
+  /// than one matching route of maximum length, the routes with the lowest
+  /// priority value win.
   core.int advertisedRoutePriority;
 
   /// Name of the interface the BGP peer is associated with.
@@ -58511,10 +65279,11 @@ class RouterBgpPeer {
   core.String ipAddress;
 
   /// [Output Only] The resource that configures and manages this BGP peer.
-  /// MANAGED_BY_USER is the default value and can be managed by you or other
-  /// users; MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed
-  /// by Cloud Interconnect, specifically by an InterconnectAttachment of type
-  /// PARTNER. Google will automatically create, update, and delete this type of
+  /// - MANAGED_BY_USER is the default value and can be managed by you or other
+  /// users
+  /// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by
+  /// Cloud Interconnect, specifically by an InterconnectAttachment of type
+  /// PARTNER. Google automatically creates, updates, and deletes this type of
   /// BGP peer when the PARTNER InterconnectAttachment is created, updated, or
   /// deleted.
   /// Possible string values are:
@@ -58526,12 +65295,12 @@ class RouterBgpPeer {
   /// with RFC1035.
   core.String name;
 
-  /// Peer BGP Autonomous System Number (ASN). For VPN use case, this value can
-  /// be different for every tunnel.
+  /// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a
+  /// different value.
   core.int peerAsn;
 
-  /// IP address of the BGP interface outside Google cloud. Only IPv4 is
-  /// supported.
+  /// IP address of the BGP interface outside Google Cloud Platform. Only IPv4
+  /// is supported.
   core.String peerIpAddress;
 
   RouterBgpPeer();
@@ -58613,28 +65382,29 @@ class RouterBgpPeer {
 
 class RouterInterface {
   /// IP address and range of the interface. The IP range must be in the RFC3927
-  /// link-local IP space. The value must be a CIDR-formatted string, for
-  /// example: 169.254.0.1/30. NOTE: Do not truncate the address as it
+  /// link-local IP address space. The value must be a CIDR-formatted string,
+  /// for example: 169.254.0.1/30. NOTE: Do not truncate the address as it
   /// represents the IP address of the interface.
   core.String ipRange;
 
-  /// URI of the linked interconnect attachment. It must be in the same region
-  /// as the router. Each interface can have at most one linked resource and it
-  /// could either be a VPN Tunnel or an interconnect attachment.
+  /// URI of the linked Interconnect attachment. It must be in the same region
+  /// as the router. Each interface can have one linked resource, which can be
+  /// either be a VPN tunnel or an Interconnect attachment.
   core.String linkedInterconnectAttachment;
 
-  /// URI of the linked VPN tunnel. It must be in the same region as the router.
-  /// Each interface can have at most one linked resource and it could either be
-  /// a VPN Tunnel or an interconnect attachment.
+  /// URI of the linked VPN tunnel, which must be in the same region as the
+  /// router. Each interface can have one linked resource, which can be either a
+  /// VPN tunnel or an Interconnect attachment.
   core.String linkedVpnTunnel;
 
   /// [Output Only] The resource that configures and manages this interface.
-  /// MANAGED_BY_USER is the default value and can be managed by you or other
-  /// users; MANAGED_BY_ATTACHMENT is an interface that is configured and
-  /// managed by Cloud Interconnect, specifically by an InterconnectAttachment
-  /// of type PARTNER. Google will automatically create, update, and delete this
-  /// type of interface when the PARTNER InterconnectAttachment is created,
-  /// updated, or deleted.
+  /// - MANAGED_BY_USER is the default value and can be managed directly by
+  /// users.
+  /// - MANAGED_BY_ATTACHMENT is an interface that is configured and managed by
+  /// Cloud Interconnect, specifically, by an InterconnectAttachment of type
+  /// PARTNER. Google automatically creates, updates, and deletes this type of
+  /// interface when the PARTNER InterconnectAttachment is created, updated, or
+  /// deleted.
   /// Possible string values are:
   /// - "MANAGED_BY_ATTACHMENT"
   /// - "MANAGED_BY_USER"
@@ -58877,32 +65647,47 @@ class RouterNat {
   /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
   core.int icmpIdleTimeoutSec;
 
+  /// Configure logging on this NAT.
+  RouterNatLogConfig logConfig;
+
   /// Minimum number of ports allocated to a VM from this NAT config. If not
-  /// set, a default number of ports is allocated to a VM. This gets rounded up
-  /// to the nearest power of 2. Eg. if the value of this field is 50, at least
-  /// 64 ports will be allocated to a VM.
+  /// set, a default number of ports is allocated to a VM. This is rounded up to
+  /// the nearest power of 2. For example, if the value of this field is 50, at
+  /// least 64 ports are allocated to a VM.
   core.int minPortsPerVm;
 
   /// Unique name of this Nat service. The name must be 1-63 characters long and
   /// comply with RFC1035.
   core.String name;
 
-  /// Specify the NatIpAllocateOption. If it is AUTO_ONLY, then nat_ip should be
+  /// Specify the NatIpAllocateOption, which can take one of the following
+  /// values:
+  /// - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When
+  /// there are not enough specified Nat IPs, the Nat service fails for new VMs.
+  /// - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers
+  /// can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be
   /// empty.
   /// Possible string values are:
   /// - "AUTO_ONLY"
   /// - "MANUAL_ONLY"
   core.String natIpAllocateOption;
 
-  /// A list of URLs of the IP resources used for this Nat service. These IPs
-  /// must be valid static external IP addresses assigned to the project.
-  /// max_length is subject to change post alpha.
+  /// A list of URLs of the IP resources used for this Nat service. These IP
+  /// addresses must be valid static external IP addresses assigned to the
+  /// project.
   core.List<core.String> natIps;
 
-  /// Specify the Nat option. If this field contains
-  /// ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES,
-  /// then there should not be any other Router.Nat section in any Router for
-  /// this network in this region.
+  /// Specify the Nat option, which can take one of the following values:
+  /// - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork
+  /// are allowed to Nat.
+  /// - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in
+  /// every Subnetwork are allowed to Nat.
+  /// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified
+  /// in the field subnetwork below) The default is
+  /// SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field
+  /// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
+  /// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other
+  /// Router.Nat section in any Router for this network in this region.
   /// Possible string values are:
   /// - "ALL_SUBNETWORKS_ALL_IP_RANGES"
   /// - "ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES"
@@ -58930,6 +65715,9 @@ class RouterNat {
   RouterNat.fromJson(core.Map _json) {
     if (_json.containsKey("icmpIdleTimeoutSec")) {
       icmpIdleTimeoutSec = _json["icmpIdleTimeoutSec"];
+    }
+    if (_json.containsKey("logConfig")) {
+      logConfig = new RouterNatLogConfig.fromJson(_json["logConfig"]);
     }
     if (_json.containsKey("minPortsPerVm")) {
       minPortsPerVm = _json["minPortsPerVm"];
@@ -58969,6 +65757,9 @@ class RouterNat {
     if (icmpIdleTimeoutSec != null) {
       _json["icmpIdleTimeoutSec"] = icmpIdleTimeoutSec;
     }
+    if (logConfig != null) {
+      _json["logConfig"] = (logConfig).toJson();
+    }
     if (minPortsPerVm != null) {
       _json["minPortsPerVm"] = minPortsPerVm;
     }
@@ -59001,9 +65792,46 @@ class RouterNat {
   }
 }
 
+/// Configuration of logging on a NAT.
+class RouterNatLogConfig {
+  /// Indicates whether or not to export logs. This is false by default.
+  core.bool enable;
+
+  /// Specifies the desired filtering of logs on this NAT. If unspecified, logs
+  /// are exported for all connections handled by this NAT.
+  /// Possible string values are:
+  /// - "ALL"
+  /// - "ERRORS_ONLY"
+  /// - "TRANSLATIONS_ONLY"
+  core.String filter;
+
+  RouterNatLogConfig();
+
+  RouterNatLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enable")) {
+      enable = _json["enable"];
+    }
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enable != null) {
+      _json["enable"] = enable;
+    }
+    if (filter != null) {
+      _json["filter"] = filter;
+    }
+    return _json;
+  }
+}
+
 /// Defines the IP ranges that want to use NAT for a subnetwork.
 class RouterNatSubnetworkToNat {
-  /// URL for the subnetwork resource to use NAT.
+  /// URL for the subnetwork resource that will use NAT.
   core.String name;
 
   /// A list of the secondary ranges of the Subnetwork that are allowed to use
@@ -59011,9 +65839,9 @@ class RouterNatSubnetworkToNat {
   /// the values in source_ip_ranges_to_nat.
   core.List<core.String> secondaryIpRangeNames;
 
-  /// Specify the options for NAT ranges in the Subnetwork. All usages of single
-  /// value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid
-  /// option with multiple values is: ["PRIMARY_IP_RANGE",
+  /// Specify the options for NAT ranges in the Subnetwork. All options of a
+  /// single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only
+  /// valid option with multiple values is: ["PRIMARY_IP_RANGE",
   /// "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]
   core.List<core.String> sourceIpRangesToNat;
 
@@ -59227,7 +66055,7 @@ class RouterStatusBgpPeerStatus {
   }
 }
 
-/// Status of a NAT contained in this router.
+/// Status of a NAT contained in this router. Next tag: 9
 class RouterStatusNatStatus {
   /// A list of IPs auto-allocated for NAT. Example: ["1.1.1.1", "129.2.16.89"]
   core.List<core.String> autoAllocatedNatIps;
@@ -59602,6 +66430,31 @@ class SSLHealthCheck {
   /// port_name are defined, port takes precedence.
   core.String portName;
 
+  /// Specifies how port is selected for health checking, can be one of
+  /// following values:
+  /// USE_FIXED_PORT: The port number in
+  /// port
+  /// is used for health checking.
+  /// USE_NAMED_PORT: The
+  /// portName
+  /// is used for health checking.
+  /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+  /// network endpoint is used for health checking. For other backends, the port
+  /// or named port specified in the Backend Service is used for health
+  /// checking.
+  ///
+  ///
+  /// If not specified, SSL health check follows behavior specified in
+  /// port
+  /// and
+  /// portName
+  /// fields.
+  /// Possible string values are:
+  /// - "USE_FIXED_PORT"
+  /// - "USE_NAMED_PORT"
+  /// - "USE_SERVING_PORT"
+  core.String portSpecification;
+
   /// Specifies the type of proxy header to append before sending data to the
   /// backend, either NONE or PROXY_V1. The default is NONE.
   /// Possible string values are:
@@ -59629,6 +66482,9 @@ class SSLHealthCheck {
     if (_json.containsKey("portName")) {
       portName = _json["portName"];
     }
+    if (_json.containsKey("portSpecification")) {
+      portSpecification = _json["portSpecification"];
+    }
     if (_json.containsKey("proxyHeader")) {
       proxyHeader = _json["proxyHeader"];
     }
@@ -59649,6 +66505,9 @@ class SSLHealthCheck {
     if (portName != null) {
       _json["portName"] = portName;
     }
+    if (portSpecification != null) {
+      _json["portSpecification"] = portSpecification;
+    }
     if (proxyHeader != null) {
       _json["proxyHeader"] = proxyHeader;
     }
@@ -59662,7 +66521,7 @@ class SSLHealthCheck {
   }
 }
 
-/// Sets the scheduling options for an Instance.
+/// Sets the scheduling options for an Instance. NextID: 9
 class Scheduling {
   /// Specifies whether the instance should be automatically restarted if it is
   /// terminated by Compute Engine (not terminated by a user). You can only set
@@ -60291,6 +67150,32 @@ class SerialPortOutput {
   }
 }
 
+class ServerBinding {
+  ///
+  /// Possible string values are:
+  /// - "RESTART_NODE_ON_ANY_SERVER"
+  /// - "RESTART_NODE_ON_MINIMAL_SERVERS"
+  /// - "SERVER_BINDING_TYPE_UNSPECIFIED"
+  core.String type;
+
+  ServerBinding();
+
+  ServerBinding.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// A service account.
 class ServiceAccount {
   /// Email address of the service account.
@@ -60318,6 +67203,148 @@ class ServiceAccount {
     }
     if (scopes != null) {
       _json["scopes"] = scopes;
+    }
+    return _json;
+  }
+}
+
+/// A set of Shielded Instance options.
+class ShieldedInstanceConfig {
+  /// Defines whether the instance has integrity monitoring enabled.
+  core.bool enableIntegrityMonitoring;
+
+  /// Defines whether the instance has Secure Boot enabled.
+  core.bool enableSecureBoot;
+
+  /// Defines whether the instance has the vTPM enabled.
+  core.bool enableVtpm;
+
+  ShieldedInstanceConfig();
+
+  ShieldedInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableIntegrityMonitoring")) {
+      enableIntegrityMonitoring = _json["enableIntegrityMonitoring"];
+    }
+    if (_json.containsKey("enableSecureBoot")) {
+      enableSecureBoot = _json["enableSecureBoot"];
+    }
+    if (_json.containsKey("enableVtpm")) {
+      enableVtpm = _json["enableVtpm"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableIntegrityMonitoring != null) {
+      _json["enableIntegrityMonitoring"] = enableIntegrityMonitoring;
+    }
+    if (enableSecureBoot != null) {
+      _json["enableSecureBoot"] = enableSecureBoot;
+    }
+    if (enableVtpm != null) {
+      _json["enableVtpm"] = enableVtpm;
+    }
+    return _json;
+  }
+}
+
+/// A shielded Instance identity entry.
+class ShieldedInstanceIdentity {
+  /// An Endorsement Key (EK) issued to the Shielded Instance's vTPM.
+  ShieldedInstanceIdentityEntry encryptionKey;
+
+  /// [Output Only] Type of the resource. Always
+  /// compute#shieldedInstanceIdentity for shielded Instance identity entry.
+  core.String kind;
+
+  /// An Attestation Key (AK) issued to the Shielded Instance's vTPM.
+  ShieldedInstanceIdentityEntry signingKey;
+
+  ShieldedInstanceIdentity();
+
+  ShieldedInstanceIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("encryptionKey")) {
+      encryptionKey =
+          new ShieldedInstanceIdentityEntry.fromJson(_json["encryptionKey"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("signingKey")) {
+      signingKey =
+          new ShieldedInstanceIdentityEntry.fromJson(_json["signingKey"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (encryptionKey != null) {
+      _json["encryptionKey"] = (encryptionKey).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (signingKey != null) {
+      _json["signingKey"] = (signingKey).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A Shielded Instance Identity Entry.
+class ShieldedInstanceIdentityEntry {
+  /// A PEM-encoded X.509 certificate. This field can be empty.
+  core.String ekCert;
+
+  /// A PEM-encoded public key.
+  core.String ekPub;
+
+  ShieldedInstanceIdentityEntry();
+
+  ShieldedInstanceIdentityEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("ekCert")) {
+      ekCert = _json["ekCert"];
+    }
+    if (_json.containsKey("ekPub")) {
+      ekPub = _json["ekPub"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ekCert != null) {
+      _json["ekCert"] = ekCert;
+    }
+    if (ekPub != null) {
+      _json["ekPub"] = ekPub;
+    }
+    return _json;
+  }
+}
+
+/// The policy describes the baseline against which Instance boot integrity is
+/// measured.
+class ShieldedInstanceIntegrityPolicy {
+  /// Updates the integrity policy baseline using the measurements from the VM
+  /// instance's most recent boot.
+  core.bool updateAutoLearnPolicy;
+
+  ShieldedInstanceIntegrityPolicy();
+
+  ShieldedInstanceIntegrityPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("updateAutoLearnPolicy")) {
+      updateAutoLearnPolicy = _json["updateAutoLearnPolicy"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (updateAutoLearnPolicy != null) {
+      _json["updateAutoLearnPolicy"] = updateAutoLearnPolicy;
     }
     return _json;
   }
@@ -60361,9 +67388,16 @@ class SignedUrlKey {
   }
 }
 
-/// A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (==
-/// resource_for v1.snapshots ==)
+/// Represents a Persistent Disk Snapshot resource.
+///
+/// You can use snapshots to back up data on a regular interval. For more
+/// information, read  Creating persistent disk snapshots. (== resource_for
+/// beta.snapshots ==) (== resource_for v1.snapshots ==)
 class Snapshot {
+  /// [Output Only] Set to true if snapshots are automatically by applying
+  /// resource policy on the target disk.
+  core.bool autoCreated;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -60429,12 +67463,12 @@ class Snapshot {
   /// Encrypts the snapshot using a customer-supplied encryption key.
   ///
   /// After you encrypt a snapshot using a customer-supplied key, you must
-  /// provide the same key if you use the image later For example, you must
+  /// provide the same key if you use the snapshot later. For example, you must
   /// provide the encryption key when you create a disk from the encrypted
   /// snapshot in a future request.
   ///
   /// Customer-supplied encryption keys do not protect access to metadata of the
-  /// disk.
+  /// snapshot.
   ///
   /// If you do not provide an encryption key when creating the snapshot, then
   /// the snapshot will be encrypted using an automatically generated key and
@@ -60477,9 +67511,15 @@ class Snapshot {
   /// - "UP_TO_DATE"
   core.String storageBytesStatus;
 
+  /// GCS bucket storage location of the snapshot (regional or multi-regional).
+  core.List<core.String> storageLocations;
+
   Snapshot();
 
   Snapshot.fromJson(core.Map _json) {
+    if (_json.containsKey("autoCreated")) {
+      autoCreated = _json["autoCreated"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -60536,11 +67576,18 @@ class Snapshot {
     if (_json.containsKey("storageBytesStatus")) {
       storageBytesStatus = _json["storageBytesStatus"];
     }
+    if (_json.containsKey("storageLocations")) {
+      storageLocations =
+          (_json["storageLocations"] as core.List).cast<core.String>();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoCreated != null) {
+      _json["autoCreated"] = autoCreated;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -60594,6 +67641,9 @@ class Snapshot {
     }
     if (storageBytesStatus != null) {
       _json["storageBytesStatus"] = storageBytesStatus;
+    }
+    if (storageLocations != null) {
+      _json["storageLocations"] = storageLocations;
     }
     return _json;
   }
@@ -61598,8 +68648,12 @@ class SslPolicyReference {
   }
 }
 
-/// A Subnetwork resource. (== resource_for beta.subnetworks ==) (==
-/// resource_for v1.subnetworks ==)
+/// Represents a Subnetwork resource.
+///
+/// A subnetwork (also known as a subnet) is a logical partition of a Virtual
+/// Private Cloud network with one primary IP range and zero or more secondary
+/// IP ranges. For more information, read  Virtual Private Cloud (VPC) Network.
+/// (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)
 class Subnetwork {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -62385,6 +69439,31 @@ class TCPHealthCheck {
   /// port_name are defined, port takes precedence.
   core.String portName;
 
+  /// Specifies how port is selected for health checking, can be one of
+  /// following values:
+  /// USE_FIXED_PORT: The port number in
+  /// port
+  /// is used for health checking.
+  /// USE_NAMED_PORT: The
+  /// portName
+  /// is used for health checking.
+  /// USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
+  /// network endpoint is used for health checking. For other backends, the port
+  /// or named port specified in the Backend Service is used for health
+  /// checking.
+  ///
+  ///
+  /// If not specified, TCP health check follows behavior specified in
+  /// port
+  /// and
+  /// portName
+  /// fields.
+  /// Possible string values are:
+  /// - "USE_FIXED_PORT"
+  /// - "USE_NAMED_PORT"
+  /// - "USE_SERVING_PORT"
+  core.String portSpecification;
+
   /// Specifies the type of proxy header to append before sending data to the
   /// backend, either NONE or PROXY_V1. The default is NONE.
   /// Possible string values are:
@@ -62412,6 +69491,9 @@ class TCPHealthCheck {
     if (_json.containsKey("portName")) {
       portName = _json["portName"];
     }
+    if (_json.containsKey("portSpecification")) {
+      portSpecification = _json["portSpecification"];
+    }
     if (_json.containsKey("proxyHeader")) {
       proxyHeader = _json["proxyHeader"];
     }
@@ -62431,6 +69513,9 @@ class TCPHealthCheck {
     }
     if (portName != null) {
       _json["portName"] = portName;
+    }
+    if (portSpecification != null) {
+      _json["portSpecification"] = portSpecification;
     }
     if (proxyHeader != null) {
       _json["proxyHeader"] = proxyHeader;
@@ -63135,9 +70220,13 @@ class TargetHttpsProxyList {
   }
 }
 
-/// A TargetInstance resource. This resource defines an endpoint instance that
-/// terminates traffic of certain protocols. (== resource_for
-/// beta.targetInstances ==) (== resource_for v1.targetInstances ==)
+/// Represents a Target Instance resource.
+///
+/// You can use a target instance to handle traffic for one or more forwarding
+/// rules, which is ideal for forwarding protocol traffic that is managed by a
+/// single source. For example, ESP, AH, TCP, or UDP. For more information, read
+/// Target instances. (== resource_for beta.targetInstances ==) (== resource_for
+/// v1.targetInstances ==)
 class TargetInstance {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -65325,7 +72414,10 @@ class TargetTcpProxyList {
   }
 }
 
-/// Represents a Target VPN gateway resource. (== resource_for
+/// Represents a Target VPN Gateway resource.
+///
+/// The target VPN gateway resource represents a Classic Cloud VPN gateway. For
+/// more information, read the the Cloud VPN Overview. (== resource_for
 /// beta.targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
 class TargetVpnGateway {
   /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -65337,7 +72429,7 @@ class TargetVpnGateway {
 
   /// [Output Only] A list of URLs to the ForwardingRule resources.
   /// ForwardingRules are created using compute.forwardingRules.insert and
-  /// associated to a VPN gateway.
+  /// associated with a VPN gateway.
   core.List<core.String> forwardingRules;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -65369,7 +72461,8 @@ class TargetVpnGateway {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// [Output Only] The status of the VPN gateway.
+  /// [Output Only] The status of the VPN gateway, which can be one of the
+  /// following: CREATING, READY, FAILED, or DELETING.
   /// Possible string values are:
   /// - "CREATING"
   /// - "DELETING"
@@ -65378,8 +72471,8 @@ class TargetVpnGateway {
   core.String status;
 
   /// [Output Only] A list of URLs to VpnTunnel resources. VpnTunnels are
-  /// created using compute.vpntunnels.insert method and associated to a VPN
-  /// gateway.
+  /// created using the compute.vpntunnels.insert method and associated with a
+  /// VPN gateway.
   core.List<core.String> tunnels;
 
   TargetVpnGateway();
@@ -65940,7 +73033,7 @@ class TargetVpnGatewaysScopedListWarning {
 }
 
 class TargetVpnGatewaysScopedList {
-  /// [Output Only] A list of target vpn gateways contained in this scope.
+  /// [Output Only] A list of target VPN gateways contained in this scope.
   core.List<TargetVpnGateway> targetVpnGateways;
 
   /// [Output Only] Informational warning which replaces the list of addresses
@@ -67156,8 +74249,10 @@ class VmEndpointNatMappingsList {
   }
 }
 
-/// VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for
-/// v1.vpnTunnels ==)
+/// Represents a Cloud VPN Tunnel resource.
+///
+/// For more information about VPN, read the the Cloud VPN Overview. (==
+/// resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)
 class VpnTunnel {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -67173,16 +74268,17 @@ class VpnTunnel {
   /// defined by the server.
   core.String id;
 
-  /// IKE protocol version to use when establishing the VPN tunnel with peer VPN
-  /// gateway. Acceptable IKE versions are 1 or 2. Default version is 2.
+  /// IKE protocol version to use when establishing the VPN tunnel with the peer
+  /// VPN gateway. Acceptable IKE versions are 1 or 2. The default version is 2.
   core.int ikeVersion;
 
   /// [Output Only] Type of resource. Always compute#vpnTunnel for VPN tunnels.
   core.String kind;
 
-  /// Local traffic selector to use when establishing the VPN tunnel with peer
-  /// VPN gateway. The value should be a CIDR formatted string, for example:
-  /// 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
+  /// Local traffic selector to use when establishing the VPN tunnel with the
+  /// peer VPN gateway. The value should be a CIDR formatted string, for
+  /// example: 192.168.0.0/16. The ranges must be disjoint. Only IPv4 is
+  /// supported.
   core.List<core.String> localTrafficSelector;
 
   /// Name of the resource. Provided by the client when the resource is created.
@@ -67202,12 +74298,13 @@ class VpnTunnel {
   /// a field in the request body.
   core.String region;
 
-  /// Remote traffic selectors to use when establishing the VPN tunnel with peer
-  /// VPN gateway. The value should be a CIDR formatted string, for example:
-  /// 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
+  /// Remote traffic selectors to use when establishing the VPN tunnel with the
+  /// peer VPN gateway. The value should be a CIDR formatted string, for
+  /// example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is
+  /// supported.
   core.List<core.String> remoteTrafficSelector;
 
-  /// URL of router resource to be used for dynamic routing.
+  /// URL of the router resource to be used for dynamic routing.
   core.String router;
 
   /// [Output Only] Server-defined URL for the resource.
@@ -67220,7 +74317,21 @@ class VpnTunnel {
   /// Hash of the shared secret.
   core.String sharedSecretHash;
 
-  /// [Output Only] The status of the VPN tunnel.
+  /// [Output Only] The status of the VPN tunnel, which can be one of the
+  /// following:
+  /// - PROVISIONING: Resource is being allocated for the VPN tunnel.
+  /// - WAITING_FOR_FULL_CONFIG: Waiting to receive all VPN-related configs from
+  /// the user. Network, TargetVpnGateway, VpnTunnel, ForwardingRule, and Route
+  /// resources are needed to setup the VPN tunnel.
+  /// - FIRST_HANDSHAKE: Successful first handshake with the peer VPN.
+  /// - ESTABLISHED: Secure session is successfully established with the peer
+  /// VPN.
+  /// - NETWORK_ERROR: Deprecated, replaced by NO_INCOMING_PACKETS
+  /// - AUTHORIZATION_ERROR: Auth error (for example, bad shared secret).
+  /// - NEGOTIATION_FAILURE: Handshake failed.
+  /// - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
+  /// - FAILED: Tunnel creation has failed and the tunnel is not ready to be
+  /// used.
   /// Possible string values are:
   /// - "ALLOCATING_RESOURCES"
   /// - "AUTHORIZATION_ERROR"
@@ -67831,7 +74942,7 @@ class VpnTunnelsScopedListWarning {
 }
 
 class VpnTunnelsScopedList {
-  /// A list of vpn tunnels contained in this scope.
+  /// A list of VPN tunnels contained in this scope.
   core.List<VpnTunnel> vpnTunnels;
 
   /// Informational warning which replaces the list of addresses when the list
@@ -68084,8 +75195,12 @@ class XpnResourceId {
   }
 }
 
-/// A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones
-/// ==)
+/// Represents a Zone resource.
+///
+/// A zone is a deployment area. These deployment areas are subsets of a region.
+/// For example the zone us-east1-a is located in the us-east1 region. For more
+/// information, read Regions and Zones. (== resource_for beta.zones ==) (==
+/// resource_for v1.zones ==)
 class Zone {
   /// [Output Only] Available cpu/platform selections for the zone.
   core.List<core.String> availableCpuPlatforms;

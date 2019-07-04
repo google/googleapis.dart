@@ -50,79 +50,115 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4211() {
+core.int buildCounterAboutDriveThemes = 0;
+buildAboutDriveThemes() {
+  var o = new api.AboutDriveThemes();
+  buildCounterAboutDriveThemes++;
+  if (buildCounterAboutDriveThemes < 3) {
+    o.backgroundImageLink = "foo";
+    o.colorRgb = "foo";
+    o.id = "foo";
+  }
+  buildCounterAboutDriveThemes--;
+  return o;
+}
+
+checkAboutDriveThemes(api.AboutDriveThemes o) {
+  buildCounterAboutDriveThemes++;
+  if (buildCounterAboutDriveThemes < 3) {
+    unittest.expect(o.backgroundImageLink, unittest.equals('foo'));
+    unittest.expect(o.colorRgb, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+  }
+  buildCounterAboutDriveThemes--;
+}
+
+buildUnnamed3737() {
+  var o = new core.List<api.AboutDriveThemes>();
+  o.add(buildAboutDriveThemes());
+  o.add(buildAboutDriveThemes());
+  return o;
+}
+
+checkUnnamed3737(core.List<api.AboutDriveThemes> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkAboutDriveThemes(o[0]);
+  checkAboutDriveThemes(o[1]);
+}
+
+buildUnnamed3738() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4211(core.List<core.String> o) {
+checkUnnamed3738(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4212() {
+buildUnnamed3739() {
   var o = new core.Map<core.String, core.List<core.String>>();
-  o["x"] = buildUnnamed4211();
-  o["y"] = buildUnnamed4211();
+  o["x"] = buildUnnamed3738();
+  o["y"] = buildUnnamed3738();
   return o;
 }
 
-checkUnnamed4212(core.Map<core.String, core.List<core.String>> o) {
+checkUnnamed3739(core.Map<core.String, core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed4211(o["x"]);
-  checkUnnamed4211(o["y"]);
+  checkUnnamed3738(o["x"]);
+  checkUnnamed3738(o["y"]);
 }
 
-buildUnnamed4213() {
+buildUnnamed3740() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4213(core.List<core.String> o) {
+checkUnnamed3740(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4214() {
+buildUnnamed3741() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4214(core.List<core.String> o) {
+checkUnnamed3741(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4215() {
+buildUnnamed3742() {
   var o = new core.Map<core.String, core.List<core.String>>();
-  o["x"] = buildUnnamed4214();
-  o["y"] = buildUnnamed4214();
+  o["x"] = buildUnnamed3741();
+  o["y"] = buildUnnamed3741();
   return o;
 }
 
-checkUnnamed4215(core.Map<core.String, core.List<core.String>> o) {
+checkUnnamed3742(core.Map<core.String, core.List<core.String>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed4214(o["x"]);
-  checkUnnamed4214(o["y"]);
+  checkUnnamed3741(o["x"]);
+  checkUnnamed3741(o["y"]);
 }
 
-buildUnnamed4216() {
+buildUnnamed3743() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4216(core.Map<core.String, core.String> o) {
+checkUnnamed3743(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -176,14 +212,14 @@ checkAboutTeamDriveThemes(api.AboutTeamDriveThemes o) {
   buildCounterAboutTeamDriveThemes--;
 }
 
-buildUnnamed4217() {
+buildUnnamed3744() {
   var o = new core.List<api.AboutTeamDriveThemes>();
   o.add(buildAboutTeamDriveThemes());
   o.add(buildAboutTeamDriveThemes());
   return o;
 }
 
-checkUnnamed4217(core.List<api.AboutTeamDriveThemes> o) {
+checkUnnamed3744(core.List<api.AboutTeamDriveThemes> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAboutTeamDriveThemes(o[0]);
   checkAboutTeamDriveThemes(o[1]);
@@ -195,15 +231,17 @@ buildAbout() {
   buildCounterAbout++;
   if (buildCounterAbout < 3) {
     o.appInstalled = true;
+    o.canCreateDrives = true;
     o.canCreateTeamDrives = true;
-    o.exportFormats = buildUnnamed4212();
-    o.folderColorPalette = buildUnnamed4213();
-    o.importFormats = buildUnnamed4215();
+    o.driveThemes = buildUnnamed3737();
+    o.exportFormats = buildUnnamed3739();
+    o.folderColorPalette = buildUnnamed3740();
+    o.importFormats = buildUnnamed3742();
     o.kind = "foo";
-    o.maxImportSizes = buildUnnamed4216();
+    o.maxImportSizes = buildUnnamed3743();
     o.maxUploadSize = "foo";
     o.storageQuota = buildAboutStorageQuota();
-    o.teamDriveThemes = buildUnnamed4217();
+    o.teamDriveThemes = buildUnnamed3744();
     o.user = buildUser();
   }
   buildCounterAbout--;
@@ -214,15 +252,17 @@ checkAbout(api.About o) {
   buildCounterAbout++;
   if (buildCounterAbout < 3) {
     unittest.expect(o.appInstalled, unittest.isTrue);
+    unittest.expect(o.canCreateDrives, unittest.isTrue);
     unittest.expect(o.canCreateTeamDrives, unittest.isTrue);
-    checkUnnamed4212(o.exportFormats);
-    checkUnnamed4213(o.folderColorPalette);
-    checkUnnamed4215(o.importFormats);
+    checkUnnamed3737(o.driveThemes);
+    checkUnnamed3739(o.exportFormats);
+    checkUnnamed3740(o.folderColorPalette);
+    checkUnnamed3742(o.importFormats);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4216(o.maxImportSizes);
+    checkUnnamed3743(o.maxImportSizes);
     unittest.expect(o.maxUploadSize, unittest.equals('foo'));
     checkAboutStorageQuota(o.storageQuota);
-    checkUnnamed4217(o.teamDriveThemes);
+    checkUnnamed3744(o.teamDriveThemes);
     checkUser(o.user);
   }
   buildCounterAbout--;
@@ -233,6 +273,9 @@ buildChange() {
   var o = new api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
+    o.changeType = "foo";
+    o.drive = buildDrive();
+    o.driveId = "foo";
     o.file = buildFile();
     o.fileId = "foo";
     o.kind = "foo";
@@ -249,6 +292,9 @@ buildChange() {
 checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
+    unittest.expect(o.changeType, unittest.equals('foo'));
+    checkDrive(o.drive);
+    unittest.expect(o.driveId, unittest.equals('foo'));
     checkFile(o.file);
     unittest.expect(o.fileId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -262,14 +308,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed4218() {
+buildUnnamed3745() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed4218(core.List<api.Change> o) {
+checkUnnamed3745(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -280,7 +326,7 @@ buildChangeList() {
   var o = new api.ChangeList();
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
-    o.changes = buildUnnamed4218();
+    o.changes = buildUnnamed3745();
     o.kind = "foo";
     o.newStartPageToken = "foo";
     o.nextPageToken = "foo";
@@ -292,7 +338,7 @@ buildChangeList() {
 checkChangeList(api.ChangeList o) {
   buildCounterChangeList++;
   if (buildCounterChangeList < 3) {
-    checkUnnamed4218(o.changes);
+    checkUnnamed3745(o.changes);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.newStartPageToken, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -300,14 +346,14 @@ checkChangeList(api.ChangeList o) {
   buildCounterChangeList--;
 }
 
-buildUnnamed4219() {
+buildUnnamed3746() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4219(core.Map<core.String, core.String> o) {
+checkUnnamed3746(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -322,7 +368,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed4219();
+    o.params = buildUnnamed3746();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -340,7 +386,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed4219(o.params);
+    checkUnnamed3746(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -371,14 +417,14 @@ checkCommentQuotedFileContent(api.CommentQuotedFileContent o) {
   buildCounterCommentQuotedFileContent--;
 }
 
-buildUnnamed4220() {
+buildUnnamed3747() {
   var o = new core.List<api.Reply>();
   o.add(buildReply());
   o.add(buildReply());
   return o;
 }
 
-checkUnnamed4220(core.List<api.Reply> o) {
+checkUnnamed3747(core.List<api.Reply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReply(o[0]);
   checkReply(o[1]);
@@ -399,7 +445,7 @@ buildComment() {
     o.kind = "foo";
     o.modifiedTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.quotedFileContent = buildCommentQuotedFileContent();
-    o.replies = buildUnnamed4220();
+    o.replies = buildUnnamed3747();
     o.resolved = true;
   }
   buildCounterComment--;
@@ -421,20 +467,20 @@ checkComment(api.Comment o) {
     unittest.expect(o.modifiedTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     checkCommentQuotedFileContent(o.quotedFileContent);
-    checkUnnamed4220(o.replies);
+    checkUnnamed3747(o.replies);
     unittest.expect(o.resolved, unittest.isTrue);
   }
   buildCounterComment--;
 }
 
-buildUnnamed4221() {
+buildUnnamed3748() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed4221(core.List<api.Comment> o) {
+checkUnnamed3748(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -445,7 +491,7 @@ buildCommentList() {
   var o = new api.CommentList();
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    o.comments = buildUnnamed4221();
+    o.comments = buildUnnamed3748();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -456,21 +502,201 @@ buildCommentList() {
 checkCommentList(api.CommentList o) {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
-    checkUnnamed4221(o.comments);
+    checkUnnamed3748(o.comments);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterCommentList--;
 }
 
-buildUnnamed4222() {
+core.int buildCounterDriveBackgroundImageFile = 0;
+buildDriveBackgroundImageFile() {
+  var o = new api.DriveBackgroundImageFile();
+  buildCounterDriveBackgroundImageFile++;
+  if (buildCounterDriveBackgroundImageFile < 3) {
+    o.id = "foo";
+    o.width = 42.0;
+    o.xCoordinate = 42.0;
+    o.yCoordinate = 42.0;
+  }
+  buildCounterDriveBackgroundImageFile--;
+  return o;
+}
+
+checkDriveBackgroundImageFile(api.DriveBackgroundImageFile o) {
+  buildCounterDriveBackgroundImageFile++;
+  if (buildCounterDriveBackgroundImageFile < 3) {
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.width, unittest.equals(42.0));
+    unittest.expect(o.xCoordinate, unittest.equals(42.0));
+    unittest.expect(o.yCoordinate, unittest.equals(42.0));
+  }
+  buildCounterDriveBackgroundImageFile--;
+}
+
+core.int buildCounterDriveCapabilities = 0;
+buildDriveCapabilities() {
+  var o = new api.DriveCapabilities();
+  buildCounterDriveCapabilities++;
+  if (buildCounterDriveCapabilities < 3) {
+    o.canAddChildren = true;
+    o.canChangeCopyRequiresWriterPermissionRestriction = true;
+    o.canChangeDomainUsersOnlyRestriction = true;
+    o.canChangeDriveBackground = true;
+    o.canChangeDriveMembersOnlyRestriction = true;
+    o.canComment = true;
+    o.canCopy = true;
+    o.canDeleteChildren = true;
+    o.canDeleteDrive = true;
+    o.canDownload = true;
+    o.canEdit = true;
+    o.canListChildren = true;
+    o.canManageMembers = true;
+    o.canReadRevisions = true;
+    o.canRename = true;
+    o.canRenameDrive = true;
+    o.canShare = true;
+    o.canTrashChildren = true;
+  }
+  buildCounterDriveCapabilities--;
+  return o;
+}
+
+checkDriveCapabilities(api.DriveCapabilities o) {
+  buildCounterDriveCapabilities++;
+  if (buildCounterDriveCapabilities < 3) {
+    unittest.expect(o.canAddChildren, unittest.isTrue);
+    unittest.expect(
+        o.canChangeCopyRequiresWriterPermissionRestriction, unittest.isTrue);
+    unittest.expect(o.canChangeDomainUsersOnlyRestriction, unittest.isTrue);
+    unittest.expect(o.canChangeDriveBackground, unittest.isTrue);
+    unittest.expect(o.canChangeDriveMembersOnlyRestriction, unittest.isTrue);
+    unittest.expect(o.canComment, unittest.isTrue);
+    unittest.expect(o.canCopy, unittest.isTrue);
+    unittest.expect(o.canDeleteChildren, unittest.isTrue);
+    unittest.expect(o.canDeleteDrive, unittest.isTrue);
+    unittest.expect(o.canDownload, unittest.isTrue);
+    unittest.expect(o.canEdit, unittest.isTrue);
+    unittest.expect(o.canListChildren, unittest.isTrue);
+    unittest.expect(o.canManageMembers, unittest.isTrue);
+    unittest.expect(o.canReadRevisions, unittest.isTrue);
+    unittest.expect(o.canRename, unittest.isTrue);
+    unittest.expect(o.canRenameDrive, unittest.isTrue);
+    unittest.expect(o.canShare, unittest.isTrue);
+    unittest.expect(o.canTrashChildren, unittest.isTrue);
+  }
+  buildCounterDriveCapabilities--;
+}
+
+core.int buildCounterDriveRestrictions = 0;
+buildDriveRestrictions() {
+  var o = new api.DriveRestrictions();
+  buildCounterDriveRestrictions++;
+  if (buildCounterDriveRestrictions < 3) {
+    o.adminManagedRestrictions = true;
+    o.copyRequiresWriterPermission = true;
+    o.domainUsersOnly = true;
+    o.driveMembersOnly = true;
+  }
+  buildCounterDriveRestrictions--;
+  return o;
+}
+
+checkDriveRestrictions(api.DriveRestrictions o) {
+  buildCounterDriveRestrictions++;
+  if (buildCounterDriveRestrictions < 3) {
+    unittest.expect(o.adminManagedRestrictions, unittest.isTrue);
+    unittest.expect(o.copyRequiresWriterPermission, unittest.isTrue);
+    unittest.expect(o.domainUsersOnly, unittest.isTrue);
+    unittest.expect(o.driveMembersOnly, unittest.isTrue);
+  }
+  buildCounterDriveRestrictions--;
+}
+
+core.int buildCounterDrive = 0;
+buildDrive() {
+  var o = new api.Drive();
+  buildCounterDrive++;
+  if (buildCounterDrive < 3) {
+    o.backgroundImageFile = buildDriveBackgroundImageFile();
+    o.backgroundImageLink = "foo";
+    o.capabilities = buildDriveCapabilities();
+    o.colorRgb = "foo";
+    o.createdTime = core.DateTime.parse("2002-02-27T14:01:02");
+    o.hidden = true;
+    o.id = "foo";
+    o.kind = "foo";
+    o.name = "foo";
+    o.restrictions = buildDriveRestrictions();
+    o.themeId = "foo";
+  }
+  buildCounterDrive--;
+  return o;
+}
+
+checkDrive(api.Drive o) {
+  buildCounterDrive++;
+  if (buildCounterDrive < 3) {
+    checkDriveBackgroundImageFile(o.backgroundImageFile);
+    unittest.expect(o.backgroundImageLink, unittest.equals('foo'));
+    checkDriveCapabilities(o.capabilities);
+    unittest.expect(o.colorRgb, unittest.equals('foo'));
+    unittest.expect(o.createdTime,
+        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.hidden, unittest.isTrue);
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    checkDriveRestrictions(o.restrictions);
+    unittest.expect(o.themeId, unittest.equals('foo'));
+  }
+  buildCounterDrive--;
+}
+
+buildUnnamed3749() {
+  var o = new core.List<api.Drive>();
+  o.add(buildDrive());
+  o.add(buildDrive());
+  return o;
+}
+
+checkUnnamed3749(core.List<api.Drive> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkDrive(o[0]);
+  checkDrive(o[1]);
+}
+
+core.int buildCounterDriveList = 0;
+buildDriveList() {
+  var o = new api.DriveList();
+  buildCounterDriveList++;
+  if (buildCounterDriveList < 3) {
+    o.drives = buildUnnamed3749();
+    o.kind = "foo";
+    o.nextPageToken = "foo";
+  }
+  buildCounterDriveList--;
+  return o;
+}
+
+checkDriveList(api.DriveList o) {
+  buildCounterDriveList++;
+  if (buildCounterDriveList < 3) {
+    checkUnnamed3749(o.drives);
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterDriveList--;
+}
+
+buildUnnamed3750() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4222(core.Map<core.String, core.String> o) {
+checkUnnamed3750(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -491,12 +717,17 @@ buildFileCapabilities() {
     o.canDownload = true;
     o.canEdit = true;
     o.canListChildren = true;
+    o.canMoveChildrenOutOfDrive = true;
     o.canMoveChildrenOutOfTeamDrive = true;
+    o.canMoveChildrenWithinDrive = true;
     o.canMoveChildrenWithinTeamDrive = true;
     o.canMoveItemIntoTeamDrive = true;
+    o.canMoveItemOutOfDrive = true;
     o.canMoveItemOutOfTeamDrive = true;
+    o.canMoveItemWithinDrive = true;
     o.canMoveItemWithinTeamDrive = true;
     o.canMoveTeamDriveItem = true;
+    o.canReadDrive = true;
     o.canReadRevisions = true;
     o.canReadTeamDrive = true;
     o.canRemoveChildren = true;
@@ -523,12 +754,17 @@ checkFileCapabilities(api.FileCapabilities o) {
     unittest.expect(o.canDownload, unittest.isTrue);
     unittest.expect(o.canEdit, unittest.isTrue);
     unittest.expect(o.canListChildren, unittest.isTrue);
+    unittest.expect(o.canMoveChildrenOutOfDrive, unittest.isTrue);
     unittest.expect(o.canMoveChildrenOutOfTeamDrive, unittest.isTrue);
+    unittest.expect(o.canMoveChildrenWithinDrive, unittest.isTrue);
     unittest.expect(o.canMoveChildrenWithinTeamDrive, unittest.isTrue);
     unittest.expect(o.canMoveItemIntoTeamDrive, unittest.isTrue);
+    unittest.expect(o.canMoveItemOutOfDrive, unittest.isTrue);
     unittest.expect(o.canMoveItemOutOfTeamDrive, unittest.isTrue);
+    unittest.expect(o.canMoveItemWithinDrive, unittest.isTrue);
     unittest.expect(o.canMoveItemWithinTeamDrive, unittest.isTrue);
     unittest.expect(o.canMoveTeamDriveItem, unittest.isTrue);
+    unittest.expect(o.canReadDrive, unittest.isTrue);
     unittest.expect(o.canReadRevisions, unittest.isTrue);
     unittest.expect(o.canReadTeamDrive, unittest.isTrue);
     unittest.expect(o.canRemoveChildren, unittest.isTrue);
@@ -583,14 +819,14 @@ checkFileContentHints(api.FileContentHints o) {
   buildCounterFileContentHints--;
 }
 
-buildUnnamed4223() {
+buildUnnamed3751() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4223(core.Map<core.String, core.String> o) {
+checkUnnamed3751(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -678,79 +914,79 @@ checkFileImageMediaMetadata(api.FileImageMediaMetadata o) {
   buildCounterFileImageMediaMetadata--;
 }
 
-buildUnnamed4224() {
+buildUnnamed3752() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed4224(core.List<api.User> o) {
+checkUnnamed3752(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
 }
 
-buildUnnamed4225() {
+buildUnnamed3753() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4225(core.List<core.String> o) {
+checkUnnamed3753(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4226() {
+buildUnnamed3754() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4226(core.List<core.String> o) {
+checkUnnamed3754(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4227() {
+buildUnnamed3755() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed4227(core.List<api.Permission> o) {
+checkUnnamed3755(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
 }
 
-buildUnnamed4228() {
+buildUnnamed3756() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4228(core.Map<core.String, core.String> o) {
+checkUnnamed3756(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed4229() {
+buildUnnamed3757() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4229(core.List<core.String> o) {
+checkUnnamed3757(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -784,14 +1020,15 @@ buildFile() {
   var o = new api.File();
   buildCounterFile++;
   if (buildCounterFile < 3) {
-    o.appProperties = buildUnnamed4222();
+    o.appProperties = buildUnnamed3750();
     o.capabilities = buildFileCapabilities();
     o.contentHints = buildFileContentHints();
     o.copyRequiresWriterPermission = true;
     o.createdTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.description = "foo";
+    o.driveId = "foo";
     o.explicitlyTrashed = true;
-    o.exportLinks = buildUnnamed4223();
+    o.exportLinks = buildUnnamed3751();
     o.fileExtension = "foo";
     o.folderColorRgb = "foo";
     o.fullFileExtension = "foo";
@@ -812,17 +1049,17 @@ buildFile() {
     o.name = "foo";
     o.originalFilename = "foo";
     o.ownedByMe = true;
-    o.owners = buildUnnamed4224();
-    o.parents = buildUnnamed4225();
-    o.permissionIds = buildUnnamed4226();
-    o.permissions = buildUnnamed4227();
-    o.properties = buildUnnamed4228();
+    o.owners = buildUnnamed3752();
+    o.parents = buildUnnamed3753();
+    o.permissionIds = buildUnnamed3754();
+    o.permissions = buildUnnamed3755();
+    o.properties = buildUnnamed3756();
     o.quotaBytesUsed = "foo";
     o.shared = true;
     o.sharedWithMeTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.sharingUser = buildUser();
     o.size = "foo";
-    o.spaces = buildUnnamed4229();
+    o.spaces = buildUnnamed3757();
     o.starred = true;
     o.teamDriveId = "foo";
     o.thumbnailLink = "foo";
@@ -846,15 +1083,16 @@ buildFile() {
 checkFile(api.File o) {
   buildCounterFile++;
   if (buildCounterFile < 3) {
-    checkUnnamed4222(o.appProperties);
+    checkUnnamed3750(o.appProperties);
     checkFileCapabilities(o.capabilities);
     checkFileContentHints(o.contentHints);
     unittest.expect(o.copyRequiresWriterPermission, unittest.isTrue);
     unittest.expect(o.createdTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.driveId, unittest.equals('foo'));
     unittest.expect(o.explicitlyTrashed, unittest.isTrue);
-    checkUnnamed4223(o.exportLinks);
+    checkUnnamed3751(o.exportLinks);
     unittest.expect(o.fileExtension, unittest.equals('foo'));
     unittest.expect(o.folderColorRgb, unittest.equals('foo'));
     unittest.expect(o.fullFileExtension, unittest.equals('foo'));
@@ -877,18 +1115,18 @@ checkFile(api.File o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.originalFilename, unittest.equals('foo'));
     unittest.expect(o.ownedByMe, unittest.isTrue);
-    checkUnnamed4224(o.owners);
-    checkUnnamed4225(o.parents);
-    checkUnnamed4226(o.permissionIds);
-    checkUnnamed4227(o.permissions);
-    checkUnnamed4228(o.properties);
+    checkUnnamed3752(o.owners);
+    checkUnnamed3753(o.parents);
+    checkUnnamed3754(o.permissionIds);
+    checkUnnamed3755(o.permissions);
+    checkUnnamed3756(o.properties);
     unittest.expect(o.quotaBytesUsed, unittest.equals('foo'));
     unittest.expect(o.shared, unittest.isTrue);
     unittest.expect(o.sharedWithMeTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     checkUser(o.sharingUser);
     unittest.expect(o.size, unittest.equals('foo'));
-    checkUnnamed4229(o.spaces);
+    checkUnnamed3757(o.spaces);
     unittest.expect(o.starred, unittest.isTrue);
     unittest.expect(o.teamDriveId, unittest.equals('foo'));
     unittest.expect(o.thumbnailLink, unittest.equals('foo'));
@@ -910,14 +1148,14 @@ checkFile(api.File o) {
   buildCounterFile--;
 }
 
-buildUnnamed4230() {
+buildUnnamed3758() {
   var o = new core.List<api.File>();
   o.add(buildFile());
   o.add(buildFile());
   return o;
 }
 
-checkUnnamed4230(core.List<api.File> o) {
+checkUnnamed3758(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFile(o[0]);
   checkFile(o[1]);
@@ -928,7 +1166,7 @@ buildFileList() {
   var o = new api.FileList();
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
-    o.files = buildUnnamed4230();
+    o.files = buildUnnamed3758();
     o.incompleteSearch = true;
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -940,7 +1178,7 @@ buildFileList() {
 checkFileList(api.FileList o) {
   buildCounterFileList++;
   if (buildCounterFileList < 3) {
-    checkUnnamed4230(o.files);
+    checkUnnamed3758(o.files);
     unittest.expect(o.incompleteSearch, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -948,14 +1186,14 @@ checkFileList(api.FileList o) {
   buildCounterFileList--;
 }
 
-buildUnnamed4231() {
+buildUnnamed3759() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4231(core.List<core.String> o) {
+checkUnnamed3759(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -966,7 +1204,7 @@ buildGeneratedIds() {
   var o = new api.GeneratedIds();
   buildCounterGeneratedIds++;
   if (buildCounterGeneratedIds < 3) {
-    o.ids = buildUnnamed4231();
+    o.ids = buildUnnamed3759();
     o.kind = "foo";
     o.space = "foo";
   }
@@ -977,11 +1215,49 @@ buildGeneratedIds() {
 checkGeneratedIds(api.GeneratedIds o) {
   buildCounterGeneratedIds++;
   if (buildCounterGeneratedIds < 3) {
-    checkUnnamed4231(o.ids);
+    checkUnnamed3759(o.ids);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.space, unittest.equals('foo'));
   }
   buildCounterGeneratedIds--;
+}
+
+core.int buildCounterPermissionPermissionDetails = 0;
+buildPermissionPermissionDetails() {
+  var o = new api.PermissionPermissionDetails();
+  buildCounterPermissionPermissionDetails++;
+  if (buildCounterPermissionPermissionDetails < 3) {
+    o.inherited = true;
+    o.inheritedFrom = "foo";
+    o.permissionType = "foo";
+    o.role = "foo";
+  }
+  buildCounterPermissionPermissionDetails--;
+  return o;
+}
+
+checkPermissionPermissionDetails(api.PermissionPermissionDetails o) {
+  buildCounterPermissionPermissionDetails++;
+  if (buildCounterPermissionPermissionDetails < 3) {
+    unittest.expect(o.inherited, unittest.isTrue);
+    unittest.expect(o.inheritedFrom, unittest.equals('foo'));
+    unittest.expect(o.permissionType, unittest.equals('foo'));
+    unittest.expect(o.role, unittest.equals('foo'));
+  }
+  buildCounterPermissionPermissionDetails--;
+}
+
+buildUnnamed3760() {
+  var o = new core.List<api.PermissionPermissionDetails>();
+  o.add(buildPermissionPermissionDetails());
+  o.add(buildPermissionPermissionDetails());
+  return o;
+}
+
+checkUnnamed3760(core.List<api.PermissionPermissionDetails> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkPermissionPermissionDetails(o[0]);
+  checkPermissionPermissionDetails(o[1]);
 }
 
 core.int buildCounterPermissionTeamDrivePermissionDetails = 0;
@@ -1010,14 +1286,14 @@ checkPermissionTeamDrivePermissionDetails(
   buildCounterPermissionTeamDrivePermissionDetails--;
 }
 
-buildUnnamed4232() {
+buildUnnamed3761() {
   var o = new core.List<api.PermissionTeamDrivePermissionDetails>();
   o.add(buildPermissionTeamDrivePermissionDetails());
   o.add(buildPermissionTeamDrivePermissionDetails());
   return o;
 }
 
-checkUnnamed4232(core.List<api.PermissionTeamDrivePermissionDetails> o) {
+checkUnnamed3761(core.List<api.PermissionTeamDrivePermissionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermissionTeamDrivePermissionDetails(o[0]);
   checkPermissionTeamDrivePermissionDetails(o[1]);
@@ -1036,9 +1312,10 @@ buildPermission() {
     o.expirationTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.id = "foo";
     o.kind = "foo";
+    o.permissionDetails = buildUnnamed3760();
     o.photoLink = "foo";
     o.role = "foo";
-    o.teamDrivePermissionDetails = buildUnnamed4232();
+    o.teamDrivePermissionDetails = buildUnnamed3761();
     o.type = "foo";
   }
   buildCounterPermission--;
@@ -1057,22 +1334,23 @@ checkPermission(api.Permission o) {
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed3760(o.permissionDetails);
     unittest.expect(o.photoLink, unittest.equals('foo'));
     unittest.expect(o.role, unittest.equals('foo'));
-    checkUnnamed4232(o.teamDrivePermissionDetails);
+    checkUnnamed3761(o.teamDrivePermissionDetails);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPermission--;
 }
 
-buildUnnamed4233() {
+buildUnnamed3762() {
   var o = new core.List<api.Permission>();
   o.add(buildPermission());
   o.add(buildPermission());
   return o;
 }
 
-checkUnnamed4233(core.List<api.Permission> o) {
+checkUnnamed3762(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPermission(o[0]);
   checkPermission(o[1]);
@@ -1085,7 +1363,7 @@ buildPermissionList() {
   if (buildCounterPermissionList < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.permissions = buildUnnamed4233();
+    o.permissions = buildUnnamed3762();
   }
   buildCounterPermissionList--;
   return o;
@@ -1096,7 +1374,7 @@ checkPermissionList(api.PermissionList o) {
   if (buildCounterPermissionList < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4233(o.permissions);
+    checkUnnamed3762(o.permissions);
   }
   buildCounterPermissionList--;
 }
@@ -1138,14 +1416,14 @@ checkReply(api.Reply o) {
   buildCounterReply--;
 }
 
-buildUnnamed4234() {
+buildUnnamed3763() {
   var o = new core.List<api.Reply>();
   o.add(buildReply());
   o.add(buildReply());
   return o;
 }
 
-checkUnnamed4234(core.List<api.Reply> o) {
+checkUnnamed3763(core.List<api.Reply> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReply(o[0]);
   checkReply(o[1]);
@@ -1158,7 +1436,7 @@ buildReplyList() {
   if (buildCounterReplyList < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.replies = buildUnnamed4234();
+    o.replies = buildUnnamed3763();
   }
   buildCounterReplyList--;
   return o;
@@ -1169,19 +1447,19 @@ checkReplyList(api.ReplyList o) {
   if (buildCounterReplyList < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4234(o.replies);
+    checkUnnamed3763(o.replies);
   }
   buildCounterReplyList--;
 }
 
-buildUnnamed4235() {
+buildUnnamed3764() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4235(core.Map<core.String, core.String> o) {
+checkUnnamed3764(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1192,7 +1470,7 @@ buildRevision() {
   var o = new api.Revision();
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    o.exportLinks = buildUnnamed4235();
+    o.exportLinks = buildUnnamed3764();
     o.id = "foo";
     o.keepForever = true;
     o.kind = "foo";
@@ -1213,7 +1491,7 @@ buildRevision() {
 checkRevision(api.Revision o) {
   buildCounterRevision++;
   if (buildCounterRevision < 3) {
-    checkUnnamed4235(o.exportLinks);
+    checkUnnamed3764(o.exportLinks);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.keepForever, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -1231,14 +1509,14 @@ checkRevision(api.Revision o) {
   buildCounterRevision--;
 }
 
-buildUnnamed4236() {
+buildUnnamed3765() {
   var o = new core.List<api.Revision>();
   o.add(buildRevision());
   o.add(buildRevision());
   return o;
 }
 
-checkUnnamed4236(core.List<api.Revision> o) {
+checkUnnamed3765(core.List<api.Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRevision(o[0]);
   checkRevision(o[1]);
@@ -1251,7 +1529,7 @@ buildRevisionList() {
   if (buildCounterRevisionList < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.revisions = buildUnnamed4236();
+    o.revisions = buildUnnamed3765();
   }
   buildCounterRevisionList--;
   return o;
@@ -1262,7 +1540,7 @@ checkRevisionList(api.RevisionList o) {
   if (buildCounterRevisionList < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4236(o.revisions);
+    checkUnnamed3765(o.revisions);
   }
   buildCounterRevisionList--;
 }
@@ -1432,14 +1710,14 @@ checkTeamDrive(api.TeamDrive o) {
   buildCounterTeamDrive--;
 }
 
-buildUnnamed4237() {
+buildUnnamed3766() {
   var o = new core.List<api.TeamDrive>();
   o.add(buildTeamDrive());
   o.add(buildTeamDrive());
   return o;
 }
 
-checkUnnamed4237(core.List<api.TeamDrive> o) {
+checkUnnamed3766(core.List<api.TeamDrive> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeamDrive(o[0]);
   checkTeamDrive(o[1]);
@@ -1452,7 +1730,7 @@ buildTeamDriveList() {
   if (buildCounterTeamDriveList < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.teamDrives = buildUnnamed4237();
+    o.teamDrives = buildUnnamed3766();
   }
   buildCounterTeamDriveList--;
   return o;
@@ -1463,7 +1741,7 @@ checkTeamDriveList(api.TeamDriveList o) {
   if (buildCounterTeamDriveList < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4237(o.teamDrives);
+    checkUnnamed3766(o.teamDrives);
   }
   buildCounterTeamDriveList--;
 }
@@ -1498,6 +1776,14 @@ checkUser(api.User o) {
 }
 
 main() {
+  unittest.group("obj-schema-AboutDriveThemes", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAboutDriveThemes();
+      var od = new api.AboutDriveThemes.fromJson(o.toJson());
+      checkAboutDriveThemes(od);
+    });
+  });
+
   unittest.group("obj-schema-AboutStorageQuota", () {
     unittest.test("to-json--from-json", () {
       var o = buildAboutStorageQuota();
@@ -1570,6 +1856,46 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-DriveBackgroundImageFile", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveBackgroundImageFile();
+      var od = new api.DriveBackgroundImageFile.fromJson(o.toJson());
+      checkDriveBackgroundImageFile(od);
+    });
+  });
+
+  unittest.group("obj-schema-DriveCapabilities", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveCapabilities();
+      var od = new api.DriveCapabilities.fromJson(o.toJson());
+      checkDriveCapabilities(od);
+    });
+  });
+
+  unittest.group("obj-schema-DriveRestrictions", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveRestrictions();
+      var od = new api.DriveRestrictions.fromJson(o.toJson());
+      checkDriveRestrictions(od);
+    });
+  });
+
+  unittest.group("obj-schema-Drive", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDrive();
+      var od = new api.Drive.fromJson(o.toJson());
+      checkDrive(od);
+    });
+  });
+
+  unittest.group("obj-schema-DriveList", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDriveList();
+      var od = new api.DriveList.fromJson(o.toJson());
+      checkDriveList(od);
+    });
+  });
+
   unittest.group("obj-schema-FileCapabilities", () {
     unittest.test("to-json--from-json", () {
       var o = buildFileCapabilities();
@@ -1639,6 +1965,14 @@ main() {
       var o = buildGeneratedIds();
       var od = new api.GeneratedIds.fromJson(o.toJson());
       checkGeneratedIds(od);
+    });
+  });
+
+  unittest.group("obj-schema-PermissionPermissionDetails", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPermissionPermissionDetails();
+      var od = new api.PermissionPermissionDetails.fromJson(o.toJson());
+      checkPermissionPermissionDetails(od);
     });
   });
 
@@ -1811,6 +2145,8 @@ main() {
     unittest.test("method--getStartPageToken", () {
       var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DriveApi(mock).changes;
+      var arg_driveId = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_teamDriveId = "foo";
       var arg_$fields = "foo";
@@ -1847,6 +2183,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["driveId"].first, unittest.equals(arg_driveId));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(
@@ -1861,6 +2201,8 @@ main() {
       }), true);
       res
           .getStartPageToken(
+              driveId: arg_driveId,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
@@ -1873,12 +2215,15 @@ main() {
       var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DriveApi(mock).changes;
       var arg_pageToken = "foo";
+      var arg_driveId = "foo";
       var arg_includeCorpusRemovals = true;
+      var arg_includeItemsFromAllDrives = true;
       var arg_includeRemoved = true;
       var arg_includeTeamDriveItems = true;
       var arg_pageSize = 42;
       var arg_restrictToMyDrive = true;
       var arg_spaces = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_teamDriveId = "foo";
       var arg_$fields = "foo";
@@ -1917,8 +2262,12 @@ main() {
         }
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["driveId"].first, unittest.equals(arg_driveId));
         unittest.expect(queryMap["includeCorpusRemovals"].first,
             unittest.equals("$arg_includeCorpusRemovals"));
+        unittest.expect(queryMap["includeItemsFromAllDrives"].first,
+            unittest.equals("$arg_includeItemsFromAllDrives"));
         unittest.expect(queryMap["includeRemoved"].first,
             unittest.equals("$arg_includeRemoved"));
         unittest.expect(queryMap["includeTeamDriveItems"].first,
@@ -1928,6 +2277,8 @@ main() {
         unittest.expect(queryMap["restrictToMyDrive"].first,
             unittest.equals("$arg_restrictToMyDrive"));
         unittest.expect(queryMap["spaces"].first, unittest.equals(arg_spaces));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(
@@ -1942,12 +2293,15 @@ main() {
       }), true);
       res
           .list(arg_pageToken,
+              driveId: arg_driveId,
               includeCorpusRemovals: arg_includeCorpusRemovals,
+              includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
               includeRemoved: arg_includeRemoved,
               includeTeamDriveItems: arg_includeTeamDriveItems,
               pageSize: arg_pageSize,
               restrictToMyDrive: arg_restrictToMyDrive,
               spaces: arg_spaces,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
@@ -1961,12 +2315,15 @@ main() {
       api.ChangesResourceApi res = new api.DriveApi(mock).changes;
       var arg_request = buildChannel();
       var arg_pageToken = "foo";
+      var arg_driveId = "foo";
       var arg_includeCorpusRemovals = true;
+      var arg_includeItemsFromAllDrives = true;
       var arg_includeRemoved = true;
       var arg_includeTeamDriveItems = true;
       var arg_pageSize = 42;
       var arg_restrictToMyDrive = true;
       var arg_spaces = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_teamDriveId = "foo";
       var arg_$fields = "foo";
@@ -2008,8 +2365,12 @@ main() {
         }
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["driveId"].first, unittest.equals(arg_driveId));
         unittest.expect(queryMap["includeCorpusRemovals"].first,
             unittest.equals("$arg_includeCorpusRemovals"));
+        unittest.expect(queryMap["includeItemsFromAllDrives"].first,
+            unittest.equals("$arg_includeItemsFromAllDrives"));
         unittest.expect(queryMap["includeRemoved"].first,
             unittest.equals("$arg_includeRemoved"));
         unittest.expect(queryMap["includeTeamDriveItems"].first,
@@ -2019,6 +2380,8 @@ main() {
         unittest.expect(queryMap["restrictToMyDrive"].first,
             unittest.equals("$arg_restrictToMyDrive"));
         unittest.expect(queryMap["spaces"].first, unittest.equals(arg_spaces));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(
@@ -2033,12 +2396,15 @@ main() {
       }), true);
       res
           .watch(arg_request, arg_pageToken,
+              driveId: arg_driveId,
               includeCorpusRemovals: arg_includeCorpusRemovals,
+              includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
               includeRemoved: arg_includeRemoved,
               includeTeamDriveItems: arg_includeTeamDriveItems,
               pageSize: arg_pageSize,
               restrictToMyDrive: arg_restrictToMyDrive,
               spaces: arg_spaces,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
@@ -2455,6 +2821,439 @@ main() {
     });
   });
 
+  unittest.group("resource-DrivesResourceApi", () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_request = buildDrive();
+      var arg_requestId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Drive.fromJson(json);
+        checkDrive(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("drives"));
+        pathOffset += 6;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["requestId"].first, unittest.equals(arg_requestId));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildDrive());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_requestId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkDrive(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_driveId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("drives/"));
+        pathOffset += 7;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_driveId, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_driveId = "foo";
+      var arg_useDomainAdminAccess = true;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("drives/"));
+        pathOffset += 7;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["useDomainAdminAccess"].first,
+            unittest.equals("$arg_useDomainAdminAccess"));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildDrive());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_driveId,
+              useDomainAdminAccess: arg_useDomainAdminAccess,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkDrive(response);
+      })));
+    });
+
+    unittest.test("method--hide", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_driveId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("drives/"));
+        pathOffset += 7;
+        index = path.indexOf("/hide", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/hide"));
+        pathOffset += 5;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildDrive());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .hide(arg_driveId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkDrive(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_q = "foo";
+      var arg_useDomainAdminAccess = true;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("drives"));
+        pathOffset += 6;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
+        unittest.expect(queryMap["useDomainAdminAccess"].first,
+            unittest.equals("$arg_useDomainAdminAccess"));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildDriveList());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              q: arg_q,
+              useDomainAdminAccess: arg_useDomainAdminAccess,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkDriveList(response);
+      })));
+    });
+
+    unittest.test("method--unhide", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_driveId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("drives/"));
+        pathOffset += 7;
+        index = path.indexOf("/unhide", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/unhide"));
+        pathOffset += 7;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildDrive());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .unhide(arg_driveId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkDrive(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+      var mock = new HttpServerMock();
+      api.DrivesResourceApi res = new api.DriveApi(mock).drives;
+      var arg_request = buildDrive();
+      var arg_driveId = "foo";
+      var arg_useDomainAdminAccess = true;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.Drive.fromJson(json);
+        checkDrive(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("drive/v3/"));
+        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("drives/"));
+        pathOffset += 7;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_driveId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["useDomainAdminAccess"].first,
+            unittest.equals("$arg_useDomainAdminAccess"));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildDrive());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .update(arg_request, arg_driveId,
+              useDomainAdminAccess: arg_useDomainAdminAccess,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkDrive(response);
+      })));
+    });
+  });
+
   unittest.group("resource-FilesResourceApi", () {
     unittest.test("method--copy", () {
       var mock = new HttpServerMock();
@@ -2464,6 +3263,7 @@ main() {
       var arg_ignoreDefaultVisibility = true;
       var arg_keepRevisionForever = true;
       var arg_ocrLanguage = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2517,6 +3317,8 @@ main() {
             unittest.equals("$arg_keepRevisionForever"));
         unittest.expect(
             queryMap["ocrLanguage"].first, unittest.equals(arg_ocrLanguage));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2532,6 +3334,7 @@ main() {
               ignoreDefaultVisibility: arg_ignoreDefaultVisibility,
               keepRevisionForever: arg_keepRevisionForever,
               ocrLanguage: arg_ocrLanguage,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2549,6 +3352,7 @@ main() {
       var arg_ignoreDefaultVisibility = true;
       var arg_keepRevisionForever = true;
       var arg_ocrLanguage = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useContentAsIndexableText = true;
       var arg_$fields = "foo";
@@ -2594,6 +3398,8 @@ main() {
             unittest.equals("$arg_keepRevisionForever"));
         unittest.expect(
             queryMap["ocrLanguage"].first, unittest.equals(arg_ocrLanguage));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["useContentAsIndexableText"].first,
@@ -2611,6 +3417,7 @@ main() {
               ignoreDefaultVisibility: arg_ignoreDefaultVisibility,
               keepRevisionForever: arg_keepRevisionForever,
               ocrLanguage: arg_ocrLanguage,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               useContentAsIndexableText: arg_useContentAsIndexableText,
               $fields: arg_$fields)
@@ -2623,6 +3430,7 @@ main() {
       var mock = new HttpServerMock();
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2661,6 +3469,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2673,7 +3483,9 @@ main() {
       }), true);
       res
           .delete(arg_fileId,
-              supportsTeamDrives: arg_supportsTeamDrives, $fields: arg_$fields)
+              supportsAllDrives: arg_supportsAllDrives,
+              supportsTeamDrives: arg_supportsTeamDrives,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -2856,6 +3668,7 @@ main() {
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_fileId = "foo";
       var arg_acknowledgeAbuse = true;
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2896,6 +3709,8 @@ main() {
         }
         unittest.expect(queryMap["acknowledgeAbuse"].first,
             unittest.equals("$arg_acknowledgeAbuse"));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2909,6 +3724,7 @@ main() {
       res
           .get(arg_fileId,
               acknowledgeAbuse: arg_acknowledgeAbuse,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2921,12 +3737,15 @@ main() {
       api.FilesResourceApi res = new api.DriveApi(mock).files;
       var arg_corpora = "foo";
       var arg_corpus = "foo";
+      var arg_driveId = "foo";
+      var arg_includeItemsFromAllDrives = true;
       var arg_includeTeamDriveItems = true;
       var arg_orderBy = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
       var arg_q = "foo";
       var arg_spaces = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_teamDriveId = "foo";
       var arg_$fields = "foo";
@@ -2966,6 +3785,10 @@ main() {
         unittest.expect(
             queryMap["corpora"].first, unittest.equals(arg_corpora));
         unittest.expect(queryMap["corpus"].first, unittest.equals(arg_corpus));
+        unittest.expect(
+            queryMap["driveId"].first, unittest.equals(arg_driveId));
+        unittest.expect(queryMap["includeItemsFromAllDrives"].first,
+            unittest.equals("$arg_includeItemsFromAllDrives"));
         unittest.expect(queryMap["includeTeamDriveItems"].first,
             unittest.equals("$arg_includeTeamDriveItems"));
         unittest.expect(
@@ -2976,6 +3799,8 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["q"].first, unittest.equals(arg_q));
         unittest.expect(queryMap["spaces"].first, unittest.equals(arg_spaces));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(
@@ -2992,12 +3817,15 @@ main() {
           .list(
               corpora: arg_corpora,
               corpus: arg_corpus,
+              driveId: arg_driveId,
+              includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
               includeTeamDriveItems: arg_includeTeamDriveItems,
               orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
               q: arg_q,
               spaces: arg_spaces,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
@@ -3018,6 +3846,7 @@ main() {
       var arg_keepRevisionForever = true;
       var arg_ocrLanguage = "foo";
       var arg_removeParents = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useContentAsIndexableText = true;
       var arg_$fields = "foo";
@@ -3068,6 +3897,8 @@ main() {
             queryMap["ocrLanguage"].first, unittest.equals(arg_ocrLanguage));
         unittest.expect(queryMap["removeParents"].first,
             unittest.equals(arg_removeParents));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["useContentAsIndexableText"].first,
@@ -3086,6 +3917,7 @@ main() {
               keepRevisionForever: arg_keepRevisionForever,
               ocrLanguage: arg_ocrLanguage,
               removeParents: arg_removeParents,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               useContentAsIndexableText: arg_useContentAsIndexableText,
               $fields: arg_$fields)
@@ -3103,6 +3935,7 @@ main() {
       var arg_request = buildChannel();
       var arg_fileId = "foo";
       var arg_acknowledgeAbuse = true;
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3152,6 +3985,8 @@ main() {
         }
         unittest.expect(queryMap["acknowledgeAbuse"].first,
             unittest.equals("$arg_acknowledgeAbuse"));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3165,6 +4000,7 @@ main() {
       res
           .watch(arg_request, arg_fileId,
               acknowledgeAbuse: arg_acknowledgeAbuse,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3181,6 +4017,7 @@ main() {
       var arg_fileId = "foo";
       var arg_emailMessage = "foo";
       var arg_sendNotificationEmail = true;
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_transferOwnership = true;
       var arg_useDomainAdminAccess = true;
@@ -3234,6 +4071,8 @@ main() {
             queryMap["emailMessage"].first, unittest.equals(arg_emailMessage));
         unittest.expect(queryMap["sendNotificationEmail"].first,
             unittest.equals("$arg_sendNotificationEmail"));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["transferOwnership"].first,
@@ -3252,6 +4091,7 @@ main() {
           .create(arg_request, arg_fileId,
               emailMessage: arg_emailMessage,
               sendNotificationEmail: arg_sendNotificationEmail,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               transferOwnership: arg_transferOwnership,
               useDomainAdminAccess: arg_useDomainAdminAccess,
@@ -3266,6 +4106,7 @@ main() {
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_fileId = "foo";
       var arg_permissionId = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
       var arg_$fields = "foo";
@@ -3314,6 +4155,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["useDomainAdminAccess"].first,
@@ -3328,6 +4171,7 @@ main() {
       }), true);
       res
           .delete(arg_fileId, arg_permissionId,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
@@ -3339,6 +4183,7 @@ main() {
       api.PermissionsResourceApi res = new api.DriveApi(mock).permissions;
       var arg_fileId = "foo";
       var arg_permissionId = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
       var arg_$fields = "foo";
@@ -3387,6 +4232,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["useDomainAdminAccess"].first,
@@ -3401,6 +4248,7 @@ main() {
       }), true);
       res
           .get(arg_fileId, arg_permissionId,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
@@ -3415,6 +4263,7 @@ main() {
       var arg_fileId = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_useDomainAdminAccess = true;
       var arg_$fields = "foo";
@@ -3464,6 +4313,8 @@ main() {
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["useDomainAdminAccess"].first,
@@ -3480,6 +4331,7 @@ main() {
           .list(arg_fileId,
               pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
@@ -3495,6 +4347,7 @@ main() {
       var arg_fileId = "foo";
       var arg_permissionId = "foo";
       var arg_removeExpiration = true;
+      var arg_supportsAllDrives = true;
       var arg_supportsTeamDrives = true;
       var arg_transferOwnership = true;
       var arg_useDomainAdminAccess = true;
@@ -3549,6 +4402,8 @@ main() {
         }
         unittest.expect(queryMap["removeExpiration"].first,
             unittest.equals("$arg_removeExpiration"));
+        unittest.expect(queryMap["supportsAllDrives"].first,
+            unittest.equals("$arg_supportsAllDrives"));
         unittest.expect(queryMap["supportsTeamDrives"].first,
             unittest.equals("$arg_supportsTeamDrives"));
         unittest.expect(queryMap["transferOwnership"].first,
@@ -3566,6 +4421,7 @@ main() {
       res
           .update(arg_request, arg_fileId, arg_permissionId,
               removeExpiration: arg_removeExpiration,
+              supportsAllDrives: arg_supportsAllDrives,
               supportsTeamDrives: arg_supportsTeamDrives,
               transferOwnership: arg_transferOwnership,
               useDomainAdminAccess: arg_useDomainAdminAccess,

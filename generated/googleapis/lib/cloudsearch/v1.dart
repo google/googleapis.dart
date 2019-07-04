@@ -121,9 +121,9 @@ class DebugDatasourcesItemsResourceApi {
   /// datasources/{source_id}/items/{item_id}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -243,15 +243,15 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   /// datasources/{source_id}/items/{ID}
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [pageSize] - Maximum number of items to fetch in a request.
   /// Defaults to 100.
+  ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -264,9 +264,9 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUnmappedIdentitiesResponse> list(core.String parent,
-      {core.bool debugOptions_enableDebugging,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.bool debugOptions_enableDebugging,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -278,16 +278,16 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams["debugOptions.enableDebugging"] = [
-        "${debugOptions_enableDebugging}"
-      ];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (debugOptions_enableDebugging != null) {
+      _queryParams["debugOptions.enableDebugging"] = [
+        "${debugOptions_enableDebugging}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -334,6 +334,8 @@ class DebugIdentitysourcesItemsResourceApi {
   /// identitysources/{source_id}}
   /// Value must have pattern "^identitysources/[^/]+$".
   ///
+  /// [groupResourceName] - null
+  ///
   /// [userResourceName] - null
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
@@ -342,11 +344,9 @@ class DebugIdentitysourcesItemsResourceApi {
   /// [pageSize] - Maximum number of items to fetch in a request.
   /// Defaults to 100.
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
-  ///
-  /// [groupResourceName] - null
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -360,11 +360,11 @@ class DebugIdentitysourcesItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListItemNamesForUnmappedIdentityResponse>
       listForunmappedidentity(core.String parent,
-          {core.String userResourceName,
+          {core.String groupResourceName,
+          core.String userResourceName,
           core.String pageToken,
           core.int pageSize,
           core.bool debugOptions_enableDebugging,
-          core.String groupResourceName,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -375,6 +375,9 @@ class DebugIdentitysourcesItemsResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (groupResourceName != null) {
+      _queryParams["groupResourceName"] = [groupResourceName];
     }
     if (userResourceName != null) {
       _queryParams["userResourceName"] = [userResourceName];
@@ -389,9 +392,6 @@ class DebugIdentitysourcesItemsResourceApi {
       _queryParams["debugOptions.enableDebugging"] = [
         "${debugOptions_enableDebugging}"
       ];
-    }
-    if (groupResourceName != null) {
-      _queryParams["groupResourceName"] = [groupResourceName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -441,9 +441,9 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
   /// - "TOO_MANY_MAPPINGS_FOUND" : A TOO_MANY_MAPPINGS_FOUND.
   /// - "INTERNAL_ERROR" : A INTERNAL_ERROR.
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -530,9 +530,9 @@ class IndexingDatasourcesResourceApi {
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -586,9 +586,9 @@ class IndexingDatasourcesResourceApi {
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -717,9 +717,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// the version of the currently indexed item.
   /// The maximum length for this field is 1024 bytes.
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [mode] - Required. The RequestMode for this request.
   /// Possible string values are:
@@ -847,9 +847,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// [connectorName] - Name of connector making this call.
   /// <br />Format: datasources/{source_id}/connectors/{ID}
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -964,6 +964,18 @@ class IndexingDatasourcesItemsResourceApi {
   /// datasources/{source_id}
   /// Value must have pattern "^datasources/[^/]+$".
   ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
+  ///
+  /// [pageSize] - Maximum number of items to fetch in a request.
+  /// The max value is 1000 when brief is true.  The max value is 10 if brief
+  /// is false.
+  /// <br />The default value is 10
+  ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
+  ///
   /// [connectorName] - Name of connector making this call.
   /// <br />Format: datasources/{source_id}/connectors/{ID}
   ///
@@ -976,18 +988,6 @@ class IndexingDatasourcesItemsResourceApi {
   /// content.hash.
   /// <br />If this value is false, then all the fields are populated in Item.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
-  ///
-  /// [pageSize] - Maximum number of items to fetch in a request.
-  /// The max value is 1000 when brief is true.  The max value is 10 if brief
-  /// is false.
-  /// <br />The default value is 10
-  ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -999,11 +999,11 @@ class IndexingDatasourcesItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListItemsResponse> list(core.String name,
-      {core.String connectorName,
-      core.bool brief,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.bool debugOptions_enableDebugging,
+      core.String connectorName,
+      core.bool brief,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1015,12 +1015,6 @@ class IndexingDatasourcesItemsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (connectorName != null) {
-      _queryParams["connectorName"] = [connectorName];
-    }
-    if (brief != null) {
-      _queryParams["brief"] = ["${brief}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1031,6 +1025,12 @@ class IndexingDatasourcesItemsResourceApi {
       _queryParams["debugOptions.enableDebugging"] = [
         "${debugOptions_enableDebugging}"
       ];
+    }
+    if (connectorName != null) {
+      _queryParams["connectorName"] = [connectorName];
+    }
+    if (brief != null) {
+      _queryParams["brief"] = ["${brief}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1245,8 +1245,8 @@ class IndexingDatasourcesItemsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the Data Source to start a resumable upload.
-  /// Format: datasources/{source_id}
+  /// [name] - Name of the Item to start a resumable upload.
+  /// Format: datasources/{source_id}/items/{item_id}.
   /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1533,6 +1533,17 @@ class QuerySourcesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
+  /// or "sr-Latn".
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// For translations.
+  ///
+  /// When specified, the documents in search results are biased towards the
+  /// specified language.
+  /// Suggest API does not use this parameter. It autocompletes only based on
+  /// characters in the query.
+  ///
   /// [requestOptions_searchApplicationId] - Id of the application created using
   /// SearchApplicationsService.
   ///
@@ -1545,15 +1556,9 @@ class QuerySourcesResourceApi {
   ///
   /// [pageToken] - Number of sources to return in the response.
   ///
-  /// [requestOptions_debugOptions_enableDebugging] - If set, the request will
-  /// enable debugging features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
-  ///
-  /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
-  /// or "sr-Latn".
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// For translations.
+  /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
+  /// to help with debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1566,11 +1571,11 @@ class QuerySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQuerySourcesResponse> list(
-      {core.String requestOptions_searchApplicationId,
+      {core.String requestOptions_languageCode,
+      core.String requestOptions_searchApplicationId,
       core.String requestOptions_timeZone,
       core.String pageToken,
       core.bool requestOptions_debugOptions_enableDebugging,
-      core.String requestOptions_languageCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1579,6 +1584,11 @@ class QuerySourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (requestOptions_languageCode != null) {
+      _queryParams["requestOptions.languageCode"] = [
+        requestOptions_languageCode
+      ];
+    }
     if (requestOptions_searchApplicationId != null) {
       _queryParams["requestOptions.searchApplicationId"] = [
         requestOptions_searchApplicationId
@@ -1593,11 +1603,6 @@ class QuerySourcesResourceApi {
     if (requestOptions_debugOptions_enableDebugging != null) {
       _queryParams["requestOptions.debugOptions.enableDebugging"] = [
         "${requestOptions_debugOptions_enableDebugging}"
-      ];
-    }
-    if (requestOptions_languageCode != null) {
-      _queryParams["requestOptions.languageCode"] = [
-        requestOptions_languageCode
       ];
     }
     if ($fields != null) {
@@ -1634,7 +1639,7 @@ class SettingsDatasourcesResourceApi {
   SettingsDatasourcesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates data source.
+  /// Creates a datasource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1676,17 +1681,17 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a data source.
+  /// Deletes a datasource.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source.
+  /// [name] - Name of the datasource.
   /// Format: datasources/{source_id}.
   /// Value must have pattern "^datasources/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1730,17 +1735,17 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets a data source.
+  /// Gets a datasource.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source resource.
+  /// [name] - Name of the datasource resource.
   /// Format: datasources/{source_id}.
   /// Value must have pattern "^datasources/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1784,19 +1789,19 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /// Lists data sources.
+  /// Lists datasources.
   ///
   /// Request parameters:
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
-  ///
   /// [pageToken] - Starting index of the results.
   ///
-  /// [pageSize] - Maximum number of data sources to fetch in a request.
+  /// [pageSize] - Maximum number of datasources to fetch in a request.
   /// The max value is 100.
   /// <br />The default value is 10
+  ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1809,9 +1814,9 @@ class SettingsDatasourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourceResponse> list(
-      {core.bool debugOptions_enableDebugging,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.bool debugOptions_enableDebugging,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1820,16 +1825,16 @@ class SettingsDatasourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (debugOptions_enableDebugging != null) {
-      _queryParams["debugOptions.enableDebugging"] = [
-        "${debugOptions_enableDebugging}"
-      ];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (debugOptions_enableDebugging != null) {
+      _queryParams["debugOptions.enableDebugging"] = [
+        "${debugOptions_enableDebugging}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1846,15 +1851,15 @@ class SettingsDatasourcesResourceApi {
     return _response.then((data) => new ListDataSourceResponse.fromJson(data));
   }
 
-  /// Updates a data source.
+  /// Updates a datasource.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the data source resource.
+  /// [name] - Name of the datasource resource.
   /// Format: datasources/{source_id}.
-  /// <br />The name is ignored when creating a data source.
+  /// <br />The name is ignored when creating a datasource.
   /// Value must have pattern "^datasources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1956,9 +1961,9 @@ class SettingsSearchapplicationsResourceApi {
   /// <br />Format: applications/{application_id}.
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2010,9 +2015,9 @@ class SettingsSearchapplicationsResourceApi {
   /// <br />Format: applications/{application_id}.
   /// Value must have pattern "^searchapplications/[^/]+$".
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2060,9 +2065,9 @@ class SettingsSearchapplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debugOptions_enableDebugging] - If set, the request will enable debugging
-  /// features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
@@ -2231,7 +2236,9 @@ class StatsResourceApi {
 
   StatsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets indexed item statistics aggreggated across all data sources.
+  /// Gets indexed item statistics aggreggated across all data sources. This
+  /// API only returns statistics for previous dates; it doesn't return
+  /// statistics for the current day.
   ///
   /// Request parameters:
   ///
@@ -2563,11 +2570,11 @@ class CustomerIndexStats {
   }
 }
 
-/// Data source is a logical namespace for items to be indexed.
-/// All items must belong to a data source.  This is the prerequisite before
+/// Datasource is a logical namespace for items to be indexed.
+/// All items must belong to a datasource.  This is the prerequisite before
 /// items can be indexed into Cloud Search.
 class DataSource {
-  /// If true, Indexing API rejects any modification calls to this data source
+  /// If true, Indexing API rejects any modification calls to this datasource
   /// such as create, update, and delete.
   /// Disabling this does not imply halting process of previously
   /// accepted data.
@@ -2576,24 +2583,24 @@ class DataSource {
   /// Disable serving any search or assist results.
   core.bool disableServing;
 
-  /// Required. Display name of the data source
+  /// Required. Display name of the datasource
   /// The maximum length is 300 characters.
   core.String displayName;
 
   /// List of service accounts that have indexing access.
   core.List<core.String> indexingServiceAccounts;
 
-  /// This restricts visibility to items at a data source level to the
-  /// disjunction of users/groups mentioned with the field. Note that, this
-  /// does not ensure access to a specific item, as users need to have ACL
-  /// permissions on the contained items. This ensures a high level access
-  /// on the entire data source, and that the individual items are not shared
-  /// outside this visibility.
+  /// This field restricts visibility to items at the datasource level. Items
+  /// within the datasource are restricted to the union of users and groups
+  /// included in this field. Note that, this does not ensure access to a
+  /// specific item, as users need to have ACL permissions on the contained
+  /// items. This ensures a high level access on the entire datasource, and
+  /// that the individual items are not shared outside this visibility.
   core.List<GSuitePrincipal> itemsVisibility;
 
-  /// Name of the data source resource.
+  /// Name of the datasource resource.
   /// Format: datasources/{source_id}.
-  /// <br />The name is ignored when creating a data source.
+  /// <br />The name is ignored when creating a datasource.
   core.String name;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
@@ -2604,11 +2611,11 @@ class DataSource {
   /// the
   /// 'source' operator. For example, if the short name is *&lt;value&gt;* then
   /// queries like *source:&lt;value&gt;* will only return results for this
-  /// source. The value must be unique across all data sources. The value must
+  /// source. The value must be unique across all datasources. The value must
   /// only contain alphanumeric characters (a-zA-Z0-9). The value cannot start
   /// with 'google' and cannot be one of the following: mail, gmail, docs,
   /// drive,
-  /// groups, sites, calendar, hangouts, gplus, keep.
+  /// groups, sites, calendar, hangouts, gplus, keep, people, teams.
   /// Its maximum length is 32 characters.
   core.String shortName;
 
@@ -2723,6 +2730,10 @@ class DataSourceRestriction {
   /// the resulting expressions are joined disjunctively.
   ///
   /// The maximum number of elements is 20.
+  ///
+  /// NOTE: Suggest API supports only few filters at the moment:
+  ///   "objecttype", "type" and "mimetype".
+  /// For now, schema specific filters cannot be used to filter suggestions.
   core.List<FilterOptions> filterOptions;
 
   /// The source of restriction.
@@ -2917,8 +2928,8 @@ class DateValues {
 
 /// Shared request debug options for all cloudsearch RPC methods.
 class DebugOptions {
-  /// If set, the request will enable debugging features of Cloud Search.
-  /// Only turn on this field, if asked by Google to help with debugging.
+  /// If you are asked by Google to help with debugging, set this field.
+  /// Otherwise, ignore this field.
   core.bool enableDebugging;
 
   DebugOptions();
@@ -3482,12 +3493,14 @@ class ErrorMessage {
 /// type of the field bucketed.
 /// FacetBucket is currently used only for returning the response object.
 class FacetBucket {
-  /// Number of results that match the bucket value.
+  /// Number of results that match the bucket value. Counts are only returned
+  /// for searches when count accuracy is ensured. Can be empty.
   core.int count;
 
   /// Percent of results that match the bucket value. This value is between
-  /// (0-100].
-  /// This may not be accurate and is a best effort estimate.
+  /// (0-100]. Percentages are returned for all searches, but are an estimate.
+  /// Because percentages are always returned, you should render percentages
+  /// instead of counts.
   core.int percentage;
   Value value;
 
@@ -3524,6 +3537,11 @@ class FacetBucket {
 /// Specifies operators to return facet results for. There will be one
 /// FacetResult for every source_name/object_type/operator_name combination.
 class FacetOptions {
+  /// Maximum number of facet buckets that should be returned for this facet.
+  /// Defaults to 10.
+  /// Maximum value is 100.
+  core.int numFacetBuckets;
+
   /// If object_type is set, only those objects of that type will be used to
   /// compute facets. If empty, then all objects will be used to compute facets.
   core.String objectType;
@@ -3539,6 +3557,9 @@ class FacetOptions {
   FacetOptions();
 
   FacetOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("numFacetBuckets")) {
+      numFacetBuckets = _json["numFacetBuckets"];
+    }
     if (_json.containsKey("objectType")) {
       objectType = _json["objectType"];
     }
@@ -3553,6 +3574,9 @@ class FacetOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (numFacetBuckets != null) {
+      _json["numFacetBuckets"] = numFacetBuckets;
+    }
     if (objectType != null) {
       _json["objectType"] = objectType;
     }
@@ -3568,7 +3592,7 @@ class FacetOptions {
 
 /// Source specific facet response
 class FacetResult {
-  /// FacetBuckets for values in response containing atleast a single result.
+  /// FacetBuckets for values in response containing at least a single result.
   core.List<FacetBucket> buckets;
 
   /// Object type for which facet results are returned. Can be empty.
@@ -3732,8 +3756,8 @@ class FilterOptions {
 /// this way, calendar events that occur closer to the time of the search query
 /// are considered higher quality and ranked accordingly.
 class FreshnessOptions {
-  /// The duration (in seconds) after which an object should be considered
-  /// stale.
+  /// The duration after which an object should be considered
+  /// stale. The default value is 180 days (in seconds).
   core.String freshnessDuration;
 
   /// This property indicates the freshness level of the object in the index.
@@ -3747,6 +3771,9 @@ class FreshnessOptions {
   /// updateTime
   /// as the freshness indicator.
   /// The maximum length is 256 characters.
+  ///
+  /// When a property is used to calculate fresheness, the value defaults
+  /// to 2 years from the current time.
   core.String freshnessProperty;
 
   FreshnessOptions();
@@ -3864,6 +3891,170 @@ class GetDataSourceIndexStatsResponse {
   }
 }
 
+/// Gmail Action restricts (i.e. read/replied/snoozed).
+class GmailActionRestrict {
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "UNREAD" : is:unread
+  /// - "READ" : is:read
+  /// - "REPLIED_TO" : label:^io_re
+  /// - "MUTED" : label:mute
+  core.String type;
+
+  GmailActionRestrict();
+
+  GmailActionRestrict.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).
+class GmailAttachmentRestrict {
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "HAS_ATTACHMENT" : has:attachment
+  /// - "HAS_PHOTO" : has photos (changes to filename:(jpg OR jpeg OR png)  when
+  /// typed)
+  /// - "HAS_DRIVE" : has:drive
+  /// - "HAS_DOCUMENT" : has:document
+  /// - "HAS_SPREADSHEET" : has:spreadsheet
+  /// - "HAS_PRESENTATION" : has:presentation
+  /// - "HAS_YOUTUBE" : has:youtube
+  /// - "HAS_PDF" : filename:pdf
+  core.String type;
+
+  GmailAttachmentRestrict();
+
+  GmailAttachmentRestrict.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).
+class GmailFolderRestrict {
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "IN_SENT" : in:sent
+  /// - "IN_DRAFT" : in:draft
+  /// - "CHATS" : label:chats
+  /// - "IN_TRASH" : in:trash
+  /// - "USER_GENERATED_LABEL" : label:<user generated>
+  core.String type;
+
+  GmailFolderRestrict();
+
+  GmailFolderRestrict.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Gmail Intelligent restricts (i.e. smartlabels, important).
+class GmailIntelligentRestrict {
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "SOCIAL" : category:social
+  /// - "UPDATES" : category:updates
+  /// - "FORUMS" : category:forums
+  /// - "PROMOTIONS" : category:promotions
+  /// - "IMPORTANT" : is:important
+  /// - "FLIGHT_RESERVATION" : label:^cob_sm_flightreservation
+  /// - "LODGING_RESERVATION" : label:^cob_sm_lodgingreservation
+  /// - "CAR_RESERVATION" : label:^cob_sm_rentalcarreservation
+  /// - "BUS_RESERVATION" : label:^cob_sm_busreservation
+  core.String type;
+
+  GmailIntelligentRestrict();
+
+  GmailIntelligentRestrict.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Gmail Time restricts (i.e. received today, this week).
+class GmailTimeRestrict {
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "FROM_THIS_WEEK" : newer_than:7d
+  /// - "OLDER_THAN_ONE_YEAR" : older_than:1y
+  /// - "FROM_TODAY" : newer_than:1d
+  /// - "FROM_YESTERDAY" : newer_than:2d older_than:1d
+  /// - "FROM_THIS_MONTH" : newer_than:30d
+  /// - "FROM_CERTAIN_MONTH" : This will read as something like "From November"
+  /// and will have operator
+  /// before:X after:Y
+  /// - "OLDER_THAN_TODAY" : older_than:1d
+  /// - "OLDER_THAN_YESTERDAY" : older_than:2d
+  /// - "OLDER_THAN_A_WEEK" : older_than:7d
+  /// - "OLDER_THAN_A_MONTH" : older_than:30d
+  core.String type;
+
+  GmailTimeRestrict();
+
+  GmailTimeRestrict.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// Used to provide a search operator for html properties. This is optional.
 /// Search operators let users restrict the query to specific fields relevant
 /// to the type of item being searched.
@@ -3956,6 +4147,29 @@ class HtmlValues {
   }
 }
 
+class IndexItemOptions {
+  /// Specifies if the index request should allow gsuite principals that do not
+  /// exist or are deleted in the index request.
+  core.bool allowUnknownGsuitePrincipals;
+
+  IndexItemOptions();
+
+  IndexItemOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("allowUnknownGsuitePrincipals")) {
+      allowUnknownGsuitePrincipals = _json["allowUnknownGsuitePrincipals"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowUnknownGsuitePrincipals != null) {
+      _json["allowUnknownGsuitePrincipals"] = allowUnknownGsuitePrincipals;
+    }
+    return _json;
+  }
+}
+
 class IndexItemRequest {
   /// Name of connector making this call.
   /// <br />Format: datasources/{source_id}/connectors/{ID}
@@ -3963,6 +4177,7 @@ class IndexItemRequest {
 
   /// Common debug options.
   DebugOptions debugOptions;
+  IndexItemOptions indexItemOptions;
 
   /// Name of the item.  Format:
   /// datasources/{source_id}/items/{item_id}
@@ -3987,6 +4202,10 @@ class IndexItemRequest {
     if (_json.containsKey("debugOptions")) {
       debugOptions = new DebugOptions.fromJson(_json["debugOptions"]);
     }
+    if (_json.containsKey("indexItemOptions")) {
+      indexItemOptions =
+          new IndexItemOptions.fromJson(_json["indexItemOptions"]);
+    }
     if (_json.containsKey("item")) {
       item = new Item.fromJson(_json["item"]);
     }
@@ -4003,6 +4222,9 @@ class IndexItemRequest {
     }
     if (debugOptions != null) {
       _json["debugOptions"] = (debugOptions).toJson();
+    }
+    if (indexItemOptions != null) {
+      _json["indexItemOptions"] = (indexItemOptions).toJson();
     }
     if (item != null) {
       _json["item"] = (item).toJson();
@@ -4431,7 +4653,8 @@ class ItemAcl {
   /// List of principals who are allowed to see the item in search results.
   /// Optional if inheriting permissions from another item or if the item
   /// is not intended to be visible, such as
-  /// virtual containers.
+  /// virtual
+  /// containers.
   /// The maximum number of elements is 1000.
   core.List<Principal> readers;
 
@@ -5130,7 +5353,10 @@ class Metadata {
   /// The named source for the result, such as Gmail.
   Source source;
 
-  /// The last modified date for the object in the search result.
+  /// The last modified date for the object in the search result. If not
+  /// set in the item, the value returned here is empty. When
+  /// `updateTime` is used for calculating freshness and is not set, this
+  /// value defaults to 2 years from the current time.
   core.String updateTime;
 
   Metadata();
@@ -5199,7 +5425,8 @@ class Metadata {
 /// A metaline is a list of properties that are displayed along with the search
 /// result to provide context.
 class Metaline {
-  /// The list of displayed properties for the metaline.
+  /// The list of displayed properties for the metaline. The maxiumum number of
+  /// properties is 5.
   core.List<DisplayedProperty> properties;
 
   Metaline();
@@ -5405,7 +5632,7 @@ class ObjectDisplayOptions {
   /// All
   /// of the properties must set
   /// is_returnable
-  /// to true. The maximum number of elements is 3.
+  /// to true. The maximum number of metalines is 3.
   core.List<Metaline> metalines;
 
   /// The user friendly label to display in the search result to inidicate the
@@ -5553,7 +5780,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -5613,7 +5840,7 @@ class Operation {
   }
 }
 
-/// A people suggestion.
+/// This field contains information about the person being suggested.
 class PeopleSuggestion {
   /// Suggested person. All fields of the person object might not be populated.
   Person person;
@@ -5955,13 +6182,12 @@ class PropertyDefinition {
   core.bool isRepeatable;
 
   /// Indicates that the property identifies data that should be returned in
-  /// search
-  /// results via the Query API. If set to *true*, indicates that Query API
-  /// users can use matching property fields in results. However, storing fields
-  /// requires more space allocation and uses more bandwidth for search queries,
-  /// which impacts performance over large datasets. Set to *true* here only if
-  /// the field is needed for search results. Cannot be true for properties
-  /// whose type is an object.
+  /// search results via the Query API. If set to *true*, indicates that Query
+  /// API users can use matching property fields in results. However, storing
+  /// fields requires more space allocation and uses more bandwidth for search
+  /// queries, which impacts performance over large datasets. Set to *true* here
+  /// only if the field is needed for search results. Cannot be true for
+  /// properties whose type is an object.
   core.bool isReturnable;
 
   /// Indicates that the property can be used for sorting. Cannot be true for
@@ -5971,6 +6197,14 @@ class PropertyDefinition {
   /// Only supported for Boolean, Date, Double, Integer, and Timestamp
   /// properties.
   core.bool isSortable;
+
+  /// Indicates that users can perform wildcard search for this
+  /// property. Only supported for Text properties. IsReturnable must be true to
+  /// set this option. In a given datasource maximum of 5 properties can be
+  /// marked as is_wildcard_searchable.
+  ///
+  /// Note: This is an alpha feature and is enabled for whitelisted users only.
+  core.bool isWildcardSearchable;
 
   /// The name of the property. Item indexing requests sent to the Indexing API
   /// should set the property name
@@ -6031,6 +6265,9 @@ class PropertyDefinition {
     if (_json.containsKey("isSortable")) {
       isSortable = _json["isSortable"];
     }
+    if (_json.containsKey("isWildcardSearchable")) {
+      isWildcardSearchable = _json["isWildcardSearchable"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -6083,6 +6320,9 @@ class PropertyDefinition {
     }
     if (isSortable != null) {
       _json["isSortable"] = isSortable;
+    }
+    if (isWildcardSearchable != null) {
+      _json["isWildcardSearchable"] = isWildcardSearchable;
     }
     if (name != null) {
       _json["name"] = name;
@@ -6580,7 +6820,8 @@ class QuerySource {
   }
 }
 
-/// A completed query suggestion.
+/// This field does not contain anything as of now and is just used as an
+/// indicator that the suggest result was a phrase completion.
 class QuerySuggestion {
   QuerySuggestion();
 
@@ -6659,6 +6900,11 @@ class RequestOptions {
   /// For more information, see
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   /// For translations.
+  ///
+  /// When specified, the documents in search results are biased towards the
+  /// specified language.
+  /// Suggest API does not use this parameter. It autocompletes only based on
+  /// characters in the query.
   core.String languageCode;
 
   /// Id of the application created using SearchApplicationsService.
@@ -6753,12 +6999,23 @@ class ResponseDebugInfo {
 }
 
 /// Information relevant only to a restrict entry.
-/// NextId: 7
+/// NextId: 12
 class RestrictItem {
+  /// LINT.ThenChange(//depot/google3/java/com/google/apps/search/quality/itemsuggest/utils/SubtypeRerankingUtils.java)
   DriveFollowUpRestrict driveFollowUpRestrict;
   DriveLocationRestrict driveLocationRestrict;
+
+  /// LINT.IfChange
+  /// Drive Types.
   DriveMimeTypeRestrict driveMimeTypeRestrict;
   DriveTimeSpanRestrict driveTimeSpanRestrict;
+  GmailActionRestrict gmailActionRestrict;
+  GmailAttachmentRestrict gmailAttachmentRestrict;
+
+  /// Gmail Types.
+  GmailFolderRestrict gmailFolderRestrict;
+  GmailIntelligentRestrict gmailIntelligentRestrict;
+  GmailTimeRestrict gmailTimeRestrict;
 
   /// The search restrict (e.g. "after:2017-09-11 before:2017-09-12").
   core.String searchOperator;
@@ -6782,6 +7039,26 @@ class RestrictItem {
       driveTimeSpanRestrict =
           new DriveTimeSpanRestrict.fromJson(_json["driveTimeSpanRestrict"]);
     }
+    if (_json.containsKey("gmailActionRestrict")) {
+      gmailActionRestrict =
+          new GmailActionRestrict.fromJson(_json["gmailActionRestrict"]);
+    }
+    if (_json.containsKey("gmailAttachmentRestrict")) {
+      gmailAttachmentRestrict = new GmailAttachmentRestrict.fromJson(
+          _json["gmailAttachmentRestrict"]);
+    }
+    if (_json.containsKey("gmailFolderRestrict")) {
+      gmailFolderRestrict =
+          new GmailFolderRestrict.fromJson(_json["gmailFolderRestrict"]);
+    }
+    if (_json.containsKey("gmailIntelligentRestrict")) {
+      gmailIntelligentRestrict = new GmailIntelligentRestrict.fromJson(
+          _json["gmailIntelligentRestrict"]);
+    }
+    if (_json.containsKey("gmailTimeRestrict")) {
+      gmailTimeRestrict =
+          new GmailTimeRestrict.fromJson(_json["gmailTimeRestrict"]);
+    }
     if (_json.containsKey("searchOperator")) {
       searchOperator = _json["searchOperator"];
     }
@@ -6801,6 +7078,21 @@ class RestrictItem {
     }
     if (driveTimeSpanRestrict != null) {
       _json["driveTimeSpanRestrict"] = (driveTimeSpanRestrict).toJson();
+    }
+    if (gmailActionRestrict != null) {
+      _json["gmailActionRestrict"] = (gmailActionRestrict).toJson();
+    }
+    if (gmailAttachmentRestrict != null) {
+      _json["gmailAttachmentRestrict"] = (gmailAttachmentRestrict).toJson();
+    }
+    if (gmailFolderRestrict != null) {
+      _json["gmailFolderRestrict"] = (gmailFolderRestrict).toJson();
+    }
+    if (gmailIntelligentRestrict != null) {
+      _json["gmailIntelligentRestrict"] = (gmailIntelligentRestrict).toJson();
+    }
+    if (gmailTimeRestrict != null) {
+      _json["gmailTimeRestrict"] = (gmailTimeRestrict).toJson();
     }
     if (searchOperator != null) {
       _json["searchOperator"] = searchOperator;
@@ -6999,7 +7291,7 @@ class Schema {
   core.List<ObjectDefinition> objectDefinitions;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
-  /// schema. After modifying the schema, wait for opeations to complete
+  /// schema. After modifying the schema, wait for operations to complete
   /// before indexing additional content.
   core.List<core.String> operationIds;
 
@@ -7037,7 +7329,8 @@ class Schema {
 class ScoringConfig {
   /// Whether to use freshness as a ranking signal. By default, freshness is
   /// used
-  /// as a ranking signal.
+  /// as a ranking signal. Note that this setting is not available in the Admin
+  /// UI.
   core.bool disableFreshness;
 
   /// Whether to personalize the results. By default, personal signals will
@@ -7092,8 +7385,7 @@ class SearchApplication {
   core.String name;
 
   /// IDs of the Long Running Operations (LROs) currently running for this
-  /// schema.
-  /// Output only field.
+  /// schema. Output only field.
   core.List<core.String> operationIds;
 
   /// Configuration for ranking results.
@@ -7252,6 +7544,8 @@ class SearchQualityMetadata {
   /// An indication of the quality of the item, used to influence search
   /// quality.
   /// Value should be between 0.0 (lowest quality) and 1.0 (highest quality).
+  /// The
+  /// default value is 0.0.
   core.double quality;
 
   SearchQualityMetadata();
@@ -7518,7 +7812,8 @@ class SearchResult {
   /// Title of the search result.
   core.String title;
 
-  /// The URL of the result.
+  /// The URL of the search result. The URL contains a Google redirect to the
+  /// actual item. This URL is signed and shouldn't be changed.
   core.String url;
 
   SearchResult();
@@ -7931,61 +8226,12 @@ class StartUploadItemRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -8064,6 +8310,7 @@ class StructuredDataObject {
 
 /// Structured results that are returned as part of search request.
 class StructuredResult {
+  /// Representation of a person
   Person person;
 
   StructuredResult();
@@ -8088,9 +8335,14 @@ class StructuredResult {
 class SuggestRequest {
   /// The sources to use for suggestions. If not specified, all data sources
   /// from the current search application are used.
+  /// Suggestions are based on Gmail titles. Suggestions from third party
+  /// sources
+  /// are not available.
   core.List<DataSourceRestriction> dataSourceRestrictions;
 
-  /// Partial query for the completion suggestion.
+  /// Partial query for which autocomplete suggestions will be shown.
+  /// For example, if the query is "sea", then the server might return
+  /// "season", "search", "seagull" and so on.
   core.String query;
 
   /// Request options, such as the search application and user timezone.
@@ -8132,7 +8384,7 @@ class SuggestRequest {
 
 /// Response of the suggest API.
 class SuggestResponse {
-  /// List of suggestion results.
+  /// List of suggestions.
   core.List<SuggestResult> suggestResults;
 
   SuggestResponse();
@@ -8158,7 +8410,13 @@ class SuggestResponse {
 
 /// One suggestion result.
 class SuggestResult {
+  /// This is present when the suggestion indicates a person. It
+  /// contains more information about the person - like their email ID,
+  /// name etc.
   PeopleSuggestion peopleSuggestion;
+
+  /// This field will be present if the suggested query is a word/phrase
+  /// completion.
   QuerySuggestion querySuggestion;
 
   /// The source of the suggestion.

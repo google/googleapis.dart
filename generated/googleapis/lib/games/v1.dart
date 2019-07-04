@@ -22,8 +22,7 @@ class GamesApi {
   static const DriveAppdataScope =
       "https://www.googleapis.com/auth/drive.appdata";
 
-  /// Share your Google+ profile information and view and manage your game
-  /// activity
+  /// Create, edit, and delete your Google Play Games activity
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
   final commons.ApiRequester _requester;

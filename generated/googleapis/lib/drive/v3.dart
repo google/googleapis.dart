@@ -64,6 +64,7 @@ class DriveApi {
   ChangesResourceApi get changes => new ChangesResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   CommentsResourceApi get comments => new CommentsResourceApi(_requester);
+  DrivesResourceApi get drives => new DrivesResourceApi(_requester);
   FilesResourceApi get files => new FilesResourceApi(_requester);
   PermissionsResourceApi get permissions =>
       new PermissionsResourceApi(_requester);
@@ -131,11 +132,17 @@ class ChangesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [driveId] - The ID of the shared drive for which the starting pageToken
+  /// for listing future changes from that shared drive will be returned.
   ///
-  /// [teamDriveId] - The ID of the Team Drive for which the starting pageToken
-  /// for listing future changes from that Team Drive will be returned.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  ///
+  /// [teamDriveId] - Deprecated use driveId instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -148,7 +155,9 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StartPageToken> getStartPageToken(
-      {core.bool supportsTeamDrives,
+      {core.String driveId,
+      core.bool supportsAllDrives,
+      core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
     var _url;
@@ -158,6 +167,12 @@ class ChangesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (driveId != null) {
+      _queryParams["driveId"] = [driveId];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
+    }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
@@ -179,7 +194,7 @@ class ChangesResourceApi {
     return _response.then((data) => new StartPageToken.fromJson(data));
   }
 
-  /// Lists the changes for a user or Team Drive.
+  /// Lists the changes for a user or shared drive.
   ///
   /// Request parameters:
   ///
@@ -187,17 +202,26 @@ class ChangesResourceApi {
   /// page. This should be set to the value of 'nextPageToken' from the previous
   /// response or to the response from the getStartPageToken method.
   ///
+  /// [driveId] - The shared drive from which changes will be returned. If
+  /// specified the change IDs will be reflective of the shared drive; use the
+  /// combined drive ID and change ID as an identifier.
+  ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
   /// even when a file was removed from the list of changes and there will be no
   /// further change entries for this file.
   ///
+  /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
+  /// shared drive items should be included in results. This parameter will only
+  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// included in the results.
+  ///
   /// [includeRemoved] - Whether to include changes indicating that items have
   /// been removed from the list of changes, for example by deletion or loss of
   /// access.
   ///
-  /// [includeTeamDriveItems] - Whether Team Drive files or changes should be
-  /// included in results.
+  /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
+  /// instead.
   ///
   /// [pageSize] - The maximum number of changes to return per page.
   /// Value must be between "1" and "1000".
@@ -210,12 +234,14 @@ class ChangesResourceApi {
   /// [spaces] - A comma-separated list of spaces to query within the user
   /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
   ///
-  /// [teamDriveId] - The Team Drive from which changes will be returned. If
-  /// specified the change IDs will be reflective of the Team Drive; use the
-  /// combined Team Drive ID and change ID as an identifier.
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  ///
+  /// [teamDriveId] - Deprecated use driveId instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -228,12 +254,15 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChangeList> list(core.String pageToken,
-      {core.bool includeCorpusRemovals,
+      {core.String driveId,
+      core.bool includeCorpusRemovals,
+      core.bool includeItemsFromAllDrives,
       core.bool includeRemoved,
       core.bool includeTeamDriveItems,
       core.int pageSize,
       core.bool restrictToMyDrive,
       core.String spaces,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
@@ -248,8 +277,16 @@ class ChangesResourceApi {
       throw new core.ArgumentError("Parameter pageToken is required.");
     }
     _queryParams["pageToken"] = [pageToken];
+    if (driveId != null) {
+      _queryParams["driveId"] = [driveId];
+    }
     if (includeCorpusRemovals != null) {
       _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
+    }
+    if (includeItemsFromAllDrives != null) {
+      _queryParams["includeItemsFromAllDrives"] = [
+        "${includeItemsFromAllDrives}"
+      ];
     }
     if (includeRemoved != null) {
       _queryParams["includeRemoved"] = ["${includeRemoved}"];
@@ -265,6 +302,9 @@ class ChangesResourceApi {
     }
     if (spaces != null) {
       _queryParams["spaces"] = [spaces];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -297,17 +337,26 @@ class ChangesResourceApi {
   /// page. This should be set to the value of 'nextPageToken' from the previous
   /// response or to the response from the getStartPageToken method.
   ///
+  /// [driveId] - The shared drive from which changes will be returned. If
+  /// specified the change IDs will be reflective of the shared drive; use the
+  /// combined drive ID and change ID as an identifier.
+  ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
   /// even when a file was removed from the list of changes and there will be no
   /// further change entries for this file.
   ///
+  /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
+  /// shared drive items should be included in results. This parameter will only
+  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// included in the results.
+  ///
   /// [includeRemoved] - Whether to include changes indicating that items have
   /// been removed from the list of changes, for example by deletion or loss of
   /// access.
   ///
-  /// [includeTeamDriveItems] - Whether Team Drive files or changes should be
-  /// included in results.
+  /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
+  /// instead.
   ///
   /// [pageSize] - The maximum number of changes to return per page.
   /// Value must be between "1" and "1000".
@@ -320,12 +369,14 @@ class ChangesResourceApi {
   /// [spaces] - A comma-separated list of spaces to query within the user
   /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
   ///
-  /// [teamDriveId] - The Team Drive from which changes will be returned. If
-  /// specified the change IDs will be reflective of the Team Drive; use the
-  /// combined Team Drive ID and change ID as an identifier.
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  ///
+  /// [teamDriveId] - Deprecated use driveId instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -338,12 +389,15 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request, core.String pageToken,
-      {core.bool includeCorpusRemovals,
+      {core.String driveId,
+      core.bool includeCorpusRemovals,
+      core.bool includeItemsFromAllDrives,
       core.bool includeRemoved,
       core.bool includeTeamDriveItems,
       core.int pageSize,
       core.bool restrictToMyDrive,
       core.String spaces,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
@@ -361,8 +415,16 @@ class ChangesResourceApi {
       throw new core.ArgumentError("Parameter pageToken is required.");
     }
     _queryParams["pageToken"] = [pageToken];
+    if (driveId != null) {
+      _queryParams["driveId"] = [driveId];
+    }
     if (includeCorpusRemovals != null) {
       _queryParams["includeCorpusRemovals"] = ["${includeCorpusRemovals}"];
+    }
+    if (includeItemsFromAllDrives != null) {
+      _queryParams["includeItemsFromAllDrives"] = [
+        "${includeItemsFromAllDrives}"
+      ];
     }
     if (includeRemoved != null) {
       _queryParams["includeRemoved"] = ["${includeRemoved}"];
@@ -378,6 +440,9 @@ class ChangesResourceApi {
     }
     if (spaces != null) {
       _queryParams["spaces"] = [spaces];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -740,6 +805,362 @@ class CommentsResourceApi {
   }
 }
 
+class DrivesResourceApi {
+  final commons.ApiRequester _requester;
+
+  DrivesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new shared drive.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestId] - An ID, such as a random UUID, which uniquely identifies this
+  /// user's request for idempotent creation of a shared drive. A repeated
+  /// request by the same user and with the same request ID will avoid creating
+  /// duplicates by attempting to create the same shared drive. If the shared
+  /// drive already exists a 409 error will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Drive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Drive> create(Drive request, core.String requestId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (requestId == null) {
+      throw new core.ArgumentError("Parameter requestId is required.");
+    }
+    _queryParams["requestId"] = [requestId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'drives';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Drive.fromJson(data));
+  }
+
+  /// Permanently deletes a shared drive for which the user is an organizer. The
+  /// shared drive cannot contain any untrashed items.
+  ///
+  /// Request parameters:
+  ///
+  /// [driveId] - The ID of the shared drive.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String driveId, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (driveId == null) {
+      throw new core.ArgumentError("Parameter driveId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets a shared drive's metadata by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [driveId] - The ID of the shared drive.
+  ///
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the shared drive belongs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Drive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Drive> get(core.String driveId,
+      {core.bool useDomainAdminAccess, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (driveId == null) {
+      throw new core.ArgumentError("Parameter driveId is required.");
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Drive.fromJson(data));
+  }
+
+  /// Hides a shared drive from the default view.
+  ///
+  /// Request parameters:
+  ///
+  /// [driveId] - The ID of the shared drive.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Drive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Drive> hide(core.String driveId, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (driveId == null) {
+      throw new core.ArgumentError("Parameter driveId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Drive.fromJson(data));
+  }
+
+  /// Lists the user's shared drives.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Maximum number of shared drives to return.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - Page token for shared drives.
+  ///
+  /// [q] - Query string for searching shared drives.
+  ///
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then all shared drives of the domain in which the requester
+  /// is an administrator are returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DriveList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DriveList> list(
+      {core.int pageSize,
+      core.String pageToken,
+      core.String q,
+      core.bool useDomainAdminAccess,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (q != null) {
+      _queryParams["q"] = [q];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'drives';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DriveList.fromJson(data));
+  }
+
+  /// Restores a shared drive to the default view.
+  ///
+  /// Request parameters:
+  ///
+  /// [driveId] - The ID of the shared drive.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Drive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Drive> unhide(core.String driveId, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (driveId == null) {
+      throw new core.ArgumentError("Parameter driveId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Drive.fromJson(data));
+  }
+
+  /// Updates the metadate for a shared drive.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [driveId] - The ID of the shared drive.
+  ///
+  /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
+  /// set to true, then the requester will be granted access if they are an
+  /// administrator of the domain to which the shared drive belongs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Drive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Drive> update(Drive request, core.String driveId,
+      {core.bool useDomainAdminAccess, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (driveId == null) {
+      throw new core.ArgumentError("Parameter driveId is required.");
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Drive.fromJson(data));
+  }
+}
+
 class FilesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -762,13 +1183,17 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Drive.
+  /// Google Drive.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -784,6 +1209,7 @@ class FilesResourceApi {
       {core.bool ignoreDefaultVisibility,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields}) {
     var _url;
@@ -807,6 +1233,9 @@ class FilesResourceApi {
     }
     if (ocrLanguage != null) {
       _queryParams["ocrLanguage"] = [ocrLanguage];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -840,13 +1269,17 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Drive.
+  /// Google Drive.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [useContentAsIndexableText] - Whether to use the uploaded content as
   /// indexable text.
@@ -871,6 +1304,7 @@ class FilesResourceApi {
       {core.bool ignoreDefaultVisibility,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.bool useContentAsIndexableText,
       core.String $fields,
@@ -894,6 +1328,9 @@ class FilesResourceApi {
     }
     if (ocrLanguage != null) {
       _queryParams["ocrLanguage"] = [ocrLanguage];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -928,7 +1365,7 @@ class FilesResourceApi {
   }
 
   /// Permanently deletes a file owned by the user without moving it to the
-  /// trash. If the file belongs to a Team Drive the user must be an organizer
+  /// trash. If the file belongs to a shared drive the user must be an organizer
   /// on the parent. If the target is a folder, all descendants owned by the
   /// user are also deleted.
   ///
@@ -936,8 +1373,12 @@ class FilesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -948,7 +1389,9 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId,
-      {core.bool supportsTeamDrives, core.String $fields}) {
+      {core.bool supportsAllDrives,
+      core.bool supportsTeamDrives,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -958,6 +1401,9 @@ class FilesResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1077,7 +1523,8 @@ class FilesResourceApi {
     }
   }
 
-  /// Generates a set of file IDs which can be provided in create requests.
+  /// Generates a set of file IDs which can be provided in create or copy
+  /// requests.
   ///
   /// Request parameters:
   ///
@@ -1137,8 +1584,12 @@ class FilesResourceApi {
   /// downloading known malware or other abusive files. This is only applicable
   /// when alt=media.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1160,6 +1611,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future get(core.String fileId,
       {core.bool acknowledgeAbuse,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields,
       commons.DownloadOptions downloadOptions =
@@ -1176,6 +1628,9 @@ class FilesResourceApi {
     }
     if (acknowledgeAbuse != null) {
       _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1206,19 +1661,24 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [corpora] - Comma-separated list of bodies of items (files/documents) to
-  /// which the query applies. Supported bodies are 'user', 'domain',
-  /// 'teamDrive' and 'allTeamDrives'. 'allTeamDrives' must be combined with
-  /// 'user'; all other values must be used in isolation. Prefer 'user' or
-  /// 'teamDrive' to 'allTeamDrives' for efficiency.
+  /// [corpora] - Bodies of items (files/documents) to which the query applies.
+  /// Supported bodies are 'user', 'domain', 'drive' and 'allDrives'. Prefer
+  /// 'user' or 'drive' to 'allDrives' for efficiency.
   ///
   /// [corpus] - The source of files to list. Deprecated: use 'corpora' instead.
   /// Possible string values are:
   /// - "domain" : Files shared to the user's domain.
   /// - "user" : Files owned by or shared to the user.
   ///
-  /// [includeTeamDriveItems] - Whether Team Drive items should be included in
-  /// results.
+  /// [driveId] - ID of the shared drive to search.
+  ///
+  /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
+  /// shared drive items should be included in results. This parameter will only
+  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// included in the results.
+  ///
+  /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
+  /// instead.
   ///
   /// [orderBy] - A comma-separated list of sort keys. Valid keys are
   /// 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name',
@@ -1244,10 +1704,14 @@ class FilesResourceApi {
   /// [spaces] - A comma-separated list of spaces to query within the corpus.
   /// Supported values are 'drive', 'appDataFolder' and 'photos'.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
   ///
-  /// [teamDriveId] - ID of Team Drive to search.
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
+  ///
+  /// [teamDriveId] - Deprecated use driveId instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1262,12 +1726,15 @@ class FilesResourceApi {
   async.Future<FileList> list(
       {core.String corpora,
       core.String corpus,
+      core.String driveId,
+      core.bool includeItemsFromAllDrives,
       core.bool includeTeamDriveItems,
       core.String orderBy,
       core.int pageSize,
       core.String pageToken,
       core.String q,
       core.String spaces,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String teamDriveId,
       core.String $fields}) {
@@ -1283,6 +1750,14 @@ class FilesResourceApi {
     }
     if (corpus != null) {
       _queryParams["corpus"] = [corpus];
+    }
+    if (driveId != null) {
+      _queryParams["driveId"] = [driveId];
+    }
+    if (includeItemsFromAllDrives != null) {
+      _queryParams["includeItemsFromAllDrives"] = [
+        "${includeItemsFromAllDrives}"
+      ];
     }
     if (includeTeamDriveItems != null) {
       _queryParams["includeTeamDriveItems"] = ["${includeTeamDriveItems}"];
@@ -1301,6 +1776,9 @@ class FilesResourceApi {
     }
     if (spaces != null) {
       _queryParams["spaces"] = [spaces];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1335,15 +1813,19 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Drive.
+  /// Google Drive.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
   ///
   /// [removeParents] - A comma-separated list of parent IDs to remove.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [useContentAsIndexableText] - Whether to use the uploaded content as
   /// indexable text.
@@ -1369,6 +1851,7 @@ class FilesResourceApi {
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.String removeParents,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.bool useContentAsIndexableText,
       core.String $fields,
@@ -1398,6 +1881,9 @@ class FilesResourceApi {
     }
     if (removeParents != null) {
       _queryParams["removeParents"] = [removeParents];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1445,8 +1931,12 @@ class FilesResourceApi {
   /// downloading known malware or other abusive files. This is only applicable
   /// when alt=media.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1468,6 +1958,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future watch(Channel request, core.String fileId,
       {core.bool acknowledgeAbuse,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields,
       commons.DownloadOptions downloadOptions =
@@ -1487,6 +1978,9 @@ class FilesResourceApi {
     }
     if (acknowledgeAbuse != null) {
       _queryParams["acknowledgeAbuse"] = ["${acknowledgeAbuse}"];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1519,13 +2013,13 @@ class PermissionsResourceApi {
 
   PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a permission for a file or Team Drive.
+  /// Creates a permission for a file or shared drive.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID of the file or Team Drive.
+  /// [fileId] - The ID of the file or shared drive.
   ///
   /// [emailMessage] - A plain text custom message to include in the
   /// notification email.
@@ -1535,16 +2029,21 @@ class PermissionsResourceApi {
   /// and is not allowed for other requests. It must not be disabled for
   /// ownership transfers.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [transferOwnership] - Whether to transfer ownership to the specified user
   /// and downgrade the current owner to a writer. This parameter is required as
   /// an acknowledgement of the side effect.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if they are an
-  /// administrator of the domain to which the item belongs.
+  /// set to true, then the requester will be granted access if the file ID
+  /// parameter refers to a shared drive and the requester is an administrator
+  /// of the domain to which the shared drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1559,6 +2058,7 @@ class PermissionsResourceApi {
   async.Future<Permission> create(Permission request, core.String fileId,
       {core.String emailMessage,
       core.bool sendNotificationEmail,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.bool transferOwnership,
       core.bool useDomainAdminAccess,
@@ -1581,6 +2081,9 @@ class PermissionsResourceApi {
     }
     if (sendNotificationEmail != null) {
       _queryParams["sendNotificationEmail"] = ["${sendNotificationEmail}"];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1610,16 +2113,21 @@ class PermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID of the file or Team Drive.
+  /// [fileId] - The ID of the file or shared drive.
   ///
   /// [permissionId] - The ID of the permission.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if they are an
-  /// administrator of the domain to which the item belongs.
+  /// set to true, then the requester will be granted access if the file ID
+  /// parameter refers to a shared drive and the requester is an administrator
+  /// of the domain to which the shared drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1630,7 +2138,8 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String permissionId,
-      {core.bool supportsTeamDrives,
+      {core.bool supportsAllDrives,
+      core.bool supportsTeamDrives,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url;
@@ -1645,6 +2154,9 @@ class PermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1680,12 +2192,17 @@ class PermissionsResourceApi {
   ///
   /// [permissionId] - The ID of the permission.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if they are an
-  /// administrator of the domain to which the item belongs.
+  /// set to true, then the requester will be granted access if the file ID
+  /// parameter refers to a shared drive and the requester is an administrator
+  /// of the domain to which the shared drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1698,7 +2215,8 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Permission> get(core.String fileId, core.String permissionId,
-      {core.bool supportsTeamDrives,
+      {core.bool supportsAllDrives,
+      core.bool supportsTeamDrives,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url;
@@ -1713,6 +2231,9 @@ class PermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1738,28 +2259,33 @@ class PermissionsResourceApi {
     return _response.then((data) => new Permission.fromJson(data));
   }
 
-  /// Lists a file's or Team Drive's permissions.
+  /// Lists a file's or shared drive's permissions.
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID of the file or Team Drive.
+  /// [fileId] - The ID of the file or shared drive.
   ///
   /// [pageSize] - The maximum number of permissions to return per page. When
-  /// not set for files in a Team Drive, at most 100 results will be returned.
-  /// When not set for files that are not in a Team Drive, the entire list will
-  /// be returned.
+  /// not set for files in a shared drive, at most 100 results will be returned.
+  /// When not set for files that are not in a shared drive, the entire list
+  /// will be returned.
   /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The token for continuing a previous list request on the next
   /// page. This should be set to the value of 'nextPageToken' from the previous
   /// response.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if they are an
-  /// administrator of the domain to which the item belongs.
+  /// set to true, then the requester will be granted access if the file ID
+  /// parameter refers to a shared drive and the requester is an administrator
+  /// of the domain to which the shared drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1774,6 +2300,7 @@ class PermissionsResourceApi {
   async.Future<PermissionList> list(core.String fileId,
       {core.int pageSize,
       core.String pageToken,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.bool useDomainAdminAccess,
       core.String $fields}) {
@@ -1792,6 +2319,9 @@ class PermissionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -1820,22 +2350,27 @@ class PermissionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [fileId] - The ID of the file or Team Drive.
+  /// [fileId] - The ID of the file or shared drive.
   ///
   /// [permissionId] - The ID of the permission.
   ///
   /// [removeExpiration] - Whether to remove the expiration date.
   ///
-  /// [supportsTeamDrives] - Whether the requesting application supports Team
-  /// Drives.
+  /// [supportsAllDrives] - Deprecated - Whether the requesting application
+  /// supports both My Drives and shared drives. This parameter will only be
+  /// effective until June 1, 2020. Afterwards all applications are assumed to
+  /// support shared drives.
+  ///
+  /// [supportsTeamDrives] - Deprecated use supportsAllDrives instead.
   ///
   /// [transferOwnership] - Whether to transfer ownership to the specified user
   /// and downgrade the current owner to a writer. This parameter is required as
   /// an acknowledgement of the side effect.
   ///
   /// [useDomainAdminAccess] - Issue the request as a domain administrator; if
-  /// set to true, then the requester will be granted access if they are an
-  /// administrator of the domain to which the item belongs.
+  /// set to true, then the requester will be granted access if the file ID
+  /// parameter refers to a shared drive and the requester is an administrator
+  /// of the domain to which the shared drive belongs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1850,6 +2385,7 @@ class PermissionsResourceApi {
   async.Future<Permission> update(
       Permission request, core.String fileId, core.String permissionId,
       {core.bool removeExpiration,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.bool transferOwnership,
       core.bool useDomainAdminAccess,
@@ -1872,6 +2408,9 @@ class PermissionsResourceApi {
     }
     if (removeExpiration != null) {
       _queryParams["removeExpiration"] = ["${removeExpiration}"];
+    }
+    if (supportsAllDrives != null) {
+      _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
@@ -2232,8 +2771,10 @@ class RevisionsResourceApi {
 
   RevisionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Permanently deletes a revision. This method is only applicable to files
-  /// with binary content in Drive.
+  /// Permanently deletes a file version. You can only delete revisions for
+  /// files with binary content in Google Drive, like images or videos.
+  /// Revisions for other files, like Google Docs or Sheets, and the last
+  /// remaining file version can't be deleted.
   ///
   /// Request parameters:
   ///
@@ -2479,7 +3020,7 @@ class TeamdrivesResourceApi {
 
   TeamdrivesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a new Team Drive.
+  /// Deprecated use drives.create instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2532,8 +3073,7 @@ class TeamdrivesResourceApi {
     return _response.then((data) => new TeamDrive.fromJson(data));
   }
 
-  /// Permanently deletes a Team Drive for which the user is an organizer. The
-  /// Team Drive cannot contain any untrashed items.
+  /// Deprecated use drives.delete instead.
   ///
   /// Request parameters:
   ///
@@ -2575,7 +3115,7 @@ class TeamdrivesResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Gets a Team Drive's metadata by ID.
+  /// Deprecated use drives.get instead.
   ///
   /// Request parameters:
   ///
@@ -2625,7 +3165,7 @@ class TeamdrivesResourceApi {
     return _response.then((data) => new TeamDrive.fromJson(data));
   }
 
-  /// Lists the user's Team Drives.
+  /// Deprecated use drives.list instead.
   ///
   /// Request parameters:
   ///
@@ -2690,7 +3230,7 @@ class TeamdrivesResourceApi {
     return _response.then((data) => new TeamDriveList.fromJson(data));
   }
 
-  /// Updates a Team Drive's metadata
+  /// Deprecated use drives.update instead
   ///
   /// [request] - The metadata request object.
   ///
@@ -2746,6 +3286,46 @@ class TeamdrivesResourceApi {
   }
 }
 
+class AboutDriveThemes {
+  /// A link to this theme's background image.
+  core.String backgroundImageLink;
+
+  /// The color of this theme as an RGB hex string.
+  core.String colorRgb;
+
+  /// The ID of the theme.
+  core.String id;
+
+  AboutDriveThemes();
+
+  AboutDriveThemes.fromJson(core.Map _json) {
+    if (_json.containsKey("backgroundImageLink")) {
+      backgroundImageLink = _json["backgroundImageLink"];
+    }
+    if (_json.containsKey("colorRgb")) {
+      colorRgb = _json["colorRgb"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backgroundImageLink != null) {
+      _json["backgroundImageLink"] = backgroundImageLink;
+    }
+    if (colorRgb != null) {
+      _json["colorRgb"] = colorRgb;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    return _json;
+  }
+}
+
 /// The user's storage quota limits and usage. All fields are measured in bytes.
 class AboutStorageQuota {
   /// The usage limit, if applicable. This will not be present if the user has
@@ -2798,13 +3378,13 @@ class AboutStorageQuota {
 }
 
 class AboutTeamDriveThemes {
-  /// A link to this Team Drive theme's background image.
+  /// Deprecated - use driveThemes/backgroundImageLink instead.
   core.String backgroundImageLink;
 
-  /// The color of this Team Drive theme as an RGB hex string.
+  /// Deprecated - use driveThemes/colorRgb instead.
   core.String colorRgb;
 
-  /// The ID of the theme.
+  /// Deprecated - use driveThemes/id instead.
   core.String id;
 
   AboutTeamDriveThemes();
@@ -2842,8 +3422,14 @@ class About {
   /// Whether the user has installed the requesting app.
   core.bool appInstalled;
 
-  /// Whether the user can create Team Drives.
+  /// Whether the user can create shared drives.
+  core.bool canCreateDrives;
+
+  /// Deprecated - use canCreateDrives instead.
   core.bool canCreateTeamDrives;
+
+  /// A list of themes that are supported for shared drives.
+  core.List<AboutDriveThemes> driveThemes;
 
   /// A map of source MIME type to possible targets for all supported exports.
   core.Map<core.String, core.List<core.String>> exportFormats;
@@ -2868,7 +3454,7 @@ class About {
   /// bytes.
   AboutStorageQuota storageQuota;
 
-  /// A list of themes that are supported for Team Drives.
+  /// Deprecated - use driveThemes instead.
   core.List<AboutTeamDriveThemes> teamDriveThemes;
 
   /// The authenticated user.
@@ -2880,8 +3466,17 @@ class About {
     if (_json.containsKey("appInstalled")) {
       appInstalled = _json["appInstalled"];
     }
+    if (_json.containsKey("canCreateDrives")) {
+      canCreateDrives = _json["canCreateDrives"];
+    }
     if (_json.containsKey("canCreateTeamDrives")) {
       canCreateTeamDrives = _json["canCreateTeamDrives"];
+    }
+    if (_json.containsKey("driveThemes")) {
+      driveThemes = (_json["driveThemes"] as core.List)
+          .map<AboutDriveThemes>(
+              (value) => new AboutDriveThemes.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("exportFormats")) {
       exportFormats = commons.mapMap<core.List, core.List<core.String>>(
@@ -2927,8 +3522,15 @@ class About {
     if (appInstalled != null) {
       _json["appInstalled"] = appInstalled;
     }
+    if (canCreateDrives != null) {
+      _json["canCreateDrives"] = canCreateDrives;
+    }
     if (canCreateTeamDrives != null) {
       _json["canCreateTeamDrives"] = canCreateTeamDrives;
+    }
+    if (driveThemes != null) {
+      _json["driveThemes"] =
+          driveThemes.map((value) => (value).toJson()).toList();
     }
     if (exportFormats != null) {
       _json["exportFormats"] = exportFormats;
@@ -2962,8 +3564,19 @@ class About {
   }
 }
 
-/// A change to a file or Team Drive.
+/// A change to a file or shared drive.
 class Change {
+  /// The type of the change. Possible values are file and drive.
+  core.String changeType;
+
+  /// The updated state of the shared drive. Present if the changeType is drive,
+  /// the user is still a member of the shared drive, and the shared drive has
+  /// not been deleted.
+  Drive drive;
+
+  /// The ID of the shared drive associated with this change.
+  core.String driveId;
+
   /// The updated state of the file. Present if the type is file and the file
   /// has not been removed from this list of changes.
   File file;
@@ -2975,27 +3588,34 @@ class Change {
   /// "drive#change".
   core.String kind;
 
-  /// Whether the file or Team Drive has been removed from this list of changes,
-  /// for example by deletion or loss of access.
+  /// Whether the file or shared drive has been removed from this list of
+  /// changes, for example by deletion or loss of access.
   core.bool removed;
 
-  /// The updated state of the Team Drive. Present if the type is teamDrive, the
-  /// user is still a member of the Team Drive, and the Team Drive has not been
-  /// removed.
+  /// Deprecated - use drive instead.
   TeamDrive teamDrive;
 
-  /// The ID of the Team Drive associated with this change.
+  /// Deprecated - use driveId instead.
   core.String teamDriveId;
 
   /// The time of this change (RFC 3339 date-time).
   core.DateTime time;
 
-  /// The type of the change. Possible values are file and teamDrive.
+  /// Deprecated - use changeType instead.
   core.String type;
 
   Change();
 
   Change.fromJson(core.Map _json) {
+    if (_json.containsKey("changeType")) {
+      changeType = _json["changeType"];
+    }
+    if (_json.containsKey("drive")) {
+      drive = new Drive.fromJson(_json["drive"]);
+    }
+    if (_json.containsKey("driveId")) {
+      driveId = _json["driveId"];
+    }
     if (_json.containsKey("file")) {
       file = new File.fromJson(_json["file"]);
     }
@@ -3025,6 +3645,15 @@ class Change {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (changeType != null) {
+      _json["changeType"] = changeType;
+    }
+    if (drive != null) {
+      _json["drive"] = (drive).toJson();
+    }
+    if (driveId != null) {
+      _json["driveId"] = driveId;
+    }
     if (file != null) {
       _json["file"] = (file).toJson();
     }
@@ -3124,7 +3753,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource. Value: the fixed string "api#channel".
+  /// resource, which is "api#channel".
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior. Optional.
@@ -3434,6 +4063,496 @@ class CommentList {
   }
 }
 
+/// An image file and cropping parameters from which a background image for this
+/// shared drive is set. This is a write only field; it can only be set on
+/// drive.drives.update requests that don't set themeId. When specified, all
+/// fields of the backgroundImageFile must be set.
+class DriveBackgroundImageFile {
+  /// The ID of an image file in Google Drive to use for the background image.
+  core.String id;
+
+  /// The width of the cropped image in the closed range of 0 to 1. This value
+  /// represents the width of the cropped image divided by the width of the
+  /// entire image. The height is computed by applying a width to height aspect
+  /// ratio of 80 to 9. The resulting image must be at least 1280 pixels wide
+  /// and 144 pixels high.
+  core.double width;
+
+  /// The X coordinate of the upper left corner of the cropping area in the
+  /// background image. This is a value in the closed range of 0 to 1. This
+  /// value represents the horizontal distance from the left side of the entire
+  /// image to the left side of the cropping area divided by the width of the
+  /// entire image.
+  core.double xCoordinate;
+
+  /// The Y coordinate of the upper left corner of the cropping area in the
+  /// background image. This is a value in the closed range of 0 to 1. This
+  /// value represents the vertical distance from the top side of the entire
+  /// image to the top side of the cropping area divided by the height of the
+  /// entire image.
+  core.double yCoordinate;
+
+  DriveBackgroundImageFile();
+
+  DriveBackgroundImageFile.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("width")) {
+      width = _json["width"].toDouble();
+    }
+    if (_json.containsKey("xCoordinate")) {
+      xCoordinate = _json["xCoordinate"].toDouble();
+    }
+    if (_json.containsKey("yCoordinate")) {
+      yCoordinate = _json["yCoordinate"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (width != null) {
+      _json["width"] = width;
+    }
+    if (xCoordinate != null) {
+      _json["xCoordinate"] = xCoordinate;
+    }
+    if (yCoordinate != null) {
+      _json["yCoordinate"] = yCoordinate;
+    }
+    return _json;
+  }
+}
+
+/// Capabilities the current user has on this shared drive.
+class DriveCapabilities {
+  /// Whether the current user can add children to folders in this shared drive.
+  core.bool canAddChildren;
+
+  /// Whether the current user can change the copyRequiresWriterPermission
+  /// restriction of this shared drive.
+  core.bool canChangeCopyRequiresWriterPermissionRestriction;
+
+  /// Whether the current user can change the domainUsersOnly restriction of
+  /// this shared drive.
+  core.bool canChangeDomainUsersOnlyRestriction;
+
+  /// Whether the current user can change the background of this shared drive.
+  core.bool canChangeDriveBackground;
+
+  /// Whether the current user can change the driveMembersOnly restriction of
+  /// this shared drive.
+  core.bool canChangeDriveMembersOnlyRestriction;
+
+  /// Whether the current user can comment on files in this shared drive.
+  core.bool canComment;
+
+  /// Whether the current user can copy files in this shared drive.
+  core.bool canCopy;
+
+  /// Whether the current user can delete children from folders in this shared
+  /// drive.
+  core.bool canDeleteChildren;
+
+  /// Whether the current user can delete this shared drive. Attempting to
+  /// delete the shared drive may still fail if there are untrashed items inside
+  /// the shared drive.
+  core.bool canDeleteDrive;
+
+  /// Whether the current user can download files in this shared drive.
+  core.bool canDownload;
+
+  /// Whether the current user can edit files in this shared drive
+  core.bool canEdit;
+
+  /// Whether the current user can list the children of folders in this shared
+  /// drive.
+  core.bool canListChildren;
+
+  /// Whether the current user can add members to this shared drive or remove
+  /// them or change their role.
+  core.bool canManageMembers;
+
+  /// Whether the current user can read the revisions resource of files in this
+  /// shared drive.
+  core.bool canReadRevisions;
+
+  /// Whether the current user can rename files or folders in this shared drive.
+  core.bool canRename;
+
+  /// Whether the current user can rename this shared drive.
+  core.bool canRenameDrive;
+
+  /// Whether the current user can share files or folders in this shared drive.
+  core.bool canShare;
+
+  /// Whether the current user can trash children from folders in this shared
+  /// drive.
+  core.bool canTrashChildren;
+
+  DriveCapabilities();
+
+  DriveCapabilities.fromJson(core.Map _json) {
+    if (_json.containsKey("canAddChildren")) {
+      canAddChildren = _json["canAddChildren"];
+    }
+    if (_json.containsKey("canChangeCopyRequiresWriterPermissionRestriction")) {
+      canChangeCopyRequiresWriterPermissionRestriction =
+          _json["canChangeCopyRequiresWriterPermissionRestriction"];
+    }
+    if (_json.containsKey("canChangeDomainUsersOnlyRestriction")) {
+      canChangeDomainUsersOnlyRestriction =
+          _json["canChangeDomainUsersOnlyRestriction"];
+    }
+    if (_json.containsKey("canChangeDriveBackground")) {
+      canChangeDriveBackground = _json["canChangeDriveBackground"];
+    }
+    if (_json.containsKey("canChangeDriveMembersOnlyRestriction")) {
+      canChangeDriveMembersOnlyRestriction =
+          _json["canChangeDriveMembersOnlyRestriction"];
+    }
+    if (_json.containsKey("canComment")) {
+      canComment = _json["canComment"];
+    }
+    if (_json.containsKey("canCopy")) {
+      canCopy = _json["canCopy"];
+    }
+    if (_json.containsKey("canDeleteChildren")) {
+      canDeleteChildren = _json["canDeleteChildren"];
+    }
+    if (_json.containsKey("canDeleteDrive")) {
+      canDeleteDrive = _json["canDeleteDrive"];
+    }
+    if (_json.containsKey("canDownload")) {
+      canDownload = _json["canDownload"];
+    }
+    if (_json.containsKey("canEdit")) {
+      canEdit = _json["canEdit"];
+    }
+    if (_json.containsKey("canListChildren")) {
+      canListChildren = _json["canListChildren"];
+    }
+    if (_json.containsKey("canManageMembers")) {
+      canManageMembers = _json["canManageMembers"];
+    }
+    if (_json.containsKey("canReadRevisions")) {
+      canReadRevisions = _json["canReadRevisions"];
+    }
+    if (_json.containsKey("canRename")) {
+      canRename = _json["canRename"];
+    }
+    if (_json.containsKey("canRenameDrive")) {
+      canRenameDrive = _json["canRenameDrive"];
+    }
+    if (_json.containsKey("canShare")) {
+      canShare = _json["canShare"];
+    }
+    if (_json.containsKey("canTrashChildren")) {
+      canTrashChildren = _json["canTrashChildren"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (canAddChildren != null) {
+      _json["canAddChildren"] = canAddChildren;
+    }
+    if (canChangeCopyRequiresWriterPermissionRestriction != null) {
+      _json["canChangeCopyRequiresWriterPermissionRestriction"] =
+          canChangeCopyRequiresWriterPermissionRestriction;
+    }
+    if (canChangeDomainUsersOnlyRestriction != null) {
+      _json["canChangeDomainUsersOnlyRestriction"] =
+          canChangeDomainUsersOnlyRestriction;
+    }
+    if (canChangeDriveBackground != null) {
+      _json["canChangeDriveBackground"] = canChangeDriveBackground;
+    }
+    if (canChangeDriveMembersOnlyRestriction != null) {
+      _json["canChangeDriveMembersOnlyRestriction"] =
+          canChangeDriveMembersOnlyRestriction;
+    }
+    if (canComment != null) {
+      _json["canComment"] = canComment;
+    }
+    if (canCopy != null) {
+      _json["canCopy"] = canCopy;
+    }
+    if (canDeleteChildren != null) {
+      _json["canDeleteChildren"] = canDeleteChildren;
+    }
+    if (canDeleteDrive != null) {
+      _json["canDeleteDrive"] = canDeleteDrive;
+    }
+    if (canDownload != null) {
+      _json["canDownload"] = canDownload;
+    }
+    if (canEdit != null) {
+      _json["canEdit"] = canEdit;
+    }
+    if (canListChildren != null) {
+      _json["canListChildren"] = canListChildren;
+    }
+    if (canManageMembers != null) {
+      _json["canManageMembers"] = canManageMembers;
+    }
+    if (canReadRevisions != null) {
+      _json["canReadRevisions"] = canReadRevisions;
+    }
+    if (canRename != null) {
+      _json["canRename"] = canRename;
+    }
+    if (canRenameDrive != null) {
+      _json["canRenameDrive"] = canRenameDrive;
+    }
+    if (canShare != null) {
+      _json["canShare"] = canShare;
+    }
+    if (canTrashChildren != null) {
+      _json["canTrashChildren"] = canTrashChildren;
+    }
+    return _json;
+  }
+}
+
+/// A set of restrictions that apply to this shared drive or items inside this
+/// shared drive.
+class DriveRestrictions {
+  /// Whether administrative privileges on this shared drive are required to
+  /// modify restrictions.
+  core.bool adminManagedRestrictions;
+
+  /// Whether the options to copy, print, or download files inside this shared
+  /// drive, should be disabled for readers and commenters. When this
+  /// restriction is set to true, it will override the similarly named field to
+  /// true for any file inside this shared drive.
+  core.bool copyRequiresWriterPermission;
+
+  /// Whether access to this shared drive and items inside this shared drive is
+  /// restricted to users of the domain to which this shared drive belongs. This
+  /// restriction may be overridden by other sharing policies controlled outside
+  /// of this shared drive.
+  core.bool domainUsersOnly;
+
+  /// Whether access to items inside this shared drive is restricted to its
+  /// members.
+  core.bool driveMembersOnly;
+
+  DriveRestrictions();
+
+  DriveRestrictions.fromJson(core.Map _json) {
+    if (_json.containsKey("adminManagedRestrictions")) {
+      adminManagedRestrictions = _json["adminManagedRestrictions"];
+    }
+    if (_json.containsKey("copyRequiresWriterPermission")) {
+      copyRequiresWriterPermission = _json["copyRequiresWriterPermission"];
+    }
+    if (_json.containsKey("domainUsersOnly")) {
+      domainUsersOnly = _json["domainUsersOnly"];
+    }
+    if (_json.containsKey("driveMembersOnly")) {
+      driveMembersOnly = _json["driveMembersOnly"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (adminManagedRestrictions != null) {
+      _json["adminManagedRestrictions"] = adminManagedRestrictions;
+    }
+    if (copyRequiresWriterPermission != null) {
+      _json["copyRequiresWriterPermission"] = copyRequiresWriterPermission;
+    }
+    if (domainUsersOnly != null) {
+      _json["domainUsersOnly"] = domainUsersOnly;
+    }
+    if (driveMembersOnly != null) {
+      _json["driveMembersOnly"] = driveMembersOnly;
+    }
+    return _json;
+  }
+}
+
+/// Representation of a shared drive.
+class Drive {
+  /// An image file and cropping parameters from which a background image for
+  /// this shared drive is set. This is a write only field; it can only be set
+  /// on drive.drives.update requests that don't set themeId. When specified,
+  /// all fields of the backgroundImageFile must be set.
+  DriveBackgroundImageFile backgroundImageFile;
+
+  /// A short-lived link to this shared drive's background image.
+  core.String backgroundImageLink;
+
+  /// Capabilities the current user has on this shared drive.
+  DriveCapabilities capabilities;
+
+  /// The color of this shared drive as an RGB hex string. It can only be set on
+  /// a drive.drives.update request that does not set themeId.
+  core.String colorRgb;
+
+  /// The time at which the shared drive was created (RFC 3339 date-time).
+  core.DateTime createdTime;
+
+  /// Whether the shared drive is hidden from default view.
+  core.bool hidden;
+
+  /// The ID of this shared drive which is also the ID of the top level folder
+  /// of this shared drive.
+  core.String id;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#drive".
+  core.String kind;
+
+  /// The name of this shared drive.
+  core.String name;
+
+  /// A set of restrictions that apply to this shared drive or items inside this
+  /// shared drive.
+  DriveRestrictions restrictions;
+
+  /// The ID of the theme from which the background image and color will be set.
+  /// The set of possible driveThemes can be retrieved from a drive.about.get
+  /// response. When not specified on a drive.drives.create request, a random
+  /// theme is chosen from which the background image and color are set. This is
+  /// a write-only field; it can only be set on requests that don't set colorRgb
+  /// or backgroundImageFile.
+  core.String themeId;
+
+  Drive();
+
+  Drive.fromJson(core.Map _json) {
+    if (_json.containsKey("backgroundImageFile")) {
+      backgroundImageFile =
+          new DriveBackgroundImageFile.fromJson(_json["backgroundImageFile"]);
+    }
+    if (_json.containsKey("backgroundImageLink")) {
+      backgroundImageLink = _json["backgroundImageLink"];
+    }
+    if (_json.containsKey("capabilities")) {
+      capabilities = new DriveCapabilities.fromJson(_json["capabilities"]);
+    }
+    if (_json.containsKey("colorRgb")) {
+      colorRgb = _json["colorRgb"];
+    }
+    if (_json.containsKey("createdTime")) {
+      createdTime = core.DateTime.parse(_json["createdTime"]);
+    }
+    if (_json.containsKey("hidden")) {
+      hidden = _json["hidden"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("restrictions")) {
+      restrictions = new DriveRestrictions.fromJson(_json["restrictions"]);
+    }
+    if (_json.containsKey("themeId")) {
+      themeId = _json["themeId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (backgroundImageFile != null) {
+      _json["backgroundImageFile"] = (backgroundImageFile).toJson();
+    }
+    if (backgroundImageLink != null) {
+      _json["backgroundImageLink"] = backgroundImageLink;
+    }
+    if (capabilities != null) {
+      _json["capabilities"] = (capabilities).toJson();
+    }
+    if (colorRgb != null) {
+      _json["colorRgb"] = colorRgb;
+    }
+    if (createdTime != null) {
+      _json["createdTime"] = (createdTime).toIso8601String();
+    }
+    if (hidden != null) {
+      _json["hidden"] = hidden;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (restrictions != null) {
+      _json["restrictions"] = (restrictions).toJson();
+    }
+    if (themeId != null) {
+      _json["themeId"] = themeId;
+    }
+    return _json;
+  }
+}
+
+/// A list of shared drives.
+class DriveList {
+  /// The list of shared drives. If nextPageToken is populated, then this list
+  /// may be incomplete and an additional page of results should be fetched.
+  core.List<Drive> drives;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#driveList".
+  core.String kind;
+
+  /// The page token for the next page of shared drives. This will be absent if
+  /// the end of the list has been reached. If the token is rejected for any
+  /// reason, it should be discarded, and pagination should be restarted from
+  /// the first page of results.
+  core.String nextPageToken;
+
+  DriveList();
+
+  DriveList.fromJson(core.Map _json) {
+    if (_json.containsKey("drives")) {
+      drives = (_json["drives"] as core.List)
+          .map<Drive>((value) => new Drive.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (drives != null) {
+      _json["drives"] = drives.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Capabilities the current user has on this file. Each capability corresponds
 /// to a fine-grained action that a user may take.
 class FileCapabilities {
@@ -3451,16 +4570,16 @@ class FileCapabilities {
   /// Whether the current user can comment on this file.
   core.bool canComment;
 
-  /// Whether the current user can copy this file. For a Team Drive item,
-  /// whether the current user can copy non-folder descendants of this item, or
-  /// this item itself if it is not a folder.
+  /// Whether the current user can copy this file. For an item in a shared
+  /// drive, whether the current user can copy non-folder descendants of this
+  /// item, or this item itself if it is not a folder.
   core.bool canCopy;
 
   /// Whether the current user can delete this file.
   core.bool canDelete;
 
   /// Whether the current user can delete children of this folder. This is false
-  /// when the item is not a folder. Only populated for Team Drive items.
+  /// when the item is not a folder. Only populated for items in shared drives.
   core.bool canDeleteChildren;
 
   /// Whether the current user can download this file.
@@ -3474,47 +4593,59 @@ class FileCapabilities {
   core.bool canListChildren;
 
   /// Whether the current user can move children of this folder outside of the
-  /// Team Drive. This is false when the item is not a folder. Only populated
-  /// for Team Drive items.
+  /// shared drive. This is false when the item is not a folder. Only populated
+  /// for items in shared drives.
+  core.bool canMoveChildrenOutOfDrive;
+
+  /// Deprecated - use canMoveChildrenOutOfDrive instead.
   core.bool canMoveChildrenOutOfTeamDrive;
 
-  /// Whether the current user can move children of this folder within the Team
-  /// Drive. This is false when the item is not a folder. Only populated for
-  /// Team Drive items.
+  /// Whether the current user can move children of this folder within the
+  /// shared drive. This is false when the item is not a folder. Only populated
+  /// for items in shared drives.
+  core.bool canMoveChildrenWithinDrive;
+
+  /// Deprecated - use canMoveChildrenWithinDrive instead.
   core.bool canMoveChildrenWithinTeamDrive;
 
-  /// Whether the current user can move this item into a Team Drive. If the item
-  /// is in a Team Drive, this field is equivalent to canMoveTeamDriveItem.
+  /// Deprecated - use canMoveItemOutOfDrive instead.
   core.bool canMoveItemIntoTeamDrive;
 
-  /// Whether the current user can move this Team Drive item outside of this
-  /// Team Drive by changing its parent. Note that a request to change the
-  /// parent of the item may still fail depending on the new parent that is
-  /// being added. Only populated for Team Drive items.
+  /// Whether the current user can move this item outside of this drive by
+  /// changing its parent. Note that a request to change the parent of the item
+  /// may still fail depending on the new parent that is being added.
+  core.bool canMoveItemOutOfDrive;
+
+  /// Deprecated - use canMoveItemOutOfDrive instead.
   core.bool canMoveItemOutOfTeamDrive;
 
-  /// Whether the current user can move this Team Drive item within this Team
-  /// Drive. Note that a request to change the parent of the item may still fail
-  /// depending on the new parent that is being added. Only populated for Team
-  /// Drive items.
+  /// Whether the current user can move this item within this shared drive. Note
+  /// that a request to change the parent of the item may still fail depending
+  /// on the new parent that is being added. Only populated for items in shared
+  /// drives.
+  core.bool canMoveItemWithinDrive;
+
+  /// Deprecated - use canMoveItemWithinDrive instead.
   core.bool canMoveItemWithinTeamDrive;
 
-  /// Deprecated - use canMoveItemWithinTeamDrive or canMoveItemOutOfTeamDrive
-  /// instead.
+  /// Deprecated - use canMoveItemWithinDrive or canMoveItemOutOfDrive instead.
   core.bool canMoveTeamDriveItem;
 
+  /// Whether the current user can read the shared drive to which this file
+  /// belongs. Only populated for items in shared drives.
+  core.bool canReadDrive;
+
   /// Whether the current user can read the revisions resource of this file. For
-  /// a Team Drive item, whether revisions of non-folder descendants of this
+  /// a shared drive item, whether revisions of non-folder descendants of this
   /// item, or this item itself if it is not a folder, can be read.
   core.bool canReadRevisions;
 
-  /// Whether the current user can read the Team Drive to which this file
-  /// belongs. Only populated for Team Drive files.
+  /// Deprecated - use canReadDrive instead.
   core.bool canReadTeamDrive;
 
   /// Whether the current user can remove children from this folder. This is
-  /// always false when the item is not a folder. For Team Drive items, use
-  /// canDeleteChildren or canTrashChildren instead.
+  /// always false when the item is not a folder. For a folder in a shared
+  /// drive, use canDeleteChildren or canTrashChildren instead.
   core.bool canRemoveChildren;
 
   /// Whether the current user can rename this file.
@@ -3527,7 +4658,7 @@ class FileCapabilities {
   core.bool canTrash;
 
   /// Whether the current user can trash children of this folder. This is false
-  /// when the item is not a folder. Only populated for Team Drive items.
+  /// when the item is not a folder. Only populated for items in shared drives.
   core.bool canTrashChildren;
 
   /// Whether the current user can restore this file from trash.
@@ -3567,8 +4698,14 @@ class FileCapabilities {
     if (_json.containsKey("canListChildren")) {
       canListChildren = _json["canListChildren"];
     }
+    if (_json.containsKey("canMoveChildrenOutOfDrive")) {
+      canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
+    }
     if (_json.containsKey("canMoveChildrenOutOfTeamDrive")) {
       canMoveChildrenOutOfTeamDrive = _json["canMoveChildrenOutOfTeamDrive"];
+    }
+    if (_json.containsKey("canMoveChildrenWithinDrive")) {
+      canMoveChildrenWithinDrive = _json["canMoveChildrenWithinDrive"];
     }
     if (_json.containsKey("canMoveChildrenWithinTeamDrive")) {
       canMoveChildrenWithinTeamDrive = _json["canMoveChildrenWithinTeamDrive"];
@@ -3576,14 +4713,23 @@ class FileCapabilities {
     if (_json.containsKey("canMoveItemIntoTeamDrive")) {
       canMoveItemIntoTeamDrive = _json["canMoveItemIntoTeamDrive"];
     }
+    if (_json.containsKey("canMoveItemOutOfDrive")) {
+      canMoveItemOutOfDrive = _json["canMoveItemOutOfDrive"];
+    }
     if (_json.containsKey("canMoveItemOutOfTeamDrive")) {
       canMoveItemOutOfTeamDrive = _json["canMoveItemOutOfTeamDrive"];
+    }
+    if (_json.containsKey("canMoveItemWithinDrive")) {
+      canMoveItemWithinDrive = _json["canMoveItemWithinDrive"];
     }
     if (_json.containsKey("canMoveItemWithinTeamDrive")) {
       canMoveItemWithinTeamDrive = _json["canMoveItemWithinTeamDrive"];
     }
     if (_json.containsKey("canMoveTeamDriveItem")) {
       canMoveTeamDriveItem = _json["canMoveTeamDriveItem"];
+    }
+    if (_json.containsKey("canReadDrive")) {
+      canReadDrive = _json["canReadDrive"];
     }
     if (_json.containsKey("canReadRevisions")) {
       canReadRevisions = _json["canReadRevisions"];
@@ -3645,8 +4791,14 @@ class FileCapabilities {
     if (canListChildren != null) {
       _json["canListChildren"] = canListChildren;
     }
+    if (canMoveChildrenOutOfDrive != null) {
+      _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
+    }
     if (canMoveChildrenOutOfTeamDrive != null) {
       _json["canMoveChildrenOutOfTeamDrive"] = canMoveChildrenOutOfTeamDrive;
+    }
+    if (canMoveChildrenWithinDrive != null) {
+      _json["canMoveChildrenWithinDrive"] = canMoveChildrenWithinDrive;
     }
     if (canMoveChildrenWithinTeamDrive != null) {
       _json["canMoveChildrenWithinTeamDrive"] = canMoveChildrenWithinTeamDrive;
@@ -3654,14 +4806,23 @@ class FileCapabilities {
     if (canMoveItemIntoTeamDrive != null) {
       _json["canMoveItemIntoTeamDrive"] = canMoveItemIntoTeamDrive;
     }
+    if (canMoveItemOutOfDrive != null) {
+      _json["canMoveItemOutOfDrive"] = canMoveItemOutOfDrive;
+    }
     if (canMoveItemOutOfTeamDrive != null) {
       _json["canMoveItemOutOfTeamDrive"] = canMoveItemOutOfTeamDrive;
+    }
+    if (canMoveItemWithinDrive != null) {
+      _json["canMoveItemWithinDrive"] = canMoveItemWithinDrive;
     }
     if (canMoveItemWithinTeamDrive != null) {
       _json["canMoveItemWithinTeamDrive"] = canMoveItemWithinTeamDrive;
     }
     if (canMoveTeamDriveItem != null) {
       _json["canMoveTeamDriveItem"] = canMoveTeamDriveItem;
+    }
+    if (canReadDrive != null) {
+      _json["canReadDrive"] = canReadDrive;
     }
     if (canReadRevisions != null) {
       _json["canReadRevisions"] = canReadRevisions;
@@ -3691,8 +4852,8 @@ class FileCapabilities {
   }
 }
 
-/// A thumbnail for the file. This will only be used if Drive cannot generate a
-/// standard thumbnail.
+/// A thumbnail for the file. This will only be used if Google Drive cannot
+/// generate a standard thumbnail.
 class FileContentHintsThumbnail {
   /// The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
   core.String image;
@@ -3739,8 +4900,8 @@ class FileContentHints {
   /// limited to 128KB in length and may contain HTML elements.
   core.String indexableText;
 
-  /// A thumbnail for the file. This will only be used if Drive cannot generate
-  /// a standard thumbnail.
+  /// A thumbnail for the file. This will only be used if Google Drive cannot
+  /// generate a standard thumbnail.
   FileContentHintsThumbnail thumbnail;
 
   FileContentHints();
@@ -4079,6 +5240,10 @@ class File {
   /// A short description of the file.
   core.String description;
 
+  /// ID of the shared drive the file resides in. Only populated for items in
+  /// shared drives.
+  core.String driveId;
+
   /// Whether the file has been explicitly trashed, as opposed to recursively
   /// trashed from a parent folder.
   core.bool explicitlyTrashed;
@@ -4087,7 +5252,7 @@ class File {
   core.Map<core.String, core.String> exportLinks;
 
   /// The final component of fullFileExtension. This is only available for files
-  /// with binary content in Drive.
+  /// with binary content in Google Drive.
   core.String fileExtension;
 
   /// The color for a folder as an RGB hex string. The supported colors are
@@ -4098,13 +5263,13 @@ class File {
 
   /// The full file extension extracted from the name field. May contain
   /// multiple concatenated extensions, such as "tar.gz". This is only available
-  /// for files with binary content in Drive.
+  /// for files with binary content in Google Drive.
   /// This is automatically updated when the name field changes, however it is
   /// not cleared if the new name does not contain a valid extension.
   core.String fullFileExtension;
 
   /// Whether any users are granted file access directly on this file. This
-  /// field is only populated for Team Drive files.
+  /// field is only populated for shared drive files.
   core.bool hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail. This does not indicate whether the
@@ -4113,7 +5278,7 @@ class File {
   core.bool hasThumbnail;
 
   /// The ID of the file's head revision. This is currently only available for
-  /// files with binary content in Drive.
+  /// files with binary content in Google Drive.
   core.String headRevisionId;
 
   /// A static, unauthenticated link to the file's icon.
@@ -4136,12 +5301,12 @@ class File {
   User lastModifyingUser;
 
   /// The MD5 checksum for the content of the file. This is only applicable to
-  /// files with binary content in Drive.
+  /// files with binary content in Google Drive.
   core.String md5Checksum;
 
   /// The MIME type of the file.
-  /// Drive will attempt to automatically detect an appropriate value from
-  /// uploaded content if no value is provided. The value cannot be changed
+  /// Google Drive will attempt to automatically detect an appropriate value
+  /// from uploaded content if no value is provided. The value cannot be changed
   /// unless a new revision is uploaded.
   /// If a file is created with a Google Doc MIME type, the uploaded content
   /// will be imported if possible. The supported import formats are published
@@ -4160,20 +5325,20 @@ class File {
   core.DateTime modifiedTime;
 
   /// The name of the file. This is not necessarily unique within a folder. Note
-  /// that for immutable items such as the top level folders of Team Drives, My
-  /// Drive root folder, and Application Data folder the name is constant.
+  /// that for immutable items such as the top level folders of shared drives,
+  /// My Drive root folder, and Application Data folder the name is constant.
   core.String name;
 
   /// The original filename of the uploaded content if available, or else the
   /// original value of the name field. This is only available for files with
-  /// binary content in Drive.
+  /// binary content in Google Drive.
   core.String originalFilename;
 
-  /// Whether the user owns the file. Not populated for Team Drive files.
+  /// Whether the user owns the file. Not populated for items in shared drives.
   core.bool ownedByMe;
 
   /// The owners of the file. Currently, only certain legacy files may have more
-  /// than one owner. Not populated for Team Drive files.
+  /// than one owner. Not populated for items in shared drives.
   core.List<User> owners;
 
   /// The IDs of the parent folders which contain the file.
@@ -4188,7 +5353,8 @@ class File {
   core.List<core.String> permissionIds;
 
   /// The full list of permissions for the file. This is only available if the
-  /// requesting user can share the file. Not populated for Team Drive files.
+  /// requesting user can share the file. Not populated for items in shared
+  /// drives.
   core.List<Permission> permissions;
 
   /// A collection of arbitrary key-value pairs which are visible to all apps.
@@ -4199,7 +5365,8 @@ class File {
   /// revision as well as previous revisions with keepForever enabled.
   core.String quotaBytesUsed;
 
-  /// Whether the file has been shared. Not populated for Team Drive files.
+  /// Whether the file has been shared. Not populated for items in shared
+  /// drives.
   core.bool shared;
 
   /// The time at which the file was shared with the user, if applicable (RFC
@@ -4210,7 +5377,7 @@ class File {
   User sharingUser;
 
   /// The size of the file's content in bytes. This is only applicable to files
-  /// with binary content in Drive.
+  /// with binary content in Google Drive.
   core.String size;
 
   /// The list of spaces which contain the file. The currently supported values
@@ -4220,7 +5387,7 @@ class File {
   /// Whether the user has starred the file.
   core.bool starred;
 
-  /// ID of the Team Drive the file resides in.
+  /// Deprecated - use driveId instead.
   core.String teamDriveId;
 
   /// A short-lived link to the file's thumbnail, if available. Typically lasts
@@ -4237,11 +5404,11 @@ class File {
   core.bool trashed;
 
   /// The time that the item was trashed (RFC 3339 date-time). Only populated
-  /// for Team Drive files.
+  /// for items in shared drives.
   core.DateTime trashedTime;
 
   /// If the file has been explicitly trashed, the user who trashed it. Only
-  /// populated for Team Drive files.
+  /// populated for items in shared drives.
   User trashingUser;
 
   /// A monotonically increasing version number for the file. This reflects
@@ -4263,7 +5430,7 @@ class File {
   core.bool viewersCanCopyContent;
 
   /// A link for downloading the content of the file in a browser. This is only
-  /// available for files with binary content in Drive.
+  /// available for files with binary content in Google Drive.
   core.String webContentLink;
 
   /// A link for opening the file in a relevant Google editor or viewer in a
@@ -4271,7 +5438,7 @@ class File {
   core.String webViewLink;
 
   /// Whether users with only writer permission can modify the file's
-  /// permissions. Not populated for Team Drive files.
+  /// permissions. Not populated for items in shared drives.
   core.bool writersCanShare;
 
   File();
@@ -4295,6 +5462,9 @@ class File {
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("driveId")) {
+      driveId = _json["driveId"];
     }
     if (_json.containsKey("explicitlyTrashed")) {
       explicitlyTrashed = _json["explicitlyTrashed"];
@@ -4471,6 +5641,9 @@ class File {
     if (description != null) {
       _json["description"] = description;
     }
+    if (driveId != null) {
+      _json["driveId"] = driveId;
+    }
     if (explicitlyTrashed != null) {
       _json["explicitlyTrashed"] = explicitlyTrashed;
     }
@@ -4628,10 +5801,10 @@ class FileList {
 
   /// Whether the search process was incomplete. If true, then some search
   /// results may be missing, since all documents were not searched. This may
-  /// occur when searching multiple Team Drives with the "user,allTeamDrives"
-  /// corpora, but all corpora could not be searched. When this happens, it is
-  /// suggested that clients narrow their query by choosing a different corpus
-  /// such as "user" or "teamDrive".
+  /// occur when searching multiple drives with the "allDrives" corpora, but all
+  /// corpora could not be searched. When this happens, it is suggested that
+  /// clients narrow their query by choosing a different corpus such as "user"
+  /// or "drive".
   core.bool incompleteSearch;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -4724,14 +5897,20 @@ class GeneratedIds {
   }
 }
 
-class PermissionTeamDrivePermissionDetails {
+class PermissionPermissionDetails {
   /// Whether this permission is inherited. This field is always populated. This
   /// is an output-only field.
   core.bool inherited;
 
   /// The ID of the item from which this permission is inherited. This is an
-  /// output-only field and is only populated for members of the Team Drive.
+  /// output-only field and is only populated for members of the shared drive.
   core.String inheritedFrom;
+
+  /// The permission type for this user. While new values may be added in
+  /// future, the following are currently possible:
+  /// - file
+  /// - member
+  core.String permissionType;
 
   /// The primary role for this user. While new values may be added in the
   /// future, the following are currently possible:
@@ -4742,10 +5921,53 @@ class PermissionTeamDrivePermissionDetails {
   /// - reader
   core.String role;
 
-  /// The Team Drive permission type for this user. While new values may be
-  /// added in future, the following are currently possible:
-  /// - file
-  /// - member
+  PermissionPermissionDetails();
+
+  PermissionPermissionDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("inherited")) {
+      inherited = _json["inherited"];
+    }
+    if (_json.containsKey("inheritedFrom")) {
+      inheritedFrom = _json["inheritedFrom"];
+    }
+    if (_json.containsKey("permissionType")) {
+      permissionType = _json["permissionType"];
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (inherited != null) {
+      _json["inherited"] = inherited;
+    }
+    if (inheritedFrom != null) {
+      _json["inheritedFrom"] = inheritedFrom;
+    }
+    if (permissionType != null) {
+      _json["permissionType"] = permissionType;
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
+    return _json;
+  }
+}
+
+class PermissionTeamDrivePermissionDetails {
+  /// Deprecated - use permissionDetails/inherited instead.
+  core.bool inherited;
+
+  /// Deprecated - use permissionDetails/inheritedFrom instead.
+  core.String inheritedFrom;
+
+  /// Deprecated - use permissionDetails/role instead.
+  core.String role;
+
+  /// Deprecated - use permissionDetails/permissionType instead.
   core.String teamDrivePermissionType;
 
   PermissionTeamDrivePermissionDetails();
@@ -4819,6 +6041,11 @@ class Permission {
   /// "drive#permission".
   core.String kind;
 
+  /// Details of whether the permissions on this shared drive item are inherited
+  /// or directly on this item. This is an output-only field which is present
+  /// only for shared drive items.
+  core.List<PermissionPermissionDetails> permissionDetails;
+
   /// A link to the user's profile photo, if available.
   core.String photoLink;
 
@@ -4832,9 +6059,7 @@ class Permission {
   /// - reader
   core.String role;
 
-  /// Details of whether the permissions on this Team Drive item are inherited
-  /// or directly on this item. This is an output-only field which is present
-  /// only for Team Drive items.
+  /// Deprecated - use permissionDetails instead.
   core.List<PermissionTeamDrivePermissionDetails> teamDrivePermissionDetails;
 
   /// The type of the grantee. Valid values are:
@@ -4870,6 +6095,12 @@ class Permission {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("permissionDetails")) {
+      permissionDetails = (_json["permissionDetails"] as core.List)
+          .map<PermissionPermissionDetails>(
+              (value) => new PermissionPermissionDetails.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("photoLink")) {
       photoLink = _json["photoLink"];
@@ -4915,6 +6146,10 @@ class Permission {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (permissionDetails != null) {
+      _json["permissionDetails"] =
+          permissionDetails.map((value) => (value).toJson()).toList();
     }
     if (photoLink != null) {
       _json["photoLink"] = photoLink;
@@ -5678,7 +6913,7 @@ class TeamDriveRestrictions {
   }
 }
 
-/// Representation of a Team Drive.
+/// Deprecated: use the drive collection instead.
 class TeamDrive {
   /// An image file and cropping parameters from which a background image for
   /// this Team Drive is set. This is a write only field; it can only be set on

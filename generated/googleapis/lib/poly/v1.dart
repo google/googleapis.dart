@@ -39,8 +39,8 @@ class AssetsResourceApi {
 
   /// Returns detailed information about an asset given its name.
   /// PRIVATE assets are returned only if
-  /// the currently authenticated user (via OAuth token) is the author of the
-  /// asset.
+  ///  the currently authenticated user (via OAuth token) is the author of the
+  ///  asset.
   ///
   /// Request parameters:
   ///
@@ -84,8 +84,7 @@ class AssetsResourceApi {
   }
 
   /// Lists all public, remixable assets. These are assets with an access level
-  /// of
-  /// PUBLIC and published under the
+  /// of PUBLIC and published under the
   /// CC-By license.
   ///
   /// Request parameters:
@@ -109,13 +108,13 @@ class AssetsResourceApi {
   /// [category] - Filter assets based on the specified category. Supported
   /// values are:
   /// `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
-  /// `scenes`,
-  /// `technology`, and `transport`.
+  /// `scenes`, `technology`, and `transport`.
   ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
   /// results were
   /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from next_page_token.
+  /// specifying the value from
+  /// next_page_token.
   ///
   /// [maxComplexity] - Returns assets that are of the specified complexity or
   /// less. Defaults to
@@ -229,14 +228,6 @@ class UsersAssetsResourceApi {
   /// an OAuth token with the request.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
-  ///
-  /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
-  ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
   /// results were
   /// split into multiple pages. To get the next page, submit the same request
@@ -248,11 +239,21 @@ class UsersAssetsResourceApi {
   /// and `100`. Defaults to `20`.
   ///
   /// [visibility] - The visibility of the assets to be returned.
-  /// Defaults to VISIBILITY_UNSPECIFIED which returns all assets.
+  /// Defaults to
+  /// VISIBILITY_UNSPECIFIED
+  /// which returns all assets.
   /// Possible string values are:
   /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
   /// - "PUBLISHED" : A PUBLISHED.
   /// - "PRIVATE" : A PRIVATE.
+  ///
+  /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
+  /// based on a combination of popularity and other features.
+  ///
+  /// [format] - Return only assets with the matching format. Acceptable values
+  /// are:
+  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -265,11 +266,11 @@ class UsersAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserAssetsResponse> list(core.String name,
-      {core.String orderBy,
-      core.String format,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String visibility,
+      core.String orderBy,
+      core.String format,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -281,12 +282,6 @@ class UsersAssetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (format != null) {
-      _queryParams["format"] = [format];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -295,6 +290,12 @@ class UsersAssetsResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (format != null) {
+      _queryParams["format"] = [format];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -673,8 +674,9 @@ class File {
   /// types](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
   core.String contentType;
 
-  /// The path of the resource file relative to the root file.
-  /// For root or thumbnail files, this is just the filename.
+  /// The path of the resource file relative to the
+  /// root file. For root or thumbnail files,
+  /// this is just the filename.
   core.String relativePath;
 
   /// The URL where the file data can be retrieved.
@@ -730,8 +732,8 @@ class Format {
   core.List<File> resources;
 
   /// The root of the file hierarchy. This will always be populated.
-  /// For some format_types - such as `TILT`, which are self-contained -
-  /// this is all of the data.
+  /// For some format_types - such as `TILT`, which are
+  /// self-contained - this is all of the data.
   ///
   /// Other types - such as `OBJ` - often reference other data elements.
   /// These are contained in the resources field.
@@ -1246,8 +1248,9 @@ class RemixInfo {
   }
 }
 
-/// A response message from a request to startImport.
-/// This is returned in the response field of the Operation.
+/// A response message from a request to
+/// startImport. This is returned in the response
+/// field of the Operation.
 class StartAssetImportResponse {
   /// The id of newly created asset. If this is empty when the operation is
   /// complete it means the import failed. Please refer to the

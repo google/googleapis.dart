@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1876() {
+buildUnnamed4742() {
   var o = new core.List<api.BucketAccessControl>();
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-checkUnnamed1876(core.List<api.BucketAccessControl> o) {
+checkUnnamed4742(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
@@ -82,40 +82,40 @@ checkBucketBilling(api.BucketBilling o) {
   buildCounterBucketBilling--;
 }
 
-buildUnnamed1877() {
+buildUnnamed4743() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1877(core.List<core.String> o) {
+checkUnnamed4743(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1878() {
+buildUnnamed4744() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1878(core.List<core.String> o) {
+checkUnnamed4744(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1879() {
+buildUnnamed4745() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1879(core.List<core.String> o) {
+checkUnnamed4745(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -127,9 +127,9 @@ buildBucketCors() {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     o.maxAgeSeconds = 42;
-    o.method = buildUnnamed1877();
-    o.origin = buildUnnamed1878();
-    o.responseHeader = buildUnnamed1879();
+    o.method = buildUnnamed4743();
+    o.origin = buildUnnamed4744();
+    o.responseHeader = buildUnnamed4745();
   }
   buildCounterBucketCors--;
   return o;
@@ -139,34 +139,34 @@ checkBucketCors(api.BucketCors o) {
   buildCounterBucketCors++;
   if (buildCounterBucketCors < 3) {
     unittest.expect(o.maxAgeSeconds, unittest.equals(42));
-    checkUnnamed1877(o.method);
-    checkUnnamed1878(o.origin);
-    checkUnnamed1879(o.responseHeader);
+    checkUnnamed4743(o.method);
+    checkUnnamed4744(o.origin);
+    checkUnnamed4745(o.responseHeader);
   }
   buildCounterBucketCors--;
 }
 
-buildUnnamed1880() {
+buildUnnamed4746() {
   var o = new core.List<api.BucketCors>();
   o.add(buildBucketCors());
   o.add(buildBucketCors());
   return o;
 }
 
-checkUnnamed1880(core.List<api.BucketCors> o) {
+checkUnnamed4746(core.List<api.BucketCors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketCors(o[0]);
   checkBucketCors(o[1]);
 }
 
-buildUnnamed1881() {
+buildUnnamed4747() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed1881(core.List<api.ObjectAccessControl> o) {
+checkUnnamed4747(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -214,12 +214,37 @@ checkBucketIamConfigurationBucketPolicyOnly(
   buildCounterBucketIamConfigurationBucketPolicyOnly--;
 }
 
+core.int buildCounterBucketIamConfigurationUniformBucketLevelAccess = 0;
+buildBucketIamConfigurationUniformBucketLevelAccess() {
+  var o = new api.BucketIamConfigurationUniformBucketLevelAccess();
+  buildCounterBucketIamConfigurationUniformBucketLevelAccess++;
+  if (buildCounterBucketIamConfigurationUniformBucketLevelAccess < 3) {
+    o.enabled = true;
+    o.lockedTime = core.DateTime.parse("2002-02-27T14:01:02");
+  }
+  buildCounterBucketIamConfigurationUniformBucketLevelAccess--;
+  return o;
+}
+
+checkBucketIamConfigurationUniformBucketLevelAccess(
+    api.BucketIamConfigurationUniformBucketLevelAccess o) {
+  buildCounterBucketIamConfigurationUniformBucketLevelAccess++;
+  if (buildCounterBucketIamConfigurationUniformBucketLevelAccess < 3) {
+    unittest.expect(o.enabled, unittest.isTrue);
+    unittest.expect(o.lockedTime,
+        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+  }
+  buildCounterBucketIamConfigurationUniformBucketLevelAccess--;
+}
+
 core.int buildCounterBucketIamConfiguration = 0;
 buildBucketIamConfiguration() {
   var o = new api.BucketIamConfiguration();
   buildCounterBucketIamConfiguration++;
   if (buildCounterBucketIamConfiguration < 3) {
     o.bucketPolicyOnly = buildBucketIamConfigurationBucketPolicyOnly();
+    o.uniformBucketLevelAccess =
+        buildBucketIamConfigurationUniformBucketLevelAccess();
   }
   buildCounterBucketIamConfiguration--;
   return o;
@@ -229,18 +254,20 @@ checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration++;
   if (buildCounterBucketIamConfiguration < 3) {
     checkBucketIamConfigurationBucketPolicyOnly(o.bucketPolicyOnly);
+    checkBucketIamConfigurationUniformBucketLevelAccess(
+        o.uniformBucketLevelAccess);
   }
   buildCounterBucketIamConfiguration--;
 }
 
-buildUnnamed1882() {
+buildUnnamed4748() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1882(core.Map<core.String, core.String> o) {
+checkUnnamed4748(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -267,14 +294,14 @@ checkBucketLifecycleRuleAction(api.BucketLifecycleRuleAction o) {
   buildCounterBucketLifecycleRuleAction--;
 }
 
-buildUnnamed1883() {
+buildUnnamed4749() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1883(core.List<core.String> o) {
+checkUnnamed4749(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -289,7 +316,7 @@ buildBucketLifecycleRuleCondition() {
     o.createdBefore = core.DateTime.parse("2002-02-27T14:01:02Z");
     o.isLive = true;
     o.matchesPattern = "foo";
-    o.matchesStorageClass = buildUnnamed1883();
+    o.matchesStorageClass = buildUnnamed4749();
     o.numNewerVersions = 42;
   }
   buildCounterBucketLifecycleRuleCondition--;
@@ -304,7 +331,7 @@ checkBucketLifecycleRuleCondition(api.BucketLifecycleRuleCondition o) {
         unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
     unittest.expect(o.isLive, unittest.isTrue);
     unittest.expect(o.matchesPattern, unittest.equals('foo'));
-    checkUnnamed1883(o.matchesStorageClass);
+    checkUnnamed4749(o.matchesStorageClass);
     unittest.expect(o.numNewerVersions, unittest.equals(42));
   }
   buildCounterBucketLifecycleRuleCondition--;
@@ -331,14 +358,14 @@ checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule--;
 }
 
-buildUnnamed1884() {
+buildUnnamed4750() {
   var o = new core.List<api.BucketLifecycleRule>();
   o.add(buildBucketLifecycleRule());
   o.add(buildBucketLifecycleRule());
   return o;
 }
 
-checkUnnamed1884(core.List<api.BucketLifecycleRule> o) {
+checkUnnamed4750(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketLifecycleRule(o[0]);
   checkBucketLifecycleRule(o[1]);
@@ -349,7 +376,7 @@ buildBucketLifecycle() {
   var o = new api.BucketLifecycle();
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    o.rule = buildUnnamed1884();
+    o.rule = buildUnnamed4750();
   }
   buildCounterBucketLifecycle--;
   return o;
@@ -358,7 +385,7 @@ buildBucketLifecycle() {
 checkBucketLifecycle(api.BucketLifecycle o) {
   buildCounterBucketLifecycle++;
   if (buildCounterBucketLifecycle < 3) {
-    checkUnnamed1884(o.rule);
+    checkUnnamed4750(o.rule);
   }
   buildCounterBucketLifecycle--;
 }
@@ -474,19 +501,20 @@ buildBucket() {
   var o = new api.Bucket();
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    o.acl = buildUnnamed1876();
+    o.acl = buildUnnamed4742();
     o.billing = buildBucketBilling();
-    o.cors = buildUnnamed1880();
+    o.cors = buildUnnamed4746();
     o.defaultEventBasedHold = true;
-    o.defaultObjectAcl = buildUnnamed1881();
+    o.defaultObjectAcl = buildUnnamed4747();
     o.encryption = buildBucketEncryption();
     o.etag = "foo";
     o.iamConfiguration = buildBucketIamConfiguration();
     o.id = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed1882();
+    o.labels = buildUnnamed4748();
     o.lifecycle = buildBucketLifecycle();
     o.location = "foo";
+    o.locationType = "foo";
     o.logging = buildBucketLogging();
     o.metageneration = "foo";
     o.name = "foo";
@@ -507,19 +535,20 @@ buildBucket() {
 checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
-    checkUnnamed1876(o.acl);
+    checkUnnamed4742(o.acl);
     checkBucketBilling(o.billing);
-    checkUnnamed1880(o.cors);
+    checkUnnamed4746(o.cors);
     unittest.expect(o.defaultEventBasedHold, unittest.isTrue);
-    checkUnnamed1881(o.defaultObjectAcl);
+    checkUnnamed4747(o.defaultObjectAcl);
     checkBucketEncryption(o.encryption);
     unittest.expect(o.etag, unittest.equals('foo'));
     checkBucketIamConfiguration(o.iamConfiguration);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1882(o.labels);
+    checkUnnamed4748(o.labels);
     checkBucketLifecycle(o.lifecycle);
     unittest.expect(o.location, unittest.equals('foo'));
+    unittest.expect(o.locationType, unittest.equals('foo'));
     checkBucketLogging(o.logging);
     unittest.expect(o.metageneration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -598,14 +627,14 @@ checkBucketAccessControl(api.BucketAccessControl o) {
   buildCounterBucketAccessControl--;
 }
 
-buildUnnamed1885() {
+buildUnnamed4751() {
   var o = new core.List<api.BucketAccessControl>();
   o.add(buildBucketAccessControl());
   o.add(buildBucketAccessControl());
   return o;
 }
 
-checkUnnamed1885(core.List<api.BucketAccessControl> o) {
+checkUnnamed4751(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucketAccessControl(o[0]);
   checkBucketAccessControl(o[1]);
@@ -616,7 +645,7 @@ buildBucketAccessControls() {
   var o = new api.BucketAccessControls();
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    o.items = buildUnnamed1885();
+    o.items = buildUnnamed4751();
     o.kind = "foo";
   }
   buildCounterBucketAccessControls--;
@@ -626,20 +655,20 @@ buildBucketAccessControls() {
 checkBucketAccessControls(api.BucketAccessControls o) {
   buildCounterBucketAccessControls++;
   if (buildCounterBucketAccessControls < 3) {
-    checkUnnamed1885(o.items);
+    checkUnnamed4751(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBucketAccessControls--;
 }
 
-buildUnnamed1886() {
+buildUnnamed4752() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed1886(core.List<api.Bucket> o) {
+checkUnnamed4752(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -650,7 +679,7 @@ buildBuckets() {
   var o = new api.Buckets();
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    o.items = buildUnnamed1886();
+    o.items = buildUnnamed4752();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -661,21 +690,21 @@ buildBuckets() {
 checkBuckets(api.Buckets o) {
   buildCounterBuckets++;
   if (buildCounterBuckets < 3) {
-    checkUnnamed1886(o.items);
+    checkUnnamed4752(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterBuckets--;
 }
 
-buildUnnamed1887() {
+buildUnnamed4753() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1887(core.Map<core.String, core.String> o) {
+checkUnnamed4753(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -690,7 +719,7 @@ buildChannel() {
     o.expiration = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.params = buildUnnamed1887();
+    o.params = buildUnnamed4753();
     o.payload = true;
     o.resourceId = "foo";
     o.resourceUri = "foo";
@@ -708,7 +737,7 @@ checkChannel(api.Channel o) {
     unittest.expect(o.expiration, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1887(o.params);
+    checkUnnamed4753(o.params);
     unittest.expect(o.payload, unittest.isTrue);
     unittest.expect(o.resourceId, unittest.equals('foo'));
     unittest.expect(o.resourceUri, unittest.equals('foo'));
@@ -762,14 +791,14 @@ checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   buildCounterComposeRequestSourceObjects--;
 }
 
-buildUnnamed1888() {
+buildUnnamed4754() {
   var o = new core.List<api.ComposeRequestSourceObjects>();
   o.add(buildComposeRequestSourceObjects());
   o.add(buildComposeRequestSourceObjects());
   return o;
 }
 
-checkUnnamed1888(core.List<api.ComposeRequestSourceObjects> o) {
+checkUnnamed4754(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComposeRequestSourceObjects(o[0]);
   checkComposeRequestSourceObjects(o[1]);
@@ -782,7 +811,7 @@ buildComposeRequest() {
   if (buildCounterComposeRequest < 3) {
     o.destination = buildObject();
     o.kind = "foo";
-    o.sourceObjects = buildUnnamed1888();
+    o.sourceObjects = buildUnnamed4754();
   }
   buildCounterComposeRequest--;
   return o;
@@ -793,32 +822,155 @@ checkComposeRequest(api.ComposeRequest o) {
   if (buildCounterComposeRequest < 3) {
     checkObject(o.destination);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1888(o.sourceObjects);
+    checkUnnamed4754(o.sourceObjects);
   }
   buildCounterComposeRequest--;
 }
 
-buildUnnamed1889() {
+core.int buildCounterExpr = 0;
+buildExpr() {
+  var o = new api.Expr();
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    o.description = "foo";
+    o.expression = "foo";
+    o.location = "foo";
+    o.title = "foo";
+  }
+  buildCounterExpr--;
+  return o;
+}
+
+checkExpr(api.Expr o) {
+  buildCounterExpr++;
+  if (buildCounterExpr < 3) {
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.expression, unittest.equals('foo'));
+    unittest.expect(o.location, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterExpr--;
+}
+
+core.int buildCounterHmacKey = 0;
+buildHmacKey() {
+  var o = new api.HmacKey();
+  buildCounterHmacKey++;
+  if (buildCounterHmacKey < 3) {
+    o.kind = "foo";
+    o.metadata = buildHmacKeyMetadata();
+    o.secret = "foo";
+  }
+  buildCounterHmacKey--;
+  return o;
+}
+
+checkHmacKey(api.HmacKey o) {
+  buildCounterHmacKey++;
+  if (buildCounterHmacKey < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkHmacKeyMetadata(o.metadata);
+    unittest.expect(o.secret, unittest.equals('foo'));
+  }
+  buildCounterHmacKey--;
+}
+
+core.int buildCounterHmacKeyMetadata = 0;
+buildHmacKeyMetadata() {
+  var o = new api.HmacKeyMetadata();
+  buildCounterHmacKeyMetadata++;
+  if (buildCounterHmacKeyMetadata < 3) {
+    o.accessId = "foo";
+    o.etag = "foo";
+    o.id = "foo";
+    o.kind = "foo";
+    o.projectId = "foo";
+    o.selfLink = "foo";
+    o.serviceAccountEmail = "foo";
+    o.state = "foo";
+    o.timeCreated = core.DateTime.parse("2002-02-27T14:01:02");
+    o.updated = core.DateTime.parse("2002-02-27T14:01:02");
+  }
+  buildCounterHmacKeyMetadata--;
+  return o;
+}
+
+checkHmacKeyMetadata(api.HmacKeyMetadata o) {
+  buildCounterHmacKeyMetadata++;
+  if (buildCounterHmacKeyMetadata < 3) {
+    unittest.expect(o.accessId, unittest.equals('foo'));
+    unittest.expect(o.etag, unittest.equals('foo'));
+    unittest.expect(o.id, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.projectId, unittest.equals('foo'));
+    unittest.expect(o.selfLink, unittest.equals('foo'));
+    unittest.expect(o.serviceAccountEmail, unittest.equals('foo'));
+    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.timeCreated,
+        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(
+        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+  }
+  buildCounterHmacKeyMetadata--;
+}
+
+buildUnnamed4755() {
+  var o = new core.List<api.HmacKeyMetadata>();
+  o.add(buildHmacKeyMetadata());
+  o.add(buildHmacKeyMetadata());
+  return o;
+}
+
+checkUnnamed4755(core.List<api.HmacKeyMetadata> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHmacKeyMetadata(o[0]);
+  checkHmacKeyMetadata(o[1]);
+}
+
+core.int buildCounterHmacKeysMetadata = 0;
+buildHmacKeysMetadata() {
+  var o = new api.HmacKeysMetadata();
+  buildCounterHmacKeysMetadata++;
+  if (buildCounterHmacKeysMetadata < 3) {
+    o.items = buildUnnamed4755();
+    o.kind = "foo";
+    o.nextPageToken = "foo";
+  }
+  buildCounterHmacKeysMetadata--;
+  return o;
+}
+
+checkHmacKeysMetadata(api.HmacKeysMetadata o) {
+  buildCounterHmacKeysMetadata++;
+  if (buildCounterHmacKeysMetadata < 3) {
+    checkUnnamed4755(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterHmacKeysMetadata--;
+}
+
+buildUnnamed4756() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1889(core.Map<core.String, core.String> o) {
+checkUnnamed4756(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1890() {
+buildUnnamed4757() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1890(core.List<core.String> o) {
+checkUnnamed4757(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -829,9 +981,9 @@ buildNotification() {
   var o = new api.Notification();
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    o.customAttributes = buildUnnamed1889();
+    o.customAttributes = buildUnnamed4756();
     o.etag = "foo";
-    o.eventTypes = buildUnnamed1890();
+    o.eventTypes = buildUnnamed4757();
     o.id = "foo";
     o.kind = "foo";
     o.objectNamePrefix = "foo";
@@ -846,9 +998,9 @@ buildNotification() {
 checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    checkUnnamed1889(o.customAttributes);
+    checkUnnamed4756(o.customAttributes);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1890(o.eventTypes);
+    checkUnnamed4757(o.eventTypes);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.objectNamePrefix, unittest.equals('foo'));
@@ -859,14 +1011,14 @@ checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-buildUnnamed1891() {
+buildUnnamed4758() {
   var o = new core.List<api.Notification>();
   o.add(buildNotification());
   o.add(buildNotification());
   return o;
 }
 
-checkUnnamed1891(core.List<api.Notification> o) {
+checkUnnamed4758(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0]);
   checkNotification(o[1]);
@@ -877,7 +1029,7 @@ buildNotifications() {
   var o = new api.Notifications();
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    o.items = buildUnnamed1891();
+    o.items = buildUnnamed4758();
     o.kind = "foo";
   }
   buildCounterNotifications--;
@@ -887,20 +1039,20 @@ buildNotifications() {
 checkNotifications(api.Notifications o) {
   buildCounterNotifications++;
   if (buildCounterNotifications < 3) {
-    checkUnnamed1891(o.items);
+    checkUnnamed4758(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterNotifications--;
 }
 
-buildUnnamed1892() {
+buildUnnamed4759() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed1892(core.List<api.ObjectAccessControl> o) {
+checkUnnamed4759(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -927,14 +1079,14 @@ checkObjectCustomerEncryption(api.ObjectCustomerEncryption o) {
   buildCounterObjectCustomerEncryption--;
 }
 
-buildUnnamed1893() {
+buildUnnamed4760() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1893(core.Map<core.String, core.String> o) {
+checkUnnamed4760(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -966,7 +1118,7 @@ buildObject() {
   var o = new api.Object();
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    o.acl = buildUnnamed1892();
+    o.acl = buildUnnamed4759();
     o.bucket = "foo";
     o.cacheControl = "foo";
     o.componentCount = 42;
@@ -984,7 +1136,7 @@ buildObject() {
     o.kmsKeyName = "foo";
     o.md5Hash = "foo";
     o.mediaLink = "foo";
-    o.metadata = buildUnnamed1893();
+    o.metadata = buildUnnamed4760();
     o.metageneration = "foo";
     o.name = "foo";
     o.owner = buildObjectOwner();
@@ -1005,7 +1157,7 @@ buildObject() {
 checkObject(api.Object o) {
   buildCounterObject++;
   if (buildCounterObject < 3) {
-    checkUnnamed1892(o.acl);
+    checkUnnamed4759(o.acl);
     unittest.expect(o.bucket, unittest.equals('foo'));
     unittest.expect(o.cacheControl, unittest.equals('foo'));
     unittest.expect(o.componentCount, unittest.equals(42));
@@ -1023,7 +1175,7 @@ checkObject(api.Object o) {
     unittest.expect(o.kmsKeyName, unittest.equals('foo'));
     unittest.expect(o.md5Hash, unittest.equals('foo'));
     unittest.expect(o.mediaLink, unittest.equals('foo'));
-    checkUnnamed1893(o.metadata);
+    checkUnnamed4760(o.metadata);
     unittest.expect(o.metageneration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkObjectOwner(o.owner);
@@ -1109,14 +1261,14 @@ checkObjectAccessControl(api.ObjectAccessControl o) {
   buildCounterObjectAccessControl--;
 }
 
-buildUnnamed1894() {
+buildUnnamed4761() {
   var o = new core.List<api.ObjectAccessControl>();
   o.add(buildObjectAccessControl());
   o.add(buildObjectAccessControl());
   return o;
 }
 
-checkUnnamed1894(core.List<api.ObjectAccessControl> o) {
+checkUnnamed4761(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectAccessControl(o[0]);
   checkObjectAccessControl(o[1]);
@@ -1127,7 +1279,7 @@ buildObjectAccessControls() {
   var o = new api.ObjectAccessControls();
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    o.items = buildUnnamed1894();
+    o.items = buildUnnamed4761();
     o.kind = "foo";
   }
   buildCounterObjectAccessControls--;
@@ -1137,33 +1289,33 @@ buildObjectAccessControls() {
 checkObjectAccessControls(api.ObjectAccessControls o) {
   buildCounterObjectAccessControls++;
   if (buildCounterObjectAccessControls < 3) {
-    checkUnnamed1894(o.items);
+    checkUnnamed4761(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterObjectAccessControls--;
 }
 
-buildUnnamed1895() {
+buildUnnamed4762() {
   var o = new core.List<api.Object>();
   o.add(buildObject());
   o.add(buildObject());
   return o;
 }
 
-checkUnnamed1895(core.List<api.Object> o) {
+checkUnnamed4762(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObject(o[0]);
   checkObject(o[1]);
 }
 
-buildUnnamed1896() {
+buildUnnamed4763() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1896(core.List<core.String> o) {
+checkUnnamed4763(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1174,10 +1326,10 @@ buildObjects() {
   var o = new api.Objects();
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    o.items = buildUnnamed1895();
+    o.items = buildUnnamed4762();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.prefixes = buildUnnamed1896();
+    o.prefixes = buildUnnamed4763();
   }
   buildCounterObjects--;
   return o;
@@ -1186,22 +1338,22 @@ buildObjects() {
 checkObjects(api.Objects o) {
   buildCounterObjects++;
   if (buildCounterObjects < 3) {
-    checkUnnamed1895(o.items);
+    checkUnnamed4762(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1896(o.prefixes);
+    checkUnnamed4763(o.prefixes);
   }
   buildCounterObjects--;
 }
 
-buildUnnamed1897() {
+buildUnnamed4764() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1897(core.List<core.String> o) {
+checkUnnamed4764(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1212,12 +1364,8 @@ buildPolicyBindings() {
   var o = new api.PolicyBindings();
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
-    o.condition = {
-      'list': [1, 2, 3],
-      'bool': true,
-      'string': 'foo'
-    };
-    o.members = buildUnnamed1897();
+    o.condition = buildExpr();
+    o.members = buildUnnamed4764();
     o.role = "foo";
   }
   buildCounterPolicyBindings--;
@@ -1227,25 +1375,21 @@ buildPolicyBindings() {
 checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
-    var casted1 = (o.condition) as core.Map;
-    unittest.expect(casted1, unittest.hasLength(3));
-    unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted1["bool"], unittest.equals(true));
-    unittest.expect(casted1["string"], unittest.equals('foo'));
-    checkUnnamed1897(o.members);
+    checkExpr(o.condition);
+    checkUnnamed4764(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterPolicyBindings--;
 }
 
-buildUnnamed1898() {
+buildUnnamed4765() {
   var o = new core.List<api.PolicyBindings>();
   o.add(buildPolicyBindings());
   o.add(buildPolicyBindings());
   return o;
 }
 
-checkUnnamed1898(core.List<api.PolicyBindings> o) {
+checkUnnamed4765(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyBindings(o[0]);
   checkPolicyBindings(o[1]);
@@ -1256,7 +1400,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed1898();
+    o.bindings = buildUnnamed4765();
     o.etag = "foo";
     o.kind = "foo";
     o.resourceId = "foo";
@@ -1268,7 +1412,7 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1898(o.bindings);
+    checkUnnamed4765(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.resourceId, unittest.equals('foo'));
@@ -1326,14 +1470,14 @@ checkServiceAccount(api.ServiceAccount o) {
   buildCounterServiceAccount--;
 }
 
-buildUnnamed1899() {
+buildUnnamed4766() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1899(core.List<core.String> o) {
+checkUnnamed4766(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1345,7 +1489,7 @@ buildTestIamPermissionsResponse() {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     o.kind = "foo";
-    o.permissions = buildUnnamed1899();
+    o.permissions = buildUnnamed4766();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1355,32 +1499,32 @@ checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1899(o.permissions);
+    checkUnnamed4766(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed1900() {
+buildUnnamed4767() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1900(core.List<core.String> o) {
+checkUnnamed4767(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1901() {
+buildUnnamed4768() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1901(core.List<core.String> o) {
+checkUnnamed4768(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1417,6 +1561,16 @@ main() {
       var od =
           new api.BucketIamConfigurationBucketPolicyOnly.fromJson(o.toJson());
       checkBucketIamConfigurationBucketPolicyOnly(od);
+    });
+  });
+
+  unittest.group("obj-schema-BucketIamConfigurationUniformBucketLevelAccess",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildBucketIamConfigurationUniformBucketLevelAccess();
+      var od = new api.BucketIamConfigurationUniformBucketLevelAccess.fromJson(
+          o.toJson());
+      checkBucketIamConfigurationUniformBucketLevelAccess(od);
     });
   });
 
@@ -1574,6 +1728,38 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Expr", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildExpr();
+      var od = new api.Expr.fromJson(o.toJson());
+      checkExpr(od);
+    });
+  });
+
+  unittest.group("obj-schema-HmacKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildHmacKey();
+      var od = new api.HmacKey.fromJson(o.toJson());
+      checkHmacKey(od);
+    });
+  });
+
+  unittest.group("obj-schema-HmacKeyMetadata", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildHmacKeyMetadata();
+      var od = new api.HmacKeyMetadata.fromJson(o.toJson());
+      checkHmacKeyMetadata(od);
+    });
+  });
+
+  unittest.group("obj-schema-HmacKeysMetadata", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildHmacKeysMetadata();
+      var od = new api.HmacKeysMetadata.fromJson(o.toJson());
+      checkHmacKeysMetadata(od);
+    });
+  });
+
   unittest.group("obj-schema-Notification", () {
     unittest.test("to-json--from-json", () {
       var o = buildNotification();
@@ -1693,6 +1879,7 @@ main() {
           new api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1740,6 +1927,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1752,7 +1941,9 @@ main() {
       }), true);
       res
           .delete(arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -1762,6 +1953,7 @@ main() {
           new api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1809,6 +2001,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1821,7 +2015,9 @@ main() {
       }), true);
       res
           .get(arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBucketAccessControl(response);
       })));
@@ -1833,6 +2029,7 @@ main() {
           new api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1880,6 +2077,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1892,7 +2091,9 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_bucket,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBucketAccessControl(response);
       })));
@@ -1903,6 +2104,7 @@ main() {
       api.BucketAccessControlsResourceApi res =
           new api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1947,6 +2149,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1958,7 +2162,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_bucket, userProject: arg_userProject, $fields: arg_$fields)
+          .list(arg_bucket,
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBucketAccessControls(response);
       })));
@@ -1971,6 +2178,7 @@ main() {
       var arg_request = buildBucketAccessControl();
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2021,6 +2229,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2033,7 +2243,9 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBucketAccessControl(response);
       })));
@@ -2046,6 +2258,7 @@ main() {
       var arg_request = buildBucketAccessControl();
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2096,6 +2309,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2108,7 +2323,9 @@ main() {
       }), true);
       res
           .update(arg_request, arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBucketAccessControl(response);
       })));
@@ -2122,6 +2339,7 @@ main() {
       var arg_bucket = "foo";
       var arg_ifMetagenerationMatch = "foo";
       var arg_ifMetagenerationNotMatch = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2164,6 +2382,8 @@ main() {
             unittest.equals(arg_ifMetagenerationMatch));
         unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
             unittest.equals(arg_ifMetagenerationNotMatch));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2178,6 +2398,7 @@ main() {
           .delete(arg_bucket,
               ifMetagenerationMatch: arg_ifMetagenerationMatch,
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
@@ -2190,6 +2411,7 @@ main() {
       var arg_ifMetagenerationMatch = "foo";
       var arg_ifMetagenerationNotMatch = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2234,6 +2456,8 @@ main() {
             unittest.equals(arg_ifMetagenerationNotMatch));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2249,6 +2473,7 @@ main() {
               ifMetagenerationMatch: arg_ifMetagenerationMatch,
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2260,6 +2485,7 @@ main() {
       var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2304,6 +2530,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2316,7 +2544,9 @@ main() {
       }), true);
       res
           .getIamPolicy(arg_bucket,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
@@ -2330,6 +2560,7 @@ main() {
       var arg_predefinedAcl = "foo";
       var arg_predefinedDefaultObjectAcl = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2376,6 +2607,8 @@ main() {
             unittest.equals(arg_predefinedDefaultObjectAcl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2391,6 +2624,7 @@ main() {
               predefinedAcl: arg_predefinedAcl,
               predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2406,6 +2640,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_prefix = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2450,6 +2685,8 @@ main() {
         unittest.expect(queryMap["prefix"].first, unittest.equals(arg_prefix));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2466,6 +2703,7 @@ main() {
               pageToken: arg_pageToken,
               prefix: arg_prefix,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2478,6 +2716,7 @@ main() {
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_bucket = "foo";
       var arg_ifMetagenerationMatch = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2524,6 +2763,8 @@ main() {
         }
         unittest.expect(queryMap["ifMetagenerationMatch"].first,
             unittest.equals(arg_ifMetagenerationMatch));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2536,7 +2777,9 @@ main() {
       }), true);
       res
           .lockRetentionPolicy(arg_bucket, arg_ifMetagenerationMatch,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkBucket(response);
       })));
@@ -2552,6 +2795,7 @@ main() {
       var arg_predefinedAcl = "foo";
       var arg_predefinedDefaultObjectAcl = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2603,6 +2847,8 @@ main() {
             unittest.equals(arg_predefinedDefaultObjectAcl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2620,6 +2866,7 @@ main() {
               predefinedAcl: arg_predefinedAcl,
               predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2632,6 +2879,7 @@ main() {
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_request = buildPolicy();
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2679,6 +2927,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2691,7 +2941,9 @@ main() {
       }), true);
       res
           .setIamPolicy(arg_request, arg_bucket,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
@@ -2701,7 +2953,8 @@ main() {
       var mock = new HttpServerMock();
       api.BucketsResourceApi res = new api.StorageApi(mock).buckets;
       var arg_bucket = "foo";
-      var arg_permissions = buildUnnamed1900();
+      var arg_permissions = buildUnnamed4767();
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2748,6 +3001,8 @@ main() {
         }
         unittest.expect(
             queryMap["permissions"], unittest.equals(arg_permissions));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2760,7 +3015,9 @@ main() {
       }), true);
       res
           .testIamPermissions(arg_bucket, arg_permissions,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTestIamPermissionsResponse(response);
       })));
@@ -2776,6 +3033,7 @@ main() {
       var arg_predefinedAcl = "foo";
       var arg_predefinedDefaultObjectAcl = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2827,6 +3085,8 @@ main() {
             unittest.equals(arg_predefinedDefaultObjectAcl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2844,6 +3104,7 @@ main() {
               predefinedAcl: arg_predefinedAcl,
               predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -2915,6 +3176,7 @@ main() {
           new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2962,6 +3224,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -2974,7 +3238,9 @@ main() {
       }), true);
       res
           .delete(arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -2984,6 +3250,7 @@ main() {
           new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3031,6 +3298,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3043,7 +3312,9 @@ main() {
       }), true);
       res
           .get(arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkObjectAccessControl(response);
       })));
@@ -3055,6 +3326,7 @@ main() {
           new api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3102,6 +3374,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3114,7 +3388,9 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_bucket,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkObjectAccessControl(response);
       })));
@@ -3127,6 +3403,7 @@ main() {
       var arg_bucket = "foo";
       var arg_ifMetagenerationMatch = "foo";
       var arg_ifMetagenerationNotMatch = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3175,6 +3452,8 @@ main() {
             unittest.equals(arg_ifMetagenerationMatch));
         unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
             unittest.equals(arg_ifMetagenerationNotMatch));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3189,6 +3468,7 @@ main() {
           .list(arg_bucket,
               ifMetagenerationMatch: arg_ifMetagenerationMatch,
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3203,6 +3483,7 @@ main() {
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3253,6 +3534,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3265,7 +3548,9 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkObjectAccessControl(response);
       })));
@@ -3278,6 +3563,7 @@ main() {
       var arg_request = buildObjectAccessControl();
       var arg_bucket = "foo";
       var arg_entity = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3328,6 +3614,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3340,7 +3628,9 @@ main() {
       }), true);
       res
           .update(arg_request, arg_bucket, arg_entity,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkObjectAccessControl(response);
       })));
@@ -3353,6 +3643,7 @@ main() {
       api.NotificationsResourceApi res = new api.StorageApi(mock).notifications;
       var arg_bucket = "foo";
       var arg_notification = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3400,6 +3691,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3412,7 +3705,9 @@ main() {
       }), true);
       res
           .delete(arg_bucket, arg_notification,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -3421,6 +3716,7 @@ main() {
       api.NotificationsResourceApi res = new api.StorageApi(mock).notifications;
       var arg_bucket = "foo";
       var arg_notification = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3468,6 +3764,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3480,7 +3778,9 @@ main() {
       }), true);
       res
           .get(arg_bucket, arg_notification,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkNotification(response);
       })));
@@ -3491,6 +3791,7 @@ main() {
       api.NotificationsResourceApi res = new api.StorageApi(mock).notifications;
       var arg_request = buildNotification();
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3538,6 +3839,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3550,7 +3853,9 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_bucket,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkNotification(response);
       })));
@@ -3560,6 +3865,7 @@ main() {
       var mock = new HttpServerMock();
       api.NotificationsResourceApi res = new api.StorageApi(mock).notifications;
       var arg_bucket = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3604,6 +3910,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3615,7 +3923,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_bucket, userProject: arg_userProject, $fields: arg_$fields)
+          .list(arg_bucket,
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkNotifications(response);
       })));
@@ -3631,6 +3942,7 @@ main() {
       var arg_object = "foo";
       var arg_entity = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3689,6 +4001,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3702,6 +4016,7 @@ main() {
       res
           .delete(arg_bucket, arg_object, arg_entity,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
@@ -3715,6 +4030,7 @@ main() {
       var arg_object = "foo";
       var arg_entity = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3773,6 +4089,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3786,6 +4104,7 @@ main() {
       res
           .get(arg_bucket, arg_object, arg_entity,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3801,6 +4120,7 @@ main() {
       var arg_bucket = "foo";
       var arg_object = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3859,6 +4179,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3872,6 +4194,7 @@ main() {
       res
           .insert(arg_request, arg_bucket, arg_object,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3886,6 +4209,7 @@ main() {
       var arg_bucket = "foo";
       var arg_object = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3941,6 +4265,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -3954,6 +4280,7 @@ main() {
       res
           .list(arg_bucket, arg_object,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -3970,6 +4297,7 @@ main() {
       var arg_object = "foo";
       var arg_entity = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4031,6 +4359,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4044,6 +4374,7 @@ main() {
       res
           .patch(arg_request, arg_bucket, arg_object, arg_entity,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4060,6 +4391,7 @@ main() {
       var arg_object = "foo";
       var arg_entity = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4121,6 +4453,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4134,6 +4468,7 @@ main() {
       res
           .update(arg_request, arg_bucket, arg_object, arg_entity,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4153,6 +4488,7 @@ main() {
       var arg_ifGenerationMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
       var arg_kmsKeyName = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4217,6 +4553,8 @@ main() {
             unittest.equals(arg_ifMetagenerationMatch));
         unittest.expect(
             queryMap["kmsKeyName"].first, unittest.equals(arg_kmsKeyName));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4233,6 +4571,7 @@ main() {
               ifGenerationMatch: arg_ifGenerationMatch,
               ifMetagenerationMatch: arg_ifMetagenerationMatch,
               kmsKeyName: arg_kmsKeyName,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4258,6 +4597,7 @@ main() {
       var arg_ifSourceMetagenerationMatch = "foo";
       var arg_ifSourceMetagenerationNotMatch = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_sourceGeneration = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
@@ -4347,6 +4687,8 @@ main() {
             unittest.equals(arg_ifSourceMetagenerationNotMatch));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(queryMap["sourceGeneration"].first,
             unittest.equals(arg_sourceGeneration));
         unittest.expect(
@@ -4373,6 +4715,7 @@ main() {
               ifSourceMetagenerationNotMatch:
                   arg_ifSourceMetagenerationNotMatch,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               sourceGeneration: arg_sourceGeneration,
               userProject: arg_userProject,
               $fields: arg_$fields)
@@ -4391,6 +4734,7 @@ main() {
       var arg_ifGenerationNotMatch = "foo";
       var arg_ifMetagenerationMatch = "foo";
       var arg_ifMetagenerationNotMatch = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4448,6 +4792,8 @@ main() {
             unittest.equals(arg_ifMetagenerationMatch));
         unittest.expect(queryMap["ifMetagenerationNotMatch"].first,
             unittest.equals(arg_ifMetagenerationNotMatch));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4465,6 +4811,7 @@ main() {
               ifGenerationNotMatch: arg_ifGenerationNotMatch,
               ifMetagenerationMatch: arg_ifMetagenerationMatch,
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
@@ -4484,6 +4831,7 @@ main() {
       var arg_ifMetagenerationMatch = "foo";
       var arg_ifMetagenerationNotMatch = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4543,6 +4891,8 @@ main() {
             unittest.equals(arg_ifMetagenerationNotMatch));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4561,6 +4911,7 @@ main() {
               ifMetagenerationMatch: arg_ifMetagenerationMatch,
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4574,6 +4925,7 @@ main() {
       var arg_bucket = "foo";
       var arg_object = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4629,6 +4981,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4642,6 +4996,7 @@ main() {
       res
           .getIamPolicy(arg_bucket, arg_object,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4666,6 +5021,7 @@ main() {
       var arg_name = "foo";
       var arg_predefinedAcl = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4730,6 +5086,8 @@ main() {
             unittest.equals(arg_predefinedAcl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4751,6 +5109,7 @@ main() {
               name: arg_name,
               predefinedAcl: arg_predefinedAcl,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4768,6 +5127,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_prefix = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_versions = true;
       var arg_$fields = "foo";
@@ -4824,6 +5184,8 @@ main() {
         unittest.expect(queryMap["prefix"].first, unittest.equals(arg_prefix));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(
@@ -4844,6 +5206,7 @@ main() {
               pageToken: arg_pageToken,
               prefix: arg_prefix,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               versions: arg_versions,
               $fields: arg_$fields)
@@ -4865,6 +5228,7 @@ main() {
       var arg_ifMetagenerationNotMatch = "foo";
       var arg_predefinedAcl = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4929,6 +5293,8 @@ main() {
             unittest.equals(arg_predefinedAcl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -4948,6 +5314,7 @@ main() {
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
               predefinedAcl: arg_predefinedAcl,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -4975,6 +5342,7 @@ main() {
       var arg_ifSourceMetagenerationNotMatch = "foo";
       var arg_maxBytesRewrittenPerCall = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_rewriteToken = "foo";
       var arg_sourceGeneration = "foo";
       var arg_userProject = "foo";
@@ -5069,6 +5437,8 @@ main() {
             unittest.equals(arg_maxBytesRewrittenPerCall));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["rewriteToken"].first, unittest.equals(arg_rewriteToken));
         unittest.expect(queryMap["sourceGeneration"].first,
@@ -5099,6 +5469,7 @@ main() {
                   arg_ifSourceMetagenerationNotMatch,
               maxBytesRewrittenPerCall: arg_maxBytesRewrittenPerCall,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               rewriteToken: arg_rewriteToken,
               sourceGeneration: arg_sourceGeneration,
               userProject: arg_userProject,
@@ -5115,6 +5486,7 @@ main() {
       var arg_bucket = "foo";
       var arg_object = "foo";
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5173,6 +5545,8 @@ main() {
         }
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5186,6 +5560,7 @@ main() {
       res
           .setIamPolicy(arg_request, arg_bucket, arg_object,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5198,8 +5573,9 @@ main() {
       api.ObjectsResourceApi res = new api.StorageApi(mock).objects;
       var arg_bucket = "foo";
       var arg_object = "foo";
-      var arg_permissions = buildUnnamed1901();
+      var arg_permissions = buildUnnamed4768();
       var arg_generation = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5257,6 +5633,8 @@ main() {
             queryMap["permissions"], unittest.equals(arg_permissions));
         unittest.expect(
             queryMap["generation"].first, unittest.equals(arg_generation));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5270,6 +5648,7 @@ main() {
       res
           .testIamPermissions(arg_bucket, arg_object, arg_permissions,
               generation: arg_generation,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5290,6 +5669,7 @@ main() {
       var arg_ifMetagenerationNotMatch = "foo";
       var arg_predefinedAcl = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5354,6 +5734,8 @@ main() {
             unittest.equals(arg_predefinedAcl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5373,6 +5755,7 @@ main() {
               ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
               predefinedAcl: arg_predefinedAcl,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -5391,6 +5774,7 @@ main() {
       var arg_pageToken = "foo";
       var arg_prefix = "foo";
       var arg_projection = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_versions = true;
       var arg_$fields = "foo";
@@ -5450,6 +5834,8 @@ main() {
         unittest.expect(queryMap["prefix"].first, unittest.equals(arg_prefix));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(
@@ -5470,11 +5856,383 @@ main() {
               pageToken: arg_pageToken,
               prefix: arg_prefix,
               projection: arg_projection,
+              provisionalUserProject: arg_provisionalUserProject,
               userProject: arg_userProject,
               versions: arg_versions,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkChannel(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsHmacKeysResourceApi", () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsHmacKeysResourceApi res =
+          new api.StorageApi(mock).projects.hmacKeys;
+      var arg_projectId = "foo";
+      var arg_serviceAccountEmail = "foo";
+      var arg_userProject = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("storage/v1/"));
+        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("projects/"));
+        pathOffset += 9;
+        index = path.indexOf("/hmacKeys", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/hmacKeys"));
+        pathOffset += 9;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["serviceAccountEmail"].first,
+            unittest.equals(arg_serviceAccountEmail));
+        unittest.expect(
+            queryMap["userProject"].first, unittest.equals(arg_userProject));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildHmacKey());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_projectId, arg_serviceAccountEmail,
+              userProject: arg_userProject, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkHmacKey(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsHmacKeysResourceApi res =
+          new api.StorageApi(mock).projects.hmacKeys;
+      var arg_projectId = "foo";
+      var arg_accessId = "foo";
+      var arg_userProject = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("storage/v1/"));
+        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("projects/"));
+        pathOffset += 9;
+        index = path.indexOf("/hmacKeys/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/hmacKeys/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_accessId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["userProject"].first, unittest.equals(arg_userProject));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = "";
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_projectId, arg_accessId,
+              userProject: arg_userProject, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsHmacKeysResourceApi res =
+          new api.StorageApi(mock).projects.hmacKeys;
+      var arg_projectId = "foo";
+      var arg_accessId = "foo";
+      var arg_userProject = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("storage/v1/"));
+        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("projects/"));
+        pathOffset += 9;
+        index = path.indexOf("/hmacKeys/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/hmacKeys/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_accessId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["userProject"].first, unittest.equals(arg_userProject));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildHmacKeyMetadata());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_projectId, arg_accessId,
+              userProject: arg_userProject, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkHmacKeyMetadata(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsHmacKeysResourceApi res =
+          new api.StorageApi(mock).projects.hmacKeys;
+      var arg_projectId = "foo";
+      var arg_maxResults = 42;
+      var arg_pageToken = "foo";
+      var arg_serviceAccountEmail = "foo";
+      var arg_showDeletedKeys = true;
+      var arg_userProject = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("storage/v1/"));
+        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("projects/"));
+        pathOffset += 9;
+        index = path.indexOf("/hmacKeys", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/hmacKeys"));
+        pathOffset += 9;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["serviceAccountEmail"].first,
+            unittest.equals(arg_serviceAccountEmail));
+        unittest.expect(queryMap["showDeletedKeys"].first,
+            unittest.equals("$arg_showDeletedKeys"));
+        unittest.expect(
+            queryMap["userProject"].first, unittest.equals(arg_userProject));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildHmacKeysMetadata());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_projectId,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              serviceAccountEmail: arg_serviceAccountEmail,
+              showDeletedKeys: arg_showDeletedKeys,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkHmacKeysMetadata(response);
+      })));
+    });
+
+    unittest.test("method--update", () {
+      var mock = new HttpServerMock();
+      api.ProjectsHmacKeysResourceApi res =
+          new api.StorageApi(mock).projects.hmacKeys;
+      var arg_request = buildHmacKeyMetadata();
+      var arg_projectId = "foo";
+      var arg_accessId = "foo";
+      var arg_userProject = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.HmacKeyMetadata.fromJson(json);
+        checkHmacKeyMetadata(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("storage/v1/"));
+        pathOffset += 11;
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("projects/"));
+        pathOffset += 9;
+        index = path.indexOf("/hmacKeys/", pathOffset);
+        unittest.expect(index >= 0, unittest.isTrue);
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        pathOffset = index;
+        unittest.expect(subPart, unittest.equals("$arg_projectId"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/hmacKeys/"));
+        pathOffset += 10;
+        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
+        pathOffset = path.length;
+        unittest.expect(subPart, unittest.equals("$arg_accessId"));
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["userProject"].first, unittest.equals(arg_userProject));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildHmacKeyMetadata());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .update(arg_request, arg_projectId, arg_accessId,
+              userProject: arg_userProject, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkHmacKeyMetadata(response);
       })));
     });
   });
@@ -5485,6 +6243,7 @@ main() {
       api.ProjectsServiceAccountResourceApi res =
           new api.StorageApi(mock).projects.serviceAccount;
       var arg_projectId = "foo";
+      var arg_provisionalUserProject = "foo";
       var arg_userProject = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5529,6 +6288,8 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["provisionalUserProject"].first,
+            unittest.equals(arg_provisionalUserProject));
         unittest.expect(
             queryMap["userProject"].first, unittest.equals(arg_userProject));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -5541,7 +6302,9 @@ main() {
       }), true);
       res
           .get(arg_projectId,
-              userProject: arg_userProject, $fields: arg_$fields)
+              provisionalUserProject: arg_provisionalUserProject,
+              userProject: arg_userProject,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkServiceAccount(response);
       })));

@@ -1251,61 +1251,6 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
   ProjectsLocationsRegistriesGroupsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Associates the device with the gateway.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - The name of the registry. For example,
-  /// `projects/example-project/locations/us-central1/registries/my-registry`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [BindDeviceToGatewayResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<BindDeviceToGatewayResponse> bindDeviceToGateway(
-      BindDeviceToGatewayRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':bindDeviceToGateway';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new BindDeviceToGatewayResponse.fromJson(data));
-  }
-
   /// Gets the access control policy for a resource.
   /// Returns an empty policy if the resource exists and does not have a policy
   /// set.
@@ -1476,131 +1421,14 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
     return _response
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
-
-  /// Deletes the association between the device and the gateway.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - The name of the registry. For example,
-  /// `projects/example-project/locations/us-central1/registries/my-registry`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [UnbindDeviceFromGatewayResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<UnbindDeviceFromGatewayResponse> unbindDeviceFromGateway(
-      UnbindDeviceFromGatewayRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$parent') +
-        ':unbindDeviceFromGateway';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new UnbindDeviceFromGatewayResponse.fromJson(data));
-  }
 }
 
 class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi
-      get configVersions =>
-          new ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi(
-              _requester);
-  ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi get states =>
-      new ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi(_requester);
-
   ProjectsLocationsRegistriesGroupsDevicesResourceApi(
       commons.ApiRequester client)
       : _requester = client;
-
-  /// Gets details about a device.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the device. For example,
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
-  /// or
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [fieldMask] - The fields of the `Device` resource to be returned in the
-  /// response. If the
-  /// field mask is unset or empty, all fields are returned.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Device].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Device> get(core.String name,
-      {core.String fieldMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
-  }
 
   /// List devices in a device registry.
   ///
@@ -1610,6 +1438,16 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// `projects/my-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum
+  /// IDs: 10,000.
+  ///
+  /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
+  /// gateways with which the specified device is
+  /// associated. The device ID can be numeric (`num_id`) or the user-defined
+  /// string (`id`). For example, if `456` is specified, returns only the
+  /// gateways to which the device with `num_id` 456 is bound.
   ///
   /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
   /// gateways are returned. If `NON_GATEWAY`
@@ -1626,15 +1464,15 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// (`id`). For example, if `123` is specified, only devices bound to the
   /// gateway with `num_id` 123 are returned.
   ///
-  /// [fieldMask] - The fields of the `Device` resource to be returned in the
-  /// response. The
-  /// fields `id` and `num_id` are always returned, along with any
-  /// other fields specified.
-  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListDevices` call and
   /// the system should return the next page of data.
+  ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. The
+  /// fields `id` and `num_id` are always returned, along with any
+  /// other fields specified.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// this value
@@ -1645,16 +1483,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// [deviceIds] - A list of device string IDs. For example, `['device0',
   /// 'device12']`.
   /// If empty, this field is ignored. Maximum IDs: 10,000
-  ///
-  /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
-  /// gateways with which the specified device is
-  /// associated. The device ID can be numeric (`num_id`) or the user-defined
-  /// string (`id`). For example, if `456` is specified, returns only the
-  /// gateways to which the device with `num_id` 456 is bound.
-  ///
-  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
-  /// ignored. Maximum
-  /// IDs: 10,000.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1667,14 +1495,14 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String gatewayListOptions_gatewayType,
+      {core.List<core.String> deviceNumIds,
+      core.String gatewayListOptions_associationsDeviceId,
+      core.String gatewayListOptions_gatewayType,
       core.String gatewayListOptions_associationsGatewayId,
-      core.String fieldMask,
       core.String pageToken,
+      core.String fieldMask,
       core.int pageSize,
       core.List<core.String> deviceIds,
-      core.String gatewayListOptions_associationsDeviceId,
-      core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1686,6 +1514,14 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
+    }
+    if (gatewayListOptions_associationsDeviceId != null) {
+      _queryParams["gatewayListOptions.associationsDeviceId"] = [
+        gatewayListOptions_associationsDeviceId
+      ];
+    }
     if (gatewayListOptions_gatewayType != null) {
       _queryParams["gatewayListOptions.gatewayType"] = [
         gatewayListOptions_gatewayType
@@ -1696,25 +1532,17 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
         gatewayListOptions_associationsGatewayId
       ];
     }
-    if (fieldMask != null) {
-      _queryParams["fieldMask"] = [fieldMask];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (deviceIds != null) {
       _queryParams["deviceIds"] = deviceIds;
-    }
-    if (gatewayListOptions_associationsDeviceId != null) {
-      _queryParams["gatewayListOptions.associationsDeviceId"] = [
-        gatewayListOptions_associationsDeviceId
-      ];
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1730,329 +1558,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListDevicesResponse.fromJson(data));
-  }
-
-  /// Modifies the configuration for the device, which is eventually sent from
-  /// the Cloud IoT Core servers. Returns the modified configuration version and
-  /// its metadata.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the device. For example,
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
-  /// or
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DeviceConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DeviceConfig> modifyCloudToDeviceConfig(
-      ModifyCloudToDeviceConfigRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':modifyCloudToDeviceConfig';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeviceConfig.fromJson(data));
-  }
-
-  /// Updates a device.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The resource path name. For example,
-  /// `projects/p1/locations/us-central1/registries/registry0/devices/dev0` or
-  /// `projects/p1/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// When `name` is populated as a response from the service, it always ends
-  /// in the device numeric ID.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [updateMask] - Only updates the `device` fields indicated by this mask.
-  /// The field mask must not be empty, and it must not contain fields that
-  /// are immutable or only set by the server.
-  /// Mutable top-level fields: `credentials`, `blocked`, and `metadata`
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Device].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Device> patch(Device request, core.String name,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
-  }
-
-  /// Sends a command to the specified device. In order for a device to be able
-  /// to receive commands, it must:
-  /// 1) be connected to Cloud IoT Core using the MQTT protocol, and
-  /// 2) be subscribed to the group of MQTT topics specified by
-  /// /devices/{device-id}/commands/#. This subscription will receive commands
-  /// at the top-level topic /devices/{device-id}/commands as well as commands
-  ///    for subfolders, like /devices/{device-id}/commands/subfolder.
-  ///    Note that subscribing to specific subfolders is not supported.
-  /// If the command could not be delivered to the device, this method will
-  /// return an error; in particular, if the device is not subscribed, this
-  /// method will return FAILED_PRECONDITION. Otherwise, this method will
-  /// return OK. If the subscription is QoS 1, at least once delivery will be
-  /// guaranteed; for QoS 0, no acknowledgment will be expected from the device.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the device. For example,
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
-  /// or
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SendCommandToDeviceResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SendCommandToDeviceResponse> sendCommandToDevice(
-      SendCommandToDeviceRequest request, core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':sendCommandToDevice';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new SendCommandToDeviceResponse.fromJson(data));
-  }
-}
-
-class ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRegistriesGroupsDevicesConfigVersionsResourceApi(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists the last few versions of the device configuration in descending
-  /// order (i.e.: newest first).
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the device. For example,
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
-  /// or
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [numVersions] - The number of versions to list. Versions are listed in
-  /// decreasing order of
-  /// the version number. The maximum number of versions retained is 10. If this
-  /// value is zero, it will return all the versions available.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListDeviceConfigVersionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListDeviceConfigVersionsResponse> list(core.String name,
-      {core.int numVersions, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (numVersions != null) {
-      _queryParams["numVersions"] = ["${numVersions}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        '/configVersions';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListDeviceConfigVersionsResponse.fromJson(data));
-  }
-}
-
-class ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRegistriesGroupsDevicesStatesResourceApi(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists the last few versions of the device state in descending order (i.e.:
-  /// newest first).
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the device. For example,
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
-  /// or
-  /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
-  /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$".
-  ///
-  /// [numStates] - The number of states to list. States are listed in
-  /// descending order of
-  /// update time. The maximum number of states retained is 10. If this
-  /// value is zero, it will return all the states available.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListDeviceStatesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListDeviceStatesResponse> list(core.String name,
-      {core.int numStates, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (numStates != null) {
-      _queryParams["numStates"] = ["${numStates}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new ListDeviceStatesResponse.fromJson(data));
   }
 }
 
@@ -2106,8 +1611,8 @@ class BindDeviceToGatewayResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -2132,7 +1637,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -3470,61 +2975,12 @@ class StateNotificationConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

@@ -16,6 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client bigtableadmin/v2';
 
+/// Administer your Cloud Bigtable tables and instances.
 class BigtableadminApi {
   /// Administer your Cloud Bigtable tables and clusters
   static const BigtableAdminScope =
@@ -312,6 +313,8 @@ class ProjectsResourceApi {
 
   ProjectsInstancesResourceApi get instances =>
       new ProjectsInstancesResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -820,13 +823,13 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// `projects/<project>/instances/<instance>`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
-  /// [ignoreWarnings] - If true, ignore safety checks when creating the app
-  /// profile.
-  ///
   /// [appProfileId] - The ID to be used when referring to the new app profile
   /// within its
   /// instance, e.g., just `myprofile` rather than
   /// `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+  ///
+  /// [ignoreWarnings] - If true, ignore safety checks when creating the app
+  /// profile.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,8 +842,8 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AppProfile> create(AppProfile request, core.String parent,
-      {core.bool ignoreWarnings,
-      core.String appProfileId,
+      {core.String appProfileId,
+      core.bool ignoreWarnings,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -855,11 +858,11 @@ class ProjectsInstancesAppProfilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (ignoreWarnings != null) {
-      _queryParams["ignoreWarnings"] = ["${ignoreWarnings}"];
-    }
     if (appProfileId != null) {
       _queryParams["appProfileId"] = [appProfileId];
+    }
+    if (ignoreWarnings != null) {
+      _queryParams["ignoreWarnings"] = ["${ignoreWarnings}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -989,10 +992,10 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// e.g., `projects/myproject/instances/-`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
+  /// [pageToken] - The value of `next_page_token` returned by a previous call.
+  ///
   /// [pageSize] - Maximum number of results per page.
   /// CURRENTLY UNIMPLEMENTED AND IGNORED.
-  ///
-  /// [pageToken] - The value of `next_page_token` returned by a previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1005,7 +1008,7 @@ class ProjectsInstancesAppProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAppProfilesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1016,11 +1019,11 @@ class ProjectsInstancesAppProfilesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1702,6 +1705,61 @@ class ProjectsInstancesTablesResourceApi {
     return _response.then((data) => new Table.fromJson(data));
   }
 
+  /// Gets the access control policy for an instance resource. Returns an empty
+  /// policy if an table exists but does not have a policy set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
   /// Lists all tables served from a specified instance.
   ///
   /// Request parameters:
@@ -1714,7 +1772,15 @@ class ProjectsInstancesTablesResourceApi {
   /// [pageToken] - The value of `next_page_token` returned by a previous call.
   ///
   /// [pageSize] - Maximum number of results per page.
-  /// CURRENTLY UNIMPLEMENTED AND IGNORED.
+  ///
+  /// A page_size of zero lets the server choose the number of items to return.
+  /// A page_size which is strictly positive will return at most that many
+  /// items.
+  /// A negative page_size will cause an error.
+  ///
+  /// Following the first request, subsequent paginated calls are not required
+  /// to pass a page_size. If a page_size is set in subsequent calls, it must
+  /// match the page_size given in the first request.
   ///
   /// [view] - The view to be applied to the returned tables' fields.
   /// Defaults to `NAME_ONLY` if unspecified; no others are currently supported.
@@ -1829,6 +1895,229 @@ class ProjectsInstancesTablesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Table.fromJson(data));
+  }
+
+  /// Sets the access control policy on a table resource. Replaces any existing
+  /// policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that the caller has on the specified table resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Location.fromJson(data));
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(core.String name,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLocationsResponse.fromJson(data));
   }
 }
 
@@ -2050,8 +2339,8 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -2076,7 +2365,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -2256,7 +2545,7 @@ class Cluster {
 
 /// The state of a table's data in a particular cluster.
 class ClusterState {
-  /// (`OutputOnly`)
+  /// Output only.
   /// The state of replication for the table in this cluster.
   /// Possible string values are:
   /// - "STATE_NOT_KNOWN" : The replication state of the table is unknown in
@@ -3098,6 +3387,40 @@ class ListInstancesResponse {
   }
 }
 
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location> locations;
+
+  /// The standard List next-page token.
+  core.String nextPageToken;
+
+  ListLocationsResponse();
+
+  ListLocationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("locations")) {
+      locations = (_json["locations"] as core.List)
+          .map<Location>((value) => new Location.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locations != null) {
+      _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -3165,6 +3488,74 @@ class ListTablesResponse {
     }
     if (tables != null) {
       _json["tables"] = tables.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A resource that represents Google Cloud Platform location.
+class Location {
+  /// The friendly name for this location, typically a nearby city name.
+  /// For example, "Tokyo".
+  core.String displayName;
+
+  /// Cross-service attributes for the location. For example
+  ///
+  ///     {"cloud.googleapis.com/region": "us-east1"}
+  core.Map<core.String, core.String> labels;
+
+  /// The canonical id for this location. For example: `"us-east1"`.
+  core.String locationId;
+
+  /// Service-specific metadata. For example the available capacity at the given
+  /// location.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// Resource name for the location, which may vary between implementations.
+  /// For example: `"projects/example-project/locations/us-east1"`
+  core.String name;
+
+  Location();
+
+  Location.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -3613,9 +4004,8 @@ class Split {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). The error model is designed to be:
 ///
 /// - Simple to use and understand for most users
 /// - Flexible enough to meet unexpected needs
@@ -3623,8 +4013,7 @@ class Split {
 /// # Overview
 ///
 /// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
+/// message, and error details. The error code should be an enum value of
 /// google.rpc.Code, but it may accept additional error codes if needed.  The
 /// error message should be a developer-facing English message that helps
 /// developers *understand* and *resolve* the error. If a localized user-facing
@@ -3720,7 +4109,7 @@ class Status {
 /// A collection of user data indexed by row, column, and timestamp.
 /// Each table is served using the resources of its parent cluster.
 class Table {
-  /// (`OutputOnly`)
+  /// Output only.
   /// Map from cluster ID to per-cluster table state.
   /// If it could not be determined whether or not the table has data in a
   /// particular cluster (for example, if its zone is unavailable), then
@@ -3737,7 +4126,7 @@ class Table {
   /// The granularity (i.e. `MILLIS`) at which timestamps are stored in
   /// this table. Timestamps not matching the granularity will be rejected.
   /// If unspecified at creation time, the value will be set to `MILLIS`.
-  /// Views: `SCHEMA_VIEW`, `FULL`
+  /// Views: `SCHEMA_VIEW`, `FULL`.
   /// Possible string values are:
   /// - "TIMESTAMP_GRANULARITY_UNSPECIFIED" : The user did not specify a
   /// granularity. Should not be returned.
@@ -3745,7 +4134,7 @@ class Table {
   /// - "MILLIS" : The table keeps data versioned at a granularity of 1ms.
   core.String granularity;
 
-  /// (`OutputOnly`)
+  /// Output only.
   /// The unique name of the table. Values are of the form
   /// `projects/<project>/instances/<instance>/tables/_a-zA-Z0-9*`.
   /// Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`

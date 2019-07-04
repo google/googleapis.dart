@@ -342,68 +342,6 @@ class UsersDataSourcesResourceApi {
   /// dataStreamName, and device properties with the exception of version,
   /// cannot be modified.
   ///
-  /// Data sources are identified by their dataStreamId. This method supports
-  /// patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [userId] - Update the data source for the person identified. Use me to
-  /// indicate the authenticated user. Only me is supported at this time.
-  ///
-  /// [dataSourceId] - The data stream ID of the data source to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DataSource].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DataSource> patch(
-      DataSource request, core.String userId, core.String dataSourceId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (dataSourceId == null) {
-      throw new core.ArgumentError("Parameter dataSourceId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$userId') +
-        '/dataSources/' +
-        commons.Escaper.ecapeVariable('$dataSourceId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DataSource.fromJson(data));
-  }
-
-  /// Updates the specified data source. The dataStreamId, dataType, type,
-  /// dataStreamName, and device properties with the exception of version,
-  /// cannot be modified.
-  ///
   /// Data sources are identified by their dataStreamId.
   ///
   /// [request] - The metadata request object.
@@ -928,7 +866,7 @@ class UsersSessionsResourceApi {
   /// timestamp (in millis since epoch). If specified, the API returns sessions
   /// modified since this time. The page token is ignored if either start or end
   /// time is specified. If none of start time, end time, and the page token is
-  /// specified, sessions modified in the last 7 days are returned.
+  /// specified, sessions modified in the last 30 days are returned.
   ///
   /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response.
@@ -1201,9 +1139,7 @@ class AggregateRequest {
   /// will be aggregated. The time is in milliseconds since epoch, inclusive.
   core.String endTimeMillis;
 
-  /// DO NOT POPULATE THIS FIELD. As data quality standards are deprecated,
-  /// filling it in will result in no data sources being returned. It will be
-  /// removed in a future version entirely.
+  /// DO NOT POPULATE THIS FIELD. It is ignored.
   core.List<core.String> filteredDataQualityStandard;
 
   /// The start of a window of time. Data that intersects with this time window
@@ -1517,6 +1453,10 @@ class DataPoint {
   /// If the data point is contained in a dataset for a derived data source,
   /// this field will be populated with the data source stream ID that created
   /// the data point originally.
+  ///
+  /// WARNING: do not rely on this field for anything other than debugging. The
+  /// value of this field, if it is set at all, is an implementation detail and
+  /// is not guaranteed to remain consistent.
   core.String originDataSourceId;
 
   /// The raw timestamp from the original SensorEvent.
@@ -1645,8 +1585,8 @@ class DataSource {
   /// type:dataType.name:developer project
   /// number:device.manufacturer:device.model:device.uid:dataStreamName
   ///
-  /// When any of the optional fields that comprise of the data stream ID are
-  /// blank, they will be omitted from the data stream ID. The minimum viable
+  /// When any of the optional fields that make up the data stream ID are
+  /// absent, they will be omitted from the data stream ID. The minimum viable
   /// data stream ID would be: type:dataType.name:developer project number
   ///
   /// Finally, the developer project number is obfuscated when read by any REST

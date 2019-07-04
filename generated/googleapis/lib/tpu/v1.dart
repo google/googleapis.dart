@@ -107,11 +107,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -124,9 +124,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -138,14 +138,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -221,14 +221,14 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of items to return.
-  ///
-  /// [filter] - List filter.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [orderBy] - Sort results.
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [filter] - List filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -241,10 +241,10 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAcceleratorTypesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.String orderBy,
+      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -256,17 +256,17 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -919,14 +919,14 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// [parent] - The parent resource name.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - List filter.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [orderBy] - Sort results.
   ///
   /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [filter] - List filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -939,10 +939,10 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTensorFlowVersionsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -954,9 +954,6 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -965,6 +962,9 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1338,8 +1338,7 @@ class Node {
   /// Required.
   core.String cidrBlock;
 
-  /// Output only.
-  /// The time when the node was created.
+  /// Output only. The time when the node was created.
   core.String createTime;
 
   /// The user-supplied description of the TPU. Maximum of 512 characters.
@@ -1350,17 +1349,20 @@ class Node {
   /// - "HEALTH_UNSPECIFIED" : Health status is unknown: not initialized or
   /// failed to retrieve.
   /// - "HEALTHY" : The resource is healthy.
-  /// - "UNHEALTHY" : The resource is unhealthy.
+  /// - "DEPRECATED_UNHEALTHY" : The resource is unhealthy.
   /// - "TIMEOUT" : The resource is unresponsive.
+  /// - "UNHEALTHY_TENSORFLOW" : The in-guest ML stack is unhealthy.
+  /// - "UNHEALTHY_MAINTENANCE" : The node is under maintenance/priority boost
+  /// caused rescheduling and
+  /// will resume running once rescheduled.
   core.String health;
 
-  /// Output only.
-  /// If this field is populated, it contains a description of why the TPU Node
+  /// Output only. If this field is populated, it contains a description of why
+  /// the TPU Node
   /// is unhealthy.
   core.String healthDescription;
 
-  /// Output only.
-  /// DEPRECATED! Use network_endpoints instead.
+  /// Output only. DEPRECATED! Use network_endpoints instead.
   /// The network address for the TPU Node as visible to Compute Engine
   /// instances.
   core.String ipAddress;
@@ -1368,8 +1370,7 @@ class Node {
   /// Resource labels to represent user-provided metadata.
   core.Map<core.String, core.String> labels;
 
-  /// Output only.
-  /// The immutable name of the TPU
+  /// Output only. The immutable name of the TPU
   core.String name;
 
   /// The name of a network they wish to peer the TPU node to. It must be a
@@ -1378,26 +1379,23 @@ class Node {
   core.String network;
 
   /// Output only. The network endpoints where TPU workers can be accessed and
-  /// sent work.
-  /// It is recommended that Tensorflow clients of the node reach out to the 0th
-  /// entry in this map first.
+  /// sent work. It is recommended that Tensorflow clients of the node reach out
+  /// to the 0th entry in this map first.
   core.List<NetworkEndpoint> networkEndpoints;
 
-  /// Output only.
-  /// DEPRECATED! Use network_endpoints instead.
+  /// Output only. DEPRECATED! Use network_endpoints instead.
   /// The network port for the TPU Node as visible to Compute Engine instances.
   core.String port;
   SchedulingConfig schedulingConfig;
 
-  /// Output only.
-  /// The service account used to run the tensor flow services within the node.
+  /// Output only. The service account used to run the tensor flow services
+  /// within the node.
   /// To share resources, including Google Cloud Storage data, with the
   /// Tensorflow job running in the Node, this account must have permissions to
   /// that data.
   core.String serviceAccount;
 
-  /// Output only.
-  /// The current state for the TPU Node.
+  /// Output only. The current state for the TPU Node.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : TPU node state is not known/set.
   /// - "CREATING" : TPU node is being created.
@@ -1408,8 +1406,7 @@ class Node {
   /// - "REPAIRING" : TPU node is being repaired and may be unusable. Details
   /// can be
   /// found in the `help_description` field.
-  /// - "STOPPED" : 7 - Reserved. Was SUSPENDED.
-  /// TPU node is stopped.
+  /// - "STOPPED" : TPU node is stopped.
   /// - "STOPPING" : TPU node is currently stopping.
   /// - "STARTING" : TPU node is currently starting.
   /// - "PREEMPTED" : TPU node has been preempted. Only applies to Preemptible
@@ -1417,6 +1414,9 @@ class Node {
   /// - "TERMINATED" : TPU node has been terminated due to maintenance or has
   /// reached the end of
   /// its life cycle (for preemptible nodes).
+  /// - "HIDING" : TPU node is currently hiding.
+  /// - "HIDDEN" : TPU node has been hidden.
+  /// - "UNHIDING" : TPU node is currently unhiding.
   core.String state;
 
   /// The version of Tensorflow running in the Node.
@@ -1558,7 +1558,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -1725,11 +1725,17 @@ class ReimageNodeRequest {
 class SchedulingConfig {
   core.bool preemptible;
 
+  /// Whether the node is created under a reservation.
+  core.bool reserved;
+
   SchedulingConfig();
 
   SchedulingConfig.fromJson(core.Map _json) {
     if (_json.containsKey("preemptible")) {
       preemptible = _json["preemptible"];
+    }
+    if (_json.containsKey("reserved")) {
+      reserved = _json["reserved"];
     }
   }
 
@@ -1738,6 +1744,9 @@ class SchedulingConfig {
         new core.Map<core.String, core.Object>();
     if (preemptible != null) {
       _json["preemptible"] = preemptible;
+    }
+    if (reserved != null) {
+      _json["reserved"] = reserved;
     }
     return _json;
   }
@@ -1757,61 +1766,12 @@ class StartNodeRequest {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

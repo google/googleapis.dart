@@ -703,6 +703,14 @@ class AuthenticationInfo {
   /// with a "permission denied" error.
   core.String principalEmail;
 
+  /// Identity delegation history of an authenticated service account that makes
+  /// the request. It contains information on the real authorities that try to
+  /// access GCP resources by delegating on a service account. When multiple
+  /// authorities present, they are guaranteed to be sorted based on the
+  /// original
+  /// ordering of the identity delegation events.
+  core.List<ServiceAccountDelegationInfo> serviceAccountDelegationInfo;
+
   /// The name of the service account key used to create or exchange
   /// credentials for authenticating the service account making the request.
   /// This is a scheme-less URI full resource name. For example:
@@ -728,6 +736,13 @@ class AuthenticationInfo {
     if (_json.containsKey("principalEmail")) {
       principalEmail = _json["principalEmail"];
     }
+    if (_json.containsKey("serviceAccountDelegationInfo")) {
+      serviceAccountDelegationInfo =
+          (_json["serviceAccountDelegationInfo"] as core.List)
+              .map<ServiceAccountDelegationInfo>(
+                  (value) => new ServiceAccountDelegationInfo.fromJson(value))
+              .toList();
+    }
     if (_json.containsKey("serviceAccountKeyName")) {
       serviceAccountKeyName = _json["serviceAccountKeyName"];
     }
@@ -745,6 +760,11 @@ class AuthenticationInfo {
     }
     if (principalEmail != null) {
       _json["principalEmail"] = principalEmail;
+    }
+    if (serviceAccountDelegationInfo != null) {
+      _json["serviceAccountDelegationInfo"] = serviceAccountDelegationInfo
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (serviceAccountKeyName != null) {
       _json["serviceAccountKeyName"] = serviceAccountKeyName;
@@ -899,6 +919,11 @@ class CheckError {
   /// Free-form text providing details on the error cause of the error.
   core.String detail;
 
+  /// Contains public information about the check error. If available,
+  /// `status.code` will be non zero and client can propagate it out as public
+  /// error.
+  Status status;
+
   /// Subject to whom this error applies. See the specific code enum for more
   /// details on this field. For example:
   ///     - “project:<project-id or project-number>”
@@ -915,6 +940,9 @@ class CheckError {
     if (_json.containsKey("detail")) {
       detail = _json["detail"];
     }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
     if (_json.containsKey("subject")) {
       subject = _json["subject"];
     }
@@ -928,6 +956,9 @@ class CheckError {
     }
     if (detail != null) {
       _json["detail"] = detail;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
     }
     if (subject != null) {
       _json["subject"] = subject;
@@ -1050,6 +1081,9 @@ class CheckResponse {
   /// The actual config id used to process the request.
   core.String serviceConfigId;
 
+  /// Unimplemented. The current service rollout id used to process the request.
+  core.String serviceRolloutId;
+
   CheckResponse();
 
   CheckResponse.fromJson(core.Map _json) {
@@ -1069,6 +1103,9 @@ class CheckResponse {
     }
     if (_json.containsKey("serviceConfigId")) {
       serviceConfigId = _json["serviceConfigId"];
+    }
+    if (_json.containsKey("serviceRolloutId")) {
+      serviceRolloutId = _json["serviceRolloutId"];
     }
   }
 
@@ -1091,6 +1128,9 @@ class CheckResponse {
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
     }
+    if (serviceRolloutId != null) {
+      _json["serviceRolloutId"] = serviceRolloutId;
+    }
     return _json;
   }
 }
@@ -1109,12 +1149,17 @@ class ConsumerInfo {
   /// id. New code should not depend on this field anymore.
   core.String projectNumber;
 
-  ///
+  /// The type of the consumer which should have been defined in
+  /// [Google Resource Manager](https://cloud.google.com/resource-manager/).
   /// Possible string values are:
-  /// - "CONSUMER_TYPE_UNSPECIFIED"
-  /// - "PROJECT"
-  /// - "FOLDER"
-  /// - "ORGANIZATION"
+  /// - "CONSUMER_TYPE_UNSPECIFIED" : This is never used.
+  /// - "PROJECT" : The consumer is a Google Cloud Project.
+  /// - "FOLDER" : The consumer is a Google Cloud Folder.
+  /// - "ORGANIZATION" : The consumer is a Google Cloud Organization.
+  /// - "SERVICE_SPECIFIC" : Service-specific resource container which is
+  /// defined by the service
+  /// producer to offer their users the ability to manage service control
+  /// functionalities at a finer level of granularity than the PROJECT.
   core.String type;
 
   ConsumerInfo();
@@ -1172,6 +1217,9 @@ class Distribution {
   /// The total number of samples in the distribution. Must be >= 0.
   core.String count;
 
+  /// Example points. Must be in increasing order of `value` field.
+  core.List<Exemplar> exemplars;
+
   /// Buckets with arbitrary user-provided width.
   ExplicitBuckets explicitBuckets;
 
@@ -1206,6 +1254,11 @@ class Distribution {
     if (_json.containsKey("count")) {
       count = _json["count"];
     }
+    if (_json.containsKey("exemplars")) {
+      exemplars = (_json["exemplars"] as core.List)
+          .map<Exemplar>((value) => new Exemplar.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("explicitBuckets")) {
       explicitBuckets = new ExplicitBuckets.fromJson(_json["explicitBuckets"]);
     }
@@ -1239,6 +1292,9 @@ class Distribution {
     if (count != null) {
       _json["count"] = count;
     }
+    if (exemplars != null) {
+      _json["exemplars"] = exemplars.map((value) => (value).toJson()).toList();
+    }
     if (explicitBuckets != null) {
       _json["explicitBuckets"] = (explicitBuckets).toJson();
     }
@@ -1259,6 +1315,68 @@ class Distribution {
     }
     if (sumOfSquaredDeviation != null) {
       _json["sumOfSquaredDeviation"] = sumOfSquaredDeviation;
+    }
+    return _json;
+  }
+}
+
+/// Exemplars are example points that may be used to annotate aggregated
+/// distribution values. They are metadata that gives information about a
+/// particular value added to a Distribution bucket, such as a trace ID that
+/// was active when a value was added. They may contain further information,
+/// such as a example values and timestamps, origin, etc.
+class Exemplar {
+  /// Contextual information about the example value. Examples are:
+  ///
+  ///   Trace: type.googleapis.com/google.monitoring.v3.SpanContext
+  ///
+  ///   Literal string: type.googleapis.com/google.protobuf.StringValue
+  ///
+  ///   Labels dropped during aggregation:
+  ///     type.googleapis.com/google.monitoring.v3.DroppedLabels
+  ///
+  /// There may be only a single attachment of any given message type in a
+  /// single exemplar, and this is enforced by the system.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> attachments;
+
+  /// The observation (sampling) time of the above value.
+  core.String timestamp;
+
+  /// Value of the exemplar point. This value determines to which bucket the
+  /// exemplar belongs.
+  core.double value;
+
+  Exemplar();
+
+  Exemplar.fromJson(core.Map _json) {
+    if (_json.containsKey("attachments")) {
+      attachments = (_json["attachments"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attachments != null) {
+      _json["attachments"] = attachments;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -1347,6 +1465,44 @@ class ExponentialBuckets {
     }
     if (scale != null) {
       _json["scale"] = scale;
+    }
+    return _json;
+  }
+}
+
+/// First party identity principal.
+class FirstPartyPrincipal {
+  /// The email address of a Google account.
+  /// .
+  core.String principalEmail;
+
+  /// Metadata about the service that uses the service account.
+  /// .
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> serviceMetadata;
+
+  FirstPartyPrincipal();
+
+  FirstPartyPrincipal.fromJson(core.Map _json) {
+    if (_json.containsKey("principalEmail")) {
+      principalEmail = _json["principalEmail"];
+    }
+    if (_json.containsKey("serviceMetadata")) {
+      serviceMetadata = (_json["serviceMetadata"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (principalEmail != null) {
+      _json["principalEmail"] = principalEmail;
+    }
+    if (serviceMetadata != null) {
+      _json["serviceMetadata"] = serviceMetadata;
     }
     return _json;
   }
@@ -1965,10 +2121,13 @@ class Operation {
   /// consumer, but not for service-initiated operations that are
   /// not related to a specific consumer.
   ///
-  /// This can be in one of the following formats:
-  ///   project:<project_id>,
-  ///   project_number:<project_number>,
-  ///   api_key:<api_key>.
+  /// - This can be in one of the following formats:
+  ///     - project:PROJECT_ID,
+  ///     - project`_`number:PROJECT_NUMBER,
+  ///     - projects/PROJECT_ID or PROJECT_NUMBER,
+  ///     - folders/FOLDER_NUMBER,
+  ///     - organizations/ORGANIZATION_NUMBER,
+  ///     - api`_`key:API_KEY.
   core.String consumerId;
 
   /// End time of the operation.
@@ -2448,6 +2607,10 @@ class QuotaOperation {
   /// configuration or specified using the quota metrics. If the amount is
   /// higher than the available quota, request does not fail but all available
   /// quota will be allocated.
+  /// For rate quota, BEST_EFFORT will continue to deduct from other groups
+  /// even if one does not have enough quota. For allocation, it will find the
+  /// minimum available amount across all groups and deduct that amount from
+  /// all the affected groups.
   /// - "CHECK_ONLY" : For AllocateQuota request, only checks if there is enough
   /// quota
   /// available and does not change the available quota. No lock is placed on
@@ -2687,6 +2850,9 @@ class ReportResponse {
   /// The actual config id used to process the request.
   core.String serviceConfigId;
 
+  /// Unimplemented. The current service rollout id used to process the request.
+  core.String serviceRolloutId;
+
   ReportResponse();
 
   ReportResponse.fromJson(core.Map _json) {
@@ -2703,6 +2869,9 @@ class ReportResponse {
     if (_json.containsKey("serviceConfigId")) {
       serviceConfigId = _json["serviceConfigId"];
     }
+    if (_json.containsKey("serviceRolloutId")) {
+      serviceRolloutId = _json["serviceRolloutId"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2718,6 +2887,9 @@ class ReportResponse {
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
+    }
+    if (serviceRolloutId != null) {
+      _json["serviceRolloutId"] = serviceRolloutId;
     }
     return _json;
   }
@@ -3125,62 +3297,47 @@ class ResourceLocation {
   }
 }
 
+/// Identity delegation history of an authenticated service account.
+class ServiceAccountDelegationInfo {
+  /// First party (Google) identity as the real authority.
+  FirstPartyPrincipal firstPartyPrincipal;
+
+  /// Third party identity as the real authority.
+  ThirdPartyPrincipal thirdPartyPrincipal;
+
+  ServiceAccountDelegationInfo();
+
+  ServiceAccountDelegationInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("firstPartyPrincipal")) {
+      firstPartyPrincipal =
+          new FirstPartyPrincipal.fromJson(_json["firstPartyPrincipal"]);
+    }
+    if (_json.containsKey("thirdPartyPrincipal")) {
+      thirdPartyPrincipal =
+          new ThirdPartyPrincipal.fromJson(_json["thirdPartyPrincipal"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (firstPartyPrincipal != null) {
+      _json["firstPartyPrincipal"] = (firstPartyPrincipal).toJson();
+    }
+    if (thirdPartyPrincipal != null) {
+      _json["thirdPartyPrincipal"] = (thirdPartyPrincipal).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -3225,6 +3382,33 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Third party identity principal.
+class ThirdPartyPrincipal {
+  /// Metadata about third party identity.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> thirdPartyClaims;
+
+  ThirdPartyPrincipal();
+
+  ThirdPartyPrincipal.fromJson(core.Map _json) {
+    if (_json.containsKey("thirdPartyClaims")) {
+      thirdPartyClaims = (_json["thirdPartyClaims"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (thirdPartyClaims != null) {
+      _json["thirdPartyClaims"] = thirdPartyClaims;
     }
     return _json;
   }

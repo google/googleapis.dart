@@ -1921,17 +1921,17 @@ class EventsResourceApi {
   ///
   /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
   /// by. Optional. The default is not to filter by start time. Must be an
-  /// RFC3339 timestamp with mandatory time zone offset, e.g.,
+  /// RFC3339 timestamp with mandatory time zone offset, for example,
   /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but will be ignored. If timeMin is set, timeMax must be greater
-  /// than timeMin.
+  /// provided but are ignored. If timeMin is set, timeMax must be greater than
+  /// timeMin.
   ///
-  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
+  /// [timeMin] - Lower bound (exclusive) for an event's end time to filter by.
   /// Optional. The default is not to filter by end time. Must be an RFC3339
-  /// timestamp with mandatory time zone offset, e.g.,
+  /// timestamp with mandatory time zone offset, for example,
   /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but will be ignored. If timeMax is set, timeMin must be smaller
-  /// than timeMax.
+  /// provided but are ignored. If timeMax is set, timeMin must be smaller than
+  /// timeMax.
   ///
   /// [timeZone] - Time zone used in the response. Optional. The default is the
   /// time zone of the calendar.
@@ -2542,17 +2542,17 @@ class EventsResourceApi {
   ///
   /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
   /// by. Optional. The default is not to filter by start time. Must be an
-  /// RFC3339 timestamp with mandatory time zone offset, e.g.,
+  /// RFC3339 timestamp with mandatory time zone offset, for example,
   /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but will be ignored. If timeMin is set, timeMax must be greater
-  /// than timeMin.
+  /// provided but are ignored. If timeMin is set, timeMax must be greater than
+  /// timeMin.
   ///
-  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
+  /// [timeMin] - Lower bound (exclusive) for an event's end time to filter by.
   /// Optional. The default is not to filter by end time. Must be an RFC3339
-  /// timestamp with mandatory time zone offset, e.g.,
+  /// timestamp with mandatory time zone offset, for example,
   /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
-  /// provided but will be ignored. If timeMax is set, timeMin must be smaller
-  /// than timeMax.
+  /// provided but are ignored. If timeMax is set, timeMin must be smaller than
+  /// timeMax.
   ///
   /// [timeZone] - Time zone used in the response. Optional. The default is the
   /// time zone of the calendar.
@@ -3533,7 +3533,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource. Value: the fixed string "api#channel".
+  /// resource, which is "api#channel".
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior. Optional.
@@ -3763,7 +3763,7 @@ class ConferenceData {
   ConferenceParameters parameters;
 
   /// The signature of the conference data.
-  /// Genereated on server side. Must be preserved while copying the conference
+  /// Generated on server side. Must be preserved while copying the conference
   /// data between events, otherwise the conference data will not be copied.
   /// Unset for a conference with a failed create request.
   /// Optional for a conference with a pending create request.

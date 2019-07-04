@@ -344,18 +344,22 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response.
+  ///
+  /// [view] - Optional view for the returned Role objects. When `FULL` is
+  /// specified,
+  /// the `includedPermissions` field is returned, which includes a list of all
+  /// permissions in the role. The default value is `BASIC`, which does not
+  /// return the `includedPermissions` field.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "FULL" : A FULL.
+  ///
   /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response.
-  ///
-  /// [view] - Optional view for the returned Role objects.
-  /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "FULL" : A FULL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -368,10 +372,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.bool showDeleted,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
+      core.bool showDeleted,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -383,17 +387,17 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -763,7 +767,11 @@ class ProjectsRolesResourceApi {
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response.
   ///
-  /// [view] - Optional view for the returned Role objects.
+  /// [view] - Optional view for the returned Role objects. When `FULL` is
+  /// specified,
+  /// the `includedPermissions` field is returned, which includes a list of all
+  /// permissions in the role. The default value is `BASIC`, which does not
+  /// return the `includedPermissions` field.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
@@ -1043,6 +1051,140 @@ class ProjectsServiceAccountsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
+  /// DisableServiceAccount is currently in the alpha launch stage.
+  ///
+  /// Disables a ServiceAccount,
+  /// which immediately prevents the service account from authenticating and
+  /// gaining access to APIs.
+  ///
+  /// Disabled service accounts can be safely restored by using
+  /// EnableServiceAccount at any point. Deleted service accounts cannot be
+  /// restored using this method.
+  ///
+  /// Disabling a service account that is bound to VMs, Apps, Functions, or
+  /// other jobs will cause those jobs to lose access to resources if they are
+  /// using the disabled service account.
+  ///
+  /// To improve reliability of your services and avoid unexpected outages, it
+  /// is recommended to first disable a service account rather than delete it.
+  /// After disabling the service account, wait at least 24 hours to verify
+  /// there
+  /// are no unintended consequences, and then delete the service account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> disable(
+      DisableServiceAccountRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// EnableServiceAccount is currently in the alpha launch stage.
+  ///
+  ///  Restores a disabled ServiceAccount
+  ///  that has been manually disabled by using DisableServiceAccount. Service
+  ///  accounts that have been disabled by other means or for other reasons,
+  ///  such as abuse, cannot be restored using this method.
+  ///
+  ///  EnableServiceAccount will have no effect on a service account that is
+  ///  not disabled.  Enabling an already enabled service account will have no
+  ///  effect.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> enable(
+      EnableServiceAccountRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
   /// Gets a ServiceAccount.
   ///
   /// Request parameters:
@@ -1090,8 +1232,21 @@ class ProjectsServiceAccountsResourceApi {
     return _response.then((data) => new ServiceAccount.fromJson(data));
   }
 
-  /// Returns the IAM access control policy for a
+  /// Returns the Cloud IAM access control policy for a
   /// ServiceAccount.
+  ///
+  /// Note: Service accounts are both
+  /// [resources and
+  /// identities](/iam/docs/service-accounts#service_account_permissions). This
+  /// method treats the service account as a resource. It returns the Cloud IAM
+  /// policy that reflects what members have access to the service account.
+  ///
+  /// This method does not return what resources the service account has access
+  /// to. To see if a service account has access to a resource, call the
+  /// `getIamPolicy` method on the target resource. For example, to view grants
+  /// for a project, call the
+  /// [projects.getIamPolicy](/resource-manager/reference/rest/v1/projects/getIamPolicy)
+  /// method.
   ///
   /// Request parameters:
   ///
@@ -1208,7 +1363,7 @@ class ProjectsServiceAccountsResourceApi {
   /// Currently, only the following fields are updatable:
   /// `display_name` and `description`.
   ///
-  /// Only fields specified in the request are garaunteed to be returned in
+  /// Only fields specified in the request are guaranteed to be returned in
   /// the response. Other fields in the response may be empty.
   ///
   /// Note: The field mask is required.
@@ -1269,8 +1424,22 @@ class ProjectsServiceAccountsResourceApi {
     return _response.then((data) => new ServiceAccount.fromJson(data));
   }
 
-  /// Sets the IAM access control policy for a
+  /// Sets the Cloud IAM access control policy for a
   /// ServiceAccount.
+  ///
+  /// Note: Service accounts are both
+  /// [resources and
+  /// identities](/iam/docs/service-accounts#service_account_permissions). This
+  /// method treats the service account as a resource. Use it to grant members
+  /// access to the service account, such as when they need to impersonate it.
+  ///
+  /// This method does not grant the service account access to other resources,
+  /// such as projects. To grant a service account access to resources, include
+  /// the service account in the Cloud IAM policy for the desired resource, then
+  /// call the appropriate `setIamPolicy` method on the target resource. For
+  /// example, to grant a service account access to a project, call the
+  /// [projects.setIamPolicy](/resource-manager/reference/rest/v1/projects/setIamPolicy)
+  /// method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1324,6 +1493,10 @@ class ProjectsServiceAccountsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
+  /// **Note**: This method is in the process of being deprecated. Call the
+  /// [`signBlob()`](/iam/credentials/reference/rest/v1/projects.serviceAccounts/signBlob)
+  /// method of the Cloud IAM Service Account Credentials API instead.
+  ///
   /// Signs a blob using a service account's system-managed private key.
   ///
   /// [request] - The metadata request object.
@@ -1378,6 +1551,10 @@ class ProjectsServiceAccountsResourceApi {
     return _response.then((data) => new SignBlobResponse.fromJson(data));
   }
 
+  /// **Note**: This method is in the process of being deprecated. Call the
+  /// [`signJwt()`](/iam/credentials/reference/rest/v1/projects.serviceAccounts/signJwt)
+  /// method of the Cloud IAM Service Account Credentials API instead.
+  ///
   /// Signs a JWT using a service account's system-managed private key.
   ///
   /// If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an
@@ -1492,11 +1669,69 @@ class ProjectsServiceAccountsResourceApi {
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
+  /// Restores a deleted ServiceAccount.
+  /// This is to be used as an action of last resort.  A service account may
+  /// not always be restorable.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}'.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UndeleteServiceAccountResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UndeleteServiceAccountResponse> undelete(
+      UndeleteServiceAccountRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UndeleteServiceAccountResponse.fromJson(data));
+  }
+
+  /// Note: This method is in the process of being deprecated. Use
+  /// PatchServiceAccount instead.
+  ///
   /// Updates a ServiceAccount.
   ///
   /// Currently, only the following fields are updatable:
-  /// `display_name` .
-  /// The `etag` is mandatory.
+  /// `display_name` and `description`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1840,15 +2075,11 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response.
-  ///
-  /// [view] - Optional view for the returned Role objects.
+  /// [view] - Optional view for the returned Role objects. When `FULL` is
+  /// specified,
+  /// the `includedPermissions` field is returned, which includes a list of all
+  /// permissions in the role. The default value is `BASIC`, which does not
+  /// return the `includedPermissions` field.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
@@ -1858,6 +2089,14 @@ class RolesResourceApi {
   /// `` (empty string) -- this refers to curated roles.
   /// `organizations/{ORGANIZATION_ID}`
   /// `projects/{PROJECT_ID}`
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1870,11 +2109,11 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
-      {core.bool showDeleted,
+      {core.String view,
+      core.String parent,
+      core.bool showDeleted,
       core.String pageToken,
       core.int pageSize,
-      core.String view,
-      core.String parent,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1883,6 +2122,12 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
     }
@@ -1891,12 +2136,6 @@ class RolesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1959,6 +2198,31 @@ class RolesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new QueryGrantableRolesResponse.fromJson(data));
+  }
+}
+
+/// Audit log information specific to Cloud IAM admin APIs. This message is
+/// serialized as an `Any` type in the `ServiceData` message of an
+/// `AuditLog` message.
+class AdminAuditData {
+  /// The permission_delta when when creating or updating a Role.
+  PermissionDelta permissionDelta;
+
+  AdminAuditData();
+
+  AdminAuditData.fromJson(core.Map _json) {
+    if (_json.containsKey("permissionDelta")) {
+      permissionDelta = new PermissionDelta.fromJson(_json["permissionDelta"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (permissionDelta != null) {
+      _json["permissionDelta"] = (permissionDelta).toJson();
+    }
+    return _json;
   }
 }
 
@@ -2158,8 +2422,8 @@ class AuditableService {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -2184,7 +2448,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -2370,8 +2634,8 @@ class CreateServiceAccountRequest {
   /// `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
   core.String accountId;
 
-  /// The ServiceAccount resource to create.
-  /// Currently, only the following values are user assignable:
+  /// The ServiceAccount resource to
+  /// create. Currently, only the following values are user assignable:
   /// `display_name` .
   ServiceAccount serviceAccount;
 
@@ -2399,6 +2663,19 @@ class CreateServiceAccountRequest {
   }
 }
 
+/// The service account disable request.
+class DisableServiceAccountRequest {
+  DisableServiceAccountRequest();
+
+  DisableServiceAccountRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -2412,6 +2689,19 @@ class Empty {
   Empty();
 
   Empty.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// The service account enable request.
+class EnableServiceAccountRequest {
+  EnableServiceAccountRequest();
+
+  EnableServiceAccountRequest.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
@@ -2946,6 +3236,41 @@ class Permission {
   }
 }
 
+/// A PermissionDelta message to record the added_permissions and
+/// removed_permissions inside a role.
+class PermissionDelta {
+  /// Added permissions.
+  core.List<core.String> addedPermissions;
+
+  /// Removed permissions.
+  core.List<core.String> removedPermissions;
+
+  PermissionDelta();
+
+  PermissionDelta.fromJson(core.Map _json) {
+    if (_json.containsKey("addedPermissions")) {
+      addedPermissions =
+          (_json["addedPermissions"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("removedPermissions")) {
+      removedPermissions =
+          (_json["removedPermissions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addedPermissions != null) {
+      _json["addedPermissions"] = addedPermissions;
+    }
+    if (removedPermissions != null) {
+      _json["removedPermissions"] = removedPermissions;
+    }
+    return _json;
+  }
+}
+
 /// Defines an Identity and Access Management (IAM) policy. It is used to
 /// specify access control policies for Cloud Platform resources.
 ///
@@ -3449,6 +3774,14 @@ class Role {
 /// the account. The `ACCOUNT` value can be the `email` address or the
 /// `unique_id` of the service account.
 class ServiceAccount {
+  /// Optional. A user-specified opaque description of the service account.
+  /// Must be less than or equal to 256 UTF-8 bytes.
+  core.String description;
+
+  /// @OutputOnly A bool indicate if the service account is disabled.
+  /// The field is currently in alpha phase.
+  core.bool disabled;
+
   /// Optional. A user-specified name for the service account.
   /// Must be less than or equal to 100 UTF-8 bytes.
   core.String displayName;
@@ -3493,6 +3826,12 @@ class ServiceAccount {
   ServiceAccount();
 
   ServiceAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
@@ -3519,6 +3858,12 @@ class ServiceAccount {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3569,6 +3914,13 @@ class ServiceAccountKey {
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
   core.String keyAlgorithm;
+
+  /// The key origin.
+  /// Possible string values are:
+  /// - "ORIGIN_UNSPECIFIED" : Unspecified key origin.
+  /// - "USER_PROVIDED" : Key is provided by user.
+  /// - "GOOGLE_PROVIDED" : Key is provided by Google.
+  core.String keyOrigin;
 
   /// The resource name of the service account key in the following format
   /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
@@ -3629,6 +3981,9 @@ class ServiceAccountKey {
     if (_json.containsKey("keyAlgorithm")) {
       keyAlgorithm = _json["keyAlgorithm"];
     }
+    if (_json.containsKey("keyOrigin")) {
+      keyOrigin = _json["keyOrigin"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3654,6 +4009,9 @@ class ServiceAccountKey {
         new core.Map<core.String, core.Object>();
     if (keyAlgorithm != null) {
       _json["keyAlgorithm"] = keyAlgorithm;
+    }
+    if (keyOrigin != null) {
+      _json["keyOrigin"] = keyOrigin;
     }
     if (name != null) {
       _json["name"] = name;
@@ -3919,6 +4277,41 @@ class UndeleteRoleRequest {
         new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
+    }
+    return _json;
+  }
+}
+
+/// The service account undelete request.
+class UndeleteServiceAccountRequest {
+  UndeleteServiceAccountRequest();
+
+  UndeleteServiceAccountRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+class UndeleteServiceAccountResponse {
+  /// Metadata for the restored service account.
+  ServiceAccount restoredAccount;
+
+  UndeleteServiceAccountResponse();
+
+  UndeleteServiceAccountResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("restoredAccount")) {
+      restoredAccount = new ServiceAccount.fromJson(_json["restoredAccount"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (restoredAccount != null) {
+      _json["restoredAccount"] = (restoredAccount).toJson();
     }
     return _json;
   }

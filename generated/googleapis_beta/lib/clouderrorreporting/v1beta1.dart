@@ -116,17 +116,6 @@ class ProjectsEventsResourceApi {
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [groupId] - [Required] The group for which events shall be returned.
-  ///
-  /// [serviceFilter_service] - [Optional] The exact value to match against
-  /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-  ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
-  /// response.
-  ///
-  /// [pageSize] - [Optional] The maximum number of results to return per
-  /// response.
-  ///
   /// [serviceFilter_version] - [Optional] The exact value to match against
   /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
   ///
@@ -142,6 +131,17 @@ class ProjectsEventsResourceApi {
   /// - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
   /// - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
   ///
+  /// [groupId] - [Required] The group for which events shall be returned.
+  ///
+  /// [serviceFilter_service] - [Optional] The exact value to match against
+  /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+  ///
+  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// response.
+  ///
+  /// [pageSize] - [Optional] The maximum number of results to return per
+  /// response.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -153,13 +153,13 @@ class ProjectsEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEventsResponse> list(core.String projectName,
-      {core.String groupId,
+      {core.String serviceFilter_version,
+      core.String serviceFilter_resourceType,
+      core.String timeRange_period,
+      core.String groupId,
       core.String serviceFilter_service,
       core.String pageToken,
       core.int pageSize,
-      core.String serviceFilter_version,
-      core.String serviceFilter_resourceType,
-      core.String timeRange_period,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -170,6 +170,15 @@ class ProjectsEventsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if (serviceFilter_version != null) {
+      _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
+    if (serviceFilter_resourceType != null) {
+      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
+    }
+    if (timeRange_period != null) {
+      _queryParams["timeRange.period"] = [timeRange_period];
     }
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
@@ -182,15 +191,6 @@ class ProjectsEventsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
-    }
-    if (serviceFilter_resourceType != null) {
-      _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
-    }
-    if (timeRange_period != null) {
-      _queryParams["timeRange.period"] = [timeRange_period];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -228,8 +228,8 @@ class ProjectsEventsResourceApi {
   /// project. Written
   /// as `projects/` plus the
   /// [Google Cloud Platform project
-  /// ID](https://support.google.com/cloud/answer/6158840).
-  /// Example: `projects/my-project-123`.
+  /// ID](https://support.google.com/cloud/answer/6158840). Example:
+  /// `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1062,8 +1062,8 @@ class ReportedErrorEvent {
   /// * **Python**: Must be the return value of
   /// [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).
   /// * **JavaScript**: Must be the value of
-  /// [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API)
-  /// as returned by V8.
+  /// [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned
+  /// by V8.
   /// * **Ruby**: Must contain frames returned by
   /// [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).
   /// * **C#**: Must be the return value of

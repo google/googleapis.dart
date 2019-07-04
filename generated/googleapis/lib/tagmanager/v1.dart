@@ -723,76 +723,6 @@ class AccountsContainersEnvironmentsResourceApi {
         .then((data) => new ListEnvironmentsResponse.fromJson(data));
   }
 
-  /// Updates a GTM Environment. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [accountId] - The GTM Account ID.
-  ///
-  /// [containerId] - The GTM Container ID.
-  ///
-  /// [environmentId] - The GTM Environment ID.
-  ///
-  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the environment in storage.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Environment].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Environment> patch(Environment request, core.String accountId,
-      core.String containerId, core.String environmentId,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (containerId == null) {
-      throw new core.ArgumentError("Parameter containerId is required.");
-    }
-    if (environmentId == null) {
-      throw new core.ArgumentError("Parameter environmentId is required.");
-    }
-    if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/containers/' +
-        commons.Escaper.ecapeVariable('$containerId') +
-        '/environments/' +
-        commons.Escaper.ecapeVariable('$environmentId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Environment.fromJson(data));
-  }
-
   /// Updates a GTM Environment.
   ///
   /// [request] - The metadata request object.
@@ -4355,12 +4285,15 @@ class Parameter {
   /// - map: A map of parameters should be specified
   /// - template: The value represents any text; this can include variable
   /// references (even variable references that might return non-string types)
+  /// - trigger_reference: The value represents a trigger, represented as the
+  /// trigger id
   /// Possible string values are:
   /// - "boolean"
   /// - "integer"
   /// - "list"
   /// - "map"
   /// - "template"
+  /// - "triggerReference"
   core.String type;
 
   /// A parameter's value (may contain variable references such as
@@ -4911,6 +4844,7 @@ class Trigger {
   /// - "pageview"
   /// - "scrollDepth"
   /// - "timer"
+  /// - "triggerGroup"
   /// - "windowLoaded"
   /// - "youTubeVideo"
   core.String type;

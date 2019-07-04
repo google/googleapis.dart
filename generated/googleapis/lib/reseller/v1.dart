@@ -643,7 +643,7 @@ class SubscriptionsResourceApi {
     return _response.then((data) => new Subscription.fromJson(data));
   }
 
-  /// Cancel, suspend or transfer a subscription to direct.
+  /// Cancel or transfer a subscription to direct.
   ///
   /// Request parameters:
   ///
@@ -663,28 +663,6 @@ class SubscriptionsResourceApi {
   /// Possible string values are:
   /// - "cancel" : Cancels the subscription immediately. This does not apply to
   /// a G Suite subscription.
-  /// - "downgrade" : Downgrades a G Suite subscription to a Google Apps Free
-  /// edition subscription only if the customer was initially subscribed to a
-  /// Google Apps Free edition (also known as the Standard edition). Once
-  /// downgraded, the customer no longer has access to the previous G Suite
-  /// subscription and is no longer managed by the reseller.
-  ///
-  /// A G Suite subscription's downgrade cannot be invoked if an active or
-  /// suspended Google Drive or Google Vault subscription is present. The Google
-  /// Drive or Google Vault subscription must be cancelled before the G Suite
-  /// subscription's downgrade is invoked.
-  ///
-  /// The downgrade deletionType does not apply to other products or G Suite
-  /// SKUs.
-  /// - "suspend" : (DEPRECATED) The G Suite account is suspended for four days
-  /// and then cancelled. Once suspended, an administrator has access to the
-  /// suspended account, but the account users can not access their services. A
-  /// suspension can be lifted, using the reseller tools.
-  ///
-  /// A G Suite subscription's suspension can not be invoked if an active or
-  /// suspended Google Drive or Google Vault subscription is present. The Google
-  /// Drive or Google Vault subscription must be cancelled before the G Suite
-  /// subscription's suspension is invoked.
   /// - "transfer_to_direct" : Transfers a subscription directly to Google.  The
   /// customer is immediately transferred to a direct billing relationship with
   /// Google and is given a short amount of time with no service interruption.
@@ -1202,6 +1180,7 @@ class ChangePlanRequest {
   ///
   /// Possible values are:
   /// - ANNUAL_MONTHLY_PAY - The annual commitment plan with monthly payments
+  /// Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.
   /// - ANNUAL_YEARLY_PAY - The annual commitment plan with yearly payments
   /// - FLEXIBLE - The flexible plan
   /// - TRIAL - The 30-day free trial plan
@@ -1284,9 +1263,10 @@ class Customer {
   /// Identifies the resource as a customer. Value: reseller#customer
   core.String kind;
 
-  /// Customer contact phone number. This can be continuous numbers, with
-  /// spaces, etc. But it must be a real phone number and not, for example,
-  /// "123". See phone  local format conventions.
+  /// Customer contact phone number. Must start with "+" followed by the country
+  /// code. The rest of the number can be contiguous numbers or respect the
+  /// phone local format conventions, but it must be a real phone number and
+  /// not, for example, "123". This field is silently ignored if invalid.
   core.String phoneNumber;
 
   /// A customer's address information. Each field has a limit of 255 charcters.
@@ -1451,48 +1431,31 @@ class ResellernotifyResource {
 
 /// JSON template for subscription seats.
 class Seats {
-  /// Identifies the resource as a subscription change plan request. Value:
+  /// Identifies the resource as a subscription seat setting. Value:
   /// subscriptions#seats
   core.String kind;
 
-  /// Read-only field containing the current number of licensed seats for
-  /// FLEXIBLE Google-Apps subscriptions and secondary subscriptions such as
-  /// Google-Vault and Drive-storage.
+  /// Read-only field containing the current number of users that are assigned a
+  /// license for the product defined in skuId. This field's value is equivalent
+  /// to the numerical count of users returned by the Enterprise License Manager
+  /// API method: listForProductAndSku
   core.int licensedNumberOfSeats;
 
-  /// The maximumNumberOfSeats property is the maximum number of licenses that
-  /// the customer can purchase. This property applies to plans other than the
-  /// annual commitment plan. How a user's licenses are managed depends on the
-  /// subscription's payment plan:
-  /// - annual commitment plan (with monthly or yearly payments) — For this
-  /// plan, a reseller is invoiced on the number of user licenses in the
-  /// numberOfSeats property. The maximumNumberOfSeats property is a read-only
-  /// property in the API's response.
-  /// - flexible plan — For this plan, a reseller is invoiced on the actual
-  /// number of users which is capped by the maximumNumberOfSeats. This is the
-  /// maximum number of user licenses a customer has for user license
-  /// provisioning. This quantity can be increased up to the maximum limit
-  /// defined in the reseller's contract. And the minimum quantity is the
-  /// current number of users in the customer account.
-  /// - 30-day free trial plan — A subscription in a 30-day free trial is
-  /// restricted to maximum 10 seats.
+  /// This is a required property and is exclusive to subscriptions with
+  /// FLEXIBLE or TRIAL plans. This property sets the maximum number of licensed
+  /// users allowed on a subscription. This quantity can be increased up to the
+  /// maximum limit defined in the reseller's contract. The minimum quantity is
+  /// the current number of users in the customer account. Note: G Suite
+  /// subscriptions automatically assign a license to every user.
   core.int maximumNumberOfSeats;
 
-  /// The numberOfSeats property holds the customer's number of user licenses.
-  /// How a user's licenses are managed depends on the subscription's plan:
-  /// - annual commitment plan (with monthly or yearly pay) — For this plan, a
-  /// reseller is invoiced on the number of user licenses in the numberOfSeats
-  /// property. This is the maximum number of user licenses that a reseller's
-  /// customer can create. The reseller can add more licenses, but once set, the
-  /// numberOfSeats can not be reduced until renewal. The reseller is invoiced
-  /// based on the numberOfSeats value regardless of how many of these user
-  /// licenses are provisioned users.
-  /// - flexible plan — For this plan, a reseller is invoiced on the actual
-  /// number of users which is capped by the maximumNumberOfSeats. The
-  /// numberOfSeats property is not used in the request or response for flexible
-  /// plan customers.
-  /// - 30-day free trial plan — The numberOfSeats property is not used in the
-  /// request or response for an account in a 30-day trial.
+  /// This is a required property and is exclusive to subscriptions with
+  /// ANNUAL_MONTHLY_PAY and ANNUAL_YEARLY_PAY plans. This property sets the
+  /// maximum number of licenses assignable to users on a subscription. The
+  /// reseller can add more licenses, but once set, the numberOfSeats cannot be
+  /// reduced until renewal. The reseller is invoiced based on the numberOfSeats
+  /// value regardless of how many of these user licenses are assigned. Note: G
+  /// Suite subscriptions automatically assign a license to every user.
   core.int numberOfSeats;
 
   Seats();
@@ -1532,6 +1495,8 @@ class Seats {
 }
 
 /// In this version of the API, annual commitment plan's interval is one year.
+/// Note: When billingMethod value is OFFLINE, the subscription property object
+/// plan.commitmentInterval is omitted in all API responses.
 class SubscriptionPlanCommitmentInterval {
   /// An annual commitment plan's interval's endTime in milliseconds using the
   /// UNIX Epoch format. See an example Epoch converter.
@@ -1571,6 +1536,8 @@ class SubscriptionPlanCommitmentInterval {
 /// concepts.
 class SubscriptionPlan {
   /// In this version of the API, annual commitment plan's interval is one year.
+  /// Note: When billingMethod value is OFFLINE, the subscription property
+  /// object plan.commitmentInterval is omitted in all API responses.
   SubscriptionPlanCommitmentInterval commitmentInterval;
 
   /// The isCommitmentPlan property's boolean value identifies the plan as an
@@ -1584,7 +1551,8 @@ class SubscriptionPlan {
   /// concepts.
   ///
   /// Possible values are:
-  /// - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments
+  /// - ANNUAL_MONTHLY_PAY — The annual commitment plan with monthly payments.
+  /// Caution: ANNUAL_MONTHLY_PAY is returned as ANNUAL in all API responses.
   /// - ANNUAL_YEARLY_PAY — The annual commitment plan with yearly payments
   /// - FLEXIBLE — The flexible plan
   /// - TRIAL — The 30-day free trial plan. A subscription in trial will be
@@ -1592,6 +1560,8 @@ class SubscriptionPlan {
   /// changePlan will assign a payment plan to a trial but will not activate the
   /// plan. A trial will automatically begin its assigned payment plan after its
   /// 30th free day or immediately after calling startPaidService.
+  /// - FREE — The free plan is exclusive to the Cloud Identity SKU and does not
+  /// incur any billing.
   core.String planName;
 
   SubscriptionPlan();

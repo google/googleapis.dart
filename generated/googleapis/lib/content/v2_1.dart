@@ -35,8 +35,6 @@ class ContentApi {
       new LiasettingsResourceApi(_requester);
   OrderinvoicesResourceApi get orderinvoices =>
       new OrderinvoicesResourceApi(_requester);
-  OrderpaymentsResourceApi get orderpayments =>
-      new OrderpaymentsResourceApi(_requester);
   OrderreportsResourceApi get orderreports =>
       new OrderreportsResourceApi(_requester);
   OrderreturnsResourceApi get orderreturns =>
@@ -46,6 +44,8 @@ class ContentApi {
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
   ProductstatusesResourceApi get productstatuses =>
       new ProductstatusesResourceApi(_requester);
+  RegionalinventoryResourceApi get regionalinventory =>
+      new RegionalinventoryResourceApi(_requester);
   ShippingsettingsResourceApi get shippingsettings =>
       new ShippingsettingsResourceApi(_requester);
 
@@ -365,8 +365,8 @@ class AccountsResourceApi {
     return _response.then((data) => new Account.fromJson(data));
   }
 
-  /// Performs an action on a link between a Merchant Center account and another
-  /// account.
+  /// Performs an action on a link between two Merchant Center accounts, namely
+  /// accountId and linkedAccountId.
   ///
   /// [request] - The metadata request object.
   ///
@@ -544,6 +544,8 @@ class AccountstatusesResourceApi {
 
   AccountstatusesResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Retrieves multiple Merchant Center account statuses in a single request.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -587,8 +589,8 @@ class AccountstatusesResourceApi {
         .then((data) => new AccountstatusesCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves the status of a Merchant Center account. Multi-client accounts
-  /// can only call this method for sub-accounts.
+  /// Retrieves the status of a Merchant Center account. No itemLevelIssues are
+  /// returned for multi-client accounts.
   ///
   /// Request parameters:
   ///
@@ -937,6 +939,9 @@ class DatafeedsResourceApi {
 
   DatafeedsResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Deletes, fetches, gets, inserts and updates multiple datafeeds in a single
+  /// request.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1304,6 +1309,8 @@ class DatafeedstatusesResourceApi {
   DatafeedstatusesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Gets multiple Merchant Center datafeed statuses in a single request.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2079,7 +2086,7 @@ class OrderinvoicesResourceApi {
   OrderinvoicesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a charge invoice for a shipment group, and triggers a charge
-  /// capture for non-facilitated payment orders.
+  /// capture for orderinvoice enabled orders.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2141,7 +2148,7 @@ class OrderinvoicesResourceApi {
   }
 
   /// Creates a refund invoice for one or more shipment groups, and triggers a
-  /// refund for non-facilitated payment orders. This can only be used for line
+  /// refund for orderinvoice enabled orders. This can only be used for line
   /// items that have previously been charged using createChargeInvoice. All
   /// amounts (except for the summary) are incremental with respect to the
   /// previous invoice.
@@ -2203,259 +2210,6 @@ class OrderinvoicesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new OrderinvoicesCreateRefundInvoiceResponse.fromJson(data));
-  }
-}
-
-class OrderpaymentsResourceApi {
-  final commons.ApiRequester _requester;
-
-  OrderpaymentsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Notify about successfully authorizing user's payment method for a given
-  /// amount.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The ID of the account that manages the order. This cannot
-  /// be a multi-client account.
-  ///
-  /// [orderId] - The ID of the order for for which payment authorization is
-  /// happening.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [OrderpaymentsNotifyAuthApprovedResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<OrderpaymentsNotifyAuthApprovedResponse> notifyauthapproved(
-      OrderpaymentsNotifyAuthApprovedRequest request,
-      core.String merchantId,
-      core.String orderId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (merchantId == null) {
-      throw new core.ArgumentError("Parameter merchantId is required.");
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
-        '/orderpayments/' +
-        commons.Escaper.ecapeVariable('$orderId') +
-        '/notifyAuthApproved';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new OrderpaymentsNotifyAuthApprovedResponse.fromJson(data));
-  }
-
-  /// Notify about failure to authorize user's payment method.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The ID of the account that manages the order. This cannot
-  /// be a multi-client account.
-  ///
-  /// [orderId] - The ID of the order for which payment authorization was
-  /// declined.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [OrderpaymentsNotifyAuthDeclinedResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<OrderpaymentsNotifyAuthDeclinedResponse> notifyauthdeclined(
-      OrderpaymentsNotifyAuthDeclinedRequest request,
-      core.String merchantId,
-      core.String orderId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (merchantId == null) {
-      throw new core.ArgumentError("Parameter merchantId is required.");
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
-        '/orderpayments/' +
-        commons.Escaper.ecapeVariable('$orderId') +
-        '/notifyAuthDeclined';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then(
-        (data) => new OrderpaymentsNotifyAuthDeclinedResponse.fromJson(data));
-  }
-
-  /// Notify about charge on user's selected payments method.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The ID of the account that manages the order. This cannot
-  /// be a multi-client account.
-  ///
-  /// [orderId] - The ID of the order for which charge is happening.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [OrderpaymentsNotifyChargeResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<OrderpaymentsNotifyChargeResponse> notifycharge(
-      OrderpaymentsNotifyChargeRequest request,
-      core.String merchantId,
-      core.String orderId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (merchantId == null) {
-      throw new core.ArgumentError("Parameter merchantId is required.");
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
-        '/orderpayments/' +
-        commons.Escaper.ecapeVariable('$orderId') +
-        '/notifyCharge';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new OrderpaymentsNotifyChargeResponse.fromJson(data));
-  }
-
-  /// Notify about refund on user's selected payments method.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [merchantId] - The ID of the account that manages the order. This cannot
-  /// be a multi-client account.
-  ///
-  /// [orderId] - The ID of the order for which charge is happening.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [OrderpaymentsNotifyRefundResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<OrderpaymentsNotifyRefundResponse> notifyrefund(
-      OrderpaymentsNotifyRefundRequest request,
-      core.String merchantId,
-      core.String orderId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (merchantId == null) {
-      throw new core.ArgumentError("Parameter merchantId is required.");
-    }
-    if (orderId == null) {
-      throw new core.ArgumentError("Parameter orderId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$merchantId') +
-        '/orderpayments/' +
-        commons.Escaper.ecapeVariable('$orderId') +
-        '/notifyRefund';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new OrderpaymentsNotifyRefundResponse.fromJson(data));
   }
 }
 
@@ -3229,14 +2983,14 @@ class OrdersResourceApi {
     return _response.then((data) => new Order.fromJson(data));
   }
 
-  /// Retrieves an order using merchant order id.
+  /// Retrieves an order using merchant order ID.
   ///
   /// Request parameters:
   ///
   /// [merchantId] - The ID of the account that manages the order. This cannot
   /// be a multi-client account.
   ///
-  /// [merchantOrderId] - The merchant order id to be looked for.
+  /// [merchantOrderId] - The merchant order ID to be looked for.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3348,6 +3102,12 @@ class OrdersResourceApi {
 
   /// Notifies that item return and refund was handled directly by merchant
   /// outside of Google payments processing (e.g. cash refund done in store).
+  /// Note: We recommend calling the returnrefundlineitem method to refund
+  /// in-store returns. We will issue the refund directly to the customer. This
+  /// helps to prevent possible differences arising between merchant and Google
+  /// transaction records. We also recommend having the point of sale system
+  /// communicate with Google to ensure that customers do not receive a double
+  /// refund by first refunding via Google then via an in-store return.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3424,18 +3184,13 @@ class OrdersResourceApi {
   /// [maxResults] - The maximum number of orders to return in the response,
   /// used for paging. The default value is 25 orders per page, and the maximum
   /// allowed value is 250 orders per page.
-  /// Known issue: All List calls will return all Orders without limit
-  /// regardless of the value of this field.
   ///
-  /// [orderBy] - The ordering of the returned list. The only supported value
-  /// are placedDate desc and placedDate asc for now, which returns orders
-  /// sorted by placement date. "placedDate desc" stands for listing orders by
-  /// placement date, from oldest to most recent. "placedDate asc" stands for
-  /// listing orders by placement date, from most recent to oldest. In future
-  /// releases we'll support other sorting criteria.
-  /// Possible string values are:
-  /// - "placedDate asc"
-  /// - "placedDate desc"
+  /// [orderBy] - Order results by placement date in descending or ascending
+  /// order.
+  ///
+  /// Acceptable values are:
+  /// - placedDateAsc
+  /// - placedDateDesc
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -3446,9 +3201,8 @@ class OrdersResourceApi {
   /// in ISO 8601 format.
   ///
   /// [statuses] - Obtains orders that match any of the specified statuses.
-  /// Multiple values can be specified with comma separation. Additionally,
-  /// please note that active is a shortcut for pendingShipment and
-  /// partiallyShipped, and completed is a shortcut for shipped ,
+  /// Please note that active is a shortcut for pendingShipment and
+  /// partiallyShipped, and completed is a shortcut for shipped,
   /// partiallyDelivered, delivered, partiallyReturned, returned, and canceled.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3639,7 +3393,11 @@ class OrdersResourceApi {
         .then((data) => new OrdersReturnRefundLineItemResponse.fromJson(data));
   }
 
-  /// Sets (overrides) merchant provided annotations on the line item.
+  /// Sets (or overrides if it already exists) merchant provided annotations in
+  /// the form of key-value pairs. A common use case would be to supply us with
+  /// additional structured information about a line item that cannot be
+  /// provided via other methods. Submitted key-value pairs can be retrieved as
+  /// part of the orders resource.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4392,7 +4150,9 @@ class ProductsResourceApi {
   /// [merchantId] - The ID of the account that contains the product. This
   /// account cannot be a multi-client account.
   ///
-  /// [productId] - The REST id of the product.
+  /// [productId] - The REST ID of the product.
+  ///
+  /// [feedId] - The Content API Supplemental Feed ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4403,7 +4163,7 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String productId,
-      {core.String $fields}) {
+      {core.String feedId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -4416,6 +4176,9 @@ class ProductsResourceApi {
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if (feedId != null) {
+      _queryParams["feedId"] = [feedId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4443,7 +4206,7 @@ class ProductsResourceApi {
   /// [merchantId] - The ID of the account that contains the product. This
   /// account cannot be a multi-client account.
   ///
-  /// [productId] - The REST id of the product.
+  /// [productId] - The REST ID of the product.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4498,6 +4261,8 @@ class ProductsResourceApi {
   /// [merchantId] - The ID of the account that contains the product. This
   /// account cannot be a multi-client account.
   ///
+  /// [feedId] - The Content API Supplemental Feed ID.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4509,7 +4274,7 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Product> insert(Product request, core.String merchantId,
-      {core.String $fields}) {
+      {core.String feedId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -4522,6 +4287,9 @@ class ProductsResourceApi {
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (feedId != null) {
+      _queryParams["feedId"] = [feedId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4651,7 +4419,7 @@ class ProductstatusesResourceApi {
   /// [merchantId] - The ID of the account that contains the product. This
   /// account cannot be a multi-client account.
   ///
-  /// [productId] - The REST id of the product.
+  /// [productId] - The REST ID of the product.
   ///
   /// [destinations] - If set, only issues for the specified destinations are
   /// returned, otherwise only issues for the Shopping destination.
@@ -4764,6 +4532,120 @@ class ProductstatusesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ProductstatusesListResponse.fromJson(data));
+  }
+}
+
+class RegionalinventoryResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegionalinventoryResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Updates regional inventory for multiple products or regions in a single
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionalinventoryCustomBatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionalinventoryCustomBatchResponse> custombatch(
+      RegionalinventoryCustomBatchRequest request,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'regionalinventory/batch';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new RegionalinventoryCustomBatchResponse.fromJson(data));
+  }
+
+  /// Update the regional inventory of a product in your Merchant Center
+  /// account. If a regional inventory with the same region ID already exists,
+  /// this method updates that entry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
+  ///
+  /// [productId] - The REST ID of the product for which to update the regional
+  /// inventory.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RegionalInventory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RegionalInventory> insert(
+      RegionalInventory request, core.String merchantId, core.String productId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (merchantId == null) {
+      throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$merchantId') +
+        '/products/' +
+        commons.Escaper.ecapeVariable('$productId') +
+        '/regionalinventory';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RegionalInventory.fromJson(data));
   }
 }
 
@@ -5855,7 +5737,7 @@ class AccountTaxTaxRule {
   core.String country;
 
   /// State (or province) is which the tax is applicable, described by its
-  /// location id (also called criteria id).
+  /// location ID (also called criteria ID).
   core.String locationId;
 
   /// Explicit tax rate in percent, represented as a floating point number
@@ -6859,6 +6741,28 @@ class Amount {
     }
     if (taxAmount != null) {
       _json["taxAmount"] = (taxAmount).toJson();
+    }
+    return _json;
+  }
+}
+
+class BusinessDayConfig {
+  /// Regular business days. May not be empty.
+  core.List<core.String> businessDays;
+
+  BusinessDayConfig();
+
+  BusinessDayConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("businessDays")) {
+      businessDays = (_json["businessDays"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (businessDays != null) {
+      _json["businessDays"] = businessDays;
     }
     return _json;
   }
@@ -8045,6 +7949,10 @@ class DeliveryTime {
   /// will be defaulted to 8AM PST.
   CutoffTime cutoffTime;
 
+  /// The business days during which orders can be handled. If not provided,
+  /// Monday to Friday business days will be assumed.
+  BusinessDayConfig handlingBusinessDayConfig;
+
   /// Holiday cutoff definitions. If configured, they specify order cutoff times
   /// for holiday-specific shipping.
   core.List<HolidayCutoff> holidayCutoffs;
@@ -8056,7 +7964,7 @@ class DeliveryTime {
 
   /// Maximum number of business days that is spent in transit. 0 means same day
   /// delivery, 1 means next day delivery. Must be greater than or equal to
-  /// minTransitTimeInDays. Required.
+  /// minTransitTimeInDays.
   core.int maxTransitTimeInDays;
 
   /// Minimum number of business days spent before an order is shipped. 0 means
@@ -8064,14 +7972,28 @@ class DeliveryTime {
   core.int minHandlingTimeInDays;
 
   /// Minimum number of business days that is spent in transit. 0 means same day
-  /// delivery, 1 means next day delivery. Required.
+  /// delivery, 1 means next day delivery. Either {min,max}TransitTimeInDays or
+  /// transitTimeTable must be set, but not both.
   core.int minTransitTimeInDays;
+
+  /// The business days during which orders can be in-transit. If not provided,
+  /// Monday to Friday business days will be assumed.
+  BusinessDayConfig transitBusinessDayConfig;
+
+  /// Transit time table, number of business days spent in transit based on row
+  /// and column dimensions. Either {min,max}TransitTimeInDays or
+  /// transitTimeTable can be set, but not both.
+  TransitTable transitTimeTable;
 
   DeliveryTime();
 
   DeliveryTime.fromJson(core.Map _json) {
     if (_json.containsKey("cutoffTime")) {
       cutoffTime = new CutoffTime.fromJson(_json["cutoffTime"]);
+    }
+    if (_json.containsKey("handlingBusinessDayConfig")) {
+      handlingBusinessDayConfig =
+          new BusinessDayConfig.fromJson(_json["handlingBusinessDayConfig"]);
     }
     if (_json.containsKey("holidayCutoffs")) {
       holidayCutoffs = (_json["holidayCutoffs"] as core.List)
@@ -8090,6 +8012,13 @@ class DeliveryTime {
     if (_json.containsKey("minTransitTimeInDays")) {
       minTransitTimeInDays = _json["minTransitTimeInDays"];
     }
+    if (_json.containsKey("transitBusinessDayConfig")) {
+      transitBusinessDayConfig =
+          new BusinessDayConfig.fromJson(_json["transitBusinessDayConfig"]);
+    }
+    if (_json.containsKey("transitTimeTable")) {
+      transitTimeTable = new TransitTable.fromJson(_json["transitTimeTable"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8097,6 +8026,9 @@ class DeliveryTime {
         new core.Map<core.String, core.Object>();
     if (cutoffTime != null) {
       _json["cutoffTime"] = (cutoffTime).toJson();
+    }
+    if (handlingBusinessDayConfig != null) {
+      _json["handlingBusinessDayConfig"] = (handlingBusinessDayConfig).toJson();
     }
     if (holidayCutoffs != null) {
       _json["holidayCutoffs"] =
@@ -8113,6 +8045,12 @@ class DeliveryTime {
     }
     if (minTransitTimeInDays != null) {
       _json["minTransitTimeInDays"] = minTransitTimeInDays;
+    }
+    if (transitBusinessDayConfig != null) {
+      _json["transitBusinessDayConfig"] = (transitBusinessDayConfig).toJson();
+    }
+    if (transitTimeTable != null) {
+      _json["transitTimeTable"] = (transitTimeTable).toJson();
     }
     return _json;
   }
@@ -8287,7 +8225,7 @@ class GmbAccountsGmbAccount {
 }
 
 /// A non-empty list of row or column headers for a table. Exactly one of
-/// prices, weights, numItems, postalCodeGroupNames, or locations must be set.
+/// prices, weights, numItems, postalCodeGroupNames, or location must be set.
 class Headers {
   /// A list of location ID sets. Must be non-empty. Can only be set if all
   /// other fields are not set.
@@ -8541,32 +8479,8 @@ class InvoiceSummary {
   /// Summary of the total amounts of the additional charges.
   core.List<InvoiceSummaryAdditionalChargeSummary> additionalChargeSummaries;
 
-  /// [required] Customer balance on this invoice. A negative amount means the
-  /// customer is paying, a positive one means the customer is receiving money.
-  /// Note: the sum of merchant_balance, customer_balance and google_balance
-  /// must always be zero.
-  ///
-  /// Furthermore the absolute value of this amount is expected to be equal to
-  /// the sum of product amount and additional charges, minus promotions.
-  Amount customerBalance;
-
-  /// [required] Google balance on this invoice. A negative amount means Google
-  /// is paying, a positive one means Google is receiving money. Note: the sum
-  /// of merchant_balance, customer_balance and google_balance must always be
-  /// zero.
-  Amount googleBalance;
-
-  /// [required] Merchant balance on this invoice. A negative amount means the
-  /// merchant is paying, a positive one means the merchant is receiving money.
-  /// Note: the sum of merchant_balance, customer_balance and google_balance
-  /// must always be zero.
-  Amount merchantBalance;
-
   /// [required] Total price for the product.
   Amount productTotal;
-
-  /// Summary for each promotion.
-  core.List<Promotion> promotionSummaries;
 
   InvoiceSummary();
 
@@ -8578,22 +8492,8 @@ class InvoiceSummary {
                   new InvoiceSummaryAdditionalChargeSummary.fromJson(value))
               .toList();
     }
-    if (_json.containsKey("customerBalance")) {
-      customerBalance = new Amount.fromJson(_json["customerBalance"]);
-    }
-    if (_json.containsKey("googleBalance")) {
-      googleBalance = new Amount.fromJson(_json["googleBalance"]);
-    }
-    if (_json.containsKey("merchantBalance")) {
-      merchantBalance = new Amount.fromJson(_json["merchantBalance"]);
-    }
     if (_json.containsKey("productTotal")) {
       productTotal = new Amount.fromJson(_json["productTotal"]);
-    }
-    if (_json.containsKey("promotionSummaries")) {
-      promotionSummaries = (_json["promotionSummaries"] as core.List)
-          .map<Promotion>((value) => new Promotion.fromJson(value))
-          .toList();
     }
   }
 
@@ -8604,21 +8504,8 @@ class InvoiceSummary {
       _json["additionalChargeSummaries"] =
           additionalChargeSummaries.map((value) => (value).toJson()).toList();
     }
-    if (customerBalance != null) {
-      _json["customerBalance"] = (customerBalance).toJson();
-    }
-    if (googleBalance != null) {
-      _json["googleBalance"] = (googleBalance).toJson();
-    }
-    if (merchantBalance != null) {
-      _json["merchantBalance"] = (merchantBalance).toJson();
-    }
     if (productTotal != null) {
       _json["productTotal"] = (productTotal).toJson();
-    }
-    if (promotionSummaries != null) {
-      _json["promotionSummaries"] =
-          promotionSummaries.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -9583,16 +9470,13 @@ class Order {
   /// The billing address.
   OrderAddress billingAddress;
 
-  /// The channel type of the order: "purchaseOnGoogle" or "googleExpress".
-  core.String channelType;
-
   /// The details of the customer who placed the order.
   OrderCustomer customer;
 
-  /// The details for the delivery.
+  /// Delivery details for shipments.
   OrderDeliveryDetails deliveryDetails;
 
-  /// The REST id of the order. Globally unique.
+  /// The REST ID of the order. Globally unique.
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -9603,13 +9487,18 @@ class Order {
   core.List<OrderLineItem> lineItems;
   core.String merchantId;
 
-  /// Merchant-provided id of the order.
+  /// Merchant-provided ID of the order.
   core.String merchantOrderId;
 
-  /// The net amount for the order. For example, if an order was originally for
-  /// a grand total of $100 and a refund was issued for $20, the net amount will
+  /// The net amount for the order (price part). For example, if an order was
+  /// originally for $100 and a refund was issued for $20, the net amount will
   /// be $80.
-  Price netAmount;
+  Price netPriceAmount;
+
+  /// The net amount for the order (tax part). Note that in certain cases due to
+  /// taxable base adjustment netTaxAmount might not match to a sum of tax field
+  /// across all lineItems and refunds.
+  Price netTaxAmount;
 
   /// The status of the payment.
   core.String paymentStatus;
@@ -9632,9 +9521,6 @@ class Order {
   /// The tax for the total shipping cost.
   Price shippingCostTax;
 
-  /// The requested shipping option.
-  core.String shippingOption;
-
   /// The status of the order.
   core.String status;
 
@@ -9649,9 +9535,6 @@ class Order {
     }
     if (_json.containsKey("billingAddress")) {
       billingAddress = new OrderAddress.fromJson(_json["billingAddress"]);
-    }
-    if (_json.containsKey("channelType")) {
-      channelType = _json["channelType"];
     }
     if (_json.containsKey("customer")) {
       customer = new OrderCustomer.fromJson(_json["customer"]);
@@ -9677,8 +9560,11 @@ class Order {
     if (_json.containsKey("merchantOrderId")) {
       merchantOrderId = _json["merchantOrderId"];
     }
-    if (_json.containsKey("netAmount")) {
-      netAmount = new Price.fromJson(_json["netAmount"]);
+    if (_json.containsKey("netPriceAmount")) {
+      netPriceAmount = new Price.fromJson(_json["netPriceAmount"]);
+    }
+    if (_json.containsKey("netTaxAmount")) {
+      netTaxAmount = new Price.fromJson(_json["netTaxAmount"]);
     }
     if (_json.containsKey("paymentStatus")) {
       paymentStatus = _json["paymentStatus"];
@@ -9707,9 +9593,6 @@ class Order {
     if (_json.containsKey("shippingCostTax")) {
       shippingCostTax = new Price.fromJson(_json["shippingCostTax"]);
     }
-    if (_json.containsKey("shippingOption")) {
-      shippingOption = _json["shippingOption"];
-    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -9726,9 +9609,6 @@ class Order {
     }
     if (billingAddress != null) {
       _json["billingAddress"] = (billingAddress).toJson();
-    }
-    if (channelType != null) {
-      _json["channelType"] = channelType;
     }
     if (customer != null) {
       _json["customer"] = (customer).toJson();
@@ -9751,8 +9631,11 @@ class Order {
     if (merchantOrderId != null) {
       _json["merchantOrderId"] = merchantOrderId;
     }
-    if (netAmount != null) {
-      _json["netAmount"] = (netAmount).toJson();
+    if (netPriceAmount != null) {
+      _json["netPriceAmount"] = (netPriceAmount).toJson();
+    }
+    if (netTaxAmount != null) {
+      _json["netTaxAmount"] = (netTaxAmount).toJson();
     }
     if (paymentStatus != null) {
       _json["paymentStatus"] = paymentStatus;
@@ -9775,9 +9658,6 @@ class Order {
     }
     if (shippingCostTax != null) {
       _json["shippingCostTax"] = (shippingCostTax).toJson();
-    }
-    if (shippingOption != null) {
-      _json["shippingOption"] = shippingOption;
     }
     if (status != null) {
       _json["status"] = status;
@@ -9943,21 +9823,18 @@ class OrderCancellation {
 }
 
 class OrderCustomer {
-  /// Deprecated.
-  core.String email;
-
   /// Full name of the customer.
   core.String fullName;
 
-  /// Customer's marketing preferences.
+  /// Customer's marketing preferences. Contains the marketing opt-in
+  /// information that is current at the time that the merchant call. User
+  /// preference selections can change from one order to the next so preferences
+  /// must be checked with every order.
   OrderCustomerMarketingRightsInfo marketingRightsInfo;
 
   OrderCustomer();
 
   OrderCustomer.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
-    }
     if (_json.containsKey("fullName")) {
       fullName = _json["fullName"];
     }
@@ -9970,9 +9847,6 @@ class OrderCustomer {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (email != null) {
-      _json["email"] = email;
-    }
     if (fullName != null) {
       _json["fullName"] = fullName;
     }
@@ -9984,16 +9858,20 @@ class OrderCustomer {
 }
 
 class OrderCustomerMarketingRightsInfo {
-  /// Last known user selection regarding marketing preferences. In certain
-  /// cases this selection might not be known, so this field would be empty.
+  /// Last known customer selection regarding marketing preferences. In certain
+  /// cases this selection might not be known, so this field would be empty. If
+  /// a customer selected granted in their most recent order, they can be
+  /// subscribed to marketing emails. Customers who have chosen denied must not
+  /// be subscribed, or must be unsubscribed if already opted-in.
   core.String explicitMarketingPreference;
 
   /// Timestamp when last time marketing preference was updated. Could be empty,
   /// if user wasn't offered a selection yet.
   core.String lastUpdatedTimestamp;
 
-  /// Email address that can be used for marketing purposes. This field is only
-  /// filled when explicitMarketingPreference is equal to 'granted'.
+  /// Email address that can be used for marketing purposes. The field may be
+  /// empty even if explicitMarketingPreference is 'granted'. This happens when
+  /// retrieving an old order from the customer who deleted their account.
   core.String marketingEmailAddress;
 
   OrderCustomerMarketingRightsInfo();
@@ -10058,13 +9936,16 @@ class OrderDeliveryDetails {
 }
 
 class OrderLineItem {
+  /// Price and tax adjustments applied on the line item.
+  core.List<OrderLineItemAdjustment> adjustments;
+
   /// Annotations that are attached to the line item.
   core.List<OrderMerchantProvidedAnnotation> annotations;
 
   /// Cancellations of the line item.
   core.List<OrderCancellation> cancellations;
 
-  /// The id of the line item.
+  /// The ID of the line item.
   core.String id;
 
   /// Total price for the line item. For example, if two items for $10 are
@@ -10111,6 +9992,12 @@ class OrderLineItem {
   OrderLineItem();
 
   OrderLineItem.fromJson(core.Map _json) {
+    if (_json.containsKey("adjustments")) {
+      adjustments = (_json["adjustments"] as core.List)
+          .map<OrderLineItemAdjustment>(
+              (value) => new OrderLineItemAdjustment.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("annotations")) {
       annotations = (_json["annotations"] as core.List)
           .map<OrderMerchantProvidedAnnotation>(
@@ -10170,6 +10057,10 @@ class OrderLineItem {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (adjustments != null) {
+      _json["adjustments"] =
+          adjustments.map((value) => (value).toJson()).toList();
+    }
     if (annotations != null) {
       _json["annotations"] =
           annotations.map((value) => (value).toJson()).toList();
@@ -10221,12 +10112,49 @@ class OrderLineItem {
   }
 }
 
+class OrderLineItemAdjustment {
+  /// Adjustment for total price of the line item.
+  Price priceAdjustment;
+
+  /// Adjustment for total tax of the line item.
+  Price taxAdjustment;
+
+  /// Type of this adjustment.
+  core.String type;
+
+  OrderLineItemAdjustment();
+
+  OrderLineItemAdjustment.fromJson(core.Map _json) {
+    if (_json.containsKey("priceAdjustment")) {
+      priceAdjustment = new Price.fromJson(_json["priceAdjustment"]);
+    }
+    if (_json.containsKey("taxAdjustment")) {
+      taxAdjustment = new Price.fromJson(_json["taxAdjustment"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (priceAdjustment != null) {
+      _json["priceAdjustment"] = (priceAdjustment).toJson();
+    }
+    if (taxAdjustment != null) {
+      _json["taxAdjustment"] = (taxAdjustment).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 class OrderLineItemProduct {
   /// Brand of the item.
   core.String brand;
-
-  /// The item's channel (online or local).
-  core.String channel;
 
   /// Condition or state of the item.
   core.String condition;
@@ -10240,7 +10168,7 @@ class OrderLineItemProduct {
   /// Global Trade Item Number (GTIN) of the item.
   core.String gtin;
 
-  /// The REST id of the product.
+  /// The REST ID of the product.
   core.String id;
 
   /// URL of an image of the item.
@@ -10277,9 +10205,6 @@ class OrderLineItemProduct {
   OrderLineItemProduct.fromJson(core.Map _json) {
     if (_json.containsKey("brand")) {
       brand = _json["brand"];
-    }
-    if (_json.containsKey("channel")) {
-      channel = _json["channel"];
     }
     if (_json.containsKey("condition")) {
       condition = _json["condition"];
@@ -10336,9 +10261,6 @@ class OrderLineItemProduct {
         new core.Map<core.String, core.Object>();
     if (brand != null) {
       _json["brand"] = brand;
-    }
-    if (channel != null) {
-      _json["channel"] = channel;
     }
     if (condition != null) {
       _json["condition"] = condition;
@@ -10626,8 +10548,9 @@ class OrderPromotion {
   /// This field is used to identify promotions within merchants' own systems.
   core.String merchantPromotionId;
 
-  /// Estimated discount applied to pre-tax amount.
-  Price pretaxValue;
+  /// Estimated discount applied to price. Amount is pre-tax or post-tax
+  /// depending on location of order.
+  Price priceValue;
 
   /// A short title of the promotion to be shown on the checkout page.
   core.String shortTitle;
@@ -10665,8 +10588,8 @@ class OrderPromotion {
     if (_json.containsKey("merchantPromotionId")) {
       merchantPromotionId = _json["merchantPromotionId"];
     }
-    if (_json.containsKey("pretaxValue")) {
-      pretaxValue = new Price.fromJson(_json["pretaxValue"]);
+    if (_json.containsKey("priceValue")) {
+      priceValue = new Price.fromJson(_json["priceValue"]);
     }
     if (_json.containsKey("shortTitle")) {
       shortTitle = _json["shortTitle"];
@@ -10702,8 +10625,8 @@ class OrderPromotion {
     if (merchantPromotionId != null) {
       _json["merchantPromotionId"] = merchantPromotionId;
     }
-    if (pretaxValue != null) {
-      _json["pretaxValue"] = (pretaxValue).toJson();
+    if (priceValue != null) {
+      _json["priceValue"] = (priceValue).toJson();
     }
     if (shortTitle != null) {
       _json["shortTitle"] = shortTitle;
@@ -10894,10 +10817,10 @@ class OrderReportTransaction {
   /// The ID of the managing account.
   core.String merchantId;
 
-  /// Merchant-provided id of the order.
+  /// Merchant-provided ID of the order.
   core.String merchantOrderId;
 
-  /// The id of the order.
+  /// The ID of the order.
   core.String orderId;
 
   /// Total amount for the items.
@@ -11050,10 +10973,14 @@ class OrderShipment {
   /// - "lasership"
   /// - "mpx"
   /// - "uds"
+  /// - "efw"
   ///
   /// Acceptable values for FR are:
   /// - "colissimo"
   /// - "chronopost"
+  /// - "gls"
+  /// - "dpd"
+  /// - "bpost"
   core.String carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -11063,7 +10990,7 @@ class OrderShipment {
   /// only if status is delivered
   core.String deliveryDate;
 
-  /// The id of the shipment.
+  /// The ID of the shipment.
   core.String id;
 
   /// The line items that are shipped.
@@ -11072,7 +10999,7 @@ class OrderShipment {
   /// The status of the shipment.
   core.String status;
 
-  /// The tracking id for the shipment.
+  /// The tracking ID for the shipment.
   core.String trackingId;
 
   OrderShipment();
@@ -11133,7 +11060,7 @@ class OrderShipment {
 }
 
 class OrderShipmentLineItemShipment {
-  /// The id of the line item that is shipped. Either lineItemId or productId is
+  /// The ID of the line item that is shipped. Either lineItemId or productId is
   /// required.
   core.String lineItemId;
 
@@ -11188,7 +11115,9 @@ class OrderinvoicesCreateChargeInvoiceRequest {
   /// given order.
   core.String operationId;
 
-  /// [required] ID of the shipment group.
+  /// [required] ID of the shipment group. It is assigned by the merchant in the
+  /// shipLineItems method and is used to group multiple line items that have
+  /// the same kind of shipping charges.
   core.String shipmentGroupId;
 
   OrderinvoicesCreateChargeInvoiceRequest();
@@ -11431,246 +11360,6 @@ class OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption {
     }
     if (reason != null) {
       _json["reason"] = reason;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyAuthApprovedRequest {
-  Price authAmountPretax;
-  Price authAmountTax;
-
-  OrderpaymentsNotifyAuthApprovedRequest();
-
-  OrderpaymentsNotifyAuthApprovedRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("authAmountPretax")) {
-      authAmountPretax = new Price.fromJson(_json["authAmountPretax"]);
-    }
-    if (_json.containsKey("authAmountTax")) {
-      authAmountTax = new Price.fromJson(_json["authAmountTax"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (authAmountPretax != null) {
-      _json["authAmountPretax"] = (authAmountPretax).toJson();
-    }
-    if (authAmountTax != null) {
-      _json["authAmountTax"] = (authAmountTax).toJson();
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyAuthApprovedResponse {
-  /// The status of the execution.
-  core.String executionStatus;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderpaymentsNotifyAuthApprovedResponse".
-  core.String kind;
-
-  OrderpaymentsNotifyAuthApprovedResponse();
-
-  OrderpaymentsNotifyAuthApprovedResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("executionStatus")) {
-      executionStatus = _json["executionStatus"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (executionStatus != null) {
-      _json["executionStatus"] = executionStatus;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyAuthDeclinedRequest {
-  /// Reason why payment authorization was declined.
-  core.String declineReason;
-
-  OrderpaymentsNotifyAuthDeclinedRequest();
-
-  OrderpaymentsNotifyAuthDeclinedRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("declineReason")) {
-      declineReason = _json["declineReason"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (declineReason != null) {
-      _json["declineReason"] = declineReason;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyAuthDeclinedResponse {
-  /// The status of the execution.
-  core.String executionStatus;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderpaymentsNotifyAuthDeclinedResponse".
-  core.String kind;
-
-  OrderpaymentsNotifyAuthDeclinedResponse();
-
-  OrderpaymentsNotifyAuthDeclinedResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("executionStatus")) {
-      executionStatus = _json["executionStatus"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (executionStatus != null) {
-      _json["executionStatus"] = executionStatus;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyChargeRequest {
-  /// Whether charge was successful.
-  core.String chargeState;
-
-  /// Invoice IDs from the orderinvoices service that correspond to the charge.
-  core.List<core.String> invoiceIds;
-
-  OrderpaymentsNotifyChargeRequest();
-
-  OrderpaymentsNotifyChargeRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("chargeState")) {
-      chargeState = _json["chargeState"];
-    }
-    if (_json.containsKey("invoiceIds")) {
-      invoiceIds = (_json["invoiceIds"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (chargeState != null) {
-      _json["chargeState"] = chargeState;
-    }
-    if (invoiceIds != null) {
-      _json["invoiceIds"] = invoiceIds;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyChargeResponse {
-  /// The status of the execution.
-  core.String executionStatus;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderpaymentsNotifyChargeResponse".
-  core.String kind;
-
-  OrderpaymentsNotifyChargeResponse();
-
-  OrderpaymentsNotifyChargeResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("executionStatus")) {
-      executionStatus = _json["executionStatus"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (executionStatus != null) {
-      _json["executionStatus"] = executionStatus;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyRefundRequest {
-  /// Invoice IDs from the orderinvoices service that correspond to the refund.
-  core.List<core.String> invoiceIds;
-
-  /// Whether refund was successful.
-  core.String refundState;
-
-  OrderpaymentsNotifyRefundRequest();
-
-  OrderpaymentsNotifyRefundRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("invoiceIds")) {
-      invoiceIds = (_json["invoiceIds"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("refundState")) {
-      refundState = _json["refundState"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (invoiceIds != null) {
-      _json["invoiceIds"] = invoiceIds;
-    }
-    if (refundState != null) {
-      _json["refundState"] = refundState;
-    }
-    return _json;
-  }
-}
-
-class OrderpaymentsNotifyRefundResponse {
-  /// The status of the execution.
-  core.String executionStatus;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "content#orderpaymentsNotifyRefundResponse".
-  core.String kind;
-
-  OrderpaymentsNotifyRefundResponse();
-
-  OrderpaymentsNotifyRefundResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("executionStatus")) {
-      executionStatus = _json["executionStatus"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (executionStatus != null) {
-      _json["executionStatus"] = executionStatus;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
     }
     return _json;
   }
@@ -12279,10 +11968,11 @@ class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
   /// resource representation for a list of acceptable values.
   core.String carrier;
 
-  /// The ID of the shipment.
+  /// The ID of the shipment. This is assigned by the merchant and is unique to
+  /// each shipment.
   core.String shipmentId;
 
-  /// The tracking id for the shipment.
+  /// The tracking ID for the shipment.
   core.String trackingId;
 
   OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
@@ -12945,6 +12635,9 @@ class OrdersShipLineItemsResponse {
 class OrdersUpdateLineItemShippingDetailsRequest {
   /// Updated delivery by date, in ISO 8601 format. If not specified only ship
   /// by date is updated.
+  ///
+  /// Provided date should be within 1 year timeframe and can not be a date in
+  /// the past.
   core.String deliverByDate;
 
   /// The ID of the line item to set metadata. Either lineItemId or productId is
@@ -12960,6 +12653,9 @@ class OrdersUpdateLineItemShippingDetailsRequest {
 
   /// Updated ship by date, in ISO 8601 format. If not specified only deliver by
   /// date is updated.
+  ///
+  /// Provided date should be within 1 year timeframe and can not be a date in
+  /// the past.
   core.String shipByDate;
 
   OrdersUpdateLineItemShippingDetailsRequest();
@@ -13119,7 +12815,7 @@ class OrdersUpdateShipmentRequest {
   /// New status for the shipment. Not updated if missing.
   core.String status;
 
-  /// The tracking id for the shipment. Not updated if missing.
+  /// The tracking ID for the shipment. Not updated if missing.
   core.String trackingId;
 
   OrdersUpdateShipmentRequest();
@@ -14314,8 +14010,8 @@ class Product {
 
   /// A list of custom (merchant-provided) attributes. It can also be used for
   /// submitting any attribute of the feed specification in its generic form
-  /// (e.g., { "name": "size type", "type": "text", "value": "regular" }). This
-  /// is useful for submitting attributes not explicitly exposed by the API.
+  /// (e.g., { "name": "size type", "value": "regular" }). This is useful for
+  /// submitting attributes not explicitly exposed by the API.
   core.List<CustomAttribute> customAttributes;
 
   /// Custom label 0 for custom grouping of items in a Shopping campaign.
@@ -14374,9 +14070,9 @@ class Product {
   /// Global Trade Item Number (GTIN) of the item.
   core.String gtin;
 
-  /// The REST id of the product. Content API methods that operate on products
+  /// The REST ID of the product. Content API methods that operate on products
   /// take this as their productId parameter.
-  /// The REST id for a product is of the form
+  /// The REST ID for a product is of the form
   /// channel:contentLanguage:targetCountry:offerId.
   core.String id;
 
@@ -14442,7 +14138,7 @@ class Product {
   /// stripped and multiple whitespaces are replaced by a single whitespace upon
   /// submission. Only valid unicode characters are accepted. See the products
   /// feed specification for details.
-  /// Note: Content API methods that operate on products take the REST id of the
+  /// Note: Content API methods that operate on products take the REST ID of the
   /// product, not this identifier.
   core.String offerId;
 
@@ -14452,7 +14148,7 @@ class Product {
   /// Price of the item.
   Price price;
 
-  /// Categories of the item (formatted as in products feed specification).
+  /// Categories of the item (formatted as in products data specification).
   core.List<core.String> productTypes;
 
   /// The unique ID of a promotion.
@@ -14461,7 +14157,7 @@ class Product {
   /// Advertised sale price of the item.
   Price salePrice;
 
-  /// Date range during which the item is on sale (see products feed
+  /// Date range during which the item is on sale (see products data
   /// specification).
   core.String salePriceEffectiveDate;
 
@@ -14503,11 +14199,19 @@ class Product {
   /// The CLDR territory code for the item.
   core.String targetCountry;
 
+  /// The tax category of the product, used to configure detailed tax nexus in
+  /// account-level tax settings.
+  core.String taxCategory;
+
   /// Tax information.
   core.List<ProductTax> taxes;
 
   /// Title of the item.
   core.String title;
+
+  /// The transit time label of the product, used to group product in
+  /// account-level transit time tables.
+  core.String transitTimeLabel;
 
   /// The preference of the denominator of the unit price.
   ProductUnitPricingBaseMeasure unitPricingBaseMeasure;
@@ -14737,6 +14441,9 @@ class Product {
     if (_json.containsKey("targetCountry")) {
       targetCountry = _json["targetCountry"];
     }
+    if (_json.containsKey("taxCategory")) {
+      taxCategory = _json["taxCategory"];
+    }
     if (_json.containsKey("taxes")) {
       taxes = (_json["taxes"] as core.List)
           .map<ProductTax>((value) => new ProductTax.fromJson(value))
@@ -14744,6 +14451,9 @@ class Product {
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
+    }
+    if (_json.containsKey("transitTimeLabel")) {
+      transitTimeLabel = _json["transitTimeLabel"];
     }
     if (_json.containsKey("unitPricingBaseMeasure")) {
       unitPricingBaseMeasure = new ProductUnitPricingBaseMeasure.fromJson(
@@ -14966,11 +14676,17 @@ class Product {
     if (targetCountry != null) {
       _json["targetCountry"] = targetCountry;
     }
+    if (taxCategory != null) {
+      _json["taxCategory"] = taxCategory;
+    }
     if (taxes != null) {
       _json["taxes"] = taxes.map((value) => (value).toJson()).toList();
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    if (transitTimeLabel != null) {
+      _json["transitTimeLabel"] = transitTimeLabel;
     }
     if (unitPricingBaseMeasure != null) {
       _json["unitPricingBaseMeasure"] = (unitPricingBaseMeasure).toJson();
@@ -15030,7 +14746,7 @@ class ProductShipping {
   /// group name.
   core.String locationGroupName;
 
-  /// The numeric id of a location that the shipping rate applies to as defined
+  /// The numeric ID of a location that the shipping rate applies to as defined
   /// in the AdWords API.
   core.String locationId;
 
@@ -15166,7 +14882,7 @@ class ProductShippingWeight {
 }
 
 /// The status of a product, i.e., information about a product computed
-/// asynchronously by the data quality analysis.
+/// asynchronously.
 class ProductStatus {
   /// Date on which the item has been created, in ISO 8601 format.
   core.String creationDate;
@@ -15190,7 +14906,7 @@ class ProductStatus {
   /// The link to the product.
   core.String link;
 
-  /// The id of the product for which status is reported.
+  /// The ID of the product for which status is reported.
   core.String productId;
 
   /// The title of the product.
@@ -15389,7 +15105,7 @@ class ProductTax {
   /// code.
   core.String country;
 
-  /// The numeric id of a location that the tax rate applies to as defined in
+  /// The numeric ID of a location that the tax rate applies to as defined in
   /// the AdWords API.
   core.String locationId;
 
@@ -15548,6 +15264,9 @@ class ProductsCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
+  /// The ContentAPI feed id.
+  core.String feedId;
+
   /// The ID of the managing account.
   core.String merchantId;
   core.String method;
@@ -15564,6 +15283,9 @@ class ProductsCustomBatchRequestEntry {
   ProductsCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey("batchId")) {
       batchId = _json["batchId"];
+    }
+    if (_json.containsKey("feedId")) {
+      feedId = _json["feedId"];
     }
     if (_json.containsKey("merchantId")) {
       merchantId = _json["merchantId"];
@@ -15584,6 +15306,9 @@ class ProductsCustomBatchRequestEntry {
         new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
+    }
+    if (feedId != null) {
+      _json["feedId"] = feedId;
     }
     if (merchantId != null) {
       _json["merchantId"] = merchantId;
@@ -15946,38 +15671,6 @@ class ProductstatusesListResponse {
   }
 }
 
-class Promotion {
-  /// [required] Amount of the promotion. The values here are the promotion
-  /// applied to the unit price pretax and to the total of the tax amounts.
-  Amount promotionAmount;
-
-  /// [required] ID of the promotion.
-  core.String promotionId;
-
-  Promotion();
-
-  Promotion.fromJson(core.Map _json) {
-    if (_json.containsKey("promotionAmount")) {
-      promotionAmount = new Amount.fromJson(_json["promotionAmount"]);
-    }
-    if (_json.containsKey("promotionId")) {
-      promotionId = _json["promotionId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (promotionAmount != null) {
-      _json["promotionAmount"] = (promotionAmount).toJson();
-    }
-    if (promotionId != null) {
-      _json["promotionId"] = promotionId;
-    }
-    return _json;
-  }
-}
-
 class RateGroup {
   /// A list of shipping labels defining the products to which this rate group
   /// applies to. This is a disjunction: only one of the labels has to match for
@@ -16087,17 +15780,278 @@ class RefundReason {
   }
 }
 
+/// Regional inventory resource. contains the regional name and all attributes
+/// which are overridden for the specified region.
+class RegionalInventory {
+  /// The availability of the product.
+  core.String availability;
+
+  /// A list of custom (merchant-provided) attributes. It can also be used for
+  /// submitting any attribute of the feed specification in its generic form.
+  core.List<CustomAttribute> customAttributes;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#regionalInventory".
+  core.String kind;
+
+  /// The price of the product.
+  Price price;
+
+  /// The ID (name) of the region.
+  core.String regionId;
+
+  /// The sale price of the product. Mandatory if sale_price_effective_date is
+  /// defined.
+  Price salePrice;
+
+  /// A date range represented by a pair of ISO 8601 dates separated by a space,
+  /// comma, or slash. Both dates might be specified as 'null' if undecided.
+  core.String salePriceEffectiveDate;
+
+  RegionalInventory();
+
+  RegionalInventory.fromJson(core.Map _json) {
+    if (_json.containsKey("availability")) {
+      availability = _json["availability"];
+    }
+    if (_json.containsKey("customAttributes")) {
+      customAttributes = (_json["customAttributes"] as core.List)
+          .map<CustomAttribute>((value) => new CustomAttribute.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("price")) {
+      price = new Price.fromJson(_json["price"]);
+    }
+    if (_json.containsKey("regionId")) {
+      regionId = _json["regionId"];
+    }
+    if (_json.containsKey("salePrice")) {
+      salePrice = new Price.fromJson(_json["salePrice"]);
+    }
+    if (_json.containsKey("salePriceEffectiveDate")) {
+      salePriceEffectiveDate = _json["salePriceEffectiveDate"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (availability != null) {
+      _json["availability"] = availability;
+    }
+    if (customAttributes != null) {
+      _json["customAttributes"] =
+          customAttributes.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (price != null) {
+      _json["price"] = (price).toJson();
+    }
+    if (regionId != null) {
+      _json["regionId"] = regionId;
+    }
+    if (salePrice != null) {
+      _json["salePrice"] = (salePrice).toJson();
+    }
+    if (salePriceEffectiveDate != null) {
+      _json["salePriceEffectiveDate"] = salePriceEffectiveDate;
+    }
+    return _json;
+  }
+}
+
+class RegionalinventoryCustomBatchRequest {
+  /// The request entries to be processed in the batch.
+  core.List<RegionalinventoryCustomBatchRequestEntry> entries;
+
+  RegionalinventoryCustomBatchRequest();
+
+  RegionalinventoryCustomBatchRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<RegionalinventoryCustomBatchRequestEntry>((value) =>
+              new RegionalinventoryCustomBatchRequestEntry.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A batch entry encoding a single non-batch regional inventory request.
+class RegionalinventoryCustomBatchRequestEntry {
+  /// An entry ID, unique within the batch request.
+  core.int batchId;
+
+  /// The ID of the managing account.
+  core.String merchantId;
+  core.String method;
+
+  /// The ID of the product for which to update price and availability.
+  core.String productId;
+
+  /// Price and availability of the product.
+  RegionalInventory regionalInventory;
+
+  RegionalinventoryCustomBatchRequestEntry();
+
+  RegionalinventoryCustomBatchRequestEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("merchantId")) {
+      merchantId = _json["merchantId"];
+    }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("regionalInventory")) {
+      regionalInventory =
+          new RegionalInventory.fromJson(_json["regionalInventory"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (merchantId != null) {
+      _json["merchantId"] = merchantId;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (regionalInventory != null) {
+      _json["regionalInventory"] = (regionalInventory).toJson();
+    }
+    return _json;
+  }
+}
+
+class RegionalinventoryCustomBatchResponse {
+  /// The result of the execution of the batch requests.
+  core.List<RegionalinventoryCustomBatchResponseEntry> entries;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#regionalinventoryCustomBatchResponse".
+  core.String kind;
+
+  RegionalinventoryCustomBatchResponse();
+
+  RegionalinventoryCustomBatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<RegionalinventoryCustomBatchResponseEntry>((value) =>
+              new RegionalinventoryCustomBatchResponseEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// A batch entry encoding a single non-batch regional inventory response.
+class RegionalinventoryCustomBatchResponseEntry {
+  /// The ID of the request entry this entry responds to.
+  core.int batchId;
+
+  /// A list of errors defined if and only if the request failed.
+  Errors errors;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "content#regionalinventoryCustomBatchResponseEntry".
+  core.String kind;
+
+  /// Price and availability of the product.
+  RegionalInventory regionalInventory;
+
+  RegionalinventoryCustomBatchResponseEntry();
+
+  RegionalinventoryCustomBatchResponseEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("batchId")) {
+      batchId = _json["batchId"];
+    }
+    if (_json.containsKey("errors")) {
+      errors = new Errors.fromJson(_json["errors"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("regionalInventory")) {
+      regionalInventory =
+          new RegionalInventory.fromJson(_json["regionalInventory"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (batchId != null) {
+      _json["batchId"] = batchId;
+    }
+    if (errors != null) {
+      _json["errors"] = (errors).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (regionalInventory != null) {
+      _json["regionalInventory"] = (regionalInventory).toJson();
+    }
+    return _json;
+  }
+}
+
 class ReturnShipment {
   core.String creationDate;
+  core.String deliveryDate;
   core.String returnMethodType;
   core.String shipmentId;
   core.List<ShipmentTrackingInfo> shipmentTrackingInfos;
+  core.String shippingDate;
+  core.String state;
 
   ReturnShipment();
 
   ReturnShipment.fromJson(core.Map _json) {
     if (_json.containsKey("creationDate")) {
       creationDate = _json["creationDate"];
+    }
+    if (_json.containsKey("deliveryDate")) {
+      deliveryDate = _json["deliveryDate"];
     }
     if (_json.containsKey("returnMethodType")) {
       returnMethodType = _json["returnMethodType"];
@@ -16111,6 +16065,12 @@ class ReturnShipment {
               (value) => new ShipmentTrackingInfo.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("shippingDate")) {
+      shippingDate = _json["shippingDate"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -16118,6 +16078,9 @@ class ReturnShipment {
         new core.Map<core.String, core.Object>();
     if (creationDate != null) {
       _json["creationDate"] = creationDate;
+    }
+    if (deliveryDate != null) {
+      _json["deliveryDate"] = deliveryDate;
     }
     if (returnMethodType != null) {
       _json["returnMethodType"] = returnMethodType;
@@ -16128,6 +16091,12 @@ class ReturnShipment {
     if (shipmentTrackingInfos != null) {
       _json["shipmentTrackingInfos"] =
           shipmentTrackingInfos.map((value) => (value).toJson()).toList();
+    }
+    if (shippingDate != null) {
+      _json["shippingDate"] = shippingDate;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -16262,7 +16231,9 @@ class ShipmentInvoice {
   /// [required] Invoice details per line item.
   core.List<ShipmentInvoiceLineItemInvoice> lineItemInvoices;
 
-  /// [required] ID of the shipment group.
+  /// [required] ID of the shipment group. It is assigned by the merchant in the
+  /// shipLineItems method and is used to group multiple line items that have
+  /// the same kind of shipping charges.
   core.String shipmentGroupId;
 
   ShipmentInvoice();
@@ -16307,7 +16278,10 @@ class ShipmentInvoiceLineItemInvoice {
   /// Either lineItemId or productId must be set.
   core.String productId;
 
-  /// [required] Unit IDs to define specific units within the line item.
+  /// [required] The shipment unit ID is assigned by the merchant and defines
+  /// individual quantities within a line item. The same ID can be assigned to
+  /// units that are the same while units that differ must be assigned a
+  /// different ID (for example: free or promotional units).
   core.List<core.String> shipmentUnitIds;
 
   /// [required] Invoice details for a single unit.
@@ -16762,9 +16736,6 @@ class Table {
 }
 
 class TestOrder {
-  /// The details of the customer who placed the order.
-  TestOrderCustomer customer;
-
   /// Whether the orderinvoices service should support this order.
   core.bool enableOrderinvoices;
 
@@ -16785,14 +16756,16 @@ class TestOrder {
   /// Identifier of one of the predefined delivery addresses for the delivery.
   core.String predefinedDeliveryAddress;
 
+  /// Email address of the customer.
+  core.String predefinedEmail;
+
   /// Promotions associated with the order.
   core.List<OrderPromotion> promotions;
 
-  /// The total cost of shipping for all items.
+  /// The price of shipping for all items. Shipping tax is automatically
+  /// calculated for MFL orders. For non-MFL orders, tax settings from Merchant
+  /// Center are applied. Note that shipping is not taxed in certain states.
   Price shippingCost;
-
-  /// The tax for the total shipping cost.
-  Price shippingCostTax;
 
   /// The requested shipping option.
   core.String shippingOption;
@@ -16800,9 +16773,6 @@ class TestOrder {
   TestOrder();
 
   TestOrder.fromJson(core.Map _json) {
-    if (_json.containsKey("customer")) {
-      customer = new TestOrderCustomer.fromJson(_json["customer"]);
-    }
     if (_json.containsKey("enableOrderinvoices")) {
       enableOrderinvoices = _json["enableOrderinvoices"];
     }
@@ -16824,6 +16794,9 @@ class TestOrder {
     if (_json.containsKey("predefinedDeliveryAddress")) {
       predefinedDeliveryAddress = _json["predefinedDeliveryAddress"];
     }
+    if (_json.containsKey("predefinedEmail")) {
+      predefinedEmail = _json["predefinedEmail"];
+    }
     if (_json.containsKey("promotions")) {
       promotions = (_json["promotions"] as core.List)
           .map<OrderPromotion>((value) => new OrderPromotion.fromJson(value))
@@ -16831,9 +16804,6 @@ class TestOrder {
     }
     if (_json.containsKey("shippingCost")) {
       shippingCost = new Price.fromJson(_json["shippingCost"]);
-    }
-    if (_json.containsKey("shippingCostTax")) {
-      shippingCostTax = new Price.fromJson(_json["shippingCostTax"]);
     }
     if (_json.containsKey("shippingOption")) {
       shippingOption = _json["shippingOption"];
@@ -16843,9 +16813,6 @@ class TestOrder {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (customer != null) {
-      _json["customer"] = (customer).toJson();
-    }
     if (enableOrderinvoices != null) {
       _json["enableOrderinvoices"] = enableOrderinvoices;
     }
@@ -16864,6 +16831,9 @@ class TestOrder {
     if (predefinedDeliveryAddress != null) {
       _json["predefinedDeliveryAddress"] = predefinedDeliveryAddress;
     }
+    if (predefinedEmail != null) {
+      _json["predefinedEmail"] = predefinedEmail;
+    }
     if (promotions != null) {
       _json["promotions"] =
           promotions.map((value) => (value).toJson()).toList();
@@ -16871,85 +16841,8 @@ class TestOrder {
     if (shippingCost != null) {
       _json["shippingCost"] = (shippingCost).toJson();
     }
-    if (shippingCostTax != null) {
-      _json["shippingCostTax"] = (shippingCostTax).toJson();
-    }
     if (shippingOption != null) {
       _json["shippingOption"] = shippingOption;
-    }
-    return _json;
-  }
-}
-
-class TestOrderCustomer {
-  /// Deprecated.
-  core.String email;
-
-  /// Full name of the customer.
-  core.String fullName;
-
-  /// Customer's marketing preferences.
-  TestOrderCustomerMarketingRightsInfo marketingRightsInfo;
-
-  TestOrderCustomer();
-
-  TestOrderCustomer.fromJson(core.Map _json) {
-    if (_json.containsKey("email")) {
-      email = _json["email"];
-    }
-    if (_json.containsKey("fullName")) {
-      fullName = _json["fullName"];
-    }
-    if (_json.containsKey("marketingRightsInfo")) {
-      marketingRightsInfo = new TestOrderCustomerMarketingRightsInfo.fromJson(
-          _json["marketingRightsInfo"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (email != null) {
-      _json["email"] = email;
-    }
-    if (fullName != null) {
-      _json["fullName"] = fullName;
-    }
-    if (marketingRightsInfo != null) {
-      _json["marketingRightsInfo"] = (marketingRightsInfo).toJson();
-    }
-    return _json;
-  }
-}
-
-class TestOrderCustomerMarketingRightsInfo {
-  /// Last know user use selection regards marketing preferences. In certain
-  /// cases selection might not be known, so this field would be empty.
-  core.String explicitMarketingPreference;
-
-  /// Timestamp when last time marketing preference was updated. Could be empty,
-  /// if user wasn't offered a selection yet.
-  core.String lastUpdatedTimestamp;
-
-  TestOrderCustomerMarketingRightsInfo();
-
-  TestOrderCustomerMarketingRightsInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("explicitMarketingPreference")) {
-      explicitMarketingPreference = _json["explicitMarketingPreference"];
-    }
-    if (_json.containsKey("lastUpdatedTimestamp")) {
-      lastUpdatedTimestamp = _json["lastUpdatedTimestamp"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (explicitMarketingPreference != null) {
-      _json["explicitMarketingPreference"] = explicitMarketingPreference;
-    }
-    if (lastUpdatedTimestamp != null) {
-      _json["lastUpdatedTimestamp"] = lastUpdatedTimestamp;
     }
     return _json;
   }
@@ -16968,9 +16861,6 @@ class TestOrderLineItem {
   /// Details of the requested shipping for the line item.
   OrderLineItemShippingDetails shippingDetails;
 
-  /// Unit tax for the line item.
-  Price unitTax;
-
   TestOrderLineItem();
 
   TestOrderLineItem.fromJson(core.Map _json) {
@@ -16986,9 +16876,6 @@ class TestOrderLineItem {
     if (_json.containsKey("shippingDetails")) {
       shippingDetails =
           new OrderLineItemShippingDetails.fromJson(_json["shippingDetails"]);
-    }
-    if (_json.containsKey("unitTax")) {
-      unitTax = new Price.fromJson(_json["unitTax"]);
     }
   }
 
@@ -17007,9 +16894,6 @@ class TestOrderLineItem {
     if (shippingDetails != null) {
       _json["shippingDetails"] = (shippingDetails).toJson();
     }
-    if (unitTax != null) {
-      _json["unitTax"] = (unitTax).toJson();
-    }
     return _json;
   }
 }
@@ -17018,14 +16902,14 @@ class TestOrderLineItemProduct {
   /// Brand of the item.
   core.String brand;
 
-  /// The item's channel.
-  core.String channel;
-
   /// Condition or state of the item.
   core.String condition;
 
   /// The two-letter ISO 639-1 language code for the item.
   core.String contentLanguage;
+
+  /// Fees for the item. Optional.
+  core.List<OrderLineItemProductFee> fees;
 
   /// Global Trade Item Number (GTIN) of the item. Optional.
   core.String gtin;
@@ -17042,7 +16926,8 @@ class TestOrderLineItemProduct {
   /// An identifier of the item.
   core.String offerId;
 
-  /// The price for the product.
+  /// The price for the product. Tax is automatically calculated for MFL orders.
+  /// For non-MFL orders, tax settings from Merchant Center are applied.
   Price price;
 
   /// The CLDR territory code of the target country of the product.
@@ -17060,14 +16945,17 @@ class TestOrderLineItemProduct {
     if (_json.containsKey("brand")) {
       brand = _json["brand"];
     }
-    if (_json.containsKey("channel")) {
-      channel = _json["channel"];
-    }
     if (_json.containsKey("condition")) {
       condition = _json["condition"];
     }
     if (_json.containsKey("contentLanguage")) {
       contentLanguage = _json["contentLanguage"];
+    }
+    if (_json.containsKey("fees")) {
+      fees = (_json["fees"] as core.List)
+          .map<OrderLineItemProductFee>(
+              (value) => new OrderLineItemProductFee.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("gtin")) {
       gtin = _json["gtin"];
@@ -17107,14 +16995,14 @@ class TestOrderLineItemProduct {
     if (brand != null) {
       _json["brand"] = brand;
     }
-    if (channel != null) {
-      _json["channel"] = channel;
-    }
     if (condition != null) {
       _json["condition"] = condition;
     }
     if (contentLanguage != null) {
       _json["contentLanguage"] = contentLanguage;
+    }
+    if (fees != null) {
+      _json["fees"] = fees.map((value) => (value).toJson()).toList();
     }
     if (gtin != null) {
       _json["gtin"] = gtin;
@@ -17148,15 +17036,115 @@ class TestOrderLineItemProduct {
   }
 }
 
+class TransitTable {
+  /// A list of postal group names. The last value can be "all other locations".
+  /// Example: ["zone 1", "zone 2", "all other locations"]. The referred postal
+  /// code groups must match the delivery country of the service.
+  core.List<core.String> postalCodeGroupNames;
+  core.List<TransitTableTransitTimeRow> rows;
+
+  /// A list of transit time labels. The last value can be "all other labels".
+  /// Example: ["food", "electronics", "all other labels"].
+  core.List<core.String> transitTimeLabels;
+
+  TransitTable();
+
+  TransitTable.fromJson(core.Map _json) {
+    if (_json.containsKey("postalCodeGroupNames")) {
+      postalCodeGroupNames =
+          (_json["postalCodeGroupNames"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("rows")) {
+      rows = (_json["rows"] as core.List)
+          .map<TransitTableTransitTimeRow>(
+              (value) => new TransitTableTransitTimeRow.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("transitTimeLabels")) {
+      transitTimeLabels =
+          (_json["transitTimeLabels"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (postalCodeGroupNames != null) {
+      _json["postalCodeGroupNames"] = postalCodeGroupNames;
+    }
+    if (rows != null) {
+      _json["rows"] = rows.map((value) => (value).toJson()).toList();
+    }
+    if (transitTimeLabels != null) {
+      _json["transitTimeLabels"] = transitTimeLabels;
+    }
+    return _json;
+  }
+}
+
+class TransitTableTransitTimeRow {
+  core.List<TransitTableTransitTimeRowTransitTimeValue> values;
+
+  TransitTableTransitTimeRow();
+
+  TransitTableTransitTimeRow.fromJson(core.Map _json) {
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List)
+          .map<TransitTableTransitTimeRowTransitTimeValue>((value) =>
+              new TransitTableTransitTimeRowTransitTimeValue.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (values != null) {
+      _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class TransitTableTransitTimeRowTransitTimeValue {
+  /// Must be greater than or equal to minTransitTimeInDays.
+  core.int maxTransitTimeInDays;
+
+  /// Transit time range (min-max) in business days. 0 means same day delivery,
+  /// 1 means next day delivery.
+  core.int minTransitTimeInDays;
+
+  TransitTableTransitTimeRowTransitTimeValue();
+
+  TransitTableTransitTimeRowTransitTimeValue.fromJson(core.Map _json) {
+    if (_json.containsKey("maxTransitTimeInDays")) {
+      maxTransitTimeInDays = _json["maxTransitTimeInDays"];
+    }
+    if (_json.containsKey("minTransitTimeInDays")) {
+      minTransitTimeInDays = _json["minTransitTimeInDays"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxTransitTimeInDays != null) {
+      _json["maxTransitTimeInDays"] = maxTransitTimeInDays;
+    }
+    if (minTransitTimeInDays != null) {
+      _json["minTransitTimeInDays"] = minTransitTimeInDays;
+    }
+    return _json;
+  }
+}
+
 class UnitInvoice {
   /// Additional charges for a unit, e.g. shipping costs.
   core.List<UnitInvoiceAdditionalCharge> additionalCharges;
 
-  /// Promotions applied to a unit.
-  core.List<Promotion> promotions;
-
-  /// [required] Price of the unit, before applying taxes.
-  Price unitPricePretax;
+  /// [required] Pre-tax or post-tax price of the unit depending on the locality
+  /// of the order.
+  Price unitPrice;
 
   /// Tax amounts to apply to the unit price.
   core.List<UnitInvoiceTaxLine> unitPriceTaxes;
@@ -17170,13 +17158,8 @@ class UnitInvoice {
               (value) => new UnitInvoiceAdditionalCharge.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("promotions")) {
-      promotions = (_json["promotions"] as core.List)
-          .map<Promotion>((value) => new Promotion.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("unitPricePretax")) {
-      unitPricePretax = new Price.fromJson(_json["unitPricePretax"]);
+    if (_json.containsKey("unitPrice")) {
+      unitPrice = new Price.fromJson(_json["unitPrice"]);
     }
     if (_json.containsKey("unitPriceTaxes")) {
       unitPriceTaxes = (_json["unitPriceTaxes"] as core.List)
@@ -17193,12 +17176,8 @@ class UnitInvoice {
       _json["additionalCharges"] =
           additionalCharges.map((value) => (value).toJson()).toList();
     }
-    if (promotions != null) {
-      _json["promotions"] =
-          promotions.map((value) => (value).toJson()).toList();
-    }
-    if (unitPricePretax != null) {
-      _json["unitPricePretax"] = (unitPricePretax).toJson();
+    if (unitPrice != null) {
+      _json["unitPrice"] = (unitPrice).toJson();
     }
     if (unitPriceTaxes != null) {
       _json["unitPriceTaxes"] =
@@ -17212,9 +17191,6 @@ class UnitInvoiceAdditionalCharge {
   /// [required] Amount of the additional charge.
   Amount additionalChargeAmount;
 
-  /// Promotions applied to the additional charge.
-  core.List<Promotion> additionalChargePromotions;
-
   /// [required] Type of the additional charge.
   core.String type;
 
@@ -17224,12 +17200,6 @@ class UnitInvoiceAdditionalCharge {
     if (_json.containsKey("additionalChargeAmount")) {
       additionalChargeAmount =
           new Amount.fromJson(_json["additionalChargeAmount"]);
-    }
-    if (_json.containsKey("additionalChargePromotions")) {
-      additionalChargePromotions =
-          (_json["additionalChargePromotions"] as core.List)
-              .map<Promotion>((value) => new Promotion.fromJson(value))
-              .toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -17241,10 +17211,6 @@ class UnitInvoiceAdditionalCharge {
         new core.Map<core.String, core.Object>();
     if (additionalChargeAmount != null) {
       _json["additionalChargeAmount"] = (additionalChargeAmount).toJson();
-    }
-    if (additionalChargePromotions != null) {
-      _json["additionalChargePromotions"] =
-          additionalChargePromotions.map((value) => (value).toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;

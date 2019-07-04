@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client bigquerydatatransfer/v1';
 
-/// Transfers data from partner SaaS applications to Google BigQuery on a
-/// scheduled, managed basis.
+/// Schedule queries or transfer external data from SaaS applications to Google
+/// BigQuery on a regular basis.
 class BigquerydatatransferApi {
   /// View and manage your data in Google BigQuery
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
@@ -291,11 +291,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -308,9 +308,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -322,14 +322,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -548,6 +548,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// do not match - the request will fail.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [versionInfo] - Optional version info. If users want to find a very recent
+  /// access token,
+  /// that is, immediately after approving access, users have to set the
+  /// version_info claim in the token request. To obtain the version_info, users
+  /// must use the "none+gsession" response type. which be return a
+  /// version_info back in the authorization response which be be put in a JWT
+  /// claim in the token request.
+  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// This is required if new credentials are needed, as indicated by
@@ -578,7 +586,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferConfig> create(
       TransferConfig request, core.String parent,
-      {core.String authorizationCode, core.String $fields}) {
+      {core.String versionInfo,
+      core.String authorizationCode,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -591,6 +601,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (versionInfo != null) {
+      _queryParams["versionInfo"] = [versionInfo];
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
@@ -713,18 +726,18 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
   /// results, `ListTransfersResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -737,9 +750,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.List<core.String> dataSourceIds,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -751,14 +764,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -795,6 +808,16 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [updateMask] - Required list of fields to be updated in this request.
+  ///
+  /// [versionInfo] - Optional version info. If users want to find a very recent
+  /// access token,
+  /// that is, immediately after approving access, users have to set the
+  /// version_info claim in the token request. To obtain the version_info, users
+  /// must use the "none+gsession" response type. which be return a
+  /// version_info back in the authorization response which be be put in a JWT
+  /// claim in the token request.
+  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -813,8 +836,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -826,8 +847,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String authorizationCode,
-      core.String updateMask,
+      {core.String updateMask,
+      core.String versionInfo,
+      core.String authorizationCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -842,11 +864,14 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (versionInfo != null) {
+      _queryParams["versionInfo"] = [versionInfo];
+    }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -867,6 +892,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// For each date - or whatever granularity the data source supports - in the
   /// range, one transfer run is created.
   /// Note that runs are created per UTC time in the time range.
+  /// DEPRECATED: use StartManualTransferRuns instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -919,6 +945,65 @@ class ProjectsLocationsTransferConfigsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ScheduleTransferRunsResponse.fromJson(data));
+  }
+
+  /// Start manual transfer runs to be executed now with schedule_time equal to
+  /// current time. The transfer runs can be created for a time range where the
+  /// run_time is between start_time (inclusive) and end_time (exclusive), or
+  /// for
+  /// a specific run_time.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Transfer configuration name in the form:
+  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StartManualTransferRunsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StartManualTransferRunsResponse> startManualRuns(
+      StartManualTransferRunsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':startManualRuns';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new StartManualTransferRunsResponse.fromJson(data));
   }
 }
 
@@ -1036,6 +1121,13 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [pageToken] - Pagination token, which can be used to request a specific
+  /// page
+  /// of `ListTransferRunsRequest` list results. For multiple-page
+  /// results, `ListTransferRunsResponse` outputs
+  /// a `next_page` token, which can be used as the
+  /// `page_token` value to request the next page of list results.
+  ///
   /// [states] - When specified, only transfer runs with requested states are
   /// returned.
   ///
@@ -1046,13 +1138,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Possible string values are:
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
   /// - "LATEST" : A LATEST.
-  ///
-  /// [pageToken] - Pagination token, which can be used to request a specific
-  /// page
-  /// of `ListTransferRunsRequest` list results. For multiple-page
-  /// results, `ListTransferRunsResponse` outputs
-  /// a `next_page` token, which can be used as the
-  /// `page_token` value to request the next page of list results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1065,10 +1150,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.List<core.String> states,
+      {core.String pageToken,
+      core.List<core.String> states,
       core.int pageSize,
       core.String runAttempt,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1080,6 +1165,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (states != null) {
       _queryParams["states"] = states;
     }
@@ -1088,9 +1176,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1125,19 +1210,19 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
-  /// and ERROR
-  /// messages are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransferLogsRequest` list results. For multiple-page
   /// results, `ListTransferLogsResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
+  /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
+  /// and ERROR
+  /// messages are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1150,9 +1235,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.List<core.String> messageTypes,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1164,14 +1249,14 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (messageTypes != null) {
       _queryParams["messageTypes"] = messageTypes;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1214,6 +1299,14 @@ class ProjectsTransferConfigsResourceApi {
   /// do not match - the request will fail.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [versionInfo] - Optional version info. If users want to find a very recent
+  /// access token,
+  /// that is, immediately after approving access, users have to set the
+  /// version_info claim in the token request. To obtain the version_info, users
+  /// must use the "none+gsession" response type. which be return a
+  /// version_info back in the authorization response which be be put in a JWT
+  /// claim in the token request.
+  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// This is required if new credentials are needed, as indicated by
@@ -1244,7 +1337,9 @@ class ProjectsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferConfig> create(
       TransferConfig request, core.String parent,
-      {core.String authorizationCode, core.String $fields}) {
+      {core.String versionInfo,
+      core.String authorizationCode,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1257,6 +1352,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (versionInfo != null) {
+      _queryParams["versionInfo"] = [versionInfo];
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
@@ -1377,9 +1475,6 @@ class ProjectsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
@@ -1389,6 +1484,9 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1401,9 +1499,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.List<core.String> dataSourceIds,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1415,14 +1513,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1458,6 +1556,14 @@ class ProjectsTransferConfigsResourceApi {
   /// required, will be generated for config_id.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [versionInfo] - Optional version info. If users want to find a very recent
+  /// access token,
+  /// that is, immediately after approving access, users have to set the
+  /// version_info claim in the token request. To obtain the version_info, users
+  /// must use the "none+gsession" response type. which be return a
+  /// version_info back in the authorization response which be be put in a JWT
+  /// claim in the token request.
+  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -1489,7 +1595,8 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String authorizationCode,
+      {core.String versionInfo,
+      core.String authorizationCode,
       core.String updateMask,
       core.String $fields}) {
     var _url;
@@ -1504,6 +1611,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (versionInfo != null) {
+      _queryParams["versionInfo"] = [versionInfo];
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
@@ -1530,6 +1640,7 @@ class ProjectsTransferConfigsResourceApi {
   /// For each date - or whatever granularity the data source supports - in the
   /// range, one transfer run is created.
   /// Note that runs are created per UTC time in the time range.
+  /// DEPRECATED: use StartManualTransferRuns instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1581,6 +1692,64 @@ class ProjectsTransferConfigsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ScheduleTransferRunsResponse.fromJson(data));
+  }
+
+  /// Start manual transfer runs to be executed now with schedule_time equal to
+  /// current time. The transfer runs can be created for a time range where the
+  /// run_time is between start_time (inclusive) and end_time (exclusive), or
+  /// for
+  /// a specific run_time.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Transfer configuration name in the form:
+  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StartManualTransferRunsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StartManualTransferRunsResponse> startManualRuns(
+      StartManualTransferRunsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':startManualRuns';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new StartManualTransferRunsResponse.fromJson(data));
   }
 }
 
@@ -1695,12 +1864,6 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [states] - When specified, only transfer runs with requested states are
-  /// returned.
-  ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
   /// [runAttempt] - Indicates how run attempts are to be pulled.
   /// Possible string values are:
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
@@ -1713,6 +1876,12 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
   ///
+  /// [states] - When specified, only transfer runs with requested states are
+  /// returned.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1724,10 +1893,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.List<core.String> states,
-      core.int pageSize,
-      core.String runAttempt,
+      {core.String runAttempt,
       core.String pageToken,
+      core.List<core.String> states,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1739,17 +1908,17 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (states != null) {
-      _queryParams["states"] = states;
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (states != null) {
+      _queryParams["states"] = states;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2123,6 +2292,10 @@ class DataSourceParameter {
   /// All possible values for the parameter.
   core.List<core.String> allowedValues;
 
+  /// If true, it should not be used in new transfers, and it should not be
+  /// visible to users.
+  core.bool deprecated;
+
   /// Parameter description.
   core.String description;
 
@@ -2182,6 +2355,9 @@ class DataSourceParameter {
     if (_json.containsKey("allowedValues")) {
       allowedValues = (_json["allowedValues"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("deprecated")) {
+      deprecated = _json["deprecated"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -2234,6 +2410,9 @@ class DataSourceParameter {
         new core.Map<core.String, core.Object>();
     if (allowedValues != null) {
       _json["allowedValues"] = allowedValues;
+    }
+    if (deprecated != null) {
+      _json["deprecated"] = deprecated;
     }
     if (description != null) {
       _json["description"] = description;
@@ -2556,6 +2735,57 @@ class Location {
   }
 }
 
+/// Options customizing the data transfer schedule.
+class ScheduleOptions {
+  /// If true, automatic scheduling of data transfer runs for this configuration
+  /// will be disabled. The runs can be started on ad-hoc basis using
+  /// StartManualTransferRuns API. When automatic scheduling is disabled, the
+  /// TransferConfig.schedule field will be ignored.
+  core.bool disableAutoScheduling;
+
+  /// Defines time to stop scheduling transfer runs. A transfer run cannot be
+  /// scheduled at or after the end time. The end time can be changed at any
+  /// moment. The time when a data transfer can be trigerred manually is not
+  /// limited by this option.
+  core.String endTime;
+
+  /// Specifies time to start scheduling transfer runs. The first run will be
+  /// scheduled at or after the start time according to a recurrence pattern
+  /// defined in the schedule string. The start time can be changed at any
+  /// moment. The time when a data transfer can be trigerred manually is not
+  /// limited by this option.
+  core.String startTime;
+
+  ScheduleOptions();
+
+  ScheduleOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("disableAutoScheduling")) {
+      disableAutoScheduling = _json["disableAutoScheduling"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disableAutoScheduling != null) {
+      _json["disableAutoScheduling"] = disableAutoScheduling;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 /// A request to schedule transfer runs for a time range.
 class ScheduleTransferRunsRequest {
   /// End time of the range of transfer runs. For example,
@@ -2615,62 +2845,71 @@ class ScheduleTransferRunsResponse {
   }
 }
 
+/// A request to start manual transfer runs.
+class StartManualTransferRunsRequest {
+  /// Specific run_time for a transfer run to be started. The
+  /// requested_run_time must not be in the future.
+  core.String requestedRunTime;
+
+  /// Time range for the transfer runs that should be started.
+  TimeRange requestedTimeRange;
+
+  StartManualTransferRunsRequest();
+
+  StartManualTransferRunsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedRunTime")) {
+      requestedRunTime = _json["requestedRunTime"];
+    }
+    if (_json.containsKey("requestedTimeRange")) {
+      requestedTimeRange = new TimeRange.fromJson(_json["requestedTimeRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedRunTime != null) {
+      _json["requestedRunTime"] = requestedRunTime;
+    }
+    if (requestedTimeRange != null) {
+      _json["requestedTimeRange"] = (requestedTimeRange).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A response to start manual transfer runs.
+class StartManualTransferRunsResponse {
+  /// The transfer runs that were created.
+  core.List<TransferRun> runs;
+
+  StartManualTransferRunsResponse();
+
+  StartManualTransferRunsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("runs")) {
+      runs = (_json["runs"] as core.List)
+          .map<TransferRun>((value) => new TransferRun.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (runs != null) {
+      _json["runs"] = runs.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -2715,6 +2954,45 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// A specification for a time range, this will request transfer runs with
+/// run_time between start_time (inclusive) and end_time (exclusive).
+class TimeRange {
+  /// End time of the range of transfer runs. For example,
+  /// `"2017-05-30T00:00:00+00:00"`. The end_time must not be in the future.
+  /// Creates transfer runs where run_time is in the range betwen start_time
+  /// (inclusive) and end_time (exlusive).
+  core.String endTime;
+
+  /// Start time of the range of transfer runs. For example,
+  /// `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than
+  /// the end_time. Creates transfer runs where run_time is in the range betwen
+  /// start_time (inclusive) and end_time (exlusive).
+  core.String startTime;
+
+  TimeRange();
+
+  TimeRange.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }
@@ -2784,6 +3062,9 @@ class TransferConfig {
   /// NOTE: the granularity should be at least 8 hours, or less frequent.
   core.String schedule;
 
+  /// Options customizing the data transfer schedule.
+  ScheduleOptions scheduleOptions;
+
   /// Output only. State of the most recently updated transfer run.
   /// Possible string values are:
   /// - "TRANSFER_STATE_UNSPECIFIED" : State placeholder.
@@ -2834,6 +3115,9 @@ class TransferConfig {
     if (_json.containsKey("schedule")) {
       schedule = _json["schedule"];
     }
+    if (_json.containsKey("scheduleOptions")) {
+      scheduleOptions = new ScheduleOptions.fromJson(_json["scheduleOptions"]);
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -2877,6 +3161,9 @@ class TransferConfig {
     }
     if (schedule != null) {
       _json["schedule"] = schedule;
+    }
+    if (scheduleOptions != null) {
+      _json["scheduleOptions"] = (scheduleOptions).toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -2964,8 +3251,8 @@ class TransferRun {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> params;
 
-  /// For batch transfer runs, specifies the date and time that
-  /// data should be ingested.
+  /// For batch transfer runs, specifies the date and time of the data should be
+  /// ingested.
   core.String runTime;
 
   /// Output only. Describes the schedule of this transfer run if it was

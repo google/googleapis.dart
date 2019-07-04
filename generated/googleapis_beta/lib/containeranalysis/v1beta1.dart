@@ -325,13 +325,13 @@ class ProjectsNotesResourceApi {
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The filter expression.
-  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of notes to return in the list. Must be positive. Max
   /// allowed page
   /// size is 1000. If not specified, page size defaults to 20.
+  ///
+  /// [filter] - The filter expression.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -344,9 +344,9 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNotesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -358,14 +358,14 @@ class ProjectsNotesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -580,11 +580,11 @@ class ProjectsNotesOccurrencesResourceApi {
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
-  /// [pageSize] - Number of occurrences to return in the list.
-  ///
   /// [filter] - The filter expression.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [pageSize] - Number of occurrences to return in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -597,9 +597,9 @@ class ProjectsNotesOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNoteOccurrencesResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -611,14 +611,14 @@ class ProjectsNotesOccurrencesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1015,13 +1015,13 @@ class ProjectsOccurrencesResourceApi {
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
   /// [pageSize] - Number of occurrences to return in the list. Must be
   /// positive. Max allowed
   /// page size is 1000. If not specified, page size defaults to 20.
   ///
   /// [filter] - The filter expression.
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1034,9 +1034,9 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOccurrencesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1048,14 +1048,14 @@ class ProjectsOccurrencesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1311,11 +1311,11 @@ class ProjectsScanConfigsResourceApi {
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The filter expression.
-  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - The number of scan configs to return in the list.
+  ///
+  /// [filter] - The filter expression.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1328,9 +1328,9 @@ class ProjectsScanConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScanConfigsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1342,14 +1342,14 @@ class ProjectsScanConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1516,12 +1516,18 @@ class Artifact {
 /// verified) and intent (which authority was this attestation intended to sign
 /// for).
 class Attestation {
+  GenericSignedAttestation genericSignedAttestation;
+
   /// A PGP signed attestation.
   PgpSignedAttestation pgpSignedAttestation;
 
   Attestation();
 
   Attestation.fromJson(core.Map _json) {
+    if (_json.containsKey("genericSignedAttestation")) {
+      genericSignedAttestation = new GenericSignedAttestation.fromJson(
+          _json["genericSignedAttestation"]);
+    }
     if (_json.containsKey("pgpSignedAttestation")) {
       pgpSignedAttestation =
           new PgpSignedAttestation.fromJson(_json["pgpSignedAttestation"]);
@@ -1531,6 +1537,9 @@ class Attestation {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (genericSignedAttestation != null) {
+      _json["genericSignedAttestation"] = (genericSignedAttestation).toJson();
+    }
     if (pgpSignedAttestation != null) {
       _json["pgpSignedAttestation"] = (pgpSignedAttestation).toJson();
     }
@@ -1856,8 +1865,8 @@ class BatchCreateOccurrencesResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -1882,7 +1891,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -2173,6 +2182,156 @@ class BuildSignature {
     }
     if (signature != null) {
       _json["signature"] = signature;
+    }
+    return _json;
+  }
+}
+
+/// Common Vulnerability Scoring System version 3.
+/// For details, see https://www.first.org/cvss/specification-document
+class CVSSv3 {
+  ///
+  /// Possible string values are:
+  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
+  /// - "ATTACK_COMPLEXITY_LOW"
+  /// - "ATTACK_COMPLEXITY_HIGH"
+  core.String attackComplexity;
+
+  /// Base Metrics
+  /// Represents the intrinsic characteristics of a vulnerability that are
+  /// constant over time and across user environments.
+  /// Possible string values are:
+  /// - "ATTACK_VECTOR_UNSPECIFIED"
+  /// - "ATTACK_VECTOR_NETWORK"
+  /// - "ATTACK_VECTOR_ADJACENT"
+  /// - "ATTACK_VECTOR_LOCAL"
+  /// - "ATTACK_VECTOR_PHYSICAL"
+  core.String attackVector;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String availabilityImpact;
+
+  /// The base score is a function of the base metric scores.
+  core.double baseScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String confidentialityImpact;
+  core.double exploitabilityScore;
+  core.double impactScore;
+
+  ///
+  /// Possible string values are:
+  /// - "IMPACT_UNSPECIFIED"
+  /// - "IMPACT_HIGH"
+  /// - "IMPACT_LOW"
+  /// - "IMPACT_NONE"
+  core.String integrityImpact;
+
+  ///
+  /// Possible string values are:
+  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
+  /// - "PRIVILEGES_REQUIRED_NONE"
+  /// - "PRIVILEGES_REQUIRED_LOW"
+  /// - "PRIVILEGES_REQUIRED_HIGH"
+  core.String privilegesRequired;
+
+  ///
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED"
+  /// - "SCOPE_UNCHANGED"
+  /// - "SCOPE_CHANGED"
+  core.String scope;
+
+  ///
+  /// Possible string values are:
+  /// - "USER_INTERACTION_UNSPECIFIED"
+  /// - "USER_INTERACTION_NONE"
+  /// - "USER_INTERACTION_REQUIRED"
+  core.String userInteraction;
+
+  CVSSv3();
+
+  CVSSv3.fromJson(core.Map _json) {
+    if (_json.containsKey("attackComplexity")) {
+      attackComplexity = _json["attackComplexity"];
+    }
+    if (_json.containsKey("attackVector")) {
+      attackVector = _json["attackVector"];
+    }
+    if (_json.containsKey("availabilityImpact")) {
+      availabilityImpact = _json["availabilityImpact"];
+    }
+    if (_json.containsKey("baseScore")) {
+      baseScore = _json["baseScore"].toDouble();
+    }
+    if (_json.containsKey("confidentialityImpact")) {
+      confidentialityImpact = _json["confidentialityImpact"];
+    }
+    if (_json.containsKey("exploitabilityScore")) {
+      exploitabilityScore = _json["exploitabilityScore"].toDouble();
+    }
+    if (_json.containsKey("impactScore")) {
+      impactScore = _json["impactScore"].toDouble();
+    }
+    if (_json.containsKey("integrityImpact")) {
+      integrityImpact = _json["integrityImpact"];
+    }
+    if (_json.containsKey("privilegesRequired")) {
+      privilegesRequired = _json["privilegesRequired"];
+    }
+    if (_json.containsKey("scope")) {
+      scope = _json["scope"];
+    }
+    if (_json.containsKey("userInteraction")) {
+      userInteraction = _json["userInteraction"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attackComplexity != null) {
+      _json["attackComplexity"] = attackComplexity;
+    }
+    if (attackVector != null) {
+      _json["attackVector"] = attackVector;
+    }
+    if (availabilityImpact != null) {
+      _json["availabilityImpact"] = availabilityImpact;
+    }
+    if (baseScore != null) {
+      _json["baseScore"] = baseScore;
+    }
+    if (confidentialityImpact != null) {
+      _json["confidentialityImpact"] = confidentialityImpact;
+    }
+    if (exploitabilityScore != null) {
+      _json["exploitabilityScore"] = exploitabilityScore;
+    }
+    if (impactScore != null) {
+      _json["impactScore"] = impactScore;
+    }
+    if (integrityImpact != null) {
+      _json["integrityImpact"] = integrityImpact;
+    }
+    if (privilegesRequired != null) {
+      _json["privilegesRequired"] = privilegesRequired;
+    }
+    if (scope != null) {
+      _json["scope"] = scope;
+    }
+    if (userInteraction != null) {
+      _json["userInteraction"] = userInteraction;
     }
     return _json;
   }
@@ -2475,6 +2634,8 @@ class Detail {
   /// obsolete details.
   core.bool isObsolete;
 
+  /// Deprecated, do not use. Use fixed_location instead.
+  ///
   /// The max version of the package in which the vulnerability exists.
   Version maxAffectedVersion;
 
@@ -2914,7 +3075,7 @@ class Fingerprint {
   }
 }
 
-/// Per resource and severity counts of fixable and total vulnerabilites.
+/// Per resource and severity counts of fixable and total vulnerabilities.
 class FixableTotalByDigest {
   /// The number of fixable vulnerabilities associated with this resource.
   core.String fixableCount;
@@ -2967,6 +3128,79 @@ class FixableTotalByDigest {
     }
     if (totalCount != null) {
       _json["totalCount"] = totalCount;
+    }
+    return _json;
+  }
+}
+
+/// An attestation wrapper that uses the Grafeas `Signature` message.
+/// This attestation must define the `serialized_payload` that the `signatures`
+/// verify and any metadata necessary to interpret that plaintext.  The
+/// signatures should always be over the `serialized_payload` bytestring.
+class GenericSignedAttestation {
+  /// Type (for example schema) of the attestation payload that was signed.
+  /// The verifier must ensure that the provided type is one that the verifier
+  /// supports, and that the attestation payload is a valid instantiation of
+  /// that
+  /// type (for example by validating a JSON schema).
+  /// Possible string values are:
+  /// - "CONTENT_TYPE_UNSPECIFIED" : `ContentType` is not set.
+  /// - "SIMPLE_SIGNING_JSON" : Atomic format attestation signature. See
+  /// https://github.com/containers/image/blob/8a5d2f82a6e3263290c8e0276c3e0f64e77723e7/docs/atomic-signature.md
+  /// The payload extracted in `plaintext` is a JSON blob conforming to the
+  /// linked schema.
+  core.String contentType;
+
+  /// The serialized payload that is verified by one or more `signatures`.
+  /// The encoding and semantic meaning of this payload must match what is set
+  /// in
+  /// `content_type`.
+  core.String serializedPayload;
+  core.List<core.int> get serializedPayloadAsBytes {
+    return convert.base64.decode(serializedPayload);
+  }
+
+  set serializedPayloadAsBytes(core.List<core.int> _bytes) {
+    serializedPayload =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// One or more signatures over `serialized_payload`.  Verifier
+  /// implementations
+  /// should consider this attestation message verified if at least one
+  /// `signature` verifies `serialized_payload`.  See `Signature` in
+  /// common.proto
+  /// for more details on signature structure and verification.
+  core.List<Signature> signatures;
+
+  GenericSignedAttestation();
+
+  GenericSignedAttestation.fromJson(core.Map _json) {
+    if (_json.containsKey("contentType")) {
+      contentType = _json["contentType"];
+    }
+    if (_json.containsKey("serializedPayload")) {
+      serializedPayload = _json["serializedPayload"];
+    }
+    if (_json.containsKey("signatures")) {
+      signatures = (_json["signatures"] as core.List)
+          .map<Signature>((value) => new Signature.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentType != null) {
+      _json["contentType"] = contentType;
+    }
+    if (serializedPayload != null) {
+      _json["serializedPayload"] = serializedPayload;
+    }
+    if (signatures != null) {
+      _json["signatures"] =
+          signatures.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3245,6 +3479,18 @@ class GrafeasV1beta1VulnerabilityDetails {
   /// severity.
   core.double cvssScore;
 
+  /// The distro assigned severity for this vulnerability when it is
+  /// available, and note provider assigned severity when distro has not yet
+  /// assigned a severity for this vulnerability.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unknown.
+  /// - "MINIMAL" : Minimal severity.
+  /// - "LOW" : Low severity.
+  /// - "MEDIUM" : Medium severity.
+  /// - "HIGH" : High severity.
+  /// - "CRITICAL" : Critical severity.
+  core.String effectiveSeverity;
+
   /// Output only. A detailed description of this vulnerability.
   core.String longDescription;
 
@@ -3278,6 +3524,9 @@ class GrafeasV1beta1VulnerabilityDetails {
     if (_json.containsKey("cvssScore")) {
       cvssScore = _json["cvssScore"].toDouble();
     }
+    if (_json.containsKey("effectiveSeverity")) {
+      effectiveSeverity = _json["effectiveSeverity"];
+    }
     if (_json.containsKey("longDescription")) {
       longDescription = _json["longDescription"];
     }
@@ -3307,6 +3556,9 @@ class GrafeasV1beta1VulnerabilityDetails {
         new core.Map<core.String, core.Object>();
     if (cvssScore != null) {
       _json["cvssScore"] = cvssScore;
+    }
+    if (effectiveSeverity != null) {
+      _json["effectiveSeverity"] = effectiveSeverity;
     }
     if (longDescription != null) {
       _json["longDescription"] = longDescription;
@@ -3482,23 +3734,23 @@ class Layer {
   /// Possible string values are:
   /// - "DIRECTIVE_UNSPECIFIED" : Default value for unsupported/missing
   /// directive.
-  /// - "MAINTAINER" : https://docs.docker.com/reference/builder/#maintainer
-  /// - "RUN" : https://docs.docker.com/reference/builder/#run
-  /// - "CMD" : https://docs.docker.com/reference/builder/#cmd
-  /// - "LABEL" : https://docs.docker.com/reference/builder/#label
-  /// - "EXPOSE" : https://docs.docker.com/reference/builder/#expose
-  /// - "ENV" : https://docs.docker.com/reference/builder/#env
-  /// - "ADD" : https://docs.docker.com/reference/builder/#add
-  /// - "COPY" : https://docs.docker.com/reference/builder/#copy
-  /// - "ENTRYPOINT" : https://docs.docker.com/reference/builder/#entrypoint
-  /// - "VOLUME" : https://docs.docker.com/reference/builder/#volume
-  /// - "USER" : https://docs.docker.com/reference/builder/#user
-  /// - "WORKDIR" : https://docs.docker.com/reference/builder/#workdir
-  /// - "ARG" : https://docs.docker.com/reference/builder/#arg
-  /// - "ONBUILD" : https://docs.docker.com/reference/builder/#onbuild
-  /// - "STOPSIGNAL" : https://docs.docker.com/reference/builder/#stopsignal
-  /// - "HEALTHCHECK" : https://docs.docker.com/reference/builder/#healthcheck
-  /// - "SHELL" : https://docs.docker.com/reference/builder/#shell
+  /// - "MAINTAINER" : https://docs.docker.com/engine/reference/builder/
+  /// - "RUN" : https://docs.docker.com/engine/reference/builder/
+  /// - "CMD" : https://docs.docker.com/engine/reference/builder/
+  /// - "LABEL" : https://docs.docker.com/engine/reference/builder/
+  /// - "EXPOSE" : https://docs.docker.com/engine/reference/builder/
+  /// - "ENV" : https://docs.docker.com/engine/reference/builder/
+  /// - "ADD" : https://docs.docker.com/engine/reference/builder/
+  /// - "COPY" : https://docs.docker.com/engine/reference/builder/
+  /// - "ENTRYPOINT" : https://docs.docker.com/engine/reference/builder/
+  /// - "VOLUME" : https://docs.docker.com/engine/reference/builder/
+  /// - "USER" : https://docs.docker.com/engine/reference/builder/
+  /// - "WORKDIR" : https://docs.docker.com/engine/reference/builder/
+  /// - "ARG" : https://docs.docker.com/engine/reference/builder/
+  /// - "ONBUILD" : https://docs.docker.com/engine/reference/builder/
+  /// - "STOPSIGNAL" : https://docs.docker.com/engine/reference/builder/
+  /// - "HEALTHCHECK" : https://docs.docker.com/engine/reference/builder/
+  /// - "SHELL" : https://docs.docker.com/engine/reference/builder/
   core.String directive;
 
   Layer();
@@ -4102,6 +4354,7 @@ class PackageIssue {
   /// The location of the available fix for vulnerability.
   VulnerabilityLocation fixedLocation;
 
+  /// Deprecated, use Details.effective_severity instead
   /// The severity (e.g., distro assigned severity) for this vulnerability.
   core.String severityName;
 
@@ -4432,9 +4685,13 @@ class RepoId {
 
 /// An entity that can have metadata. For example, a Docker image.
 class Resource {
+  /// Deprecated, do not use. Use uri instead.
+  ///
   /// The hash of the resource content. For example, the Docker digest.
   Hash contentHash;
 
+  /// Deprecated, do not use. Use uri instead.
+  ///
   /// The name of the resource. For example, the name of a Docker image -
   /// "Debian".
   core.String name;
@@ -4576,6 +4833,91 @@ class SetIamPolicyRequest {
   }
 }
 
+/// Verifiers (e.g. Kritis implementations) MUST verify signatures
+/// with respect to the trust anchors defined in policy (e.g. a Kritis policy).
+/// Typically this means that the verifier has been configured with a map from
+/// `public_key_id` to public key material (and any required parameters, e.g.
+/// signing algorithm).
+///
+/// In particular, verification implementations MUST NOT treat the signature
+/// `public_key_id` as anything more than a key lookup hint. The `public_key_id`
+/// DOES NOT validate or authenticate a public key; it only provides a mechanism
+/// for quickly selecting a public key ALREADY CONFIGURED on the verifier
+/// through
+/// a trusted channel. Verification implementations MUST reject signatures in
+/// any
+/// of the following circumstances:
+///   * The `public_key_id` is not recognized by the verifier.
+///   * The public key that `public_key_id` refers to does not verify the
+///     signature with respect to the payload.
+///
+/// The `signature` contents SHOULD NOT be "attached" (where the payload is
+/// included with the serialized `signature` bytes). Verifiers MUST ignore any
+/// "attached" payload and only verify signatures with respect to explicitly
+/// provided payload (e.g. a `payload` field on the proto message that holds
+/// this Signature, or the canonical serialization of the proto message that
+/// holds this signature).
+class Signature {
+  /// The identifier for the public key that verifies this signature.
+  ///   * The `public_key_id` is required.
+  ///   * The `public_key_id` MUST be an RFC3986 conformant URI.
+  ///   * When possible, the `public_key_id` SHOULD be an immutable reference,
+  ///     such as a cryptographic digest.
+  ///
+  /// Examples of valid `public_key_id`s:
+  ///
+  /// OpenPGP V4 public key fingerprint:
+  ///   * "openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA"
+  /// See https://www.iana.org/assignments/uri-schemes/prov/openpgp4fpr for more
+  /// details on this scheme.
+  ///
+  /// RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER
+  /// serialization):
+  ///   * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+  /// *
+  /// "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5"
+  core.String publicKeyId;
+
+  /// The content of the signature, an opaque bytestring.
+  /// The payload that this signature verifies MUST be unambiguously provided
+  /// with the Signature during verification. A wrapper message might provide
+  /// the payload explicitly. Alternatively, a message might have a canonical
+  /// serialization that can always be unambiguously computed to derive the
+  /// payload.
+  core.String signature;
+  core.List<core.int> get signatureAsBytes {
+    return convert.base64.decode(signature);
+  }
+
+  set signatureAsBytes(core.List<core.int> _bytes) {
+    signature =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  Signature();
+
+  Signature.fromJson(core.Map _json) {
+    if (_json.containsKey("publicKeyId")) {
+      publicKeyId = _json["publicKeyId"];
+    }
+    if (_json.containsKey("signature")) {
+      signature = _json["signature"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (publicKeyId != null) {
+      _json["publicKeyId"] = publicKeyId;
+    }
+    if (signature != null) {
+      _json["signature"] = signature;
+    }
+    return _json;
+  }
+}
+
 /// Source describes the location of the source used for the build.
 class Source {
   /// If provided, some of the source code used for the build may be found in
@@ -4697,61 +5039,12 @@ class SourceContext {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -4913,6 +5206,9 @@ class Vulnerability {
   /// The CVSS score for this vulnerability.
   core.double cvssScore;
 
+  /// The full description of the CVSSv3.
+  CVSSv3 cvssV3;
+
   /// All information about the package to specifically identify this
   /// vulnerability. One entry per (version range and cpe_uri) the package
   /// vulnerability has manifested in.
@@ -4941,6 +5237,9 @@ class Vulnerability {
     if (_json.containsKey("cvssScore")) {
       cvssScore = _json["cvssScore"].toDouble();
     }
+    if (_json.containsKey("cvssV3")) {
+      cvssV3 = new CVSSv3.fromJson(_json["cvssV3"]);
+    }
     if (_json.containsKey("details")) {
       details = (_json["details"] as core.List)
           .map<Detail>((value) => new Detail.fromJson(value))
@@ -4961,6 +5260,9 @@ class Vulnerability {
         new core.Map<core.String, core.Object>();
     if (cvssScore != null) {
       _json["cvssScore"] = cvssScore;
+    }
+    if (cvssV3 != null) {
+      _json["cvssV3"] = (cvssV3).toJson();
     }
     if (details != null) {
       _json["details"] = details.map((value) => (value).toJson()).toList();

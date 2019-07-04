@@ -2134,7 +2134,7 @@ class ManagementFiltersResourceApi {
     return _response.then((data) => new Filter.fromJson(data));
   }
 
-  /// Returns a filters to which the user has access.
+  /// Returns filters to which the user has access.
   ///
   /// Request parameters:
   ///
@@ -13841,7 +13841,7 @@ class Webproperty {
   /// Set to true to reset the retention period of the user identifier with each
   /// new event from that user (thus setting the expiration date to current time
   /// plus retention period).
-  /// Set to false to delete data associated with the user identifer
+  /// Set to false to delete data associated with the user identifier
   /// automatically after the rentention period.
   /// This property cannot be set on insert.
   core.bool dataRetentionResetOnNewActivity;

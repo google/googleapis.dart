@@ -17,17 +17,15 @@ const core.String USER_AGENT = 'dart-api-client oauth2/v2';
 
 /// Obtains end-user authorization grants for use with other Google APIs.
 class Oauth2Api {
-  /// Know the list of people in your circles, your age range, and language
-  static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
-
-  /// Know who you are on Google
+  /// Associate you with your personal info on Google
   static const PlusMeScope = "https://www.googleapis.com/auth/plus.me";
 
   /// View your email address
   static const UserinfoEmailScope =
       "https://www.googleapis.com/auth/userinfo.email";
 
-  /// View your basic profile info
+  /// See your personal info, including any personal info you've made publicly
+  /// available
   static const UserinfoProfileScope =
       "https://www.googleapis.com/auth/userinfo.profile";
 

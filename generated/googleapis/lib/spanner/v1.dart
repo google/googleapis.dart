@@ -434,10 +434,6 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -463,6 +459,10 @@ class ProjectsInstancesResourceApi {
   /// next_page_token from a
   /// previous ListInstancesResponse.
   ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -474,9 +474,9 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -488,14 +488,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -562,7 +562,7 @@ class ProjectsInstancesResourceApi {
   /// changed
   /// after the instance is created. Values are of the form
   /// `projects/<project>/instances/a-z*[a-z0-9]`. The final
-  /// segment of the name must be between 6 and 30 characters in length.
+  /// segment of the name must be between 2 and 64 characters in length.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1409,11 +1409,11 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1426,9 +1426,9 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1440,14 +1440,14 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1659,7 +1659,10 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     return _response.then((data) => new Session.fromJson(data));
   }
 
-  /// Ends a session, releasing server resources associated with it.
+  /// Ends a session, releasing server resources associated with it. This will
+  /// asynchronously trigger cancellation of any operations that are running
+  /// with
+  /// this session.
   ///
   /// Request parameters:
   ///
@@ -1701,6 +1704,79 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Executes a batch of SQL DML statements. This method allows many statements
+  /// to be run with lower latency than submitting them sequentially with
+  /// ExecuteSql.
+  ///
+  /// Statements are executed in order, sequentially.
+  /// ExecuteBatchDmlResponse will contain a
+  /// ResultSet for each DML statement that has successfully executed. If a
+  /// statement fails, its error status will be returned as part of the
+  /// ExecuteBatchDmlResponse. Execution will
+  /// stop at the first failed statement; the remaining statements will not run.
+  ///
+  /// ExecuteBatchDml is expected to return an OK status with a response even if
+  /// there was an error while processing one of the DML statements. Clients
+  /// must
+  /// inspect response.status to determine if there were any errors while
+  /// processing the request.
+  ///
+  /// See more details in
+  /// ExecuteBatchDmlRequest and
+  /// ExecuteBatchDmlResponse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [session] - Required. The session in which the DML statements should be
+  /// performed.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteBatchDmlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteBatchDmlResponse> executeBatchDml(
+      ExecuteBatchDmlRequest request, core.String session,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (session == null) {
+      throw new core.ArgumentError("Parameter session is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$session') +
+        ':executeBatchDml';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ExecuteBatchDmlResponse.fromJson(data));
   }
 
   /// Executes an SQL statement, returning all results in a single reply. This
@@ -1879,6 +1955,10 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
   /// [pageSize] - Number of sessions to be returned in the response. If 0 or
   /// less, defaults
   /// to the server's maximum allowed page size.
@@ -1895,10 +1975,6 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   ///   * `labels.env:dev` --> The session has the label "env" and the value of
   ///                        the label contains the string "dev".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a previous
-  /// ListSessionsResponse.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1910,9 +1986,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1924,14 +2000,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2428,11 +2504,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2445,9 +2521,9 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2459,14 +2535,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2509,8 +2585,8 @@ class BeginTransactionRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -2535,7 +2611,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -2836,7 +2912,7 @@ class CreateInstanceRequest {
   Instance instance;
 
   /// Required. The ID of the instance to create.  Valid identifiers are of the
-  /// form `a-z*[a-z0-9]` and must be between 6 and 30 characters in
+  /// form `a-z*[a-z0-9]` and must be between 2 and 64 characters in
   /// length.
   core.String instanceId;
 
@@ -2980,6 +3056,124 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// The request for ExecuteBatchDml
+class ExecuteBatchDmlRequest {
+  /// A per-transaction sequence number used to identify this request. This is
+  /// used in the same space as the seqno in
+  /// ExecuteSqlRequest. See more details
+  /// in ExecuteSqlRequest.
+  core.String seqno;
+
+  /// The list of statements to execute in this batch. Statements are executed
+  /// serially, such that the effects of statement i are visible to statement
+  /// i+1. Each statement must be a DML statement. Execution will stop at the
+  /// first failed statement; the remaining statements will not run.
+  ///
+  /// REQUIRES: `statements_size()` > 0.
+  core.List<Statement> statements;
+
+  /// The transaction to use. A ReadWrite transaction is required. Single-use
+  /// transactions are not supported (to avoid replay).  The caller must either
+  /// supply an existing transaction ID or begin a new transaction.
+  TransactionSelector transaction;
+
+  ExecuteBatchDmlRequest();
+
+  ExecuteBatchDmlRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("seqno")) {
+      seqno = _json["seqno"];
+    }
+    if (_json.containsKey("statements")) {
+      statements = (_json["statements"] as core.List)
+          .map<Statement>((value) => new Statement.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("transaction")) {
+      transaction = new TransactionSelector.fromJson(_json["transaction"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (seqno != null) {
+      _json["seqno"] = seqno;
+    }
+    if (statements != null) {
+      _json["statements"] =
+          statements.map((value) => (value).toJson()).toList();
+    }
+    if (transaction != null) {
+      _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response for ExecuteBatchDml. Contains a list
+/// of ResultSet, one for each DML statement that has successfully executed.
+/// If a statement fails, the error is returned as part of the response payload.
+/// Clients can determine whether all DML statements have run successfully, or
+/// if
+/// a statement failed, using one of the following approaches:
+///
+///   1. Check if `'status'` field is `OkStatus`.
+///   2. Check if `result_sets_size()` equals the number of statements in
+///      ExecuteBatchDmlRequest.
+///
+/// Example 1: A request with 5 DML statements, all executed successfully.
+///
+/// Result: A response with 5 ResultSets, one for each statement in the same
+/// order, and an `OkStatus`.
+///
+/// Example 2: A request with 5 DML statements. The 3rd statement has a syntax
+/// error.
+///
+/// Result: A response with 2 ResultSets, for the first 2 statements that
+/// run successfully, and a syntax error (`INVALID_ARGUMENT`) status. From
+/// `result_set_size()` client can determine that the 3rd statement has failed.
+class ExecuteBatchDmlResponse {
+  /// ResultSets, one for each statement in the request that ran successfully,
+  /// in
+  /// the same order as the statements in the request. Each ResultSet will
+  /// not contain any rows. The ResultSetStats in each ResultSet will
+  /// contain the number of rows modified by the statement.
+  ///
+  /// Only the first ResultSet in the response contains a valid
+  /// ResultSetMetadata.
+  core.List<ResultSet> resultSets;
+
+  /// If all DML statements are executed successfully, status will be OK.
+  /// Otherwise, the error status of the first failed statement.
+  Status status;
+
+  ExecuteBatchDmlResponse();
+
+  ExecuteBatchDmlResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("resultSets")) {
+      resultSets = (_json["resultSets"] as core.List)
+          .map<ResultSet>((value) => new ResultSet.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resultSets != null) {
+      _json["resultSets"] =
+          resultSets.map((value) => (value).toJson()).toList();
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
     return _json;
   }
 }
@@ -3329,7 +3523,7 @@ class Instance {
   /// Required. A unique identifier for the instance, which cannot be changed
   /// after the instance is created. Values are of the form
   /// `projects/<project>/instances/a-z*[a-z0-9]`. The final
-  /// segment of the name must be between 6 and 30 characters in length.
+  /// segment of the name must be between 2 and 64 characters in length.
   core.String name;
 
   /// Required. The number of nodes allocated to this instance. This may be zero
@@ -3413,6 +3607,10 @@ class InstanceConfig {
   /// `projects/<project>/instanceConfigs/a-z*`
   core.String name;
 
+  /// The geographic placement of nodes in this instance configuration and their
+  /// replication properties.
+  core.List<ReplicaInfo> replicas;
+
   InstanceConfig();
 
   InstanceConfig.fromJson(core.Map _json) {
@@ -3421,6 +3619,11 @@ class InstanceConfig {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("replicas")) {
+      replicas = (_json["replicas"] as core.List)
+          .map<ReplicaInfo>((value) => new ReplicaInfo.fromJson(value))
+          .toList();
     }
   }
 
@@ -3433,6 +3636,9 @@ class InstanceConfig {
     if (name != null) {
       _json["name"] = name;
     }
+    if (replicas != null) {
+      _json["replicas"] = replicas.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -3444,7 +3650,8 @@ class InstanceConfig {
 ///
 /// Keys are represented by lists, where the ith value in the list
 /// corresponds to the ith component of the table or index primary key.
-/// Individual values are encoded as described here.
+/// Individual values are encoded as described
+/// here.
 ///
 /// For example, consider the following table definition:
 ///
@@ -3921,7 +4128,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -4945,6 +5152,74 @@ class ReadWrite {
   }
 }
 
+class ReplicaInfo {
+  /// If true, this location is designated as the default leader location where
+  /// leader replicas are placed. See the [region types
+  /// documentation](https://cloud.google.com/spanner/docs/instances#region_types)
+  /// for more details.
+  core.bool defaultLeaderLocation;
+
+  /// The location of the serving resources, e.g. "us-central1".
+  core.String location;
+
+  /// The type of replica.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Not specified.
+  /// - "READ_WRITE" : Read-write replicas support both reads and writes. These
+  /// replicas:
+  ///
+  /// * Maintain a full copy of your data.
+  /// * Serve reads.
+  /// * Can vote whether to commit a write.
+  /// * Participate in leadership election.
+  /// * Are eligible to become a leader.
+  /// - "READ_ONLY" : Read-only replicas only support reads (not writes).
+  /// Read-only replicas:
+  ///
+  /// * Maintain a full copy of your data.
+  /// * Serve reads.
+  /// * Do not participate in voting to commit writes.
+  /// * Are not eligible to become a leader.
+  /// - "WITNESS" : Witness replicas don't support reads but do participate in
+  /// voting to
+  /// commit writes. Witness replicas:
+  ///
+  /// * Do not maintain a full copy of data.
+  /// * Do not serve reads.
+  /// * Vote whether to commit writes.
+  /// * Participate in leader election but are not eligible to become leader.
+  core.String type;
+
+  ReplicaInfo();
+
+  ReplicaInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("defaultLeaderLocation")) {
+      defaultLeaderLocation = _json["defaultLeaderLocation"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (defaultLeaderLocation != null) {
+      _json["defaultLeaderLocation"] = defaultLeaderLocation;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// Results from Read or
 /// ExecuteSql.
 class ResultSet {
@@ -5264,62 +5539,81 @@ class ShortRepresentation {
   }
 }
 
+/// A single DML statement.
+class Statement {
+  /// It is not always possible for Cloud Spanner to infer the right SQL type
+  /// from a JSON value.  For example, values of type `BYTES` and values
+  /// of type `STRING` both appear in params as JSON strings.
+  ///
+  /// In these cases, `param_types` can be used to specify the exact
+  /// SQL type for some or all of the SQL statement parameters. See the
+  /// definition of Type for more information
+  /// about SQL types.
+  core.Map<core.String, Type> paramTypes;
+
+  /// The DML string can contain parameter placeholders. A parameter
+  /// placeholder consists of `'@'` followed by the parameter
+  /// name. Parameter names consist of any combination of letters,
+  /// numbers, and underscores.
+  ///
+  /// Parameters can appear anywhere that a literal value is expected.  The
+  /// same parameter name can be used more than once, for example:
+  ///   `"WHERE id > @msg_id AND id < @msg_id + 100"`
+  ///
+  /// It is an error to execute an SQL statement with unbound parameters.
+  ///
+  /// Parameter values are specified using `params`, which is a JSON
+  /// object whose keys are parameter names, and whose values are the
+  /// corresponding parameter values.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> params;
+
+  /// Required. The DML string.
+  core.String sql;
+
+  Statement();
+
+  Statement.fromJson(core.Map _json) {
+    if (_json.containsKey("paramTypes")) {
+      paramTypes = commons.mapMap<core.Map, Type>(
+          _json["paramTypes"].cast<core.String, core.Map>(),
+          (core.Map item) => new Type.fromJson(item));
+    }
+    if (_json.containsKey("params")) {
+      params = (_json["params"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("sql")) {
+      sql = _json["sql"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (paramTypes != null) {
+      _json["paramTypes"] =
+          commons.mapMap<Type, core.Map<core.String, core.Object>>(
+              paramTypes, (Type item) => (item).toJson());
+    }
+    if (params != null) {
+      _json["params"] = params;
+    }
+    if (sql != null) {
+      _json["sql"] = sql;
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -5917,7 +6211,8 @@ class Type {
   /// 4648,
   /// section 4.
   /// - "ARRAY" : Encoded as `list`, where the list elements are represented
-  /// according to array_element_type.
+  /// according to
+  /// array_element_type.
   /// - "STRUCT" : Encoded as `list`, where list element `i` is represented
   /// according
   /// to [struct_type.fields[i]][google.spanner.v1.StructType.fields].

@@ -184,6 +184,10 @@ class CompaniesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - Optional.
+  ///
+  /// The starting indicator from which to return results.
+  ///
   /// [pageSize] - Optional.
   ///
   /// The maximum number of companies to be returned, at most 100.
@@ -198,10 +202,6 @@ class CompaniesResourceApi {
   /// If true, at most page_size of companies are fetched, among which
   /// only those with open jobs are returned.
   ///
-  /// [pageToken] - Optional.
-  ///
-  /// The starting indicator from which to return results.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -213,9 +213,9 @@ class CompaniesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompaniesResponse> list(
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.bool mustHaveOpenJobs,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -224,14 +224,14 @@ class CompaniesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (mustHaveOpenJobs != null) {
       _queryParams["mustHaveOpenJobs"] = ["${mustHaveOpenJobs}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -347,6 +347,13 @@ class CompaniesJobsResourceApi {
   /// such as, "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
   /// Value must have pattern "^companies/[^/]+$".
   ///
+  /// [jobRequisitionId] - Optional.
+  ///
+  /// The requisition ID, also known as posting ID, assigned by the company
+  /// to the job.
+  ///
+  /// The maximum number of allowable characters is 225.
+  ///
   /// [includeJobsCount] - Deprecated. Please DO NOT use this field except for
   /// small companies.
   /// Suggest counting jobs page by page instead.
@@ -380,13 +387,6 @@ class CompaniesJobsResourceApi {
   ///
   /// Default is 100 if empty or a number < 1 is specified.
   ///
-  /// [jobRequisitionId] - Optional.
-  ///
-  /// The requisition ID, also known as posting ID, assigned by the company
-  /// to the job.
-  ///
-  /// The maximum number of allowable characters is 225.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -398,11 +398,11 @@ class CompaniesJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCompanyJobsResponse> list(core.String companyName,
-      {core.bool includeJobsCount,
+      {core.String jobRequisitionId,
+      core.bool includeJobsCount,
       core.String pageToken,
       core.bool idsOnly,
       core.int pageSize,
-      core.String jobRequisitionId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -413,6 +413,9 @@ class CompaniesJobsResourceApi {
 
     if (companyName == null) {
       throw new core.ArgumentError("Parameter companyName is required.");
+    }
+    if (jobRequisitionId != null) {
+      _queryParams["jobRequisitionId"] = [jobRequisitionId];
     }
     if (includeJobsCount != null) {
       _queryParams["includeJobsCount"] = ["${includeJobsCount}"];
@@ -425,9 +428,6 @@ class CompaniesJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (jobRequisitionId != null) {
-      _queryParams["jobRequisitionId"] = [jobRequisitionId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -752,6 +752,22 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [filter] - Required.
+  ///
+  /// The filter string specifies the jobs to be enumerated.
+  ///
+  /// Supported operator: =, AND
+  ///
+  /// The fields eligible for filtering are:
+  ///
+  /// * `companyName` (Required)
+  /// * `requisitionId` (Optional)
+  ///
+  /// Sample Query:
+  ///
+  /// * companyName = "companies/123"
+  /// * companyName = "companies/123" AND requisitionId = "req-1"
+  ///
   /// [pageToken] - Optional.
   ///
   /// The starting point of a query result.
@@ -774,22 +790,6 @@ class JobsResourceApi {
   ///
   /// Defaults to false.
   ///
-  /// [filter] - Required.
-  ///
-  /// The filter string specifies the jobs to be enumerated.
-  ///
-  /// Supported operator: =, AND
-  ///
-  /// The fields eligible for filtering are:
-  ///
-  /// * `companyName` (Required)
-  /// * `requisitionId` (Optional)
-  ///
-  /// Sample Query:
-  ///
-  /// * companyName = "companies/123"
-  /// * companyName = "companies/123" AND requisitionId = "req-1"
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -801,10 +801,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
       core.bool idsOnly,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -813,6 +813,9 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -821,9 +824,6 @@ class JobsResourceApi {
     }
     if (idsOnly != null) {
       _queryParams["idsOnly"] = ["${idsOnly}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1006,15 +1006,6 @@ class V2ResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Required.
-  ///
-  /// Completion result count.
-  /// The maximum allowed page size is 10.
-  ///
-  /// [query] - Required.
-  ///
-  /// The query used to generate suggestions.
-  ///
   /// [languageCode] - Required.
   ///
   /// The language of the query. This is
@@ -1054,6 +1045,15 @@ class V2ResourceApi {
   /// - "TENANT" : A TENANT.
   /// - "PUBLIC" : A PUBLIC.
   ///
+  /// [pageSize] - Required.
+  ///
+  /// Completion result count.
+  /// The maximum allowed page size is 10.
+  ///
+  /// [query] - Required.
+  ///
+  /// The query used to generate suggestions.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1065,12 +1065,12 @@ class V2ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(
-      {core.int pageSize,
-      core.String query,
-      core.String languageCode,
+      {core.String languageCode,
       core.String type,
       core.String companyName,
       core.String scope,
+      core.int pageSize,
+      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1079,12 +1079,6 @@ class V2ResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
     }
@@ -1096,6 +1090,12 @@ class V2ResourceApi {
     }
     if (scope != null) {
       _queryParams["scope"] = [scope];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1763,7 +1763,7 @@ class CompensationEntry {
   ///
   /// Frequency of the specified amount.
   ///
-  /// Default is CompensationUnit.OTHER_COMPENSATION_UNIT.
+  /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMPENSATION_UNIT_UNSPECIFIED" : Default value. Equivalent to
   /// OTHER_COMPENSATION_UNIT.
@@ -2685,7 +2685,8 @@ class DeviceInfo {
   /// - "ANDROID" : An Android device native application.
   /// - "IOS" : An iOS device native application.
   /// - "BOT" : A bot, as opposed to a device operated by human beings, such as
-  /// a web crawler.
+  /// a web
+  /// crawler.
   /// - "OTHER" : Other devices types.
   core.String deviceType;
 
@@ -3021,7 +3022,7 @@ class ExtendedCompensationInfoCompensationEntry {
   ///
   /// Frequency of the specified amount.
   ///
-  /// Default is CompensationUnit.OTHER_COMPENSATION_UNIT.
+  /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   /// Possible string values are:
   /// - "EXTENDED_COMPENSATION_UNIT_UNSPECIFIED" : Default value. Equivalent to
   /// OTHER_COMPENSATION_UNIT.
@@ -3344,7 +3345,8 @@ class HistogramFacets {
   /// Optional.
   ///
   /// Specifies the custom attributes histogram requests.
-  /// Duplicate values of CustomAttributeHistogramRequest.key are not allowed.
+  /// Duplicate values of CustomAttributeHistogramRequest.key are not
+  /// allowed.
   core.List<CustomAttributeHistogramRequest> customAttributeHistogramFacets;
 
   /// Optional. Specifies the simple type of histogram facets, for example,
@@ -3713,9 +3715,8 @@ class Job {
   /// ListJobs APIs, but it can be retrieved with the GetJob API or
   /// updated with the UpdateJob API. An expired job can be updated and
   /// opened again by using a future expiration timestamp. Updating an expired
-  /// job fails if there is another
-  /// existing open job with same requisition_id, company_name and
-  /// language_code.
+  /// job fails if there is another existing open job with same
+  /// requisition_id, company_name and language_code.
   ///
   /// The expired jobs are retained in our system for 90 days. However, the
   /// overall expired job count cannot exceed 3 times the maximum of open jobs
@@ -3733,10 +3734,9 @@ class Job {
   /// time not provided.
   ///
   /// If this value is not provided at the time of job creation or is invalid,
-  /// the job posting
-  /// expires after 30 days from the job's creation time. For example, if the
-  /// job was created on 2017/01/01 13:00AM UTC with an unspecified expiration
-  /// date, the job expires after 2017/01/31 13:00AM UTC.
+  /// the job posting expires after 30 days from the job's creation time. For
+  /// example, if the job was created on 2017/01/01 13:00AM UTC with an
+  /// unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC.
   ///
   /// If this value is not provided but expiry_date is, expiry_date is
   /// used.
@@ -4430,9 +4430,8 @@ class JobFilters {
   ///
   ///
   /// Language codes should be in BCP-47 format, for example, "en-US" or
-  /// "sr-Latn".
-  /// For more information, see
-  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+  /// "sr-Latn". For more information, see [Tags for Identifying
+  /// Languages](https://tools.ietf.org/html/bcp47).
   ///
   /// At most 10 language code filters are allowed.
   core.List<core.String> languageCodes;
@@ -5296,8 +5295,7 @@ class MatchingJob {
 
   /// Contains snippets of text from the Job.job_title field most
   /// closely matching a search query's keywords, if available. The matching
-  /// query
-  /// keywords are enclosed in HTML bold tags.
+  /// query keywords are enclosed in HTML bold tags.
   core.String jobTitleSnippet;
 
   /// Contains snippets of text from the Job.description and similar
@@ -5899,8 +5897,8 @@ class SearchJobsRequest {
   /// Possible string values are:
   /// - "JOB_VIEW_UNSPECIFIED" : Default value.
   /// - "SMALL" : A small view of the job, with the following attributes in the
-  /// search results:
-  /// Job.name, Job.requisition_id, Job.job_title,
+  /// search
+  /// results: Job.name, Job.requisition_id, Job.job_title,
   /// Job.company_name, Job.job_locations, Job.description,
   /// Job.visibility.
   /// Note: Job.description is deprecated. It is scheduled to be removed
@@ -5942,8 +5940,8 @@ class SearchJobsRequest {
   /// Optional.
   ///
   /// An integer that specifies the current offset (that is, starting result
-  /// location, amongst the jobs deemed by the API as relevant) in
-  /// search results. This field is only considered if page_token is unset.
+  /// location, amongst the jobs deemed by the API as relevant) in search
+  /// results. This field is only considered if page_token is unset.
   ///
   /// For example, 0 means to  return results starting from the first matching
   /// job, and 10 means to return from the 11th job. This can be used for
@@ -6168,8 +6166,8 @@ class SearchJobsResponse {
   /// Possible string values are:
   /// - "JOB_VIEW_UNSPECIFIED" : Default value.
   /// - "SMALL" : A small view of the job, with the following attributes in the
-  /// search results:
-  /// Job.name, Job.requisition_id, Job.job_title,
+  /// search
+  /// results: Job.name, Job.requisition_id, Job.job_title,
   /// Job.company_name, Job.job_locations, Job.description,
   /// Job.visibility.
   /// Note: Job.description is deprecated. It is scheduled to be removed

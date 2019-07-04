@@ -58,7 +58,9 @@ class BigqueryApi {
 
   DatasetsResourceApi get datasets => new DatasetsResourceApi(_requester);
   JobsResourceApi get jobs => new JobsResourceApi(_requester);
+  ModelsResourceApi get models => new ModelsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  RoutinesResourceApi get routines => new RoutinesResourceApi(_requester);
   TabledataResourceApi get tabledata => new TabledataResourceApi(_requester);
   TablesResourceApi get tables => new TablesResourceApi(_requester);
 
@@ -241,6 +243,11 @@ class DatasetsResourceApi {
   ///
   /// [projectId] - Project ID of the datasets to be listed
   ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
+  ///
+  /// [maxResults] - The maximum number of results to return
+  ///
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
@@ -248,11 +255,6 @@ class DatasetsResourceApi {
   /// ANDed together by connecting with a space. Example:
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
-  ///
-  /// [maxResults] - The maximum number of results to return
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -265,10 +267,10 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatasetList> list(core.String projectId,
-      {core.bool all,
-      core.String filter,
+      {core.String pageToken,
       core.int maxResults,
-      core.String pageToken,
+      core.bool all,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -280,17 +282,17 @@ class DatasetsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
     if (all != null) {
       _queryParams["all"] = ["${all}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -563,20 +565,20 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the query job
   ///
+  /// [startIndex] - Zero-based index of the starting row
+  ///
   /// [location] - The geographic location where the job should run. Required
   /// except for US and EU. See details at
   /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
   ///
-  /// [maxResults] - Maximum number of results to read
-  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
-  ///
-  /// [startIndex] - Zero-based index of the starting row
   ///
   /// [timeoutMs] - How long to wait for the query to complete, in milliseconds,
   /// before returning. Default is 10 seconds. If the timeout passes before the
   /// job completes, the 'jobComplete' field in the response will be false
+  ///
+  /// [maxResults] - Maximum number of results to read
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -590,11 +592,11 @@ class JobsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetQueryResultsResponse> getQueryResults(
       core.String projectId, core.String jobId,
-      {core.String location,
-      core.int maxResults,
+      {core.String startIndex,
+      core.String location,
       core.String pageToken,
-      core.String startIndex,
       core.int timeoutMs,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -609,20 +611,20 @@ class JobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (startIndex != null) {
+      _queryParams["startIndex"] = [startIndex];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (startIndex != null) {
-      _queryParams["startIndex"] = [startIndex];
-    }
     if (timeoutMs != null) {
       _queryParams["timeoutMs"] = ["${timeoutMs}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -722,28 +724,28 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the jobs to list
   ///
-  /// [allUsers] - Whether to display jobs owned by all users in the project.
-  /// Default false
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [maxCreationTime] - Max value for job creation time, in milliseconds since
   /// the POSIX epoch. If set, only jobs created before or at this timestamp are
   /// returned
   ///
-  /// [maxResults] - Maximum number of results to return
-  ///
-  /// [minCreationTime] - Min value for job creation time, in milliseconds since
-  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
-  /// returned
-  ///
-  /// [pageToken] - Page token, returned by a previous call, to request the next
-  /// page of results
+  /// [stateFilter] - Filter for job state
   ///
   /// [projection] - Restrict information returned to a set of selected fields
   /// Possible string values are:
   /// - "full" : Includes all job data
   /// - "minimal" : Does not include the job configuration
   ///
-  /// [stateFilter] - Filter for job state
+  /// [minCreationTime] - Min value for job creation time, in milliseconds since
+  /// the POSIX epoch. If set, only jobs created after or at this timestamp are
+  /// returned
+  ///
+  /// [allUsers] - Whether to display jobs owned by all users in the project.
+  /// Default false
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -756,13 +758,13 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobList> list(core.String projectId,
-      {core.bool allUsers,
+      {core.int maxResults,
       core.String maxCreationTime,
-      core.int maxResults,
-      core.String minCreationTime,
-      core.String pageToken,
-      core.String projection,
       core.List<core.String> stateFilter,
+      core.String projection,
+      core.String minCreationTime,
+      core.bool allUsers,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -774,26 +776,26 @@ class JobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (allUsers != null) {
-      _queryParams["allUsers"] = ["${allUsers}"];
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (maxCreationTime != null) {
       _queryParams["maxCreationTime"] = [maxCreationTime];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (minCreationTime != null) {
-      _queryParams["minCreationTime"] = [minCreationTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (stateFilter != null) {
+      _queryParams["stateFilter"] = stateFilter;
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
-    if (stateFilter != null) {
-      _queryParams["stateFilter"] = stateFilter;
+    if (minCreationTime != null) {
+      _queryParams["minCreationTime"] = [minCreationTime];
+    }
+    if (allUsers != null) {
+      _queryParams["allUsers"] = ["${allUsers}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -861,6 +863,273 @@ class JobsResourceApi {
   }
 }
 
+class ModelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ModelsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the model specified by modelId from the dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the model to delete.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the model to delete.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [modelId] - Model ID of the model to delete.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+      core.String projectId, core.String datasetId, core.String modelId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (modelId == null) {
+      throw new core.ArgumentError("Parameter modelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/models/' +
+        commons.Escaper.ecapeVariableReserved('$modelId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets the specified model resource by model ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the requested model.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the requested model.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [modelId] - Model ID of the requested model.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Model].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Model> get(
+      core.String projectId, core.String datasetId, core.String modelId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (modelId == null) {
+      throw new core.ArgumentError("Parameter modelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/models/' +
+        commons.Escaper.ecapeVariableReserved('$modelId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Model.fromJson(data));
+  }
+
+  /// Lists all models in the specified dataset. Requires the READER dataset
+  /// role.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the models to list.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the models to list.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [pageToken] - Page token, returned by a previous call to request the next
+  /// page of
+  /// results
+  ///
+  /// [maxResults] - The maximum number of results to return in a single
+  /// response page.
+  /// Leverage the page tokens to iterate through the entire collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListModelsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListModelsResponse> list(
+      core.String projectId, core.String datasetId,
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/models';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListModelsResponse.fromJson(data));
+  }
+
+  /// Patch specific fields in the specified model.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the model to patch.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the model to patch.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [modelId] - Model ID of the model to patch.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Model].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Model> patch(Model request, core.String projectId,
+      core.String datasetId, core.String modelId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (modelId == null) {
+      throw new core.ArgumentError("Parameter modelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/models/' +
+        commons.Escaper.ecapeVariableReserved('$modelId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Model.fromJson(data));
+  }
+}
+
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -918,10 +1187,10 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxResults] - Maximum number of results to return
-  ///
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
+  ///
+  /// [maxResults] - Maximum number of results to return
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -934,7 +1203,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectList> list(
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -942,11 +1211,11 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -961,6 +1230,341 @@ class ProjectsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ProjectList.fromJson(data));
+  }
+}
+
+class RoutinesResourceApi {
+  final commons.ApiRequester _requester;
+
+  RoutinesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the routine specified by routineId from the dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the routine to delete
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the routine to delete
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [routineId] - Routine ID of the routine to delete
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+      core.String projectId, core.String datasetId, core.String routineId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (routineId == null) {
+      throw new core.ArgumentError("Parameter routineId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/routines/' +
+        commons.Escaper.ecapeVariableReserved('$routineId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets the specified routine resource by routine ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the requested routine
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the requested routine
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [routineId] - Routine ID of the requested routine
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [fieldMask] - If set, only the Routine fields in the field mask are
+  /// returned in the
+  /// response. If unset, all Routine fields are returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Routine].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Routine> get(
+      core.String projectId, core.String datasetId, core.String routineId,
+      {core.String fieldMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (routineId == null) {
+      throw new core.ArgumentError("Parameter routineId is required.");
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/routines/' +
+        commons.Escaper.ecapeVariableReserved('$routineId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Routine.fromJson(data));
+  }
+
+  /// Creates a new routine in the dataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the new routine
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the new routine
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Routine].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Routine> insert(
+      Routine request, core.String projectId, core.String datasetId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/routines';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Routine.fromJson(data));
+  }
+
+  /// Lists all routines in the specified dataset. Requires the READER dataset
+  /// role.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the routines to list
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the routines to list
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of
+  /// results
+  ///
+  /// [maxResults] - The maximum number of results to return in a single
+  /// response page.
+  /// Leverage the page tokens to iterate through the entire collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRoutinesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRoutinesResponse> list(
+      core.String projectId, core.String datasetId,
+      {core.String pageToken, core.int maxResults, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/routines';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListRoutinesResponse.fromJson(data));
+  }
+
+  /// Updates information in an existing routine. The update method replaces the
+  /// entire Routine resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID of the routine to update
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [datasetId] - Dataset ID of the routine to update
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [routineId] - Routine ID of the routine to update
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Routine].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Routine> update(Routine request, core.String projectId,
+      core.String datasetId, core.String routineId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (datasetId == null) {
+      throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if (routineId == null) {
+      throw new core.ArgumentError("Parameter routineId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/routines/' +
+        commons.Escaper.ecapeVariableReserved('$routineId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Routine.fromJson(data));
   }
 }
 
@@ -1052,13 +1656,13 @@ class TabledataResourceApi {
   ///
   /// [maxResults] - Maximum number of results to return
   ///
-  /// [pageToken] - Page token, returned by a previous call, identifying the
-  /// result set
-  ///
   /// [selectedFields] - List of fields to return (comma-separated). If
   /// unspecified, all fields are returned
   ///
   /// [startIndex] - Zero-based index of the starting row to read
+  ///
+  /// [pageToken] - Page token, returned by a previous call, identifying the
+  /// result set
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1073,9 +1677,9 @@ class TabledataResourceApi {
   async.Future<TableDataList> list(
       core.String projectId, core.String datasetId, core.String tableId,
       {core.int maxResults,
-      core.String pageToken,
       core.String selectedFields,
       core.String startIndex,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1096,14 +1700,14 @@ class TabledataResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (selectedFields != null) {
       _queryParams["selectedFields"] = [selectedFields];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1515,6 +2119,162 @@ class TablesResourceApi {
   }
 }
 
+/// Aggregate metrics for classification/classifier models. For multi-class
+/// models, the metrics are either macro-averaged or micro-averaged. When
+/// macro-averaged, the metrics are calculated for each label and then an
+/// unweighted average is taken of those values. When micro-averaged, the
+/// metric is calculated globally by counting the total number of correctly
+/// predicted rows.
+class AggregateClassificationMetrics {
+  /// Accuracy is the fraction of predictions given the correct label. For
+  /// multiclass this is a micro-averaged metric.
+  core.double accuracy;
+
+  /// The F1 score is an average of recall and precision. For multiclass
+  /// this is a macro-averaged metric.
+  core.double f1Score;
+
+  /// Logarithmic Loss. For multiclass this is a macro-averaged metric.
+  core.double logLoss;
+
+  /// Precision is the fraction of actual positive predictions that had
+  /// positive actual labels. For multiclass this is a macro-averaged
+  /// metric treating each class as a binary classifier.
+  core.double precision;
+
+  /// Recall is the fraction of actual positive labels that were given a
+  /// positive prediction. For multiclass this is a macro-averaged metric.
+  core.double recall;
+
+  /// Area Under a ROC Curve. For multiclass this is a macro-averaged
+  /// metric.
+  core.double rocAuc;
+
+  /// Threshold at which the metrics are computed. For binary
+  /// classification models this is the positive class threshold.
+  /// For multi-class classfication models this is the confidence
+  /// threshold.
+  core.double threshold;
+
+  AggregateClassificationMetrics();
+
+  AggregateClassificationMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("accuracy")) {
+      accuracy = _json["accuracy"].toDouble();
+    }
+    if (_json.containsKey("f1Score")) {
+      f1Score = _json["f1Score"].toDouble();
+    }
+    if (_json.containsKey("logLoss")) {
+      logLoss = _json["logLoss"].toDouble();
+    }
+    if (_json.containsKey("precision")) {
+      precision = _json["precision"].toDouble();
+    }
+    if (_json.containsKey("recall")) {
+      recall = _json["recall"].toDouble();
+    }
+    if (_json.containsKey("rocAuc")) {
+      rocAuc = _json["rocAuc"].toDouble();
+    }
+    if (_json.containsKey("threshold")) {
+      threshold = _json["threshold"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accuracy != null) {
+      _json["accuracy"] = accuracy;
+    }
+    if (f1Score != null) {
+      _json["f1Score"] = f1Score;
+    }
+    if (logLoss != null) {
+      _json["logLoss"] = logLoss;
+    }
+    if (precision != null) {
+      _json["precision"] = precision;
+    }
+    if (recall != null) {
+      _json["recall"] = recall;
+    }
+    if (rocAuc != null) {
+      _json["rocAuc"] = rocAuc;
+    }
+    if (threshold != null) {
+      _json["threshold"] = threshold;
+    }
+    return _json;
+  }
+}
+
+/// Input/output argument of a function or a stored procedure.
+class Argument {
+  /// Optional. Defaults to FIXED_TYPE.
+  /// Possible string values are:
+  /// - "ARGUMENT_KIND_UNSPECIFIED"
+  /// - "FIXED_TYPE" : The argument is a variable with fully specified type,
+  /// which can be a
+  /// struct or an array, but not a table.
+  /// - "ANY_TYPE" : The argument is any type, including struct or array, but
+  /// not a table.
+  /// To be added: FIXED_TABLE, ANY_TABLE
+  core.String argumentKind;
+
+  /// Required unless argument_kind = ANY_TYPE.
+  StandardSqlDataType dataType;
+
+  /// Optional. Specifies whether the argument is input or output.
+  /// Can be set for procedures only.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED"
+  /// - "IN" : The argument is input-only.
+  /// - "OUT" : The argument is output-only.
+  /// - "INOUT" : The argument is both an input and an output.
+  core.String mode;
+
+  /// Optional. The name of this argument. Can be absent for function return
+  /// argument.
+  core.String name;
+
+  Argument();
+
+  Argument.fromJson(core.Map _json) {
+    if (_json.containsKey("argumentKind")) {
+      argumentKind = _json["argumentKind"];
+    }
+    if (_json.containsKey("dataType")) {
+      dataType = new StandardSqlDataType.fromJson(_json["dataType"]);
+    }
+    if (_json.containsKey("mode")) {
+      mode = _json["mode"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (argumentKind != null) {
+      _json["argumentKind"] = argumentKind;
+    }
+    if (dataType != null) {
+      _json["dataType"] = (dataType).toJson();
+    }
+    if (mode != null) {
+      _json["mode"] = mode;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 class BigQueryModelTraining {
   /// [Output-only, Beta] Index of current ML training iteration. Updated during
   /// create model query job to show job progress.
@@ -1778,6 +2538,414 @@ class BigtableOptions {
   }
 }
 
+/// Evaluation metrics for binary classification/classifier models.
+class BinaryClassificationMetrics {
+  /// Aggregate classification metrics.
+  AggregateClassificationMetrics aggregateClassificationMetrics;
+
+  /// Binary confusion matrix at multiple thresholds.
+  core.List<BinaryConfusionMatrix> binaryConfusionMatrixList;
+
+  /// Label representing the negative class.
+  core.String negativeLabel;
+
+  /// Label representing the positive class.
+  core.String positiveLabel;
+
+  BinaryClassificationMetrics();
+
+  BinaryClassificationMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregateClassificationMetrics")) {
+      aggregateClassificationMetrics =
+          new AggregateClassificationMetrics.fromJson(
+              _json["aggregateClassificationMetrics"]);
+    }
+    if (_json.containsKey("binaryConfusionMatrixList")) {
+      binaryConfusionMatrixList =
+          (_json["binaryConfusionMatrixList"] as core.List)
+              .map<BinaryConfusionMatrix>(
+                  (value) => new BinaryConfusionMatrix.fromJson(value))
+              .toList();
+    }
+    if (_json.containsKey("negativeLabel")) {
+      negativeLabel = _json["negativeLabel"];
+    }
+    if (_json.containsKey("positiveLabel")) {
+      positiveLabel = _json["positiveLabel"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (aggregateClassificationMetrics != null) {
+      _json["aggregateClassificationMetrics"] =
+          (aggregateClassificationMetrics).toJson();
+    }
+    if (binaryConfusionMatrixList != null) {
+      _json["binaryConfusionMatrixList"] =
+          binaryConfusionMatrixList.map((value) => (value).toJson()).toList();
+    }
+    if (negativeLabel != null) {
+      _json["negativeLabel"] = negativeLabel;
+    }
+    if (positiveLabel != null) {
+      _json["positiveLabel"] = positiveLabel;
+    }
+    return _json;
+  }
+}
+
+/// Confusion matrix for binary classification models.
+class BinaryConfusionMatrix {
+  /// The fraction of predictions given the correct label.
+  core.double accuracy;
+
+  /// The equally weighted average of recall and precision.
+  core.double f1Score;
+
+  /// Number of false samples predicted as false.
+  core.String falseNegatives;
+
+  /// Number of false samples predicted as true.
+  core.String falsePositives;
+
+  /// Threshold value used when computing each of the following metric.
+  core.double positiveClassThreshold;
+
+  /// The fraction of actual positive predictions that had positive actual
+  /// labels.
+  core.double precision;
+
+  /// The fraction of actual positive labels that were given a positive
+  /// prediction.
+  core.double recall;
+
+  /// Number of true samples predicted as false.
+  core.String trueNegatives;
+
+  /// Number of true samples predicted as true.
+  core.String truePositives;
+
+  BinaryConfusionMatrix();
+
+  BinaryConfusionMatrix.fromJson(core.Map _json) {
+    if (_json.containsKey("accuracy")) {
+      accuracy = _json["accuracy"].toDouble();
+    }
+    if (_json.containsKey("f1Score")) {
+      f1Score = _json["f1Score"].toDouble();
+    }
+    if (_json.containsKey("falseNegatives")) {
+      falseNegatives = _json["falseNegatives"];
+    }
+    if (_json.containsKey("falsePositives")) {
+      falsePositives = _json["falsePositives"];
+    }
+    if (_json.containsKey("positiveClassThreshold")) {
+      positiveClassThreshold = _json["positiveClassThreshold"].toDouble();
+    }
+    if (_json.containsKey("precision")) {
+      precision = _json["precision"].toDouble();
+    }
+    if (_json.containsKey("recall")) {
+      recall = _json["recall"].toDouble();
+    }
+    if (_json.containsKey("trueNegatives")) {
+      trueNegatives = _json["trueNegatives"];
+    }
+    if (_json.containsKey("truePositives")) {
+      truePositives = _json["truePositives"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accuracy != null) {
+      _json["accuracy"] = accuracy;
+    }
+    if (f1Score != null) {
+      _json["f1Score"] = f1Score;
+    }
+    if (falseNegatives != null) {
+      _json["falseNegatives"] = falseNegatives;
+    }
+    if (falsePositives != null) {
+      _json["falsePositives"] = falsePositives;
+    }
+    if (positiveClassThreshold != null) {
+      _json["positiveClassThreshold"] = positiveClassThreshold;
+    }
+    if (precision != null) {
+      _json["precision"] = precision;
+    }
+    if (recall != null) {
+      _json["recall"] = recall;
+    }
+    if (trueNegatives != null) {
+      _json["trueNegatives"] = trueNegatives;
+    }
+    if (truePositives != null) {
+      _json["truePositives"] = truePositives;
+    }
+    return _json;
+  }
+}
+
+class BqmlIterationResult {
+  /// [Output-only, Beta] Time taken to run the training iteration in
+  /// milliseconds.
+  core.String durationMs;
+
+  /// [Output-only, Beta] Eval loss computed on the eval data at the end of the
+  /// iteration. The eval loss is used for early stopping to avoid overfitting.
+  /// No eval loss if eval_split_method option is specified as no_split or
+  /// auto_split with input data size less than 500 rows.
+  core.double evalLoss;
+
+  /// [Output-only, Beta] Index of the ML training iteration, starting from zero
+  /// for each training run.
+  core.int index;
+
+  /// [Output-only, Beta] Learning rate used for this iteration, it varies for
+  /// different training iterations if learn_rate_strategy option is not
+  /// constant.
+  core.double learnRate;
+
+  /// [Output-only, Beta] Training loss computed on the training data at the end
+  /// of the iteration. The training loss function is defined by model type.
+  core.double trainingLoss;
+
+  BqmlIterationResult();
+
+  BqmlIterationResult.fromJson(core.Map _json) {
+    if (_json.containsKey("durationMs")) {
+      durationMs = _json["durationMs"];
+    }
+    if (_json.containsKey("evalLoss")) {
+      evalLoss = _json["evalLoss"].toDouble();
+    }
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("learnRate")) {
+      learnRate = _json["learnRate"].toDouble();
+    }
+    if (_json.containsKey("trainingLoss")) {
+      trainingLoss = _json["trainingLoss"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (durationMs != null) {
+      _json["durationMs"] = durationMs;
+    }
+    if (evalLoss != null) {
+      _json["evalLoss"] = evalLoss;
+    }
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (learnRate != null) {
+      _json["learnRate"] = learnRate;
+    }
+    if (trainingLoss != null) {
+      _json["trainingLoss"] = trainingLoss;
+    }
+    return _json;
+  }
+}
+
+/// [Output-only, Beta] Training options used by this training run. These
+/// options are mutable for subsequent training runs. Default values are
+/// explicitly stored for options not specified in the input query of the first
+/// training run. For subsequent training runs, any option not explicitly
+/// specified in the input query will be copied from the previous training run.
+class BqmlTrainingRunTrainingOptions {
+  core.bool earlyStop;
+  core.double l1Reg;
+  core.double l2Reg;
+  core.double learnRate;
+  core.String learnRateStrategy;
+  core.double lineSearchInitLearnRate;
+  core.String maxIteration;
+  core.double minRelProgress;
+  core.bool warmStart;
+
+  BqmlTrainingRunTrainingOptions();
+
+  BqmlTrainingRunTrainingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("earlyStop")) {
+      earlyStop = _json["earlyStop"];
+    }
+    if (_json.containsKey("l1Reg")) {
+      l1Reg = _json["l1Reg"].toDouble();
+    }
+    if (_json.containsKey("l2Reg")) {
+      l2Reg = _json["l2Reg"].toDouble();
+    }
+    if (_json.containsKey("learnRate")) {
+      learnRate = _json["learnRate"].toDouble();
+    }
+    if (_json.containsKey("learnRateStrategy")) {
+      learnRateStrategy = _json["learnRateStrategy"];
+    }
+    if (_json.containsKey("lineSearchInitLearnRate")) {
+      lineSearchInitLearnRate = _json["lineSearchInitLearnRate"].toDouble();
+    }
+    if (_json.containsKey("maxIteration")) {
+      maxIteration = _json["maxIteration"];
+    }
+    if (_json.containsKey("minRelProgress")) {
+      minRelProgress = _json["minRelProgress"].toDouble();
+    }
+    if (_json.containsKey("warmStart")) {
+      warmStart = _json["warmStart"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (earlyStop != null) {
+      _json["earlyStop"] = earlyStop;
+    }
+    if (l1Reg != null) {
+      _json["l1Reg"] = l1Reg;
+    }
+    if (l2Reg != null) {
+      _json["l2Reg"] = l2Reg;
+    }
+    if (learnRate != null) {
+      _json["learnRate"] = learnRate;
+    }
+    if (learnRateStrategy != null) {
+      _json["learnRateStrategy"] = learnRateStrategy;
+    }
+    if (lineSearchInitLearnRate != null) {
+      _json["lineSearchInitLearnRate"] = lineSearchInitLearnRate;
+    }
+    if (maxIteration != null) {
+      _json["maxIteration"] = maxIteration;
+    }
+    if (minRelProgress != null) {
+      _json["minRelProgress"] = minRelProgress;
+    }
+    if (warmStart != null) {
+      _json["warmStart"] = warmStart;
+    }
+    return _json;
+  }
+}
+
+class BqmlTrainingRun {
+  /// [Output-only, Beta] List of each iteration results.
+  core.List<BqmlIterationResult> iterationResults;
+
+  /// [Output-only, Beta] Training run start time in milliseconds since the
+  /// epoch.
+  core.DateTime startTime;
+
+  /// [Output-only, Beta] Different state applicable for a training run. IN
+  /// PROGRESS: Training run is in progress. FAILED: Training run ended due to a
+  /// non-retryable failure. SUCCEEDED: Training run successfully completed.
+  /// CANCELLED: Training run cancelled by the user.
+  core.String state;
+
+  /// [Output-only, Beta] Training options used by this training run. These
+  /// options are mutable for subsequent training runs. Default values are
+  /// explicitly stored for options not specified in the input query of the
+  /// first training run. For subsequent training runs, any option not
+  /// explicitly specified in the input query will be copied from the previous
+  /// training run.
+  BqmlTrainingRunTrainingOptions trainingOptions;
+
+  BqmlTrainingRun();
+
+  BqmlTrainingRun.fromJson(core.Map _json) {
+    if (_json.containsKey("iterationResults")) {
+      iterationResults = (_json["iterationResults"] as core.List)
+          .map<BqmlIterationResult>(
+              (value) => new BqmlIterationResult.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = core.DateTime.parse(_json["startTime"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("trainingOptions")) {
+      trainingOptions =
+          new BqmlTrainingRunTrainingOptions.fromJson(_json["trainingOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (iterationResults != null) {
+      _json["iterationResults"] =
+          iterationResults.map((value) => (value).toJson()).toList();
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toIso8601String();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (trainingOptions != null) {
+      _json["trainingOptions"] = (trainingOptions).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Information about a single cluster for clustering model.
+class ClusterInfo {
+  /// Centroid id.
+  core.String centroidId;
+
+  /// Cluster radius, the average distance from centroid
+  /// to each point assigned to the cluster.
+  core.double clusterRadius;
+
+  /// Cluster size, the total number of points assigned to the cluster.
+  core.String clusterSize;
+
+  ClusterInfo();
+
+  ClusterInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("centroidId")) {
+      centroidId = _json["centroidId"];
+    }
+    if (_json.containsKey("clusterRadius")) {
+      clusterRadius = _json["clusterRadius"].toDouble();
+    }
+    if (_json.containsKey("clusterSize")) {
+      clusterSize = _json["clusterSize"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (centroidId != null) {
+      _json["centroidId"] = centroidId;
+    }
+    if (clusterRadius != null) {
+      _json["clusterRadius"] = clusterRadius;
+    }
+    if (clusterSize != null) {
+      _json["clusterSize"] = clusterSize;
+    }
+    return _json;
+  }
+}
+
 class Clustering {
   /// [Repeated] One or more fields on which data should be clustered. Only
   /// top-level, non-repeated, simple-type fields are supported. When you
@@ -1799,6 +2967,73 @@ class Clustering {
         new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields;
+    }
+    return _json;
+  }
+}
+
+/// Evaluation metrics for clustering models.
+class ClusteringMetrics {
+  /// Davies-Bouldin index.
+  core.double daviesBouldinIndex;
+
+  /// Mean of squared distances between each sample to its cluster centroid.
+  core.double meanSquaredDistance;
+
+  ClusteringMetrics();
+
+  ClusteringMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("daviesBouldinIndex")) {
+      daviesBouldinIndex = _json["daviesBouldinIndex"].toDouble();
+    }
+    if (_json.containsKey("meanSquaredDistance")) {
+      meanSquaredDistance = _json["meanSquaredDistance"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (daviesBouldinIndex != null) {
+      _json["daviesBouldinIndex"] = daviesBouldinIndex;
+    }
+    if (meanSquaredDistance != null) {
+      _json["meanSquaredDistance"] = meanSquaredDistance;
+    }
+    return _json;
+  }
+}
+
+/// Confusion matrix for multi-class classification models.
+class ConfusionMatrix {
+  /// Confidence threshold used when computing the entries of the
+  /// confusion matrix.
+  core.double confidenceThreshold;
+
+  /// One row per actual label.
+  core.List<Row> rows;
+
+  ConfusionMatrix();
+
+  ConfusionMatrix.fromJson(core.Map _json) {
+    if (_json.containsKey("confidenceThreshold")) {
+      confidenceThreshold = _json["confidenceThreshold"].toDouble();
+    }
+    if (_json.containsKey("rows")) {
+      rows = (_json["rows"] as core.List)
+          .map<Row>((value) => new Row.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidenceThreshold != null) {
+      _json["confidenceThreshold"] = confidenceThreshold;
+    }
+    if (rows != null) {
+      _json["rows"] = rows.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1905,9 +3140,13 @@ class DatasetAccess {
   /// isn't a user, group, domain, or special group.
   core.String iamMember;
 
-  /// [Required] Describes the rights granted to the user specified by the other
-  /// member of the access object. The following string values are supported:
-  /// READER, WRITER, OWNER.
+  /// [Required] An IAM role ID that should be granted to the user, group, or
+  /// domain specified in this access entry. The following legacy mappings will
+  /// be applied: OWNER  roles/bigquery.dataOwner WRITER
+  /// roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field
+  /// will accept any of the above formats, but will return only the legacy
+  /// format. For example, if you set this field to "roles/bigquery.dataOwner",
+  /// it will be returned back as "OWNER".
   core.String role;
 
   /// [Pick one] A special group to grant access to. Possible values include:
@@ -2000,6 +3239,7 @@ class Dataset {
 
   /// [Required] A reference that identifies the dataset.
   DatasetReference datasetReference;
+  EncryptionConfiguration defaultEncryptionConfiguration;
 
   /// [Optional] The default partition expiration for all partitioned tables in
   /// the dataset, in milliseconds. Once this property is set, all newly-created
@@ -2077,6 +3317,10 @@ class Dataset {
       datasetReference =
           new DatasetReference.fromJson(_json["datasetReference"]);
     }
+    if (_json.containsKey("defaultEncryptionConfiguration")) {
+      defaultEncryptionConfiguration = new EncryptionConfiguration.fromJson(
+          _json["defaultEncryptionConfiguration"]);
+    }
     if (_json.containsKey("defaultPartitionExpirationMs")) {
       defaultPartitionExpirationMs = _json["defaultPartitionExpirationMs"];
     }
@@ -2123,6 +3367,10 @@ class Dataset {
     }
     if (datasetReference != null) {
       _json["datasetReference"] = (datasetReference).toJson();
+    }
+    if (defaultEncryptionConfiguration != null) {
+      _json["defaultEncryptionConfiguration"] =
+          (defaultEncryptionConfiguration).toJson();
     }
     if (defaultPartitionExpirationMs != null) {
       _json["defaultPartitionExpirationMs"] = defaultPartitionExpirationMs;
@@ -2336,6 +3584,12 @@ class DestinationTableProperties {
   /// the job will fail.
   core.String friendlyName;
 
+  /// [Optional] The labels associated with this table. You can use these to
+  /// organize and group your tables. This will only be used if the destination
+  /// table is newly created. If the table already exists and labels are
+  /// different than the current labels are provided, the job will fail.
+  core.Map<core.String, core.String> labels;
+
   DestinationTableProperties();
 
   DestinationTableProperties.fromJson(core.Map _json) {
@@ -2344,6 +3598,9 @@ class DestinationTableProperties {
     }
     if (_json.containsKey("friendlyName")) {
       friendlyName = _json["friendlyName"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
   }
 
@@ -2355,6 +3612,9 @@ class DestinationTableProperties {
     }
     if (friendlyName != null) {
       _json["friendlyName"] = friendlyName;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     return _json;
   }
@@ -2379,6 +3639,40 @@ class EncryptionConfiguration {
         new core.Map<core.String, core.Object>();
     if (kmsKeyName != null) {
       _json["kmsKeyName"] = kmsKeyName;
+    }
+    return _json;
+  }
+}
+
+/// A single entry in the confusion matrix.
+class Entry {
+  /// Number of items being predicted as this label.
+  core.String itemCount;
+
+  /// The predicted label. For confidence_threshold > 0, we will
+  /// also add an entry indicating the number of items under the
+  /// confidence threshold.
+  core.String predictedLabel;
+
+  Entry();
+
+  Entry.fromJson(core.Map _json) {
+    if (_json.containsKey("itemCount")) {
+      itemCount = _json["itemCount"];
+    }
+    if (_json.containsKey("predictedLabel")) {
+      predictedLabel = _json["predictedLabel"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (itemCount != null) {
+      _json["itemCount"] = itemCount;
+    }
+    if (predictedLabel != null) {
+      _json["predictedLabel"] = predictedLabel;
     }
     return _json;
   }
@@ -2429,6 +3723,65 @@ class ErrorProto {
     }
     if (reason != null) {
       _json["reason"] = reason;
+    }
+    return _json;
+  }
+}
+
+/// Evaluation metrics of a model. These are either computed on all training
+/// data or just the eval data based on whether eval data was used during
+/// training. These are not present for imported models.
+class EvaluationMetrics {
+  /// Populated for binary classification/classifier models.
+  BinaryClassificationMetrics binaryClassificationMetrics;
+
+  /// [Beta] Populated for clustering models.
+  ClusteringMetrics clusteringMetrics;
+
+  /// Populated for multi-class classification/classifier models.
+  MultiClassClassificationMetrics multiClassClassificationMetrics;
+
+  /// Populated for regression models.
+  RegressionMetrics regressionMetrics;
+
+  EvaluationMetrics();
+
+  EvaluationMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("binaryClassificationMetrics")) {
+      binaryClassificationMetrics = new BinaryClassificationMetrics.fromJson(
+          _json["binaryClassificationMetrics"]);
+    }
+    if (_json.containsKey("clusteringMetrics")) {
+      clusteringMetrics =
+          new ClusteringMetrics.fromJson(_json["clusteringMetrics"]);
+    }
+    if (_json.containsKey("multiClassClassificationMetrics")) {
+      multiClassClassificationMetrics =
+          new MultiClassClassificationMetrics.fromJson(
+              _json["multiClassClassificationMetrics"]);
+    }
+    if (_json.containsKey("regressionMetrics")) {
+      regressionMetrics =
+          new RegressionMetrics.fromJson(_json["regressionMetrics"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (binaryClassificationMetrics != null) {
+      _json["binaryClassificationMetrics"] =
+          (binaryClassificationMetrics).toJson();
+    }
+    if (clusteringMetrics != null) {
+      _json["clusteringMetrics"] = (clusteringMetrics).toJson();
+    }
+    if (multiClassClassificationMetrics != null) {
+      _json["multiClassClassificationMetrics"] =
+          (multiClassClassificationMetrics).toJson();
+    }
+    if (regressionMetrics != null) {
+      _json["regressionMetrics"] = (regressionMetrics).toJson();
     }
     return _json;
   }
@@ -2763,13 +4116,17 @@ class ExternalDataConfiguration {
   /// [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
   GoogleSheetsOptions googleSheetsOptions;
 
-  /// [Optional, Experimental] If hive partitioning is enabled, which mode to
+  /// [Optional, Trusted Tester] If hive partitioning is enabled, which mode to
   /// use. Two modes are supported: - AUTO: automatically infer partition key
   /// name(s) and type(s). - STRINGS: automatic infer partition key name(s). All
   /// types are strings. Not all storage formats support hive partitioning --
   /// requesting hive partitioning on an unsupported format will lead to an
-  /// error.
+  /// error. Note: this setting is in the process of being deprecated in favor
+  /// of hivePartitioningOptions.
   core.String hivePartitioningMode;
+
+  /// [Optional, Trusted Tester] Options to configure hive partitioning support.
+  HivePartitioningOptions hivePartitioningOptions;
 
   /// [Optional] Indicates if BigQuery should allow extra values that are not
   /// represented in the table schema. If true, the extra values are ignored. If
@@ -2834,6 +4191,10 @@ class ExternalDataConfiguration {
     if (_json.containsKey("hivePartitioningMode")) {
       hivePartitioningMode = _json["hivePartitioningMode"];
     }
+    if (_json.containsKey("hivePartitioningOptions")) {
+      hivePartitioningOptions = new HivePartitioningOptions.fromJson(
+          _json["hivePartitioningOptions"]);
+    }
     if (_json.containsKey("ignoreUnknownValues")) {
       ignoreUnknownValues = _json["ignoreUnknownValues"];
     }
@@ -2871,6 +4232,9 @@ class ExternalDataConfiguration {
     }
     if (hivePartitioningMode != null) {
       _json["hivePartitioningMode"] = hivePartitioningMode;
+    }
+    if (hivePartitioningOptions != null) {
+      _json["hivePartitioningOptions"] = (hivePartitioningOptions).toJson();
     }
     if (ignoreUnknownValues != null) {
       _json["ignoreUnknownValues"] = ignoreUnknownValues;
@@ -3107,33 +4471,79 @@ class GoogleSheetsOptions {
   }
 }
 
+class HivePartitioningOptions {
+  /// [Optional, Trusted Tester] When set, what mode of hive partitioning to use
+  /// when reading data. Two modes are supported. (1) AUTO: automatically infer
+  /// partition key name(s) and type(s). (2) STRINGS: automatically infer
+  /// partition key name(s). All types are interpreted as strings. Not all
+  /// storage formats support hive partitioning. Requesting hive partitioning on
+  /// an unsupported format will lead to an error. Currently supported types
+  /// include: AVRO, CSV, JSON, ORC and Parquet.
+  core.String mode;
+
+  /// [Optional, Trusted Tester] When hive partition detection is requested, a
+  /// common prefix for all source uris should be supplied. The prefix must end
+  /// immediately before the partition key encoding begins. For example,
+  /// consider files following this data layout.
+  /// gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro
+  /// gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When
+  /// hive partitioning is requested with either AUTO or STRINGS detection, the
+  /// common prefix can be either of gs://bucket/path_to_table or
+  /// gs://bucket/path_to_table/ (trailing slash does not matter).
+  core.String sourceUriPrefix;
+
+  HivePartitioningOptions();
+
+  HivePartitioningOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("mode")) {
+      mode = _json["mode"];
+    }
+    if (_json.containsKey("sourceUriPrefix")) {
+      sourceUriPrefix = _json["sourceUriPrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (mode != null) {
+      _json["mode"] = mode;
+    }
+    if (sourceUriPrefix != null) {
+      _json["sourceUriPrefix"] = sourceUriPrefix;
+    }
+    return _json;
+  }
+}
+
+/// Information about a single iteration of the training run.
 class IterationResult {
-  /// [Output-only, Beta] Time taken to run the training iteration in
-  /// milliseconds.
+  /// [Beta] Information about top clusters for clustering models.
+  core.List<ClusterInfo> clusterInfos;
+
+  /// Time taken to run the iteration in milliseconds.
   core.String durationMs;
 
-  /// [Output-only, Beta] Eval loss computed on the eval data at the end of the
-  /// iteration. The eval loss is used for early stopping to avoid overfitting.
-  /// No eval loss if eval_split_method option is specified as no_split or
-  /// auto_split with input data size less than 500 rows.
+  /// Loss computed on the eval data at the end of iteration.
   core.double evalLoss;
 
-  /// [Output-only, Beta] Index of the ML training iteration, starting from zero
-  /// for each training run.
+  /// Index of the iteration, 0 based.
   core.int index;
 
-  /// [Output-only, Beta] Learning rate used for this iteration, it varies for
-  /// different training iterations if learn_rate_strategy option is not
-  /// constant.
+  /// Learn rate used for this iteration.
   core.double learnRate;
 
-  /// [Output-only, Beta] Training loss computed on the training data at the end
-  /// of the iteration. The training loss function is defined by model type.
+  /// Loss computed on the training data at the end of iteration.
   core.double trainingLoss;
 
   IterationResult();
 
   IterationResult.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterInfos")) {
+      clusterInfos = (_json["clusterInfos"] as core.List)
+          .map<ClusterInfo>((value) => new ClusterInfo.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("durationMs")) {
       durationMs = _json["durationMs"];
     }
@@ -3154,6 +4564,10 @@ class IterationResult {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clusterInfos != null) {
+      _json["clusterInfos"] =
+          clusterInfos.map((value) => (value).toJson()).toList();
+    }
     if (durationMs != null) {
       _json["durationMs"] = durationMs;
     }
@@ -3535,13 +4949,16 @@ class JobConfigurationLoad {
   /// a comma (',').
   core.String fieldDelimiter;
 
-  /// [Optional, Experimental] If hive partitioning is enabled, which mode to
+  /// [Optional, Trusted Tester] If hive partitioning is enabled, which mode to
   /// use. Two modes are supported: - AUTO: automatically infer partition key
   /// name(s) and type(s). - STRINGS: automatic infer partition key name(s). All
   /// types are strings. Not all storage formats support hive partitioning --
   /// requesting hive partitioning on an unsupported format will lead to an
   /// error.
   core.String hivePartitioningMode;
+
+  /// [Optional, Trusted Tester] Options to configure hive partitioning support.
+  HivePartitioningOptions hivePartitioningOptions;
 
   /// [Optional] Indicates if BigQuery should allow extra values that are not
   /// represented in the table schema. If true, the extra values are ignored. If
@@ -3693,6 +5110,10 @@ class JobConfigurationLoad {
     if (_json.containsKey("hivePartitioningMode")) {
       hivePartitioningMode = _json["hivePartitioningMode"];
     }
+    if (_json.containsKey("hivePartitioningOptions")) {
+      hivePartitioningOptions = new HivePartitioningOptions.fromJson(
+          _json["hivePartitioningOptions"]);
+    }
     if (_json.containsKey("ignoreUnknownValues")) {
       ignoreUnknownValues = _json["ignoreUnknownValues"];
     }
@@ -3784,6 +5205,9 @@ class JobConfigurationLoad {
     }
     if (hivePartitioningMode != null) {
       _json["hivePartitioningMode"] = hivePartitioningMode;
+    }
+    if (hivePartitioningOptions != null) {
+      _json["hivePartitioningOptions"] = (hivePartitioningOptions).toJson();
     }
     if (ignoreUnknownValues != null) {
       _json["ignoreUnknownValues"] = ignoreUnknownValues;
@@ -4450,6 +5874,12 @@ class JobStatistics {
   /// [Output-only] Statistics for a load job.
   JobStatistics3 load;
 
+  /// [Output-only] Number of child jobs executed.
+  core.String numChildJobs;
+
+  /// [Output-only] If this is a child job, the id of the parent.
+  core.String parentJobId;
+
   /// [Output-only] Statistics for a query job.
   JobStatistics2 query;
 
@@ -4458,6 +5888,11 @@ class JobStatistics {
 
   /// [Output-only] Job resource usage breakdown by reservation.
   core.List<JobStatisticsReservationUsage> reservationUsage;
+
+  /// [Output-only] Name of the primary reservation assigned to this job. Note
+  /// that this could be different than reservations reported in the reservation
+  /// usage field if parent reservations were used to execute this job.
+  core.String reservationId;
 
   /// [Output-only] Start time of this job, in milliseconds since the epoch.
   /// This field will be present when the job transitions from the PENDING state
@@ -4489,6 +5924,12 @@ class JobStatistics {
     if (_json.containsKey("load")) {
       load = new JobStatistics3.fromJson(_json["load"]);
     }
+    if (_json.containsKey("numChildJobs")) {
+      numChildJobs = _json["numChildJobs"];
+    }
+    if (_json.containsKey("parentJobId")) {
+      parentJobId = _json["parentJobId"];
+    }
     if (_json.containsKey("query")) {
       query = new JobStatistics2.fromJson(_json["query"]);
     }
@@ -4501,6 +5942,9 @@ class JobStatistics {
           .map<JobStatisticsReservationUsage>(
               (value) => new JobStatisticsReservationUsage.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("reservation_id")) {
+      reservationId = _json["reservation_id"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -4531,6 +5975,12 @@ class JobStatistics {
     if (load != null) {
       _json["load"] = (load).toJson();
     }
+    if (numChildJobs != null) {
+      _json["numChildJobs"] = numChildJobs;
+    }
+    if (parentJobId != null) {
+      _json["parentJobId"] = parentJobId;
+    }
     if (query != null) {
       _json["query"] = (query).toJson();
     }
@@ -4540,6 +5990,9 @@ class JobStatistics {
     if (reservationUsage != null) {
       _json["reservationUsage"] =
           reservationUsage.map((value) => (value).toJson()).toList();
+    }
+    if (reservationId != null) {
+      _json["reservation_id"] = reservationId;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -4603,6 +6056,10 @@ class JobStatistics2 {
   /// deleted the DDL target.
   core.String ddlOperationPerformed;
 
+  /// The DDL target routine. Present only for CREATE/DROP FUNCTION/PROCEDURE
+  /// queries.
+  RoutineReference ddlTargetRoutine;
+
   /// The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.
   TableReference ddlTargetTable;
 
@@ -4646,11 +6103,14 @@ class JobStatistics2 {
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "MERGE": MERGE query; see
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
-  /// "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT.
+  /// "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query.
+  /// "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR
+  /// REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE
+  /// query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT.
   /// "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... .
-  /// "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW
-  /// ... AS SELECT ... . "DROP_VIEW": DROP VIEW query. "ALTER_TABLE": ALTER
-  /// TABLE query. "ALTER_VIEW": ALTER VIEW query.
+  /// "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... .
+  /// "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE
+  /// query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
   core.String statementType;
 
   /// [Output-only] [Beta] Describes a timeline of job execution.
@@ -4666,7 +6126,7 @@ class JobStatistics2 {
   /// this field specifies the accuracy of the estimate. Possible values can be:
   /// UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is
   /// precise. LOWER_BOUND: estimate is lower bound of what the query would
-  /// cost. UPPER_BOUND: estiamte is upper bound of what the query would cost.
+  /// cost. UPPER_BOUND: estimate is upper bound of what the query would cost.
   core.String totalBytesProcessedAccuracy;
 
   /// [Output-only] Total number of partitions processed from all partitioned
@@ -4691,6 +6151,10 @@ class JobStatistics2 {
     }
     if (_json.containsKey("ddlOperationPerformed")) {
       ddlOperationPerformed = _json["ddlOperationPerformed"];
+    }
+    if (_json.containsKey("ddlTargetRoutine")) {
+      ddlTargetRoutine =
+          new RoutineReference.fromJson(_json["ddlTargetRoutine"]);
     }
     if (_json.containsKey("ddlTargetTable")) {
       ddlTargetTable = new TableReference.fromJson(_json["ddlTargetTable"]);
@@ -4775,6 +6239,9 @@ class JobStatistics2 {
     }
     if (ddlOperationPerformed != null) {
       _json["ddlOperationPerformed"] = ddlOperationPerformed;
+    }
+    if (ddlTargetRoutine != null) {
+      _json["ddlTargetRoutine"] = (ddlTargetRoutine).toJson();
     }
     if (ddlTargetTable != null) {
       _json["ddlTargetTable"] = (ddlTargetTable).toJson();
@@ -4907,12 +6374,19 @@ class JobStatistics4 {
   /// the URIs specified in the 'destinationUris' field.
   core.List<core.String> destinationUriFileCounts;
 
+  /// [Output-only] Number of user bytes extracted into the result. This is the
+  /// byte count as computed by BigQuery for billing purposes.
+  core.String inputBytes;
+
   JobStatistics4();
 
   JobStatistics4.fromJson(core.Map _json) {
     if (_json.containsKey("destinationUriFileCounts")) {
       destinationUriFileCounts =
           (_json["destinationUriFileCounts"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("inputBytes")) {
+      inputBytes = _json["inputBytes"];
     }
   }
 
@@ -4921,6 +6395,9 @@ class JobStatistics4 {
         new core.Map<core.String, core.Object>();
     if (destinationUriFileCounts != null) {
       _json["destinationUriFileCounts"] = destinationUriFileCounts;
+    }
+    if (inputBytes != null) {
+      _json["inputBytes"] = inputBytes;
     }
     return _json;
   }
@@ -5008,6 +6485,104 @@ class JsonObject extends collection.MapBase<core.String, core.Object> {
   core.Object remove(core.Object key) => _innerMap.remove(key);
 }
 
+class ListModelsResponse {
+  /// Models in the requested dataset. Only the following fields are populated:
+  /// model_reference, model_type, creation_time, last_modified_time and
+  /// labels.
+  core.List<Model> models;
+
+  /// A token to request the next page of results.
+  core.String nextPageToken;
+
+  ListModelsResponse();
+
+  ListModelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("models")) {
+      models = (_json["models"] as core.List)
+          .map<Model>((value) => new Model.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (models != null) {
+      _json["models"] = models.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+class ListRoutinesResponse {
+  /// A token to request the next page of results.
+  core.String nextPageToken;
+
+  /// Routines in the requested dataset. Only the following fields are
+  /// populated:
+  /// etag, project_id, dataset_id, routine_id, routine_type, creation_time,
+  /// last_modified_time, language.
+  core.List<Routine> routines;
+
+  ListRoutinesResponse();
+
+  ListRoutinesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("routines")) {
+      routines = (_json["routines"] as core.List)
+          .map<Routine>((value) => new Routine.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (routines != null) {
+      _json["routines"] = routines.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// BigQuery-specific metadata about a location. This will be set on
+/// google.cloud.location.Location.metadata in Cloud Location API
+/// responses.
+class LocationMetadata {
+  /// The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
+  /// This is for any API consumers that need the legacy “US” and “EU”
+  /// locations.
+  core.String legacyLocationId;
+
+  LocationMetadata();
+
+  LocationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("legacyLocationId")) {
+      legacyLocationId = _json["legacyLocationId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (legacyLocationId != null) {
+      _json["legacyLocationId"] = legacyLocationId;
+    }
+    return _json;
+  }
+}
+
 class MaterializedViewDefinition {
   /// [Output-only] [TrustedTester] The time when this materialized view was
   /// last modified, in milliseconds since the epoch.
@@ -5035,6 +6610,167 @@ class MaterializedViewDefinition {
     }
     if (query != null) {
       _json["query"] = query;
+    }
+    return _json;
+  }
+}
+
+class Model {
+  /// Output only. The time when this model was created, in millisecs since the
+  /// epoch.
+  core.String creationTime;
+
+  /// [Optional] A user-friendly description of this model.
+  core.String description;
+
+  /// Output only. A hash of this resource.
+  core.String etag;
+
+  /// [Optional] The time when this model expires, in milliseconds since the
+  /// epoch. If not present, the model will persist indefinitely. Expired models
+  /// will be deleted and their storage reclaimed.  The defaultTableExpirationMs
+  /// property of the encapsulating dataset can be used to set a default
+  /// expirationTime on newly created models.
+  core.String expirationTime;
+
+  /// Output only. Input feature columns that were used to train this model.
+  core.List<StandardSqlField> featureColumns;
+
+  /// [Optional] A descriptive name for this model.
+  core.String friendlyName;
+
+  /// Output only. Label columns that were used to train this model.
+  /// The output of the model will have a "predicted_" prefix to these columns.
+  core.List<StandardSqlField> labelColumns;
+
+  /// [Optional] The labels associated with this model. You can use these to
+  /// organize and group your models. Label keys and values can be no longer
+  /// than 63 characters, can only contain lowercase letters, numeric
+  /// characters, underscores and dashes. International characters are allowed.
+  /// Label values are optional. Label keys must start with a letter and each
+  /// label in the list must have a different key.
+  core.Map<core.String, core.String> labels;
+
+  /// Output only. The time when this model was last modified, in millisecs
+  /// since the epoch.
+  core.String lastModifiedTime;
+
+  /// Output only. The geographic location where the model resides. This value
+  /// is inherited from the dataset.
+  core.String location;
+
+  /// Required. Unique identifier for this model.
+  ModelReference modelReference;
+
+  /// Output only. Type of the model resource.
+  /// Possible string values are:
+  /// - "MODEL_TYPE_UNSPECIFIED"
+  /// - "LINEAR_REGRESSION" : Linear regression model.
+  /// - "LOGISTIC_REGRESSION" : Logistic regression based classification model.
+  /// - "KMEANS" : [Beta] K-means clustering model.
+  /// - "TENSORFLOW" : [Beta] An imported TensorFlow model.
+  core.String modelType;
+
+  /// Output only. Information for all training runs in increasing order of
+  /// start_time.
+  core.List<TrainingRun> trainingRuns;
+
+  Model();
+
+  Model.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("expirationTime")) {
+      expirationTime = _json["expirationTime"];
+    }
+    if (_json.containsKey("featureColumns")) {
+      featureColumns = (_json["featureColumns"] as core.List)
+          .map<StandardSqlField>(
+              (value) => new StandardSqlField.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("friendlyName")) {
+      friendlyName = _json["friendlyName"];
+    }
+    if (_json.containsKey("labelColumns")) {
+      labelColumns = (_json["labelColumns"] as core.List)
+          .map<StandardSqlField>(
+              (value) => new StandardSqlField.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("lastModifiedTime")) {
+      lastModifiedTime = _json["lastModifiedTime"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("modelReference")) {
+      modelReference = new ModelReference.fromJson(_json["modelReference"]);
+    }
+    if (_json.containsKey("modelType")) {
+      modelType = _json["modelType"];
+    }
+    if (_json.containsKey("trainingRuns")) {
+      trainingRuns = (_json["trainingRuns"] as core.List)
+          .map<TrainingRun>((value) => new TrainingRun.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (expirationTime != null) {
+      _json["expirationTime"] = expirationTime;
+    }
+    if (featureColumns != null) {
+      _json["featureColumns"] =
+          featureColumns.map((value) => (value).toJson()).toList();
+    }
+    if (friendlyName != null) {
+      _json["friendlyName"] = friendlyName;
+    }
+    if (labelColumns != null) {
+      _json["labelColumns"] =
+          labelColumns.map((value) => (value).toJson()).toList();
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (lastModifiedTime != null) {
+      _json["lastModifiedTime"] = lastModifiedTime;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (modelReference != null) {
+      _json["modelReference"] = (modelReference).toJson();
+    }
+    if (modelType != null) {
+      _json["modelType"] = modelType;
+    }
+    if (trainingRuns != null) {
+      _json["trainingRuns"] =
+          trainingRuns.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5088,7 +6824,7 @@ class ModelDefinition {
   /// comprises of multiple iterations and there may be multiple training runs
   /// for the model if warm start is used or if a user decides to continue a
   /// previously cancelled query.
-  core.List<TrainingRun> trainingRuns;
+  core.List<BqmlTrainingRun> trainingRuns;
 
   ModelDefinition();
 
@@ -5099,7 +6835,7 @@ class ModelDefinition {
     }
     if (_json.containsKey("trainingRuns")) {
       trainingRuns = (_json["trainingRuns"] as core.List)
-          .map<TrainingRun>((value) => new TrainingRun.fromJson(value))
+          .map<BqmlTrainingRun>((value) => new BqmlTrainingRun.fromJson(value))
           .toList();
     }
   }
@@ -5113,6 +6849,87 @@ class ModelDefinition {
     if (trainingRuns != null) {
       _json["trainingRuns"] =
           trainingRuns.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Id path of a model.
+class ModelReference {
+  /// [Required] The ID of the dataset containing this model.
+  core.String datasetId;
+
+  /// [Required] The ID of the model. The ID must contain only
+  /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
+  /// length is 1,024 characters.
+  core.String modelId;
+
+  /// [Required] The ID of the project containing this model.
+  core.String projectId;
+
+  ModelReference();
+
+  ModelReference.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetId")) {
+      datasetId = _json["datasetId"];
+    }
+    if (_json.containsKey("modelId")) {
+      modelId = _json["modelId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (datasetId != null) {
+      _json["datasetId"] = datasetId;
+    }
+    if (modelId != null) {
+      _json["modelId"] = modelId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
+/// Evaluation metrics for multi-class classification/classifier models.
+class MultiClassClassificationMetrics {
+  /// Aggregate classification metrics.
+  AggregateClassificationMetrics aggregateClassificationMetrics;
+
+  /// Confusion matrix at different thresholds.
+  core.List<ConfusionMatrix> confusionMatrixList;
+
+  MultiClassClassificationMetrics();
+
+  MultiClassClassificationMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregateClassificationMetrics")) {
+      aggregateClassificationMetrics =
+          new AggregateClassificationMetrics.fromJson(
+              _json["aggregateClassificationMetrics"]);
+    }
+    if (_json.containsKey("confusionMatrixList")) {
+      confusionMatrixList = (_json["confusionMatrixList"] as core.List)
+          .map<ConfusionMatrix>((value) => new ConfusionMatrix.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (aggregateClassificationMetrics != null) {
+      _json["aggregateClassificationMetrics"] =
+          (aggregateClassificationMetrics).toJson();
+    }
+    if (confusionMatrixList != null) {
+      _json["confusionMatrixList"] =
+          confusionMatrixList.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5853,6 +7670,434 @@ class RangePartitioning {
   }
 }
 
+/// Evaluation metrics for regression models.
+class RegressionMetrics {
+  /// Mean absolute error.
+  core.double meanAbsoluteError;
+
+  /// Mean squared error.
+  core.double meanSquaredError;
+
+  /// Mean squared log error.
+  core.double meanSquaredLogError;
+
+  /// Median absolute error.
+  core.double medianAbsoluteError;
+
+  /// R^2 score.
+  core.double rSquared;
+
+  RegressionMetrics();
+
+  RegressionMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey("meanAbsoluteError")) {
+      meanAbsoluteError = _json["meanAbsoluteError"].toDouble();
+    }
+    if (_json.containsKey("meanSquaredError")) {
+      meanSquaredError = _json["meanSquaredError"].toDouble();
+    }
+    if (_json.containsKey("meanSquaredLogError")) {
+      meanSquaredLogError = _json["meanSquaredLogError"].toDouble();
+    }
+    if (_json.containsKey("medianAbsoluteError")) {
+      medianAbsoluteError = _json["medianAbsoluteError"].toDouble();
+    }
+    if (_json.containsKey("rSquared")) {
+      rSquared = _json["rSquared"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (meanAbsoluteError != null) {
+      _json["meanAbsoluteError"] = meanAbsoluteError;
+    }
+    if (meanSquaredError != null) {
+      _json["meanSquaredError"] = meanSquaredError;
+    }
+    if (meanSquaredLogError != null) {
+      _json["meanSquaredLogError"] = meanSquaredLogError;
+    }
+    if (medianAbsoluteError != null) {
+      _json["medianAbsoluteError"] = medianAbsoluteError;
+    }
+    if (rSquared != null) {
+      _json["rSquared"] = rSquared;
+    }
+    return _json;
+  }
+}
+
+/// A user-defined function or a stored procedure.
+class Routine {
+  /// Optional.
+  core.List<Argument> arguments;
+
+  /// Output only. The time when this routine was created, in milliseconds since
+  /// the epoch.
+  core.String creationTime;
+
+  /// Required. The body of the routine.
+  ///
+  /// For functions, this is the expression in the AS clause.
+  ///
+  /// If language=SQL, it is the substring inside (but excluding) the
+  /// parentheses. For example, for the function created with the following
+  /// statement:
+  ///
+  /// `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))`
+  ///
+  /// The definition_body is `concat(x, "\n", y)` (\n is not replaced with
+  /// linebreak).
+  ///
+  /// If language=JAVASCRIPT, it is the evaluated string in the AS clause.
+  /// For example, for the function created with the following statement:
+  ///
+  /// `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'`
+  ///
+  /// The definition_body is
+  ///
+  /// `return "\n";\n`
+  ///
+  /// Note that both \n are replaced with linebreaks.
+  core.String definitionBody;
+
+  /// Output only. A hash of this resource.
+  core.String etag;
+
+  /// Optional. If language = "JAVASCRIPT", this field stores the path of the
+  /// imported JAVASCRIPT libraries.
+  core.List<core.String> importedLibraries;
+
+  /// Optional. Defaults to "SQL".
+  /// Possible string values are:
+  /// - "LANGUAGE_UNSPECIFIED"
+  /// - "SQL" : SQL language.
+  /// - "JAVASCRIPT" : JavaScript language.
+  core.String language;
+
+  /// Output only. The time when this routine was last modified, in milliseconds
+  /// since the epoch.
+  core.String lastModifiedTime;
+
+  /// Optional if language = "SQL"; required otherwise.
+  ///
+  /// If absent, the return type is inferred from definition_body at query time
+  /// in each query that references this routine. If present, then the evaluated
+  /// result will be cast to the specified returned type at query time.
+  ///
+  /// For example, for the functions created with the following statements:
+  ///
+  /// * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);`
+  ///
+  /// * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));`
+  ///
+  /// * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));`
+  ///
+  /// The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and
+  /// is absent for `Increment` (inferred as FLOAT64 at query time).
+  ///
+  /// Suppose the function `Add` is replaced by
+  ///   `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);`
+  ///
+  /// Then the inferred return type of `Increment` is automatically changed to
+  /// INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+  StandardSqlDataType returnType;
+
+  /// Required. Reference describing the ID of this routine.
+  RoutineReference routineReference;
+
+  /// Required.
+  /// Possible string values are:
+  /// - "ROUTINE_TYPE_UNSPECIFIED"
+  /// - "SCALAR_FUNCTION" : Non-builtin permanent scalar function.
+  /// - "PROCEDURE" : Stored procedure.
+  core.String routineType;
+
+  Routine();
+
+  Routine.fromJson(core.Map _json) {
+    if (_json.containsKey("arguments")) {
+      arguments = (_json["arguments"] as core.List)
+          .map<Argument>((value) => new Argument.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("definitionBody")) {
+      definitionBody = _json["definitionBody"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("importedLibraries")) {
+      importedLibraries =
+          (_json["importedLibraries"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("lastModifiedTime")) {
+      lastModifiedTime = _json["lastModifiedTime"];
+    }
+    if (_json.containsKey("returnType")) {
+      returnType = new StandardSqlDataType.fromJson(_json["returnType"]);
+    }
+    if (_json.containsKey("routineReference")) {
+      routineReference =
+          new RoutineReference.fromJson(_json["routineReference"]);
+    }
+    if (_json.containsKey("routineType")) {
+      routineType = _json["routineType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (arguments != null) {
+      _json["arguments"] = arguments.map((value) => (value).toJson()).toList();
+    }
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (definitionBody != null) {
+      _json["definitionBody"] = definitionBody;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (importedLibraries != null) {
+      _json["importedLibraries"] = importedLibraries;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (lastModifiedTime != null) {
+      _json["lastModifiedTime"] = lastModifiedTime;
+    }
+    if (returnType != null) {
+      _json["returnType"] = (returnType).toJson();
+    }
+    if (routineReference != null) {
+      _json["routineReference"] = (routineReference).toJson();
+    }
+    if (routineType != null) {
+      _json["routineType"] = routineType;
+    }
+    return _json;
+  }
+}
+
+class RoutineReference {
+  /// [Required] The ID of the dataset containing this routine.
+  core.String datasetId;
+
+  /// [Required] The ID of the project containing this routine.
+  core.String projectId;
+
+  /// [Required] The ID of the routine. The ID must contain only letters (a-z,
+  /// A-Z), numbers (0-9), or underscores (_). The maximum length is 256
+  /// characters.
+  core.String routineId;
+
+  RoutineReference();
+
+  RoutineReference.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetId")) {
+      datasetId = _json["datasetId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("routineId")) {
+      routineId = _json["routineId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (datasetId != null) {
+      _json["datasetId"] = datasetId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (routineId != null) {
+      _json["routineId"] = routineId;
+    }
+    return _json;
+  }
+}
+
+/// A single row in the confusion matrix.
+class Row {
+  /// The original label of this row.
+  core.String actualLabel;
+
+  /// Info describing predicted label distribution.
+  core.List<Entry> entries;
+
+  Row();
+
+  Row.fromJson(core.Map _json) {
+    if (_json.containsKey("actualLabel")) {
+      actualLabel = _json["actualLabel"];
+    }
+    if (_json.containsKey("entries")) {
+      entries = (_json["entries"] as core.List)
+          .map<Entry>((value) => new Entry.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actualLabel != null) {
+      _json["actualLabel"] = actualLabel;
+    }
+    if (entries != null) {
+      _json["entries"] = entries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The type of a variable, e.g., a function argument.
+/// Examples:
+/// INT64: {type_kind="INT64"}
+/// ARRAY<STRING>: {type_kind="ARRAY", array_element_type="STRING"}
+/// STRUCT<x STRING, y ARRAY<DATE>>:
+///   {type_kind="STRUCT",
+///    struct_type={fields=[
+///      {name="x", type={type_kind="STRING"}},
+///      {name="y", type={type_kind="ARRAY", array_element_type="DATE"}}
+///    ]}}
+class StandardSqlDataType {
+  /// The type of the array's elements, if type_kind = "ARRAY".
+  StandardSqlDataType arrayElementType;
+
+  /// The fields of this struct, in order, if type_kind = "STRUCT".
+  StandardSqlStructType structType;
+
+  /// Required. The top level type of this field.
+  /// Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+  /// Possible string values are:
+  /// - "TYPE_KIND_UNSPECIFIED" : Invalid type.
+  /// - "INT64" : Encoded as a string in decimal format.
+  /// - "BOOL" : Encoded as a boolean "false" or "true".
+  /// - "FLOAT64" : Encoded as a number, or string "NaN", "Infinity" or
+  /// "-Infinity".
+  /// - "STRING" : Encoded as a string value.
+  /// - "BYTES" : Encoded as a base64 string per RFC 4648, section 4.
+  /// - "TIMESTAMP" : Encoded as an RFC 3339 timestamp with mandatory "Z" time
+  /// zone string:
+  /// 1985-04-12T23:20:50.52Z
+  /// - "DATE" : Encoded as RFC 3339 full-date format string: 1985-04-12
+  /// - "TIME" : Encoded as RFC 3339 partial-time format string: 23:20:50.52
+  /// - "DATETIME" : Encoded as RFC 3339 full-date "T" partial-time:
+  /// 1985-04-12T23:20:50.52
+  /// - "GEOGRAPHY" : Encoded as WKT
+  /// - "NUMERIC" : Encoded as a decimal string.
+  /// - "ARRAY" : Encoded as a list with types matching Type.array_type.
+  /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type[i].
+  /// List is used
+  /// because a JSON object cannot have duplicate field names.
+  core.String typeKind;
+
+  StandardSqlDataType();
+
+  StandardSqlDataType.fromJson(core.Map _json) {
+    if (_json.containsKey("arrayElementType")) {
+      arrayElementType =
+          new StandardSqlDataType.fromJson(_json["arrayElementType"]);
+    }
+    if (_json.containsKey("structType")) {
+      structType = new StandardSqlStructType.fromJson(_json["structType"]);
+    }
+    if (_json.containsKey("typeKind")) {
+      typeKind = _json["typeKind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (arrayElementType != null) {
+      _json["arrayElementType"] = (arrayElementType).toJson();
+    }
+    if (structType != null) {
+      _json["structType"] = (structType).toJson();
+    }
+    if (typeKind != null) {
+      _json["typeKind"] = typeKind;
+    }
+    return _json;
+  }
+}
+
+/// A field or a column.
+class StandardSqlField {
+  /// Optional. The name of this field. Can be absent for struct fields.
+  core.String name;
+
+  /// Optional. The type of this parameter. Absent if not explicitly
+  /// specified (e.g., CREATE FUNCTION statement can omit the return type;
+  /// in this case the output parameter does not have this "type" field).
+  StandardSqlDataType type;
+
+  StandardSqlField();
+
+  StandardSqlField.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("type")) {
+      type = new StandardSqlDataType.fromJson(_json["type"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (type != null) {
+      _json["type"] = (type).toJson();
+    }
+    return _json;
+  }
+}
+
+class StandardSqlStructType {
+  core.List<StandardSqlField> fields;
+
+  StandardSqlStructType();
+
+  StandardSqlStructType.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = (_json["fields"] as core.List)
+          .map<StandardSqlField>(
+              (value) => new StandardSqlField.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class Streamingbuffer {
   /// [Output-only] A lower-bound estimate of the number of bytes currently in
   /// the streaming buffer.
@@ -6461,7 +8706,36 @@ class TableDataList {
   }
 }
 
+/// [Optional] The categories attached to this field, used for field-level
+/// access control.
+class TableFieldSchemaCategories {
+  /// A list of category resource names. For example,
+  /// "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+  core.List<core.String> names;
+
+  TableFieldSchemaCategories();
+
+  TableFieldSchemaCategories.fromJson(core.Map _json) {
+    if (_json.containsKey("names")) {
+      names = (_json["names"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (names != null) {
+      _json["names"] = names;
+    }
+    return _json;
+  }
+}
+
 class TableFieldSchema {
+  /// [Optional] The categories attached to this field, used for field-level
+  /// access control.
+  TableFieldSchemaCategories categories;
+
   /// [Optional] The field description. The maximum length is 1,024 characters.
   core.String description;
 
@@ -6488,6 +8762,9 @@ class TableFieldSchema {
   TableFieldSchema();
 
   TableFieldSchema.fromJson(core.Map _json) {
+    if (_json.containsKey("categories")) {
+      categories = new TableFieldSchemaCategories.fromJson(_json["categories"]);
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -6511,6 +8788,9 @@ class TableFieldSchema {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (categories != null) {
+      _json["categories"] = (categories).toJson();
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -6875,33 +9155,146 @@ class TimePartitioning {
   }
 }
 
-/// [Output-only, Beta] Training options used by this training run. These
-/// options are mutable for subsequent training runs. Default values are
-/// explicitly stored for options not specified in the input query of the first
-/// training run. For subsequent training runs, any option not explicitly
-/// specified in the input query will be copied from the previous training run.
-class TrainingRunTrainingOptions {
+class TrainingOptions {
+  /// The column to split data with. This column won't be used as a
+  /// feature.
+  /// 1. When data_split_method is CUSTOM, the corresponding column should
+  /// be boolean. The rows with true value tag are eval data, and the false
+  /// are training data.
+  /// 2. When data_split_method is SEQ, the first DATA_SPLIT_EVAL_FRACTION
+  /// rows (from smallest to largest) in the corresponding column are used
+  /// as training data, and the rest are eval data. It respects the order
+  /// in Orderable data types:
+  /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types#data-type-properties
+  core.String dataSplitColumn;
+
+  /// The fraction of evaluation data over the whole input data. The rest
+  /// of data will be used as training data. The format should be double.
+  /// Accurate to two decimal places.
+  /// Default value is 0.2.
+  core.double dataSplitEvalFraction;
+
+  /// The data split type for training and evaluation, e.g. RANDOM.
+  /// Possible string values are:
+  /// - "DATA_SPLIT_METHOD_UNSPECIFIED"
+  /// - "RANDOM" : Splits data randomly.
+  /// - "CUSTOM" : Splits data with the user provided tags.
+  /// - "SEQUENTIAL" : Splits data sequentially.
+  /// - "NO_SPLIT" : Data split will be skipped.
+  /// - "AUTO_SPLIT" : Splits data automatically: Uses NO_SPLIT if the data size
+  /// is small.
+  /// Otherwise uses RANDOM.
+  core.String dataSplitMethod;
+
+  /// [Beta] Distance type for clustering models.
+  /// Possible string values are:
+  /// - "DISTANCE_TYPE_UNSPECIFIED"
+  /// - "EUCLIDEAN" : Eculidean distance.
+  /// - "COSINE" : Cosine distance.
+  core.String distanceType;
+
+  /// Whether to stop early when the loss doesn't improve significantly
+  /// any more (compared to min_relative_progress). Used only for iterative
+  /// training algorithms.
   core.bool earlyStop;
-  core.double l1Reg;
-  core.double l2Reg;
+
+  /// Specifies the initial learning rate for the line search learn rate
+  /// strategy.
+  core.double initialLearnRate;
+
+  /// Name of input label columns in training data.
+  core.List<core.String> inputLabelColumns;
+
+  /// L1 regularization coefficient.
+  core.double l1Regularization;
+
+  /// L2 regularization coefficient.
+  core.double l2Regularization;
+
+  /// Weights associated with each label class, for rebalancing the
+  /// training data. Only applicable for classification models.
+  core.Map<core.String, core.double> labelClassWeights;
+
+  /// Learning rate in training. Used only for iterative training algorithms.
   core.double learnRate;
+
+  /// The strategy to determine learn rate for the current iteration.
+  /// Possible string values are:
+  /// - "LEARN_RATE_STRATEGY_UNSPECIFIED"
+  /// - "LINE_SEARCH" : Use line search to determine learning rate.
+  /// - "CONSTANT" : Use a constant learning rate.
   core.String learnRateStrategy;
-  core.double lineSearchInitLearnRate;
-  core.String maxIteration;
-  core.double minRelProgress;
+
+  /// Type of loss function used during training run.
+  /// Possible string values are:
+  /// - "LOSS_TYPE_UNSPECIFIED"
+  /// - "MEAN_SQUARED_LOSS" : Mean squared loss, used for linear regression.
+  /// - "MEAN_LOG_LOSS" : Mean log loss, used for logistic regression.
+  core.String lossType;
+
+  /// The maximum number of iterations in training. Used only for iterative
+  /// training algorithms.
+  core.String maxIterations;
+
+  /// When early_stop is true, stops training when accuracy improvement is
+  /// less than 'min_relative_progress'. Used only for iterative training
+  /// algorithms.
+  core.double minRelativeProgress;
+
+  /// [Beta] Google Cloud Storage URI from which the model was imported. Only
+  /// applicable for imported models.
+  core.String modelUri;
+
+  /// [Beta] Number of clusters for clustering models.
+  core.String numClusters;
+
+  /// Optimization strategy for training linear regression models.
+  /// Possible string values are:
+  /// - "OPTIMIZATION_STRATEGY_UNSPECIFIED"
+  /// - "BATCH_GRADIENT_DESCENT" : Uses an iterative batch gradient descent
+  /// algorithm.
+  /// - "NORMAL_EQUATION" : Uses a normal equation to solve linear regression
+  /// problem.
+  core.String optimizationStrategy;
+
+  /// Whether to train a model from the last checkpoint.
   core.bool warmStart;
 
-  TrainingRunTrainingOptions();
+  TrainingOptions();
 
-  TrainingRunTrainingOptions.fromJson(core.Map _json) {
+  TrainingOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("dataSplitColumn")) {
+      dataSplitColumn = _json["dataSplitColumn"];
+    }
+    if (_json.containsKey("dataSplitEvalFraction")) {
+      dataSplitEvalFraction = _json["dataSplitEvalFraction"].toDouble();
+    }
+    if (_json.containsKey("dataSplitMethod")) {
+      dataSplitMethod = _json["dataSplitMethod"];
+    }
+    if (_json.containsKey("distanceType")) {
+      distanceType = _json["distanceType"];
+    }
     if (_json.containsKey("earlyStop")) {
       earlyStop = _json["earlyStop"];
     }
-    if (_json.containsKey("l1Reg")) {
-      l1Reg = _json["l1Reg"].toDouble();
+    if (_json.containsKey("initialLearnRate")) {
+      initialLearnRate = _json["initialLearnRate"].toDouble();
     }
-    if (_json.containsKey("l2Reg")) {
-      l2Reg = _json["l2Reg"].toDouble();
+    if (_json.containsKey("inputLabelColumns")) {
+      inputLabelColumns =
+          (_json["inputLabelColumns"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("l1Regularization")) {
+      l1Regularization = _json["l1Regularization"].toDouble();
+    }
+    if (_json.containsKey("l2Regularization")) {
+      l2Regularization = _json["l2Regularization"].toDouble();
+    }
+    if (_json.containsKey("labelClassWeights")) {
+      labelClassWeights = commons.mapMap<core.num, core.double>(
+          _json["labelClassWeights"].cast<core.String, core.num>(),
+          (core.num item) => item.toDouble());
     }
     if (_json.containsKey("learnRate")) {
       learnRate = _json["learnRate"].toDouble();
@@ -6909,14 +9302,23 @@ class TrainingRunTrainingOptions {
     if (_json.containsKey("learnRateStrategy")) {
       learnRateStrategy = _json["learnRateStrategy"];
     }
-    if (_json.containsKey("lineSearchInitLearnRate")) {
-      lineSearchInitLearnRate = _json["lineSearchInitLearnRate"].toDouble();
+    if (_json.containsKey("lossType")) {
+      lossType = _json["lossType"];
     }
-    if (_json.containsKey("maxIteration")) {
-      maxIteration = _json["maxIteration"];
+    if (_json.containsKey("maxIterations")) {
+      maxIterations = _json["maxIterations"];
     }
-    if (_json.containsKey("minRelProgress")) {
-      minRelProgress = _json["minRelProgress"].toDouble();
+    if (_json.containsKey("minRelativeProgress")) {
+      minRelativeProgress = _json["minRelativeProgress"].toDouble();
+    }
+    if (_json.containsKey("modelUri")) {
+      modelUri = _json["modelUri"];
+    }
+    if (_json.containsKey("numClusters")) {
+      numClusters = _json["numClusters"];
+    }
+    if (_json.containsKey("optimizationStrategy")) {
+      optimizationStrategy = _json["optimizationStrategy"];
     }
     if (_json.containsKey("warmStart")) {
       warmStart = _json["warmStart"];
@@ -6926,14 +9328,35 @@ class TrainingRunTrainingOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (dataSplitColumn != null) {
+      _json["dataSplitColumn"] = dataSplitColumn;
+    }
+    if (dataSplitEvalFraction != null) {
+      _json["dataSplitEvalFraction"] = dataSplitEvalFraction;
+    }
+    if (dataSplitMethod != null) {
+      _json["dataSplitMethod"] = dataSplitMethod;
+    }
+    if (distanceType != null) {
+      _json["distanceType"] = distanceType;
+    }
     if (earlyStop != null) {
       _json["earlyStop"] = earlyStop;
     }
-    if (l1Reg != null) {
-      _json["l1Reg"] = l1Reg;
+    if (initialLearnRate != null) {
+      _json["initialLearnRate"] = initialLearnRate;
     }
-    if (l2Reg != null) {
-      _json["l2Reg"] = l2Reg;
+    if (inputLabelColumns != null) {
+      _json["inputLabelColumns"] = inputLabelColumns;
+    }
+    if (l1Regularization != null) {
+      _json["l1Regularization"] = l1Regularization;
+    }
+    if (l2Regularization != null) {
+      _json["l2Regularization"] = l2Regularization;
+    }
+    if (labelClassWeights != null) {
+      _json["labelClassWeights"] = labelClassWeights;
     }
     if (learnRate != null) {
       _json["learnRate"] = learnRate;
@@ -6941,14 +9364,23 @@ class TrainingRunTrainingOptions {
     if (learnRateStrategy != null) {
       _json["learnRateStrategy"] = learnRateStrategy;
     }
-    if (lineSearchInitLearnRate != null) {
-      _json["lineSearchInitLearnRate"] = lineSearchInitLearnRate;
+    if (lossType != null) {
+      _json["lossType"] = lossType;
     }
-    if (maxIteration != null) {
-      _json["maxIteration"] = maxIteration;
+    if (maxIterations != null) {
+      _json["maxIterations"] = maxIterations;
     }
-    if (minRelProgress != null) {
-      _json["minRelProgress"] = minRelProgress;
+    if (minRelativeProgress != null) {
+      _json["minRelativeProgress"] = minRelativeProgress;
+    }
+    if (modelUri != null) {
+      _json["modelUri"] = modelUri;
+    }
+    if (numClusters != null) {
+      _json["numClusters"] = numClusters;
+    }
+    if (optimizationStrategy != null) {
+      _json["optimizationStrategy"] = optimizationStrategy;
     }
     if (warmStart != null) {
       _json["warmStart"] = warmStart;
@@ -6957,60 +9389,53 @@ class TrainingRunTrainingOptions {
   }
 }
 
+/// Information about a single training query run for the model.
 class TrainingRun {
-  /// [Output-only, Beta] List of each iteration results.
-  core.List<IterationResult> iterationResults;
+  /// The evaluation metrics over training/eval data that were computed at the
+  /// end of training.
+  EvaluationMetrics evaluationMetrics;
 
-  /// [Output-only, Beta] Training run start time in milliseconds since the
-  /// epoch.
-  core.DateTime startTime;
+  /// Output of each iteration run, results.size() <= max_iterations.
+  core.List<IterationResult> results;
 
-  /// [Output-only, Beta] Different state applicable for a training run. IN
-  /// PROGRESS: Training run is in progress. FAILED: Training run ended due to a
-  /// non-retryable failure. SUCCEEDED: Training run successfully completed.
-  /// CANCELLED: Training run cancelled by the user.
-  core.String state;
+  /// The start time of this training run.
+  core.String startTime;
 
-  /// [Output-only, Beta] Training options used by this training run. These
-  /// options are mutable for subsequent training runs. Default values are
-  /// explicitly stored for options not specified in the input query of the
-  /// first training run. For subsequent training runs, any option not
-  /// explicitly specified in the input query will be copied from the previous
-  /// training run.
-  TrainingRunTrainingOptions trainingOptions;
+  /// Options that were used for this training run, includes
+  /// user specified and default options that were used.
+  TrainingOptions trainingOptions;
 
   TrainingRun();
 
   TrainingRun.fromJson(core.Map _json) {
-    if (_json.containsKey("iterationResults")) {
-      iterationResults = (_json["iterationResults"] as core.List)
+    if (_json.containsKey("evaluationMetrics")) {
+      evaluationMetrics =
+          new EvaluationMetrics.fromJson(_json["evaluationMetrics"]);
+    }
+    if (_json.containsKey("results")) {
+      results = (_json["results"] as core.List)
           .map<IterationResult>((value) => new IterationResult.fromJson(value))
           .toList();
     }
     if (_json.containsKey("startTime")) {
-      startTime = core.DateTime.parse(_json["startTime"]);
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
+      startTime = _json["startTime"];
     }
     if (_json.containsKey("trainingOptions")) {
-      trainingOptions =
-          new TrainingRunTrainingOptions.fromJson(_json["trainingOptions"]);
+      trainingOptions = new TrainingOptions.fromJson(_json["trainingOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (iterationResults != null) {
-      _json["iterationResults"] =
-          iterationResults.map((value) => (value).toJson()).toList();
+    if (evaluationMetrics != null) {
+      _json["evaluationMetrics"] = (evaluationMetrics).toJson();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
     }
     if (startTime != null) {
-      _json["startTime"] = (startTime).toIso8601String();
-    }
-    if (state != null) {
-      _json["state"] = state;
+      _json["startTime"] = startTime;
     }
     if (trainingOptions != null) {
       _json["trainingOptions"] = (trainingOptions).toJson();

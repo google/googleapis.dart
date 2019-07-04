@@ -1941,8 +1941,7 @@ class DriveExportOptions {
   /// Set to true to include access level information for users
   /// with <a
   /// href="https://support.google.com/vault/answer/6099459#metadata">indirect
-  /// access</a>
-  /// to files.
+  /// access</a> to files.
   core.bool includeAccessInfo;
 
   DriveExportOptions();
@@ -1965,6 +1964,9 @@ class DriveExportOptions {
 
 /// Drive search advanced options
 class DriveOptions {
+  /// Set to true to include shared drive.
+  core.bool includeSharedDrives;
+
   /// Set to true to include Team Drive.
   core.bool includeTeamDrives;
 
@@ -1976,6 +1978,9 @@ class DriveOptions {
   DriveOptions();
 
   DriveOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("includeSharedDrives")) {
+      includeSharedDrives = _json["includeSharedDrives"];
+    }
     if (_json.containsKey("includeTeamDrives")) {
       includeTeamDrives = _json["includeTeamDrives"];
     }
@@ -1987,6 +1992,9 @@ class DriveOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (includeSharedDrives != null) {
+      _json["includeSharedDrives"] = includeSharedDrives;
+    }
     if (includeTeamDrives != null) {
       _json["includeTeamDrives"] = includeTeamDrives;
     }
@@ -2342,8 +2350,18 @@ class HeldAccount {
   /// <a href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
   core.String accountId;
 
-  /// When the account was put on hold.
+  /// The primary email address of the account. If used as an input, this takes
+  /// precedence over account ID.
+  core.String email;
+
+  /// Output only. The first name of the account holder.
+  core.String firstName;
+
+  /// Output only. When the account was put on hold.
   core.String holdTime;
+
+  /// Output only. The last name of the account holder.
+  core.String lastName;
 
   HeldAccount();
 
@@ -2351,8 +2369,17 @@ class HeldAccount {
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
     }
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("firstName")) {
+      firstName = _json["firstName"];
+    }
     if (_json.containsKey("holdTime")) {
       holdTime = _json["holdTime"];
+    }
+    if (_json.containsKey("lastName")) {
+      lastName = _json["lastName"];
     }
   }
 
@@ -2362,8 +2389,17 @@ class HeldAccount {
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (firstName != null) {
+      _json["firstName"] = firstName;
+    }
     if (holdTime != null) {
       _json["holdTime"] = holdTime;
+    }
+    if (lastName != null) {
+      _json["lastName"] = lastName;
     }
     return _json;
   }
@@ -2371,12 +2407,18 @@ class HeldAccount {
 
 /// Query options for Drive holds.
 class HeldDriveQuery {
+  /// If true, include files in shared drives in the hold.
+  core.bool includeSharedDriveFiles;
+
   /// If true, include files in Team Drives in the hold.
   core.bool includeTeamDriveFiles;
 
   HeldDriveQuery();
 
   HeldDriveQuery.fromJson(core.Map _json) {
+    if (_json.containsKey("includeSharedDriveFiles")) {
+      includeSharedDriveFiles = _json["includeSharedDriveFiles"];
+    }
     if (_json.containsKey("includeTeamDriveFiles")) {
       includeTeamDriveFiles = _json["includeTeamDriveFiles"];
     }
@@ -2385,6 +2427,9 @@ class HeldDriveQuery {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (includeSharedDriveFiles != null) {
+      _json["includeSharedDriveFiles"] = includeSharedDriveFiles;
+    }
     if (includeTeamDriveFiles != null) {
       _json["includeTeamDriveFiles"] = includeTeamDriveFiles;
     }
@@ -2799,11 +2844,17 @@ class MailExportOptions {
   /// - "PST" : PST as export format
   core.String exportFormat;
 
+  /// Set to true to export confidential mode content.
+  core.bool showConfidentialModeContent;
+
   MailExportOptions();
 
   MailExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey("exportFormat")) {
       exportFormat = _json["exportFormat"];
+    }
+    if (_json.containsKey("showConfidentialModeContent")) {
+      showConfidentialModeContent = _json["showConfidentialModeContent"];
     }
   }
 
@@ -2812,6 +2863,9 @@ class MailExportOptions {
         new core.Map<core.String, core.Object>();
     if (exportFormat != null) {
       _json["exportFormat"] = exportFormat;
+    }
+    if (showConfidentialModeContent != null) {
+      _json["showConfidentialModeContent"] = showConfidentialModeContent;
     }
     return _json;
   }
@@ -3014,6 +3068,29 @@ class Query {
   /// For mail search, specify more options in this field.
   MailOptions mailOptions;
 
+  /// The search method to use. This field is similar to the search_method field
+  /// but is introduced to support shared drives. It supports all
+  /// search method types. In case the search_method is TEAM_DRIVE the response
+  /// of this field will be SHARED_DRIVE only.
+  /// Possible string values are:
+  /// - "SEARCH_METHOD_UNSPECIFIED" : A search method must be specified. If a
+  /// request does not specify a
+  /// search method, it will be rejected.
+  /// - "ACCOUNT" : Will search all accounts provided in account_info.
+  /// - "ORG_UNIT" : Will search all accounts in the OU specified in
+  /// org_unit_info.
+  /// - "TEAM_DRIVE" : Will search for all accounts in the Team Drive specified
+  /// in
+  /// team_drive_info.
+  /// - "ENTIRE_ORG" : Will search for all accounts in the organization.
+  /// No need to set account_info or org_unit_info.
+  /// - "ROOM" : Will search in the Room specified in
+  /// hangout_chats_info. (read-only)
+  /// - "SHARED_DRIVE" : Will search for all accounts in the shared drive
+  /// specified in
+  /// shared_drive_info.
+  core.String method;
+
   /// When 'ORG_UNIT' is chosen as as search method, org_unit_info needs
   /// to be specified.
   OrgUnitInfo orgUnitInfo;
@@ -3033,7 +3110,14 @@ class Query {
   /// No need to set account_info or org_unit_info.
   /// - "ROOM" : Will search in the Room specified in
   /// hangout_chats_info. (read-only)
+  /// - "SHARED_DRIVE" : Will search for all accounts in the shared drive
+  /// specified in
+  /// shared_drive_info.
   core.String searchMethod;
+
+  /// When 'SHARED_DRIVE' is chosen as search method, shared_drive_info needs
+  /// to be specified.
+  SharedDriveInfo sharedDriveInfo;
 
   /// The start time range for the search query. These timestamps are in GMT and
   /// rounded down to the start of the given date.
@@ -3045,8 +3129,7 @@ class Query {
 
   /// The corpus-specific
   /// <a href="https://support.google.com/vault/answer/2474474">search
-  /// operators</a>
-  /// used to generate search results.
+  /// operators</a> used to generate search results.
   core.String terms;
 
   /// The time zone name.
@@ -3086,11 +3169,17 @@ class Query {
     if (_json.containsKey("mailOptions")) {
       mailOptions = new MailOptions.fromJson(_json["mailOptions"]);
     }
+    if (_json.containsKey("method")) {
+      method = _json["method"];
+    }
     if (_json.containsKey("orgUnitInfo")) {
       orgUnitInfo = new OrgUnitInfo.fromJson(_json["orgUnitInfo"]);
     }
     if (_json.containsKey("searchMethod")) {
       searchMethod = _json["searchMethod"];
+    }
+    if (_json.containsKey("sharedDriveInfo")) {
+      sharedDriveInfo = new SharedDriveInfo.fromJson(_json["sharedDriveInfo"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -3133,11 +3222,17 @@ class Query {
     if (mailOptions != null) {
       _json["mailOptions"] = (mailOptions).toJson();
     }
+    if (method != null) {
+      _json["method"] = method;
+    }
     if (orgUnitInfo != null) {
       _json["orgUnitInfo"] = (orgUnitInfo).toJson();
     }
     if (searchMethod != null) {
       _json["searchMethod"] = searchMethod;
+    }
+    if (sharedDriveInfo != null) {
+      _json["sharedDriveInfo"] = (sharedDriveInfo).toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -3328,62 +3423,38 @@ class SavedQuery {
   }
 }
 
+/// Shared drives to search
+class SharedDriveInfo {
+  /// List of Shared drive ids, as provided by <a
+  /// href="https://developers.google.com/drive">Drive API</a>.
+  core.List<core.String> sharedDriveIds;
+
+  SharedDriveInfo();
+
+  SharedDriveInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("sharedDriveIds")) {
+      sharedDriveIds =
+          (_json["sharedDriveIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sharedDriveIds != null) {
+      _json["sharedDriveIds"] = sharedDriveIds;
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

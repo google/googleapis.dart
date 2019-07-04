@@ -37,12 +37,107 @@ class ContainerApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsAggregatedResourceApi get aggregated =>
+      new ProjectsAggregatedResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
       new ProjectsLocationsResourceApi(_requester);
   ProjectsZonesResourceApi get zones =>
       new ProjectsZonesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsAggregatedResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsAggregatedUsableSubnetworksResourceApi get usableSubnetworks =>
+      new ProjectsAggregatedUsableSubnetworksResourceApi(_requester);
+
+  ProjectsAggregatedResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsAggregatedUsableSubnetworksResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsAggregatedUsableSubnetworksResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists subnetworks that are usable for creating clusters in a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent project where subnetworks are usable.
+  /// Specified in the format 'projects / * '.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - Specifies a page token to use. Set this to the nextPageToken
+  /// returned by
+  /// previous list requests to get the next page of results.
+  ///
+  /// [pageSize] - The max number of results per page that should be returned.
+  /// If the number
+  /// of available results is larger than `page_size`, a `next_page_token` is
+  /// returned which can be used to get the next page of results in subsequent
+  /// requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+  ///
+  /// [filter] - Filtering currently only supports equality on the
+  /// networkProjectId and must
+  /// be in the form: "networkProjectId=[PROJECTID]", where `networkProjectId`
+  /// is the project which owns the listed subnetworks. This defaults to the
+  /// parent project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUsableSubnetworksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUsableSubnetworksResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/aggregated/usableSubnetworks';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListUsableSubnetworksResponse.fromJson(data));
+  }
 }
 
 class ProjectsLocationsResourceApi {
@@ -56,21 +151,21 @@ class ProjectsLocationsResourceApi {
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Returns configuration info about the Kubernetes Engine service.
+  /// Returns configuration info about the Google Kubernetes Engine service.
   ///
   /// Request parameters:
   ///
-  /// [name] - The name (project and location) of the server config to get
-  /// Specified in the format 'projects / * /locations / * '.
+  /// [name] - The name (project and location) of the server config to get,
+  /// specified in the format 'projects / * /locations / * '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
-  ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for.
-  /// This field has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -84,7 +179,7 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServerConfig> getServerConfig(core.String name,
-      {core.String zone, core.String projectId, core.String $fields}) {
+      {core.String projectId, core.String zone, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -95,11 +190,11 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -192,12 +287,12 @@ class ProjectsLocationsClustersResourceApi {
   /// [default network](/compute/docs/networks-and-firewalls#networks).
   ///
   /// One firewall is added for the cluster. After cluster creation,
-  /// the cluster creates routes for each node to allow the containers
+  /// the Kubelet creates routes for each node to allow the containers
   /// on that node to communicate with all other instances in the
   /// cluster.
   ///
   /// Finally, an entry is added to the project's global metadata indicating
-  /// which CIDR range is being used by the cluster.
+  /// which CIDR range the cluster is using.
   ///
   /// [request] - The metadata request object.
   ///
@@ -256,15 +351,18 @@ class ProjectsLocationsClustersResourceApi {
   /// Firewalls and routes that were configured during cluster creation
   /// are also deleted.
   ///
-  /// Other Google Compute Engine resources that might be in use by the cluster
-  /// (e.g. load balancer resources) will not be deleted if they weren't present
-  /// at the initial create time.
+  /// Other Google Compute Engine resources that might be in use by the cluster,
+  /// such as load balancer resources, are not deleted if they weren't present
+  /// when the cluster was initially created.
   ///
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster) of the cluster to delete.
   /// Specified in the format 'projects / * /locations / * /clusters / * '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster to delete.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
@@ -274,9 +372,6 @@ class ProjectsLocationsClustersResourceApi {
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [clusterId] - Deprecated. The name of the cluster to delete.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -290,6 +385,76 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
+      {core.String clusterId,
+      core.String projectId,
+      core.String zone,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (clusterId != null) {
+      _queryParams["clusterId"] = [clusterId];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Gets the details of a specific cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name (project, location, cluster) of the cluster to retrieve.
+  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [clusterId] - Deprecated. The name of the cluster to retrieve.
+  /// This field has been deprecated and replaced by the name field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Cluster].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Cluster> get(core.String name,
       {core.String projectId,
       core.String zone,
       core.String clusterId,
@@ -319,76 +484,6 @@ class ProjectsLocationsClustersResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
-  }
-
-  /// Gets the details of a specific cluster.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name (project, location, cluster) of the cluster to retrieve.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
-  ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [clusterId] - Deprecated. The name of the cluster to retrieve.
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://support.google.com/cloud/answer/6158840).
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Cluster].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Cluster> get(core.String name,
-      {core.String zone,
-      core.String clusterId,
-      core.String projectId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
-    }
-    if (clusterId != null) {
-      _queryParams["clusterId"] = [clusterId];
-    }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
     var _response = _requester.request(_url, "GET",
         body: _body,
         queryParams: _queryParams,
@@ -398,7 +493,7 @@ class ProjectsLocationsClustersResourceApi {
     return _response.then((data) => new Cluster.fromJson(data));
   }
 
-  /// GetJSONWebKeys gets the public component of the cluster signing keys in
+  /// Gets the public component of the cluster signing keys in
   /// JSON Web Key format.
   /// This API is not yet intended for general use, and is not available for all
   /// clusters.
@@ -781,9 +876,10 @@ class ProjectsLocationsClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Used to set master auth materials. Currently supports :-
-  /// Changing the admin password for a specific cluster.
-  /// This can be either via password generation or explicitly set the password.
+  /// Sets master auth materials. Currently supports changing the admin password
+  /// or a specific cluster, either via password generation or explicitly
+  /// setting
+  /// the password.
   ///
   /// [request] - The metadata request object.
   ///
@@ -890,7 +986,7 @@ class ProjectsLocationsClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Enables/Disables Network Policy for a cluster.
+  /// Enables or disables Network Policy for a cluster.
   ///
   /// [request] - The metadata request object.
   ///
@@ -999,7 +1095,7 @@ class ProjectsLocationsClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Start master IP rotation.
+  /// Starts master IP rotation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1229,9 +1325,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
-  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
-  /// This field has been deprecated and replaced by the name field.
-  ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://developers.google.com/console/help/new/#projectnumber).
@@ -1245,6 +1338,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
   ///
+  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
+  /// This field has been deprecated and replaced by the name field.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1256,10 +1352,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
-      {core.String nodePoolId,
-      core.String projectId,
+      {core.String projectId,
       core.String zone,
       core.String clusterId,
+      core.String nodePoolId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1271,9 +1367,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (nodePoolId != null) {
-      _queryParams["nodePoolId"] = [nodePoolId];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
@@ -1282,6 +1375,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
+    }
+    if (nodePoolId != null) {
+      _queryParams["nodePoolId"] = [nodePoolId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1298,7 +1394,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves the node pool requested.
+  /// Retrieves the requested node pool.
   ///
   /// Request parameters:
   ///
@@ -1309,6 +1405,11 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the name field.
+  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
@@ -1318,11 +1419,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [nodePoolId] - Deprecated. The name of the node pool.
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1336,10 +1432,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<NodePool> get(core.String name,
-      {core.String zone,
+      {core.String projectId,
+      core.String zone,
       core.String clusterId,
       core.String nodePoolId,
-      core.String projectId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1351,6 +1447,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
     }
@@ -1359,9 +1458,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     }
     if (nodePoolId != null) {
       _queryParams["nodePoolId"] = [nodePoolId];
-    }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1388,17 +1484,17 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// '.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
+  /// [projectId] - Deprecated. The Google Developers Console [project ID or
+  /// project
+  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// This field has been deprecated and replaced by the parent field.
+  ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
-  /// This field has been deprecated and replaced by the parent field.
-  ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1412,9 +1508,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNodePoolsResponse> list(core.String parent,
-      {core.String zone,
+      {core.String projectId,
+      core.String zone,
       core.String clusterId,
-      core.String projectId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1426,14 +1522,14 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (zone != null) {
       _queryParams["zone"] = [zone];
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
-    }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1451,8 +1547,8 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
   }
 
-  /// Roll back the previously Aborted or Failed NodePool upgrade.
-  /// This will be an no-op if the last upgrade successfully completed.
+  /// Rolls back a previously Aborted or Failed NodePool upgrade.
+  /// This makes no changes if the last upgrade successfully completed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1507,7 +1603,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets the autoscaling settings for a specific node pool.
+  /// Sets the autoscaling settings for the specified node pool.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1674,7 +1770,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Updates the version and/or image type for a specific node pool.
+  /// Updates the version and/or image type for the specified node pool.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1735,9 +1831,11 @@ class ProjectsLocationsClustersWell_knownResourceApi {
   ProjectsLocationsClustersWell_knownResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// GetOpenIDConfig gets the OIDC discovery document for the cluster.
-  /// See the OpenID Connect Discovery 1.0 specification for details.
-  /// https://openid.net/specs/openid-connect-discovery-1_0.html
+  /// Gets the OIDC discovery document for the cluster.
+  /// See the
+  /// [OpenID Connect Discovery 1.0
+  /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html)
+  /// for details.
   /// This API is not yet intended for general use, and is not available for all
   /// clusters.
   ///
@@ -1929,15 +2027,15 @@ class ProjectsLocationsOperationsResourceApi {
   /// Location "-" matches all zones and all regions.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
-  /// all zones. This field has been deprecated and replaced by the parent
-  /// field.
-  ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
   /// This field has been deprecated and replaced by the parent field.
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
+  /// all zones. This field has been deprecated and replaced by the parent
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1950,7 +2048,7 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String parent,
-      {core.String zone, core.String projectId, core.String $fields}) {
+      {core.String projectId, core.String zone, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1961,11 +2059,11 @@ class ProjectsLocationsOperationsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1995,7 +2093,7 @@ class ProjectsZonesResourceApi {
 
   ProjectsZonesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns configuration info about the Kubernetes Engine service.
+  /// Returns configuration info about the Google Kubernetes Engine service.
   ///
   /// Request parameters:
   ///
@@ -2008,8 +2106,8 @@ class ProjectsZonesResourceApi {
   /// [zone](/compute/docs/zones#available) to return operations for.
   /// This field has been deprecated and replaced by the name field.
   ///
-  /// [name] - The name (project and location) of the server config to get
-  /// Specified in the format 'projects / * /locations / * '.
+  /// [name] - The name (project and location) of the server config to get,
+  /// specified in the format 'projects / * /locations / * '.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2220,12 +2318,12 @@ class ProjectsZonesClustersResourceApi {
   /// [default network](/compute/docs/networks-and-firewalls#networks).
   ///
   /// One firewall is added for the cluster. After cluster creation,
-  /// the cluster creates routes for each node to allow the containers
+  /// the Kubelet creates routes for each node to allow the containers
   /// on that node to communicate with all other instances in the
   /// cluster.
   ///
   /// Finally, an entry is added to the project's global metadata indicating
-  /// which CIDR range is being used by the cluster.
+  /// which CIDR range the cluster is using.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2295,9 +2393,9 @@ class ProjectsZonesClustersResourceApi {
   /// Firewalls and routes that were configured during cluster creation
   /// are also deleted.
   ///
-  /// Other Google Compute Engine resources that might be in use by the cluster
-  /// (e.g. load balancer resources) will not be deleted if they weren't present
-  /// at the initial create time.
+  /// Other Google Compute Engine resources that might be in use by the cluster,
+  /// such as load balancer resources, are not deleted if they weren't present
+  /// when the cluster was initially created.
   ///
   /// Request parameters:
   ///
@@ -3012,9 +3110,10 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Used to set master auth materials. Currently supports :-
-  /// Changing the admin password for a specific cluster.
-  /// This can be either via password generation or explicitly set the password.
+  /// Sets master auth materials. Currently supports changing the admin password
+  /// or a specific cluster, either via password generation or explicitly
+  /// setting
+  /// the password.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3086,7 +3185,7 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Enables/Disables Network Policy for a cluster.
+  /// Enables or disables Network Policy for a cluster.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3158,7 +3257,7 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Start master IP rotation.
+  /// Starts master IP rotation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3308,7 +3407,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ProjectsZonesClustersNodePoolsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Sets the autoscaling settings for a specific node pool.
+  /// Sets the autoscaling settings for the specified node pool.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3546,7 +3645,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves the node pool requested.
+  /// Retrieves the requested node pool.
   ///
   /// Request parameters:
   ///
@@ -3703,8 +3802,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new ListNodePoolsResponse.fromJson(data));
   }
 
-  /// Roll back the previously Aborted or Failed NodePool upgrade.
-  /// This will be an no-op if the last upgrade successfully completed.
+  /// Rolls back a previously Aborted or Failed NodePool upgrade.
+  /// This makes no changes if the last upgrade successfully completed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3956,7 +4055,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Updates the version and/or image type for a specific node pool.
+  /// Updates the version and/or image type for the specified node pool.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4305,6 +4404,10 @@ class AddonsConfig {
   HttpLoadBalancing httpLoadBalancing;
 
   /// Configuration for the Kubernetes Dashboard.
+  /// This addon is deprecated, and will be disabled in 1.15. It is recommended
+  /// to use the Cloud Console to manage and monitor your Kubernetes clusters,
+  /// workloads and applications. For more information, see:
+  /// https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
   KubernetesDashboard kubernetesDashboard;
 
   /// Configuration for NetworkPolicy. This only tracks whether the addon
@@ -4383,6 +4486,29 @@ class AutoUpgradeOptions {
     }
     if (description != null) {
       _json["description"] = description;
+    }
+    return _json;
+  }
+}
+
+/// Parameters for using BigQuery as the destination of resource usage export.
+class BigQueryDestination {
+  /// The ID of a BigQuery Dataset.
+  core.String datasetId;
+
+  BigQueryDestination();
+
+  BigQueryDestination.fromJson(core.Map _json) {
+    if (_json.containsKey("datasetId")) {
+      datasetId = _json["datasetId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (datasetId != null) {
+      _json["datasetId"] = datasetId;
     }
     return _json;
   }
@@ -4525,11 +4651,16 @@ class Cluster {
   core.int currentNodeCount;
 
   /// [Output only] Deprecated, use
-  /// [NodePool.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePool)
+  /// [NodePools.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)
   /// instead. The current version of the node software components. If they are
   /// currently at multiple versions because they're in the process of being
   /// upgraded, this reflects the minimum version of all nodes.
   core.String currentNodeVersion;
+
+  /// The default constraint on the maximum number of pods that can be run
+  /// simultaneously on a node in the node pool of this cluster. Only honored
+  /// if cluster created with IP Alias support.
+  MaxPodsConstraint defaultMaxPodsConstraint;
 
   /// An optional description of this cluster.
   core.String description;
@@ -4542,6 +4673,9 @@ class Cluster {
   /// Alpha enabled clusters are automatically deleted thirty days after
   /// creation.
   core.bool enableKubernetesAlpha;
+
+  /// Enable the ability to use Cloud TPUs in this cluster.
+  core.bool enableTpu;
 
   /// [Output only] The IP address of this cluster's master endpoint.
   /// The endpoint can be accessed from the internet at
@@ -4578,6 +4712,8 @@ class Cluster {
   /// "node_pool" object, since this configuration (along with the
   /// "node_config") will be used to create a "NodePool" object with an
   /// auto-generated name. Do not use this and a node_pool at the same time.
+  ///
+  /// This field is deprecated, use node_pool.initial_node_count instead.
   core.int initialNodeCount;
 
   /// Deprecated. Use node_pools.instance_group_urls.
@@ -4606,6 +4742,8 @@ class Cluster {
   /// The logging service the cluster should use to write logs.
   /// Currently available options:
   ///
+  /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
+  /// service with Kubernetes-native resource model in Stackdriver
   /// * `logging.googleapis.com` - the Google Cloud Logging service.
   /// * `none` - no logs will be exported from the cluster.
   /// * if left as an empty string,`logging.googleapis.com` will be used.
@@ -4653,20 +4791,22 @@ class Cluster {
   NetworkPolicy networkPolicy;
 
   /// Parameters used in creating the cluster's nodes.
-  /// See `nodeConfig` for the description of its properties.
   /// For requests, this field should only be used in lieu of a
   /// "node_pool" object, since this configuration (along with the
   /// "initial_node_count") will be used to create a "NodePool" object with an
   /// auto-generated name. Do not use this and a node_pool at the same time.
   /// For responses, this field will be populated with the node configuration of
-  /// the first node pool.
+  /// the first node pool. (For configuration of each node pool, see
+  /// `node_pool.config`)
   ///
   /// If unspecified, the defaults are used.
+  /// This field is deprecated, use node_pool.config instead.
   NodeConfig nodeConfig;
 
   /// [Output only] The size of the address space on each node for hosting
   /// containers. This is provisioned from within the `container_ipv4_cidr`
-  /// range.
+  /// range. This field will only be set when cluster is in route-based network
+  /// mode.
   core.int nodeIpv4CidrSize;
 
   /// The node pools associated with this cluster.
@@ -4680,6 +4820,10 @@ class Cluster {
   /// The resource labels for the cluster to use to annotate any related
   /// Google Compute Engine resources.
   core.Map<core.String, core.String> resourceLabels;
+
+  /// Configuration for exporting resource usages. Resource usage export is
+  /// disabled when this config is unspecified.
+  ResourceUsageExportConfig resourceUsageExportConfig;
 
   /// [Output only] Server-defined URL for the resource.
   core.String selfLink;
@@ -4720,6 +4864,11 @@ class Cluster {
   /// cluster is connected.
   core.String subnetwork;
 
+  /// [Output only] The IP address range of the Cloud TPUs in this cluster, in
+  /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `1.2.3.4/29`).
+  core.String tpuIpv4CidrBlock;
+
   /// [Output only] The name of the Google Compute Engine
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
@@ -4752,11 +4901,18 @@ class Cluster {
     if (_json.containsKey("currentNodeVersion")) {
       currentNodeVersion = _json["currentNodeVersion"];
     }
+    if (_json.containsKey("defaultMaxPodsConstraint")) {
+      defaultMaxPodsConstraint =
+          new MaxPodsConstraint.fromJson(_json["defaultMaxPodsConstraint"]);
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
     if (_json.containsKey("enableKubernetesAlpha")) {
       enableKubernetesAlpha = _json["enableKubernetesAlpha"];
+    }
+    if (_json.containsKey("enableTpu")) {
+      enableTpu = _json["enableTpu"];
     }
     if (_json.containsKey("endpoint")) {
       endpoint = _json["endpoint"];
@@ -4839,6 +4995,10 @@ class Cluster {
       resourceLabels = (_json["resourceLabels"] as core.Map)
           .cast<core.String, core.String>();
     }
+    if (_json.containsKey("resourceUsageExportConfig")) {
+      resourceUsageExportConfig = new ResourceUsageExportConfig.fromJson(
+          _json["resourceUsageExportConfig"]);
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -4853,6 +5013,9 @@ class Cluster {
     }
     if (_json.containsKey("subnetwork")) {
       subnetwork = _json["subnetwork"];
+    }
+    if (_json.containsKey("tpuIpv4CidrBlock")) {
+      tpuIpv4CidrBlock = _json["tpuIpv4CidrBlock"];
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -4884,11 +5047,17 @@ class Cluster {
     if (currentNodeVersion != null) {
       _json["currentNodeVersion"] = currentNodeVersion;
     }
+    if (defaultMaxPodsConstraint != null) {
+      _json["defaultMaxPodsConstraint"] = (defaultMaxPodsConstraint).toJson();
+    }
     if (description != null) {
       _json["description"] = description;
     }
     if (enableKubernetesAlpha != null) {
       _json["enableKubernetesAlpha"] = enableKubernetesAlpha;
+    }
+    if (enableTpu != null) {
+      _json["enableTpu"] = enableTpu;
     }
     if (endpoint != null) {
       _json["endpoint"] = endpoint;
@@ -4963,6 +5132,9 @@ class Cluster {
     if (resourceLabels != null) {
       _json["resourceLabels"] = resourceLabels;
     }
+    if (resourceUsageExportConfig != null) {
+      _json["resourceUsageExportConfig"] = (resourceUsageExportConfig).toJson();
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -4977,6 +5149,9 @@ class Cluster {
     }
     if (subnetwork != null) {
       _json["subnetwork"] = subnetwork;
+    }
+    if (tpuIpv4CidrBlock != null) {
+      _json["tpuIpv4CidrBlock"] = tpuIpv4CidrBlock;
     }
     if (zone != null) {
       _json["zone"] = zone;
@@ -5005,6 +5180,15 @@ class ClusterUpdate {
   /// This list must always include the cluster's primary zone.
   core.List<core.String> desiredLocations;
 
+  /// The logging service the cluster should use to write logs.
+  /// Currently available options:
+  ///
+  /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
+  /// service with Kubernetes-native resource model in Stackdriver
+  /// * "logging.googleapis.com" - the Google Cloud Logging service
+  /// * "none" - no logs will be exported from the cluster
+  core.String desiredLoggingService;
+
   /// The desired configuration options for master authorized networks feature.
   MasterAuthorizedNetworksConfig desiredMasterAuthorizedNetworksConfig;
 
@@ -5023,6 +5207,8 @@ class ClusterUpdate {
   /// The monitoring service the cluster should use to write metrics.
   /// Currently available options:
   ///
+  /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
+  /// service with Kubernetes-native resource model in Stackdriver
   /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
   /// * "none" - no metrics will be exported from the cluster
   core.String desiredMonitoringService;
@@ -5052,6 +5238,9 @@ class ClusterUpdate {
   /// - "-": picks the Kubernetes master version
   core.String desiredNodeVersion;
 
+  /// The desired configuration for exporting resource usage.
+  ResourceUsageExportConfig desiredResourceUsageExportConfig;
+
   ClusterUpdate();
 
   ClusterUpdate.fromJson(core.Map _json) {
@@ -5065,6 +5254,9 @@ class ClusterUpdate {
     if (_json.containsKey("desiredLocations")) {
       desiredLocations =
           (_json["desiredLocations"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("desiredLoggingService")) {
+      desiredLoggingService = _json["desiredLoggingService"];
     }
     if (_json.containsKey("desiredMasterAuthorizedNetworksConfig")) {
       desiredMasterAuthorizedNetworksConfig =
@@ -5087,6 +5279,10 @@ class ClusterUpdate {
     if (_json.containsKey("desiredNodeVersion")) {
       desiredNodeVersion = _json["desiredNodeVersion"];
     }
+    if (_json.containsKey("desiredResourceUsageExportConfig")) {
+      desiredResourceUsageExportConfig = new ResourceUsageExportConfig.fromJson(
+          _json["desiredResourceUsageExportConfig"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5100,6 +5296,9 @@ class ClusterUpdate {
     }
     if (desiredLocations != null) {
       _json["desiredLocations"] = desiredLocations;
+    }
+    if (desiredLoggingService != null) {
+      _json["desiredLoggingService"] = desiredLoggingService;
     }
     if (desiredMasterAuthorizedNetworksConfig != null) {
       _json["desiredMasterAuthorizedNetworksConfig"] =
@@ -5120,6 +5319,10 @@ class ClusterUpdate {
     }
     if (desiredNodeVersion != null) {
       _json["desiredNodeVersion"] = desiredNodeVersion;
+    }
+    if (desiredResourceUsageExportConfig != null) {
+      _json["desiredResourceUsageExportConfig"] =
+          (desiredResourceUsageExportConfig).toJson();
     }
     return _json;
   }
@@ -5178,6 +5381,31 @@ class CompleteIPRotationRequest {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// Parameters for controlling consumption metering.
+class ConsumptionMeteringConfig {
+  /// Whether to enable consumption metering for this cluster. If enabled, a
+  /// second BigQuery table will be created to hold resource consumption
+  /// records.
+  core.bool enabled;
+
+  ConsumptionMeteringConfig();
+
+  ConsumptionMeteringConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
     }
     return _json;
   }
@@ -5317,7 +5545,7 @@ class DailyMaintenanceWindow {
 
   /// Time within the maintenance window to start the maintenance operations.
   /// Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-  /// format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+  /// format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
   core.String startTime;
 
   DailyMaintenanceWindow();
@@ -5394,25 +5622,25 @@ class GetJSONWebKeysResponse {
 /// GetOpenIDConfigResponse is an OIDC discovery document for the cluster.
 /// See the OpenID Connect Discovery 1.0 specification for details.
 class GetOpenIDConfigResponse {
-  /// NOLINT
+  /// Supported claims.
   core.List<core.String> claimsSupported;
 
-  /// NOLINT
+  /// Supported grant types.
   core.List<core.String> grantTypes;
 
-  /// NOLINT
+  /// supported ID Token signing Algorithms.
   core.List<core.String> idTokenSigningAlgValuesSupported;
 
-  /// NOLINT
+  /// OIDC Issuer.
   core.String issuer;
 
-  /// NOLINT
+  /// JSON Web Key uri.
   core.String jwksUri;
 
-  /// NOLINT
+  /// Supported response types.
   core.List<core.String> responseTypesSupported;
 
-  /// NOLINT
+  /// Supported subject types.
   core.List<core.String> subjectTypesSupported;
 
   GetOpenIDConfigResponse();
@@ -5618,6 +5846,23 @@ class IPAllocationPolicy {
   /// subnetwork.
   core.String subnetworkName;
 
+  /// The IP address range of the Cloud TPUs in this cluster. If unspecified, a
+  /// range will be automatically chosen with the default size.
+  ///
+  /// This field is only applicable when `use_ip_aliases` is true.
+  ///
+  /// If unspecified, the range will use the default size.
+  ///
+  /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific
+  /// netmask.
+  ///
+  /// Set to a
+  /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+  /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+  /// to use.
+  core.String tpuIpv4CidrBlock;
+
   /// Whether alias IPs will be used for pod IPs in the cluster.
   core.bool useIpAliases;
 
@@ -5653,6 +5898,9 @@ class IPAllocationPolicy {
     }
     if (_json.containsKey("subnetworkName")) {
       subnetworkName = _json["subnetworkName"];
+    }
+    if (_json.containsKey("tpuIpv4CidrBlock")) {
+      tpuIpv4CidrBlock = _json["tpuIpv4CidrBlock"];
     }
     if (_json.containsKey("useIpAliases")) {
       useIpAliases = _json["useIpAliases"];
@@ -5692,6 +5940,9 @@ class IPAllocationPolicy {
     if (subnetworkName != null) {
       _json["subnetworkName"] = subnetworkName;
     }
+    if (tpuIpv4CidrBlock != null) {
+      _json["tpuIpv4CidrBlock"] = tpuIpv4CidrBlock;
+    }
     if (useIpAliases != null) {
       _json["useIpAliases"] = useIpAliases;
     }
@@ -5701,33 +5952,31 @@ class IPAllocationPolicy {
 
 /// Jwk is a JSON Web Key as specified in RFC 7517
 class Jwk {
-  /// NOLINT
+  /// Algorithm.
   core.String alg;
 
-  /// NOLINT
+  /// Used for ECDSA keys.
   core.String crv;
 
-  /// NOLINT
+  /// Used for RSA keys.
   core.String e;
 
-  /// NOLINT
+  /// Key ID.
   core.String kid;
 
-  /// NOLINT
+  /// Key Type.
   core.String kty;
 
-  /// Fields for RSA keys.
-  /// NOLINT
+  /// Used for RSA keys.
   core.String n;
 
-  /// NOLINT
+  /// Permitted uses for the public keys.
   core.String use;
 
-  /// Fields for ECDSA keys.
-  /// NOLINT
+  /// Used for ECDSA keys.
   core.String x;
 
-  /// NOLINT
+  /// Used for ECDSA keys.
   core.String y;
 
   Jwk();
@@ -5943,6 +6192,46 @@ class ListOperationsResponse {
   }
 }
 
+/// ListUsableSubnetworksResponse is the response of
+/// ListUsableSubnetworksRequest.
+class ListUsableSubnetworksResponse {
+  /// This token allows you to get the next page of results for list requests.
+  /// If the number of results is larger than `page_size`, use the
+  /// `next_page_token` as a value for the query parameter `page_token` in the
+  /// next request. The value will become empty when there are no more pages.
+  core.String nextPageToken;
+
+  /// A list of usable subnetworks in the specified network project.
+  core.List<UsableSubnetwork> subnetworks;
+
+  ListUsableSubnetworksResponse();
+
+  ListUsableSubnetworksResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("subnetworks")) {
+      subnetworks = (_json["subnetworks"] as core.List)
+          .map<UsableSubnetwork>(
+              (value) => new UsableSubnetwork.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (subnetworks != null) {
+      _json["subnetworks"] =
+          subnetworks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicy {
   /// Specifies the maintenance window in which maintenance may be performed.
@@ -6076,7 +6365,7 @@ class MasterAuth {
 /// Kubernetes master through HTTPS except traffic from the given CIDR blocks,
 /// Google Compute Engine Public IPs and Google Prod IPs.
 class MasterAuthorizedNetworksConfig {
-  /// cidr_blocks define up to 10 external networks that could access
+  /// cidr_blocks define up to 50 external networks that could access
   /// Kubernetes master through HTTPS.
   core.List<CidrBlock> cidrBlocks;
 
@@ -6105,6 +6394,29 @@ class MasterAuthorizedNetworksConfig {
     }
     if (enabled != null) {
       _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
+/// Constraints applied to pods.
+class MaxPodsConstraint {
+  /// Constraint enforced on the max num of pods per node.
+  core.String maxPodsPerNode;
+
+  MaxPodsConstraint();
+
+  MaxPodsConstraint.fromJson(core.Map _json) {
+    if (_json.containsKey("maxPodsPerNode")) {
+      maxPodsPerNode = _json["maxPodsPerNode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxPodsPerNode != null) {
+      _json["maxPodsPerNode"] = maxPodsPerNode;
     }
     return _json;
   }
@@ -6266,6 +6578,7 @@ class NodeConfig {
   ///  "cluster-name"
   ///  "cluster-uid"
   ///  "configure-sh"
+  ///  "containerd-configure-sh"
   ///  "enable-os-login"
   ///  "gci-update-strategy"
   ///  "gci-ensure-gke-docker"
@@ -6273,6 +6586,13 @@ class NodeConfig {
   ///  "kube-env"
   ///  "startup-script"
   ///  "user-data"
+  ///  "disable-address-manager"
+  ///  "windows-startup-script-ps1"
+  ///  "common-psm1"
+  ///  "k8s-node-setup-psm1"
+  ///  "install-ssh-psm1"
+  ///  "user-profile-psm1"
+  ///  "serial-port-logging-enable"
   ///
   /// Values are free-form strings, and only have meaning as interpreted by
   /// the image running in the instance. The only restriction placed on them is
@@ -6509,8 +6829,15 @@ class NodePool {
   /// NodeManagement configuration for this NodePool.
   NodeManagement management;
 
+  /// The constraint on the maximum number of pods that can be run
+  /// simultaneously on a node in the node pool.
+  MaxPodsConstraint maxPodsConstraint;
+
   /// The name of the node pool.
   core.String name;
+
+  /// [Output only] The pod CIDR block size per node in this node pool.
+  core.int podIpv4CidrSize;
 
   /// [Output only] Server-defined URL for the resource.
   core.String selfLink;
@@ -6569,8 +6896,15 @@ class NodePool {
     if (_json.containsKey("management")) {
       management = new NodeManagement.fromJson(_json["management"]);
     }
+    if (_json.containsKey("maxPodsConstraint")) {
+      maxPodsConstraint =
+          new MaxPodsConstraint.fromJson(_json["maxPodsConstraint"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("podIpv4CidrSize")) {
+      podIpv4CidrSize = _json["podIpv4CidrSize"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -6608,8 +6942,14 @@ class NodePool {
     if (management != null) {
       _json["management"] = (management).toJson();
     }
+    if (maxPodsConstraint != null) {
+      _json["maxPodsConstraint"] = (maxPodsConstraint).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (podIpv4CidrSize != null) {
+      _json["podIpv4CidrSize"] = podIpv4CidrSize;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -6951,6 +7291,50 @@ class PrivateClusterConfig {
     }
     if (publicEndpoint != null) {
       _json["publicEndpoint"] = publicEndpoint;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for exporting cluster resource usages.
+class ResourceUsageExportConfig {
+  /// Configuration to use BigQuery as usage export destination.
+  BigQueryDestination bigqueryDestination;
+
+  /// Configuration to enable resource consumption metering.
+  ConsumptionMeteringConfig consumptionMeteringConfig;
+
+  /// Whether to enable network egress metering for this cluster. If enabled, a
+  /// daemonset will be created in the cluster to meter network egress traffic.
+  core.bool enableNetworkEgressMetering;
+
+  ResourceUsageExportConfig();
+
+  ResourceUsageExportConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("bigqueryDestination")) {
+      bigqueryDestination =
+          new BigQueryDestination.fromJson(_json["bigqueryDestination"]);
+    }
+    if (_json.containsKey("consumptionMeteringConfig")) {
+      consumptionMeteringConfig = new ConsumptionMeteringConfig.fromJson(
+          _json["consumptionMeteringConfig"]);
+    }
+    if (_json.containsKey("enableNetworkEgressMetering")) {
+      enableNetworkEgressMetering = _json["enableNetworkEgressMetering"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bigqueryDestination != null) {
+      _json["bigqueryDestination"] = (bigqueryDestination).toJson();
+    }
+    if (consumptionMeteringConfig != null) {
+      _json["consumptionMeteringConfig"] = (consumptionMeteringConfig).toJson();
+    }
+    if (enableNetworkEgressMetering != null) {
+      _json["enableNetworkEgressMetering"] = enableNetworkEgressMetering;
     }
     return _json;
   }
@@ -7609,6 +7993,8 @@ class SetMonitoringServiceRequest {
   /// The monitoring service the cluster should use to write metrics.
   /// Currently available options:
   ///
+  /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
+  /// service with Kubernetes-native resource model in Stackdriver
   /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
   /// * "none" - no metrics will be exported from the cluster
   core.String monitoringService;
@@ -8317,6 +8703,134 @@ class UpdateNodePoolRequest {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// UsableSubnetwork resource returns the subnetwork name, its associated
+/// network
+/// and the primary CIDR range.
+class UsableSubnetwork {
+  /// The range of internal addresses that are owned by this subnetwork.
+  core.String ipCidrRange;
+
+  /// Network Name.
+  /// Example: projects/my-project/global/networks/my-network
+  core.String network;
+
+  /// Secondary IP ranges.
+  core.List<UsableSubnetworkSecondaryRange> secondaryIpRanges;
+
+  /// A human readable status message representing the reasons for cases where
+  /// the caller cannot use the secondary ranges under the subnet. For example
+  /// if
+  /// the secondary_ip_ranges is empty due to a permission issue, an
+  /// insufficient
+  /// permission message will be given by status_message.
+  core.String statusMessage;
+
+  /// Subnetwork Name.
+  /// Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+  core.String subnetwork;
+
+  UsableSubnetwork();
+
+  UsableSubnetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("secondaryIpRanges")) {
+      secondaryIpRanges = (_json["secondaryIpRanges"] as core.List)
+          .map<UsableSubnetworkSecondaryRange>(
+              (value) => new UsableSubnetworkSecondaryRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("statusMessage")) {
+      statusMessage = _json["statusMessage"];
+    }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (secondaryIpRanges != null) {
+      _json["secondaryIpRanges"] =
+          secondaryIpRanges.map((value) => (value).toJson()).toList();
+    }
+    if (statusMessage != null) {
+      _json["statusMessage"] = statusMessage;
+    }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
+    return _json;
+  }
+}
+
+/// Secondary IP range of a usable subnetwork.
+class UsableSubnetworkSecondaryRange {
+  /// The range of IP addresses belonging to this subnetwork secondary range.
+  core.String ipCidrRange;
+
+  /// The name associated with this subnetwork secondary range, used when adding
+  /// an alias IP range to a VM instance.
+  core.String rangeName;
+
+  /// This field is to determine the status of the secondary range programmably.
+  /// Possible string values are:
+  /// - "UNKNOWN" : UNKNOWN is the zero value of the Status enum. It's not a
+  /// valid status.
+  /// - "UNUSED" : UNUSED denotes that this range is unclaimed by any cluster.
+  /// - "IN_USE_SERVICE" : IN_USE_SERVICE denotes that this range is claimed by
+  /// a cluster for
+  /// services. It cannot be used for other clusters.
+  /// - "IN_USE_SHAREABLE_POD" : IN_USE_SHAREABLE_POD denotes this range was
+  /// created by the network admin
+  /// and is currently claimed by a cluster for pods. It can only be used by
+  /// other clusters as a pod range.
+  /// - "IN_USE_MANAGED_POD" : IN_USE_MANAGED_POD denotes this range was created
+  /// by GKE and is claimed
+  /// for pods. It cannot be used for other clusters.
+  core.String status;
+
+  UsableSubnetworkSecondaryRange();
+
+  UsableSubnetworkSecondaryRange.fromJson(core.Map _json) {
+    if (_json.containsKey("ipCidrRange")) {
+      ipCidrRange = _json["ipCidrRange"];
+    }
+    if (_json.containsKey("rangeName")) {
+      rangeName = _json["rangeName"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipCidrRange != null) {
+      _json["ipCidrRange"] = ipCidrRange;
+    }
+    if (rangeName != null) {
+      _json["rangeName"] = rangeName;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }

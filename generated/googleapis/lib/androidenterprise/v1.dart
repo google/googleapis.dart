@@ -65,6 +65,68 @@ class DevicesResourceApi {
 
   DevicesResourceApi(commons.ApiRequester client) : _requester = client;
 
+  /// Uploads a report containing any changes in app states on the device since
+  /// the last report was generated. You can call this method up to 3 times
+  /// every 24 hours for a given device.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [userId] - The ID of the user.
+  ///
+  /// [deviceId] - The ID of the device.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future forceReportUpload(
+      core.String enterpriseId, core.String userId, core.String deviceId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/devices/' +
+        commons.Escaper.ecapeVariable('$deviceId') +
+        '/forceReportUpload';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
   /// Retrieves the details of a device.
   ///
   /// Request parameters:
@@ -1087,58 +1149,6 @@ class EnterprisesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new EnterpriseAccount.fromJson(data));
-  }
-
-  /// Deprecated and unused.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [AndroidDevicePolicyConfig].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<AndroidDevicePolicyConfig> setAndroidDevicePolicyConfig(
-      AndroidDevicePolicyConfig request, core.String enterpriseId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/androidDevicePolicyConfig';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AndroidDevicePolicyConfig.fromJson(data));
   }
 
   /// Sets the store layout for the enterprise. By default, storeLayoutType is
@@ -3242,7 +3252,7 @@ class ProductsResourceApi {
   /// parameters), including apps that are not available in the store (e.g.
   /// unpublished apps).
   ///
-  /// [token] - A pagination token is contained in a request''s response when
+  /// [token] - A pagination token is contained in a request's response when
   /// there are more products. The token can be used in a subsequent request to
   /// obtain more products, and so forth. This parameter cannot be used in the
   /// initial request.
@@ -5274,6 +5284,9 @@ class AdministratorWebTokenSpec {
   /// "androidenterprise#administratorWebTokenSpec".
   core.String kind;
 
+  /// Options for displaying the Managed Configuration page.
+  AdministratorWebTokenSpecManagedConfigurations managedConfigurations;
+
   /// The URI of the parent frame hosting the iframe. To prevent XSS, the iframe
   /// may not be hosted at other URIs. This URI must be https.
   core.String parent;
@@ -5298,6 +5311,11 @@ class AdministratorWebTokenSpec {
   AdministratorWebTokenSpec.fromJson(core.Map _json) {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("managedConfigurations")) {
+      managedConfigurations =
+          new AdministratorWebTokenSpecManagedConfigurations.fromJson(
+              _json["managedConfigurations"]);
     }
     if (_json.containsKey("parent")) {
       parent = _json["parent"];
@@ -5328,6 +5346,9 @@ class AdministratorWebTokenSpec {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (managedConfigurations != null) {
+      _json["managedConfigurations"] = (managedConfigurations).toJson();
+    }
     if (parent != null) {
       _json["parent"] = parent;
     }
@@ -5345,6 +5366,28 @@ class AdministratorWebTokenSpec {
     }
     if (webApps != null) {
       _json["webApps"] = (webApps).toJson();
+    }
+    return _json;
+  }
+}
+
+class AdministratorWebTokenSpecManagedConfigurations {
+  /// Whether the Managed Configuration page is displayed. Default is true.
+  core.bool enabled;
+
+  AdministratorWebTokenSpecManagedConfigurations();
+
+  AdministratorWebTokenSpecManagedConfigurations.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
     }
     return _json;
   }
@@ -5442,39 +5485,6 @@ class AdministratorWebTokenSpecWebApps {
         new core.Map<core.String, core.Object>();
     if (enabled != null) {
       _json["enabled"] = enabled;
-    }
-    return _json;
-  }
-}
-
-/// Deprecated and unused.
-class AndroidDevicePolicyConfig {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#androidDevicePolicyConfig".
-  core.String kind;
-
-  /// Deprecated and unused.
-  core.String state;
-
-  AndroidDevicePolicyConfig();
-
-  AndroidDevicePolicyConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (state != null) {
-      _json["state"] = state;
     }
     return _json;
   }
@@ -5708,6 +5718,41 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   }
 }
 
+/// List of states set by the app.
+class AppState {
+  /// List of keyed app states. This field will always be present.
+  core.List<KeyedAppState> keyedAppState;
+
+  /// The package name of the app. This field will always be present.
+  core.String packageName;
+
+  AppState();
+
+  AppState.fromJson(core.Map _json) {
+    if (_json.containsKey("keyedAppState")) {
+      keyedAppState = (_json["keyedAppState"] as core.List)
+          .map<KeyedAppState>((value) => new KeyedAppState.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (keyedAppState != null) {
+      _json["keyedAppState"] =
+          keyedAppState.map((value) => (value).toJson()).toList();
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    return _json;
+  }
+}
+
 /// An event generated when a new version of an app is uploaded to Google Play.
 /// Notifications are sent for new public versions only: alpha, beta, or canary
 /// versions do not generate this event. To fetch up-to-date version history for
@@ -5868,16 +5913,16 @@ class AuthenticationToken {
   }
 }
 
-/// The Auto install constraint. Defines a set of restrictions for installation.
+/// The auto-install constraint. Defines a set of restrictions for installation.
 /// At least one of the fields must be set.
 class AutoInstallConstraint {
-  /// Charging state to constrain on.
+  /// Charging state constraint.
   core.String chargingStateConstraint;
 
-  /// The idle state of the device to constrain on.
+  /// Device idle state constraint.
   core.String deviceIdleStateConstraint;
 
-  /// Network type to constrain on.
+  /// Network type constraint.
   core.String networkTypeConstraint;
 
   AutoInstallConstraint();
@@ -5911,19 +5956,19 @@ class AutoInstallConstraint {
 }
 
 class AutoInstallPolicy {
-  /// The constraints for the install. Currently there can be at most one
-  /// constraint.
+  /// The constraints for auto-installing the app. You can specify a maximum of
+  /// one constraint.
   core.List<AutoInstallConstraint> autoInstallConstraint;
 
-  /// The auto install mode. If unset defaults to "doNotAutoInstall".
+  /// The auto-install mode. If unset defaults to "doNotAutoInstall".
   core.String autoInstallMode;
 
-  /// The priority of the install, as an unsigned integer. Lower number means
+  /// The priority of the install, as an unsigned integer. A lower number means
   /// higher priority.
   core.int autoInstallPriority;
 
-  /// The minimum version of the app. If a lower version of the app is installed
-  /// then the app will be auto-updated according to the auto-install
+  /// The minimum version of the app. If a lower version of the app is
+  /// installed, then the app will be auto-updated according to the auto-install
   /// constraints, instead of waiting for the regular auto-update.
   core.int minimumVersionCode;
 
@@ -6044,6 +6089,9 @@ class Device {
   /// The policy enforced on the device.
   Policy policy;
 
+  /// The device report updated with the latest app states.
+  DeviceReport report;
+
   Device();
 
   Device.fromJson(core.Map _json) {
@@ -6058,6 +6106,9 @@ class Device {
     }
     if (_json.containsKey("policy")) {
       policy = new Policy.fromJson(_json["policy"]);
+    }
+    if (_json.containsKey("report")) {
+      report = new DeviceReport.fromJson(_json["report"]);
     }
   }
 
@@ -6075,6 +6126,88 @@ class Device {
     }
     if (policy != null) {
       _json["policy"] = (policy).toJson();
+    }
+    if (report != null) {
+      _json["report"] = (report).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Device report updated with the latest app states for managed apps on the
+/// device.
+class DeviceReport {
+  /// List of app states set by managed apps on the device. App states are
+  /// defined by the app's developers. This field will always be present.
+  core.List<AppState> appState;
+
+  /// The timestamp of the last report update in milliseconds since epoch. This
+  /// field will always be present.
+  core.String lastUpdatedTimestampMillis;
+
+  DeviceReport();
+
+  DeviceReport.fromJson(core.Map _json) {
+    if (_json.containsKey("appState")) {
+      appState = (_json["appState"] as core.List)
+          .map<AppState>((value) => new AppState.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("lastUpdatedTimestampMillis")) {
+      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appState != null) {
+      _json["appState"] = appState.map((value) => (value).toJson()).toList();
+    }
+    if (lastUpdatedTimestampMillis != null) {
+      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
+    }
+    return _json;
+  }
+}
+
+/// An event generated when an updated device report is available.
+class DeviceReportUpdateEvent {
+  /// The Android ID of the device. This field will always be present.
+  core.String deviceId;
+
+  /// The device report updated with the latest app states. This field will
+  /// always be present.
+  DeviceReport report;
+
+  /// The ID of the user. This field will always be present.
+  core.String userId;
+
+  DeviceReportUpdateEvent();
+
+  DeviceReportUpdateEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceId")) {
+      deviceId = _json["deviceId"];
+    }
+    if (_json.containsKey("report")) {
+      report = new DeviceReport.fromJson(_json["report"]);
+    }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceId != null) {
+      _json["deviceId"] = deviceId;
+    }
+    if (report != null) {
+      _json["report"] = (report).toJson();
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
     }
     return _json;
   }
@@ -6798,6 +6931,74 @@ class InstallsListResponse {
   }
 }
 
+/// Represents a keyed app state containing a key, timestamp, severity level,
+/// optional description, and optional data.
+class KeyedAppState {
+  /// Additional field intended for machine-readable data. For example, a number
+  /// or JSON object. To prevent XSS, we recommend removing any HTML from the
+  /// data before displaying it.
+  core.String data;
+
+  /// Key indicating what the app is providing a state for. The content of the
+  /// key is set by the app's developer. To prevent XSS, we recommend removing
+  /// any HTML from the key before displaying it. This field will always be
+  /// present.
+  core.String key;
+
+  /// Free-form, human-readable message describing the app state. For example,
+  /// an error message. To prevent XSS, we recommend removing any HTML from the
+  /// message before displaying it.
+  core.String message;
+
+  /// Severity of the app state. This field will always be present.
+  core.String severity;
+
+  /// Timestamp of when the app set the state in milliseconds since epoch. This
+  /// field will always be present.
+  core.String stateTimestampMillis;
+
+  KeyedAppState();
+
+  KeyedAppState.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = _json["data"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
+    if (_json.containsKey("stateTimestampMillis")) {
+      stateTimestampMillis = _json["stateTimestampMillis"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (data != null) {
+      _json["data"] = data;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
+    if (stateTimestampMillis != null) {
+      _json["stateTimestampMillis"] = stateTimestampMillis;
+    }
+    return _json;
+  }
+}
+
 /// A localized string with its locale.
 class LocalizedText {
   /// The BCP47 tag for a locale. (e.g. "en-US", "de").
@@ -7336,6 +7537,9 @@ class Notification {
   /// Notifications about app updates.
   AppUpdateEvent appUpdateEvent;
 
+  /// Notifications about device report updates.
+  DeviceReportUpdateEvent deviceReportUpdateEvent;
+
   /// The ID of the enterprise for which the notification is sent. This will
   /// always be present.
   core.String enterpriseId;
@@ -7372,6 +7576,10 @@ class Notification {
     }
     if (_json.containsKey("appUpdateEvent")) {
       appUpdateEvent = new AppUpdateEvent.fromJson(_json["appUpdateEvent"]);
+    }
+    if (_json.containsKey("deviceReportUpdateEvent")) {
+      deviceReportUpdateEvent = new DeviceReportUpdateEvent.fromJson(
+          _json["deviceReportUpdateEvent"]);
     }
     if (_json.containsKey("enterpriseId")) {
       enterpriseId = _json["enterpriseId"];
@@ -7413,6 +7621,9 @@ class Notification {
     }
     if (appUpdateEvent != null) {
       _json["appUpdateEvent"] = (appUpdateEvent).toJson();
+    }
+    if (deviceReportUpdateEvent != null) {
+      _json["deviceReportUpdateEvent"] = (deviceReportUpdateEvent).toJson();
     }
     if (enterpriseId != null) {
       _json["enterpriseId"] = enterpriseId;
@@ -7594,6 +7805,10 @@ class Policy {
   /// auto updates only when the device is connected to wifi.
   core.String autoUpdatePolicy;
 
+  /// Whether the device reports app states to the EMM. The default value is
+  /// "deviceReportDisabled".
+  core.String deviceReportPolicy;
+
   /// The maintenance window defining when apps running in the foreground should
   /// be updated.
   MaintenanceWindow maintenanceWindow;
@@ -7617,6 +7832,9 @@ class Policy {
     if (_json.containsKey("autoUpdatePolicy")) {
       autoUpdatePolicy = _json["autoUpdatePolicy"];
     }
+    if (_json.containsKey("deviceReportPolicy")) {
+      deviceReportPolicy = _json["deviceReportPolicy"];
+    }
     if (_json.containsKey("maintenanceWindow")) {
       maintenanceWindow =
           new MaintenanceWindow.fromJson(_json["maintenanceWindow"]);
@@ -7636,6 +7854,9 @@ class Policy {
         new core.Map<core.String, core.Object>();
     if (autoUpdatePolicy != null) {
       _json["autoUpdatePolicy"] = autoUpdatePolicy;
+    }
+    if (deviceReportPolicy != null) {
+      _json["deviceReportPolicy"] = deviceReportPolicy;
     }
     if (maintenanceWindow != null) {
       _json["maintenanceWindow"] = (maintenanceWindow).toJson();
@@ -8069,8 +8290,11 @@ class ProductPermissions {
 
 /// The policy for a product.
 class ProductPolicy {
-  /// The auto install policy for the product.
+  /// The auto-install policy for the product.
   AutoInstallPolicy autoInstallPolicy;
+
+  /// The managed configuration for the product.
+  ManagedConfiguration managedConfiguration;
 
   /// The ID of the product. For example, "app:com.google.android.gm".
   core.String productId;
@@ -8090,6 +8314,10 @@ class ProductPolicy {
       autoInstallPolicy =
           new AutoInstallPolicy.fromJson(_json["autoInstallPolicy"]);
     }
+    if (_json.containsKey("managedConfiguration")) {
+      managedConfiguration =
+          new ManagedConfiguration.fromJson(_json["managedConfiguration"]);
+    }
     if (_json.containsKey("productId")) {
       productId = _json["productId"];
     }
@@ -8106,6 +8334,9 @@ class ProductPolicy {
         new core.Map<core.String, core.Object>();
     if (autoInstallPolicy != null) {
       _json["autoInstallPolicy"] = (autoInstallPolicy).toJson();
+    }
+    if (managedConfiguration != null) {
+      _json["managedConfiguration"] = (managedConfiguration).toJson();
     }
     if (productId != null) {
       _json["productId"] = productId;
@@ -9114,9 +9345,22 @@ class VariableSet {
   }
 }
 
-/// WebApp resource info.
+/// A WebApps resource represents a web app created for an enterprise. Web apps
+/// are published to managed Google Play and can be distributed like other
+/// Android apps. On a user's device, a web app opens its specified URL.
 class WebApp {
   /// The display mode of the web app.
+  ///
+  /// Possible values include:
+  /// - "minimalUi", the device's status bar, navigation bar, the app's URL, and
+  /// a refresh button are visible when the app is open. For HTTP URLs, you can
+  /// only select this option.
+  /// - "standalone", the device's status bar and navigation bar are visible
+  /// when the app is open.
+  /// - "fullScreen", the app opens in full screen mode, hiding the device's
+  /// status and navigation bars. All browser UI elements, page URL, system
+  /// status bar and back button are not visible, and the web app takes up the
+  /// entirety of the available display area.
   core.String displayMode;
 
   /// A list of icons representing this website. If absent, a default icon (for
@@ -9130,8 +9374,8 @@ class WebApp {
   /// application.
   core.String startUrl;
 
-  /// The title of the web application as displayed to the user (e.g., amongst a
-  /// list of other applications, or as a label for an icon).
+  /// The title of the web app as displayed to the user (e.g., amongst a list of
+  /// other applications, or as a label for an icon).
   core.String title;
 
   /// The current version of the app.
@@ -9142,7 +9386,9 @@ class WebApp {
   /// up-to-date.
   core.String versionCode;
 
-  /// The ID of the application.
+  /// The ID of the application. A string of the form "app:<package name>" where
+  /// the package name always starts with the prefix
+  /// "com.google.enterprise.webapp." followed by a random id.
   core.String webAppId;
 
   WebApp();

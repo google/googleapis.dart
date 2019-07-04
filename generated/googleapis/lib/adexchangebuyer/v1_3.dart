@@ -1481,6 +1481,35 @@ class Budget {
   }
 }
 
+class CreativeAdTechnologyProviders {
+  core.List<core.String> detectedProviderIds;
+  core.bool hasUnidentifiedProvider;
+
+  CreativeAdTechnologyProviders();
+
+  CreativeAdTechnologyProviders.fromJson(core.Map _json) {
+    if (_json.containsKey("detectedProviderIds")) {
+      detectedProviderIds =
+          (_json["detectedProviderIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("hasUnidentifiedProvider")) {
+      hasUnidentifiedProvider = _json["hasUnidentifiedProvider"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (detectedProviderIds != null) {
+      _json["detectedProviderIds"] = detectedProviderIds;
+    }
+    if (hasUnidentifiedProvider != null) {
+      _json["hasUnidentifiedProvider"] = hasUnidentifiedProvider;
+    }
+    return _json;
+  }
+}
+
 class CreativeCorrections {
   /// Additional details about the correction.
   core.List<core.String> details;
@@ -1755,9 +1784,6 @@ class CreativeNativeAd {
   /// The app rating in the app store. Must be in the range [0-5].
   core.double starRating;
 
-  /// The URL to the app store to purchase/download the promoted app.
-  core.String store;
-
   CreativeNativeAd();
 
   CreativeNativeAd.fromJson(core.Map _json) {
@@ -1794,9 +1820,6 @@ class CreativeNativeAd {
     }
     if (_json.containsKey("starRating")) {
       starRating = _json["starRating"].toDouble();
-    }
-    if (_json.containsKey("store")) {
-      store = _json["store"];
     }
   }
 
@@ -1836,9 +1859,6 @@ class CreativeNativeAd {
     if (starRating != null) {
       _json["starRating"] = starRating;
     }
-    if (store != null) {
-      _json["store"] = store;
-    }
     return _json;
   }
 }
@@ -1851,6 +1871,7 @@ class Creative {
 
   /// Account id.
   core.int accountId;
+  CreativeAdTechnologyProviders adTechnologyProviders;
 
   /// Detected advertiser id, if any. Read-only. This field should not be set in
   /// requests.
@@ -1941,6 +1962,10 @@ class Creative {
     if (_json.containsKey("accountId")) {
       accountId = _json["accountId"];
     }
+    if (_json.containsKey("adTechnologyProviders")) {
+      adTechnologyProviders = new CreativeAdTechnologyProviders.fromJson(
+          _json["adTechnologyProviders"]);
+    }
     if (_json.containsKey("advertiserId")) {
       advertiserId = (_json["advertiserId"] as core.List).cast<core.String>();
     }
@@ -2029,6 +2054,9 @@ class Creative {
     }
     if (accountId != null) {
       _json["accountId"] = accountId;
+    }
+    if (adTechnologyProviders != null) {
+      _json["adTechnologyProviders"] = (adTechnologyProviders).toJson();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;

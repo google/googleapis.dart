@@ -123,14 +123,14 @@ checkCreateManagedShortLinkRequest(api.CreateManagedShortLinkRequest o) {
   buildCounterCreateManagedShortLinkRequest--;
 }
 
-buildUnnamed1902() {
+buildUnnamed84() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed1902(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed84(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -143,7 +143,7 @@ buildCreateManagedShortLinkResponse() {
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     o.managedShortLink = buildManagedShortLink();
     o.previewLink = "foo";
-    o.warning = buildUnnamed1902();
+    o.warning = buildUnnamed84();
   }
   buildCounterCreateManagedShortLinkResponse--;
   return o;
@@ -154,7 +154,7 @@ checkCreateManagedShortLinkResponse(api.CreateManagedShortLinkResponse o) {
   if (buildCounterCreateManagedShortLinkResponse < 3) {
     checkManagedShortLink(o.managedShortLink);
     unittest.expect(o.previewLink, unittest.equals('foo'));
-    checkUnnamed1902(o.warning);
+    checkUnnamed84(o.warning);
   }
   buildCounterCreateManagedShortLinkResponse--;
 }
@@ -184,14 +184,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed1903() {
+buildUnnamed85() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed1903(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed85(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -204,7 +204,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed1903();
+    o.warning = buildUnnamed85();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -215,7 +215,7 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed1903(o.warning);
+    checkUnnamed85(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
 }
@@ -328,14 +328,14 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo--;
 }
 
-buildUnnamed1904() {
+buildUnnamed86() {
   var o = new core.List<api.DynamicLinkEventStat>();
   o.add(buildDynamicLinkEventStat());
   o.add(buildDynamicLinkEventStat());
   return o;
 }
 
-checkUnnamed1904(core.List<api.DynamicLinkEventStat> o) {
+checkUnnamed86(core.List<api.DynamicLinkEventStat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkEventStat(o[0]);
   checkDynamicLinkEventStat(o[1]);
@@ -346,7 +346,7 @@ buildDynamicLinkStats() {
   var o = new api.DynamicLinkStats();
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    o.linkEventStats = buildUnnamed1904();
+    o.linkEventStats = buildUnnamed86();
   }
   buildCounterDynamicLinkStats--;
   return o;
@@ -355,7 +355,7 @@ buildDynamicLinkStats() {
 checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    checkUnnamed1904(o.linkEventStats);
+    checkUnnamed86(o.linkEventStats);
   }
   buildCounterDynamicLinkStats--;
 }
@@ -434,8 +434,10 @@ buildGetIosPostInstallAttributionResponse() {
     o.requestedLink = "foo";
     o.resolvedLink = "foo";
     o.utmCampaign = "foo";
+    o.utmContent = "foo";
     o.utmMedium = "foo";
     o.utmSource = "foo";
+    o.utmTerm = "foo";
   }
   buildCounterGetIosPostInstallAttributionResponse--;
   return o;
@@ -457,8 +459,10 @@ checkGetIosPostInstallAttributionResponse(
     unittest.expect(o.requestedLink, unittest.equals('foo'));
     unittest.expect(o.resolvedLink, unittest.equals('foo'));
     unittest.expect(o.utmCampaign, unittest.equals('foo'));
+    unittest.expect(o.utmContent, unittest.equals('foo'));
     unittest.expect(o.utmMedium, unittest.equals('foo'));
     unittest.expect(o.utmSource, unittest.equals('foo'));
+    unittest.expect(o.utmTerm, unittest.equals('foo'));
   }
   buildCounterGetIosPostInstallAttributionResponse--;
 }
@@ -496,8 +500,10 @@ buildGetIosReopenAttributionResponse() {
     o.iosMinAppVersion = "foo";
     o.resolvedLink = "foo";
     o.utmCampaign = "foo";
+    o.utmContent = "foo";
     o.utmMedium = "foo";
     o.utmSource = "foo";
+    o.utmTerm = "foo";
   }
   buildCounterGetIosReopenAttributionResponse--;
   return o;
@@ -511,8 +517,10 @@ checkGetIosReopenAttributionResponse(api.GetIosReopenAttributionResponse o) {
     unittest.expect(o.iosMinAppVersion, unittest.equals('foo'));
     unittest.expect(o.resolvedLink, unittest.equals('foo'));
     unittest.expect(o.utmCampaign, unittest.equals('foo'));
+    unittest.expect(o.utmContent, unittest.equals('foo'));
     unittest.expect(o.utmMedium, unittest.equals('foo'));
     unittest.expect(o.utmSource, unittest.equals('foo'));
+    unittest.expect(o.utmTerm, unittest.equals('foo'));
   }
   buildCounterGetIosReopenAttributionResponse--;
 }
@@ -602,14 +610,14 @@ checkIosInfo(api.IosInfo o) {
   buildCounterIosInfo--;
 }
 
-buildUnnamed1905() {
+buildUnnamed87() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1905(core.List<core.String> o) {
+checkUnnamed87(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -621,7 +629,7 @@ buildManagedShortLink() {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
     o.creationTime = "foo";
-    o.flaggedAttribute = buildUnnamed1905();
+    o.flaggedAttribute = buildUnnamed87();
     o.info = buildDynamicLinkInfo();
     o.link = "foo";
     o.linkName = "foo";
@@ -635,7 +643,7 @@ checkManagedShortLink(api.ManagedShortLink o) {
   buildCounterManagedShortLink++;
   if (buildCounterManagedShortLink < 3) {
     unittest.expect(o.creationTime, unittest.equals('foo'));
-    checkUnnamed1905(o.flaggedAttribute);
+    checkUnnamed87(o.flaggedAttribute);
     checkDynamicLinkInfo(o.info);
     unittest.expect(o.link, unittest.equals('foo'));
     unittest.expect(o.linkName, unittest.equals('foo'));
@@ -1010,8 +1018,8 @@ main() {
       var mock = new HttpServerMock();
       api.V1ResourceApi res = new api.FirebasedynamiclinksApi(mock).v1;
       var arg_dynamicLink = "foo";
-      var arg_sdkVersion = "foo";
       var arg_durationDays = "foo";
+      var arg_sdkVersion = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1053,9 +1061,9 @@ main() {
           }
         }
         unittest.expect(
-            queryMap["sdkVersion"].first, unittest.equals(arg_sdkVersion));
-        unittest.expect(
             queryMap["durationDays"].first, unittest.equals(arg_durationDays));
+        unittest.expect(
+            queryMap["sdkVersion"].first, unittest.equals(arg_sdkVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1066,8 +1074,8 @@ main() {
       }), true);
       res
           .getLinkStats(arg_dynamicLink,
-              sdkVersion: arg_sdkVersion,
               durationDays: arg_durationDays,
+              sdkVersion: arg_sdkVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkDynamicLinkStats(response);

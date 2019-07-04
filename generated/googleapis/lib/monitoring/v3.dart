@@ -18,7 +18,10 @@ const core.String USER_AGENT = 'dart-api-client monitoring/v3';
 
 /// Manages your Stackdriver Monitoring data and configurations. Most projects
 /// must be associated with a Stackdriver account, with a few exceptions as
-/// noted on the individual method pages.
+/// noted on the individual method pages. The table entries below are presented
+/// in alphabetical order, not in order of common use. For explanations of the
+/// concepts found in the table entries, read the Stackdriver Monitoring
+/// documentation.
 class MonitoringApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -527,6 +530,10 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [recursive] - If this field is true, then the request means to delete a
+  /// group with all its descendants. Otherwise, the request means to delete a
+  /// group only when it has no descendants. The default value is false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -537,7 +544,8 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+  async.Future<Empty> delete(core.String name,
+      {core.bool recursive, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -547,6 +555,9 @@ class ProjectsGroupsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (recursive != null) {
+      _queryParams["recursive"] = ["${recursive}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1014,9 +1025,6 @@ class ProjectsMetricDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [filter] - If this field is empty, all custom and system-defined metric
   /// descriptors are returned. Otherwise, the filter specifies which metric
   /// descriptors are to be returned. For example, the following filter matches
@@ -1027,6 +1035,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
   /// method call.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1039,9 +1050,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1053,14 +1064,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1145,6 +1156,11 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
   ///
@@ -1153,11 +1169,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// the following filter returns only Google Compute Engine descriptors that
   /// have an id label:
   /// resource.type = starts_with("gce_") AND resource.label:id
-  ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1170,9 +1181,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1184,14 +1195,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1895,77 +1906,6 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [orderBy] - Unsupported: must be left blank. The points in each time
-  /// series are returned in reverse time order.
-  ///
-  /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
-  /// series. Not all reducer functions may be applied to all time series,
-  /// depending on the metric type and the value type of the original time
-  /// series. Reduction may change the metric type of value type of the time
-  /// series.Time series data must be aligned in order to perform cross-time
-  /// series reduction. If crossSeriesReducer is specified, then
-  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
-  /// alignmentPeriod must be specified; otherwise, an error is returned.
-  /// Possible string values are:
-  /// - "REDUCE_NONE" : A REDUCE_NONE.
-  /// - "REDUCE_MEAN" : A REDUCE_MEAN.
-  /// - "REDUCE_MIN" : A REDUCE_MIN.
-  /// - "REDUCE_MAX" : A REDUCE_MAX.
-  /// - "REDUCE_SUM" : A REDUCE_SUM.
-  /// - "REDUCE_STDDEV" : A REDUCE_STDDEV.
-  /// - "REDUCE_COUNT" : A REDUCE_COUNT.
-  /// - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
-  /// - "REDUCE_COUNT_FALSE" : A REDUCE_COUNT_FALSE.
-  /// - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
-  /// - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
-  /// - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
-  /// - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
-  /// - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
-  ///
-  /// [filter] - A monitoring filter that specifies which time series should be
-  /// returned. The filter must specify a single metric type, and can
-  /// additionally specify metric labels and other information. For example:
-  /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-  ///     metric.label.instance_name = "my-instance-name"
-  ///
-  /// [aggregation_perSeriesAligner] - The approach to be used to align
-  /// individual time series. Not all alignment functions may be applied to all
-  /// time series, depending on the metric type and value type of the original
-  /// time series. Alignment may change the metric type or the value type of the
-  /// time series.Time series data must be aligned in order to perform
-  /// cross-time series reduction. If crossSeriesReducer is specified, then
-  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
-  /// alignmentPeriod must be specified; otherwise, an error is returned.
-  /// Possible string values are:
-  /// - "ALIGN_NONE" : A ALIGN_NONE.
-  /// - "ALIGN_DELTA" : A ALIGN_DELTA.
-  /// - "ALIGN_RATE" : A ALIGN_RATE.
-  /// - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
-  /// - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
-  /// - "ALIGN_MIN" : A ALIGN_MIN.
-  /// - "ALIGN_MAX" : A ALIGN_MAX.
-  /// - "ALIGN_MEAN" : A ALIGN_MEAN.
-  /// - "ALIGN_COUNT" : A ALIGN_COUNT.
-  /// - "ALIGN_SUM" : A ALIGN_SUM.
-  /// - "ALIGN_STDDEV" : A ALIGN_STDDEV.
-  /// - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
-  /// - "ALIGN_COUNT_FALSE" : A ALIGN_COUNT_FALSE.
-  /// - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
-  /// - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
-  /// - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
-  /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
-  /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
-  /// - "ALIGN_PERCENT_CHANGE" : A ALIGN_PERCENT_CHANGE.
-  ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
-  ///
   /// [view] - Specifies which information is returned about the time series.
   /// Possible string values are:
   /// - "FULL" : A FULL.
@@ -2000,6 +1940,77 @@ class ProjectsTimeSeriesResourceApi {
   /// number of Points returned. If view is set to HEADERS, this is the maximum
   /// number of TimeSeries returned.
   ///
+  /// [orderBy] - Unsupported: must be left blank. The points in each time
+  /// series are returned in reverse time order.
+  ///
+  /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
+  /// series. Not all reducer functions may be applied to all time series,
+  /// depending on the metric type and the value type of the original time
+  /// series. Reduction may change the metric type of value type of the time
+  /// series.Time series data must be aligned in order to perform cross-time
+  /// series reduction. If crossSeriesReducer is specified, then
+  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
+  /// alignmentPeriod must be specified; otherwise, an error is returned.
+  /// Possible string values are:
+  /// - "REDUCE_NONE" : A REDUCE_NONE.
+  /// - "REDUCE_MEAN" : A REDUCE_MEAN.
+  /// - "REDUCE_MIN" : A REDUCE_MIN.
+  /// - "REDUCE_MAX" : A REDUCE_MAX.
+  /// - "REDUCE_SUM" : A REDUCE_SUM.
+  /// - "REDUCE_STDDEV" : A REDUCE_STDDEV.
+  /// - "REDUCE_COUNT" : A REDUCE_COUNT.
+  /// - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
+  /// - "REDUCE_COUNT_FALSE" : A REDUCE_COUNT_FALSE.
+  /// - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
+  /// - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
+  /// - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
+  /// - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
+  /// - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
+  ///
+  /// [filter] - A monitoring filter that specifies which time series should be
+  /// returned. The filter must specify a single metric type, and can
+  /// additionally specify metric labels and other information. For example:
+  /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+  ///     metric.labels.instance_name = "my-instance-name"
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
+  /// [aggregation_perSeriesAligner] - The approach to be used to align
+  /// individual time series. Not all alignment functions may be applied to all
+  /// time series, depending on the metric type and value type of the original
+  /// time series. Alignment may change the metric type or the value type of the
+  /// time series.Time series data must be aligned in order to perform
+  /// cross-time series reduction. If crossSeriesReducer is specified, then
+  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
+  /// alignmentPeriod must be specified; otherwise, an error is returned.
+  /// Possible string values are:
+  /// - "ALIGN_NONE" : A ALIGN_NONE.
+  /// - "ALIGN_DELTA" : A ALIGN_DELTA.
+  /// - "ALIGN_RATE" : A ALIGN_RATE.
+  /// - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
+  /// - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
+  /// - "ALIGN_MIN" : A ALIGN_MIN.
+  /// - "ALIGN_MAX" : A ALIGN_MAX.
+  /// - "ALIGN_MEAN" : A ALIGN_MEAN.
+  /// - "ALIGN_COUNT" : A ALIGN_COUNT.
+  /// - "ALIGN_SUM" : A ALIGN_SUM.
+  /// - "ALIGN_STDDEV" : A ALIGN_STDDEV.
+  /// - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
+  /// - "ALIGN_COUNT_FALSE" : A ALIGN_COUNT_FALSE.
+  /// - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
+  /// - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
+  /// - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
+  /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
+  /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
+  /// - "ALIGN_PERCENT_CHANGE" : A ALIGN_PERCENT_CHANGE.
+  ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2011,17 +2022,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.String orderBy,
-      core.String aggregation_crossSeriesReducer,
-      core.String filter,
-      core.String aggregation_perSeriesAligner,
-      core.String pageToken,
-      core.String interval_startTime,
-      core.String view,
+      {core.String view,
       core.List<core.String> aggregation_groupByFields,
       core.String interval_endTime,
       core.String aggregation_alignmentPeriod,
       core.int pageSize,
+      core.String orderBy,
+      core.String aggregation_crossSeriesReducer,
+      core.String filter,
+      core.String pageToken,
+      core.String aggregation_perSeriesAligner,
+      core.String interval_startTime,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2032,28 +2043,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams["aggregation.crossSeriesReducer"] = [
-        aggregation_crossSeriesReducer
-      ];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams["aggregation.perSeriesAligner"] = [
-        aggregation_perSeriesAligner
-      ];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -2071,6 +2060,28 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (aggregation_crossSeriesReducer != null) {
+      _queryParams["aggregation.crossSeriesReducer"] = [
+        aggregation_crossSeriesReducer
+      ];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (aggregation_perSeriesAligner != null) {
+      _queryParams["aggregation.perSeriesAligner"] = [
+        aggregation_perSeriesAligner
+      ];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3541,8 +3552,8 @@ class Empty {
 /// active when a value was added. They may contain further information, such as
 /// a example values and timestamps, origin, etc.
 class Exemplar {
-  /// Contextual information about the example value. Examples are:Trace ID:
-  /// type.googleapis.com/google.devtools.cloudtrace.v1.TraceLiteral string:
+  /// Contextual information about the example value. Examples are:Trace:
+  /// type.googleapis.com/google.monitoring.v3.SpanContextLiteral string:
   /// type.googleapis.com/google.protobuf.StringValueLabels dropped during
   /// aggregation:  type.googleapis.com/google.monitoring.v3.DroppedLabelsThere
   /// may be only a single attachment of any given message type in a single
@@ -3981,7 +3992,8 @@ class HttpCheck {
 
   /// The path to the page to run the check against. Will be combined with the
   /// host (specified within the MonitoredResource) and port to construct the
-  /// full URL. Optional (defaults to "/").
+  /// full URL. Optional (defaults to "/"). If the provided path does not begin
+  /// with "/", it will be prepended automatically.
   core.String path;
 
   /// The port to the page to run the check against. Will be combined with host
@@ -4766,6 +4778,37 @@ class MetricDescriptor {
   /// latencies for successful responses or just for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
+  /// Platform Subject to the Deprecation Policy
+  /// (https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. Metadata which can be used to guide usage of the metric.
   MetricDescriptorMetadata metadata;
 
@@ -4873,6 +4916,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
     }
@@ -4905,6 +4951,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -4934,7 +4983,8 @@ class MetricDescriptorMetadata {
   /// loss due to errors.
   core.String ingestDelay;
 
-  /// The launch stage of the metric definition.
+  /// Deprecated. Please use the MetricDescriptor.launch_stage instead. The
+  /// launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
@@ -5220,6 +5270,37 @@ class MonitoredResourceDescriptor {
   /// identified by values for the labels "database_id" and "zone".
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the monitored resource definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
+  /// Platform Subject to the Deprecation Policy
+  /// (https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. The resource name of the monitored resource descriptor:
   /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type}
   /// is the value of the type field in this object and {project_id} is a
@@ -5247,6 +5328,9 @@ class MonitoredResourceDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -5266,6 +5350,9 @@ class MonitoredResourceDescriptor {
     }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
     }
     if (name != null) {
       _json["name"] = name;
@@ -5364,7 +5451,7 @@ class MutationRecord {
 class NotificationChannel {
   /// An optional human-readable description of this notification channel. This
   /// description may provide additional details, beyond the display name, for
-  /// the channel. This may not exceeed 1024 Unicode characters.
+  /// the channel. This may not exceed 1024 Unicode characters.
   core.String description;
 
   /// An optional human-readable name for this notification channel. It is
@@ -5797,39 +5884,10 @@ class SpanContext {
 
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs. It is used by
-/// gRPC (https://github.com/grpc). The error model is designed to be:
-/// Simple to use and understand for most users
-/// Flexible enough to meet unexpected needsOverviewThe Status message contains
-/// three pieces of data: error code, error message, and error details. The
-/// error code should be an enum value of google.rpc.Code, but it may accept
-/// additional error codes if needed. The error message should be a
-/// developer-facing English message that helps developers understand and
-/// resolve the error. If a localized user-facing error message is needed, put
-/// the localized message in the error details or localize it in the client. The
-/// optional error details may contain arbitrary information about the error.
-/// There is a predefined set of error detail types in the package google.rpc
-/// that can be used for common error conditions.Language mappingThe Status
-/// message is the logical representation of the error model, but it is not
-/// necessarily the actual wire format. When the Status message is exposed in
-/// different client libraries and different wire protocols, it can be mapped
-/// differently. For example, it will likely be mapped to some exceptions in
-/// Java, but more likely mapped to some error codes in C.Other usesThe error
-/// model and the Status message can be used in a variety of environments,
-/// either with or without APIs, to provide a consistent developer experience
-/// across different environments.Example uses of this error model include:
-/// Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the Status in the normal response to indicate the partial
-/// errors.
-/// Workflow errors. A typical workflow has multiple steps. Each step may have a
-/// Status message for error reporting.
-/// Batch operations. If a client uses batch request and batch response, the
-/// Status message should be used directly inside batch response, one for each
-/// error sub-response.
-/// Asynchronous operations. If an API call embeds asynchronous operation
-/// results in its response, the status of those operations should be
-/// represented directly using the Status message.
-/// Logging. If some API errors are stored in logs, the message Status could be
-/// used directly after any stripping needed for security/privacy reasons.
+/// gRPC (https://github.com/grpc). Each Status message contains three pieces of
+/// data: error code, error message, and error details.You can find out more
+/// about this error model and how to work with it in the API Design Guide
+/// (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -5904,13 +5962,21 @@ class TcpCheck {
   }
 }
 
-/// A time interval extending just after a start time through an end time. The
-/// start time must not be later than the end time. The default start time is
-/// the end time, making the startTime value technically optional. Whether this
-/// is useful depends on the MetricKind. If the start and end times are the
-/// same, the interval represents a point in time. This is appropriate for GAUGE
-/// metrics, but not for DELTA and CUMULATIVE metrics, which cover a span of
+/// A closed time interval. It extends from the start time to the end time, and
+/// includes both: [startTime, endTime]. Valid time intervals depend on the
+/// MetricKind of the metric value. In no case can the end time be earlier than
+/// the start time.
+/// For a GAUGE metric, the startTime value is technically optional; if  no
+/// value is specified, the start time defaults to the value of the  end time,
+/// and the interval represents a single point in time. Such an  interval is
+/// valid only for GAUGE metrics, which are point-in-time  measurements.
+/// For DELTA and CUMULATIVE metrics, the start time must be later than  the end
 /// time.
+/// In all cases, the start time of the next interval must be  at least a
+/// microsecond after the end time of the previous interval.  Because the
+/// interval is closed, if the start time of a new interval  is the same as the
+/// end time of the previous interval, data written  at the new start time could
+/// overwrite data written at the previous  end time.
 class TimeInterval {
   /// Required. The end of the time interval.
   core.String endTime;
@@ -6250,12 +6316,6 @@ class UptimeCheckConfig {
   /// InternalCheckers configured for the project that owns this CheckConfig.
   core.List<InternalChecker> internalCheckers;
 
-  /// If this is true, then checks are made only from the 'internal_checkers'.
-  /// If it is false, then checks are made only from the 'selected_regions'. It
-  /// is an error to provide 'selected_regions' when is_internal is true, or to
-  /// provide 'internal_checkers' when is_internal is false.
-  core.bool isInternal;
-
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
   /// associated with the configuration. The following monitored resource types
   /// are supported for uptime checks:  uptime_url  gce_instance  gae_app
@@ -6270,7 +6330,7 @@ class UptimeCheckConfig {
 
   /// How often, in seconds, the uptime check is performed. Currently, the only
   /// supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes),
-  /// and 900s (15 minutes). Optional, defaults to 300s.
+  /// and 900s (15 minutes). Optional, defaults to 60s.
   core.String period;
 
   /// The group resource associated with the configuration.
@@ -6308,9 +6368,6 @@ class UptimeCheckConfig {
       internalCheckers = (_json["internalCheckers"] as core.List)
           .map<InternalChecker>((value) => new InternalChecker.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("isInternal")) {
-      isInternal = _json["isInternal"];
     }
     if (_json.containsKey("monitoredResource")) {
       monitoredResource =
@@ -6353,9 +6410,6 @@ class UptimeCheckConfig {
     if (internalCheckers != null) {
       _json["internalCheckers"] =
           internalCheckers.map((value) => (value).toJson()).toList();
-    }
-    if (isInternal != null) {
-      _json["isInternal"] = isInternal;
     }
     if (monitoredResource != null) {
       _json["monitoredResource"] = (monitoredResource).toJson();

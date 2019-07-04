@@ -96,7 +96,7 @@ class ProjectsResourceApi {
   }
 
   /// Performs prediction on the data in the request.
-  /// Cloud ML Engine implements a custom `predict` verb on top of an HTTP POST
+  /// AI Platform implements a custom `predict` verb on top of an HTTP POST
   /// method. <p>For details of the request and response format, see the **guide
   /// to the [predict request format](/ml-engine/docs/v1/predict-request)**.
   ///
@@ -361,20 +361,13 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
-  /// results. If there
-  /// are more remaining results than this number, the response message will
-  /// contain a valid value in the `next_page_token` field.
-  ///
-  /// The default value is 20, and the maximum page size is 100.
-  ///
   /// [filter] - Optional. Specifies the subset of jobs to retrieve.
   /// You can filter on the value of one or more attributes of the job object.
   /// For example, retrieve jobs with a job identifier that starts with
   /// 'census':
-  /// <p><code>gcloud ml-engine jobs list --filter='jobId:census*'</code>
+  /// <p><code>gcloud ai-platform jobs list --filter='jobId:census*'</code>
   /// <p>List all failed jobs with names that start with 'rnn':
-  /// <p><code>gcloud ml-engine jobs list --filter='jobId:rnn*
+  /// <p><code>gcloud ai-platform jobs list --filter='jobId:rnn*
   /// AND state:FAILED'</code>
   /// <p>For more examples, see the guide to
   /// <a href="/ml-engine/docs/tensorflow/monitor-training">monitoring jobs</a>.
@@ -383,6 +376,13 @@ class ProjectsJobsResourceApi {
   ///
   /// You get the token from the `next_page_token` field of the response from
   /// the previous call.
+  ///
+  /// [pageSize] - Optional. The number of jobs to retrieve per "page" of
+  /// results. If there
+  /// are more remaining results than this number, the response message will
+  /// contain a valid value in the `next_page_token` field.
+  ///
+  /// The default value is 20, and the maximum page size is 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -395,9 +395,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -409,14 +409,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -693,9 +693,9 @@ class ProjectsLocationsResourceApi {
   /// the previous call.
   ///
   /// [pageSize] - Optional. The number of locations to retrieve per "page" of
-  /// results. If there
-  /// are more remaining results than this number, the response message will
-  /// contain a valid value in the `next_page_token` field.
+  /// results. If
+  /// there are more remaining results than this number, the response message
+  /// will contain a valid value in the `next_page_token` field.
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
@@ -1403,6 +1403,8 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of versions to retrieve.
+  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -1415,8 +1417,6 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
-  /// [filter] - Optional. Specifies the subset of versions to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1428,9 +1428,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1442,14 +1442,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1660,53 +1660,6 @@ class ProjectsOperationsResourceApi {
     return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
   }
 
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
-  }
-
   /// Gets the latest state of a long-running operation.  Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
@@ -1771,11 +1724,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1788,9 +1741,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1802,14 +1755,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1853,7 +1806,8 @@ class ProjectsOperationsResourceApi {
 ///
 ///     service ResourceService {
 ///       rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
-/// rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty);
+///       rpc UpdateResource(google.api.HttpBody) returns
+///       (google.protobuf.Empty);
 ///     }
 ///
 /// Example with streaming methods:
@@ -1961,7 +1915,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
   core.String count;
 
-  /// The available types of accelerators.
+  /// The type of accelerator to use.
   /// Possible string values are:
   /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Unspecified accelerator type. Default
   /// to no GPU.
@@ -1970,6 +1924,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_V100" : Nvidia Tesla V100 GPU.
   /// - "NVIDIA_TESLA_P4" : Nvidia Tesla P4 GPU.
   /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
+  /// - "TPU_V2" : TPU v2.
   core.String type;
 
   GoogleCloudMlV1AcceleratorConfig();
@@ -2029,8 +1984,10 @@ class GoogleCloudMlV1AutoScaling {
   /// </pre>
   /// HTTP request:
   /// <pre>
-  /// PATCH https://ml.googleapis.com/v1/{name=projects / * /models / *
-  /// /versions / * }?update_mask=autoScaling.minNodes -d @./update_body.json
+  /// PATCH
+  /// https://ml.googleapis.com/v1/{name=projects / * /models / * /versions / *
+  /// }?update_mask=autoScaling.minNodes
+  /// -d @./update_body.json
   /// </pre>
   core.int minNodes;
 
@@ -2047,6 +2004,59 @@ class GoogleCloudMlV1AutoScaling {
         new core.Map<core.String, core.Object>();
     if (minNodes != null) {
       _json["minNodes"] = minNodes;
+    }
+    return _json;
+  }
+}
+
+/// Represents output related to a built-in algorithm Job.
+class GoogleCloudMlV1BuiltInAlgorithmOutput {
+  /// Framework on which the built-in algorithm was trained.
+  core.String framework;
+
+  /// The Cloud Storage path to the `model/` directory where the training job
+  /// saves the trained model. Only set for successful jobs that don't use
+  /// hyperparameter tuning.
+  core.String modelPath;
+
+  /// Python version on which the built-in algorithm was trained.
+  core.String pythonVersion;
+
+  /// AI Platform runtime version on which the built-in algorithm was
+  /// trained.
+  core.String runtimeVersion;
+
+  GoogleCloudMlV1BuiltInAlgorithmOutput();
+
+  GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(core.Map _json) {
+    if (_json.containsKey("framework")) {
+      framework = _json["framework"];
+    }
+    if (_json.containsKey("modelPath")) {
+      modelPath = _json["modelPath"];
+    }
+    if (_json.containsKey("pythonVersion")) {
+      pythonVersion = _json["pythonVersion"];
+    }
+    if (_json.containsKey("runtimeVersion")) {
+      runtimeVersion = _json["runtimeVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (framework != null) {
+      _json["framework"] = framework;
+    }
+    if (modelPath != null) {
+      _json["modelPath"] = modelPath;
+    }
+    if (pythonVersion != null) {
+      _json["pythonVersion"] = pythonVersion;
+    }
+    if (runtimeVersion != null) {
+      _json["runtimeVersion"] = runtimeVersion;
     }
     return _json;
   }
@@ -2173,6 +2183,13 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// populated.
   core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> allMetrics;
 
+  /// Details related to built-in algorithms jobs.
+  /// Only set for trials of built-in algorithms jobs that have succeeded.
+  GoogleCloudMlV1BuiltInAlgorithmOutput builtInAlgorithmOutput;
+
+  /// Output only. End time for the trial.
+  core.String endTime;
+
   /// The final objective metric seen for this trial.
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric finalMetric;
 
@@ -2181,6 +2198,25 @@ class GoogleCloudMlV1HyperparameterOutput {
 
   /// True if the trial is stopped early.
   core.bool isTrialStoppedEarly;
+
+  /// Output only. Start time for the trial.
+  core.String startTime;
+
+  /// Output only. The detailed state of the trial.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The job state is unspecified.
+  /// - "QUEUED" : The job has been just created and processing has not yet
+  /// begun.
+  /// - "PREPARING" : The service is preparing to run the job.
+  /// - "RUNNING" : The job is in progress.
+  /// - "SUCCEEDED" : The job completed successfully.
+  /// - "FAILED" : The job failed.
+  /// `error_message` should contain the details of the failure.
+  /// - "CANCELLING" : The job is being cancelled.
+  /// `error_message` should describe the reason for the cancellation.
+  /// - "CANCELLED" : The job has been cancelled.
+  /// `error_message` should describe the reason for the cancellation.
+  core.String state;
 
   /// The trial id for these results.
   core.String trialId;
@@ -2196,6 +2232,14 @@ class GoogleCloudMlV1HyperparameterOutput {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("builtInAlgorithmOutput")) {
+      builtInAlgorithmOutput =
+          new GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+              _json["builtInAlgorithmOutput"]);
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
     if (_json.containsKey("finalMetric")) {
       finalMetric =
           new GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
@@ -2207,6 +2251,12 @@ class GoogleCloudMlV1HyperparameterOutput {
     }
     if (_json.containsKey("isTrialStoppedEarly")) {
       isTrialStoppedEarly = _json["isTrialStoppedEarly"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
     if (_json.containsKey("trialId")) {
       trialId = _json["trialId"];
@@ -2220,6 +2270,12 @@ class GoogleCloudMlV1HyperparameterOutput {
       _json["allMetrics"] =
           allMetrics.map((value) => (value).toJson()).toList();
     }
+    if (builtInAlgorithmOutput != null) {
+      _json["builtInAlgorithmOutput"] = (builtInAlgorithmOutput).toJson();
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
     if (finalMetric != null) {
       _json["finalMetric"] = (finalMetric).toJson();
     }
@@ -2228,6 +2284,12 @@ class GoogleCloudMlV1HyperparameterOutput {
     }
     if (isTrialStoppedEarly != null) {
       _json["isTrialStoppedEarly"] = isTrialStoppedEarly;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     if (trialId != null) {
       _json["trialId"] = trialId;
@@ -2240,7 +2302,7 @@ class GoogleCloudMlV1HyperparameterOutput {
 class GoogleCloudMlV1HyperparameterSpec {
   /// Optional. The search algorithm specified for the hyperparameter
   /// tuning job.
-  /// Uses the default CloudML Engine hyperparameter tuning
+  /// Uses the default AI Platform hyperparameter tuning
   /// algorithm if unspecified.
   /// Possible string values are:
   /// - "ALGORITHM_UNSPECIFIED" : The default algorithm used by the
@@ -2266,13 +2328,21 @@ class GoogleCloudMlV1HyperparameterSpec {
   /// - "MINIMIZE" : Minimize the goal metric.
   core.String goal;
 
-  /// Optional. The Tensorflow summary tag name to use for optimizing trials.
+  /// Optional. The TensorFlow summary tag name to use for optimizing trials.
   /// For
-  /// current versions of Tensorflow, this tag name should exactly match what is
-  /// shown in Tensorboard, including all scopes.  For versions of Tensorflow
+  /// current versions of TensorFlow, this tag name should exactly match what is
+  /// shown in TensorBoard, including all scopes.  For versions of TensorFlow
   /// prior to 0.12, this should be only the tag passed to tf.Summary.
   /// By default, "training/hptuning/metric" will be used.
   core.String hyperparameterMetricTag;
+
+  /// Optional. The number of failed trials that need to be seen before failing
+  /// the hyperparameter tuning job. You can specify this field to override the
+  /// default failing criteria for AI Platform hyperparameter tuning jobs.
+  ///
+  /// Defaults to zero, which means the service decides when a hyperparameter
+  /// job should fail.
+  core.int maxFailedTrials;
 
   /// Optional. The number of training trials to run concurrently.
   /// You can reduce the time it takes to perform hyperparameter tuning by
@@ -2316,6 +2386,9 @@ class GoogleCloudMlV1HyperparameterSpec {
     if (_json.containsKey("hyperparameterMetricTag")) {
       hyperparameterMetricTag = _json["hyperparameterMetricTag"];
     }
+    if (_json.containsKey("maxFailedTrials")) {
+      maxFailedTrials = _json["maxFailedTrials"];
+    }
     if (_json.containsKey("maxParallelTrials")) {
       maxParallelTrials = _json["maxParallelTrials"];
     }
@@ -2347,6 +2420,9 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
     if (hyperparameterMetricTag != null) {
       _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
+    }
+    if (maxFailedTrials != null) {
+      _json["maxFailedTrials"] = maxFailedTrials;
     }
     if (maxParallelTrials != null) {
       _json["maxParallelTrials"] = maxParallelTrials;
@@ -2769,7 +2845,26 @@ class GoogleCloudMlV1Model {
   /// The model name must be unique within the project it is created in.
   core.String name;
 
-  /// Optional. If true, enables StackDriver Logging for online prediction.
+  /// Optional. If true, online prediction nodes send `stderr` and `stdout`
+  /// streams to Stackdriver Logging. These can be more verbose than the
+  /// standard
+  /// access logs (see `onlinePredictionLogging`) and can incur higher cost.
+  /// However, they are helpful for debugging. Note that
+  /// [Stackdriver logs may incur a cost](/stackdriver/pricing), especially if
+  /// your project receives prediction requests at a high QPS. Estimate your
+  /// costs before enabling this option.
+  ///
+  /// Default is false.
+  core.bool onlinePredictionConsoleLogging;
+
+  /// Optional. If true, online prediction access logs are sent to StackDriver
+  /// Logging. These logs are like standard server access logs, containing
+  /// information like timestamp and latency for each request. Note that
+  /// [Stackdriver logs may incur a cost](/stackdriver/pricing), especially if
+  /// your project receives prediction requests at a high queries per second
+  /// rate
+  /// (QPS). Estimate your costs before enabling this option.
+  ///
   /// Default is false.
   core.bool onlinePredictionLogging;
 
@@ -2777,7 +2872,7 @@ class GoogleCloudMlV1Model {
   /// Currently only one region per model is supported.
   /// Defaults to 'us-central1' if nothing is set.
   /// See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-  /// for ML Engine services.
+  /// for AI Platform services.
   /// Note:
   /// *   No matter where a model is deployed, it can always be accessed by
   ///     users from anywhere, both for online and batch prediction.
@@ -2805,6 +2900,9 @@ class GoogleCloudMlV1Model {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("onlinePredictionConsoleLogging")) {
+      onlinePredictionConsoleLogging = _json["onlinePredictionConsoleLogging"];
+    }
     if (_json.containsKey("onlinePredictionLogging")) {
       onlinePredictionLogging = _json["onlinePredictionLogging"];
     }
@@ -2830,6 +2928,9 @@ class GoogleCloudMlV1Model {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (onlinePredictionConsoleLogging != null) {
+      _json["onlinePredictionConsoleLogging"] = onlinePredictionConsoleLogging;
     }
     if (onlinePredictionLogging != null) {
       _json["onlinePredictionLogging"] = onlinePredictionLogging;
@@ -3088,10 +3189,6 @@ class GoogleCloudMlV1PredictRequest {
 
 /// Represents input parameters for a prediction job.
 class GoogleCloudMlV1PredictionInput {
-  /// Optional. The type and number of accelerators to be attached to each
-  /// machine running the job.
-  GoogleCloudMlV1AcceleratorConfig accelerator;
-
   /// Optional. Number of records per batch, defaults to 64.
   /// The service will buffer batch_size number of records in memory before
   /// invoking one Tensorflow prediction call internally. So take the record
@@ -3104,16 +3201,16 @@ class GoogleCloudMlV1PredictionInput {
   /// - "JSON" : Each line of the file is a JSON dictionary representing one
   /// record.
   /// - "TEXT" : Deprecated. Use JSON instead.
-  /// - "TF_RECORD" : INPUT ONLY. The source file is a TFRecord file.
-  /// - "TF_RECORD_GZIP" : INPUT ONLY. The source file is a GZIP-compressed
-  /// TFRecord file.
-  /// - "CSV" : OUTPUT ONLY. Output values will be in comma-separated rows, with
-  /// keys
-  /// in a separate file.
+  /// - "TF_RECORD" : The source file is a TFRecord file.
+  /// Currently available only for input data.
+  /// - "TF_RECORD_GZIP" : The source file is a GZIP-compressed TFRecord file.
+  /// Currently available only for input data.
+  /// - "CSV" : Values are comma-separated rows, with keys in a separate file.
+  /// Currently available only for output data.
   core.String dataFormat;
 
-  /// Required. The Google Cloud Storage location of the input data files.
-  /// May contain wildcards.
+  /// Required. The Cloud Storage location of the input data files. May contain
+  /// <a href="/storage/docs/gsutil/addlhelp/WildcardNames">wildcards</a>.
   core.List<core.String> inputPaths;
 
   /// Optional. The maximum number of workers to be used for parallel
@@ -3133,12 +3230,12 @@ class GoogleCloudMlV1PredictionInput {
   /// - "JSON" : Each line of the file is a JSON dictionary representing one
   /// record.
   /// - "TEXT" : Deprecated. Use JSON instead.
-  /// - "TF_RECORD" : INPUT ONLY. The source file is a TFRecord file.
-  /// - "TF_RECORD_GZIP" : INPUT ONLY. The source file is a GZIP-compressed
-  /// TFRecord file.
-  /// - "CSV" : OUTPUT ONLY. Output values will be in comma-separated rows, with
-  /// keys
-  /// in a separate file.
+  /// - "TF_RECORD" : The source file is a TFRecord file.
+  /// Currently available only for input data.
+  /// - "TF_RECORD_GZIP" : The source file is a GZIP-compressed TFRecord file.
+  /// Currently available only for input data.
+  /// - "CSV" : Values are comma-separated rows, with keys in a separate file.
+  /// Currently available only for output data.
   core.String outputDataFormat;
 
   /// Required. The output Google Cloud Storage location.
@@ -3146,11 +3243,11 @@ class GoogleCloudMlV1PredictionInput {
 
   /// Required. The Google Compute Engine region to run the prediction job in.
   /// See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-  /// for ML Engine services.
+  /// for AI Platform services.
   core.String region;
 
-  /// Optional. The Cloud ML Engine runtime version to use for this batch
-  /// prediction. If not set, Cloud ML Engine will pick the runtime version used
+  /// Optional. The AI Platform runtime version to use for this batch
+  /// prediction. If not set, AI Platform will pick the runtime version used
   /// during the CreateVersion request for this model version, or choose the
   /// latest stable version when model version information is not available
   /// such as when the model is specified by uri.
@@ -3180,10 +3277,6 @@ class GoogleCloudMlV1PredictionInput {
   GoogleCloudMlV1PredictionInput();
 
   GoogleCloudMlV1PredictionInput.fromJson(core.Map _json) {
-    if (_json.containsKey("accelerator")) {
-      accelerator =
-          new GoogleCloudMlV1AcceleratorConfig.fromJson(_json["accelerator"]);
-    }
     if (_json.containsKey("batchSize")) {
       batchSize = _json["batchSize"];
     }
@@ -3225,9 +3318,6 @@ class GoogleCloudMlV1PredictionInput {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (accelerator != null) {
-      _json["accelerator"] = (accelerator).toJson();
-    }
     if (batchSize != null) {
       _json["batchSize"] = batchSize;
     }
@@ -3319,6 +3409,55 @@ class GoogleCloudMlV1PredictionOutput {
   }
 }
 
+/// Represents the configuration for a replica in a cluster.
+class GoogleCloudMlV1ReplicaConfig {
+  /// Represents the type and number of accelerators used by the replica.
+  /// [Learn about restrictions on accelerator configurations for
+  /// training.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
+  GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
+
+  /// The Docker image to run on the replica. This image must be in Container
+  /// Registry. Learn more about [configuring custom
+  /// containers](/ml-engine/docs/distributed-training-containers).
+  core.String imageUri;
+
+  /// TensorFlow version used in the custom container. This field is required if
+  /// the replica is a TPU worker that uses a custom container. Otherwise, do
+  /// not
+  /// specify this field.
+  core.String tpuTfVersion;
+
+  GoogleCloudMlV1ReplicaConfig();
+
+  GoogleCloudMlV1ReplicaConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorConfig")) {
+      acceleratorConfig = new GoogleCloudMlV1AcceleratorConfig.fromJson(
+          _json["acceleratorConfig"]);
+    }
+    if (_json.containsKey("imageUri")) {
+      imageUri = _json["imageUri"];
+    }
+    if (_json.containsKey("tpuTfVersion")) {
+      tpuTfVersion = _json["tpuTfVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (acceleratorConfig != null) {
+      _json["acceleratorConfig"] = (acceleratorConfig).toJson();
+    }
+    if (imageUri != null) {
+      _json["imageUri"] = imageUri;
+    }
+    if (tpuTfVersion != null) {
+      _json["tpuTfVersion"] = tpuTfVersion;
+    }
+    return _json;
+  }
+}
+
 /// Request message for the SetDefaultVersion request.
 class GoogleCloudMlV1SetDefaultVersionRequest {
   GoogleCloudMlV1SetDefaultVersionRequest();
@@ -3353,6 +3492,21 @@ class GoogleCloudMlV1TrainingInput {
   /// specifying
   /// this field is that Cloud ML validates the path for use in training.
   core.String jobDir;
+
+  /// Optional. The configuration for your master worker.
+  ///
+  /// You should only set `masterConfig.acceleratorConfig` if `masterType` is
+  /// set
+  /// to a Compute Engine machine type. Learn about [restrictions on accelerator
+  /// configurations for
+  /// training.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
+  ///
+  /// Set `masterConfig.imageUri` only if you build a custom image. Only one of
+  /// `masterConfig.imageUri` and `runtimeVersion` should be set. Learn more
+  /// about
+  /// [configuring custom
+  /// containers](/ml-engine/docs/distributed-training-containers).
+  GoogleCloudMlV1ReplicaConfig masterConfig;
 
   /// Optional. Specifies the type of virtual machine to use for your training
   /// job's master worker.
@@ -3442,13 +3596,55 @@ class GoogleCloudMlV1TrainingInput {
   ///   </dd>
   /// </dl>
   ///
+  /// You may also use certain Compute Engine machine types directly in this
+  /// field. The following types are supported:
+  ///
+  /// - `n1-standard-4`
+  /// - `n1-standard-8`
+  /// - `n1-standard-16`
+  /// - `n1-standard-32`
+  /// - `n1-standard-64`
+  /// - `n1-standard-96`
+  /// - `n1-highmem-2`
+  /// - `n1-highmem-4`
+  /// - `n1-highmem-8`
+  /// - `n1-highmem-16`
+  /// - `n1-highmem-32`
+  /// - `n1-highmem-64`
+  /// - `n1-highmem-96`
+  /// - `n1-highcpu-16`
+  /// - `n1-highcpu-32`
+  /// - `n1-highcpu-64`
+  /// - `n1-highcpu-96`
+  ///
+  /// See more about [using Compute Engine machine
+  /// types](/ml-engine/docs/tensorflow/machine-types#compute-engine-machine-types).
+  ///
   /// You must set this value when `scaleTier` is set to `CUSTOM`.
   core.String masterType;
+
+  /// Optional. The maximum job running time. The default is 7 days.
+  core.String maxRunningTime;
 
   /// Required. The Google Cloud Storage location of the packages with
   /// the training program and any additional dependencies.
   /// The maximum number of package URIs is 100.
   core.List<core.String> packageUris;
+
+  /// Optional. The configuration for parameter servers.
+  ///
+  /// You should only set `parameterServerConfig.acceleratorConfig` if
+  /// `parameterServerConfigType` is set to a Compute Engine machine type.
+  /// [Learn
+  /// about restrictions on accelerator configurations for
+  /// training.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
+  ///
+  /// Set `parameterServerConfig.imageUri` only if you build a custom image for
+  /// your parameter server. If `parameterServerConfig.imageUri` has not been
+  /// set, AI Platform uses the value of `masterConfig.imageUri`.
+  /// Learn more about [configuring custom
+  /// containers](/ml-engine/docs/distributed-training-containers).
+  GoogleCloudMlV1ReplicaConfig parameterServerConfig;
 
   /// Optional. The number of parameter server replicas to use for the training
   /// job. Each replica in the cluster will be of the type specified in
@@ -3466,6 +3662,10 @@ class GoogleCloudMlV1TrainingInput {
   /// The supported values are the same as those described in the entry for
   /// `master_type`.
   ///
+  /// This value must be consistent with the category of machine type that
+  /// `masterType` uses. In other words, both must be AI Platform machine
+  /// types or both must be Compute Engine machine types.
+  ///
   /// This value must be present when `scaleTier` is set to `CUSTOM` and
   /// `parameter_server_count` is greater than zero.
   core.String parameterServerType;
@@ -3481,11 +3681,11 @@ class GoogleCloudMlV1TrainingInput {
 
   /// Required. The Google Compute Engine region to run the training job in.
   /// See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-  /// for ML Engine services.
+  /// for AI Platform services.
   core.String region;
 
-  /// Optional. The Cloud ML Engine runtime version to use for training. If not
-  /// set, Cloud ML Engine uses the default stable version, 1.0. For more
+  /// Optional. The AI Platform runtime version to use for training. If not
+  /// set, AI Platform uses the default stable version, 1.0. For more
   /// information, see the
   /// <a href="/ml-engine/docs/runtime-version-list">runtime version list</a>
   /// and
@@ -3530,6 +3730,21 @@ class GoogleCloudMlV1TrainingInput {
   /// different from your worker type and master type.
   core.String scaleTier;
 
+  /// Optional. The configuration for workers.
+  ///
+  /// You should only set `workerConfig.acceleratorConfig` if `workerType` is
+  /// set
+  /// to a Compute Engine machine type. [Learn about restrictions on accelerator
+  /// configurations for
+  /// training.](/ml-engine/docs/tensorflow/using-gpus#compute-engine-machine-types-with-gpu)
+  ///
+  /// Set `workerConfig.imageUri` only if you build a custom image for your
+  /// worker. If `workerConfig.imageUri` has not been set, AI Platform uses
+  /// the value of `masterConfig.imageUri`. Learn more about
+  /// [configuring custom
+  /// containers](/ml-engine/docs/distributed-training-containers).
+  GoogleCloudMlV1ReplicaConfig workerConfig;
+
   /// Optional. The number of worker replicas to use for the training job. Each
   /// replica in the cluster will be of the type specified in `worker_type`.
   ///
@@ -3544,6 +3759,14 @@ class GoogleCloudMlV1TrainingInput {
   ///
   /// The supported values are the same as those described in the entry for
   /// `masterType`.
+  ///
+  /// This value must be consistent with the category of machine type that
+  /// `masterType` uses. In other words, both must be AI Platform machine
+  /// types or both must be Compute Engine machine types.
+  ///
+  /// If you use `cloud_tpu` for this value, see special instructions for
+  /// [configuring a custom TPU
+  /// machine](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
   ///
   /// This value must be present when `scaleTier` is set to `CUSTOM` and
   /// `workerCount` is greater than zero.
@@ -3562,11 +3785,22 @@ class GoogleCloudMlV1TrainingInput {
     if (_json.containsKey("jobDir")) {
       jobDir = _json["jobDir"];
     }
+    if (_json.containsKey("masterConfig")) {
+      masterConfig =
+          new GoogleCloudMlV1ReplicaConfig.fromJson(_json["masterConfig"]);
+    }
     if (_json.containsKey("masterType")) {
       masterType = _json["masterType"];
     }
+    if (_json.containsKey("maxRunningTime")) {
+      maxRunningTime = _json["maxRunningTime"];
+    }
     if (_json.containsKey("packageUris")) {
       packageUris = (_json["packageUris"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("parameterServerConfig")) {
+      parameterServerConfig = new GoogleCloudMlV1ReplicaConfig.fromJson(
+          _json["parameterServerConfig"]);
     }
     if (_json.containsKey("parameterServerCount")) {
       parameterServerCount = _json["parameterServerCount"];
@@ -3589,6 +3823,10 @@ class GoogleCloudMlV1TrainingInput {
     if (_json.containsKey("scaleTier")) {
       scaleTier = _json["scaleTier"];
     }
+    if (_json.containsKey("workerConfig")) {
+      workerConfig =
+          new GoogleCloudMlV1ReplicaConfig.fromJson(_json["workerConfig"]);
+    }
     if (_json.containsKey("workerCount")) {
       workerCount = _json["workerCount"];
     }
@@ -3609,11 +3847,20 @@ class GoogleCloudMlV1TrainingInput {
     if (jobDir != null) {
       _json["jobDir"] = jobDir;
     }
+    if (masterConfig != null) {
+      _json["masterConfig"] = (masterConfig).toJson();
+    }
     if (masterType != null) {
       _json["masterType"] = masterType;
     }
+    if (maxRunningTime != null) {
+      _json["maxRunningTime"] = maxRunningTime;
+    }
     if (packageUris != null) {
       _json["packageUris"] = packageUris;
+    }
+    if (parameterServerConfig != null) {
+      _json["parameterServerConfig"] = (parameterServerConfig).toJson();
     }
     if (parameterServerCount != null) {
       _json["parameterServerCount"] = parameterServerCount;
@@ -3636,6 +3883,9 @@ class GoogleCloudMlV1TrainingInput {
     if (scaleTier != null) {
       _json["scaleTier"] = scaleTier;
     }
+    if (workerConfig != null) {
+      _json["workerConfig"] = (workerConfig).toJson();
+    }
     if (workerCount != null) {
       _json["workerCount"] = workerCount;
     }
@@ -3648,12 +3898,25 @@ class GoogleCloudMlV1TrainingInput {
 
 /// Represents results of a training job. Output only.
 class GoogleCloudMlV1TrainingOutput {
+  /// Details related to built-in algorithms jobs.
+  /// Only set for built-in algorithms jobs.
+  GoogleCloudMlV1BuiltInAlgorithmOutput builtInAlgorithmOutput;
+
   /// The number of hyperparameter tuning trials that completed successfully.
   /// Only set for hyperparameter tuning jobs.
   core.String completedTrialCount;
 
   /// The amount of ML units consumed by the job.
   core.double consumedMLUnits;
+
+  /// The TensorFlow summary tag name used for optimizing hyperparameter tuning
+  /// trials. See
+  /// [`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag)
+  /// for more information. Only set for hyperparameter tuning jobs.
+  core.String hyperparameterMetricTag;
+
+  /// Whether this job is a built-in Algorithm job.
+  core.bool isBuiltInAlgorithmJob;
 
   /// Whether this job is a hyperparameter tuning job.
   core.bool isHyperparameterTuningJob;
@@ -3665,11 +3928,22 @@ class GoogleCloudMlV1TrainingOutput {
   GoogleCloudMlV1TrainingOutput();
 
   GoogleCloudMlV1TrainingOutput.fromJson(core.Map _json) {
+    if (_json.containsKey("builtInAlgorithmOutput")) {
+      builtInAlgorithmOutput =
+          new GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+              _json["builtInAlgorithmOutput"]);
+    }
     if (_json.containsKey("completedTrialCount")) {
       completedTrialCount = _json["completedTrialCount"];
     }
     if (_json.containsKey("consumedMLUnits")) {
       consumedMLUnits = _json["consumedMLUnits"].toDouble();
+    }
+    if (_json.containsKey("hyperparameterMetricTag")) {
+      hyperparameterMetricTag = _json["hyperparameterMetricTag"];
+    }
+    if (_json.containsKey("isBuiltInAlgorithmJob")) {
+      isBuiltInAlgorithmJob = _json["isBuiltInAlgorithmJob"];
     }
     if (_json.containsKey("isHyperparameterTuningJob")) {
       isHyperparameterTuningJob = _json["isHyperparameterTuningJob"];
@@ -3685,11 +3959,20 @@ class GoogleCloudMlV1TrainingOutput {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (builtInAlgorithmOutput != null) {
+      _json["builtInAlgorithmOutput"] = (builtInAlgorithmOutput).toJson();
+    }
     if (completedTrialCount != null) {
       _json["completedTrialCount"] = completedTrialCount;
     }
     if (consumedMLUnits != null) {
       _json["consumedMLUnits"] = consumedMLUnits;
+    }
+    if (hyperparameterMetricTag != null) {
+      _json["hyperparameterMetricTag"] = hyperparameterMetricTag;
+    }
+    if (isBuiltInAlgorithmJob != null) {
+      _json["isBuiltInAlgorithmJob"] = isBuiltInAlgorithmJob;
     }
     if (isHyperparameterTuningJob != null) {
       _json["isHyperparameterTuningJob"] = isHyperparameterTuningJob;
@@ -3717,7 +4000,7 @@ class GoogleCloudMlV1Version {
   /// Output only. The time the version was created.
   core.String createTime;
 
-  /// Required. The Google Cloud Storage location of the trained model used to
+  /// Required. The Cloud Storage location of the trained model used to
   /// create the version. See the
   /// [guide to model
   /// deployment](/ml-engine/docs/tensorflow/deploying-models) for more
@@ -3754,12 +4037,16 @@ class GoogleCloudMlV1Version {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Optional. The machine learning framework Cloud ML Engine uses to train
+  /// Optional. The machine learning framework AI Platform uses to train
   /// this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
-  /// `XGBOOST`. If you do not specify a framework, Cloud ML Engine
+  /// `XGBOOST`. If you do not specify a framework, AI Platform
   /// will analyze files in the deployment_uri to determine a framework. If you
   /// choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version
   /// of the model to 1.4 or greater.
+  ///
+  /// Do **not** specify a framework if you're deploying a [custom
+  /// prediction
+  /// routine](/ml-engine/docs/tensorflow/custom-prediction-routines).
   /// Possible string values are:
   /// - "FRAMEWORK_UNSPECIFIED" : Unspecified framework. Assigns a value based
   /// on the file suffix.
@@ -3787,13 +4074,18 @@ class GoogleCloudMlV1Version {
 
   /// Optional. The type of machine on which to serve the model. Currently only
   /// applies to online prediction service.
-  /// The following are currently supported and will be deprecated in
-  /// Beta release.
-  ///   mls1-highmem-1    1 core    2 Gb RAM
-  ///   mls1-highcpu-4    4 core    2 Gb RAM
-  /// The following are available in Beta:
-  ///   mls1-c1-m2        1 core    2 Gb RAM   Default
-  ///   mls1-c4-m2        4 core    2 Gb RAM
+  /// <dl>
+  ///   <dt>mls1-c1-m2</dt>
+  ///   <dd>
+  /// The <b>default</b> machine type, with 1 core and 2 GB RAM. The deprecated
+  ///   name for this machine type is "mls1-highmem-1".
+  ///   </dd>
+  ///   <dt>mls1-c4-m2</dt>
+  ///   <dd>
+  ///   In <b>Beta</b>. This machine type has 4 cores and 2 GB RAM. The
+  ///   deprecated name for this machine type is "mls1-highcpu-4".
+  ///   </dd>
+  /// </dl>
   core.String machineType;
 
   /// Manually select the number of nodes to use for serving the
@@ -3809,6 +4101,78 @@ class GoogleCloudMlV1Version {
   /// The version name must be unique within the model it is created in.
   core.String name;
 
+  /// Optional. Cloud Storage paths (`gs://…`) of packages for [custom
+  /// prediction
+  /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines)
+  /// or [scikit-learn pipelines with custom
+  /// code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code).
+  ///
+  /// For a custom prediction routine, one of these packages must contain your
+  /// Predictor class (see
+  /// [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally,
+  /// include any dependencies used by your Predictor or scikit-learn pipeline
+  /// uses that are not already included in your selected [runtime
+  /// version](/ml-engine/docs/tensorflow/runtime-version-list).
+  ///
+  /// If you specify this field, you must also set
+  /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+  core.List<core.String> packageUris;
+
+  /// Optional. The fully qualified name
+  /// (<var>module_name</var>.<var>class_name</var>) of a class that implements
+  /// the Predictor interface described in this reference field. The module
+  /// containing this class should be included in a package provided to the
+  /// [`packageUris` field](#Version.FIELDS.package_uris).
+  ///
+  /// Specify this field if and only if you are deploying a [custom prediction
+  /// routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines).
+  /// If you specify this field, you must set
+  /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+  ///
+  /// The following code sample provides the Predictor interface:
+  ///
+  /// ```py
+  /// class Predictor(object):
+  /// """Interface for constructing custom predictors."""
+  ///
+  /// def predict(self, instances, **kwargs):
+  ///     """Performs custom prediction.
+  ///
+  ///     Instances are the decoded values from the request. They have already
+  ///     been deserialized from JSON.
+  ///
+  ///     Args:
+  ///         instances: A list of prediction input instances.
+  ///         **kwargs: A dictionary of keyword args provided as additional
+  ///             fields on the predict request body.
+  ///
+  ///     Returns:
+  /// A list of outputs containing the prediction results. This list must
+  ///         be JSON serializable.
+  ///     """
+  ///     raise NotImplementedError()
+  ///
+  /// @classmethod
+  /// def from_path(cls, model_dir):
+  ///     """Creates an instance of Predictor using the given path.
+  ///
+  ///     Loading of the predictor should be done in this method.
+  ///
+  ///     Args:
+  ///         model_dir: The local directory that contains the exported model
+  /// file along with any additional files uploaded when creating the
+  ///             version resource.
+  ///
+  ///     Returns:
+  ///         An instance implementing this Predictor class.
+  ///     """
+  ///     raise NotImplementedError()
+  /// ```
+  ///
+  /// Learn more about [the Predictor interface and custom prediction
+  /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
+  core.String predictionClass;
+
   /// Optional. The version of Python used in prediction. If not set, the
   /// default
   /// version is '2.7'. Python '3.5' is available when `runtime_version` is set
@@ -3816,12 +4180,15 @@ class GoogleCloudMlV1Version {
   /// versions.
   core.String pythonVersion;
 
-  /// Optional. The Cloud ML Engine runtime version to use for this deployment.
-  /// If not set, Cloud ML Engine uses the default stable version, 1.0. For more
+  /// Optional. The AI Platform runtime version to use for this deployment.
+  /// If not set, AI Platform uses the default stable version, 1.0. For more
   /// information, see the
   /// [runtime version list](/ml-engine/docs/runtime-version-list) and
   /// [how to manage runtime versions](/ml-engine/docs/versioning).
   core.String runtimeVersion;
+
+  /// Optional. Specifies the service account for resource access control.
+  core.String serviceAccount;
 
   /// Output only. The state of a version.
   /// Possible string values are:
@@ -3884,11 +4251,20 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("packageUris")) {
+      packageUris = (_json["packageUris"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("predictionClass")) {
+      predictionClass = _json["predictionClass"];
+    }
     if (_json.containsKey("pythonVersion")) {
       pythonVersion = _json["pythonVersion"];
     }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
+    }
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -3937,11 +4313,20 @@ class GoogleCloudMlV1Version {
     if (name != null) {
       _json["name"] = name;
     }
+    if (packageUris != null) {
+      _json["packageUris"] = packageUris;
+    }
+    if (predictionClass != null) {
+      _json["predictionClass"] = predictionClass;
+    }
     if (pythonVersion != null) {
       _json["pythonVersion"] = pythonVersion;
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
+    }
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
     }
     if (state != null) {
       _json["state"] = state;
@@ -4098,8 +4483,8 @@ class GoogleIamV1AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   GoogleTypeExpr condition;
@@ -4124,7 +4509,7 @@ class GoogleIamV1Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -4433,7 +4818,7 @@ class GoogleLongrunningOperation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -4515,61 +4900,12 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

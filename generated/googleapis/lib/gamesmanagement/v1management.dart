@@ -18,8 +18,7 @@ const core.String USER_AGENT = 'dart-api-client gamesManagement/v1management';
 
 /// The Management API for Google Play Game Services.
 class GamesManagementApi {
-  /// Share your Google+ profile information and view and manage your game
-  /// activity
+  /// Create, edit, and delete your Google Play Games activity
   static const GamesScope = "https://www.googleapis.com/auth/games";
 
   final commons.ApiRequester _requester;

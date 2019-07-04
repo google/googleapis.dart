@@ -16,7 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client oslogin/v1';
 
-/// Manages OS login configuration for Google account users.
+/// You can use OS Login to manage access to your VM instances using IAM roles.
+/// For more information, read [OS Login](/compute/docs/oslogin/).
 class OsloginApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =

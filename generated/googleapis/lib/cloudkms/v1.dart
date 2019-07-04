@@ -286,6 +286,13 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  /// Acceptable values are 0 and 1.
+  /// If the value is 0, or the field is omitted, policy format version 1 will
+  /// be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -297,7 +304,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -307,6 +314,11 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -333,8 +345,17 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// KeyRings, in the format `projects / * /locations / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
   /// [pageToken] - Optional pagination token, returned earlier via
   /// ListKeyRingsResponse.next_page_token.
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the
+  /// results will be sorted in the default order
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [pageSize] - Optional limit on the number of KeyRings to include in the
   /// response.  Further KeyRings can subsequently be obtained by
@@ -352,7 +373,11 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListKeyRingsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String filter,
+      core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -363,8 +388,14 @@ class ProjectsLocationsKeyRingsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -531,6 +562,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// regular
   /// expression `[a-zA-Z0-9_-]{1,63}`
   ///
+  /// [skipInitialVersionCreation] - If set to true, the request will create a
+  /// CryptoKey without any
+  /// CryptoKeyVersions. You must manually call
+  /// CreateCryptoKeyVersion or
+  /// ImportCryptoKeyVersion
+  /// before you can use this CryptoKey.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -542,7 +580,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKey> create(CryptoKey request, core.String parent,
-      {core.String cryptoKeyId, core.String $fields}) {
+      {core.String cryptoKeyId,
+      core.bool skipInitialVersionCreation,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -558,6 +598,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (cryptoKeyId != null) {
       _queryParams["cryptoKeyId"] = [cryptoKeyId];
+    }
+    if (skipInitialVersionCreation != null) {
+      _queryParams["skipInitialVersionCreation"] = [
+        "${skipInitialVersionCreation}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -744,6 +789,13 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  /// Acceptable values are 0 and 1.
+  /// If the value is 0, or the field is omitted, policy format version 1 will
+  /// be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -755,7 +807,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -765,6 +817,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -800,12 +857,21 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
   ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the
+  /// results will be sorted in the default order
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
   /// [versionView] - The fields of the primary version to include in the
   /// response.
   /// Possible string values are:
   /// - "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" : A
   /// CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED.
   /// - "FULL" : A FULL.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -820,7 +886,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   async.Future<ListCryptoKeysResponse> list(core.String parent,
       {core.String pageToken,
       core.int pageSize,
+      core.String orderBy,
       core.String versionView,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -838,8 +906,14 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
     if (versionView != null) {
       _queryParams["versionView"] = [versionView];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1423,6 +1497,64 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     return _response.then((data) => new PublicKey.fromJson(data));
   }
 
+  /// Imports a new CryptoKeyVersion into an existing CryptoKey using the
+  /// wrapped key material provided in the request.
+  ///
+  /// The version ID will be assigned the next sequential id within the
+  /// CryptoKey.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the CryptoKey to
+  /// be imported into.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CryptoKeyVersion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CryptoKeyVersion> import(
+      ImportCryptoKeyVersionRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/cryptoKeyVersions:import';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CryptoKeyVersion.fromJson(data));
+  }
+
   /// Lists CryptoKeyVersions.
   ///
   /// Request parameters:
@@ -1432,6 +1564,15 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// `projects / * /locations / * /keyRings / * /cryptoKeys / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the
+  /// results will be sorted in the default order
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [pageToken] - Optional pagination token, returned earlier via
   /// ListCryptoKeyVersionsResponse.next_page_token.
@@ -1459,7 +1600,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String orderBy,
+      core.String filter,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
       core.String $fields}) {
@@ -1472,6 +1615,12 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1629,6 +1778,111 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   ProjectsLocationsKeyRingsImportJobsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Create a new ImportJob within a KeyRing.
+  ///
+  /// ImportJob.import_method is required.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the KeyRing associated with the
+  /// ImportJobs.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  ///
+  /// [importJobId] - Required. It must be unique within a KeyRing and match the
+  /// regular
+  /// expression `[a-zA-Z0-9_-]{1,63}`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImportJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImportJob> create(ImportJob request, core.String parent,
+      {core.String importJobId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (importJobId != null) {
+      _queryParams["importJobId"] = [importJobId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/importJobs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ImportJob.fromJson(data));
+  }
+
+  /// Returns metadata for a given ImportJob.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the ImportJob to get.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ImportJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImportJob> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ImportJob.fromJson(data));
+  }
+
   /// Gets the access control policy for a resource.
   /// Returns an empty policy if the resource exists and does not have a policy
   /// set.
@@ -1641,6 +1895,13 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  /// Acceptable values are 0 and 1.
+  /// If the value is 0, or the field is omitted, policy format version 1 will
+  /// be
+  /// returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1652,7 +1913,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1662,6 +1923,11 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1678,6 +1944,87 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Lists ImportJobs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the KeyRing to list, in the
+  /// format
+  /// `projects / * /locations / * /keyRings / * `.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  ///
+  /// [pageToken] - Optional pagination token, returned earlier via
+  /// ListImportJobsResponse.next_page_token.
+  ///
+  /// [orderBy] - Optional. Specify how the results should be sorted. If not
+  /// specified, the
+  /// results will be sorted in the default order
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [pageSize] - Optional limit on the number of ImportJobs to include in the
+  /// response. Further ImportJobs can subsequently be obtained by
+  /// including the ListImportJobsResponse.next_page_token in a subsequent
+  /// request. If unspecified, the server will pick an appropriate default.
+  ///
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response
+  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListImportJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListImportJobsResponse> list(core.String parent,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/importJobs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListImportJobsResponse.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -2065,8 +2412,8 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -2091,7 +2438,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -2188,7 +2535,8 @@ class CryptoKey {
   core.String purpose;
 
   /// next_rotation_time will be advanced by this period when the service
-  /// automatically rotates a key. Must be at least one day.
+  /// automatically rotates a key. Must be at least 24 hours and at most
+  /// 876,000 hours.
   ///
   /// If rotation_period is set, next_rotation_time must also be set.
   ///
@@ -2335,6 +2683,20 @@ class CryptoKeyVersion {
   /// generated.
   core.String generateTime;
 
+  /// Output only. The root cause of an import failure. Only present if
+  /// state is
+  /// IMPORT_FAILED.
+  core.String importFailureReason;
+
+  /// Output only. The name of the ImportJob used to import this
+  /// CryptoKeyVersion. Only present if the underlying key material was
+  /// imported.
+  core.String importJob;
+
+  /// Output only. The time at which this CryptoKeyVersion's key material
+  /// was imported.
+  core.String importTime;
+
   /// Output only. The resource name for this CryptoKeyVersion in the format
   /// `projects / * /locations / * /keyRings / * /cryptoKeys / *
   /// /cryptoKeyVersions / * `.
@@ -2367,6 +2729,15 @@ class CryptoKeyVersion {
   /// Call
   /// RestoreCryptoKeyVersion
   /// to put it back into the DISABLED state.
+  /// - "PENDING_IMPORT" : This version is still being imported. It may not be
+  /// used, enabled,
+  /// disabled, or destroyed yet. Cloud KMS will automatically mark this
+  /// version ENABLED as soon as the version is ready.
+  /// - "IMPORT_FAILED" : This version was not imported successfully. It may not
+  /// be used, enabled,
+  /// disabled, or destroyed. The submitted key material has been discarded.
+  /// Additional details can be found in
+  /// CryptoKeyVersion.import_failure_reason.
   core.String state;
 
   CryptoKeyVersion();
@@ -2389,6 +2760,15 @@ class CryptoKeyVersion {
     }
     if (_json.containsKey("generateTime")) {
       generateTime = _json["generateTime"];
+    }
+    if (_json.containsKey("importFailureReason")) {
+      importFailureReason = _json["importFailureReason"];
+    }
+    if (_json.containsKey("importJob")) {
+      importJob = _json["importJob"];
+    }
+    if (_json.containsKey("importTime")) {
+      importTime = _json["importTime"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2421,6 +2801,15 @@ class CryptoKeyVersion {
     }
     if (generateTime != null) {
       _json["generateTime"] = generateTime;
+    }
+    if (importFailureReason != null) {
+      _json["importFailureReason"] = importFailureReason;
+    }
+    if (importJob != null) {
+      _json["importJob"] = importJob;
+    }
+    if (importTime != null) {
+      _json["importTime"] = importTime;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2836,7 +3225,288 @@ class Expr {
   }
 }
 
-/// Contains an HSM-generated attestation about a key operation.
+/// Request message for KeyManagementService.ImportCryptoKeyVersion.
+class ImportCryptoKeyVersionRequest {
+  /// Required. The algorithm of
+  /// the key being imported. This does not need to match the
+  /// version_template of the CryptoKey this
+  /// version imports into.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest.
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest.
+  core.String algorithm;
+
+  /// Required. The name of the ImportJob that was used to
+  /// wrap this key material.
+  core.String importJob;
+
+  /// Wrapped key material produced with
+  /// RSA_OAEP_3072_SHA1_AES_256
+  /// or
+  /// RSA_OAEP_4096_SHA1_AES_256.
+  ///
+  /// This field contains the concatenation of two wrapped keys:
+  /// <ol>
+  ///   <li>An ephemeral AES-256 wrapping key wrapped with the
+  ///       public_key using RSAES-OAEP with SHA-1,
+  ///       MGF1 with SHA-1, and an empty label.
+  ///   </li>
+  ///   <li>The key to be imported, wrapped with the ephemeral AES-256 key
+  ///       using AES-KWP (RFC 5649).
+  ///   </li>
+  /// </ol>
+  ///
+  /// This format is the same as the format produced by PKCS#11 mechanism
+  /// CKM_RSA_AES_KEY_WRAP.
+  core.String rsaAesWrappedKey;
+  core.List<core.int> get rsaAesWrappedKeyAsBytes {
+    return convert.base64.decode(rsaAesWrappedKey);
+  }
+
+  set rsaAesWrappedKeyAsBytes(core.List<core.int> _bytes) {
+    rsaAesWrappedKey =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  ImportCryptoKeyVersionRequest();
+
+  ImportCryptoKeyVersionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("algorithm")) {
+      algorithm = _json["algorithm"];
+    }
+    if (_json.containsKey("importJob")) {
+      importJob = _json["importJob"];
+    }
+    if (_json.containsKey("rsaAesWrappedKey")) {
+      rsaAesWrappedKey = _json["rsaAesWrappedKey"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (algorithm != null) {
+      _json["algorithm"] = algorithm;
+    }
+    if (importJob != null) {
+      _json["importJob"] = importJob;
+    }
+    if (rsaAesWrappedKey != null) {
+      _json["rsaAesWrappedKey"] = rsaAesWrappedKey;
+    }
+    return _json;
+  }
+}
+
+/// An ImportJob can be used to create CryptoKeys and
+/// CryptoKeyVersions using pre-existing key material,
+/// generated outside of Cloud KMS.
+///
+/// When an ImportJob is created, Cloud KMS will generate a "wrapping key",
+/// which is a public/private key pair. You use the wrapping key to encrypt
+/// (also
+/// known as wrap) the pre-existing key material to protect it during the import
+/// process. The nature of the wrapping key depends on the choice of
+/// import_method. When the wrapping key generation
+/// is complete, the state will be set to
+/// ACTIVE and the public_key
+/// can be fetched. The fetched public key can then be used to wrap your
+/// pre-existing key material.
+///
+/// Once the key material is wrapped, it can be imported into a new
+/// CryptoKeyVersion in an existing CryptoKey by calling
+/// ImportCryptoKeyVersion.
+/// Multiple CryptoKeyVersions can be imported with a single
+/// ImportJob. Cloud KMS uses the private key portion of the wrapping key to
+/// unwrap the key material. Only Cloud KMS has access to the private key.
+///
+/// An ImportJob expires 3 days after it is created. Once expired, Cloud KMS
+/// will no longer be able to import or unwrap any key material that was wrapped
+/// with the ImportJob's public key.
+///
+/// For more information, see
+/// [Importing a key](https://cloud.google.com/kms/docs/importing-a-key).
+class ImportJob {
+  /// Output only. Statement that was generated and signed by the key creator
+  /// (for example, an HSM) at key creation time. Use this statement to verify
+  /// attributes of the key as stored on the HSM, independently of Google.
+  /// Only present if the chosen ImportMethod is one with a protection
+  /// level of HSM.
+  KeyOperationAttestation attestation;
+
+  /// Output only. The time at which this ImportJob was created.
+  core.String createTime;
+
+  /// Output only. The time this ImportJob expired. Only present if
+  /// state is EXPIRED.
+  core.String expireEventTime;
+
+  /// Output only. The time at which this ImportJob is scheduled for
+  /// expiration and can no longer be used to import key material.
+  core.String expireTime;
+
+  /// Output only. The time this ImportJob's key material was generated.
+  core.String generateTime;
+
+  /// Required and immutable. The wrapping method to be used for incoming
+  /// key material.
+  /// Possible string values are:
+  /// - "IMPORT_METHOD_UNSPECIFIED" : Not specified.
+  /// - "RSA_OAEP_3072_SHA1_AES_256" : This ImportMethod represents the
+  /// CKM_RSA_AES_KEY_WRAP key wrapping
+  /// scheme defined in the PKCS #11 standard. In summary, this involves
+  /// wrapping the raw key with an ephemeral AES key, and wrapping the
+  /// ephemeral AES key with a 3072 bit RSA key. For more details, see
+  /// [RSA AES key wrap
+  /// mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
+  /// - "RSA_OAEP_4096_SHA1_AES_256" : This ImportMethod represents the
+  /// CKM_RSA_AES_KEY_WRAP key wrapping
+  /// scheme defined in the PKCS #11 standard. In summary, this involves
+  /// wrapping the raw key with an ephemeral AES key, and wrapping the
+  /// ephemeral AES key with a 4096 bit RSA key. For more details, see
+  /// [RSA AES key wrap
+  /// mechanism](http://docs.oasis-open.org/pkcs11/pkcs11-curr/v2.40/cos01/pkcs11-curr-v2.40-cos01.html#_Toc408226908).
+  core.String importMethod;
+
+  /// Output only. The resource name for this ImportJob in the format
+  /// `projects / * /locations / * /keyRings / * /importJobs / * `.
+  core.String name;
+
+  /// Required and immutable. The protection level of the ImportJob. This
+  /// must match the
+  /// protection_level of the
+  /// version_template on the CryptoKey you
+  /// attempt to import into.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  core.String protectionLevel;
+
+  /// Output only. The public key with which to wrap key material prior to
+  /// import. Only returned if state is
+  /// ACTIVE.
+  WrappingPublicKey publicKey;
+
+  /// Output only. The current state of the ImportJob, indicating if it can
+  /// be used.
+  /// Possible string values are:
+  /// - "IMPORT_JOB_STATE_UNSPECIFIED" : Not specified.
+  /// - "PENDING_GENERATION" : The wrapping key for this job is still being
+  /// generated. It may not be
+  /// used. Cloud KMS will automatically mark this job as
+  /// ACTIVE as soon as the wrapping key is generated.
+  /// - "ACTIVE" : This job may be used in
+  /// CreateCryptoKey and
+  /// CreateCryptoKeyVersion
+  /// requests.
+  /// - "EXPIRED" : This job can no longer be used and may not leave this state
+  /// once entered.
+  core.String state;
+
+  ImportJob();
+
+  ImportJob.fromJson(core.Map _json) {
+    if (_json.containsKey("attestation")) {
+      attestation = new KeyOperationAttestation.fromJson(_json["attestation"]);
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("expireEventTime")) {
+      expireEventTime = _json["expireEventTime"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("generateTime")) {
+      generateTime = _json["generateTime"];
+    }
+    if (_json.containsKey("importMethod")) {
+      importMethod = _json["importMethod"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("protectionLevel")) {
+      protectionLevel = _json["protectionLevel"];
+    }
+    if (_json.containsKey("publicKey")) {
+      publicKey = new WrappingPublicKey.fromJson(_json["publicKey"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attestation != null) {
+      _json["attestation"] = (attestation).toJson();
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (expireEventTime != null) {
+      _json["expireEventTime"] = expireEventTime;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (generateTime != null) {
+      _json["generateTime"] = generateTime;
+    }
+    if (importMethod != null) {
+      _json["importMethod"] = importMethod;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (protectionLevel != null) {
+      _json["protectionLevel"] = protectionLevel;
+    }
+    if (publicKey != null) {
+      _json["publicKey"] = (publicKey).toJson();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Contains an HSM-generated attestation about a key operation. For more
+/// information, see [Verifying attestations]
+/// (https://cloud.google.com/kms/docs/attest-key).
 class KeyOperationAttestation {
   /// Output only. The attestation data provided by the HSM when the key
   /// operation was performed.
@@ -2856,6 +3526,9 @@ class KeyOperationAttestation {
   /// - "CAVIUM_V1_COMPRESSED" : Cavium HSM attestation compressed with gzip.
   /// Note that this format is
   /// defined by Cavium and subject to change at any time.
+  /// - "CAVIUM_V2_COMPRESSED" : Cavium HSM attestation V2 compressed with gzip.
+  /// This is a new format
+  /// introduced in Cavium's version 3.2-08.
   core.String format;
 
   KeyOperationAttestation();
@@ -2997,6 +3670,51 @@ class ListCryptoKeysResponse {
     if (cryptoKeys != null) {
       _json["cryptoKeys"] =
           cryptoKeys.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (totalSize != null) {
+      _json["totalSize"] = totalSize;
+    }
+    return _json;
+  }
+}
+
+/// Response message for KeyManagementService.ListImportJobs.
+class ListImportJobsResponse {
+  /// The list of ImportJobs.
+  core.List<ImportJob> importJobs;
+
+  /// A token to retrieve next page of results. Pass this value in
+  /// ListImportJobsRequest.page_token to retrieve the next page of results.
+  core.String nextPageToken;
+
+  /// The total number of ImportJobs that matched the query.
+  core.int totalSize;
+
+  ListImportJobsResponse();
+
+  ListImportJobsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("importJobs")) {
+      importJobs = (_json["importJobs"] as core.List)
+          .map<ImportJob>((value) => new ImportJob.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("totalSize")) {
+      totalSize = _json["totalSize"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (importJobs != null) {
+      _json["importJobs"] =
+          importJobs.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -3490,6 +4208,34 @@ class UpdateCryptoKeyPrimaryVersionRequest {
         new core.Map<core.String, core.Object>();
     if (cryptoKeyVersionId != null) {
       _json["cryptoKeyVersionId"] = cryptoKeyVersionId;
+    }
+    return _json;
+  }
+}
+
+/// The public key component of the wrapping key. For details of the type of
+/// key this public key corresponds to, see the ImportMethod.
+class WrappingPublicKey {
+  /// The public key, encoded in PEM format. For more information, see the [RFC
+  /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
+  /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
+  /// [Textual Encoding of Subject Public Key Info]
+  /// (https://tools.ietf.org/html/rfc7468#section-13).
+  core.String pem;
+
+  WrappingPublicKey();
+
+  WrappingPublicKey.fromJson(core.Map _json) {
+    if (_json.containsKey("pem")) {
+      pem = _json["pem"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pem != null) {
+      _json["pem"] = pem;
     }
     return _json;
   }

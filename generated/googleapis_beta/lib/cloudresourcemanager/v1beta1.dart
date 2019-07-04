@@ -50,8 +50,10 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the Organization to fetch, e.g.
-  /// "organizations/1234".
+  /// [name] - The resource name of the Organization to fetch. This is the
+  /// organization's
+  /// relative path in the API, formatted as "organizations/[organizationId]".
+  /// For example, "organizations/1234".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
   /// [organizationId] - The id of the Organization resource to fetch.
@@ -176,12 +178,10 @@ class OrganizationsResourceApi {
   /// Organizations may be filtered by `owner.directoryCustomerId` or by
   /// `domain`, where the domain is a G Suite domain, for example:
   ///
-  /// |Filter|Description|
-  /// |------|-----------|
-  /// |owner.directorycustomerid:123456789|Organizations with
-  /// `owner.directory_customer_id` equal to `123456789`.|
-  /// |domain:google.com|Organizations corresponding to the domain
-  /// `google.com`.|
+  /// * Filter `owner.directorycustomerid:123456789` returns Organization
+  /// resources with `owner.directory_customer_id` equal to `123456789`.
+  /// * Filter `domain:google.com` returns Organization resources corresponding
+  /// to the domain `google.com`.
   ///
   /// This field is optional.
   ///
@@ -484,8 +484,9 @@ class ProjectsResourceApi {
   /// However, you cannot update the project.
   ///
   /// After the deletion completes, the Project is not retrievable by
-  /// the  GetProject and
-  /// ListProjects methods.
+  /// the  GetProject
+  /// and ListProjects
+  /// methods.
   ///
   /// The caller must have modify permissions for this Project.
   ///
@@ -691,47 +692,24 @@ class ProjectsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Lists Projects that are visible to the user and satisfy the
-  /// specified filter. This method returns Projects in an unspecified order.
+  /// Lists Projects that the caller has the `resourcemanager.projects.get`
+  /// permission on and satisfy the specified filter.
+  ///
+  /// This method returns Projects in an unspecified order.
   /// This method is eventually consistent with project mutations; this means
   /// that a newly created project may not appear in the results or recent
   /// updates to an existing project may not be reflected in the results. To
-  /// retrieve the latest state of a project, use the GetProjectmethod.
+  /// retrieve the latest state of a project, use the
+  /// GetProject method.
+  ///
+  /// NOTE: If the request filter contains a `parent.type` and `parent.id` and
+  /// the caller has the `resourcemanager.projects.list` permission on the
+  /// parent, the results will be drawn from an alternate index which provides
+  /// more consistent results. In future versions of this API, this List method
+  /// will be split into List and Search to properly capture the behavorial
+  /// difference.
   ///
   /// Request parameters:
-  ///
-  /// [filter] - An expression for filtering the results of the request.  Filter
-  /// rules are
-  /// case insensitive. The fields eligible for filtering are:
-  ///
-  /// + `name`
-  /// + `id`
-  /// + <code>labels.<em>key</em></code> where *key* is the name of a label
-  ///
-  /// Some examples of using labels as filters:
-  ///
-  /// |Filter|Description|
-  /// |------|-----------|
-  /// |name:how*|The project's name starts with "how".|
-  /// |name:Howl|The project's name is `Howl` or `howl`.|
-  /// |name:HOWL|Equivalent to above.|
-  /// |NAME:howl|Equivalent to above.|
-  /// |labels.color:*|The project has the label `color`.|
-  /// |labels.color:red|The project's label `color` has the value `red`.|
-  /// |labels.color:red&nbsp;labels.size:big|The project's label `color` has the
-  /// value `red` and its label `size` has the value `big`.
-  ///
-  /// If you specify a filter that has both `parent.type` and `parent.id`, then
-  /// the `resourcemanager.projects.list` permission is checked on the parent.
-  /// If the user has this permission, all projects under the parent will be
-  /// returned after remaining filters have been applied. If the user lacks this
-  /// permission, then all projects for which the user has the
-  /// `resourcemanager.projects.get` permission will be returned after remaining
-  /// filters have been applied. If no filter is specified, the call will return
-  /// projects for which the user has `resourcemanager.projects.get`
-  /// permissions.
-  ///
-  /// Optional.
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListProjects
@@ -742,6 +720,42 @@ class ProjectsResourceApi {
   /// [pageSize] - The maximum number of Projects to return in the response.
   /// The server can return fewer Projects than requested.
   /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
+  /// [filter] - An expression for filtering the results of the request.  Filter
+  /// rules are
+  /// case insensitive. The fields eligible for filtering are:
+  ///
+  /// + `name`
+  /// + `id`
+  /// + `labels.<key>` (where *key* is the name of a label)
+  /// + `parent.type`
+  /// + `parent.id`
+  ///
+  /// Some examples of using labels as filters:
+  ///
+  /// | Filter           | Description                                         |
+  /// |------------------|-----------------------------------------------------|
+  /// | name:how*        | The project's name starts with "how".               |
+  /// | name:Howl        | The project's name is `Howl` or `howl`.             |
+  /// | name:HOWL        | Equivalent to above.                                |
+  /// | NAME:howl        | Equivalent to above.                                |
+  /// | labels.color:*   | The project has the label `color`.                  |
+  /// | labels.color:red | The project's label `color` has the value `red`.    |
+  /// | labels.color:red&nbsp;labels.size:big |The project's label `color` has
+  /// the value `red` and its label `size` has the value `big`.              |
+  ///
+  /// If no filter is specified, the call will return projects for which the
+  /// user
+  /// has the `resourcemanager.projects.get` permission.
+  ///
+  /// NOTE: To perform a by-parent query (eg., what projects are directly in a
+  /// Folder), the caller must have the `resourcemanager.projects.list`
+  /// permission on the parent and the filter must contain both a `parent.type`
+  /// and a `parent.id` restriction
+  /// (example: "parent.type:folder parent.id:123"). In this case an alternate
+  /// search index is used which provides more consistent results.
   ///
   /// Optional.
   ///
@@ -756,9 +770,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -767,14 +781,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1219,8 +1233,8 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -1245,7 +1259,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -1512,13 +1526,51 @@ class GetAncestryResponse {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`. This field is only used by Cloud IAM.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  /// Acceptable values are 0 and 1.
+  /// If the value is 0, or the field is omitted, policy format version 1 will
+  /// be
+  /// returned.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
     return _json;
   }
 }
@@ -1885,15 +1937,16 @@ class Project {
   /// - "ACTIVE" : The normal and active state.
   /// - "DELETE_REQUESTED" : The project has been marked for deletion by the
   /// user
-  /// (by invoking DeleteProject)
+  /// (by invoking
+  /// DeleteProject)
   /// or by the system (Google Cloud Platform).
   /// This can generally be reversed by invoking UndeleteProject.
   /// - "DELETE_IN_PROGRESS" : This lifecycle state is no longer used and is not
   /// returned by the API.
   core.String lifecycleState;
 
-  /// The user-assigned display name of the Project.
-  /// It must be 4 to 30 characters.
+  /// The optional user-assigned display name of the Project.
+  /// When present it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers,
   /// hyphen, single-quote, double-quote, space, and exclamation point.
   ///

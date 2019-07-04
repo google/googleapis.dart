@@ -40,12 +40,115 @@ class DialogflowApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsAgentResourceApi get agent =>
+  ProjectsAgentResourceApi get agent_1 =>
       new ProjectsAgentResourceApi(_requester);
   ProjectsOperationsResourceApi get operations =>
       new ProjectsOperationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates/updates the specified agent.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project of this agent.
+  /// Format: `projects/<Project ID>`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [updateMask] - Optional. The mask to control which fields get updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Agent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Agent> agent(
+      GoogleCloudDialogflowV2Agent request, core.String parent,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleCloudDialogflowV2Agent.fromJson(data));
+  }
+
+  /// Deletes the specified agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project that the agent to delete is associated
+  /// with.
+  /// Format: `projects/<Project ID>`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> deleteAgent(core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
 
   /// Retrieves the specified agent.
   ///
@@ -552,9 +655,11 @@ class ProjectsAgentEntityTypesResourceApi {
   /// [languageCode] - Optional. The language of entity synonyms defined in
   /// `entity_type`. If not
   /// specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,9 +764,11 @@ class ProjectsAgentEntityTypesResourceApi {
   /// [languageCode] - Optional. The language to retrieve entity synonyms for.
   /// If not specified,
   /// the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -712,6 +819,9 @@ class ProjectsAgentEntityTypesResourceApi {
   /// Format: `projects/<Project ID>/agent`.
   /// Value must have pattern "^projects/[^/]+/agent$".
   ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By
   /// default 100 and at most 1000.
@@ -719,12 +829,11 @@ class ProjectsAgentEntityTypesResourceApi {
   /// [languageCode] - Optional. The language to list entity synonyms for. If
   /// not specified,
   /// the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
-  ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -738,9 +847,9 @@ class ProjectsAgentEntityTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListEntityTypesResponse> list(
       core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String languageCode,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -752,14 +861,14 @@ class ProjectsAgentEntityTypesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -794,9 +903,11 @@ class ProjectsAgentEntityTypesResourceApi {
   /// [languageCode] - Optional. The language of entity synonyms defined in
   /// `entity_type`. If not
   /// specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -1163,18 +1274,20 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent`.
   /// Value must have pattern "^projects/[^/]+/agent$".
   ///
-  /// [languageCode] - Optional. The language of training phrases, parameters
-  /// and rich messages
-  /// defined in `intent`. If not specified, the agent's default language is
-  /// used. [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
-  ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
   /// Possible string values are:
   /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
   /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
+  ///
+  /// [languageCode] - Optional. The language of training phrases, parameters
+  /// and rich messages
+  /// defined in `intent`. If not specified, the agent's default language is
+  /// used. [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1188,7 +1301,7 @@ class ProjectsAgentIntentsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2Intent> create(
       GoogleCloudDialogflowV2Intent request, core.String parent,
-      {core.String languageCode, core.String intentView, core.String $fields}) {
+      {core.String intentView, core.String languageCode, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1202,11 +1315,11 @@ class ProjectsAgentIntentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (intentView != null) {
       _queryParams["intentView"] = [intentView];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1280,18 +1393,20 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
   /// Value must have pattern "^projects/[^/]+/agent/intents/[^/]+$".
   ///
-  /// [languageCode] - Optional. The language to retrieve training phrases,
-  /// parameters and rich
-  /// messages for. If not specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
-  ///
   /// [intentView] - Optional. The resource view to apply to the returned
   /// intent.
   /// Possible string values are:
   /// - "INTENT_VIEW_UNSPECIFIED" : A INTENT_VIEW_UNSPECIFIED.
   /// - "INTENT_VIEW_FULL" : A INTENT_VIEW_FULL.
+  ///
+  /// [languageCode] - Optional. The language to retrieve training phrases,
+  /// parameters and rich
+  /// messages for. If not specified, the agent's default language is used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1304,7 +1419,7 @@ class ProjectsAgentIntentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2Intent> get(core.String name,
-      {core.String languageCode, core.String intentView, core.String $fields}) {
+      {core.String intentView, core.String languageCode, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1315,11 +1430,11 @@ class ProjectsAgentIntentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
     if (intentView != null) {
       _queryParams["intentView"] = [intentView];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1345,6 +1460,9 @@ class ProjectsAgentIntentsResourceApi {
   /// Format: `projects/<Project ID>/agent`.
   /// Value must have pattern "^projects/[^/]+/agent$".
   ///
+  /// [pageToken] - Optional. The next_page_token value returned from a previous
+  /// list request.
+  ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By
   /// default 100 and at most 1000.
@@ -1358,12 +1476,11 @@ class ProjectsAgentIntentsResourceApi {
   /// [languageCode] - Optional. The language to list training phrases,
   /// parameters and rich
   /// messages for. If not specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent before they can be used.
-  ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1377,10 +1494,10 @@ class ProjectsAgentIntentsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudDialogflowV2ListIntentsResponse> list(
       core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String intentView,
       core.String languageCode,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1392,6 +1509,9 @@ class ProjectsAgentIntentsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -1400,9 +1520,6 @@ class ProjectsAgentIntentsResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1442,9 +1559,11 @@ class ProjectsAgentIntentsResourceApi {
   /// [languageCode] - Optional. The language of training phrases, parameters
   /// and rich messages
   /// defined in `intent`. If not specified, the agent's default language is
-  /// used. [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// used. [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -2250,25 +2369,40 @@ class ProjectsOperationsResourceApi {
 
 /// Represents a conversational agent.
 class GoogleCloudDialogflowV2Agent {
+  /// Optional. API version displayed in Dialogflow console. If not specified,
+  /// V2 API is assumed. Clients are free to query different service endpoints
+  /// for different API versions. However, bots connectors and webhook calls
+  /// will
+  /// follow the specified API version.
+  /// Possible string values are:
+  /// - "API_VERSION_UNSPECIFIED" : Not specified.
+  /// - "API_VERSION_V1" : Legacy V1 API.
+  /// - "API_VERSION_V2" : V2 API.
+  /// - "API_VERSION_V2_BETA_1" : V2beta1 API.
+  core.String apiVersion;
+
   /// Optional. The URI of the agent's avatar.
   /// Avatars are used throughout the Dialogflow console and in the self-hosted
-  /// [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.
+  /// [Web
+  /// Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)
+  /// integration.
   core.String avatarUri;
 
   /// Optional. To filter out false positive results and still get variety in
   /// matched natural language inputs for your agent, you can tune the machine
   /// learning classification threshold. If the returned score value is less
   /// than
-  /// the threshold value, then a fallback intent is be triggered or, if there
+  /// the threshold value, then a fallback intent will be triggered or, if there
   /// are no fallback intents defined, no intent will be triggered. The score
   /// values range from 0.0 (completely uncertain) to 1.0 (completely certain).
   /// If set to 0.0, the default of 0.3 is used.
   core.double classificationThreshold;
 
   /// Required. The default language of the agent as a language tag. See
-  /// [Language Support](https://dialogflow.com/docs/reference/language) for a
-  /// list of the currently supported language codes.
-  /// This field cannot be set by the `Update` method.
+  /// [Language
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. This field cannot be
+  /// set by the `Update` method.
   core.String defaultLanguageCode;
 
   /// Optional. The description of this agent.
@@ -2302,6 +2436,14 @@ class GoogleCloudDialogflowV2Agent {
   /// `default_language_code`).
   core.List<core.String> supportedLanguageCodes;
 
+  /// Optional. The agent tier. If not specified, TIER_STANDARD is assumed.
+  /// Possible string values are:
+  /// - "TIER_UNSPECIFIED" : Not specified. This value should never be used.
+  /// - "TIER_STANDARD" : Standard tier.
+  /// - "TIER_ENTERPRISE" : Enterprise tier (Essentials).
+  /// - "TIER_ENTERPRISE_PLUS" : Enterprise tier (Plus).
+  core.String tier;
+
   /// Required. The time zone of this agent from the
   /// [time zone database](https://www.iana.org/time-zones), e.g.,
   /// America/New_York, Europe/Paris.
@@ -2310,6 +2452,9 @@ class GoogleCloudDialogflowV2Agent {
   GoogleCloudDialogflowV2Agent();
 
   GoogleCloudDialogflowV2Agent.fromJson(core.Map _json) {
+    if (_json.containsKey("apiVersion")) {
+      apiVersion = _json["apiVersion"];
+    }
     if (_json.containsKey("avatarUri")) {
       avatarUri = _json["avatarUri"];
     }
@@ -2338,6 +2483,9 @@ class GoogleCloudDialogflowV2Agent {
       supportedLanguageCodes =
           (_json["supportedLanguageCodes"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("tier")) {
+      tier = _json["tier"];
+    }
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
     }
@@ -2346,6 +2494,9 @@ class GoogleCloudDialogflowV2Agent {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (apiVersion != null) {
+      _json["apiVersion"] = apiVersion;
+    }
     if (avatarUri != null) {
       _json["avatarUri"] = avatarUri;
     }
@@ -2373,6 +2524,9 @@ class GoogleCloudDialogflowV2Agent {
     if (supportedLanguageCodes != null) {
       _json["supportedLanguageCodes"] = supportedLanguageCodes;
     }
+    if (tier != null) {
+      _json["tier"] = tier;
+    }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
     }
@@ -2387,9 +2541,11 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
 
   /// Optional. The language of entity synonyms defined in `entities`. If not
   /// specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   core.String languageCode;
 
   GoogleCloudDialogflowV2BatchCreateEntitiesRequest();
@@ -2428,9 +2584,11 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
 
   /// Optional. The language of entity synonyms defined in `entities`. If not
   /// specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   core.String languageCode;
 
   GoogleCloudDialogflowV2BatchDeleteEntitiesRequest();
@@ -2517,9 +2675,11 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
 
   /// Optional. The language of entity synonyms defined in `entities`. If not
   /// specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   core.String languageCode;
 
   /// Optional. The mask to control which fields get updated.
@@ -2572,9 +2732,11 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
   /// Optional. The language of entity synonyms defined in `entity_types`. If
   /// not
   /// specified, the agent's default language is used.
-  /// [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   core.String languageCode;
 
   /// Optional. The mask to control which fields get updated.
@@ -2666,9 +2828,11 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
 
   /// Optional. The language of training phrases, parameters and rich messages
   /// defined in `intents`. If not specified, the agent's default language is
-  /// used. [More than a dozen
-  /// languages](https://dialogflow.com/docs/reference/language) are supported.
-  /// Note: languages must be enabled in the agent, before they can be used.
+  /// used. [Many
+  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// are supported. Note: languages must be enabled in the agent before they
+  /// can
+  /// be used.
   core.String languageCode;
 
   /// Optional. The mask to control which fields get updated.
@@ -2747,7 +2911,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
 class GoogleCloudDialogflowV2Context {
   /// Optional. The number of conversational query requests after which the
   /// context expires. If set to `0` (the default) the context expires
-  /// immediately. Contexts expire automatically after 20 minutes even if there
+  /// immediately. Contexts expire automatically after 20 minutes if there
   /// are no matching queries.
   core.int lifespanCount;
 
@@ -2759,9 +2923,9 @@ class GoogleCloudDialogflowV2Context {
   core.String name;
 
   /// Optional. The collection of parameters associated with this context.
-  /// Refer to [this doc](https://dialogflow.com/docs/actions-and-parameters)
-  /// for
-  /// syntax.
+  /// Refer to [this
+  /// doc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)
+  /// for syntax.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -2813,6 +2977,11 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// Optional. Instructs the speech synthesizer how to generate the output
+  /// audio. If this field is not set and agent-level speech synthesizer is not
+  /// configured, no output audio is generated.
+  GoogleCloudDialogflowV2OutputAudioConfig outputAudioConfig;
+
   /// Required. The input specification. It can be set to:
   ///
   /// 1.  an audio config
@@ -2832,6 +3001,10 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
     if (_json.containsKey("inputAudio")) {
       inputAudio = _json["inputAudio"];
     }
+    if (_json.containsKey("outputAudioConfig")) {
+      outputAudioConfig = new GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+          _json["outputAudioConfig"]);
+    }
     if (_json.containsKey("queryInput")) {
       queryInput =
           new GoogleCloudDialogflowV2QueryInput.fromJson(_json["queryInput"]);
@@ -2848,6 +3021,9 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
     if (inputAudio != null) {
       _json["inputAudio"] = inputAudio;
     }
+    if (outputAudioConfig != null) {
+      _json["outputAudioConfig"] = (outputAudioConfig).toJson();
+    }
     if (queryInput != null) {
       _json["queryInput"] = (queryInput).toJson();
     }
@@ -2860,6 +3036,26 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
 
 /// The message returned from the DetectIntent method.
 class GoogleCloudDialogflowV2DetectIntentResponse {
+  /// The audio data bytes encoded as specified in the request.
+  /// Note: The output audio is generated based on the values of default
+  /// platform
+  /// text responses found in the `query_result.fulfillment_messages` field. If
+  /// multiple default text responses exist, they will be concatenated when
+  /// generating audio. If no default platform text responses exist, the
+  /// generated audio content will be empty.
+  core.String outputAudio;
+  core.List<core.int> get outputAudioAsBytes {
+    return convert.base64.decode(outputAudio);
+  }
+
+  set outputAudioAsBytes(core.List<core.int> _bytes) {
+    outputAudio =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The config used by the speech synthesizer to generate the output audio.
+  GoogleCloudDialogflowV2OutputAudioConfig outputAudioConfig;
+
   /// The selected results of the conversational query or event processing.
   /// See `alternative_query_results` for additional potential results.
   GoogleCloudDialogflowV2QueryResult queryResult;
@@ -2874,6 +3070,13 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
   GoogleCloudDialogflowV2DetectIntentResponse();
 
   GoogleCloudDialogflowV2DetectIntentResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("outputAudio")) {
+      outputAudio = _json["outputAudio"];
+    }
+    if (_json.containsKey("outputAudioConfig")) {
+      outputAudioConfig = new GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
+          _json["outputAudioConfig"]);
+    }
     if (_json.containsKey("queryResult")) {
       queryResult =
           new GoogleCloudDialogflowV2QueryResult.fromJson(_json["queryResult"]);
@@ -2889,6 +3092,12 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (outputAudio != null) {
+      _json["outputAudio"] = outputAudio;
+    }
+    if (outputAudioConfig != null) {
+      _json["outputAudioConfig"] = (outputAudioConfig).toJson();
+    }
     if (queryResult != null) {
       _json["queryResult"] = (queryResult).toJson();
     }
@@ -2919,7 +3128,8 @@ class GoogleCloudDialogflowV2EntityType {
   /// Required. The name of the entity type.
   core.String displayName;
 
-  /// Optional. The collection of entities associated with the entity type.
+  /// Optional. The collection of entity entries associated with the entity
+  /// type.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity> entities;
 
   /// Required. Indicates the kind of entity type.
@@ -3012,18 +3222,29 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
   }
 }
 
-/// Optional. Represents an entity.
+/// An **entity entry** for an associated entity type.
 class GoogleCloudDialogflowV2EntityTypeEntity {
-  /// Required. A collection of synonyms. For `KIND_LIST` entity types this
-  /// must contain exactly one synonym equal to `value`.
+  /// Required. A collection of value synonyms. For example, if the entity type
+  /// is *vegetable*, and `value` is *scallions*, a synonym could be *green
+  /// onions*.
+  ///
+  /// For `KIND_LIST` entity types:
+  ///
+  /// *   This collection must contain exactly one synonym equal to `value`.
   core.List<core.String> synonyms;
 
-  /// Required.
+  /// Required. The primary value associated with this entity entry.
+  /// For example, if the entity type is *vegetable*, the value could be
+  /// *scallions*.
+  ///
   /// For `KIND_MAP` entity types:
-  ///   A canonical name to be used in place of synonyms.
+  ///
+  /// *   A canonical value to be used in place of synonyms.
+  ///
   /// For `KIND_LIST` entity types:
-  ///   A string that can contain references to other entity types (with or
-  ///   without aliases).
+  ///
+  /// *   A string that can contain references to other entity types (with or
+  ///     without aliases).
   core.String value;
 
   GoogleCloudDialogflowV2EntityTypeEntity();
@@ -3051,15 +3272,15 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
 }
 
 /// Events allow for matching intents by event name instead of the natural
-/// language input. For instance, input `<event: { name: “welcome_event”,
-/// parameters: { name: “Sam” } }>` can trigger a personalized welcome response.
+/// language input. For instance, input `<event: { name: "welcome_event",
+/// parameters: { name: "Sam" } }>` can trigger a personalized welcome response.
 /// The parameter `name` may be used by the agent in the response:
-/// `“Hello #welcome_event.name! What can I do for you today?”`.
+/// `"Hello #welcome_event.name! What can I do for you today?"`.
 class GoogleCloudDialogflowV2EventInput {
   /// Required. The language of this query. See [Language
-  /// Support](https://dialogflow.com/docs/languages) for a list of the
-  /// currently supported language codes. Note that queries in the same session
-  /// do not necessarily need to specify the same language.
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   core.String languageCode;
 
   /// Required. The unique identifier of the event.
@@ -3277,15 +3498,47 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   /// Required. The language of the supplied audio. Dialogflow does not do
   /// translations. See [Language
-  /// Support](https://dialogflow.com/docs/languages) for a list of the
-  /// currently supported language codes. Note that queries in the same session
-  /// do not necessarily need to specify the same language.
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   core.String languageCode;
 
-  /// Optional. The collection of phrase hints which are used to boost accuracy
-  /// of speech recognition.
-  /// Refer to
-  /// [Cloud Speech API
+  /// Optional. Which variant of the Speech model to use.
+  /// Possible string values are:
+  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
+  /// case Dialogflow defaults to
+  /// USE_BEST_AVAILABLE.
+  /// - "USE_BEST_AVAILABLE" : Use the best available variant of the Speech
+  /// model that the caller is eligible for.
+  ///
+  /// Please see the [Dialogflow
+  /// docs](https://cloud.google.com/dialogflow/docs/data-logging) for
+  /// how to make your project eligible for enhanced models.
+  /// - "USE_STANDARD" : Use standard model variant even if an enhanced model is
+  /// available.  See the
+  /// [Cloud Speech
+  /// documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// for details about enhanced models.
+  /// - "USE_ENHANCED" : Use an enhanced model variant:
+  ///
+  /// * If an enhanced variant does not exist for the given
+  ///   model and request language, Dialogflow falls
+  ///   back to the standard variant.
+  ///
+  ///   The [Cloud Speech
+  /// documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  ///   describes which models have enhanced variants.
+  ///
+  /// * If the API caller isn't eligible for enhanced models, Dialogflow returns
+  ///   an error. Please see the [Dialogflow
+  ///   docs](https://cloud.google.com/dialogflow/docs/data-logging)
+  ///   for how to make your project eligible.
+  core.String modelVariant;
+
+  /// Optional. A list of strings containing words and phrases that the speech
+  /// recognizer should recognize with higher likelihood.
+  ///
+  /// See [the Cloud Speech
   /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
   /// for more details.
   core.List<core.String> phraseHints;
@@ -3297,6 +3550,19 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// more details.
   core.int sampleRateHertz;
 
+  /// Optional. If `false` (default), recognition does not cease until the
+  /// client closes the stream.
+  /// If `true`, the recognizer will detect a single spoken utterance in input
+  /// audio. Recognition ceases when it detects the audio's voice has
+  /// stopped or paused. In this case, once a detected intent is received, the
+  /// client should close the stream and start a new request with a new stream
+  /// as
+  /// needed.
+  /// Note: This setting is relevant only for streaming methods.
+  /// Note: When specified, InputAudioConfig.single_utterance takes precedence
+  /// over StreamingDetectIntentRequest.single_utterance.
+  core.bool singleUtterance;
+
   GoogleCloudDialogflowV2InputAudioConfig();
 
   GoogleCloudDialogflowV2InputAudioConfig.fromJson(core.Map _json) {
@@ -3306,11 +3572,17 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     if (_json.containsKey("languageCode")) {
       languageCode = _json["languageCode"];
     }
+    if (_json.containsKey("modelVariant")) {
+      modelVariant = _json["modelVariant"];
+    }
     if (_json.containsKey("phraseHints")) {
       phraseHints = (_json["phraseHints"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("sampleRateHertz")) {
       sampleRateHertz = _json["sampleRateHertz"];
+    }
+    if (_json.containsKey("singleUtterance")) {
+      singleUtterance = _json["singleUtterance"];
     }
   }
 
@@ -3323,11 +3595,17 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     if (languageCode != null) {
       _json["languageCode"] = languageCode;
     }
+    if (modelVariant != null) {
+      _json["modelVariant"] = modelVariant;
+    }
     if (phraseHints != null) {
       _json["phraseHints"] = phraseHints;
     }
     if (sampleRateHertz != null) {
       _json["sampleRateHertz"] = sampleRateHertz;
+    }
+    if (singleUtterance != null) {
+      _json["singleUtterance"] = singleUtterance;
     }
     return _json;
   }
@@ -3341,8 +3619,8 @@ class GoogleCloudDialogflowV2Intent {
   /// Note: The action name must not contain whitespaces.
   core.String action;
 
-  /// Optional. The list of platforms for which the first response will be
-  /// taken from among the messages assigned to the DEFAULT_PLATFORM.
+  /// Optional. The list of platforms for which the first responses will be
+  /// copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
   core.List<core.String> defaultResponsePlatforms;
 
   /// Required. The name of this intent.
@@ -3735,6 +4013,7 @@ class GoogleCloudDialogflowV2IntentMessage {
   ///     "intent": "actions.intent.OPTION"
   ///   }
   /// }</pre>
+  /// - "GOOGLE_HANGOUTS" : Google Hangouts.
   core.String platform;
 
   /// The quick replies response.
@@ -4540,7 +4819,7 @@ class GoogleCloudDialogflowV2IntentParameter {
   core.String name;
 
   /// Optional. The collection of prompts that the agent can present to the
-  /// user in order to collect value for the parameter.
+  /// user in order to collect a value for the parameter.
   core.List<core.String> prompts;
 
   /// Optional. The definition of the parameter value. It can be:
@@ -4616,9 +4895,25 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
   /// Output only. The unique identifier of this training phrase.
   core.String name;
 
-  /// Required. The collection of training phrase parts (can be annotated).
-  /// Fields: `entity_type`, `alias` and `user_defined` should be populated
-  /// only for the annotated parts of the training phrase.
+  /// Required. The ordered list of training phrase parts.
+  /// The parts are concatenated in order to form the training phrase.
+  ///
+  /// Note: The API does not automatically annotate training phrases like the
+  /// Dialogflow Console does.
+  ///
+  /// Note: Do not forget to include whitespace at part boundaries,
+  /// so the training phrase is well formatted when the parts are concatenated.
+  ///
+  /// If the training phrase does not need to be annotated with parameters,
+  /// you just need a single part with only the Part.text field set.
+  ///
+  /// If you want to annotate the training phrase, you must create multiple
+  /// parts, where the fields of each part are populated in one of two ways:
+  ///
+  /// -   `Part.text` is set to a part of the phrase that has no parameters.
+  /// -   `Part.text` is set to a part of the phrase that you want to annotate,
+  ///     and the `entity_type`, `alias`, and `user_defined` fields are all
+  ///     set.
   core.List<GoogleCloudDialogflowV2IntentTrainingPhrasePart> parts;
 
   /// Optional. Indicates how many times this example was added to
@@ -4685,20 +4980,20 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
 class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
   /// Optional. The parameter name for the value extracted from the
   /// annotated part of the example.
+  /// This field is required for annotated parts of the training phrase.
   core.String alias;
 
-  /// Optional. The entity type name prefixed with `@`. This field is
-  /// required for the annotated part of the text and applies only to
-  /// examples.
+  /// Optional. The entity type name prefixed with `@`.
+  /// This field is required for annotated parts of the training phrase.
   core.String entityType;
 
-  /// Required. The text corresponding to the example,
-  /// if there are no annotations. For
-  /// annotated examples, it is the text for one of the example's parts.
+  /// Required. The text for this part.
   core.String text;
 
-  /// Optional. Indicates whether the text was manually annotated by the
-  /// developer.
+  /// Optional. Indicates whether the text was manually annotated.
+  /// This field is set to true when the Dialogflow Console is used to
+  /// manually annotate the part. When creating an annotated part with the
+  /// API, you must set this to true.
   core.bool userDefined;
 
   GoogleCloudDialogflowV2IntentTrainingPhrasePart();
@@ -4948,6 +5243,65 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   }
 }
 
+/// Instructs the speech synthesizer on how to generate the output audio
+/// content.
+class GoogleCloudDialogflowV2OutputAudioConfig {
+  /// Required. Audio encoding of the synthesized audio content.
+  /// Possible string values are:
+  /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" : Not specified.
+  /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed
+  /// little-endian samples (Linear PCM).
+  /// Audio content returned as LINEAR16 also contains a WAV header.
+  /// - "OUTPUT_AUDIO_ENCODING_MP3" : MP3 audio.
+  /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio wrapped in an ogg
+  /// container. The result will be a
+  /// file which can be played natively on Android, and in browsers (at least
+  /// Chrome and Firefox). The quality of the encoding is considerably higher
+  /// than MP3 while using approximately the same bitrate.
+  core.String audioEncoding;
+
+  /// Optional. The synthesis sample rate (in hertz) for this audio. If not
+  /// provided, then the synthesizer will use the default sample rate based on
+  /// the audio encoding. If this is different from the voice's natural sample
+  /// rate, then the synthesizer will honor this request by converting to the
+  /// desired sample rate (which might result in worse audio quality).
+  core.int sampleRateHertz;
+
+  /// Optional. Configuration of how speech should be synthesized.
+  GoogleCloudDialogflowV2SynthesizeSpeechConfig synthesizeSpeechConfig;
+
+  GoogleCloudDialogflowV2OutputAudioConfig();
+
+  GoogleCloudDialogflowV2OutputAudioConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("audioEncoding")) {
+      audioEncoding = _json["audioEncoding"];
+    }
+    if (_json.containsKey("sampleRateHertz")) {
+      sampleRateHertz = _json["sampleRateHertz"];
+    }
+    if (_json.containsKey("synthesizeSpeechConfig")) {
+      synthesizeSpeechConfig =
+          new GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
+              _json["synthesizeSpeechConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (audioEncoding != null) {
+      _json["audioEncoding"] = audioEncoding;
+    }
+    if (sampleRateHertz != null) {
+      _json["sampleRateHertz"] = sampleRateHertz;
+    }
+    if (synthesizeSpeechConfig != null) {
+      _json["synthesizeSpeechConfig"] = (synthesizeSpeechConfig).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Represents the query input. It can contain either:
 ///
 /// 1.  An audio config which
@@ -5017,6 +5371,11 @@ class GoogleCloudDialogflowV2QueryParameters {
   /// before the new ones are activated.
   core.bool resetContexts;
 
+  /// Optional. Configures the type of sentiment analysis to perform. If not
+  /// provided, sentiment analysis is not performed.
+  GoogleCloudDialogflowV2SentimentAnalysisRequestConfig
+      sentimentAnalysisRequestConfig;
+
   /// Optional. Additional session entity types to replace or extend developer
   /// entity types with. The entity synonyms apply to all languages and persist
   /// for the session of this query.
@@ -5047,6 +5406,11 @@ class GoogleCloudDialogflowV2QueryParameters {
     if (_json.containsKey("resetContexts")) {
       resetContexts = _json["resetContexts"];
     }
+    if (_json.containsKey("sentimentAnalysisRequestConfig")) {
+      sentimentAnalysisRequestConfig =
+          new GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
+              _json["sentimentAnalysisRequestConfig"]);
+    }
     if (_json.containsKey("sessionEntityTypes")) {
       sessionEntityTypes = (_json["sessionEntityTypes"] as core.List)
           .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
@@ -5073,6 +5437,10 @@ class GoogleCloudDialogflowV2QueryParameters {
     if (resetContexts != null) {
       _json["resetContexts"] = resetContexts;
     }
+    if (sentimentAnalysisRequestConfig != null) {
+      _json["sentimentAnalysisRequestConfig"] =
+          (sentimentAnalysisRequestConfig).toJson();
+    }
     if (sessionEntityTypes != null) {
       _json["sessionEntityTypes"] =
           sessionEntityTypes.map((value) => (value).toJson()).toList();
@@ -5090,6 +5458,7 @@ class GoogleCloudDialogflowV2QueryResult {
   core.String action;
 
   /// This field is set to:
+  ///
   /// - `false` if the matched intent has required parameters and not all of
   ///    the required parameter values have been collected.
   /// - `true` if all required parameter values have been collected, or if the
@@ -5124,7 +5493,8 @@ class GoogleCloudDialogflowV2QueryResult {
   core.double intentDetectionConfidence;
 
   /// The language that was triggered during intent detection.
-  /// See [Language Support](https://dialogflow.com/docs/reference/language)
+  /// See [Language
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes.
   core.String languageCode;
 
@@ -5141,13 +5511,19 @@ class GoogleCloudDialogflowV2QueryResult {
   core.Map<core.String, core.Object> parameters;
 
   /// The original conversational query text:
+  ///
   /// - If natural language text was provided as input, `query_text` contains
   ///   a copy of the input.
   /// - If natural language speech audio was provided as input, `query_text`
   ///   contains the speech recognition result. If speech recognizer produced
   ///   multiple alternatives, a particular one is picked.
-  /// - If an event was provided as input, `query_text` is not set.
+  /// - If automatic spell correction is enabled, `query_text` will contain the
+  ///   corrected user input.
   core.String queryText;
+
+  /// The sentiment analysis result, which depends on the
+  /// `sentiment_analysis_request_config` specified in the request.
+  GoogleCloudDialogflowV2SentimentAnalysisResult sentimentAnalysisResult;
 
   /// The Speech recognition confidence between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
@@ -5215,6 +5591,11 @@ class GoogleCloudDialogflowV2QueryResult {
     if (_json.containsKey("queryText")) {
       queryText = _json["queryText"];
     }
+    if (_json.containsKey("sentimentAnalysisResult")) {
+      sentimentAnalysisResult =
+          new GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
+              _json["sentimentAnalysisResult"]);
+    }
     if (_json.containsKey("speechRecognitionConfidence")) {
       speechRecognitionConfidence =
           _json["speechRecognitionConfidence"].toDouble();
@@ -5265,6 +5646,9 @@ class GoogleCloudDialogflowV2QueryResult {
     }
     if (queryText != null) {
       _json["queryText"] = queryText;
+    }
+    if (sentimentAnalysisResult != null) {
+      _json["sentimentAnalysisResult"] = (sentimentAnalysisResult).toJson();
     }
     if (speechRecognitionConfidence != null) {
       _json["speechRecognitionConfidence"] = speechRecognitionConfidence;
@@ -5370,6 +5754,93 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
   }
 }
 
+/// The sentiment, such as positive/negative feeling or association, for a unit
+/// of analysis, such as the query text.
+class GoogleCloudDialogflowV2Sentiment {
+  /// A non-negative number in the [0, +inf) range, which represents the
+  /// absolute
+  /// magnitude of sentiment, regardless of score (positive or negative).
+  core.double magnitude;
+
+  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
+  /// sentiment).
+  core.double score;
+
+  GoogleCloudDialogflowV2Sentiment();
+
+  GoogleCloudDialogflowV2Sentiment.fromJson(core.Map _json) {
+    if (_json.containsKey("magnitude")) {
+      magnitude = _json["magnitude"].toDouble();
+    }
+    if (_json.containsKey("score")) {
+      score = _json["score"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (magnitude != null) {
+      _json["magnitude"] = magnitude;
+    }
+    if (score != null) {
+      _json["score"] = score;
+    }
+    return _json;
+  }
+}
+
+/// Configures the types of sentiment analysis to perform.
+class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
+  /// Optional. Instructs the service to perform sentiment analysis on
+  /// `query_text`. If not provided, sentiment analysis is not performed on
+  /// `query_text`.
+  core.bool analyzeQueryTextSentiment;
+
+  GoogleCloudDialogflowV2SentimentAnalysisRequestConfig();
+
+  GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("analyzeQueryTextSentiment")) {
+      analyzeQueryTextSentiment = _json["analyzeQueryTextSentiment"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (analyzeQueryTextSentiment != null) {
+      _json["analyzeQueryTextSentiment"] = analyzeQueryTextSentiment;
+    }
+    return _json;
+  }
+}
+
+/// The result of sentiment analysis as configured by
+/// `sentiment_analysis_request_config`.
+class GoogleCloudDialogflowV2SentimentAnalysisResult {
+  /// The sentiment analysis result for `query_text`.
+  GoogleCloudDialogflowV2Sentiment queryTextSentiment;
+
+  GoogleCloudDialogflowV2SentimentAnalysisResult();
+
+  GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(core.Map _json) {
+    if (_json.containsKey("queryTextSentiment")) {
+      queryTextSentiment = new GoogleCloudDialogflowV2Sentiment.fromJson(
+          _json["queryTextSentiment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (queryTextSentiment != null) {
+      _json["queryTextSentiment"] = (queryTextSentiment).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Represents a session entity type.
 ///
 /// Extends or replaces a developer entity type at the user session level (we
@@ -5445,12 +5916,91 @@ class GoogleCloudDialogflowV2SessionEntityType {
   }
 }
 
+/// Configuration of how speech should be synthesized.
+class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
+  /// Optional. An identifier which selects 'audio effects' profiles that are
+  /// applied on (post synthesized) text to speech. Effects are applied on top
+  /// of
+  /// each other in the order they are given.
+  core.List<core.String> effectsProfileId;
+
+  /// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20
+  /// semitones from the original pitch. -20 means decrease 20 semitones from
+  /// the
+  /// original pitch.
+  core.double pitch;
+
+  /// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal
+  /// native speed supported by the specific voice. 2.0 is twice as fast, and
+  /// 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any
+  /// other values < 0.25 or > 4.0 will return an error.
+  core.double speakingRate;
+
+  /// Optional. The desired voice of the synthesized audio.
+  GoogleCloudDialogflowV2VoiceSelectionParams voice;
+
+  /// Optional. Volume gain (in dB) of the normal native volume supported by the
+  /// specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of
+  /// 0.0 (dB), will play at normal native signal amplitude. A value of -6.0
+  /// (dB)
+  /// will play at approximately half the amplitude of the normal native signal
+  /// amplitude. A value of +6.0 (dB) will play at approximately twice the
+  /// amplitude of the normal native signal amplitude. We strongly recommend not
+  /// to exceed +10 (dB) as there's usually no effective increase in loudness
+  /// for
+  /// any value greater than that.
+  core.double volumeGainDb;
+
+  GoogleCloudDialogflowV2SynthesizeSpeechConfig();
+
+  GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("effectsProfileId")) {
+      effectsProfileId =
+          (_json["effectsProfileId"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("pitch")) {
+      pitch = _json["pitch"].toDouble();
+    }
+    if (_json.containsKey("speakingRate")) {
+      speakingRate = _json["speakingRate"].toDouble();
+    }
+    if (_json.containsKey("voice")) {
+      voice = new GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
+          _json["voice"]);
+    }
+    if (_json.containsKey("volumeGainDb")) {
+      volumeGainDb = _json["volumeGainDb"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (effectsProfileId != null) {
+      _json["effectsProfileId"] = effectsProfileId;
+    }
+    if (pitch != null) {
+      _json["pitch"] = pitch;
+    }
+    if (speakingRate != null) {
+      _json["speakingRate"] = speakingRate;
+    }
+    if (voice != null) {
+      _json["voice"] = (voice).toJson();
+    }
+    if (volumeGainDb != null) {
+      _json["volumeGainDb"] = volumeGainDb;
+    }
+    return _json;
+  }
+}
+
 /// Represents the natural language text to be processed.
 class GoogleCloudDialogflowV2TextInput {
   /// Required. The language of this conversational query. See [Language
-  /// Support](https://dialogflow.com/docs/languages) for a list of the
-  /// currently supported language codes. Note that queries in the same session
-  /// do not necessarily need to specify the same language.
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   core.String languageCode;
 
   /// Required. The UTF-8 encoded natural language text to be processed.
@@ -5490,6 +6040,51 @@ class GoogleCloudDialogflowV2TrainAgentRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Description of which voice to use for speech synthesis.
+class GoogleCloudDialogflowV2VoiceSelectionParams {
+  /// Optional. The name of the voice. If not set, the service will choose a
+  /// voice based on the other parameters such as language_code and gender.
+  core.String name;
+
+  /// Optional. The preferred gender of the voice. If not set, the service will
+  /// choose a voice based on the other parameters such as language_code and
+  /// name. Note that this is only a preference, not requirement. If a
+  /// voice of the appropriate gender is not available, the synthesizer should
+  /// substitute a voice with a different gender rather than failing the
+  /// request.
+  /// Possible string values are:
+  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender, which means
+  /// that the client doesn't care which
+  /// gender the selected voice will have.
+  /// - "SSML_VOICE_GENDER_MALE" : A male voice.
+  /// - "SSML_VOICE_GENDER_FEMALE" : A female voice.
+  /// - "SSML_VOICE_GENDER_NEUTRAL" : A gender-neutral voice.
+  core.String ssmlGender;
+
+  GoogleCloudDialogflowV2VoiceSelectionParams();
+
+  GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("ssmlGender")) {
+      ssmlGender = _json["ssmlGender"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (ssmlGender != null) {
+      _json["ssmlGender"] = ssmlGender;
+    }
     return _json;
   }
 }
@@ -5561,6 +6156,8 @@ class GoogleCloudDialogflowV2WebhookResponse {
   /// Optional. Makes the platform immediately invoke another `DetectIntent`
   /// call
   /// internally with the specified event as input.
+  /// When this field is set, Dialogflow ignores the `fulfillment_text`,
+  /// `fulfillment_messages`, and `payload` fields.
   GoogleCloudDialogflowV2EventInput followupEventInput;
 
   /// Optional. The collection of rich messages to present to the user. This
@@ -5724,7 +6321,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
 class GoogleCloudDialogflowV2beta1Context {
   /// Optional. The number of conversational query requests after which the
   /// context expires. If set to `0` (the default) the context expires
-  /// immediately. Contexts expire automatically after 10 minutes even if there
+  /// immediately. Contexts expire automatically after 20 minutes if there
   /// are no matching queries.
   core.int lifespanCount;
 
@@ -5741,9 +6338,9 @@ class GoogleCloudDialogflowV2beta1Context {
   core.String name;
 
   /// Optional. The collection of parameters associated with this context.
-  /// Refer to [this doc](https://dialogflow.com/docs/actions-and-parameters)
-  /// for
-  /// syntax.
+  /// Refer to [this
+  /// doc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)
+  /// for syntax.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5797,7 +6394,8 @@ class GoogleCloudDialogflowV2beta1EntityType {
   /// Required. The name of the entity type.
   core.String displayName;
 
-  /// Optional. The collection of entities associated with the entity type.
+  /// Optional. The collection of entity entries associated with the entity
+  /// type.
   core.List<GoogleCloudDialogflowV2beta1EntityTypeEntity> entities;
 
   /// Required. Indicates the kind of entity type.
@@ -5863,18 +6461,29 @@ class GoogleCloudDialogflowV2beta1EntityType {
   }
 }
 
-/// Optional. Represents an entity.
+/// An **entity entry** for an associated entity type.
 class GoogleCloudDialogflowV2beta1EntityTypeEntity {
-  /// Required. A collection of synonyms. For `KIND_LIST` entity types this
-  /// must contain exactly one synonym equal to `value`.
+  /// Required. A collection of value synonyms. For example, if the entity type
+  /// is *vegetable*, and `value` is *scallions*, a synonym could be *green
+  /// onions*.
+  ///
+  /// For `KIND_LIST` entity types:
+  ///
+  /// *   This collection must contain exactly one synonym equal to `value`.
   core.List<core.String> synonyms;
 
-  /// Required.
+  /// Required. The primary value associated with this entity entry.
+  /// For example, if the entity type is *vegetable*, the value could be
+  /// *scallions*.
+  ///
   /// For `KIND_MAP` entity types:
-  ///   A canonical name to be used in place of synonyms.
+  ///
+  /// *   A canonical value to be used in place of synonyms.
+  ///
   /// For `KIND_LIST` entity types:
-  ///   A string that can contain references to other entity types (with or
-  ///   without aliases).
+  ///
+  /// *   A string that can contain references to other entity types (with or
+  ///     without aliases).
   core.String value;
 
   GoogleCloudDialogflowV2beta1EntityTypeEntity();
@@ -5902,15 +6511,15 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
 }
 
 /// Events allow for matching intents by event name instead of the natural
-/// language input. For instance, input `<event: { name: “welcome_event”,
-/// parameters: { name: “Sam” } }>` can trigger a personalized welcome response.
+/// language input. For instance, input `<event: { name: "welcome_event",
+/// parameters: { name: "Sam" } }>` can trigger a personalized welcome response.
 /// The parameter `name` may be used by the agent in the response:
-/// `“Hello #welcome_event.name! What can I do for you today?”`.
+/// `"Hello #welcome_event.name! What can I do for you today?"`.
 class GoogleCloudDialogflowV2beta1EventInput {
   /// Required. The language of this query. See [Language
-  /// Support](https://dialogflow.com/docs/languages) for a list of the
-  /// currently supported language codes. Note that queries in the same session
-  /// do not necessarily need to specify the same language.
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   core.String languageCode;
 
   /// Required. The unique identifier of the event.
@@ -6015,8 +6624,8 @@ class GoogleCloudDialogflowV2beta1Intent {
   /// Note: The action name must not contain whitespaces.
   core.String action;
 
-  /// Optional. The list of platforms for which the first response will be
-  /// taken from among the messages assigned to the DEFAULT_PLATFORM.
+  /// Optional. The list of platforms for which the first responses will be
+  /// copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
   core.List<core.String> defaultResponsePlatforms;
 
   /// Required. The name of this intent.
@@ -6418,10 +7027,24 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   ///   }
   /// }</pre>
   /// - "TELEPHONY" : Telephony Gateway.
+  /// - "GOOGLE_HANGOUTS" : Google Hangouts.
   core.String platform;
 
   /// Displays quick replies.
   GoogleCloudDialogflowV2beta1IntentMessageQuickReplies quickReplies;
+
+  /// Rich Business Messaging (RBM) carousel rich card response.
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard rbmCarouselRichCard;
+
+  /// Standalone Rich Business Messaging (RBM) rich card response.
+  GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard
+      rbmStandaloneRichCard;
+
+  /// Rich Business Messaging (RBM) text response.
+  ///
+  /// RBM allows businesses to send enriched and branded versions of SMS. See
+  /// https://jibe.google.com/business-messaging.
+  GoogleCloudDialogflowV2beta1IntentMessageRbmText rbmText;
 
   /// Returns a voice or text-only response for Actions on Google.
   GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses simpleResponses;
@@ -6486,6 +7109,20 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
           new GoogleCloudDialogflowV2beta1IntentMessageQuickReplies.fromJson(
               _json["quickReplies"]);
     }
+    if (_json.containsKey("rbmCarouselRichCard")) {
+      rbmCarouselRichCard =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard.fromJson(
+              _json["rbmCarouselRichCard"]);
+    }
+    if (_json.containsKey("rbmStandaloneRichCard")) {
+      rbmStandaloneRichCard =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard
+              .fromJson(_json["rbmStandaloneRichCard"]);
+    }
+    if (_json.containsKey("rbmText")) {
+      rbmText = new GoogleCloudDialogflowV2beta1IntentMessageRbmText.fromJson(
+          _json["rbmText"]);
+    }
     if (_json.containsKey("simpleResponses")) {
       simpleResponses =
           new GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses.fromJson(
@@ -6546,6 +7183,15 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
     }
     if (quickReplies != null) {
       _json["quickReplies"] = (quickReplies).toJson();
+    }
+    if (rbmCarouselRichCard != null) {
+      _json["rbmCarouselRichCard"] = (rbmCarouselRichCard).toJson();
+    }
+    if (rbmStandaloneRichCard != null) {
+      _json["rbmStandaloneRichCard"] = (rbmStandaloneRichCard).toJson();
+    }
+    if (rbmText != null) {
+      _json["rbmText"] = (rbmText).toJson();
     }
     if (simpleResponses != null) {
       _json["simpleResponses"] = (simpleResponses).toJson();
@@ -7056,6 +7702,514 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
   }
 }
 
+/// Rich Business Messaging (RBM) Card content
+class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
+  /// Optional. Description of the card (at most 2000 bytes).
+  ///
+  /// At least one of the title, description or media must be set.
+  core.String description;
+
+  /// Optional. However at least one of the title, description or media must
+  /// be set. Media (image, GIF or a video) to include in the card.
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia media;
+
+  /// Optional. List of suggestions to include in the card.
+  core.List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> suggestions;
+
+  /// Optional. Title of the card (at most 200 bytes).
+  ///
+  /// At least one of the title, description or media must be set.
+  core.String title;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("media")) {
+      media =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
+              .fromJson(_json["media"]);
+    }
+    if (_json.containsKey("suggestions")) {
+      suggestions = (_json["suggestions"] as core.List)
+          .map<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
+              (value) =>
+                  new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (media != null) {
+      _json["media"] = (media).toJson();
+    }
+    if (suggestions != null) {
+      _json["suggestions"] =
+          suggestions.map((value) => (value).toJson()).toList();
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// Rich Business Messaging (RBM) Media displayed in Cards
+/// The following media-types are currently supported:
+///
+/// ## Image Types
+///
+///  image/jpeg
+///  image/jpg'
+///  image/gif
+///  image/png
+///
+/// ## Video Types
+///
+///  video/h263
+///  video/m4v
+///  video/mp4
+///  video/mpeg
+///  video/mpeg4
+///  video/webm
+class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
+  /// Required. Publicly reachable URI of the file. The RBM platform
+  /// determines the MIME type of the file from the content-type field in
+  /// the HTTP headers when the platform fetches the file. The content-type
+  /// field must be present and accurate in the HTTP response from the URL.
+  core.String fileUri;
+
+  /// Required for cards with vertical orientation. The height of the media
+  /// within a rich card with a vertical layout. (https://goo.gl/NeFCjz).
+  /// For a standalone card with horizontal layout, height is not
+  /// customizable, and this field is ignored.
+  /// Possible string values are:
+  /// - "HEIGHT_UNSPECIFIED" : Not specified.
+  /// - "SHORT" : 112 DP.
+  /// - "MEDIUM" : 168 DP.
+  /// - "TALL" : 264 DP. Not available for rich card carousels when the card
+  /// width
+  /// is set to small.
+  core.String height;
+
+  /// Optional. Publicly reachable URI of the thumbnail.If you don't
+  /// provide a thumbnail URI, the RBM platform displays a blank
+  /// placeholder thumbnail until the user's device downloads the file.
+  /// Depending on the user's setting, the file may not download
+  /// automatically and may require the user to tap a download button.
+  core.String thumbnailUri;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("fileUri")) {
+      fileUri = _json["fileUri"];
+    }
+    if (_json.containsKey("height")) {
+      height = _json["height"];
+    }
+    if (_json.containsKey("thumbnailUri")) {
+      thumbnailUri = _json["thumbnailUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fileUri != null) {
+      _json["fileUri"] = fileUri;
+    }
+    if (height != null) {
+      _json["height"] = height;
+    }
+    if (thumbnailUri != null) {
+      _json["thumbnailUri"] = thumbnailUri;
+    }
+    return _json;
+  }
+}
+
+/// Carousel Rich Business Messaging (RBM) rich card.
+///
+/// Rich cards allow you to respond to users with more vivid content, e.g.
+/// with media and suggestions.
+///
+/// For more details about RBM rich cards, please see:
+/// https://developers.google.com/rcs-business-messaging/rbm/guides/build/send-messages#rich-cards.
+/// If you want to show a single card with more control over the layout,
+/// please use RbmStandaloneCard instead.
+class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
+  /// Required. The cards in the carousel. A carousel must have at least
+  /// 2 cards and at most 10.
+  core.List<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>
+      cardContents;
+
+  /// Required. The width of the cards in the carousel.
+  /// Possible string values are:
+  /// - "CARD_WIDTH_UNSPECIFIED" : Not specified.
+  /// - "SMALL" : 120 DP. Note that tall media cannot be used.
+  /// - "MEDIUM" : 232 DP.
+  core.String cardWidth;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("cardContents")) {
+      cardContents = (_json["cardContents"] as core.List)
+          .map<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>(
+              (value) =>
+                  new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("cardWidth")) {
+      cardWidth = _json["cardWidth"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cardContents != null) {
+      _json["cardContents"] =
+          cardContents.map((value) => (value).toJson()).toList();
+    }
+    if (cardWidth != null) {
+      _json["cardWidth"] = cardWidth;
+    }
+    return _json;
+  }
+}
+
+/// Standalone Rich Business Messaging (RBM) rich card.
+///
+/// Rich cards allow you to respond to users with more vivid content, e.g.
+/// with media and suggestions.
+///
+/// For more details about RBM rich cards, please see:
+/// https://developers.google.com/rcs-business-messaging/rbm/guides/build/send-messages#rich-cards.
+/// You can group multiple rich cards into one using RbmCarouselCard but
+/// carousel cards will give you less control over the card layout.
+class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
+  /// Required. Card content.
+  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent cardContent;
+
+  /// Required. Orientation of the card.
+  /// Possible string values are:
+  /// - "CARD_ORIENTATION_UNSPECIFIED" : Not specified.
+  /// - "HORIZONTAL" : Horizontal layout.
+  /// - "VERTICAL" : Vertical layout.
+  core.String cardOrientation;
+
+  /// Required if orientation is horizontal.
+  /// Image preview alignment for standalone cards with horizontal layout.
+  /// Possible string values are:
+  /// - "THUMBNAIL_IMAGE_ALIGNMENT_UNSPECIFIED" : Not specified.
+  /// - "LEFT" : Thumbnail preview is left-aligned.
+  /// - "RIGHT" : Thumbnail preview is right-aligned.
+  core.String thumbnailImageAlignment;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("cardContent")) {
+      cardContent =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromJson(
+              _json["cardContent"]);
+    }
+    if (_json.containsKey("cardOrientation")) {
+      cardOrientation = _json["cardOrientation"];
+    }
+    if (_json.containsKey("thumbnailImageAlignment")) {
+      thumbnailImageAlignment = _json["thumbnailImageAlignment"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cardContent != null) {
+      _json["cardContent"] = (cardContent).toJson();
+    }
+    if (cardOrientation != null) {
+      _json["cardOrientation"] = cardOrientation;
+    }
+    if (thumbnailImageAlignment != null) {
+      _json["thumbnailImageAlignment"] = thumbnailImageAlignment;
+    }
+    return _json;
+  }
+}
+
+/// Rich Business Messaging (RBM) suggested client-side action that the user
+/// can choose from the card.
+class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
+  /// Suggested client side action: Dial a phone number
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+      dial;
+
+  /// Suggested client side action: Open a URI on device
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+      openUrl;
+
+  /// Opaque payload that the Dialogflow receives in a user event
+  /// when the user taps the suggested action. This data will be also
+  /// forwarded to webhook to allow performing custom business logic.
+  core.String postbackData;
+
+  /// Suggested client side action: Share user location
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+      shareLocation;
+
+  /// Text to display alongside the action.
+  core.String text;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("dial")) {
+      dial =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
+              .fromJson(_json["dial"]);
+    }
+    if (_json.containsKey("openUrl")) {
+      openUrl =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
+              .fromJson(_json["openUrl"]);
+    }
+    if (_json.containsKey("postbackData")) {
+      postbackData = _json["postbackData"];
+    }
+    if (_json.containsKey("shareLocation")) {
+      shareLocation =
+          new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
+              .fromJson(_json["shareLocation"]);
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dial != null) {
+      _json["dial"] = (dial).toJson();
+    }
+    if (openUrl != null) {
+      _json["openUrl"] = (openUrl).toJson();
+    }
+    if (postbackData != null) {
+      _json["postbackData"] = postbackData;
+    }
+    if (shareLocation != null) {
+      _json["shareLocation"] = (shareLocation).toJson();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/// Opens the user's default dialer app with the specified phone number
+/// but does not dial automatically (https://goo.gl/ergbB2).
+class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial {
+  /// Required. The phone number to fill in the default dialer app.
+  /// This field should be in [E.164](https://en.wikipedia.org/wiki/E.164)
+  /// format. An example of a correctly formatted phone number:
+  /// +15556767888.
+  core.String phoneNumber;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("phoneNumber")) {
+      phoneNumber = _json["phoneNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (phoneNumber != null) {
+      _json["phoneNumber"] = phoneNumber;
+    }
+    return _json;
+  }
+}
+
+/// Opens the user's default web browser app to the specified uri
+/// (https://goo.gl/6GLJD2). If the user has an app installed that is
+/// registered as the default handler for the URL, then this app will be
+/// opened instead, and its icon will be used in the suggested action UI.
+class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri {
+  /// Required. The uri to open on the user device
+  core.String uri;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+/// Opens the device's location chooser so the user can pick a location
+/// to send back to the agent (https://goo.gl/GXotJW).
+class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation {
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation.fromJson(
+      core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Rich Business Messaging (RBM) suggested reply that the user can click
+/// instead of typing in their own response.
+class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
+  /// Opaque payload that the Dialogflow receives in a user event
+  /// when the user taps the suggested reply. This data will be also
+  /// forwarded to webhook to allow performing custom business logic.
+  core.String postbackData;
+
+  /// Suggested reply text.
+  core.String text;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("postbackData")) {
+      postbackData = _json["postbackData"];
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (postbackData != null) {
+      _json["postbackData"] = postbackData;
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/// Rich Business Messaging (RBM) suggestion. Suggestions allow user to
+/// easily select/click a predefined response or perform an action (like
+/// opening a web uri).
+class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
+  /// Predefined client side actions that user can choose
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction action;
+
+  /// Predefined replies for user to select instead of typing
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply reply;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction
+          .fromJson(_json["action"]);
+    }
+    if (_json.containsKey("reply")) {
+      reply = new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply
+          .fromJson(_json["reply"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (action != null) {
+      _json["action"] = (action).toJson();
+    }
+    if (reply != null) {
+      _json["reply"] = (reply).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Rich Business Messaging (RBM) text response with suggestions.
+class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
+  /// Optional. One or more suggestions to show to the user.
+  core.List<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>
+      rbmSuggestion;
+
+  /// Required. Text sent and displayed to the user.
+  core.String text;
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmText();
+
+  GoogleCloudDialogflowV2beta1IntentMessageRbmText.fromJson(core.Map _json) {
+    if (_json.containsKey("rbmSuggestion")) {
+      rbmSuggestion = (_json["rbmSuggestion"] as core.List)
+          .map<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
+              (value) =>
+                  new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rbmSuggestion != null) {
+      _json["rbmSuggestion"] =
+          rbmSuggestion.map((value) => (value).toJson()).toList();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
 /// Additional info about the select item for when it is triggered in a
 /// dialog.
 class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
@@ -7377,7 +8531,7 @@ class GoogleCloudDialogflowV2beta1IntentParameter {
   core.String name;
 
   /// Optional. The collection of prompts that the agent can present to the
-  /// user in order to collect value for the parameter.
+  /// user in order to collect a value for the parameter.
   core.List<core.String> prompts;
 
   /// Optional. The definition of the parameter value. It can be:
@@ -7453,9 +8607,25 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
   /// Output only. The unique identifier of this training phrase.
   core.String name;
 
-  /// Required. The collection of training phrase parts (can be annotated).
-  /// Fields: `entity_type`, `alias` and `user_defined` should be populated
-  /// only for the annotated parts of the training phrase.
+  /// Required. The ordered list of training phrase parts.
+  /// The parts are concatenated in order to form the training phrase.
+  ///
+  /// Note: The API does not automatically annotate training phrases like the
+  /// Dialogflow Console does.
+  ///
+  /// Note: Do not forget to include whitespace at part boundaries,
+  /// so the training phrase is well formatted when the parts are concatenated.
+  ///
+  /// If the training phrase does not need to be annotated with parameters,
+  /// you just need a single part with only the Part.text field set.
+  ///
+  /// If you want to annotate the training phrase, you must create multiple
+  /// parts, where the fields of each part are populated in one of two ways:
+  ///
+  /// -   `Part.text` is set to a part of the phrase that has no parameters.
+  /// -   `Part.text` is set to a part of the phrase that you want to annotate,
+  ///     and the `entity_type`, `alias`, and `user_defined` fields are all
+  ///     set.
   core.List<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> parts;
 
   /// Optional. Indicates how many times this example was added to
@@ -7522,20 +8692,20 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
 class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
   /// Optional. The parameter name for the value extracted from the
   /// annotated part of the example.
+  /// This field is required for annotated parts of the training phrase.
   core.String alias;
 
-  /// Optional. The entity type name prefixed with `@`. This field is
-  /// required for the annotated part of the text and applies only to
-  /// examples.
+  /// Optional. The entity type name prefixed with `@`.
+  /// This field is required for annotated parts of the training phrase.
   core.String entityType;
 
-  /// Required. The text corresponding to the example,
-  /// if there are no annotations. For
-  /// annotated examples, it is the text for one of the example's parts.
+  /// Required. The text for this part.
   core.String text;
 
-  /// Optional. Indicates whether the text was manually annotated by the
-  /// developer.
+  /// Optional. Indicates whether the text was manually annotated.
+  /// This field is set to true when the Dialogflow Console is used to
+  /// manually annotate the part. When creating an annotated part with the
+  /// API, you must set this to true.
   core.bool userDefined;
 
   GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart();
@@ -7778,6 +8948,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   core.String action;
 
   /// This field is set to:
+  ///
   /// - `false` if the matched intent has required parameters and not all of
   ///    the required parameter values have been collected.
   /// - `true` if all required parameter values have been collected, or if the
@@ -7816,7 +8987,8 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   GoogleCloudDialogflowV2beta1KnowledgeAnswers knowledgeAnswers;
 
   /// The language that was triggered during intent detection.
-  /// See [Language Support](https://dialogflow.com/docs/reference/language)
+  /// See [Language
+  /// Support](https://cloud.google.com/dialogflow/docs/reference/language)
   /// for a list of the currently supported language codes.
   core.String languageCode;
 
@@ -7833,12 +9005,14 @@ class GoogleCloudDialogflowV2beta1QueryResult {
   core.Map<core.String, core.Object> parameters;
 
   /// The original conversational query text:
+  ///
   /// - If natural language text was provided as input, `query_text` contains
   ///   a copy of the input.
   /// - If natural language speech audio was provided as input, `query_text`
   ///   contains the speech recognition result. If speech recognizer produced
   ///   multiple alternatives, a particular one is picked.
-  /// - If an event was provided as input, `query_text` is not set.
+  /// - If automatic spell correction is enabled, `query_text` will contain the
+  ///   corrected user input.
   core.String queryText;
 
   /// The sentiment analysis result, which depends on the
@@ -8138,6 +9312,8 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   /// Optional. Makes the platform immediately invoke another `DetectIntent`
   /// call
   /// internally with the specified event as input.
+  /// When this field is set, Dialogflow ignores the `fulfillment_text`,
+  /// `fulfillment_messages`, and `payload` fields.
   GoogleCloudDialogflowV2beta1EventInput followupEventInput;
 
   /// Optional. The collection of rich messages to present to the user. This
@@ -8271,7 +9447,7 @@ class GoogleLongrunningOperation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -8353,61 +9529,12 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

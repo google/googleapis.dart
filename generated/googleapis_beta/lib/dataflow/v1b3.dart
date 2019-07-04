@@ -50,10 +50,68 @@ class ProjectsResourceApi {
   ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
       new ProjectsLocationsResourceApi(_requester);
+  ProjectsSnapshotsResourceApi get snapshots =>
+      new ProjectsSnapshotsResourceApi(_requester);
   ProjectsTemplatesResourceApi get templates =>
       new ProjectsTemplatesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a snapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the Cloud Platform project that the snapshot
+  /// belongs to.
+  ///
+  /// [snapshotId] - The ID of the snapshot.
+  ///
+  /// [location] - The location that contains this snapshot.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeleteSnapshotResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeleteSnapshotResponse> deleteSnapshots(core.String projectId,
+      {core.String snapshotId, core.String location, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (snapshotId != null) {
+      _queryParams["snapshotId"] = [snapshotId];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/snapshots';
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DeleteSnapshotResponse.fromJson(data));
+  }
 
   /// Send a worker_message to the service.
   ///
@@ -133,7 +191,9 @@ class ProjectsJobsResourceApi {
   /// - "TERMINATED" : A TERMINATED.
   /// - "ACTIVE" : A ACTIVE.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
@@ -212,6 +272,14 @@ class ProjectsJobsResourceApi {
 
   /// Creates a Cloud Dataflow job.
   ///
+  /// To create a job, we recommend using `projects.locations.jobs.create` with
+  /// a
+  /// [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.create` is not recommended, as your job will always start
+  /// in `us-central1`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -219,7 +287,9 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
@@ -286,6 +356,14 @@ class ProjectsJobsResourceApi {
 
   /// Gets the state of the specified Cloud Dataflow job.
   ///
+  /// To get the state of a job, we recommend using
+  /// `projects.locations.jobs.get`
+  /// with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.get` is not recommended, as you can only get the state of
+  /// jobs that are running in `us-central1`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
@@ -293,14 +371,16 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job ID.
   ///
-  /// [location] - The location that contains this job.
-  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -313,7 +393,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> get(core.String projectId, core.String jobId,
-      {core.String location, core.String view, core.String $fields}) {
+      {core.String view, core.String location, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -327,11 +407,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -353,13 +433,22 @@ class ProjectsJobsResourceApi {
 
   /// Request the job status.
   ///
+  /// To request the status of a job, we recommend using
+  /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.getMetrics` is not recommended, as you can only request the
+  /// status of jobs that are running in `us-central1`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - A project id.
   ///
   /// [jobId] - The job to get messages for.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   ///
   /// [startTime] - Return only metric data that has changed since this time.
   /// Default is to return all information about all metrics for the job.
@@ -414,7 +503,15 @@ class ProjectsJobsResourceApi {
     return _response.then((data) => new JobMetrics.fromJson(data));
   }
 
-  /// List the jobs of a project in a given region.
+  /// List the jobs of a project.
+  ///
+  /// To list the jobs of a project in a region, we recommend using
+  /// `projects.locations.jobs.get` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
+  /// list the all jobs across all regions, use `projects.jobs.aggregated`.
+  /// Using
+  /// `projects.jobs.list` is not recommended, as you can only get the list of
+  /// jobs that are running in `us-central1`.
   ///
   /// Request parameters:
   ///
@@ -427,7 +524,9 @@ class ProjectsJobsResourceApi {
   /// - "TERMINATED" : A TERMINATED.
   /// - "ACTIVE" : A ACTIVE.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
@@ -564,6 +663,14 @@ class ProjectsJobsResourceApi {
 
   /// Updates the state of an existing Cloud Dataflow job.
   ///
+  /// To update the state of an existing job, we recommend using
+  /// `projects.locations.jobs.update` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.update` is not recommended, as you can only update the
+  /// state
+  /// of jobs that are running in `us-central1`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -573,7 +680,9 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job ID.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -758,13 +867,22 @@ class ProjectsJobsMessagesResourceApi {
 
   /// Request the job status.
   ///
+  /// To request the status of a job, we recommend using
+  /// `projects.locations.jobs.messages.list` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.messages.list` is not recommended, as you can only request
+  /// the status of jobs that are running in `us-central1`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - A project id.
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now
@@ -993,6 +1111,10 @@ class ProjectsLocationsResourceApi {
 
   ProjectsLocationsJobsResourceApi get jobs =>
       new ProjectsLocationsJobsResourceApi(_requester);
+  ProjectsLocationsSnapshotsResourceApi get snapshots =>
+      new ProjectsLocationsSnapshotsResourceApi(_requester);
+  ProjectsLocationsSqlResourceApi get sql =>
+      new ProjectsLocationsSqlResourceApi(_requester);
   ProjectsLocationsTemplatesResourceApi get templates =>
       new ProjectsLocationsTemplatesResourceApi(_requester);
 
@@ -1007,7 +1129,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [projectId] - The project to send the WorkerMessages to.
   ///
-  /// [location] - The location which contains the job
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1068,6 +1192,8 @@ class ProjectsLocationsJobsResourceApi {
       new ProjectsLocationsJobsDebugResourceApi(_requester);
   ProjectsLocationsJobsMessagesResourceApi get messages =>
       new ProjectsLocationsJobsMessagesResourceApi(_requester);
+  ProjectsLocationsJobsSnapshotsResourceApi get snapshots =>
+      new ProjectsLocationsJobsSnapshotsResourceApi(_requester);
   ProjectsLocationsJobsWorkItemsResourceApi get workItems =>
       new ProjectsLocationsJobsWorkItemsResourceApi(_requester);
 
@@ -1076,6 +1202,14 @@ class ProjectsLocationsJobsResourceApi {
 
   /// Creates a Cloud Dataflow job.
   ///
+  /// To create a job, we recommend using `projects.locations.jobs.create` with
+  /// a
+  /// [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.create` is not recommended, as your job will always start
+  /// in `us-central1`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1083,7 +1217,9 @@ class ProjectsLocationsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
@@ -1150,12 +1286,22 @@ class ProjectsLocationsJobsResourceApi {
 
   /// Gets the state of the specified Cloud Dataflow job.
   ///
+  /// To get the state of a job, we recommend using
+  /// `projects.locations.jobs.get`
+  /// with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.get` is not recommended, as you can only get the state of
+  /// jobs that are running in `us-central1`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [jobId] - The job ID.
   ///
@@ -1220,11 +1366,20 @@ class ProjectsLocationsJobsResourceApi {
 
   /// Request the job status.
   ///
+  /// To request the status of a job, we recommend using
+  /// `projects.locations.jobs.getMetrics` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.getMetrics` is not recommended, as you can only request the
+  /// status of jobs that are running in `us-central1`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - A project id.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   ///
   /// [jobId] - The job to get messages for.
   ///
@@ -1284,20 +1439,23 @@ class ProjectsLocationsJobsResourceApi {
     return _response.then((data) => new JobMetrics.fromJson(data));
   }
 
-  /// List the jobs of a project in a given region.
+  /// List the jobs of a project.
+  ///
+  /// To list the jobs of a project in a region, we recommend using
+  /// `projects.locations.jobs.get` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To
+  /// list the all jobs across all regions, use `projects.jobs.aggregated`.
+  /// Using
+  /// `projects.jobs.list` is not recommended, as you can only get the list of
+  /// jobs that are running in `us-central1`.
   ///
   /// Request parameters:
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [location] - The location that contains this job.
-  ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
@@ -1315,6 +1473,13 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1327,10 +1492,10 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
       core.String projectId, core.String location,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1345,9 +1510,6 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1356,6 +1518,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1443,6 +1608,14 @@ class ProjectsLocationsJobsResourceApi {
 
   /// Updates the state of an existing Cloud Dataflow job.
   ///
+  /// To update the state of an existing job, we recommend using
+  /// `projects.locations.jobs.update` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.update` is not recommended, as you can only update the
+  /// state
+  /// of jobs that are running in `us-central1`.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1450,7 +1623,9 @@ class ProjectsLocationsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The location that contains this job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   ///
   /// [jobId] - The job ID.
   ///
@@ -1521,7 +1696,9 @@ class ProjectsLocationsJobsDebugResourceApi {
   ///
   /// [projectId] - The project id.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   ///
   /// [jobId] - The job id.
   ///
@@ -1586,7 +1763,9 @@ class ProjectsLocationsJobsDebugResourceApi {
   ///
   /// [projectId] - The project id.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   ///
   /// [jobId] - The job id.
   ///
@@ -1656,11 +1835,20 @@ class ProjectsLocationsJobsMessagesResourceApi {
 
   /// Request the job status.
   ///
+  /// To request the status of a job, we recommend using
+  /// `projects.locations.jobs.messages.list` with a [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// Using
+  /// `projects.jobs.messages.list` is not recommended, as you can only request
+  /// the status of jobs that are running in `us-central1`.
+  ///
   /// Request parameters:
   ///
   /// [projectId] - A project id.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   ///
   /// [jobId] - The job to get messages about.
   ///
@@ -1668,14 +1856,14 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// is now
   /// (i.e. return up to the latest messages available).
   ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time.
-  /// The default is the job creation time (i.e. beginning of messages).
-  ///
   /// [pageToken] - If supplied, this should be the value of next_page_token
   /// returned
   /// by an earlier call. This will cause the next page of results to
   /// be returned.
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time.
+  /// The default is the job creation time (i.e. beginning of messages).
   ///
   /// [pageSize] - If specified, determines the maximum number of messages to
   /// return.  If unspecified, the service may choose an appropriate
@@ -1703,8 +1891,8 @@ class ProjectsLocationsJobsMessagesResourceApi {
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String location, core.String jobId,
       {core.String endTime,
-      core.String startTime,
       core.String pageToken,
+      core.String startTime,
       core.int pageSize,
       core.String minimumImportance,
       core.String $fields}) {
@@ -1727,11 +1915,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1761,6 +1949,73 @@ class ProjectsLocationsJobsMessagesResourceApi {
   }
 }
 
+class ProjectsLocationsJobsSnapshotsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsSnapshotsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists snapshots.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The project ID to list snapshots for.
+  ///
+  /// [location] - The location to list snapshots in.
+  ///
+  /// [jobId] - If specified, list snapshots created from this job.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnapshotsResponse> list(
+      core.String projectId, core.String location, core.String jobId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId == null) {
+      throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$location') +
+        '/jobs/' +
+        commons.Escaper.ecapeVariable('$jobId') +
+        '/snapshots';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
+  }
+}
+
 class ProjectsLocationsJobsWorkItemsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1775,7 +2030,9 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   ///
   /// [projectId] - Identifies the project this worker belongs to.
   ///
-  /// [location] - The location which contains the WorkItem's job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the WorkItem's job.
   ///
   /// [jobId] - Identifies the workflow job this worker belongs to.
   ///
@@ -1840,7 +2097,9 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   ///
   /// [projectId] - The project which owns the WorkItem's job.
   ///
-  /// [location] - The location which contains the WorkItem's job.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the WorkItem's job.
   ///
   /// [jobId] - The job which the WorkItem is part of.
   ///
@@ -1902,6 +2161,262 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   }
 }
 
+class ProjectsLocationsSnapshotsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSnapshotsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes a snapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the Cloud Platform project that the snapshot
+  /// belongs to.
+  ///
+  /// [location] - The location that contains this snapshot.
+  ///
+  /// [snapshotId] - The ID of the snapshot.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeleteSnapshotResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeleteSnapshotResponse> delete(
+      core.String projectId, core.String location, core.String snapshotId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (snapshotId == null) {
+      throw new core.ArgumentError("Parameter snapshotId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$location') +
+        '/snapshots/' +
+        commons.Escaper.ecapeVariable('$snapshotId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DeleteSnapshotResponse.fromJson(data));
+  }
+
+  /// Gets information about a snapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the Cloud Platform project that the snapshot
+  /// belongs to.
+  ///
+  /// [location] - The location that contains this snapshot.
+  ///
+  /// [snapshotId] - The ID of the snapshot.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snapshot> get(
+      core.String projectId, core.String location, core.String snapshotId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (snapshotId == null) {
+      throw new core.ArgumentError("Parameter snapshotId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$location') +
+        '/snapshots/' +
+        commons.Escaper.ecapeVariable('$snapshotId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Snapshot.fromJson(data));
+  }
+
+  /// Lists snapshots.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The project ID to list snapshots for.
+  ///
+  /// [location] - The location to list snapshots in.
+  ///
+  /// [jobId] - If specified, list snapshots created from this job.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnapshotsResponse> list(
+      core.String projectId, core.String location,
+      {core.String jobId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (jobId != null) {
+      _queryParams["jobId"] = [jobId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$location') +
+        '/snapshots';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsSqlResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSqlResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Validates a GoogleSQL query for Cloud Dataflow syntax. Will always
+  /// confirm the given query parses correctly, and if able to look up
+  /// schema information from DataCatalog, will validate that the query
+  /// analyzes properly as well.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Cloud Platform project that the job
+  /// belongs to.
+  ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
+  ///
+  /// [query] - The sql query to validate.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ValidateResponse> validate(
+      core.String projectId, core.String location,
+      {core.String query, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$location') +
+        '/sql:validate';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ValidateResponse.fromJson(data));
+  }
+}
+
 class ProjectsLocationsTemplatesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1917,7 +2432,9 @@ class ProjectsLocationsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The location to which to direct the request.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1974,7 +2491,9 @@ class ProjectsLocationsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The location to which to direct the request.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
   ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
   /// Possible string values are:
@@ -2044,7 +2563,16 @@ class ProjectsLocationsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The location to which to direct the request.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
+  ///
+  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS.
+  /// The file must be a Json serialized DynamicTemplateFieSpec object.
+  ///
+  /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
+  /// dependencies.
+  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed.
@@ -2053,13 +2581,6 @@ class ProjectsLocationsTemplatesResourceApi {
   /// [gcsPath] - A Cloud Storage path to the template from which to create
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
-  ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS.
-  /// The file must be a Json serialized DynamicTemplateFieSpec object.
-  ///
-  /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
-  /// dependencies.
-  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2073,10 +2594,10 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request,
       core.String projectId, core.String location,
-      {core.bool validateOnly,
-      core.String gcsPath,
-      core.String dynamicTemplate_gcsPath,
+      {core.String dynamicTemplate_gcsPath,
       core.String dynamicTemplate_stagingLocation,
+      core.bool validateOnly,
+      core.String gcsPath,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2094,12 +2615,6 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
-    }
     if (dynamicTemplate_gcsPath != null) {
       _queryParams["dynamicTemplate.gcsPath"] = [dynamicTemplate_gcsPath];
     }
@@ -2107,6 +2622,12 @@ class ProjectsLocationsTemplatesResourceApi {
       _queryParams["dynamicTemplate.stagingLocation"] = [
         dynamicTemplate_stagingLocation
       ];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2125,6 +2646,125 @@ class ProjectsLocationsTemplatesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new LaunchTemplateResponse.fromJson(data));
+  }
+}
+
+class ProjectsSnapshotsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSnapshotsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets information about a snapshot.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the Cloud Platform project that the snapshot
+  /// belongs to.
+  ///
+  /// [snapshotId] - The ID of the snapshot.
+  ///
+  /// [location] - The location that contains this snapshot.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snapshot> get(core.String projectId, core.String snapshotId,
+      {core.String location, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (snapshotId == null) {
+      throw new core.ArgumentError("Parameter snapshotId is required.");
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/snapshots/' +
+        commons.Escaper.ecapeVariable('$snapshotId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Snapshot.fromJson(data));
+  }
+
+  /// Lists snapshots.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The project ID to list snapshots for.
+  ///
+  /// [jobId] - If specified, list snapshots created from this job.
+  ///
+  /// [location] - The location to list snapshots in.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnapshotsResponse> list(core.String projectId,
+      {core.String jobId, core.String location, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (jobId != null) {
+      _queryParams["jobId"] = [jobId];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/snapshots';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
   }
 }
 
@@ -2193,8 +2833,6 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The location to which to direct the request.
-  ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
   /// Possible string values are:
   /// - "METADATA_ONLY" : A METADATA_ONLY.
@@ -2202,6 +2840,10 @@ class ProjectsTemplatesResourceApi {
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2214,9 +2856,9 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(core.String projectId,
-      {core.String location,
-      core.String view,
+      {core.String view,
       core.String gcsPath,
+      core.String location,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2228,14 +2870,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2263,13 +2905,6 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS.
-  /// The file must be a Json serialized DynamicTemplateFieSpec object.
-  ///
-  /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
-  /// dependencies.
-  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
-  ///
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed.
   /// Defaults to false.
@@ -2278,7 +2913,16 @@ class ProjectsTemplatesResourceApi {
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
-  /// [location] - The location to which to direct the request.
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
+  ///
+  /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS.
+  /// The file must be a Json serialized DynamicTemplateFieSpec object.
+  ///
+  /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
+  /// dependencies.
+  /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2292,11 +2936,11 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.String dynamicTemplate_gcsPath,
-      core.String dynamicTemplate_stagingLocation,
-      core.bool validateOnly,
+      {core.bool validateOnly,
       core.String gcsPath,
       core.String location,
+      core.String dynamicTemplate_gcsPath,
+      core.String dynamicTemplate_stagingLocation,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2311,14 +2955,6 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (dynamicTemplate_gcsPath != null) {
-      _queryParams["dynamicTemplate.gcsPath"] = [dynamicTemplate_gcsPath];
-    }
-    if (dynamicTemplate_stagingLocation != null) {
-      _queryParams["dynamicTemplate.stagingLocation"] = [
-        dynamicTemplate_stagingLocation
-      ];
-    }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
     }
@@ -2327,6 +2963,14 @@ class ProjectsTemplatesResourceApi {
     }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (dynamicTemplate_gcsPath != null) {
+      _queryParams["dynamicTemplate.gcsPath"] = [dynamicTemplate_gcsPath];
+    }
+    if (dynamicTemplate_stagingLocation != null) {
+      _queryParams["dynamicTemplate.stagingLocation"] = [
+        dynamicTemplate_stagingLocation
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3378,7 +4022,9 @@ class CreateJobFromTemplateRequest {
   /// Required. The job name to use for the created job.
   core.String jobName;
 
-  /// The location to which to direct the request.
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
   core.String location;
 
   /// The runtime parameters to pass to the job.
@@ -3514,6 +4160,19 @@ class DatastoreIODetails {
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
+    return _json;
+  }
+}
+
+/// Response from deleting a snapshot.
+class DeleteSnapshotResponse {
+  DeleteSnapshotResponse();
+
+  DeleteSnapshotResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3880,6 +4539,13 @@ class Environment {
   /// The list of experiments to enable.
   core.List<core.String> experiments;
 
+  /// Which Flexible Resource Scheduling mode to run in.
+  /// Possible string values are:
+  /// - "FLEXRS_UNSPECIFIED" : Run in the default mode.
+  /// - "FLEXRS_SPEED_OPTIMIZED" : Optimize for lower execution time.
+  /// - "FLEXRS_COST_OPTIMIZED" : Optimize for lower cost.
+  core.String flexResourceSchedulingGoal;
+
   /// Experimental settings.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -3897,6 +4563,13 @@ class Environment {
 
   /// Identity to run virtual machines as. Defaults to the default account.
   core.String serviceAccountEmail;
+
+  /// If set, contains the Cloud KMS key identifier used to encrypt data
+  /// at rest, AKA a Customer Managed Encryption Key (CMEK).
+  ///
+  /// Format:
+  ///   projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+  core.String serviceKmsKeyName;
 
   /// The prefix of the resources the system should use for temporary
   /// storage.  The system will append the suffix "/temp-{JOBNAME} to
@@ -3942,6 +4615,9 @@ class Environment {
     if (_json.containsKey("experiments")) {
       experiments = (_json["experiments"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("flexResourceSchedulingGoal")) {
+      flexResourceSchedulingGoal = _json["flexResourceSchedulingGoal"];
+    }
     if (_json.containsKey("internalExperiments")) {
       internalExperiments = (_json["internalExperiments"] as core.Map)
           .cast<core.String, core.Object>();
@@ -3952,6 +4628,9 @@ class Environment {
     }
     if (_json.containsKey("serviceAccountEmail")) {
       serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+    if (_json.containsKey("serviceKmsKeyName")) {
+      serviceKmsKeyName = _json["serviceKmsKeyName"];
     }
     if (_json.containsKey("tempStoragePrefix")) {
       tempStoragePrefix = _json["tempStoragePrefix"];
@@ -3982,6 +4661,9 @@ class Environment {
     if (experiments != null) {
       _json["experiments"] = experiments;
     }
+    if (flexResourceSchedulingGoal != null) {
+      _json["flexResourceSchedulingGoal"] = flexResourceSchedulingGoal;
+    }
     if (internalExperiments != null) {
       _json["internalExperiments"] = internalExperiments;
     }
@@ -3990,6 +4672,9 @@ class Environment {
     }
     if (serviceAccountEmail != null) {
       _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    if (serviceKmsKeyName != null) {
+      _json["serviceKmsKeyName"] = serviceKmsKeyName;
     }
     if (tempStoragePrefix != null) {
       _json["tempStoragePrefix"] = tempStoragePrefix;
@@ -4209,9 +4894,13 @@ class ExecutionStageSummary {
   }
 }
 
-/// Indicates which location failed to respond to a request for data.
+/// Indicates which [regional endpoint]
+/// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) failed
+/// to respond to a request for data.
 class FailedLocation {
-  /// The name of the failed location.
+  /// The name of the [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// failed to respond.
   core.String name;
 
   FailedLocation();
@@ -4344,7 +5033,9 @@ class GetDebugConfigRequest {
   /// requested.
   core.String componentId;
 
-  /// The location which contains the job specified by job_id.
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   core.String location;
 
   /// The worker id, i.e., VM hostname.
@@ -4475,6 +5166,48 @@ class Histogram {
     }
     if (firstBucketOffset != null) {
       _json["firstBucketOffset"] = firstBucketOffset;
+    }
+    return _json;
+  }
+}
+
+/// Proto describing a hot key detected on a given WorkItem.
+class HotKeyDetection {
+  /// The age of the hot key measured from when it was first detected.
+  core.String hotKeyAge;
+
+  /// System-defined name of the step containing this hot key.
+  /// Unique across the workflow.
+  core.String systemName;
+
+  /// User-provided name of the step that contains this hot key.
+  core.String userStepName;
+
+  HotKeyDetection();
+
+  HotKeyDetection.fromJson(core.Map _json) {
+    if (_json.containsKey("hotKeyAge")) {
+      hotKeyAge = _json["hotKeyAge"];
+    }
+    if (_json.containsKey("systemName")) {
+      systemName = _json["systemName"];
+    }
+    if (_json.containsKey("userStepName")) {
+      userStepName = _json["userStepName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hotKeyAge != null) {
+      _json["hotKeyAge"] = hotKeyAge;
+    }
+    if (systemName != null) {
+      _json["systemName"] = systemName;
+    }
+    if (userStepName != null) {
+      _json["userStepName"] = userStepName;
     }
     return _json;
   }
@@ -4801,7 +5534,9 @@ class Job {
   /// size.
   core.Map<core.String, core.String> labels;
 
-  /// The location that contains this job.
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
   core.String location;
 
   /// The user-specified Cloud Dataflow job name.
@@ -5253,7 +5988,7 @@ class JobMessage {
 }
 
 /// Metadata available primarily for filtering jobs. Will be included in the
-/// ListJob response and Job SUMMARY view+.
+/// ListJob response and Job SUMMARY view.
 class JobMetadata {
   /// Identification of a BigTable source used in the Dataflow job.
   core.List<BigTableIODetails> bigTableDetails;
@@ -5352,7 +6087,7 @@ class JobMetadata {
   }
 }
 
-/// JobMetrics contains a collection of metrics descibing the detailed progress
+/// JobMetrics contains a collection of metrics describing the detailed progress
 /// of a Dataflow job. Metrics correspond to user-defined and system-defined
 /// metrics in the job.
 ///
@@ -5516,6 +6251,15 @@ class LaunchTemplateParameters {
   /// The runtime parameters to pass to the job.
   core.Map<core.String, core.String> parameters;
 
+  /// Only applicable when updating a pipeline. Map of transform name prefixes
+  /// of
+  /// the job to be replaced to the corresponding name prefixes of the new job.
+  core.Map<core.String, core.String> transformNameMapping;
+
+  /// If set, replace the existing pipeline with the name specified by jobName
+  /// with this pipeline, preserving state.
+  core.bool update;
+
   LaunchTemplateParameters();
 
   LaunchTemplateParameters.fromJson(core.Map _json) {
@@ -5528,6 +6272,13 @@ class LaunchTemplateParameters {
     if (_json.containsKey("parameters")) {
       parameters =
           (_json["parameters"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("transformNameMapping")) {
+      transformNameMapping = (_json["transformNameMapping"] as core.Map)
+          .cast<core.String, core.String>();
+    }
+    if (_json.containsKey("update")) {
+      update = _json["update"];
     }
   }
 
@@ -5542,6 +6293,12 @@ class LaunchTemplateParameters {
     }
     if (parameters != null) {
       _json["parameters"] = parameters;
+    }
+    if (transformNameMapping != null) {
+      _json["transformNameMapping"] = transformNameMapping;
+    }
+    if (update != null) {
+      _json["update"] = update;
     }
     return _json;
   }
@@ -5576,11 +6333,19 @@ class LeaseWorkItemRequest {
   /// The current timestamp at the worker.
   core.String currentWorkerTime;
 
-  /// The location which contains the WorkItem's job.
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the WorkItem's job.
   core.String location;
 
   /// The initial lease period.
   core.String requestedLeaseDuration;
+
+  /// Untranslated bag-of-bytes WorkRequest from UnifiedWorker.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> unifiedWorkerRequest;
 
   /// Filter for WorkItem type.
   core.List<core.String> workItemTypes;
@@ -5604,6 +6369,10 @@ class LeaseWorkItemRequest {
     }
     if (_json.containsKey("requestedLeaseDuration")) {
       requestedLeaseDuration = _json["requestedLeaseDuration"];
+    }
+    if (_json.containsKey("unifiedWorkerRequest")) {
+      unifiedWorkerRequest = (_json["unifiedWorkerRequest"] as core.Map)
+          .cast<core.String, core.Object>();
     }
     if (_json.containsKey("workItemTypes")) {
       workItemTypes = (_json["workItemTypes"] as core.List).cast<core.String>();
@@ -5629,6 +6398,9 @@ class LeaseWorkItemRequest {
     if (requestedLeaseDuration != null) {
       _json["requestedLeaseDuration"] = requestedLeaseDuration;
     }
+    if (unifiedWorkerRequest != null) {
+      _json["unifiedWorkerRequest"] = unifiedWorkerRequest;
+    }
     if (workItemTypes != null) {
       _json["workItemTypes"] = workItemTypes;
     }
@@ -5644,12 +6416,22 @@ class LeaseWorkItemRequest {
 
 /// Response to a request to lease WorkItems.
 class LeaseWorkItemResponse {
+  /// Untranslated bag-of-bytes WorkResponse for UnifiedWorker.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> unifiedWorkerResponse;
+
   /// A list of the leased WorkItems.
   core.List<WorkItem> workItems;
 
   LeaseWorkItemResponse();
 
   LeaseWorkItemResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("unifiedWorkerResponse")) {
+      unifiedWorkerResponse = (_json["unifiedWorkerResponse"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
     if (_json.containsKey("workItems")) {
       workItems = (_json["workItems"] as core.List)
           .map<WorkItem>((value) => new WorkItem.fromJson(value))
@@ -5660,6 +6442,9 @@ class LeaseWorkItemResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (unifiedWorkerResponse != null) {
+      _json["unifiedWorkerResponse"] = unifiedWorkerResponse;
+    }
     if (workItems != null) {
       _json["workItems"] = workItems.map((value) => (value).toJson()).toList();
     }
@@ -5718,7 +6503,9 @@ class ListJobMessagesResponse {
 /// Response to a request to list Cloud Dataflow jobs.  This may be a partial
 /// response, depending on the page size in the ListJobsRequest.
 class ListJobsResponse {
-  /// Zero or more messages describing locations that failed to respond.
+  /// Zero or more messages describing the [regional endpoints]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// failed to respond.
   core.List<FailedLocation> failedLocation;
 
   /// A subset of the requested job information.
@@ -5757,6 +6544,31 @@ class ListJobsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// List of snapshots.
+class ListSnapshotsResponse {
+  /// Returned snapshots.
+  core.List<Snapshot> snapshots;
+
+  ListSnapshotsResponse();
+
+  ListSnapshotsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("snapshots")) {
+      snapshots = (_json["snapshots"] as core.List)
+          .map<Snapshot>((value) => new Snapshot.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (snapshots != null) {
+      _json["snapshots"] = snapshots.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6555,7 +7367,7 @@ class PartialGroupByKeyInstruction {
 
 /// A descriptive representation of submitted pipeline as well as the executed
 /// form.  This data is provided by the Dataflow service for ease of visualizing
-/// the pipeline and interpretting Dataflow provided metrics.
+/// the pipeline and interpreting Dataflow provided metrics.
 class PipelineDescription {
   /// Pipeline level display data.
   core.List<DisplayData> displayData;
@@ -6825,8 +7637,16 @@ class ReportWorkItemStatusRequest {
   /// The current timestamp at the worker.
   core.String currentWorkerTime;
 
-  /// The location which contains the WorkItem's job.
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the WorkItem's job.
   core.String location;
+
+  /// Untranslated bag-of-bytes WorkProgressUpdateRequest from UnifiedWorker.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> unifiedWorkerRequest;
 
   /// The order is unimportant, except that the order of the
   /// WorkItemServiceState messages in the ReportWorkItemStatusResponse
@@ -6848,6 +7668,10 @@ class ReportWorkItemStatusRequest {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("unifiedWorkerRequest")) {
+      unifiedWorkerRequest = (_json["unifiedWorkerRequest"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
     if (_json.containsKey("workItemStatuses")) {
       workItemStatuses = (_json["workItemStatuses"] as core.List)
           .map<WorkItemStatus>((value) => new WorkItemStatus.fromJson(value))
@@ -6867,6 +7691,9 @@ class ReportWorkItemStatusRequest {
     if (location != null) {
       _json["location"] = location;
     }
+    if (unifiedWorkerRequest != null) {
+      _json["unifiedWorkerRequest"] = unifiedWorkerRequest;
+    }
     if (workItemStatuses != null) {
       _json["workItemStatuses"] =
           workItemStatuses.map((value) => (value).toJson()).toList();
@@ -6880,6 +7707,12 @@ class ReportWorkItemStatusRequest {
 
 /// Response from a request to report the status of WorkItems.
 class ReportWorkItemStatusResponse {
+  /// Untranslated bag-of-bytes WorkProgressUpdateResponse for UnifiedWorker.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> unifiedWorkerResponse;
+
   /// A set of messages indicating the service-side state for each
   /// WorkItem whose status was reported, in the same order as the
   /// WorkItemStatus messages in the ReportWorkItemStatusRequest which
@@ -6889,6 +7722,10 @@ class ReportWorkItemStatusResponse {
   ReportWorkItemStatusResponse();
 
   ReportWorkItemStatusResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("unifiedWorkerResponse")) {
+      unifiedWorkerResponse = (_json["unifiedWorkerResponse"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
     if (_json.containsKey("workItemServiceStates")) {
       workItemServiceStates = (_json["workItemServiceStates"] as core.List)
           .map<WorkItemServiceState>(
@@ -6900,6 +7737,9 @@ class ReportWorkItemStatusResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (unifiedWorkerResponse != null) {
+      _json["unifiedWorkerResponse"] = unifiedWorkerResponse;
+    }
     if (workItemServiceStates != null) {
       _json["workItemServiceStates"] =
           workItemServiceStates.map((value) => (value).toJson()).toList();
@@ -6991,12 +7831,20 @@ class RuntimeEnvironment {
   /// Additional experiment flags for the job.
   core.List<core.String> additionalExperiments;
 
-  /// Additional user labels attached to the job.
+  /// Additional user labels to be specified for the job.
+  /// Keys and values should follow the restrictions specified in the [labeling
+  /// restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+  /// page.
   core.Map<core.String, core.String> additionalUserLabels;
 
   /// Whether to bypass the safety checks for the job's temporary directory.
   /// Use with caution.
   core.bool bypassTempDirValidation;
+
+  /// Optional. Name for the Cloud KMS key for the job.
+  /// Key format is:
+  /// projects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>
+  core.String kmsKeyName;
 
   /// The machine type to use for the job. Defaults to the value from the
   /// template if not specified.
@@ -7043,6 +7891,9 @@ class RuntimeEnvironment {
     if (_json.containsKey("bypassTempDirValidation")) {
       bypassTempDirValidation = _json["bypassTempDirValidation"];
     }
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
     }
@@ -7081,6 +7932,9 @@ class RuntimeEnvironment {
     if (bypassTempDirValidation != null) {
       _json["bypassTempDirValidation"] = bypassTempDirValidation;
     }
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
     if (machineType != null) {
       _json["machineType"] = machineType;
     }
@@ -7109,7 +7963,7 @@ class RuntimeEnvironment {
   }
 }
 
-/// The version of the SDK used to run the jobl
+/// The version of the SDK used to run the job.
 class SdkVersion {
   /// The support status for this SDK version.
   /// Possible string values are:
@@ -7127,7 +7981,7 @@ class SdkVersion {
   /// The version of the SDK used to run the job.
   core.String version;
 
-  /// A readable string describing the version of the sdk.
+  /// A readable string describing the version of the SDK.
   core.String versionDisplayName;
 
   SdkVersion();
@@ -7168,7 +8022,9 @@ class SendDebugCaptureRequest {
   /// The encoded debug information.
   core.String data;
 
-  /// The location which contains the job specified by job_id.
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job specified by job_id.
   core.String location;
 
   /// The worker id, i.e., VM hostname.
@@ -7226,7 +8082,9 @@ class SendDebugCaptureResponse {
 
 /// A request for sending worker messages to the service.
 class SendWorkerMessagesRequest {
-  /// The location which contains the job
+  /// The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains the job.
   core.String location;
 
   /// The WorkerMessages to send.
@@ -7531,6 +8389,18 @@ class Snapshot {
   /// The job this snapshot was created from.
   core.String sourceJobId;
 
+  /// State of the snapshot.
+  /// Possible string values are:
+  /// - "UNKNOWN_SNAPSHOT_STATE" : Unknown state.
+  /// - "PENDING" : Snapshot intent to create has been persisted, snapshotting
+  /// of state has not
+  /// yet started.
+  /// - "RUNNING" : Snapshotting is being performed.
+  /// - "READY" : Snapshot has been created and is ready to be used.
+  /// - "FAILED" : Snapshot failed to be created.
+  /// - "DELETED" : Snapshot has been deleted.
+  core.String state;
+
   /// The time after which this snapshot will be automatically deleted.
   core.String ttl;
 
@@ -7548,6 +8418,9 @@ class Snapshot {
     }
     if (_json.containsKey("sourceJobId")) {
       sourceJobId = _json["sourceJobId"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
     if (_json.containsKey("ttl")) {
       ttl = _json["ttl"];
@@ -7568,6 +8441,9 @@ class Snapshot {
     }
     if (sourceJobId != null) {
       _json["sourceJobId"] = sourceJobId;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     if (ttl != null) {
       _json["ttl"] = ttl;
@@ -8295,61 +9171,12 @@ class StateFamilyConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -8572,6 +9399,10 @@ class StreamingComputationConfig {
   /// System defined name for this computation.
   core.String systemName;
 
+  /// Map from user name of stateful transforms in this stage to their state
+  /// family.
+  core.Map<core.String, core.String> transformUserNameToStateFamily;
+
   StreamingComputationConfig();
 
   StreamingComputationConfig.fromJson(core.Map _json) {
@@ -8590,6 +9421,11 @@ class StreamingComputationConfig {
     if (_json.containsKey("systemName")) {
       systemName = _json["systemName"];
     }
+    if (_json.containsKey("transformUserNameToStateFamily")) {
+      transformUserNameToStateFamily =
+          (_json["transformUserNameToStateFamily"] as core.Map)
+              .cast<core.String, core.String>();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8607,6 +9443,9 @@ class StreamingComputationConfig {
     }
     if (systemName != null) {
       _json["systemName"] = systemName;
+    }
+    if (transformUserNameToStateFamily != null) {
+      _json["transformUserNameToStateFamily"] = transformUserNameToStateFamily;
     }
     return _json;
   }
@@ -8707,6 +9546,9 @@ class StreamingComputationTask {
 
 /// A task that carries configuration information for streaming computations.
 class StreamingConfigTask {
+  /// Maximum size for work item commit supported windmill storage layer.
+  core.String maxWorkItemCommitBytes;
+
   /// Set of computation configuration information.
   core.List<StreamingComputationConfig> streamingComputationConfigs;
 
@@ -8726,6 +9568,9 @@ class StreamingConfigTask {
   StreamingConfigTask();
 
   StreamingConfigTask.fromJson(core.Map _json) {
+    if (_json.containsKey("maxWorkItemCommitBytes")) {
+      maxWorkItemCommitBytes = _json["maxWorkItemCommitBytes"];
+    }
     if (_json.containsKey("streamingComputationConfigs")) {
       streamingComputationConfigs =
           (_json["streamingComputationConfigs"] as core.List)
@@ -8749,6 +9594,9 @@ class StreamingConfigTask {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (maxWorkItemCommitBytes != null) {
+      _json["maxWorkItemCommitBytes"] = maxWorkItemCommitBytes;
+    }
     if (streamingComputationConfigs != null) {
       _json["streamingComputationConfigs"] =
           streamingComputationConfigs.map((value) => (value).toJson()).toList();
@@ -8914,7 +9762,7 @@ class StringList {
 /// identifying the message, and structured data associated with the message for
 /// programmatic consumption.
 class StructuredMessage {
-  /// Idenfier for this message type.  Used by external systems to
+  /// Identifier for this message type.  Used by external systems to
   /// internationalize or personalize message.
   core.String messageKey;
 
@@ -9369,6 +10217,29 @@ class TransformSummary {
   }
 }
 
+/// Response to the validation request.
+class ValidateResponse {
+  /// Will be empty if validation succeeds.
+  core.String errorMessage;
+
+  ValidateResponse();
+
+  ValidateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
+    }
+    return _json;
+  }
+}
+
 /// WorkItem represents basic information about a WorkItem to be executed
 /// in the cloud.
 class WorkItem {
@@ -9536,6 +10407,11 @@ class WorkItemServiceState {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> harnessData;
 
+  /// A hot key is a symptom of poor data distribution in which there are enough
+  /// elements mapped to a single key to impact pipeline performance. When
+  /// present, this field includes metadata associated with any hot key.
+  HotKeyDetection hotKeyDetection;
+
   /// Time at which the current lease will expire.
   core.String leaseExpireTime;
 
@@ -9572,6 +10448,9 @@ class WorkItemServiceState {
       harnessData =
           (_json["harnessData"] as core.Map).cast<core.String, core.Object>();
     }
+    if (_json.containsKey("hotKeyDetection")) {
+      hotKeyDetection = new HotKeyDetection.fromJson(_json["hotKeyDetection"]);
+    }
     if (_json.containsKey("leaseExpireTime")) {
       leaseExpireTime = _json["leaseExpireTime"];
     }
@@ -9605,6 +10484,9 @@ class WorkItemServiceState {
         new core.Map<core.String, core.Object>();
     if (harnessData != null) {
       _json["harnessData"] = harnessData;
+    }
+    if (hotKeyDetection != null) {
+      _json["hotKeyDetection"] = (hotKeyDetection).toJson();
     }
     if (leaseExpireTime != null) {
       _json["leaseExpireTime"] = leaseExpireTime;
@@ -9832,6 +10714,9 @@ class WorkItemStatus {
 /// The VM should be identified by the labels attached to the WorkerMessage that
 /// this health ping belongs to.
 class WorkerHealthReport {
+  /// A message describing any unusual health reports.
+  core.String msg;
+
   /// The pods running on the worker. See:
   /// http://kubernetes.io/v1.1/docs/api-reference/v1/definitions.html#_v1_pod
   ///
@@ -9847,7 +10732,12 @@ class WorkerHealthReport {
   /// explicitly set by the worker.
   core.String reportInterval;
 
-  /// Whether the VM is healthy.
+  /// Whether the VM is in a permanently broken state.
+  /// Broken VMs should be abandoned or deleted ASAP to avoid assigning or
+  /// completing any work.
+  core.bool vmIsBroken;
+
+  /// Whether the VM is currently healthy.
   core.bool vmIsHealthy;
 
   /// The time the VM was booted.
@@ -9856,6 +10746,9 @@ class WorkerHealthReport {
   WorkerHealthReport();
 
   WorkerHealthReport.fromJson(core.Map _json) {
+    if (_json.containsKey("msg")) {
+      msg = _json["msg"];
+    }
     if (_json.containsKey("pods")) {
       pods = (_json["pods"] as core.List)
           .map<core.Map<core.String, core.Object>>(
@@ -9864,6 +10757,9 @@ class WorkerHealthReport {
     }
     if (_json.containsKey("reportInterval")) {
       reportInterval = _json["reportInterval"];
+    }
+    if (_json.containsKey("vmIsBroken")) {
+      vmIsBroken = _json["vmIsBroken"];
     }
     if (_json.containsKey("vmIsHealthy")) {
       vmIsHealthy = _json["vmIsHealthy"];
@@ -9876,11 +10772,17 @@ class WorkerHealthReport {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (msg != null) {
+      _json["msg"] = msg;
+    }
     if (pods != null) {
       _json["pods"] = pods;
     }
     if (reportInterval != null) {
       _json["reportInterval"] = reportInterval;
+    }
+    if (vmIsBroken != null) {
+      _json["vmIsBroken"] = vmIsBroken;
     }
     if (vmIsHealthy != null) {
       _json["vmIsHealthy"] = vmIsHealthy;

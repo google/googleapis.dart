@@ -16,7 +16,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client logging/v2';
 
-/// Writes log entries and manages your Logging configuration.
+/// Writes log entries and manages your Stackdriver Logging configuration. The
+/// table entries below are presented in alphabetical order, not in order of
+/// common use. For explanations of the concepts found in the table entries,
+/// read the Stackdriver Logging documentation.
 class LoggingApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -437,14 +440,14 @@ class BillingAccountsLogsResourceApi {
   ///
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -457,7 +460,7 @@ class BillingAccountsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -468,11 +471,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2204,14 +2207,14 @@ class LogsResourceApi {
   ///
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2224,7 +2227,7 @@ class LogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2235,11 +2238,11 @@ class LogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2267,14 +2270,14 @@ class MonitoredResourceDescriptorsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2287,7 +2290,7 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2295,11 +2298,11 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2504,14 +2507,14 @@ class OrganizationsExclusionsResourceApi {
   ///
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2524,7 +2527,7 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2535,11 +2538,11 @@ class OrganizationsExclusionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2695,14 +2698,14 @@ class OrganizationsLogsResourceApi {
   ///
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2715,7 +2718,7 @@ class OrganizationsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2726,11 +2729,11 @@ class OrganizationsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4802,7 +4805,8 @@ class HttpRequest {
   core.int status;
 
   /// The user agent sent by the client. Example: "Mozilla/4.0 (compatible; MSIE
-  /// 6.0; Windows 98; Q312461; .NET CLR 1.0.3705)".
+  /// 6.0; Windows 98; Q312461; .NET
+  /// CLR 1.0.3705)".
   core.String userAgent;
 
   HttpRequest();
@@ -5066,8 +5070,7 @@ class ListLogEntriesRequest {
 
   /// Deprecated. Use resource_names instead. One or more project identifiers or
   /// project numbers from which to retrieve log entries. Example:
-  /// "my-project-1A". If present, these project identifiers are converted to
-  /// resource name format and added to the list of resources in resource_names.
+  /// "my-project-1A".
   core.List<core.String> projectIds;
 
   /// Required. Names of one or more parent resources from which to retrieve log
@@ -5360,9 +5363,14 @@ class LogEntry {
   /// with a leading slash will never return any results.
   core.String logName;
 
-  /// Output only. Additional metadata about the monitored resource.Only
-  /// k8s_container, k8s_pod, and k8s_node MonitoredResources have this field
-  /// populated.
+  /// Deprecated. Output only. Additional metadata about the monitored
+  /// resource.Only k8s_container, k8s_pod, and k8s_node MonitoredResources have
+  /// this field populated for GKE versions older than 1.12.6. For GKE versions
+  /// 1.12.6 and above, the metadata field has been deprecated. The Kubernetes
+  /// pod labels that used to be in metadata.userLabels will now be present in
+  /// the labels field with a key prefix of k8s-pod/. The Stackdriver system
+  /// labels that were present in the metadata.systemLabels field will no longer
+  /// be available in the LogEntry.
   MonitoredResourceMetadata metadata;
 
   /// Optional. Information about an operation associated with the log entry, if
@@ -5370,7 +5378,10 @@ class LogEntry {
   LogEntryOperation operation;
 
   /// The log entry payload, represented as a protocol buffer. Some Google Cloud
-  /// Platform services use this field for their log entry payloads.
+  /// Platform services use this field for their log entry payloads.The
+  /// following protocol buffer types are supported; user-defined types are not
+  /// supported:"type.googleapis.com/google.cloud.audit.AuditLog"
+  /// "type.googleapis.com/google.appengine.logging.v1.RequestLog"
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -5379,10 +5390,10 @@ class LogEntry {
   /// Output only. The time the log entry was received by Logging.
   core.String receiveTimestamp;
 
-  /// Required. The primary monitored resource associated with this log
-  /// entry.Example: a log entry that reports a database error would be
-  /// associated with the monitored resource designating the particular database
-  /// that reported the error.
+  /// Required. The monitored resource that produced this log entry.Example: a
+  /// log entry that reports a database error would be associated with the
+  /// monitored resource designating the particular database that reported the
+  /// error.
   MonitoredResource resource;
 
   /// Optional. The severity of the log entry. The default value is
@@ -6124,6 +6135,37 @@ class MetricDescriptor {
   /// latencies for successful responses or just for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
+  /// Platform Subject to the Deprecation Policy
+  /// (https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. Metadata which can be used to guide usage of the metric.
   MetricDescriptorMetadata metadata;
 
@@ -6231,6 +6273,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
     }
@@ -6263,6 +6308,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -6292,7 +6340,8 @@ class MetricDescriptorMetadata {
   /// loss due to errors.
   core.String ingestDelay;
 
-  /// The launch stage of the metric definition.
+  /// Deprecated. Please use the MetricDescriptor.launch_stage instead. The
+  /// launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
@@ -6429,6 +6478,37 @@ class MonitoredResourceDescriptor {
   /// identified by values for the labels "database_id" and "zone".
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the monitored resource definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects whitelisted. Alpha releases don’t have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the “Deprecation Policy” section of our
+  /// Terms of Service (https://cloud.google.com/terms/) and the Google Cloud
+  /// Platform Subject to the Deprecation Policy
+  /// (https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. The resource name of the monitored resource descriptor:
   /// "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type}
   /// is the value of the type field in this object and {project_id} is a
@@ -6456,6 +6536,9 @@ class MonitoredResourceDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -6475,6 +6558,9 @@ class MonitoredResourceDescriptor {
     }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
     }
     if (name != null) {
       _json["name"] = name;

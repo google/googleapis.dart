@@ -679,6 +679,49 @@ class Domain {
   }
 }
 
+/// Information about a shared drive.
+class Drive {
+  /// The resource name of the shared drive. The format is
+  /// "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
+  /// ID for this resource name.
+  core.String name;
+
+  /// The root of this shared drive.
+  DriveItem root;
+
+  /// The title of the shared drive.
+  core.String title;
+
+  Drive();
+
+  Drive.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("root")) {
+      root = new DriveItem.fromJson(_json["root"]);
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (root != null) {
+      _json["root"] = (root).toJson();
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 /// A single Drive activity comprising one or more Actions by one or more
 /// Actors on one or more Targets. Some Action groupings occur spontaneously,
 /// such as moving an item into a shared folder triggering a permission change.
@@ -697,7 +740,8 @@ class DriveActivity {
   /// according to the ConsolidationStrategy in the request.
   ActionDetail primaryActionDetail;
 
-  /// All Drive objects this activity is about (e.g. file, folder, Team Drive).
+  /// All Google Drive objects this activity is about (e.g. file, folder,
+  /// drive).
   /// This represents the state of the target immediately after the actions
   /// occurred.
   core.List<Target> targets;
@@ -763,12 +807,59 @@ class DriveActivity {
   }
 }
 
+/// A Drive item which is a file.
+class DriveFile {
+  DriveFile();
+
+  DriveFile.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A Drive item which is a folder.
+class DriveFolder {
+  /// The type of Drive folder.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : The folder type is unknown.
+  /// - "MY_DRIVE_ROOT" : The folder is the root of a user's MyDrive.
+  /// - "SHARED_DRIVE_ROOT" : The folder is the root of a shared drive.
+  /// - "STANDARD_FOLDER" : The folder is a standard, non-root, folder.
+  core.String type;
+
+  DriveFolder();
+
+  DriveFolder.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
 /// A Drive item, such as a file or folder.
 class DriveItem {
   /// The Drive item is a file.
-  File file;
+  DriveFile driveFile;
 
   /// The Drive item is a folder.
+  DriveFolder driveFolder;
+
+  /// This field is deprecated; please use the `driveFile` field instead.
+  File file;
+
+  /// This field is deprecated; please use the `driveFolder` field instead.
   Folder folder;
 
   /// The MIME type of the Drive item.  See
@@ -787,6 +878,12 @@ class DriveItem {
   DriveItem();
 
   DriveItem.fromJson(core.Map _json) {
+    if (_json.containsKey("driveFile")) {
+      driveFile = new DriveFile.fromJson(_json["driveFile"]);
+    }
+    if (_json.containsKey("driveFolder")) {
+      driveFolder = new DriveFolder.fromJson(_json["driveFolder"]);
+    }
     if (_json.containsKey("file")) {
       file = new File.fromJson(_json["file"]);
     }
@@ -810,6 +907,12 @@ class DriveItem {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (driveFile != null) {
+      _json["driveFile"] = (driveFile).toJson();
+    }
+    if (driveFolder != null) {
+      _json["driveFolder"] = (driveFolder).toJson();
+    }
     if (file != null) {
       _json["file"] = (file).toJson();
     }
@@ -835,9 +938,15 @@ class DriveItem {
 /// A lightweight reference to a Drive item, such as a file or folder.
 class DriveItemReference {
   /// The Drive item is a file.
-  File file;
+  DriveFile driveFile;
 
   /// The Drive item is a folder.
+  DriveFolder driveFolder;
+
+  /// This field is deprecated; please use the `driveFile` field instead.
+  File file;
+
+  /// This field is deprecated; please use the `driveFolder` field instead.
   Folder folder;
 
   /// The target Drive item. The format is "items/ITEM_ID".
@@ -849,6 +958,12 @@ class DriveItemReference {
   DriveItemReference();
 
   DriveItemReference.fromJson(core.Map _json) {
+    if (_json.containsKey("driveFile")) {
+      driveFile = new DriveFile.fromJson(_json["driveFile"]);
+    }
+    if (_json.containsKey("driveFolder")) {
+      driveFolder = new DriveFolder.fromJson(_json["driveFolder"]);
+    }
     if (_json.containsKey("file")) {
       file = new File.fromJson(_json["file"]);
     }
@@ -866,12 +981,52 @@ class DriveItemReference {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (driveFile != null) {
+      _json["driveFile"] = (driveFile).toJson();
+    }
+    if (driveFolder != null) {
+      _json["driveFolder"] = (driveFolder).toJson();
+    }
     if (file != null) {
       _json["file"] = (file).toJson();
     }
     if (folder != null) {
       _json["folder"] = (folder).toJson();
     }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// A lightweight reference to a shared drive.
+class DriveReference {
+  /// The resource name of the shared drive. The format is
+  /// "COLLECTION_ID/DRIVE_ID". Clients should not assume a specific collection
+  /// ID for this resource name.
+  core.String name;
+
+  /// The title of the shared drive.
+  core.String title;
+
+  DriveReference();
+
+  DriveReference.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -895,7 +1050,7 @@ class Edit {
   }
 }
 
-/// A Drive item which is a file.
+/// This item is deprecated; please see `DriveFile` instead.
 class File {
   File();
 
@@ -965,16 +1120,18 @@ class FileComment {
   }
 }
 
-/// A Drive item which is a folder.
+/// This item is deprecated; please see `DriveFolder` instead.
 class Folder {
-  /// The type of Drive folder.
+  /// This field is deprecated; please see `DriveFolder.type` instead.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The folder type is unknown.
-  /// - "MY_DRIVE_ROOT" : The folder is the root of a user's MyDrive.
-  /// - "TEAM_DRIVE_ROOT" : The folder is the root of a Team Drive. Note that
-  /// this folder is
-  /// a Drive item, and is a distinct entity from the Team Drive itself.
-  /// - "STANDARD_FOLDER" : The folder is a standard, non-root, folder.
+  /// - "TYPE_UNSPECIFIED" : This item is deprecated; please see
+  /// `DriveFolder.Type` instead.
+  /// - "MY_DRIVE_ROOT" : This item is deprecated; please see `DriveFolder.Type`
+  /// instead.
+  /// - "TEAM_DRIVE_ROOT" : This item is deprecated; please see
+  /// `DriveFolder.Type` instead.
+  /// - "STANDARD_FOLDER" : This item is deprecated; please see
+  /// `DriveFolder.Type` instead.
   core.String type;
 
   Folder();
@@ -1171,7 +1328,10 @@ class Owner {
   /// The domain of the Drive item owner.
   Domain domain;
 
-  /// The Team Drive that owns the Drive item.
+  /// The drive that owns the item.
+  DriveReference drive;
+
+  /// This field is deprecated; please use the `drive` field instead.
   TeamDriveReference teamDrive;
 
   /// The user that owns the Drive item.
@@ -1182,6 +1342,9 @@ class Owner {
   Owner.fromJson(core.Map _json) {
     if (_json.containsKey("domain")) {
       domain = new Domain.fromJson(_json["domain"]);
+    }
+    if (_json.containsKey("drive")) {
+      drive = new DriveReference.fromJson(_json["drive"]);
     }
     if (_json.containsKey("teamDrive")) {
       teamDrive = new TeamDriveReference.fromJson(_json["teamDrive"]);
@@ -1196,6 +1359,9 @@ class Owner {
         new core.Map<core.String, core.Object>();
     if (domain != null) {
       _json["domain"] = (domain).toJson();
+    }
+    if (drive != null) {
+      _json["drive"] = (drive).toJson();
     }
     if (teamDrive != null) {
       _json["teamDrive"] = (teamDrive).toJson();
@@ -1695,18 +1861,24 @@ class SystemEvent {
 
 /// Information about the target of activity.
 class Target {
+  /// The target is a shared drive.
+  Drive drive;
+
   /// The target is a Drive item.
   DriveItem driveItem;
 
   /// The target is a comment on a Drive file.
   FileComment fileComment;
 
-  /// The target is a Team Drive.
+  /// This field is deprecated; please use the `drive` field instead.
   TeamDrive teamDrive;
 
   Target();
 
   Target.fromJson(core.Map _json) {
+    if (_json.containsKey("drive")) {
+      drive = new Drive.fromJson(_json["drive"]);
+    }
     if (_json.containsKey("driveItem")) {
       driveItem = new DriveItem.fromJson(_json["driveItem"]);
     }
@@ -1721,6 +1893,9 @@ class Target {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (drive != null) {
+      _json["drive"] = (drive).toJson();
+    }
     if (driveItem != null) {
       _json["driveItem"] = (driveItem).toJson();
     }
@@ -1736,15 +1911,21 @@ class Target {
 
 /// A lightweight reference to the target of activity.
 class TargetReference {
+  /// The target is a shared drive.
+  DriveReference drive;
+
   /// The target is a Drive item.
   DriveItemReference driveItem;
 
-  /// The target is a Team Drive.
+  /// This field is deprecated; please use the `drive` field instead.
   TeamDriveReference teamDrive;
 
   TargetReference();
 
   TargetReference.fromJson(core.Map _json) {
+    if (_json.containsKey("drive")) {
+      drive = new DriveReference.fromJson(_json["drive"]);
+    }
     if (_json.containsKey("driveItem")) {
       driveItem = new DriveItemReference.fromJson(_json["driveItem"]);
     }
@@ -1756,6 +1937,9 @@ class TargetReference {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (drive != null) {
+      _json["drive"] = (drive).toJson();
+    }
     if (driveItem != null) {
       _json["driveItem"] = (driveItem).toJson();
     }
@@ -1766,16 +1950,15 @@ class TargetReference {
   }
 }
 
-/// Information about a Team Drive.
+/// This item is deprecated; please see `Drive` instead.
 class TeamDrive {
-  /// The resource name of the Team Drive. The format is
-  /// "teamDrives/TEAM_DRIVE_ID".
+  /// This field is deprecated; please see `Drive.name` instead.
   core.String name;
 
-  /// The root of this Team Drive.
+  /// This field is deprecated; please see `Drive.root` instead.
   DriveItem root;
 
-  /// The title of the Team Drive.
+  /// This field is deprecated; please see `Drive.title` instead.
   core.String title;
 
   TeamDrive();
@@ -1808,13 +1991,12 @@ class TeamDrive {
   }
 }
 
-/// A lightweight reference to a Team Drive.
+/// This item is deprecated; please see `DriveReference` instead.
 class TeamDriveReference {
-  /// The resource name of the Team Drive. The format is
-  /// "teamDrives/TEAM_DRIVE_ID".
+  /// This field is deprecated; please see `DriveReference.name` instead.
   core.String name;
 
-  /// The title of the Team Drive.
+  /// This field is deprecated; please see `DriveReference.title` instead.
   core.String title;
 
   TeamDriveReference();

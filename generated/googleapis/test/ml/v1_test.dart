@@ -50,7 +50,7 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1675() {
+buildUnnamed3128() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -65,7 +65,7 @@ buildUnnamed1675() {
   return o;
 }
 
-checkUnnamed1675(core.Map<core.String, core.Object> o) {
+checkUnnamed3128(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -79,17 +79,17 @@ checkUnnamed1675(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed1676() {
+buildUnnamed3129() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1675());
-  o.add(buildUnnamed1675());
+  o.add(buildUnnamed3128());
+  o.add(buildUnnamed3128());
   return o;
 }
 
-checkUnnamed1676(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3129(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1675(o[0]);
-  checkUnnamed1675(o[1]);
+  checkUnnamed3128(o[0]);
+  checkUnnamed3128(o[1]);
 }
 
 core.int buildCounterGoogleApiHttpBody = 0;
@@ -99,7 +99,7 @@ buildGoogleApiHttpBody() {
   if (buildCounterGoogleApiHttpBody < 3) {
     o.contentType = "foo";
     o.data = "foo";
-    o.extensions = buildUnnamed1676();
+    o.extensions = buildUnnamed3129();
   }
   buildCounterGoogleApiHttpBody--;
   return o;
@@ -110,7 +110,7 @@ checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
   if (buildCounterGoogleApiHttpBody < 3) {
     unittest.expect(o.contentType, unittest.equals('foo'));
     unittest.expect(o.data, unittest.equals('foo'));
-    checkUnnamed1676(o.extensions);
+    checkUnnamed3129(o.extensions);
   }
   buildCounterGoogleApiHttpBody--;
 }
@@ -178,6 +178,32 @@ checkGoogleCloudMlV1AutoScaling(api.GoogleCloudMlV1AutoScaling o) {
   buildCounterGoogleCloudMlV1AutoScaling--;
 }
 
+core.int buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput = 0;
+buildGoogleCloudMlV1BuiltInAlgorithmOutput() {
+  var o = new api.GoogleCloudMlV1BuiltInAlgorithmOutput();
+  buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput++;
+  if (buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput < 3) {
+    o.framework = "foo";
+    o.modelPath = "foo";
+    o.pythonVersion = "foo";
+    o.runtimeVersion = "foo";
+  }
+  buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput--;
+  return o;
+}
+
+checkGoogleCloudMlV1BuiltInAlgorithmOutput(
+    api.GoogleCloudMlV1BuiltInAlgorithmOutput o) {
+  buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput++;
+  if (buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput < 3) {
+    unittest.expect(o.framework, unittest.equals('foo'));
+    unittest.expect(o.modelPath, unittest.equals('foo'));
+    unittest.expect(o.pythonVersion, unittest.equals('foo'));
+    unittest.expect(o.runtimeVersion, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudMlV1BuiltInAlgorithmOutput--;
+}
+
 core.int buildCounterGoogleCloudMlV1CancelJobRequest = 0;
 buildGoogleCloudMlV1CancelJobRequest() {
   var o = new api.GoogleCloudMlV1CancelJobRequest();
@@ -193,14 +219,14 @@ checkGoogleCloudMlV1CancelJobRequest(api.GoogleCloudMlV1CancelJobRequest o) {
   buildCounterGoogleCloudMlV1CancelJobRequest--;
 }
 
-buildUnnamed1677() {
+buildUnnamed3130() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1677(core.List<core.String> o) {
+checkUnnamed3130(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -211,7 +237,7 @@ buildGoogleCloudMlV1Capability() {
   var o = new api.GoogleCloudMlV1Capability();
   buildCounterGoogleCloudMlV1Capability++;
   if (buildCounterGoogleCloudMlV1Capability < 3) {
-    o.availableAccelerators = buildUnnamed1677();
+    o.availableAccelerators = buildUnnamed3130();
     o.type = "foo";
   }
   buildCounterGoogleCloudMlV1Capability--;
@@ -221,7 +247,7 @@ buildGoogleCloudMlV1Capability() {
 checkGoogleCloudMlV1Capability(api.GoogleCloudMlV1Capability o) {
   buildCounterGoogleCloudMlV1Capability++;
   if (buildCounterGoogleCloudMlV1Capability < 3) {
-    checkUnnamed1677(o.availableAccelerators);
+    checkUnnamed3130(o.availableAccelerators);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1Capability--;
@@ -269,7 +295,7 @@ checkGoogleCloudMlV1GetConfigResponse(api.GoogleCloudMlV1GetConfigResponse o) {
   buildCounterGoogleCloudMlV1GetConfigResponse--;
 }
 
-buildUnnamed1678() {
+buildUnnamed3131() {
   var o = new core
       .List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>();
   o.add(buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric());
@@ -277,21 +303,21 @@ buildUnnamed1678() {
   return o;
 }
 
-checkUnnamed1678(
+checkUnnamed3131(
     core.List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(o[0]);
   checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(o[1]);
 }
 
-buildUnnamed1679() {
+buildUnnamed3132() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1679(core.Map<core.String, core.String> o) {
+checkUnnamed3132(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -302,11 +328,15 @@ buildGoogleCloudMlV1HyperparameterOutput() {
   var o = new api.GoogleCloudMlV1HyperparameterOutput();
   buildCounterGoogleCloudMlV1HyperparameterOutput++;
   if (buildCounterGoogleCloudMlV1HyperparameterOutput < 3) {
-    o.allMetrics = buildUnnamed1678();
+    o.allMetrics = buildUnnamed3131();
+    o.builtInAlgorithmOutput = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
+    o.endTime = "foo";
     o.finalMetric =
         buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
-    o.hyperparameters = buildUnnamed1679();
+    o.hyperparameters = buildUnnamed3132();
     o.isTrialStoppedEarly = true;
+    o.startTime = "foo";
+    o.state = "foo";
     o.trialId = "foo";
   }
   buildCounterGoogleCloudMlV1HyperparameterOutput--;
@@ -317,23 +347,27 @@ checkGoogleCloudMlV1HyperparameterOutput(
     api.GoogleCloudMlV1HyperparameterOutput o) {
   buildCounterGoogleCloudMlV1HyperparameterOutput++;
   if (buildCounterGoogleCloudMlV1HyperparameterOutput < 3) {
-    checkUnnamed1678(o.allMetrics);
+    checkUnnamed3131(o.allMetrics);
+    checkGoogleCloudMlV1BuiltInAlgorithmOutput(o.builtInAlgorithmOutput);
+    unittest.expect(o.endTime, unittest.equals('foo'));
     checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(o.finalMetric);
-    checkUnnamed1679(o.hyperparameters);
+    checkUnnamed3132(o.hyperparameters);
     unittest.expect(o.isTrialStoppedEarly, unittest.isTrue);
+    unittest.expect(o.startTime, unittest.equals('foo'));
+    unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.trialId, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1HyperparameterOutput--;
 }
 
-buildUnnamed1680() {
+buildUnnamed3133() {
   var o = new core.List<api.GoogleCloudMlV1ParameterSpec>();
   o.add(buildGoogleCloudMlV1ParameterSpec());
   o.add(buildGoogleCloudMlV1ParameterSpec());
   return o;
 }
 
-checkUnnamed1680(core.List<api.GoogleCloudMlV1ParameterSpec> o) {
+checkUnnamed3133(core.List<api.GoogleCloudMlV1ParameterSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1ParameterSpec(o[0]);
   checkGoogleCloudMlV1ParameterSpec(o[1]);
@@ -348,9 +382,10 @@ buildGoogleCloudMlV1HyperparameterSpec() {
     o.enableTrialEarlyStopping = true;
     o.goal = "foo";
     o.hyperparameterMetricTag = "foo";
+    o.maxFailedTrials = 42;
     o.maxParallelTrials = 42;
     o.maxTrials = 42;
-    o.params = buildUnnamed1680();
+    o.params = buildUnnamed3133();
     o.resumePreviousJobId = "foo";
   }
   buildCounterGoogleCloudMlV1HyperparameterSpec--;
@@ -365,22 +400,23 @@ checkGoogleCloudMlV1HyperparameterSpec(
     unittest.expect(o.enableTrialEarlyStopping, unittest.isTrue);
     unittest.expect(o.goal, unittest.equals('foo'));
     unittest.expect(o.hyperparameterMetricTag, unittest.equals('foo'));
+    unittest.expect(o.maxFailedTrials, unittest.equals(42));
     unittest.expect(o.maxParallelTrials, unittest.equals(42));
     unittest.expect(o.maxTrials, unittest.equals(42));
-    checkUnnamed1680(o.params);
+    checkUnnamed3133(o.params);
     unittest.expect(o.resumePreviousJobId, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1HyperparameterSpec--;
 }
 
-buildUnnamed1681() {
+buildUnnamed3134() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1681(core.Map<core.String, core.String> o) {
+checkUnnamed3134(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -396,7 +432,7 @@ buildGoogleCloudMlV1Job() {
     o.errorMessage = "foo";
     o.etag = "foo";
     o.jobId = "foo";
-    o.labels = buildUnnamed1681();
+    o.labels = buildUnnamed3134();
     o.predictionInput = buildGoogleCloudMlV1PredictionInput();
     o.predictionOutput = buildGoogleCloudMlV1PredictionOutput();
     o.startTime = "foo";
@@ -416,7 +452,7 @@ checkGoogleCloudMlV1Job(api.GoogleCloudMlV1Job o) {
     unittest.expect(o.errorMessage, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.jobId, unittest.equals('foo'));
-    checkUnnamed1681(o.labels);
+    checkUnnamed3134(o.labels);
     checkGoogleCloudMlV1PredictionInput(o.predictionInput);
     checkGoogleCloudMlV1PredictionOutput(o.predictionOutput);
     unittest.expect(o.startTime, unittest.equals('foo'));
@@ -427,14 +463,14 @@ checkGoogleCloudMlV1Job(api.GoogleCloudMlV1Job o) {
   buildCounterGoogleCloudMlV1Job--;
 }
 
-buildUnnamed1682() {
+buildUnnamed3135() {
   var o = new core.List<api.GoogleCloudMlV1Job>();
   o.add(buildGoogleCloudMlV1Job());
   o.add(buildGoogleCloudMlV1Job());
   return o;
 }
 
-checkUnnamed1682(core.List<api.GoogleCloudMlV1Job> o) {
+checkUnnamed3135(core.List<api.GoogleCloudMlV1Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1Job(o[0]);
   checkGoogleCloudMlV1Job(o[1]);
@@ -445,7 +481,7 @@ buildGoogleCloudMlV1ListJobsResponse() {
   var o = new api.GoogleCloudMlV1ListJobsResponse();
   buildCounterGoogleCloudMlV1ListJobsResponse++;
   if (buildCounterGoogleCloudMlV1ListJobsResponse < 3) {
-    o.jobs = buildUnnamed1682();
+    o.jobs = buildUnnamed3135();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudMlV1ListJobsResponse--;
@@ -455,20 +491,20 @@ buildGoogleCloudMlV1ListJobsResponse() {
 checkGoogleCloudMlV1ListJobsResponse(api.GoogleCloudMlV1ListJobsResponse o) {
   buildCounterGoogleCloudMlV1ListJobsResponse++;
   if (buildCounterGoogleCloudMlV1ListJobsResponse < 3) {
-    checkUnnamed1682(o.jobs);
+    checkUnnamed3135(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1ListJobsResponse--;
 }
 
-buildUnnamed1683() {
+buildUnnamed3136() {
   var o = new core.List<api.GoogleCloudMlV1Location>();
   o.add(buildGoogleCloudMlV1Location());
   o.add(buildGoogleCloudMlV1Location());
   return o;
 }
 
-checkUnnamed1683(core.List<api.GoogleCloudMlV1Location> o) {
+checkUnnamed3136(core.List<api.GoogleCloudMlV1Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1Location(o[0]);
   checkGoogleCloudMlV1Location(o[1]);
@@ -479,7 +515,7 @@ buildGoogleCloudMlV1ListLocationsResponse() {
   var o = new api.GoogleCloudMlV1ListLocationsResponse();
   buildCounterGoogleCloudMlV1ListLocationsResponse++;
   if (buildCounterGoogleCloudMlV1ListLocationsResponse < 3) {
-    o.locations = buildUnnamed1683();
+    o.locations = buildUnnamed3136();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudMlV1ListLocationsResponse--;
@@ -490,20 +526,20 @@ checkGoogleCloudMlV1ListLocationsResponse(
     api.GoogleCloudMlV1ListLocationsResponse o) {
   buildCounterGoogleCloudMlV1ListLocationsResponse++;
   if (buildCounterGoogleCloudMlV1ListLocationsResponse < 3) {
-    checkUnnamed1683(o.locations);
+    checkUnnamed3136(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1ListLocationsResponse--;
 }
 
-buildUnnamed1684() {
+buildUnnamed3137() {
   var o = new core.List<api.GoogleCloudMlV1Model>();
   o.add(buildGoogleCloudMlV1Model());
   o.add(buildGoogleCloudMlV1Model());
   return o;
 }
 
-checkUnnamed1684(core.List<api.GoogleCloudMlV1Model> o) {
+checkUnnamed3137(core.List<api.GoogleCloudMlV1Model> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1Model(o[0]);
   checkGoogleCloudMlV1Model(o[1]);
@@ -514,7 +550,7 @@ buildGoogleCloudMlV1ListModelsResponse() {
   var o = new api.GoogleCloudMlV1ListModelsResponse();
   buildCounterGoogleCloudMlV1ListModelsResponse++;
   if (buildCounterGoogleCloudMlV1ListModelsResponse < 3) {
-    o.models = buildUnnamed1684();
+    o.models = buildUnnamed3137();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudMlV1ListModelsResponse--;
@@ -525,20 +561,20 @@ checkGoogleCloudMlV1ListModelsResponse(
     api.GoogleCloudMlV1ListModelsResponse o) {
   buildCounterGoogleCloudMlV1ListModelsResponse++;
   if (buildCounterGoogleCloudMlV1ListModelsResponse < 3) {
-    checkUnnamed1684(o.models);
+    checkUnnamed3137(o.models);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1ListModelsResponse--;
 }
 
-buildUnnamed1685() {
+buildUnnamed3138() {
   var o = new core.List<api.GoogleCloudMlV1Version>();
   o.add(buildGoogleCloudMlV1Version());
   o.add(buildGoogleCloudMlV1Version());
   return o;
 }
 
-checkUnnamed1685(core.List<api.GoogleCloudMlV1Version> o) {
+checkUnnamed3138(core.List<api.GoogleCloudMlV1Version> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1Version(o[0]);
   checkGoogleCloudMlV1Version(o[1]);
@@ -550,7 +586,7 @@ buildGoogleCloudMlV1ListVersionsResponse() {
   buildCounterGoogleCloudMlV1ListVersionsResponse++;
   if (buildCounterGoogleCloudMlV1ListVersionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.versions = buildUnnamed1685();
+    o.versions = buildUnnamed3138();
   }
   buildCounterGoogleCloudMlV1ListVersionsResponse--;
   return o;
@@ -561,19 +597,19 @@ checkGoogleCloudMlV1ListVersionsResponse(
   buildCounterGoogleCloudMlV1ListVersionsResponse++;
   if (buildCounterGoogleCloudMlV1ListVersionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1685(o.versions);
+    checkUnnamed3138(o.versions);
   }
   buildCounterGoogleCloudMlV1ListVersionsResponse--;
 }
 
-buildUnnamed1686() {
+buildUnnamed3139() {
   var o = new core.List<api.GoogleCloudMlV1Capability>();
   o.add(buildGoogleCloudMlV1Capability());
   o.add(buildGoogleCloudMlV1Capability());
   return o;
 }
 
-checkUnnamed1686(core.List<api.GoogleCloudMlV1Capability> o) {
+checkUnnamed3139(core.List<api.GoogleCloudMlV1Capability> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1Capability(o[0]);
   checkGoogleCloudMlV1Capability(o[1]);
@@ -584,7 +620,7 @@ buildGoogleCloudMlV1Location() {
   var o = new api.GoogleCloudMlV1Location();
   buildCounterGoogleCloudMlV1Location++;
   if (buildCounterGoogleCloudMlV1Location < 3) {
-    o.capabilities = buildUnnamed1686();
+    o.capabilities = buildUnnamed3139();
     o.name = "foo";
   }
   buildCounterGoogleCloudMlV1Location--;
@@ -594,7 +630,7 @@ buildGoogleCloudMlV1Location() {
 checkGoogleCloudMlV1Location(api.GoogleCloudMlV1Location o) {
   buildCounterGoogleCloudMlV1Location++;
   if (buildCounterGoogleCloudMlV1Location < 3) {
-    checkUnnamed1686(o.capabilities);
+    checkUnnamed3139(o.capabilities);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1Location--;
@@ -619,27 +655,27 @@ checkGoogleCloudMlV1ManualScaling(api.GoogleCloudMlV1ManualScaling o) {
   buildCounterGoogleCloudMlV1ManualScaling--;
 }
 
-buildUnnamed1687() {
+buildUnnamed3140() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1687(core.Map<core.String, core.String> o) {
+checkUnnamed3140(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1688() {
+buildUnnamed3141() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1688(core.List<core.String> o) {
+checkUnnamed3141(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -653,10 +689,11 @@ buildGoogleCloudMlV1Model() {
     o.defaultVersion = buildGoogleCloudMlV1Version();
     o.description = "foo";
     o.etag = "foo";
-    o.labels = buildUnnamed1687();
+    o.labels = buildUnnamed3140();
     o.name = "foo";
+    o.onlinePredictionConsoleLogging = true;
     o.onlinePredictionLogging = true;
-    o.regions = buildUnnamed1688();
+    o.regions = buildUnnamed3141();
   }
   buildCounterGoogleCloudMlV1Model--;
   return o;
@@ -668,22 +705,23 @@ checkGoogleCloudMlV1Model(api.GoogleCloudMlV1Model o) {
     checkGoogleCloudMlV1Version(o.defaultVersion);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed1687(o.labels);
+    checkUnnamed3140(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.onlinePredictionConsoleLogging, unittest.isTrue);
     unittest.expect(o.onlinePredictionLogging, unittest.isTrue);
-    checkUnnamed1688(o.regions);
+    checkUnnamed3141(o.regions);
   }
   buildCounterGoogleCloudMlV1Model--;
 }
 
-buildUnnamed1689() {
+buildUnnamed3142() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1689(core.Map<core.String, core.String> o) {
+checkUnnamed3142(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -697,7 +735,7 @@ buildGoogleCloudMlV1OperationMetadata() {
     o.createTime = "foo";
     o.endTime = "foo";
     o.isCancellationRequested = true;
-    o.labels = buildUnnamed1689();
+    o.labels = buildUnnamed3142();
     o.modelName = "foo";
     o.operationType = "foo";
     o.projectNumber = "foo";
@@ -714,7 +752,7 @@ checkGoogleCloudMlV1OperationMetadata(api.GoogleCloudMlV1OperationMetadata o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.isCancellationRequested, unittest.isTrue);
-    checkUnnamed1689(o.labels);
+    checkUnnamed3142(o.labels);
     unittest.expect(o.modelName, unittest.equals('foo'));
     unittest.expect(o.operationType, unittest.equals('foo'));
     unittest.expect(o.projectNumber, unittest.equals('foo'));
@@ -724,27 +762,27 @@ checkGoogleCloudMlV1OperationMetadata(api.GoogleCloudMlV1OperationMetadata o) {
   buildCounterGoogleCloudMlV1OperationMetadata--;
 }
 
-buildUnnamed1690() {
+buildUnnamed3143() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1690(core.List<core.String> o) {
+checkUnnamed3143(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1691() {
+buildUnnamed3144() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed1691(core.List<core.double> o) {
+checkUnnamed3144(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -755,8 +793,8 @@ buildGoogleCloudMlV1ParameterSpec() {
   var o = new api.GoogleCloudMlV1ParameterSpec();
   buildCounterGoogleCloudMlV1ParameterSpec++;
   if (buildCounterGoogleCloudMlV1ParameterSpec < 3) {
-    o.categoricalValues = buildUnnamed1690();
-    o.discreteValues = buildUnnamed1691();
+    o.categoricalValues = buildUnnamed3143();
+    o.discreteValues = buildUnnamed3144();
     o.maxValue = 42.0;
     o.minValue = 42.0;
     o.parameterName = "foo";
@@ -770,8 +808,8 @@ buildGoogleCloudMlV1ParameterSpec() {
 checkGoogleCloudMlV1ParameterSpec(api.GoogleCloudMlV1ParameterSpec o) {
   buildCounterGoogleCloudMlV1ParameterSpec++;
   if (buildCounterGoogleCloudMlV1ParameterSpec < 3) {
-    checkUnnamed1690(o.categoricalValues);
-    checkUnnamed1691(o.discreteValues);
+    checkUnnamed3143(o.categoricalValues);
+    checkUnnamed3144(o.discreteValues);
     unittest.expect(o.maxValue, unittest.equals(42.0));
     unittest.expect(o.minValue, unittest.equals(42.0));
     unittest.expect(o.parameterName, unittest.equals('foo'));
@@ -800,14 +838,14 @@ checkGoogleCloudMlV1PredictRequest(api.GoogleCloudMlV1PredictRequest o) {
   buildCounterGoogleCloudMlV1PredictRequest--;
 }
 
-buildUnnamed1692() {
+buildUnnamed3145() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1692(core.List<core.String> o) {
+checkUnnamed3145(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -818,10 +856,9 @@ buildGoogleCloudMlV1PredictionInput() {
   var o = new api.GoogleCloudMlV1PredictionInput();
   buildCounterGoogleCloudMlV1PredictionInput++;
   if (buildCounterGoogleCloudMlV1PredictionInput < 3) {
-    o.accelerator = buildGoogleCloudMlV1AcceleratorConfig();
     o.batchSize = "foo";
     o.dataFormat = "foo";
-    o.inputPaths = buildUnnamed1692();
+    o.inputPaths = buildUnnamed3145();
     o.maxWorkerCount = "foo";
     o.modelName = "foo";
     o.outputDataFormat = "foo";
@@ -839,10 +876,9 @@ buildGoogleCloudMlV1PredictionInput() {
 checkGoogleCloudMlV1PredictionInput(api.GoogleCloudMlV1PredictionInput o) {
   buildCounterGoogleCloudMlV1PredictionInput++;
   if (buildCounterGoogleCloudMlV1PredictionInput < 3) {
-    checkGoogleCloudMlV1AcceleratorConfig(o.accelerator);
     unittest.expect(o.batchSize, unittest.equals('foo'));
     unittest.expect(o.dataFormat, unittest.equals('foo'));
-    checkUnnamed1692(o.inputPaths);
+    checkUnnamed3145(o.inputPaths);
     unittest.expect(o.maxWorkerCount, unittest.equals('foo'));
     unittest.expect(o.modelName, unittest.equals('foo'));
     unittest.expect(o.outputDataFormat, unittest.equals('foo'));
@@ -881,6 +917,29 @@ checkGoogleCloudMlV1PredictionOutput(api.GoogleCloudMlV1PredictionOutput o) {
   buildCounterGoogleCloudMlV1PredictionOutput--;
 }
 
+core.int buildCounterGoogleCloudMlV1ReplicaConfig = 0;
+buildGoogleCloudMlV1ReplicaConfig() {
+  var o = new api.GoogleCloudMlV1ReplicaConfig();
+  buildCounterGoogleCloudMlV1ReplicaConfig++;
+  if (buildCounterGoogleCloudMlV1ReplicaConfig < 3) {
+    o.acceleratorConfig = buildGoogleCloudMlV1AcceleratorConfig();
+    o.imageUri = "foo";
+    o.tpuTfVersion = "foo";
+  }
+  buildCounterGoogleCloudMlV1ReplicaConfig--;
+  return o;
+}
+
+checkGoogleCloudMlV1ReplicaConfig(api.GoogleCloudMlV1ReplicaConfig o) {
+  buildCounterGoogleCloudMlV1ReplicaConfig++;
+  if (buildCounterGoogleCloudMlV1ReplicaConfig < 3) {
+    checkGoogleCloudMlV1AcceleratorConfig(o.acceleratorConfig);
+    unittest.expect(o.imageUri, unittest.equals('foo'));
+    unittest.expect(o.tpuTfVersion, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudMlV1ReplicaConfig--;
+}
+
 core.int buildCounterGoogleCloudMlV1SetDefaultVersionRequest = 0;
 buildGoogleCloudMlV1SetDefaultVersionRequest() {
   var o = new api.GoogleCloudMlV1SetDefaultVersionRequest();
@@ -897,27 +956,27 @@ checkGoogleCloudMlV1SetDefaultVersionRequest(
   buildCounterGoogleCloudMlV1SetDefaultVersionRequest--;
 }
 
-buildUnnamed1693() {
+buildUnnamed3146() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1693(core.List<core.String> o) {
+checkUnnamed3146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1694() {
+buildUnnamed3147() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1694(core.List<core.String> o) {
+checkUnnamed3147(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -928,11 +987,14 @@ buildGoogleCloudMlV1TrainingInput() {
   var o = new api.GoogleCloudMlV1TrainingInput();
   buildCounterGoogleCloudMlV1TrainingInput++;
   if (buildCounterGoogleCloudMlV1TrainingInput < 3) {
-    o.args = buildUnnamed1693();
+    o.args = buildUnnamed3146();
     o.hyperparameters = buildGoogleCloudMlV1HyperparameterSpec();
     o.jobDir = "foo";
+    o.masterConfig = buildGoogleCloudMlV1ReplicaConfig();
     o.masterType = "foo";
-    o.packageUris = buildUnnamed1694();
+    o.maxRunningTime = "foo";
+    o.packageUris = buildUnnamed3147();
+    o.parameterServerConfig = buildGoogleCloudMlV1ReplicaConfig();
     o.parameterServerCount = "foo";
     o.parameterServerType = "foo";
     o.pythonModule = "foo";
@@ -940,6 +1002,7 @@ buildGoogleCloudMlV1TrainingInput() {
     o.region = "foo";
     o.runtimeVersion = "foo";
     o.scaleTier = "foo";
+    o.workerConfig = buildGoogleCloudMlV1ReplicaConfig();
     o.workerCount = "foo";
     o.workerType = "foo";
   }
@@ -950,11 +1013,14 @@ buildGoogleCloudMlV1TrainingInput() {
 checkGoogleCloudMlV1TrainingInput(api.GoogleCloudMlV1TrainingInput o) {
   buildCounterGoogleCloudMlV1TrainingInput++;
   if (buildCounterGoogleCloudMlV1TrainingInput < 3) {
-    checkUnnamed1693(o.args);
+    checkUnnamed3146(o.args);
     checkGoogleCloudMlV1HyperparameterSpec(o.hyperparameters);
     unittest.expect(o.jobDir, unittest.equals('foo'));
+    checkGoogleCloudMlV1ReplicaConfig(o.masterConfig);
     unittest.expect(o.masterType, unittest.equals('foo'));
-    checkUnnamed1694(o.packageUris);
+    unittest.expect(o.maxRunningTime, unittest.equals('foo'));
+    checkUnnamed3147(o.packageUris);
+    checkGoogleCloudMlV1ReplicaConfig(o.parameterServerConfig);
     unittest.expect(o.parameterServerCount, unittest.equals('foo'));
     unittest.expect(o.parameterServerType, unittest.equals('foo'));
     unittest.expect(o.pythonModule, unittest.equals('foo'));
@@ -962,20 +1028,21 @@ checkGoogleCloudMlV1TrainingInput(api.GoogleCloudMlV1TrainingInput o) {
     unittest.expect(o.region, unittest.equals('foo'));
     unittest.expect(o.runtimeVersion, unittest.equals('foo'));
     unittest.expect(o.scaleTier, unittest.equals('foo'));
+    checkGoogleCloudMlV1ReplicaConfig(o.workerConfig);
     unittest.expect(o.workerCount, unittest.equals('foo'));
     unittest.expect(o.workerType, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1TrainingInput--;
 }
 
-buildUnnamed1695() {
+buildUnnamed3148() {
   var o = new core.List<api.GoogleCloudMlV1HyperparameterOutput>();
   o.add(buildGoogleCloudMlV1HyperparameterOutput());
   o.add(buildGoogleCloudMlV1HyperparameterOutput());
   return o;
 }
 
-checkUnnamed1695(core.List<api.GoogleCloudMlV1HyperparameterOutput> o) {
+checkUnnamed3148(core.List<api.GoogleCloudMlV1HyperparameterOutput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1HyperparameterOutput(o[0]);
   checkGoogleCloudMlV1HyperparameterOutput(o[1]);
@@ -986,10 +1053,13 @@ buildGoogleCloudMlV1TrainingOutput() {
   var o = new api.GoogleCloudMlV1TrainingOutput();
   buildCounterGoogleCloudMlV1TrainingOutput++;
   if (buildCounterGoogleCloudMlV1TrainingOutput < 3) {
+    o.builtInAlgorithmOutput = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
     o.completedTrialCount = "foo";
     o.consumedMLUnits = 42.0;
+    o.hyperparameterMetricTag = "foo";
+    o.isBuiltInAlgorithmJob = true;
     o.isHyperparameterTuningJob = true;
-    o.trials = buildUnnamed1695();
+    o.trials = buildUnnamed3148();
   }
   buildCounterGoogleCloudMlV1TrainingOutput--;
   return o;
@@ -998,25 +1068,41 @@ buildGoogleCloudMlV1TrainingOutput() {
 checkGoogleCloudMlV1TrainingOutput(api.GoogleCloudMlV1TrainingOutput o) {
   buildCounterGoogleCloudMlV1TrainingOutput++;
   if (buildCounterGoogleCloudMlV1TrainingOutput < 3) {
+    checkGoogleCloudMlV1BuiltInAlgorithmOutput(o.builtInAlgorithmOutput);
     unittest.expect(o.completedTrialCount, unittest.equals('foo'));
     unittest.expect(o.consumedMLUnits, unittest.equals(42.0));
+    unittest.expect(o.hyperparameterMetricTag, unittest.equals('foo'));
+    unittest.expect(o.isBuiltInAlgorithmJob, unittest.isTrue);
     unittest.expect(o.isHyperparameterTuningJob, unittest.isTrue);
-    checkUnnamed1695(o.trials);
+    checkUnnamed3148(o.trials);
   }
   buildCounterGoogleCloudMlV1TrainingOutput--;
 }
 
-buildUnnamed1696() {
+buildUnnamed3149() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1696(core.Map<core.String, core.String> o) {
+checkUnnamed3149(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed3150() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed3150(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudMlV1Version = 0;
@@ -1032,13 +1118,16 @@ buildGoogleCloudMlV1Version() {
     o.etag = "foo";
     o.framework = "foo";
     o.isDefault = true;
-    o.labels = buildUnnamed1696();
+    o.labels = buildUnnamed3149();
     o.lastUseTime = "foo";
     o.machineType = "foo";
     o.manualScaling = buildGoogleCloudMlV1ManualScaling();
     o.name = "foo";
+    o.packageUris = buildUnnamed3150();
+    o.predictionClass = "foo";
     o.pythonVersion = "foo";
     o.runtimeVersion = "foo";
+    o.serviceAccount = "foo";
     o.state = "foo";
   }
   buildCounterGoogleCloudMlV1Version--;
@@ -1056,26 +1145,29 @@ checkGoogleCloudMlV1Version(api.GoogleCloudMlV1Version o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.framework, unittest.equals('foo'));
     unittest.expect(o.isDefault, unittest.isTrue);
-    checkUnnamed1696(o.labels);
+    checkUnnamed3149(o.labels);
     unittest.expect(o.lastUseTime, unittest.equals('foo'));
     unittest.expect(o.machineType, unittest.equals('foo'));
     checkGoogleCloudMlV1ManualScaling(o.manualScaling);
     unittest.expect(o.name, unittest.equals('foo'));
+    checkUnnamed3150(o.packageUris);
+    unittest.expect(o.predictionClass, unittest.equals('foo'));
     unittest.expect(o.pythonVersion, unittest.equals('foo'));
     unittest.expect(o.runtimeVersion, unittest.equals('foo'));
+    unittest.expect(o.serviceAccount, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterGoogleCloudMlV1Version--;
 }
 
-buildUnnamed1697() {
+buildUnnamed3151() {
   var o = new core.List<api.GoogleIamV1AuditLogConfig>();
   o.add(buildGoogleIamV1AuditLogConfig());
   o.add(buildGoogleIamV1AuditLogConfig());
   return o;
 }
 
-checkUnnamed1697(core.List<api.GoogleIamV1AuditLogConfig> o) {
+checkUnnamed3151(core.List<api.GoogleIamV1AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditLogConfig(o[0]);
   checkGoogleIamV1AuditLogConfig(o[1]);
@@ -1086,7 +1178,7 @@ buildGoogleIamV1AuditConfig() {
   var o = new api.GoogleIamV1AuditConfig();
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed1697();
+    o.auditLogConfigs = buildUnnamed3151();
     o.service = "foo";
   }
   buildCounterGoogleIamV1AuditConfig--;
@@ -1096,20 +1188,20 @@ buildGoogleIamV1AuditConfig() {
 checkGoogleIamV1AuditConfig(api.GoogleIamV1AuditConfig o) {
   buildCounterGoogleIamV1AuditConfig++;
   if (buildCounterGoogleIamV1AuditConfig < 3) {
-    checkUnnamed1697(o.auditLogConfigs);
+    checkUnnamed3151(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditConfig--;
 }
 
-buildUnnamed1698() {
+buildUnnamed3152() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1698(core.List<core.String> o) {
+checkUnnamed3152(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1120,7 +1212,7 @@ buildGoogleIamV1AuditLogConfig() {
   var o = new api.GoogleIamV1AuditLogConfig();
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed1698();
+    o.exemptedMembers = buildUnnamed3152();
     o.logType = "foo";
   }
   buildCounterGoogleIamV1AuditLogConfig--;
@@ -1130,20 +1222,20 @@ buildGoogleIamV1AuditLogConfig() {
 checkGoogleIamV1AuditLogConfig(api.GoogleIamV1AuditLogConfig o) {
   buildCounterGoogleIamV1AuditLogConfig++;
   if (buildCounterGoogleIamV1AuditLogConfig < 3) {
-    checkUnnamed1698(o.exemptedMembers);
+    checkUnnamed3152(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1AuditLogConfig--;
 }
 
-buildUnnamed1699() {
+buildUnnamed3153() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1699(core.List<core.String> o) {
+checkUnnamed3153(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1155,7 +1247,7 @@ buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed1699();
+    o.members = buildUnnamed3153();
     o.role = "foo";
   }
   buildCounterGoogleIamV1Binding--;
@@ -1166,33 +1258,33 @@ checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition);
-    checkUnnamed1699(o.members);
+    checkUnnamed3153(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1Binding--;
 }
 
-buildUnnamed1700() {
+buildUnnamed3154() {
   var o = new core.List<api.GoogleIamV1AuditConfig>();
   o.add(buildGoogleIamV1AuditConfig());
   o.add(buildGoogleIamV1AuditConfig());
   return o;
 }
 
-checkUnnamed1700(core.List<api.GoogleIamV1AuditConfig> o) {
+checkUnnamed3154(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-buildUnnamed1701() {
+buildUnnamed3155() {
   var o = new core.List<api.GoogleIamV1Binding>();
   o.add(buildGoogleIamV1Binding());
   o.add(buildGoogleIamV1Binding());
   return o;
 }
 
-checkUnnamed1701(core.List<api.GoogleIamV1Binding> o) {
+checkUnnamed3155(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -1203,8 +1295,8 @@ buildGoogleIamV1Policy() {
   var o = new api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed1700();
-    o.bindings = buildUnnamed1701();
+    o.auditConfigs = buildUnnamed3154();
+    o.bindings = buildUnnamed3155();
     o.etag = "foo";
     o.version = 42;
   }
@@ -1215,8 +1307,8 @@ buildGoogleIamV1Policy() {
 checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed1700(o.auditConfigs);
-    checkUnnamed1701(o.bindings);
+    checkUnnamed3154(o.auditConfigs);
+    checkUnnamed3155(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -1244,14 +1336,14 @@ checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-buildUnnamed1702() {
+buildUnnamed3156() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1702(core.List<core.String> o) {
+checkUnnamed3156(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1262,7 +1354,7 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   var o = new api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1702();
+    o.permissions = buildUnnamed3156();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -1272,19 +1364,19 @@ checkGoogleIamV1TestIamPermissionsRequest(
     api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed1702(o.permissions);
+    checkUnnamed3156(o.permissions);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-buildUnnamed1703() {
+buildUnnamed3157() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1703(core.List<core.String> o) {
+checkUnnamed3157(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1295,7 +1387,7 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   var o = new api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1703();
+    o.permissions = buildUnnamed3157();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -1305,19 +1397,19 @@ checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed1703(o.permissions);
+    checkUnnamed3157(o.permissions);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-buildUnnamed1704() {
+buildUnnamed3158() {
   var o = new core.List<api.GoogleLongrunningOperation>();
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-checkUnnamed1704(core.List<api.GoogleLongrunningOperation> o) {
+checkUnnamed3158(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1329,7 +1421,7 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed1704();
+    o.operations = buildUnnamed3158();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -1340,12 +1432,12 @@ checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1704(o.operations);
+    checkUnnamed3158(o.operations);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-buildUnnamed1705() {
+buildUnnamed3159() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1360,7 +1452,7 @@ buildUnnamed1705() {
   return o;
 }
 
-checkUnnamed1705(core.Map<core.String, core.Object> o) {
+checkUnnamed3159(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1374,7 +1466,7 @@ checkUnnamed1705(core.Map<core.String, core.Object> o) {
   unittest.expect(casted4["string"], unittest.equals('foo'));
 }
 
-buildUnnamed1706() {
+buildUnnamed3160() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1389,7 +1481,7 @@ buildUnnamed1706() {
   return o;
 }
 
-checkUnnamed1706(core.Map<core.String, core.Object> o) {
+checkUnnamed3160(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1410,9 +1502,9 @@ buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed1705();
+    o.metadata = buildUnnamed3159();
     o.name = "foo";
-    o.response = buildUnnamed1706();
+    o.response = buildUnnamed3160();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1423,9 +1515,9 @@ checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkGoogleRpcStatus(o.error);
-    checkUnnamed1705(o.metadata);
+    checkUnnamed3159(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1706(o.response);
+    checkUnnamed3160(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -1445,7 +1537,7 @@ checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-buildUnnamed1707() {
+buildUnnamed3161() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1460,7 +1552,7 @@ buildUnnamed1707() {
   return o;
 }
 
-checkUnnamed1707(core.Map<core.String, core.Object> o) {
+checkUnnamed3161(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o["x"]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1474,17 +1566,17 @@ checkUnnamed1707(core.Map<core.String, core.Object> o) {
   unittest.expect(casted8["string"], unittest.equals('foo'));
 }
 
-buildUnnamed1708() {
+buildUnnamed3162() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed1707());
-  o.add(buildUnnamed1707());
+  o.add(buildUnnamed3161());
+  o.add(buildUnnamed3161());
   return o;
 }
 
-checkUnnamed1708(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3162(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1707(o[0]);
-  checkUnnamed1707(o[1]);
+  checkUnnamed3161(o[0]);
+  checkUnnamed3161(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1493,7 +1585,7 @@ buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed1708();
+    o.details = buildUnnamed3162();
     o.message = "foo";
   }
   buildCounterGoogleRpcStatus--;
@@ -1504,7 +1596,7 @@ checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed1708(o.details);
+    checkUnnamed3162(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -1568,6 +1660,15 @@ main() {
       var o = buildGoogleCloudMlV1AutoScaling();
       var od = new api.GoogleCloudMlV1AutoScaling.fromJson(o.toJson());
       checkGoogleCloudMlV1AutoScaling(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudMlV1BuiltInAlgorithmOutput", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
+      var od =
+          new api.GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(o.toJson());
+      checkGoogleCloudMlV1BuiltInAlgorithmOutput(od);
     });
   });
 
@@ -1721,6 +1822,14 @@ main() {
       var o = buildGoogleCloudMlV1PredictionOutput();
       var od = new api.GoogleCloudMlV1PredictionOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictionOutput(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudMlV1ReplicaConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudMlV1ReplicaConfig();
+      var od = new api.GoogleCloudMlV1ReplicaConfig.fromJson(o.toJson());
+      checkGoogleCloudMlV1ReplicaConfig(od);
     });
   });
 
@@ -2181,9 +2290,9 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_filter = "foo";
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2216,11 +2325,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2231,9 +2340,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               filter: arg_filter,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudMlV1ListJobsResponse(response);
@@ -3137,9 +3246,9 @@ main() {
       api.ProjectsModelsVersionsResourceApi res =
           new api.MlApi(mock).projects.models.versions;
       var arg_parent = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3172,11 +3281,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3188,9 +3297,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudMlV1ListVersionsResponse(response);
@@ -3368,58 +3477,6 @@ main() {
       })));
     });
 
-    unittest.test("method--delete", () {
-      var mock = new HttpServerMock();
-      api.ProjectsOperationsResourceApi res =
-          new api.MlApi(mock).projects.operations;
-      var arg_name = "foo";
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = convert.json.encode(buildGoogleProtobufEmpty());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response);
-      })));
-    });
-
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsOperationsResourceApi res =
@@ -3477,9 +3534,9 @@ main() {
       api.ProjectsOperationsResourceApi res =
           new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
-      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3512,11 +3569,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3528,9 +3585,9 @@ main() {
       }), true);
       res
           .list(arg_name,
-              filter: arg_filter,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleLongrunningListOperationsResponse(response);

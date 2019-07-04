@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4648() {
+buildUnnamed5025() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4648(core.List<core.String> o) {
+checkUnnamed5025(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -70,7 +70,7 @@ buildAdmissionRule() {
   if (buildCounterAdmissionRule < 3) {
     o.enforcementMode = "foo";
     o.evaluationMode = "foo";
-    o.requireAttestationsBy = buildUnnamed4648();
+    o.requireAttestationsBy = buildUnnamed5025();
   }
   buildCounterAdmissionRule--;
   return o;
@@ -81,7 +81,7 @@ checkAdmissionRule(api.AdmissionRule o) {
   if (buildCounterAdmissionRule < 3) {
     unittest.expect(o.enforcementMode, unittest.equals('foo'));
     unittest.expect(o.evaluationMode, unittest.equals('foo'));
-    checkUnnamed4648(o.requireAttestationsBy);
+    checkUnnamed5025(o.requireAttestationsBy);
   }
   buildCounterAdmissionRule--;
 }
@@ -138,6 +138,7 @@ buildAttestorPublicKey() {
     o.asciiArmoredPgpPublicKey = "foo";
     o.comment = "foo";
     o.id = "foo";
+    o.pkixPublicKey = buildPkixPublicKey();
   }
   buildCounterAttestorPublicKey--;
   return o;
@@ -149,18 +150,19 @@ checkAttestorPublicKey(api.AttestorPublicKey o) {
     unittest.expect(o.asciiArmoredPgpPublicKey, unittest.equals('foo'));
     unittest.expect(o.comment, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
+    checkPkixPublicKey(o.pkixPublicKey);
   }
   buildCounterAttestorPublicKey--;
 }
 
-buildUnnamed4649() {
+buildUnnamed5026() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4649(core.List<core.String> o) {
+checkUnnamed5026(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -172,7 +174,7 @@ buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed4649();
+    o.members = buildUnnamed5026();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -183,7 +185,7 @@ checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition);
-    checkUnnamed4649(o.members);
+    checkUnnamed5026(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -229,14 +231,14 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
-buildUnnamed4650() {
+buildUnnamed5027() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed4650(core.List<api.Binding> o) {
+checkUnnamed5027(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -247,7 +249,7 @@ buildIamPolicy() {
   var o = new api.IamPolicy();
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
-    o.bindings = buildUnnamed4650();
+    o.bindings = buildUnnamed5027();
     o.etag = "foo";
     o.version = 42;
   }
@@ -258,21 +260,21 @@ buildIamPolicy() {
 checkIamPolicy(api.IamPolicy o) {
   buildCounterIamPolicy++;
   if (buildCounterIamPolicy < 3) {
-    checkUnnamed4650(o.bindings);
+    checkUnnamed5027(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterIamPolicy--;
 }
 
-buildUnnamed4651() {
+buildUnnamed5028() {
   var o = new core.List<api.Attestor>();
   o.add(buildAttestor());
   o.add(buildAttestor());
   return o;
 }
 
-checkUnnamed4651(core.List<api.Attestor> o) {
+checkUnnamed5028(core.List<api.Attestor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttestor(o[0]);
   checkAttestor(o[1]);
@@ -283,7 +285,7 @@ buildListAttestorsResponse() {
   var o = new api.ListAttestorsResponse();
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
-    o.attestors = buildUnnamed4651();
+    o.attestors = buildUnnamed5028();
     o.nextPageToken = "foo";
   }
   buildCounterListAttestorsResponse--;
@@ -293,33 +295,54 @@ buildListAttestorsResponse() {
 checkListAttestorsResponse(api.ListAttestorsResponse o) {
   buildCounterListAttestorsResponse++;
   if (buildCounterListAttestorsResponse < 3) {
-    checkUnnamed4651(o.attestors);
+    checkUnnamed5028(o.attestors);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAttestorsResponse--;
 }
 
-buildUnnamed4652() {
+core.int buildCounterPkixPublicKey = 0;
+buildPkixPublicKey() {
+  var o = new api.PkixPublicKey();
+  buildCounterPkixPublicKey++;
+  if (buildCounterPkixPublicKey < 3) {
+    o.publicKeyPem = "foo";
+    o.signatureAlgorithm = "foo";
+  }
+  buildCounterPkixPublicKey--;
+  return o;
+}
+
+checkPkixPublicKey(api.PkixPublicKey o) {
+  buildCounterPkixPublicKey++;
+  if (buildCounterPkixPublicKey < 3) {
+    unittest.expect(o.publicKeyPem, unittest.equals('foo'));
+    unittest.expect(o.signatureAlgorithm, unittest.equals('foo'));
+  }
+  buildCounterPkixPublicKey--;
+}
+
+buildUnnamed5029() {
   var o = new core.List<api.AdmissionWhitelistPattern>();
   o.add(buildAdmissionWhitelistPattern());
   o.add(buildAdmissionWhitelistPattern());
   return o;
 }
 
-checkUnnamed4652(core.List<api.AdmissionWhitelistPattern> o) {
+checkUnnamed5029(core.List<api.AdmissionWhitelistPattern> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionWhitelistPattern(o[0]);
   checkAdmissionWhitelistPattern(o[1]);
 }
 
-buildUnnamed4653() {
+buildUnnamed5030() {
   var o = new core.Map<core.String, api.AdmissionRule>();
   o["x"] = buildAdmissionRule();
   o["y"] = buildAdmissionRule();
   return o;
 }
 
-checkUnnamed4653(core.Map<core.String, api.AdmissionRule> o) {
+checkUnnamed5030(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdmissionRule(o["x"]);
   checkAdmissionRule(o["y"]);
@@ -330,10 +353,11 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.admissionWhitelistPatterns = buildUnnamed4652();
-    o.clusterAdmissionRules = buildUnnamed4653();
+    o.admissionWhitelistPatterns = buildUnnamed5029();
+    o.clusterAdmissionRules = buildUnnamed5030();
     o.defaultAdmissionRule = buildAdmissionRule();
     o.description = "foo";
+    o.globalPolicyEvaluationMode = "foo";
     o.name = "foo";
     o.updateTime = "foo";
   }
@@ -344,10 +368,11 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed4652(o.admissionWhitelistPatterns);
-    checkUnnamed4653(o.clusterAdmissionRules);
+    checkUnnamed5029(o.admissionWhitelistPatterns);
+    checkUnnamed5030(o.clusterAdmissionRules);
     checkAdmissionRule(o.defaultAdmissionRule);
     unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.globalPolicyEvaluationMode, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
@@ -373,14 +398,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed4654() {
+buildUnnamed5031() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4654(core.List<core.String> o) {
+checkUnnamed5031(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -391,7 +416,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed4654();
+    o.permissions = buildUnnamed5031();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -400,19 +425,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed4654(o.permissions);
+    checkUnnamed5031(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed4655() {
+buildUnnamed5032() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4655(core.List<core.String> o) {
+checkUnnamed5032(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -423,7 +448,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed4655();
+    o.permissions = buildUnnamed5032();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -432,19 +457,19 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed4655(o.permissions);
+    checkUnnamed5032(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
 
-buildUnnamed4656() {
+buildUnnamed5033() {
   var o = new core.List<api.AttestorPublicKey>();
   o.add(buildAttestorPublicKey());
   o.add(buildAttestorPublicKey());
   return o;
 }
 
-checkUnnamed4656(core.List<api.AttestorPublicKey> o) {
+checkUnnamed5033(core.List<api.AttestorPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttestorPublicKey(o[0]);
   checkAttestorPublicKey(o[1]);
@@ -457,7 +482,7 @@ buildUserOwnedDrydockNote() {
   if (buildCounterUserOwnedDrydockNote < 3) {
     o.delegationServiceAccountEmail = "foo";
     o.noteReference = "foo";
-    o.publicKeys = buildUnnamed4656();
+    o.publicKeys = buildUnnamed5033();
   }
   buildCounterUserOwnedDrydockNote--;
   return o;
@@ -468,7 +493,7 @@ checkUserOwnedDrydockNote(api.UserOwnedDrydockNote o) {
   if (buildCounterUserOwnedDrydockNote < 3) {
     unittest.expect(o.delegationServiceAccountEmail, unittest.equals('foo'));
     unittest.expect(o.noteReference, unittest.equals('foo'));
-    checkUnnamed4656(o.publicKeys);
+    checkUnnamed5033(o.publicKeys);
   }
   buildCounterUserOwnedDrydockNote--;
 }
@@ -543,6 +568,14 @@ main() {
       var o = buildListAttestorsResponse();
       var od = new api.ListAttestorsResponse.fromJson(o.toJson());
       checkListAttestorsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-PkixPublicKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildPkixPublicKey();
+      var od = new api.PkixPublicKey.fromJson(o.toJson());
+      checkPkixPublicKey(od);
     });
   });
 
@@ -866,6 +899,7 @@ main() {
       api.ProjectsAttestorsResourceApi res =
           new api.BinaryauthorizationApi(mock).projects.attestors;
       var arg_resource = "foo";
+      var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -898,6 +932,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
+            unittest.equals(arg_options_requestedPolicyVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -907,7 +944,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource, $fields: arg_$fields)
+          .getIamPolicy(arg_resource,
+              options_requestedPolicyVersion:
+                  arg_options_requestedPolicyVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkIamPolicy(response);
       })));
@@ -1149,6 +1189,7 @@ main() {
       api.ProjectsPolicyResourceApi res =
           new api.BinaryauthorizationApi(mock).projects.policy;
       var arg_resource = "foo";
+      var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1181,6 +1222,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
+            unittest.equals(arg_options_requestedPolicyVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1190,7 +1234,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource, $fields: arg_$fields)
+          .getIamPolicy(arg_resource,
+              options_requestedPolicyVersion:
+                  arg_options_requestedPolicyVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkIamPolicy(response);
       })));
