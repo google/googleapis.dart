@@ -212,13 +212,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
-  ///
   /// [name] - The name of the operation's parent resource.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -231,10 +231,10 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.int pageSize,
-      core.String filter,
-      core.String name,
+      {core.String name,
       core.String pageToken,
+      core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -243,17 +243,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -288,8 +288,7 @@ class ServicesResourceApi {
   /// [parent] - Parent to enable services on.
   ///
   /// An example name would be:
-  /// `projects/123`
-  /// where `123` is the project number (not project ID).
+  /// `projects/123` where `123` is the project number.
   ///
   /// The `BatchEnableServices` method currently only supports projects.
   /// Value must have pattern "^[^/]+/[^/]+$".
@@ -354,8 +353,8 @@ class ServicesResourceApi {
   /// The enable and disable methods currently only support projects.
   ///
   /// An example name would be:
-  /// `projects/123/services/serviceusage.googleapis.com`
-  /// where `123` is the project number (not project ID).
+  /// `projects/123/services/serviceusage.googleapis.com` where `123` is the
+  /// project number.
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -414,8 +413,8 @@ class ServicesResourceApi {
   /// the user enabling the service.
   ///
   /// An example name would be:
-  /// `projects/123/services/serviceusage.googleapis.com`
-  /// where `123` is the project number (not project ID).
+  /// `projects/123/services/serviceusage.googleapis.com` where `123` is the
+  /// project number.
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -465,8 +464,8 @@ class ServicesResourceApi {
   /// [name] - Name of the consumer and service to get the `ConsumerState` for.
   ///
   /// An example name would be:
-  /// `projects/123/services/serviceusage.googleapis.com`
-  /// where `123` is the project number (not project ID).
+  /// `projects/123/services/serviceusage.googleapis.com` where `123` is the
+  /// project number.
   /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -520,8 +519,7 @@ class ServicesResourceApi {
   /// [parent] - Parent to search for services on.
   ///
   /// An example name would be:
-  /// `projects/123`
-  /// where `123` is the project number (not project ID).
+  /// `projects/123` where `123` is the project number.
   /// Value must have pattern "^[^/]+/[^/]+$".
   ///
   /// [filter] - Only list services that conform to the given filter.
@@ -702,7 +700,7 @@ class Api {
   }
 }
 
-/// Configuration for an anthentication provider, including support for
+/// Configuration for an authentication provider, including support for
 /// [JSON Web Token
 /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthProvider {
@@ -744,11 +742,11 @@ class AuthProvider {
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document:
   ///  - can be retrieved from
-  /// [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html
-  ///    of the issuer.
-  /// - can be inferred from the email domain of the issuer (e.g. a Google
-  /// service account).
+  ///    [OpenID
+  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  ///    the issuer.
+  ///  - can be inferred from the email domain of the issuer (e.g. a Google
+  ///  service account).
   ///
   /// Example: https://www.googleapis.com/oauth2/v1/certs
   core.String jwksUri;
@@ -963,39 +961,6 @@ class AuthenticationRule {
   }
 }
 
-/// Configuration of authorization.
-///
-/// This section determines the authorization provider, if unspecified, then no
-/// authorization check will be done.
-///
-/// Example:
-///
-///     experimental:
-///       authorization:
-///         provider: firebaserules.googleapis.com
-class AuthorizationConfig {
-  /// The name of the authorization provider, such as
-  /// firebaserules.googleapis.com.
-  core.String provider;
-
-  AuthorizationConfig();
-
-  AuthorizationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (provider != null) {
-      _json["provider"] = provider;
-    }
-    return _json;
-  }
-}
-
 /// `Backend` defines the backend configuration for a service.
 class Backend {
   /// A list of API backend rules that apply to individual API methods.
@@ -1065,11 +1030,11 @@ class BackendRule {
   /// translated path:
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe
-  /// Translated:
+  ///     Translated:
   /// https://example.cloudfunctions.net/getUser?cid=widgetworks&uid=johndoe
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe?timezone=EST
-  /// Translated:
+  ///     Translated:
   /// https://example.cloudfunctions.net/getUser?timezone=EST&cid=widgetworks&uid=johndoe
   /// - "APPEND_PATH_TO_ADDRESS" : The request path will be appended to the
   /// backend address.
@@ -1085,11 +1050,11 @@ class BackendRule {
   /// translated path:
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe
-  /// Translated:
-  /// https://example.appspot.com/api/company/widgetworks/user/johndoe
+  ///     Translated:
+  ///     https://example.appspot.com/api/company/widgetworks/user/johndoe
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe?timezone=EST
-  /// Translated:
+  ///     Translated:
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
   core.String pathTranslation;
 
@@ -1147,6 +1112,56 @@ class BackendRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/// Response message for BatchCreateAdminOverrides
+class BatchCreateAdminOverridesResponse {
+  /// The overrides that were created.
+  core.List<QuotaOverride> overrides;
+
+  BatchCreateAdminOverridesResponse();
+
+  BatchCreateAdminOverridesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("overrides")) {
+      overrides = (_json["overrides"] as core.List)
+          .map<QuotaOverride>((value) => new QuotaOverride.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (overrides != null) {
+      _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for BatchCreateConsumerOverrides
+class BatchCreateConsumerOverridesResponse {
+  /// The overrides that were created.
+  core.List<QuotaOverride> overrides;
+
+  BatchCreateConsumerOverridesResponse();
+
+  BatchCreateConsumerOverridesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("overrides")) {
+      overrides = (_json["overrides"] as core.List)
+          .map<QuotaOverride>((value) => new QuotaOverride.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (overrides != null) {
+      _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1783,8 +1798,7 @@ class Documentation {
 /// A documentation rule provides information about individual API elements.
 class DocumentationRule {
   /// Deprecation description of the selected element(s). It can be provided if
-  /// an
-  /// element is marked as `deprecated`.
+  /// an element is marked as `deprecated`.
   core.String deprecationDescription;
 
   /// Description of the selected API(s).
@@ -1793,9 +1807,9 @@ class DocumentationRule {
   /// The selector is a comma-separated list of patterns. Each pattern is a
   /// qualified name of the element which may end in "*", indicating a wildcard.
   /// Wildcards are only allowed at the end and for a whole component of the
-  /// qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". To
-  /// specify a default for all applicable elements, the whole pattern "*"
-  /// is used.
+  /// qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A
+  /// wildcard will match one or more components. To specify a default for all
+  /// applicable elements, the whole pattern "*" is used.
   core.String selector;
 
   DocumentationRule();
@@ -1961,9 +1975,9 @@ class Endpoint {
   /// The specification of an Internet routable address of API frontend that
   /// will
   /// handle requests to this [API
-  /// Endpoint](https://cloud.google.com/apis/design/glossary).
-  /// It should be either a valid IPv4 address or a fully-qualified domain name.
-  /// For example, "8.8.8.8" or "myservice.appspot.com".
+  /// Endpoint](https://cloud.google.com/apis/design/glossary). It should be
+  /// either a valid IPv4 address or a fully-qualified domain name. For example,
+  /// "8.8.8.8" or "myservice.appspot.com".
   core.String target;
 
   Endpoint();
@@ -2112,30 +2126,6 @@ class EnumValue {
     }
     if (options != null) {
       _json["options"] = options.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// Experimental service configuration. These configuration options can
-/// only be used by whitelisted users.
-class Experimental {
-  /// Authorization configuration.
-  AuthorizationConfig authorization;
-
-  Experimental();
-
-  Experimental.fromJson(core.Map _json) {
-    if (_json.containsKey("authorization")) {
-      authorization = new AuthorizationConfig.fromJson(_json["authorization"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (authorization != null) {
-      _json["authorization"] = (authorization).toJson();
     }
     return _json;
   }
@@ -2348,9 +2338,6 @@ class GoogleApiService {
   ///     - name: google.someapi.v1.SomeEnum
   core.List<Enum> enums;
 
-  /// Experimental configuration.
-  Experimental experimental;
-
   /// HTTP configuration.
   Http http;
 
@@ -2458,9 +2445,6 @@ class GoogleApiService {
           .map<Enum>((value) => new Enum.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("experimental")) {
-      experimental = new Experimental.fromJson(_json["experimental"]);
-    }
     if (_json.containsKey("http")) {
       http = new Http.fromJson(_json["http"]);
     }
@@ -2559,9 +2543,6 @@ class GoogleApiService {
     }
     if (enums != null) {
       _json["enums"] = enums.map((value) => (value).toJson()).toList();
-    }
-    if (experimental != null) {
-      _json["experimental"] = (experimental).toJson();
     }
     if (http != null) {
       _json["http"] = (http).toJson();
@@ -2812,7 +2793,7 @@ class GoogleApiServiceusageV1ServiceConfig {
 /// HttpRule, each specifying the mapping of an RPC method
 /// to one or more HTTP REST API methods.
 class Http {
-  /// When set to true, URL path parmeters will be fully URI-decoded except in
+  /// When set to true, URL path parameters will be fully URI-decoded except in
   /// cases of single segment matches in reserved expansion, where "%2F" will be
   /// left encoded.
   ///
@@ -3062,8 +3043,8 @@ class Http {
 /// side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
 /// server side does the reverse decoding. Such variables show up in the
 /// [Discovery
-/// Document](https://developers.google.com/discovery/v1/reference/apis)
-/// as `{var}`.
+/// Document](https://developers.google.com/discovery/v1/reference/apis) as
+/// `{var}`.
 ///
 /// If a variable contains multiple path segments, such as `"{var=foo / * }"`
 /// or `"{var=**}"`, when such a variable is expanded into a URL path on the
@@ -3071,8 +3052,8 @@ class Http {
 /// The server side does the reverse decoding, except "%2F" and "%2f" are left
 /// unchanged. Such variables show up in the
 /// [Discovery
-/// Document](https://developers.google.com/discovery/v1/reference/apis)
-/// as `{+var}`.
+/// Document](https://developers.google.com/discovery/v1/reference/apis) as
+/// `{+var}`.
 ///
 /// ## Using gRPC API Service Configuration
 ///
@@ -3646,6 +3627,42 @@ class MetricDescriptor {
   /// for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use
+  /// these features, you must sign up in advance and sign a Trusted Tester
+  /// agreement (which includes confidentiality provisions). These features may
+  /// be unstable, changed in backward-incompatible ways, and are not
+  /// guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared
+  /// for widespread use. By Alpha, all significant design issues are resolved
+  /// and we are in the process of verifying functionality. Alpha customers
+  /// need to apply for access, agree to applicable terms, and have their
+  /// projects whitelisted. Alpha releases don’t have to be feature complete,
+  /// no SLAs are provided, and there are no technical support obligations, but
+  /// they will be far enough along that customers can actually use them in
+  /// test environments or for limited-use tests -- just like they would in
+  /// normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any
+  /// customer to use. There are no SLA or technical support obligations in a
+  /// Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and
+  /// fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more
+  /// information, see the “Deprecation Policy” section of our [Terms of
+  /// Service](https://cloud.google.com/terms/)
+  /// and the [Google Cloud Platform Subject to the Deprecation
+  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. Metadata which can be used to guide usage of the metric.
   MetricDescriptorMetadata metadata;
 
@@ -3772,6 +3789,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
     }
@@ -3804,6 +3824,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -3833,6 +3856,7 @@ class MetricDescriptorMetadata {
   /// data loss due to errors.
   core.String ingestDelay;
 
+  /// Deprecated. Please use the MetricDescriptor.launch_stage instead.
   /// The launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
@@ -4082,6 +4106,42 @@ class MonitoredResourceDescriptor {
   /// identified by values for the labels `"database_id"` and `"zone"`.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the monitored resource definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use
+  /// these features, you must sign up in advance and sign a Trusted Tester
+  /// agreement (which includes confidentiality provisions). These features may
+  /// be unstable, changed in backward-incompatible ways, and are not
+  /// guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared
+  /// for widespread use. By Alpha, all significant design issues are resolved
+  /// and we are in the process of verifying functionality. Alpha customers
+  /// need to apply for access, agree to applicable terms, and have their
+  /// projects whitelisted. Alpha releases don’t have to be feature complete,
+  /// no SLAs are provided, and there are no technical support obligations, but
+  /// they will be far enough along that customers can actually use them in
+  /// test environments or for limited-use tests -- just like they would in
+  /// normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any
+  /// customer to use. There are no SLA or technical support obligations in a
+  /// Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and
+  /// fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more
+  /// information, see the “Deprecation Policy” section of our [Terms of
+  /// Service](https://cloud.google.com/terms/)
+  /// and the [Google Cloud Platform Subject to the Deprecation
+  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. The resource name of the monitored resource descriptor:
   /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where
   /// {type} is the value of the `type` field in this object and
@@ -4109,6 +4169,9 @@ class MonitoredResourceDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -4128,6 +4191,9 @@ class MonitoredResourceDescriptor {
     }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
     }
     if (name != null) {
       _json["name"] = name;
@@ -4329,7 +4395,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -4459,8 +4525,7 @@ class Option {
 /// nested documentation set structure.
 class Page {
   /// The Markdown content of the page. You can use <code>&#40;== include {path}
-  /// ==&#41;</code>
-  /// to include content from a Markdown file.
+  /// ==&#41;</code> to include content from a Markdown file.
   core.String content;
 
   /// The name of the page. It will be used as an identity of the page to
@@ -4518,7 +4583,7 @@ class Page {
 /// Quota configuration helps to achieve fairness and budgeting in service
 /// usage.
 ///
-/// The quota configuration works this way:
+/// The metric based quota configuration works this way:
 /// - The service configuration defines a set of metrics.
 /// - For API calls, the quota.metric_rules maps methods to metrics with
 ///   corresponding costs.
@@ -4760,6 +4825,77 @@ class QuotaLimit {
   }
 }
 
+/// A quota override
+class QuotaOverride {
+  /// If this map is nonempty, then this override applies only to specific
+  /// values
+  /// for dimensions defined in the limit unit.
+  ///
+  /// For example, an override on a limit with the unit 1/{project}/{region}
+  /// could contain an entry with the key "region" and the value "us-east-1";
+  /// the override is only applied to quota consumed in that region.
+  ///
+  /// This map has the following restrictions:
+  /// - Keys that are not defined in the limit's unit are not valid keys.
+  ///   Any string appearing in {brackets} in the unit (besides {project} or
+  ///   {user}) is a defined key.
+  /// - "project" is not a valid key; the project is already specified in
+  ///   the parent resource name.
+  /// - "user" is not a valid key; the API does not support quota overrides
+  ///   that apply only to a specific user.
+  /// - If "region" appears as a key, its value must be a valid Cloud region.
+  /// - If "zone" appears as a key, its value must be a valid Cloud zone.
+  /// - If any valid key other than "region" or "zone" appears in the map, then
+  /// all valid keys other than "region" or "zone" must also appear in the map.
+  core.Map<core.String, core.String> dimensions;
+
+  /// The resource name of the override.
+  /// This name is generated by the server when the override is created.
+  ///
+  /// Example names would be:
+  /// `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
+  /// `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`
+  ///
+  /// The resource name is intended to be opaque and should not be parsed for
+  /// its component strings, since its representation could change in the
+  /// future.
+  core.String name;
+
+  /// The overriding quota limit value.
+  /// Can be any nonnegative integer, or -1 (unlimited quota).
+  core.String overrideValue;
+
+  QuotaOverride();
+
+  QuotaOverride.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensions")) {
+      dimensions =
+          (_json["dimensions"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("overrideValue")) {
+      overrideValue = _json["overrideValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (overrideValue != null) {
+      _json["overrideValue"] = overrideValue;
+    }
+    return _json;
+  }
+}
+
 /// `SourceContext` represents information about the source of a
 /// protobuf element, like the file in which it is defined.
 class SourceContext {
@@ -4815,61 +4951,12 @@ class SourceInfo {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

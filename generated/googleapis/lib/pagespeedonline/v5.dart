@@ -747,6 +747,56 @@ class LighthouseResultV5RuntimeError {
   }
 }
 
+class LighthouseResultV5StackPacks {
+  /// The stack pack advice strings.
+  core.Map<core.String, core.String> descriptions;
+
+  /// The stack pack icon data uri.
+  core.String iconDataURL;
+
+  /// The stack pack id.
+  core.String id;
+
+  /// The stack pack title.
+  core.String title;
+
+  LighthouseResultV5StackPacks();
+
+  LighthouseResultV5StackPacks.fromJson(core.Map _json) {
+    if (_json.containsKey("descriptions")) {
+      descriptions =
+          (_json["descriptions"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("iconDataURL")) {
+      iconDataURL = _json["iconDataURL"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (descriptions != null) {
+      _json["descriptions"] = descriptions;
+    }
+    if (iconDataURL != null) {
+      _json["iconDataURL"] = iconDataURL;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 /// Timing information for this LHR.
 class LighthouseResultV5Timing {
   /// The total duration of Lighthouse's run.
@@ -811,6 +861,9 @@ class LighthouseResultV5 {
   /// problem that this Lighthouse result may need to be discarded.
   LighthouseResultV5RuntimeError runtimeError;
 
+  /// The Stack Pack advice strings.
+  core.List<LighthouseResultV5StackPacks> stackPacks;
+
   /// Timing information for this LHR.
   LighthouseResultV5Timing timing;
 
@@ -866,6 +919,12 @@ class LighthouseResultV5 {
       runtimeError =
           new LighthouseResultV5RuntimeError.fromJson(_json["runtimeError"]);
     }
+    if (_json.containsKey("stackPacks")) {
+      stackPacks = (_json["stackPacks"] as core.List)
+          .map<LighthouseResultV5StackPacks>(
+              (value) => new LighthouseResultV5StackPacks.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("timing")) {
       timing = new LighthouseResultV5Timing.fromJson(_json["timing"]);
     }
@@ -917,6 +976,10 @@ class LighthouseResultV5 {
     }
     if (runtimeError != null) {
       _json["runtimeError"] = (runtimeError).toJson();
+    }
+    if (stackPacks != null) {
+      _json["stackPacks"] =
+          stackPacks.map((value) => (value).toJson()).toList();
     }
     if (timing != null) {
       _json["timing"] = (timing).toJson();

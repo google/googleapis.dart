@@ -7712,6 +7712,7 @@ class CdnSettings {
   /// The method or protocol used to transmit the video stream.
   /// Possible string values are:
   /// - "dash"
+  /// - "hls"
   /// - "rtmp"
   core.String ingestionType;
 
@@ -7940,13 +7941,6 @@ class ChannelAuditDetails {
   /// Whether or not the channel has any copyright strikes.
   core.bool copyrightStrikesGoodStanding;
 
-  /// Describes the general state of the channel. This field will always show if
-  /// there are any issues whatsoever with the channel. Currently this field
-  /// represents the result of the logical and operation over the community
-  /// guidelines good standing, the copyright strikes good standing and the
-  /// content ID claims good standing, but this may change in the future.
-  core.bool overallGoodStanding;
-
   ChannelAuditDetails();
 
   ChannelAuditDetails.fromJson(core.Map _json) {
@@ -7959,9 +7953,6 @@ class ChannelAuditDetails {
     }
     if (_json.containsKey("copyrightStrikesGoodStanding")) {
       copyrightStrikesGoodStanding = _json["copyrightStrikesGoodStanding"];
-    }
-    if (_json.containsKey("overallGoodStanding")) {
-      overallGoodStanding = _json["overallGoodStanding"];
     }
   }
 
@@ -7977,9 +7968,6 @@ class ChannelAuditDetails {
     }
     if (copyrightStrikesGoodStanding != null) {
       _json["copyrightStrikesGoodStanding"] = copyrightStrikesGoodStanding;
-    }
-    if (overallGoodStanding != null) {
-      _json["overallGoodStanding"] = overallGoodStanding;
     }
     return _json;
   }
@@ -8961,6 +8949,16 @@ class ChannelSnippet {
   /// A map of thumbnail images associated with the channel. For each object in
   /// the map, the key is the name of the thumbnail image, and the value is an
   /// object that contains other information about the thumbnail.
+  ///
+  /// When displaying thumbnails in your application, make sure that your code
+  /// uses the image URLs exactly as they are returned in API responses. For
+  /// example, your application should not use the http domain instead of the
+  /// https domain in a URL returned in an API response.
+  ///
+  /// Beginning in July 2018, channel thumbnail URLs will only be available in
+  /// the https domain, which is how the URLs appear in API responses. After
+  /// that time, you might see broken images in your application if it tries to
+  /// load YouTube images from the http domain.
   ThumbnailDetails thumbnails;
 
   /// The channel's title.
@@ -9914,6 +9912,7 @@ class ContentRating {
   /// - "cnc16"
   /// - "cnc18"
   /// - "cncE"
+  /// - "cncInterdiction"
   /// - "cncT"
   /// - "cncUnrated"
   core.String cncRating;
@@ -9956,11 +9955,27 @@ class ContentRating {
   /// (DJCQT - Brazil) rating.
   /// Possible string values are:
   /// - "djctq10"
+  /// - "djctq1012"
+  /// - "djctq1014"
+  /// - "djctq1016"
+  /// - "djctq1018"
   /// - "djctq12"
+  /// - "djctq1214"
+  /// - "djctq1216"
+  /// - "djctq1218"
   /// - "djctq14"
+  /// - "djctq1416"
+  /// - "djctq1418"
   /// - "djctq16"
+  /// - "djctq1618"
   /// - "djctq18"
+  /// - "djctqEr"
   /// - "djctqL"
+  /// - "djctqL10"
+  /// - "djctqL12"
+  /// - "djctqL14"
+  /// - "djctqL16"
+  /// - "djctqL18"
   /// - "djctqUnrated"
   core.String djctqRating;
 
@@ -10303,6 +10318,7 @@ class ContentRating {
   /// - "mpaaPg13"
   /// - "mpaaR"
   /// - "mpaaUnrated"
+  /// - "mpaaX"
   core.String mpaaRating;
 
   /// The rating system for trailer, DVD, and Ad in the US. See
@@ -12538,14 +12554,11 @@ class LiveBroadcastStatus {
   /// The broadcast's status. The status can be updated using the API's
   /// liveBroadcasts.transition method.
   /// Possible string values are:
-  /// - "abandoned"
   /// - "complete"
-  /// - "completeStarting"
   /// - "created"
   /// - "live"
   /// - "liveStarting"
   /// - "ready"
-  /// - "reclaimed"
   /// - "revoked"
   /// - "testStarting"
   /// - "testing"
@@ -13094,6 +13107,10 @@ class LiveChatMessageSnippet {
   /// 'superChatEvent'.
   LiveChatSuperChatDetails superChatDetails;
 
+  /// Details about the Super Sticker event, this is only set if the type is
+  /// 'superStickerEvent'.
+  LiveChatSuperStickerDetails superStickerDetails;
+
   /// Details about the text message, this is only set if the type is
   /// 'textMessageEvent'.
   LiveChatTextMessageDetails textMessageDetails;
@@ -13113,6 +13130,7 @@ class LiveChatMessageSnippet {
   /// - "sponsorOnlyModeEndedEvent"
   /// - "sponsorOnlyModeStartedEvent"
   /// - "superChatEvent"
+  /// - "superStickerEvent"
   /// - "textMessageEvent"
   /// - "tombstone"
   /// - "userBannedEvent"
@@ -13169,6 +13187,10 @@ class LiveChatMessageSnippet {
       superChatDetails =
           new LiveChatSuperChatDetails.fromJson(_json["superChatDetails"]);
     }
+    if (_json.containsKey("superStickerDetails")) {
+      superStickerDetails = new LiveChatSuperStickerDetails.fromJson(
+          _json["superStickerDetails"]);
+    }
     if (_json.containsKey("textMessageDetails")) {
       textMessageDetails =
           new LiveChatTextMessageDetails.fromJson(_json["textMessageDetails"]);
@@ -13223,6 +13245,9 @@ class LiveChatMessageSnippet {
     }
     if (superChatDetails != null) {
       _json["superChatDetails"] = (superChatDetails).toJson();
+    }
+    if (superStickerDetails != null) {
+      _json["superStickerDetails"] = (superStickerDetails).toJson();
     }
     if (textMessageDetails != null) {
       _json["textMessageDetails"] = (textMessageDetails).toJson();
@@ -13586,8 +13611,8 @@ class LiveChatSuperChatDetails {
   /// The currency in which the purchase was made.
   core.String currency;
 
-  /// The tier in which the amount belongs to. Lower amounts belong to lower
-  /// tiers. Starts at 1.
+  /// The tier in which the amount belongs. Lower amounts belong to lower tiers.
+  /// The lowest tier is 1.
   core.int tier;
 
   /// The comment added by the user to this Super Chat event.
@@ -13630,6 +13655,66 @@ class LiveChatSuperChatDetails {
     }
     if (userComment != null) {
       _json["userComment"] = userComment;
+    }
+    return _json;
+  }
+}
+
+class LiveChatSuperStickerDetails {
+  /// A rendered string that displays the fund amount and currency to the user.
+  core.String amountDisplayString;
+
+  /// The amount purchased by the user, in micros (1,750,000 micros = 1.75).
+  core.String amountMicros;
+
+  /// The currency in which the purchase was made.
+  core.String currency;
+
+  /// Information about the Super Sticker.
+  SuperStickerMetadata superStickerMetadata;
+
+  /// The tier in which the amount belongs. Lower amounts belong to lower tiers.
+  /// The lowest tier is 1.
+  core.int tier;
+
+  LiveChatSuperStickerDetails();
+
+  LiveChatSuperStickerDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("amountDisplayString")) {
+      amountDisplayString = _json["amountDisplayString"];
+    }
+    if (_json.containsKey("amountMicros")) {
+      amountMicros = _json["amountMicros"];
+    }
+    if (_json.containsKey("currency")) {
+      currency = _json["currency"];
+    }
+    if (_json.containsKey("superStickerMetadata")) {
+      superStickerMetadata =
+          new SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
+    }
+    if (_json.containsKey("tier")) {
+      tier = _json["tier"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amountDisplayString != null) {
+      _json["amountDisplayString"] = amountDisplayString;
+    }
+    if (amountMicros != null) {
+      _json["amountMicros"] = amountMicros;
+    }
+    if (currency != null) {
+      _json["currency"] = currency;
+    }
+    if (superStickerMetadata != null) {
+      _json["superStickerMetadata"] = (superStickerMetadata).toJson();
+    }
+    if (tier != null) {
+      _json["tier"] = tier;
     }
     return _json;
   }
@@ -16310,6 +16395,9 @@ class SuperChatEventSnippet {
   /// True if this event is a Super Chat for Good purchase.
   core.bool isSuperChatForGood;
 
+  /// True if this event is a Super Sticker event.
+  core.bool isSuperStickerEvent;
+
   /// The tier for the paid message, which is based on the amount of money spent
   /// to purchase the message.
   core.int messageType;
@@ -16317,6 +16405,10 @@ class SuperChatEventSnippet {
   /// If this event is a Super Chat for Good purchase, this field will contain
   /// information about the charity the purchase is donated to.
   Nonprofit nonprofit;
+
+  /// If this event is a Super Sticker event, this field will contain metadata
+  /// about the Super Sticker.
+  SuperStickerMetadata superStickerMetadata;
 
   /// Details about the supporter.
   ChannelProfileDetails supporterDetails;
@@ -16345,11 +16437,18 @@ class SuperChatEventSnippet {
     if (_json.containsKey("isSuperChatForGood")) {
       isSuperChatForGood = _json["isSuperChatForGood"];
     }
+    if (_json.containsKey("isSuperStickerEvent")) {
+      isSuperStickerEvent = _json["isSuperStickerEvent"];
+    }
     if (_json.containsKey("messageType")) {
       messageType = _json["messageType"];
     }
     if (_json.containsKey("nonprofit")) {
       nonprofit = new Nonprofit.fromJson(_json["nonprofit"]);
+    }
+    if (_json.containsKey("superStickerMetadata")) {
+      superStickerMetadata =
+          new SuperStickerMetadata.fromJson(_json["superStickerMetadata"]);
     }
     if (_json.containsKey("supporterDetails")) {
       supporterDetails =
@@ -16381,14 +16480,63 @@ class SuperChatEventSnippet {
     if (isSuperChatForGood != null) {
       _json["isSuperChatForGood"] = isSuperChatForGood;
     }
+    if (isSuperStickerEvent != null) {
+      _json["isSuperStickerEvent"] = isSuperStickerEvent;
+    }
     if (messageType != null) {
       _json["messageType"] = messageType;
     }
     if (nonprofit != null) {
       _json["nonprofit"] = (nonprofit).toJson();
     }
+    if (superStickerMetadata != null) {
+      _json["superStickerMetadata"] = (superStickerMetadata).toJson();
+    }
     if (supporterDetails != null) {
       _json["supporterDetails"] = (supporterDetails).toJson();
+    }
+    return _json;
+  }
+}
+
+class SuperStickerMetadata {
+  /// Internationalized alt text that describes the sticker image and any
+  /// animation associated with it.
+  core.String altText;
+
+  /// Specifies the localization language in which the alt text is returned.
+  core.String altTextLanguage;
+
+  /// Unique identifier of the Super Sticker. This is a shorter form of the
+  /// alt_text that includes pack name and a recognizable characteristic of the
+  /// sticker.
+  core.String stickerId;
+
+  SuperStickerMetadata();
+
+  SuperStickerMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("altText")) {
+      altText = _json["altText"];
+    }
+    if (_json.containsKey("altTextLanguage")) {
+      altTextLanguage = _json["altTextLanguage"];
+    }
+    if (_json.containsKey("stickerId")) {
+      stickerId = _json["stickerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (altText != null) {
+      _json["altText"] = altText;
+    }
+    if (altTextLanguage != null) {
+      _json["altTextLanguage"] = altTextLanguage;
+    }
+    if (stickerId != null) {
+      _json["stickerId"] = stickerId;
     }
     return _json;
   }

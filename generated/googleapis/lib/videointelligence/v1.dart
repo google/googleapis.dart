@@ -17,7 +17,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client videointelligence/v1';
 
 /// Detects objects, explicit content, and scene changes in videos. It also
-/// specifies the region for annotation and transcribes speech to text.
+/// specifies the region for annotation and transcribes speech to text. Supports
+/// both asynchronous API and streaming API.
 class VideointelligenceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -26,6 +27,7 @@ class VideointelligenceApi {
   final commons.ApiRequester _requester;
 
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   VideosResourceApi get videos => new VideosResourceApi(_requester);
 
   VideointelligenceApi(http.Client client,
@@ -37,6 +39,9 @@ class VideointelligenceApi {
 
 class OperationsResourceApi {
   final commons.ApiRequester _requester;
+
+  OperationsProjectsResourceApi get projects =>
+      new OperationsProjectsResourceApi(_requester);
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
 
@@ -50,8 +55,6 @@ class OperationsResourceApi {
   /// the operation is not deleted; instead, it becomes an operation with
   /// an Operation.error value with a google.rpc.Status.code of 1,
   /// corresponding to `Code.CANCELLED`.
-  ///
-  /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
@@ -68,8 +71,7 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancel(
-      GoogleLongrunningCancelOperationRequest request, core.String name,
+  async.Future<GoogleProtobufEmpty> cancel(core.String name,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -78,9 +80,6 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
@@ -194,6 +193,367 @@ class OperationsResourceApi {
     return _response
         .then((data) => new GoogleLongrunningOperation.fromJson(data));
   }
+}
+
+class OperationsProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsProjectsLocationsResourceApi get locations =>
+      new OperationsProjectsLocationsResourceApi(_requester);
+
+  OperationsProjectsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OperationsProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsProjectsLocationsOperationsResourceApi get operations =>
+      new OperationsProjectsLocationsOperationsResourceApi(_requester);
+
+  OperationsProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OperationsProjectsLocationsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// makes a best effort to cancel the operation, but success is not
+  /// guaranteed.  If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+  /// Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with
+  /// an Operation.error value with a google.rpc.Status.code of 1,
+  /// corresponding to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/operations/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Deletes a long-running operation. This method indicates that the client is
+  /// no longer interested in the operation result. It does not cancel the
+  /// operation. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+}
+
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
+
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResourceApi get operations =>
+      new ProjectsLocationsOperationsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// makes a best effort to cancel the operation, but success is not
+  /// guaranteed.  If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+  /// Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with
+  /// an Operation.error value with a google.rpc.Status.code of 1,
+  /// corresponding to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+      GoogleLongrunningCancelOperationRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Deletes a long-running operation. This method indicates that the client is
+  /// no longer interested in the operation result. It does not cancel the
+  /// operation. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
 
   /// Lists operations that match the specified filter in the request. If the
   /// server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -209,9 +569,10 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
   ///
@@ -227,9 +588,8 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningListOperationsResponse> list(
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
       {core.String filter,
-      core.String name,
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
@@ -240,11 +600,11 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (name != null) {
-      _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -256,7 +616,8 @@ class OperationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'v1/operations';
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -687,6 +1048,14 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
 
 /// Config for LABEL_DETECTION.
 class GoogleCloudVideointelligenceV1LabelDetectionConfig {
+  /// The confidence threshold we perform filtering on the labels from
+  /// frame-level detection. If not set, it is set to 0.4 by default. The valid
+  /// range for this threshold is [0.1, 0.9]. Any value set outside of this
+  /// range will be clipped.
+  /// Note: for best results please follow the default threshold. We will update
+  /// the default threshold everytime when we release a new model.
+  core.double frameConfidenceThreshold;
+
   /// What labels should be detected with LABEL_DETECTION, in addition to
   /// video-level labels or segment-level labels.
   /// If unspecified, defaults to `SHOT_MODE`.
@@ -708,9 +1077,20 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   /// Should be used with `SHOT_AND_FRAME_MODE` enabled.
   core.bool stationaryCamera;
 
+  /// The confidence threshold we perform filtering on the labels from
+  /// video-level and shot-level detections. If not set, it is set to 0.3 by
+  /// default. The valid range for this threshold is [0.1, 0.9]. Any value set
+  /// outside of this range will be clipped.
+  /// Note: for best results please follow the default threshold. We will update
+  /// the default threshold everytime when we release a new model.
+  core.double videoConfidenceThreshold;
+
   GoogleCloudVideointelligenceV1LabelDetectionConfig();
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("frameConfidenceThreshold")) {
+      frameConfidenceThreshold = _json["frameConfidenceThreshold"].toDouble();
+    }
     if (_json.containsKey("labelDetectionMode")) {
       labelDetectionMode = _json["labelDetectionMode"];
     }
@@ -720,11 +1100,17 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
     if (_json.containsKey("stationaryCamera")) {
       stationaryCamera = _json["stationaryCamera"];
     }
+    if (_json.containsKey("videoConfidenceThreshold")) {
+      videoConfidenceThreshold = _json["videoConfidenceThreshold"].toDouble();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (frameConfidenceThreshold != null) {
+      _json["frameConfidenceThreshold"] = frameConfidenceThreshold;
+    }
     if (labelDetectionMode != null) {
       _json["labelDetectionMode"] = labelDetectionMode;
     }
@@ -733,6 +1119,9 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
     }
     if (stationaryCamera != null) {
       _json["stationaryCamera"] = stationaryCamera;
+    }
+    if (videoConfidenceThreshold != null) {
+      _json["videoConfidenceThreshold"] = videoConfidenceThreshold;
     }
     return _json;
   }
@@ -804,6 +1193,272 @@ class GoogleCloudVideointelligenceV1LabelSegment {
   }
 }
 
+/// Normalized bounding box.
+/// The normalized vertex coordinates are relative to the original image.
+/// Range: [0, 1].
+class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
+  /// Bottom Y coordinate.
+  core.double bottom;
+
+  /// Left X coordinate.
+  core.double left;
+
+  /// Right X coordinate.
+  core.double right;
+
+  /// Top Y coordinate.
+  core.double top;
+
+  GoogleCloudVideointelligenceV1NormalizedBoundingBox();
+
+  GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(core.Map _json) {
+    if (_json.containsKey("bottom")) {
+      bottom = _json["bottom"].toDouble();
+    }
+    if (_json.containsKey("left")) {
+      left = _json["left"].toDouble();
+    }
+    if (_json.containsKey("right")) {
+      right = _json["right"].toDouble();
+    }
+    if (_json.containsKey("top")) {
+      top = _json["top"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bottom != null) {
+      _json["bottom"] = bottom;
+    }
+    if (left != null) {
+      _json["left"] = left;
+    }
+    if (right != null) {
+      _json["right"] = right;
+    }
+    if (top != null) {
+      _json["top"] = top;
+    }
+    return _json;
+  }
+}
+
+/// Normalized bounding polygon for text (that might not be aligned with axis).
+/// Contains list of the corner points in clockwise order starting from
+/// top-left corner. For example, for a rectangular bounding box:
+/// When the text is horizontal it might look like:
+///         0----1
+///         |    |
+///         3----2
+///
+/// When it's clockwise rotated 180 degrees around the top-left corner it
+/// becomes:
+///         2----3
+///         |    |
+///         1----0
+///
+/// and the vertex order will still be (0, 1, 2, 3). Note that values can be
+/// less
+/// than 0, or greater than 1 due to trignometric calculations for location of
+/// the box.
+class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
+  /// Normalized vertices of the bounding polygon.
+  core.List<GoogleCloudVideointelligenceV1NormalizedVertex> vertices;
+
+  GoogleCloudVideointelligenceV1NormalizedBoundingPoly();
+
+  GoogleCloudVideointelligenceV1NormalizedBoundingPoly.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("vertices")) {
+      vertices = (_json["vertices"] as core.List)
+          .map<GoogleCloudVideointelligenceV1NormalizedVertex>((value) =>
+              new GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (vertices != null) {
+      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A vertex represents a 2D point in the image.
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
+class GoogleCloudVideointelligenceV1NormalizedVertex {
+  /// X coordinate.
+  core.double x;
+
+  /// Y coordinate.
+  core.double y;
+
+  GoogleCloudVideointelligenceV1NormalizedVertex();
+
+  GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(core.Map _json) {
+    if (_json.containsKey("x")) {
+      x = _json["x"].toDouble();
+    }
+    if (_json.containsKey("y")) {
+      y = _json["y"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (x != null) {
+      _json["x"] = x;
+    }
+    if (y != null) {
+      _json["y"] = y;
+    }
+    return _json;
+  }
+}
+
+/// Annotations corresponding to one tracked object.
+class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
+  /// Object category's labeling confidence of this track.
+  core.double confidence;
+
+  /// Entity to specify the object category that this track is labeled as.
+  GoogleCloudVideointelligenceV1Entity entity;
+
+  /// Information corresponding to all frames where this object track appears.
+  /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
+  /// messages in frames.
+  /// Streaming mode: it can only be one ObjectTrackingFrame message in frames.
+  core.List<GoogleCloudVideointelligenceV1ObjectTrackingFrame> frames;
+
+  /// Non-streaming batch mode ONLY.
+  /// Each object track corresponds to one video segment where it appears.
+  GoogleCloudVideointelligenceV1VideoSegment segment;
+
+  /// Streaming mode ONLY.
+  /// In streaming mode, we do not know the end time of a tracked object
+  /// before it is completed. Hence, there is no VideoSegment info returned.
+  /// Instead, we provide a unique identifiable integer track_id so that
+  /// the customers can correlate the results of the ongoing
+  /// ObjectTrackAnnotation of the same track_id over time.
+  core.String trackId;
+
+  GoogleCloudVideointelligenceV1ObjectTrackingAnnotation();
+
+  GoogleCloudVideointelligenceV1ObjectTrackingAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("entity")) {
+      entity =
+          new GoogleCloudVideointelligenceV1Entity.fromJson(_json["entity"]);
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1ObjectTrackingFrame>((value) =>
+              new GoogleCloudVideointelligenceV1ObjectTrackingFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = _json["trackId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
+    }
+    return _json;
+  }
+}
+
+/// Config for OBJECT_TRACKING.
+class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
+  /// Model to use for object tracking.
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
+  core.String model;
+
+  GoogleCloudVideointelligenceV1ObjectTrackingConfig();
+
+  GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (model != null) {
+      _json["model"] = model;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotations for object detection and tracking. This field
+/// stores per frame location, time offset, and confidence.
+class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
+  /// The normalized bounding box location of this object track for the frame.
+  GoogleCloudVideointelligenceV1NormalizedBoundingBox normalizedBoundingBox;
+
+  /// The timestamp of the frame in microseconds.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1ObjectTrackingFrame();
+
+  GoogleCloudVideointelligenceV1ObjectTrackingFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBox")) {
+      normalizedBoundingBox =
+          new GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(
+              _json["normalizedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBox != null) {
+      _json["normalizedBoundingBox"] = (normalizedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
 /// Config for SHOT_CHANGE_DETECTION.
 class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
   /// Model to use for shot change detection.
@@ -862,11 +1517,12 @@ class GoogleCloudVideointelligenceV1SpeechContext {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
-  /// The confidence estimate between 0.0 and 1.0. A higher number
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is typically provided only for the top hypothesis, and
-  /// only for `is_final=true` results. Clients should not rely on the
-  /// `confidence` field as it is not guaranteed to be accurate or consistent.
+  /// correct. This field is set only for the top alternative.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
   /// The default of 0.0 is a sentinel value indicating `confidence` was not
   /// set.
   core.double confidence;
@@ -874,7 +1530,10 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// A list of word-specific information for each recognized word.
+  /// Output only. A list of word-specific information for each recognized word.
+  /// Note: When `enable_speaker_diarization` is true, you will see all the
+  /// words
+  /// from the beginning of the audio.
   core.List<GoogleCloudVideointelligenceV1WordInfo> words;
 
   GoogleCloudVideointelligenceV1SpeechRecognitionAlternative();
@@ -1088,8 +1747,178 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   }
 }
 
+/// Annotations related to one detected OCR text snippet. This will contain the
+/// corresponding text, confidence value, and frame level information for each
+/// detection.
+class GoogleCloudVideointelligenceV1TextAnnotation {
+  /// All video segments where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1TextSegment> segments;
+
+  /// The detected text.
+  core.String text;
+
+  GoogleCloudVideointelligenceV1TextAnnotation();
+
+  GoogleCloudVideointelligenceV1TextAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1TextSegment>((value) =>
+              new GoogleCloudVideointelligenceV1TextSegment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/// Config for TEXT_DETECTION.
+class GoogleCloudVideointelligenceV1TextDetectionConfig {
+  /// Language hint can be specified if the language to be detected is known a
+  /// priori. It can increase the accuracy of the detection. Language hint must
+  /// be language code in BCP-47 format.
+  ///
+  /// Automatic language detection is performed if no hint is provided.
+  core.List<core.String> languageHints;
+
+  /// Model to use for text detection.
+  /// Supported values: "builtin/stable" (the default if unset) and
+  /// "builtin/latest".
+  core.String model;
+
+  GoogleCloudVideointelligenceV1TextDetectionConfig();
+
+  GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("languageHints")) {
+      languageHints = (_json["languageHints"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("model")) {
+      model = _json["model"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (languageHints != null) {
+      _json["languageHints"] = languageHints;
+    }
+    if (model != null) {
+      _json["model"] = model;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotation results for text annotation (OCR).
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
+class GoogleCloudVideointelligenceV1TextFrame {
+  /// Bounding polygon of the detected text for this frame.
+  GoogleCloudVideointelligenceV1NormalizedBoundingPoly rotatedBoundingBox;
+
+  /// Timestamp of this frame.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1TextFrame();
+
+  GoogleCloudVideointelligenceV1TextFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("rotatedBoundingBox")) {
+      rotatedBoundingBox =
+          new GoogleCloudVideointelligenceV1NormalizedBoundingPoly.fromJson(
+              _json["rotatedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rotatedBoundingBox != null) {
+      _json["rotatedBoundingBox"] = (rotatedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for text detection.
+class GoogleCloudVideointelligenceV1TextSegment {
+  /// Confidence for the track of detected text. It is calculated as the highest
+  /// over all frames where OCR detected text appears.
+  core.double confidence;
+
+  /// Information related to the frames where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1TextFrame> frames;
+
+  /// Video segment where a text snippet was detected.
+  GoogleCloudVideointelligenceV1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1TextSegment();
+
+  GoogleCloudVideointelligenceV1TextSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1TextFrame>((value) =>
+              new GoogleCloudVideointelligenceV1TextFrame.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Annotation progress for a single video.
 class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
+  /// Specifies which feature is being tracked if the request contains more than
+  /// one features.
+  /// Possible string values are:
+  /// - "FEATURE_UNSPECIFIED" : Unspecified.
+  /// - "LABEL_DETECTION" : Label detection. Detect objects, such as dog or
+  /// flower.
+  /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
+  /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
+  /// - "TEXT_DETECTION" : OCR text detection and tracking.
+  /// - "OBJECT_TRACKING" : Object detection and tracking.
+  core.String feature;
+
   /// Video file location in
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
@@ -1097,6 +1926,10 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
   /// Approximate percentage processed thus far. Guaranteed to be
   /// 100 when fully processed.
   core.int progressPercent;
+
+  /// Specifies which segment is being tracked if the request contains more than
+  /// one segments.
+  GoogleCloudVideointelligenceV1VideoSegment segment;
 
   /// Time when the request was received.
   core.String startTime;
@@ -1108,11 +1941,18 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(
       core.Map _json) {
+    if (_json.containsKey("feature")) {
+      feature = _json["feature"];
+    }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("progressPercent")) {
       progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+          _json["segment"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1125,11 +1965,17 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (feature != null) {
+      _json["feature"] = feature;
+    }
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
     if (progressPercent != null) {
       _json["progressPercent"] = progressPercent;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -1159,7 +2005,11 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Label annotations on video level or user specified segment level.
+  /// Annotations for list of objects detected and tracked in video.
+  core.List<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>
+      objectAnnotations;
+
+  /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
       segmentLabelAnnotations;
@@ -1167,13 +2017,18 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1VideoSegment> shotAnnotations;
 
-  /// Label annotations on shot level.
+  /// Topical label annotations on shot level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation> shotLabelAnnotations;
 
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1SpeechTranscription>
       speechTranscriptions;
+
+  /// OCR text detection and tracking.
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
+  core.List<GoogleCloudVideointelligenceV1TextAnnotation> textAnnotations;
 
   GoogleCloudVideointelligenceV1VideoAnnotationResults();
 
@@ -1195,6 +2050,14 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("objectAnnotations")) {
+      objectAnnotations = (_json["objectAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
@@ -1221,6 +2084,12 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
                   value))
           .toList();
     }
+    if (_json.containsKey("textAnnotations")) {
+      textAnnotations = (_json["textAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1TextAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1TextAnnotation.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1239,6 +2108,10 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
+    if (objectAnnotations != null) {
+      _json["objectAnnotations"] =
+          objectAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -1255,6 +2128,10 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
       _json["speechTranscriptions"] =
           speechTranscriptions.map((value) => (value).toJson()).toList();
     }
+    if (textAnnotations != null) {
+      _json["textAnnotations"] =
+          textAnnotations.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -1267,6 +2144,9 @@ class GoogleCloudVideointelligenceV1VideoContext {
 
   /// Config for LABEL_DETECTION.
   GoogleCloudVideointelligenceV1LabelDetectionConfig labelDetectionConfig;
+
+  /// Config for OBJECT_TRACKING.
+  GoogleCloudVideointelligenceV1ObjectTrackingConfig objectTrackingConfig;
 
   /// Video segments to annotate. The segments may overlap and are not required
   /// to be contiguous or span the whole video. If unspecified, each video is
@@ -1281,6 +2161,9 @@ class GoogleCloudVideointelligenceV1VideoContext {
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
       speechTranscriptionConfig;
 
+  /// Config for TEXT_DETECTION.
+  GoogleCloudVideointelligenceV1TextDetectionConfig textDetectionConfig;
+
   GoogleCloudVideointelligenceV1VideoContext();
 
   GoogleCloudVideointelligenceV1VideoContext.fromJson(core.Map _json) {
@@ -1293,6 +2176,11 @@ class GoogleCloudVideointelligenceV1VideoContext {
       labelDetectionConfig =
           new GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
               _json["labelDetectionConfig"]);
+    }
+    if (_json.containsKey("objectTrackingConfig")) {
+      objectTrackingConfig =
+          new GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
+              _json["objectTrackingConfig"]);
     }
     if (_json.containsKey("segments")) {
       segments = (_json["segments"] as core.List)
@@ -1310,6 +2198,11 @@ class GoogleCloudVideointelligenceV1VideoContext {
           new GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
               _json["speechTranscriptionConfig"]);
     }
+    if (_json.containsKey("textDetectionConfig")) {
+      textDetectionConfig =
+          new GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
+              _json["textDetectionConfig"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1322,6 +2215,9 @@ class GoogleCloudVideointelligenceV1VideoContext {
     if (labelDetectionConfig != null) {
       _json["labelDetectionConfig"] = (labelDetectionConfig).toJson();
     }
+    if (objectTrackingConfig != null) {
+      _json["objectTrackingConfig"] = (objectTrackingConfig).toJson();
+    }
     if (segments != null) {
       _json["segments"] = segments.map((value) => (value).toJson()).toList();
     }
@@ -1330,6 +2226,9 @@ class GoogleCloudVideointelligenceV1VideoContext {
     }
     if (speechTranscriptionConfig != null) {
       _json["speechTranscriptionConfig"] = (speechTranscriptionConfig).toJson();
+    }
+    if (textDetectionConfig != null) {
+      _json["textDetectionConfig"] = (textDetectionConfig).toJson();
     }
     return _json;
   }
@@ -1760,13 +2659,259 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
   }
 }
 
+/// Normalized bounding box.
+/// The normalized vertex coordinates are relative to the original image.
+/// Range: [0, 1].
+class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
+  /// Bottom Y coordinate.
+  core.double bottom;
+
+  /// Left X coordinate.
+  core.double left;
+
+  /// Right X coordinate.
+  core.double right;
+
+  /// Top Y coordinate.
+  core.double top;
+
+  GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox();
+
+  GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("bottom")) {
+      bottom = _json["bottom"].toDouble();
+    }
+    if (_json.containsKey("left")) {
+      left = _json["left"].toDouble();
+    }
+    if (_json.containsKey("right")) {
+      right = _json["right"].toDouble();
+    }
+    if (_json.containsKey("top")) {
+      top = _json["top"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bottom != null) {
+      _json["bottom"] = bottom;
+    }
+    if (left != null) {
+      _json["left"] = left;
+    }
+    if (right != null) {
+      _json["right"] = right;
+    }
+    if (top != null) {
+      _json["top"] = top;
+    }
+    return _json;
+  }
+}
+
+/// Normalized bounding polygon for text (that might not be aligned with axis).
+/// Contains list of the corner points in clockwise order starting from
+/// top-left corner. For example, for a rectangular bounding box:
+/// When the text is horizontal it might look like:
+///         0----1
+///         |    |
+///         3----2
+///
+/// When it's clockwise rotated 180 degrees around the top-left corner it
+/// becomes:
+///         2----3
+///         |    |
+///         1----0
+///
+/// and the vertex order will still be (0, 1, 2, 3). Note that values can be
+/// less
+/// than 0, or greater than 1 due to trignometric calculations for location of
+/// the box.
+class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
+  /// Normalized vertices of the bounding polygon.
+  core.List<GoogleCloudVideointelligenceV1beta2NormalizedVertex> vertices;
+
+  GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly();
+
+  GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("vertices")) {
+      vertices = (_json["vertices"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2NormalizedVertex>((value) =>
+              new GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (vertices != null) {
+      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A vertex represents a 2D point in the image.
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
+class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
+  /// X coordinate.
+  core.double x;
+
+  /// Y coordinate.
+  core.double y;
+
+  GoogleCloudVideointelligenceV1beta2NormalizedVertex();
+
+  GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(core.Map _json) {
+    if (_json.containsKey("x")) {
+      x = _json["x"].toDouble();
+    }
+    if (_json.containsKey("y")) {
+      y = _json["y"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (x != null) {
+      _json["x"] = x;
+    }
+    if (y != null) {
+      _json["y"] = y;
+    }
+    return _json;
+  }
+}
+
+/// Annotations corresponding to one tracked object.
+class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
+  /// Object category's labeling confidence of this track.
+  core.double confidence;
+
+  /// Entity to specify the object category that this track is labeled as.
+  GoogleCloudVideointelligenceV1beta2Entity entity;
+
+  /// Information corresponding to all frames where this object track appears.
+  /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
+  /// messages in frames.
+  /// Streaming mode: it can only be one ObjectTrackingFrame message in frames.
+  core.List<GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame> frames;
+
+  /// Non-streaming batch mode ONLY.
+  /// Each object track corresponds to one video segment where it appears.
+  GoogleCloudVideointelligenceV1beta2VideoSegment segment;
+
+  /// Streaming mode ONLY.
+  /// In streaming mode, we do not know the end time of a tracked object
+  /// before it is completed. Hence, there is no VideoSegment info returned.
+  /// Instead, we provide a unique identifiable integer track_id so that
+  /// the customers can correlate the results of the ongoing
+  /// ObjectTrackAnnotation of the same track_id over time.
+  core.String trackId;
+
+  GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation();
+
+  GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("entity")) {
+      entity = new GoogleCloudVideointelligenceV1beta2Entity.fromJson(
+          _json["entity"]);
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
+          _json["segment"]);
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = _json["trackId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotations for object detection and tracking. This field
+/// stores per frame location, time offset, and confidence.
+class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
+  /// The normalized bounding box location of this object track for the frame.
+  GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox
+      normalizedBoundingBox;
+
+  /// The timestamp of the frame in microseconds.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame();
+
+  GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBox")) {
+      normalizedBoundingBox =
+          new GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
+              _json["normalizedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBox != null) {
+      _json["normalizedBoundingBox"] = (normalizedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
-  /// The confidence estimate between 0.0 and 1.0. A higher number
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is typically provided only for the top hypothesis, and
-  /// only for `is_final=true` results. Clients should not rely on the
-  /// `confidence` field as it is not guaranteed to be accurate or consistent.
+  /// correct. This field is set only for the top alternative.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
   /// The default of 0.0 is a sentinel value indicating `confidence` was not
   /// set.
   core.double confidence;
@@ -1774,7 +2919,10 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// A list of word-specific information for each recognized word.
+  /// Output only. A list of word-specific information for each recognized word.
+  /// Note: When `enable_speaker_diarization` is true, you will see all the
+  /// words
+  /// from the beginning of the audio.
   core.List<GoogleCloudVideointelligenceV1beta2WordInfo> words;
 
   GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative();
@@ -1858,8 +3006,141 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
   }
 }
 
+/// Annotations related to one detected OCR text snippet. This will contain the
+/// corresponding text, confidence value, and frame level information for each
+/// detection.
+class GoogleCloudVideointelligenceV1beta2TextAnnotation {
+  /// All video segments where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1beta2TextSegment> segments;
+
+  /// The detected text.
+  core.String text;
+
+  GoogleCloudVideointelligenceV1beta2TextAnnotation();
+
+  GoogleCloudVideointelligenceV1beta2TextAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2TextSegment>((value) =>
+              new GoogleCloudVideointelligenceV1beta2TextSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotation results for text annotation (OCR).
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
+class GoogleCloudVideointelligenceV1beta2TextFrame {
+  /// Bounding polygon of the detected text for this frame.
+  GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly rotatedBoundingBox;
+
+  /// Timestamp of this frame.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1beta2TextFrame();
+
+  GoogleCloudVideointelligenceV1beta2TextFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("rotatedBoundingBox")) {
+      rotatedBoundingBox =
+          new GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly
+              .fromJson(_json["rotatedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rotatedBoundingBox != null) {
+      _json["rotatedBoundingBox"] = (rotatedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for text detection.
+class GoogleCloudVideointelligenceV1beta2TextSegment {
+  /// Confidence for the track of detected text. It is calculated as the highest
+  /// over all frames where OCR detected text appears.
+  core.double confidence;
+
+  /// Information related to the frames where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1beta2TextFrame> frames;
+
+  /// Video segment where a text snippet was detected.
+  GoogleCloudVideointelligenceV1beta2VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1beta2TextSegment();
+
+  GoogleCloudVideointelligenceV1beta2TextSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2TextFrame>((value) =>
+              new GoogleCloudVideointelligenceV1beta2TextFrame.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Annotation progress for a single video.
 class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
+  /// Specifies which feature is being tracked if the request contains more than
+  /// one features.
+  /// Possible string values are:
+  /// - "FEATURE_UNSPECIFIED" : Unspecified.
+  /// - "LABEL_DETECTION" : Label detection. Detect objects, such as dog or
+  /// flower.
+  /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
+  /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
+  /// - "TEXT_DETECTION" : OCR text detection and tracking.
+  /// - "OBJECT_TRACKING" : Object detection and tracking.
+  core.String feature;
+
   /// Video file location in
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
@@ -1867,6 +3148,10 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
   /// Approximate percentage processed thus far. Guaranteed to be
   /// 100 when fully processed.
   core.int progressPercent;
+
+  /// Specifies which segment is being tracked if the request contains more than
+  /// one segments.
+  GoogleCloudVideointelligenceV1beta2VideoSegment segment;
 
   /// Time when the request was received.
   core.String startTime;
@@ -1878,11 +3163,18 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress.fromJson(
       core.Map _json) {
+    if (_json.containsKey("feature")) {
+      feature = _json["feature"];
+    }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("progressPercent")) {
       progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
+          _json["segment"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1895,11 +3187,17 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (feature != null) {
+      _json["feature"] = feature;
+    }
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
     if (progressPercent != null) {
       _json["progressPercent"] = progressPercent;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -1930,7 +3228,11 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Label annotations on video level or user specified segment level.
+  /// Annotations for list of objects detected and tracked in video.
+  core.List<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
+      objectAnnotations;
+
+  /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       segmentLabelAnnotations;
@@ -1938,7 +3240,7 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1beta2VideoSegment> shotAnnotations;
 
-  /// Label annotations on shot level.
+  /// Topical label annotations on shot level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       shotLabelAnnotations;
@@ -1946,6 +3248,11 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1beta2SpeechTranscription>
       speechTranscriptions;
+
+  /// OCR text detection and tracking.
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
+  core.List<GoogleCloudVideointelligenceV1beta2TextAnnotation> textAnnotations;
 
   GoogleCloudVideointelligenceV1beta2VideoAnnotationResults();
 
@@ -1968,6 +3275,14 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("objectAnnotations")) {
+      objectAnnotations = (_json["objectAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
@@ -1998,6 +3313,13 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("textAnnotations")) {
+      textAnnotations = (_json["textAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2TextAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1beta2TextAnnotation.fromJson(
+                  value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2016,6 +3338,10 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
+    if (objectAnnotations != null) {
+      _json["objectAnnotations"] =
+          objectAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -2031,6 +3357,10 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =
           speechTranscriptions.map((value) => (value).toJson()).toList();
+    }
+    if (textAnnotations != null) {
+      _json["textAnnotations"] =
+          textAnnotations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2463,13 +3793,260 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
   }
 }
 
+/// Normalized bounding box.
+/// The normalized vertex coordinates are relative to the original image.
+/// Range: [0, 1].
+class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
+  /// Bottom Y coordinate.
+  core.double bottom;
+
+  /// Left X coordinate.
+  core.double left;
+
+  /// Right X coordinate.
+  core.double right;
+
+  /// Top Y coordinate.
+  core.double top;
+
+  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox();
+
+  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("bottom")) {
+      bottom = _json["bottom"].toDouble();
+    }
+    if (_json.containsKey("left")) {
+      left = _json["left"].toDouble();
+    }
+    if (_json.containsKey("right")) {
+      right = _json["right"].toDouble();
+    }
+    if (_json.containsKey("top")) {
+      top = _json["top"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bottom != null) {
+      _json["bottom"] = bottom;
+    }
+    if (left != null) {
+      _json["left"] = left;
+    }
+    if (right != null) {
+      _json["right"] = right;
+    }
+    if (top != null) {
+      _json["top"] = top;
+    }
+    return _json;
+  }
+}
+
+/// Normalized bounding polygon for text (that might not be aligned with axis).
+/// Contains list of the corner points in clockwise order starting from
+/// top-left corner. For example, for a rectangular bounding box:
+/// When the text is horizontal it might look like:
+///         0----1
+///         |    |
+///         3----2
+///
+/// When it's clockwise rotated 180 degrees around the top-left corner it
+/// becomes:
+///         2----3
+///         |    |
+///         1----0
+///
+/// and the vertex order will still be (0, 1, 2, 3). Note that values can be
+/// less
+/// than 0, or greater than 1 due to trignometric calculations for location of
+/// the box.
+class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
+  /// Normalized vertices of the bounding polygon.
+  core.List<GoogleCloudVideointelligenceV1p1beta1NormalizedVertex> vertices;
+
+  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly();
+
+  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("vertices")) {
+      vertices = (_json["vertices"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1NormalizedVertex>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1NormalizedVertex
+                  .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (vertices != null) {
+      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A vertex represents a 2D point in the image.
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
+class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
+  /// X coordinate.
+  core.double x;
+
+  /// Y coordinate.
+  core.double y;
+
+  GoogleCloudVideointelligenceV1p1beta1NormalizedVertex();
+
+  GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("x")) {
+      x = _json["x"].toDouble();
+    }
+    if (_json.containsKey("y")) {
+      y = _json["y"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (x != null) {
+      _json["x"] = x;
+    }
+    if (y != null) {
+      _json["y"] = y;
+    }
+    return _json;
+  }
+}
+
+/// Annotations corresponding to one tracked object.
+class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
+  /// Object category's labeling confidence of this track.
+  core.double confidence;
+
+  /// Entity to specify the object category that this track is labeled as.
+  GoogleCloudVideointelligenceV1p1beta1Entity entity;
+
+  /// Information corresponding to all frames where this object track appears.
+  /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
+  /// messages in frames.
+  /// Streaming mode: it can only be one ObjectTrackingFrame message in frames.
+  core.List<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame> frames;
+
+  /// Non-streaming batch mode ONLY.
+  /// Each object track corresponds to one video segment where it appears.
+  GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
+
+  /// Streaming mode ONLY.
+  /// In streaming mode, we do not know the end time of a tracked object
+  /// before it is completed. Hence, there is no VideoSegment info returned.
+  /// Instead, we provide a unique identifiable integer track_id so that
+  /// the customers can correlate the results of the ongoing
+  /// ObjectTrackAnnotation of the same track_id over time.
+  core.String trackId;
+
+  GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation();
+
+  GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("entity")) {
+      entity = new GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(
+          _json["entity"]);
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = _json["trackId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotations for object detection and tracking. This field
+/// stores per frame location, time offset, and confidence.
+class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
+  /// The normalized bounding box location of this object track for the frame.
+  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox
+      normalizedBoundingBox;
+
+  /// The timestamp of the frame in microseconds.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame();
+
+  GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBox")) {
+      normalizedBoundingBox =
+          new GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox
+              .fromJson(_json["normalizedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBox != null) {
+      _json["normalizedBoundingBox"] = (normalizedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
-  /// The confidence estimate between 0.0 and 1.0. A higher number
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is typically provided only for the top hypothesis, and
-  /// only for `is_final=true` results. Clients should not rely on the
-  /// `confidence` field as it is not guaranteed to be accurate or consistent.
+  /// correct. This field is set only for the top alternative.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
   /// The default of 0.0 is a sentinel value indicating `confidence` was not
   /// set.
   core.double confidence;
@@ -2477,7 +4054,10 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// A list of word-specific information for each recognized word.
+  /// Output only. A list of word-specific information for each recognized word.
+  /// Note: When `enable_speaker_diarization` is true, you will see all the
+  /// words
+  /// from the beginning of the audio.
   core.List<GoogleCloudVideointelligenceV1p1beta1WordInfo> words;
 
   GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative();
@@ -2561,8 +4141,143 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
   }
 }
 
+/// Annotations related to one detected OCR text snippet. This will contain the
+/// corresponding text, confidence value, and frame level information for each
+/// detection.
+class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
+  /// All video segments where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1p1beta1TextSegment> segments;
+
+  /// The detected text.
+  core.String text;
+
+  GoogleCloudVideointelligenceV1p1beta1TextAnnotation();
+
+  GoogleCloudVideointelligenceV1p1beta1TextAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1TextSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1TextSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotation results for text annotation (OCR).
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
+class GoogleCloudVideointelligenceV1p1beta1TextFrame {
+  /// Bounding polygon of the detected text for this frame.
+  GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
+      rotatedBoundingBox;
+
+  /// Timestamp of this frame.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p1beta1TextFrame();
+
+  GoogleCloudVideointelligenceV1p1beta1TextFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("rotatedBoundingBox")) {
+      rotatedBoundingBox =
+          new GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
+              .fromJson(_json["rotatedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rotatedBoundingBox != null) {
+      _json["rotatedBoundingBox"] = (rotatedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for text detection.
+class GoogleCloudVideointelligenceV1p1beta1TextSegment {
+  /// Confidence for the track of detected text. It is calculated as the highest
+  /// over all frames where OCR detected text appears.
+  core.double confidence;
+
+  /// Information related to the frames where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1p1beta1TextFrame> frames;
+
+  /// Video segment where a text snippet was detected.
+  GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1p1beta1TextSegment();
+
+  GoogleCloudVideointelligenceV1p1beta1TextSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1TextFrame>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1TextFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Annotation progress for a single video.
 class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
+  /// Specifies which feature is being tracked if the request contains more than
+  /// one features.
+  /// Possible string values are:
+  /// - "FEATURE_UNSPECIFIED" : Unspecified.
+  /// - "LABEL_DETECTION" : Label detection. Detect objects, such as dog or
+  /// flower.
+  /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
+  /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
+  /// - "TEXT_DETECTION" : OCR text detection and tracking.
+  /// - "OBJECT_TRACKING" : Object detection and tracking.
+  core.String feature;
+
   /// Video file location in
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
@@ -2570,6 +4285,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
   /// Approximate percentage processed thus far. Guaranteed to be
   /// 100 when fully processed.
   core.int progressPercent;
+
+  /// Specifies which segment is being tracked if the request contains more than
+  /// one segments.
+  GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
 
   /// Time when the request was received.
   core.String startTime;
@@ -2581,11 +4300,18 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
+    if (_json.containsKey("feature")) {
+      feature = _json["feature"];
+    }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("progressPercent")) {
       progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
+          _json["segment"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -2598,11 +4324,17 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (feature != null) {
+      _json["feature"] = feature;
+    }
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
     if (progressPercent != null) {
       _json["progressPercent"] = progressPercent;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -2633,7 +4365,11 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
 
-  /// Label annotations on video level or user specified segment level.
+  /// Annotations for list of objects detected and tracked in video.
+  core.List<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
+      objectAnnotations;
+
+  /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       segmentLabelAnnotations;
@@ -2641,7 +4377,7 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p1beta1VideoSegment> shotAnnotations;
 
-  /// Label annotations on shot level.
+  /// Topical label annotations on shot level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       shotLabelAnnotations;
@@ -2649,6 +4385,12 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>
       speechTranscriptions;
+
+  /// OCR text detection and tracking.
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
+  core.List<GoogleCloudVideointelligenceV1p1beta1TextAnnotation>
+      textAnnotations;
 
   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults();
 
@@ -2671,6 +4413,14 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("objectAnnotations")) {
+      objectAnnotations = (_json["objectAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
@@ -2701,6 +4451,13 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("textAnnotations")) {
+      textAnnotations = (_json["textAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1TextAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1TextAnnotation.fromJson(
+                  value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2719,6 +4476,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
+    if (objectAnnotations != null) {
+      _json["objectAnnotations"] =
+          objectAnnotations.map((value) => (value).toJson()).toList();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
@@ -2734,6 +4495,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =
           speechTranscriptions.map((value) => (value).toJson()).toList();
+    }
+    if (textAnnotations != null) {
+      _json["textAnnotations"] =
+          textAnnotations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3414,11 +5179,12 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
-  /// The confidence estimate between 0.0 and 1.0. A higher number
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
-  /// correct. This field is typically provided only for the top hypothesis, and
-  /// only for `is_final=true` results. Clients should not rely on the
-  /// `confidence` field as it is not guaranteed to be accurate or consistent.
+  /// correct. This field is set only for the top alternative.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
   /// The default of 0.0 is a sentinel value indicating `confidence` was not
   /// set.
   core.double confidence;
@@ -3426,7 +5192,10 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
   /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// A list of word-specific information for each recognized word.
+  /// Output only. A list of word-specific information for each recognized word.
+  /// Note: When `enable_speaker_diarization` is true, you will see all the
+  /// words
+  /// from the beginning of the audio.
   core.List<GoogleCloudVideointelligenceV1p2beta1WordInfo> words;
 
   GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative();
@@ -3634,6 +5403,19 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
 
 /// Annotation progress for a single video.
 class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
+  /// Specifies which feature is being tracked if the request contains more than
+  /// one features.
+  /// Possible string values are:
+  /// - "FEATURE_UNSPECIFIED" : Unspecified.
+  /// - "LABEL_DETECTION" : Label detection. Detect objects, such as dog or
+  /// flower.
+  /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
+  /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
+  /// - "TEXT_DETECTION" : OCR text detection and tracking.
+  /// - "OBJECT_TRACKING" : Object detection and tracking.
+  core.String feature;
+
   /// Video file location in
   /// [Google Cloud Storage](https://cloud.google.com/storage/).
   core.String inputUri;
@@ -3641,6 +5423,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
   /// Approximate percentage processed thus far. Guaranteed to be
   /// 100 when fully processed.
   core.int progressPercent;
+
+  /// Specifies which segment is being tracked if the request contains more than
+  /// one segments.
+  GoogleCloudVideointelligenceV1p2beta1VideoSegment segment;
 
   /// Time when the request was received.
   core.String startTime;
@@ -3652,11 +5438,18 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
 
   GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
+    if (_json.containsKey("feature")) {
+      feature = _json["feature"];
+    }
     if (_json.containsKey("inputUri")) {
       inputUri = _json["inputUri"];
     }
     if (_json.containsKey("progressPercent")) {
       progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
+          _json["segment"]);
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -3669,11 +5462,17 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (feature != null) {
+      _json["feature"] = feature;
+    }
     if (inputUri != null) {
       _json["inputUri"] = inputUri;
     }
     if (progressPercent != null) {
       _json["progressPercent"] = progressPercent;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -3708,7 +5507,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
       objectAnnotations;
 
-  /// Label annotations on video level or user specified segment level.
+  /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       segmentLabelAnnotations;
@@ -3716,7 +5515,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p2beta1VideoSegment> shotAnnotations;
 
-  /// Label annotations on shot level.
+  /// Topical label annotations on shot level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       shotLabelAnnotations;
@@ -3956,6 +5755,1502 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
   }
 }
 
+/// Video annotation progress. Included in the `metadata`
+/// field of the `Operation` returned by the `GetOperation`
+/// call of the `google::longrunning::Operations` service.
+class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
+  /// Progress metadata for all videos specified in `AnnotateVideoRequest`.
+  core.List<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>
+      annotationProgress;
+
+  GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress();
+
+  GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("annotationProgress")) {
+      annotationProgress = (_json["annotationProgress"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
+                      .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotationProgress != null) {
+      _json["annotationProgress"] =
+          annotationProgress.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Video annotation response. Included in the `response`
+/// field of the `Operation` returned by the `GetOperation`
+/// call of the `google::longrunning::Operations` service.
+class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
+  /// Annotation results for all videos specified in `AnnotateVideoRequest`.
+  core.List<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>
+      annotationResults;
+
+  GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse();
+
+  GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("annotationResults")) {
+      annotationResults = (_json["annotationResults"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
+                      .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotationResults != null) {
+      _json["annotationResults"] =
+          annotationResults.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A generic detected attribute represented by name in string format.
+class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
+  /// Detected attribute confidence. Range [0, 1].
+  core.double confidence;
+
+  /// The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+  /// A full list of supported type names will be provided in the document.
+  core.String name;
+
+  /// Text value of the detection result. For example, the value for "HairColor"
+  /// can be "black", "blonde", etc.
+  core.String value;
+
+  GoogleCloudVideointelligenceV1p3beta1DetectedAttribute();
+
+  GoogleCloudVideointelligenceV1p3beta1DetectedAttribute.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Detected entity from video analysis.
+class GoogleCloudVideointelligenceV1p3beta1Entity {
+  /// Textual description, e.g. `Fixed-gear bicycle`.
+  core.String description;
+
+  /// Opaque entity ID. Some IDs may be available in
+  /// [Google Knowledge Graph Search
+  /// API](https://developers.google.com/knowledge-graph/).
+  core.String entityId;
+
+  /// Language code for `description` in BCP-47 format.
+  core.String languageCode;
+
+  GoogleCloudVideointelligenceV1p3beta1Entity();
+
+  GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("entityId")) {
+      entityId = _json["entityId"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (entityId != null) {
+      _json["entityId"] = entityId;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    return _json;
+  }
+}
+
+/// Explicit content annotation (based on per-frame visual signals only).
+/// If no explicit content has been detected in a frame, no annotations are
+/// present for that frame.
+class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
+  /// All video frames where explicit content was detected.
+  core.List<GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame> frames;
+
+  GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame
+                      .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotation results for explicit content.
+class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
+  /// Likelihood of the pornography content..
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Unspecified likelihood.
+  /// - "VERY_UNLIKELY" : Very unlikely.
+  /// - "UNLIKELY" : Unlikely.
+  /// - "POSSIBLE" : Possible.
+  /// - "LIKELY" : Likely.
+  /// - "VERY_LIKELY" : Very likely.
+  core.String pornographyLikelihood;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame();
+
+  GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("pornographyLikelihood")) {
+      pornographyLikelihood = _json["pornographyLikelihood"];
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pornographyLikelihood != null) {
+      _json["pornographyLikelihood"] = pornographyLikelihood;
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Label annotation.
+class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
+  /// Common categories for the detected entity.
+  /// E.g. when the label is `Terrier` the category is likely `dog`. And in some
+  /// cases there might be more than one categories e.g. `Terrier` could also be
+  /// a `pet`.
+  core.List<GoogleCloudVideointelligenceV1p3beta1Entity> categoryEntities;
+
+  /// Detected entity.
+  GoogleCloudVideointelligenceV1p3beta1Entity entity;
+
+  /// All video frames where a label was detected.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelFrame> frames;
+
+  /// All video segments where a label was detected.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelSegment> segments;
+
+  GoogleCloudVideointelligenceV1p3beta1LabelAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("categoryEntities")) {
+      categoryEntities = (_json["categoryEntities"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1Entity>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("entity")) {
+      entity = new GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(
+          _json["entity"]);
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelFrame>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelSegment.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (categoryEntities != null) {
+      _json["categoryEntities"] =
+          categoryEntities.map((value) => (value).toJson()).toList();
+    }
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotation results for label detection.
+class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
+  /// Confidence that the label is accurate. Range: [0, 1].
+  core.double confidence;
+
+  /// Time-offset, relative to the beginning of the video, corresponding to the
+  /// video frame for this location.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1LabelFrame();
+
+  GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for label detection.
+class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
+  /// Confidence that the label is accurate. Range: [0, 1].
+  core.double confidence;
+
+  /// Video segment where a label was detected.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1p3beta1LabelSegment();
+
+  GoogleCloudVideointelligenceV1p3beta1LabelSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Annotation corresponding to one detected, tracked and recognized logo class.
+class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
+  /// Entity category information to specify the logo class that all the logo
+  /// tracks within this LogoRecognitionAnnotation are recognized as.
+  GoogleCloudVideointelligenceV1p3beta1Entity entity;
+
+  /// All video segments where the recognized logo appears. There might be
+  /// multiple instances of the same logo class appearing in one VideoSegment.
+  core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> segments;
+
+  /// All logo tracks where the recognized logo appears. Each track corresponds
+  /// to one logo instance appearing in consecutive frames.
+  core.List<GoogleCloudVideointelligenceV1p3beta1Track> tracks;
+
+  GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("entity")) {
+      entity = new GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(
+          _json["entity"]);
+    }
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1VideoSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = (_json["tracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1Track>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1Track.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Normalized bounding box.
+/// The normalized vertex coordinates are relative to the original image.
+/// Range: [0, 1].
+class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
+  /// Bottom Y coordinate.
+  core.double bottom;
+
+  /// Left X coordinate.
+  core.double left;
+
+  /// Right X coordinate.
+  core.double right;
+
+  /// Top Y coordinate.
+  core.double top;
+
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox();
+
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("bottom")) {
+      bottom = _json["bottom"].toDouble();
+    }
+    if (_json.containsKey("left")) {
+      left = _json["left"].toDouble();
+    }
+    if (_json.containsKey("right")) {
+      right = _json["right"].toDouble();
+    }
+    if (_json.containsKey("top")) {
+      top = _json["top"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bottom != null) {
+      _json["bottom"] = bottom;
+    }
+    if (left != null) {
+      _json["left"] = left;
+    }
+    if (right != null) {
+      _json["right"] = right;
+    }
+    if (top != null) {
+      _json["top"] = top;
+    }
+    return _json;
+  }
+}
+
+/// Normalized bounding polygon for text (that might not be aligned with axis).
+/// Contains list of the corner points in clockwise order starting from
+/// top-left corner. For example, for a rectangular bounding box:
+/// When the text is horizontal it might look like:
+///         0----1
+///         |    |
+///         3----2
+///
+/// When it's clockwise rotated 180 degrees around the top-left corner it
+/// becomes:
+///         2----3
+///         |    |
+///         1----0
+///
+/// and the vertex order will still be (0, 1, 2, 3). Note that values can be
+/// less
+/// than 0, or greater than 1 due to trignometric calculations for location of
+/// the box.
+class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
+  /// Normalized vertices of the bounding polygon.
+  core.List<GoogleCloudVideointelligenceV1p3beta1NormalizedVertex> vertices;
+
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly();
+
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("vertices")) {
+      vertices = (_json["vertices"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1NormalizedVertex>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1NormalizedVertex
+                  .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (vertices != null) {
+      _json["vertices"] = vertices.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A vertex represents a 2D point in the image.
+/// NOTE: the normalized vertex coordinates are relative to the original image
+/// and range from 0 to 1.
+class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
+  /// X coordinate.
+  core.double x;
+
+  /// Y coordinate.
+  core.double y;
+
+  GoogleCloudVideointelligenceV1p3beta1NormalizedVertex();
+
+  GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("x")) {
+      x = _json["x"].toDouble();
+    }
+    if (_json.containsKey("y")) {
+      y = _json["y"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (x != null) {
+      _json["x"] = x;
+    }
+    if (y != null) {
+      _json["y"] = y;
+    }
+    return _json;
+  }
+}
+
+/// Annotations corresponding to one tracked object.
+class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
+  /// Object category's labeling confidence of this track.
+  core.double confidence;
+
+  /// Entity to specify the object category that this track is labeled as.
+  GoogleCloudVideointelligenceV1p3beta1Entity entity;
+
+  /// Information corresponding to all frames where this object track appears.
+  /// Non-streaming batch mode: it may be one or multiple ObjectTrackingFrame
+  /// messages in frames.
+  /// Streaming mode: it can only be one ObjectTrackingFrame message in frames.
+  core.List<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame> frames;
+
+  /// Non-streaming batch mode ONLY.
+  /// Each object track corresponds to one video segment where it appears.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
+  /// Streaming mode ONLY.
+  /// In streaming mode, we do not know the end time of a tracked object
+  /// before it is completed. Hence, there is no VideoSegment info returned.
+  /// Instead, we provide a unique identifiable integer track_id so that
+  /// the customers can correlate the results of the ongoing
+  /// ObjectTrackAnnotation of the same track_id over time.
+  core.String trackId;
+
+  GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("entity")) {
+      entity = new GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(
+          _json["entity"]);
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = _json["trackId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotations for object detection and tracking. This field
+/// stores per frame location, time offset, and confidence.
+class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
+  /// The normalized bounding box location of this object track for the frame.
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
+      normalizedBoundingBox;
+
+  /// The timestamp of the frame in microseconds.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame();
+
+  GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("normalizedBoundingBox")) {
+      normalizedBoundingBox =
+          new GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
+              .fromJson(_json["normalizedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (normalizedBoundingBox != null) {
+      _json["normalizedBoundingBox"] = (normalizedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Alternative hypotheses (a.k.a. n-best list).
+class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
+  /// indicates an estimated greater likelihood that the recognized words are
+  /// correct. This field is set only for the top alternative.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
+  /// The default of 0.0 is a sentinel value indicating `confidence` was not
+  /// set.
+  core.double confidence;
+
+  /// Transcript text representing the words that the user spoke.
+  core.String transcript;
+
+  /// Output only. A list of word-specific information for each recognized word.
+  /// Note: When `enable_speaker_diarization` is true, you will see all the
+  /// words
+  /// from the beginning of the audio.
+  core.List<GoogleCloudVideointelligenceV1p3beta1WordInfo> words;
+
+  GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative();
+
+  GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("transcript")) {
+      transcript = _json["transcript"];
+    }
+    if (_json.containsKey("words")) {
+      words = (_json["words"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1WordInfo>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (transcript != null) {
+      _json["transcript"] = transcript;
+    }
+    if (words != null) {
+      _json["words"] = words.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A speech recognition result corresponding to a portion of the audio.
+class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
+  /// May contain one or more recognition hypotheses (up to the maximum
+  /// specified
+  /// in `max_alternatives`).  These alternatives are ordered in terms of
+  /// accuracy, with the top (first) alternative being the most probable, as
+  /// ranked by the recognizer.
+  core.List<GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
+      alternatives;
+
+  /// Output only. The
+  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
+  /// language in this result. This language code was detected to have the most
+  /// likelihood of being spoken in the audio.
+  core.String languageCode;
+
+  GoogleCloudVideointelligenceV1p3beta1SpeechTranscription();
+
+  GoogleCloudVideointelligenceV1p3beta1SpeechTranscription.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("alternatives")) {
+      alternatives = (_json["alternatives"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alternatives != null) {
+      _json["alternatives"] =
+          alternatives.map((value) => (value).toJson()).toList();
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    return _json;
+  }
+}
+
+/// `StreamingAnnotateVideoResponse` is the only message returned to the client
+/// by `StreamingAnnotateVideo`. A series of zero or more
+/// `StreamingAnnotateVideoResponse` messages are streamed back to the client.
+class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
+  /// Streaming annotation results.
+  GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
+      annotationResults;
+
+  /// GCS URI that stores annotation results of one streaming session.
+  /// It is a directory that can hold multiple files in JSON format.
+  /// Example uri format:
+  /// gs://bucket_id/object_id/cloud_project_name-session_id
+  core.String annotationResultsUri;
+
+  /// If set, returns a google.rpc.Status message that
+  /// specifies the error for the operation.
+  GoogleRpcStatus error;
+
+  GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse();
+
+  GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("annotationResults")) {
+      annotationResults =
+          new GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults
+              .fromJson(_json["annotationResults"]);
+    }
+    if (_json.containsKey("annotationResultsUri")) {
+      annotationResultsUri = _json["annotationResultsUri"];
+    }
+    if (_json.containsKey("error")) {
+      error = new GoogleRpcStatus.fromJson(_json["error"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (annotationResults != null) {
+      _json["annotationResults"] = (annotationResults).toJson();
+    }
+    if (annotationResultsUri != null) {
+      _json["annotationResultsUri"] = annotationResultsUri;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Streaming annotation results corresponding to a portion of the video
+/// that is currently being processed.
+class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
+  /// Explicit content annotation results.
+  GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
+      explicitAnnotation;
+
+  /// Label annotation results.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+      labelAnnotations;
+
+  /// Object tracking results.
+  core.List<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
+      objectAnnotations;
+
+  /// Shot annotation results. Each shot is represented as a video segment.
+  core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> shotAnnotations;
+
+  GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults();
+
+  GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("explicitAnnotation")) {
+      explicitAnnotation =
+          new GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
+              .fromJson(_json["explicitAnnotation"]);
+    }
+    if (_json.containsKey("labelAnnotations")) {
+      labelAnnotations = (_json["labelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("objectAnnotations")) {
+      objectAnnotations = (_json["objectAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("shotAnnotations")) {
+      shotAnnotations = (_json["shotAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1VideoSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (explicitAnnotation != null) {
+      _json["explicitAnnotation"] = (explicitAnnotation).toJson();
+    }
+    if (labelAnnotations != null) {
+      _json["labelAnnotations"] =
+          labelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (objectAnnotations != null) {
+      _json["objectAnnotations"] =
+          objectAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotAnnotations != null) {
+      _json["shotAnnotations"] =
+          shotAnnotations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Annotations related to one detected OCR text snippet. This will contain the
+/// corresponding text, confidence value, and frame level information for each
+/// detection.
+class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
+  /// All video segments where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1p3beta1TextSegment> segments;
+
+  /// The detected text.
+  core.String text;
+
+  GoogleCloudVideointelligenceV1p3beta1TextAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1TextAnnotation.fromJson(core.Map _json) {
+    if (_json.containsKey("segments")) {
+      segments = (_json["segments"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1TextSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1TextSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (segments != null) {
+      _json["segments"] = segments.map((value) => (value).toJson()).toList();
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
+/// Video frame level annotation results for text annotation (OCR).
+/// Contains information regarding timestamp and bounding box locations for the
+/// frames containing detected OCR text snippets.
+class GoogleCloudVideointelligenceV1p3beta1TextFrame {
+  /// Bounding polygon of the detected text for this frame.
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
+      rotatedBoundingBox;
+
+  /// Timestamp of this frame.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1TextFrame();
+
+  GoogleCloudVideointelligenceV1p3beta1TextFrame.fromJson(core.Map _json) {
+    if (_json.containsKey("rotatedBoundingBox")) {
+      rotatedBoundingBox =
+          new GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
+              .fromJson(_json["rotatedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rotatedBoundingBox != null) {
+      _json["rotatedBoundingBox"] = (rotatedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Video segment level annotation results for text detection.
+class GoogleCloudVideointelligenceV1p3beta1TextSegment {
+  /// Confidence for the track of detected text. It is calculated as the highest
+  /// over all frames where OCR detected text appears.
+  core.double confidence;
+
+  /// Information related to the frames where OCR detected text appears.
+  core.List<GoogleCloudVideointelligenceV1p3beta1TextFrame> frames;
+
+  /// Video segment where a text snippet was detected.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
+  GoogleCloudVideointelligenceV1p3beta1TextSegment();
+
+  GoogleCloudVideointelligenceV1p3beta1TextSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("frames")) {
+      frames = (_json["frames"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1TextFrame>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1TextFrame.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (frames != null) {
+      _json["frames"] = frames.map((value) => (value).toJson()).toList();
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    return _json;
+  }
+}
+
+/// For tracking related features, such as LOGO_RECOGNITION, FACE_DETECTION,
+/// CELEBRITY_RECOGNITION, PERSON_DETECTION.
+/// An object at time_offset with attributes, and located with
+/// normalized_bounding_box.
+class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
+  /// Optional. The attributes of the object in the bounding box.
+  core.List<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> attributes;
+
+  /// Normalized Bounding box in a frame, where the object is located.
+  GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
+      normalizedBoundingBox;
+
+  /// Time-offset, relative to the beginning of the video,
+  /// corresponding to the video frame for this object.
+  core.String timeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1TimestampedObject();
+
+  GoogleCloudVideointelligenceV1p3beta1TimestampedObject.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("attributes")) {
+      attributes = (_json["attributes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("normalizedBoundingBox")) {
+      normalizedBoundingBox =
+          new GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
+              .fromJson(_json["normalizedBoundingBox"]);
+    }
+    if (_json.containsKey("timeOffset")) {
+      timeOffset = _json["timeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attributes != null) {
+      _json["attributes"] =
+          attributes.map((value) => (value).toJson()).toList();
+    }
+    if (normalizedBoundingBox != null) {
+      _json["normalizedBoundingBox"] = (normalizedBoundingBox).toJson();
+    }
+    if (timeOffset != null) {
+      _json["timeOffset"] = timeOffset;
+    }
+    return _json;
+  }
+}
+
+/// A track of an object instance.
+class GoogleCloudVideointelligenceV1p3beta1Track {
+  /// Optional. Attributes in the track level.
+  core.List<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute> attributes;
+
+  /// Optional. The confidence score of the tracked object.
+  core.double confidence;
+
+  /// Video segment of a track.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
+  /// The object with timestamp and attributes per frame in the track.
+  core.List<GoogleCloudVideointelligenceV1p3beta1TimestampedObject>
+      timestampedObjects;
+
+  GoogleCloudVideointelligenceV1p3beta1Track();
+
+  GoogleCloudVideointelligenceV1p3beta1Track.fromJson(core.Map _json) {
+    if (_json.containsKey("attributes")) {
+      attributes = (_json["attributes"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+    if (_json.containsKey("timestampedObjects")) {
+      timestampedObjects = (_json["timestampedObjects"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1TimestampedObject>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1TimestampedObject
+                      .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attributes != null) {
+      _json["attributes"] =
+          attributes.map((value) => (value).toJson()).toList();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    if (timestampedObjects != null) {
+      _json["timestampedObjects"] =
+          timestampedObjects.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Annotation progress for a single video.
+class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
+  /// Specifies which feature is being tracked if the request contains more than
+  /// one features.
+  /// Possible string values are:
+  /// - "FEATURE_UNSPECIFIED" : Unspecified.
+  /// - "LABEL_DETECTION" : Label detection. Detect objects, such as dog or
+  /// flower.
+  /// - "SHOT_CHANGE_DETECTION" : Shot change detection.
+  /// - "EXPLICIT_CONTENT_DETECTION" : Explicit content detection.
+  /// - "SPEECH_TRANSCRIPTION" : Speech transcription.
+  /// - "TEXT_DETECTION" : OCR text detection and tracking.
+  /// - "OBJECT_TRACKING" : Object detection and tracking.
+  /// - "LOGO_RECOGNITION" : Logo detection, tracking, and recognition.
+  core.String feature;
+
+  /// Video file location in
+  /// [Google Cloud Storage](https://cloud.google.com/storage/).
+  core.String inputUri;
+
+  /// Approximate percentage processed thus far. Guaranteed to be
+  /// 100 when fully processed.
+  core.int progressPercent;
+
+  /// Specifies which segment is being tracked if the request contains more than
+  /// one segments.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
+  /// Time when the request was received.
+  core.String startTime;
+
+  /// Time of the most recent update.
+  core.String updateTime;
+
+  GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress();
+
+  GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("feature")) {
+      feature = _json["feature"];
+    }
+    if (_json.containsKey("inputUri")) {
+      inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("progressPercent")) {
+      progressPercent = _json["progressPercent"];
+    }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (feature != null) {
+      _json["feature"] = feature;
+    }
+    if (inputUri != null) {
+      _json["inputUri"] = inputUri;
+    }
+    if (progressPercent != null) {
+      _json["progressPercent"] = progressPercent;
+    }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Annotation results for a single video.
+class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
+  /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
+  /// some videos may succeed and some may fail.
+  GoogleRpcStatus error;
+
+  /// Explicit content annotation.
+  GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
+      explicitAnnotation;
+
+  /// Label annotations on frame level.
+  /// There is exactly one element for each unique label.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+      frameLabelAnnotations;
+
+  /// Video file location in
+  /// [Google Cloud Storage](https://cloud.google.com/storage/).
+  core.String inputUri;
+
+  /// Annotations for list of logos detected, tracked and recognized in video.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>
+      logoRecognitionAnnotations;
+
+  /// Annotations for list of objects detected and tracked in video.
+  core.List<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
+      objectAnnotations;
+
+  /// Topical label annotations on video level or user specified segment level.
+  /// There is exactly one element for each unique label.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+      segmentLabelAnnotations;
+
+  /// Shot annotations. Each shot is represented as a video segment.
+  core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> shotAnnotations;
+
+  /// Topical label annotations on shot level.
+  /// There is exactly one element for each unique label.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+      shotLabelAnnotations;
+
+  /// Speech transcription.
+  core.List<GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>
+      speechTranscriptions;
+
+  /// OCR text detection and tracking.
+  /// Annotations for list of detected text snippets. Each will have list of
+  /// frame information associated with it.
+  core.List<GoogleCloudVideointelligenceV1p3beta1TextAnnotation>
+      textAnnotations;
+
+  GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults();
+
+  GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("error")) {
+      error = new GoogleRpcStatus.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("explicitAnnotation")) {
+      explicitAnnotation =
+          new GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation
+              .fromJson(_json["explicitAnnotation"]);
+    }
+    if (_json.containsKey("frameLabelAnnotations")) {
+      frameLabelAnnotations = (_json["frameLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("inputUri")) {
+      inputUri = _json["inputUri"];
+    }
+    if (_json.containsKey("logoRecognitionAnnotations")) {
+      logoRecognitionAnnotations = (_json["logoRecognitionAnnotations"]
+              as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("objectAnnotations")) {
+      objectAnnotations = (_json["objectAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segmentLabelAnnotations")) {
+      segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("shotAnnotations")) {
+      shotAnnotations = (_json["shotAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1VideoSegment>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("shotLabelAnnotations")) {
+      shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("speechTranscriptions")) {
+      speechTranscriptions = (_json["speechTranscriptions"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1SpeechTranscription
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("textAnnotations")) {
+      textAnnotations = (_json["textAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1TextAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1TextAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (explicitAnnotation != null) {
+      _json["explicitAnnotation"] = (explicitAnnotation).toJson();
+    }
+    if (frameLabelAnnotations != null) {
+      _json["frameLabelAnnotations"] =
+          frameLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (inputUri != null) {
+      _json["inputUri"] = inputUri;
+    }
+    if (logoRecognitionAnnotations != null) {
+      _json["logoRecognitionAnnotations"] =
+          logoRecognitionAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (objectAnnotations != null) {
+      _json["objectAnnotations"] =
+          objectAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (segmentLabelAnnotations != null) {
+      _json["segmentLabelAnnotations"] =
+          segmentLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotAnnotations != null) {
+      _json["shotAnnotations"] =
+          shotAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotLabelAnnotations != null) {
+      _json["shotLabelAnnotations"] =
+          shotLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (speechTranscriptions != null) {
+      _json["speechTranscriptions"] =
+          speechTranscriptions.map((value) => (value).toJson()).toList();
+    }
+    if (textAnnotations != null) {
+      _json["textAnnotations"] =
+          textAnnotations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Video segment.
+class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
+  /// Time-offset, relative to the beginning of the video,
+  /// corresponding to the end of the segment (inclusive).
+  core.String endTimeOffset;
+
+  /// Time-offset, relative to the beginning of the video,
+  /// corresponding to the start of the segment (inclusive).
+  core.String startTimeOffset;
+
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment();
+
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(core.Map _json) {
+    if (_json.containsKey("endTimeOffset")) {
+      endTimeOffset = _json["endTimeOffset"];
+    }
+    if (_json.containsKey("startTimeOffset")) {
+      startTimeOffset = _json["startTimeOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTimeOffset != null) {
+      _json["endTimeOffset"] = endTimeOffset;
+    }
+    if (startTimeOffset != null) {
+      _json["startTimeOffset"] = startTimeOffset;
+    }
+    return _json;
+  }
+}
+
+/// Word-specific information for recognized words. Word information is only
+/// included in the response when certain request parameters are set, such
+/// as `enable_word_time_offsets`.
+class GoogleCloudVideointelligenceV1p3beta1WordInfo {
+  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
+  /// indicates an estimated greater likelihood that the recognized words are
+  /// correct. This field is set only for the top alternative.
+  /// This field is not guaranteed to be accurate and users should not rely on
+  /// it
+  /// to be always provided.
+  /// The default of 0.0 is a sentinel value indicating `confidence` was not
+  /// set.
+  core.double confidence;
+
+  /// Time offset relative to the beginning of the audio, and
+  /// corresponding to the end of the spoken word. This field is only set if
+  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+  /// experimental feature and the accuracy of the time offset can vary.
+  core.String endTime;
+
+  /// Output only. A distinct integer value is assigned for every speaker within
+  /// the audio. This field specifies which one of those speakers was detected
+  /// to
+  /// have spoken this word. Value ranges from 1 up to
+  /// diarization_speaker_count,
+  /// and is only set if speaker diarization is enabled.
+  core.int speakerTag;
+
+  /// Time offset relative to the beginning of the audio, and
+  /// corresponding to the start of the spoken word. This field is only set if
+  /// `enable_word_time_offsets=true` and only in the top hypothesis. This is an
+  /// experimental feature and the accuracy of the time offset can vary.
+  core.String startTime;
+
+  /// The word corresponding to this set of information.
+  core.String word;
+
+  GoogleCloudVideointelligenceV1p3beta1WordInfo();
+
+  GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("speakerTag")) {
+      speakerTag = _json["speakerTag"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("word")) {
+      word = _json["word"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (speakerTag != null) {
+      _json["speakerTag"] = speakerTag;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (word != null) {
+      _json["word"] = word;
+    }
+    return _json;
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 class GoogleLongrunningCancelOperationRequest {
   GoogleLongrunningCancelOperationRequest();
@@ -4028,7 +7323,7 @@ class GoogleLongrunningOperation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -4110,61 +7405,12 @@ class GoogleProtobufEmpty {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class GoogleRpcStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

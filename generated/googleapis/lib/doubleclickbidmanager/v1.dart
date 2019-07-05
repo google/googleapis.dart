@@ -533,22 +533,24 @@ class DownloadLineItemsResponse {
 /// Request to fetch stored inventory sources, campaigns, insertion orders, line
 /// items, TrueView ad groups and ads.
 class DownloadRequest {
-  /// File types that will be returned.
+  /// File types that will be returned. If INVENTORY_SOURCE is requested, no
+  /// other file types may be requested.
   ///
   /// Acceptable values are:
   /// - "AD"
   /// - "AD_GROUP"
   /// - "CAMPAIGN"
   /// - "INSERTION_ORDER"
-  /// - "LINE_ITEM"
   /// - "INVENTORY_SOURCE"
+  /// - "LINE_ITEM"
   core.List<core.String> fileTypes;
 
   /// The IDs of the specified filter type. This is used to filter entities to
   /// fetch. At least one ID must be specified.
   core.List<core.String> filterIds;
 
-  /// Filter type used to filter entities to fetch.
+  /// Filter type used to filter entities to fetch. PARTNER_ID and
+  /// INVENTORY_SOURCE_ID may only be used when downloading inventory sources.
   /// Possible string values are:
   /// - "ADVERTISER_ID"
   /// - "CAMPAIGN_ID"
@@ -711,6 +713,7 @@ class FilterPair {
   /// - "FILTER_INVENTORY_FORMAT"
   /// - "FILTER_INVENTORY_RATE_TYPE"
   /// - "FILTER_INVENTORY_SOURCE"
+  /// - "FILTER_INVENTORY_SOURCE_EXTERNAL_ID"
   /// - "FILTER_INVENTORY_SOURCE_TYPE"
   /// - "FILTER_KEYWORD"
   /// - "FILTER_LINE_ITEM"
@@ -903,7 +906,7 @@ class Parameters {
   /// Data is grouped by the filters listed in this field.
   core.List<core.String> groupBys;
 
-  /// Whether to include data from Invite Media.
+  /// Deprecated. This field is no longer in use.
   core.bool includeInviteData;
 
   /// Metrics to include as columns in your report.

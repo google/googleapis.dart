@@ -40,6 +40,8 @@ class JobsApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsClientEventsResourceApi get clientEvents =>
+      new ProjectsClientEventsResourceApi(_requester);
   ProjectsCompaniesResourceApi get companies =>
       new ProjectsCompaniesResourceApi(_requester);
   ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
@@ -58,6 +60,53 @@ class ProjectsResourceApi {
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [languageCodes] - Optional.
+  ///
+  /// The list of languages of the query. This is
+  /// the BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+  ///
+  /// For CompletionType.JOB_TITLE type, only open jobs with the same
+  /// language_codes are returned.
+  ///
+  /// For CompletionType.COMPANY_NAME type,
+  /// only companies having open jobs with the same language_codes are
+  /// returned.
+  ///
+  /// For CompletionType.COMBINED type, only open jobs with the same
+  /// language_codes or companies having open jobs with the same
+  /// language_codes are returned.
+  ///
+  /// The maximum number of allowed characters is 255.
+  ///
+  /// [companyName] - Optional.
+  ///
+  /// If provided, restricts completion to specified company.
+  ///
+  /// The format is "projects/{project_id}/companies/{company_id}", for example,
+  /// "projects/api-test-project/companies/foo".
+  ///
+  /// [scope] - Optional.
+  ///
+  /// The scope of the completion. The defaults is CompletionScope.PUBLIC.
+  /// Possible string values are:
+  /// - "COMPLETION_SCOPE_UNSPECIFIED" : A COMPLETION_SCOPE_UNSPECIFIED.
+  /// - "TENANT" : A TENANT.
+  /// - "PUBLIC" : A PUBLIC.
+  ///
+  /// [pageSize] - Required.
+  ///
+  /// Completion result count.
+  ///
+  /// The maximum allowed page size is 10.
+  ///
+  /// [query] - Required.
+  ///
+  /// The query used to generate suggestions.
+  ///
+  /// The maximum number of allowed characters is 255.
   ///
   /// [languageCode] - Deprecated. Use language_codes instead.
   ///
@@ -90,53 +139,6 @@ class ProjectsResourceApi {
   /// - "COMPANY_NAME" : A COMPANY_NAME.
   /// - "COMBINED" : A COMBINED.
   ///
-  /// [languageCodes] - Optional.
-  ///
-  /// The list of languages of the query. This is
-  /// the BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
-  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-  ///
-  /// For CompletionType.JOB_TITLE type, only open jobs with the same
-  /// language_codes are returned.
-  ///
-  /// For CompletionType.COMPANY_NAME type,
-  /// only companies having open jobs with the same language_codes are
-  /// returned.
-  ///
-  /// For CompletionType.COMBINED type, only open jobs with the same
-  /// language_codes or companies having open jobs with the same
-  /// language_codes are returned.
-  ///
-  /// The maximum number of allowed characters is 255.
-  ///
-  /// [scope] - Optional.
-  ///
-  /// The scope of the completion. The defaults is CompletionScope.PUBLIC.
-  /// Possible string values are:
-  /// - "COMPLETION_SCOPE_UNSPECIFIED" : A COMPLETION_SCOPE_UNSPECIFIED.
-  /// - "TENANT" : A TENANT.
-  /// - "PUBLIC" : A PUBLIC.
-  ///
-  /// [companyName] - Optional.
-  ///
-  /// If provided, restricts completion to specified company.
-  ///
-  /// The format is "projects/{project_id}/companies/{company_id}", for example,
-  /// "projects/api-test-project/companies/foo".
-  ///
-  /// [pageSize] - Required.
-  ///
-  /// Completion result count.
-  ///
-  /// The maximum allowed page size is 10.
-  ///
-  /// [query] - Required.
-  ///
-  /// The query used to generate suggestions.
-  ///
-  /// The maximum number of allowed characters is 255.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -148,13 +150,13 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(core.String name,
-      {core.String languageCode,
-      core.String type,
-      core.List<core.String> languageCodes,
-      core.String scope,
+      {core.List<core.String> languageCodes,
       core.String companyName,
+      core.String scope,
       core.int pageSize,
       core.String query,
+      core.String languageCode,
+      core.String type,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -166,26 +168,26 @@ class ProjectsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
-    }
-    if (type != null) {
-      _queryParams["type"] = [type];
-    }
     if (languageCodes != null) {
       _queryParams["languageCodes"] = languageCodes;
     }
-    if (scope != null) {
-      _queryParams["scope"] = [scope];
-    }
     if (companyName != null) {
       _queryParams["companyName"] = [companyName];
+    }
+    if (scope != null) {
+      _queryParams["scope"] = [scope];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -200,6 +202,71 @@ class ProjectsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new CompleteQueryResponse.fromJson(data));
+  }
+}
+
+class ProjectsClientEventsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsClientEventsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Report events issued when end user interacts with customer's application
+  /// that uses Cloud Talent Solution. You may inspect the created events in
+  /// [self service
+  /// tools](https://console.cloud.google.com/talent-solution/overview).
+  /// [Learn
+  /// more](https://cloud.google.com/talent-solution/docs/management-tools)
+  /// about self service tools.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Parent project name.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ClientEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ClientEvent> create(
+      CreateClientEventRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/clientEvents';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ClientEvent.fromJson(data));
   }
 }
 
@@ -730,24 +797,6 @@ class ProjectsJobsResourceApi {
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - Required.
-  ///
-  /// The filter string specifies the jobs to be enumerated.
-  ///
-  /// Supported operator: =, AND
-  ///
-  /// The fields eligible for filtering are:
-  ///
-  /// * `companyName` (Required)
-  /// * `requisitionId` (Optional)
-  ///
-  /// Sample Query:
-  ///
-  /// * companyName = "projects/api-test-project/companies/123"
-  /// * companyName = "projects/api-test-project/companies/123" AND
-  /// requisitionId
-  /// = "req-1"
-  ///
   /// [jobView] - Optional.
   ///
   /// The desired job attributes returned for jobs in the
@@ -773,6 +822,24 @@ class ProjectsJobsResourceApi {
   ///
   /// Default is 100 if empty or a number < 1 is specified.
   ///
+  /// [filter] - Required.
+  ///
+  /// The filter string specifies the jobs to be enumerated.
+  ///
+  /// Supported operator: =, AND
+  ///
+  /// The fields eligible for filtering are:
+  ///
+  /// * `companyName` (Required)
+  /// * `requisitionId` (Optional)
+  ///
+  /// Sample Query:
+  ///
+  /// * companyName = "projects/api-test-project/companies/123"
+  /// * companyName = "projects/api-test-project/companies/123" AND
+  /// requisitionId
+  /// = "req-1"
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -784,10 +851,10 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String parent,
-      {core.String filter,
-      core.String jobView,
+      {core.String jobView,
       core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -799,9 +866,6 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (jobView != null) {
       _queryParams["jobView"] = [jobView];
     }
@@ -810,6 +874,9 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1183,17 +1250,120 @@ class BucketizedCount {
   }
 }
 
+/// An event issued when an end user interacts with the application that
+/// implements Cloud Talent Solution. Providing this information improves the
+/// quality of search and recommendation for the API clients, enabling the
+/// service to perform optimally. The number of events sent must be consistent
+/// with other calls, such as job searches, issued to the service by the client.
+class ClientEvent {
+  /// Required.
+  ///
+  /// The timestamp of the event.
+  core.String createTime;
+
+  /// Required.
+  ///
+  /// A unique identifier, generated by the client application. This `event_id`
+  /// is used to establish the relationship between different events
+  /// (see parent_event_id).
+  core.String eventId;
+
+  /// Optional.
+  ///
+  /// Extra information about this event. Used for storing information with no
+  /// matching field in event payload, for example, user application specific
+  /// context or details.
+  ///
+  /// At most 20 keys are supported. The maximum total size of all keys and
+  /// values is 2 KB.
+  core.Map<core.String, core.String> extraInfo;
+
+  /// A event issued when a job seeker interacts with the application that
+  /// implements Cloud Talent Solution.
+  JobEvent jobEvent;
+
+  /// Optional.
+  ///
+  /// The event_id of an event that resulted in the current event. For example,
+  /// a
+  /// Job view event usually follows a parent
+  /// impression event: A job seeker first does a
+  /// search where a list of jobs appears
+  /// (impression). The job seeker then selects a
+  /// result and views the description of a particular job (Job
+  /// view).
+  core.String parentEventId;
+
+  /// Required.
+  ///
+  /// A unique ID generated in the API responses. It can be found in
+  /// ResponseMetadata.request_id.
+  core.String requestId;
+
+  ClientEvent();
+
+  ClientEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("extraInfo")) {
+      extraInfo =
+          (_json["extraInfo"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("jobEvent")) {
+      jobEvent = new JobEvent.fromJson(_json["jobEvent"]);
+    }
+    if (_json.containsKey("parentEventId")) {
+      parentEventId = _json["parentEventId"];
+    }
+    if (_json.containsKey("requestId")) {
+      requestId = _json["requestId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (extraInfo != null) {
+      _json["extraInfo"] = extraInfo;
+    }
+    if (jobEvent != null) {
+      _json["jobEvent"] = (jobEvent).toJson();
+    }
+    if (parentEventId != null) {
+      _json["parentEventId"] = parentEventId;
+    }
+    if (requestId != null) {
+      _json["requestId"] = requestId;
+    }
+    return _json;
+  }
+}
+
 /// Input only.
 ///
 /// Parameters needed for commute search.
 class CommuteFilter {
   /// Optional.
-  /// If `true`, jobs without street level addresses may also be returned.
-  /// For city level addresses, the city center is used. For state and coarser
-  /// level addresses, text matching is used.
-  /// If this field is set to `false` or is not specified, only jobs that
-  /// include
-  /// street level addresses will be returned by commute search.
+  /// If true, jobs without "precise" addresses (street level addresses or GPS
+  /// coordinates) might also be returned. For city and coarser level addresses,
+  /// text matching is used. If this field is set to false or is not specified,
+  /// only jobs that include precise addresses are returned by Commute
+  /// Search.
+  ///
+  /// Note: If `allow_imprecise_addresses` is set to true, Commute Search is not
+  /// able to calculate accurate commute times to jobs with city level and
+  /// coarser address information. Jobs with imprecise addresses will return a
+  /// `travel_duration` time of 0 regardless of distance from the job seeker.
   core.bool allowImpreciseAddresses;
 
   /// Required.
@@ -1210,7 +1380,7 @@ class CommuteFilter {
   /// Optional.
   ///
   /// The departure time used to calculate traffic impact, represented as
-  /// .google.type.TimeOfDay in local time zone.
+  /// google.type.TimeOfDay in local time zone.
   ///
   /// Currently traffic model is restricted to hour level resolution.
   TimeOfDay departureTime;
@@ -1585,7 +1755,7 @@ class CompensationEntry {
   ///
   /// Compensation type.
   ///
-  /// Default is CompensationUnit.OTHER_COMPENSATION_TYPE.
+  /// Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMPENSATION_TYPE_UNSPECIFIED" : Default value.
   /// - "BASE" : Base compensation: Refers to the fixed amount of money paid to
@@ -1606,7 +1776,7 @@ class CompensationEntry {
   ///
   /// Frequency of the specified amount.
   ///
-  /// Default is CompensationUnit.OTHER_COMPENSATION_UNIT.
+  /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMPENSATION_UNIT_UNSPECIFIED" : Default value.
   /// - "HOURLY" : Hourly.
@@ -1672,7 +1842,8 @@ class CompensationEntry {
 class CompensationFilter {
   /// Optional.
   ///
-  /// Whether to include jobs whose compensation range is unspecified.
+  /// If set to true, jobs with unspecified compensation range fields are
+  /// included.
   core.bool includeJobsWithUnspecifiedCompensationRange;
 
   /// Optional.
@@ -2039,6 +2210,32 @@ class CompletionResult {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// The report event request.
+class CreateClientEventRequest {
+  /// Required.
+  ///
+  /// Events issued when end user interacts with customer's application that
+  /// uses Cloud Talent Solution.
+  ClientEvent clientEvent;
+
+  CreateClientEventRequest();
+
+  CreateClientEventRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("clientEvent")) {
+      clientEvent = new ClientEvent.fromJson(_json["clientEvent"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clientEvent != null) {
+      _json["clientEvent"] = (clientEvent).toJson();
     }
     return _json;
   }
@@ -2770,9 +2967,9 @@ class Job {
   /// The job PostingRegion (for example, state, country) throughout which
   /// the job is available. If this field is set, a
   /// LocationFilter in a search query within the job region
-  /// finds this job posting if an exact location match is not specified.
-  /// If this field is set to PostingRegion.NATION_WIDE or
-  /// [PostingRegion.ADMINISTRATIVE_AREA], setting job addresses
+  /// finds this job posting if an exact location match isn't specified.
+  /// If this field is set to PostingRegion.NATION or
+  /// PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses
   /// to the same location level as this field is strongly recommended.
   /// Possible string values are:
   /// - "POSTING_REGION_UNSPECIFIED" : If the region is unspecified, the job is
@@ -3109,6 +3306,125 @@ class JobDerivedInfo {
     }
     if (locations != null) {
       _json["locations"] = locations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// An event issued when a job seeker interacts with the application that
+/// implements Cloud Talent Solution.
+class JobEvent {
+  /// Required.
+  ///
+  /// The job name(s) associated with this event.
+  /// For example, if this is an impression event,
+  /// this field contains the identifiers of all jobs shown to the job seeker.
+  /// If this was a view event, this field contains the
+  /// identifier of the viewed job.
+  core.List<core.String> jobs;
+
+  /// Required.
+  ///
+  /// The type of the event (see JobEventType).
+  /// Possible string values are:
+  /// - "JOB_EVENT_TYPE_UNSPECIFIED" : The event is unspecified by other
+  /// provided values.
+  /// - "IMPRESSION" : The job seeker or other entity interacting with the
+  /// service has
+  /// had a job rendered in their view, such as in a list of search results in
+  /// a compressed or clipped format. This event is typically associated with
+  /// the viewing of a jobs list on a single page by a job seeker.
+  /// - "VIEW" : The job seeker, or other entity interacting with the service,
+  /// has
+  /// viewed the details of a job, including the full description. This
+  /// event doesn't apply to the viewing a snippet of a job appearing as a
+  /// part of the job search results. Viewing a snippet is associated with an
+  /// impression).
+  /// - "VIEW_REDIRECT" : The job seeker or other entity interacting with the
+  /// service
+  /// performed an action to view a job and was redirected to a different
+  /// website for job.
+  /// - "APPLICATION_START" : The job seeker or other entity interacting with
+  /// the service
+  /// began the process or demonstrated the intention of applying for a job.
+  /// - "APPLICATION_FINISH" : The job seeker or other entity interacting with
+  /// the service
+  /// submitted an application for a job.
+  /// - "APPLICATION_QUICK_SUBMISSION" : The job seeker or other entity
+  /// interacting with the service
+  /// submitted an application for a job with a single click without
+  /// entering information. If a job seeker performs this action, send only
+  /// this event to the service. Do not also send
+  /// JobEventType.APPLICATION_START or JobEventType.APPLICATION_FINISH
+  /// events.
+  /// - "APPLICATION_REDIRECT" : The job seeker or other entity interacting with
+  /// the service
+  /// performed an action to apply to a job and was redirected to a different
+  /// website to complete the application.
+  /// - "APPLICATION_START_FROM_SEARCH" : The job seeker or other entity
+  /// interacting with the service began the
+  /// process or demonstrated the intention of applying for a job from the
+  /// search results page without viewing the details of the job posting.
+  /// If sending this event, JobEventType.VIEW event shouldn't be sent.
+  /// - "APPLICATION_REDIRECT_FROM_SEARCH" : The job seeker, or other entity
+  /// interacting with the service, performs an
+  /// action with a single click from the search results page to apply to a job
+  /// (without viewing the details of the job posting), and is redirected
+  /// to a different website to complete the application. If a candidate
+  /// performs this action, send only this event to the service. Do not also
+  /// send JobEventType.APPLICATION_START,
+  /// JobEventType.APPLICATION_FINISH or JobEventType.VIEW events.
+  /// - "APPLICATION_COMPANY_SUBMIT" : This event should be used when a company
+  /// submits an application
+  /// on behalf of a job seeker. This event is intended for use by staffing
+  /// agencies attempting to place candidates.
+  /// - "BOOKMARK" : The job seeker or other entity interacting with the service
+  /// demonstrated
+  /// an interest in a job by bookmarking or saving it.
+  /// - "NOTIFICATION" : The job seeker or other entity interacting with the
+  /// service was
+  /// sent a notification, such as an email alert or device notification,
+  /// containing one or more jobs listings generated by the service.
+  /// - "HIRED" : The job seeker or other entity interacting with the service
+  /// was
+  /// employed by the hiring entity (employer). Send this event
+  /// only if the job seeker was hired through an application that was
+  /// initiated by a search conducted through the Cloud Talent Solution
+  /// service.
+  /// - "SENT_CV" : A recruiter or staffing agency submitted an application on
+  /// behalf of the
+  /// candidate after interacting with the service to identify a suitable job
+  /// posting.
+  /// - "INTERVIEW_GRANTED" : The entity interacting with the service (for
+  /// example, the job seeker),
+  /// was granted an initial interview by the hiring entity (employer). This
+  /// event should only be sent if the job seeker was granted an interview as
+  /// part of an application that was initiated by a search conducted through /
+  /// recommendation provided by the Cloud Talent Solution service.
+  /// - "NOT_INTERESTED" : The job seeker or other entity interacting with the
+  /// service showed
+  /// no interest in the job.
+  core.String type;
+
+  JobEvent();
+
+  JobEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("jobs")) {
+      jobs = (_json["jobs"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (jobs != null) {
+      _json["jobs"] = jobs;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -3615,7 +3931,8 @@ class LocationFilter {
   /// Optional.
   ///
   /// Allows the client to return jobs without a
-  /// set location, specifically, telecommuting jobs (telecomuting is considered
+  /// set location, specifically, telecommuting jobs (telecommuting is
+  /// considered
   /// by the service as a special location.
   /// Job.posting_region indicates if a job permits telecommuting.
   /// If this field is set to TelecommutePreference.TELECOMMUTE_ALLOWED,
@@ -4300,7 +4617,8 @@ class SearchJobsRequest {
   /// is specified.
   /// Possible string values are:
   /// - "DIVERSIFICATION_LEVEL_UNSPECIFIED" : The diversification level isn't
-  /// specified.
+  /// specified. By default, jobs with this
+  /// enum are ordered according to SIMPLE diversifying behavior.
   /// - "DISABLED" : Disables diversification. Jobs that would normally be
   /// pushed to the last
   /// page would not have their positions altered. This may result in highly
@@ -4340,11 +4658,11 @@ class SearchJobsRequest {
   /// Job.name, Job.requisition_id, Job.language_code.
   /// - "JOB_VIEW_MINIMAL" : A minimal view of the job, with the following
   /// attributes:
-  /// Job.name, Job.requisition_id, Job.job_title,
+  /// Job.name, Job.requisition_id, Job.title,
   /// Job.company_name, Job.DerivedInfo.locations, Job.language_code.
   /// - "JOB_VIEW_SMALL" : A small view of the job, with the following
   /// attributes in the search
-  /// results: Job.name, Job.requisition_id, Job.job_title,
+  /// results: Job.name, Job.requisition_id, Job.title,
   /// Job.company_name, Job.DerivedInfo.locations, Job.visibility,
   /// Job.language_code, Job.description.
   /// - "JOB_VIEW_FULL" : All available attributes are included in the search
@@ -4370,26 +4688,28 @@ class SearchJobsRequest {
   ///
   /// Supported options are:
   ///
-  /// * "relevance desc": By relevance descending, as determined by the API
+  /// * `"relevance desc"`: By relevance descending, as determined by the API
   /// algorithms. Relevance thresholding of query results is only available
   /// with this ordering.
-  /// * "posting`_`publish`_`time desc": By Job.posting_publish_time descending.
-  /// * "posting`_`update`_`time desc": By Job.posting_update_time descending.
-  /// * "title": By Job.title ascending.
-  /// * "title desc": By Job.title descending.
-  /// * "annualized`_`base`_`compensation": By job's
+  /// * `"posting_publish_time desc"`: By Job.posting_publish_time
+  /// descending.
+  /// * `"posting_update_time desc"`: By Job.posting_update_time
+  /// descending.
+  /// * `"title"`: By Job.title ascending.
+  /// * `"title desc"`: By Job.title descending.
+  /// * `"annualized_base_compensation"`: By job's
   /// CompensationInfo.annualized_base_compensation_range ascending. Jobs
   /// whose annualized base compensation is unspecified are put at the end of
   /// search results.
-  /// * "annualized`_`base`_`compensation desc": By job's
+  /// * `"annualized_base_compensation desc"`: By job's
   /// CompensationInfo.annualized_base_compensation_range descending. Jobs
   /// whose annualized base compensation is unspecified are put at the end of
   /// search results.
-  /// * "annualized`_`total`_`compensation": By job's
+  /// * `"annualized_total_compensation"`: By job's
   /// CompensationInfo.annualized_total_compensation_range ascending. Jobs
   /// whose annualized base compensation is unspecified are put at the end of
   /// search results.
-  /// * "annualized`_`total`_`compensation desc": By job's
+  /// * `"annualized_total_compensation desc"`: By job's
   /// CompensationInfo.annualized_total_compensation_range descending. Jobs
   /// whose annualized base compensation is unspecified are put at the end of
   /// search results.
@@ -4412,7 +4732,7 @@ class SearchJobsRequest {
   /// Required.
   ///
   /// The meta information collected about the job searcher, used to improve the
-  /// search quality of the service.. The identifiers, (such as `user_id`) are
+  /// search quality of the service. The identifiers (such as `user_id`) are
   /// provided by users, and must be unique and consistent.
   RequestMetadata requestMetadata;
 

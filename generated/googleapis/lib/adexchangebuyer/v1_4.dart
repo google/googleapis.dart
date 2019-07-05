@@ -2726,6 +2726,35 @@ class CreateOrdersResponse {
   }
 }
 
+class CreativeAdTechnologyProviders {
+  core.List<core.String> detectedProviderIds;
+  core.bool hasUnidentifiedProvider;
+
+  CreativeAdTechnologyProviders();
+
+  CreativeAdTechnologyProviders.fromJson(core.Map _json) {
+    if (_json.containsKey("detectedProviderIds")) {
+      detectedProviderIds =
+          (_json["detectedProviderIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("hasUnidentifiedProvider")) {
+      hasUnidentifiedProvider = _json["hasUnidentifiedProvider"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (detectedProviderIds != null) {
+      _json["detectedProviderIds"] = detectedProviderIds;
+    }
+    if (hasUnidentifiedProvider != null) {
+      _json["hasUnidentifiedProvider"] = hasUnidentifiedProvider;
+    }
+    return _json;
+  }
+}
+
 class CreativeCorrectionsContexts {
   /// Only set when contextType=AUCTION_TYPE. Represents the auction types this
   /// correction applies to.
@@ -3036,9 +3065,6 @@ class CreativeNativeAd {
   /// The app rating in the app store. Must be in the range [0-5].
   core.double starRating;
 
-  /// The URL to the app store to purchase/download the promoted app.
-  core.String store;
-
   /// The URL of the XML VAST for a native ad. Note this is a separate field
   /// from resource.video_url.
   core.String videoURL;
@@ -3083,9 +3109,6 @@ class CreativeNativeAd {
     if (_json.containsKey("starRating")) {
       starRating = _json["starRating"].toDouble();
     }
-    if (_json.containsKey("store")) {
-      store = _json["store"];
-    }
     if (_json.containsKey("videoURL")) {
       videoURL = _json["videoURL"];
     }
@@ -3129,9 +3152,6 @@ class CreativeNativeAd {
     }
     if (starRating != null) {
       _json["starRating"] = starRating;
-    }
-    if (store != null) {
-      _json["store"] = store;
     }
     if (videoURL != null) {
       _json["videoURL"] = videoURL;
@@ -3289,6 +3309,7 @@ class Creative {
   /// The link to the Ad Preferences page. This is only supported for native
   /// ads.
   core.String adChoicesDestinationUrl;
+  CreativeAdTechnologyProviders adTechnologyProviders;
 
   /// Detected advertiser id, if any. Read-only. This field should not be set in
   /// requests.
@@ -3425,6 +3446,10 @@ class Creative {
     if (_json.containsKey("adChoicesDestinationUrl")) {
       adChoicesDestinationUrl = _json["adChoicesDestinationUrl"];
     }
+    if (_json.containsKey("adTechnologyProviders")) {
+      adTechnologyProviders = new CreativeAdTechnologyProviders.fromJson(
+          _json["adTechnologyProviders"]);
+    }
     if (_json.containsKey("advertiserId")) {
       advertiserId = (_json["advertiserId"] as core.List).cast<core.String>();
     }
@@ -3532,6 +3557,9 @@ class Creative {
     }
     if (adChoicesDestinationUrl != null) {
       _json["adChoicesDestinationUrl"] = adChoicesDestinationUrl;
+    }
+    if (adTechnologyProviders != null) {
+      _json["adTechnologyProviders"] = (adTechnologyProviders).toJson();
     }
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;

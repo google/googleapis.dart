@@ -61,7 +61,7 @@ class ActivitiesResourceApi {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)".
+  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)".
   ///
   /// [actorIpAddress] - IP Address of host where the event was performed.
   /// Supports both IPv4 and IPv6 addresses.
@@ -188,7 +188,7 @@ class ActivitiesResourceApi {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)".
+  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)".
   ///
   /// [actorIpAddress] - IP Address of host where the event was performed.
   /// Supports both IPv4 and IPv6 addresses.
@@ -750,6 +750,55 @@ class ActivityActor {
   }
 }
 
+/// Nested value of the parameter.
+class ActivityEventsParametersMessageValue {
+  /// Looping to get parameter values.
+  core.List<NestedParameter> parameter;
+
+  ActivityEventsParametersMessageValue();
+
+  ActivityEventsParametersMessageValue.fromJson(core.Map _json) {
+    if (_json.containsKey("parameter")) {
+      parameter = (_json["parameter"] as core.List)
+          .map<NestedParameter>((value) => new NestedParameter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parameter != null) {
+      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ActivityEventsParametersMultiMessageValue {
+  /// Parameter value.
+  core.List<NestedParameter> parameter;
+
+  ActivityEventsParametersMultiMessageValue();
+
+  ActivityEventsParametersMultiMessageValue.fromJson(core.Map _json) {
+    if (_json.containsKey("parameter")) {
+      parameter = (_json["parameter"] as core.List)
+          .map<NestedParameter>((value) => new NestedParameter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parameter != null) {
+      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class ActivityEventsParameters {
   /// Boolean value of the parameter.
   core.bool boolValue;
@@ -757,8 +806,14 @@ class ActivityEventsParameters {
   /// Integral value of the parameter.
   core.String intValue;
 
+  /// Nested value of the parameter.
+  ActivityEventsParametersMessageValue messageValue;
+
   /// Multi-int value of the parameter.
   core.List<core.String> multiIntValue;
+
+  /// Nested values of the parameter.
+  core.List<ActivityEventsParametersMultiMessageValue> multiMessageValue;
 
   /// Multi-string value of the parameter.
   core.List<core.String> multiValue;
@@ -778,8 +833,18 @@ class ActivityEventsParameters {
     if (_json.containsKey("intValue")) {
       intValue = _json["intValue"];
     }
+    if (_json.containsKey("messageValue")) {
+      messageValue = new ActivityEventsParametersMessageValue.fromJson(
+          _json["messageValue"]);
+    }
     if (_json.containsKey("multiIntValue")) {
       multiIntValue = (_json["multiIntValue"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("multiMessageValue")) {
+      multiMessageValue = (_json["multiMessageValue"] as core.List)
+          .map<ActivityEventsParametersMultiMessageValue>((value) =>
+              new ActivityEventsParametersMultiMessageValue.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("multiValue")) {
       multiValue = (_json["multiValue"] as core.List).cast<core.String>();
@@ -801,8 +866,15 @@ class ActivityEventsParameters {
     if (intValue != null) {
       _json["intValue"] = intValue;
     }
+    if (messageValue != null) {
+      _json["messageValue"] = (messageValue).toJson();
+    }
     if (multiIntValue != null) {
       _json["multiIntValue"] = multiIntValue;
+    }
+    if (multiMessageValue != null) {
+      _json["multiMessageValue"] =
+          multiMessageValue.map((value) => (value).toJson()).toList();
     }
     if (multiValue != null) {
       _json["multiValue"] = multiValue;
@@ -1003,7 +1075,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource. Value: the fixed string "api#channel".
+  /// resource, which is "api#channel".
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior. Optional.
@@ -1093,6 +1165,83 @@ class Channel {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for a parameter used in various reports.
+class NestedParameter {
+  /// Boolean value of the parameter.
+  core.bool boolValue;
+
+  /// Integral value of the parameter.
+  core.String intValue;
+
+  /// Multiple boolean values of the parameter.
+  core.List<core.bool> multiBoolValue;
+
+  /// Multiple integral values of the parameter.
+  core.List<core.String> multiIntValue;
+
+  /// Multiple string values of the parameter.
+  core.List<core.String> multiValue;
+
+  /// The name of the parameter.
+  core.String name;
+
+  /// String value of the parameter.
+  core.String value;
+
+  NestedParameter();
+
+  NestedParameter.fromJson(core.Map _json) {
+    if (_json.containsKey("boolValue")) {
+      boolValue = _json["boolValue"];
+    }
+    if (_json.containsKey("intValue")) {
+      intValue = _json["intValue"];
+    }
+    if (_json.containsKey("multiBoolValue")) {
+      multiBoolValue = (_json["multiBoolValue"] as core.List).cast<core.bool>();
+    }
+    if (_json.containsKey("multiIntValue")) {
+      multiIntValue = (_json["multiIntValue"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("multiValue")) {
+      multiValue = (_json["multiValue"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boolValue != null) {
+      _json["boolValue"] = boolValue;
+    }
+    if (intValue != null) {
+      _json["intValue"] = intValue;
+    }
+    if (multiBoolValue != null) {
+      _json["multiBoolValue"] = multiBoolValue;
+    }
+    if (multiIntValue != null) {
+      _json["multiIntValue"] = multiIntValue;
+    }
+    if (multiValue != null) {
+      _json["multiValue"] = multiValue;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

@@ -6373,6 +6373,7 @@ class Notification {
   core.String reason;
   core.bool showNotificationSettingsAction;
   core.String targetUrl;
+  core.String timeToExpireMs;
   core.String title;
 
   Notification();
@@ -6421,6 +6422,9 @@ class Notification {
     }
     if (_json.containsKey("targetUrl")) {
       targetUrl = _json["targetUrl"];
+    }
+    if (_json.containsKey("timeToExpireMs")) {
+      timeToExpireMs = _json["timeToExpireMs"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -6472,6 +6476,9 @@ class Notification {
     }
     if (targetUrl != null) {
       _json["targetUrl"] = targetUrl;
+    }
+    if (timeToExpireMs != null) {
+      _json["timeToExpireMs"] = timeToExpireMs;
     }
     if (title != null) {
       _json["title"] = title;

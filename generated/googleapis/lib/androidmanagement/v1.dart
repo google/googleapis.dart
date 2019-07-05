@@ -47,6 +47,8 @@ class EnterprisesResourceApi {
       new EnterprisesEnrollmentTokensResourceApi(_requester);
   EnterprisesPoliciesResourceApi get policies =>
       new EnterprisesPoliciesResourceApi(_requester);
+  EnterprisesWebAppsResourceApi get webApps =>
+      new EnterprisesWebAppsResourceApi(_requester);
   EnterprisesWebTokensResourceApi get webTokens =>
       new EnterprisesWebTokensResourceApi(_requester);
 
@@ -59,13 +61,13 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [enterpriseToken] - The enterprise token appended to the callback URL.
+  ///
   /// [signupUrlName] - The name of the SignupUrl used to sign up for the
   /// enterprise.
   ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
-  ///
-  /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -78,9 +80,9 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
-      {core.String signupUrlName,
+      {core.String enterpriseToken,
+      core.String signupUrlName,
       core.String projectId,
-      core.String enterpriseToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -92,14 +94,14 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
+    if (enterpriseToken != null) {
+      _queryParams["enterpriseToken"] = [enterpriseToken];
+    }
     if (signupUrlName != null) {
       _queryParams["signupUrlName"] = [signupUrlName];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (enterpriseToken != null) {
-      _queryParams["enterpriseToken"] = [enterpriseToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -714,11 +716,11 @@ class EnterprisesDevicesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+/operations$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -731,9 +733,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -745,14 +747,14 @@ class EnterprisesDevicesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1082,6 +1084,266 @@ class EnterprisesPoliciesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
+  }
+}
+
+class EnterprisesWebAppsResourceApi {
+  final commons.ApiRequester _requester;
+
+  EnterprisesWebAppsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a web app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the enterprise in the form
+  /// enterprises/{enterpriseId}.
+  /// Value must have pattern "^enterprises/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> create(WebApp request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webApps';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
+  }
+
+  /// Deletes a web app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the web app in the form
+  /// enterprises/{enterpriseId}/webApps/{packageName}.
+  /// Value must have pattern "^enterprises/[^/]+/webApps/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a web app.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the web app in the form
+  /// enterprises/{enterpriseId}/webApp/{packageName}.
+  /// Value must have pattern "^enterprises/[^/]+/webApps/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
+  }
+
+  /// Lists web apps for a given enterprise.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The name of the enterprise in the form
+  /// enterprises/{enterpriseId}.
+  /// Value must have pattern "^enterprises/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results returned by the
+  /// server.
+  ///
+  /// [pageSize] - The requested page size. The actual page size may be fixed to
+  /// a min or max value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListWebAppsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListWebAppsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webApps';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListWebAppsResponse.fromJson(data));
+  }
+
+  /// Updates a web app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the web app in the form
+  /// enterprises/{enterpriseId}/webApps/{packageName}.
+  /// Value must have pattern "^enterprises/[^/]+/webApps/[^/]+$".
+  ///
+  /// [updateMask] - The field mask indicating the fields to update. If not set,
+  /// all modifiable fields will be modified.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WebApp].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WebApp> patch(WebApp request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new WebApp.fromJson(data));
   }
 }
 
@@ -1439,6 +1701,9 @@ class ApplicationPolicy {
   /// - "BLOCKED" : The app is blocked and can't be installed. If the app was
   /// installed under a previous policy, it will be uninstalled.
   /// - "AVAILABLE" : The app is available to install.
+  /// - "REQUIRED_FOR_SETUP" : The app is automatically installed and can't be
+  /// removed by the user and will prevent setup from completion until
+  /// installation is complete.
   core.String installType;
 
   /// Whether the app is allowed to lock itself in full-screen mode.
@@ -1583,6 +1848,9 @@ class ApplicationReport {
   /// The package name of the app that installed this app.
   core.String installerPackageName;
 
+  /// List of keyed app states reported by the app.
+  core.List<KeyedAppState> keyedAppStates;
+
   /// Package name of the app.
   core.String packageName;
 
@@ -1628,6 +1896,11 @@ class ApplicationReport {
     if (_json.containsKey("installerPackageName")) {
       installerPackageName = _json["installerPackageName"];
     }
+    if (_json.containsKey("keyedAppStates")) {
+      keyedAppStates = (_json["keyedAppStates"] as core.List)
+          .map<KeyedAppState>((value) => new KeyedAppState.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
     }
@@ -1665,6 +1938,10 @@ class ApplicationReport {
     if (installerPackageName != null) {
       _json["installerPackageName"] = installerPackageName;
     }
+    if (keyedAppStates != null) {
+      _json["keyedAppStates"] =
+          keyedAppStates.map((value) => (value).toJson()).toList();
+    }
     if (packageName != null) {
       _json["packageName"] = packageName;
     }
@@ -1682,6 +1959,57 @@ class ApplicationReport {
     }
     if (versionName != null) {
       _json["versionName"] = versionName;
+    }
+    return _json;
+  }
+}
+
+/// Settings controlling the behavior of application reports.
+class ApplicationReportingSettings {
+  /// Whether removed apps are included in application reports.
+  core.bool includeRemovedApps;
+
+  ApplicationReportingSettings();
+
+  ApplicationReportingSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("includeRemovedApps")) {
+      includeRemovedApps = _json["includeRemovedApps"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (includeRemovedApps != null) {
+      _json["includeRemovedApps"] = includeRemovedApps;
+    }
+    return _json;
+  }
+}
+
+/// An action to block access to apps and data on a fully managed device or in a
+/// work profile. This action also triggers a device or work profile to displays
+/// a user-facing notification with information (where possible) on how to
+/// correct the compliance issue. Note: wipeAction must also be specified.
+class BlockAction {
+  /// Number of days the policy is non-compliant before the device or work
+  /// profile is blocked. To block access immediately, set to 0. blockAfterDays
+  /// must be less than wipeAfterDays.
+  core.int blockAfterDays;
+
+  BlockAction();
+
+  BlockAction.fromJson(core.Map _json) {
+    if (_json.containsKey("blockAfterDays")) {
+      blockAfterDays = _json["blockAfterDays"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (blockAfterDays != null) {
+      _json["blockAfterDays"] = blockAfterDays;
     }
     return _json;
   }
@@ -2039,6 +2367,9 @@ class Device {
   /// are in this state until they have a policy applied.
   core.String state;
 
+  /// Map of selected system properties name and value related to the device.
+  core.Map<core.String, core.String> systemProperties;
+
   /// The user who owns the device.
   User user;
 
@@ -2149,6 +2480,10 @@ class Device {
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
+    if (_json.containsKey("systemProperties")) {
+      systemProperties = (_json["systemProperties"] as core.Map)
+          .cast<core.String, core.String>();
+    }
     if (_json.containsKey("user")) {
       user = new User.fromJson(_json["user"]);
     }
@@ -2248,6 +2583,9 @@ class Device {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (systemProperties != null) {
+      _json["systemProperties"] = systemProperties;
     }
     if (user != null) {
       _json["user"] = (user).toJson();
@@ -2983,6 +3321,109 @@ class HardwareStatus {
   }
 }
 
+/// Keyed app state reported by the app.
+class KeyedAppState {
+  /// The creation time of the app state on the device.
+  core.String createTime;
+
+  /// Optionally, a machine-readable value to be read by the EMM. For example,
+  /// setting values that the admin can choose to query against in the EMM
+  /// console (e.g. “notify me if the battery_warning data < 10”).
+  core.String data;
+
+  /// The key for the app state. Acts as a point of reference for what the app
+  /// is providing state for. For example, when providing managed configuration
+  /// feedback, this key could be the managed configuration key.
+  core.String key;
+
+  /// The time the app state was most recently updated.
+  core.String lastUpdateTime;
+
+  /// Optionally, a free-form message string to explain the app state. If the
+  /// state was triggered by a particular value (e.g. a managed configuration
+  /// value), it should be included in the message.
+  core.String message;
+
+  /// The severity of the app state.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity level.
+  /// - "INFO" : Information severity level.
+  /// - "ERROR" : Error severity level. This should only be set for genuine
+  /// error conditions that a management organization needs to take action to
+  /// fix.
+  core.String severity;
+
+  KeyedAppState();
+
+  KeyedAppState.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("lastUpdateTime")) {
+      lastUpdateTime = _json["lastUpdateTime"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (data != null) {
+      _json["data"] = data;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (lastUpdateTime != null) {
+      _json["lastUpdateTime"] = lastUpdateTime;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
+    return _json;
+  }
+}
+
+/// An action to launch an app.
+class LaunchAppAction {
+  /// Package name of app to be launched
+  core.String packageName;
+
+  LaunchAppAction();
+
+  LaunchAppAction.fromJson(core.Map _json) {
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    return _json;
+  }
+}
+
 /// Response to a request to list devices for a given enterprise.
 class ListDevicesResponse {
   /// The list of devices.
@@ -3081,6 +3522,40 @@ class ListPoliciesResponse {
     }
     if (policies != null) {
       _json["policies"] = policies.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response to a request to list web apps for a given enterprise.
+class ListWebAppsResponse {
+  /// If there are more results, a token to retrieve next page of results.
+  core.String nextPageToken;
+
+  /// The list of web apps.
+  core.List<WebApp> webApps;
+
+  ListWebAppsResponse();
+
+  ListWebAppsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("webApps")) {
+      webApps = (_json["webApps"] as core.List)
+          .map<WebApp>((value) => new WebApp.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (webApps != null) {
+      _json["webApps"] = webApps.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3607,7 +4082,7 @@ class Operation {
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it. If you use the default HTTP mapping, the name
-  /// should have the format of operations/some/unique/name.
+  /// should be a resource name ending with operations/{unique_id}.
   core.String name;
 
   /// The normal response of the operation in case of success. If the original
@@ -4010,7 +4485,7 @@ class Policy {
   /// Rules declaring which mitigating actions to take when a device is not
   /// compliant with its policy. When the conditions for multiple rules are
   /// satisfied, all of the mitigating actions for the rules are taken. There is
-  /// a maximum limit of 100 rules.
+  /// a maximum limit of 100 rules. Use policy enforcement rules instead.
   core.List<ComplianceRule> complianceRules;
 
   /// Whether creating windows besides app windows is disabled.
@@ -4104,6 +4579,9 @@ class Policy {
   /// value of 0 means there is no restriction.
   core.String maximumTimeToLock;
 
+  /// The minimum allowed Android API level.
+  core.int minimumApiLevel;
+
   /// Whether configuring mobile networks is disabled.
   core.bool mobileNetworksConfigDisabled;
 
@@ -4174,6 +4652,10 @@ class Policy {
   /// policy.
   core.String playStoreMode;
 
+  /// Rules that define the behavior when a particular policy can not be applied
+  /// on device
+  core.List<PolicyEnforcementRule> policyEnforcementRules;
+
   /// Allows showing UI on a device for a user to choose a private key alias if
   /// there are no matching rules in ChoosePrivateKeyRules. For devices below
   /// Android P, setting this may leave enterprise keys vulnerable.
@@ -4200,6 +4682,9 @@ class Policy {
 
   /// Whether changing the wallpaper is disabled.
   core.bool setWallpaperDisabled;
+
+  /// Actions to take during the setup process.
+  core.List<SetupAction> setupActions;
 
   /// Whether location sharing is disabled.
   core.bool shareLocationDisabled;
@@ -4260,8 +4745,7 @@ class Policy {
   /// Whether configuring Wi-Fi access points is disabled.
   core.bool wifiConfigDisabled;
 
-  /// Whether Wi-Fi networks defined in Open Network Configuration are locked so
-  /// they can't be edited by the user.
+  /// DEPRECATED - Use wifi_config_disabled.
   core.bool wifiConfigsLockdownEnabled;
 
   Policy();
@@ -4389,6 +4873,9 @@ class Policy {
     if (_json.containsKey("maximumTimeToLock")) {
       maximumTimeToLock = _json["maximumTimeToLock"];
     }
+    if (_json.containsKey("minimumApiLevel")) {
+      minimumApiLevel = _json["minimumApiLevel"];
+    }
     if (_json.containsKey("mobileNetworksConfigDisabled")) {
       mobileNetworksConfigDisabled = _json["mobileNetworksConfigDisabled"];
     }
@@ -4446,6 +4933,12 @@ class Policy {
     if (_json.containsKey("playStoreMode")) {
       playStoreMode = _json["playStoreMode"];
     }
+    if (_json.containsKey("policyEnforcementRules")) {
+      policyEnforcementRules = (_json["policyEnforcementRules"] as core.List)
+          .map<PolicyEnforcementRule>(
+              (value) => new PolicyEnforcementRule.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("privateKeySelectionEnabled")) {
       privateKeySelectionEnabled = _json["privateKeySelectionEnabled"];
     }
@@ -4467,6 +4960,11 @@ class Policy {
     }
     if (_json.containsKey("setWallpaperDisabled")) {
       setWallpaperDisabled = _json["setWallpaperDisabled"];
+    }
+    if (_json.containsKey("setupActions")) {
+      setupActions = (_json["setupActions"] as core.List)
+          .map<SetupAction>((value) => new SetupAction.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("shareLocationDisabled")) {
       shareLocationDisabled = _json["shareLocationDisabled"];
@@ -4637,6 +5135,9 @@ class Policy {
     if (maximumTimeToLock != null) {
       _json["maximumTimeToLock"] = maximumTimeToLock;
     }
+    if (minimumApiLevel != null) {
+      _json["minimumApiLevel"] = minimumApiLevel;
+    }
     if (mobileNetworksConfigDisabled != null) {
       _json["mobileNetworksConfigDisabled"] = mobileNetworksConfigDisabled;
     }
@@ -4686,6 +5187,10 @@ class Policy {
     if (playStoreMode != null) {
       _json["playStoreMode"] = playStoreMode;
     }
+    if (policyEnforcementRules != null) {
+      _json["policyEnforcementRules"] =
+          policyEnforcementRules.map((value) => (value).toJson()).toList();
+    }
     if (privateKeySelectionEnabled != null) {
       _json["privateKeySelectionEnabled"] = privateKeySelectionEnabled;
     }
@@ -4706,6 +5211,10 @@ class Policy {
     }
     if (setWallpaperDisabled != null) {
       _json["setWallpaperDisabled"] = setWallpaperDisabled;
+    }
+    if (setupActions != null) {
+      _json["setupActions"] =
+          setupActions.map((value) => (value).toJson()).toList();
     }
     if (shareLocationDisabled != null) {
       _json["shareLocationDisabled"] = shareLocationDisabled;
@@ -4757,6 +5266,53 @@ class Policy {
     }
     if (wifiConfigsLockdownEnabled != null) {
       _json["wifiConfigsLockdownEnabled"] = wifiConfigsLockdownEnabled;
+    }
+    return _json;
+  }
+}
+
+/// A rule that defines the actions to take if a device or work profile is not
+/// compliant with the policy specified in settingName.
+class PolicyEnforcementRule {
+  /// An action to block access to apps and data on a fully managed device or in
+  /// a work profile. This action also triggers a user-facing notification with
+  /// information (where possible) on how to correct the compliance issue. Note:
+  /// wipeAction must also be specified.
+  BlockAction blockAction;
+
+  /// The top-level policy to enforce. For example, applications or
+  /// passwordPolicies.
+  core.String settingName;
+
+  /// An action to reset a fully managed device or delete a work profile. Note:
+  /// blockAction must also be specified.
+  WipeAction wipeAction;
+
+  PolicyEnforcementRule();
+
+  PolicyEnforcementRule.fromJson(core.Map _json) {
+    if (_json.containsKey("blockAction")) {
+      blockAction = new BlockAction.fromJson(_json["blockAction"]);
+    }
+    if (_json.containsKey("settingName")) {
+      settingName = _json["settingName"];
+    }
+    if (_json.containsKey("wipeAction")) {
+      wipeAction = new WipeAction.fromJson(_json["wipeAction"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (blockAction != null) {
+      _json["blockAction"] = (blockAction).toJson();
+    }
+    if (settingName != null) {
+      _json["settingName"] = settingName;
+    }
+    if (wipeAction != null) {
+      _json["wipeAction"] = (wipeAction).toJson();
     }
     return _json;
   }
@@ -4861,6 +5417,47 @@ class ProxyInfo {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    return _json;
+  }
+}
+
+/// An action executed during setup.
+class SetupAction {
+  /// Description of this action.
+  UserFacingMessage description;
+
+  /// An action to launch an app.
+  LaunchAppAction launchApp;
+
+  /// Title of this action.
+  UserFacingMessage title;
+
+  SetupAction();
+
+  SetupAction.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = new UserFacingMessage.fromJson(_json["description"]);
+    }
+    if (_json.containsKey("launchApp")) {
+      launchApp = new LaunchAppAction.fromJson(_json["launchApp"]);
+    }
+    if (_json.containsKey("title")) {
+      title = new UserFacingMessage.fromJson(_json["title"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = (description).toJson();
+    }
+    if (launchApp != null) {
+      _json["launchApp"] = (launchApp).toJson();
+    }
+    if (title != null) {
+      _json["title"] = (title).toJson();
     }
     return _json;
   }
@@ -5061,39 +5658,10 @@ class SoftwareInfo {
 
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs. It is used by
-/// gRPC (https://github.com/grpc). The error model is designed to be:
-/// Simple to use and understand for most users
-/// Flexible enough to meet unexpected needsOverviewThe Status message contains
-/// three pieces of data: error code, error message, and error details. The
-/// error code should be an enum value of google.rpc.Code, but it may accept
-/// additional error codes if needed. The error message should be a
-/// developer-facing English message that helps developers understand and
-/// resolve the error. If a localized user-facing error message is needed, put
-/// the localized message in the error details or localize it in the client. The
-/// optional error details may contain arbitrary information about the error.
-/// There is a predefined set of error detail types in the package google.rpc
-/// that can be used for common error conditions.Language mappingThe Status
-/// message is the logical representation of the error model, but it is not
-/// necessarily the actual wire format. When the Status message is exposed in
-/// different client libraries and different wire protocols, it can be mapped
-/// differently. For example, it will likely be mapped to some exceptions in
-/// Java, but more likely mapped to some error codes in C.Other usesThe error
-/// model and the Status message can be used in a variety of environments,
-/// either with or without APIs, to provide a consistent developer experience
-/// across different environments.Example uses of this error model include:
-/// Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the Status in the normal response to indicate the partial
-/// errors.
-/// Workflow errors. A typical workflow has multiple steps. Each step may have a
-/// Status message for error reporting.
-/// Batch operations. If a client uses batch request and batch response, the
-/// Status message should be used directly inside batch response, one for each
-/// error sub-response.
-/// Asynchronous operations. If an API call embeds asynchronous operation
-/// results in its response, the status of those operations should be
-/// represented directly using the Status message.
-/// Logging. If some API errors are stored in logs, the message Status could be
-/// used directly after any stripping needed for security/privacy reasons.
+/// gRPC (https://github.com/grpc). Each Status message contains three pieces of
+/// data: error code, error message, and error details.You can find out more
+/// about this error model and how to work with it in the API Design Guide
+/// (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -5145,6 +5713,10 @@ class Status {
 
 /// Settings controlling the behavior of status reports.
 class StatusReportingSettings {
+  /// Application reporting settings. Only applicable if
+  /// application_reports_enabled is true.
+  ApplicationReportingSettings applicationReportingSettings;
+
   /// Whether app reports are enabled.
   core.bool applicationReportsEnabled;
 
@@ -5172,6 +5744,10 @@ class StatusReportingSettings {
   StatusReportingSettings();
 
   StatusReportingSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("applicationReportingSettings")) {
+      applicationReportingSettings = new ApplicationReportingSettings.fromJson(
+          _json["applicationReportingSettings"]);
+    }
     if (_json.containsKey("applicationReportsEnabled")) {
       applicationReportsEnabled = _json["applicationReportsEnabled"];
     }
@@ -5201,6 +5777,10 @@ class StatusReportingSettings {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (applicationReportingSettings != null) {
+      _json["applicationReportingSettings"] =
+          (applicationReportingSettings).toJson();
+    }
     if (applicationReportsEnabled != null) {
       _json["applicationReportsEnabled"] = applicationReportsEnabled;
     }
@@ -5385,6 +5965,118 @@ class UserFacingMessage {
   }
 }
 
+/// A web app.
+class WebApp {
+  /// The display mode of the web app.
+  /// Possible string values are:
+  /// - "DISPLAY_MODE_UNSPECIFIED" : Not used.
+  /// - "MINIMAL_UI" : Opens the web app with a minimal set of browser UI
+  /// elements for controlling navigation and viewing the page URL.
+  /// - "STANDALONE" : Opens the web app to look and feel like a standalone
+  /// native application. The browser UI elements and page URL are not visible,
+  /// however the system status bar and back button are visible.
+  /// - "FULL_SCREEN" : Opens the web app in full screen without any visible
+  /// controls. The browser UI elements, page URL, system status bar and back
+  /// button are not visible, and the web app takes up the entirety of the
+  /// available display area.
+  core.String displayMode;
+
+  /// A list of icons for the web app. Must have at least one element.
+  core.List<WebAppIcon> icons;
+
+  /// The name of the web app, which is generated by the server during creation
+  /// in the form enterprises/{enterpriseId}/webApps/{packageName}.
+  core.String name;
+
+  /// The start URL, i.e. the URL that should load when the user opens the
+  /// application.
+  core.String startUrl;
+
+  /// The title of the web app as displayed to the user (e.g., amongst a list of
+  /// other applications, or as a label for an icon).
+  core.String title;
+
+  /// The current version of the app.<p>Note that the version can automatically
+  /// increase during the lifetime of the web app, while Google does internal
+  /// housekeeping to keep the web app up-to-date.
+  core.String versionCode;
+
+  WebApp();
+
+  WebApp.fromJson(core.Map _json) {
+    if (_json.containsKey("displayMode")) {
+      displayMode = _json["displayMode"];
+    }
+    if (_json.containsKey("icons")) {
+      icons = (_json["icons"] as core.List)
+          .map<WebAppIcon>((value) => new WebAppIcon.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("startUrl")) {
+      startUrl = _json["startUrl"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+    if (_json.containsKey("versionCode")) {
+      versionCode = _json["versionCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayMode != null) {
+      _json["displayMode"] = displayMode;
+    }
+    if (icons != null) {
+      _json["icons"] = icons.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (startUrl != null) {
+      _json["startUrl"] = startUrl;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    if (versionCode != null) {
+      _json["versionCode"] = versionCode;
+    }
+    return _json;
+  }
+}
+
+/// An icon for a web app. Supported formats are: png, jpg and webp.
+class WebAppIcon {
+  /// The actual bytes of the image in a base64url encoded string (c.f. RFC4648,
+  /// section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). <ul>
+  /// <li>The image type can be png or jpg. <li>The image should ideally be
+  /// square. <li>The image should ideally have a size of 512x512. </ul>
+  core.String imageData;
+
+  WebAppIcon();
+
+  WebAppIcon.fromJson(core.Map _json) {
+    if (_json.containsKey("imageData")) {
+      imageData = _json["imageData"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageData != null) {
+      _json["imageData"] = imageData;
+    }
+    return _json;
+  }
+}
+
 /// A web token used to access the managed Google Play iframe.
 class WebToken {
   /// The name of the web token, which is generated by the server during
@@ -5435,6 +6127,41 @@ class WebToken {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// An action to reset a fully managed device or delete a work profile. Note:
+/// blockAction must also be specified.
+class WipeAction {
+  /// Whether the factory-reset protection data is preserved on the device. This
+  /// setting doesn’t apply to work profiles.
+  core.bool preserveFrp;
+
+  /// Number of days the policy is non-compliant before the device or work
+  /// profile is wiped. wipeAfterDays must be greater than blockAfterDays.
+  core.int wipeAfterDays;
+
+  WipeAction();
+
+  WipeAction.fromJson(core.Map _json) {
+    if (_json.containsKey("preserveFrp")) {
+      preserveFrp = _json["preserveFrp"];
+    }
+    if (_json.containsKey("wipeAfterDays")) {
+      wipeAfterDays = _json["wipeAfterDays"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (preserveFrp != null) {
+      _json["preserveFrp"] = preserveFrp;
+    }
+    if (wipeAfterDays != null) {
+      _json["wipeAfterDays"] = wipeAfterDays;
     }
     return _json;
   }

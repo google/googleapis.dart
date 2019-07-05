@@ -375,11 +375,6 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
-  /// result set that
-  /// should be returned. In an API response, the `nextPageToken` property
-  /// identifies the next page that can be retrieved.
-  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
   /// authorized request. **Note:**
   /// This parameter is intended exclusively for YouTube content partners that
@@ -408,6 +403,11 @@ class GroupsResourceApi {
   /// authenticated
   /// user.
   ///
+  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
+  /// result set that
+  /// should be returned. In an API response, the `nextPageToken` property
+  /// identifies the next page that can be retrieved.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -419,10 +419,10 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
-      {core.String pageToken,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
       core.String id,
       core.bool mine,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -431,9 +431,6 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -442,6 +439,9 @@ class GroupsResourceApi {
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -527,6 +527,28 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [ids] - Identifies the YouTube channel or content owner for which you are
+  /// retrieving YouTube Analytics data.
+  ///
+  /// - To request data for a YouTube user, set the `ids` parameter value to
+  ///   `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube
+  ///   channel ID.
+  /// - To request data for a YouTube CMS content owner, set the `ids` parameter
+  ///   value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name
+  ///   of the content owner.
+  /// required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
+  ///
+  /// [includeHistoricalChannelData] - If set to true historical data (i.e.
+  /// channel data from before the linking
+  /// of the channel to the content owner) will be retrieved.",
+  ///
+  /// [currency] - The currency to which financial metrics should be converted.
+  /// The default is
+  /// US Dollar (USD). If the result contains no financial metrics, this flag
+  /// will be ignored. Responds with an error if the specified currency is not
+  /// recognized.",
+  /// pattern: [A-Z]{3}
+  ///
   /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a
   /// pagination mechanism along with the max-results parameter (one-based,
@@ -583,28 +605,6 @@ class ReportsResourceApi {
   /// those metrics.
   /// required: true, pattern: [0-9a-zA-Z,]+
   ///
-  /// [includeHistoricalChannelData] - If set to true historical data (i.e.
-  /// channel data from before the linking
-  /// of the channel to the content owner) will be retrieved.",
-  ///
-  /// [ids] - Identifies the YouTube channel or content owner for which you are
-  /// retrieving YouTube Analytics data.
-  ///
-  /// - To request data for a YouTube user, set the `ids` parameter value to
-  ///   `channel==CHANNEL_ID`, where `CHANNEL_ID` specifies the unique YouTube
-  ///   channel ID.
-  /// - To request data for a YouTube CMS content owner, set the `ids` parameter
-  ///   value to `contentOwner==OWNER_NAME`, where `OWNER_NAME` is the CMS name
-  ///   of the content owner.
-  /// required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
-  ///
-  /// [currency] - The currency to which financial metrics should be converted.
-  /// The default is
-  /// US Dollar (USD). If the result contains no financial metrics, this flag
-  /// will be ignored. Responds with an error if the specified currency is not
-  /// recognized.",
-  /// pattern: [A-Z]{3}
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -616,7 +616,10 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QueryResponse> query(
-      {core.int startIndex,
+      {core.String ids,
+      core.bool includeHistoricalChannelData,
+      core.String currency,
+      core.int startIndex,
       core.String dimensions,
       core.String endDate,
       core.int maxResults,
@@ -624,9 +627,6 @@ class ReportsResourceApi {
       core.String sort,
       core.String startDate,
       core.String metrics,
-      core.bool includeHistoricalChannelData,
-      core.String ids,
-      core.String currency,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -635,6 +635,17 @@ class ReportsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (ids != null) {
+      _queryParams["ids"] = [ids];
+    }
+    if (includeHistoricalChannelData != null) {
+      _queryParams["includeHistoricalChannelData"] = [
+        "${includeHistoricalChannelData}"
+      ];
+    }
+    if (currency != null) {
+      _queryParams["currency"] = [currency];
+    }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
@@ -658,17 +669,6 @@ class ReportsResourceApi {
     }
     if (metrics != null) {
       _queryParams["metrics"] = [metrics];
-    }
-    if (includeHistoricalChannelData != null) {
-      _queryParams["includeHistoricalChannelData"] = [
-        "${includeHistoricalChannelData}"
-      ];
-    }
-    if (ids != null) {
-      _queryParams["ids"] = [ids];
-    }
-    if (currency != null) {
-      _queryParams["currency"] = [currency];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -759,6 +759,9 @@ class ErrorProto {
   /// to the request field that caused the error.
   /// - "OTHER" : other location type which can safely be shared
   /// externally.
+  /// - "PARAMETER" : Location is request paramater. This maps to the {@link
+  /// PARAMETERS} in
+  /// {@link MessageLocation}.
   core.String locationType;
 
   ErrorProto();

@@ -593,14 +593,14 @@ class ProjectsIndexesResourceApi {
   ///
   /// [projectId] - Project ID against which to make the request.
   ///
-  /// [filter] - null
-  ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
   ///
   /// [pageSize] - The maximum number of items to return.  If zero, then all
   /// results will be
   /// returned.
+  ///
+  /// [filter] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -614,9 +614,9 @@ class ProjectsIndexesResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleDatastoreAdminV1ListIndexesResponse> list(
       core.String projectId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -628,14 +628,14 @@ class ProjectsIndexesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3640,9 +3640,8 @@ class RunQueryResponse {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). The error model is designed to be:
 ///
 /// - Simple to use and understand for most users
 /// - Flexible enough to meet unexpected needs
@@ -3650,8 +3649,7 @@ class RunQueryResponse {
 /// # Overview
 ///
 /// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
+/// message, and error details. The error code should be an enum value of
 /// google.rpc.Code, but it may accept additional error codes if needed.  The
 /// error message should be a developer-facing English message that helps
 /// developers *understand* and *resolve* the error. If a localized user-facing

@@ -81,6 +81,12 @@ Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list 
 
 Official API documentation: https://developers.google.com/amp/cache/
 
+#### Access Context Manager API - accesscontextmanager v1
+
+An API for setting attribute based access control to requests to GCP services.
+
+Official API documentation: https://cloud.google.com/access-context-manager/docs/reference/rest/
+
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) Ad Exchange Buyer API - adexchangebuyer v1.3
 
 Accesses your bidding-account information, submits creatives for validation, finds available direct deals, and retrieves performance reports.
@@ -197,13 +203,13 @@ Official API documentation: https://cloud.google.com/bigquery/
 
 #### BigQuery Data Transfer API - bigquerydatatransfer v1
 
-Transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis.
+Schedule queries or transfer external data from SaaS applications to Google BigQuery on a regular basis.
 
 Official API documentation: https://cloud.google.com/bigquery/
 
 #### Cloud Bigtable Admin API - bigtableadmin v2
 
-
+Administer your Cloud Bigtable tables and instances.
 
 Official API documentation: https://cloud.google.com/bigtable/
 
@@ -242,6 +248,12 @@ Official API documentation: https://developers.google.com/civic-information
 Manages classes, rosters, and invitations in Google Classroom.
 
 Official API documentation: https://developers.google.com/classroom/
+
+#### Cloud Asset API - cloudasset v1
+
+The cloud asset API manages the history and inventory of cloud resources.
+
+Official API documentation: https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory
 
 #### Cloud Billing API - cloudbilling v1
 
@@ -307,11 +319,17 @@ Creates, reads, and updates metadata for Google Cloud Platform resource containe
 
 Official API documentation: https://cloud.google.com/resource-manager
 
+#### Cloud Scheduler API - cloudscheduler v1
+
+Creates and manages jobs run on a regular recurring schedule.
+
+Official API documentation: https://cloud.google.com/scheduler/
+
 #### Cloud Search API - cloudsearch v1
 
 Cloud Search provides cloud-based search capabilities over G Suite data.  The Cloud Search API allows indexing of non-G Suite data into Cloud Search.
 
-Official API documentation: https://gsuite.google.com/products/cloud-search/
+Official API documentation: https://developers.google.com/cloud-search/docs/guides/
 
 #### Cloud Shell API - cloudshell v1
 
@@ -319,6 +337,12 @@ Allows users to start, configure, and connect to interactive shell sessions runn
 
 
 Official API documentation: https://cloud.google.com/shell/docs/
+
+#### Cloud Tasks API - cloudtasks v2
+
+Manages the execution of large numbers of distributed requests.
+
+Official API documentation: https://cloud.google.com/tasks/
 
 #### Stackdriver Trace API - cloudtrace v2
 
@@ -376,7 +400,7 @@ Declares, configures, and deploys complex solutions on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/deployment-manager/
 
-#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v3.2
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v3.3
 
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
@@ -386,7 +410,7 @@ Official API documentation: https://developers.google.com/doubleclick-advertiser
 
 Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).
 
-Official API documentation: https://cloud.google.com/dialogflow-enterprise/
+Official API documentation: https://cloud.google.com/dialogflow/
 
 #### Digital Asset Links API - digitalassetlinks v1
 
@@ -394,7 +418,7 @@ Discovers relationships between online assets such as websites or mobile apps.
 
 Official API documentation: https://developers.google.com/digital-asset-links/
 
-#### APIs Discovery Service - discovery v1
+#### API Discovery Service - discovery v1
 
 Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.
 
@@ -411,6 +435,12 @@ Official API documentation: https://cloud.google.com/dlp/docs/
 Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
+
+#### Google Docs API - docs v1
+
+Reads and writes Google Docs documents.
+
+Official API documentation: https://developers.google.com/docs/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) DoubleClick Bid Manager API - doubleclickbidmanager v1
 
@@ -441,6 +471,18 @@ Official API documentation: https://developers.google.com/drive/
 Provides a historical view of activity in Google Drive.
 
 Official API documentation: https://developers.google.com/drive/activity/
+
+#### Firebase Cloud Messaging API - fcm v1
+
+FCM send API that provides a cross-platform messaging solution to reliably deliver messages at no cost.
+
+Official API documentation: https://firebase.google.com/docs/cloud-messaging
+
+#### Cloud Filestore API - file v1
+
+The Cloud Filestore API is used for creating and managing cloud file servers.
+
+Official API documentation: https://cloud.google.com/filestore/
 
 #### Firebase Dynamic Links API - firebasedynamiclinks v1
 
@@ -518,7 +560,7 @@ Official API documentation: https://developers.google.com/google-apps/groups-mig
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Groups Settings API - groupssettings v1
 
-Lets you manage permission levels and related settings of a group.
+Manages permission levels and related settings of a group.
 
 Official API documentation: https://developers.google.com/google-apps/groups-settings/get_started
 
@@ -592,7 +634,7 @@ Official API documentation: https://developers.google.com/google-apps/licensing/
 
 #### Stackdriver Logging API - logging v2
 
-Writes log entries and manages your Logging configuration.
+Writes log entries and manages your Stackdriver Logging configuration. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Logging documentation.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
@@ -616,7 +658,7 @@ Official API documentation: https://cloud.google.com/ml/
 
 #### Stackdriver Monitoring API - monitoring v3
 
-Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages.
+Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Monitoring documentation.
 
 Official API documentation: https://cloud.google.com/monitoring/api/
 
@@ -628,7 +670,7 @@ Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
 #### Cloud OS Login API - oslogin v1
 
-Manages OS login configuration for Google account users.
+You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
@@ -682,11 +724,23 @@ Creates and manages Redis instances on the Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/memorystore/docs/redis/
 
+#### Remote Build Execution API - remotebuildexecution v2
+
+Supplies a Remote Execution API service for tools such as bazel.
+
+Official API documentation: https://cloud.google.com/remote-build-execution/docs/
+
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise Apps Reseller API - reseller v1
 
 Creates and manages your customers and their subscriptions.
 
 Official API documentation: https://developers.google.com/google-apps/reseller/
+
+#### Cloud Run API - run v1
+
+Deploy and manage user provided container images that scale automatically based on HTTP traffic.
+
+Official API documentation: https://cloud.google.com/run/
 
 #### Cloud Runtime Configuration API - runtimeconfig v1
 
@@ -712,6 +766,12 @@ Official API documentation: https://developers.google.com/apps-script/api/
 Provides tools for running validation tests against single URLs
 
 Official API documentation: https://developers.google.com/webmaster-tools/search-console-api/
+
+#### Cloud Security Command Center API - securitycenter v1
+
+Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.
+
+Official API documentation: https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
 
 #### Service Broker API - servicebroker v1
 
@@ -739,6 +799,12 @@ Official API documentation: https://cloud.google.com/service-control/
 Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.
 
 Official API documentation: https://cloud.google.com/service-management/
+
+#### Service Networking API - servicenetworking v1
+
+Provides automatic management of network configurations necessary for certain services.
+
+Official API documentation: https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
 
 #### Service Usage API - serviceusage v1
 
@@ -776,7 +842,7 @@ Cloud Spanner is a managed, mission-critical, globally consistent and scalable r
 
 Official API documentation: https://cloud.google.com/spanner/
 
-#### Cloud Speech API - speech v1
+#### Cloud Speech-to-Text API - speech v1
 
 Converts audio to text by applying powerful neural network models.
 
@@ -792,7 +858,7 @@ Official API documentation: https://developers.google.com/storage/docs/json_api/
 
 Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.
 
-Official API documentation: https://cloud.google.com/storage/transfer
+Official API documentation: https://cloud.google.com/storage-transfer/docs
 
 #### Street View Publish API - streetviewpublish v1
 
@@ -819,7 +885,7 @@ Official API documentation: https://developers.google.com/tag-manager/api/v2/
 
 #### ![Logo](https://www.google.com/images/icons/product/tasks-16.png) Tasks API - tasks v1
 
-Lets you manage your tasks and task lists.
+Manages your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
 
@@ -862,7 +928,7 @@ Official API documentation: https://developers.google.com/vault
 
 #### Cloud Video Intelligence API - videointelligence v1
 
-Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text.
+Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text. Supports both asynchronous API and streaming API.
 
 Official API documentation: https://cloud.google.com/video-intelligence/docs/
 
@@ -884,17 +950,23 @@ View Google Search Console data for your verified sites.
 
 Official API documentation: https://developers.google.com/webmaster-tools/
 
+#### Web Security Scanner API - websecurityscanner v1
+
+Scans your Compute and App Engine apps for common web vulnerabilities.
+
+Official API documentation: https://cloud.google.com/security-scanner/
+
 #### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Data API - youtube v3
 
 Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.
 
 Official API documentation: https://developers.google.com/youtube/v3
 
-#### ![Logo](https://www.google.com/images/icons/product/youtube-16.png) YouTube Analytics API - youtubeAnalytics v1
+#### YouTube Analytics API - youtubeAnalytics v1
 
 Retrieves your YouTube Analytics data.
 
-Official API documentation: http://developers.google.com/youtube/analytics/
+Official API documentation: https://developers.google.com/youtube/analytics
 
 #### YouTube Analytics API - youtubeAnalytics v2
 

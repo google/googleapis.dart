@@ -103,11 +103,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -120,9 +120,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -134,14 +134,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -187,7 +187,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// [parent] - Required. The resource name of the instance location using the
   /// form:
   ///     `projects/{project_id}/locations/{location_id}`
-  /// where `location_id` refers to a GCP region
+  /// where `location_id` refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [instanceId] - Required. The logical name of the Redis instance in the
@@ -251,7 +251,7 @@ class ProjectsLocationsInstancesResourceApi {
   ///
   /// [name] - Required. Redis instance resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  /// where `location_id` refers to a GCP region
+  /// where `location_id` refers to a GCP region.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
@@ -291,13 +291,125 @@ class ProjectsLocationsInstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Export Redis instance data into a Redis RDB format file in Cloud Storage.
+  ///
+  /// Redis will continue serving during this operation.
+  ///
+  /// The returned operation is automatically deleted after a few hours, so
+  /// there is no need to call DeleteOperation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> export(
+      ExportInstanceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Initiates a failover of the master node to current replica node for a
+  /// specific STANDARD tier Cloud Memorystore for Redis instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> failover(
+      FailoverInstanceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':failover';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Gets the details of a specific Redis instance.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. Redis instance resource name using the form:
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-  /// where `location_id` refers to a GCP region
+  /// where `location_id` refers to a GCP region.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
@@ -337,6 +449,66 @@ class ProjectsLocationsInstancesResourceApi {
     return _response.then((data) => new Instance.fromJson(data));
   }
 
+  /// Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
+  ///
+  /// Redis may stop serving during this operation. Instance state will be
+  /// IMPORTING for entire operation. When complete, the instance will contain
+  /// only data from the imported file.
+  ///
+  /// The returned operation is automatically deleted after a few hours, so
+  /// there is no need to call DeleteOperation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> import(
+      ImportInstanceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Lists all Redis instances owned by a project in either the specified
   /// location (region) or all locations.
   ///
@@ -351,8 +523,12 @@ class ProjectsLocationsInstancesResourceApi {
   /// [parent] - Required. The resource name of the instance location using the
   /// form:
   ///     `projects/{project_id}/locations/{location_id}`
-  /// where `location_id` refers to a GCP region
+  /// where `location_id` refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request,
+  /// if any.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
@@ -361,10 +537,6 @@ class ProjectsLocationsInstancesResourceApi {
   /// and a caller should only rely on response's
   /// next_page_token
   /// to determine if there are more instances left to be queried.
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request,
-  /// if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -377,7 +549,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -388,11 +560,11 @@ class ProjectsLocationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -736,6 +908,112 @@ class Empty {
   }
 }
 
+/// Request for Export.
+class ExportInstanceRequest {
+  /// Required. Specify data to be exported.
+  OutputConfig outputConfig;
+
+  ExportInstanceRequest();
+
+  ExportInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("outputConfig")) {
+      outputConfig = new OutputConfig.fromJson(_json["outputConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (outputConfig != null) {
+      _json["outputConfig"] = (outputConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request for Failover.
+class FailoverInstanceRequest {
+  /// Optional. Available data protection modes that the user can choose. If
+  /// it's
+  /// unspecified, data protection mode will be LIMITED_DATA_LOSS by default.
+  /// Possible string values are:
+  /// - "DATA_PROTECTION_MODE_UNSPECIFIED" : Defaults to LIMITED_DATA_LOSS if a
+  /// data protection mode is not
+  /// specified.
+  /// - "LIMITED_DATA_LOSS" : Instance failover will be protected with data loss
+  /// control. More
+  /// specifically, the failover will only be performed if the current
+  /// replication offset diff between master and replica is under a certain
+  /// threshold.
+  /// - "FORCE_DATA_LOSS" : Instance failover will be performed without data
+  /// loss control.
+  core.String dataProtectionMode;
+
+  FailoverInstanceRequest();
+
+  FailoverInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataProtectionMode")) {
+      dataProtectionMode = _json["dataProtectionMode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataProtectionMode != null) {
+      _json["dataProtectionMode"] = dataProtectionMode;
+    }
+    return _json;
+  }
+}
+
+/// The Cloud Storage location for the output content
+class GcsDestination {
+  /// Required. Data destination URI (e.g.
+  /// 'gs://my_bucket/my_object'). Existing files will be overwritten.
+  core.String uri;
+
+  GcsDestination();
+
+  GcsDestination.fromJson(core.Map _json) {
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+/// The Cloud Storage location for the input content
+class GcsSource {
+  /// Required. Source data URI. (e.g. 'gs://my_bucket/my_object').
+  core.String uri;
+
+  GcsSource();
+
+  GcsSource.fromJson(core.Map _json) {
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
 /// This location metadata represents additional configuration options for a
 /// given location where a Redis instance may be created. All fields are output
 /// only. It is returned as content of the
@@ -860,6 +1138,52 @@ class GoogleCloudRedisV1ZoneMetadata {
   }
 }
 
+/// Request for Import.
+class ImportInstanceRequest {
+  /// Required. Specify data to be imported.
+  InputConfig inputConfig;
+
+  ImportInstanceRequest();
+
+  ImportInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("inputConfig")) {
+      inputConfig = new InputConfig.fromJson(_json["inputConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (inputConfig != null) {
+      _json["inputConfig"] = (inputConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The input content
+class InputConfig {
+  /// Google Cloud Storage location where input content is located.
+  GcsSource gcsSource;
+
+  InputConfig();
+
+  InputConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("gcsSource")) {
+      gcsSource = new GcsSource.fromJson(_json["gcsSource"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gcsSource != null) {
+      _json["gcsSource"] = (gcsSource).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A Google Cloud Redis instance.
 class Instance {
   /// Optional. Only applicable to STANDARD_HA tier which protects the instance
@@ -918,6 +1242,13 @@ class Instance {
   /// [alternative_location_id] fields for more details.
   core.String name;
 
+  /// Output only. Cloud IAM identity used by import / export operations to
+  /// transfer data to/from Cloud Storage. Format is
+  /// "serviceAccount:<service_account_email>". The value may change over time
+  /// for a given instance so should be checked before each import/export
+  /// operation.
+  core.String persistenceIamIdentity;
+
   /// Output only. The port number of the exposed Redis endpoint.
   core.int port;
 
@@ -925,14 +1256,25 @@ class Instance {
   /// http://redis.io/topics/config. Currently, the only supported parameters
   /// are:
   ///
+  ///  Redis 3.2 and above:
+  ///
   ///  *   maxmemory-policy
   ///  *   notify-keyspace-events
+  ///
+  ///  Redis 4.0 and above:
+  ///
+  ///  *   activedefrag
+  ///  *   lfu-log-factor
+  ///  *   lfu-decay-time
   core.Map<core.String, core.String> redisConfigs;
 
   /// Optional. The version of Redis software.
   /// If not provided, latest supported version will be used. Updating the
   /// version will perform an upgrade/downgrade to the new version. Currently,
-  /// the supported values are `REDIS_3_2` for Redis 3.2.
+  /// the supported values are:
+  ///
+  ///  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+  ///  *   `REDIS_3_2` for Redis 3.2 compatibility
   core.String redisVersion;
 
   /// Optional. The CIDR range of internal addresses that are reserved for this
@@ -952,9 +1294,11 @@ class Instance {
   /// progress.
   /// - "DELETING" : Redis instance is being deleted.
   /// - "REPAIRING" : Redis instance is being repaired and may be unusable.
-  /// Details can be
-  /// found in the `status_message` field.
   /// - "MAINTENANCE" : Maintenance is being performed on this Redis instance.
+  /// - "IMPORTING" : Redis instance is importing data (availability may be
+  /// affected).
+  /// - "FAILING_OVER" : Redis instance is failing over (availability may be
+  /// affected).
   core.String state;
 
   /// Output only. Additional information about the current status of this
@@ -1001,6 +1345,9 @@ class Instance {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("persistenceIamIdentity")) {
+      persistenceIamIdentity = _json["persistenceIamIdentity"];
     }
     if (_json.containsKey("port")) {
       port = _json["port"];
@@ -1058,6 +1405,9 @@ class Instance {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (persistenceIamIdentity != null) {
+      _json["persistenceIamIdentity"] = persistenceIamIdentity;
     }
     if (port != null) {
       _json["port"] = port;
@@ -1317,7 +1667,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -1377,62 +1727,36 @@ class Operation {
   }
 }
 
+/// The output content
+class OutputConfig {
+  /// Google Cloud Storage destination for output content.
+  GcsDestination gcsDestination;
+
+  OutputConfig();
+
+  OutputConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("gcsDestination")) {
+      gcsDestination = new GcsDestination.fromJson(_json["gcsDestination"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gcsDestination != null) {
+      _json["gcsDestination"] = (gcsDestination).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

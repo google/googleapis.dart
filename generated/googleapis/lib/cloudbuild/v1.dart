@@ -722,6 +722,10 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - ID of the project for which to list BuildTriggers.
   ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
+  ///
+  /// [pageSize] - Number of results to return in the list.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -733,7 +737,7 @@ class ProjectsTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildTriggersResponse> list(core.String projectId,
-      {core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -743,6 +747,12 @@ class ProjectsTriggersResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1708,6 +1718,10 @@ class BuildTrigger {
   /// template.
   core.String filename;
 
+  /// GitHubEventsConfig describes the configuration of a trigger that creates
+  /// a build whenever a GitHub event is received.
+  GitHubEventsConfig github;
+
   /// Output only. Unique identifier of the trigger.
   core.String id;
 
@@ -1735,6 +1749,9 @@ class BuildTrigger {
   /// Substitutions data for Build resource.
   core.Map<core.String, core.String> substitutions;
 
+  /// Tags for annotation of a `BuildTrigger`
+  core.List<core.String> tags;
+
   /// Template describing the types of source changes to trigger a build.
   ///
   /// Branch and tag names in trigger templates are interpreted as regular
@@ -1760,6 +1777,9 @@ class BuildTrigger {
     if (_json.containsKey("filename")) {
       filename = _json["filename"];
     }
+    if (_json.containsKey("github")) {
+      github = new GitHubEventsConfig.fromJson(_json["github"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1772,6 +1792,9 @@ class BuildTrigger {
     if (_json.containsKey("substitutions")) {
       substitutions =
           (_json["substitutions"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("tags")) {
+      tags = (_json["tags"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("triggerTemplate")) {
       triggerTemplate = new RepoSource.fromJson(_json["triggerTemplate"]);
@@ -1796,6 +1819,9 @@ class BuildTrigger {
     if (filename != null) {
       _json["filename"] = filename;
     }
+    if (github != null) {
+      _json["github"] = (github).toJson();
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -1807,6 +1833,9 @@ class BuildTrigger {
     }
     if (substitutions != null) {
       _json["substitutions"] = substitutions;
+    }
+    if (tags != null) {
+      _json["tags"] = tags;
     }
     if (triggerTemplate != null) {
       _json["triggerTemplate"] = (triggerTemplate).toJson();
@@ -1930,6 +1959,71 @@ class FileHashes {
   }
 }
 
+/// GitHubEventsConfig describes the configuration of a trigger that creates a
+/// build whenever a GitHub event is received.
+///
+/// This message is experimental.
+class GitHubEventsConfig {
+  /// The installationID that emits the GitHub event.
+  core.String installationId;
+
+  /// Name of the repository. For example: The name for
+  /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+  core.String name;
+
+  /// Owner of the repository. For example: The owner for
+  /// https://github.com/googlecloudplatform/cloud-builders is
+  /// "googlecloudplatform".
+  core.String owner;
+
+  /// filter to match changes in pull requests.
+  PullRequestFilter pullRequest;
+
+  /// filter to match changes in refs like branches, tags.
+  PushFilter push;
+
+  GitHubEventsConfig();
+
+  GitHubEventsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("installationId")) {
+      installationId = _json["installationId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("owner")) {
+      owner = _json["owner"];
+    }
+    if (_json.containsKey("pullRequest")) {
+      pullRequest = new PullRequestFilter.fromJson(_json["pullRequest"]);
+    }
+    if (_json.containsKey("push")) {
+      push = new PushFilter.fromJson(_json["push"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (installationId != null) {
+      _json["installationId"] = installationId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (owner != null) {
+      _json["owner"] = owner;
+    }
+    if (pullRequest != null) {
+      _json["pullRequest"] = (pullRequest).toJson();
+    }
+    if (push != null) {
+      _json["push"] = (push).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Container message for hash values.
 class Hash {
   /// The type of hash that was performed.
@@ -1976,12 +2070,18 @@ class Hash {
 
 /// Response containing existing `BuildTriggers`.
 class ListBuildTriggersResponse {
+  /// Token to receive the next page of results.
+  core.String nextPageToken;
+
   /// `BuildTriggers` for the project, sorted by `create_time` descending.
   core.List<BuildTrigger> triggers;
 
   ListBuildTriggersResponse();
 
   ListBuildTriggersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
     if (_json.containsKey("triggers")) {
       triggers = (_json["triggers"] as core.List)
           .map<BuildTrigger>((value) => new BuildTrigger.fromJson(value))
@@ -1992,6 +2092,9 @@ class ListBuildTriggersResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
     if (triggers != null) {
       _json["triggers"] = triggers.map((value) => (value).toJson()).toList();
     }
@@ -2091,7 +2194,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -2146,6 +2249,87 @@ class Operation {
     }
     if (response != null) {
       _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/// PullRequestFilter contains filter properties for matching GitHub Pull
+/// Requests.
+class PullRequestFilter {
+  /// Regex of branches to match.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  core.String branch;
+
+  /// Whether to block builds on a "/gcbrun" comment from a repository owner or
+  /// collaborator.
+  /// Possible string values are:
+  /// - "COMMENTS_DISABLED" : Do not require comments on Pull Requests before
+  /// builds are triggered.
+  /// - "COMMENTS_ENABLED" : Enforce that repository owners or collaborators
+  /// must comment on Pull
+  /// Requests before builds are triggered.
+  core.String commentControl;
+
+  PullRequestFilter();
+
+  PullRequestFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("branch")) {
+      branch = _json["branch"];
+    }
+    if (_json.containsKey("commentControl")) {
+      commentControl = _json["commentControl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (branch != null) {
+      _json["branch"] = branch;
+    }
+    if (commentControl != null) {
+      _json["commentControl"] = commentControl;
+    }
+    return _json;
+  }
+}
+
+/// Push contains filter properties for matching GitHub git pushes.
+class PushFilter {
+  /// Regexes of branches to match.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  core.String branch;
+
+  /// Regexes of tags to match.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+  core.String tag;
+
+  PushFilter();
+
+  PushFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("branch")) {
+      branch = _json["branch"];
+    }
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (branch != null) {
+      _json["branch"] = branch;
+    }
+    if (tag != null) {
+      _json["tag"] = tag;
     }
     return _json;
   }
@@ -2229,6 +2413,9 @@ class Results {
   /// Path to the artifact manifest. Only populated when artifacts are uploaded.
   core.String artifactManifest;
 
+  /// Time to push all non-container artifacts.
+  TimeSpan artifactTiming;
+
   /// List of build step digests, in the order corresponding to build step
   /// indices.
   core.List<core.String> buildStepImages;
@@ -2253,6 +2440,9 @@ class Results {
     if (_json.containsKey("artifactManifest")) {
       artifactManifest = _json["artifactManifest"];
     }
+    if (_json.containsKey("artifactTiming")) {
+      artifactTiming = new TimeSpan.fromJson(_json["artifactTiming"]);
+    }
     if (_json.containsKey("buildStepImages")) {
       buildStepImages =
           (_json["buildStepImages"] as core.List).cast<core.String>();
@@ -2276,6 +2466,9 @@ class Results {
         new core.Map<core.String, core.Object>();
     if (artifactManifest != null) {
       _json["artifactManifest"] = artifactManifest;
+    }
+    if (artifactTiming != null) {
+      _json["artifactTiming"] = (artifactTiming).toJson();
     }
     if (buildStepImages != null) {
       _json["buildStepImages"] = buildStepImages;
@@ -2439,61 +2632,12 @@ class SourceProvenance {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

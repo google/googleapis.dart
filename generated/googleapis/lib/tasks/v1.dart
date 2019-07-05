@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client tasks/v1';
 
-/// Lets you manage your tasks and task lists.
+/// Manages your tasks and task lists.
 class TasksApi {
   /// Create, edit, organize, and delete all your tasks
   static const TasksScope = "https://www.googleapis.com/auth/tasks";
@@ -174,7 +174,7 @@ class TasklistsResourceApi {
   /// Request parameters:
   ///
   /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 100.
+  /// Optional. The default is 20 (max allowed: 100).
   ///
   /// [pageToken] - Token specifying the result page to return. Optional.
   ///
@@ -549,7 +549,7 @@ class TasksResourceApi {
   /// filter by. Optional. The default is not to filter by due date.
   ///
   /// [maxResults] - Maximum number of task lists returned on one page.
-  /// Optional. The default is 100.
+  /// Optional. The default is 20 (max allowed: 100).
   ///
   /// [pageToken] - Token specifying the result page to return. Optional.
   ///
@@ -872,7 +872,10 @@ class Task {
   /// Flag indicating whether the task has been deleted. The default if False.
   core.bool deleted;
 
-  /// Due date of the task (as a RFC 3339 timestamp). Optional.
+  /// Due date of the task (as a RFC 3339 timestamp). Optional. The due date
+  /// only records date information; the time portion of the timestamp is
+  /// discarded when setting the due date. It isn't possible to read or write
+  /// the time that a task is due via the API.
   core.DateTime due;
 
   /// ETag of the resource.

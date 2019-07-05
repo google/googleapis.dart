@@ -62,12 +62,7 @@ class ProjectsSnapshotsResourceApi {
   /// you to manage message acknowledgments in bulk. That is, you can set the
   /// acknowledgment state of messages in an existing subscription to the state
   /// captured by a snapshot.
-  /// <br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.<br><br>
-  /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+  /// <br><br>If the snapshot already exists, returns `ALREADY_EXISTS`.
   /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
   /// If the backlog in the subscription is too old -- and the resulting
   /// snapshot
@@ -78,9 +73,9 @@ class ProjectsSnapshotsResourceApi {
   /// name for this snapshot on the same project as the subscription, conforming
   /// to the
   /// [resource name
-  /// format](https://cloud.google.com/pubsub/docs/overview#names).
-  /// The generated name is populated in the returned Snapshot object. Note that
-  /// for REST API requests, you must specify a name in the request.
+  /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+  /// generated name is populated in the returned Snapshot object. Note that for
+  /// REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -142,10 +137,6 @@ class ProjectsSnapshotsResourceApi {
   /// you to manage message acknowledgments in bulk. That is, you can set the
   /// acknowledgment state of messages in an existing subscription to the state
   /// captured by a snapshot.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
   /// When the snapshot is deleted, all messages retained in the snapshot
   /// are immediately dropped. After a snapshot is deleted, a new one may be
   /// created with the same name, but the new one has no association with the
@@ -199,11 +190,7 @@ class ProjectsSnapshotsResourceApi {
   /// operations, which allow you to manage message acknowledgments in bulk.
   /// That
   /// is, you can set the acknowledgment state of messages in an existing
-  /// subscription to the state captured by a snapshot.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
+  /// subscription to the state captured by a snapshot.
   ///
   /// Request parameters:
   ///
@@ -302,11 +289,7 @@ class ProjectsSnapshotsResourceApi {
   /// operations, which allow
   /// you to manage message acknowledgments in bulk. That is, you can set the
   /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
+  /// captured by a snapshot.
   ///
   /// Request parameters:
   ///
@@ -371,12 +354,7 @@ class ProjectsSnapshotsResourceApi {
   /// operations, which allow
   /// you to manage message acknowledgments in bulk. That is, you can set the
   /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
-  /// Note that certain properties of a snapshot are not modifiable.
+  /// captured by a snapshot.
   ///
   /// [request] - The metadata request object.
   ///
@@ -618,9 +596,9 @@ class ProjectsSubscriptionsResourceApi {
   /// name for this subscription on the same project as the topic, conforming
   /// to the
   /// [resource name
-  /// format](https://cloud.google.com/pubsub/docs/overview#names).
-  /// The generated name is populated in the returned Subscription object.
-  /// Note that for REST API requests, you must specify a name in the request.
+  /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+  /// generated name is populated in the returned Subscription object. Note that
+  /// for REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1112,11 +1090,7 @@ class ProjectsSubscriptionsResourceApi {
   /// you to manage message acknowledgments in bulk. That is, you can set the
   /// acknowledgment state of messages in an existing subscription to the state
   /// captured by a snapshot. Note that both the subscription and the snapshot
-  /// must be on the same topic.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
+  /// must be on the same topic.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1786,11 +1760,7 @@ class ProjectsTopicsSnapshotsResourceApi {
   /// operations, which allow
   /// you to manage message acknowledgments in bulk. That is, you can set the
   /// acknowledgment state of messages in an existing subscription to the state
-  /// captured by a snapshot.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
+  /// captured by a snapshot.
   ///
   /// Request parameters:
   ///
@@ -1946,8 +1916,8 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -1972,7 +1942,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -2010,11 +1980,7 @@ class Binding {
   }
 }
 
-/// Request for the `CreateSnapshot` method.<br><br>
-/// <b>BETA:</b> This feature is part of a beta release. This API might be
-/// changed in
-/// backward-incompatible ways and is not recommended for production use.
-/// It is not subject to any SLA or deprecation policy.
+/// Request for the `CreateSnapshot` method.
 class CreateSnapshotRequest {
   /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
   /// managing labels</a>.
@@ -2167,10 +2133,7 @@ class Expr {
   }
 }
 
-/// Response for the `ListSnapshots` method.<br><br>
-/// <b>BETA:</b> This feature is part of a beta release. This API might be
-/// changed in backward-incompatible ways and is not recommended for production
-/// use. It is not subject to any SLA or deprecation policy.
+/// Response for the `ListSnapshots` method.
 class ListSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshot that match the
   /// request; this value should be passed in a new `ListSnapshotsRequest`.
@@ -2242,10 +2205,7 @@ class ListSubscriptionsResponse {
   }
 }
 
-/// Response for the `ListTopicSnapshots` method.<br><br>
-/// <b>BETA:</b> This feature is part of a beta release. This API might be
-/// changed in backward-incompatible ways and is not recommended for production
-/// use. It is not subject to any SLA or deprecation policy.
+/// Response for the `ListTopicSnapshots` method.
 class ListTopicSnapshotsResponse {
   /// If not empty, indicates that there may be more snapshots that match
   /// the request; this value should be passed in a new
@@ -2348,6 +2308,34 @@ class ListTopicsResponse {
   }
 }
 
+class MessageStoragePolicy {
+  /// A list of IDs of GCP regions where messages that are published to the
+  /// topic
+  /// may be persisted in storage. Messages published by publishers running in
+  /// non-allowed GCP regions (or running outside of GCP altogether) will be
+  /// routed for storage in one of the allowed regions. An empty list means that
+  /// no regions are allowed, and is not a valid configuration.
+  core.List<core.String> allowedPersistenceRegions;
+
+  MessageStoragePolicy();
+
+  MessageStoragePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedPersistenceRegions")) {
+      allowedPersistenceRegions =
+          (_json["allowedPersistenceRegions"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowedPersistenceRegions != null) {
+      _json["allowedPersistenceRegions"] = allowedPersistenceRegions;
+    }
+    return _json;
+  }
+}
+
 /// Request for the ModifyAckDeadline method.
 class ModifyAckDeadlineRequest {
   /// The new ack deadline with respect to the time this request was sent to
@@ -2410,6 +2398,49 @@ class ModifyPushConfigRequest {
         new core.Map<core.String, core.Object>();
     if (pushConfig != null) {
       _json["pushConfig"] = (pushConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Contains information needed for generating an
+/// [OpenID Connect
+/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+class OidcToken {
+  /// Audience to be used when generating OIDC token. The audience claim
+  /// identifies the recipients that the JWT is intended for. The audience
+  /// value is a single case-sensitive string. Having multiple values (array)
+  /// for the audience field is not supported. More info about the OIDC JWT
+  /// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+  /// Note: if not specified, the Push endpoint URL will be used.
+  core.String audience;
+
+  /// [Service account
+  /// email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating the OIDC token. The caller (for
+  /// CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
+  /// have the iam.serviceAccounts.actAs permission for the service account.
+  core.String serviceAccountEmail;
+
+  OidcToken();
+
+  OidcToken.fromJson(core.Map _json) {
+    if (_json.containsKey("audience")) {
+      audience = _json["audience"];
+    }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (audience != null) {
+      _json["audience"] = audience;
+    }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
     }
     return _json;
   }
@@ -2737,6 +2768,10 @@ class PushConfig {
   /// * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
   core.Map<core.String, core.String> attributes;
 
+  /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
+  /// `Authorization` header in the HTTP request for every pushed message.
+  OidcToken oidcToken;
+
   /// A URL locating the endpoint to which messages should be pushed.
   /// For example, a Webhook endpoint might use "https://example.com/push".
   core.String pushEndpoint;
@@ -2748,6 +2783,9 @@ class PushConfig {
       attributes =
           (_json["attributes"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("oidcToken")) {
+      oidcToken = new OidcToken.fromJson(_json["oidcToken"]);
+    }
     if (_json.containsKey("pushEndpoint")) {
       pushEndpoint = _json["pushEndpoint"];
     }
@@ -2758,6 +2796,9 @@ class PushConfig {
         new core.Map<core.String, core.Object>();
     if (attributes != null) {
       _json["attributes"] = attributes;
+    }
+    if (oidcToken != null) {
+      _json["oidcToken"] = (oidcToken).toJson();
     }
     if (pushEndpoint != null) {
       _json["pushEndpoint"] = pushEndpoint;
@@ -2798,10 +2839,7 @@ class ReceivedMessage {
   }
 }
 
-/// Request for the `Seek` method. <br><br>
-/// <b>BETA:</b> This feature is part of a beta release. This API might be
-/// changed in backward-incompatible ways and is not recommended for production
-/// use. It is not subject to any SLA or deprecation policy.
+/// Request for the `Seek` method.
 class SeekRequest {
   /// The snapshot to seek to. The snapshot's topic must be the same as that of
   /// the provided subscription.
@@ -2889,10 +2927,7 @@ class SetIamPolicyRequest {
 /// operations, which allow
 /// you to manage message acknowledgments in bulk. That is, you can set the
 /// acknowledgment state of messages in an existing subscription to the state
-/// captured by a snapshot.<br><br>
-/// <b>BETA:</b> This feature is part of a beta release. This API might be
-/// changed in backward-incompatible ways and is not recommended for production
-/// use. It is not subject to any SLA or deprecation policy.
+/// captured by a snapshot.
 class Snapshot {
   /// The snapshot is guaranteed to exist up until this time.
   /// A newly-created snapshot expires no later than 7 days from the time of its
@@ -2986,10 +3021,6 @@ class Subscription {
   /// operations on the subscription. If `expiration_policy` is not set, a
   /// *default policy* with `ttl` of 31 days will be used. The minimum allowed
   /// value for `expiration_policy.ttl` is 1 day.
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
   ExpirationPolicy expirationPolicy;
 
   /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
@@ -3004,11 +3035,7 @@ class Subscription {
   /// `Seek`
   /// can be done. Defaults to 7 days. Cannot be more than 7 days or less than
   /// 10
-  /// minutes.<br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
+  /// minutes.
   core.String messageRetentionDuration;
 
   /// The name of the subscription. It must have the format
@@ -3032,11 +3059,6 @@ class Subscription {
   /// <a
   /// href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">
   /// Seek to a timestamp</a>.
-  /// <br><br>
-  /// <b>BETA:</b> This feature is part of a beta release. This API might be
-  /// changed in backward-incompatible ways and is not recommended for
-  /// production
-  /// use. It is not subject to any SLA or deprecation policy.
   core.bool retainAckedMessages;
 
   /// The name of the topic from which this subscription is receiving messages.
@@ -3158,9 +3180,22 @@ class TestIamPermissionsResponse {
 
 /// A topic resource.
 class Topic {
+  /// The resource name of the Cloud KMS CryptoKey to be used to protect access
+  /// to messages published on this topic.
+  ///
+  /// The expected format is `projects / * /locations / * /keyRings / *
+  /// /cryptoKeys / * `.
+  core.String kmsKeyName;
+
   /// See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
   /// managing labels</a>.
   core.Map<core.String, core.String> labels;
+
+  /// Policy constraining the set of Google Cloud Platform regions where
+  /// messages
+  /// published to the topic may be stored. If not present, then no constraints
+  /// are in effect.
+  MessageStoragePolicy messageStoragePolicy;
 
   /// The name of the topic. It must have the format
   /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
@@ -3173,8 +3208,15 @@ class Topic {
   Topic();
 
   Topic.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("messageStoragePolicy")) {
+      messageStoragePolicy =
+          new MessageStoragePolicy.fromJson(_json["messageStoragePolicy"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3184,8 +3226,14 @@ class Topic {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
     if (labels != null) {
       _json["labels"] = labels;
+    }
+    if (messageStoragePolicy != null) {
+      _json["messageStoragePolicy"] = (messageStoragePolicy).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -3194,10 +3242,7 @@ class Topic {
   }
 }
 
-/// Request for the UpdateSnapshot method.<br><br>
-/// <b>BETA:</b> This feature is part of a beta release. This API might be
-/// changed in backward-incompatible ways and is not recommended for production
-/// use. It is not subject to any SLA or deprecation policy.
+/// Request for the UpdateSnapshot method.
 class UpdateSnapshotRequest {
   /// The updated snapshot object.
   Snapshot snapshot;

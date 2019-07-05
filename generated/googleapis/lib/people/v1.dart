@@ -25,9 +25,6 @@ class PeopleApi {
   static const ContactsReadonlyScope =
       "https://www.googleapis.com/auth/contacts.readonly";
 
-  /// Know the list of people in your circles, your age range, and language
-  static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
-
   /// View your street addresses
   static const UserAddressesReadScope =
       "https://www.googleapis.com/auth/user.addresses.read";
@@ -48,7 +45,8 @@ class PeopleApi {
   static const UserinfoEmailScope =
       "https://www.googleapis.com/auth/userinfo.email";
 
-  /// View your basic profile info
+  /// See your personal info, including any personal info you've made publicly
+  /// available
   static const UserinfoProfileScope =
       "https://www.googleapis.com/auth/userinfo.profile";
 
@@ -275,15 +273,15 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [syncToken] - A sync token, returned by a previous call to
+  /// `contactgroups.list`.
+  /// Only resources changed since the sync token was created will be returned.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [pageSize] - The maximum number of resources to return.
-  ///
-  /// [syncToken] - A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -296,9 +294,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String pageToken,
+      {core.String syncToken,
+      core.String pageToken,
       core.int pageSize,
-      core.String syncToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -307,14 +305,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -393,6 +391,10 @@ class ContactGroupsMembersResourceApi {
       : _requester = client;
 
   /// Modify the members of a contact group owned by the authenticated user.
+  /// <br>
+  /// The only system contact groups that can have members added are
+  /// `contactGroups/myContacts` and `contactGroups/starred`. Other system
+  /// contact groups are deprecated and can only have contacts removed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -794,6 +796,7 @@ class PeopleResourceApi {
   /// * imClients
   /// * interests
   /// * locales
+  /// * memberships
   /// * names
   /// * nicknames
   /// * occupations
@@ -930,6 +933,7 @@ class PeopleConnectionsResourceApi {
   /// `LAST_MODIFIED_ASCENDING`.
   /// Possible string values are:
   /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "LAST_MODIFIED_DESCENDING" : A LAST_MODIFIED_DESCENDING.
   /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
   /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
   ///
@@ -1418,19 +1422,25 @@ class ContactGroup {
 
 /// A Google contact group membership.
 class ContactGroupMembership {
-  /// The contact group ID for the contact group membership. The contact group
-  /// ID can be custom or one of these predefined values:
-  ///
-  /// *  `myContacts`
-  /// *  `starred`
-  /// *  A numerical ID for user-created groups.
+  /// The read-only contact group ID for the contact group membership.
   core.String contactGroupId;
+
+  /// The resource name for the contact group, assigned by the server. An ASCII
+  /// string, in the form of `contactGroups/`<var>contact_group_id</var>.
+  /// Only contact_group_resource_name can be used for modifying memberships.
+  /// Any contact group membership can be removed, but only user group or
+  /// "myContacts" or "starred" system groups memberships can be added. A
+  /// contact must always have at least one contact group membership.
+  core.String contactGroupResourceName;
 
   ContactGroupMembership();
 
   ContactGroupMembership.fromJson(core.Map _json) {
     if (_json.containsKey("contactGroupId")) {
       contactGroupId = _json["contactGroupId"];
+    }
+    if (_json.containsKey("contactGroupResourceName")) {
+      contactGroupResourceName = _json["contactGroupResourceName"];
     }
   }
 
@@ -1439,6 +1449,9 @@ class ContactGroupMembership {
         new core.Map<core.String, core.Object>();
     if (contactGroupId != null) {
       _json["contactGroupId"] = contactGroupId;
+    }
+    if (contactGroupResourceName != null) {
+      _json["contactGroupResourceName"] = contactGroupResourceName;
     }
     return _json;
   }
@@ -1637,9 +1650,9 @@ class Date {
   }
 }
 
-/// A Google Apps Domain membership.
+/// A read-only G Suite Domain membership.
 class DomainMembership {
-  /// True if the person is in the viewer's Google Apps domain.
+  /// True if the person is in the viewer's G Suite domain.
   core.bool inViewerDomain;
 
   DomainMembership();
@@ -2184,12 +2197,13 @@ class Locale {
   }
 }
 
-/// A person's read-only membership in a group.
+/// A person's membership in a group. Only contact group memberships can be
+/// modified.
 class Membership {
   /// The contact group membership.
   ContactGroupMembership contactGroupMembership;
 
-  /// The domain membership.
+  /// The read-only domain membership.
   DomainMembership domainMembership;
 
   /// Metadata about the membership.
@@ -2229,7 +2243,7 @@ class Membership {
 
 /// A request to modify an existing contact group's members. Contacts can be
 /// removed from any group but they can only be added to a user group or
-/// myContacts or starred system groups.
+/// "myContacts" or "starred" system groups.
 class ModifyContactGroupMembersRequest {
   /// The resource names of the contact people to add in the form of in the form
   /// `people/`<var>person_id</var>.
@@ -2720,7 +2734,7 @@ class Person {
   /// The person's locale preferences.
   core.List<Locale> locales;
 
-  /// The person's read-only group memberships.
+  /// The person's group memberships.
   core.List<Membership> memberships;
 
   /// Read-only metadata about the person.
@@ -3673,8 +3687,8 @@ class Source {
   /// the
   /// profile at https://profiles.google.com/<var>id</var> where
   /// <var>id</var> is the source id.
-  /// - "DOMAIN_PROFILE" : [Google Apps domain
-  /// profile](https://admin.google.com).
+  /// - "DOMAIN_PROFILE" : [G Suite domain
+  /// profile](https://support.google.com/a/answer/1628008).
   /// - "CONTACT" : [Google contact](https://contacts.google.com). You can view
   /// the
   /// contact at https://contact.google.com/<var>id</var> where <var>id</var>
@@ -3729,61 +3743,12 @@ class Source {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

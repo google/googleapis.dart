@@ -1,3 +1,26 @@
+## 0.49.0
+ * [api-new] accessapproval:v1beta1
+ * [api-new] cloudprivatecatalog:v1beta1
+ * [api-new] cloudprivatecatalogproducer:v1beta1
+ * [api-new] commentanalyzer:v1alpha1
+ * [api-new] datafusion:v1beta1
+ * [api-new] factchecktools:v1alpha1
+ * [api-new] firebase:v1beta1
+ * [api-new] healthcare:v1beta1
+ * [api-removed] accesscontextmanager:v1beta
+ * [api-removed] appengine:v1beta4
+ * [api-removed] appengine:v1beta4
+ * [api-removed] appengine:v1beta5
+ * [api-removed] appengine:v1beta5
+ * [api-removed] cloudasset:v1beta1
+ * [api-removed] cloudscheduler:v1beta1
+ * [api-removed] cloudtasks:v2beta3
+ * [api-removed] file:v1beta1
+ * [api-removed] logging:v2beta1
+ * [api-removed] logging:v2beta1
+ * [api-removed] servicenetworking:v1beta
+ * [api-removed] websecurityscanner:v1alpha
+
 ## 0.48.0
 
  * [api-new] accesscontextmanager:v1beta

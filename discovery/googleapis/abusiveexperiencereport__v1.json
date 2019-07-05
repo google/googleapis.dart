@@ -103,24 +103,6 @@
     },
     "protocol": "rest",
     "resources": {
-        "violatingSites": {
-            "methods": {
-                "list": {
-                    "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
-                    "httpMethod": "GET",
-                    "id": "abusiveexperiencereport.violatingSites.list",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/violatingSites",
-                    "response": {
-                        "$ref": "ViolatingSitesResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/xapi.zoo"
-                    ]
-                }
-            }
-        },
         "sites": {
             "methods": {
                 "get": {
@@ -148,9 +130,27 @@
                     ]
                 }
             }
+        },
+        "violatingSites": {
+            "methods": {
+                "list": {
+                    "description": "Lists sites with Abusive Experience Report statuses of \"Failing\".",
+                    "httpMethod": "GET",
+                    "id": "abusiveexperiencereport.violatingSites.list",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/violatingSites",
+                    "response": {
+                        "$ref": "ViolatingSitesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/xapi.zoo"
+                    ]
+                }
+            }
         }
     },
-    "revision": "20190108",
+    "revision": "20190624",
     "rootUrl": "https://abusiveexperiencereport.googleapis.com/",
     "schemas": {
         "ViolatingSitesResponse": {
@@ -171,6 +171,20 @@
             "description": "Response message for GetSiteSummary.",
             "id": "SiteSummaryResponse",
             "properties": {
+                "abusiveStatus": {
+                    "description": "The status of the site reviewed for the abusive experiences.",
+                    "enum": [
+                        "UNKNOWN",
+                        "PASSING",
+                        "FAILING"
+                    ],
+                    "enumDescriptions": [
+                        "Not reviewed.",
+                        "Passing.",
+                        "Failing."
+                    ],
+                    "type": "string"
+                },
                 "enforcementTime": {
                     "description": "The date on which enforcement begins.",
                     "format": "google-datetime",
@@ -209,20 +223,6 @@
                 "lastChangeTime": {
                     "description": "The last time that the site changed status.",
                     "format": "google-datetime",
-                    "type": "string"
-                },
-                "abusiveStatus": {
-                    "description": "The status of the site reviewed for the abusive experiences.",
-                    "enum": [
-                        "UNKNOWN",
-                        "PASSING",
-                        "FAILING"
-                    ],
-                    "enumDescriptions": [
-                        "Not reviewed.",
-                        "Passing.",
-                        "Failing."
-                    ],
                     "type": "string"
                 }
             },

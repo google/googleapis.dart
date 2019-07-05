@@ -211,14 +211,6 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested page size. Server may return fewer jobs than
-  /// requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return. Typically,
   /// this is the value of
@@ -229,6 +221,14 @@ class JobsResourceApi {
   /// returned; otherwise only
   /// user-created jobs will be returned. System-managed jobs can neither be
   /// modified nor deleted.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer jobs than
+  /// requested.
+  /// If unspecified, server will pick an appropriate default.
+  ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If
+  /// not set, the user is acting for himself (his own channel).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -241,10 +241,10 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.int pageSize,
-      core.String onBehalfOfContentOwner,
-      core.String pageToken,
+      {core.String pageToken,
       core.bool includeSystemManaged,
+      core.int pageSize,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -253,17 +253,17 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -351,10 +351,6 @@ class JobsReportsResourceApi {
   ///
   /// [jobId] - The ID of the job.
   ///
-  /// [pageSize] - Requested page size. Server may return fewer report types
-  /// than requested.
-  /// If unspecified, server will pick an appropriate default.
-  ///
   /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
   /// the user is acting on. If
   /// not set, the user is acting for himself (his own channel).
@@ -376,6 +372,10 @@ class JobsReportsResourceApi {
   /// than or equal the
   /// specified date/time are returned.
   ///
+  /// [pageSize] - Requested page size. Server may return fewer report types
+  /// than requested.
+  /// If unspecified, server will pick an appropriate default.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -387,12 +387,12 @@ class JobsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReportsResponse> list(core.String jobId,
-      {core.int pageSize,
-      core.String onBehalfOfContentOwner,
+      {core.String onBehalfOfContentOwner,
       core.String startTimeBefore,
       core.String createdAfter,
       core.String pageToken,
       core.String startTimeAtOrAfter,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -403,9 +403,6 @@ class JobsReportsResourceApi {
 
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -421,6 +418,9 @@ class JobsReportsResourceApi {
     }
     if (startTimeAtOrAfter != null) {
       _queryParams["startTimeAtOrAfter"] = [startTimeAtOrAfter];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1653,8 +1653,7 @@ class ListReportTypesResponse {
   /// Pass this value in the
   /// ListReportTypesRequest.page_token
   /// field in the subsequent call to `ListReportTypes` method to retrieve the
-  /// next
-  /// page of results.
+  /// next page of results.
   core.String nextPageToken;
 
   /// The list of report types.

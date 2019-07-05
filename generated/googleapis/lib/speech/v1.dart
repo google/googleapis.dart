@@ -99,13 +99,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [name] - The name of the operation's parent resource.
   ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -118,10 +118,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String filter,
-      core.String name,
+      {core.String name,
       core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -130,9 +130,6 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
@@ -141,6 +138,9 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -163,8 +163,6 @@ class ProjectsResourceApi {
 
   ProjectsLocationsResourceApi get locations =>
       new ProjectsLocationsResourceApi(_requester);
-  ProjectsOperationsResourceApi get operations =>
-      new ProjectsOperationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -248,11 +246,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -265,9 +263,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -279,14 +277,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -305,71 +303,6 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
-class ProjectsOperationsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsOperationsManualRecognitionTasksResourceApi
-      get manualRecognitionTasks =>
-          new ProjectsOperationsManualRecognitionTasksResourceApi(_requester);
-
-  ProjectsOperationsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-}
-
-class ProjectsOperationsManualRecognitionTasksResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsOperationsManualRecognitionTasksResourceApi(
-      commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets the latest state of a long-running operation.  Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern
-  /// "^projects/[^/]+/operations/manualRecognitionTasks/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Operation.fromJson(data));
-  }
-}
-
 class SpeechResourceApi {
   final commons.ApiRequester _requester;
 
@@ -379,6 +312,8 @@ class SpeechResourceApi {
   /// google.longrunning.Operations interface. Returns either an
   /// `Operation.error` or an `Operation.response` which contains
   /// a `LongRunningRecognizeResponse` message.
+  /// For more information on asynchronous speech recognition, see the
+  /// [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
   ///
   /// [request] - The metadata request object.
   ///
@@ -635,7 +570,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -701,7 +636,7 @@ class Operation {
 /// [content limits](/speech-to-text/quotas#content).
 class RecognitionAudio {
   /// The audio data bytes encoded as specified in
-  /// `RecognitionConfig`. Note: as with all bytes fields, protobuffers use a
+  /// `RecognitionConfig`. Note: as with all bytes fields, proto buffers use a
   /// pure binary representation, whereas JSON representations use base64.
   core.String content;
   core.List<core.int> get contentAsBytes {
@@ -749,6 +684,17 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
+  /// *Optional* The number of channels in the input audio data.
+  /// ONLY set this for MULTI-CHANNEL recognition.
+  /// Valid values for LINEAR16 and FLAC are `1`-`8`.
+  /// Valid values for OGG_OPUS are '1'-'254'.
+  /// Valid value for MULAW, AMR, AMR_WB and SPEEX_WITH_HEADER_BYTE is only `1`.
+  /// If `0` or omitted, defaults to one channel (mono).
+  /// Note: We only recognize the first channel by default.
+  /// To perform independent recognition on each channel set
+  /// `enable_separate_recognition_per_channel` to 'true'.
+  core.int audioChannelCount;
+
   /// *Optional* If 'true', adds punctuation to recognition result hypotheses.
   /// This feature is only available in select languages. Setting this for
   /// requests in other languages has no effect at all.
@@ -826,6 +772,9 @@ class RecognitionConfig {
   /// one. If omitted, will return a maximum of one.
   core.int maxAlternatives;
 
+  /// *Optional* Metadata regarding this request.
+  RecognitionMetadata metadata;
+
   /// *Optional* Which model to select for the given request. Select the model
   /// best suited to your domain to get best results. If a model is not
   /// explicitly specified, then we auto-select a model based on the parameters
@@ -871,8 +820,8 @@ class RecognitionConfig {
   /// 16000 is optimal. For best results, set the sampling rate of the audio
   /// source to 16000 Hz. If that's not possible, use the native sample rate of
   /// the audio source (instead of re-sampling).
-  /// This field is optional for `FLAC` and `WAV` audio files and required
-  /// for all other audio formats. For details, see AudioEncoding.
+  /// This field is optional for FLAC and WAV audio files, but is
+  /// required for all other audio formats. For details, see AudioEncoding.
   core.int sampleRateHertz;
 
   /// *Optional* array of SpeechContext.
@@ -882,24 +831,20 @@ class RecognitionConfig {
 
   /// *Optional* Set to true to use an enhanced model for speech recognition.
   /// If `use_enhanced` is set to true and the `model` field is not set, then
-  /// an appropriate enhanced model is chosen if:
-  /// 1. project is eligible for requesting enhanced models
-  /// 2. an enhanced model exists for the audio
+  /// an appropriate enhanced model is chosen if an enhanced model exists for
+  /// the audio.
   ///
   /// If `use_enhanced` is true and an enhanced version of the specified model
   /// does not exist, then the speech is recognized using the standard version
   /// of the specified model.
-  ///
-  /// Enhanced speech models require that you opt-in to data logging using
-  /// instructions in the
-  /// [documentation](/speech-to-text/docs/enable-data-logging). If you set
-  /// `use_enhanced` to true and you have not enabled audio logging, then you
-  /// will receive an error.
   core.bool useEnhanced;
 
   RecognitionConfig();
 
   RecognitionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("audioChannelCount")) {
+      audioChannelCount = _json["audioChannelCount"];
+    }
     if (_json.containsKey("enableAutomaticPunctuation")) {
       enableAutomaticPunctuation = _json["enableAutomaticPunctuation"];
     }
@@ -918,6 +863,9 @@ class RecognitionConfig {
     }
     if (_json.containsKey("maxAlternatives")) {
       maxAlternatives = _json["maxAlternatives"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new RecognitionMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("model")) {
       model = _json["model"];
@@ -941,6 +889,9 @@ class RecognitionConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (audioChannelCount != null) {
+      _json["audioChannelCount"] = audioChannelCount;
+    }
     if (enableAutomaticPunctuation != null) {
       _json["enableAutomaticPunctuation"] = enableAutomaticPunctuation;
     }
@@ -960,6 +911,9 @@ class RecognitionConfig {
     if (maxAlternatives != null) {
       _json["maxAlternatives"] = maxAlternatives;
     }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
     if (model != null) {
       _json["model"] = model;
     }
@@ -975,6 +929,156 @@ class RecognitionConfig {
     }
     if (useEnhanced != null) {
       _json["useEnhanced"] = useEnhanced;
+    }
+    return _json;
+  }
+}
+
+/// Description of audio data to be recognized.
+class RecognitionMetadata {
+  /// Description of the content. Eg. "Recordings of federal supreme court
+  /// hearings from 2012".
+  core.String audioTopic;
+
+  /// The industry vertical to which this speech recognition request most
+  /// closely applies. This is most indicative of the topics contained
+  /// in the audio.  Use the 6-digit NAICS code to identify the industry
+  /// vertical - see https://www.naics.com/search/.
+  core.int industryNaicsCodeOfAudio;
+
+  /// The use case most closely describing the audio content to be recognized.
+  /// Possible string values are:
+  /// - "INTERACTION_TYPE_UNSPECIFIED" : Use case is either unknown or is
+  /// something other than one of the other
+  /// values below.
+  /// - "DISCUSSION" : Multiple people in a conversation or discussion. For
+  /// example in a
+  /// meeting with two or more people actively participating. Typically
+  /// all the primary people speaking would be in the same room (if not,
+  /// see PHONE_CALL)
+  /// - "PRESENTATION" : One or more persons lecturing or presenting to others,
+  /// mostly
+  /// uninterrupted.
+  /// - "PHONE_CALL" : A phone-call or video-conference in which two or more
+  /// people, who are
+  /// not in the same room, are actively participating.
+  /// - "VOICEMAIL" : A recorded message intended for another person to listen
+  /// to.
+  /// - "PROFESSIONALLY_PRODUCED" : Professionally produced audio (eg. TV Show,
+  /// Podcast).
+  /// - "VOICE_SEARCH" : Transcribe spoken questions and queries into text.
+  /// - "VOICE_COMMAND" : Transcribe voice commands, such as for controlling a
+  /// device.
+  /// - "DICTATION" : Transcribe speech to text to create a written document,
+  /// such as a
+  /// text-message, email or report.
+  core.String interactionType;
+
+  /// The audio type that most closely describes the audio being recognized.
+  /// Possible string values are:
+  /// - "MICROPHONE_DISTANCE_UNSPECIFIED" : Audio type is not known.
+  /// - "NEARFIELD" : The audio was captured from a closely placed microphone.
+  /// Eg. phone,
+  /// dictaphone, or handheld microphone. Generally if there speaker is within
+  /// 1 meter of the microphone.
+  /// - "MIDFIELD" : The speaker if within 3 meters of the microphone.
+  /// - "FARFIELD" : The speaker is more than 3 meters away from the microphone.
+  core.String microphoneDistance;
+
+  /// Obfuscated (privacy-protected) ID of the user, to identify number of
+  /// unique users using the service.
+  core.String obfuscatedId;
+
+  /// The original media the speech was recorded on.
+  /// Possible string values are:
+  /// - "ORIGINAL_MEDIA_TYPE_UNSPECIFIED" : Unknown original media type.
+  /// - "AUDIO" : The speech data is an audio recording.
+  /// - "VIDEO" : The speech data originally recorded on a video.
+  core.String originalMediaType;
+
+  /// Mime type of the original audio file.  For example `audio/m4a`,
+  /// `audio/x-alaw-basic`, `audio/mp3`, `audio/3gpp`.
+  /// A list of possible audio mime types is maintained at
+  /// http://www.iana.org/assignments/media-types/media-types.xhtml#audio
+  core.String originalMimeType;
+
+  /// The device used to make the recording.  Examples 'Nexus 5X' or
+  /// 'Polycom SoundStation IP 6000' or 'POTS' or 'VoIP' or
+  /// 'Cardioid Microphone'.
+  core.String recordingDeviceName;
+
+  /// The type of device the speech was recorded with.
+  /// Possible string values are:
+  /// - "RECORDING_DEVICE_TYPE_UNSPECIFIED" : The recording device is unknown.
+  /// - "SMARTPHONE" : Speech was recorded on a smartphone.
+  /// - "PC" : Speech was recorded using a personal computer or tablet.
+  /// - "PHONE_LINE" : Speech was recorded over a phone line.
+  /// - "VEHICLE" : Speech was recorded in a vehicle.
+  /// - "OTHER_OUTDOOR_DEVICE" : Speech was recorded outdoors.
+  /// - "OTHER_INDOOR_DEVICE" : Speech was recorded indoors.
+  core.String recordingDeviceType;
+
+  RecognitionMetadata();
+
+  RecognitionMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("audioTopic")) {
+      audioTopic = _json["audioTopic"];
+    }
+    if (_json.containsKey("industryNaicsCodeOfAudio")) {
+      industryNaicsCodeOfAudio = _json["industryNaicsCodeOfAudio"];
+    }
+    if (_json.containsKey("interactionType")) {
+      interactionType = _json["interactionType"];
+    }
+    if (_json.containsKey("microphoneDistance")) {
+      microphoneDistance = _json["microphoneDistance"];
+    }
+    if (_json.containsKey("obfuscatedId")) {
+      obfuscatedId = _json["obfuscatedId"];
+    }
+    if (_json.containsKey("originalMediaType")) {
+      originalMediaType = _json["originalMediaType"];
+    }
+    if (_json.containsKey("originalMimeType")) {
+      originalMimeType = _json["originalMimeType"];
+    }
+    if (_json.containsKey("recordingDeviceName")) {
+      recordingDeviceName = _json["recordingDeviceName"];
+    }
+    if (_json.containsKey("recordingDeviceType")) {
+      recordingDeviceType = _json["recordingDeviceType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (audioTopic != null) {
+      _json["audioTopic"] = audioTopic;
+    }
+    if (industryNaicsCodeOfAudio != null) {
+      _json["industryNaicsCodeOfAudio"] = industryNaicsCodeOfAudio;
+    }
+    if (interactionType != null) {
+      _json["interactionType"] = interactionType;
+    }
+    if (microphoneDistance != null) {
+      _json["microphoneDistance"] = microphoneDistance;
+    }
+    if (obfuscatedId != null) {
+      _json["obfuscatedId"] = obfuscatedId;
+    }
+    if (originalMediaType != null) {
+      _json["originalMediaType"] = originalMediaType;
+    }
+    if (originalMimeType != null) {
+      _json["originalMimeType"] = originalMimeType;
+    }
+    if (recordingDeviceName != null) {
+      _json["recordingDeviceName"] = recordingDeviceName;
+    }
+    if (recordingDeviceType != null) {
+      _json["recordingDeviceType"] = recordingDeviceType;
     }
     return _json;
   }
@@ -1052,6 +1156,12 @@ class SpeechContext {
   /// specific commands are typically spoken by the user. This can also be used
   /// to add additional words to the vocabulary of the recognizer. See
   /// [usage limits](/speech-to-text/quotas#content).
+  ///
+  /// List items can also be set to classes for groups of words that represent
+  /// common concepts that occur in natural language. For example, rather than
+  /// providing phrase hints for every month of the year, using the $MONTH class
+  /// improves the likelihood of correctly transcribing audio that includes
+  /// months.
   core.List<core.String> phrases;
 
   SpeechContext();
@@ -1168,61 +1278,12 @@ class SpeechRecognitionResult {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

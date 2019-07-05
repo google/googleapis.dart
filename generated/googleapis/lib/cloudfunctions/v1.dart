@@ -251,8 +251,8 @@ class ProjectsLocationsFunctionsResourceApi {
 
   /// Synchronously invokes a deployed Cloud Function. To be used for testing
   /// purposes as very limited traffic is allowed. For more information on
-  /// the actual limits refer to [API Calls](
-  /// https://cloud.google.com/functions/quotas#rate_limits).
+  /// the actual limits, refer to
+  /// [Rate Limits](https://cloud.google.com/functions/quotas#rate_limits).
   ///
   /// [request] - The metadata request object.
   ///
@@ -477,11 +477,20 @@ class ProjectsLocationsFunctionsResourceApi {
   ///
   /// * Source file type should be a zip file.
   /// * Source file size should not exceed 100MB limit.
+  /// * No credentials should be attached - the signed URLs provide access to
+  /// the
+  ///   target bucket using internal service identity; if credentials were
+  ///   attached, the identity from the credentials would be used, but that
+  ///   identity does not have permissions to upload files to the URL.
   ///
   /// When making a HTTP PUT request, these two headers need to be specified:
   ///
   /// * `content-type: application/zip`
   /// * `x-goog-content-length-range: 0,104857600`
+  ///
+  /// And this header SHOULD NOT be specified:
+  ///
+  /// * `Authorization: Bearer YOUR_TOKEN`
   ///
   /// [request] - The metadata request object.
   ///
@@ -581,8 +590,8 @@ class ProjectsLocationsFunctionsResourceApi {
     return _response.then((data) => new CloudFunction.fromJson(data));
   }
 
-  /// Gets the access control policy for a resource.
-  /// Returns an empty policy if the resource exists and does not have a policy
+  /// Gets the IAM access control policy for a function.
+  /// Returns an empty policy if the function exists and does not have a policy
   /// set.
   ///
   /// Request parameters:
@@ -751,8 +760,8 @@ class ProjectsLocationsFunctionsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// Sets the IAM access control policy on the specified function.
+  /// Replaces any existing policy.
   ///
   /// [request] - The metadata request object.
   ///
@@ -807,13 +816,10 @@ class ProjectsLocationsFunctionsResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Returns permissions that a caller has on the specified resource.
-  /// If the resource does not exist, this will return an empty set of
+  /// Tests the specified permissions against the IAM access control policy
+  /// for a function.
+  /// If the function does not exist, this will return an empty set of
   /// permissions, not a NOT_FOUND error.
-  ///
-  /// Note: This operation is designed to be used for building permission-aware
-  /// UIs and command-line tools, not for authorization checking. This operation
-  /// may "fail open" without warning.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1017,8 +1023,8 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// Unimplemented. The condition that is associated with this binding.
-  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// The condition that is associated with this binding.
+  /// NOTE: An unsatisfied condition will not allow user access via current
   /// binding. Different bindings, including their conditions, are examined
   /// independently.
   Expr condition;
@@ -1043,7 +1049,7 @@ class Binding {
   ///    For example, `admins@example.com`.
   ///
   ///
-  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
   ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
 
@@ -1180,8 +1186,7 @@ class CloudFunction {
 
   /// The limit on the maximum number of function instances that may coexist at
   /// a
-  /// given time. This feature is currently in alpha, available only for
-  /// whitelisted users.
+  /// given time.
   core.int maxInstances;
 
   /// A user-defined name of the function. Function names must be unique
@@ -1206,11 +1211,17 @@ class CloudFunction {
   /// This feature is currently in alpha, available only for whitelisted users.
   core.String network;
 
-  /// The runtime in which the function is going to run. If empty, defaults to
-  /// Node.js 6.
+  /// Required. The runtime in which the function is going to run. Choices:
+  ///
+  /// * `nodejs6`: Node.js 6
+  /// * `nodejs8`: Node.js 8
+  /// * `nodejs10`: Node.js 10
+  /// * `python37`: Python 3.7
+  /// * `go111`: Go 1.11
   core.String runtime;
 
-  /// Output only. The email of the function's service account.
+  /// The email of the function's service account. If empty, defaults to
+  /// {project_id}@appspot.gserviceaccount.com.
   core.String serviceAccountEmail;
 
   /// The Google Cloud Storage URL, starting with gs://, pointing to the zip
@@ -1229,7 +1240,7 @@ class CloudFunction {
   /// Output only. Status of the function deployment.
   /// Possible string values are:
   /// - "CLOUD_FUNCTION_STATUS_UNSPECIFIED" : Not specified. Invalid state.
-  /// - "ACTIVE" : Function has been succesfully deployed and is serving.
+  /// - "ACTIVE" : Function has been successfully deployed and is serving.
   /// - "OFFLINE" : Function deployment failed and the function isn’t serving.
   /// - "DEPLOY_IN_PROGRESS" : Function is being created or updated.
   /// - "DELETE_IN_PROGRESS" : Function is being deleted.
@@ -1877,7 +1888,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -2303,61 +2314,12 @@ class SourceRepository {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

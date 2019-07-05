@@ -538,11 +538,6 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were appended. By default, responses
-  /// do not include the updated values.
-  ///
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -572,6 +567,11 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were appended. By default, responses
+  /// do not include the updated values.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -584,11 +584,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
+      {core.String responseValueRenderOption,
       core.String insertDataOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
+      core.bool includeValuesInResponse,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -606,9 +606,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -622,6 +619,9 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -760,20 +760,6 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
-  ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -791,6 +777,20 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
+  /// [ranges] - The A1 notation of the values to retrieve.
+  ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -802,10 +802,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.List<core.String> ranges,
-      core.String majorDimension,
-      core.String valueRenderOption,
+      {core.String valueRenderOption,
       core.String dateTimeRenderOption,
+      core.List<core.String> ranges,
+      core.String majorDimension,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -817,17 +817,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (ranges != null) {
-      _queryParams["ranges"] = ranges;
-    }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
-    }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
+    }
+    if (ranges != null) {
+      _queryParams["ranges"] = ranges;
+    }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1082,6 +1082,18 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to retrieve.
   ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -1099,18 +1111,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1122,9 +1122,9 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ValueRange> get(core.String spreadsheetId, core.String range,
-      {core.String valueRenderOption,
+      {core.String majorDimension,
+      core.String valueRenderOption,
       core.String dateTimeRenderOption,
-      core.String majorDimension,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1139,14 +1139,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
+    }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1178,14 +1178,6 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to update.
   ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
   /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
@@ -1210,6 +1202,14 @@ class SpreadsheetsValuesResourceApi {
   /// the response will include all values in the requested range (excluding
   /// trailing empty rows and columns).
   ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1222,10 +1222,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String responseValueRenderOption,
-      core.String valueInputOption,
+      {core.String valueInputOption,
       core.String responseDateTimeRenderOption,
       core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1243,9 +1243,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
-    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
     }
@@ -1256,6 +1253,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (includeValuesInResponse != null) {
       _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1331,7 +1331,7 @@ class AddChartRequest {
   /// where it should be placed. The chartId
   /// field is optional; if one is not set, an id will be randomly generated.
   /// (It
-  /// is an error to specify the ID of a chart that already exists.)
+  /// is an error to specify the ID of an embedded object that already exists.)
   EmbeddedChart chart;
 
   AddChartRequest();
@@ -4470,7 +4470,13 @@ class ClearValuesResponse {
 /// can be trivially provided to the constructor of "java.awt.Color" in Java; it
 /// can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
 /// method in iOS; and, with just a little work, it can be easily formatted into
-/// a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+/// a CSS "rgba()" string in JavaScript, as well.
+///
+/// Note: this proto does not carry information about the absolute color space
+/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+/// DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB
+/// color
+/// space.
 ///
 /// Example (Java):
 ///
@@ -7675,8 +7681,7 @@ class NumberFormat {
   /// on
   /// the user's locale will be used if necessary for the given type.
   /// See the [Date and Number Formats guide](/sheets/api/guides/formats) for
-  /// more
-  /// information about the supported patterns.
+  /// more information about the supported patterns.
   core.String pattern;
 
   /// The type of the number format.
@@ -10300,8 +10305,9 @@ class TextRotation {
   /// Measured in degrees. Valid values are between -90 and 90. Positive
   /// angles are angled upwards, negative are angled downwards.
   ///
-  /// Note: For LTR text direction positive angles are in the counterclockwise
-  /// direction, whereas for RTL they are in the clockwise direction
+  /// Note: For LTR text direction positive angles are in the
+  /// counterclockwise direction, whereas for RTL they are in the clockwise
+  /// direction
   core.int angle;
 
   /// If true, text reads top to bottom, but the orientation of individual

@@ -966,6 +966,44 @@ class CertHttpChallenge {
   }
 }
 
+/// A configured rewrite that directs requests to a Cloud Run service. If the
+/// Cloud Run service does not exist when setting or updating your Firebase
+/// Hosting configuration, then the request fails. Any errors from the Cloud Run
+/// service are passed to the end user (for example, if you delete a service,
+/// any
+/// requests directed to that service receive a `404` error).
+class CloudRunRewrite {
+  /// Optional. User-provided region where the Cloud Run service is hosted.<br>
+  /// Defaults to `us-central1` if not supplied.
+  core.String region;
+
+  /// Required. User-defined ID of the Cloud Run service.
+  core.String serviceId;
+
+  CloudRunRewrite();
+
+  CloudRunRewrite.fromJson(core.Map _json) {
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("serviceId")) {
+      serviceId = _json["serviceId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (serviceId != null) {
+      _json["serviceId"] = serviceId;
+    }
+    return _json;
+  }
+}
+
 /// The intended behavior and status information of a domain.
 class Domain {
   /// Required. The domain name of the association.
@@ -1584,6 +1622,9 @@ class Rewrite {
   /// The URL path to rewrite the request to.
   core.String path;
 
+  /// The request will be forwarded to Cloud Run.
+  CloudRunRewrite run;
+
   Rewrite();
 
   Rewrite.fromJson(core.Map _json) {
@@ -1598,6 +1639,9 @@ class Rewrite {
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
+    }
+    if (_json.containsKey("run")) {
+      run = new CloudRunRewrite.fromJson(_json["run"]);
     }
   }
 
@@ -1615,6 +1659,9 @@ class Rewrite {
     }
     if (path != null) {
       _json["path"] = path;
+    }
+    if (run != null) {
+      _json["run"] = (run).toJson();
     }
     return _json;
   }
@@ -1811,9 +1858,9 @@ class Version {
   /// - "ABANDONED" : The version was not updated to `FINALIZED` within
   /// 12&nbsp;hours and was
   /// automatically deleted.
-  /// - "EXPIRED" : The version has fallen out of the site-configured retention
-  /// window and its
-  /// associated files in GCS have been/been scheduled for deletion.
+  /// - "EXPIRED" : The version is outside the site-configured limit for the
+  /// number of
+  /// retained versions, so the version's content is scheduled for deletion.
   core.String status;
 
   /// Output only. The total stored bytesize of the version.

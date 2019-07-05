@@ -378,8 +378,8 @@ class ProjectsLocationsEnvironmentsResourceApi {
   ///  <tr>
   ///  <td>config.nodeCount</td>
   /// <td>Horizontally scale the number of nodes in the environment. An integer
-  /// greater than or equal to 3 must be provided in the `config.nodeCount`
-  /// field.
+  ///  greater than or equal to 3 must be provided in the `config.nodeCount`
+  ///  field.
   ///  </td>
   ///  </tr>
   ///  <tr>
@@ -638,11 +638,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,9 +655,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -669,14 +669,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1051,8 +1051,8 @@ class NodeConfig {
   /// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which
   /// to deploy the VMs used to run the Apache Airflow software, specified as a
   /// [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
-  /// For example: "projects/{projectId}/zones/{zoneId}".
+  /// name](/apis/design/resource_names#relative_resource_name). For example:
+  /// "projects/{projectId}/zones/{zoneId}".
   ///
   /// This `location` must belong to the enclosing environment's project and
   /// location. If both this field and `nodeConfig.machineType` are specified,
@@ -1068,8 +1068,7 @@ class NodeConfig {
   /// [machine type](/compute/docs/machine-types) used for cluster instances,
   /// specified as a
   /// [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
-  /// For example:
+  /// name](/apis/design/resource_names#relative_resource_name). For example:
   /// "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}".
   ///
   /// The `machineType` must belong to the enclosing environment's project and
@@ -1088,8 +1087,8 @@ class NodeConfig {
   /// Optional. The Compute Engine network to be used for machine
   /// communications, specified as a
   /// [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
-  /// For example: "projects/{projectId}/global/networks/{networkId}".
+  /// name](/apis/design/resource_names#relative_resource_name). For example:
+  /// "projects/{projectId}/global/networks/{networkId}".
   ///
   /// [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The
   /// network must belong to the environment's project. If unspecified, the
@@ -1111,8 +1110,7 @@ class NodeConfig {
   /// Optional. The Compute Engine subnetwork to be used for machine
   /// communications, specified as a
   /// [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
-  /// For example:
+  /// name](/apis/design/resource_names#relative_resource_name). For example:
   /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}"
   ///
   /// If a subnetwork is provided, `nodeConfig.network` must also be provided,
@@ -1210,7 +1208,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -1364,15 +1362,16 @@ class SoftwareConfig {
   /// Optional. Apache Airflow configuration properties to override.
   ///
   /// Property keys contain the section and property names, separated by a
-  /// hyphen,
-  /// for example "core-dags_are_paused_at_creation". Section names must not
-  /// contain hyphens ("-"), opening square brackets ("["),  or closing square
-  /// brackets ("]"). The property name must not be empty and must not contain
-  /// an equals sign ("=") or semicolon (";"). Section and property names must
-  /// not contain a period ("."). Apache Airflow configuration property names
-  /// must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).
-  /// Property values can contain any character, and can be written in any
-  /// lower/upper case format.
+  /// hyphen, for example "core-dags_are_paused_at_creation". Section names must
+  /// not contain hyphens ("-"), opening square brackets ("["),  or closing
+  /// square brackets ("]"). The property name must not be empty and must not
+  /// contain an equals sign ("=") or semicolon (";"). Section and property
+  /// names
+  /// must not contain a period ("."). Apache Airflow configuration property
+  /// names must be written in
+  /// [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values
+  /// can
+  /// contain any character, and can be written in any lower/upper case format.
   ///
   /// Certain Apache Airflow configuration property values are
   /// [blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#airflow_configuration_blacklists),
@@ -1404,18 +1403,26 @@ class SoftwareConfig {
   /// * `SQL_USER`
   core.Map<core.String, core.String> envVariables;
 
-  /// Output only.
   /// The version of the software running in the environment.
   /// This encapsulates both the version of Cloud Composer functionality and the
   /// version of Apache Airflow. It must match the regular expression
-  /// `composer-[0-9]+\.[0-9]+(\.[0-9]+)?-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+  /// `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`.
+  /// When used as input, the server also checks if the provided version is
+  /// supported and denies the request for an unsupported version.
   ///
   /// The Cloud Composer portion of the version is a
-  /// [semantic version](https://semver.org). The portion of the image version
-  /// following _airflow-_ is an official Apache Airflow repository
+  /// [semantic version](https://semver.org) or `latest`. When the patch version
+  /// is omitted, the current Cloud Composer patch version is selected.
+  /// When `latest` is provided instead of an explicit version number,
+  /// the server replaces `latest` with the current Cloud Composer version
+  /// and stores that version number in the same field.
+  ///
+  /// The portion of the image version that follows <em>airflow-</em> is an
+  /// official Apache Airflow repository
   /// [release name](https://github.com/apache/incubator-airflow/releases).
   ///
-  /// See also [Release Notes](/composer/docs/release-notes).
+  /// See also [Version
+  /// List](/composer/docs/concepts/versioning/composer-versions).
   core.String imageVersion;
 
   /// Optional. Custom Python Package Index (PyPI) packages to be installed in
@@ -1481,61 +1488,12 @@ class SoftwareConfig {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

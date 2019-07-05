@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 0.53.0
+    version: 0.54.0
     author: Dart Team <misc@dartlang.org>
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
@@ -60,7 +60,6 @@ packages:
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
-    - dfareporting:v3.2 # https://developers.google.com/doubleclick-advertisers/reporting/
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
@@ -148,47 +147,70 @@ packages:
     - youtubeAnalytics:v1 # https://developers.google.com/youtube/analytics/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
+    - accesscontextmanager:v1
+    - cloudasset:v1
+    - cloudscheduler:v1
+    - cloudtasks:v2
+    - docs:v1
+    - fcm:v1
+    - file:v1
+    - run:v1
+    - remotebuildexecution:v2
+    - securitycenter:v1
+    - servicenetworking:v1
+    - websecurityscanner:v1
+    - accesscontextmanager:v1
+    - cloudasset:v1
+    - cloudscheduler:v1
+    - cloudtasks:v2
+    - dfareporting:v3.3
+    - docs:v1
+    - fcm:v1
+    - file:v1
+    - run:v1
+    - remotebuildexecution:v2
+    - securitycenter:v1
+    - servicenetworking:v1
 
 - googleapis_beta:
-    version: 0.48.0
+    version: 0.49.0
     author: Dart Team <misc@dartlang.org>
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
     changelog: resources/googleapis_beta/CHANGELOG.md
     apis:
-    - accesscontextmanager:v1beta # https://cloud.google.com/access-context-manager/docs/
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
     - appengine:v1beta # https://cloud.google.com/appengine/docs/admin-api/
-    - appengine:v1beta4 # https://cloud.google.com/appengine/docs/admin-api/
-    - appengine:v1beta5 # https://cloud.google.com/appengine/docs/admin-api/
     - binaryauthorization:v1beta1
-    - cloudasset:v1beta1 # https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/reference/rest/
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
     - cloudresourcemanager:v1beta1 # https://cloud.google.com/resource-manager
-    - cloudscheduler:v1beta1 # https://cloud.google.com/scheduler/
-    - cloudtasks:v2beta3 # https://cloud.google.com/cloud-tasks/
     - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
     - dialogflow:v2beta1 # https://cloud.google.com/dialogflow-enterprise/
     - dns:v2beta1 # https://cloud.google.com/dns/docs/
-    - file:v1beta1 # https://cloud.google.com/filestore/
     - firebasehosting:v1beta1 # https://firebase.google.com/docs/hosting/
     - language:v1beta1 # https://cloud.google.com/natural-language/
     - language:v1beta2 # https://cloud.google.com/natural-language/
-    - logging:v2beta1 # https://cloud.google.com/appengine/articles/logging
     - oslogin:v1alpha # https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
     - oslogin:v1beta # https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
     - proximitybeacon:v1beta1 # https://developers.google.com/beacons/proximity/guides
     - pubsub:v1beta2 # https://developers.google.com/pubsub/ (Limited Preview)
     - replicapool:v1beta1 # https://cloud.google.com/compute/docs/instance-groups/
     - runtimeconfig:v1beta1 # https://cloud.google.com/deployment-manager/docs/
-    - servicenetworking:v1beta # https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
     - sqladmin:v1beta4 # https://developers.google.com/cloud-sql/docs/admin-api/
     - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
     - tpu:v1alpha1 # https://cloud.google.com/tpu/
-    - websecurityscanner:v1alpha
+    - accessapproval:v1beta1
+    - cloudprivatecatalog:v1beta1
+    - cloudprivatecatalogproducer:v1beta1
+    - commentanalyzer:v1alpha1
+    - datafusion:v1beta1
+    - factchecktools:v1alpha1
+    - firebase:v1beta1
+    - healthcare:v1beta1
+
 
 # APIs that we do not wish to include in this package
 skipped_apis:
@@ -243,4 +265,20 @@ skipped_apis:
 - videointelligence:v1p1beta1 # v1 included
 - vision:v1p1beta1 # v1 included
 - vision:v1p2beta1 # v1 included
-- youtubeAnalytics:v1beta1 # v1 included
+- bigtableadmin:v1 # v2 included
+- websecurityscanner:v1beta # v1 included
+- websecurityscanner:v1alpha # v1 included
+- accesscontextmanager:v1beta
+- cloudasset:v1beta1
+- cloudscheduler:v1beta1
+- cloudtasks:v2beta3
+- file:v1beta1
+- servicenetworking:v1beta # v1 included
+- healthcare:v1alpha2
+- videointelligence:v1p2beta1
+- videointelligence:v1p3beta1
+- securitycenter:v1beta1
+- securitycenter:v1p1alpha1
+- run:v1beta1
+- run:v1alpha1
+- dfareporting:v3.2 # v3.3 added

@@ -3921,7 +3921,12 @@ class PageElementProperties {
 class PageProperties {
   /// The color scheme of the page. If unset, the color scheme is inherited from
   /// a parent page. If the page has no parent, the color scheme uses a default
-  /// Slides color scheme. This field is read-only.
+  /// Slides color scheme, matching the defaults in the Slides editor. Only the
+  /// concrete colors of the first 12 ThemeColorTypes are editable. To update
+  /// the field,
+  /// a color scheme containing mappings from all the first 12 ThemeColorTypes
+  /// to
+  /// their concrete colors must be provided.
   ColorScheme colorScheme;
 
   /// The background fill of the page. If unset, the background fill is
@@ -8656,8 +8661,8 @@ class WeightedFontFamily {
   /// The rendered weight of the text. This field can have any value that is a
   /// multiple of `100` between `100` and `900`, inclusive. This range
   /// corresponds to the numerical values described in the CSS 2.1
-  /// Specification, [section
-  /// 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness),
+  /// Specification,
+  /// [section 15.6](https://www.w3.org/TR/CSS21/fonts.html#font-boldness),
   /// with non-numerical values disallowed. Weights greater than or equal to
   /// `700` are considered bold, and weights less than `700`are not bold. The
   /// default value is `400` ("normal").

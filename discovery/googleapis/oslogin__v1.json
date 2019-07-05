@@ -2,11 +2,11 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/compute": {
-                    "description": "View and manage your Google Compute Engine resources"
-                },
                 "https://www.googleapis.com/auth/cloud-platform": {
                     "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/compute": {
+                    "description": "View and manage your Google Compute Engine resources"
                 }
             }
         }
@@ -15,7 +15,7 @@
     "baseUrl": "https://oslogin.googleapis.com/",
     "batchPath": "batch",
     "canonicalName": "Cloud OS Login",
-    "description": "Manages OS login configuration for Google account users.",
+    "description": "You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/compute/docs/oslogin/",
     "icons": {
@@ -67,13 +67,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -93,13 +93,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -116,16 +116,16 @@
                         "parent"
                     ],
                     "parameters": {
-                        "projectId": {
-                            "description": "The project ID of the Google Cloud Platform project.",
-                            "location": "query",
-                            "type": "string"
-                        },
                         "parent": {
                             "description": "The unique ID for the user in format `users/{user}`.",
                             "location": "path",
                             "pattern": "^users/[^/]+$",
                             "required": true,
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "The project ID of the Google Cloud Platform project.",
+                            "location": "query",
                             "type": "string"
                         }
                     },
@@ -298,7 +298,7 @@
             }
         }
     },
-    "revision": "20190107",
+    "revision": "20190614",
     "rootUrl": "https://oslogin.googleapis.com/",
     "schemas": {
         "ImportSshPublicKeyResponse": {
@@ -316,25 +316,25 @@
             "description": "The POSIX account information associated with a Google account.",
             "id": "PosixAccount",
             "properties": {
-                "shell": {
-                    "description": "The path to the logic shell for this account.",
-                    "type": "string"
-                },
                 "homeDirectory": {
                     "description": "The path to the home directory for this account.",
-                    "type": "string"
-                },
-                "gecos": {
-                    "description": "The GECOS (user information) entry for this account.",
                     "type": "string"
                 },
                 "systemId": {
                     "description": "System identifier for which account the username or uid applies to.\nBy default, the empty value is used.",
                     "type": "string"
                 },
+                "gecos": {
+                    "description": "The GECOS (user information) entry for this account.",
+                    "type": "string"
+                },
                 "primary": {
                     "description": "Only one POSIX account can be marked as primary.",
                     "type": "boolean"
+                },
+                "accountId": {
+                    "description": "Output only. A POSIX account identifier.",
+                    "type": "string"
                 },
                 "operatingSystemType": {
                     "description": "The operating system type where this account applies.",
@@ -350,10 +350,6 @@
                     ],
                     "type": "string"
                 },
-                "accountId": {
-                    "description": "Output only. A POSIX account identifier.",
-                    "type": "string"
-                },
                 "gid": {
                     "description": "The default group ID.",
                     "format": "int64",
@@ -367,6 +363,10 @@
                 "username": {
                     "description": "The username of the POSIX account.",
                     "type": "string"
+                },
+                "shell": {
+                    "description": "The path to the logic shell for this account.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -375,6 +375,13 @@
             "description": "The user profile information used for logging in to a virtual machine on\nGoogle Compute Engine.",
             "id": "LoginProfile",
             "properties": {
+                "sshPublicKeys": {
+                    "additionalProperties": {
+                        "$ref": "SshPublicKey"
+                    },
+                    "description": "A map from SSH public key fingerprint to the associated key object.",
+                    "type": "object"
+                },
                 "name": {
                     "description": "A unique user ID.",
                     "type": "string"
@@ -385,13 +392,6 @@
                         "$ref": "PosixAccount"
                     },
                     "type": "array"
-                },
-                "sshPublicKeys": {
-                    "additionalProperties": {
-                        "$ref": "SshPublicKey"
-                    },
-                    "description": "A map from SSH public key fingerprint to the associated key object.",
-                    "type": "object"
                 }
             },
             "type": "object"
@@ -406,6 +406,10 @@
             "description": "The SSH public key information associated with a Google account.",
             "id": "SshPublicKey",
             "properties": {
+                "key": {
+                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
+                    "type": "string"
+                },
                 "expirationTimeUsec": {
                     "description": "An expiration time in microseconds since epoch.",
                     "format": "int64",
@@ -413,10 +417,6 @@
                 },
                 "fingerprint": {
                     "description": "Output only. The SHA-256 fingerprint of the SSH public key.",
-                    "type": "string"
-                },
-                "key": {
-                    "description": "Public key text in SSH format, defined by\n<a href=\"https://www.ietf.org/rfc/rfc4253.txt\" target=\"_blank\">RFC4253</a>\nsection 6.6.",
                     "type": "string"
                 }
             },

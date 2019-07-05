@@ -85,6 +85,9 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -97,7 +100,9 @@ class BucketAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -110,6 +115,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -144,6 +152,9 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -158,7 +169,9 @@ class BucketAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> get(core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -171,6 +184,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -201,6 +217,9 @@ class BucketAccessControlsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -216,7 +235,9 @@ class BucketAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> insert(
       BucketAccessControl request, core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -229,6 +250,9 @@ class BucketAccessControlsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -254,6 +278,9 @@ class BucketAccessControlsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -268,7 +295,9 @@ class BucketAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BucketAccessControls> list(core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -278,6 +307,9 @@ class BucketAccessControlsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -309,6 +341,9 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -324,7 +359,9 @@ class BucketAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> patch(
       BucketAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -340,6 +377,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -374,6 +414,9 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -389,7 +432,9 @@ class BucketAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> update(
       BucketAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -405,6 +450,9 @@ class BucketAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -445,6 +493,9 @@ class BucketsResourceApi {
   /// [ifMetagenerationNotMatch] - If set, only deletes the bucket if its
   /// metageneration does not match this value.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -459,6 +510,7 @@ class BucketsResourceApi {
   async.Future delete(core.String bucket,
       {core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -476,6 +528,9 @@ class BucketsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -516,6 +571,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -533,6 +591,7 @@ class BucketsResourceApi {
       {core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -553,6 +612,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -578,6 +640,9 @@ class BucketsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -592,7 +657,9 @@ class BucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -602,6 +669,9 @@ class BucketsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -664,6 +734,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -680,6 +753,7 @@ class BucketsResourceApi {
       {core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -704,6 +778,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -742,6 +819,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -759,6 +839,7 @@ class BucketsResourceApi {
       core.String pageToken,
       core.String prefix,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -783,6 +864,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -811,6 +895,9 @@ class BucketsResourceApi {
   /// [ifMetagenerationMatch] - Makes the operation conditional on whether
   /// bucket's current metageneration matches the given value.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -826,7 +913,9 @@ class BucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<Bucket> lockRetentionPolicy(
       core.String bucket, core.String ifMetagenerationMatch,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -842,6 +931,9 @@ class BucketsResourceApi {
           "Parameter ifMetagenerationMatch is required.");
     }
     _queryParams["ifMetagenerationMatch"] = [ifMetagenerationMatch];
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
@@ -912,6 +1004,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -931,6 +1026,7 @@ class BucketsResourceApi {
       core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -961,6 +1057,9 @@ class BucketsResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
@@ -987,6 +1086,9 @@ class BucketsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1001,7 +1103,9 @@ class BucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(Policy request, core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1014,6 +1118,9 @@ class BucketsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1042,6 +1149,9 @@ class BucketsResourceApi {
   ///
   /// [permissions] - Permissions to test.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1057,7 +1167,9 @@ class BucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       core.String bucket, core.List<core.String> permissions,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1072,6 +1184,9 @@ class BucketsResourceApi {
       throw new core.ArgumentError("Parameter permissions is required.");
     }
     _queryParams["permissions"] = permissions;
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
@@ -1143,6 +1258,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1162,6 +1280,7 @@ class BucketsResourceApi {
       core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -1191,6 +1310,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1276,6 +1398,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1288,7 +1413,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1301,6 +1428,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1336,6 +1466,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1350,7 +1483,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> get(core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1363,6 +1498,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1393,6 +1531,9 @@ class DefaultObjectAccessControlsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1408,7 +1549,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> insert(
       ObjectAccessControl request, core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1421,6 +1564,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1453,6 +1599,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// [ifMetagenerationNotMatch] - If present, only return default ACL listing
   /// if the bucket's current metageneration does not match the given value.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1469,6 +1618,7 @@ class DefaultObjectAccessControlsResourceApi {
   async.Future<ObjectAccessControls> list(core.String bucket,
       {core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -1486,6 +1636,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1518,6 +1671,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1533,7 +1689,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> patch(
       ObjectAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1549,6 +1707,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1583,6 +1744,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1598,7 +1762,9 @@ class DefaultObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> update(
       ObjectAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1614,6 +1780,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (entity == null) {
       throw new core.ArgumentError("Parameter entity is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1650,6 +1819,9 @@ class NotificationsResourceApi {
   ///
   /// [notification] - ID of the notification to delete.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1662,7 +1834,9 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String bucket, core.String notification,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1675,6 +1849,9 @@ class NotificationsResourceApi {
     }
     if (notification == null) {
       throw new core.ArgumentError("Parameter notification is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1707,6 +1884,9 @@ class NotificationsResourceApi {
   ///
   /// [notification] - Notification ID
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1721,7 +1901,9 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> get(core.String bucket, core.String notification,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1734,6 +1916,9 @@ class NotificationsResourceApi {
     }
     if (notification == null) {
       throw new core.ArgumentError("Parameter notification is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1764,6 +1949,9 @@ class NotificationsResourceApi {
   ///
   /// [bucket] - The parent bucket of the notification.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1778,7 +1966,9 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> insert(Notification request, core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1791,6 +1981,9 @@ class NotificationsResourceApi {
     }
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1818,6 +2011,9 @@ class NotificationsResourceApi {
   ///
   /// [bucket] - Name of a Google Cloud Storage bucket.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1832,7 +2028,9 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notifications> list(core.String bucket,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1842,6 +2040,9 @@ class NotificationsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1887,6 +2088,9 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1900,7 +2104,10 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1919,6 +2126,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -1961,6 +2171,9 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -1976,7 +2189,10 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> get(
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1995,6 +2211,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2033,6 +2252,9 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2048,7 +2270,10 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> insert(
       ObjectAccessControl request, core.String bucket, core.String object,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2067,6 +2292,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2102,6 +2330,9 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2117,7 +2348,10 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControls> list(
       core.String bucket, core.String object,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2133,6 +2367,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2174,6 +2411,9 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2189,7 +2429,10 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> patch(ObjectAccessControl request,
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2211,6 +2454,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2253,6 +2499,9 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2268,7 +2517,10 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> update(ObjectAccessControl request,
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2290,6 +2542,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2360,6 +2615,9 @@ class ObjectsResourceApi {
   /// that will be used to encrypt the object. Overrides the object metadata's
   /// kms_key_name value, if any.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2379,6 +2637,7 @@ class ObjectsResourceApi {
       core.String ifGenerationMatch,
       core.String ifMetagenerationMatch,
       core.String kmsKeyName,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -2408,6 +2667,9 @@ class ObjectsResourceApi {
     }
     if (kmsKeyName != null) {
       _queryParams["kmsKeyName"] = [kmsKeyName];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2503,6 +2765,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [sourceGeneration] - If present, selects a specific revision of the source
   /// object (as opposed to the latest version, the default).
   ///
@@ -2535,6 +2800,7 @@ class ObjectsResourceApi {
       core.String ifSourceMetagenerationMatch,
       core.String ifSourceMetagenerationNotMatch,
       core.String projection,
+      core.String provisionalUserProject,
       core.String sourceGeneration,
       core.String userProject,
       core.String $fields}) {
@@ -2594,6 +2860,9 @@ class ObjectsResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
     if (sourceGeneration != null) {
       _queryParams["sourceGeneration"] = [sourceGeneration];
     }
@@ -2650,6 +2919,9 @@ class ObjectsResourceApi {
   /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
   /// the object's current metageneration does not match the given value.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2667,6 +2939,7 @@ class ObjectsResourceApi {
       core.String ifGenerationNotMatch,
       core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -2696,6 +2969,9 @@ class ObjectsResourceApi {
     }
     if (ifMetagenerationNotMatch != null) {
       _queryParams["ifMetagenerationNotMatch"] = [ifMetagenerationNotMatch];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2752,6 +3028,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2780,6 +3059,7 @@ class ObjectsResourceApi {
       core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields,
       commons.DownloadOptions downloadOptions =
@@ -2814,6 +3094,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2855,6 +3138,9 @@ class ObjectsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2869,7 +3155,10 @@ class ObjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String bucket, core.String object,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2885,6 +3174,9 @@ class ObjectsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -2969,6 +3261,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -2998,6 +3293,7 @@ class ObjectsResourceApi {
       core.String name,
       core.String predefinedAcl,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields,
       commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
@@ -3041,6 +3337,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -3104,6 +3403,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3127,6 +3429,7 @@ class ObjectsResourceApi {
       core.String pageToken,
       core.String prefix,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.bool versions,
       core.String $fields}) {
@@ -3159,6 +3462,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -3230,6 +3536,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request, for Requester
   /// Pays buckets.
   ///
@@ -3252,6 +3561,7 @@ class ObjectsResourceApi {
       core.String ifMetagenerationNotMatch,
       core.String predefinedAcl,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -3290,6 +3600,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -3395,6 +3708,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [rewriteToken] - Include this field (from the previous rewrite response)
   /// on each rewrite request after the first one, until the rewrite response
   /// 'done' flag is true. Calls that provide a rewriteToken can omit all other
@@ -3435,6 +3751,7 @@ class ObjectsResourceApi {
       core.String ifSourceMetagenerationNotMatch,
       core.String maxBytesRewrittenPerCall,
       core.String projection,
+      core.String provisionalUserProject,
       core.String rewriteToken,
       core.String sourceGeneration,
       core.String userProject,
@@ -3501,6 +3818,9 @@ class ObjectsResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
     if (rewriteToken != null) {
       _queryParams["rewriteToken"] = [rewriteToken];
     }
@@ -3546,6 +3866,9 @@ class ObjectsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3561,7 +3884,10 @@ class ObjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
       Policy request, core.String bucket, core.String object,
-      {core.String generation, core.String userProject, core.String $fields}) {
+      {core.String generation,
+      core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3580,6 +3906,9 @@ class ObjectsResourceApi {
     }
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -3618,6 +3947,9 @@ class ObjectsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3636,6 +3968,7 @@ class ObjectsResourceApi {
       core.String object,
       core.List<core.String> permissions,
       {core.String generation,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -3657,6 +3990,9 @@ class ObjectsResourceApi {
     _queryParams["permissions"] = permissions;
     if (generation != null) {
       _queryParams["generation"] = [generation];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -3730,6 +4066,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3752,6 +4091,7 @@ class ObjectsResourceApi {
       core.String ifMetagenerationNotMatch,
       core.String predefinedAcl,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -3790,6 +4130,9 @@ class ObjectsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -3845,6 +4188,9 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3868,6 +4214,7 @@ class ObjectsResourceApi {
       core.String pageToken,
       core.String prefix,
       core.String projection,
+      core.String provisionalUserProject,
       core.String userProject,
       core.bool versions,
       core.String $fields}) {
@@ -3904,6 +4251,9 @@ class ObjectsResourceApi {
     if (projection != null) {
       _queryParams["projection"] = [projection];
     }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
@@ -3929,10 +4279,332 @@ class ObjectsResourceApi {
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsHmacKeysResourceApi get hmacKeys =>
+      new ProjectsHmacKeysResourceApi(_requester);
   ProjectsServiceAccountResourceApi get serviceAccount =>
       new ProjectsServiceAccountResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsHmacKeysResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHmacKeysResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new HMAC key for the specified service account.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID owning the service account.
+  ///
+  /// [serviceAccountEmail] - Email address of the service account.
+  ///
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HmacKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HmacKey> create(
+      core.String projectId, core.String serviceAccountEmail,
+      {core.String userProject, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (serviceAccountEmail == null) {
+      throw new core.ArgumentError(
+          "Parameter serviceAccountEmail is required.");
+    }
+    _queryParams["serviceAccountEmail"] = [serviceAccountEmail];
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HmacKey.fromJson(data));
+  }
+
+  /// Deletes an HMAC key.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID owning the requested key
+  ///
+  /// [accessId] - Name of the HMAC key to be deleted.
+  ///
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String projectId, core.String accessId,
+      {core.String userProject, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (accessId == null) {
+      throw new core.ArgumentError("Parameter accessId is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/hmacKeys/' +
+        commons.Escaper.ecapeVariable('$accessId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Retrieves an HMAC key's metadata
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID owning the service account of the requested key.
+  ///
+  /// [accessId] - Name of the HMAC key.
+  ///
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HmacKeyMetadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HmacKeyMetadata> get(core.String projectId, core.String accessId,
+      {core.String userProject, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (accessId == null) {
+      throw new core.ArgumentError("Parameter accessId is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/hmacKeys/' +
+        commons.Escaper.ecapeVariable('$accessId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HmacKeyMetadata.fromJson(data));
+  }
+
+  /// Retrieves a list of HMAC keys matching the criteria.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Name of the project in which to look for HMAC keys.
+  ///
+  /// [maxResults] - Maximum number of items to return in a single page of
+  /// responses. The service uses this parameter or 250 items, whichever is
+  /// smaller. The max number of items per page will also be limited by the
+  /// number of distinct service accounts in the response. If the number of
+  /// service accounts in a single response is too high, the page will truncated
+  /// and a next page token will be returned.
+  ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of results to view.
+  ///
+  /// [serviceAccountEmail] - If present, only keys for the given service
+  /// account are returned.
+  ///
+  /// [showDeletedKeys] - Whether or not to show keys in the DELETED state.
+  ///
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HmacKeysMetadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HmacKeysMetadata> list(core.String projectId,
+      {core.int maxResults,
+      core.String pageToken,
+      core.String serviceAccountEmail,
+      core.bool showDeletedKeys,
+      core.String userProject,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (serviceAccountEmail != null) {
+      _queryParams["serviceAccountEmail"] = [serviceAccountEmail];
+    }
+    if (showDeletedKeys != null) {
+      _queryParams["showDeletedKeys"] = ["${showDeletedKeys}"];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HmacKeysMetadata.fromJson(data));
+  }
+
+  /// Updates the state of an HMAC key. See the HMAC Key resource descriptor for
+  /// valid states.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID owning the service account of the updated key.
+  ///
+  /// [accessId] - Name of the HMAC key being updated.
+  ///
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HmacKeyMetadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HmacKeyMetadata> update(
+      HmacKeyMetadata request, core.String projectId, core.String accessId,
+      {core.String userProject, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (accessId == null) {
+      throw new core.ArgumentError("Parameter accessId is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/hmacKeys/' +
+        commons.Escaper.ecapeVariable('$accessId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new HmacKeyMetadata.fromJson(data));
+  }
 }
 
 class ProjectsServiceAccountResourceApi {
@@ -3948,6 +4620,9 @@ class ProjectsServiceAccountResourceApi {
   ///
   /// [projectId] - Project ID
   ///
+  /// [provisionalUserProject] - The project to be billed for this request if
+  /// the target bucket is requester-pays bucket.
+  ///
   /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3961,7 +4636,9 @@ class ProjectsServiceAccountResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServiceAccount> get(core.String projectId,
-      {core.String userProject, core.String $fields}) {
+      {core.String provisionalUserProject,
+      core.String userProject,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3971,6 +4648,9 @@ class ProjectsServiceAccountResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (provisionalUserProject != null) {
+      _queryParams["provisionalUserProject"] = [provisionalUserProject];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -4095,12 +4775,13 @@ class BucketEncryption {
   }
 }
 
+/// The bucket's Bucket Policy Only configuration.
 class BucketIamConfigurationBucketPolicyOnly {
-  /// If set, access checks only use bucket-level IAM policies or above.
+  /// If set, access is controlled only by bucket-level or above IAM policies.
   core.bool enabled;
 
-  /// The deadline time for changing iamConfiguration.bucketPolicyOnly.enabled
-  /// from true to false in RFC 3339 format.
+  /// The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from
+  /// true to false in RFC 3339 format.
   /// iamConfiguration.bucketPolicyOnly.enabled may be changed from true to
   /// false until the locked time, after which the field is immutable.
   core.DateTime lockedTime;
@@ -4129,9 +4810,49 @@ class BucketIamConfigurationBucketPolicyOnly {
   }
 }
 
+/// The bucket's uniform bucket-level access configuration.
+class BucketIamConfigurationUniformBucketLevelAccess {
+  /// If set, access is controlled only by bucket-level or above IAM policies.
+  core.bool enabled;
+
+  /// The deadline for changing
+  /// iamConfiguration.uniformBucketLevelAccess.enabled from true to false in
+  /// RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be
+  /// changed from true to false until the locked time, after which the field is
+  /// immutable.
+  core.DateTime lockedTime;
+
+  BucketIamConfigurationUniformBucketLevelAccess();
+
+  BucketIamConfigurationUniformBucketLevelAccess.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("lockedTime")) {
+      lockedTime = core.DateTime.parse(_json["lockedTime"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (lockedTime != null) {
+      _json["lockedTime"] = (lockedTime).toIso8601String();
+    }
+    return _json;
+  }
+}
+
 /// The bucket's IAM configuration.
 class BucketIamConfiguration {
+  /// The bucket's Bucket Policy Only configuration.
   BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
+
+  /// The bucket's uniform bucket-level access configuration.
+  BucketIamConfigurationUniformBucketLevelAccess uniformBucketLevelAccess;
 
   BucketIamConfiguration();
 
@@ -4140,6 +4861,11 @@ class BucketIamConfiguration {
       bucketPolicyOnly = new BucketIamConfigurationBucketPolicyOnly.fromJson(
           _json["bucketPolicyOnly"]);
     }
+    if (_json.containsKey("uniformBucketLevelAccess")) {
+      uniformBucketLevelAccess =
+          new BucketIamConfigurationUniformBucketLevelAccess.fromJson(
+              _json["uniformBucketLevelAccess"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4147,6 +4873,9 @@ class BucketIamConfiguration {
         new core.Map<core.String, core.Object>();
     if (bucketPolicyOnly != null) {
       _json["bucketPolicyOnly"] = (bucketPolicyOnly).toJson();
+    }
+    if (uniformBucketLevelAccess != null) {
+      _json["uniformBucketLevelAccess"] = (uniformBucketLevelAccess).toJson();
     }
     return _json;
   }
@@ -4565,6 +5294,9 @@ class Bucket {
   /// developer's guide for the authoritative list.
   core.String location;
 
+  /// The type of the bucket location.
+  core.String locationType;
+
   /// The bucket's logging configuration, which defines the destination bucket
   /// and optional name prefix for the current bucket's logs.
   BucketLogging logging;
@@ -4669,6 +5401,9 @@ class Bucket {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("locationType")) {
+      locationType = _json["locationType"];
+    }
     if (_json.containsKey("logging")) {
       logging = new BucketLogging.fromJson(_json["logging"]);
     }
@@ -4750,6 +5485,9 @@ class Bucket {
     }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (locationType != null) {
+      _json["locationType"] = locationType;
     }
     if (logging != null) {
       _json["logging"] = (logging).toJson();
@@ -5045,7 +5783,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource. Value: the fixed string "api#channel".
+  /// resource, which is "api#channel".
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior. Optional.
@@ -5248,6 +5986,255 @@ class ComposeRequest {
     if (sourceObjects != null) {
       _json["sourceObjects"] =
           sourceObjects.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example: title: "User account presence"
+/// description: "Determines whether the request has a user account" expression:
+/// "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax. The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing its
+  /// purpose. This can be used e.g. in UIs which allow to enter the expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// JSON template to produce a JSON-style HMAC Key resource for Create
+/// responses.
+class HmacKey {
+  /// The kind of item this is. For HMAC keys, this is always storage#hmacKey.
+  core.String kind;
+
+  /// Key metadata.
+  HmacKeyMetadata metadata;
+
+  /// HMAC secret key material.
+  core.String secret;
+
+  HmacKey();
+
+  HmacKey.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new HmacKeyMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("secret")) {
+      secret = _json["secret"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (secret != null) {
+      _json["secret"] = secret;
+    }
+    return _json;
+  }
+}
+
+/// JSON template to produce a JSON-style HMAC Key metadata resource.
+class HmacKeyMetadata {
+  /// The ID of the HMAC Key.
+  core.String accessId;
+
+  /// HTTP 1.1 Entity tag for the HMAC key.
+  core.String etag;
+
+  /// The ID of the HMAC key, including the Project ID and the Access ID.
+  core.String id;
+
+  /// The kind of item this is. For HMAC Key metadata, this is always
+  /// storage#hmacKeyMetadata.
+  core.String kind;
+
+  /// Project ID owning the service account to which the key authenticates.
+  core.String projectId;
+
+  /// The link to this resource.
+  core.String selfLink;
+
+  /// The email address of the key's associated service account.
+  core.String serviceAccountEmail;
+
+  /// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
+  core.String state;
+
+  /// The creation time of the HMAC key in RFC 3339 format.
+  core.DateTime timeCreated;
+
+  /// The last modification time of the HMAC key metadata in RFC 3339 format.
+  core.DateTime updated;
+
+  HmacKeyMetadata();
+
+  HmacKeyMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("accessId")) {
+      accessId = _json["accessId"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("timeCreated")) {
+      timeCreated = core.DateTime.parse(_json["timeCreated"]);
+    }
+    if (_json.containsKey("updated")) {
+      updated = core.DateTime.parse(_json["updated"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accessId != null) {
+      _json["accessId"] = accessId;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (timeCreated != null) {
+      _json["timeCreated"] = (timeCreated).toIso8601String();
+    }
+    if (updated != null) {
+      _json["updated"] = (updated).toIso8601String();
+    }
+    return _json;
+  }
+}
+
+/// A list of hmacKeys.
+class HmacKeysMetadata {
+  /// The list of items.
+  core.List<HmacKeyMetadata> items;
+
+  /// The kind of item this is. For lists of hmacKeys, this is always
+  /// storage#hmacKeysMetadata.
+  core.String kind;
+
+  /// The continuation token, used to page through large result sets. Provide
+  /// this value in a subsequent request to return the next page of results.
+  core.String nextPageToken;
+
+  HmacKeysMetadata();
+
+  HmacKeysMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<HmacKeyMetadata>((value) => new HmacKeyMetadata.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -6062,11 +7049,10 @@ class Objects {
 }
 
 class PolicyBindings {
-  ///
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object condition;
+  /// The condition that is associated with this binding. NOTE: an unsatisfied
+  /// condition will not allow user access via current binding. Different
+  /// bindings, including their conditions, are examined independently.
+  Expr condition;
 
   /// A collection of identifiers for members who may assume the provided role.
   /// Recognized identifiers are as follows:
@@ -6122,7 +7108,7 @@ class PolicyBindings {
 
   PolicyBindings.fromJson(core.Map _json) {
     if (_json.containsKey("condition")) {
-      condition = _json["condition"];
+      condition = new Expr.fromJson(_json["condition"]);
     }
     if (_json.containsKey("members")) {
       members = (_json["members"] as core.List).cast<core.String>();
@@ -6136,7 +7122,7 @@ class PolicyBindings {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (condition != null) {
-      _json["condition"] = condition;
+      _json["condition"] = (condition).toJson();
     }
     if (members != null) {
       _json["members"] = members;

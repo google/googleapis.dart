@@ -126,14 +126,14 @@ checkAsymmetricSignResponse(api.AsymmetricSignResponse o) {
   buildCounterAsymmetricSignResponse--;
 }
 
-buildUnnamed1398() {
+buildUnnamed4585() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed1398(core.List<api.AuditLogConfig> o) {
+checkUnnamed4585(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
@@ -144,7 +144,7 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed1398();
+    o.auditLogConfigs = buildUnnamed4585();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -154,20 +154,20 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed1398(o.auditLogConfigs);
+    checkUnnamed4585(o.auditLogConfigs);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed1399() {
+buildUnnamed4586() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1399(core.List<core.String> o) {
+checkUnnamed4586(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -178,7 +178,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed1399();
+    o.exemptedMembers = buildUnnamed4586();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -188,20 +188,20 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed1399(o.exemptedMembers);
+    checkUnnamed4586(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
 }
 
-buildUnnamed1400() {
+buildUnnamed4587() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1400(core.List<core.String> o) {
+checkUnnamed4587(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -213,7 +213,7 @@ buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed1400();
+    o.members = buildUnnamed4587();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -224,20 +224,20 @@ checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition);
-    checkUnnamed1400(o.members);
+    checkUnnamed4587(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-buildUnnamed1401() {
+buildUnnamed4588() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1401(core.Map<core.String, core.String> o) {
+checkUnnamed4588(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -249,7 +249,7 @@ buildCryptoKey() {
   buildCounterCryptoKey++;
   if (buildCounterCryptoKey < 3) {
     o.createTime = "foo";
-    o.labels = buildUnnamed1401();
+    o.labels = buildUnnamed4588();
     o.name = "foo";
     o.nextRotationTime = "foo";
     o.primary = buildCryptoKeyVersion();
@@ -265,7 +265,7 @@ checkCryptoKey(api.CryptoKey o) {
   buildCounterCryptoKey++;
   if (buildCounterCryptoKey < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed1401(o.labels);
+    checkUnnamed4588(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nextRotationTime, unittest.equals('foo'));
     checkCryptoKeyVersion(o.primary);
@@ -287,6 +287,9 @@ buildCryptoKeyVersion() {
     o.destroyEventTime = "foo";
     o.destroyTime = "foo";
     o.generateTime = "foo";
+    o.importFailureReason = "foo";
+    o.importJob = "foo";
+    o.importTime = "foo";
     o.name = "foo";
     o.protectionLevel = "foo";
     o.state = "foo";
@@ -304,6 +307,9 @@ checkCryptoKeyVersion(api.CryptoKeyVersion o) {
     unittest.expect(o.destroyEventTime, unittest.equals('foo'));
     unittest.expect(o.destroyTime, unittest.equals('foo'));
     unittest.expect(o.generateTime, unittest.equals('foo'));
+    unittest.expect(o.importFailureReason, unittest.equals('foo'));
+    unittest.expect(o.importJob, unittest.equals('foo'));
+    unittest.expect(o.importTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.protectionLevel, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -477,6 +483,66 @@ checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
+core.int buildCounterImportCryptoKeyVersionRequest = 0;
+buildImportCryptoKeyVersionRequest() {
+  var o = new api.ImportCryptoKeyVersionRequest();
+  buildCounterImportCryptoKeyVersionRequest++;
+  if (buildCounterImportCryptoKeyVersionRequest < 3) {
+    o.algorithm = "foo";
+    o.importJob = "foo";
+    o.rsaAesWrappedKey = "foo";
+  }
+  buildCounterImportCryptoKeyVersionRequest--;
+  return o;
+}
+
+checkImportCryptoKeyVersionRequest(api.ImportCryptoKeyVersionRequest o) {
+  buildCounterImportCryptoKeyVersionRequest++;
+  if (buildCounterImportCryptoKeyVersionRequest < 3) {
+    unittest.expect(o.algorithm, unittest.equals('foo'));
+    unittest.expect(o.importJob, unittest.equals('foo'));
+    unittest.expect(o.rsaAesWrappedKey, unittest.equals('foo'));
+  }
+  buildCounterImportCryptoKeyVersionRequest--;
+}
+
+core.int buildCounterImportJob = 0;
+buildImportJob() {
+  var o = new api.ImportJob();
+  buildCounterImportJob++;
+  if (buildCounterImportJob < 3) {
+    o.attestation = buildKeyOperationAttestation();
+    o.createTime = "foo";
+    o.expireEventTime = "foo";
+    o.expireTime = "foo";
+    o.generateTime = "foo";
+    o.importMethod = "foo";
+    o.name = "foo";
+    o.protectionLevel = "foo";
+    o.publicKey = buildWrappingPublicKey();
+    o.state = "foo";
+  }
+  buildCounterImportJob--;
+  return o;
+}
+
+checkImportJob(api.ImportJob o) {
+  buildCounterImportJob++;
+  if (buildCounterImportJob < 3) {
+    checkKeyOperationAttestation(o.attestation);
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.expireEventTime, unittest.equals('foo'));
+    unittest.expect(o.expireTime, unittest.equals('foo'));
+    unittest.expect(o.generateTime, unittest.equals('foo'));
+    unittest.expect(o.importMethod, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.protectionLevel, unittest.equals('foo'));
+    checkWrappingPublicKey(o.publicKey);
+    unittest.expect(o.state, unittest.equals('foo'));
+  }
+  buildCounterImportJob--;
+}
+
 core.int buildCounterKeyOperationAttestation = 0;
 buildKeyOperationAttestation() {
   var o = new api.KeyOperationAttestation();
@@ -519,14 +585,14 @@ checkKeyRing(api.KeyRing o) {
   buildCounterKeyRing--;
 }
 
-buildUnnamed1402() {
+buildUnnamed4589() {
   var o = new core.List<api.CryptoKeyVersion>();
   o.add(buildCryptoKeyVersion());
   o.add(buildCryptoKeyVersion());
   return o;
 }
 
-checkUnnamed1402(core.List<api.CryptoKeyVersion> o) {
+checkUnnamed4589(core.List<api.CryptoKeyVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKeyVersion(o[0]);
   checkCryptoKeyVersion(o[1]);
@@ -537,7 +603,7 @@ buildListCryptoKeyVersionsResponse() {
   var o = new api.ListCryptoKeyVersionsResponse();
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    o.cryptoKeyVersions = buildUnnamed1402();
+    o.cryptoKeyVersions = buildUnnamed4589();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -548,21 +614,21 @@ buildListCryptoKeyVersionsResponse() {
 checkListCryptoKeyVersionsResponse(api.ListCryptoKeyVersionsResponse o) {
   buildCounterListCryptoKeyVersionsResponse++;
   if (buildCounterListCryptoKeyVersionsResponse < 3) {
-    checkUnnamed1402(o.cryptoKeyVersions);
+    checkUnnamed4589(o.cryptoKeyVersions);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListCryptoKeyVersionsResponse--;
 }
 
-buildUnnamed1403() {
+buildUnnamed4590() {
   var o = new core.List<api.CryptoKey>();
   o.add(buildCryptoKey());
   o.add(buildCryptoKey());
   return o;
 }
 
-checkUnnamed1403(core.List<api.CryptoKey> o) {
+checkUnnamed4590(core.List<api.CryptoKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCryptoKey(o[0]);
   checkCryptoKey(o[1]);
@@ -573,7 +639,7 @@ buildListCryptoKeysResponse() {
   var o = new api.ListCryptoKeysResponse();
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    o.cryptoKeys = buildUnnamed1403();
+    o.cryptoKeys = buildUnnamed4590();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -584,21 +650,57 @@ buildListCryptoKeysResponse() {
 checkListCryptoKeysResponse(api.ListCryptoKeysResponse o) {
   buildCounterListCryptoKeysResponse++;
   if (buildCounterListCryptoKeysResponse < 3) {
-    checkUnnamed1403(o.cryptoKeys);
+    checkUnnamed4590(o.cryptoKeys);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListCryptoKeysResponse--;
 }
 
-buildUnnamed1404() {
+buildUnnamed4591() {
+  var o = new core.List<api.ImportJob>();
+  o.add(buildImportJob());
+  o.add(buildImportJob());
+  return o;
+}
+
+checkUnnamed4591(core.List<api.ImportJob> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkImportJob(o[0]);
+  checkImportJob(o[1]);
+}
+
+core.int buildCounterListImportJobsResponse = 0;
+buildListImportJobsResponse() {
+  var o = new api.ListImportJobsResponse();
+  buildCounterListImportJobsResponse++;
+  if (buildCounterListImportJobsResponse < 3) {
+    o.importJobs = buildUnnamed4591();
+    o.nextPageToken = "foo";
+    o.totalSize = 42;
+  }
+  buildCounterListImportJobsResponse--;
+  return o;
+}
+
+checkListImportJobsResponse(api.ListImportJobsResponse o) {
+  buildCounterListImportJobsResponse++;
+  if (buildCounterListImportJobsResponse < 3) {
+    checkUnnamed4591(o.importJobs);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    unittest.expect(o.totalSize, unittest.equals(42));
+  }
+  buildCounterListImportJobsResponse--;
+}
+
+buildUnnamed4592() {
   var o = new core.List<api.KeyRing>();
   o.add(buildKeyRing());
   o.add(buildKeyRing());
   return o;
 }
 
-checkUnnamed1404(core.List<api.KeyRing> o) {
+checkUnnamed4592(core.List<api.KeyRing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkKeyRing(o[0]);
   checkKeyRing(o[1]);
@@ -609,7 +711,7 @@ buildListKeyRingsResponse() {
   var o = new api.ListKeyRingsResponse();
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    o.keyRings = buildUnnamed1404();
+    o.keyRings = buildUnnamed4592();
     o.nextPageToken = "foo";
     o.totalSize = 42;
   }
@@ -620,21 +722,21 @@ buildListKeyRingsResponse() {
 checkListKeyRingsResponse(api.ListKeyRingsResponse o) {
   buildCounterListKeyRingsResponse++;
   if (buildCounterListKeyRingsResponse < 3) {
-    checkUnnamed1404(o.keyRings);
+    checkUnnamed4592(o.keyRings);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals(42));
   }
   buildCounterListKeyRingsResponse--;
 }
 
-buildUnnamed1405() {
+buildUnnamed4593() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed1405(core.List<api.Location> o) {
+checkUnnamed4593(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -645,7 +747,7 @@ buildListLocationsResponse() {
   var o = new api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed1405();
+    o.locations = buildUnnamed4593();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
@@ -655,26 +757,26 @@ buildListLocationsResponse() {
 checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed1405(o.locations);
+    checkUnnamed4593(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed1406() {
+buildUnnamed4594() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1406(core.Map<core.String, core.String> o) {
+checkUnnamed4594(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1407() {
+buildUnnamed4595() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -689,7 +791,7 @@ buildUnnamed1407() {
   return o;
 }
 
-checkUnnamed1407(core.Map<core.String, core.Object> o) {
+checkUnnamed4595(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -709,9 +811,9 @@ buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = "foo";
-    o.labels = buildUnnamed1406();
+    o.labels = buildUnnamed4594();
     o.locationId = "foo";
-    o.metadata = buildUnnamed1407();
+    o.metadata = buildUnnamed4595();
     o.name = "foo";
   }
   buildCounterLocation--;
@@ -722,9 +824,9 @@ checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed1406(o.labels);
+    checkUnnamed4594(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed1407(o.metadata);
+    checkUnnamed4595(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -749,27 +851,27 @@ checkLocationMetadata(api.LocationMetadata o) {
   buildCounterLocationMetadata--;
 }
 
-buildUnnamed1408() {
+buildUnnamed4596() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed1408(core.List<api.AuditConfig> o) {
+checkUnnamed4596(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed1409() {
+buildUnnamed4597() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed1409(core.List<api.Binding> o) {
+checkUnnamed4597(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -780,8 +882,8 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed1408();
-    o.bindings = buildUnnamed1409();
+    o.auditConfigs = buildUnnamed4596();
+    o.bindings = buildUnnamed4597();
     o.etag = "foo";
     o.version = 42;
   }
@@ -792,8 +894,8 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed1408(o.auditConfigs);
-    checkUnnamed1409(o.bindings);
+    checkUnnamed4596(o.auditConfigs);
+    checkUnnamed4597(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -857,14 +959,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed1410() {
+buildUnnamed4598() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1410(core.List<core.String> o) {
+checkUnnamed4598(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -875,7 +977,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed1410();
+    o.permissions = buildUnnamed4598();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -884,19 +986,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed1410(o.permissions);
+    checkUnnamed4598(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed1411() {
+buildUnnamed4599() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1411(core.List<core.String> o) {
+checkUnnamed4599(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -907,7 +1009,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed1411();
+    o.permissions = buildUnnamed4599();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -916,7 +1018,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed1411(o.permissions);
+    checkUnnamed4599(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -939,6 +1041,25 @@ checkUpdateCryptoKeyPrimaryVersionRequest(
     unittest.expect(o.cryptoKeyVersionId, unittest.equals('foo'));
   }
   buildCounterUpdateCryptoKeyPrimaryVersionRequest--;
+}
+
+core.int buildCounterWrappingPublicKey = 0;
+buildWrappingPublicKey() {
+  var o = new api.WrappingPublicKey();
+  buildCounterWrappingPublicKey++;
+  if (buildCounterWrappingPublicKey < 3) {
+    o.pem = "foo";
+  }
+  buildCounterWrappingPublicKey--;
+  return o;
+}
+
+checkWrappingPublicKey(api.WrappingPublicKey o) {
+  buildCounterWrappingPublicKey++;
+  if (buildCounterWrappingPublicKey < 3) {
+    unittest.expect(o.pem, unittest.equals('foo'));
+  }
+  buildCounterWrappingPublicKey--;
 }
 
 main() {
@@ -1078,6 +1199,22 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-ImportCryptoKeyVersionRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildImportCryptoKeyVersionRequest();
+      var od = new api.ImportCryptoKeyVersionRequest.fromJson(o.toJson());
+      checkImportCryptoKeyVersionRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-ImportJob", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildImportJob();
+      var od = new api.ImportJob.fromJson(o.toJson());
+      checkImportJob(od);
+    });
+  });
+
   unittest.group("obj-schema-KeyOperationAttestation", () {
     unittest.test("to-json--from-json", () {
       var o = buildKeyOperationAttestation();
@@ -1107,6 +1244,14 @@ main() {
       var o = buildListCryptoKeysResponse();
       var od = new api.ListCryptoKeysResponse.fromJson(o.toJson());
       checkListCryptoKeysResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-ListImportJobsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildListImportJobsResponse();
+      var od = new api.ListImportJobsResponse.fromJson(o.toJson());
+      checkListImportJobsResponse(od);
     });
   });
 
@@ -1196,6 +1341,14 @@ main() {
       var od =
           new api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(o.toJson());
       checkUpdateCryptoKeyPrimaryVersionRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-WrappingPublicKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildWrappingPublicKey();
+      var od = new api.WrappingPublicKey.fromJson(o.toJson());
+      checkWrappingPublicKey(od);
     });
   });
 
@@ -1435,6 +1588,7 @@ main() {
       api.ProjectsLocationsKeyRingsResourceApi res =
           new api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_resource = "foo";
+      var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1467,6 +1621,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
+            unittest.equals(arg_options_requestedPolicyVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1476,7 +1633,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource, $fields: arg_$fields)
+          .getIamPolicy(arg_resource,
+              options_requestedPolicyVersion:
+                  arg_options_requestedPolicyVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
@@ -1487,7 +1647,9 @@ main() {
       api.ProjectsLocationsKeyRingsResourceApi res =
           new api.CloudkmsApi(mock).projects.locations.keyRings;
       var arg_parent = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
+      var arg_orderBy = "foo";
       var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1521,8 +1683,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
@@ -1535,7 +1700,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
               pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
@@ -1664,6 +1831,7 @@ main() {
       var arg_request = buildCryptoKey();
       var arg_parent = "foo";
       var arg_cryptoKeyId = "foo";
+      var arg_skipInitialVersionCreation = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CryptoKey.fromJson(json);
@@ -1701,6 +1869,8 @@ main() {
         }
         unittest.expect(
             queryMap["cryptoKeyId"].first, unittest.equals(arg_cryptoKeyId));
+        unittest.expect(queryMap["skipInitialVersionCreation"].first,
+            unittest.equals("$arg_skipInitialVersionCreation"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1711,7 +1881,9 @@ main() {
       }), true);
       res
           .create(arg_request, arg_parent,
-              cryptoKeyId: arg_cryptoKeyId, $fields: arg_$fields)
+              cryptoKeyId: arg_cryptoKeyId,
+              skipInitialVersionCreation: arg_skipInitialVersionCreation,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkCryptoKey(response);
       })));
@@ -1886,6 +2058,7 @@ main() {
       api.ProjectsLocationsKeyRingsCryptoKeysResourceApi res =
           new api.CloudkmsApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_resource = "foo";
+      var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1918,6 +2091,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
+            unittest.equals(arg_options_requestedPolicyVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1927,7 +2103,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource, $fields: arg_$fields)
+          .getIamPolicy(arg_resource,
+              options_requestedPolicyVersion:
+                  arg_options_requestedPolicyVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
       })));
@@ -1940,7 +2119,9 @@ main() {
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_orderBy = "foo";
       var arg_versionView = "foo";
+      var arg_filter = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1978,7 +2159,10 @@ main() {
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
             queryMap["versionView"].first, unittest.equals(arg_versionView));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1991,7 +2175,9 @@ main() {
           .list(arg_parent,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              orderBy: arg_orderBy,
               versionView: arg_versionView,
+              filter: arg_filter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListCryptoKeysResponse(response);
@@ -2588,6 +2774,67 @@ main() {
       })));
     });
 
+    unittest.test("method--import", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
+          new api.CloudkmsApi(mock)
+              .projects
+              .locations
+              .keyRings
+              .cryptoKeys
+              .cryptoKeyVersions;
+      var arg_request = buildImportCryptoKeyVersionRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.ImportCryptoKeyVersionRequest.fromJson(json);
+        checkImportCryptoKeyVersionRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildCryptoKeyVersion());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .import(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkCryptoKeyVersion(response);
+      })));
+    });
+
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi res =
@@ -2598,6 +2845,8 @@ main() {
               .cryptoKeys
               .cryptoKeyVersions;
       var arg_parent = "foo";
+      var arg_orderBy = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
@@ -2634,6 +2883,9 @@ main() {
           }
         }
         unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
@@ -2648,6 +2900,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              orderBy: arg_orderBy,
+              filter: arg_filter,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               view: arg_view,
@@ -2785,11 +3039,71 @@ main() {
   });
 
   unittest.group("resource-ProjectsLocationsKeyRingsImportJobsResourceApi", () {
-    unittest.test("method--getIamPolicy", () {
+    unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
           new api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
-      var arg_resource = "foo";
+      var arg_request = buildImportJob();
+      var arg_parent = "foo";
+      var arg_importJobId = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.ImportJob.fromJson(json);
+        checkImportJob(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["importJobId"].first, unittest.equals(arg_importJobId));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildImportJob());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent,
+              importJobId: arg_importJobId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkImportJob(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
+          new api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2827,13 +3141,140 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
+        var resp = convert.json.encode(buildImportJob());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkImportJob(response);
+      })));
+    });
+
+    unittest.test("method--getIamPolicy", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
+          new api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var arg_resource = "foo";
+      var arg_options_requestedPolicyVersion = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
+            unittest.equals(arg_options_requestedPolicyVersion));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
         var resp = convert.json.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource, $fields: arg_$fields)
+          .getIamPolicy(arg_resource,
+              options_requestedPolicyVersion:
+                  arg_options_requestedPolicyVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkPolicy(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsKeyRingsImportJobsResourceApi res =
+          new api.CloudkmsApi(mock).projects.locations.keyRings.importJobs;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_orderBy = "foo";
+      var arg_pageSize = 42;
+      var arg_filter = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildListImportJobsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              orderBy: arg_orderBy,
+              pageSize: arg_pageSize,
+              filter: arg_filter,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkListImportJobsResponse(response);
       })));
     });
 

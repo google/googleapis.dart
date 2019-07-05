@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client groupssettings/v1';
 
-/// Lets you manage permission levels and related settings of a group.
+/// Manages permission levels and related settings of a group.
 class GroupssettingsApi {
   /// View and manage the settings of a G Suite group
   static const AppsGroupsSettingsScope =
@@ -197,6 +197,10 @@ class Groups {
   /// Default email to which reply to any message should go.
   core.String customReplyTo;
 
+  /// If any of the settings that will be merged have custom roles which is
+  /// anything other than owners, managers, or group scopes.
+  core.String customRolesEnabledForSettingsToBeMerged;
+
   /// Default message deny notification message
   core.String defaultMessageDenyNotificationText;
 
@@ -205,6 +209,9 @@ class Groups {
 
   /// Email id of the group
   core.String email;
+
+  /// If a primary Collab Inbox feature is enabled.
+  core.String enableCollaborativeInbox;
 
   /// If favorite replies should be displayed above other replies.
   core.String favoriteRepliesOnTop;
@@ -264,18 +271,50 @@ class Groups {
   /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
   core.String whoCanAddReferences;
 
+  /// Permission to approve members. Possible values are: ALL_OWNERS_CAN_APPROVE
+  /// ALL_MANAGERS_CAN_APPROVE ALL_MEMBERS_CAN_APPROVE NONE_CAN_APPROVE
+  core.String whoCanApproveMembers;
+
+  /// Permission to approve pending messages in the moderation queue. Possible
+  /// values are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanApproveMessages;
+
   /// Permission to assign topics in a forum to another user. Possible values
   /// are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
   core.String whoCanAssignTopics;
+
+  /// Permission for content assistants. Possible values are: Possible values
+  /// are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanAssistContent;
+
+  /// Permission to ban users. Possible values are: NONE OWNERS_ONLY
+  /// OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanBanUsers;
 
   /// Permission to contact owner of the group via web UI. Possible values are:
   /// ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
   /// ALL_MANAGERS_CAN_CONTACT
   core.String whoCanContactOwner;
 
+  /// Permission to delete replies to topics. Possible values are: NONE
+  /// OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanDeleteAnyPost;
+
+  /// Permission to delete topics. Possible values are: NONE OWNERS_ONLY
+  /// OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanDeleteTopics;
+
+  /// Permission for who can discover the group. Possible values are:
+  /// ALL_MEMBERS_CAN_DISCOVER ALL_IN_DOMAIN_CAN_DISCOVER ANYONE_CAN_DISCOVER
+  core.String whoCanDiscoverGroup;
+
   /// Permission to enter free form tags for topics in a forum. Possible values
   /// are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
   core.String whoCanEnterFreeFormTags;
+
+  /// Permission to hide posts by reporting them as abuse. Possible values are:
+  /// NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanHideAbuse;
 
   /// Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
   /// ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE
@@ -288,6 +327,14 @@ class Groups {
   /// Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
   /// ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
   core.String whoCanLeaveGroup;
+
+  /// Permission to lock topics. Possible values are: NONE OWNERS_ONLY
+  /// OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanLockTopics;
+
+  /// Permission to make topics appear at the top of the topic list. Possible
+  /// values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanMakeTopicsSticky;
 
   /// Permission to mark a topic as a duplicate of another topic. Possible
   /// values are: NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
@@ -306,9 +353,33 @@ class Groups {
   /// NONE OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
   core.String whoCanMarkNoResponseNeeded;
 
+  /// Permission for content moderation. Possible values are: NONE OWNERS_ONLY
+  /// OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanModerateContent;
+
+  /// Permission for membership moderation. Possible values are: NONE
+  /// OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanModerateMembers;
+
+  /// Permission to modify members (change member roles). Possible values are:
+  /// NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanModifyMembers;
+
   /// Permission to change tags and categories. Possible values are: NONE
   /// OWNERS_ONLY MANAGERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
   core.String whoCanModifyTagsAndCategories;
+
+  /// Permission to move topics into the group or forum. Possible values are:
+  /// NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanMoveTopicsIn;
+
+  /// Permission to move topics out of the group or forum. Possible values are:
+  /// NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanMoveTopicsOut;
+
+  /// Permission to post announcements, a special topic type. Possible values
+  /// are: NONE OWNERS_ONLY OWNERS_AND_MANAGERS ALL_MEMBERS
+  core.String whoCanPostAnnouncements;
 
   /// Permissions to post messages to the group. Possible values are:
   /// NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST
@@ -334,6 +405,7 @@ class Groups {
 
   /// Permissions to view membership. Possible values are:
   /// ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
+  /// ALL_OWNERS_CAN_VIEW
   core.String whoCanViewMembership;
 
   Groups();
@@ -357,6 +429,10 @@ class Groups {
     if (_json.containsKey("customReplyTo")) {
       customReplyTo = _json["customReplyTo"];
     }
+    if (_json.containsKey("customRolesEnabledForSettingsToBeMerged")) {
+      customRolesEnabledForSettingsToBeMerged =
+          _json["customRolesEnabledForSettingsToBeMerged"];
+    }
     if (_json.containsKey("defaultMessageDenyNotificationText")) {
       defaultMessageDenyNotificationText =
           _json["defaultMessageDenyNotificationText"];
@@ -366,6 +442,9 @@ class Groups {
     }
     if (_json.containsKey("email")) {
       email = _json["email"];
+    }
+    if (_json.containsKey("enableCollaborativeInbox")) {
+      enableCollaborativeInbox = _json["enableCollaborativeInbox"];
     }
     if (_json.containsKey("favoriteRepliesOnTop")) {
       favoriteRepliesOnTop = _json["favoriteRepliesOnTop"];
@@ -418,14 +497,38 @@ class Groups {
     if (_json.containsKey("whoCanAddReferences")) {
       whoCanAddReferences = _json["whoCanAddReferences"];
     }
+    if (_json.containsKey("whoCanApproveMembers")) {
+      whoCanApproveMembers = _json["whoCanApproveMembers"];
+    }
+    if (_json.containsKey("whoCanApproveMessages")) {
+      whoCanApproveMessages = _json["whoCanApproveMessages"];
+    }
     if (_json.containsKey("whoCanAssignTopics")) {
       whoCanAssignTopics = _json["whoCanAssignTopics"];
+    }
+    if (_json.containsKey("whoCanAssistContent")) {
+      whoCanAssistContent = _json["whoCanAssistContent"];
+    }
+    if (_json.containsKey("whoCanBanUsers")) {
+      whoCanBanUsers = _json["whoCanBanUsers"];
     }
     if (_json.containsKey("whoCanContactOwner")) {
       whoCanContactOwner = _json["whoCanContactOwner"];
     }
+    if (_json.containsKey("whoCanDeleteAnyPost")) {
+      whoCanDeleteAnyPost = _json["whoCanDeleteAnyPost"];
+    }
+    if (_json.containsKey("whoCanDeleteTopics")) {
+      whoCanDeleteTopics = _json["whoCanDeleteTopics"];
+    }
+    if (_json.containsKey("whoCanDiscoverGroup")) {
+      whoCanDiscoverGroup = _json["whoCanDiscoverGroup"];
+    }
     if (_json.containsKey("whoCanEnterFreeFormTags")) {
       whoCanEnterFreeFormTags = _json["whoCanEnterFreeFormTags"];
+    }
+    if (_json.containsKey("whoCanHideAbuse")) {
+      whoCanHideAbuse = _json["whoCanHideAbuse"];
     }
     if (_json.containsKey("whoCanInvite")) {
       whoCanInvite = _json["whoCanInvite"];
@@ -435,6 +538,12 @@ class Groups {
     }
     if (_json.containsKey("whoCanLeaveGroup")) {
       whoCanLeaveGroup = _json["whoCanLeaveGroup"];
+    }
+    if (_json.containsKey("whoCanLockTopics")) {
+      whoCanLockTopics = _json["whoCanLockTopics"];
+    }
+    if (_json.containsKey("whoCanMakeTopicsSticky")) {
+      whoCanMakeTopicsSticky = _json["whoCanMakeTopicsSticky"];
     }
     if (_json.containsKey("whoCanMarkDuplicate")) {
       whoCanMarkDuplicate = _json["whoCanMarkDuplicate"];
@@ -450,8 +559,26 @@ class Groups {
     if (_json.containsKey("whoCanMarkNoResponseNeeded")) {
       whoCanMarkNoResponseNeeded = _json["whoCanMarkNoResponseNeeded"];
     }
+    if (_json.containsKey("whoCanModerateContent")) {
+      whoCanModerateContent = _json["whoCanModerateContent"];
+    }
+    if (_json.containsKey("whoCanModerateMembers")) {
+      whoCanModerateMembers = _json["whoCanModerateMembers"];
+    }
+    if (_json.containsKey("whoCanModifyMembers")) {
+      whoCanModifyMembers = _json["whoCanModifyMembers"];
+    }
     if (_json.containsKey("whoCanModifyTagsAndCategories")) {
       whoCanModifyTagsAndCategories = _json["whoCanModifyTagsAndCategories"];
+    }
+    if (_json.containsKey("whoCanMoveTopicsIn")) {
+      whoCanMoveTopicsIn = _json["whoCanMoveTopicsIn"];
+    }
+    if (_json.containsKey("whoCanMoveTopicsOut")) {
+      whoCanMoveTopicsOut = _json["whoCanMoveTopicsOut"];
+    }
+    if (_json.containsKey("whoCanPostAnnouncements")) {
+      whoCanPostAnnouncements = _json["whoCanPostAnnouncements"];
     }
     if (_json.containsKey("whoCanPostMessage")) {
       whoCanPostMessage = _json["whoCanPostMessage"];
@@ -495,6 +622,10 @@ class Groups {
     if (customReplyTo != null) {
       _json["customReplyTo"] = customReplyTo;
     }
+    if (customRolesEnabledForSettingsToBeMerged != null) {
+      _json["customRolesEnabledForSettingsToBeMerged"] =
+          customRolesEnabledForSettingsToBeMerged;
+    }
     if (defaultMessageDenyNotificationText != null) {
       _json["defaultMessageDenyNotificationText"] =
           defaultMessageDenyNotificationText;
@@ -504,6 +635,9 @@ class Groups {
     }
     if (email != null) {
       _json["email"] = email;
+    }
+    if (enableCollaborativeInbox != null) {
+      _json["enableCollaborativeInbox"] = enableCollaborativeInbox;
     }
     if (favoriteRepliesOnTop != null) {
       _json["favoriteRepliesOnTop"] = favoriteRepliesOnTop;
@@ -556,14 +690,38 @@ class Groups {
     if (whoCanAddReferences != null) {
       _json["whoCanAddReferences"] = whoCanAddReferences;
     }
+    if (whoCanApproveMembers != null) {
+      _json["whoCanApproveMembers"] = whoCanApproveMembers;
+    }
+    if (whoCanApproveMessages != null) {
+      _json["whoCanApproveMessages"] = whoCanApproveMessages;
+    }
     if (whoCanAssignTopics != null) {
       _json["whoCanAssignTopics"] = whoCanAssignTopics;
+    }
+    if (whoCanAssistContent != null) {
+      _json["whoCanAssistContent"] = whoCanAssistContent;
+    }
+    if (whoCanBanUsers != null) {
+      _json["whoCanBanUsers"] = whoCanBanUsers;
     }
     if (whoCanContactOwner != null) {
       _json["whoCanContactOwner"] = whoCanContactOwner;
     }
+    if (whoCanDeleteAnyPost != null) {
+      _json["whoCanDeleteAnyPost"] = whoCanDeleteAnyPost;
+    }
+    if (whoCanDeleteTopics != null) {
+      _json["whoCanDeleteTopics"] = whoCanDeleteTopics;
+    }
+    if (whoCanDiscoverGroup != null) {
+      _json["whoCanDiscoverGroup"] = whoCanDiscoverGroup;
+    }
     if (whoCanEnterFreeFormTags != null) {
       _json["whoCanEnterFreeFormTags"] = whoCanEnterFreeFormTags;
+    }
+    if (whoCanHideAbuse != null) {
+      _json["whoCanHideAbuse"] = whoCanHideAbuse;
     }
     if (whoCanInvite != null) {
       _json["whoCanInvite"] = whoCanInvite;
@@ -573,6 +731,12 @@ class Groups {
     }
     if (whoCanLeaveGroup != null) {
       _json["whoCanLeaveGroup"] = whoCanLeaveGroup;
+    }
+    if (whoCanLockTopics != null) {
+      _json["whoCanLockTopics"] = whoCanLockTopics;
+    }
+    if (whoCanMakeTopicsSticky != null) {
+      _json["whoCanMakeTopicsSticky"] = whoCanMakeTopicsSticky;
     }
     if (whoCanMarkDuplicate != null) {
       _json["whoCanMarkDuplicate"] = whoCanMarkDuplicate;
@@ -588,8 +752,26 @@ class Groups {
     if (whoCanMarkNoResponseNeeded != null) {
       _json["whoCanMarkNoResponseNeeded"] = whoCanMarkNoResponseNeeded;
     }
+    if (whoCanModerateContent != null) {
+      _json["whoCanModerateContent"] = whoCanModerateContent;
+    }
+    if (whoCanModerateMembers != null) {
+      _json["whoCanModerateMembers"] = whoCanModerateMembers;
+    }
+    if (whoCanModifyMembers != null) {
+      _json["whoCanModifyMembers"] = whoCanModifyMembers;
+    }
     if (whoCanModifyTagsAndCategories != null) {
       _json["whoCanModifyTagsAndCategories"] = whoCanModifyTagsAndCategories;
+    }
+    if (whoCanMoveTopicsIn != null) {
+      _json["whoCanMoveTopicsIn"] = whoCanMoveTopicsIn;
+    }
+    if (whoCanMoveTopicsOut != null) {
+      _json["whoCanMoveTopicsOut"] = whoCanMoveTopicsOut;
+    }
+    if (whoCanPostAnnouncements != null) {
+      _json["whoCanPostAnnouncements"] = whoCanPostAnnouncements;
     }
     if (whoCanPostMessage != null) {
       _json["whoCanPostMessage"] = whoCanPostMessage;

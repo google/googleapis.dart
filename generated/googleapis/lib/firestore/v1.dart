@@ -261,17 +261,17 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$".
   ///
-  /// [pageToken] - A page token, returned from a previous call to
-  /// FirestoreAdmin.ListFields, that may be used to get the next
-  /// page of results.
-  ///
-  /// [pageSize] - The number of results to return.
-  ///
   /// [filter] - The filter to apply to list results. Currently,
   /// FirestoreAdmin.ListFields only supports listing fields
   /// that have been explicitly overridden. To issue this query, call
   /// FirestoreAdmin.ListFields with the filter set to
   /// `indexConfig.usesAncestorConfig:false`.
+  ///
+  /// [pageToken] - A page token, returned from a previous call to
+  /// FirestoreAdmin.ListFields, that may be used to get the next
+  /// page of results.
+  ///
+  /// [pageSize] - The number of results to return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -285,9 +285,9 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleFirestoreAdminV1ListFieldsResponse> list(
       core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -299,14 +299,14 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -907,13 +907,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [currentDocument_exists] - When set to `true`, the target document must
-  /// exist.
-  /// When set to `false`, the target document must not exist.
-  ///
   /// [currentDocument_updateTime] - When set, the target document must exist
   /// and have been last updated at
   /// that time.
+  ///
+  /// [currentDocument_exists] - When set to `true`, the target document must
+  /// exist.
+  /// When set to `false`, the target document must not exist.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -926,8 +926,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.bool currentDocument_exists,
-      core.String currentDocument_updateTime,
+      {core.String currentDocument_updateTime,
+      core.bool currentDocument_exists,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -939,11 +939,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
-    }
     if (currentDocument_updateTime != null) {
       _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+    }
+    if (currentDocument_exists != null) {
+      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1044,12 +1044,6 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// example: `chatrooms`
   /// or `messages`.
   ///
-  /// [orderBy] - The order to sort results by. For example: `priority desc,
-  /// name`.
-  ///
-  /// [readTime] - Reads documents as they were at the given time.
-  /// This may not be older than 60 seconds.
-  ///
   /// [showMissing] - If the list should show missing documents. A missing
   /// document is a
   /// document that does not exist but has sub-documents. These documents will
@@ -1070,6 +1064,12 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// [transaction] - Reads documents in a transaction.
   ///
+  /// [readTime] - Reads documents as they were at the given time.
+  /// This may not be older than 60 seconds.
+  ///
+  /// [orderBy] - The order to sort results by. For example: `priority desc,
+  /// name`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1082,13 +1082,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDocumentsResponse> list(
       core.String parent, core.String collectionId,
-      {core.String orderBy,
-      core.String readTime,
-      core.bool showMissing,
+      {core.bool showMissing,
       core.List<core.String> mask_fieldPaths,
       core.String pageToken,
       core.int pageSize,
       core.String transaction,
+      core.String readTime,
+      core.String orderBy,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1102,12 +1102,6 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
     }
     if (showMissing != null) {
       _queryParams["showMissing"] = ["${showMissing}"];
@@ -1123,6 +1117,12 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (transaction != null) {
       _queryParams["transaction"] = [transaction];
+    }
+    if (readTime != null) {
+      _queryParams["readTime"] = [readTime];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1263,10 +1263,6 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [currentDocument_exists] - When set to `true`, the target document must
-  /// exist.
-  /// When set to `false`, the target document must not exist.
-  ///
   /// [updateMask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
@@ -1279,6 +1275,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// and have been last updated at
   /// that time.
   ///
+  /// [currentDocument_exists] - When set to `true`, the target document must
+  /// exist.
+  /// When set to `false`, the target document must not exist.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1290,10 +1290,10 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Document> patch(Document request, core.String name,
-      {core.bool currentDocument_exists,
-      core.List<core.String> updateMask_fieldPaths,
+      {core.List<core.String> updateMask_fieldPaths,
       core.List<core.String> mask_fieldPaths,
       core.String currentDocument_updateTime,
+      core.bool currentDocument_exists,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1308,9 +1308,6 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_exists != null) {
-      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
-    }
     if (updateMask_fieldPaths != null) {
       _queryParams["updateMask.fieldPaths"] = updateMask_fieldPaths;
     }
@@ -1319,6 +1316,9 @@ class ProjectsDatabasesDocumentsResourceApi {
     }
     if (currentDocument_updateTime != null) {
       _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
+    }
+    if (currentDocument_exists != null) {
+      _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1676,11 +1676,11 @@ class ProjectsDatabasesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1693,9 +1693,9 @@ class ProjectsDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1707,14 +1707,14 @@ class ProjectsDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1790,11 +1790,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1807,9 +1807,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1821,14 +1821,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4689,9 +4689,8 @@ class RunQueryResponse {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). The error model is designed to be:
 ///
 /// - Simple to use and understand for most users
 /// - Flexible enough to meet unexpected needs
@@ -4699,8 +4698,7 @@ class RunQueryResponse {
 /// # Overview
 ///
 /// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
+/// message, and error details. The error code should be an enum value of
 /// google.rpc.Code, but it may accept additional error codes if needed.  The
 /// error message should be a developer-facing English message that helps
 /// developers *understand* and *resolve* the error. If a localized user-facing
@@ -5318,7 +5316,7 @@ class Write {
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   core.String delete;
 
-  /// Applies a tranformation to a document.
+  /// Applies a transformation to a document.
   /// At most one `transform` per document is allowed in a given request.
   /// An `update` cannot follow a `transform` on the same document in a given
   /// request.

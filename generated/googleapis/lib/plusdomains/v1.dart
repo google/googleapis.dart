@@ -30,16 +30,10 @@ class PlusDomainsApi {
   static const PlusCirclesReadScope =
       "https://www.googleapis.com/auth/plus.circles.read";
 
-  /// Manage your circles and add people and pages. People and pages you add to
-  /// your circles will be notified. Others may see this information publicly.
-  /// People you add to circles can use Hangouts with you.
-  static const PlusCirclesWriteScope =
-      "https://www.googleapis.com/auth/plus.circles.write";
-
-  /// Know the list of people in your circles, your age range, and language
+  /// View your basic profile info, including your age range and language
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
-  /// Know who you are on Google
+  /// Associate you with your personal info on Google
   static const PlusMeScope = "https://www.googleapis.com/auth/plus.me";
 
   /// Send your photos and videos to Google+
@@ -54,15 +48,12 @@ class PlusDomainsApi {
   static const PlusStreamReadScope =
       "https://www.googleapis.com/auth/plus.stream.read";
 
-  /// Manage your Google+ posts, comments, and stream
-  static const PlusStreamWriteScope =
-      "https://www.googleapis.com/auth/plus.stream.write";
-
   /// View your email address
   static const UserinfoEmailScope =
       "https://www.googleapis.com/auth/userinfo.email";
 
-  /// View your basic profile info
+  /// See your personal info, including any personal info you've made publicly
+  /// available
   static const UserinfoProfileScope =
       "https://www.googleapis.com/auth/userinfo.profile";
 
@@ -87,7 +78,8 @@ class ActivitiesResourceApi {
 
   ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get an activity.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -129,64 +121,8 @@ class ActivitiesResourceApi {
     return _response.then((data) => new Activity.fromJson(data));
   }
 
-  /// Create a new activity for the authenticated user.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [userId] - The ID of the user to create the activity on behalf of. Its
-  /// value should be "me", to indicate the authenticated user.
-  ///
-  /// [preview] - If "true", extract the potential media attachments for a URL.
-  /// The response will include all possible attachments for a URL, including
-  /// video, photos, and articles based on the content of the page.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Activity].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Activity> insert(Activity request, core.String userId,
-      {core.bool preview, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (preview != null) {
-      _queryParams["preview"] = ["${preview}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Activity.fromJson(data));
-  }
-
-  /// List all of the activities in the specified collection for a particular
-  /// user.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -262,7 +198,8 @@ class AudiencesResourceApi {
 
   AudiencesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// List all of the audiences to which a user can share.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -327,156 +264,8 @@ class CirclesResourceApi {
 
   CirclesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Add a person to a circle. Google+ limits certain circle operations,
-  /// including the number of circle adds. Learn More.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to add the person to.
-  ///
-  /// [email] - Email of the people to add to the circle. Optional, can be
-  /// repeated.
-  ///
-  /// [userId] - IDs of the people to add to the circle. Optional, can be
-  /// repeated.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Circle].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Circle> addPeople(core.String circleId,
-      {core.List<core.String> email,
-      core.List<core.String> userId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if (email != null) {
-      _queryParams["email"] = email;
-    }
-    if (userId != null) {
-      _queryParams["userId"] = userId;
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Circle.fromJson(data));
-  }
-
-  /// Get a circle.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to get.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Circle].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Circle> get(core.String circleId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Circle.fromJson(data));
-  }
-
-  /// Create a new circle for the authenticated user.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [userId] - The ID of the user to create the circle on behalf of. The value
-  /// "me" can be used to indicate the authenticated user.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Circle].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Circle> insert(Circle request, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Circle.fromJson(data));
-  }
-
-  /// List all of the circles for a user.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -534,201 +323,6 @@ class CirclesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new CircleFeed.fromJson(data));
   }
-
-  /// Update a circle's description. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Circle].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Circle> patch(Circle request, core.String circleId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Circle.fromJson(data));
-  }
-
-  /// Delete a circle.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to delete.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future remove(core.String circleId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Remove a person from a circle.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to remove the person from.
-  ///
-  /// [email] - Email of the people to add to the circle. Optional, can be
-  /// repeated.
-  ///
-  /// [userId] - IDs of the people to remove from the circle. Optional, can be
-  /// repeated.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future removePeople(core.String circleId,
-      {core.List<core.String> email,
-      core.List<core.String> userId,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if (email != null) {
-      _queryParams["email"] = email;
-    }
-    if (userId != null) {
-      _queryParams["userId"] = userId;
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Update a circle's description.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to update.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Circle].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Circle> update(Circle request, core.String circleId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Circle.fromJson(data));
-  }
 }
 
 class CommentsResourceApi {
@@ -736,7 +330,8 @@ class CommentsResourceApi {
 
   CommentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get a comment.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -778,57 +373,8 @@ class CommentsResourceApi {
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /// Create a new comment in reply to an activity.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [activityId] - The ID of the activity to reply to.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Comment].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Comment> insert(Comment request, core.String activityId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (activityId == null) {
-      throw new core.ArgumentError("Parameter activityId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'activities/' +
-        commons.Escaper.ecapeVariable('$activityId') +
-        '/comments';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Comment.fromJson(data));
-  }
-
-  /// List all of the comments for an activity.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -905,10 +451,8 @@ class MediaResourceApi {
 
   MediaResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Add a new media item to an album. The current upload size limitations are
-  /// 36MB for a photo and 1GB for a video. Uploads do not count against quota
-  /// if photos are less than 2048 pixels on their longest side or videos are
-  /// less than 15 minutes in length.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1120,8 +664,8 @@ class PeopleResourceApi {
     return _response.then((data) => new PeopleFeed.fromJson(data));
   }
 
-  /// List all of the people in the specified collection for a particular
-  /// activity.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -1182,64 +726,6 @@ class PeopleResourceApi {
         commons.Escaper.ecapeVariable('$activityId') +
         '/people/' +
         commons.Escaper.ecapeVariable('$collection');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PeopleFeed.fromJson(data));
-  }
-
-  /// List all of the people who are members of a circle.
-  ///
-  /// Request parameters:
-  ///
-  /// [circleId] - The ID of the circle to get the members of.
-  ///
-  /// [maxResults] - The maximum number of people to include in the response,
-  /// which is used for paging. For any response, the actual number returned
-  /// might be less than the specified maxResults.
-  /// Value must be between "1" and "100".
-  ///
-  /// [pageToken] - The continuation token, which is used to page through large
-  /// result sets. To get the next page of results, set this parameter to the
-  /// value of "nextPageToken" from the previous response.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [PeopleFeed].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<PeopleFeed> listByCircle(core.String circleId,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (circleId == null) {
-      throw new core.ArgumentError("Parameter circleId is required.");
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
 
     var _response = _requester.request(_url, "GET",
         body: _body,

@@ -172,10 +172,10 @@ class V1ResourceApi {
   ///
   /// [dynamicLink] - Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
   ///
+  /// [durationDays] - The span of time requested in days.
+  ///
   /// [sdkVersion] - Google SDK version. Version takes the form
   /// "$major.$minor.$patch"
-  ///
-  /// [durationDays] - The span of time requested in days.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -188,7 +188,7 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink,
-      {core.String sdkVersion, core.String durationDays, core.String $fields}) {
+      {core.String durationDays, core.String sdkVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -199,11 +199,11 @@ class V1ResourceApi {
     if (dynamicLink == null) {
       throw new core.ArgumentError("Parameter dynamicLink is required.");
     }
-    if (sdkVersion != null) {
-      _queryParams["sdkVersion"] = [sdkVersion];
-    }
     if (durationDays != null) {
       _queryParams["durationDays"] = [durationDays];
+    }
+    if (sdkVersion != null) {
+      _queryParams["sdkVersion"] = [sdkVersion];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -798,9 +798,8 @@ class DynamicLinkInfo {
 
   /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
   /// [Learn
-  /// more](https://firebase.google.com/docs/dynamic-links/android/receive)
-  /// on how to set up Dynamic Link domain associated with your Firebase
-  /// project.
+  /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on
+  /// how to set up Dynamic Link domain associated with your Firebase project.
   ///
   /// Required if missing domain_uri_prefix.
   core.String dynamicLinkDomain;
@@ -1185,11 +1184,17 @@ class GetIosPostInstallAttributionResponse {
   /// Scion campaign value to be propagated by iSDK to Scion at post-install.
   core.String utmCampaign;
 
+  /// Scion content value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmContent;
+
   /// Scion medium value to be propagated by iSDK to Scion at post-install.
   core.String utmMedium;
 
   /// Scion source value to be propagated by iSDK to Scion at post-install.
   core.String utmSource;
+
+  /// Scion term value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmTerm;
 
   GetIosPostInstallAttributionResponse();
 
@@ -1230,11 +1235,17 @@ class GetIosPostInstallAttributionResponse {
     if (_json.containsKey("utmCampaign")) {
       utmCampaign = _json["utmCampaign"];
     }
+    if (_json.containsKey("utmContent")) {
+      utmContent = _json["utmContent"];
+    }
     if (_json.containsKey("utmMedium")) {
       utmMedium = _json["utmMedium"];
     }
     if (_json.containsKey("utmSource")) {
       utmSource = _json["utmSource"];
+    }
+    if (_json.containsKey("utmTerm")) {
+      utmTerm = _json["utmTerm"];
     }
   }
 
@@ -1277,11 +1288,17 @@ class GetIosPostInstallAttributionResponse {
     if (utmCampaign != null) {
       _json["utmCampaign"] = utmCampaign;
     }
+    if (utmContent != null) {
+      _json["utmContent"] = utmContent;
+    }
     if (utmMedium != null) {
       _json["utmMedium"] = utmMedium;
     }
     if (utmSource != null) {
       _json["utmSource"] = utmSource;
+    }
+    if (utmTerm != null) {
+      _json["utmTerm"] = utmTerm;
     }
     return _json;
   }
@@ -1357,11 +1374,17 @@ class GetIosReopenAttributionResponse {
   /// Scion campaign value to be propagated by iSDK to Scion at app-reopen.
   core.String utmCampaign;
 
+  /// Scion content value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmContent;
+
   /// Scion medium value to be propagated by iSDK to Scion at app-reopen.
   core.String utmMedium;
 
   /// Scion source value to be propagated by iSDK to Scion at app-reopen.
   core.String utmSource;
+
+  /// Scion term value to be propagated by iSDK to Scion at app-reopen.
+  core.String utmTerm;
 
   GetIosReopenAttributionResponse();
 
@@ -1381,11 +1404,17 @@ class GetIosReopenAttributionResponse {
     if (_json.containsKey("utmCampaign")) {
       utmCampaign = _json["utmCampaign"];
     }
+    if (_json.containsKey("utmContent")) {
+      utmContent = _json["utmContent"];
+    }
     if (_json.containsKey("utmMedium")) {
       utmMedium = _json["utmMedium"];
     }
     if (_json.containsKey("utmSource")) {
       utmSource = _json["utmSource"];
+    }
+    if (_json.containsKey("utmTerm")) {
+      utmTerm = _json["utmTerm"];
     }
   }
 
@@ -1407,11 +1436,17 @@ class GetIosReopenAttributionResponse {
     if (utmCampaign != null) {
       _json["utmCampaign"] = utmCampaign;
     }
+    if (utmContent != null) {
+      _json["utmContent"] = utmContent;
+    }
     if (utmMedium != null) {
       _json["utmMedium"] = utmMedium;
     }
     if (utmSource != null) {
       _json["utmSource"] = utmSource;
+    }
+    if (utmTerm != null) {
+      _json["utmTerm"] = utmTerm;
     }
     return _json;
   }
@@ -1423,8 +1458,9 @@ class GetIosReopenAttributionResponse {
 class GooglePlayAnalytics {
   /// [AdWords autotagging
   /// parameter](https://support.google.com/analytics/answer/1033981?hl=en);
-  /// used to measure Google AdWords ads. This value is generated dynamically
-  /// and should never be modified.
+  /// used
+  /// to measure Google AdWords ads. This value is generated dynamically and
+  /// should never be modified.
   core.String gclid;
 
   /// Campaign name; used for keyword analysis to identify a specific product

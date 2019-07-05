@@ -214,7 +214,13 @@ class AppsResourceApi {
   /// Recreates the required App Engine features for the specified App Engine
   /// application, for example a Cloud Storage bucket or App Engine service
   /// account. Use this method if you receive an error message about a missing
-  /// feature, for example, Error retrieving the App Engine service account.
+  /// feature, for example, Error retrieving the App Engine service account. If
+  /// you have deleted your App Engine service account, this will not be able to
+  /// recreate it. Instead, you should attempt to use the IAM undelete API if
+  /// possible at
+  /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D
+  /// . If the deletion was recent, the numeric ID can be found in the Cloud
+  /// Console Activity Log.
   ///
   /// [request] - The metadata request object.
   ///
@@ -594,9 +600,9 @@ class AppsAuthorizedDomainsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -609,7 +615,7 @@ class AppsAuthorizedDomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedDomainsResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -620,11 +626,11 @@ class AppsAuthorizedDomainsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -830,9 +836,9 @@ class AppsDomainMappingsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -845,7 +851,7 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainMappingsResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -856,11 +862,11 @@ class AppsDomainMappingsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1367,11 +1373,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1384,9 +1390,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1398,14 +1404,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1495,11 +1501,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1512,9 +1518,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1526,14 +1532,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2409,9 +2415,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [versionsId] - Part of `parent`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2425,7 +2431,7 @@ class AppsServicesVersionsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
       core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2442,11 +2448,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3710,11 +3716,19 @@ class FeatureSettings {
   /// value is always true, this setting can be removed.
   core.bool splitHealthChecks;
 
+  /// If true, use Container-Optimized OS
+  /// (https://cloud.google.com/container-optimized-os/) base image for VMs,
+  /// rather than a base Debian image.
+  core.bool useContainerOptimizedOs;
+
   FeatureSettings();
 
   FeatureSettings.fromJson(core.Map _json) {
     if (_json.containsKey("splitHealthChecks")) {
       splitHealthChecks = _json["splitHealthChecks"];
+    }
+    if (_json.containsKey("useContainerOptimizedOs")) {
+      useContainerOptimizedOs = _json["useContainerOptimizedOs"];
     }
   }
 
@@ -3723,6 +3737,9 @@ class FeatureSettings {
         new core.Map<core.String, core.Object>();
     if (splitHealthChecks != null) {
       _json["splitHealthChecks"] = splitHealthChecks;
+    }
+    if (useContainerOptimizedOs != null) {
+      _json["useContainerOptimizedOs"] = useContainerOptimizedOs;
     }
     return _json;
   }
@@ -4774,6 +4791,10 @@ class Network {
   /// Specify the short name, not the resource path.Defaults to default.
   core.String name;
 
+  /// Enable session affinity. Only applicable in the App Engine flexible
+  /// environment.
+  core.bool sessionAffinity;
+
   /// Google Cloud Platform sub-network where the virtual machines are created.
   /// Specify the short name, not the resource path.If a subnetwork name is
   /// specified, a network name will also be required unless it is for the
@@ -4804,6 +4825,9 @@ class Network {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("sessionAffinity")) {
+      sessionAffinity = _json["sessionAffinity"];
+    }
     if (_json.containsKey("subnetworkName")) {
       subnetworkName = _json["subnetworkName"];
     }
@@ -4820,6 +4844,9 @@ class Network {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (sessionAffinity != null) {
+      _json["sessionAffinity"] = sessionAffinity;
     }
     if (subnetworkName != null) {
       _json["subnetworkName"] = subnetworkName;
@@ -4901,7 +4928,7 @@ class Operation {
 
   /// The server-assigned name, which is only unique within the same service
   /// that originally returns it. If you use the default HTTP mapping, the name
-  /// should have the format of operations/some/unique/name.
+  /// should be a resource name ending with operations/{unique_id}.
   core.String name;
 
   /// The normal response of the operation in case of success. If the original
@@ -4955,77 +4982,6 @@ class Operation {
     }
     if (response != null) {
       _json["response"] = response;
-    }
-    return _json;
-  }
-}
-
-/// Metadata for the given google.longrunning.Operation.
-class OperationMetadata {
-  /// Timestamp that this operation completed.@OutputOnly
-  core.String endTime;
-
-  /// Timestamp that this operation was created.@OutputOnly
-  core.String insertTime;
-
-  /// API method that initiated this operation. Example:
-  /// google.appengine.v1beta4.Version.CreateVersion.@OutputOnly
-  core.String method;
-
-  /// Type of this operation. Deprecated, use method field instead. Example:
-  /// "create_version".@OutputOnly
-  core.String operationType;
-
-  /// Name of the resource that this operation is acting on. Example:
-  /// apps/myapp/modules/default.@OutputOnly
-  core.String target;
-
-  /// User who requested this operation.@OutputOnly
-  core.String user;
-
-  OperationMetadata();
-
-  OperationMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("operationType")) {
-      operationType = _json["operationType"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
-    }
-    if (operationType != null) {
-      _json["operationType"] = operationType;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
     }
     return _json;
   }
@@ -5293,67 +5249,6 @@ class OperationMetadataV1Beta {
     }
     if (warning != null) {
       _json["warning"] = warning;
-    }
-    return _json;
-  }
-}
-
-/// Metadata for the given google.longrunning.Operation.
-class OperationMetadataV1Beta5 {
-  /// Timestamp that this operation completed.@OutputOnly
-  core.String endTime;
-
-  /// Timestamp that this operation was created.@OutputOnly
-  core.String insertTime;
-
-  /// API method name that initiated this operation. Example:
-  /// google.appengine.v1beta5.Version.CreateVersion.@OutputOnly
-  core.String method;
-
-  /// Name of the resource that this operation is acting on. Example:
-  /// apps/myapp/services/default.@OutputOnly
-  core.String target;
-
-  /// User who requested this operation.@OutputOnly
-  core.String user;
-
-  OperationMetadataV1Beta5();
-
-  OperationMetadataV1Beta5.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
     }
     return _json;
   }
@@ -5867,39 +5762,10 @@ class StaticFilesHandler {
 
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs. It is used by
-/// gRPC (https://github.com/grpc). The error model is designed to be:
-/// Simple to use and understand for most users
-/// Flexible enough to meet unexpected needsOverviewThe Status message contains
-/// three pieces of data: error code, error message, and error details. The
-/// error code should be an enum value of google.rpc.Code, but it may accept
-/// additional error codes if needed. The error message should be a
-/// developer-facing English message that helps developers understand and
-/// resolve the error. If a localized user-facing error message is needed, put
-/// the localized message in the error details or localize it in the client. The
-/// optional error details may contain arbitrary information about the error.
-/// There is a predefined set of error detail types in the package google.rpc
-/// that can be used for common error conditions.Language mappingThe Status
-/// message is the logical representation of the error model, but it is not
-/// necessarily the actual wire format. When the Status message is exposed in
-/// different client libraries and different wire protocols, it can be mapped
-/// differently. For example, it will likely be mapped to some exceptions in
-/// Java, but more likely mapped to some error codes in C.Other usesThe error
-/// model and the Status message can be used in a variety of environments,
-/// either with or without APIs, to provide a consistent developer experience
-/// across different environments.Example uses of this error model include:
-/// Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the Status in the normal response to indicate the partial
-/// errors.
-/// Workflow errors. A typical workflow has multiple steps. Each step may have a
-/// Status message for error reporting.
-/// Batch operations. If a client uses batch request and batch response, the
-/// Status message should be used directly inside batch response, one for each
-/// error sub-response.
-/// Asynchronous operations. If an API call embeds asynchronous operation
-/// results in its response, the status of those operations should be
-/// represented directly using the Status message.
-/// Logging. If some API errors are stored in logs, the message Status could be
-/// used directly after any stripping needed for security/privacy reasons.
+/// gRPC (https://github.com/grpc). Each Status message contains three pieces of
+/// data: error code, error message, and error details.You can find out more
+/// about this error model and how to work with it in the API Design Guide
+/// (https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -6340,8 +6206,11 @@ class Version {
   /// Whether to deploy this version in a container on a virtual machine.
   core.bool vm;
 
+  /// Enables VPC connectivity for standard apps.
+  VpcAccessConnector vpcAccessConnector;
+
   /// The Google Compute Engine zones that are supported by this version in the
-  /// App Engine flexible environment.
+  /// App Engine flexible environment. Deprecated.
   core.List<core.String> zones;
 
   Version();
@@ -6463,6 +6332,10 @@ class Version {
     if (_json.containsKey("vm")) {
       vm = _json["vm"];
     }
+    if (_json.containsKey("vpcAccessConnector")) {
+      vpcAccessConnector =
+          new VpcAccessConnector.fromJson(_json["vpcAccessConnector"]);
+    }
     if (_json.containsKey("zones")) {
       zones = (_json["zones"] as core.List).cast<core.String>();
     }
@@ -6577,6 +6450,9 @@ class Version {
     if (vm != null) {
       _json["vm"] = vm;
     }
+    if (vpcAccessConnector != null) {
+      _json["vpcAccessConnector"] = (vpcAccessConnector).toJson();
+    }
     if (zones != null) {
       _json["zones"] = zones;
     }
@@ -6621,6 +6497,30 @@ class Volume {
     }
     if (volumeType != null) {
       _json["volumeType"] = volumeType;
+    }
+    return _json;
+  }
+}
+
+/// VPC access connector specification.
+class VpcAccessConnector {
+  /// Full Serverless VPC Access Connector name e.g.
+  /// /projects/my-project/locations/us-central1/connectors/c1.
+  core.String name;
+
+  VpcAccessConnector();
+
+  VpcAccessConnector.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }

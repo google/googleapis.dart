@@ -3392,6 +3392,16 @@ class ResourcesBuildingsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
+  /// [coordinatesSource] - Source from which Building.coordinates are derived.
+  /// Possible string values are:
+  /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
+  /// included in the request.
+  /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
+  /// populated based on the postal address.
+  /// - "SOURCE_UNSPECIFIED" : Defaults to RESOLVED_FROM_ADDRESS if postal
+  /// address is provided. Otherwise, defaults to CLIENT_SPECIFIED if
+  /// coordinates are provided.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3403,7 +3413,7 @@ class ResourcesBuildingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Building> insert(Building request, core.String customer,
-      {core.String $fields}) {
+      {core.String coordinatesSource, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3416,6 +3426,9 @@ class ResourcesBuildingsResourceApi {
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if (coordinatesSource != null) {
+      _queryParams["coordinatesSource"] = [coordinatesSource];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3504,6 +3517,16 @@ class ResourcesBuildingsResourceApi {
   ///
   /// [buildingId] - The ID of the building to update.
   ///
+  /// [coordinatesSource] - Source from which Building.coordinates are derived.
+  /// Possible string values are:
+  /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
+  /// included in the request.
+  /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
+  /// populated based on the postal address.
+  /// - "SOURCE_UNSPECIFIED" : Defaults to RESOLVED_FROM_ADDRESS if postal
+  /// address is provided. Otherwise, defaults to CLIENT_SPECIFIED if
+  /// coordinates are provided.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3516,7 +3539,7 @@ class ResourcesBuildingsResourceApi {
   /// this method will complete with the same error.
   async.Future<Building> patch(
       Building request, core.String customer, core.String buildingId,
-      {core.String $fields}) {
+      {core.String coordinatesSource, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3532,6 +3555,9 @@ class ResourcesBuildingsResourceApi {
     }
     if (buildingId == null) {
       throw new core.ArgumentError("Parameter buildingId is required.");
+    }
+    if (coordinatesSource != null) {
+      _queryParams["coordinatesSource"] = [coordinatesSource];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3563,6 +3589,16 @@ class ResourcesBuildingsResourceApi {
   ///
   /// [buildingId] - The ID of the building to update.
   ///
+  /// [coordinatesSource] - Source from which Building.coordinates are derived.
+  /// Possible string values are:
+  /// - "CLIENT_SPECIFIED" : Building.coordinates are set to the coordinates
+  /// included in the request.
+  /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
+  /// populated based on the postal address.
+  /// - "SOURCE_UNSPECIFIED" : Defaults to RESOLVED_FROM_ADDRESS if postal
+  /// address is provided. Otherwise, defaults to CLIENT_SPECIFIED if
+  /// coordinates are provided.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3575,7 +3611,7 @@ class ResourcesBuildingsResourceApi {
   /// this method will complete with the same error.
   async.Future<Building> update(
       Building request, core.String customer, core.String buildingId,
-      {core.String $fields}) {
+      {core.String coordinatesSource, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3591,6 +3627,9 @@ class ResourcesBuildingsResourceApi {
     }
     if (buildingId == null) {
       throw new core.ArgumentError("Parameter buildingId is required.");
+    }
+    if (coordinatesSource != null) {
+      _queryParams["coordinatesSource"] = [coordinatesSource];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -6924,6 +6963,10 @@ class Asps {
 
 /// JSON template for Building object in Directory API.
 class Building {
+  /// The postal address of the building. See PostalAddress for details. Note
+  /// that only a single address line and region code are required.
+  BuildingAddress address;
+
   /// Unique identifier for the building. The maximum length is 100 characters.
   core.String buildingId;
 
@@ -6953,6 +6996,9 @@ class Building {
   Building();
 
   Building.fromJson(core.Map _json) {
+    if (_json.containsKey("address")) {
+      address = new BuildingAddress.fromJson(_json["address"]);
+    }
     if (_json.containsKey("buildingId")) {
       buildingId = _json["buildingId"];
     }
@@ -6979,6 +7025,9 @@ class Building {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (address != null) {
+      _json["address"] = (address).toJson();
+    }
     if (buildingId != null) {
       _json["buildingId"] = buildingId;
     }
@@ -6999,6 +7048,87 @@ class Building {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for the postal address of a building in Directory API.
+class BuildingAddress {
+  /// Unstructured address lines describing the lower levels of an address.
+  core.List<core.String> addressLines;
+
+  /// Optional. Highest administrative subdivision which is used for postal
+  /// addresses of a country or region.
+  core.String administrativeArea;
+
+  /// Optional. BCP-47 language code of the contents of this address (if known).
+  core.String languageCode;
+
+  /// Optional. Generally refers to the city/town portion of the address.
+  /// Examples: US city, IT comune, UK post town. In regions of the world where
+  /// localities are not well defined or do not fit into this structure well,
+  /// leave locality empty and use addressLines.
+  core.String locality;
+
+  /// Optional. Postal code of the address.
+  core.String postalCode;
+
+  /// Required. CLDR region code of the country/region of the address.
+  core.String regionCode;
+
+  /// Optional. Sublocality of the address.
+  core.String sublocality;
+
+  BuildingAddress();
+
+  BuildingAddress.fromJson(core.Map _json) {
+    if (_json.containsKey("addressLines")) {
+      addressLines = (_json["addressLines"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("administrativeArea")) {
+      administrativeArea = _json["administrativeArea"];
+    }
+    if (_json.containsKey("languageCode")) {
+      languageCode = _json["languageCode"];
+    }
+    if (_json.containsKey("locality")) {
+      locality = _json["locality"];
+    }
+    if (_json.containsKey("postalCode")) {
+      postalCode = _json["postalCode"];
+    }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
+    if (_json.containsKey("sublocality")) {
+      sublocality = _json["sublocality"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addressLines != null) {
+      _json["addressLines"] = addressLines;
+    }
+    if (administrativeArea != null) {
+      _json["administrativeArea"] = administrativeArea;
+    }
+    if (languageCode != null) {
+      _json["languageCode"] = languageCode;
+    }
+    if (locality != null) {
+      _json["locality"] = locality;
+    }
+    if (postalCode != null) {
+      _json["postalCode"] = postalCode;
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
+    if (sublocality != null) {
+      _json["sublocality"] = sublocality;
     }
     return _json;
   }
@@ -7314,7 +7444,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource. Value: the fixed string "api#channel".
+  /// resource, which is "api#channel".
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior. Optional.
@@ -12198,7 +12328,7 @@ class UserPhoto {
 /// JSON template for a POSIX account entry. Description of the field family:
 /// go/fbs-posix.
 class UserPosixAccount {
-  /// A POSIX account field identifier. (Read-only)
+  /// A POSIX account field identifier.
   core.String accountId;
 
   /// The GECOS (user information) for this account.

@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3692() {
+buildUnnamed4007() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3692(core.List<core.String> o) {
+checkUnnamed4007(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed3692();
+    o.members = buildUnnamed4007();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -80,7 +80,7 @@ checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition);
-    checkUnnamed3692(o.members);
+    checkUnnamed4007(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
@@ -115,25 +115,48 @@ core.int buildCounterGetIamPolicyRequest = 0;
 buildGetIamPolicyRequest() {
   var o = new api.GetIamPolicyRequest();
   buildCounterGetIamPolicyRequest++;
-  if (buildCounterGetIamPolicyRequest < 3) {}
+  if (buildCounterGetIamPolicyRequest < 3) {
+    o.options = buildGetPolicyOptions();
+  }
   buildCounterGetIamPolicyRequest--;
   return o;
 }
 
 checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
-  if (buildCounterGetIamPolicyRequest < 3) {}
+  if (buildCounterGetIamPolicyRequest < 3) {
+    checkGetPolicyOptions(o.options);
+  }
   buildCounterGetIamPolicyRequest--;
 }
 
-buildUnnamed3693() {
+core.int buildCounterGetPolicyOptions = 0;
+buildGetPolicyOptions() {
+  var o = new api.GetPolicyOptions();
+  buildCounterGetPolicyOptions++;
+  if (buildCounterGetPolicyOptions < 3) {
+    o.requestedPolicyVersion = 42;
+  }
+  buildCounterGetPolicyOptions--;
+  return o;
+}
+
+checkGetPolicyOptions(api.GetPolicyOptions o) {
+  buildCounterGetPolicyOptions++;
+  if (buildCounterGetPolicyOptions < 3) {
+    unittest.expect(o.requestedPolicyVersion, unittest.equals(42));
+  }
+  buildCounterGetPolicyOptions--;
+}
+
+buildUnnamed4008() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed3693(core.List<api.Binding> o) {
+checkUnnamed4008(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -144,7 +167,7 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.bindings = buildUnnamed3693();
+    o.bindings = buildUnnamed4008();
     o.etag = "foo";
     o.version = 42;
   }
@@ -155,7 +178,7 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed3693(o.bindings);
+    checkUnnamed4008(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -181,14 +204,14 @@ checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest--;
 }
 
-buildUnnamed3694() {
+buildUnnamed4009() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3694(core.List<core.String> o) {
+checkUnnamed4009(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -199,7 +222,7 @@ buildTestIamPermissionsRequest() {
   var o = new api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3694();
+    o.permissions = buildUnnamed4009();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -208,19 +231,19 @@ buildTestIamPermissionsRequest() {
 checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed3694(o.permissions);
+    checkUnnamed4009(o.permissions);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-buildUnnamed3695() {
+buildUnnamed4010() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3695(core.List<core.String> o) {
+checkUnnamed4010(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -231,7 +254,7 @@ buildTestIamPermissionsResponse() {
   var o = new api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3695();
+    o.permissions = buildUnnamed4010();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -240,7 +263,7 @@ buildTestIamPermissionsResponse() {
 checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed3695(o.permissions);
+    checkUnnamed4010(o.permissions);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -267,6 +290,14 @@ main() {
       var o = buildGetIamPolicyRequest();
       var od = new api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-GetPolicyOptions", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGetPolicyOptions();
+      var od = new api.GetPolicyOptions.fromJson(o.toJson());
+      checkGetPolicyOptions(od);
     });
   });
 

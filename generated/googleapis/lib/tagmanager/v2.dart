@@ -654,61 +654,6 @@ class AccountsContainersEnvironmentsResourceApi {
         .then((data) => new ListEnvironmentsResponse.fromJson(data));
   }
 
-  /// Updates a GTM Environment. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [path] - GTM Environment's API relative path. Example:
-  /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
-  ///
-  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
-  /// of the environment in storage.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Environment].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Environment> patch(Environment request, core.String path,
-      {core.String fingerprint, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
-    }
-    if (fingerprint != null) {
-      _queryParams["fingerprint"] = [fingerprint];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariableReserved('$path');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Environment.fromJson(data));
-  }
-
   /// Re-generates the authorization code for a GTM Environment.
   ///
   /// [request] - The metadata request object.
@@ -1271,14 +1216,16 @@ class AccountsContainersWorkspacesResourceApi {
               _requester);
   AccountsContainersWorkspacesFoldersResourceApi get folders =>
       new AccountsContainersWorkspacesFoldersResourceApi(_requester);
-  AccountsContainersWorkspacesProposalResourceApi get proposal =>
-      new AccountsContainersWorkspacesProposalResourceApi(_requester);
   AccountsContainersWorkspacesTagsResourceApi get tags =>
       new AccountsContainersWorkspacesTagsResourceApi(_requester);
+  AccountsContainersWorkspacesTemplatesResourceApi get templates =>
+      new AccountsContainersWorkspacesTemplatesResourceApi(_requester);
   AccountsContainersWorkspacesTriggersResourceApi get triggers =>
       new AccountsContainersWorkspacesTriggersResourceApi(_requester);
   AccountsContainersWorkspacesVariablesResourceApi get variables =>
       new AccountsContainersWorkspacesVariablesResourceApi(_requester);
+  AccountsContainersWorkspacesZonesResourceApi get zones =>
+      new AccountsContainersWorkspacesZonesResourceApi(_requester);
 
   AccountsContainersWorkspacesResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -1469,50 +1416,6 @@ class AccountsContainersWorkspacesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Workspace.fromJson(data));
-  }
-
-  /// Gets a GTM Workspace Proposal.
-  ///
-  /// Request parameters:
-  ///
-  /// [path] - GTM workspace proposal's relative path: Example:
-  /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WorkspaceProposal].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WorkspaceProposal> getProposal(core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariableReserved('$path');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WorkspaceProposal.fromJson(data));
   }
 
   /// Finds conflicting and modified entities in the workspace.
@@ -1810,56 +1713,6 @@ class AccountsContainersWorkspacesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Workspace.fromJson(data));
   }
-
-  /// Updates a GTM Workspace Proposal.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [path] - GTM workspace proposal's relative path: Example:
-  /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WorkspaceProposal].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WorkspaceProposal> updateProposal(
-      UpdateWorkspaceProposalRequest request, core.String path,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariableReserved('$path');
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WorkspaceProposal.fromJson(data));
-  }
 }
 
 class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
@@ -2110,8 +1963,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// - "language"
   /// - "newHistoryFragment"
   /// - "newHistoryState"
+  /// - "newHistoryUrl"
   /// - "oldHistoryFragment"
   /// - "oldHistoryState"
+  /// - "oldHistoryUrl"
   /// - "osVersion"
   /// - "pageHostname"
   /// - "pagePath"
@@ -2589,106 +2444,6 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   }
 }
 
-class AccountsContainersWorkspacesProposalResourceApi {
-  final commons.ApiRequester _requester;
-
-  AccountsContainersWorkspacesProposalResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a GTM Workspace Proposal.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - GTM Workspace's API relative path. Example:
-  /// accounts/{aid}/containers/{cid}/workspace/{wid}
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WorkspaceProposal].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WorkspaceProposal> create(
-      CreateWorkspaceProposalRequest request, core.String parent,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariableReserved('$parent') + '/proposal';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WorkspaceProposal.fromJson(data));
-  }
-
-  /// Deletes a GTM Workspace Proposal.
-  ///
-  /// Request parameters:
-  ///
-  /// [path] - GTM workspace proposal's relative path: Example:
-  /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (path == null) {
-      throw new core.ArgumentError("Parameter path is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = commons.Escaper.ecapeVariableReserved('$path');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
 class AccountsContainersWorkspacesTagsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2982,6 +2737,303 @@ class AccountsContainersWorkspacesTagsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Tag.fromJson(data));
+  }
+}
+
+class AccountsContainersWorkspacesTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersWorkspacesTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a GTM Custom Template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomTemplate> create(
+      CustomTemplate request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$parent') + '/templates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomTemplate.fromJson(data));
+  }
+
+  /// Deletes a GTM Template.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Custom Template's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String path, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariableReserved('$path');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets a GTM Template.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Custom Template's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomTemplate> get(core.String path, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$path');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomTemplate.fromJson(data));
+  }
+
+  /// Lists all GTM Templates of a GTM container workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTemplatesResponse> list(core.String parent,
+      {core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$parent') + '/templates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListTemplatesResponse.fromJson(data));
+  }
+
+  /// Reverts changes to a GTM Template in a GTM Workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Custom Template's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the template in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RevertTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevertTemplateResponse> revert(core.String path,
+      {core.String fingerprint, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$path') + ':revert';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RevertTemplateResponse.fromJson(data));
+  }
+
+  /// Updates a GTM Template.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Custom Template's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the templates in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CustomTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CustomTemplate> update(CustomTemplate request, core.String path,
+      {core.String fingerprint, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$path');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CustomTemplate.fromJson(data));
   }
 }
 
@@ -3577,6 +3629,302 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   }
 }
 
+class AccountsContainersWorkspacesZonesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AccountsContainersWorkspacesZonesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a GTM Zone.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Zone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Zone> create(Zone request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$parent') + '/zones';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Zone.fromJson(data));
+  }
+
+  /// Deletes a GTM Zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Zone's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String path, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariableReserved('$path');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Gets a GTM Zone.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Zone's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Zone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Zone> get(core.String path, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$path');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Zone.fromJson(data));
+  }
+
+  /// Lists all GTM Zones of a GTM container workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - GTM Workspace's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListZonesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListZonesResponse> list(core.String parent,
+      {core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$parent') + '/zones';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListZonesResponse.fromJson(data));
+  }
+
+  /// Reverts changes to a GTM Zone in a GTM Workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Zone's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the zone in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RevertZoneResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevertZoneResponse> revert(core.String path,
+      {core.String fingerprint, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$path') + ':revert';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new RevertZoneResponse.fromJson(data));
+  }
+
+  /// Updates a GTM Zone.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Zone's API relative path. Example:
+  /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
+  ///
+  /// [fingerprint] - When provided, this fingerprint must match the fingerprint
+  /// of the zone in storage.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Zone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Zone> update(Zone request, core.String path,
+      {core.String fingerprint, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (path == null) {
+      throw new core.ArgumentError("Parameter path is required.");
+    }
+    if (fingerprint != null) {
+      _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$path');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Zone.fromJson(data));
+  }
+}
+
 class AccountsUserPermissionsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4025,8 +4373,10 @@ class BuiltInVariable {
   /// - "language"
   /// - "newHistoryFragment"
   /// - "newHistoryState"
+  /// - "newHistoryUrl"
   /// - "oldHistoryFragment"
   /// - "oldHistoryState"
+  /// - "oldHistoryUrl"
   /// - "osVersion"
   /// - "pageHostname"
   /// - "pagePath"
@@ -4319,6 +4669,9 @@ class ContainerVersion {
   /// The Container Version ID uniquely identifies the GTM Container Version.
   core.String containerVersionId;
 
+  /// The custom templates in the container that this version was taken from.
+  core.List<CustomTemplate> customTemplate;
+
   /// A value of true indicates this container version has been deleted.
   core.bool deleted;
 
@@ -4372,6 +4725,11 @@ class ContainerVersion {
     }
     if (_json.containsKey("containerVersionId")) {
       containerVersionId = _json["containerVersionId"];
+    }
+    if (_json.containsKey("customTemplate")) {
+      customTemplate = (_json["customTemplate"] as core.List)
+          .map<CustomTemplate>((value) => new CustomTemplate.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("deleted")) {
       deleted = _json["deleted"];
@@ -4437,6 +4795,10 @@ class ContainerVersion {
     if (containerVersionId != null) {
       _json["containerVersionId"] = containerVersionId;
     }
+    if (customTemplate != null) {
+      _json["customTemplate"] =
+          customTemplate.map((value) => (value).toJson()).toList();
+    }
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
@@ -4491,6 +4853,9 @@ class ContainerVersionHeader {
   /// Container version display name.
   core.String name;
 
+  /// Number of custom templates in the container version.
+  core.String numCustomTemplates;
+
   /// Number of macros in the container version.
   core.String numMacros;
 
@@ -4529,6 +4894,9 @@ class ContainerVersionHeader {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("numCustomTemplates")) {
+      numCustomTemplates = _json["numCustomTemplates"];
     }
     if (_json.containsKey("numMacros")) {
       numMacros = _json["numMacros"];
@@ -4570,6 +4938,9 @@ class ContainerVersionHeader {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (numCustomTemplates != null) {
+      _json["numCustomTemplates"] = numCustomTemplates;
     }
     if (numMacros != null) {
       _json["numMacros"] = numMacros;
@@ -4707,37 +5078,97 @@ class CreateContainerVersionResponse {
   }
 }
 
-/// Creates a workspace proposal to start a review of a workspace.
-class CreateWorkspaceProposalRequest {
-  /// If present, an initial comment to associate with the workspace proposal.
-  WorkspaceProposalHistoryComment initialComment;
+/// Represents a Google Tag Manager Custom Template's contents.
+class CustomTemplate {
+  /// GTM Account ID.
+  core.String accountId;
 
-  /// List of users to review the workspace proposal.
-  core.List<WorkspaceProposalUser> reviewers;
+  /// GTM Container ID.
+  core.String containerId;
 
-  CreateWorkspaceProposalRequest();
+  /// The fingerprint of the GTM Custom Template as computed at storage time.
+  /// This value is recomputed whenever the template is modified.
+  core.String fingerprint;
 
-  CreateWorkspaceProposalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("initialComment")) {
-      initialComment =
-          new WorkspaceProposalHistoryComment.fromJson(_json["initialComment"]);
+  /// Custom Template display name.
+  core.String name;
+
+  /// GTM Custom Template's API relative path.
+  core.String path;
+
+  /// Auto generated link to the tag manager UI
+  core.String tagManagerUrl;
+
+  /// The custom template in text format.
+  core.String templateData;
+
+  /// The Custom Template ID uniquely identifies the GTM custom template.
+  core.String templateId;
+
+  /// GTM Workspace ID.
+  core.String workspaceId;
+
+  CustomTemplate();
+
+  CustomTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
     }
-    if (_json.containsKey("reviewers")) {
-      reviewers = (_json["reviewers"] as core.List)
-          .map<WorkspaceProposalUser>(
-              (value) => new WorkspaceProposalUser.fromJson(value))
-          .toList();
+    if (_json.containsKey("containerId")) {
+      containerId = _json["containerId"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("tagManagerUrl")) {
+      tagManagerUrl = _json["tagManagerUrl"];
+    }
+    if (_json.containsKey("templateData")) {
+      templateData = _json["templateData"];
+    }
+    if (_json.containsKey("templateId")) {
+      templateId = _json["templateId"];
+    }
+    if (_json.containsKey("workspaceId")) {
+      workspaceId = _json["workspaceId"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (initialComment != null) {
-      _json["initialComment"] = (initialComment).toJson();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
     }
-    if (reviewers != null) {
-      _json["reviewers"] = reviewers.map((value) => (value).toJson()).toList();
+    if (containerId != null) {
+      _json["containerId"] = containerId;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (tagManagerUrl != null) {
+      _json["tagManagerUrl"] = tagManagerUrl;
+    }
+    if (templateData != null) {
+      _json["templateData"] = templateData;
+    }
+    if (templateId != null) {
+      _json["templateId"] = templateId;
+    }
+    if (workspaceId != null) {
+      _json["workspaceId"] = workspaceId;
     }
     return _json;
   }
@@ -5402,6 +5833,39 @@ class ListTagsResponse {
   }
 }
 
+class ListTemplatesResponse {
+  /// Continuation token for fetching the next page of results.
+  core.String nextPageToken;
+
+  /// All GTM Custom Templates of a GTM Container.
+  core.List<CustomTemplate> template;
+
+  ListTemplatesResponse();
+
+  ListTemplatesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("template")) {
+      template = (_json["template"] as core.List)
+          .map<CustomTemplate>((value) => new CustomTemplate.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (template != null) {
+      _json["template"] = template.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// List triggers response.
 class ListTriggersResponse {
   /// Continuation token for fetching the next page of results.
@@ -5539,6 +6003,39 @@ class ListWorkspacesResponse {
   }
 }
 
+class ListZonesResponse {
+  /// Continuation token for fetching the next page of results.
+  core.String nextPageToken;
+
+  /// All GTM Zones of a GTM Container.
+  core.List<Zone> zone;
+
+  ListZonesResponse();
+
+  ListZonesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("zone")) {
+      zone = (_json["zone"] as core.List)
+          .map<Zone>((value) => new Zone.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (zone != null) {
+      _json["zone"] = zone.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Represents a merge conflict.
 class MergeConflict {
   /// The base version entity (since the latest sync operation) that has
@@ -5595,12 +6092,15 @@ class Parameter {
   /// - map: A map of parameters should be specified
   /// - template: The value represents any text; this can include variable
   /// references (even variable references that might return non-string types)
+  /// - trigger_reference: The value represents a trigger, represented as the
+  /// trigger id
   /// Possible string values are:
   /// - "boolean"
   /// - "integer"
   /// - "list"
   /// - "map"
   /// - "template"
+  /// - "triggerReference"
   /// - "typeUnspecified"
   core.String type;
 
@@ -5803,6 +6303,31 @@ class RevertTagResponse {
   }
 }
 
+/// The result of reverting a template in a workspace.
+class RevertTemplateResponse {
+  /// Template as it appears in the latest container version since the last
+  /// workspace synchronization operation. If no template is present, that means
+  /// the template was deleted in the latest container version.
+  CustomTemplate template;
+
+  RevertTemplateResponse();
+
+  RevertTemplateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("template")) {
+      template = new CustomTemplate.fromJson(_json["template"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (template != null) {
+      _json["template"] = (template).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The result of reverting a trigger in a workspace.
 class RevertTriggerResponse {
   /// Trigger as it appears in the latest container version since the last
@@ -5848,6 +6373,31 @@ class RevertVariableResponse {
         new core.Map<core.String, core.Object>();
     if (variable != null) {
       _json["variable"] = (variable).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of reverting a zone in a workspace.
+class RevertZoneResponse {
+  /// Zone as it appears in the latest container version since the last
+  /// workspace synchronization operation. If no zone is present, that means the
+  /// zone was deleted in the latest container version.
+  Zone zone;
+
+  RevertZoneResponse();
+
+  RevertZoneResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("zone")) {
+      zone = new Zone.fromJson(_json["zone"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (zone != null) {
+      _json["zone"] = (zone).toJson();
     }
     return _json;
   }
@@ -6246,16 +6796,19 @@ class TeardownTag {
   }
 }
 
-/// A Timestamp represents a point in time independent of any time zone or
-/// calendar, represented as seconds and fractions of seconds at nanosecond
-/// resolution in UTC Epoch time. It is encoded using the Proleptic Gregorian
-/// Calendar which extends the Gregorian calendar backwards to year one. It is
-/// encoded assuming all minutes are 60 seconds long, i.e. leap seconds are
-/// "smeared" so that no leap second table is needed for interpretation. Range
-/// is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-/// restricting to that range, we ensure that we can convert to and from RFC
-/// 3339 date strings. See
-/// [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
+/// A Timestamp represents a point in time independent of any time zone or local
+/// calendar, encoded as a count of seconds and fractions of seconds at
+/// nanosecond resolution. The count is relative to an epoch at UTC midnight on
+/// January 1, 1970, in the proleptic Gregorian calendar which extends the
+/// Gregorian calendar backwards to year one.
+///
+/// All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
+/// second table is needed for interpretation, using a [24-hour linear
+/// smear](https://developers.google.com/time/smear).
+///
+/// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
+/// restricting to that range, we ensure that we can convert to and from [RFC
+/// 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
 ///
 /// # Examples
 ///
@@ -6302,22 +6855,24 @@ class TeardownTag {
 /// always expressed using four digits while {month}, {day}, {hour}, {min}, and
 /// {sec} are zero-padded to two digits each. The fractional seconds, which can
 /// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The
-/// "Z" suffix indicates the timezone ("UTC"); the timezone is required, though
-/// only UTC (as indicated by "Z") is presently supported.
+/// "Z" suffix indicates the timezone ("UTC"); the timezone is required. A
+/// proto3 JSON serializer should always use UTC (as indicated by "Z") when
+/// printing the Timestamp type and a proto3 JSON parser should be able to
+/// accept both UTC and other timezones (as indicated by an offset).
 ///
 /// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC
 /// on January 15, 2017.
 ///
 /// In JavaScript, one can convert a Date object to this format using the
 /// standard
-/// [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString]
+/// [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
 /// method. In Python, a standard `datetime.datetime` object can be converted to
 /// this format using
 /// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with
 /// the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use
 /// the Joda Time's [`ISODateTimeFormat.dateTime()`](
-/// http://joda-time.sourceforge.net/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime())
-/// to obtain a formatter capable of generating timestamps in this format.
+/// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D
+/// ) to obtain a formatter capable of generating timestamps in this format.
 class Timestamp {
   /// Non-negative fractions of a second at nanosecond resolution. Negative
   /// second values with fractions must still have non-negative nanos values
@@ -6468,6 +7023,7 @@ class Trigger {
   /// - "pageview"
   /// - "scrollDepth"
   /// - "timer"
+  /// - "triggerGroup"
   /// - "windowLoaded"
   /// - "youTubeVideo"
   core.String type;
@@ -6735,68 +7291,6 @@ class Trigger {
   }
 }
 
-/// Updates a workspace proposal with patch-like semantics.
-class UpdateWorkspaceProposalRequest {
-  /// When provided, this fingerprint must match the fingerprint of the proposal
-  /// in storage.
-  core.String fingerprint;
-
-  /// If present, a new comment is added to the workspace proposal history.
-  WorkspaceProposalHistoryComment newComment;
-
-  /// If present, the list of reviewers of the workspace proposal is updated.
-  core.List<WorkspaceProposalUser> reviewers;
-
-  /// If present, the status of the workspace proposal is updated.
-  /// Possible string values are:
-  /// - "approved"
-  /// - "cancelled"
-  /// - "completed"
-  /// - "requested"
-  /// - "reviewed"
-  /// - "statusUnspecified"
-  core.String status;
-
-  UpdateWorkspaceProposalRequest();
-
-  UpdateWorkspaceProposalRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
-    }
-    if (_json.containsKey("newComment")) {
-      newComment =
-          new WorkspaceProposalHistoryComment.fromJson(_json["newComment"]);
-    }
-    if (_json.containsKey("reviewers")) {
-      reviewers = (_json["reviewers"] as core.List)
-          .map<WorkspaceProposalUser>(
-              (value) => new WorkspaceProposalUser.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
-    }
-    if (newComment != null) {
-      _json["newComment"] = (newComment).toJson();
-    }
-    if (reviewers != null) {
-      _json["reviewers"] = reviewers.map((value) => (value).toJson()).toList();
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    return _json;
-  }
-}
-
 /// Represents a user's permissions to an account and its container.
 class UserPermission {
   /// GTM Account access permissions.
@@ -6882,6 +7376,9 @@ class Variable {
   /// value is recomputed whenever the variable is modified.
   core.String fingerprint;
 
+  /// Option to convert a variable value to other value.
+  VariableFormatValue formatValue;
+
   /// Variable display name.
   core.String name;
 
@@ -6934,6 +7431,9 @@ class Variable {
     }
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("formatValue")) {
+      formatValue = new VariableFormatValue.fromJson(_json["formatValue"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -6990,6 +7490,9 @@ class Variable {
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
+    if (formatValue != null) {
+      _json["formatValue"] = (formatValue).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -7022,6 +7525,71 @@ class Variable {
     }
     if (workspaceId != null) {
       _json["workspaceId"] = workspaceId;
+    }
+    return _json;
+  }
+}
+
+class VariableFormatValue {
+  /// The option to convert a string-type variable value to either lowercase or
+  /// uppercase.
+  /// Possible string values are:
+  /// - "lowercase"
+  /// - "none"
+  /// - "uppercase"
+  core.String caseConversionType;
+
+  /// The value to convert if a variable value is false.
+  Parameter convertFalseToValue;
+
+  /// The value to convert if a variable value is null.
+  Parameter convertNullToValue;
+
+  /// The value to convert if a variable value is true.
+  Parameter convertTrueToValue;
+
+  /// The value to convert if a variable value is undefined.
+  Parameter convertUndefinedToValue;
+
+  VariableFormatValue();
+
+  VariableFormatValue.fromJson(core.Map _json) {
+    if (_json.containsKey("caseConversionType")) {
+      caseConversionType = _json["caseConversionType"];
+    }
+    if (_json.containsKey("convertFalseToValue")) {
+      convertFalseToValue =
+          new Parameter.fromJson(_json["convertFalseToValue"]);
+    }
+    if (_json.containsKey("convertNullToValue")) {
+      convertNullToValue = new Parameter.fromJson(_json["convertNullToValue"]);
+    }
+    if (_json.containsKey("convertTrueToValue")) {
+      convertTrueToValue = new Parameter.fromJson(_json["convertTrueToValue"]);
+    }
+    if (_json.containsKey("convertUndefinedToValue")) {
+      convertUndefinedToValue =
+          new Parameter.fromJson(_json["convertUndefinedToValue"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (caseConversionType != null) {
+      _json["caseConversionType"] = caseConversionType;
+    }
+    if (convertFalseToValue != null) {
+      _json["convertFalseToValue"] = (convertFalseToValue).toJson();
+    }
+    if (convertNullToValue != null) {
+      _json["convertNullToValue"] = (convertNullToValue).toJson();
+    }
+    if (convertTrueToValue != null) {
+      _json["convertTrueToValue"] = (convertTrueToValue).toJson();
+    }
+    if (convertUndefinedToValue != null) {
+      _json["convertUndefinedToValue"] = (convertUndefinedToValue).toJson();
     }
     return _json;
   }
@@ -7109,260 +7677,6 @@ class Workspace {
     }
     if (workspaceId != null) {
       _json["workspaceId"] = workspaceId;
-    }
-    return _json;
-  }
-}
-
-/// A workspace proposal represents an ongoing review of workspace changes in an
-/// effort to gain approval for container version creation.
-class WorkspaceProposal {
-  /// List of authors for the workspace proposal.
-  core.List<WorkspaceProposalUser> authors;
-
-  /// The fingerprint of the GTM workspace proposal as computed at storage time.
-  /// This value is recomputed whenever the proposal is modified.
-  core.String fingerprint;
-
-  /// Records the history of comments and status changes.
-  core.List<WorkspaceProposalHistory> history;
-
-  /// GTM workspace proposal's relative path.
-  core.String path;
-
-  /// Lists of reviewers for the workspace proposal.
-  core.List<WorkspaceProposalUser> reviewers;
-
-  /// The status of the workspace proposal as it goes through review.
-  /// Possible string values are:
-  /// - "approved"
-  /// - "cancelled"
-  /// - "completed"
-  /// - "requested"
-  /// - "reviewed"
-  /// - "statusUnspecified"
-  core.String status;
-
-  WorkspaceProposal();
-
-  WorkspaceProposal.fromJson(core.Map _json) {
-    if (_json.containsKey("authors")) {
-      authors = (_json["authors"] as core.List)
-          .map<WorkspaceProposalUser>(
-              (value) => new WorkspaceProposalUser.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("fingerprint")) {
-      fingerprint = _json["fingerprint"];
-    }
-    if (_json.containsKey("history")) {
-      history = (_json["history"] as core.List)
-          .map<WorkspaceProposalHistory>(
-              (value) => new WorkspaceProposalHistory.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
-    }
-    if (_json.containsKey("reviewers")) {
-      reviewers = (_json["reviewers"] as core.List)
-          .map<WorkspaceProposalUser>(
-              (value) => new WorkspaceProposalUser.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (authors != null) {
-      _json["authors"] = authors.map((value) => (value).toJson()).toList();
-    }
-    if (fingerprint != null) {
-      _json["fingerprint"] = fingerprint;
-    }
-    if (history != null) {
-      _json["history"] = history.map((value) => (value).toJson()).toList();
-    }
-    if (path != null) {
-      _json["path"] = path;
-    }
-    if (reviewers != null) {
-      _json["reviewers"] = reviewers.map((value) => (value).toJson()).toList();
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    return _json;
-  }
-}
-
-/// A history event that represents a comment or status change in the proposal.
-class WorkspaceProposalHistory {
-  /// A user or reviewer comment.
-  WorkspaceProposalHistoryComment comment;
-
-  /// The party responsible for the change in history.
-  WorkspaceProposalUser createdBy;
-
-  /// When this history event was added to the workspace proposal.
-  Timestamp createdTimestamp;
-
-  /// A change in the proposal's status.
-  WorkspaceProposalHistoryStatusChange statusChange;
-
-  /// The history type distinguishing between comments and status changes.
-  /// Possible string values are:
-  /// - "comment"
-  /// - "statusChange"
-  /// - "unspecified"
-  core.String type;
-
-  WorkspaceProposalHistory();
-
-  WorkspaceProposalHistory.fromJson(core.Map _json) {
-    if (_json.containsKey("comment")) {
-      comment = new WorkspaceProposalHistoryComment.fromJson(_json["comment"]);
-    }
-    if (_json.containsKey("createdBy")) {
-      createdBy = new WorkspaceProposalUser.fromJson(_json["createdBy"]);
-    }
-    if (_json.containsKey("createdTimestamp")) {
-      createdTimestamp = new Timestamp.fromJson(_json["createdTimestamp"]);
-    }
-    if (_json.containsKey("statusChange")) {
-      statusChange = new WorkspaceProposalHistoryStatusChange.fromJson(
-          _json["statusChange"]);
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (comment != null) {
-      _json["comment"] = (comment).toJson();
-    }
-    if (createdBy != null) {
-      _json["createdBy"] = (createdBy).toJson();
-    }
-    if (createdTimestamp != null) {
-      _json["createdTimestamp"] = (createdTimestamp).toJson();
-    }
-    if (statusChange != null) {
-      _json["statusChange"] = (statusChange).toJson();
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-/// A comment from the reviewer or author.
-class WorkspaceProposalHistoryComment {
-  /// The contents of the reviewer or author comment.
-  core.String content;
-
-  WorkspaceProposalHistoryComment();
-
-  WorkspaceProposalHistoryComment.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (content != null) {
-      _json["content"] = content;
-    }
-    return _json;
-  }
-}
-
-/// A change in the proposal's status.
-class WorkspaceProposalHistoryStatusChange {
-  /// The new proposal status after that status change.
-  /// Possible string values are:
-  /// - "approved"
-  /// - "cancelled"
-  /// - "completed"
-  /// - "requested"
-  /// - "reviewed"
-  /// - "statusUnspecified"
-  core.String newStatus;
-
-  /// The old proposal status before the status change.
-  /// Possible string values are:
-  /// - "approved"
-  /// - "cancelled"
-  /// - "completed"
-  /// - "requested"
-  /// - "reviewed"
-  /// - "statusUnspecified"
-  core.String oldStatus;
-
-  WorkspaceProposalHistoryStatusChange();
-
-  WorkspaceProposalHistoryStatusChange.fromJson(core.Map _json) {
-    if (_json.containsKey("newStatus")) {
-      newStatus = _json["newStatus"];
-    }
-    if (_json.containsKey("oldStatus")) {
-      oldStatus = _json["oldStatus"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (newStatus != null) {
-      _json["newStatus"] = newStatus;
-    }
-    if (oldStatus != null) {
-      _json["oldStatus"] = oldStatus;
-    }
-    return _json;
-  }
-}
-
-/// Represents an external user or internal Google Tag Manager system.
-class WorkspaceProposalUser {
-  /// Gaia id associated with a user, absent for the Google Tag Manager system.
-  core.String gaiaId;
-
-  /// User type distinguishes between a user and the Google Tag Manager system.
-  /// Possible string values are:
-  /// - "gaiaId"
-  /// - "system"
-  core.String type;
-
-  WorkspaceProposalUser();
-
-  WorkspaceProposalUser.fromJson(core.Map _json) {
-    if (_json.containsKey("gaiaId")) {
-      gaiaId = _json["gaiaId"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (gaiaId != null) {
-      _json["gaiaId"] = gaiaId;
-    }
-    if (type != null) {
-      _json["type"] = type;
     }
     return _json;
   }

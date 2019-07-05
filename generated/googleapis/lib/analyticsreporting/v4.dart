@@ -28,6 +28,8 @@ class AnalyticsreportingApi {
   final commons.ApiRequester _requester;
 
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
+  UserActivityResourceApi get userActivity =>
+      new UserActivityResourceApi(_requester);
 
   AnalyticsreportingApi(http.Client client,
       {core.String rootUrl = "https://analyticsreporting.googleapis.com/",
@@ -82,6 +84,254 @@ class ReportsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new GetReportsResponse.fromJson(data));
+  }
+}
+
+class UserActivityResourceApi {
+  final commons.ApiRequester _requester;
+
+  UserActivityResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Returns User Activity data.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchUserActivityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchUserActivityResponse> search(
+      SearchUserActivityRequest request,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v4/userActivity:search';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SearchUserActivityResponse.fromJson(data));
+  }
+}
+
+/// An Activity represents data for an activity of a user. Note that an
+/// Activity is different from a hit.
+/// A hit might result in multiple Activity's. For example, if a hit
+/// includes a transaction and a goal completion, there will be two
+/// Activity protos for this hit, one for ECOMMERCE and one for GOAL.
+/// Conversely, multiple hits can also construct one Activity. In classic
+/// e-commerce, data for one transaction might be sent through multiple hits.
+/// These hits will be merged into one ECOMMERCE Activity.
+class Activity {
+  /// Timestamp of the activity.
+  core.String activityTime;
+
+  /// Type of this activity.
+  /// Possible string values are:
+  /// - "ACTIVITY_TYPE_UNSPECIFIED" : ActivityType will never have this value in
+  /// the response. Using this type in
+  /// the request will result in an error.
+  /// - "PAGEVIEW" : Used when the activity resulted out of a visitor viewing a
+  /// page.
+  /// - "SCREENVIEW" : Used when the activity resulted out of a visitor using an
+  /// application on a
+  /// mobile device.
+  /// - "GOAL" : Used to denote that a goal type activity.
+  /// - "ECOMMERCE" : An e-commerce transaction was performed by the visitor on
+  /// the page.
+  /// - "EVENT" : Used when the activity is an event.
+  core.String activityType;
+
+  /// This will be set if `activity_type` equals `SCREEN_VIEW`.
+  ScreenviewData appview;
+
+  /// For manual campaign tracking, it is the value of the utm_campaign campaign
+  /// tracking parameter. For AdWords autotagging, it is the name(s) of the
+  /// online ad campaign(s) you use for the property. If you use neither, its
+  /// value is (not set).
+  core.String campaign;
+
+  /// The Channel Group associated with an end user's session for this View
+  /// (defined by the View's Channel Groupings).
+  core.String channelGrouping;
+
+  /// A list of all custom dimensions associated with this activity.
+  core.List<CustomDimension> customDimension;
+
+  /// This will be set if `activity_type` equals `ECOMMERCE`.
+  EcommerceData ecommerce;
+
+  /// This field contains all the details pertaining to an event and will be
+  /// set if `activity_type` equals `EVENT`.
+  EventData event;
+
+  /// This field contains a list of all the goals that were reached in this
+  /// activity when `activity_type` equals `GOAL`.
+  GoalSetData goals;
+
+  /// The hostname from which the tracking request was made.
+  core.String hostname;
+
+  /// For manual campaign tracking, it is the value of the utm_term campaign
+  /// tracking parameter. For AdWords traffic, it contains the best matching
+  /// targeting criteria. For the display network, where multiple targeting
+  /// criteria could have caused the ad to show up, it returns the best matching
+  /// targeting criteria as selected by Ads. This could be display_keyword, site
+  /// placement, boomuserlist, user_interest, age, or gender. Otherwise its
+  /// value
+  /// is (not set).
+  core.String keyword;
+
+  /// The first page in users' sessions, or the landing page.
+  core.String landingPagePath;
+
+  /// The type of referrals. For manual campaign tracking, it is the value of
+  /// the
+  /// utm_medium campaign tracking parameter. For AdWords autotagging, it is
+  /// cpc.
+  /// If users came from a search engine detected by Google Analytics, it is
+  /// organic. If the referrer is not a search engine, it is referral. If users
+  /// came directly to the property and document.referrer is empty, its value is
+  /// (none).
+  core.String medium;
+
+  /// This will be set if `activity_type` equals `PAGEVIEW`. This field
+  /// contains all the details about the visitor and the page that was visited.
+  PageviewData pageview;
+
+  /// The source of referrals. For manual campaign tracking, it is the value of
+  /// the utm_source campaign tracking parameter. For AdWords autotagging, it is
+  /// google. If you use neither, it is the domain of the source
+  /// (e.g., document.referrer) referring the users. It may also contain a port
+  /// address. If users arrived without a referrer, its value is (direct).
+  core.String source;
+
+  Activity();
+
+  Activity.fromJson(core.Map _json) {
+    if (_json.containsKey("activityTime")) {
+      activityTime = _json["activityTime"];
+    }
+    if (_json.containsKey("activityType")) {
+      activityType = _json["activityType"];
+    }
+    if (_json.containsKey("appview")) {
+      appview = new ScreenviewData.fromJson(_json["appview"]);
+    }
+    if (_json.containsKey("campaign")) {
+      campaign = _json["campaign"];
+    }
+    if (_json.containsKey("channelGrouping")) {
+      channelGrouping = _json["channelGrouping"];
+    }
+    if (_json.containsKey("customDimension")) {
+      customDimension = (_json["customDimension"] as core.List)
+          .map<CustomDimension>((value) => new CustomDimension.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("ecommerce")) {
+      ecommerce = new EcommerceData.fromJson(_json["ecommerce"]);
+    }
+    if (_json.containsKey("event")) {
+      event = new EventData.fromJson(_json["event"]);
+    }
+    if (_json.containsKey("goals")) {
+      goals = new GoalSetData.fromJson(_json["goals"]);
+    }
+    if (_json.containsKey("hostname")) {
+      hostname = _json["hostname"];
+    }
+    if (_json.containsKey("keyword")) {
+      keyword = _json["keyword"];
+    }
+    if (_json.containsKey("landingPagePath")) {
+      landingPagePath = _json["landingPagePath"];
+    }
+    if (_json.containsKey("medium")) {
+      medium = _json["medium"];
+    }
+    if (_json.containsKey("pageview")) {
+      pageview = new PageviewData.fromJson(_json["pageview"]);
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (activityTime != null) {
+      _json["activityTime"] = activityTime;
+    }
+    if (activityType != null) {
+      _json["activityType"] = activityType;
+    }
+    if (appview != null) {
+      _json["appview"] = (appview).toJson();
+    }
+    if (campaign != null) {
+      _json["campaign"] = campaign;
+    }
+    if (channelGrouping != null) {
+      _json["channelGrouping"] = channelGrouping;
+    }
+    if (customDimension != null) {
+      _json["customDimension"] =
+          customDimension.map((value) => (value).toJson()).toList();
+    }
+    if (ecommerce != null) {
+      _json["ecommerce"] = (ecommerce).toJson();
+    }
+    if (event != null) {
+      _json["event"] = (event).toJson();
+    }
+    if (goals != null) {
+      _json["goals"] = (goals).toJson();
+    }
+    if (hostname != null) {
+      _json["hostname"] = hostname;
+    }
+    if (keyword != null) {
+      _json["keyword"] = keyword;
+    }
+    if (landingPagePath != null) {
+      _json["landingPagePath"] = landingPagePath;
+    }
+    if (medium != null) {
+      _json["medium"] = medium;
+    }
+    if (pageview != null) {
+      _json["pageview"] = (pageview).toJson();
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    return _json;
   }
 }
 
@@ -249,6 +499,39 @@ class ColumnHeader {
     }
     if (metricHeader != null) {
       _json["metricHeader"] = (metricHeader).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Custom dimension.
+class CustomDimension {
+  /// Slot number of custom dimension.
+  core.int index;
+
+  /// Value of the custom dimension. Default value (i.e. empty string) indicates
+  /// clearing sesion/visitor scope custom dimension value.
+  core.String value;
+
+  CustomDimension();
+
+  CustomDimension.fromJson(core.Map _json) {
+    if (_json.containsKey("index")) {
+      index = _json["index"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (index != null) {
+      _json["index"] = index;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -574,6 +857,133 @@ class DynamicSegment {
   }
 }
 
+/// E-commerce details associated with the user activity.
+class EcommerceData {
+  /// Action associated with this e-commerce action.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Action type is not known.
+  /// - "CLICK" : Click through of product lists.
+  /// - "DETAILS_VIEW" : Product detail views.
+  /// - "ADD_TO_CART" : Add product(s) to cart.
+  /// - "REMOVE_FROM_CART" : Remove product(s) from cart.
+  /// - "CHECKOUT" : Check out.
+  /// - "PAYMENT" : Completed purchase.
+  /// - "REFUND" : Refund of purchase.
+  /// - "CHECKOUT_OPTION" : Checkout options.
+  core.String actionType;
+
+  /// The type of this e-commerce activity.
+  /// Possible string values are:
+  /// - "ECOMMERCE_TYPE_UNSPECIFIED" : Used when the e-commerce activity type is
+  /// unspecified.
+  /// - "CLASSIC" : Used when activity has classic (non-enhanced) e-commerce
+  /// information.
+  /// - "ENHANCED" : Used when activity has enhanced e-commerce information.
+  core.String ecommerceType;
+
+  /// Details of the products in this transaction.
+  core.List<ProductData> products;
+
+  /// Transaction details of this e-commerce action.
+  TransactionData transaction;
+
+  EcommerceData();
+
+  EcommerceData.fromJson(core.Map _json) {
+    if (_json.containsKey("actionType")) {
+      actionType = _json["actionType"];
+    }
+    if (_json.containsKey("ecommerceType")) {
+      ecommerceType = _json["ecommerceType"];
+    }
+    if (_json.containsKey("products")) {
+      products = (_json["products"] as core.List)
+          .map<ProductData>((value) => new ProductData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("transaction")) {
+      transaction = new TransactionData.fromJson(_json["transaction"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (actionType != null) {
+      _json["actionType"] = actionType;
+    }
+    if (ecommerceType != null) {
+      _json["ecommerceType"] = ecommerceType;
+    }
+    if (products != null) {
+      _json["products"] = products.map((value) => (value).toJson()).toList();
+    }
+    if (transaction != null) {
+      _json["transaction"] = (transaction).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents all the details pertaining to an event.
+class EventData {
+  /// Type of interaction with the object. Eg: 'play'.
+  core.String eventAction;
+
+  /// The object on the page that was interacted with. Eg: 'Video'.
+  core.String eventCategory;
+
+  /// Number of such events in this activity.
+  core.String eventCount;
+
+  /// Label attached with the event.
+  core.String eventLabel;
+
+  /// Numeric value associated with the event.
+  core.String eventValue;
+
+  EventData();
+
+  EventData.fromJson(core.Map _json) {
+    if (_json.containsKey("eventAction")) {
+      eventAction = _json["eventAction"];
+    }
+    if (_json.containsKey("eventCategory")) {
+      eventCategory = _json["eventCategory"];
+    }
+    if (_json.containsKey("eventCount")) {
+      eventCount = _json["eventCount"];
+    }
+    if (_json.containsKey("eventLabel")) {
+      eventLabel = _json["eventLabel"];
+    }
+    if (_json.containsKey("eventValue")) {
+      eventValue = _json["eventValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (eventAction != null) {
+      _json["eventAction"] = eventAction;
+    }
+    if (eventCategory != null) {
+      _json["eventCategory"] = eventCategory;
+    }
+    if (eventCount != null) {
+      _json["eventCount"] = eventCount;
+    }
+    if (eventLabel != null) {
+      _json["eventLabel"] = eventLabel;
+    }
+    if (eventValue != null) {
+      _json["eventValue"] = eventValue;
+    }
+    return _json;
+  }
+}
+
 /// The batch request containing multiple report request.
 class GetReportsRequest {
   /// Requests, each request will have a separate response.
@@ -663,6 +1073,117 @@ class GetReportsResponse {
     }
     if (resourceQuotasRemaining != null) {
       _json["resourceQuotasRemaining"] = (resourceQuotasRemaining).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents all the details pertaining to a goal.
+class GoalData {
+  /// URL of the page where this goal was completed.
+  core.String goalCompletionLocation;
+
+  /// Total number of goal completions in this activity.
+  core.String goalCompletions;
+
+  /// This identifies the goal as configured for the profile.
+  core.int goalIndex;
+
+  /// Name of the goal.
+  core.String goalName;
+
+  /// URL of the page one step prior to the goal completion.
+  core.String goalPreviousStep1;
+
+  /// URL of the page two steps prior to the goal completion.
+  core.String goalPreviousStep2;
+
+  /// URL of the page three steps prior to the goal completion.
+  core.String goalPreviousStep3;
+
+  /// Value in this goal.
+  core.double goalValue;
+
+  GoalData();
+
+  GoalData.fromJson(core.Map _json) {
+    if (_json.containsKey("goalCompletionLocation")) {
+      goalCompletionLocation = _json["goalCompletionLocation"];
+    }
+    if (_json.containsKey("goalCompletions")) {
+      goalCompletions = _json["goalCompletions"];
+    }
+    if (_json.containsKey("goalIndex")) {
+      goalIndex = _json["goalIndex"];
+    }
+    if (_json.containsKey("goalName")) {
+      goalName = _json["goalName"];
+    }
+    if (_json.containsKey("goalPreviousStep1")) {
+      goalPreviousStep1 = _json["goalPreviousStep1"];
+    }
+    if (_json.containsKey("goalPreviousStep2")) {
+      goalPreviousStep2 = _json["goalPreviousStep2"];
+    }
+    if (_json.containsKey("goalPreviousStep3")) {
+      goalPreviousStep3 = _json["goalPreviousStep3"];
+    }
+    if (_json.containsKey("goalValue")) {
+      goalValue = _json["goalValue"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (goalCompletionLocation != null) {
+      _json["goalCompletionLocation"] = goalCompletionLocation;
+    }
+    if (goalCompletions != null) {
+      _json["goalCompletions"] = goalCompletions;
+    }
+    if (goalIndex != null) {
+      _json["goalIndex"] = goalIndex;
+    }
+    if (goalName != null) {
+      _json["goalName"] = goalName;
+    }
+    if (goalPreviousStep1 != null) {
+      _json["goalPreviousStep1"] = goalPreviousStep1;
+    }
+    if (goalPreviousStep2 != null) {
+      _json["goalPreviousStep2"] = goalPreviousStep2;
+    }
+    if (goalPreviousStep3 != null) {
+      _json["goalPreviousStep3"] = goalPreviousStep3;
+    }
+    if (goalValue != null) {
+      _json["goalValue"] = goalValue;
+    }
+    return _json;
+  }
+}
+
+/// Represents a set of goals that were reached in an activity.
+class GoalSetData {
+  /// All the goals that were reached in the current activity.
+  core.List<GoalData> goals;
+
+  GoalSetData();
+
+  GoalSetData.fromJson(core.Map _json) {
+    if (_json.containsKey("goals")) {
+      goals = (_json["goals"] as core.List)
+          .map<GoalData>((value) => new GoalData.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (goals != null) {
+      _json["goals"] = goals.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1017,6 +1538,38 @@ class OrderBy {
   }
 }
 
+/// Represents details collected when the visitor views a page.
+class PageviewData {
+  /// The URL of the page that the visitor viewed.
+  core.String pagePath;
+
+  /// The title of the page that the visitor viewed.
+  core.String pageTitle;
+
+  PageviewData();
+
+  PageviewData.fromJson(core.Map _json) {
+    if (_json.containsKey("pagePath")) {
+      pagePath = _json["pagePath"];
+    }
+    if (_json.containsKey("pageTitle")) {
+      pageTitle = _json["pageTitle"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pagePath != null) {
+      _json["pagePath"] = pagePath;
+    }
+    if (pageTitle != null) {
+      _json["pageTitle"] = pageTitle;
+    }
+    return _json;
+  }
+}
+
 /// The Pivot describes the pivot section in the request.
 /// The Pivot helps rearrange the information in the table for certain reports
 /// by pivoting your data on a second dimension.
@@ -1207,6 +1760,57 @@ class PivotValueRegion {
         new core.Map<core.String, core.Object>();
     if (values != null) {
       _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/// Details of the products in an e-commerce transaction.
+class ProductData {
+  /// The total revenue from purchased product items.
+  core.double itemRevenue;
+
+  /// The product name, supplied by the e-commerce tracking application, for
+  /// the purchased items.
+  core.String productName;
+
+  /// Total number of this product units in the transaction.
+  core.String productQuantity;
+
+  /// Unique code that represents the product.
+  core.String productSku;
+
+  ProductData();
+
+  ProductData.fromJson(core.Map _json) {
+    if (_json.containsKey("itemRevenue")) {
+      itemRevenue = _json["itemRevenue"].toDouble();
+    }
+    if (_json.containsKey("productName")) {
+      productName = _json["productName"];
+    }
+    if (_json.containsKey("productQuantity")) {
+      productQuantity = _json["productQuantity"];
+    }
+    if (_json.containsKey("productSku")) {
+      productSku = _json["productSku"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (itemRevenue != null) {
+      _json["itemRevenue"] = itemRevenue;
+    }
+    if (productName != null) {
+      _json["productName"] = productName;
+    }
+    if (productQuantity != null) {
+      _json["productQuantity"] = productQuantity;
+    }
+    if (productSku != null) {
+      _json["productSku"] = productSku;
     }
     return _json;
   }
@@ -1707,6 +2311,198 @@ class ResourceQuotasRemaining {
   }
 }
 
+class ScreenviewData {
+  /// The application name.
+  core.String appName;
+
+  /// Mobile manufacturer or branded name. Eg: "Google", "Apple" etc.
+  core.String mobileDeviceBranding;
+
+  /// Mobile device model. Eg: "Pixel", "iPhone" etc.
+  core.String mobileDeviceModel;
+
+  /// The name of the screen.
+  core.String screenName;
+
+  ScreenviewData();
+
+  ScreenviewData.fromJson(core.Map _json) {
+    if (_json.containsKey("appName")) {
+      appName = _json["appName"];
+    }
+    if (_json.containsKey("mobileDeviceBranding")) {
+      mobileDeviceBranding = _json["mobileDeviceBranding"];
+    }
+    if (_json.containsKey("mobileDeviceModel")) {
+      mobileDeviceModel = _json["mobileDeviceModel"];
+    }
+    if (_json.containsKey("screenName")) {
+      screenName = _json["screenName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appName != null) {
+      _json["appName"] = appName;
+    }
+    if (mobileDeviceBranding != null) {
+      _json["mobileDeviceBranding"] = mobileDeviceBranding;
+    }
+    if (mobileDeviceModel != null) {
+      _json["mobileDeviceModel"] = mobileDeviceModel;
+    }
+    if (screenName != null) {
+      _json["screenName"] = screenName;
+    }
+    return _json;
+  }
+}
+
+/// The request to fetch User Report from Reporting API `userActivity:get` call.
+class SearchUserActivityRequest {
+  /// Set of all activity types being requested. Only acvities matching these
+  /// types will be returned in the response. If empty, all activies will be
+  /// returned.
+  core.List<core.String> activityTypes;
+
+  /// Date range for which to retrieve the user activity. If a date range is not
+  /// provided, the default date range is (startDate: current date - 7 days,
+  /// endDate: current date - 1 day).
+  DateRange dateRange;
+
+  /// Page size is for paging and specifies the maximum number of returned rows.
+  /// Page size should be > 0. If the value is 0 or if the field isn't
+  /// specified,
+  /// the request returns the default of 1000 rows per page.
+  core.int pageSize;
+
+  /// A continuation token to get the next page of the results. Adding this to
+  /// the request will return the rows after the pageToken. The pageToken should
+  /// be the value returned in the nextPageToken parameter in the response to
+  /// the [SearchUserActivityRequest](#SearchUserActivityRequest) request.
+  core.String pageToken;
+
+  /// Required. Unique user Id to query for. Every
+  /// [SearchUserActivityRequest](#SearchUserActivityRequest) must contain this
+  /// field.
+  User user;
+
+  /// Required. The Analytics
+  /// [view ID](https://support.google.com/analytics/answer/1009618)
+  /// from which to retrieve data. Every
+  /// [SearchUserActivityRequest](#SearchUserActivityRequest) must contain the
+  /// `viewId`.
+  core.String viewId;
+
+  SearchUserActivityRequest();
+
+  SearchUserActivityRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("activityTypes")) {
+      activityTypes = (_json["activityTypes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("dateRange")) {
+      dateRange = new DateRange.fromJson(_json["dateRange"]);
+    }
+    if (_json.containsKey("pageSize")) {
+      pageSize = _json["pageSize"];
+    }
+    if (_json.containsKey("pageToken")) {
+      pageToken = _json["pageToken"];
+    }
+    if (_json.containsKey("user")) {
+      user = new User.fromJson(_json["user"]);
+    }
+    if (_json.containsKey("viewId")) {
+      viewId = _json["viewId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (activityTypes != null) {
+      _json["activityTypes"] = activityTypes;
+    }
+    if (dateRange != null) {
+      _json["dateRange"] = (dateRange).toJson();
+    }
+    if (pageSize != null) {
+      _json["pageSize"] = pageSize;
+    }
+    if (pageToken != null) {
+      _json["pageToken"] = pageToken;
+    }
+    if (user != null) {
+      _json["user"] = (user).toJson();
+    }
+    if (viewId != null) {
+      _json["viewId"] = viewId;
+    }
+    return _json;
+  }
+}
+
+/// The response from `userActivity:get` call.
+class SearchUserActivityResponse {
+  /// This token should be passed to
+  /// [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the
+  /// next page.
+  core.String nextPageToken;
+
+  /// This field represents the
+  /// [sampling rate](https://support.google.com/analytics/answer/2637192) for
+  /// the given request and is a number between 0.0 to 1.0. See
+  /// [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
+  /// for details.
+  core.double sampleRate;
+
+  /// Each record represents a session (device details, duration, etc).
+  core.List<UserActivitySession> sessions;
+
+  /// Total rows returned by this query (across different pages).
+  core.int totalRows;
+
+  SearchUserActivityResponse();
+
+  SearchUserActivityResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("sampleRate")) {
+      sampleRate = _json["sampleRate"].toDouble();
+    }
+    if (_json.containsKey("sessions")) {
+      sessions = (_json["sessions"] as core.List)
+          .map<UserActivitySession>(
+              (value) => new UserActivitySession.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("totalRows")) {
+      totalRows = _json["totalRows"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (sampleRate != null) {
+      _json["sampleRate"] = sampleRate;
+    }
+    if (sessions != null) {
+      _json["sessions"] = sessions.map((value) => (value).toJson()).toList();
+    }
+    if (totalRows != null) {
+      _json["totalRows"] = totalRows;
+    }
+    return _json;
+  }
+}
+
 /// The segment definition, if the report needs to be segmented.
 /// A Segment is a subset of the Analytics data. For example, of the entire
 /// set of users, one Segment might be users from a particular country or city.
@@ -2177,6 +2973,175 @@ class SimpleSegment {
     if (orFiltersForSegment != null) {
       _json["orFiltersForSegment"] =
           orFiltersForSegment.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Represents details collected when the visitor performs a transaction on the
+/// page.
+class TransactionData {
+  /// The transaction ID, supplied by the e-commerce tracking method, for the
+  /// purchase in the shopping cart.
+  core.String transactionId;
+
+  /// The total sale revenue (excluding shipping and tax) of the transaction.
+  core.double transactionRevenue;
+
+  /// Total cost of shipping.
+  core.double transactionShipping;
+
+  /// Total tax for the transaction.
+  core.double transactionTax;
+
+  TransactionData();
+
+  TransactionData.fromJson(core.Map _json) {
+    if (_json.containsKey("transactionId")) {
+      transactionId = _json["transactionId"];
+    }
+    if (_json.containsKey("transactionRevenue")) {
+      transactionRevenue = _json["transactionRevenue"].toDouble();
+    }
+    if (_json.containsKey("transactionShipping")) {
+      transactionShipping = _json["transactionShipping"].toDouble();
+    }
+    if (_json.containsKey("transactionTax")) {
+      transactionTax = _json["transactionTax"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (transactionId != null) {
+      _json["transactionId"] = transactionId;
+    }
+    if (transactionRevenue != null) {
+      _json["transactionRevenue"] = transactionRevenue;
+    }
+    if (transactionShipping != null) {
+      _json["transactionShipping"] = transactionShipping;
+    }
+    if (transactionTax != null) {
+      _json["transactionTax"] = transactionTax;
+    }
+    return _json;
+  }
+}
+
+/// Contains information to identify a particular user uniquely.
+class User {
+  /// Type of the user in the request. The field `userId` is associated with
+  /// this
+  /// type.
+  /// Possible string values are:
+  /// - "USER_ID_TYPE_UNSPECIFIED" : When the User Id Type is not specified, the
+  /// default type used will be
+  /// CLIENT_ID.
+  /// - "USER_ID" : A single user, like a signed-in user account, that may
+  /// interact with
+  /// content across one or more devices and / or browser instances.
+  /// - "CLIENT_ID" : Analytics assigned client_id.
+  core.String type;
+
+  /// Unique Id of the user for which the data is being requested.
+  core.String userId;
+
+  User();
+
+  User.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("userId")) {
+      userId = _json["userId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (userId != null) {
+      _json["userId"] = userId;
+    }
+    return _json;
+  }
+}
+
+/// This represents a user session performed on a specific device at a certain
+/// time over a period of time.
+class UserActivitySession {
+  /// Represents a detailed view into each of the activity in this session.
+  core.List<Activity> activities;
+
+  /// The data source of a hit. By default, hits sent from analytics.js are
+  /// reported as "web" and hits sent from the mobile SDKs are reported as
+  /// "app".
+  /// These values can be overridden in the Measurement Protocol.
+  core.String dataSource;
+
+  /// The type of device used: "mobile", "tablet" etc.
+  core.String deviceCategory;
+
+  /// Platform on which the activity happened: "android", "ios" etc.
+  core.String platform;
+
+  /// Date of this session in ISO-8601 format.
+  core.String sessionDate;
+
+  /// Unique ID of the session.
+  core.String sessionId;
+
+  UserActivitySession();
+
+  UserActivitySession.fromJson(core.Map _json) {
+    if (_json.containsKey("activities")) {
+      activities = (_json["activities"] as core.List)
+          .map<Activity>((value) => new Activity.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("dataSource")) {
+      dataSource = _json["dataSource"];
+    }
+    if (_json.containsKey("deviceCategory")) {
+      deviceCategory = _json["deviceCategory"];
+    }
+    if (_json.containsKey("platform")) {
+      platform = _json["platform"];
+    }
+    if (_json.containsKey("sessionDate")) {
+      sessionDate = _json["sessionDate"];
+    }
+    if (_json.containsKey("sessionId")) {
+      sessionId = _json["sessionId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (activities != null) {
+      _json["activities"] =
+          activities.map((value) => (value).toJson()).toList();
+    }
+    if (dataSource != null) {
+      _json["dataSource"] = dataSource;
+    }
+    if (deviceCategory != null) {
+      _json["deviceCategory"] = deviceCategory;
+    }
+    if (platform != null) {
+      _json["platform"] = platform;
+    }
+    if (sessionDate != null) {
+      _json["sessionDate"] = sessionDate;
+    }
+    if (sessionId != null) {
+      _json["sessionId"] = sessionId;
     }
     return _json;
   }

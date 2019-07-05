@@ -391,19 +391,19 @@ class Account {
 /// A single Android device.
 class AndroidDevice {
   /// Required. The id of the Android device to be used.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String androidModelId;
 
   /// Required. The id of the Android OS version to be used.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String androidVersionId;
 
   /// Required. The locale the test device used for testing.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String locale;
 
   /// Required. How the device is oriented during the test.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String orientation;
 
   AndroidDevice();
@@ -649,19 +649,19 @@ class AndroidInstrumentationTest {
 /// (e.g., incompatible models/versions) are ignored.
 class AndroidMatrix {
   /// Required. The ids of the set of Android device to be used.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> androidModelIds;
 
   /// Required. The ids of the set of Android OS version to be used.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> androidVersionIds;
 
   /// Required. The set of locales the test device will enable for testing.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> locales;
 
   /// Required. The set of orientations to test with.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.List<core.String> orientations;
 
   AndroidMatrix();
@@ -1245,6 +1245,9 @@ class ApkManifest {
   /// "com.example.foo".
   core.String packageName;
 
+  /// Specifies the API Level on which the application is designed to run.
+  core.int targetSdkVersion;
+
   ApkManifest();
 
   ApkManifest.fromJson(core.Map _json) {
@@ -1264,6 +1267,9 @@ class ApkManifest {
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
+    }
+    if (_json.containsKey("targetSdkVersion")) {
+      targetSdkVersion = _json["targetSdkVersion"];
     }
   }
 
@@ -1285,6 +1291,9 @@ class ApkManifest {
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
+    }
+    if (targetSdkVersion != null) {
+      _json["targetSdkVersion"] = targetSdkVersion;
     }
     return _json;
   }
@@ -1513,10 +1522,10 @@ class Date {
 
 /// A single device file description.
 class DeviceFile {
-  /// A reference to an opaque binary blob file
+  /// A reference to an opaque binary blob file.
   ObbFile obbFile;
 
-  /// A reference to a regular file
+  /// A reference to a regular file.
   RegularFile regularFile;
 
   DeviceFile();
@@ -1732,8 +1741,7 @@ class GetApkDetailsResponse {
 }
 
 /// Enables automatic Google account login.
-/// If set, the service will automatically generate a Google test account and
-/// add
+/// If set, the service automatically generates a Google test account and adds
 /// it to the device, before executing the test. Note that test accounts might
 /// be
 /// reused.
@@ -1823,19 +1831,19 @@ class IntentFilter {
 /// A single iOS device.
 class IosDevice {
   /// Required. The id of the iOS device to be used.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String iosModelId;
 
   /// Required. The id of the iOS major software version to be used.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String iosVersionId;
 
   /// Required. The locale the test device used for testing.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String locale;
 
   /// Required. How the device is oriented during the test.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   core.String orientation;
 
   IosDevice();
@@ -2076,7 +2084,7 @@ class IosRuntimeConfiguration {
   }
 }
 
-/// A description of how to set up an iOS device prior to a test.
+/// A description of how to set up an iOS device prior to running the test.
 class IosTestSetup {
   /// The network traffic profile used for running the test.
   /// Available network profiles can be queried by using the
@@ -2183,7 +2191,7 @@ class IosXcTest {
   FileReference testsZip;
 
   /// The Xcode version that should be used for the test.
-  /// Use the EnvironmentDiscoveryService to get supported options.
+  /// Use the TestEnvironmentDiscoveryService to get supported options.
   /// Defaults to the latest Xcode version Firebase Test Lab supports.
   core.String xcodeVersion;
 
@@ -2522,6 +2530,9 @@ class ResultStorage {
   /// Required.
   GoogleCloudStorage googleCloudStorage;
 
+  /// Output only. URL to the results in the Firebase Web Console.
+  core.String resultsUrl;
+
   /// Output only. The tool results execution that results are written to.
   ToolResultsExecution toolResultsExecution;
 
@@ -2538,6 +2549,9 @@ class ResultStorage {
       googleCloudStorage =
           new GoogleCloudStorage.fromJson(_json["googleCloudStorage"]);
     }
+    if (_json.containsKey("resultsUrl")) {
+      resultsUrl = _json["resultsUrl"];
+    }
     if (_json.containsKey("toolResultsExecution")) {
       toolResultsExecution =
           new ToolResultsExecution.fromJson(_json["toolResultsExecution"]);
@@ -2553,6 +2567,9 @@ class ResultStorage {
         new core.Map<core.String, core.Object>();
     if (googleCloudStorage != null) {
       _json["googleCloudStorage"] = (googleCloudStorage).toJson();
+    }
+    if (resultsUrl != null) {
+      _json["resultsUrl"] = resultsUrl;
     }
     if (toolResultsExecution != null) {
       _json["toolResultsExecution"] = (toolResultsExecution).toJson();
@@ -2577,6 +2594,7 @@ class RoboDirective {
   /// - "ENTER_TEXT" : Direct Robo to enter text on the specified element. No-op
   /// if specified
   /// element is not enabled or does not allow text entry.
+  /// - "IGNORE" : Direct Robo to ignore interactions with a specific element.
   core.String actionType;
 
   /// The text that Robo is directed to set. If left empty, the directive will
@@ -2625,8 +2643,14 @@ class RoboDirective {
 
 /// Message for specifying the start activities to crawl.
 class RoboStartingIntent {
+  /// An intent that starts the main launcher activity.
   LauncherActivityIntent launcherActivity;
+
+  /// An intent that starts an activity with specific details.
   StartActivityIntent startActivity;
+
+  /// Timeout in seconds for each intent.
+  core.String timeout;
 
   RoboStartingIntent();
 
@@ -2638,6 +2662,9 @@ class RoboStartingIntent {
     if (_json.containsKey("startActivity")) {
       startActivity = new StartActivityIntent.fromJson(_json["startActivity"]);
     }
+    if (_json.containsKey("timeout")) {
+      timeout = _json["timeout"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2648,6 +2675,9 @@ class RoboStartingIntent {
     }
     if (startActivity != null) {
       _json["startActivity"] = (startActivity).toJson();
+    }
+    if (timeout != null) {
+      _json["timeout"] = timeout;
     }
     return _json;
   }
@@ -2788,12 +2818,12 @@ class TestEnvironmentCatalog {
   }
 }
 
-/// Specifies a single test to be executed in a single environment.
+/// A single test executed in a single environment.
 class TestExecution {
   /// Output only. How the host machine(s) are configured.
   Environment environment;
 
-  /// Output only. Unique id set by the backend.
+  /// Output only. Unique id set by the service.
   core.String id;
 
   /// Output only. Id of the containing TestMatrix.
@@ -2929,13 +2959,14 @@ class TestExecution {
   }
 }
 
-/// A group of one or more TestExecutions, built by taking a
-/// product of values over a pre-defined set of axes.
+/// TestMatrix captures all details about a test. It contains the environment
+/// configuration, test specification, test executions and overall state and
+/// outcome.
 class TestMatrix {
   /// Information about the client which invoked the test.
   ClientInfo clientInfo;
 
-  /// Required. How the host machine(s) are configured.
+  /// Required. The devices the tests are being executed on.
   EnvironmentMatrix environmentMatrix;
 
   /// The number of times a TestExecution should be re-attempted if one or more
@@ -2956,6 +2987,10 @@ class TestMatrix {
   /// - "MALFORMED_TEST_APK" : The input test APK could not be parsed.
   /// - "NO_MANIFEST" : The AndroidManifest.xml could not be found.
   /// - "NO_PACKAGE_NAME" : The APK manifest does not declare a package name.
+  /// - "INVALID_PACKAGE_NAME" : The APK application ID (aka package name) is
+  /// invalid.
+  /// See also
+  /// https://developer.android.com/studio/build/application-id
   /// - "TEST_SAME_AS_APP" : The test package and app package are the same.
   /// - "NO_INSTRUMENTATION" : The test apk does not declare an instrumentation.
   /// - "NO_SIGNATURE" : The input app apk does not have a signature.
@@ -2978,7 +3013,13 @@ class TestMatrix {
   /// are not allowed.
   /// - "INVALID_ROBO_DIRECTIVES" : There is a conflict in the provided
   /// robo_directives.
-  /// - "TEST_LOOP_INTENT_FILTER_NOT_FOUND" : There there is no test loop intent
+  /// - "INVALID_RESOURCE_NAME" : There is at least one invalid resource name in
+  /// the provided
+  /// robo directives
+  /// - "INVALID_DIRECTIVE_ACTION" : Invalid definition of action in the robo
+  /// directives
+  /// (e.g. a click or ignore action includes an input text field)
+  /// - "TEST_LOOP_INTENT_FILTER_NOT_FOUND" : There is no test loop intent
   /// filter, or the one that is given is
   /// not formatted correctly.
   /// - "SCENARIO_LABEL_NOT_DECLARED" : The request contains a scenario label
@@ -3021,14 +3062,32 @@ class TestMatrix {
   /// unsupported
   core.String invalidMatrixDetails;
 
+  /// Output Only. The overall outcome of the test.
+  /// Only set when the test matrix state is FINISHED.
+  /// Possible string values are:
+  /// - "OUTCOME_SUMMARY_UNSPECIFIED" : Do not use. For proto versioning only.
+  /// - "SUCCESS" : The test matrix run was successful, for instance:
+  /// - All the test cases passed.
+  /// - Robo did not detect a crash of the application under test.
+  /// - "FAILURE" : A run failed, for instance:
+  /// - One or more test case failed.
+  /// - A test timed out.
+  /// - The application under test crashed.
+  /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
+  /// considered
+  /// unsuccessful but this is likely a transient problem and re-running the
+  /// test might be successful.
+  /// - "SKIPPED" : All tests were skipped, for instance:
+  /// - All device configurations were incompatible.
+  core.String outcomeSummary;
+
   /// The cloud project that owns the test matrix.
   core.String projectId;
 
   /// Required. Where the results for the matrix are written.
   ResultStorage resultStorage;
 
-  /// Output only. Indicates the current progress of the test matrix
-  /// (e.g., FINISHED).
+  /// Output only. Indicates the current progress of the test matrix.
   /// Possible string values are:
   /// - "TEST_STATE_UNSPECIFIED" : Do not use.  For proto versioning only.
   /// - "VALIDATING" : The execution or matrix is being validated.
@@ -3104,6 +3163,9 @@ class TestMatrix {
     if (_json.containsKey("invalidMatrixDetails")) {
       invalidMatrixDetails = _json["invalidMatrixDetails"];
     }
+    if (_json.containsKey("outcomeSummary")) {
+      outcomeSummary = _json["outcomeSummary"];
+    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
@@ -3144,6 +3206,9 @@ class TestMatrix {
     }
     if (invalidMatrixDetails != null) {
       _json["invalidMatrixDetails"] = invalidMatrixDetails;
+    }
+    if (outcomeSummary != null) {
+      _json["outcomeSummary"] = outcomeSummary;
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -3273,21 +3338,10 @@ class TestSpecification {
   /// An Android Application with a Test Loop.
   AndroidTestLoop androidTestLoop;
 
-  /// Enables automatic Google account login.
-  /// If set, the service will automatically generate a Google test account and
-  /// add it to the device, before executing the test. Note that test accounts
-  /// might be reused.
-  /// Many applications show their full set of functionalities when an account
-  /// is
-  /// present on the device. Logging into the device with these generated
-  /// accounts allows testing more functionalities.
-  /// Default is false.
-  core.bool autoGoogleLogin;
-
-  /// Disables performance metrics recording; may reduce test latency.
+  /// Disables performance metrics recording. May reduce test latency.
   core.bool disablePerformanceMetrics;
 
-  /// Disables video recording; may reduce test latency.
+  /// Disables video recording. May reduce test latency.
   core.bool disableVideoRecording;
 
   /// Test setup requirements for iOS.
@@ -3317,9 +3371,6 @@ class TestSpecification {
     }
     if (_json.containsKey("androidTestLoop")) {
       androidTestLoop = new AndroidTestLoop.fromJson(_json["androidTestLoop"]);
-    }
-    if (_json.containsKey("autoGoogleLogin")) {
-      autoGoogleLogin = _json["autoGoogleLogin"];
     }
     if (_json.containsKey("disablePerformanceMetrics")) {
       disablePerformanceMetrics = _json["disablePerformanceMetrics"];
@@ -3353,9 +3404,6 @@ class TestSpecification {
     }
     if (androidTestLoop != null) {
       _json["androidTestLoop"] = (androidTestLoop).toJson();
-    }
-    if (autoGoogleLogin != null) {
-      _json["autoGoogleLogin"] = autoGoogleLogin;
     }
     if (disablePerformanceMetrics != null) {
       _json["disablePerformanceMetrics"] = disablePerformanceMetrics;

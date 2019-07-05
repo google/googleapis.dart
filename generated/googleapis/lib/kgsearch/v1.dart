@@ -39,8 +39,6 @@ class EntitiesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [prefix] - Enables prefix match against names and aliases of entities
-  ///
   /// [query] - The literal query string for search.
   ///
   /// [types] - Restricts returned entities with these types, e.g. Person
@@ -60,6 +58,8 @@ class EntitiesResourceApi {
   ///
   /// [limit] - Limits the number of entities to be returned.
   ///
+  /// [prefix] - Enables prefix match against names and aliases of entities
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -71,13 +71,13 @@ class EntitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> search(
-      {core.bool prefix,
-      core.String query,
+      {core.String query,
       core.List<core.String> types,
       core.bool indent,
       core.List<core.String> languages,
       core.List<core.String> ids,
       core.int limit,
+      core.bool prefix,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -86,9 +86,6 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (prefix != null) {
-      _queryParams["prefix"] = ["${prefix}"];
-    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
@@ -106,6 +103,9 @@ class EntitiesResourceApi {
     }
     if (limit != null) {
       _queryParams["limit"] = ["${limit}"];
+    }
+    if (prefix != null) {
+      _queryParams["prefix"] = ["${prefix}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

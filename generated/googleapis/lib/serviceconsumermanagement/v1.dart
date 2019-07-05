@@ -270,7 +270,7 @@ class ServicesResourceApi {
 
   ServicesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Search tenancy units for a service.
+  /// Search tenancy units for a managed service.
   ///
   /// Request parameters:
   ///
@@ -288,9 +288,8 @@ class ServicesResourceApi {
   ///
   /// [pageSize] - The maximum number of results returned by this request.
   /// Currently, the
-  /// default maximum is set to 1000. If page_size is not provided or the size
-  /// provided is a number larger than 1000, it will be automatically set to
-  /// 1000.
+  /// default maximum is set to 1000. If `page_size` isn't provided or the size
+  /// provided is a number larger than 1000, it's automatically set to 1000.
   ///
   /// Optional.
   ///
@@ -302,9 +301,9 @@ class ServicesResourceApi {
   /// `tenant_resources.tag` and `tenant_resources.resource`.
   ///
   /// For example, to search tenancy units that contain at least one tenant
-  /// resource with given tag 'xyz', use query `tenant_resources.tag=xyz`.
+  /// resource with a given tag 'xyz', use the query `tenant_resources.tag=xyz`.
   /// To search tenancy units that contain at least one tenant resource with
-  /// given resource name 'projects/123456', use query
+  /// a given resource name 'projects/123456', use the query
   /// `tenant_resources.resource=projects/123456`.
   ///
   /// Multiple expressions can be joined with `AND`s. Tenancy units must match
@@ -371,10 +370,10 @@ class ServicesTenancyUnitsResourceApi {
       : _requester = client;
 
   /// Add a new tenant project to the tenancy unit.
-  /// There can be at most 512 tenant projects in a tenancy unit.
+  /// There can be a maximum of 512 tenant projects in a tenancy unit.
   /// If there are previously failed `AddTenantProject` calls, you might need to
-  /// call `RemoveTenantProject` first to clean them before you can make another
-  /// `AddTenantProject` with the same tag.
+  /// call `RemoveTenantProject` first to resolve them before you can make
+  /// another call to `AddTenantProject` with the same tag.
   /// Operation<response: Empty>.
   ///
   /// [request] - The metadata request object.
@@ -382,6 +381,8 @@ class ServicesTenancyUnitsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Name of the tenancy unit.
+  /// Such as
+  /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -427,20 +428,22 @@ class ServicesTenancyUnitsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Apply configuration to an existing tenant project.
-  /// This project must exist in active state and have the original owner
-  /// account. Caller must have the permission to add a project to the given
-  /// tenancy unit. Configuration will be applied, but any existing settings on
-  /// the project will not be modified.
-  /// Specified policy bindings will be applied. Existing binding will not be
-  /// modified.
-  /// Specified services will be activated.   No service will be deactivated.
-  /// New billing configuration will be applied if specified.
-  /// Omit billing configuration to keep the existing one.
-  /// Service account in the project will be created if previously non existing.
-  /// Specified folder will be ignored, moving tenant project to a different
-  /// folder is not supported.
-  /// Operation fails if any of the steps fail, but no rollback of already
+  /// Apply a configuration to an existing tenant project.
+  /// This project must exist in an active state and have the original owner
+  /// account. The caller must have permission to add a project to the given
+  /// tenancy unit. The configuration is applied, but any existing settings on
+  /// the project aren't modified.
+  /// Specified policy bindings are applied. Existing bindings aren't modified.
+  /// Specified services are activated. No service is deactivated.
+  /// If specified, new billing configuration is applied.
+  /// Omit a billing configuration to keep the existing one.
+  /// A service account in the project is created if previously non existed.
+  /// Specified labels will be appended to tenant project, note that the value
+  /// of
+  /// existing label key will be updated if the same label key is requested.
+  /// The specified folder is ignored, as moving a tenant project to a different
+  /// folder isn't supported.
+  /// The operation fails if any of the steps fail, but no rollback of already
   /// applied configuration changes is attempted.
   /// Operation<response: Empty>.
   ///
@@ -449,6 +452,8 @@ class ServicesTenancyUnitsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Name of the tenancy unit.
+  /// Such as
+  /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -495,23 +500,24 @@ class ServicesTenancyUnitsResourceApi {
   }
 
   /// Attach an existing project to the tenancy unit as a new tenant
-  /// resource. The project could be either the tenant project reserved by
-  /// calling AddTenantProject under tenancy unit for the producer project of
-  /// service, or from outside.
-  /// Caller will be checked against the permission as if calling
-  /// AddTenantProject on the same consumer.
-  /// To trigger the attachement, the targeted tenant project must be in a
-  /// folder. Please also make sure ServiceConsumerManagement service account is
-  /// the owner of that project. Note that these two requirements are already
-  /// met
-  /// if the project is reserved through AddTenantProject.
+  /// resource. The project could either be the tenant project reserved by
+  /// calling `AddTenantProject` under a tenancy unit of a service producer's
+  /// project of a managed service, or from a separate project.
+  /// The caller is checked against a set of permissions as if calling
+  /// `AddTenantProject` on the same service consumer.
+  /// To trigger the attachment, the targeted tenant project must be in a
+  /// folder. Make sure the ServiceConsumerManagement service account is
+  /// the owner of that project. These two requirements are already met
+  /// if the project is reserved by calling `AddTenantProject`.
   /// Operation<response: Empty>.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the tenancy unit that project will be attached to.
+  /// [name] - Name of the tenancy unit that the project will be attached to.
+  /// Such as
+  /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -568,8 +574,8 @@ class ServicesTenancyUnitsResourceApi {
   /// service consumer, for example 'projects', or 'organizations'.
   /// {resource id} is the consumer numeric id, such as project number:
   /// '123456'.
-  /// {service} the name of a service, for example 'service.googleapis.com'.
-  /// Enabled service binding using the new tenancy unit.
+  /// {service} the name of a managed service, such as 'service.googleapis.com'.
+  /// Enables service binding using the new tenancy unit.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -615,9 +621,8 @@ class ServicesTenancyUnitsResourceApi {
     return _response.then((data) => new TenancyUnit.fromJson(data));
   }
 
-  /// Delete a tenancy unit.  Before the tenancy unit is deleted, there should
-  /// be
-  /// no tenant resources in it not in DELETED state.
+  /// Delete a tenancy unit. Before you delete the tenancy unit, there should be
+  /// no tenant resources in it that aren't in a DELETED state.
   /// Operation<response: Empty>.
   ///
   /// Request parameters:
@@ -661,23 +666,88 @@ class ServicesTenancyUnitsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Find the tenancy unit for a service and consumer.
-  /// This method should not be used in producers' runtime path, for example
-  /// finding the tenant project number when creating VMs. Producers should
-  /// persist the tenant project information after the project is created.
+  /// Deletes the specified project resource identified by a tenant resource
+  /// tag.
+  /// The mothod removes a project lien with a 'TenantManager' origin if that
+  /// was
+  /// added. It will then attempt to delete the project. If that operation
+  /// fails,
+  /// this method also fails.
+  /// After the project has been deleted, the tenant resource state is set to
+  /// DELETED.  To permanently remove resource metadata, call the
+  /// `RemoveTenantProject` method.
+  /// New resources with the same tag can't be added if there are existing
+  /// resources in a DELETED state.
+  /// Operation<response: Empty>.
+  ///
+  /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Service and consumer. Required.
+  /// [name] - Name of the tenancy unit.
+  /// Such as
+  /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
+  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<Operation> deleteProject(
+      DeleteTenantProjectRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':deleteProject';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Find the tenancy unit for a managed service and service consumer.
+  /// This method shouldn't be used in a service producer's runtime path, for
+  /// example to find the tenant project number when creating VMs. Service
+  /// producers must persist the tenant project's information after the project
+  /// is created.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Managed service and service consumer. Required.
   /// services/{service}/{collection id}/{resource id}
   /// {collection id} is the cloud resource collection type representing the
   /// service consumer, for example 'projects', or 'organizations'.
   /// {resource id} is the consumer numeric id, such as project number:
   /// '123456'.
-  /// {service} the name of a service, for example 'service.googleapis.com'.
+  /// {service} the name of a service, such as 'service.googleapis.com'.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+$".
-  ///
-  /// [pageSize] - The maximum number of results returned by this request.
   ///
   /// [filter] - Filter expression over tenancy resources field. Optional.
   ///
@@ -685,6 +755,8 @@ class ServicesTenancyUnitsResourceApi {
   /// result sets.
   /// To get the next page of results, set this parameter to the value of
   /// `nextPageToken` from the previous response.
+  ///
+  /// [pageSize] - The maximum number of results returned by this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -697,9 +769,9 @@ class ServicesTenancyUnitsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListTenancyUnitsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -711,14 +783,14 @@ class ServicesTenancyUnitsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -738,11 +810,13 @@ class ServicesTenancyUnitsResourceApi {
         .then((data) => new ListTenancyUnitsResponse.fromJson(data));
   }
 
-  /// Removes specified project resource identified by tenant resource tag.
-  /// It will remove project lien with 'TenantManager' origin if that was added.
-  /// It will then attempt to delete the project. If that operation fails, this
-  /// method fails.
-  /// After the project has been deleted, or if was already in DELETED state,
+  /// Removes the specified project resource identified by a tenant resource
+  /// tag.
+  /// The method removes the project lien with 'TenantManager' origin if that
+  /// was added. It then attempts to delete the project. If that operation
+  /// fails, this method also fails.
+  /// Calls to remove already removed or non-existent tenant project succeed.
+  /// After the project has been deleted, or if was already in a DELETED state,
   /// resource metadata is permanently removed from the tenancy unit.
   /// Operation<response: Empty>.
   ///
@@ -797,12 +871,72 @@ class ServicesTenancyUnitsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Attempts to undelete a previously deleted tenant project. The project must
+  /// be in a DELETED state.
+  /// There are no guarantees that an undeleted project will be in
+  /// a fully restored and functional state. Call the `ApplyTenantProjectConfig`
+  /// method to update its configuration and then validate all managed service
+  /// resources.
+  /// Operation<response: Empty>.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Name of the tenancy unit.
+  /// Such as
+  /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
+  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<Operation> undeleteProject(
+      UndeleteTenantProjectRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':undeleteProject';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 /// Request to add a newly created and configured tenant project to a tenancy
 /// unit.
 class AddTenantProjectRequest {
-  /// Configuration of the new tenant project that will be added to tenancy unit
+  /// Configuration of the new tenant project to be added to tenancy unit
   /// resources.
   TenantProjectConfig projectConfig;
 
@@ -985,12 +1119,13 @@ class ApplyTenantProjectConfigRequest {
 /// resource.
 class AttachTenantProjectRequest {
   /// When attaching an external project, this is in the format of
-  /// `projects/{project_number}’.
+  /// `projects/{project_number}`.
   core.String externalResource;
 
-  /// When attaching a reserved project already in Tenancy Units, this is the
-  /// tag of tenant resource under the tenancy unit for the service's producer
-  /// project. The reserved tenant resource must be in active state.
+  /// When attaching a reserved project already in tenancy units, this is the
+  /// tag of a tenant resource under the tenancy unit for the managed service's
+  /// service producer project. The reserved tenant resource must be in an
+  /// active state.
   core.String reservedResource;
 
   /// Tag of the tenant resource after attachment.
@@ -1027,7 +1162,7 @@ class AttachTenantProjectRequest {
   }
 }
 
-/// Configuration for an anthentication provider, including support for
+/// Configuration for an authentication provider, including support for
 /// [JSON Web Token
 /// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthProvider {
@@ -1069,11 +1204,11 @@ class AuthProvider {
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document:
   ///  - can be retrieved from
-  /// [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html
-  ///    of the issuer.
-  /// - can be inferred from the email domain of the issuer (e.g. a Google
-  /// service account).
+  ///    [OpenID
+  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  ///    the issuer.
+  ///  - can be inferred from the email domain of the issuer (e.g. a Google
+  ///  service account).
   ///
   /// Example: https://www.googleapis.com/oauth2/v1/certs
   core.String jwksUri;
@@ -1288,39 +1423,6 @@ class AuthenticationRule {
   }
 }
 
-/// Configuration of authorization.
-///
-/// This section determines the authorization provider, if unspecified, then no
-/// authorization check will be done.
-///
-/// Example:
-///
-///     experimental:
-///       authorization:
-///         provider: firebaserules.googleapis.com
-class AuthorizationConfig {
-  /// The name of the authorization provider, such as
-  /// firebaserules.googleapis.com.
-  core.String provider;
-
-  AuthorizationConfig();
-
-  AuthorizationConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("provider")) {
-      provider = _json["provider"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (provider != null) {
-      _json["provider"] = provider;
-    }
-    return _json;
-  }
-}
-
 /// `Backend` defines the backend configuration for a service.
 class Backend {
   /// A list of API backend rules that apply to individual API methods.
@@ -1390,11 +1492,11 @@ class BackendRule {
   /// translated path:
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe
-  /// Translated:
+  ///     Translated:
   /// https://example.cloudfunctions.net/getUser?cid=widgetworks&uid=johndoe
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe?timezone=EST
-  /// Translated:
+  ///     Translated:
   /// https://example.cloudfunctions.net/getUser?timezone=EST&cid=widgetworks&uid=johndoe
   /// - "APPEND_PATH_TO_ADDRESS" : The request path will be appended to the
   /// backend address.
@@ -1410,11 +1512,11 @@ class BackendRule {
   /// translated path:
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe
-  /// Translated:
-  /// https://example.appspot.com/api/company/widgetworks/user/johndoe
+  ///     Translated:
+  ///     https://example.appspot.com/api/company/widgetworks/user/johndoe
   ///
   ///     Request path: /api/company/widgetworks/user/johndoe?timezone=EST
-  /// Translated:
+  ///     Translated:
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
   core.String pathTranslation;
 
@@ -1528,7 +1630,7 @@ class Billing {
   }
 }
 
-/// Describes billing configuration for a new tenant project.
+/// Describes the billing configuration for a new tenant project.
 class BillingConfig {
   /// Name of the billing account.
   /// For example `billingAccounts/012345-567890-ABCDEF`.
@@ -1755,15 +1857,17 @@ class Control {
   }
 }
 
-/// Request to create a tenancy unit for a consumer of a service.
+/// Request to create a tenancy unit for a service consumer of a managed
+/// service.
 class CreateTenancyUnitRequest {
-  /// Optional producer provided identifier of the tenancy unit.
+  /// Optional service producer-provided identifier of the tenancy unit.
   /// Must be no longer than 40 characters and preferably URI friendly.
-  /// If it is not provided, a UID for the tenancy unit will be auto generated.
-  /// It must be unique across a service.
-  /// If the tenancy unit already exists for the service and consumer pair,
-  /// `CreateTenancyUnit` will return the existing tenancy unit if the provided
-  /// identifier is identical or empty, otherwise the call will fail.
+  /// If it isn't provided, a UID for the tenancy unit is automatically
+  /// generated. The identifier must be unique across a managed service.
+  /// If the tenancy unit already exists for the managed service and service
+  /// consumer pair, calling `CreateTenancyUnit` returns the existing tenancy
+  /// unit if the provided identifier is identical or empty, otherwise the call
+  /// fails.
   core.String tenancyUnitId;
 
   CreateTenancyUnitRequest();
@@ -1891,6 +1995,29 @@ class CustomHttpPattern {
     }
     if (path != null) {
       _json["path"] = path;
+    }
+    return _json;
+  }
+}
+
+/// Request message to delete tenant project resource from the tenancy unit.
+class DeleteTenantProjectRequest {
+  /// Tag of the resource within the tenancy unit.
+  core.String tag;
+
+  DeleteTenantProjectRequest();
+
+  DeleteTenantProjectRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tag != null) {
+      _json["tag"] = tag;
     }
     return _json;
   }
@@ -2032,8 +2159,7 @@ class Documentation {
 /// A documentation rule provides information about individual API elements.
 class DocumentationRule {
   /// Deprecation description of the selected element(s). It can be provided if
-  /// an
-  /// element is marked as `deprecated`.
+  /// an element is marked as `deprecated`.
   core.String deprecationDescription;
 
   /// Description of the selected API(s).
@@ -2042,9 +2168,9 @@ class DocumentationRule {
   /// The selector is a comma-separated list of patterns. Each pattern is a
   /// qualified name of the element which may end in "*", indicating a wildcard.
   /// Wildcards are only allowed at the end and for a whole component of the
-  /// qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". To
-  /// specify a default for all applicable elements, the whole pattern "*"
-  /// is used.
+  /// qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A
+  /// wildcard will match one or more components. To specify a default for all
+  /// applicable elements, the whole pattern "*" is used.
   core.String selector;
 
   DocumentationRule();
@@ -2140,9 +2266,9 @@ class Endpoint {
   /// The specification of an Internet routable address of API frontend that
   /// will
   /// handle requests to this [API
-  /// Endpoint](https://cloud.google.com/apis/design/glossary).
-  /// It should be either a valid IPv4 address or a fully-qualified domain name.
-  /// For example, "8.8.8.8" or "myservice.appspot.com".
+  /// Endpoint](https://cloud.google.com/apis/design/glossary). It should be
+  /// either a valid IPv4 address or a fully-qualified domain name. For example,
+  /// "8.8.8.8" or "myservice.appspot.com".
   core.String target;
 
   Endpoint();
@@ -2296,30 +2422,6 @@ class EnumValue {
   }
 }
 
-/// Experimental service configuration. These configuration options can
-/// only be used by whitelisted users.
-class Experimental {
-  /// Authorization configuration.
-  AuthorizationConfig authorization;
-
-  Experimental();
-
-  Experimental.fromJson(core.Map _json) {
-    if (_json.containsKey("authorization")) {
-      authorization = new AuthorizationConfig.fromJson(_json["authorization"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (authorization != null) {
-      _json["authorization"] = (authorization).toJson();
-    }
-    return _json;
-  }
-}
-
 /// A single field of a message type.
 class Field {
   /// The field cardinality.
@@ -2457,7 +2559,7 @@ class Field {
 /// HttpRule, each specifying the mapping of an RPC method
 /// to one or more HTTP REST API methods.
 class Http {
-  /// When set to true, URL path parmeters will be fully URI-decoded except in
+  /// When set to true, URL path parameters will be fully URI-decoded except in
   /// cases of single segment matches in reserved expansion, where "%2F" will be
   /// left encoded.
   ///
@@ -2707,8 +2809,8 @@ class Http {
 /// side, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The
 /// server side does the reverse decoding. Such variables show up in the
 /// [Discovery
-/// Document](https://developers.google.com/discovery/v1/reference/apis)
-/// as `{var}`.
+/// Document](https://developers.google.com/discovery/v1/reference/apis) as
+/// `{var}`.
 ///
 /// If a variable contains multiple path segments, such as `"{var=foo / * }"`
 /// or `"{var=**}"`, when such a variable is expanded into a URL path on the
@@ -2716,8 +2818,8 @@ class Http {
 /// The server side does the reverse decoding, except "%2F" and "%2f" are left
 /// unchanged. Such variables show up in the
 /// [Discovery
-/// Document](https://developers.google.com/discovery/v1/reference/apis)
-/// as `{+var}`.
+/// Document](https://developers.google.com/discovery/v1/reference/apis) as
+/// `{+var}`.
 ///
 /// ## Using gRPC API Service Configuration
 ///
@@ -3290,6 +3392,42 @@ class MetricDescriptor {
   /// for responses that failed.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the metric definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use
+  /// these features, you must sign up in advance and sign a Trusted Tester
+  /// agreement (which includes confidentiality provisions). These features may
+  /// be unstable, changed in backward-incompatible ways, and are not
+  /// guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared
+  /// for widespread use. By Alpha, all significant design issues are resolved
+  /// and we are in the process of verifying functionality. Alpha customers
+  /// need to apply for access, agree to applicable terms, and have their
+  /// projects whitelisted. Alpha releases don’t have to be feature complete,
+  /// no SLAs are provided, and there are no technical support obligations, but
+  /// they will be far enough along that customers can actually use them in
+  /// test environments or for limited-use tests -- just like they would in
+  /// normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any
+  /// customer to use. There are no SLA or technical support obligations in a
+  /// Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and
+  /// fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more
+  /// information, see the “Deprecation Policy” section of our [Terms of
+  /// Service](https://cloud.google.com/terms/)
+  /// and the [Google Cloud Platform Subject to the Deprecation
+  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. Metadata which can be used to guide usage of the metric.
   MetricDescriptorMetadata metadata;
 
@@ -3416,6 +3554,9 @@ class MetricDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = new MetricDescriptorMetadata.fromJson(_json["metadata"]);
     }
@@ -3448,6 +3589,9 @@ class MetricDescriptor {
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
     }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
+    }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
@@ -3477,6 +3621,7 @@ class MetricDescriptorMetadata {
   /// data loss due to errors.
   core.String ingestDelay;
 
+  /// Deprecated. Please use the MetricDescriptor.launch_stage instead.
   /// The launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
@@ -3726,6 +3871,42 @@ class MonitoredResourceDescriptor {
   /// identified by values for the labels `"database_id"` and `"zone"`.
   core.List<LabelDescriptor> labels;
 
+  /// Optional. The launch stage of the monitored resource definition.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use
+  /// these features, you must sign up in advance and sign a Trusted Tester
+  /// agreement (which includes confidentiality provisions). These features may
+  /// be unstable, changed in backward-incompatible ways, and are not
+  /// guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared
+  /// for widespread use. By Alpha, all significant design issues are resolved
+  /// and we are in the process of verifying functionality. Alpha customers
+  /// need to apply for access, agree to applicable terms, and have their
+  /// projects whitelisted. Alpha releases don’t have to be feature complete,
+  /// no SLAs are provided, and there are no technical support obligations, but
+  /// they will be far enough along that customers can actually use them in
+  /// test environments or for limited-use tests -- just like they would in
+  /// normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any
+  /// customer to use. There are no SLA or technical support obligations in a
+  /// Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and
+  /// fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more
+  /// information, see the “Deprecation Policy” section of our [Terms of
+  /// Service](https://cloud.google.com/terms/)
+  /// and the [Google Cloud Platform Subject to the Deprecation
+  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  core.String launchStage;
+
   /// Optional. The resource name of the monitored resource descriptor:
   /// `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where
   /// {type} is the value of the `type` field in this object and
@@ -3753,6 +3934,9 @@ class MonitoredResourceDescriptor {
           .map<LabelDescriptor>((value) => new LabelDescriptor.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("launchStage")) {
+      launchStage = _json["launchStage"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3772,6 +3956,9 @@ class MonitoredResourceDescriptor {
     }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (launchStage != null) {
+      _json["launchStage"] = launchStage;
     }
     if (name != null) {
       _json["name"] = name;
@@ -3973,7 +4160,7 @@ class Operation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -4079,8 +4266,7 @@ class Option {
 /// nested documentation set structure.
 class Page {
   /// The Markdown content of the page. You can use <code>&#40;== include {path}
-  /// ==&#41;</code>
-  /// to include content from a Markdown file.
+  /// ==&#41;</code> to include content from a Markdown file.
   core.String content;
 
   /// The name of the page. It will be used as an identity of the page to
@@ -4138,7 +4324,7 @@ class Page {
 /// Translates to IAM Policy bindings (without auditing at this level)
 class PolicyBinding {
   /// Uses the same format as in IAM policy.
-  /// `member` must include both prefix and ID. For example, `user:{emailId}`,
+  /// `member` must include both a prefix and ID. For example, `user:{emailId}`,
   /// `serviceAccount:{emailId}`, `group:{emailId}`.
   core.List<core.String> members;
 
@@ -4173,7 +4359,7 @@ class PolicyBinding {
 /// Quota configuration helps to achieve fairness and budgeting in service
 /// usage.
 ///
-/// The quota configuration works this way:
+/// The metric based quota configuration works this way:
 /// - The service configuration defines a set of metrics.
 /// - For API calls, the quota.metric_rules maps methods to metrics with
 ///   corresponding costs.
@@ -4415,7 +4601,7 @@ class QuotaLimit {
   }
 }
 
-/// Request message to remove tenant project resource from the tenancy unit.
+/// Request message to remove a tenant project resource from the tenancy unit.
 class RemoveTenantProjectRequest {
   /// Tag of the resource within the tenancy unit.
   core.String tag;
@@ -4547,9 +4733,6 @@ class Service {
   ///     - name: google.someapi.v1.SomeEnum
   core.List<Enum> enums;
 
-  /// Experimental configuration.
-  Experimental experimental;
-
   /// HTTP configuration.
   Http http;
 
@@ -4657,9 +4840,6 @@ class Service {
           .map<Enum>((value) => new Enum.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("experimental")) {
-      experimental = new Experimental.fromJson(_json["experimental"]);
-    }
     if (_json.containsKey("http")) {
       http = new Http.fromJson(_json["http"]);
     }
@@ -4759,9 +4939,6 @@ class Service {
     if (enums != null) {
       _json["enums"] = enums.map((value) => (value).toJson()).toList();
     }
-    if (experimental != null) {
-      _json["experimental"] = (experimental).toJson();
-    }
     if (http != null) {
       _json["http"] = (http).toJson();
     }
@@ -4816,14 +4993,14 @@ class Service {
   }
 }
 
-/// Describes service account configuration for the tenant project.
+/// Describes the service account configuration for the tenant project.
 class ServiceAccountConfig {
   /// ID of the IAM service account to be created in tenant project.
-  /// The email format of the service account will be
+  /// The email format of the service account is
   /// "<account-id>@<tenant-project-id>.iam.gserviceaccount.com".
-  /// This account id has to be unique within tenant project and producers
-  /// have to guarantee it. And it must be 6-30 characters long, and matches the
-  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])`.
+  /// This account ID must be unique within tenant project and service
+  /// producers have to guarantee it. The ID must be 6-30 characters long, and
+  /// match the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])`.
   core.String accountId;
 
   /// Roles for the associated service account for the tenant project.
@@ -4909,61 +5086,12 @@ class SourceInfo {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -5175,7 +5303,8 @@ class TenancyUnit {
   /// "services/{service}/{collection id}/{resource id}/tenancyUnits/{unit}"
   core.String name;
 
-  /// @OutputOnly Google Cloud API name of the service owning this tenancy unit.
+  /// Output only. Google Cloud API name of the managed service owning this
+  /// tenancy unit.
   /// For example 'serviceconsumermanagement.googleapis.com'.
   core.String service;
 
@@ -5229,30 +5358,29 @@ class TenancyUnit {
 }
 
 /// This structure defines a tenant project to be added to the specified tenancy
-/// unit and its initial configuration and properties. A project lien will be
-/// created for the tenant project to prevent the tenant project from being
-/// deleted accidentally. The lien will be deleted as part of tenant project
-/// removal.
+/// unit and its initial configuration and properties. A project lien is created
+/// for the tenant project to prevent the tenant project from being deleted
+/// accidentally. The lien is deleted as part of tenant project removal.
 class TenantProjectConfig {
-  /// Billing account properties.  Billing account must be specified.
+  /// Billing account properties. The billing account must be specified.
   BillingConfig billingConfig;
 
   /// Folder where project in this tenancy unit must be located
-  /// This folder must have been previously created with proper
+  /// This folder must have been previously created with the required
   /// permissions for the caller to create and configure a project in it.
   /// Valid folder resource names have the format `folders/{folder_number}`
   /// (for example, `folders/123456`).
   core.String folder;
 
-  /// Labels that will be applied to this project.
+  /// Labels that are applied to this project.
   core.Map<core.String, core.String> labels;
 
-  /// Configuration for IAM service account on tenant project.
+  /// Configuration for the IAM service account on the tenant project.
   ServiceAccountConfig serviceAccountConfig;
 
-  /// Google Cloud API names of services that will be activated on this project
-  /// during provisioning.  If any of these services can not be activated,
-  /// request will fail.
+  /// Google Cloud API names of services that are activated on this project
+  /// during provisioning.  If any of these services can't be activated,
+  /// the request fails.
   /// For example: 'compute.googleapis.com','cloudfunctions.googleapis.com'
   core.List<core.String> services;
 
@@ -5316,8 +5444,8 @@ class TenantProjectPolicy {
   /// 'roles/owner' role granted to the Service Consumer Management service
   /// account.
   /// At least one binding must have the role `roles/owner`. Among the list of
-  /// members for `roles/owner`, at least one of them must be either `user` or
-  /// `group` type.
+  /// members for `roles/owner`, at least one of them must be either the `user`
+  /// or `group` type.
   core.List<PolicyBinding> policyBindings;
 
   TenantProjectPolicy();
@@ -5466,6 +5594,30 @@ class Type {
   }
 }
 
+/// Request message to undelete tenant project resource previously deleted from
+/// the tenancy unit.
+class UndeleteTenantProjectRequest {
+  /// Tag of the resource within the tenancy unit.
+  core.String tag;
+
+  UndeleteTenantProjectRequest();
+
+  UndeleteTenantProjectRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    return _json;
+  }
+}
+
 /// Configuration controlling usage of a service.
 class Usage {
   /// The full resource name of a channel used for sending notifications to the
@@ -5588,6 +5740,378 @@ class UsageRule {
     }
     if (skipServiceControl != null) {
       _json["skipServiceControl"] = skipServiceControl;
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `AddVisibilityLabels` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1AddVisibilityLabelsResponse {
+  /// The updated set of visibility labels for this consumer on this service.
+  core.List<core.String> labels;
+
+  V1AddVisibilityLabelsResponse();
+
+  V1AddVisibilityLabelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+/// Response message for BatchCreateProducerOverrides
+class V1Beta1BatchCreateProducerOverridesResponse {
+  /// The overrides that were created.
+  core.List<V1Beta1QuotaOverride> overrides;
+
+  V1Beta1BatchCreateProducerOverridesResponse();
+
+  V1Beta1BatchCreateProducerOverridesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("overrides")) {
+      overrides = (_json["overrides"] as core.List)
+          .map<V1Beta1QuotaOverride>(
+              (value) => new V1Beta1QuotaOverride.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (overrides != null) {
+      _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `DisableConsumer` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1Beta1DisableConsumerResponse {
+  V1Beta1DisableConsumerResponse();
+
+  V1Beta1DisableConsumerResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `EnableConsumer` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1Beta1EnableConsumerResponse {
+  V1Beta1EnableConsumerResponse();
+
+  V1Beta1EnableConsumerResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for ImportProducerOverrides
+class V1Beta1ImportProducerOverridesResponse {
+  /// The overrides that were created from the imported data.
+  core.List<V1Beta1QuotaOverride> overrides;
+
+  V1Beta1ImportProducerOverridesResponse();
+
+  V1Beta1ImportProducerOverridesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("overrides")) {
+      overrides = (_json["overrides"] as core.List)
+          .map<V1Beta1QuotaOverride>(
+              (value) => new V1Beta1QuotaOverride.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (overrides != null) {
+      _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A quota override
+class V1Beta1QuotaOverride {
+  /// If this map is nonempty, then this override applies only to specific
+  /// values
+  /// for dimensions defined in the limit unit.
+  ///
+  /// For example, an override on a limit with the unit 1/{project}/{region}
+  /// could contain an entry with the key "region" and the value "us-east-1";
+  /// the override is only applied to quota consumed in that region.
+  ///
+  /// This map has the following restrictions:
+  /// - Keys that are not defined in the limit's unit are not valid keys.
+  ///   Any string appearing in {brackets} in the unit (besides {project} or
+  ///   {user}) is a defined key.
+  /// - "project" is not a valid key; the project is already specified in
+  ///   the parent resource name.
+  /// - "user" is not a valid key; the API does not support quota overrides
+  ///   that apply only to a specific user.
+  /// - If "region" appears as a key, its value must be a valid Cloud region.
+  /// - If "zone" appears as a key, its value must be a valid Cloud zone.
+  /// - If any valid key other than "region" or "zone" appears in the map, then
+  /// all valid keys other than "region" or "zone" must also appear in the map.
+  core.Map<core.String, core.String> dimensions;
+
+  /// The name of the metric to which this override applies.
+  ///
+  /// An example name would be:
+  /// `compute.googleapis.com/cpus`
+  core.String metric;
+
+  /// The resource name of the producer override.
+  /// An example name would be:
+  /// `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
+  core.String name;
+
+  /// The overriding quota limit value.
+  /// Can be any nonnegative integer, or -1 (unlimited quota).
+  core.String overrideValue;
+
+  /// The limit unit of the limit to which this override applies.
+  ///
+  /// An example unit would be:
+  /// `1/{project}/{region}`
+  /// Note that `{project}` and `{region}` are not placeholders in this example;
+  /// the literal characters `{` and `}` occur in the string.
+  core.String unit;
+
+  V1Beta1QuotaOverride();
+
+  V1Beta1QuotaOverride.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensions")) {
+      dimensions =
+          (_json["dimensions"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("metric")) {
+      metric = _json["metric"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("overrideValue")) {
+      overrideValue = _json["overrideValue"];
+    }
+    if (_json.containsKey("unit")) {
+      unit = _json["unit"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensions != null) {
+      _json["dimensions"] = dimensions;
+    }
+    if (metric != null) {
+      _json["metric"] = metric;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (overrideValue != null) {
+      _json["overrideValue"] = overrideValue;
+    }
+    if (unit != null) {
+      _json["unit"] = unit;
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `RefreshConsumer` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1Beta1RefreshConsumerResponse {
+  V1Beta1RefreshConsumerResponse();
+
+  V1Beta1RefreshConsumerResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `DisableConsumer` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1DisableConsumerResponse {
+  V1DisableConsumerResponse();
+
+  V1DisableConsumerResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `EnableConsumer` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1EnableConsumerResponse {
+  V1EnableConsumerResponse();
+
+  V1EnableConsumerResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `GenerateServiceAccount` method.
+///
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1GenerateServiceAccountResponse {
+  /// ServiceAccount that was created or retrieved.
+  V1ServiceAccount account;
+
+  V1GenerateServiceAccountResponse();
+
+  V1GenerateServiceAccountResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("account")) {
+      account = new V1ServiceAccount.fromJson(_json["account"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (account != null) {
+      _json["account"] = (account).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response message for the `RefreshConsumer` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1RefreshConsumerResponse {
+  V1RefreshConsumerResponse();
+
+  V1RefreshConsumerResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `RemoveVisibilityLabels` method.
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1RemoveVisibilityLabelsResponse {
+  /// The updated set of visibility labels for this consumer on this service.
+  core.List<core.String> labels;
+
+  V1RemoveVisibilityLabelsResponse();
+
+  V1RemoveVisibilityLabelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    return _json;
+  }
+}
+
+/// A service account in the Identity and Access Management API.
+class V1ServiceAccount {
+  /// The email address of the service account.
+  core.String email;
+
+  /// The IAM resource name of the service account in the following format:
+  /// projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}.
+  core.String iamAccountName;
+
+  /// P4 SA resource name.
+  ///
+  /// An example name would be:
+  /// `services/serviceconsumermanagement.googleapis.com/projects/123/serviceAccounts/default`
+  core.String name;
+
+  /// The P4 SA configuration tag. This must be defined in activation_grants.
+  /// If not specified when creating the account, the tag is set to "default".
+  core.String tag;
+
+  /// The unique and stable id of the service account.
+  core.String uniqueId;
+
+  V1ServiceAccount();
+
+  V1ServiceAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("iamAccountName")) {
+      iamAccountName = _json["iamAccountName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+    if (_json.containsKey("uniqueId")) {
+      uniqueId = _json["uniqueId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (iamAccountName != null) {
+      _json["iamAccountName"] = iamAccountName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    if (uniqueId != null) {
+      _json["uniqueId"] = uniqueId;
     }
     return _json;
   }

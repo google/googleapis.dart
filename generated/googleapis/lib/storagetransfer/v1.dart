@@ -56,10 +56,9 @@ class GoogleServiceAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the Google Cloud Platform Console project that the
-  /// Google service
-  /// account is associated with.
-  /// Required.
+  /// [projectId] - Required. The ID of the Google Cloud Platform Console
+  /// project that the
+  /// Google service account is associated with.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -151,13 +150,12 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [jobName] - The job to get.
-  /// Required.
+  /// [jobName] - Required. The job to get.
   /// Value must have pattern "^transferJobs/.+$".
   ///
-  /// [projectId] - The ID of the Google Cloud Platform Console project that
-  /// owns the job.
-  /// Required.
+  /// [projectId] - Required. The ID of the Google Cloud Platform Console
+  /// project that owns the
+  /// job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -203,20 +201,19 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
-  /// [filter] - A list of query parameters specified as JSON text in the form
-  /// of
+  /// [filter] - Required. A list of query parameters specified as JSON text in
+  /// the form of:
   /// {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "job_statuses":["status1","status2",...]}.
+  ///  "job_names":["jobid1","jobid2",...],
+  ///  "job_statuses":["status1","status2",...]}.
   /// Since `job_names` and `job_statuses` support multiple values, their values
   /// must be specified with array notation. `project_id` is required.
-  /// `job_names`
-  /// and `job_statuses` are optional.  The valid values for `job_statuses` are
-  /// case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
+  /// `job_names` and `job_statuses` are optional.  The valid values for
+  /// `job_statuses` are case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
   ///
   /// [pageToken] - The list page token.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -229,9 +226,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -240,14 +237,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -273,8 +270,7 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [jobName] - The name of job to update.
-  /// Required.
+  /// [jobName] - Required. The name of job to update.
   /// Value must have pattern "^transferJobs/.+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -471,20 +467,23 @@ class TransferOperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The value `transferOperations`.
+  /// [name] - Required. The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
+  ///
+  /// [filter] - Required. A list of query parameters specified as JSON text in
+  /// the form of: {"project_id":"my_project_id",
+  ///  "job_names":["jobid1","jobid2",...],
+  ///  "operation_names":["opid1","opid2",...],
+  ///  "transfer_statuses":["status1","status2",...]}.
+  /// Since `job_names`, `operation_names`, and `transfer_statuses` support
+  /// multiple values, they must be specified with array notation. `project_id`
+  /// is required. `job_names`, `operation_names`, and `transfer_statuses` are
+  /// optional. The valid values for `transfer_statuses` are case-insensitive:
+  /// `IN_PROGRESS`, `PAUSED`, `SUCCESS`, `FAILED`, and `ABORTED`.
   ///
   /// [pageToken] - The list page token.
   ///
   /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
-  /// [filter] - A list of query parameters specified as JSON text in the form
-  /// of {\"project_id\" : \"my_project_id\", \"job_names\" : [\"jobid1\",
-  /// \"jobid2\",...], \"operation_names\" : [\"opid1\", \"opid2\",...],
-  /// \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
-  /// `operation_names`, and `transfer_statuses` support multiple values, they
-  /// must be specified with array notation. `job_names`, `operation_names`, and
-  /// `transfer_statuses` are optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -497,9 +496,9 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -511,14 +510,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -541,8 +540,7 @@ class TransferOperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the transfer operation.
-  /// Required.
+  /// [name] - Required. The name of the transfer operation.
   /// Value must have pattern "^transferOperations/.+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -592,8 +590,7 @@ class TransferOperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the transfer operation.
-  /// Required.
+  /// [name] - Required. The name of the transfer operation.
   /// Value must have pattern "^transferOperations/.+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -642,12 +639,11 @@ class TransferOperationsResourceApi {
 /// [AWS Security
 /// Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
 class AwsAccessKey {
-  /// AWS access key ID.
-  /// Required.
+  /// Required. AWS access key ID.
   core.String accessKeyId;
 
-  /// AWS secret access key. This field is not returned in RPC responses.
-  /// Required.
+  /// Required. AWS secret access key. This field is not returned in RPC
+  /// responses.
   core.String secretAccessKey;
 
   AwsAccessKey();
@@ -677,16 +673,14 @@ class AwsAccessKey {
 /// An AwsS3Data resource can be a data source, but not a data sink.
 /// In an AwsS3Data resource, an object's name is the S3 object's key name.
 class AwsS3Data {
-  /// AWS access key used to sign the API requests to the AWS S3 bucket.
-  /// Permissions on the bucket must be granted to the access ID of the
+  /// Required. AWS access key used to sign the API requests to the AWS S3
+  /// bucket. Permissions on the bucket must be granted to the access ID of the
   /// AWS access key.
-  /// Required.
   AwsAccessKey awsAccessKey;
 
-  /// S3 Bucket name (see
+  /// Required. S3 Bucket name (see
   /// [Creating a
   /// bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
-  /// Required.
   core.String bucketName;
 
   AwsS3Data();
@@ -796,9 +790,8 @@ class ErrorLogEntry {
   /// A list of messages that carry the error details.
   core.List<core.String> errorDetails;
 
-  /// A URL that refers to the target (a data source, a data sink,
+  /// Required. A URL that refers to the target (a data source, a data sink,
   /// or an object) with which the error is associated.
-  /// Required.
   core.String url;
 
   ErrorLogEntry();
@@ -953,7 +946,8 @@ class ErrorSummary {
   /// - "UNAVAILABLE" : The service is currently unavailable.  This is most
   /// likely a
   /// transient condition, which can be corrected by retrying with
-  /// a backoff.
+  /// a backoff. Note that it is not always safe to retry
+  /// non-idempotent operations.
   ///
   /// See the guidelines above for deciding between `FAILED_PRECONDITION`,
   /// `ABORTED`, and `UNAVAILABLE`.
@@ -964,11 +958,13 @@ class ErrorSummary {
   /// HTTP Mapping: 500 Internal Server Error
   core.String errorCode;
 
-  /// Count of this type of error.
-  /// Required.
+  /// Required. Count of this type of error.
   core.String errorCount;
 
   /// Error samples.
+  ///
+  /// No more than 100 error log entries may be recorded for a given
+  /// error code for a single task.
   core.List<ErrorLogEntry> errorLogEntries;
 
   ErrorSummary();
@@ -1008,10 +1004,9 @@ class ErrorSummary {
 /// name and its `lastModificationTime` refers to the object's updated time,
 /// which changes when the content or the metadata of the object is updated.
 class GcsData {
-  /// Google Cloud Storage bucket name (see
+  /// Required. Google Cloud Storage bucket name (see
   /// [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
-  /// Required.
   core.String bucketName;
 
   GcsData();
@@ -1034,7 +1029,7 @@ class GcsData {
 
 /// Google service account
 class GoogleServiceAccount {
-  /// Required.
+  /// Email address of the service account.
   core.String accountEmail;
 
   GoogleServiceAccount();
@@ -1100,10 +1095,9 @@ class GoogleServiceAccount {
 /// objects
 /// to transfer.
 class HttpData {
-  /// The URL that points to the file that stores the object list entries.
-  /// This file must allow public access.  Currently, only URLs with HTTP and
-  /// HTTPS schemes are supported.
-  /// Required.
+  /// Required. The URL that points to the file that stores the object list
+  /// entries. This file must allow public access.  Currently, only URLs with
+  /// HTTP and HTTPS schemes are supported.
   core.String listUrl;
 
   HttpData();
@@ -1194,7 +1188,8 @@ class ListTransferJobsResponse {
   }
 }
 
-/// Conditions that determine which objects will be transferred.
+/// Conditions that determine which objects will be transferred. Applies only
+/// to S3 and GCS objects.
 class ObjectConditions {
   /// `excludePrefixes` must follow the requirements described for
   /// `includePrefixes`.
@@ -1205,9 +1200,9 @@ class ObjectConditions {
   /// If `includePrefixes` is specified, objects that satisfy the object
   /// conditions must have names that start with one of the `includePrefixes`
   /// and that do not start with any of the `excludePrefixes`. If
-  /// `includePrefixes`
-  /// is not specified, all objects except those that have names starting with
-  /// one of the `excludePrefixes` must satisfy the object conditions.
+  /// `includePrefixes` is not specified, all objects except those that have
+  /// names starting with one of the `excludePrefixes` must satisfy the object
+  /// conditions.
   ///
   /// Requirements:
   ///
@@ -1238,17 +1233,27 @@ class ObjectConditions {
   /// The max size of `includePrefixes` is 1000.
   core.List<core.String> includePrefixes;
 
-  /// `maxTimeElapsedSinceLastModification` is the complement to
-  /// `minTimeElapsedSinceLastModification`.
+  /// If specified, only objects with a `lastModificationTime` on or after
+  /// `NOW` - `maxTimeElapsedSinceLastModification` and objects that don't have
+  /// a `lastModificationTime` are transferred.
+  ///
+  /// Note that, for each `TransferOperation` started by this `TransferJob`,
+  /// `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
+  /// `lastModificationTime` refers to the time of the last change to the
+  /// object's content or metadata - specifically, this would be the `updated`
+  /// property of GCS objects and the `LastModified` field of S3 objects.
   core.String maxTimeElapsedSinceLastModification;
 
-  /// If unspecified, `minTimeElapsedSinceLastModification` takes a zero value
-  /// and `maxTimeElapsedSinceLastModification` takes the maximum possible
-  /// value of Duration. Objects that satisfy the object conditions
-  /// must either have a `lastModificationTime` greater or equal to
-  /// `NOW` - `maxTimeElapsedSinceLastModification` and less than
-  /// `NOW` - `minTimeElapsedSinceLastModification`, or not have a
-  /// `lastModificationTime`.
+  /// If specified, only objects with a `lastModificationTime` before
+  /// `NOW` - `minTimeElapsedSinceLastModification` and objects that don't have
+  /// a
+  /// `lastModificationTime` are transferred.
+  ///
+  /// Note that, for each `TransferOperation` started by this `TransferJob`,
+  /// `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
+  /// `lastModificationTime` refers to the time of the last change to the
+  /// object's content or metadata - specifically, this would be the `updated`
+  /// property of GCS objects and the `LastModified` field of S3 objects.
   core.String minTimeElapsedSinceLastModification;
 
   ObjectConditions();
@@ -1405,10 +1410,9 @@ class Schedule {
   /// once.
   Date scheduleEndDate;
 
-  /// The first day the recurring transfer is scheduled to run. If
+  /// Required. The first day the recurring transfer is scheduled to run. If
   /// `scheduleStartDate` is in the past, the transfer will run for the first
   /// time on the following day.
-  /// Required.
   Date scheduleStartDate;
 
   /// The time in UTC at which the transfer will be scheduled to start in a day.
@@ -1451,61 +1455,12 @@ class Schedule {
 }
 
 /// The `Status` type defines a logical error model that is suitable for
-/// different
-/// programming environments, including REST APIs and RPC APIs. It is used by
-/// [gRPC](https://github.com/grpc). The error model is designed to be:
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message,
-/// and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
@@ -1778,17 +1733,17 @@ class TransferCounters {
 /// This resource represents the configuration of a transfer job that runs
 /// periodically.
 class TransferJob {
-  /// This field cannot be changed by user requests.
+  /// Output only. The time that the transfer job was created.
   core.String creationTime;
 
-  /// This field cannot be changed by user requests.
+  /// Output only. The time that the transfer job was deleted.
   core.String deletionTime;
 
   /// A description provided by the user for the job. Its max length is 1024
   /// bytes when Unicode-encoded.
   core.String description;
 
-  /// This field cannot be changed by user requests.
+  /// Output only. The time that the transfer job was last modified.
   core.String lastModificationTime;
 
   /// A globally unique name assigned by Storage Transfer Service when the
@@ -1798,7 +1753,7 @@ class TransferJob {
   /// error.
   core.String name;
 
-  /// The ID of the Google Cloud Platform Console project that owns the job.
+  /// The ID of the Google Cloud Platform Project that owns the job.
   core.String projectId;
 
   /// Schedule specification.
@@ -1906,9 +1861,7 @@ class TransferOperation {
   /// A globally unique ID assigned by the system.
   core.String name;
 
-  /// The ID of the Google Cloud Platform Console project that owns the
-  /// operation.
-  /// Required.
+  /// The ID of the Google Cloud Platform Project that owns the operation.
   core.String projectId;
 
   /// Start time of this transfer execution.
@@ -1928,7 +1881,6 @@ class TransferOperation {
   core.String transferJobName;
 
   /// Transfer specification.
-  /// Required.
   TransferSpec transferSpec;
 
   TransferOperation();
@@ -2125,15 +2077,15 @@ class TransferSpec {
 
 /// Request passed to UpdateTransferJob.
 class UpdateTransferJobRequest {
-  /// The ID of the Google Cloud Platform Console project that owns the job.
-  /// Required.
+  /// Required. The ID of the Google Cloud Platform Console project that owns
+  /// the
+  /// job.
   core.String projectId;
 
-  /// The job to update. `transferJob` is expected to specify only three fields:
-  /// `description`, `transferSpec`, and `status`.  An UpdateTransferJobRequest
-  /// that specifies other fields will be rejected with an error
-  /// `INVALID_ARGUMENT`.
-  /// Required.
+  /// Required. The job to update. `transferJob` is expected to specify only
+  /// three fields: `description`, `transferSpec`, and `status`.  An
+  /// UpdateTransferJobRequest that specifies other fields will be rejected with
+  /// an error `INVALID_ARGUMENT`.
   TransferJob transferJob;
 
   /// The field mask of the fields in `transferJob` that are to be updated in

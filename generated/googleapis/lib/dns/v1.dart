@@ -47,7 +47,7 @@ class DnsApi {
       new ResourceRecordSetsResourceApi(_requester);
 
   DnsApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
+      {core.String rootUrl = "https://dns.googleapis.com/",
       core.String servicePath = "dns/v1/projects/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -1590,6 +1590,17 @@ class ManagedZone {
   /// server (output only)
   core.List<core.String> nameServers;
 
+  /// For privately visible zones, the set of Virtual Private Cloud resources
+  /// that the zone is visible from.
+  ManagedZonePrivateVisibilityConfig privateVisibilityConfig;
+
+  /// The zone's visibility: public zones are exposed to the Internet, while
+  /// private zones are visible only to Virtual Private Cloud resources.
+  /// Possible string values are:
+  /// - "private"
+  /// - "public"
+  core.String visibility;
+
   ManagedZone();
 
   ManagedZone.fromJson(core.Map _json) {
@@ -1623,6 +1634,13 @@ class ManagedZone {
     }
     if (_json.containsKey("nameServers")) {
       nameServers = (_json["nameServers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("privateVisibilityConfig")) {
+      privateVisibilityConfig = new ManagedZonePrivateVisibilityConfig.fromJson(
+          _json["privateVisibilityConfig"]);
+    }
+    if (_json.containsKey("visibility")) {
+      visibility = _json["visibility"];
     }
   }
 
@@ -1659,13 +1677,19 @@ class ManagedZone {
     if (nameServers != null) {
       _json["nameServers"] = nameServers;
     }
+    if (privateVisibilityConfig != null) {
+      _json["privateVisibilityConfig"] = (privateVisibilityConfig).toJson();
+    }
+    if (visibility != null) {
+      _json["visibility"] = visibility;
+    }
     return _json;
   }
 }
 
 class ManagedZoneDnsSecConfig {
   /// Specifies parameters that will be used for generating initial DnsKeys for
-  /// this ManagedZone. Output only while state is not OFF.
+  /// this ManagedZone. Can only be changed while state is OFF.
   core.List<DnsKeySpec> defaultKeySpecs;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -1673,7 +1697,7 @@ class ManagedZoneDnsSecConfig {
   core.String kind;
 
   /// Specifies the mechanism used to provide authenticated denial-of-existence
-  /// responses. Output only while state is not OFF.
+  /// responses. Can only be changed while state is OFF.
   /// Possible string values are:
   /// - "nsec"
   /// - "nsec3"
@@ -1780,6 +1804,75 @@ class ManagedZoneOperationsListResponse {
     if (operations != null) {
       _json["operations"] =
           operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ManagedZonePrivateVisibilityConfig {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZonePrivateVisibilityConfig".
+  core.String kind;
+
+  /// The list of VPC networks that can see this zone.
+  core.List<ManagedZonePrivateVisibilityConfigNetwork> networks;
+
+  ManagedZonePrivateVisibilityConfig();
+
+  ManagedZonePrivateVisibilityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("networks")) {
+      networks = (_json["networks"] as core.List)
+          .map<ManagedZonePrivateVisibilityConfigNetwork>((value) =>
+              new ManagedZonePrivateVisibilityConfigNetwork.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (networks != null) {
+      _json["networks"] = networks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ManagedZonePrivateVisibilityConfigNetwork {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZonePrivateVisibilityConfigNetwork".
+  core.String kind;
+
+  /// The fully qualified URL of the VPC network to bind to. This should be
+  /// formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String networkUrl;
+
+  ManagedZonePrivateVisibilityConfigNetwork();
+
+  ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("networkUrl")) {
+      networkUrl = _json["networkUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (networkUrl != null) {
+      _json["networkUrl"] = networkUrl;
     }
     return _json;
   }
@@ -2078,6 +2171,14 @@ class Quota {
   /// Maximum allowed number of managed zones in the project.
   core.int managedZones;
 
+  /// Maximum allowed number of managed zones which can be attached to a
+  /// network.
+  core.int managedZonesPerNetwork;
+
+  /// Maximum allowed number of networks to which a privately scoped zone can be
+  /// attached.
+  core.int networksPerManagedZone;
+
   /// Maximum allowed number of ResourceRecords per ResourceRecordSet.
   core.int resourceRecordsPerRrset;
 
@@ -2110,6 +2211,12 @@ class Quota {
     }
     if (_json.containsKey("managedZones")) {
       managedZones = _json["managedZones"];
+    }
+    if (_json.containsKey("managedZonesPerNetwork")) {
+      managedZonesPerNetwork = _json["managedZonesPerNetwork"];
+    }
+    if (_json.containsKey("networksPerManagedZone")) {
+      networksPerManagedZone = _json["networksPerManagedZone"];
     }
     if (_json.containsKey("resourceRecordsPerRrset")) {
       resourceRecordsPerRrset = _json["resourceRecordsPerRrset"];
@@ -2145,6 +2252,12 @@ class Quota {
     if (managedZones != null) {
       _json["managedZones"] = managedZones;
     }
+    if (managedZonesPerNetwork != null) {
+      _json["managedZonesPerNetwork"] = managedZonesPerNetwork;
+    }
+    if (networksPerManagedZone != null) {
+      _json["networksPerManagedZone"] = networksPerManagedZone;
+    }
     if (resourceRecordsPerRrset != null) {
       _json["resourceRecordsPerRrset"] = resourceRecordsPerRrset;
     }
@@ -2177,7 +2290,8 @@ class ResourceRecordSet {
   /// For example, www.example.com.
   core.String name;
 
-  /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
+  /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see
+  /// examples.
   core.List<core.String> rrdatas;
 
   /// As defined in RFC 4034 (section 3.2).

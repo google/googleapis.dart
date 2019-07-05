@@ -605,7 +605,8 @@ class AccountsClientsUsersResourceApi {
   /// Typically, this is the value of
   /// ListClientUsersResponse.nextPageToken
   /// returned from the previous call to the
-  /// accounts.clients.users.list method.
+  /// accounts.clients.users.list
+  /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer clients than
   /// requested.
@@ -861,18 +862,6 @@ class AccountsCreativesResourceApi {
   /// [accountId] - The account to list the creatives from.
   /// Specify "-" to list all creatives the current user has access to.
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListCreativesResponse.next_page_token
-  /// returned from the previous call to 'ListCreatives' method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer creatives
-  /// than requested
-  /// (due to timeout constraint) even if more are available via another call.
-  /// If unspecified, server will pick an appropriate default.
-  /// Acceptable values are 1 to 1000, inclusive.
-  ///
   /// [query] - An optional query string to filter creatives. If no filter is
   /// specified,
   /// all active creatives will be returned.
@@ -891,6 +880,18 @@ class AccountsCreativesResourceApi {
   /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND
   /// disapprovalReason:unacceptable_content) OR attribute:47'
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListCreativesResponse.next_page_token
+  /// returned from the previous call to 'ListCreatives' method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer creatives
+  /// than requested
+  /// (due to timeout constraint) even if more are available via another call.
+  /// If unspecified, server will pick an appropriate default.
+  /// Acceptable values are 1 to 1000, inclusive.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -902,9 +903,9 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(core.String accountId,
-      {core.String pageToken,
+      {core.String query,
+      core.String pageToken,
       core.int pageSize,
-      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -916,14 +917,14 @@ class AccountsCreativesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1359,6 +1360,12 @@ class AccountsFinalizedProposalsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
+  /// [pageToken] - The page token as returned from ListProposalsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [filterSyntax] - Syntax the filter is written in. Current implementation
   /// defaults to PQL
   /// but in the future it will be LIST_FILTER.
@@ -1372,12 +1379,6 @@ class AccountsFinalizedProposalsResourceApi {
   /// Nested repeated fields, such as proposal.deals.targetingCriterion,
   /// cannot be filtered.
   ///
-  /// [pageToken] - The page token as returned from ListProposalsResponse.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1389,10 +1390,10 @@ class AccountsFinalizedProposalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(core.String accountId,
-      {core.String filterSyntax,
-      core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filterSyntax,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1404,17 +1405,17 @@ class AccountsFinalizedProposalsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (filterSyntax != null) {
-      _queryParams["filterSyntax"] = [filterSyntax];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filterSyntax != null) {
+      _queryParams["filterSyntax"] = [filterSyntax];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2337,83 +2338,10 @@ class BiddersResourceApi {
 class BiddersAccountsResourceApi {
   final commons.ApiRequester _requester;
 
-  BiddersAccountsCreativesResourceApi get creatives =>
-      new BiddersAccountsCreativesResourceApi(_requester);
   BiddersAccountsFilterSetsResourceApi get filterSets =>
       new BiddersAccountsFilterSetsResourceApi(_requester);
 
   BiddersAccountsResourceApi(commons.ApiRequester client) : _requester = client;
-}
-
-class BiddersAccountsCreativesResourceApi {
-  final commons.ApiRequester _requester;
-
-  BiddersAccountsCreativesResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Deletes a single creative.
-  ///
-  /// A creative is deactivated upon deletion and does not count against active
-  /// snippet quota. A deleted creative should not be used in bidding (all bids
-  /// with that creative will be rejected).
-  ///
-  /// Request parameters:
-  ///
-  /// [ownerName] - Name of the owner (bidder or account) of the creative to be
-  /// deleted.
-  /// For example:
-  ///
-  /// - For an account-level creative for the buyer account representing bidder
-  ///   123: `bidders/123/accounts/123`
-  ///
-  /// - For an account-level creative for the child seat buyer account 456
-  ///   whose bidder is 123: `bidders/123/accounts/456`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+$".
-  ///
-  /// [creativeId] - The ID of the creative to delete.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String ownerName, core.String creativeId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (ownerName == null) {
-      throw new core.ArgumentError("Parameter ownerName is required.");
-    }
-    if (creativeId == null) {
-      throw new core.ArgumentError("Parameter creativeId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v2beta1/' +
-        commons.Escaper.ecapeVariableReserved('$ownerName') +
-        '/creatives/' +
-        commons.Escaper.ecapeVariable('$creativeId');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
 }
 
 class BiddersAccountsFilterSetsResourceApi {
@@ -4234,16 +4162,16 @@ class BiddersFilterSetsFilteredBidsResourceApi {
   ///   whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
   /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListFilteredBidsResponse.nextPageToken
   /// returned from the previous call to the filteredBids.list
   /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4256,7 +4184,7 @@ class BiddersFilterSetsFilteredBidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -4267,11 +4195,11 @@ class BiddersFilterSetsFilteredBidsResourceApi {
     if (filterSetName == null) {
       throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4856,6 +4784,57 @@ class AdSize {
   }
 }
 
+/// Detected ad technology provider information.
+class AdTechnologyProviders {
+  /// The detected ad technology provider IDs for this creative.
+  /// See https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
+  /// mapping of provider ID to provided name, a privacy policy URL, and a list
+  /// of domains which can be attributed to the provider.
+  ///
+  /// If the creative contains provider IDs that are outside of those listed in
+  /// the `BidRequest.adslot.consented_providers_settings.consented_providers`
+  /// field on the (Google bid
+  /// protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto]
+  /// and the
+  /// `BidRequest.user.ext.consented_providers_settings.consented_providers`
+  /// field on the (OpenRTB
+  /// protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto],
+  /// and a bid is submitted with that creative for an impression that will
+  /// serve to an EEA user, the bid will be filtered before the auction.
+  core.List<core.String> detectedProviderIds;
+
+  /// Whether the creative contains an unidentified ad technology provider.
+  ///
+  /// If true for a given creative, any bid submitted with that creative for an
+  /// impression that will serve to an EEA user will be filtered before the
+  /// auction.
+  core.bool hasUnidentifiedProvider;
+
+  AdTechnologyProviders();
+
+  AdTechnologyProviders.fromJson(core.Map _json) {
+    if (_json.containsKey("detectedProviderIds")) {
+      detectedProviderIds =
+          (_json["detectedProviderIds"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("hasUnidentifiedProvider")) {
+      hasUnidentifiedProvider = _json["hasUnidentifiedProvider"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (detectedProviderIds != null) {
+      _json["detectedProviderIds"] = detectedProviderIds;
+    }
+    if (hasUnidentifiedProvider != null) {
+      _json["hasUnidentifiedProvider"] = hasUnidentifiedProvider;
+    }
+    return _json;
+  }
+}
+
 /// A request for associating a deal and a creative.
 class AddDealAssociationRequest {
   /// The association between a creative and a deal that should be added.
@@ -4902,7 +4881,7 @@ class AddNoteRequest {
   }
 }
 
-/// @OutputOnly The app type the restriction applies to for mobile device.
+/// Output only. The app type the restriction applies to for mobile device.
 class AppContext {
   /// The app types this restriction applies to.
   core.List<core.String> appTypes;
@@ -4925,7 +4904,7 @@ class AppContext {
   }
 }
 
-/// @OutputOnly The auction type the restriction applies to.
+/// Output only. The auction type the restriction applies to.
 class AuctionContext {
   /// The auction types this restriction applies to.
   core.List<core.String> auctionTypes;
@@ -5218,6 +5197,9 @@ class Client {
   /// - "ADVERTISER" : An advertiser.
   /// - "BRAND" : A brand.
   /// - "AGENCY" : An advertising agency.
+  /// - "ENTITY_TYPE_UNCLASSIFIED" : An explicit value for a client that was not
+  /// yet classified
+  /// as any particular entity.
   core.String entityType;
 
   /// Optional arbitrary unique identifier of this client buyer from the
@@ -5495,7 +5477,7 @@ class ContactInformation {
   }
 }
 
-/// @OutputOnly Shows any corrections that were applied to this creative.
+/// Output only. Shows any corrections that were applied to this creative.
 class Correction {
   /// The contexts for the correction.
   core.List<ServingContext> contexts;
@@ -5572,8 +5554,6 @@ class Correction {
 }
 
 /// A creative and its classification data.
-///
-/// Next ID: 39
 class Creative {
   /// The account that this creative belongs to.
   /// Can be used to filter the response of the
@@ -5584,13 +5564,16 @@ class Creative {
   /// The link to AdChoices destination page.
   core.String adChoicesDestinationUrl;
 
+  /// Output only. The detected ad technology providers.
+  AdTechnologyProviders adTechnologyProviders;
+
   /// The name of the company being advertised in the creative.
   core.String advertiserName;
 
   /// The agency ID for this creative.
   core.String agencyId;
 
-  /// @OutputOnly The last update timestamp of the creative via API.
+  /// Output only. The last update timestamp of the creative via API.
   core.String apiUpdateTime;
 
   /// All attributes for the ads that may be shown from this creative.
@@ -5602,7 +5585,7 @@ class Creative {
   /// The set of destination URLs for the creative.
   core.List<core.String> clickThroughUrls;
 
-  /// @OutputOnly Shows any corrections that were applied to this creative.
+  /// Output only. Shows any corrections that were applied to this creative.
   core.List<Correction> corrections;
 
   /// The buyer-defined creative ID of this creative.
@@ -5611,7 +5594,7 @@ class Creative {
   /// method.
   core.String creativeId;
 
-  /// @OutputOnly The top-level deals status of this creative.
+  /// Output only. The top-level deals status of this creative.
   /// If disapproved, an entry for 'auctionType=DIRECT_DEALS' (or 'ALL') in
   /// serving_restrictions will also exist. Note
   /// that this may be nuanced with other contextual restrictions, in which
@@ -5632,34 +5615,28 @@ class Creative {
   /// The set of declared destination URLs for the creative.
   core.List<core.String> declaredClickThroughUrls;
 
-  /// @OutputOnly Detected advertiser IDs, if any.
+  /// Output only. Detected advertiser IDs, if any.
   core.List<core.String> detectedAdvertiserIds;
 
-  /// @OutputOnly
-  /// The detected domains for this creative.
+  /// Output only. The detected domains for this creative.
   core.List<core.String> detectedDomains;
 
-  /// @OutputOnly
-  /// The detected languages for this creative. The order is arbitrary. The
-  /// codes
-  /// are 2 or 5 characters and are documented at
+  /// Output only. The detected languages for this creative. The order is
+  /// arbitrary. The codes are 2 or 5 characters and are documented at
   /// https://developers.google.com/adwords/api/docs/appendix/languagecodes.
   core.List<core.String> detectedLanguages;
 
-  /// @OutputOnly Detected product categories, if any.
+  /// Output only. Detected product categories, if any.
   /// See the ad-product-categories.txt file in the technical documentation
   /// for a list of IDs.
   core.List<core.int> detectedProductCategories;
 
-  /// @OutputOnly Detected sensitive categories, if any.
+  /// Output only. Detected sensitive categories, if any.
   /// See the ad-sensitive-categories.txt file in the technical documentation
   /// for
   /// a list of IDs. You should use these IDs along with the
   /// excluded-sensitive-category field in the bid request to filter your bids.
   core.List<core.int> detectedSensitiveCategories;
-
-  /// @OutputOnly The filtering stats for this creative.
-  FilteringStats filteringStats;
 
   /// An HTML creative.
   HtmlContent html;
@@ -5670,7 +5647,7 @@ class Creative {
   /// A native creative.
   NativeContent native;
 
-  /// @OutputOnly The top-level open auction status of this creative.
+  /// Output only. The top-level open auction status of this creative.
   /// If disapproved, an entry for 'auctionType = OPEN_AUCTION' (or 'ALL') in
   /// serving_restrictions will also exist. Note
   /// that this may be nuanced with other contextual restrictions, in which
@@ -5692,7 +5669,7 @@ class Creative {
   /// creative.
   core.List<core.String> restrictedCategories;
 
-  /// @OutputOnly The granular status of this ad in specific contexts.
+  /// Output only. The granular status of this ad in specific contexts.
   /// A context here relates to where something ultimately serves (for example,
   /// a physical location, a platform, an HTTPS vs HTTP request, or the type
   /// of auction).
@@ -5703,7 +5680,7 @@ class Creative {
   /// for possible values.
   core.List<core.int> vendorIds;
 
-  /// @OutputOnly The version of this creative.
+  /// Output only. The version of this creative.
   core.int version;
 
   /// A video creative.
@@ -5717,6 +5694,10 @@ class Creative {
     }
     if (_json.containsKey("adChoicesDestinationUrl")) {
       adChoicesDestinationUrl = _json["adChoicesDestinationUrl"];
+    }
+    if (_json.containsKey("adTechnologyProviders")) {
+      adTechnologyProviders =
+          new AdTechnologyProviders.fromJson(_json["adTechnologyProviders"]);
     }
     if (_json.containsKey("advertiserName")) {
       advertiserName = _json["advertiserName"];
@@ -5769,9 +5750,6 @@ class Creative {
       detectedSensitiveCategories =
           (_json["detectedSensitiveCategories"] as core.List).cast<core.int>();
     }
-    if (_json.containsKey("filteringStats")) {
-      filteringStats = new FilteringStats.fromJson(_json["filteringStats"]);
-    }
     if (_json.containsKey("html")) {
       html = new HtmlContent.fromJson(_json["html"]);
     }
@@ -5815,6 +5793,9 @@ class Creative {
     if (adChoicesDestinationUrl != null) {
       _json["adChoicesDestinationUrl"] = adChoicesDestinationUrl;
     }
+    if (adTechnologyProviders != null) {
+      _json["adTechnologyProviders"] = (adTechnologyProviders).toJson();
+    }
     if (advertiserName != null) {
       _json["advertiserName"] = advertiserName;
     }
@@ -5857,9 +5838,6 @@ class Creative {
     }
     if (detectedSensitiveCategories != null) {
       _json["detectedSensitiveCategories"] = detectedSensitiveCategories;
-    }
-    if (filteringStats != null) {
-      _json["filteringStats"] = (filteringStats).toJson();
     }
     if (html != null) {
       _json["html"] = (html).toJson();
@@ -6019,9 +5997,8 @@ class CreativeSize {
   /// - "NATIVE" : The creative is a native (mobile) creative.
   core.String creativeSizeType;
 
-  /// The native template for this creative. It will have a value only if
-  /// creative_size_type = CreativeSizeType.NATIVE.
-  /// @OutputOnly
+  /// Output only. The native template for this creative. It will have a value
+  /// only if creative_size_type = CreativeSizeType.NATIVE.
   /// Possible string values are:
   /// - "UNKNOWN_NATIVE_TEMPLATE" : A placeholder for an undefined native
   /// template.
@@ -6293,9 +6270,9 @@ class DayPart {
   /// - "SUNDAY" : Sunday
   core.String dayOfWeek;
 
-  /// The ending time of the day for the ad to show (minute level granularity).
-  /// The end time is exclusive.
-  /// This field is not available for filtering in PQL queries.
+  /// The ending time of the day for the ad to show (minute level
+  /// granularity). The end time is exclusive. This field is not available
+  /// for filtering in PQL queries.
   TimeOfDay endTime;
 
   /// The starting time of day for the ad to show (minute level granularity).
@@ -6374,8 +6351,7 @@ class DayPartTargeting {
 
 /// A deal represents a segment of inventory for displaying ads on.
 /// A proposal can contain multiple deals. A deal contains the terms and
-/// targeting information that
-/// is used for serving.
+/// targeting information that is used for serving.
 class Deal {
   /// Proposed flight end time of the deal.
   /// This will generally be stored in a granularity of a second.
@@ -6384,10 +6360,9 @@ class Deal {
 
   /// Optional proposed flight start time of the deal.
   /// This will generally be stored in the granularity of one second since deal
-  /// serving
-  /// starts at seconds boundary. Any time specified with more granularity
-  /// (e.g., in milliseconds) will be truncated towards the start of time in
-  /// seconds.
+  /// serving starts at seconds boundary. Any time specified with more
+  /// granularity (e.g., in milliseconds) will be truncated towards the start of
+  /// time in seconds.
   core.String availableStartTime;
 
   /// Buyer private data (hidden from seller).
@@ -6409,12 +6384,10 @@ class Deal {
   /// this field while updating the resource will result in an error.
   core.String createProductRevision;
 
-  /// The time of the deal creation.
-  /// @OutputOnly
+  /// Output only. The time of the deal creation.
   core.String createTime;
 
-  /// Specifies the creative pre-approval policy.
-  /// @OutputOnly
+  /// Output only. Specifies the creative pre-approval policy.
   /// Possible string values are:
   /// - "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED" : A placeholder for an
   /// undefined creative pre-approval policy.
@@ -6424,14 +6397,12 @@ class Deal {
   /// each creative before it can serve.
   core.String creativePreApprovalPolicy;
 
-  /// Restricitions about the creatives associated with the deal (i.e., size)
-  /// This is available for Programmatic Guaranteed/Preferred Deals in Ad
-  /// Manager.
-  /// @OutputOnly
+  /// Output only. Restricitions about the creatives associated with the deal
+  /// (i.e., size) This is available for Programmatic Guaranteed/Preferred Deals
+  /// in Ad Manager.
   CreativeRestrictions creativeRestrictions;
 
-  /// Specifies whether the creative is safeFrame compatible.
-  /// @OutputOnly
+  /// Output only. Specifies whether the creative is safeFrame compatible.
   /// Possible string values are:
   /// - "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED" : A placeholder for an
   /// undefined creative safe-frame compatibility.
@@ -6441,12 +6412,10 @@ class Deal {
   /// option.
   core.String creativeSafeFrameCompatibility;
 
-  /// A unique deal ID for the deal (server-assigned).
-  /// @OutputOnly
+  /// Output only. A unique deal ID for the deal (server-assigned).
   core.String dealId;
 
-  /// Metadata about the serving status of this deal.
-  /// @OutputOnly
+  /// Output only. Metadata about the serving status of this deal.
   DealServingMetadata dealServingMetadata;
 
   /// The negotiable terms of the deal.
@@ -6462,19 +6431,17 @@ class Deal {
   /// The name of the deal.
   core.String displayName;
 
-  /// The external deal ID assigned to this deal once the deal is finalized.
-  /// This is the deal ID that shows up in serving/reporting etc.
-  /// @OutputOnly
+  /// Output only. The external deal ID assigned to this deal once the deal is
+  /// finalized. This is the deal ID that shows up in serving/reporting etc.
   core.String externalDealId;
 
-  /// True, if the buyside inventory setup is complete for this deal.
-  /// @OutputOnly
+  /// Output only. True, if the buyside inventory setup is complete for this
+  /// deal.
   core.bool isSetupComplete;
 
-  /// Specifies the creative source for programmatic deals. PUBLISHER means
-  /// creative is provided by seller and ADVERTISER means creative is
-  /// provided by buyer.
-  /// @OutputOnly
+  /// Output only. Specifies the creative source for programmatic deals.
+  /// PUBLISHER means creative is provided by seller and ADVERTISER means
+  /// creative is provided by buyer.
   /// Possible string values are:
   /// - "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED" : A placeholder for an
   /// undefined programmatic creative source.
@@ -6482,12 +6449,10 @@ class Deal {
   /// - "PUBLISHER" : The publisher provides the creatives to be served.
   core.String programmaticCreativeSource;
 
-  /// ID of the proposal that this deal is part of.
-  /// @OutputOnly
+  /// Output only. ID of the proposal that this deal is part of.
   core.String proposalId;
 
-  /// Seller contact information for the deal.
-  /// @OutputOnly
+  /// Output only. Seller contact information for the deal.
   core.List<ContactInformation> sellerContacts;
 
   /// The syndication product associated with the deal.
@@ -6503,16 +6468,14 @@ class Deal {
   /// - "GAMES" : This represents ads shown within games.
   core.String syndicationProduct;
 
-  /// Specifies the subset of inventory targeted by the deal.
-  /// @OutputOnly
+  /// Output only. Specifies the subset of inventory targeted by the deal.
   MarketplaceTargeting targeting;
 
   /// The shared targeting visible to buyers and sellers. Each shared
   /// targeting entity is AND'd together.
   core.List<TargetingCriteria> targetingCriterion;
 
-  /// The time when the deal was last updated.
-  /// @OutputOnly
+  /// Output only. The time when the deal was last updated.
   core.String updateTime;
 
   /// The web property code for the seller copied over from the product.
@@ -6758,8 +6721,7 @@ class DealPauseStatus {
 
 /// Message captures metadata about the serving status of a deal.
 class DealServingMetadata {
-  /// Tracks which parties (if any) have paused a deal.
-  /// @OutputOnly
+  /// Output only. Tracks which parties (if any) have paused a deal.
   DealPauseStatus dealPauseStatus;
 
   DealServingMetadata();
@@ -6886,8 +6848,7 @@ class DealTerms {
 
 /// Message contains details about how the deals will be paced.
 class DeliveryControl {
-  /// Specified the creative blocking levels to be applied.
-  /// @OutputOnly
+  /// Output only. Specified the creative blocking levels to be applied.
   /// Possible string values are:
   /// - "CREATIVE_BLOCKING_LEVEL_UNSPECIFIED" : A placeholder for an undefined
   /// creative blocking level.
@@ -6896,8 +6857,7 @@ class DeliveryControl {
   /// be applied.
   core.String creativeBlockingLevel;
 
-  /// Specifies how the impression delivery will be paced.
-  /// @OutputOnly
+  /// Output only. Specifies how the impression delivery will be paced.
   /// Possible string values are:
   /// - "DELIVERY_RATE_TYPE_UNSPECIFIED" : A placeholder for an undefined
   /// delivery rate type.
@@ -6906,8 +6866,7 @@ class DeliveryControl {
   /// - "AS_FAST_AS_POSSIBLE" : Impressions are served as fast as possible.
   core.String deliveryRateType;
 
-  /// Specifies any frequency caps.
-  /// @OutputOnly
+  /// Output only. Specifies any frequency caps.
   core.List<FrequencyCap> frequencyCaps;
 
   DeliveryControl();
@@ -6943,7 +6902,7 @@ class DeliveryControl {
   }
 }
 
-/// @OutputOnly The reason and details for a disapproval.
+/// Output only. The reason and details for a disapproval.
 class Disapproval {
   /// Additional details about the reason for disapproval.
   core.List<core.String> details;
@@ -7428,44 +7387,6 @@ class FilteredBidDetailRow {
     }
     if (rowDimensions != null) {
       _json["rowDimensions"] = (rowDimensions).toJson();
-    }
-    return _json;
-  }
-}
-
-/// @OutputOnly Filtering reasons for this creative during a period of a single
-/// day (from midnight to midnight Pacific).
-class FilteringStats {
-  /// The day during which the data was collected.
-  /// The data is collected from 00:00:00 to 23:59:59 PT.
-  /// During switches from PST to PDT and back, the day may
-  /// contain 23 or 25 hours of data instead of the usual 24.
-  Date date;
-
-  /// The set of filtering reasons for this date.
-  core.List<Reason> reasons;
-
-  FilteringStats();
-
-  FilteringStats.fromJson(core.Map _json) {
-    if (_json.containsKey("date")) {
-      date = new Date.fromJson(_json["date"]);
-    }
-    if (_json.containsKey("reasons")) {
-      reasons = (_json["reasons"] as core.List)
-          .map<Reason>((value) => new Reason.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (date != null) {
-      _json["date"] = (date).toJson();
-    }
-    if (reasons != null) {
-      _json["reasons"] = reasons.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -8608,7 +8529,7 @@ class ListPublisherProfilesResponse {
   }
 }
 
-/// @OutputOnly The Geo criteria the restriction applies to.
+/// Output only. The Geo criteria the restriction applies to.
 class LocationContext {
   /// IDs representing the geo location for this context.
   /// Please refer to the
@@ -9062,12 +8983,10 @@ class NonGuaranteedFixedPriceTerms {
 
 /// A proposal may be associated to several notes.
 class Note {
-  /// The timestamp for when this note was created.
-  /// @OutputOnly
+  /// Output only. The timestamp for when this note was created.
   core.String createTime;
 
-  /// The role of the person (buyer/seller) creating the note.
-  /// @OutputOnly
+  /// Output only. The role of the person (buyer/seller) creating the note.
   /// Possible string values are:
   /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
   /// buyer/seller role.
@@ -9082,12 +9001,10 @@ class Note {
   /// this field while updating the resource will result in an error.
   core.String note;
 
-  /// The unique ID for the note.
-  /// @OutputOnly
+  /// Output only. The unique ID for the note.
   core.String noteId;
 
-  /// The revision number of the proposal when the note is created.
-  /// @OutputOnly
+  /// Output only. The revision number of the proposal when the note is created.
   core.String proposalRevision;
 
   Note();
@@ -9171,7 +9088,7 @@ class OperatingSystemTargeting {
 class PauseProposalRequest {
   /// The reason why the proposal is being paused.
   /// This human readable message will be displayed in the seller's UI.
-  /// (Max length: 100 unicode code units.)
+  /// (Max length: 1000 unicode code units.)
   core.String reason;
 
   PauseProposalRequest();
@@ -9229,7 +9146,7 @@ class PlacementTargeting {
   }
 }
 
-/// @OutputOnly The type of platform the restriction applies to.
+/// Output only. The type of platform the restriction applies to.
 class PlatformContext {
   /// The platforms this restriction applies to.
   core.List<core.String> platforms;
@@ -9373,15 +9290,12 @@ class PrivateData {
 /// know more about the inventory.
 class Product {
   /// The proposed end time for the deal. The field will be truncated to the
-  /// order of
-  /// seconds during serving.
+  /// order of seconds during serving.
   core.String availableEndTime;
 
   /// Inventory availability dates. The start time will be truncated to seconds
-  /// during serving.
-  /// Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will be truncated to
-  /// 3:23:34
-  /// when serving.
+  /// during serving. Thus, a field specified as 3:23:34.456 (HH:mm:ss.SSS) will
+  /// be truncated to 3:23:34 when serving.
   core.String availableStartTime;
 
   /// Creation time.
@@ -9560,8 +9474,8 @@ class Product {
 ///
 /// Fields are updatable unless noted otherwise.
 class Proposal {
-  /// Reference to the buyer that will get billed for this proposal.
-  /// @OutputOnly
+  /// Output only. Reference to the buyer that will get billed for this
+  /// proposal.
   Buyer billedBuyer;
 
   /// Reference to the buyer on the proposal.
@@ -9577,24 +9491,21 @@ class Proposal {
   PrivateData buyerPrivateData;
 
   /// The deals associated with this proposal. For Private Auction proposals
-  /// (whose deals have
-  /// NonGuaranteedAuctionTerms), there will only be one deal.
+  /// (whose deals have NonGuaranteedAuctionTerms), there will only be one deal.
   core.List<Deal> deals;
 
   /// The name for the proposal.
   core.String displayName;
 
-  /// True if the proposal is being renegotiated.
-  /// @OutputOnly
+  /// Output only. True if the proposal is being renegotiated.
   core.bool isRenegotiating;
 
-  /// True, if the buyside inventory setup is complete for this proposal.
-  /// @OutputOnly
+  /// Output only. True, if the buyside inventory setup is complete for this
+  /// proposal.
   core.bool isSetupComplete;
 
-  /// The role of the last user that either updated the proposal or left a
-  /// comment.
-  /// @OutputOnly
+  /// Output only. The role of the last user that either updated the proposal or
+  /// left a comment.
   /// Possible string values are:
   /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
   /// buyer/seller role.
@@ -9602,12 +9513,10 @@ class Proposal {
   /// - "SELLER" : Specifies the role as seller.
   core.String lastUpdaterOrCommentorRole;
 
-  /// The notes associated with this proposal.
-  /// @OutputOnly
+  /// Output only. The notes associated with this proposal.
   core.List<Note> notes;
 
-  /// Indicates whether the buyer/seller created the proposal.
-  /// @OutputOnly
+  /// Output only. Indicates whether the buyer/seller created the proposal.
   /// Possible string values are:
   /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
   /// buyer/seller role.
@@ -9615,15 +9524,14 @@ class Proposal {
   /// - "SELLER" : Specifies the role as seller.
   core.String originatorRole;
 
-  /// Private auction ID if this proposal is a private auction proposal.
-  /// @OutputOnly
+  /// Output only. Private auction ID if this proposal is a private auction
+  /// proposal.
   core.String privateAuctionId;
 
-  /// The unique ID of the proposal.
-  /// @OutputOnly
+  /// Output only. The unique ID of the proposal.
   core.String proposalId;
 
-  /// The revision number for the proposal.
+  /// Output only. The revision number for the proposal.
   /// Each update to the proposal or the deal causes the proposal revision
   /// number
   /// to auto-increment. The buyer keeps track of the last revision number they
@@ -9631,11 +9539,9 @@ class Proposal {
   /// on the server has since incremented, then an ABORTED error is returned
   /// during the update operation to let the buyer know that a subsequent update
   /// was made.
-  /// @OutputOnly
   core.String proposalRevision;
 
-  /// The current state of the proposal.
-  /// @OutputOnly
+  /// Output only. The current state of the proposal.
   /// Possible string values are:
   /// - "PROPOSAL_STATE_UNSPECIFIED" : A placeholder for an undefined proposal
   /// state.
@@ -9656,12 +9562,10 @@ class Proposal {
   /// this field while updating the resource will result in an error.
   Seller seller;
 
-  /// Contact information for the seller.
-  /// @OutputOnly
+  /// Output only. Contact information for the seller.
   core.List<ContactInformation> sellerContacts;
 
-  /// The time when the proposal was last revised.
-  /// @OutputOnly
+  /// Output only. The time when the proposal was last revised.
   core.String updateTime;
 
   Proposal();
@@ -9802,38 +9706,37 @@ class Proposal {
 /// Represents a publisher profile in Marketplace.
 ///
 /// All fields are read only. All string fields are free-form text entered by
-/// the publisher
-/// unless noted otherwise.
+/// the
+/// publisher unless noted otherwise.
 class PublisherProfile {
   /// Description on the publisher's audience.
   core.String audienceDescription;
 
   /// Statement explaining what's unique about publisher's business, and why
-  /// buyers should
-  /// partner with the publisher.
+  /// buyers should partner with the publisher.
   core.String buyerPitchStatement;
 
   /// Contact information for direct reservation deals. This is free text
-  /// entered by the publisher
-  /// and may include information like names, phone numbers and email addresses.
+  /// entered
+  /// by the publisher and may include information like names, phone numbers and
+  /// email addresses.
   core.String directDealsContact;
 
   /// Name of the publisher profile.
   core.String displayName;
 
   /// The list of domains represented in this publisher profile. Empty if this
-  /// is a parent profile.
-  /// These are top private domains, meaning that these will not contain a
-  /// string like
-  /// "photos.google.co.uk/123", but will instead contain "google.co.uk".
+  /// is
+  /// a parent profile. These are top private domains, meaning that these will
+  /// not contain a string like "photos.google.co.uk/123", but will instead
+  /// contain "google.co.uk".
   core.List<core.String> domains;
 
   /// URL to publisher's Google+ page.
   core.String googlePlusUrl;
 
   /// A Google public URL to the logo for this publisher profile. The logo is
-  /// stored as
-  /// a PNG, JPG, or GIF image.
+  /// stored as a PNG, JPG, or GIF image.
   core.String logoUrl;
 
   /// URL to additional marketing and sales materials.
@@ -9843,8 +9746,8 @@ class PublisherProfile {
   core.String overview;
 
   /// Contact information for programmatic deals. This is free text entered by
-  /// the publisher
-  /// and may include information like names, phone numbers and email addresses.
+  /// the publisher and may include information like names, phone numbers and
+  /// email addresses.
   core.String programmaticDealsContact;
 
   /// Unique ID for publisher profile.
@@ -9990,41 +9893,6 @@ class RealtimeTimeRange {
   }
 }
 
-/// A specific filtering status and how many times it occurred.
-class Reason {
-  /// The number of times the creative was filtered for the status. The
-  /// count is aggregated across all publishers on the exchange.
-  core.String count;
-
-  /// The filtering status code. Please refer to the
-  /// [creative-status-codes.txt](https://storage.googleapis.com/adx-rtb-dictionaries/creative-status-codes.txt)
-  /// file for different statuses.
-  core.int status;
-
-  Reason();
-
-  Reason.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
-    }
-    if (_json.containsKey("status")) {
-      status = _json["status"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (count != null) {
-      _json["count"] = count;
-    }
-    if (status != null) {
-      _json["status"] = status;
-    }
-    return _json;
-  }
-}
-
 /// A relative date range, specified by an offset and a duration.
 /// The supported range of dates begins 30 days before today and ends today,
 /// i.e., the limits for these values are:
@@ -10137,7 +10005,7 @@ class RowDimensions {
   }
 }
 
-/// @OutputOnly A security context.
+/// Output only. A security context.
 class SecurityContext {
   /// The security types in this context.
   core.List<core.String> securities;
@@ -10265,7 +10133,7 @@ class ServingContext {
   }
 }
 
-/// @OutputOnly A representation of the status of an ad in a
+/// Output only. A representation of the status of an ad in a
 /// specific context. A context here relates to where something ultimately
 /// serves
 /// (for example, a user or publisher geo, a platform, an HTTPS vs HTTP request,

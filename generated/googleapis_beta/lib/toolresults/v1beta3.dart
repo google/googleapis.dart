@@ -864,6 +864,8 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       get perfSampleSeries =>
           new ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(
               _requester);
+  ProjectsHistoriesExecutionsStepsTestCasesResourceApi get testCases =>
+      new ProjectsHistoriesExecutionsStepsTestCasesResourceApi(_requester);
   ProjectsHistoriesExecutionsStepsThumbnailsResourceApi get thumbnails =>
       new ProjectsHistoriesExecutionsStepsThumbnailsResourceApi(_requester);
 
@@ -1923,6 +1925,201 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   }
 }
 
+class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHistoriesExecutionsStepsTestCasesResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets details of a Test Case for a Step. Experimental test cases API. Still
+  /// in active development.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
+  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+  /// containing Test Case does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - A Execution id
+  ///
+  /// Required.
+  ///
+  /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
+  ///
+  /// Required.
+  ///
+  /// [testCaseId] - A Test Case id.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestCase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestCase> get(core.String projectId, core.String historyId,
+      core.String executionId, core.String stepId, core.String testCaseId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (testCaseId == null) {
+      throw new core.ArgumentError("Parameter testCaseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps/' +
+        commons.Escaper.ecapeVariable('$stepId') +
+        '/testCases/' +
+        commons.Escaper.ecapeVariable('$testCaseId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TestCase.fromJson(data));
+  }
+
+  /// Lists Test Cases attached to a Step. Experimental test cases API. Still in
+  /// active development.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
+  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+  /// containing Step does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - A Execution id
+  ///
+  /// Required.
+  ///
+  /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
+  ///
+  /// Required.
+  ///
+  /// [pageSize] - The maximum number of TestCases to fetch.
+  ///
+  /// Default value: 100. The server will use this default if the field is not
+  /// set or has a value of 0.
+  ///
+  /// Optional.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  ///
+  /// Optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTestCasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTestCasesResponse> list(core.String projectId,
+      core.String historyId, core.String executionId, core.String stepId,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps/' +
+        commons.Escaper.ecapeVariable('$stepId') +
+        '/testCases';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListTestCasesResponse.fromJson(data));
+  }
+}
+
 class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2763,6 +2960,7 @@ class Execution {
   }
 }
 
+/// Details for an outcome with a FAILURE outcome summary.
 class FailureDetail {
   /// If the failure was severe because the system (app) under test crashed.
   core.bool crashed;
@@ -3129,11 +3327,16 @@ class Image {
   }
 }
 
+/// Details for an outcome with an INCONCLUSIVE outcome summary.
 class InconclusiveDetail {
   /// If the end user aborted the test execution before a pass or fail could be
   /// determined. For example, the user pressed ctrl-c which sent a kill signal
   /// to the test runner while the test was running.
   core.bool abortedByUser;
+
+  /// If results are being provided to the user in certain cases of
+  /// infrastructure failures
+  core.bool hasErrorLogs;
 
   /// If the test runner could not determine success or failure because the test
   /// depends on a component other than the system under test which failed.
@@ -3148,6 +3351,9 @@ class InconclusiveDetail {
     if (_json.containsKey("abortedByUser")) {
       abortedByUser = _json["abortedByUser"];
     }
+    if (_json.containsKey("hasErrorLogs")) {
+      hasErrorLogs = _json["hasErrorLogs"];
+    }
     if (_json.containsKey("infrastructureFailure")) {
       infrastructureFailure = _json["infrastructureFailure"];
     }
@@ -3159,8 +3365,68 @@ class InconclusiveDetail {
     if (abortedByUser != null) {
       _json["abortedByUser"] = abortedByUser;
     }
+    if (hasErrorLogs != null) {
+      _json["hasErrorLogs"] = hasErrorLogs;
+    }
     if (infrastructureFailure != null) {
       _json["infrastructureFailure"] = infrastructureFailure;
+    }
+    return _json;
+  }
+}
+
+/// Step Id and outcome of each individual step that was run as a group with
+/// other steps with the same configuration.
+class IndividualOutcome {
+  /// Unique int given to each step. Ranges from 0(inclusive) to total number of
+  /// steps(exclusive). The primary step is 0.
+  core.int multistepNumber;
+
+  ///
+  /// Possible string values are:
+  /// - "failure"
+  /// - "flaky"
+  /// - "inconclusive"
+  /// - "skipped"
+  /// - "success"
+  /// - "unset"
+  core.String outcomeSummary;
+
+  /// How long it took for this step to run.
+  Duration runDuration;
+  core.String stepId;
+
+  IndividualOutcome();
+
+  IndividualOutcome.fromJson(core.Map _json) {
+    if (_json.containsKey("multistepNumber")) {
+      multistepNumber = _json["multistepNumber"];
+    }
+    if (_json.containsKey("outcomeSummary")) {
+      outcomeSummary = _json["outcomeSummary"];
+    }
+    if (_json.containsKey("runDuration")) {
+      runDuration = new Duration.fromJson(_json["runDuration"]);
+    }
+    if (_json.containsKey("stepId")) {
+      stepId = _json["stepId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (multistepNumber != null) {
+      _json["multistepNumber"] = multistepNumber;
+    }
+    if (outcomeSummary != null) {
+      _json["outcomeSummary"] = outcomeSummary;
+    }
+    if (runDuration != null) {
+      _json["runDuration"] = (runDuration).toJson();
+    }
+    if (stepId != null) {
+      _json["stepId"] = stepId;
     }
     return _json;
   }
@@ -3412,6 +3678,39 @@ class ListStepsResponse {
   }
 }
 
+/// Response message for StepService.ListTestCases.
+class ListTestCasesResponse {
+  core.String nextPageToken;
+
+  /// List of test cases.
+  core.List<TestCase> testCases;
+
+  ListTestCasesResponse();
+
+  ListTestCasesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("testCases")) {
+      testCases = (_json["testCases"] as core.List)
+          .map<TestCase>((value) => new TestCase.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (testCases != null) {
+      _json["testCases"] = testCases.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class MemoryInfo {
   /// Maximum memory that can be allocated to the process in KiB
   core.String memoryCapInKibibyte;
@@ -3438,6 +3737,48 @@ class MemoryInfo {
     }
     if (memoryTotalInKibibyte != null) {
       _json["memoryTotalInKibibyte"] = memoryTotalInKibibyte;
+    }
+    return _json;
+  }
+}
+
+/// Details when multiple steps are run with the same configuration as a group.
+class MultiStep {
+  /// Unique int given to each step. Ranges from 0(inclusive) to total number of
+  /// steps(exclusive). The primary step is 0.
+  core.int multistepNumber;
+
+  /// Present if it is a primary (original) step.
+  PrimaryStep primaryStep;
+
+  /// Step Id of the primary (original) step, which might be this step.
+  core.String primaryStepId;
+
+  MultiStep();
+
+  MultiStep.fromJson(core.Map _json) {
+    if (_json.containsKey("multistepNumber")) {
+      multistepNumber = _json["multistepNumber"];
+    }
+    if (_json.containsKey("primaryStep")) {
+      primaryStep = new PrimaryStep.fromJson(_json["primaryStep"]);
+    }
+    if (_json.containsKey("primaryStepId")) {
+      primaryStepId = _json["primaryStepId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (multistepNumber != null) {
+      _json["multistepNumber"] = multistepNumber;
+    }
+    if (primaryStep != null) {
+      _json["primaryStep"] = (primaryStep).toJson();
+    }
+    if (primaryStepId != null) {
+      _json["primaryStepId"] = primaryStepId;
     }
     return _json;
   }
@@ -3482,6 +3823,7 @@ class Outcome {
   /// Required
   /// Possible string values are:
   /// - "failure"
+  /// - "flaky"
   /// - "inconclusive"
   /// - "skipped"
   /// - "success"
@@ -3750,6 +4092,51 @@ class PerfSampleSeries {
   }
 }
 
+/// Stores rollup test status of multiple steps that were run as a group and
+/// outcome of each individual step.
+class PrimaryStep {
+  /// Step Id and outcome of each individual step.
+  core.List<IndividualOutcome> individualOutcome;
+
+  /// Rollup test status of multiple steps that were run with the same
+  /// configuration as a group.
+  /// Possible string values are:
+  /// - "failure"
+  /// - "flaky"
+  /// - "inconclusive"
+  /// - "skipped"
+  /// - "success"
+  /// - "unset"
+  core.String rollUp;
+
+  PrimaryStep();
+
+  PrimaryStep.fromJson(core.Map _json) {
+    if (_json.containsKey("individualOutcome")) {
+      individualOutcome = (_json["individualOutcome"] as core.List)
+          .map<IndividualOutcome>(
+              (value) => new IndividualOutcome.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("rollUp")) {
+      rollUp = _json["rollUp"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (individualOutcome != null) {
+      _json["individualOutcome"] =
+          individualOutcome.map((value) => (value).toJson()).toList();
+    }
+    if (rollUp != null) {
+      _json["rollUp"] = rollUp;
+    }
+    return _json;
+  }
+}
+
 /// Per-project settings for the Tool Results service.
 class ProjectSettings {
   /// The name of the Google Cloud Storage bucket to which results are written.
@@ -3923,6 +4310,7 @@ class ScreenshotCluster {
   }
 }
 
+/// Details for an outcome with a SKIPPED outcome summary.
 class SkippedDetail {
   /// If the App doesn't support the specific API level.
   core.bool incompatibleAppVersion;
@@ -4013,56 +4401,11 @@ class StackTrace {
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). The error model is designed to be:
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users - Flexible enough to meet
-/// unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message, and error details. The error code should be an enum value of
-/// [google.rpc.Code][], but it may accept additional error codes if needed. The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be mapped differently. For example, it will likely be mapped to some
-/// exceptions in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a consistent developer
-/// experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-/// errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may have
-/// a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-/// `Status` message should be used directly inside batch response, one for each
-/// error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-/// results in its response, the status of those operations should be
-/// represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of [google.rpc.Code][].
   core.int code;
@@ -4210,6 +4553,16 @@ class Step {
   /// any new value for an existing key will update that key's value
   core.List<StepLabelsEntry> labels;
 
+  /// Details when multiple steps are run with the same configuration as a
+  /// group. These details can be used identify which group this step is part
+  /// of. It also identifies the groups 'primary step' which indexes all the
+  /// group members.
+  ///
+  /// - In response: present if previously set. - In create request: optional,
+  /// set iff this step was performed more than once. - In update request:
+  /// optional
+  MultiStep multiStep;
+
   /// A short human-readable name to display in the UI. Maximum of 100
   /// characters. For example: Clean build
   ///
@@ -4306,6 +4659,9 @@ class Step {
           .map<StepLabelsEntry>((value) => new StepLabelsEntry.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("multiStep")) {
+      multiStep = new MultiStep.fromJson(_json["multiStep"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -4355,6 +4711,9 @@ class Step {
     }
     if (labels != null) {
       _json["labels"] = labels.map((value) => (value).toJson()).toList();
+    }
+    if (multiStep != null) {
+      _json["multiStep"] = (multiStep).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -4437,6 +4796,7 @@ class StepLabelsEntry {
   }
 }
 
+/// Details for an outcome with a SUCCESS outcome summary.
 class SuccessDetail {
   /// If a native process other than the app crashed.
   core.bool otherNativeCrash;
@@ -4454,6 +4814,120 @@ class SuccessDetail {
         new core.Map<core.String, core.Object>();
     if (otherNativeCrash != null) {
       _json["otherNativeCrash"] = otherNativeCrash;
+    }
+    return _json;
+  }
+}
+
+class TestCase {
+  /// The end time of the test case.
+  ///
+  /// Optional.
+  Timestamp endTime;
+
+  /// Why the test case was skipped.
+  ///
+  /// Present only for skipped test case
+  core.String skippedMessage;
+
+  /// The stack trace details if the test case failed or encountered an error.
+  ///
+  /// The maximum size of the stack traces is 100KiB, beyond which the stack
+  /// track will be truncated.
+  ///
+  /// Zero if the test case passed.
+  core.List<StackTrace> stackTraces;
+
+  /// The start time of the test case.
+  ///
+  /// Optional.
+  Timestamp startTime;
+
+  /// The status of the test case.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "error"
+  /// - "failed"
+  /// - "flaky"
+  /// - "passed"
+  /// - "skipped"
+  core.String status;
+
+  /// A unique identifier within a Step for this Test Case.
+  core.String testCaseId;
+
+  /// Test case reference, e.g. name, class name and test suite name.
+  ///
+  /// Required.
+  TestCaseReference testCaseReference;
+
+  /// References to opaque files of any format output by the tool execution.
+  core.List<ToolOutputReference> toolOutputs;
+
+  TestCase();
+
+  TestCase.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = new Timestamp.fromJson(_json["endTime"]);
+    }
+    if (_json.containsKey("skippedMessage")) {
+      skippedMessage = _json["skippedMessage"];
+    }
+    if (_json.containsKey("stackTraces")) {
+      stackTraces = (_json["stackTraces"] as core.List)
+          .map<StackTrace>((value) => new StackTrace.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = new Timestamp.fromJson(_json["startTime"]);
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("testCaseId")) {
+      testCaseId = _json["testCaseId"];
+    }
+    if (_json.containsKey("testCaseReference")) {
+      testCaseReference =
+          new TestCaseReference.fromJson(_json["testCaseReference"]);
+    }
+    if (_json.containsKey("toolOutputs")) {
+      toolOutputs = (_json["toolOutputs"] as core.List)
+          .map<ToolOutputReference>(
+              (value) => new ToolOutputReference.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = (endTime).toJson();
+    }
+    if (skippedMessage != null) {
+      _json["skippedMessage"] = skippedMessage;
+    }
+    if (stackTraces != null) {
+      _json["stackTraces"] =
+          stackTraces.map((value) => (value).toJson()).toList();
+    }
+    if (startTime != null) {
+      _json["startTime"] = (startTime).toJson();
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (testCaseId != null) {
+      _json["testCaseId"] = testCaseId;
+    }
+    if (testCaseReference != null) {
+      _json["testCaseReference"] = (testCaseReference).toJson();
+    }
+    if (toolOutputs != null) {
+      _json["toolOutputs"] =
+          toolOutputs.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4620,6 +5094,7 @@ class TestIssue {
   /// - "availableDeepLinks"
   /// - "compatibleWithOrchestrator"
   /// - "completeRoboScriptExecution"
+  /// - "crashDialogError"
   /// - "encounteredLoginScreen"
   /// - "encounteredNonAndroidUiWidgetScreen"
   /// - "failedToInstall"
@@ -4631,6 +5106,7 @@ class TestIssue {
   /// - "iosException"
   /// - "launcherActivityNotFound"
   /// - "nativeCrash"
+  /// - "nonSdkApiUsageReport"
   /// - "nonSdkApiUsageViolation"
   /// - "performedGoogleLogin"
   /// - "performedMonkeyActions"
@@ -4638,6 +5114,7 @@ class TestIssue {
   /// - "unspecifiedType"
   /// - "unusedRoboDirective"
   /// - "usedRoboDirective"
+  /// - "usedRoboIgnoreDirective"
   core.String type;
 
   /// Warning message with additional details of the issue. Should always be a
@@ -4699,6 +5176,9 @@ class TestIssue {
 /// also being used in ExecutionService in a read only mode for the
 /// corresponding step.
 class TestSuiteOverview {
+  /// Elapsed time of test suite.
+  Duration elapsedTime;
+
   /// Number of test cases in error, typically set by the service by parsing the
   /// xml_source.
   ///
@@ -4741,6 +5221,9 @@ class TestSuiteOverview {
   TestSuiteOverview();
 
   TestSuiteOverview.fromJson(core.Map _json) {
+    if (_json.containsKey("elapsedTime")) {
+      elapsedTime = new Duration.fromJson(_json["elapsedTime"]);
+    }
     if (_json.containsKey("errorCount")) {
       errorCount = _json["errorCount"];
     }
@@ -4764,6 +5247,9 @@ class TestSuiteOverview {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (elapsedTime != null) {
+      _json["elapsedTime"] = (elapsedTime).toJson();
+    }
     if (errorCount != null) {
       _json["errorCount"] = errorCount;
     }

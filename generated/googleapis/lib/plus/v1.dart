@@ -17,17 +17,18 @@ const core.String USER_AGENT = 'dart-api-client plus/v1';
 
 /// Builds on top of the Google+ platform.
 class PlusApi {
-  /// Know the list of people in your circles, your age range, and language
+  /// View your basic profile info, including your age range and language
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
-  /// Know who you are on Google
+  /// Associate you with your personal info on Google
   static const PlusMeScope = "https://www.googleapis.com/auth/plus.me";
 
   /// View your email address
   static const UserinfoEmailScope =
       "https://www.googleapis.com/auth/userinfo.email";
 
-  /// View your basic profile info
+  /// See your personal info, including any personal info you've made publicly
+  /// available
   static const UserinfoProfileScope =
       "https://www.googleapis.com/auth/userinfo.profile";
 
@@ -49,7 +50,8 @@ class ActivitiesResourceApi {
 
   ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get an activity.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -91,8 +93,8 @@ class ActivitiesResourceApi {
     return _response.then((data) => new Activity.fromJson(data));
   }
 
-  /// List all of the activities in the specified collection for a particular
-  /// user.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -161,7 +163,8 @@ class ActivitiesResourceApi {
     return _response.then((data) => new ActivityFeed.fromJson(data));
   }
 
-  /// Search public activities.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -245,7 +248,8 @@ class CommentsResourceApi {
 
   CommentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Get a comment.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -287,7 +291,8 @@ class CommentsResourceApi {
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /// List all of the comments for an activity.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -493,8 +498,8 @@ class PeopleResourceApi {
     return _response.then((data) => new PeopleFeed.fromJson(data));
   }
 
-  /// List all of the people in the specified collection for a particular
-  /// activity.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
@@ -564,7 +569,8 @@ class PeopleResourceApi {
     return _response.then((data) => new PeopleFeed.fromJson(data));
   }
 
-  /// Search all public profiles.
+  /// Shut down. See https://developers.google.com/+/api-shutdown for more
+  /// details.
   ///
   /// Request parameters:
   ///
