@@ -1,3 +1,7 @@
+## 0.1.8+2
+
+- Filter out headers we're not allowed to send when operating in a browser.
+
 ## 0.1.8+1
 
 - Fix `content-length` bug introduced in `0.1.8`.

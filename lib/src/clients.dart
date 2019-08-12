@@ -13,6 +13,14 @@ import 'requests.dart' as client_requests;
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 
+/// List of headers that is forbidden in current execution context.
+///
+/// In a browser context we're not allowed to set `user-agent` and
+/// `content-length` headers.
+const _forbiddenHeaders = bool.fromEnvironment('dart.library.html')
+    ? <String>['user-agent', 'content-length']
+    : <String>[];
+
 /// Base class for all API clients, offering generic methods for
 /// HTTP Requests to the API
 class ApiRequester {
@@ -206,6 +214,10 @@ class ApiRequester {
           'content-length': '$length',
         };
       }
+      // Filter out headers forbidden in the browser (in calling in browser).
+      // If we don't do this, the browser will complain that we're attempting
+      // to set a header that we're not allowed to set.
+      headers.removeWhere((key, value) => _forbiddenHeaders.contains(key));
 
       var request = _RequestImpl(method, uri, bodyController.stream);
       request.headers.addAll(headers);
