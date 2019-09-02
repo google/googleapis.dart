@@ -10,6 +10,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'requests.dart' as client_requests;
+import 'version_fallback.dart' if (dart.library.io) 'version_io.dart';
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 
@@ -206,12 +207,14 @@ class ApiRequester {
           'content-type': CONTENT_TYPE_JSON_UTF8,
           'content-length': '$length',
           'range': 'bytes=${downloadRange.start}-${downloadRange.end}',
+          'x-goog-api-client': 'gl-dart/$dartVersion',
         };
       } else {
         headers = {
           'user-agent': _userAgent,
           'content-type': CONTENT_TYPE_JSON_UTF8,
           'content-length': '$length',
+          'x-goog-api-client': 'gl-dart/$dartVersion',
         };
       }
       // Filter out headers forbidden in the browser (in calling in browser).
