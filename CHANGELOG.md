@@ -1,3 +1,7 @@
+## 0.1.9
+
+ - Added a `x-goog-api-client` header for client library identification.
+
 ## 0.1.8+2
 
 - Filter out headers we're not allowed to send when operating in a browser.
