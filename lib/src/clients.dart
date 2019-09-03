@@ -10,7 +10,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'requests.dart' as client_requests;
-import 'version_fallback.dart' if (dart.library.io) 'version_io.dart';
+import 'version_fallback.dart'
+    // ignore: uri_does_not_exist
+    if (dart.library.io) 'version_io.dart';
 
 const CONTENT_TYPE_JSON_UTF8 = 'application/json; charset=utf-8';
 
