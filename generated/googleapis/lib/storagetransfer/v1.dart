@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.storagetransfer.v1;
 
@@ -201,6 +201,10 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The list page token.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of:
   /// {"project_id":"my_project_id",
@@ -210,10 +214,6 @@ class TransferJobsResourceApi {
   /// must be specified with array notation. `project_id` is required.
   /// `job_names` and `job_statuses` are optional.  The valid values for
   /// `job_statuses` are case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
-  ///
-  /// [pageToken] - The list page token.
-  ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -226,9 +226,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -237,14 +237,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -263,8 +263,12 @@ class TransferJobsResourceApi {
   }
 
   /// Updates a transfer job. Updating a job's transfer spec does not affect
-  /// transfer operations that are running already. Updating the scheduling
-  /// of a job is not allowed.
+  /// transfer operations that are running already. Updating a job's schedule
+  /// is not allowed.
+  ///
+  /// Note: The job's `status` field can be modified using this RPC (for
+  /// example,
+  /// to set a job's status to `DELETED`, `DISABLED`, or `ENABLED`).
   ///
   /// [request] - The metadata request object.
   ///
@@ -453,22 +457,14 @@ class TransferOperationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// Lists transfer operations.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
@@ -483,8 +479,6 @@ class TransferOperationsResourceApi {
   ///
   /// [pageToken] - The list page token.
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -496,9 +490,9 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -510,14 +504,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -963,8 +957,8 @@ class ErrorSummary {
 
   /// Error samples.
   ///
-  /// No more than 100 error log entries may be recorded for a given
-  /// error code for a single task.
+  /// At most 5 error log entries will be recorded for a given
+  /// error code for a single transfer operation.
   core.List<ErrorLogEntry> errorLogEntries;
 
   ErrorSummary();
@@ -1000,11 +994,11 @@ class ErrorSummary {
   }
 }
 
-/// In a GcsData resource, an object's name is the Google Cloud Storage object's
+/// In a GcsData resource, an object's name is the Cloud Storage object's
 /// name and its `lastModificationTime` refers to the object's updated time,
 /// which changes when the content or the metadata of the object is updated.
 class GcsData {
-  /// Required. Google Cloud Storage bucket name (see
+  /// Required. Cloud Storage bucket name (see
   /// [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
   core.String bucketName;
@@ -1082,7 +1076,7 @@ class GoogleServiceAccount {
 /// [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
 ///
 /// * Ensure that each URL you specify is publicly accessible. For
-/// example, in Google Cloud Storage you can
+/// example, in Cloud Storage you can
 /// [share an object publicly]
 /// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
 /// a link to it.
@@ -1189,7 +1183,7 @@ class ListTransferJobsResponse {
 }
 
 /// Conditions that determine which objects will be transferred. Applies only
-/// to S3 and GCS objects.
+/// to S3 and Cloud Storage objects.
 class ObjectConditions {
   /// `excludePrefixes` must follow the requirements described for
   /// `includePrefixes`.
@@ -1241,7 +1235,8 @@ class ObjectConditions {
   /// `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
   /// `lastModificationTime` refers to the time of the last change to the
   /// object's content or metadata - specifically, this would be the `updated`
-  /// property of GCS objects and the `LastModified` field of S3 objects.
+  /// property of Cloud Storage objects and the `LastModified` field of S3
+  /// objects.
   core.String maxTimeElapsedSinceLastModification;
 
   /// If specified, only objects with a `lastModificationTime` before
@@ -1253,7 +1248,8 @@ class ObjectConditions {
   /// `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
   /// `lastModificationTime` refers to the time of the last change to the
   /// object's content or metadata - specifically, this would be the `updated`
-  /// property of GCS objects and the `LastModified` field of S3 objects.
+  /// property of Cloud Storage objects and the `LastModified` field of S3
+  /// objects.
   core.String minTimeElapsedSinceLastModification;
 
   ObjectConditions();
@@ -1405,23 +1401,47 @@ class ResumeTransferOperationRequest {
 
 /// Transfers can be scheduled to recur or to run just once.
 class Schedule {
-  /// The last day the recurring transfer will be run. If `scheduleEndDate`
-  /// is the same as `scheduleStartDate`, the transfer will be executed only
-  /// once.
+  /// The last day a transfer runs. Date boundaries are determined relative to
+  /// UTC time. A job will run once per 24 hours within the following
+  /// guidelines:
+  ///
+  /// *   If `scheduleEndDate` and `scheduleStartDate` are the same and in the
+  ///     future relative to UTC, the transfer is executed only one time.
+  /// *   If `scheduleEndDate` is later than `scheduleStartDate` and
+  ///     `scheduleEndDate` is in the future relative to UTC, the job will
+  ///     run each day at `startTimeOfDay` through `scheduleEndDate`.
   Date scheduleEndDate;
 
-  /// Required. The first day the recurring transfer is scheduled to run. If
-  /// `scheduleStartDate` is in the past, the transfer will run for the first
-  /// time on the following day.
+  /// Required. The start date of a transfer. Date boundaries are determined
+  /// relative to UTC time. If `scheduleStartDate` and `startTimeOfDay` are in
+  /// the past relative to the job's creation time, the transfer starts the day
+  /// after you schedule the transfer request.
+  ///
+  /// Note: When starting jobs at or near midnight UTC it is possible that
+  /// a job will start later than expected. For example, if you send an outbound
+  /// request on June 1 one millisecond prior to midnight UTC and the Storage
+  /// Transfer Service server receives the request on June 2, then it will
+  /// create
+  /// a TransferJob with `scheduleStartDate` set to June 2 and a
+  /// `startTimeOfDay`
+  /// set to midnight UTC. The first scheduled TransferOperation will take place
+  /// on June 3 at midnight UTC.
   Date scheduleStartDate;
 
-  /// The time in UTC at which the transfer will be scheduled to start in a day.
-  /// Transfers may start later than this time. If not specified, recurring and
-  /// one-time transfers that are scheduled to run today will run immediately;
-  /// recurring transfers that are scheduled to run on a future date will start
-  /// at approximately midnight UTC on that date. Note that when configuring a
-  /// transfer with the Cloud Platform Console, the transfer's start time in a
-  /// day is specified in your local timezone.
+  /// The time in UTC that a transfer job is scheduled to run. Transfers may
+  /// start later than this time.
+  ///
+  /// If `startTimeOfDay` is not specified:
+  ///
+  /// *   One-time transfers run immediately.
+  /// *   Recurring transfers run immediately, and each day at midnight UTC,
+  ///     through `scheduleEndDate`.
+  ///
+  /// If `startTimeOfDay` is specified:
+  ///
+  /// *   One-time transfers run at the specified time.
+  /// *   Recurring transfers run at the specified time each day, through
+  ///     `scheduleEndDate`.
   TimeOfDay startTimeOfDay;
 
   Schedule();
@@ -1875,6 +1895,9 @@ class TransferOperation {
   /// - "SUCCESS" : Completed successfully.
   /// - "FAILED" : Terminated due to an unrecoverable failure.
   /// - "ABORTED" : Aborted by the user.
+  /// - "QUEUED" : Execution is temporarily delayed by the system. No user
+  /// action is
+  /// required.
   core.String status;
 
   /// The name of the transfer job that triggers this transfer operation.
@@ -2007,10 +2030,10 @@ class TransferSpec {
   /// An AWS S3 data source.
   AwsS3Data awsS3DataSource;
 
-  /// A Google Cloud Storage data sink.
+  /// A Cloud Storage data sink.
   GcsData gcsDataSink;
 
-  /// A Google Cloud Storage data source.
+  /// A Cloud Storage data source.
   GcsData gcsDataSource;
 
   /// An HTTP URL data source.

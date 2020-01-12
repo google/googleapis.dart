@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.analytics.v3;
 
@@ -13399,6 +13399,9 @@ class UserDeletionRequest {
   /// Value is "analytics#userDeletionRequest".
   core.String kind;
 
+  /// Property ID
+  core.String propertyId;
+
   /// Web property ID of the form UA-XXXXX-YY.
   core.String webPropertyId;
 
@@ -13416,6 +13419,9 @@ class UserDeletionRequest {
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
+    }
+    if (_json.containsKey("propertyId")) {
+      propertyId = _json["propertyId"];
     }
     if (_json.containsKey("webPropertyId")) {
       webPropertyId = _json["webPropertyId"];
@@ -13436,6 +13442,9 @@ class UserDeletionRequest {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (propertyId != null) {
+      _json["propertyId"] = propertyId;
     }
     if (webPropertyId != null) {
       _json["webPropertyId"] = webPropertyId;

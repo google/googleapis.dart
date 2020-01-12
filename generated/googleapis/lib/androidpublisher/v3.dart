@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.androidpublisher.v3;
 
@@ -40,6 +40,7 @@ class AndroidpublisherApi {
   OrdersResourceApi get orders => new OrdersResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
   ReviewsResourceApi get reviews => new ReviewsResourceApi(_requester);
+  SystemapksResourceApi get systemapks => new SystemapksResourceApi(_requester);
 
   AndroidpublisherApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
@@ -3610,25 +3611,35 @@ class PurchasesVoidedpurchasesResourceApi {
   /// purchases need to be returned (for example, 'com.some.thing').
   ///
   /// [endTime] - The time, in milliseconds since the Epoch, of the newest
-  /// voided in-app product purchase that you want to see in the response. The
-  /// value of this parameter cannot be greater than the current time and is
-  /// ignored if a pagination token is set. Default value is current time. Note:
-  /// This filter is applied on the time at which the record is seen as voided
-  /// by our systems and not the actual voided time returned in the response.
+  /// voided purchase that you want to see in the response. The value of this
+  /// parameter cannot be greater than the current time and is ignored if a
+  /// pagination token is set. Default value is current time. Note: This filter
+  /// is applied on the time at which the record is seen as voided by our
+  /// systems and not the actual voided time returned in the response.
   ///
   /// [maxResults] - null
   ///
   /// [startIndex] - null
   ///
   /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
-  /// voided in-app product purchase that you want to see in the response. The
-  /// value of this parameter cannot be older than 30 days and is ignored if a
-  /// pagination token is set. Default value is current time minus 30 days.
-  /// Note: This filter is applied on the time at which the record is seen as
-  /// voided by our systems and not the actual voided time returned in the
-  /// response.
+  /// voided purchase that you want to see in the response. The value of this
+  /// parameter cannot be older than 30 days and is ignored if a pagination
+  /// token is set. Default value is current time minus 30 days. Note: This
+  /// filter is applied on the time at which the record is seen as voided by our
+  /// systems and not the actual voided time returned in the response.
   ///
   /// [token] - null
+  ///
+  /// [type] - The type of voided purchases that you want to see in the
+  /// response. Possible values are:
+  /// - 0: Only voided in-app product purchases will be returned in the
+  /// response. This is the default value.
+  /// - 1: Both voided in-app purchases and voided subscription purchases will
+  /// be returned in the response.  Note: Before requesting to receive voided
+  /// subscription purchases, you must switch to use orderId in the response
+  /// which uniquely identifies one-time purchases and subscriptions. Otherwise,
+  /// you will receive multiple subscription orders with the same PurchaseToken,
+  /// because subscription renewal orders share the same PurchaseToken.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3646,6 +3657,7 @@ class PurchasesVoidedpurchasesResourceApi {
       core.int startIndex,
       core.String startTime,
       core.String token,
+      core.int type,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3671,6 +3683,9 @@ class PurchasesVoidedpurchasesResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if (type != null) {
+      _queryParams["type"] = ["${type}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3875,6 +3890,266 @@ class ReviewsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ReviewsReplyResponse.fromJson(data));
+  }
+}
+
+class SystemapksResourceApi {
+  final commons.ApiRequester _requester;
+
+  SystemapksVariantsResourceApi get variants =>
+      new SystemapksVariantsResourceApi(_requester);
+
+  SystemapksResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class SystemapksVariantsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SystemapksVariantsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new variant of APK which is suitable for inclusion in a system
+  /// image.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [versionCode] - The version code of the App Bundle.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Variant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Variant> create(SystemApkVariantsCreateRequest request,
+      core.String packageName, core.String versionCode,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (versionCode == null) {
+      throw new core.ArgumentError("Parameter versionCode is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/systemApks/' +
+        commons.Escaper.ecapeVariable('$versionCode') +
+        '/variants';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Variant.fromJson(data));
+  }
+
+  /// Download a previously created APK which is suitable for inclusion in a
+  /// system image.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [versionCode] - The version code of the App Bundle.
+  ///
+  /// [variantId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future download(
+      core.String packageName, core.String versionCode, core.int variantId,
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions =
+          commons.DownloadOptions.Metadata}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (versionCode == null) {
+      throw new core.ArgumentError("Parameter versionCode is required.");
+    }
+    if (variantId == null) {
+      throw new core.ArgumentError("Parameter variantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = downloadOptions;
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/systemApks/' +
+        commons.Escaper.ecapeVariable('$versionCode') +
+        '/variants/' +
+        commons.Escaper.ecapeVariable('$variantId') +
+        ':download';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    if (_downloadOptions == null ||
+        _downloadOptions == commons.DownloadOptions.Metadata) {
+      return _response.then((data) => null);
+    } else {
+      return _response;
+    }
+  }
+
+  /// Returns a previously created system APK variant.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [versionCode] - The version code of the App Bundle.
+  ///
+  /// [variantId] - Unique identifier for this variant.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Variant].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Variant> get(
+      core.String packageName, core.String versionCode, core.int variantId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (versionCode == null) {
+      throw new core.ArgumentError("Parameter versionCode is required.");
+    }
+    if (variantId == null) {
+      throw new core.ArgumentError("Parameter variantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/systemApks/' +
+        commons.Escaper.ecapeVariable('$versionCode') +
+        '/variants/' +
+        commons.Escaper.ecapeVariable('$variantId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Variant.fromJson(data));
+  }
+
+  /// Returns the list of previously created system APK variants.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [versionCode] - The version code of the App Bundle.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SystemApkVariantsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SystemApkVariantsListResponse> list(
+      core.String packageName, core.String versionCode,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (versionCode == null) {
+      throw new core.ArgumentError("Parameter versionCode is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/systemApks/' +
+        commons.Escaper.ecapeVariable('$versionCode') +
+        '/variants';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SystemApkVariantsListResponse.fromJson(data));
   }
 }
 
@@ -4213,6 +4488,36 @@ class Comment {
   }
 }
 
+class Control {
+  core.List<ModRange> modRanges;
+  core.List<core.String> versionCodes;
+
+  Control();
+
+  Control.fromJson(core.Map _json) {
+    if (_json.containsKey("modRanges")) {
+      modRanges = (_json["modRanges"] as core.List)
+          .map<ModRange>((value) => new ModRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("versionCodes")) {
+      versionCodes = (_json["versionCodes"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (modRanges != null) {
+      _json["modRanges"] = modRanges.map((value) => (value).toJson()).toList();
+    }
+    if (versionCodes != null) {
+      _json["versionCodes"] = versionCodes;
+    }
+    return _json;
+  }
+}
+
 class CountryTargeting {
   core.List<core.String> countries;
   core.bool includeRestOfWorld;
@@ -4424,6 +4729,42 @@ class DeviceMetadata {
     }
     if (screenWidthPx != null) {
       _json["screenWidthPx"] = screenWidthPx;
+    }
+    return _json;
+  }
+}
+
+class DeviceSpec {
+  core.int screenDensity;
+  core.List<core.String> supportedAbis;
+  core.List<core.String> supportedLocales;
+
+  DeviceSpec();
+
+  DeviceSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("screenDensity")) {
+      screenDensity = _json["screenDensity"];
+    }
+    if (_json.containsKey("supportedAbis")) {
+      supportedAbis = (_json["supportedAbis"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("supportedLocales")) {
+      supportedLocales =
+          (_json["supportedLocales"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (screenDensity != null) {
+      _json["screenDensity"] = screenDensity;
+    }
+    if (supportedAbis != null) {
+      _json["supportedAbis"] = supportedAbis;
+    }
+    if (supportedLocales != null) {
+      _json["supportedLocales"] = supportedLocales;
     }
     return _json;
   }
@@ -4682,6 +5023,9 @@ class Image {
   /// A sha1 hash of the image that was uploaded.
   core.String sha1;
 
+  /// A sha256 hash of the image that was uploaded.
+  core.String sha256;
+
   /// A URL that will serve a preview of the image.
   core.String url;
 
@@ -4693,6 +5037,9 @@ class Image {
     }
     if (_json.containsKey("sha1")) {
       sha1 = _json["sha1"];
+    }
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -4707,6 +5054,9 @@ class Image {
     }
     if (sha1 != null) {
       _json["sha1"] = sha1;
+    }
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
     }
     if (url != null) {
       _json["url"] = url;
@@ -5221,6 +5571,34 @@ class LocalizedText {
   }
 }
 
+class ModRange {
+  core.String end;
+  core.String start;
+
+  ModRange();
+
+  ModRange.fromJson(core.Map _json) {
+    if (_json.containsKey("end")) {
+      end = _json["end"];
+    }
+    if (_json.containsKey("start")) {
+      start = _json["start"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (end != null) {
+      _json["end"] = end;
+    }
+    if (start != null) {
+      _json["start"] = start;
+    }
+    return _json;
+  }
+}
+
 class MonthDay {
   /// Day of a month, value in [1, 31] range. Valid range depends on the
   /// specified month.
@@ -5343,6 +5721,9 @@ class ProductPurchase {
   /// The order id associated with the purchase of the inapp product.
   core.String orderId;
 
+  /// The inapp product SKU.
+  core.String productId;
+
   /// The purchase state of the order. Possible values are:
   /// - Purchased
   /// - Canceled
@@ -5353,6 +5734,9 @@ class ProductPurchase {
   /// 1, 1970).
   core.String purchaseTimeMillis;
 
+  /// The purchase token generated to identify this purchase.
+  core.String purchaseToken;
+
   /// The type of purchase of the inapp product. This field is only set if this
   /// purchase was not made using the standard in-app billing flow. Possible
   /// values are:
@@ -5360,6 +5744,9 @@ class ProductPurchase {
   /// - Promo (i.e. purchased using a promo code)
   /// - Rewarded (i.e. from watching a video ad instead of paying)
   core.int purchaseType;
+
+  /// The quantity associated with the purchase of the inapp product.
+  core.int quantity;
 
   ProductPurchase();
 
@@ -5379,14 +5766,23 @@ class ProductPurchase {
     if (_json.containsKey("orderId")) {
       orderId = _json["orderId"];
     }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
     if (_json.containsKey("purchaseState")) {
       purchaseState = _json["purchaseState"];
     }
     if (_json.containsKey("purchaseTimeMillis")) {
       purchaseTimeMillis = _json["purchaseTimeMillis"];
     }
+    if (_json.containsKey("purchaseToken")) {
+      purchaseToken = _json["purchaseToken"];
+    }
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
+    }
+    if (_json.containsKey("quantity")) {
+      quantity = _json["quantity"];
     }
   }
 
@@ -5408,14 +5804,23 @@ class ProductPurchase {
     if (orderId != null) {
       _json["orderId"] = orderId;
     }
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
     if (purchaseState != null) {
       _json["purchaseState"] = purchaseState;
     }
     if (purchaseTimeMillis != null) {
       _json["purchaseTimeMillis"] = purchaseTimeMillis;
     }
+    if (purchaseToken != null) {
+      _json["purchaseToken"] = purchaseToken;
+    }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
+    }
+    if (quantity != null) {
+      _json["quantity"] = quantity;
     }
     return _json;
   }
@@ -5626,6 +6031,43 @@ class ReviewsReplyResponse {
         new core.Map<core.String, core.Object>();
     if (result != null) {
       _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
+class Sampling {
+  core.List<ModRange> modRanges;
+  core.String modulus;
+  core.int salt;
+
+  Sampling();
+
+  Sampling.fromJson(core.Map _json) {
+    if (_json.containsKey("modRanges")) {
+      modRanges = (_json["modRanges"] as core.List)
+          .map<ModRange>((value) => new ModRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("modulus")) {
+      modulus = _json["modulus"];
+    }
+    if (_json.containsKey("salt")) {
+      salt = _json["salt"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (modRanges != null) {
+      _json["modRanges"] = modRanges.map((value) => (value).toJson()).toList();
+    }
+    if (modulus != null) {
+      _json["modulus"] = modulus;
+    }
+    if (salt != null) {
+      _json["salt"] = salt;
     }
     return _json;
   }
@@ -6151,24 +6593,60 @@ class SubscriptionPurchasesDeferResponse {
   }
 }
 
+class SystemApkVariantsCreateRequest {
+  DeviceSpec deviceSpec;
+
+  SystemApkVariantsCreateRequest();
+
+  SystemApkVariantsCreateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceSpec")) {
+      deviceSpec = new DeviceSpec.fromJson(_json["deviceSpec"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceSpec != null) {
+      _json["deviceSpec"] = (deviceSpec).toJson();
+    }
+    return _json;
+  }
+}
+
+class SystemApkVariantsListResponse {
+  core.List<Variant> variants;
+
+  SystemApkVariantsListResponse();
+
+  SystemApkVariantsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("variants")) {
+      variants = (_json["variants"] as core.List)
+          .map<Variant>((value) => new Variant.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (variants != null) {
+      _json["variants"] = variants.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class Testers {
   /// A list of all Google Groups, as email addresses, that define testers for
   /// this track.
   core.List<core.String> googleGroups;
-
-  /// A list of all Google+ Communities, as URLs, that define testers for this
-  /// track.
-  core.List<core.String> googlePlusCommunities;
 
   Testers();
 
   Testers.fromJson(core.Map _json) {
     if (_json.containsKey("googleGroups")) {
       googleGroups = (_json["googleGroups"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("googlePlusCommunities")) {
-      googlePlusCommunities =
-          (_json["googlePlusCommunities"] as core.List).cast<core.String>();
     }
   }
 
@@ -6177,9 +6655,6 @@ class Testers {
         new core.Map<core.String, core.Object>();
     if (googleGroups != null) {
       _json["googleGroups"] = googleGroups;
-    }
-    if (googlePlusCommunities != null) {
-      _json["googlePlusCommunities"] = googlePlusCommunities;
     }
     return _json;
   }
@@ -6276,6 +6751,7 @@ class Track {
 }
 
 class TrackRelease {
+  core.List<Control> controls;
   CountryTargeting countryTargeting;
 
   /// The release name, used to identify this release in the Play Console UI.
@@ -6285,6 +6761,7 @@ class TrackRelease {
 
   /// The description of what is new in the app in this release.
   core.List<LocalizedText> releaseNotes;
+  Sampling sampling;
 
   /// The desired status of this release.
   core.String status;
@@ -6302,6 +6779,11 @@ class TrackRelease {
   TrackRelease();
 
   TrackRelease.fromJson(core.Map _json) {
+    if (_json.containsKey("controls")) {
+      controls = (_json["controls"] as core.List)
+          .map<Control>((value) => new Control.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("countryTargeting")) {
       countryTargeting =
           new CountryTargeting.fromJson(_json["countryTargeting"]);
@@ -6313,6 +6795,9 @@ class TrackRelease {
       releaseNotes = (_json["releaseNotes"] as core.List)
           .map<LocalizedText>((value) => new LocalizedText.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("sampling")) {
+      sampling = new Sampling.fromJson(_json["sampling"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -6328,6 +6813,9 @@ class TrackRelease {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (controls != null) {
+      _json["controls"] = controls.map((value) => (value).toJson()).toList();
+    }
     if (countryTargeting != null) {
       _json["countryTargeting"] = (countryTargeting).toJson();
     }
@@ -6337,6 +6825,9 @@ class TrackRelease {
     if (releaseNotes != null) {
       _json["releaseNotes"] =
           releaseNotes.map((value) => (value).toJson()).toList();
+    }
+    if (sampling != null) {
+      _json["sampling"] = (sampling).toJson();
     }
     if (status != null) {
       _json["status"] = status;
@@ -6512,6 +7003,36 @@ class UserComment {
   }
 }
 
+/// Represents the variant of a generated system APK from an uploaded App
+/// Bundle.
+class Variant {
+  DeviceSpec deviceSpec;
+  core.int variantId;
+
+  Variant();
+
+  Variant.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceSpec")) {
+      deviceSpec = new DeviceSpec.fromJson(_json["deviceSpec"]);
+    }
+    if (_json.containsKey("variantId")) {
+      variantId = _json["variantId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceSpec != null) {
+      _json["deviceSpec"] = (deviceSpec).toJson();
+    }
+    if (variantId != null) {
+      _json["variantId"] = variantId;
+    }
+    return _json;
+  }
+}
+
 /// A VoidedPurchase resource indicates a purchase that was either
 /// canceled/refunded/charged-back.
 class VoidedPurchase {
@@ -6519,13 +7040,35 @@ class VoidedPurchase {
   /// service.
   core.String kind;
 
+  /// The order id which uniquely identifies a one-time purchase, subscription
+  /// purchase, or subscription renewal.
+  core.String orderId;
+
   /// The time at which the purchase was made, in milliseconds since the epoch
   /// (Jan 1, 1970).
   core.String purchaseTimeMillis;
 
-  /// The token that was generated when a purchase was made. This uniquely
-  /// identifies a purchase.
+  /// The token which uniquely identifies a one-time purchase or subscription.
+  /// To uniquely identify subscription renewals use order_id (available
+  /// starting from version 3 of the API).
   core.String purchaseToken;
+
+  /// The reason why the purchase was voided, possible values are:
+  /// - Other
+  /// - Remorse
+  /// - Not_received
+  /// - Defective
+  /// - Accidental_purchase
+  /// - Fraud
+  /// - Friendly_fraud
+  /// - Chargeback
+  core.int voidedReason;
+
+  /// The initiator of voided purchase, possible values are:
+  /// - User
+  /// - Developer
+  /// - Google
+  core.int voidedSource;
 
   /// The time at which the purchase was canceled/refunded/charged-back, in
   /// milliseconds since the epoch (Jan 1, 1970).
@@ -6537,11 +7080,20 @@ class VoidedPurchase {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("orderId")) {
+      orderId = _json["orderId"];
+    }
     if (_json.containsKey("purchaseTimeMillis")) {
       purchaseTimeMillis = _json["purchaseTimeMillis"];
     }
     if (_json.containsKey("purchaseToken")) {
       purchaseToken = _json["purchaseToken"];
+    }
+    if (_json.containsKey("voidedReason")) {
+      voidedReason = _json["voidedReason"];
+    }
+    if (_json.containsKey("voidedSource")) {
+      voidedSource = _json["voidedSource"];
     }
     if (_json.containsKey("voidedTimeMillis")) {
       voidedTimeMillis = _json["voidedTimeMillis"];
@@ -6554,11 +7106,20 @@ class VoidedPurchase {
     if (kind != null) {
       _json["kind"] = kind;
     }
+    if (orderId != null) {
+      _json["orderId"] = orderId;
+    }
     if (purchaseTimeMillis != null) {
       _json["purchaseTimeMillis"] = purchaseTimeMillis;
     }
     if (purchaseToken != null) {
       _json["purchaseToken"] = purchaseToken;
+    }
+    if (voidedReason != null) {
+      _json["voidedReason"] = voidedReason;
+    }
+    if (voidedSource != null) {
+      _json["voidedSource"] = voidedSource;
     }
     if (voidedTimeMillis != null) {
       _json["voidedTimeMillis"] = voidedTimeMillis;

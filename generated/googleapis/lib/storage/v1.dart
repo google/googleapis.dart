@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.storage.v1;
 
@@ -640,6 +640,10 @@ class BucketsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [optionsRequestedPolicyVersion] - The IAM policy format version to be
+  /// returned. If the optionsRequestedPolicyVersion is for an older version
+  /// that doesn't support part of the requested IAM policy, the request fails.
+  ///
   /// [provisionalUserProject] - The project to be billed for this request if
   /// the target bucket is requester-pays bucket.
   ///
@@ -657,7 +661,8 @@ class BucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String bucket,
-      {core.String provisionalUserProject,
+      {core.int optionsRequestedPolicyVersion,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -669,6 +674,11 @@ class BucketsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if (provisionalUserProject != null) {
       _queryParams["provisionalUserProject"] = [provisionalUserProject];
@@ -4775,7 +4785,11 @@ class BucketEncryption {
   }
 }
 
-/// The bucket's Bucket Policy Only configuration.
+/// The bucket's uniform bucket-level access configuration. The feature was
+/// formerly known as Bucket Policy Only. For backward compatibility, this field
+/// will be populated with identical information as the uniformBucketLevelAccess
+/// field. We recommend using the uniformBucketLevelAccess field to enable and
+/// disable the feature.
 class BucketIamConfigurationBucketPolicyOnly {
   /// If set, access is controlled only by bucket-level or above IAM policies.
   core.bool enabled;
@@ -4848,7 +4862,11 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
 /// The bucket's IAM configuration.
 class BucketIamConfiguration {
-  /// The bucket's Bucket Policy Only configuration.
+  /// The bucket's uniform bucket-level access configuration. The feature was
+  /// formerly known as Bucket Policy Only. For backward compatibility, this
+  /// field will be populated with identical information as the
+  /// uniformBucketLevelAccess field. We recommend using the
+  /// uniformBucketLevelAccess field to enable and disable the feature.
   BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
 
   /// The bucket's uniform bucket-level access configuration.
@@ -4940,7 +4958,7 @@ class BucketLifecycleRuleCondition {
 
   /// Objects having any of the storage classes specified by this condition will
   /// be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
-  /// STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+  /// ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
   core.List<core.String> matchesStorageClass;
 
   /// Relevant only for versioned objects. If the value is N, this condition is
@@ -5330,8 +5348,8 @@ class Bucket {
   /// The bucket's default storage class, used whenever no storageClass is
   /// specified for a newly-created object. This defines how objects in the
   /// bucket are stored and determines the SLA and the cost of storage. Values
-  /// include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and
-  /// DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
+  /// include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE,
+  /// and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
   /// bucket is created, it will default to STANDARD. For more information, see
   /// storage classes.
   core.String storageClass;
@@ -7164,6 +7182,9 @@ class Policy {
   /// input.
   core.String resourceId;
 
+  /// The IAM policy format version.
+  core.int version;
+
   Policy();
 
   Policy.fromJson(core.Map _json) {
@@ -7181,6 +7202,9 @@ class Policy {
     if (_json.containsKey("resourceId")) {
       resourceId = _json["resourceId"];
     }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7197,6 +7221,9 @@ class Policy {
     }
     if (resourceId != null) {
       _json["resourceId"] = resourceId;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }

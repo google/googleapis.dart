@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.file.v1;
 
@@ -104,11 +104,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -121,9 +121,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -135,14 +135,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -329,8 +329,6 @@ class ProjectsLocationsInstancesResourceApi {
   /// value.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - List filter.
-  ///
   /// [pageToken] - The next_page_token value to use if there are additional
   /// results to retrieve for this list request.
   ///
@@ -338,6 +336,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// (unsorted).
   ///
   /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [filter] - List filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -350,10 +350,10 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -365,9 +365,6 @@ class ProjectsLocationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -376,6 +373,9 @@ class ProjectsLocationsInstancesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -409,6 +409,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// field.  The elements of the repeated paths field may only include these
   /// fields:
   /// "description"
+  /// "file_shares"
+  /// "labels"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -629,11 +631,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -646,9 +648,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -660,14 +662,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -823,10 +825,19 @@ class FileShareConfig {
 ///           "seconds": 1535406431,
 ///        },
 ///     }
-///   }
+///   },
+///   "consumer_defined_name": "my-sql-instance1",
 /// }
 /// ```
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
+  /// consumer_defined_name is the name that is set by the consumer. On the
+  /// other
+  /// hand Name field represents system-assigned id of an instance so consumers
+  /// are not necessarily aware of it.
+  /// consumer_defined_name is used for notification/UI purposes for consumer to
+  /// recognize their instances.
+  core.String consumerDefinedName;
+
   /// Output only. Timestamp when the resource was created.
   core.String createTime;
 
@@ -904,6 +915,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 
   GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
       core.Map _json) {
+    if (_json.containsKey("consumerDefinedName")) {
+      consumerDefinedName = _json["consumerDefinedName"];
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -968,6 +982,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (consumerDefinedName != null) {
+      _json["consumerDefinedName"] = consumerDefinedName;
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1035,6 +1052,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// The scheduled end time for the maintenance.
   core.String endTime;
 
+  /// The rollout management policy this maintenance schedule is associated
+  /// with. When doing reschedule update request, the reschedule should be
+  /// against this given policy.
+  core.String rolloutManagementPolicy;
+
   /// The scheduled start time for the maintenance.
   core.String startTime;
 
@@ -1047,6 +1069,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("rolloutManagementPolicy")) {
+      rolloutManagementPolicy = _json["rolloutManagementPolicy"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1061,6 +1086,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (rolloutManagementPolicy != null) {
+      _json["rolloutManagementPolicy"] = rolloutManagementPolicy;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;

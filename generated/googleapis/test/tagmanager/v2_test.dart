@@ -127,14 +127,66 @@ checkBuiltInVariable(api.BuiltInVariable o) {
   buildCounterBuiltInVariable--;
 }
 
-buildUnnamed4529() {
+buildUnnamed3669() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed4529(core.List<api.Parameter> o) {
+checkUnnamed3669(core.List<api.Parameter> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkParameter(o[0]);
+  checkParameter(o[1]);
+}
+
+core.int buildCounterClient = 0;
+buildClient() {
+  var o = new api.Client();
+  buildCounterClient++;
+  if (buildCounterClient < 3) {
+    o.accountId = "foo";
+    o.clientId = "foo";
+    o.containerId = "foo";
+    o.fingerprint = "foo";
+    o.name = "foo";
+    o.parameter = buildUnnamed3669();
+    o.path = "foo";
+    o.priority = 42;
+    o.tagManagerUrl = "foo";
+    o.type = "foo";
+    o.workspaceId = "foo";
+  }
+  buildCounterClient--;
+  return o;
+}
+
+checkClient(api.Client o) {
+  buildCounterClient++;
+  if (buildCounterClient < 3) {
+    unittest.expect(o.accountId, unittest.equals('foo'));
+    unittest.expect(o.clientId, unittest.equals('foo'));
+    unittest.expect(o.containerId, unittest.equals('foo'));
+    unittest.expect(o.fingerprint, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    checkUnnamed3669(o.parameter);
+    unittest.expect(o.path, unittest.equals('foo'));
+    unittest.expect(o.priority, unittest.equals(42));
+    unittest.expect(o.tagManagerUrl, unittest.equals('foo'));
+    unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.workspaceId, unittest.equals('foo'));
+  }
+  buildCounterClient--;
+}
+
+buildUnnamed3670() {
+  var o = new core.List<api.Parameter>();
+  o.add(buildParameter());
+  o.add(buildParameter());
+  return o;
+}
+
+checkUnnamed3670(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -145,7 +197,7 @@ buildCondition() {
   var o = new api.Condition();
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    o.parameter = buildUnnamed4529();
+    o.parameter = buildUnnamed3670();
     o.type = "foo";
   }
   buildCounterCondition--;
@@ -155,33 +207,33 @@ buildCondition() {
 checkCondition(api.Condition o) {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    checkUnnamed4529(o.parameter);
+    checkUnnamed3670(o.parameter);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCondition--;
 }
 
-buildUnnamed4530() {
+buildUnnamed3671() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4530(core.List<core.String> o) {
+checkUnnamed3671(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4531() {
+buildUnnamed3672() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4531(core.List<core.String> o) {
+checkUnnamed3672(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -194,14 +246,14 @@ buildContainer() {
   if (buildCounterContainer < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.domainName = buildUnnamed4530();
+    o.domainName = buildUnnamed3671();
     o.fingerprint = "foo";
     o.name = "foo";
     o.notes = "foo";
     o.path = "foo";
     o.publicId = "foo";
     o.tagManagerUrl = "foo";
-    o.usageContext = buildUnnamed4531();
+    o.usageContext = buildUnnamed3672();
   }
   buildCounterContainer--;
   return o;
@@ -212,14 +264,14 @@ checkContainer(api.Container o) {
   if (buildCounterContainer < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed4530(o.domainName);
+    checkUnnamed3671(o.domainName);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.publicId, unittest.equals('foo'));
     unittest.expect(o.tagManagerUrl, unittest.equals('foo'));
-    checkUnnamed4531(o.usageContext);
+    checkUnnamed3672(o.usageContext);
   }
   buildCounterContainer--;
 }
@@ -245,92 +297,105 @@ checkContainerAccess(api.ContainerAccess o) {
   buildCounterContainerAccess--;
 }
 
-buildUnnamed4532() {
+buildUnnamed3673() {
   var o = new core.List<api.BuiltInVariable>();
   o.add(buildBuiltInVariable());
   o.add(buildBuiltInVariable());
   return o;
 }
 
-checkUnnamed4532(core.List<api.BuiltInVariable> o) {
+checkUnnamed3673(core.List<api.BuiltInVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuiltInVariable(o[0]);
   checkBuiltInVariable(o[1]);
 }
 
-buildUnnamed4533() {
+buildUnnamed3674() {
+  var o = new core.List<api.Client>();
+  o.add(buildClient());
+  o.add(buildClient());
+  return o;
+}
+
+checkUnnamed3674(core.List<api.Client> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkClient(o[0]);
+  checkClient(o[1]);
+}
+
+buildUnnamed3675() {
   var o = new core.List<api.CustomTemplate>();
   o.add(buildCustomTemplate());
   o.add(buildCustomTemplate());
   return o;
 }
 
-checkUnnamed4533(core.List<api.CustomTemplate> o) {
+checkUnnamed3675(core.List<api.CustomTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomTemplate(o[0]);
   checkCustomTemplate(o[1]);
 }
 
-buildUnnamed4534() {
+buildUnnamed3676() {
   var o = new core.List<api.Folder>();
   o.add(buildFolder());
   o.add(buildFolder());
   return o;
 }
 
-checkUnnamed4534(core.List<api.Folder> o) {
+checkUnnamed3676(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0]);
   checkFolder(o[1]);
 }
 
-buildUnnamed4535() {
+buildUnnamed3677() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed4535(core.List<api.Tag> o) {
+checkUnnamed3677(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-buildUnnamed4536() {
+buildUnnamed3678() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed4536(core.List<api.Trigger> o) {
+checkUnnamed3678(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-buildUnnamed4537() {
+buildUnnamed3679() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed4537(core.List<api.Variable> o) {
+checkUnnamed3679(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
 }
 
-buildUnnamed4538() {
+buildUnnamed3680() {
   var o = new core.List<api.Zone>();
   o.add(buildZone());
   o.add(buildZone());
   return o;
 }
 
-checkUnnamed4538(core.List<api.Zone> o) {
+checkUnnamed3680(core.List<api.Zone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkZone(o[0]);
   checkZone(o[1]);
@@ -342,22 +407,23 @@ buildContainerVersion() {
   buildCounterContainerVersion++;
   if (buildCounterContainerVersion < 3) {
     o.accountId = "foo";
-    o.builtInVariable = buildUnnamed4532();
+    o.builtInVariable = buildUnnamed3673();
+    o.client = buildUnnamed3674();
     o.container = buildContainer();
     o.containerId = "foo";
     o.containerVersionId = "foo";
-    o.customTemplate = buildUnnamed4533();
+    o.customTemplate = buildUnnamed3675();
     o.deleted = true;
     o.description = "foo";
     o.fingerprint = "foo";
-    o.folder = buildUnnamed4534();
+    o.folder = buildUnnamed3676();
     o.name = "foo";
     o.path = "foo";
-    o.tag = buildUnnamed4535();
+    o.tag = buildUnnamed3677();
     o.tagManagerUrl = "foo";
-    o.trigger = buildUnnamed4536();
-    o.variable = buildUnnamed4537();
-    o.zone = buildUnnamed4538();
+    o.trigger = buildUnnamed3678();
+    o.variable = buildUnnamed3679();
+    o.zone = buildUnnamed3680();
   }
   buildCounterContainerVersion--;
   return o;
@@ -367,22 +433,23 @@ checkContainerVersion(api.ContainerVersion o) {
   buildCounterContainerVersion++;
   if (buildCounterContainerVersion < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed4532(o.builtInVariable);
+    checkUnnamed3673(o.builtInVariable);
+    checkUnnamed3674(o.client);
     checkContainer(o.container);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.containerVersionId, unittest.equals('foo'));
-    checkUnnamed4533(o.customTemplate);
+    checkUnnamed3675(o.customTemplate);
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed4534(o.folder);
+    checkUnnamed3676(o.folder);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
-    checkUnnamed4535(o.tag);
+    checkUnnamed3677(o.tag);
     unittest.expect(o.tagManagerUrl, unittest.equals('foo'));
-    checkUnnamed4536(o.trigger);
-    checkUnnamed4537(o.variable);
-    checkUnnamed4538(o.zone);
+    checkUnnamed3678(o.trigger);
+    checkUnnamed3679(o.variable);
+    checkUnnamed3680(o.zone);
   }
   buildCounterContainerVersion--;
 }
@@ -430,14 +497,14 @@ checkContainerVersionHeader(api.ContainerVersionHeader o) {
   buildCounterContainerVersionHeader--;
 }
 
-buildUnnamed4539() {
+buildUnnamed3681() {
   var o = new core.List<api.BuiltInVariable>();
   o.add(buildBuiltInVariable());
   o.add(buildBuiltInVariable());
   return o;
 }
 
-checkUnnamed4539(core.List<api.BuiltInVariable> o) {
+checkUnnamed3681(core.List<api.BuiltInVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuiltInVariable(o[0]);
   checkBuiltInVariable(o[1]);
@@ -448,7 +515,7 @@ buildCreateBuiltInVariableResponse() {
   var o = new api.CreateBuiltInVariableResponse();
   buildCounterCreateBuiltInVariableResponse++;
   if (buildCounterCreateBuiltInVariableResponse < 3) {
-    o.builtInVariable = buildUnnamed4539();
+    o.builtInVariable = buildUnnamed3681();
   }
   buildCounterCreateBuiltInVariableResponse--;
   return o;
@@ -457,7 +524,7 @@ buildCreateBuiltInVariableResponse() {
 checkCreateBuiltInVariableResponse(api.CreateBuiltInVariableResponse o) {
   buildCounterCreateBuiltInVariableResponse++;
   if (buildCounterCreateBuiltInVariableResponse < 3) {
-    checkUnnamed4539(o.builtInVariable);
+    checkUnnamed3681(o.builtInVariable);
   }
   buildCounterCreateBuiltInVariableResponse--;
 }
@@ -517,6 +584,7 @@ buildCustomTemplate() {
     o.accountId = "foo";
     o.containerId = "foo";
     o.fingerprint = "foo";
+    o.galleryReference = buildGalleryReference();
     o.name = "foo";
     o.path = "foo";
     o.tagManagerUrl = "foo";
@@ -534,6 +602,7 @@ checkCustomTemplate(api.CustomTemplate o) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
+    checkGalleryReference(o.galleryReference);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.tagManagerUrl, unittest.equals('foo'));
@@ -578,7 +647,7 @@ buildEnvironment() {
   if (buildCounterEnvironment < 3) {
     o.accountId = "foo";
     o.authorizationCode = "foo";
-    o.authorizationTimestamp = buildTimestamp();
+    o.authorizationTimestamp = "foo";
     o.containerId = "foo";
     o.containerVersionId = "foo";
     o.description = "foo";
@@ -601,7 +670,7 @@ checkEnvironment(api.Environment o) {
   if (buildCounterEnvironment < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.authorizationCode, unittest.equals('foo'));
-    checkTimestamp(o.authorizationTimestamp);
+    unittest.expect(o.authorizationTimestamp, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.containerVersionId, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -653,40 +722,40 @@ checkFolder(api.Folder o) {
   buildCounterFolder--;
 }
 
-buildUnnamed4540() {
+buildUnnamed3682() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed4540(core.List<api.Tag> o) {
+checkUnnamed3682(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
 }
 
-buildUnnamed4541() {
+buildUnnamed3683() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed4541(core.List<api.Trigger> o) {
+checkUnnamed3683(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
 }
 
-buildUnnamed4542() {
+buildUnnamed3684() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed4542(core.List<api.Variable> o) {
+checkUnnamed3684(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -698,9 +767,9 @@ buildFolderEntities() {
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
     o.nextPageToken = "foo";
-    o.tag = buildUnnamed4540();
-    o.trigger = buildUnnamed4541();
-    o.variable = buildUnnamed4542();
+    o.tag = buildUnnamed3682();
+    o.trigger = buildUnnamed3683();
+    o.variable = buildUnnamed3684();
   }
   buildCounterFolderEntities--;
   return o;
@@ -710,34 +779,63 @@ checkFolderEntities(api.FolderEntities o) {
   buildCounterFolderEntities++;
   if (buildCounterFolderEntities < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4540(o.tag);
-    checkUnnamed4541(o.trigger);
-    checkUnnamed4542(o.variable);
+    checkUnnamed3682(o.tag);
+    checkUnnamed3683(o.trigger);
+    checkUnnamed3684(o.variable);
   }
   buildCounterFolderEntities--;
 }
 
-buildUnnamed4543() {
+core.int buildCounterGalleryReference = 0;
+buildGalleryReference() {
+  var o = new api.GalleryReference();
+  buildCounterGalleryReference++;
+  if (buildCounterGalleryReference < 3) {
+    o.host = "foo";
+    o.isModified = true;
+    o.owner = "foo";
+    o.repository = "foo";
+    o.signature = "foo";
+    o.version = "foo";
+  }
+  buildCounterGalleryReference--;
+  return o;
+}
+
+checkGalleryReference(api.GalleryReference o) {
+  buildCounterGalleryReference++;
+  if (buildCounterGalleryReference < 3) {
+    unittest.expect(o.host, unittest.equals('foo'));
+    unittest.expect(o.isModified, unittest.isTrue);
+    unittest.expect(o.owner, unittest.equals('foo'));
+    unittest.expect(o.repository, unittest.equals('foo'));
+    unittest.expect(o.signature, unittest.equals('foo'));
+    unittest.expect(o.version, unittest.equals('foo'));
+  }
+  buildCounterGalleryReference--;
+}
+
+buildUnnamed3685() {
   var o = new core.List<api.MergeConflict>();
   o.add(buildMergeConflict());
   o.add(buildMergeConflict());
   return o;
 }
 
-checkUnnamed4543(core.List<api.MergeConflict> o) {
+checkUnnamed3685(core.List<api.MergeConflict> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMergeConflict(o[0]);
   checkMergeConflict(o[1]);
 }
 
-buildUnnamed4544() {
+buildUnnamed3686() {
   var o = new core.List<api.Entity>();
   o.add(buildEntity());
   o.add(buildEntity());
   return o;
 }
 
-checkUnnamed4544(core.List<api.Entity> o) {
+checkUnnamed3686(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
@@ -748,8 +846,8 @@ buildGetWorkspaceStatusResponse() {
   var o = new api.GetWorkspaceStatusResponse();
   buildCounterGetWorkspaceStatusResponse++;
   if (buildCounterGetWorkspaceStatusResponse < 3) {
-    o.mergeConflict = buildUnnamed4543();
-    o.workspaceChange = buildUnnamed4544();
+    o.mergeConflict = buildUnnamed3685();
+    o.workspaceChange = buildUnnamed3686();
   }
   buildCounterGetWorkspaceStatusResponse--;
   return o;
@@ -758,20 +856,20 @@ buildGetWorkspaceStatusResponse() {
 checkGetWorkspaceStatusResponse(api.GetWorkspaceStatusResponse o) {
   buildCounterGetWorkspaceStatusResponse++;
   if (buildCounterGetWorkspaceStatusResponse < 3) {
-    checkUnnamed4543(o.mergeConflict);
-    checkUnnamed4544(o.workspaceChange);
+    checkUnnamed3685(o.mergeConflict);
+    checkUnnamed3686(o.workspaceChange);
   }
   buildCounterGetWorkspaceStatusResponse--;
 }
 
-buildUnnamed4545() {
+buildUnnamed3687() {
   var o = new core.List<api.Account>();
   o.add(buildAccount());
   o.add(buildAccount());
   return o;
 }
 
-checkUnnamed4545(core.List<api.Account> o) {
+checkUnnamed3687(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAccount(o[0]);
   checkAccount(o[1]);
@@ -782,7 +880,7 @@ buildListAccountsResponse() {
   var o = new api.ListAccountsResponse();
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    o.account = buildUnnamed4545();
+    o.account = buildUnnamed3687();
     o.nextPageToken = "foo";
   }
   buildCounterListAccountsResponse--;
@@ -792,20 +890,20 @@ buildListAccountsResponse() {
 checkListAccountsResponse(api.ListAccountsResponse o) {
   buildCounterListAccountsResponse++;
   if (buildCounterListAccountsResponse < 3) {
-    checkUnnamed4545(o.account);
+    checkUnnamed3687(o.account);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListAccountsResponse--;
 }
 
-buildUnnamed4546() {
+buildUnnamed3688() {
   var o = new core.List<api.ContainerVersionHeader>();
   o.add(buildContainerVersionHeader());
   o.add(buildContainerVersionHeader());
   return o;
 }
 
-checkUnnamed4546(core.List<api.ContainerVersionHeader> o) {
+checkUnnamed3688(core.List<api.ContainerVersionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerVersionHeader(o[0]);
   checkContainerVersionHeader(o[1]);
@@ -816,7 +914,7 @@ buildListContainerVersionsResponse() {
   var o = new api.ListContainerVersionsResponse();
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    o.containerVersionHeader = buildUnnamed4546();
+    o.containerVersionHeader = buildUnnamed3688();
     o.nextPageToken = "foo";
   }
   buildCounterListContainerVersionsResponse--;
@@ -826,20 +924,20 @@ buildListContainerVersionsResponse() {
 checkListContainerVersionsResponse(api.ListContainerVersionsResponse o) {
   buildCounterListContainerVersionsResponse++;
   if (buildCounterListContainerVersionsResponse < 3) {
-    checkUnnamed4546(o.containerVersionHeader);
+    checkUnnamed3688(o.containerVersionHeader);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListContainerVersionsResponse--;
 }
 
-buildUnnamed4547() {
+buildUnnamed3689() {
   var o = new core.List<api.Container>();
   o.add(buildContainer());
   o.add(buildContainer());
   return o;
 }
 
-checkUnnamed4547(core.List<api.Container> o) {
+checkUnnamed3689(core.List<api.Container> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainer(o[0]);
   checkContainer(o[1]);
@@ -850,7 +948,7 @@ buildListContainersResponse() {
   var o = new api.ListContainersResponse();
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    o.container = buildUnnamed4547();
+    o.container = buildUnnamed3689();
     o.nextPageToken = "foo";
   }
   buildCounterListContainersResponse--;
@@ -860,20 +958,20 @@ buildListContainersResponse() {
 checkListContainersResponse(api.ListContainersResponse o) {
   buildCounterListContainersResponse++;
   if (buildCounterListContainersResponse < 3) {
-    checkUnnamed4547(o.container);
+    checkUnnamed3689(o.container);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListContainersResponse--;
 }
 
-buildUnnamed4548() {
+buildUnnamed3690() {
   var o = new core.List<api.BuiltInVariable>();
   o.add(buildBuiltInVariable());
   o.add(buildBuiltInVariable());
   return o;
 }
 
-checkUnnamed4548(core.List<api.BuiltInVariable> o) {
+checkUnnamed3690(core.List<api.BuiltInVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBuiltInVariable(o[0]);
   checkBuiltInVariable(o[1]);
@@ -884,7 +982,7 @@ buildListEnabledBuiltInVariablesResponse() {
   var o = new api.ListEnabledBuiltInVariablesResponse();
   buildCounterListEnabledBuiltInVariablesResponse++;
   if (buildCounterListEnabledBuiltInVariablesResponse < 3) {
-    o.builtInVariable = buildUnnamed4548();
+    o.builtInVariable = buildUnnamed3690();
     o.nextPageToken = "foo";
   }
   buildCounterListEnabledBuiltInVariablesResponse--;
@@ -895,20 +993,20 @@ checkListEnabledBuiltInVariablesResponse(
     api.ListEnabledBuiltInVariablesResponse o) {
   buildCounterListEnabledBuiltInVariablesResponse++;
   if (buildCounterListEnabledBuiltInVariablesResponse < 3) {
-    checkUnnamed4548(o.builtInVariable);
+    checkUnnamed3690(o.builtInVariable);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListEnabledBuiltInVariablesResponse--;
 }
 
-buildUnnamed4549() {
+buildUnnamed3691() {
   var o = new core.List<api.Environment>();
   o.add(buildEnvironment());
   o.add(buildEnvironment());
   return o;
 }
 
-checkUnnamed4549(core.List<api.Environment> o) {
+checkUnnamed3691(core.List<api.Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnvironment(o[0]);
   checkEnvironment(o[1]);
@@ -919,7 +1017,7 @@ buildListEnvironmentsResponse() {
   var o = new api.ListEnvironmentsResponse();
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    o.environment = buildUnnamed4549();
+    o.environment = buildUnnamed3691();
     o.nextPageToken = "foo";
   }
   buildCounterListEnvironmentsResponse--;
@@ -929,20 +1027,20 @@ buildListEnvironmentsResponse() {
 checkListEnvironmentsResponse(api.ListEnvironmentsResponse o) {
   buildCounterListEnvironmentsResponse++;
   if (buildCounterListEnvironmentsResponse < 3) {
-    checkUnnamed4549(o.environment);
+    checkUnnamed3691(o.environment);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListEnvironmentsResponse--;
 }
 
-buildUnnamed4550() {
+buildUnnamed3692() {
   var o = new core.List<api.Folder>();
   o.add(buildFolder());
   o.add(buildFolder());
   return o;
 }
 
-checkUnnamed4550(core.List<api.Folder> o) {
+checkUnnamed3692(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFolder(o[0]);
   checkFolder(o[1]);
@@ -953,7 +1051,7 @@ buildListFoldersResponse() {
   var o = new api.ListFoldersResponse();
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    o.folder = buildUnnamed4550();
+    o.folder = buildUnnamed3692();
     o.nextPageToken = "foo";
   }
   buildCounterListFoldersResponse--;
@@ -963,20 +1061,20 @@ buildListFoldersResponse() {
 checkListFoldersResponse(api.ListFoldersResponse o) {
   buildCounterListFoldersResponse++;
   if (buildCounterListFoldersResponse < 3) {
-    checkUnnamed4550(o.folder);
+    checkUnnamed3692(o.folder);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListFoldersResponse--;
 }
 
-buildUnnamed4551() {
+buildUnnamed3693() {
   var o = new core.List<api.Tag>();
   o.add(buildTag());
   o.add(buildTag());
   return o;
 }
 
-checkUnnamed4551(core.List<api.Tag> o) {
+checkUnnamed3693(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTag(o[0]);
   checkTag(o[1]);
@@ -988,7 +1086,7 @@ buildListTagsResponse() {
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
     o.nextPageToken = "foo";
-    o.tag = buildUnnamed4551();
+    o.tag = buildUnnamed3693();
   }
   buildCounterListTagsResponse--;
   return o;
@@ -998,19 +1096,19 @@ checkListTagsResponse(api.ListTagsResponse o) {
   buildCounterListTagsResponse++;
   if (buildCounterListTagsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4551(o.tag);
+    checkUnnamed3693(o.tag);
   }
   buildCounterListTagsResponse--;
 }
 
-buildUnnamed4552() {
+buildUnnamed3694() {
   var o = new core.List<api.CustomTemplate>();
   o.add(buildCustomTemplate());
   o.add(buildCustomTemplate());
   return o;
 }
 
-checkUnnamed4552(core.List<api.CustomTemplate> o) {
+checkUnnamed3694(core.List<api.CustomTemplate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomTemplate(o[0]);
   checkCustomTemplate(o[1]);
@@ -1022,7 +1120,7 @@ buildListTemplatesResponse() {
   buildCounterListTemplatesResponse++;
   if (buildCounterListTemplatesResponse < 3) {
     o.nextPageToken = "foo";
-    o.template = buildUnnamed4552();
+    o.template = buildUnnamed3694();
   }
   buildCounterListTemplatesResponse--;
   return o;
@@ -1032,19 +1130,19 @@ checkListTemplatesResponse(api.ListTemplatesResponse o) {
   buildCounterListTemplatesResponse++;
   if (buildCounterListTemplatesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4552(o.template);
+    checkUnnamed3694(o.template);
   }
   buildCounterListTemplatesResponse--;
 }
 
-buildUnnamed4553() {
+buildUnnamed3695() {
   var o = new core.List<api.Trigger>();
   o.add(buildTrigger());
   o.add(buildTrigger());
   return o;
 }
 
-checkUnnamed4553(core.List<api.Trigger> o) {
+checkUnnamed3695(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrigger(o[0]);
   checkTrigger(o[1]);
@@ -1056,7 +1154,7 @@ buildListTriggersResponse() {
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
     o.nextPageToken = "foo";
-    o.trigger = buildUnnamed4553();
+    o.trigger = buildUnnamed3695();
   }
   buildCounterListTriggersResponse--;
   return o;
@@ -1066,19 +1164,19 @@ checkListTriggersResponse(api.ListTriggersResponse o) {
   buildCounterListTriggersResponse++;
   if (buildCounterListTriggersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4553(o.trigger);
+    checkUnnamed3695(o.trigger);
   }
   buildCounterListTriggersResponse--;
 }
 
-buildUnnamed4554() {
+buildUnnamed3696() {
   var o = new core.List<api.UserPermission>();
   o.add(buildUserPermission());
   o.add(buildUserPermission());
   return o;
 }
 
-checkUnnamed4554(core.List<api.UserPermission> o) {
+checkUnnamed3696(core.List<api.UserPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserPermission(o[0]);
   checkUserPermission(o[1]);
@@ -1090,7 +1188,7 @@ buildListUserPermissionsResponse() {
   buildCounterListUserPermissionsResponse++;
   if (buildCounterListUserPermissionsResponse < 3) {
     o.nextPageToken = "foo";
-    o.userPermission = buildUnnamed4554();
+    o.userPermission = buildUnnamed3696();
   }
   buildCounterListUserPermissionsResponse--;
   return o;
@@ -1100,19 +1198,19 @@ checkListUserPermissionsResponse(api.ListUserPermissionsResponse o) {
   buildCounterListUserPermissionsResponse++;
   if (buildCounterListUserPermissionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4554(o.userPermission);
+    checkUnnamed3696(o.userPermission);
   }
   buildCounterListUserPermissionsResponse--;
 }
 
-buildUnnamed4555() {
+buildUnnamed3697() {
   var o = new core.List<api.Variable>();
   o.add(buildVariable());
   o.add(buildVariable());
   return o;
 }
 
-checkUnnamed4555(core.List<api.Variable> o) {
+checkUnnamed3697(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVariable(o[0]);
   checkVariable(o[1]);
@@ -1124,7 +1222,7 @@ buildListVariablesResponse() {
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
     o.nextPageToken = "foo";
-    o.variable = buildUnnamed4555();
+    o.variable = buildUnnamed3697();
   }
   buildCounterListVariablesResponse--;
   return o;
@@ -1134,19 +1232,19 @@ checkListVariablesResponse(api.ListVariablesResponse o) {
   buildCounterListVariablesResponse++;
   if (buildCounterListVariablesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4555(o.variable);
+    checkUnnamed3697(o.variable);
   }
   buildCounterListVariablesResponse--;
 }
 
-buildUnnamed4556() {
+buildUnnamed3698() {
   var o = new core.List<api.Workspace>();
   o.add(buildWorkspace());
   o.add(buildWorkspace());
   return o;
 }
 
-checkUnnamed4556(core.List<api.Workspace> o) {
+checkUnnamed3698(core.List<api.Workspace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWorkspace(o[0]);
   checkWorkspace(o[1]);
@@ -1158,7 +1256,7 @@ buildListWorkspacesResponse() {
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
     o.nextPageToken = "foo";
-    o.workspace = buildUnnamed4556();
+    o.workspace = buildUnnamed3698();
   }
   buildCounterListWorkspacesResponse--;
   return o;
@@ -1168,19 +1266,19 @@ checkListWorkspacesResponse(api.ListWorkspacesResponse o) {
   buildCounterListWorkspacesResponse++;
   if (buildCounterListWorkspacesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4556(o.workspace);
+    checkUnnamed3698(o.workspace);
   }
   buildCounterListWorkspacesResponse--;
 }
 
-buildUnnamed4557() {
+buildUnnamed3699() {
   var o = new core.List<api.Zone>();
   o.add(buildZone());
   o.add(buildZone());
   return o;
 }
 
-checkUnnamed4557(core.List<api.Zone> o) {
+checkUnnamed3699(core.List<api.Zone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkZone(o[0]);
   checkZone(o[1]);
@@ -1192,7 +1290,7 @@ buildListZonesResponse() {
   buildCounterListZonesResponse++;
   if (buildCounterListZonesResponse < 3) {
     o.nextPageToken = "foo";
-    o.zone = buildUnnamed4557();
+    o.zone = buildUnnamed3699();
   }
   buildCounterListZonesResponse--;
   return o;
@@ -1202,7 +1300,7 @@ checkListZonesResponse(api.ListZonesResponse o) {
   buildCounterListZonesResponse++;
   if (buildCounterListZonesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4557(o.zone);
+    checkUnnamed3699(o.zone);
   }
   buildCounterListZonesResponse--;
 }
@@ -1228,27 +1326,27 @@ checkMergeConflict(api.MergeConflict o) {
   buildCounterMergeConflict--;
 }
 
-buildUnnamed4558() {
+buildUnnamed3700() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed4558(core.List<api.Parameter> o) {
+checkUnnamed3700(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
 }
 
-buildUnnamed4559() {
+buildUnnamed3701() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed4559(core.List<api.Parameter> o) {
+checkUnnamed3701(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1260,8 +1358,8 @@ buildParameter() {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
     o.key = "foo";
-    o.list = buildUnnamed4558();
-    o.map = buildUnnamed4559();
+    o.list = buildUnnamed3700();
+    o.map = buildUnnamed3701();
     o.type = "foo";
     o.value = "foo";
   }
@@ -1273,8 +1371,8 @@ checkParameter(api.Parameter o) {
   buildCounterParameter++;
   if (buildCounterParameter < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed4558(o.list);
-    checkUnnamed4559(o.map);
+    checkUnnamed3700(o.list);
+    checkUnnamed3701(o.map);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -1500,14 +1598,14 @@ checkSyncStatus(api.SyncStatus o) {
   buildCounterSyncStatus--;
 }
 
-buildUnnamed4560() {
+buildUnnamed3702() {
   var o = new core.List<api.MergeConflict>();
   o.add(buildMergeConflict());
   o.add(buildMergeConflict());
   return o;
 }
 
-checkUnnamed4560(core.List<api.MergeConflict> o) {
+checkUnnamed3702(core.List<api.MergeConflict> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMergeConflict(o[0]);
   checkMergeConflict(o[1]);
@@ -1518,7 +1616,7 @@ buildSyncWorkspaceResponse() {
   var o = new api.SyncWorkspaceResponse();
   buildCounterSyncWorkspaceResponse++;
   if (buildCounterSyncWorkspaceResponse < 3) {
-    o.mergeConflict = buildUnnamed4560();
+    o.mergeConflict = buildUnnamed3702();
     o.syncStatus = buildSyncStatus();
   }
   buildCounterSyncWorkspaceResponse--;
@@ -1528,98 +1626,98 @@ buildSyncWorkspaceResponse() {
 checkSyncWorkspaceResponse(api.SyncWorkspaceResponse o) {
   buildCounterSyncWorkspaceResponse++;
   if (buildCounterSyncWorkspaceResponse < 3) {
-    checkUnnamed4560(o.mergeConflict);
+    checkUnnamed3702(o.mergeConflict);
     checkSyncStatus(o.syncStatus);
   }
   buildCounterSyncWorkspaceResponse--;
 }
 
-buildUnnamed4561() {
+buildUnnamed3703() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4561(core.List<core.String> o) {
+checkUnnamed3703(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4562() {
+buildUnnamed3704() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4562(core.List<core.String> o) {
+checkUnnamed3704(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4563() {
+buildUnnamed3705() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4563(core.List<core.String> o) {
+checkUnnamed3705(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4564() {
+buildUnnamed3706() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4564(core.List<core.String> o) {
+checkUnnamed3706(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4565() {
+buildUnnamed3707() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed4565(core.List<api.Parameter> o) {
+checkUnnamed3707(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
 }
 
-buildUnnamed4566() {
+buildUnnamed3708() {
   var o = new core.List<api.SetupTag>();
   o.add(buildSetupTag());
   o.add(buildSetupTag());
   return o;
 }
 
-checkUnnamed4566(core.List<api.SetupTag> o) {
+checkUnnamed3708(core.List<api.SetupTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSetupTag(o[0]);
   checkSetupTag(o[1]);
 }
 
-buildUnnamed4567() {
+buildUnnamed3709() {
   var o = new core.List<api.TeardownTag>();
   o.add(buildTeardownTag());
   o.add(buildTeardownTag());
   return o;
 }
 
-checkUnnamed4567(core.List<api.TeardownTag> o) {
+checkUnnamed3709(core.List<api.TeardownTag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTeardownTag(o[0]);
   checkTeardownTag(o[1]);
@@ -1631,27 +1729,29 @@ buildTag() {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     o.accountId = "foo";
-    o.blockingRuleId = buildUnnamed4561();
-    o.blockingTriggerId = buildUnnamed4562();
+    o.blockingRuleId = buildUnnamed3703();
+    o.blockingTriggerId = buildUnnamed3704();
     o.containerId = "foo";
     o.fingerprint = "foo";
-    o.firingRuleId = buildUnnamed4563();
-    o.firingTriggerId = buildUnnamed4564();
+    o.firingRuleId = buildUnnamed3705();
+    o.firingTriggerId = buildUnnamed3706();
     o.liveOnly = true;
+    o.monitoringMetadata = buildParameter();
+    o.monitoringMetadataTagNameKey = "foo";
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed4565();
+    o.parameter = buildUnnamed3707();
     o.parentFolderId = "foo";
     o.path = "foo";
     o.paused = true;
     o.priority = buildParameter();
     o.scheduleEndMs = "foo";
     o.scheduleStartMs = "foo";
-    o.setupTag = buildUnnamed4566();
+    o.setupTag = buildUnnamed3708();
     o.tagFiringOption = "foo";
     o.tagId = "foo";
     o.tagManagerUrl = "foo";
-    o.teardownTag = buildUnnamed4567();
+    o.teardownTag = buildUnnamed3709();
     o.type = "foo";
     o.workspaceId = "foo";
   }
@@ -1663,27 +1763,29 @@ checkTag(api.Tag o) {
   buildCounterTag++;
   if (buildCounterTag < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed4561(o.blockingRuleId);
-    checkUnnamed4562(o.blockingTriggerId);
+    checkUnnamed3703(o.blockingRuleId);
+    checkUnnamed3704(o.blockingTriggerId);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkUnnamed4563(o.firingRuleId);
-    checkUnnamed4564(o.firingTriggerId);
+    checkUnnamed3705(o.firingRuleId);
+    checkUnnamed3706(o.firingTriggerId);
     unittest.expect(o.liveOnly, unittest.isTrue);
+    checkParameter(o.monitoringMetadata);
+    unittest.expect(o.monitoringMetadataTagNameKey, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed4565(o.parameter);
+    checkUnnamed3707(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.paused, unittest.isTrue);
     checkParameter(o.priority);
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
-    checkUnnamed4566(o.setupTag);
+    checkUnnamed3708(o.setupTag);
     unittest.expect(o.tagFiringOption, unittest.equals('foo'));
     unittest.expect(o.tagId, unittest.equals('foo'));
     unittest.expect(o.tagManagerUrl, unittest.equals('foo'));
-    checkUnnamed4567(o.teardownTag);
+    checkUnnamed3709(o.teardownTag);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.workspaceId, unittest.equals('foo'));
   }
@@ -1711,74 +1813,53 @@ checkTeardownTag(api.TeardownTag o) {
   buildCounterTeardownTag--;
 }
 
-core.int buildCounterTimestamp = 0;
-buildTimestamp() {
-  var o = new api.Timestamp();
-  buildCounterTimestamp++;
-  if (buildCounterTimestamp < 3) {
-    o.nanos = 42;
-    o.seconds = "foo";
-  }
-  buildCounterTimestamp--;
-  return o;
-}
-
-checkTimestamp(api.Timestamp o) {
-  buildCounterTimestamp++;
-  if (buildCounterTimestamp < 3) {
-    unittest.expect(o.nanos, unittest.equals(42));
-    unittest.expect(o.seconds, unittest.equals('foo'));
-  }
-  buildCounterTimestamp--;
-}
-
-buildUnnamed4568() {
+buildUnnamed3710() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed4568(core.List<api.Condition> o) {
+checkUnnamed3710(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed4569() {
+buildUnnamed3711() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed4569(core.List<api.Condition> o) {
+checkUnnamed3711(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed4570() {
+buildUnnamed3712() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed4570(core.List<api.Condition> o) {
+checkUnnamed3712(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed4571() {
+buildUnnamed3713() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed4571(core.List<api.Parameter> o) {
+checkUnnamed3713(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1790,13 +1871,13 @@ buildTrigger() {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     o.accountId = "foo";
-    o.autoEventFilter = buildUnnamed4568();
+    o.autoEventFilter = buildUnnamed3710();
     o.checkValidation = buildParameter();
     o.containerId = "foo";
     o.continuousTimeMinMilliseconds = buildParameter();
-    o.customEventFilter = buildUnnamed4569();
+    o.customEventFilter = buildUnnamed3711();
     o.eventName = buildParameter();
-    o.filter = buildUnnamed4570();
+    o.filter = buildUnnamed3712();
     o.fingerprint = "foo";
     o.horizontalScrollPercentageList = buildParameter();
     o.interval = buildParameter();
@@ -1805,7 +1886,7 @@ buildTrigger() {
     o.maxTimerLengthSeconds = buildParameter();
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed4571();
+    o.parameter = buildUnnamed3713();
     o.parentFolderId = "foo";
     o.path = "foo";
     o.selector = buildParameter();
@@ -1830,13 +1911,13 @@ checkTrigger(api.Trigger o) {
   buildCounterTrigger++;
   if (buildCounterTrigger < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed4568(o.autoEventFilter);
+    checkUnnamed3710(o.autoEventFilter);
     checkParameter(o.checkValidation);
     unittest.expect(o.containerId, unittest.equals('foo'));
     checkParameter(o.continuousTimeMinMilliseconds);
-    checkUnnamed4569(o.customEventFilter);
+    checkUnnamed3711(o.customEventFilter);
     checkParameter(o.eventName);
-    checkUnnamed4570(o.filter);
+    checkUnnamed3712(o.filter);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     checkParameter(o.horizontalScrollPercentageList);
     checkParameter(o.interval);
@@ -1845,7 +1926,7 @@ checkTrigger(api.Trigger o) {
     checkParameter(o.maxTimerLengthSeconds);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed4571(o.parameter);
+    checkUnnamed3713(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     checkParameter(o.selector);
@@ -1865,14 +1946,14 @@ checkTrigger(api.Trigger o) {
   buildCounterTrigger--;
 }
 
-buildUnnamed4572() {
+buildUnnamed3714() {
   var o = new core.List<api.ContainerAccess>();
   o.add(buildContainerAccess());
   o.add(buildContainerAccess());
   return o;
 }
 
-checkUnnamed4572(core.List<api.ContainerAccess> o) {
+checkUnnamed3714(core.List<api.ContainerAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContainerAccess(o[0]);
   checkContainerAccess(o[1]);
@@ -1885,7 +1966,7 @@ buildUserPermission() {
   if (buildCounterUserPermission < 3) {
     o.accountAccess = buildAccountAccess();
     o.accountId = "foo";
-    o.containerAccess = buildUnnamed4572();
+    o.containerAccess = buildUnnamed3714();
     o.emailAddress = "foo";
     o.path = "foo";
   }
@@ -1898,47 +1979,47 @@ checkUserPermission(api.UserPermission o) {
   if (buildCounterUserPermission < 3) {
     checkAccountAccess(o.accountAccess);
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkUnnamed4572(o.containerAccess);
+    checkUnnamed3714(o.containerAccess);
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
   }
   buildCounterUserPermission--;
 }
 
-buildUnnamed4573() {
+buildUnnamed3715() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4573(core.List<core.String> o) {
+checkUnnamed3715(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4574() {
+buildUnnamed3716() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4574(core.List<core.String> o) {
+checkUnnamed3716(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4575() {
+buildUnnamed3717() {
   var o = new core.List<api.Parameter>();
   o.add(buildParameter());
   o.add(buildParameter());
   return o;
 }
 
-checkUnnamed4575(core.List<api.Parameter> o) {
+checkUnnamed3717(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParameter(o[0]);
   checkParameter(o[1]);
@@ -1951,13 +2032,13 @@ buildVariable() {
   if (buildCounterVariable < 3) {
     o.accountId = "foo";
     o.containerId = "foo";
-    o.disablingTriggerId = buildUnnamed4573();
-    o.enablingTriggerId = buildUnnamed4574();
+    o.disablingTriggerId = buildUnnamed3715();
+    o.enablingTriggerId = buildUnnamed3716();
     o.fingerprint = "foo";
     o.formatValue = buildVariableFormatValue();
     o.name = "foo";
     o.notes = "foo";
-    o.parameter = buildUnnamed4575();
+    o.parameter = buildUnnamed3717();
     o.parentFolderId = "foo";
     o.path = "foo";
     o.scheduleEndMs = "foo";
@@ -1976,13 +2057,13 @@ checkVariable(api.Variable o) {
   if (buildCounterVariable < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkUnnamed4573(o.disablingTriggerId);
-    checkUnnamed4574(o.enablingTriggerId);
+    checkUnnamed3715(o.disablingTriggerId);
+    checkUnnamed3716(o.enablingTriggerId);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     checkVariableFormatValue(o.formatValue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkUnnamed4575(o.parameter);
+    checkUnnamed3717(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
@@ -2055,14 +2136,14 @@ checkWorkspace(api.Workspace o) {
   buildCounterWorkspace--;
 }
 
-buildUnnamed4576() {
+buildUnnamed3718() {
   var o = new core.List<api.ZoneChildContainer>();
   o.add(buildZoneChildContainer());
   o.add(buildZoneChildContainer());
   return o;
 }
 
-checkUnnamed4576(core.List<api.ZoneChildContainer> o) {
+checkUnnamed3718(core.List<api.ZoneChildContainer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkZoneChildContainer(o[0]);
   checkZoneChildContainer(o[1]);
@@ -2075,7 +2156,7 @@ buildZone() {
   if (buildCounterZone < 3) {
     o.accountId = "foo";
     o.boundary = buildZoneBoundary();
-    o.childContainer = buildUnnamed4576();
+    o.childContainer = buildUnnamed3718();
     o.containerId = "foo";
     o.fingerprint = "foo";
     o.name = "foo";
@@ -2095,7 +2176,7 @@ checkZone(api.Zone o) {
   if (buildCounterZone < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     checkZoneBoundary(o.boundary);
-    checkUnnamed4576(o.childContainer);
+    checkUnnamed3718(o.childContainer);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -2109,27 +2190,27 @@ checkZone(api.Zone o) {
   buildCounterZone--;
 }
 
-buildUnnamed4577() {
+buildUnnamed3719() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed4577(core.List<api.Condition> o) {
+checkUnnamed3719(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed4578() {
+buildUnnamed3720() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4578(core.List<core.String> o) {
+checkUnnamed3720(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2140,8 +2221,8 @@ buildZoneBoundary() {
   var o = new api.ZoneBoundary();
   buildCounterZoneBoundary++;
   if (buildCounterZoneBoundary < 3) {
-    o.condition = buildUnnamed4577();
-    o.customEvaluationTriggerId = buildUnnamed4578();
+    o.condition = buildUnnamed3719();
+    o.customEvaluationTriggerId = buildUnnamed3720();
   }
   buildCounterZoneBoundary--;
   return o;
@@ -2150,8 +2231,8 @@ buildZoneBoundary() {
 checkZoneBoundary(api.ZoneBoundary o) {
   buildCounterZoneBoundary++;
   if (buildCounterZoneBoundary < 3) {
-    checkUnnamed4577(o.condition);
-    checkUnnamed4578(o.customEvaluationTriggerId);
+    checkUnnamed3719(o.condition);
+    checkUnnamed3720(o.customEvaluationTriggerId);
   }
   buildCounterZoneBoundary--;
 }
@@ -2177,14 +2258,14 @@ checkZoneChildContainer(api.ZoneChildContainer o) {
   buildCounterZoneChildContainer--;
 }
 
-buildUnnamed4579() {
+buildUnnamed3721() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4579(core.List<core.String> o) {
+checkUnnamed3721(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2196,7 +2277,7 @@ buildZoneTypeRestriction() {
   buildCounterZoneTypeRestriction++;
   if (buildCounterZoneTypeRestriction < 3) {
     o.enable = true;
-    o.whitelistedTypeId = buildUnnamed4579();
+    o.whitelistedTypeId = buildUnnamed3721();
   }
   buildCounterZoneTypeRestriction--;
   return o;
@@ -2206,71 +2287,71 @@ checkZoneTypeRestriction(api.ZoneTypeRestriction o) {
   buildCounterZoneTypeRestriction++;
   if (buildCounterZoneTypeRestriction < 3) {
     unittest.expect(o.enable, unittest.isTrue);
-    checkUnnamed4579(o.whitelistedTypeId);
+    checkUnnamed3721(o.whitelistedTypeId);
   }
   buildCounterZoneTypeRestriction--;
 }
 
-buildUnnamed4580() {
+buildUnnamed3722() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4580(core.List<core.String> o) {
+checkUnnamed3722(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4581() {
+buildUnnamed3723() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4581(core.List<core.String> o) {
+checkUnnamed3723(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4582() {
+buildUnnamed3724() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4582(core.List<core.String> o) {
+checkUnnamed3724(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4583() {
+buildUnnamed3725() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4583(core.List<core.String> o) {
+checkUnnamed3725(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4584() {
+buildUnnamed3726() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4584(core.List<core.String> o) {
+checkUnnamed3726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2298,6 +2379,14 @@ main() {
       var o = buildBuiltInVariable();
       var od = new api.BuiltInVariable.fromJson(o.toJson());
       checkBuiltInVariable(od);
+    });
+  });
+
+  unittest.group("obj-schema-Client", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildClient();
+      var od = new api.Client.fromJson(o.toJson());
+      checkClient(od);
     });
   });
 
@@ -2403,6 +2492,14 @@ main() {
       var o = buildFolderEntities();
       var od = new api.FolderEntities.fromJson(o.toJson());
       checkFolderEntities(od);
+    });
+  });
+
+  unittest.group("obj-schema-GalleryReference", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGalleryReference();
+      var od = new api.GalleryReference.fromJson(o.toJson());
+      checkGalleryReference(od);
     });
   });
 
@@ -2646,14 +2743,6 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-Timestamp", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildTimestamp();
-      var od = new api.Timestamp.fromJson(o.toJson());
-      checkTimestamp(od);
-    });
-  });
-
   unittest.group("obj-schema-Trigger", () {
     unittest.test("to-json--from-json", () {
       var o = buildTrigger();
@@ -2740,6 +2829,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2787,12 +2880,9 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 14),
-            unittest.equals("tagmanager/v2/"));
-        pathOffset += 14;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("accounts"));
-        pathOffset += 8;
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("tagmanager/v2/accounts"));
+        pathOffset += 22;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2847,6 +2937,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2904,6 +2998,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2952,6 +3050,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -2998,6 +3100,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3047,6 +3153,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3102,6 +3212,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3159,6 +3273,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3207,6 +3325,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3253,6 +3375,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3302,6 +3428,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3356,6 +3486,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3409,6 +3543,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3462,6 +3600,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3501,8 +3643,8 @@ main() {
       api.AccountsContainersVersionHeadersResourceApi res =
           new api.TagmanagerApi(mock).accounts.containers.versionHeaders;
       var arg_parent = "foo";
-      var arg_includeDeleted = true;
       var arg_pageToken = "foo";
+      var arg_includeDeleted = true;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -3512,6 +3654,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3531,10 +3677,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["includeDeleted"].first,
-            unittest.equals("$arg_includeDeleted"));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["includeDeleted"].first,
+            unittest.equals("$arg_includeDeleted"));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -3545,8 +3691,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              includeDeleted: arg_includeDeleted,
               pageToken: arg_pageToken,
+              includeDeleted: arg_includeDeleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListContainerVersionsResponse(response);
@@ -3569,6 +3715,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3616,6 +3766,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3667,6 +3821,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3716,6 +3874,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3766,6 +3928,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3814,6 +3980,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3867,6 +4037,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3924,6 +4098,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -3977,6 +4155,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4025,6 +4207,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4071,6 +4257,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4119,6 +4309,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4168,6 +4362,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4218,6 +4416,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4271,6 +4473,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4320,6 +4526,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4373,6 +4583,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4422,7 +4636,7 @@ main() {
               .workspaces
               .builtInVariables;
       var arg_parent = "foo";
-      var arg_type = buildUnnamed4580();
+      var arg_type = buildUnnamed3722();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4432,6 +4646,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4476,7 +4694,7 @@ main() {
               .workspaces
               .builtInVariables;
       var arg_path = "foo";
-      var arg_type = buildUnnamed4581();
+      var arg_type = buildUnnamed3723();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -4486,6 +4704,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4538,6 +4760,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4594,6 +4820,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4649,6 +4879,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4697,6 +4931,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4744,6 +4982,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4794,6 +5036,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4843,6 +5089,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4885,9 +5135,9 @@ main() {
           new api.TagmanagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
       var arg_path = "foo";
-      var arg_tagId = buildUnnamed4582();
-      var arg_triggerId = buildUnnamed4583();
-      var arg_variableId = buildUnnamed4584();
+      var arg_variableId = buildUnnamed3724();
+      var arg_tagId = buildUnnamed3725();
+      var arg_triggerId = buildUnnamed3726();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Folder.fromJson(json);
@@ -4900,6 +5150,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4919,10 +5173,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["tagId"], unittest.equals(arg_tagId));
-        unittest.expect(queryMap["triggerId"], unittest.equals(arg_triggerId));
         unittest.expect(
             queryMap["variableId"], unittest.equals(arg_variableId));
+        unittest.expect(queryMap["tagId"], unittest.equals(arg_tagId));
+        unittest.expect(queryMap["triggerId"], unittest.equals(arg_triggerId));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -4933,9 +5187,9 @@ main() {
       }), true);
       res
           .moveEntitiesToFolder(arg_request, arg_path,
+              variableId: arg_variableId,
               tagId: arg_tagId,
               triggerId: arg_triggerId,
-              variableId: arg_variableId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
@@ -4955,6 +5209,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5010,6 +5268,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5067,6 +5329,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5115,6 +5381,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5161,6 +5431,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5210,6 +5484,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5261,6 +5539,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5316,6 +5598,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5374,6 +5660,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5422,6 +5712,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5468,6 +5762,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5517,6 +5815,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5568,6 +5870,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5623,6 +5929,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5681,6 +5991,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5729,6 +6043,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5775,6 +6093,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5824,6 +6146,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5875,6 +6201,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5930,6 +6260,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5988,6 +6322,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6036,6 +6374,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6082,6 +6424,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6131,6 +6477,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6182,6 +6532,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6237,6 +6591,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6294,6 +6652,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6342,6 +6704,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6388,6 +6754,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6437,6 +6807,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6488,6 +6862,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6543,6 +6921,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6600,6 +6982,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6648,6 +7034,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6694,6 +7084,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6743,6 +7137,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -6797,6 +7195,10 @@ main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("tagmanager/v2/"));
+        pathOffset += 14;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
         var query = (req.url).query;
         var queryOffset = 0;

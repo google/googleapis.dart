@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.datafusion.v1beta1;
 
@@ -112,11 +112,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -129,9 +129,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -143,14 +143,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -335,6 +335,17 @@ class ProjectsLocationsInstancesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -346,7 +357,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -356,6 +367,11 @@ class ProjectsLocationsInstancesResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -570,6 +586,9 @@ class ProjectsLocationsInstancesResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -999,7 +1018,7 @@ class ProjectsLocationsOperationsResourceApi {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -1011,7 +1030,7 @@ class ProjectsLocationsOperationsResourceApi {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -1019,7 +1038,7 @@ class ProjectsLocationsOperationsResourceApi {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -1027,9 +1046,9 @@ class ProjectsLocationsOperationsResourceApi {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -1082,7 +1101,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -1092,12 +1111,13 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
   /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
+  core.bool ignoreChildExemptions;
 
   /// The log type that this config enables.
   /// Possible string values are:
@@ -1114,6 +1134,9 @@ class AuditLogConfig {
       exemptedMembers =
           (_json["exemptedMembers"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("ignoreChildExemptions")) {
+      ignoreChildExemptions = _json["ignoreChildExemptions"];
+    }
     if (_json.containsKey("logType")) {
       logType = _json["logType"];
     }
@@ -1124,6 +1147,9 @@ class AuditLogConfig {
         new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
+    }
+    if (ignoreChildExemptions != null) {
+      _json["ignoreChildExemptions"] = ignoreChildExemptions;
     }
     if (logType != null) {
       _json["logType"] = logType;
@@ -1179,7 +1205,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1311,10 +1337,11 @@ class Condition {
   /// (e.g. ALLOW/IN or DENY/NOT_IN).
   /// - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
   /// with this request.
-  /// String values should match enum names from tech.iam.JustificationType,
-  /// e.g. "MANUAL_STRING". It is not permitted to grant access based on
-  /// the *absence* of a justification, so justification conditions can only
-  /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+  /// String values should match enum names from
+  /// security.credentials.JustificationType, e.g. "MANUAL_STRING". It is not
+  /// permitted to grant access based on the *absence* of a justification, so
+  /// justification conditions can only be used in a "positive" context
+  /// (e.g., ALLOW/IN or DENY/NOT_IN).
   ///
   /// Multiple justifications, e.g., a Buganizer ID and a manually-entered
   /// reason, are normal and supported.
@@ -1419,12 +1446,12 @@ class Condition {
 ///
 /// Examples:
 ///   counter { metric: "/debug_access_count"  field: "iam_principal" }
-///   ==> increment counter /iam/policy/backend_debug_access_count
+///   ==> increment counter /iam/policy/debug_access_count
 ///                         {iam_principal=[value of IAMContext.principal]}
-///
-/// At this time we do not support multiple field names (though this may be
-/// supported in the future).
 class CounterOptions {
+  /// Custom fields.
+  core.List<CustomField> customFields;
+
   /// The field value to attribute.
   core.String field;
 
@@ -1434,6 +1461,11 @@ class CounterOptions {
   CounterOptions();
 
   CounterOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("customFields")) {
+      customFields = (_json["customFields"] as core.List)
+          .map<CustomField>((value) => new CustomField.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("field")) {
       field = _json["field"];
     }
@@ -1445,11 +1477,52 @@ class CounterOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customFields != null) {
+      _json["customFields"] =
+          customFields.map((value) => (value).toJson()).toList();
+    }
     if (field != null) {
       _json["field"] = field;
     }
     if (metric != null) {
       _json["metric"] = metric;
+    }
+    return _json;
+  }
+}
+
+/// Custom fields.
+/// These can be used to create a counter with arbitrary field/value
+/// pairs.
+/// See: go/rpcsp-custom-fields.
+class CustomField {
+  /// Name is the field name.
+  core.String name;
+
+  /// Value is the field value. It is important that in contrast to the
+  /// CounterOptions.field, the value here is a constant that is not
+  /// derived from the IAMContext.
+  core.String value;
+
+  CustomField();
+
+  CustomField.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -1580,6 +1653,13 @@ class Expr {
 
 /// Represents a Data Fusion instance.
 class Instance {
+  /// Output only. Endpoint on which the REST APIs is accessible.
+  core.String apiEndpoint;
+
+  /// Available versions that the instance can be upgraded to using
+  /// UpdateInstanceRequest.
+  core.List<Version> availableVersion;
+
   /// Output only. The time the instance was created.
   core.String createTime;
 
@@ -1621,8 +1701,7 @@ class Instance {
   /// the customer project."
   core.String serviceAccount;
 
-  /// Output only. Endpoint on which the Data Fusion UI and REST APIs are
-  /// accessible.
+  /// Output only. Endpoint on which the Data Fusion UI is accessible.
   core.String serviceEndpoint;
 
   /// Output only. The current state of this Data Fusion instance.
@@ -1634,7 +1713,9 @@ class Instance {
   /// - "DELETING" : Instance is being deleted
   /// - "UPGRADING" : Instance is being upgraded
   /// - "RESTARTING" : Instance is being restarted
-  /// - "UPDATING" : Instance is being updated
+  /// - "UPDATING" : Instance is being updated on customer request
+  /// - "AUTO_UPDATING" : Instance is being auto-updated
+  /// - "AUTO_UPGRADING" : Instance is being auto-upgraded
   core.String state;
 
   /// Output only. Additional information about the current state of this Data
@@ -1658,7 +1739,7 @@ class Instance {
   /// Output only. The time the instance was last updated.
   core.String updateTime;
 
-  /// Output only. Current version of the Data Fusion.
+  /// Current version of the Data Fusion. Only specifiable in Update.
   core.String version;
 
   /// Name of the zone in which the Data Fusion instance will be created.
@@ -1667,6 +1748,14 @@ class Instance {
   Instance();
 
   Instance.fromJson(core.Map _json) {
+    if (_json.containsKey("apiEndpoint")) {
+      apiEndpoint = _json["apiEndpoint"];
+    }
+    if (_json.containsKey("availableVersion")) {
+      availableVersion = (_json["availableVersion"] as core.List)
+          .map<Version>((value) => new Version.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -1726,6 +1815,13 @@ class Instance {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (apiEndpoint != null) {
+      _json["apiEndpoint"] = apiEndpoint;
+    }
+    if (availableVersion != null) {
+      _json["availableVersion"] =
+          availableVersion.map((value) => (value).toJson()).toList();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -2020,7 +2116,9 @@ class NetworkConfig {
   core.String ipAllocation;
 
   /// Name of the network in the customer project with which the Tenant Project
-  /// will be peered for executing pipelines.
+  /// will be peered for executing pipelines. In case of shared VPC where the
+  /// network resides in another host project the network should specified in
+  /// the form of projects/{host-project-id}/global/networks/{network}
   core.String network;
 
   NetworkConfig();
@@ -2214,29 +2312,37 @@ class OperationMetadata {
 /// specify access control policies for Cloud Platform resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions (defined by IAM or configured by users). A `binding` can
+/// optionally specify a `condition`, which is a logic expression that further
+/// constrains the role binding based on attributes about the request and/or
+/// target resource.
 ///
 /// **JSON Example**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+///             "expression": "request.time <
+///             timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
 ///       ]
 ///     }
@@ -2248,12 +2354,15 @@ class OperationMetadata {
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
 ///
 /// For a description of IAM and its features, see the
 /// [IAM developer's guide](https://cloud.google.com/iam/docs).
@@ -2261,7 +2370,8 @@ class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
+  /// Associates a list of `members` to a `role`. Optionally may specify a
+  /// `condition` that determines when binding is in effect.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
 
@@ -2275,7 +2385,9 @@ class Policy {
   /// policy.
   ///
   /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// policy is overwritten. Due to blind-set semantics of an etag-less policy,
+  /// 'setIamPolicy' will not fail even if either of incoming or stored policy
+  /// does not meet the version requirements.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -2299,7 +2411,19 @@ class Policy {
   /// - Otherwise, if no rule applies, permission is denied.
   core.List<Rule> rules;
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Operations affecting conditional bindings must specify version 3. This can
+  /// be either setting a conditional policy, modifying a conditional binding,
+  /// or removing a conditional binding from the stored conditional policy.
+  /// Operations on non-conditional policies may specify any valid value or
+  /// leave the field unset.
+  ///
+  /// If no etag is provided in the call to `setIamPolicy`, any version
+  /// compliance checks on the incoming and/or stored policy is skipped.
   core.int version;
 
   Policy();
@@ -2627,6 +2751,29 @@ class UpgradeInstanceRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// The Data Fusion version.
+class Version {
+  /// The version number of the Data Fusion instance, such as '6.0.1.0'.
+  core.String versionNumber;
+
+  Version();
+
+  Version.fromJson(core.Map _json) {
+    if (_json.containsKey("versionNumber")) {
+      versionNumber = _json["versionNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (versionNumber != null) {
+      _json["versionNumber"] = versionNumber;
+    }
     return _json;
   }
 }

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.admin.directory_v1;
 
@@ -127,6 +127,10 @@ class AdminApi {
   /// View user schemas on your domain
   static const AdminDirectoryUserschemaReadonlyScope =
       "https://www.googleapis.com/auth/admin.directory.userschema.readonly";
+
+  /// View and manage your data across Google Cloud Platform services
+  static const CloudPlatformScope =
+      "https://www.googleapis.com/auth/cloud-platform";
 
   final commons.ApiRequester _requester;
 
@@ -495,7 +499,8 @@ class ChromeosdevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 100
+  /// [maxResults] - Maximum number of results to return. Max allowed value is
+  /// 200.
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
@@ -1483,7 +1488,8 @@ class GroupsResourceApi {
   /// this domain. To return all groups in a multi-domain fill customer field
   /// instead.
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 200
+  /// [maxResults] - Maximum number of results to return. Max allowed value is
+  /// 200.
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
@@ -1501,9 +1507,9 @@ class GroupsResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
-  /// [userKey] - Email or immutable Id of the user if only those groups are to
-  /// be listed, the given user is a member of. If Id, it should match with id
-  /// of user object
+  /// [userKey] - Email or immutable ID of the user if only those groups are to
+  /// be listed, the given user is a member of. If it's an ID, it should match
+  /// with the ID of the user object.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2036,7 +2042,8 @@ class MembersResourceApi {
   /// [includeDerivedMembership] - Whether to list indirect memberships.
   /// Default: false.
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 200
+  /// [maxResults] - Maximum number of results to return. Max allowed value is
+  /// 200.
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
@@ -2397,7 +2404,8 @@ class MobiledevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 100
+  /// [maxResults] - Maximum number of results to return. Max allowed value is
+  /// 100.
   ///
   /// [orderBy] - Column to use for sorting results
   /// Possible string values are:
@@ -5639,8 +5647,7 @@ class UsersResourceApi {
   /// - "undelete" : User Undeleted Event
   /// - "update" : User Updated Event
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 100. Max
-  /// allowed is 500
+  /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
   ///
   /// [orderBy] - Column to use for sorting results
@@ -5662,8 +5669,8 @@ class UsersResourceApi {
   /// documentation is at
   /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users
   ///
-  /// [showDeleted] - If set to true retrieves the list of deleted users.
-  /// Default is false
+  /// [showDeleted] - If set to true, retrieves the list of deleted users.
+  /// (Default: false)
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
@@ -5975,8 +5982,7 @@ class UsersResourceApi {
   /// - "undelete" : User Undeleted Event
   /// - "update" : User Updated Event
   ///
-  /// [maxResults] - Maximum number of results to return. Default is 100. Max
-  /// allowed is 500
+  /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
   ///
   /// [orderBy] - Column to use for sorting results
@@ -5998,8 +6004,8 @@ class UsersResourceApi {
   /// documentation is at
   /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users
   ///
-  /// [showDeleted] - If set to true retrieves the list of deleted users.
-  /// Default is false
+  /// [showDeleted] - If set to true, retrieves the list of deleted users.
+  /// (Default: false)
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
@@ -7905,6 +7911,10 @@ class ChromeOsDevice {
   /// User of the device
   core.String annotatedUser;
 
+  /// (Read-only) The timestamp after which the device will stop receiving
+  /// Chrome updates or support
+  core.String autoUpdateExpiration;
+
   /// Chromebook boot mode (Read-only)
   core.String bootMode;
 
@@ -7920,11 +7930,26 @@ class ChromeOsDevice {
   /// Reports of disk space and other info about mounted/connected volumes.
   core.List<ChromeOsDeviceDiskVolumeReports> diskVolumeReports;
 
+  /// (Read-only) Built-in MAC address for the docking station that the device
+  /// connected to. Factory sets Media access control address (MAC address)
+  /// assigned for use by a dock. Currently this is only supported on the Dell
+  /// Arcada / Sarien devices and the Dell WD19 / WD19TB Docking Station. It is
+  /// reserved specifically for MAC pass through device policy. The format is
+  /// twelve (12) hexadecimal digits without any delimiter (uppercase letters).
+  /// This is only relevant for Dell devices.
+  core.String dockMacAddress;
+
   /// ETag of the resource.
   core.String etag;
 
   /// Chromebook Mac Address on ethernet network interface (Read-only)
   core.String ethernetMacAddress;
+
+  /// (Read-only) MAC address used by the Chromebook’s internal ethernet port,
+  /// and for onboard network (ethernet) interface. The format is twelve (12)
+  /// hexadecimal digits without any delimiter (uppercase letters). This is only
+  /// relevant for some devices.
+  core.String ethernetMacAddress0;
 
   /// Chromebook firmware version (Read-only)
   core.String firmwareVersion;
@@ -7942,8 +7967,12 @@ class ChromeOsDevice {
   /// Chromebook Mac Address on wifi network interface (Read-only)
   core.String macAddress;
 
-  /// Mobile Equipment identifier for the 3G mobile card in the Chromebook
-  /// (Read-only)
+  /// (Read-only) The date the device was manufactured in yyyy-mm-dd format.
+  core.String manufactureDate;
+
+  /// Contains either the Mobile Equipment identifier (MEID) or the
+  /// International Mobile Equipment Identity (IMEI) for the 3G mobile card in
+  /// the Chromebook (Read-only)
   core.String meid;
 
   /// Chromebook Model (Read-only)
@@ -8007,6 +8036,9 @@ class ChromeOsDevice {
     if (_json.containsKey("annotatedUser")) {
       annotatedUser = _json["annotatedUser"];
     }
+    if (_json.containsKey("autoUpdateExpiration")) {
+      autoUpdateExpiration = _json["autoUpdateExpiration"];
+    }
     if (_json.containsKey("bootMode")) {
       bootMode = _json["bootMode"];
     }
@@ -8031,11 +8063,17 @@ class ChromeOsDevice {
               (value) => new ChromeOsDeviceDiskVolumeReports.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("dockMacAddress")) {
+      dockMacAddress = _json["dockMacAddress"];
+    }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
     }
     if (_json.containsKey("ethernetMacAddress")) {
       ethernetMacAddress = _json["ethernetMacAddress"];
+    }
+    if (_json.containsKey("ethernetMacAddress0")) {
+      ethernetMacAddress0 = _json["ethernetMacAddress0"];
     }
     if (_json.containsKey("firmwareVersion")) {
       firmwareVersion = _json["firmwareVersion"];
@@ -8051,6 +8089,9 @@ class ChromeOsDevice {
     }
     if (_json.containsKey("macAddress")) {
       macAddress = _json["macAddress"];
+    }
+    if (_json.containsKey("manufactureDate")) {
+      manufactureDate = _json["manufactureDate"];
     }
     if (_json.containsKey("meid")) {
       meid = _json["meid"];
@@ -8122,6 +8163,9 @@ class ChromeOsDevice {
     if (annotatedUser != null) {
       _json["annotatedUser"] = annotatedUser;
     }
+    if (autoUpdateExpiration != null) {
+      _json["autoUpdateExpiration"] = autoUpdateExpiration;
+    }
     if (bootMode != null) {
       _json["bootMode"] = bootMode;
     }
@@ -8140,11 +8184,17 @@ class ChromeOsDevice {
       _json["diskVolumeReports"] =
           diskVolumeReports.map((value) => (value).toJson()).toList();
     }
+    if (dockMacAddress != null) {
+      _json["dockMacAddress"] = dockMacAddress;
+    }
     if (etag != null) {
       _json["etag"] = etag;
     }
     if (ethernetMacAddress != null) {
       _json["ethernetMacAddress"] = ethernetMacAddress;
+    }
+    if (ethernetMacAddress0 != null) {
+      _json["ethernetMacAddress0"] = ethernetMacAddress0;
     }
     if (firmwareVersion != null) {
       _json["firmwareVersion"] = firmwareVersion;
@@ -8160,6 +8210,9 @@ class ChromeOsDevice {
     }
     if (macAddress != null) {
       _json["macAddress"] = macAddress;
+    }
+    if (manufactureDate != null) {
+      _json["manufactureDate"] = manufactureDate;
     }
     if (meid != null) {
       _json["meid"] = meid;
@@ -9065,8 +9118,9 @@ class Member {
   /// ETag of the resource.
   core.String etag;
 
-  /// Unique identifier of customer member (Read-only) Unique identifier of
-  /// group (Read-only) Unique identifier of member (Read-only)
+  /// The unique ID of the group member. A member id can be used as a member
+  /// request URI's memberKey. Unique identifier of group (Read-only) Unique
+  /// identifier of member (Read-only)
   core.String id;
 
   /// Kind of resource this is.
@@ -10038,7 +10092,8 @@ class Privilege {
   /// The name of the privilege.
   core.String privilegeName;
 
-  /// The obfuscated ID of the service this privilege is for.
+  /// The obfuscated ID of the service this privilege is for. This value is
+  /// returned with Privileges.list().
   core.String serviceId;
 
   /// The name of the service this privilege is for.
@@ -10148,7 +10203,8 @@ class RoleRolePrivileges {
   /// The name of the privilege.
   core.String privilegeName;
 
-  /// The obfuscated ID of the service this privilege is for.
+  /// The obfuscated ID of the service this privilege is for. This value is
+  /// returned with Privileges.list().
   core.String serviceId;
 
   RoleRolePrivileges();
@@ -11092,6 +11148,13 @@ class User {
   /// username of User
   core.String primaryEmail;
 
+  /// Recovery email of the user.
+  core.String recoveryEmail;
+
+  /// Recovery phone of the user. The phone number must be in the E.164 format,
+  /// starting with the plus sign (+). Example: +16506661212.
+  core.String recoveryPhone;
+
   ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -11239,6 +11302,12 @@ class User {
     if (_json.containsKey("primaryEmail")) {
       primaryEmail = _json["primaryEmail"];
     }
+    if (_json.containsKey("recoveryEmail")) {
+      recoveryEmail = _json["recoveryEmail"];
+    }
+    if (_json.containsKey("recoveryPhone")) {
+      recoveryPhone = _json["recoveryPhone"];
+    }
     if (_json.containsKey("relations")) {
       relations = _json["relations"];
     }
@@ -11375,6 +11444,12 @@ class User {
     }
     if (primaryEmail != null) {
       _json["primaryEmail"] = primaryEmail;
+    }
+    if (recoveryEmail != null) {
+      _json["recoveryEmail"] = recoveryEmail;
+    }
+    if (recoveryPhone != null) {
+      _json["recoveryPhone"] = recoveryPhone;
     }
     if (relations != null) {
       _json["relations"] = relations;
@@ -12068,7 +12143,8 @@ class UserOrganization {
   /// The domain to which the organization belongs to.
   core.String domain;
 
-  /// The full-time equivalent percent within the organization (100000 = 100%).
+  /// The full-time equivalent millipercent within the organization (100000 =
+  /// 100%).
   core.int fullTimeEquivalent;
 
   /// Location of the organization. This need not be fully qualified address.

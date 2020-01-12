@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.videointelligence.v1;
 
@@ -44,155 +44,6 @@ class OperationsResourceApi {
       new OperationsProjectsResourceApi(_requester);
 
   OperationsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Starts asynchronous cancellation on a long-running operation.  The server
-  /// makes a best effort to cancel the operation, but success is not
-  /// guaranteed.  If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-  /// Operations.GetOperation or
-  /// other methods to check whether the cancellation succeeded or whether the
-  /// operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with
-  /// an Operation.error value with a google.rpc.Status.code of 1,
-  /// corresponding to `Code.CANCELLED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancel(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/operations/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':cancel';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
-  }
-
-  /// Deletes a long-running operation. This method indicates that the client is
-  /// no longer interested in the operation result. It does not cancel the
-  /// operation. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleProtobufEmpty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
-  }
-
-  /// Gets the latest state of a long-running operation.  Clients can use this
-  /// method to poll the operation result at intervals as recommended by the API
-  /// service.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource.
-  /// Value must have pattern "^[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GoogleLongrunningOperation.fromJson(data));
-  }
 }
 
 class OperationsProjectsResourceApi {
@@ -572,11 +423,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,9 +440,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -603,14 +454,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -717,7 +568,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
 
 /// Video annotation request.
 class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
-  /// Requested video annotation features.
+  /// Required. Requested video annotation features.
   core.List<core.String> features;
 
   /// The video data bytes.
@@ -746,13 +597,13 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
   /// unset.
   core.String inputUri;
 
-  /// Optional cloud region where annotation should take place. Supported cloud
+  /// Optional. Cloud region where annotation should take place. Supported cloud
   /// regions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no
   /// region
   /// is specified, a region will be determined based on video file location.
   core.String locationId;
 
-  /// Optional location where the output (in JSON format) should be stored.
+  /// Optional. Location where the output (in JSON format) should be stored.
   /// Currently, only [Google Cloud Storage](https://cloud.google.com/storage/)
   /// URIs are supported, which must be specified in the following format:
   /// `gs://bucket-id/object-id` (other URI formats return
@@ -1489,7 +1340,7 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
 /// phrases
 /// in the results.
 class GoogleCloudVideointelligenceV1SpeechContext {
-  /// *Optional* A list of strings containing words and phrases "hints" so that
+  /// Optional. A list of strings containing words and phrases "hints" so that
   /// the speech recognition is more likely to recognize them. This can be used
   /// to improve the accuracy for specific words and phrases, for example, if
   /// specific commands are typically spoken by the user. This can also be used
@@ -1580,10 +1431,10 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-  /// language in this result. This language code was detected to have the most
-  /// likelihood of being spoken in the audio.
+  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag of
+  /// the language in this result. This language code was detected to have the
+  /// most likelihood of being spoken in the audio.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1SpeechTranscription();
@@ -1618,17 +1469,17 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
 
 /// Config for SPEECH_TRANSCRIPTION.
 class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
-  /// *Optional* For file formats, such as MXF or MKV, supporting multiple audio
+  /// Optional. For file formats, such as MXF or MKV, supporting multiple audio
   /// tracks, specify up to two tracks. Default: track 0.
   core.List<core.int> audioTracks;
 
-  /// *Optional*
-  /// If set, specifies the estimated number of speakers in the conversation.
+  /// Optional. If set, specifies the estimated number of speakers in the
+  /// conversation.
   /// If not set, defaults to '2'.
   /// Ignored unless enable_speaker_diarization is set to true.
   core.int diarizationSpeakerCount;
 
-  /// *Optional* If 'true', adds punctuation to recognition result hypotheses.
+  /// Optional. If 'true', adds punctuation to recognition result hypotheses.
   /// This feature is only available in select languages. Setting this for
   /// requests in other languages has no effect at all. The default 'false'
   /// value
@@ -1637,8 +1488,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   /// future this may be exclusively available as a premium feature."
   core.bool enableAutomaticPunctuation;
 
-  /// *Optional* If 'true', enables speaker detection for each recognized word
-  /// in
+  /// Optional. If 'true', enables speaker detection for each recognized word in
   /// the top alternative of the recognition result using a speaker_tag provided
   /// in the WordInfo.
   /// Note: When this is true, we send all the words from the beginning of the
@@ -1647,25 +1497,25 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   /// identify the speakers in the conversation over time.
   core.bool enableSpeakerDiarization;
 
-  /// *Optional* If `true`, the top result includes a list of words and the
+  /// Optional. If `true`, the top result includes a list of words and the
   /// confidence for those words. If `false`, no word-level confidence
   /// information is returned. The default is `false`.
   core.bool enableWordConfidence;
 
-  /// *Optional* If set to `true`, the server will attempt to filter out
+  /// Optional. If set to `true`, the server will attempt to filter out
   /// profanities, replacing all but the initial character in each filtered word
   /// with asterisks, e.g. "f***". If set to `false` or omitted, profanities
   /// won't be filtered out.
   core.bool filterProfanity;
 
-  /// *Required* The language of the supplied audio as a
+  /// Required. *Required* The language of the supplied audio as a
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   /// Example: "en-US".
   /// See [Language Support](https://cloud.google.com/speech/docs/languages)
   /// for a list of the currently supported language codes.
   core.String languageCode;
 
-  /// *Optional* Maximum number of recognition hypotheses to be returned.
+  /// Optional. Maximum number of recognition hypotheses to be returned.
   /// Specifically, the maximum number of `SpeechRecognitionAlternative`
   /// messages
   /// within each `SpeechTranscription`. The server may return fewer than
@@ -1673,7 +1523,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   /// return a maximum of one. If omitted, will return a maximum of one.
   core.int maxAlternatives;
 
-  /// *Optional* A means to provide context to assist the speech recognition.
+  /// Optional. A means to provide context to assist the speech recognition.
   core.List<GoogleCloudVideointelligenceV1SpeechContext> speechContexts;
 
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig();
@@ -2009,10 +1859,22 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>
       objectAnnotations;
 
+  /// Video segment on which the annotation is run.
+  GoogleCloudVideointelligenceV1VideoSegment segment;
+
   /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
       segmentLabelAnnotations;
+
+  /// Presence label annotations on video level or user specified segment level.
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `segment_label_annotations`, this field presents more
+  /// fine-grained, segment-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
+      segmentPresenceLabelAnnotations;
 
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1VideoSegment> shotAnnotations;
@@ -2020,6 +1882,16 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
   /// Topical label annotations on shot level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1LabelAnnotation> shotLabelAnnotations;
+
+  /// Presence label annotations on shot level. There is exactly one element for
+  /// each unique label. Compared to the existing topical
+  /// `shot_label_annotations`, this field presents more fine-grained,
+  /// shot-level
+  /// labels detected in video content and is made available only when the
+  /// client
+  /// sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1LabelAnnotation>
+      shotPresenceLabelAnnotations;
 
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1SpeechTranscription>
@@ -2059,8 +1931,19 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1VideoSegment.fromJson(
+          _json["segment"]);
+    }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+      segmentPresenceLabelAnnotations = (_json[
+              "segmentPresenceLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
@@ -2073,6 +1956,13 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     }
     if (_json.containsKey("shotLabelAnnotations")) {
       shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("shotPresenceLabelAnnotations")) {
+      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+              as core.List)
           .map<GoogleCloudVideointelligenceV1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(value))
           .toList();
@@ -2112,9 +2002,17 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (segmentPresenceLabelAnnotations != null) {
+      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (shotAnnotations != null) {
       _json["shotAnnotations"] =
@@ -2123,6 +2021,11 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     if (shotLabelAnnotations != null) {
       _json["shotLabelAnnotations"] =
           shotLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotPresenceLabelAnnotations != null) {
+      _json["shotPresenceLabelAnnotations"] = shotPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =
@@ -2969,10 +2872,10 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-  /// language in this result. This language code was detected to have the most
-  /// likelihood of being spoken in the audio.
+  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag of
+  /// the language in this result. This language code was detected to have the
+  /// most likelihood of being spoken in the audio.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1beta2SpeechTranscription();
@@ -3232,10 +3135,22 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>
       objectAnnotations;
 
+  /// Video segment on which the annotation is run.
+  GoogleCloudVideointelligenceV1beta2VideoSegment segment;
+
   /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       segmentLabelAnnotations;
+
+  /// Presence label annotations on video level or user specified segment level.
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `segment_label_annotations`, this field presents more
+  /// fine-grained, segment-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
+      segmentPresenceLabelAnnotations;
 
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1beta2VideoSegment> shotAnnotations;
@@ -3244,6 +3159,16 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
       shotLabelAnnotations;
+
+  /// Presence label annotations on shot level. There is exactly one element for
+  /// each unique label. Compared to the existing topical
+  /// `shot_label_annotations`, this field presents more fine-grained,
+  /// shot-level
+  /// labels detected in video content and is made available only when the
+  /// client
+  /// sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1beta2LabelAnnotation>
+      shotPresenceLabelAnnotations;
 
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1beta2SpeechTranscription>
@@ -3284,12 +3209,25 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
+          _json["segment"]);
+    }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
           .toList();
+    }
+    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+      segmentPresenceLabelAnnotations =
+          (_json["segmentPresenceLabelAnnotations"] as core.List)
+              .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>(
+                  (value) =>
+                      new GoogleCloudVideointelligenceV1beta2LabelAnnotation
+                          .fromJson(value))
+              .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
       shotAnnotations = (_json["shotAnnotations"] as core.List)
@@ -3300,6 +3238,14 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     }
     if (_json.containsKey("shotLabelAnnotations")) {
       shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("shotPresenceLabelAnnotations")) {
+      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+              as core.List)
           .map<GoogleCloudVideointelligenceV1beta2LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
                   value))
@@ -3342,9 +3288,17 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (segmentPresenceLabelAnnotations != null) {
+      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (shotAnnotations != null) {
       _json["shotAnnotations"] =
@@ -3353,6 +3307,11 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     if (shotLabelAnnotations != null) {
       _json["shotLabelAnnotations"] =
           shotLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotPresenceLabelAnnotations != null) {
+      _json["shotPresenceLabelAnnotations"] = shotPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =
@@ -4104,10 +4063,10 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-  /// language in this result. This language code was detected to have the most
-  /// likelihood of being spoken in the audio.
+  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag of
+  /// the language in this result. This language code was detected to have the
+  /// most likelihood of being spoken in the audio.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1p1beta1SpeechTranscription();
@@ -4369,10 +4328,22 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>
       objectAnnotations;
 
+  /// Video segment on which the annotation is run.
+  GoogleCloudVideointelligenceV1p1beta1VideoSegment segment;
+
   /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       segmentLabelAnnotations;
+
+  /// Presence label annotations on video level or user specified segment level.
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `segment_label_annotations`, this field presents more
+  /// fine-grained, segment-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
+      segmentPresenceLabelAnnotations;
 
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p1beta1VideoSegment> shotAnnotations;
@@ -4381,6 +4352,16 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
       shotLabelAnnotations;
+
+  /// Presence label annotations on shot level. There is exactly one element for
+  /// each unique label. Compared to the existing topical
+  /// `shot_label_annotations`, this field presents more fine-grained,
+  /// shot-level
+  /// labels detected in video content and is made available only when the
+  /// client
+  /// sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>
+      shotPresenceLabelAnnotations;
 
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1p1beta1SpeechTranscription>
@@ -4422,12 +4403,25 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
                   value))
           .toList();
+    }
+    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+      segmentPresenceLabelAnnotations =
+          (_json["segmentPresenceLabelAnnotations"] as core.List)
+              .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>(
+                  (value) =>
+                      new GoogleCloudVideointelligenceV1p1beta1LabelAnnotation
+                          .fromJson(value))
+              .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
       shotAnnotations = (_json["shotAnnotations"] as core.List)
@@ -4438,6 +4432,14 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     }
     if (_json.containsKey("shotLabelAnnotations")) {
       shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("shotPresenceLabelAnnotations")) {
+      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+              as core.List)
           .map<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
                   value))
@@ -4480,9 +4482,17 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (segmentPresenceLabelAnnotations != null) {
+      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (shotAnnotations != null) {
       _json["shotAnnotations"] =
@@ -4491,6 +4501,11 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     if (shotLabelAnnotations != null) {
       _json["shotLabelAnnotations"] =
           shotLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotPresenceLabelAnnotations != null) {
+      _json["shotPresenceLabelAnnotations"] = shotPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =
@@ -5242,10 +5257,10 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-  /// language in this result. This language code was detected to have the most
-  /// likelihood of being spoken in the audio.
+  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag of
+  /// the language in this result. This language code was detected to have the
+  /// most likelihood of being spoken in the audio.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1p2beta1SpeechTranscription();
@@ -5507,10 +5522,22 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>
       objectAnnotations;
 
+  /// Video segment on which the annotation is run.
+  GoogleCloudVideointelligenceV1p2beta1VideoSegment segment;
+
   /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       segmentLabelAnnotations;
+
+  /// Presence label annotations on video level or user specified segment level.
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `segment_label_annotations`, this field presents more
+  /// fine-grained, segment-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
+      segmentPresenceLabelAnnotations;
 
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p2beta1VideoSegment> shotAnnotations;
@@ -5519,6 +5546,16 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
       shotLabelAnnotations;
+
+  /// Presence label annotations on shot level. There is exactly one element for
+  /// each unique label. Compared to the existing topical
+  /// `shot_label_annotations`, this field presents more fine-grained,
+  /// shot-level
+  /// labels detected in video content and is made available only when the
+  /// client
+  /// sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>
+      shotPresenceLabelAnnotations;
 
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1p2beta1SpeechTranscription>
@@ -5560,12 +5597,25 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
                   value))
           .toList();
+    }
+    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+      segmentPresenceLabelAnnotations =
+          (_json["segmentPresenceLabelAnnotations"] as core.List)
+              .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>(
+                  (value) =>
+                      new GoogleCloudVideointelligenceV1p2beta1LabelAnnotation
+                          .fromJson(value))
+              .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
       shotAnnotations = (_json["shotAnnotations"] as core.List)
@@ -5576,6 +5626,14 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     }
     if (_json.containsKey("shotLabelAnnotations")) {
       shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("shotPresenceLabelAnnotations")) {
+      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+              as core.List)
           .map<GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
                   value))
@@ -5618,9 +5676,17 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (segmentPresenceLabelAnnotations != null) {
+      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (shotAnnotations != null) {
       _json["shotAnnotations"] =
@@ -5629,6 +5695,11 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     if (shotLabelAnnotations != null) {
       _json["shotLabelAnnotations"] =
           shotLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotPresenceLabelAnnotations != null) {
+      _json["shotPresenceLabelAnnotations"] = shotPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =
@@ -5816,6 +5887,123 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
     if (annotationResults != null) {
       _json["annotationResults"] =
           annotationResults.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Celebrity definition.
+class GoogleCloudVideointelligenceV1p3beta1Celebrity {
+  /// Textual description of additional information about the celebrity, if
+  /// applicable.
+  core.String description;
+
+  /// The celebrity name.
+  core.String displayName;
+
+  /// The resource name of the celebrity. Have the format
+  /// `video-intelligence/kg-mid` indicates a celebrity from preloaded gallery.
+  /// kg-mid is the id in Google knowledge graph, which is unique for the
+  /// celebrity.
+  core.String name;
+
+  GoogleCloudVideointelligenceV1p3beta1Celebrity();
+
+  GoogleCloudVideointelligenceV1p3beta1Celebrity.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Celebrity recognition annotation per video.
+class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
+  /// The tracks detected from the input video, including recognized celebrities
+  /// and other detected faces in the video.
+  core.List<GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>
+      celebrityTracks;
+
+  GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation();
+
+  GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("celebrityTracks")) {
+      celebrityTracks = (_json["celebrityTracks"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1CelebrityTrack.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (celebrityTracks != null) {
+      _json["celebrityTracks"] =
+          celebrityTracks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The annotation result of a celebrity face track. RecognizedCelebrity field
+/// could be empty if the face track does not have any matched celebrities.
+class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
+  /// Top N match of the celebrities for the face in this track.
+  core.List<GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>
+      celebrities;
+
+  /// A track of a person's face.
+  GoogleCloudVideointelligenceV1p3beta1Track faceTrack;
+
+  GoogleCloudVideointelligenceV1p3beta1CelebrityTrack();
+
+  GoogleCloudVideointelligenceV1p3beta1CelebrityTrack.fromJson(core.Map _json) {
+    if (_json.containsKey("celebrities")) {
+      celebrities = (_json["celebrities"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>(
+              (value) =>
+                  new GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
+                      .fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("faceTrack")) {
+      faceTrack = new GoogleCloudVideointelligenceV1p3beta1Track.fromJson(
+          _json["faceTrack"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (celebrities != null) {
+      _json["celebrities"] =
+          celebrities.map((value) => (value).toJson()).toList();
+    }
+    if (faceTrack != null) {
+      _json["faceTrack"] = (faceTrack).toJson();
     }
     return _json;
   }
@@ -6412,6 +6600,40 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
   }
 }
 
+/// The recognized celebrity with confidence score.
+class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
+  /// The recognized celebrity.
+  GoogleCloudVideointelligenceV1p3beta1Celebrity celebrity;
+
+  /// Recognition confidence. Range [0, 1].
+  core.double confidence;
+
+  GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity();
+
+  GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("celebrity")) {
+      celebrity = new GoogleCloudVideointelligenceV1p3beta1Celebrity.fromJson(
+          _json["celebrity"]);
+    }
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (celebrity != null) {
+      _json["celebrity"] = (celebrity).toJson();
+    }
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    return _json;
+  }
+}
+
 /// Alternative hypotheses (a.k.a. n-best list).
 class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
   /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
@@ -6477,10 +6699,10 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// Output only. The
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-  /// language in this result. This language code was detected to have the most
-  /// likelihood of being spoken in the audio.
+  /// Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+  /// language tag of
+  /// the language in this result. This language code was detected to have the
+  /// most likelihood of being spoken in the audio.
   core.String languageCode;
 
   GoogleCloudVideointelligenceV1p3beta1SpeechTranscription();
@@ -6760,8 +6982,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
   }
 }
 
-/// For tracking related features, such as LOGO_RECOGNITION, FACE_DETECTION,
-/// CELEBRITY_RECOGNITION, PERSON_DETECTION.
+/// For tracking related features.
 /// An object at time_offset with attributes, and located with
 /// normalized_bounding_box.
 class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
@@ -6893,6 +7114,7 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
   /// - "TEXT_DETECTION" : OCR text detection and tracking.
   /// - "OBJECT_TRACKING" : Object detection and tracking.
   /// - "LOGO_RECOGNITION" : Logo detection, tracking, and recognition.
+  /// - "CELEBRITY_RECOGNITION" : Celebrity recognition.
   core.String feature;
 
   /// Video file location in
@@ -6965,6 +7187,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
 
 /// Annotation results for a single video.
 class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
+  /// Celebrity recognition annotations.
+  GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
+      celebrityRecognitionAnnotations;
+
   /// If set, indicates an error. Note that for a single `AnnotateVideoRequest`
   /// some videos may succeed and some may fail.
   GoogleRpcStatus error;
@@ -6990,10 +7216,22 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   core.List<GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>
       objectAnnotations;
 
+  /// Video segment on which the annotation is run.
+  GoogleCloudVideointelligenceV1p3beta1VideoSegment segment;
+
   /// Topical label annotations on video level or user specified segment level.
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       segmentLabelAnnotations;
+
+  /// Presence label annotations on video level or user specified segment level.
+  /// There is exactly one element for each unique label. Compared to the
+  /// existing topical `segment_label_annotations`, this field presents more
+  /// fine-grained, segment-level labels detected in video content and is made
+  /// available only when the client sets `LabelDetectionConfig.model` to
+  /// "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+      segmentPresenceLabelAnnotations;
 
   /// Shot annotations. Each shot is represented as a video segment.
   core.List<GoogleCloudVideointelligenceV1p3beta1VideoSegment> shotAnnotations;
@@ -7002,6 +7240,16 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   /// There is exactly one element for each unique label.
   core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
       shotLabelAnnotations;
+
+  /// Presence label annotations on shot level. There is exactly one element for
+  /// each unique label. Compared to the existing topical
+  /// `shot_label_annotations`, this field presents more fine-grained,
+  /// shot-level
+  /// labels detected in video content and is made available only when the
+  /// client
+  /// sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
+  core.List<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>
+      shotPresenceLabelAnnotations;
 
   /// Speech transcription.
   core.List<GoogleCloudVideointelligenceV1p3beta1SpeechTranscription>
@@ -7017,6 +7265,11 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
 
   GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults.fromJson(
       core.Map _json) {
+    if (_json.containsKey("celebrityRecognitionAnnotations")) {
+      celebrityRecognitionAnnotations =
+          new GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
+              .fromJson(_json["celebrityRecognitionAnnotations"]);
+    }
     if (_json.containsKey("error")) {
       error = new GoogleRpcStatus.fromJson(_json["error"]);
     }
@@ -7052,12 +7305,25 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
                       .fromJson(value))
           .toList();
     }
+    if (_json.containsKey("segment")) {
+      segment = new GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
+          _json["segment"]);
+    }
     if (_json.containsKey("segmentLabelAnnotations")) {
       segmentLabelAnnotations = (_json["segmentLabelAnnotations"] as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
           .toList();
+    }
+    if (_json.containsKey("segmentPresenceLabelAnnotations")) {
+      segmentPresenceLabelAnnotations =
+          (_json["segmentPresenceLabelAnnotations"] as core.List)
+              .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>(
+                  (value) =>
+                      new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
+                          .fromJson(value))
+              .toList();
     }
     if (_json.containsKey("shotAnnotations")) {
       shotAnnotations = (_json["shotAnnotations"] as core.List)
@@ -7068,6 +7334,14 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
     }
     if (_json.containsKey("shotLabelAnnotations")) {
       shotLabelAnnotations = (_json["shotLabelAnnotations"] as core.List)
+          .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
+              new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("shotPresenceLabelAnnotations")) {
+      shotPresenceLabelAnnotations = (_json["shotPresenceLabelAnnotations"]
+              as core.List)
           .map<GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>((value) =>
               new GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
                   value))
@@ -7093,6 +7367,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (celebrityRecognitionAnnotations != null) {
+      _json["celebrityRecognitionAnnotations"] =
+          (celebrityRecognitionAnnotations).toJson();
+    }
     if (error != null) {
       _json["error"] = (error).toJson();
     }
@@ -7114,9 +7392,17 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
       _json["objectAnnotations"] =
           objectAnnotations.map((value) => (value).toJson()).toList();
     }
+    if (segment != null) {
+      _json["segment"] = (segment).toJson();
+    }
     if (segmentLabelAnnotations != null) {
       _json["segmentLabelAnnotations"] =
           segmentLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (segmentPresenceLabelAnnotations != null) {
+      _json["segmentPresenceLabelAnnotations"] = segmentPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (shotAnnotations != null) {
       _json["shotAnnotations"] =
@@ -7125,6 +7411,11 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
     if (shotLabelAnnotations != null) {
       _json["shotLabelAnnotations"] =
           shotLabelAnnotations.map((value) => (value).toJson()).toList();
+    }
+    if (shotPresenceLabelAnnotations != null) {
+      _json["shotPresenceLabelAnnotations"] = shotPresenceLabelAnnotations
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (speechTranscriptions != null) {
       _json["speechTranscriptions"] =

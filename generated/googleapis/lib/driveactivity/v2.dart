@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.driveactivity.v2;
 
@@ -391,6 +391,9 @@ class ApplicationReference {
 
 /// A comment with an assignment.
 class Assignment {
+  /// The user to whom the comment was assigned.
+  User assignedUser;
+
   /// The sub-type of this event.
   /// Possible string values are:
   /// - "SUBTYPE_UNSPECIFIED" : Subtype not available.
@@ -406,6 +409,9 @@ class Assignment {
   Assignment();
 
   Assignment.fromJson(core.Map _json) {
+    if (_json.containsKey("assignedUser")) {
+      assignedUser = new User.fromJson(_json["assignedUser"]);
+    }
     if (_json.containsKey("subtype")) {
       subtype = _json["subtype"];
     }
@@ -414,6 +420,9 @@ class Assignment {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (assignedUser != null) {
+      _json["assignedUser"] = (assignedUser).toJson();
+    }
     if (subtype != null) {
       _json["subtype"] = subtype;
     }
@@ -853,7 +862,8 @@ class DriveItem {
   /// The Drive item is a file.
   DriveFile driveFile;
 
-  /// The Drive item is a folder.
+  /// The Drive item is a folder. Includes information about the type of
+  /// folder.
   DriveFolder driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.
@@ -940,7 +950,8 @@ class DriveItemReference {
   /// The Drive item is a file.
   DriveFile driveFile;
 
-  /// The Drive item is a folder.
+  /// The Drive item is a folder. Includes information about the type of
+  /// folder.
   DriveFolder driveFolder;
 
   /// This field is deprecated; please use the `driveFile` field instead.

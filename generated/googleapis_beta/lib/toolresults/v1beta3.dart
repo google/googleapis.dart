@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.toolresults.v1beta3;
 
@@ -385,6 +385,8 @@ class ProjectsHistoriesExecutionsResourceApi {
 
   ProjectsHistoriesExecutionsClustersResourceApi get clusters =>
       new ProjectsHistoriesExecutionsClustersResourceApi(_requester);
+  ProjectsHistoriesExecutionsEnvironmentsResourceApi get environments =>
+      new ProjectsHistoriesExecutionsEnvironmentsResourceApi(_requester);
   ProjectsHistoriesExecutionsStepsResourceApi get steps =>
       new ProjectsHistoriesExecutionsStepsResourceApi(_requester);
 
@@ -853,6 +855,166 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   }
 }
 
+class ProjectsHistoriesExecutionsEnvironmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsHistoriesExecutionsEnvironmentsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets an Environment.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project -
+  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+  /// Environment does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. A Project id.
+  ///
+  /// [historyId] - Required. A History id.
+  ///
+  /// [executionId] - Required. An Execution id.
+  ///
+  /// [environmentId] - Required. An Environment id.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Environment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Environment> get(core.String projectId, core.String historyId,
+      core.String executionId, core.String environmentId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/environments/' +
+        commons.Escaper.ecapeVariable('$environmentId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Environment.fromJson(data));
+  }
+
+  /// Lists Environments for a given Execution.
+  ///
+  /// The Environments are sorted by display name.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project -
+  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
+  /// containing Execution does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. A Project id.
+  ///
+  /// [historyId] - Required. A History id.
+  ///
+  /// [executionId] - Required. An Execution id.
+  ///
+  /// [pageSize] - The maximum number of Environments to fetch.
+  ///
+  /// Default value: 25. The server will use this default if the field is not
+  /// set or has a value of 0.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEnvironmentsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEnvironmentsResponse> list(
+      core.String projectId, core.String historyId, core.String executionId,
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/environments';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListEnvironmentsResponse.fromJson(data));
+  }
+}
+
 class ProjectsHistoriesExecutionsStepsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -887,17 +1049,11 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - A Project id.
+  /// [projectId] - Required. A Project id.
   ///
-  /// Required.
+  /// [historyId] - Required. A History id.
   ///
-  /// [historyId] - A History id.
-  ///
-  /// Required.
-  ///
-  /// [executionId] - A Execution id.
-  ///
-  /// Required.
+  /// [executionId] - Required. An Execution id.
   ///
   /// [requestId] - A unique request ID for server to detect duplicated
   /// requests. For example, a UUID.
@@ -2771,7 +2927,7 @@ class CPUInfo {
 /// start.nanos;
 ///
 /// if (duration.seconds  0) { duration.seconds += 1; duration.nanos -=
-/// 1000000000; } else if (durations.seconds > 0 && duration.nanos < 0) {
+/// 1000000000; } else if (duration.seconds > 0 && duration.nanos < 0) {
 /// duration.seconds -= 1; duration.nanos += 1000000000; }
 ///
 /// Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
@@ -2829,6 +2985,169 @@ class Duration {
     }
     if (seconds != null) {
       _json["seconds"] = seconds;
+    }
+    return _json;
+  }
+}
+
+/// An Environment represents the set of test runs (Steps) from the parent
+/// Execution that are configured with the same set of dimensions (Model,
+/// Version, Locale, and Orientation). Multiple such runs occur particularly
+/// because of features like sharding (splitting up a test suite to run in
+/// parallel across devices) and reruns (running a test multiple times to check
+/// for different outcomes).
+class Environment {
+  /// Output only. The time when the Environment status was set to complete.
+  ///
+  /// This value will be set automatically when state transitions to COMPLETE.
+  Timestamp completionTime;
+
+  /// Output only. The time when the Environment was created.
+  Timestamp creationTime;
+
+  /// Dimension values describing the environment. Dimension values always
+  /// consist of "Model", "Version", "Locale", and "Orientation".
+  ///
+  /// - In response: always set - In create request: always set - In update
+  /// request: never set
+  core.List<EnvironmentDimensionValueEntry> dimensionValue;
+
+  /// A short human-readable name to display in the UI. Maximum of 100
+  /// characters. For example: Nexus 5, API 27.
+  core.String displayName;
+
+  /// Output only. An Environment id.
+  core.String environmentId;
+
+  /// Merged result of the environment.
+  MergedResult environmentResult;
+
+  /// Output only. An Execution id.
+  core.String executionId;
+
+  /// Output only. A History id.
+  core.String historyId;
+
+  /// Output only. A Project id.
+  core.String projectId;
+
+  /// The location where output files are stored in the user bucket.
+  ResultsStorage resultsStorage;
+
+  /// Output only. Summaries of shards.
+  ///
+  /// Only one shard will present unless sharding feature is enabled in
+  /// TestExecutionService.
+  core.List<ShardSummary> shardSummaries;
+
+  Environment();
+
+  Environment.fromJson(core.Map _json) {
+    if (_json.containsKey("completionTime")) {
+      completionTime = new Timestamp.fromJson(_json["completionTime"]);
+    }
+    if (_json.containsKey("creationTime")) {
+      creationTime = new Timestamp.fromJson(_json["creationTime"]);
+    }
+    if (_json.containsKey("dimensionValue")) {
+      dimensionValue = (_json["dimensionValue"] as core.List)
+          .map<EnvironmentDimensionValueEntry>(
+              (value) => new EnvironmentDimensionValueEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("environmentId")) {
+      environmentId = _json["environmentId"];
+    }
+    if (_json.containsKey("environmentResult")) {
+      environmentResult = new MergedResult.fromJson(_json["environmentResult"]);
+    }
+    if (_json.containsKey("executionId")) {
+      executionId = _json["executionId"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("resultsStorage")) {
+      resultsStorage = new ResultsStorage.fromJson(_json["resultsStorage"]);
+    }
+    if (_json.containsKey("shardSummaries")) {
+      shardSummaries = (_json["shardSummaries"] as core.List)
+          .map<ShardSummary>((value) => new ShardSummary.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (completionTime != null) {
+      _json["completionTime"] = (completionTime).toJson();
+    }
+    if (creationTime != null) {
+      _json["creationTime"] = (creationTime).toJson();
+    }
+    if (dimensionValue != null) {
+      _json["dimensionValue"] =
+          dimensionValue.map((value) => (value).toJson()).toList();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (environmentId != null) {
+      _json["environmentId"] = environmentId;
+    }
+    if (environmentResult != null) {
+      _json["environmentResult"] = (environmentResult).toJson();
+    }
+    if (executionId != null) {
+      _json["executionId"] = executionId;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (resultsStorage != null) {
+      _json["resultsStorage"] = (resultsStorage).toJson();
+    }
+    if (shardSummaries != null) {
+      _json["shardSummaries"] =
+          shardSummaries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class EnvironmentDimensionValueEntry {
+  core.String key;
+  core.String value;
+
+  EnvironmentDimensionValueEntry();
+
+  EnvironmentDimensionValueEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }
@@ -3432,6 +3751,78 @@ class IndividualOutcome {
   }
 }
 
+/// Response message for EnvironmentService.ListEnvironments.
+class ListEnvironmentsResponse {
+  /// Environments.
+  ///
+  /// Always set.
+  core.List<Environment> environments;
+
+  /// A Execution id
+  ///
+  /// Always set.
+  core.String executionId;
+
+  /// A History id.
+  ///
+  /// Always set.
+  core.String historyId;
+
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// Will only be set if there are more Environments to fetch.
+  core.String nextPageToken;
+
+  /// A Project id.
+  ///
+  /// Always set.
+  core.String projectId;
+
+  ListEnvironmentsResponse();
+
+  ListEnvironmentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("environments")) {
+      environments = (_json["environments"] as core.List)
+          .map<Environment>((value) => new Environment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("executionId")) {
+      executionId = _json["executionId"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (environments != null) {
+      _json["environments"] =
+          environments.map((value) => (value).toJson()).toList();
+    }
+    if (executionId != null) {
+      _json["executionId"] = executionId;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
 class ListExecutionsResponse {
   /// Executions.
   ///
@@ -3742,6 +4133,72 @@ class MemoryInfo {
   }
 }
 
+/// Merged test result for environment.
+///
+/// If the environment has only one step (no reruns or shards), then the merged
+/// result is the same as the step result. If the environment has multiple
+/// shards and/or reruns, then the results of shards and reruns that belong to
+/// the same environment are merged into one environment result.
+class MergedResult {
+  /// Outcome of the resource
+  Outcome outcome;
+
+  /// State of the resource
+  /// Possible string values are:
+  /// - "complete"
+  /// - "inProgress"
+  /// - "pending"
+  /// - "unknownState"
+  core.String state;
+
+  /// The combined and rolled-up result of each test suite that was run as part
+  /// of this environment.
+  ///
+  /// Combining: When the test cases from a suite are run in different steps
+  /// (sharding), the results are added back together in one overview. (e.g., if
+  /// shard1 has 2 failures and shard2 has 1 failure than the overview
+  /// failure_count = 3).
+  ///
+  /// Rollup: When test cases from the same suite are run multiple times
+  /// (flaky), the results are combined (e.g., if testcase1.run1 fails,
+  /// testcase1.run2 passes, and both testcase2.run1 and testcase2.run2 fail
+  /// then the overview flaky_count = 1 and failure_count = 1).
+  core.List<TestSuiteOverview> testSuiteOverviews;
+
+  MergedResult();
+
+  MergedResult.fromJson(core.Map _json) {
+    if (_json.containsKey("outcome")) {
+      outcome = new Outcome.fromJson(_json["outcome"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("testSuiteOverviews")) {
+      testSuiteOverviews = (_json["testSuiteOverviews"] as core.List)
+          .map<TestSuiteOverview>(
+              (value) => new TestSuiteOverview.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (outcome != null) {
+      _json["outcome"] = (outcome).toJson();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (testSuiteOverviews != null) {
+      _json["testSuiteOverviews"] =
+          testSuiteOverviews.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Details when multiple steps are run with the same configuration as a group.
 class MultiStep {
   /// Unique int given to each step. Ranges from 0(inclusive) to total number of
@@ -3993,7 +4450,7 @@ class PerfMetricsSummary {
 
 /// Resource representing a single performance measure or data point
 class PerfSample {
-  /// Timestamp of collection
+  /// Timestamp of collection.
   Timestamp sampleTime;
 
   /// Value observed
@@ -4207,6 +4664,39 @@ class PublishXunitXmlFilesRequest {
   }
 }
 
+/// The storage for test results.
+class ResultsStorage {
+  /// The root directory for test results.
+  FileReference resultsStoragePath;
+
+  /// The path to the Xunit XML file.
+  FileReference xunitXmlFile;
+
+  ResultsStorage();
+
+  ResultsStorage.fromJson(core.Map _json) {
+    if (_json.containsKey("resultsStoragePath")) {
+      resultsStoragePath =
+          new FileReference.fromJson(_json["resultsStoragePath"]);
+    }
+    if (_json.containsKey("xunitXmlFile")) {
+      xunitXmlFile = new FileReference.fromJson(_json["xunitXmlFile"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resultsStoragePath != null) {
+      _json["resultsStoragePath"] = (resultsStoragePath).toJson();
+    }
+    if (xunitXmlFile != null) {
+      _json["xunitXmlFile"] = (xunitXmlFile).toJson();
+    }
+    return _json;
+  }
+}
+
 class Screen {
   /// File reference of the png file. Required.
   core.String fileReference;
@@ -4305,6 +4795,29 @@ class ScreenshotCluster {
     }
     if (screens != null) {
       _json["screens"] = screens.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Result summary for a shard in an environment.
+class ShardSummary {
+  /// Merged result of the shard.
+  MergedResult shardResult;
+
+  ShardSummary();
+
+  ShardSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("shardResult")) {
+      shardResult = new MergedResult.fromJson(_json["shardResult"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (shardResult != null) {
+      _json["shardResult"] = (shardResult).toJson();
     }
     return _json;
   }
@@ -4468,6 +4981,8 @@ class Status {
 ///
 /// A Step can be updated until its state is set to COMPLETE at which points it
 /// becomes immutable.
+///
+/// Next tag: 27
 class Step {
   /// The time when the step status was set to complete.
   ///
@@ -4796,7 +5311,7 @@ class StepLabelsEntry {
   }
 }
 
-/// Details for an outcome with a SUCCESS outcome summary.
+/// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
 class SuccessDetail {
   /// If a native process other than the app crashed.
   core.bool otherNativeCrash;
@@ -4820,6 +5335,11 @@ class SuccessDetail {
 }
 
 class TestCase {
+  /// The elapsed run time of the test case.
+  ///
+  /// Required.
+  Duration elapsedTime;
+
   /// The end time of the test case.
   ///
   /// Optional.
@@ -4868,6 +5388,9 @@ class TestCase {
   TestCase();
 
   TestCase.fromJson(core.Map _json) {
+    if (_json.containsKey("elapsedTime")) {
+      elapsedTime = new Duration.fromJson(_json["elapsedTime"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = new Timestamp.fromJson(_json["endTime"]);
     }
@@ -4903,6 +5426,9 @@ class TestCase {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (elapsedTime != null) {
+      _json["elapsedTime"] = (elapsedTime).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = (endTime).toJson();
     }
@@ -5092,6 +5618,7 @@ class TestIssue {
   /// Possible string values are:
   /// - "anr"
   /// - "availableDeepLinks"
+  /// - "blankScreen"
   /// - "compatibleWithOrchestrator"
   /// - "completeRoboScriptExecution"
   /// - "crashDialogError"
@@ -5108,9 +5635,11 @@ class TestIssue {
   /// - "nativeCrash"
   /// - "nonSdkApiUsageReport"
   /// - "nonSdkApiUsageViolation"
+  /// - "overlappingUiElements"
   /// - "performedGoogleLogin"
   /// - "performedMonkeyActions"
   /// - "startActivityNotFound"
+  /// - "uiElementsTooDeep"
   /// - "unspecifiedType"
   /// - "unusedRoboDirective"
   /// - "usedRoboDirective"
@@ -5191,6 +5720,13 @@ class TestSuiteOverview {
   /// - In create/response: always set - In update request: never
   core.int failureCount;
 
+  /// Number of flaky test cases, set by the service by rolling up flaky test
+  /// attempts.
+  ///
+  /// Present only for rollup test suite overview at environment level. A step
+  /// cannot have flaky test cases.
+  core.int flakyCount;
+
   /// The name of the test suite.
   ///
   /// - In create/response: always set - In update request: never
@@ -5230,6 +5766,9 @@ class TestSuiteOverview {
     if (_json.containsKey("failureCount")) {
       failureCount = _json["failureCount"];
     }
+    if (_json.containsKey("flakyCount")) {
+      flakyCount = _json["flakyCount"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -5255,6 +5794,9 @@ class TestSuiteOverview {
     }
     if (failureCount != null) {
       _json["failureCount"] = failureCount;
+    }
+    if (flakyCount != null) {
+      _json["flakyCount"] = flakyCount;
     }
     if (name != null) {
       _json["name"] = name;

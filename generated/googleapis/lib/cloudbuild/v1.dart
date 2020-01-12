@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudbuild.v1;
 
@@ -237,9 +237,9 @@ class ProjectsBuildsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project.
+  /// [projectId] - Required. ID of the project.
   ///
-  /// [id] - ID of the build.
+  /// [id] - Required. ID of the build.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -299,7 +299,7 @@ class ProjectsBuildsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project.
+  /// [projectId] - Required. ID of the project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -350,9 +350,9 @@ class ProjectsBuildsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project.
+  /// [projectId] - Required. ID of the project.
   ///
-  /// [id] - ID of the build.
+  /// [id] - Required. ID of the build.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -404,7 +404,7 @@ class ProjectsBuildsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project.
+  /// [projectId] - Required. ID of the project.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
@@ -497,9 +497,9 @@ class ProjectsBuildsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project.
+  /// [projectId] - Required. ID of the project.
   ///
-  /// [id] - Build ID of the original build.
+  /// [id] - Required. Build ID of the original build.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -564,7 +564,8 @@ class ProjectsTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project for which to configure automatic builds.
+  /// [projectId] - Required. ID of the project for which to configure automatic
+  /// builds.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -614,9 +615,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project that owns the trigger.
+  /// [projectId] - Required. ID of the project that owns the trigger.
   ///
-  /// [triggerId] - ID of the `BuildTrigger` to delete.
+  /// [triggerId] - Required. ID of the `BuildTrigger` to delete.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -667,9 +668,10 @@ class ProjectsTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project that owns the trigger.
+  /// [projectId] - Required. ID of the project that owns the trigger.
   ///
-  /// [triggerId] - ID of the `BuildTrigger` to get.
+  /// [triggerId] - Required. Identifier (`id` or `name`) of the `BuildTrigger`
+  /// to get.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -720,7 +722,7 @@ class ProjectsTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project for which to list BuildTriggers.
+  /// [projectId] - Required. ID of the project for which to list BuildTriggers.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
@@ -780,9 +782,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project that owns the trigger.
+  /// [projectId] - Required. ID of the project that owns the trigger.
   ///
-  /// [triggerId] - ID of the `BuildTrigger` to update.
+  /// [triggerId] - Required. ID of the `BuildTrigger` to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -837,9 +839,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - ID of the project.
+  /// [projectId] - Required. ID of the project.
   ///
-  /// [triggerId] - ID of the trigger.
+  /// [triggerId] - Required. ID of the trigger.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1410,9 +1412,10 @@ class BuildOptions {
   /// it is indicative of a build request with an incorrect configuration.
   core.List<Volume> volumes;
 
-  /// Option to specify a `WorkerPool` for the build. User specifies the pool
-  /// with the format "[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]".
-  /// This is an experimental field.
+  /// Option to specify a `WorkerPool` for the build.
+  /// Format: projects/{project}/workerPools/{workerPool}
+  ///
+  /// This field is experimental.
   core.String workerPool;
 
   BuildOptions();
@@ -1720,6 +1723,8 @@ class BuildTrigger {
 
   /// GitHubEventsConfig describes the configuration of a trigger that creates
   /// a build whenever a GitHub event is received.
+  ///
+  /// Mutually exclusive with `trigger_template`.
   GitHubEventsConfig github;
 
   /// Output only. Unique identifier of the trigger.
@@ -1746,6 +1751,14 @@ class BuildTrigger {
   /// then we do not trigger a build.
   core.List<core.String> includedFiles;
 
+  /// User-assigned name of the trigger. Must be unique within the project.
+  /// Trigger names must meet the following requirements:
+  ///
+  /// + They must contain only alphanumeric characters and dashes.
+  /// + They can be 1-64 characters long.
+  /// + They must begin and end with an alphanumeric character.
+  core.String name;
+
   /// Substitutions data for Build resource.
   core.Map<core.String, core.String> substitutions;
 
@@ -1757,6 +1770,8 @@ class BuildTrigger {
   /// Branch and tag names in trigger templates are interpreted as regular
   /// expressions. Any branch or tag change that matches that regular expression
   /// will trigger a build.
+  ///
+  /// Mutually exclusive with `github`.
   RepoSource triggerTemplate;
 
   BuildTrigger();
@@ -1788,6 +1803,9 @@ class BuildTrigger {
     }
     if (_json.containsKey("includedFiles")) {
       includedFiles = (_json["includedFiles"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
     }
     if (_json.containsKey("substitutions")) {
       substitutions =
@@ -1830,6 +1848,9 @@ class BuildTrigger {
     }
     if (includedFiles != null) {
       _json["includedFiles"] = includedFiles;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (substitutions != null) {
       _json["substitutions"] = substitutions;
@@ -2263,7 +2284,7 @@ class PullRequestFilter {
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String branch;
 
-  /// Whether to block builds on a "/gcbrun" comment from a repository owner or
+  /// Whether to block builds on a "/gcbrun" comment from a repository admin or
   /// collaborator.
   /// Possible string values are:
   /// - "COMMENTS_DISABLED" : Do not require comments on Pull Requests before
@@ -2299,13 +2320,13 @@ class PullRequestFilter {
 
 /// Push contains filter properties for matching GitHub git pushes.
 class PushFilter {
-  /// Regexes of branches to match.
+  /// Regexes matching branches to build.
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String branch;
 
-  /// Regexes of tags to match.
+  /// Regexes matching tags to build.
   ///
   /// The syntax of the regular expressions accepted is the syntax accepted by
   /// RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -2337,7 +2358,10 @@ class PushFilter {
 
 /// Location of the source in a Google Cloud Source Repository.
 class RepoSource {
-  /// Name of the branch to build.
+  /// Regex matching branches to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String branchName;
 
   /// Explicit commit SHA to build.
@@ -2353,11 +2377,17 @@ class RepoSource {
   /// project ID requesting the build is assumed.
   core.String projectId;
 
-  /// Name of the Cloud Source Repository. If omitted, the name "default" is
-  /// assumed.
+  /// Required. Name of the Cloud Source Repository.
   core.String repoName;
 
-  /// Name of the tag to build.
+  /// Substitutions to use in a triggered build.
+  /// Should only be used with RunBuildTrigger
+  core.Map<core.String, core.String> substitutions;
+
+  /// Regex matching tags to build.
+  ///
+  /// The syntax of the regular expressions accepted is the syntax accepted by
+  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
   core.String tagName;
 
   RepoSource();
@@ -2377,6 +2407,10 @@ class RepoSource {
     }
     if (_json.containsKey("repoName")) {
       repoName = _json["repoName"];
+    }
+    if (_json.containsKey("substitutions")) {
+      substitutions =
+          (_json["substitutions"] as core.Map).cast<core.String, core.String>();
     }
     if (_json.containsKey("tagName")) {
       tagName = _json["tagName"];
@@ -2400,6 +2434,9 @@ class RepoSource {
     }
     if (repoName != null) {
       _json["repoName"] = repoName;
+    }
+    if (substitutions != null) {
+      _json["substitutions"] = substitutions;
     }
     if (tagName != null) {
       _json["tagName"] = tagName;

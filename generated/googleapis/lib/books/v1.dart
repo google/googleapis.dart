@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.books.v1;
 
@@ -6913,9 +6913,12 @@ class Review {
 
 class SeriesSeries {
   core.String bannerImageUrl;
+  core.bool eligibleForSubscription;
   core.String imageUrl;
+  core.bool isComplete;
   core.String seriesId;
   core.String seriesType;
+  core.String subscriptionId;
   core.String title;
 
   SeriesSeries();
@@ -6924,14 +6927,23 @@ class SeriesSeries {
     if (_json.containsKey("bannerImageUrl")) {
       bannerImageUrl = _json["bannerImageUrl"];
     }
+    if (_json.containsKey("eligibleForSubscription")) {
+      eligibleForSubscription = _json["eligibleForSubscription"];
+    }
     if (_json.containsKey("imageUrl")) {
       imageUrl = _json["imageUrl"];
+    }
+    if (_json.containsKey("isComplete")) {
+      isComplete = _json["isComplete"];
     }
     if (_json.containsKey("seriesId")) {
       seriesId = _json["seriesId"];
     }
     if (_json.containsKey("seriesType")) {
       seriesType = _json["seriesType"];
+    }
+    if (_json.containsKey("subscriptionId")) {
+      subscriptionId = _json["subscriptionId"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -6944,14 +6956,23 @@ class SeriesSeries {
     if (bannerImageUrl != null) {
       _json["bannerImageUrl"] = bannerImageUrl;
     }
+    if (eligibleForSubscription != null) {
+      _json["eligibleForSubscription"] = eligibleForSubscription;
+    }
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
+    }
+    if (isComplete != null) {
+      _json["isComplete"] = isComplete;
     }
     if (seriesId != null) {
       _json["seriesId"] = seriesId;
     }
     if (seriesType != null) {
       _json["seriesType"] = seriesType;
+    }
+    if (subscriptionId != null) {
+      _json["subscriptionId"] = subscriptionId;
     }
     if (title != null) {
       _json["title"] = title;

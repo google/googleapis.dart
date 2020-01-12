@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.composer.v1;
 
@@ -638,11 +638,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,9 +655,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -669,14 +669,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -721,8 +721,7 @@ class Environment {
   /// Configuration parameters for this environment.
   EnvironmentConfig config;
 
-  /// Output only.
-  /// The time at which this environment was created.
+  /// Output only. The time at which this environment was created.
   core.String createTime;
 
   /// Optional. User-defined labels for this environment.
@@ -752,12 +751,11 @@ class Environment {
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String state;
 
-  /// Output only.
-  /// The time at which this environment was last modified.
+  /// Output only. The time at which this environment was last modified.
   core.String updateTime;
 
-  /// Output only.
-  /// The UUID (Universally Unique IDentifier) associated with this environment.
+  /// Output only. The UUID (Universally Unique IDentifier) associated with this
+  /// environment.
   /// This value is generated when the environment is created.
   core.String uuid;
 
@@ -817,21 +815,20 @@ class Environment {
 
 /// Configuration information for an environment.
 class EnvironmentConfig {
-  /// Output only.
-  /// The URI of the Apache Airflow Web UI hosted within this environment (see
+  /// Output only. The URI of the Apache Airflow Web UI hosted within this
+  /// environment (see
   /// [Airflow web
   /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
   core.String airflowUri;
 
-  /// Output only.
-  /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud
+  /// Output only. The Cloud Storage prefix of the DAGs for this environment.
+  /// Although Cloud
   /// Storage objects reside in a flat namespace, a hierarchical file tree
   /// can be simulated using "/"-delimited object name prefixes. DAG objects for
   /// this environment reside in a simulated directory with the given prefix.
   core.String dagGcsPrefix;
 
-  /// Output only.
-  /// The Kubernetes Engine cluster used to run this environment.
+  /// Output only. The Kubernetes Engine cluster used to run this environment.
   core.String gkeCluster;
 
   /// The configuration used for the Kubernetes Engine cluster.
@@ -1080,6 +1077,9 @@ class NodeConfig {
   /// specified, the location information from the specified field will be
   /// propagated to the unspecified field.
   ///
+  /// The `machineTypeId` must not be a [shared-core machine
+  /// type](/compute/docs/machine-types#sharedcore).
+  ///
   /// If this field is unspecified, the `machineTypeId` defaults
   /// to "n1-standard-1".
   core.String machineType;
@@ -1270,17 +1270,15 @@ class Operation {
 
 /// Metadata describing an operation.
 class OperationMetadata {
-  /// Output only.
-  /// The time the operation was submitted to the server.
+  /// Output only. The time the operation was submitted to the server.
   core.String createTime;
 
-  /// Output only.
-  /// The time when the operation terminated, regardless of its success.
+  /// Output only. The time when the operation terminated, regardless of its
+  /// success.
   /// This field is unset if the operation is still ongoing.
   core.String endTime;
 
-  /// Output only.
-  /// The type of operation being performed.
+  /// Output only. The type of operation being performed.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unused.
   /// - "CREATE" : A resource creation operation.
@@ -1288,17 +1286,15 @@ class OperationMetadata {
   /// - "UPDATE" : A resource update operation.
   core.String operationType;
 
-  /// Output only.
-  /// The resource being operated on, as a [relative resource name](
+  /// Output only. The resource being operated on, as a [relative resource
+  /// name](
   /// /apis/design/resource_names#relative_resource_name).
   core.String resource;
 
-  /// Output only.
-  /// The UUID of the resource being operated on.
+  /// Output only. The UUID of the resource being operated on.
   core.String resourceUuid;
 
-  /// Output only.
-  /// The current operation state.
+  /// Output only. The current operation state.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unused.
   /// - "PENDING" : The operation has been created but is not yet started.

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.cloudprivatecatalog.v1beta1;
 
@@ -231,6 +231,13 @@ class FoldersVersionsResourceApi {
   /// SearchCatalogsRequest.resource for details.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// SearchVersions
+  /// that indicates where this listing should continue from.
+  /// This field is optional.
+  ///
+  /// [pageSize] - The maximum number of entries that are requested.
+  ///
   /// [query] - The query to filter the versions. Required.
   ///
   /// The supported queries are:
@@ -238,13 +245,6 @@ class FoldersVersionsResourceApi {
   /// `parent=catalogs/{catalog_id}/products/{product_id}`
   /// * Get a version by name:
   /// `name=catalogs/{catalog_id}/products/{product_id}/versions/{version_id}`
-  ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// SearchVersions
-  /// that indicates where this listing should continue from.
-  /// This field is optional.
-  ///
-  /// [pageSize] - The maximum number of entries that are requested.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -258,9 +258,9 @@ class FoldersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPrivatecatalogV1beta1SearchVersionsResponse> search(
       core.String resource,
-      {core.String query,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -272,14 +272,14 @@ class FoldersVersionsResourceApi {
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -414,6 +414,13 @@ class OrganizationsProductsResourceApi {
   /// SearchCatalogsRequest.resource for details.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// SearchProducts that
+  /// indicates where this listing should continue from.
+  /// This field is optional.
+  ///
+  /// [pageSize] - The maximum number of entries that are requested.
+  ///
   /// [query] - The query to filter the products.
   ///
   /// The supported queries are:
@@ -421,13 +428,6 @@ class OrganizationsProductsResourceApi {
   /// * List products under a catalog: `parent=catalogs/{catalog_id}`
   /// * Get a product by name:
   /// `name=catalogs/{catalog_id}/products/{product_id}`
-  ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// SearchProducts that
-  /// indicates where this listing should continue from.
-  /// This field is optional.
-  ///
-  /// [pageSize] - The maximum number of entries that are requested.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -441,9 +441,9 @@ class OrganizationsProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPrivatecatalogV1beta1SearchProductsResponse> search(
       core.String resource,
-      {core.String query,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -455,14 +455,14 @@ class OrganizationsProductsResourceApi {
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -682,8 +682,6 @@ class ProjectsProductsResourceApi {
   /// SearchCatalogsRequest.resource for details.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The maximum number of entries that are requested.
-  ///
   /// [query] - The query to filter the products.
   ///
   /// The supported queries are:
@@ -697,6 +695,8 @@ class ProjectsProductsResourceApi {
   /// indicates where this listing should continue from.
   /// This field is optional.
   ///
+  /// [pageSize] - The maximum number of entries that are requested.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -709,9 +709,9 @@ class ProjectsProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleCloudPrivatecatalogV1beta1SearchProductsResponse> search(
       core.String resource,
-      {core.int pageSize,
-      core.String query,
+      {core.String query,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -723,14 +723,14 @@ class ProjectsProductsResourceApi {
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (query != null) {
       _queryParams["query"] = [query];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

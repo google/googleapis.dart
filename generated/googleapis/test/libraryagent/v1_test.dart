@@ -75,14 +75,14 @@ checkGoogleExampleLibraryagentV1Book(api.GoogleExampleLibraryagentV1Book o) {
   buildCounterGoogleExampleLibraryagentV1Book--;
 }
 
-buildUnnamed4658() {
+buildUnnamed3254() {
   var o = new core.List<api.GoogleExampleLibraryagentV1Book>();
   o.add(buildGoogleExampleLibraryagentV1Book());
   o.add(buildGoogleExampleLibraryagentV1Book());
   return o;
 }
 
-checkUnnamed4658(core.List<api.GoogleExampleLibraryagentV1Book> o) {
+checkUnnamed3254(core.List<api.GoogleExampleLibraryagentV1Book> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleExampleLibraryagentV1Book(o[0]);
   checkGoogleExampleLibraryagentV1Book(o[1]);
@@ -93,7 +93,7 @@ buildGoogleExampleLibraryagentV1ListBooksResponse() {
   var o = new api.GoogleExampleLibraryagentV1ListBooksResponse();
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListBooksResponse < 3) {
-    o.books = buildUnnamed4658();
+    o.books = buildUnnamed3254();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse--;
@@ -104,20 +104,20 @@ checkGoogleExampleLibraryagentV1ListBooksResponse(
     api.GoogleExampleLibraryagentV1ListBooksResponse o) {
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListBooksResponse < 3) {
-    checkUnnamed4658(o.books);
+    checkUnnamed3254(o.books);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse--;
 }
 
-buildUnnamed4659() {
+buildUnnamed3255() {
   var o = new core.List<api.GoogleExampleLibraryagentV1Shelf>();
   o.add(buildGoogleExampleLibraryagentV1Shelf());
   o.add(buildGoogleExampleLibraryagentV1Shelf());
   return o;
 }
 
-checkUnnamed4659(core.List<api.GoogleExampleLibraryagentV1Shelf> o) {
+checkUnnamed3255(core.List<api.GoogleExampleLibraryagentV1Shelf> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleExampleLibraryagentV1Shelf(o[0]);
   checkGoogleExampleLibraryagentV1Shelf(o[1]);
@@ -129,7 +129,7 @@ buildGoogleExampleLibraryagentV1ListShelvesResponse() {
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListShelvesResponse < 3) {
     o.nextPageToken = "foo";
-    o.shelves = buildUnnamed4659();
+    o.shelves = buildUnnamed3255();
   }
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse--;
   return o;
@@ -140,7 +140,7 @@ checkGoogleExampleLibraryagentV1ListShelvesResponse(
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListShelvesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4659(o.shelves);
+    checkUnnamed3255(o.shelves);
   }
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse--;
 }

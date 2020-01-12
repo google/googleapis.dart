@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudbilling.v1;
 
@@ -103,8 +103,8 @@ class BillingAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the billing account to retrieve. For
-  /// example,
+  /// [name] - Required. The resource name of the billing account to retrieve.
+  /// For example,
   /// `billingAccounts/012345-567890-ABCDEF`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
@@ -156,6 +156,17 @@ class BillingAccountsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -167,7 +178,7 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -177,6 +188,11 @@ class BillingAccountsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -275,7 +291,7 @@ class BillingAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the billing account resource to be updated.
+  /// [name] - Required. The name of the billing account resource to be updated.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
   /// [updateMask] - The update mask applied to the resource.
@@ -454,8 +470,8 @@ class BillingAccountsProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the billing account associated with the
-  /// projects that
+  /// [name] - Required. The resource name of the billing account associated
+  /// with the projects that
   /// you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
@@ -525,7 +541,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the project for which billing information is
+  /// [name] - Required. The resource name of the project for which billing
+  /// information is
   /// retrieved. For example, `projects/tokyo-rain-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -605,8 +622,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the project associated with the billing
-  /// information
+  /// [name] - Required. The resource name of the project associated with the
+  /// billing information
   /// that you want to update. For example, `projects/tokyo-rain-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -725,6 +742,11 @@ class ServicesSkusResourceApi {
   /// Example: "services/DA34-426B-A397"
   /// Value must have pattern "^services/[^/]+$".
   ///
+  /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
+  /// response proto.
+  /// Will use the conversion rate as of start_time.
+  /// Optional. If not specified USD will be used.
+  ///
   /// [endTime] - Optional exclusive end time of the time range for which the
   /// pricing
   /// versions will be returned. Timestamps in the future are not allowed.
@@ -748,11 +770,6 @@ class ServicesSkusResourceApi {
   ///
   /// [pageSize] - Requested page size. Defaults to 5000.
   ///
-  /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
-  /// response proto.
-  /// Will use the conversion rate as of start_time.
-  /// Optional. If not specified USD will be used.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -764,11 +781,11 @@ class ServicesSkusResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSkusResponse> list(core.String parent,
-      {core.String endTime,
+      {core.String currencyCode,
+      core.String endTime,
       core.String pageToken,
       core.String startTime,
       core.int pageSize,
-      core.String currencyCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -779,6 +796,9 @@ class ServicesSkusResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (currencyCode != null) {
+      _queryParams["currencyCode"] = [currencyCode];
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
@@ -791,9 +811,6 @@ class ServicesSkusResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (currencyCode != null) {
-      _queryParams["currencyCode"] = [currencyCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -882,7 +899,7 @@ class AggregationInfo {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -894,7 +911,7 @@ class AggregationInfo {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -902,7 +919,7 @@ class AggregationInfo {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -910,9 +927,9 @@ class AggregationInfo {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -957,7 +974,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -967,7 +984,7 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -1027,7 +1044,8 @@ class BillingAccount {
   /// billing account `012345-567890-ABCDEF`.
   core.String name;
 
-  /// True if the billing account is open, and will therefore be charged for any
+  /// Output only. True if the billing account is open, and will therefore be
+  /// charged for any
   /// usage on associated projects. False if the billing account is closed, and
   /// therefore projects associated with it will be unable to use paid services.
   core.bool open;
@@ -1086,7 +1104,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1094,6 +1112,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -1445,59 +1484,77 @@ class Money {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -1509,8 +1566,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -1521,7 +1582,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();

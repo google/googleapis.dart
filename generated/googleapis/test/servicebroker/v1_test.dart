@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3661() {
+buildUnnamed422() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3661(core.List<core.String> o) {
+checkUnnamed422(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildGoogleIamV1Binding() {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     o.condition = buildGoogleTypeExpr();
-    o.members = buildUnnamed3661();
+    o.members = buildUnnamed422();
     o.role = "foo";
   }
   buildCounterGoogleIamV1Binding--;
@@ -80,20 +80,20 @@ checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
   buildCounterGoogleIamV1Binding++;
   if (buildCounterGoogleIamV1Binding < 3) {
     checkGoogleTypeExpr(o.condition);
-    checkUnnamed3661(o.members);
+    checkUnnamed422(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterGoogleIamV1Binding--;
 }
 
-buildUnnamed3662() {
+buildUnnamed423() {
   var o = new core.List<api.GoogleIamV1Binding>();
   o.add(buildGoogleIamV1Binding());
   o.add(buildGoogleIamV1Binding());
   return o;
 }
 
-checkUnnamed3662(core.List<api.GoogleIamV1Binding> o) {
+checkUnnamed423(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
@@ -104,7 +104,7 @@ buildGoogleIamV1Policy() {
   var o = new api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.bindings = buildUnnamed3662();
+    o.bindings = buildUnnamed423();
     o.etag = "foo";
     o.version = 42;
   }
@@ -115,7 +115,7 @@ buildGoogleIamV1Policy() {
 checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed3662(o.bindings);
+    checkUnnamed423(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -141,14 +141,14 @@ checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-buildUnnamed3663() {
+buildUnnamed424() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3663(core.List<core.String> o) {
+checkUnnamed424(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -159,7 +159,7 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   var o = new api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed3663();
+    o.permissions = buildUnnamed424();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
@@ -169,19 +169,19 @@ checkGoogleIamV1TestIamPermissionsRequest(
     api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed3663(o.permissions);
+    checkUnnamed424(o.permissions);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-buildUnnamed3664() {
+buildUnnamed425() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3664(core.List<core.String> o) {
+checkUnnamed425(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -192,7 +192,7 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   var o = new api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed3664();
+    o.permissions = buildUnnamed425();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
@@ -202,7 +202,7 @@ checkGoogleIamV1TestIamPermissionsResponse(
     api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed3664(o.permissions);
+    checkUnnamed425(o.permissions);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
@@ -288,6 +288,7 @@ main() {
       var mock = new HttpServerMock();
       api.V1ResourceApi res = new api.ServicebrokerApi(mock).v1;
       var arg_resource = "foo";
+      var arg_options_requestedPolicyVersion = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -320,6 +321,9 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            core.int.parse(queryMap["options.requestedPolicyVersion"].first),
+            unittest.equals(arg_options_requestedPolicyVersion));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -329,7 +333,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource, $fields: arg_$fields)
+          .getIamPolicy(arg_resource,
+              options_requestedPolicyVersion:
+                  arg_options_requestedPolicyVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleIamV1Policy(response);
       })));

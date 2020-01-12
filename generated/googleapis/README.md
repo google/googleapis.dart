@@ -121,7 +121,7 @@ Official API documentation: https://developers.google.com/admin-sdk/directory/
 
 Fetches reports for the administrators of G Suite customers about the usage, collaboration, security, and risk for their users.
 
-Official API documentation: https://developers.google.com/admin-sdk/reports/
+Official API documentation: /admin-sdk/reports/
 
 #### ![Logo](https://www.google.com/images/icons/product/adsense-16.png) AdSense Management API - adsense v1.4
 
@@ -188,12 +188,6 @@ Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 Provides a historical view of activity.
 
 Official API documentation: https://developers.google.com/google-apps/activity/
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google App State API - appstate v1
-
-The Google App State API.
-
-Official API documentation: https://developers.google.com/games/services/web/api/states
 
 #### ![Logo](https://www.google.com/images/icons/product/search-16.gif) BigQuery API - bigquery v2
 
@@ -448,7 +442,7 @@ API for viewing and managing your reports in DoubleClick Bid Manager.
 
 Official API documentation: https://developers.google.com/bid-manager/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) DoubleClick Search API - doubleclicksearch v2
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Search Ads 360 API - doubleclicksearch v2
 
 Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).
 
@@ -509,18 +503,6 @@ Official API documentation: https://cloud.google.com/firestore
 Stores and accesses user data in the fitness store from apps on any platform.
 
 Official API documentation: https://developers.google.com/fit/rest/
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Fusion Tables API - fusiontables v1
-
-API for working with Fusion Tables data.
-
-Official API documentation: https://developers.google.com/fusiontables
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Fusion Tables API - fusiontables v2
-
-API for working with Fusion Tables data.
-
-Official API documentation: https://developers.google.com/fusiontables
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Google Play Game Services API - games v1
 
@@ -626,15 +608,15 @@ A simple Google Example Library API.
 
 Official API documentation: https://cloud.google.com/docs/quota
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise License Manager API - licensing v1
+#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Licensing API - licensing v1
 
-Views and manages licenses for your domain.
+Licensing API to view and manage licenses for your domain
 
-Official API documentation: https://developers.google.com/google-apps/licensing/
+Official API documentation: https://developers.google.com/admin-sdk/licensing/
 
 #### Stackdriver Logging API - logging v2
 
-Writes log entries and manages your Stackdriver Logging configuration. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Logging documentation.
+Writes log entries and manages your Stackdriver Logging configuration. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the <a href=https://cloud.google.com/logging/docs>Stackdriver Logging documentation</a>.
 
 Official API documentation: https://cloud.google.com/logging/docs/
 
@@ -650,7 +632,7 @@ Interacts with Glass users via the timeline.
 
 Official API documentation: https://developers.google.com/glass
 
-#### Cloud Machine Learning Engine - ml v1
+#### AI Platform Training & Prediction API - ml v1
 
 An API to enable creating and using machine learning models.
 
@@ -750,7 +732,7 @@ Official API documentation: https://cloud.google.com/deployment-manager/runtime-
 
 #### Safe Browsing API - safebrowsing v4
 
-Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.
+Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. The Safe Browsing APIs are for non-commercial use only. If you need to use APIs to detect malicious URLs for commercial purposes – meaning “for sale or revenue-generating purposes” – please refer to the Web Risk API.
 
 Official API documentation: https://developers.google.com/safe-browsing/
 
@@ -760,12 +742,6 @@ Manages and executes Google Apps Script projects.
 
 
 Official API documentation: https://developers.google.com/apps-script/api/
-
-#### Google Search Console URL Testing Tools API - searchconsole v1
-
-Provides tools for running validation tests against single URLs
-
-Official API documentation: https://developers.google.com/webmaster-tools/search-console-api/
 
 #### Cloud Security Command Center API - securitycenter v1
 
@@ -867,21 +843,19 @@ Publishes 360 photos to Google Maps, along with position, orientation, and conne
 
 Official API documentation: https://developers.google.com/streetview/publish/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Surveys API - surveys v2
+#### Tag Manager API - tagmanager v1
 
-Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.
+This API allows clients to access and modify container and tag
+     configuration.
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Tag Manager API - tagmanager v1
+Official API documentation: https://developers.google.com/tag-manager
 
-Accesses Tag Manager accounts and containers.
+#### Tag Manager API - tagmanager v2
 
-Official API documentation: https://developers.google.com/tag-manager/api/v1/
+This API allows clients to access and modify container and tag
+     configuration.
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Tag Manager API - tagmanager v2
-
-Accesses Tag Manager accounts and containers.
-
-Official API documentation: https://developers.google.com/tag-manager/api/v2/
+Official API documentation: https://developers.google.com/tag-manager
 
 #### ![Logo](https://www.google.com/images/icons/product/tasks-16.png) Tasks API - tasks v1
 
@@ -913,12 +887,6 @@ The Google Cloud Translation API lets websites and programs integrate with
     Google Translate programmatically.
 
 Official API documentation: https://code.google.com/apis/language/translate/v2/getting_started.html
-
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) URL Shortener API - urlshortener v1
-
-Lets you create, inspect, and manage goo.gl short URLs
-
-Official API documentation: https://developers.google.com/url-shortener/v1/getting_started
 
 #### G Suite Vault API - vault v1
 

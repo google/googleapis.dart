@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.servicecontrol.v1;
 
@@ -190,7 +190,8 @@ class ServicesResourceApi {
   /// the aggregation time window to avoid data loss risk more than 0.01%
   /// for business and compliance reasons.
   ///
-  /// NOTE: the ReportRequest has the size limit of 1MB.
+  /// NOTE: the ReportRequest has the size limit (wire-format byte size) of
+  /// 1MB.
   ///
   /// This method requires the `servicemanagement.services.report` permission
   /// on the specified service. For more information, see
@@ -256,7 +257,8 @@ class AllocateInfo {
   /// A list of label keys that were unused by the server in processing the
   /// request. Thus, for similar requests repeated in a certain future time
   /// window, the caller can choose to ignore these labels in the requests
-  /// to achieve better client-side cache hits and quota aggregation.
+  /// to achieve better client-side cache hits and quota aggregation for rate
+  /// quota. This field is not populated for allocation quota checks.
   core.List<core.String> unusedArguments;
 
   AllocateInfo();
@@ -703,6 +705,10 @@ class AuthenticationInfo {
   /// with a "permission denied" error.
   core.String principalEmail;
 
+  /// String representation of identity of requesting party.
+  /// Populated for both first and third party identities.
+  core.String principalSubject;
+
   /// Identity delegation history of an authenticated service account that makes
   /// the request. It contains information on the real authorities that try to
   /// access GCP resources by delegating on a service account. When multiple
@@ -736,6 +742,9 @@ class AuthenticationInfo {
     if (_json.containsKey("principalEmail")) {
       principalEmail = _json["principalEmail"];
     }
+    if (_json.containsKey("principalSubject")) {
+      principalSubject = _json["principalSubject"];
+    }
     if (_json.containsKey("serviceAccountDelegationInfo")) {
       serviceAccountDelegationInfo =
           (_json["serviceAccountDelegationInfo"] as core.List)
@@ -760,6 +769,9 @@ class AuthenticationInfo {
     }
     if (principalEmail != null) {
       _json["principalEmail"] = principalEmail;
+    }
+    if (principalSubject != null) {
+      _json["principalSubject"] = principalSubject;
     }
     if (serviceAccountDelegationInfo != null) {
       _json["serviceAccountDelegationInfo"] = serviceAccountDelegationInfo
@@ -1772,6 +1784,10 @@ class LogEntry {
   /// - "EMERGENCY" : (800) One or more systems are unusable.
   core.String severity;
 
+  /// Optional. Source code location information associated with the log entry,
+  /// if any.
+  LogEntrySourceLocation sourceLocation;
+
   /// The log entry payload, represented as a structure that
   /// is expressed as a JSON object.
   ///
@@ -1819,6 +1835,10 @@ class LogEntry {
     if (_json.containsKey("severity")) {
       severity = _json["severity"];
     }
+    if (_json.containsKey("sourceLocation")) {
+      sourceLocation =
+          new LogEntrySourceLocation.fromJson(_json["sourceLocation"]);
+    }
     if (_json.containsKey("structPayload")) {
       structPayload =
           (_json["structPayload"] as core.Map).cast<core.String, core.Object>();
@@ -1857,6 +1877,9 @@ class LogEntry {
     }
     if (severity != null) {
       _json["severity"] = severity;
+    }
+    if (sourceLocation != null) {
+      _json["sourceLocation"] = (sourceLocation).toJson();
     }
     if (structPayload != null) {
       _json["structPayload"] = structPayload;
@@ -1929,6 +1952,57 @@ class LogEntryOperation {
   }
 }
 
+/// Additional information about the source code location that produced the log
+/// entry.
+class LogEntrySourceLocation {
+  /// Optional. Source file name. Depending on the runtime environment, this
+  /// might be a simple name or a fully-qualified name.
+  core.String file;
+
+  /// Optional. Human-readable name of the function or method being invoked,
+  /// with
+  /// optional context such as the class or package name. This information may
+  /// be
+  /// used in contexts such as the logs viewer, where a file and line number are
+  /// less meaningful. The format can vary by language. For example:
+  /// `qual.if.ied.Class.method` (Java), `dir/package.func` (Go), `function`
+  /// (Python).
+  core.String function;
+
+  /// Optional. Line within the source file. 1-based; 0 indicates no line number
+  /// available.
+  core.String line;
+
+  LogEntrySourceLocation();
+
+  LogEntrySourceLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("file")) {
+      file = _json["file"];
+    }
+    if (_json.containsKey("function")) {
+      function = _json["function"];
+    }
+    if (_json.containsKey("line")) {
+      line = _json["line"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (file != null) {
+      _json["file"] = file;
+    }
+    if (function != null) {
+      _json["function"] = function;
+    }
+    if (line != null) {
+      _json["line"] = line;
+    }
+    return _json;
+  }
+}
+
 /// Represents a single metric value.
 class MetricValue {
   /// A boolean value.
@@ -1950,6 +2024,7 @@ class MetricValue {
   /// The labels describing the metric value.
   /// See comments on google.api.servicecontrol.v1.Operation.labels for
   /// the overriding relationship.
+  /// Note that this map must not contain monitored resource labels.
   core.Map<core.String, core.String> labels;
 
   /// A money value.
@@ -2202,15 +2277,6 @@ class Operation {
   /// check will be performed.
   QuotaProperties quotaProperties;
 
-  /// DO NOT USE. This field is deprecated, use "resources" field instead.
-  /// The resource name of the parent of a resource in the resource hierarchy.
-  ///
-  /// This can be in one of the following formats:
-  ///     - “projects/<project-id or project-number>”
-  ///     - “folders/<folder-id>”
-  ///     - “organizations/<organization-id>”
-  core.String resourceContainer;
-
   /// The resources that are involved in the operation.
   /// The maximum supported number of entries in this field is 100.
   core.List<ResourceInfo> resources;
@@ -2256,9 +2322,6 @@ class Operation {
     }
     if (_json.containsKey("quotaProperties")) {
       quotaProperties = new QuotaProperties.fromJson(_json["quotaProperties"]);
-    }
-    if (_json.containsKey("resourceContainer")) {
-      resourceContainer = _json["resourceContainer"];
     }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
@@ -2306,9 +2369,6 @@ class Operation {
     if (quotaProperties != null) {
       _json["quotaProperties"] = (quotaProperties).toJson();
     }
-    if (resourceContainer != null) {
-      _json["resourceContainer"] = resourceContainer;
-    }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
     }
@@ -2324,8 +2384,8 @@ class Operation {
 
 /// This message defines attributes for a node that handles a network request.
 /// The node can be either a service or an application that sends, forwards,
-/// or receives the request. Service peers should fill in the `service`,
-/// `principal`, and `labels` as appropriate.
+/// or receives the request. Service peers should fill in
+/// `principal` and `labels` as appropriate.
 class Peer {
   /// The IP address of the peer.
   core.String ip;
@@ -2346,11 +2406,6 @@ class Peer {
   /// physical location where this peer is running.
   core.String regionCode;
 
-  /// The canonical service name of the peer.
-  ///
-  /// NOTE: different systems may have different service naming schemes.
-  core.String service;
-
   Peer();
 
   Peer.fromJson(core.Map _json) {
@@ -2368,9 +2423,6 @@ class Peer {
     }
     if (_json.containsKey("regionCode")) {
       regionCode = _json["regionCode"];
-    }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
     }
   }
 
@@ -2391,9 +2443,6 @@ class Peer {
     }
     if (regionCode != null) {
       _json["regionCode"] = regionCode;
-    }
-    if (service != null) {
-      _json["service"] = service;
     }
     return _json;
   }
@@ -2572,10 +2621,11 @@ class QuotaOperation {
   /// of the service that generated the operation, and guarantees idempotency in
   /// case of retries.
   ///
-  /// UUID version 4 is recommended, though not required. In scenarios where an
-  /// operation is computed from existing information and an idempotent id is
-  /// desirable for deduplication purpose, UUID version 5 is recommended. See
-  /// RFC 4122 for details.
+  /// In order to ensure best performance and latency in the Quota backends,
+  /// operation_ids are optimally associated with time, so that related
+  /// operations can be accessed fast in storage. For this reason, the
+  /// recommended token for services that intend to operate at a high QPS is
+  /// Unix time in nanos + UUID
   core.String operationId;
 
   /// Represents information about this operation. Each MetricValueSet
@@ -2780,9 +2830,9 @@ class ReportRequest {
   /// be used only when multiple operations are natually available at the time
   /// of the report.
   ///
-  /// If multiple operations are in a single request, the total request size
-  /// should be no larger than 1MB. See ReportResponse.report_errors for
-  /// partial failure behavior.
+  /// There is no limit on the number of operations in the same ReportRequest,
+  /// however the ReportRequest size should be no larger than 1MB. See
+  /// ReportResponse.report_errors for partial failure behavior.
   core.List<Operation> operations;
 
   /// Specifies which version of service config should be used to process the
@@ -2903,9 +2953,6 @@ class Request {
   /// Derived from the HTTP request `Authorization` header or equivalent.
   Auth auth;
 
-  /// The HTTP URL fragment. No URL decoding is performed.
-  core.String fragment;
-
   /// The HTTP request headers. If multiple headers share the same key, they
   /// must be merged according to the HTTP spec. All header keys must be
   /// lowercased, because HTTP header keys are case-insensitive.
@@ -2931,7 +2978,7 @@ class Request {
   /// for details.
   core.String protocol;
 
-  /// The HTTP URL query in the format of `name1=value`&name2=value2`, as it
+  /// The HTTP URL query in the format of `name1=value1&name2=value2`, as it
   /// appears in the first line of the HTTP request. No decoding is performed.
   core.String query;
 
@@ -2954,9 +3001,6 @@ class Request {
   Request.fromJson(core.Map _json) {
     if (_json.containsKey("auth")) {
       auth = new Auth.fromJson(_json["auth"]);
-    }
-    if (_json.containsKey("fragment")) {
-      fragment = _json["fragment"];
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
@@ -2998,9 +3042,6 @@ class Request {
         new core.Map<core.String, core.Object>();
     if (auth != null) {
       _json["auth"] = (auth).toJson();
-    }
-    if (fragment != null) {
-      _json["fragment"] = fragment;
     }
     if (headers != null) {
       _json["headers"] = headers;
@@ -3162,8 +3203,10 @@ class Resource {
   /// hostname that actually serves the request.
   core.String service;
 
-  /// The type of the resource. The scheme is platform-specific because
+  /// The type of the resource. The syntax is platform-specific because
   /// different platforms define their resources differently.
+  ///
+  /// For Google APIs, the type format must be "{service}/{kind}".
   core.String type;
 
   Resource();
@@ -3326,6 +3369,40 @@ class ServiceAccountDelegationInfo {
     }
     if (thirdPartyPrincipal != null) {
       _json["thirdPartyPrincipal"] = (thirdPartyPrincipal).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The context of a span, attached to google.api.Distribution.Exemplars
+/// in google.api.Distribution values during aggregation.
+///
+/// It contains the name of a span with format:
+///     projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
+class SpanContext {
+  /// The resource name of the span in the following format:
+  ///
+  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// identifier for a trace within a project;
+  /// it is a 32-character hexadecimal encoding of a 16-byte array.
+  ///
+  /// [SPAN_ID] is a unique identifier for a span within a trace; it
+  /// is a 16-character hexadecimal encoding of an 8-byte array.
+  core.String spanName;
+
+  SpanContext();
+
+  SpanContext.fromJson(core.Map _json) {
+    if (_json.containsKey("spanName")) {
+      spanName = _json["spanName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (spanName != null) {
+      _json["spanName"] = spanName;
     }
     return _json;
   }

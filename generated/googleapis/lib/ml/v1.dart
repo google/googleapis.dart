@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.ml.v1;
 
@@ -21,6 +21,10 @@ class MlApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
       "https://www.googleapis.com/auth/cloud-platform";
+
+  /// View your data across Google Cloud Platform services
+  static const CloudPlatformReadOnlyScope =
+      "https://www.googleapis.com/auth/cloud-platform.read-only";
 
   final commons.ApiRequester _requester;
 
@@ -45,6 +49,61 @@ class ProjectsResourceApi {
       new ProjectsOperationsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Performs explanation on the data in the request.
+  /// AI Platform implements a custom `explain` verb on top of an HTTP POST
+  /// method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of a model or a version.
+  ///
+  /// Authorization: requires the `predict` permission on the specified
+  /// resource.
+  /// Value must have pattern "^projects/.+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleApiHttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleApiHttpBody> explain(
+      GoogleCloudMlV1ExplainRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':explain';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleApiHttpBody.fromJson(data));
+  }
 
   /// Get the service account information associated with your project. You need
   /// this information in order to grant the service account permissions for
@@ -95,10 +154,10 @@ class ProjectsResourceApi {
         .then((data) => new GoogleCloudMlV1GetConfigResponse.fromJson(data));
   }
 
-  /// Performs prediction on the data in the request.
-  /// AI Platform implements a custom `predict` verb on top of an HTTP POST
-  /// method. <p>For details of the request and response format, see the **guide
-  /// to the [predict request format](/ml-engine/docs/v1/predict-request)**.
+  /// Performs online prediction on the data in the request.
+  ///
+  /// <div>{% dynamic include "/ai-platform/includes/___predict-request"
+  /// %}</div>
   ///
   /// [request] - The metadata request object.
   ///
@@ -312,6 +371,17 @@ class ProjectsJobsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -323,7 +393,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -333,6 +403,11 @@ class ProjectsJobsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -512,6 +587,9 @@ class ProjectsJobsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -757,7 +835,7 @@ class ProjectsModelsResourceApi {
   ///
   /// You must add at least one version before you can request predictions from
   /// the model. Add versions by calling
-  /// [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create).
+  /// projects.models.versions.create.
   ///
   /// [request] - The metadata request object.
   ///
@@ -811,7 +889,7 @@ class ProjectsModelsResourceApi {
   ///
   /// You can only delete a model if there are no versions in it. You can delete
   /// versions by calling
-  /// [projects.models.versions.delete](/ml-engine/reference/rest/v1/projects.models.versions/delete).
+  /// projects.models.versions.delete.
   ///
   /// Request parameters:
   ///
@@ -913,6 +991,17 @@ class ProjectsModelsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -924,7 +1013,7 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -934,6 +1023,11 @@ class ProjectsModelsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -966,6 +1060,8 @@ class ProjectsModelsResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of models to retrieve.
+  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -978,8 +1074,6 @@ class ProjectsModelsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
-  /// [filter] - Optional. Specifies the subset of models to retrieve.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -991,9 +1085,9 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1005,14 +1099,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1106,6 +1200,9 @@ class ProjectsModelsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -1234,7 +1331,7 @@ class ProjectsModelsVersionsResourceApi {
   /// model. When you add a version to a model that already has one or more
   /// versions, the default version does not automatically change. If you want a
   /// new version to be the default, you must call
-  /// [projects.models.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
+  /// projects.models.versions.setDefault.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1299,7 +1396,7 @@ class ProjectsModelsVersionsResourceApi {
   /// [name] - Required. The name of the version. You can get the names of all
   /// the
   /// versions of a model by calling
-  /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
+  /// projects.models.versions.list.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1343,7 +1440,7 @@ class ProjectsModelsVersionsResourceApi {
   /// Gets information about a model version.
   ///
   /// Models can have multiple versions. You can call
-  /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list)
+  /// projects.models.versions.list
   /// to get the same information that this method returns for all of the
   /// versions of a model.
   ///
@@ -1470,8 +1567,8 @@ class ProjectsModelsVersionsResourceApi {
 
   /// Updates the specified Version resource.
   ///
-  /// Currently the only update-able fields are `description` and
-  /// `autoScaling.minNodes`.
+  /// Currently the only update-able fields are `description`,
+  /// `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1487,12 +1584,18 @@ class ProjectsModelsVersionsResourceApi {
   /// For example, to change the description of a version to "foo", the
   /// `update_mask` parameter would be specified as `description`, and the
   /// `PATCH` request body would specify the new value, as follows:
-  ///     {
-  ///       "description": "foo"
-  ///     }
   ///
-  /// Currently the only supported update mask fields are `description` and
-  /// `autoScaling.minNodes`.
+  /// ```
+  /// {
+  ///   "description": "foo"
+  /// }
+  /// ```
+  ///
+  /// Currently the only supported update mask fields are `description`,
+  /// `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
+  /// However, you can only update `manualScaling.nodes` if the version uses a
+  /// [Compute Engine (N1)
+  /// machine type](/ml-engine/docs/machine-types-online-prediction).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1555,7 +1658,7 @@ class ProjectsModelsVersionsResourceApi {
   /// [name] - Required. The name of the version to make the default for the
   /// model. You
   /// can get the names of all the versions of a model by calling
-  /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
+  /// projects.models.versions.list.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1911,6 +2014,10 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
 }
 
 /// Represents a hardware accelerator request config.
+/// Note that the AcceleratorConfig can be used in both Jobs and Versions.
+/// Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and
+/// [accelerators for online
+/// prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
   core.String count;
@@ -1925,6 +2032,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_P4" : Nvidia Tesla P4 GPU.
   /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
   /// - "TPU_V2" : TPU v2.
+  /// - "TPU_V3" : TPU v3.
   core.String type;
 
   GoogleCloudMlV1AcceleratorConfig();
@@ -1968,9 +2076,22 @@ class GoogleCloudMlV1AutoScaling {
   /// at least `min_nodes`. You will be charged for the time in which additional
   /// nodes are used.
   ///
-  /// If not specified, `min_nodes` defaults to 0, in which case, when traffic
-  /// to a model stops (and after a cool-down period), nodes will be shut down
-  /// and no charges will be incurred until traffic to the model resumes.
+  /// If `min_nodes` is not specified and AutoScaling is used with a [legacy
+  /// (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction),
+  /// `min_nodes` defaults to 0, in which case, when traffic to a model stops
+  /// (and after a cool-down period), nodes will be shut down and no charges
+  /// will
+  /// be incurred until traffic to the model resumes.
+  ///
+  /// If `min_nodes` is not specified and AutoScaling is used with a [Compute
+  /// Engine (N1) machine
+  /// type](/ml-engine/docs/machine-types-online-prediction),
+  /// `min_nodes` defaults to 1. `min_nodes` must be at least 1 for use with a
+  /// Compute Engine machine type.
+  ///
+  /// Note that you cannot use AutoScaling if your version uses
+  /// [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use
+  /// ManualScaling.
   ///
   /// You can set `min_nodes` when creating the model version, and you can also
   /// update `min_nodes` for an existing version:
@@ -1983,7 +2104,7 @@ class GoogleCloudMlV1AutoScaling {
   /// }
   /// </pre>
   /// HTTP request:
-  /// <pre>
+  /// <pre style="max-width: 626px;">
   /// PATCH
   /// https://ml.googleapis.com/v1/{name=projects / * /models / * /versions / *
   /// }?update_mask=autoScaling.minNodes
@@ -2129,6 +2250,68 @@ class GoogleCloudMlV1Config {
         new core.Map<core.String, core.Object>();
     if (tpuServiceAccount != null) {
       _json["tpuServiceAccount"] = tpuServiceAccount;
+    }
+    return _json;
+  }
+}
+
+/// Request for explanations to be issued against a trained model.
+class GoogleCloudMlV1ExplainRequest {
+  /// Required.
+  /// The explanation request body.
+  GoogleApiHttpBody httpBody;
+
+  GoogleCloudMlV1ExplainRequest();
+
+  GoogleCloudMlV1ExplainRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("httpBody")) {
+      httpBody = new GoogleApiHttpBody.fromJson(_json["httpBody"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (httpBody != null) {
+      _json["httpBody"] = (httpBody).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Message holding configuration options for explaining model predictions.
+/// There are two feature attribution methods supported for TensorFlow models:
+/// integrated gradients and sampled Shapley.
+/// <a href="/ml-engine/docs/ai-explanations/overview">Learn more about feature
+/// attributions</a>.
+class GoogleCloudMlV1ExplanationConfig {
+  GoogleCloudMlV1IntegratedGradientsAttribution integratedGradientsAttribution;
+  GoogleCloudMlV1SampledShapleyAttribution sampledShapleyAttribution;
+
+  GoogleCloudMlV1ExplanationConfig();
+
+  GoogleCloudMlV1ExplanationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("integratedGradientsAttribution")) {
+      integratedGradientsAttribution =
+          new GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
+              _json["integratedGradientsAttribution"]);
+    }
+    if (_json.containsKey("sampledShapleyAttribution")) {
+      sampledShapleyAttribution =
+          new GoogleCloudMlV1SampledShapleyAttribution.fromJson(
+              _json["sampledShapleyAttribution"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (integratedGradientsAttribution != null) {
+      _json["integratedGradientsAttribution"] =
+          (integratedGradientsAttribution).toJson();
+    }
+    if (sampledShapleyAttribution != null) {
+      _json["sampledShapleyAttribution"] = (sampledShapleyAttribution).toJson();
     }
     return _json;
   }
@@ -2435,6 +2618,33 @@ class GoogleCloudMlV1HyperparameterSpec {
     }
     if (resumePreviousJobId != null) {
       _json["resumePreviousJobId"] = resumePreviousJobId;
+    }
+    return _json;
+  }
+}
+
+/// Attributes credit by computing the Aumann-Shapley value taking advantage
+/// of the model's fully differentiable structure. Refer to this paper for
+/// more details: http://proceedings.mlr.press/v70/sundararajan17a.html
+class GoogleCloudMlV1IntegratedGradientsAttribution {
+  /// Number of steps for approximating the path integral.
+  /// A good value to start is 50 and gradually increase until the
+  /// sum to diff property is met within the desired error range.
+  core.int numIntegralSteps;
+
+  GoogleCloudMlV1IntegratedGradientsAttribution();
+
+  GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(core.Map _json) {
+    if (_json.containsKey("numIntegralSteps")) {
+      numIntegralSteps = _json["numIntegralSteps"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (numIntegralSteps != null) {
+      _json["numIntegralSteps"] = numIntegralSteps;
     }
     return _json;
   }
@@ -2810,7 +3020,7 @@ class GoogleCloudMlV1Model {
   /// handle prediction requests that do not specify a version.
   ///
   /// You can change the default version by calling
-  /// [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
+  /// projects.models.versions.setDefault.
   GoogleCloudMlV1Version defaultVersion;
 
   /// Optional. The description specified for the model when it was created.
@@ -3166,7 +3376,9 @@ class GoogleCloudMlV1ParameterSpec {
 /// Request for predictions to be issued against a trained model.
 class GoogleCloudMlV1PredictRequest {
   ///
-  /// Required. The prediction request body.
+  /// Required. The prediction request body. Refer to the [request body details
+  /// section](#request-body-details) for more information on how to structure
+  /// your request.
   GoogleApiHttpBody httpBody;
 
   GoogleCloudMlV1PredictRequest();
@@ -3421,10 +3633,22 @@ class GoogleCloudMlV1ReplicaConfig {
   /// containers](/ml-engine/docs/distributed-training-containers).
   core.String imageUri;
 
-  /// TensorFlow version used in the custom container. This field is required if
-  /// the replica is a TPU worker that uses a custom container. Otherwise, do
-  /// not
-  /// specify this field.
+  /// The AI Platform runtime version that includes a TensorFlow version
+  /// matching
+  /// the one used in the custom container. This field is required if the
+  /// replica
+  /// is a TPU worker that uses a custom container. Otherwise, do not specify
+  /// this field. This must be a [runtime version that currently supports
+  /// training with
+  /// TPUs](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support).
+  ///
+  /// Note that the version of TensorFlow included in a runtime version may
+  /// differ from the numbering of the runtime version itself, because it may
+  /// have a different [patch
+  /// version](https://www.tensorflow.org/guide/version_compat#semantic_versioning_20).
+  /// In this field, you must specify the runtime version (TensorFlow minor
+  /// version). For example, if your custom container runs TensorFlow `1.x.y`,
+  /// specify `1.x`.
   core.String tpuTfVersion;
 
   GoogleCloudMlV1ReplicaConfig();
@@ -3453,6 +3677,94 @@ class GoogleCloudMlV1ReplicaConfig {
     }
     if (tpuTfVersion != null) {
       _json["tpuTfVersion"] = tpuTfVersion;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for logging request-response pairs to a BigQuery table.
+/// Online prediction requests to a model version and the responses to these
+/// requests are converted to raw strings and saved to the specified BigQuery
+/// table. Logging is constrained by [BigQuery quotas and
+/// limits](/bigquery/quotas). If your project exceeds BigQuery quotas or
+/// limits,
+/// AI Platform Prediction does not log request-response pairs, but it continues
+/// to serve predictions.
+///
+/// If you are using [continuous
+/// evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to
+/// specify this configuration manually. Setting up continuous evaluation
+/// automatically enables logging of request-response pairs.
+class GoogleCloudMlV1RequestLoggingConfig {
+  /// Required. Fully qualified BigQuery table name in the following format:
+  /// "<var>project_id</var>.<var>dataset_name</var>.<var>table_name</var>"
+  ///
+  /// The specifcied table must already exist, and the "Cloud ML Service Agent"
+  /// for your project must have permission to write to it. The table must have
+  /// the following [schema](/bigquery/docs/schemas):
+  ///
+  /// <table>
+  ///   <tr><th>Field name</th><th style="display: table-cell">Type</th>
+  ///     <th style="display: table-cell">Mode</th></tr>
+  ///   <tr><td>model</td><td>STRING</td><td>REQUIRED</td></tr>
+  ///   <tr><td>model_version</td><td>STRING</td><td>REQUIRED</td></tr>
+  ///   <tr><td>time</td><td>TIMESTAMP</td><td>REQUIRED</td></tr>
+  ///   <tr><td>raw_data</td><td>STRING</td><td>REQUIRED</td></tr>
+  ///   <tr><td>raw_prediction</td><td>STRING</td><td>NULLABLE</td></tr>
+  ///   <tr><td>groundtruth</td><td>STRING</td><td>NULLABLE</td></tr>
+  /// </table>
+  core.String bigqueryTableName;
+
+  /// Percentage of requests to be logged, expressed as a fraction from 0 to 1.
+  /// For example, if you want to log 10% of requests, enter `0.1`. The sampling
+  /// window is the lifetime of the model version. Defaults to 0.
+  core.double samplingPercentage;
+
+  GoogleCloudMlV1RequestLoggingConfig();
+
+  GoogleCloudMlV1RequestLoggingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("bigqueryTableName")) {
+      bigqueryTableName = _json["bigqueryTableName"];
+    }
+    if (_json.containsKey("samplingPercentage")) {
+      samplingPercentage = _json["samplingPercentage"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bigqueryTableName != null) {
+      _json["bigqueryTableName"] = bigqueryTableName;
+    }
+    if (samplingPercentage != null) {
+      _json["samplingPercentage"] = samplingPercentage;
+    }
+    return _json;
+  }
+}
+
+/// An attribution method that approximates Shapley values for features that
+/// contribute to the label being predicted. A sampling strategy is used to
+/// approximate the value rather than considering all subsets of features.
+class GoogleCloudMlV1SampledShapleyAttribution {
+  /// The number of feature permutations to consider when approximating the
+  /// Shapley values.
+  core.int numPaths;
+
+  GoogleCloudMlV1SampledShapleyAttribution();
+
+  GoogleCloudMlV1SampledShapleyAttribution.fromJson(core.Map _json) {
+    if (_json.containsKey("numPaths")) {
+      numPaths = _json["numPaths"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (numPaths != null) {
+      _json["numPaths"] = numPaths;
     }
     return _json;
   }
@@ -3509,95 +3821,12 @@ class GoogleCloudMlV1TrainingInput {
   GoogleCloudMlV1ReplicaConfig masterConfig;
 
   /// Optional. Specifies the type of virtual machine to use for your training
-  /// job's master worker.
+  /// job's master worker. You must specify this field when `scaleTier` is set
+  /// to
+  /// `CUSTOM`.
   ///
+  /// You can use certain Compute Engine machine types directly in this field.
   /// The following types are supported:
-  ///
-  /// <dl>
-  ///   <dt>standard</dt>
-  ///   <dd>
-  ///   A basic machine configuration suitable for training simple models with
-  ///   small to moderate datasets.
-  ///   </dd>
-  ///   <dt>large_model</dt>
-  ///   <dd>
-  ///   A machine with a lot of memory, specially suited for parameter servers
-  ///   when your model is large (having many hidden layers or layers with very
-  ///   large numbers of nodes).
-  ///   </dd>
-  ///   <dt>complex_model_s</dt>
-  ///   <dd>
-  ///   A machine suitable for the master and workers of the cluster when your
-  ///   model requires more computation than the standard machine can handle
-  ///   satisfactorily.
-  ///   </dd>
-  ///   <dt>complex_model_m</dt>
-  ///   <dd>
-  ///   A machine with roughly twice the number of cores and roughly double the
-  ///   memory of <i>complex_model_s</i>.
-  ///   </dd>
-  ///   <dt>complex_model_l</dt>
-  ///   <dd>
-  ///   A machine with roughly twice the number of cores and roughly double the
-  ///   memory of <i>complex_model_m</i>.
-  ///   </dd>
-  ///   <dt>standard_gpu</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>standard</i> that
-  ///   also includes a single NVIDIA Tesla K80 GPU. See more about
-  ///   <a href="/ml-engine/docs/tensorflow/using-gpus">using GPUs to
-  ///   train your model</a>.
-  ///   </dd>
-  ///   <dt>complex_model_m_gpu</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>complex_model_m</i> that also includes
-  ///   four NVIDIA Tesla K80 GPUs.
-  ///   </dd>
-  ///   <dt>complex_model_l_gpu</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>complex_model_l</i> that also includes
-  ///   eight NVIDIA Tesla K80 GPUs.
-  ///   </dd>
-  ///   <dt>standard_p100</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>standard</i> that
-  ///   also includes a single NVIDIA Tesla P100 GPU.
-  ///   </dd>
-  ///   <dt>complex_model_m_p100</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>complex_model_m</i> that also includes
-  ///   four NVIDIA Tesla P100 GPUs.
-  ///   </dd>
-  ///   <dt>standard_v100</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>standard</i> that
-  ///   also includes a single NVIDIA Tesla V100 GPU.
-  ///   </dd>
-  ///   <dt>large_model_v100</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>large_model</i> that
-  ///   also includes a single NVIDIA Tesla V100 GPU.
-  ///   </dd>
-  ///   <dt>complex_model_m_v100</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>complex_model_m</i> that
-  ///   also includes four NVIDIA Tesla V100 GPUs.
-  ///   </dd>
-  ///   <dt>complex_model_l_v100</dt>
-  ///   <dd>
-  ///   A machine equivalent to <i>complex_model_l</i> that
-  ///   also includes eight NVIDIA Tesla V100 GPUs.
-  ///   </dd>
-  ///   <dt>cloud_tpu</dt>
-  ///   <dd>
-  ///   A TPU VM including one Cloud TPU. See more about
-  ///   <a href="/ml-engine/docs/tensorflow/using-tpus">using TPUs to train
-  ///   your model</a>.
-  ///   </dd>
-  /// </dl>
-  ///
-  /// You may also use certain Compute Engine machine types directly in this
-  /// field. The following types are supported:
   ///
   /// - `n1-standard-4`
   /// - `n1-standard-8`
@@ -3617,14 +3846,35 @@ class GoogleCloudMlV1TrainingInput {
   /// - `n1-highcpu-64`
   /// - `n1-highcpu-96`
   ///
-  /// See more about [using Compute Engine machine
-  /// types](/ml-engine/docs/tensorflow/machine-types#compute-engine-machine-types).
+  /// Learn more about [using Compute Engine machine
+  /// types](/ml-engine/docs/machine-types#compute-engine-machine-types).
   ///
-  /// You must set this value when `scaleTier` is set to `CUSTOM`.
+  /// Alternatively, you can use the following legacy machine types:
+  ///
+  /// - `standard`
+  /// - `large_model`
+  /// - `complex_model_s`
+  /// - `complex_model_m`
+  /// - `complex_model_l`
+  /// - `standard_gpu`
+  /// - `complex_model_m_gpu`
+  /// - `complex_model_l_gpu`
+  /// - `standard_p100`
+  /// - `complex_model_m_p100`
+  /// - `standard_v100`
+  /// - `large_model_v100`
+  /// - `complex_model_m_v100`
+  /// - `complex_model_l_v100`
+  ///
+  /// Learn more about [using legacy machine
+  /// types](/ml-engine/docs/machine-types#legacy-machine-types).
+  ///
+  /// Finally, if you want to use a TPU for training, specify `cloud_tpu` in
+  /// this
+  /// field. Learn more about the [special configuration options for training
+  /// with
+  /// TPUs](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
   core.String masterType;
-
-  /// Optional. The maximum job running time. The default is 7 days.
-  core.String maxRunningTime;
 
   /// Required. The Google Cloud Storage location of the packages with
   /// the training program and any additional dependencies.
@@ -3663,8 +3913,8 @@ class GoogleCloudMlV1TrainingInput {
   /// `master_type`.
   ///
   /// This value must be consistent with the category of machine type that
-  /// `masterType` uses. In other words, both must be AI Platform machine
-  /// types or both must be Compute Engine machine types.
+  /// `masterType` uses. In other words, both must be Compute Engine machine
+  /// types or both must be legacy machine types.
   ///
   /// This value must be present when `scaleTier` is set to `CUSTOM` and
   /// `parameter_server_count` is greater than zero.
@@ -3674,9 +3924,23 @@ class GoogleCloudMlV1TrainingInput {
   core.String pythonModule;
 
   /// Optional. The version of Python used in training. If not set, the default
-  /// version is '2.7'. Python '3.5' is available when `runtime_version` is set
-  /// to '1.4' and above. Python '2.7' works with all supported
-  /// <a href="/ml-engine/docs/runtime-version-list">runtime versions</a>.
+  /// version is '2.7'. Starting [January 13,
+  /// 2020](/ml-engine/docs/release-notes#december_10_2019), this field is
+  /// required.
+  ///
+  /// The following Python versions are available:
+  ///
+  /// * Python '3.7' is available when `runtime_version` is set to '1.15' or
+  ///   later.
+  /// * Python '3.5' is available when `runtime_version` is set to a version
+  ///   from '1.4' to '1.14'.
+  /// * Python '2.7' is available when `runtime_version` is set to '1.15' or
+  ///   earlier. (Runtime versions released [after January 1,
+  ///   2020](/ml-engine/docs/release-notes#december_10_2019) do not support
+  ///   Python 2.7.)
+  ///
+  /// Read more about the Python versions available for [each runtime
+  /// version](/ml-engine/docs/runtime-version-list).
   core.String pythonVersion;
 
   /// Required. The Google Compute Engine region to run the training job in.
@@ -3685,8 +3949,11 @@ class GoogleCloudMlV1TrainingInput {
   core.String region;
 
   /// Optional. The AI Platform runtime version to use for training. If not
-  /// set, AI Platform uses the default stable version, 1.0. For more
-  /// information, see the
+  /// set, AI Platform uses the default stable version, 1.0. Starting [January
+  /// 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this field is
+  /// required.
+  ///
+  /// For more information, see the
   /// <a href="/ml-engine/docs/runtime-version-list">runtime version list</a>
   /// and
   /// <a href="/ml-engine/docs/versioning">how to manage runtime versions</a>.
@@ -3730,6 +3997,12 @@ class GoogleCloudMlV1TrainingInput {
   /// different from your worker type and master type.
   core.String scaleTier;
 
+  /// Optional. Use 'chief' instead of 'master' in TF_CONFIG when Custom
+  /// Container is used and evaluator is not specified.
+  ///
+  /// Defaults to false.
+  core.bool useChiefInTfConfig;
+
   /// Optional. The configuration for workers.
   ///
   /// You should only set `workerConfig.acceleratorConfig` if `workerType` is
@@ -3761,8 +4034,8 @@ class GoogleCloudMlV1TrainingInput {
   /// `masterType`.
   ///
   /// This value must be consistent with the category of machine type that
-  /// `masterType` uses. In other words, both must be AI Platform machine
-  /// types or both must be Compute Engine machine types.
+  /// `masterType` uses. In other words, both must be Compute Engine machine
+  /// types or both must be legacy machine types.
   ///
   /// If you use `cloud_tpu` for this value, see special instructions for
   /// [configuring a custom TPU
@@ -3792,9 +4065,6 @@ class GoogleCloudMlV1TrainingInput {
     if (_json.containsKey("masterType")) {
       masterType = _json["masterType"];
     }
-    if (_json.containsKey("maxRunningTime")) {
-      maxRunningTime = _json["maxRunningTime"];
-    }
     if (_json.containsKey("packageUris")) {
       packageUris = (_json["packageUris"] as core.List).cast<core.String>();
     }
@@ -3822,6 +4092,9 @@ class GoogleCloudMlV1TrainingInput {
     }
     if (_json.containsKey("scaleTier")) {
       scaleTier = _json["scaleTier"];
+    }
+    if (_json.containsKey("useChiefInTfConfig")) {
+      useChiefInTfConfig = _json["useChiefInTfConfig"];
     }
     if (_json.containsKey("workerConfig")) {
       workerConfig =
@@ -3853,9 +4126,6 @@ class GoogleCloudMlV1TrainingInput {
     if (masterType != null) {
       _json["masterType"] = masterType;
     }
-    if (maxRunningTime != null) {
-      _json["maxRunningTime"] = maxRunningTime;
-    }
     if (packageUris != null) {
       _json["packageUris"] = packageUris;
     }
@@ -3882,6 +4152,9 @@ class GoogleCloudMlV1TrainingInput {
     }
     if (scaleTier != null) {
       _json["scaleTier"] = scaleTier;
+    }
+    if (useChiefInTfConfig != null) {
+      _json["useChiefInTfConfig"] = useChiefInTfConfig;
     }
     if (workerConfig != null) {
       _json["workerConfig"] = (workerConfig).toJson();
@@ -3989,12 +4262,23 @@ class GoogleCloudMlV1TrainingOutput {
 /// Each version is a trained model deployed in the cloud, ready to handle
 /// prediction requests. A model can have multiple versions. You can get
 /// information about all of the versions of a given model by calling
-/// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
+/// projects.models.versions.list.
 class GoogleCloudMlV1Version {
+  /// Optional. Accelerator config for using GPUs for online prediction (beta).
+  /// Only specify this field if you have specified a Compute Engine (N1)
+  /// machine
+  /// type in the `machineType` field. Learn more about [using GPUs for online
+  /// prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
+  GoogleCloudMlV1AcceleratorConfig acceleratorConfig;
+
   /// Automatically scale the number of nodes used to serve the model in
   /// response to increases and decreases in traffic. Care should be
   /// taken to ramp up traffic according to the model's ability to scale
   /// or you will start seeing increases in latency and 429 response codes.
+  ///
+  /// Note that you cannot use AutoScaling if your version uses
+  /// [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use specify
+  /// `manual_scaling`.
   GoogleCloudMlV1AutoScaling autoScaling;
 
   /// Output only. The time the version was created.
@@ -4007,7 +4291,7 @@ class GoogleCloudMlV1Version {
   /// information.
   ///
   /// When passing Version to
-  /// [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create)
+  /// projects.models.versions.create
   /// the model service uses the specified location as the source of the model.
   /// Once deployed, the model version is hosted by the prediction service, so
   /// this location is useful only as a historical record.
@@ -4037,6 +4321,11 @@ class GoogleCloudMlV1Version {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// Optional. Configures explainability features on the model's version.
+  /// Some explanation features require additional metadata to be loaded
+  /// as part of the model payload.
+  GoogleCloudMlV1ExplanationConfig explanationConfig;
+
   /// Optional. The machine learning framework AI Platform uses to train
   /// this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
   /// `XGBOOST`. If you do not specify a framework, AI Platform
@@ -4047,6 +4336,11 @@ class GoogleCloudMlV1Version {
   /// Do **not** specify a framework if you're deploying a [custom
   /// prediction
   /// routine](/ml-engine/docs/tensorflow/custom-prediction-routines).
+  ///
+  /// If you specify a [Compute Engine (N1) machine
+  /// type](/ml-engine/docs/machine-types-online-prediction) in the
+  /// `machineType` field, you must specify `TENSORFLOW`
+  /// for the framework.
   /// Possible string values are:
   /// - "FRAMEWORK_UNSPECIFIED" : Unspecified framework. Assigns a value based
   /// on the file suffix.
@@ -4059,7 +4353,7 @@ class GoogleCloudMlV1Version {
   /// requests that do not specify a version.
   ///
   /// You can change the default version by calling
-  /// [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
+  /// projects.methods.versions.setDefault.
   core.bool isDefault;
 
   /// Optional. One or more labels that you can add, to organize your model
@@ -4073,19 +4367,32 @@ class GoogleCloudMlV1Version {
   core.String lastUseTime;
 
   /// Optional. The type of machine on which to serve the model. Currently only
-  /// applies to online prediction service.
-  /// <dl>
-  ///   <dt>mls1-c1-m2</dt>
-  ///   <dd>
-  /// The <b>default</b> machine type, with 1 core and 2 GB RAM. The deprecated
-  ///   name for this machine type is "mls1-highmem-1".
-  ///   </dd>
-  ///   <dt>mls1-c4-m2</dt>
-  ///   <dd>
-  ///   In <b>Beta</b>. This machine type has 4 cores and 2 GB RAM. The
-  ///   deprecated name for this machine type is "mls1-highcpu-4".
-  ///   </dd>
-  /// </dl>
+  /// applies to online prediction service. If this field is not specified, it
+  /// defaults to `mls1-c1-m2`.
+  ///
+  /// Online prediction supports the following machine types:
+  ///
+  /// * `mls1-c1-m2`
+  /// * `mls1-c4-m2`
+  /// * `n1-standard-2`
+  /// * `n1-standard-4`
+  /// * `n1-standard-8`
+  /// * `n1-standard-16`
+  /// * `n1-standard-32`
+  /// * `n1-highmem-2`
+  /// * `n1-highmem-4`
+  /// * `n1-highmem-8`
+  /// * `n1-highmem-16`
+  /// * `n1-highmem-32`
+  /// * `n1-highcpu-2`
+  /// * `n1-highcpu-4`
+  /// * `n1-highcpu-8`
+  /// * `n1-highcpu-16`
+  /// * `n1-highcpu-32`
+  ///
+  /// `mls1-c1-m2` is generally available. All other machine types are available
+  /// in beta. Learn more about the [differences between machine
+  /// types](/ml-engine/docs/machine-types-online-prediction).
   core.String machineType;
 
   /// Manually select the number of nodes to use for serving the
@@ -4096,7 +4403,7 @@ class GoogleCloudMlV1Version {
   /// on the selected number of nodes.
   GoogleCloudMlV1ManualScaling manualScaling;
 
-  /// Required.The name specified for the version when it was created.
+  /// Required. The name specified for the version when it was created.
   ///
   /// The version name must be unique within the model it is created in.
   core.String name;
@@ -4127,11 +4434,13 @@ class GoogleCloudMlV1Version {
   /// Specify this field if and only if you are deploying a [custom prediction
   /// routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines).
   /// If you specify this field, you must set
-  /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+  /// [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and
+  /// you must set `machineType` to a [legacy (MLS1)
+  /// machine type](/ml-engine/docs/machine-types-online-prediction).
   ///
   /// The following code sample provides the Predictor interface:
   ///
-  /// ```py
+  /// <pre style="max-width: 626px;">
   /// class Predictor(object):
   /// """Interface for constructing custom predictors."""
   ///
@@ -4167,7 +4476,7 @@ class GoogleCloudMlV1Version {
   ///         An instance implementing this Predictor class.
   ///     """
   ///     raise NotImplementedError()
-  /// ```
+  /// </pre>
   ///
   /// Learn more about [the Predictor interface and custom prediction
   /// routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
@@ -4175,14 +4484,41 @@ class GoogleCloudMlV1Version {
 
   /// Optional. The version of Python used in prediction. If not set, the
   /// default
-  /// version is '2.7'. Python '3.5' is available when `runtime_version` is set
-  /// to '1.4' and above. Python '2.7' works with all supported runtime
-  /// versions.
+  /// version is '2.7'. Starting [January 13,
+  /// 2020](/ml-engine/docs/release-notes#december_10_2019), this field is
+  /// required.
+  ///
+  /// The following Python versions are available:
+  ///
+  /// * Python '3.7' is available when `runtime_version` is set to '1.15' or
+  ///   later.
+  /// * Python '3.5' is available when `runtime_version` is set to a version
+  ///   from '1.4' to '1.14'.
+  /// * Python '2.7' is available when `runtime_version` is set to '1.15' or
+  ///   earlier. (Runtime versions released [after January 1,
+  ///   2020](/ml-engine/docs/release-notes#december_10_2019) do not support
+  ///   Python 2.7.)
+  ///
+  /// Read more about the Python versions available for [each runtime
+  /// version](/ml-engine/docs/runtime-version-list).
   core.String pythonVersion;
 
+  /// Optional. *Only* specify this field in a
+  /// projects.models.versions.patch
+  /// request. Specifying it in a
+  /// projects.models.versions.create
+  /// request has no effect.
+  ///
+  /// Configures the request-response pair logging on predictions from this
+  /// Version.
+  GoogleCloudMlV1RequestLoggingConfig requestLoggingConfig;
+
   /// Optional. The AI Platform runtime version to use for this deployment.
-  /// If not set, AI Platform uses the default stable version, 1.0. For more
-  /// information, see the
+  /// If not set, AI Platform uses the default stable version, 1.0. Starting
+  /// [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this
+  /// field is required.
+  ///
+  /// For more information, see the
   /// [runtime version list](/ml-engine/docs/runtime-version-list) and
   /// [how to manage runtime versions](/ml-engine/docs/versioning).
   core.String runtimeVersion;
@@ -4210,6 +4546,10 @@ class GoogleCloudMlV1Version {
   GoogleCloudMlV1Version();
 
   GoogleCloudMlV1Version.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorConfig")) {
+      acceleratorConfig = new GoogleCloudMlV1AcceleratorConfig.fromJson(
+          _json["acceleratorConfig"]);
+    }
     if (_json.containsKey("autoScaling")) {
       autoScaling =
           new GoogleCloudMlV1AutoScaling.fromJson(_json["autoScaling"]);
@@ -4228,6 +4568,10 @@ class GoogleCloudMlV1Version {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
+    }
+    if (_json.containsKey("explanationConfig")) {
+      explanationConfig = new GoogleCloudMlV1ExplanationConfig.fromJson(
+          _json["explanationConfig"]);
     }
     if (_json.containsKey("framework")) {
       framework = _json["framework"];
@@ -4260,6 +4604,10 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("pythonVersion")) {
       pythonVersion = _json["pythonVersion"];
     }
+    if (_json.containsKey("requestLoggingConfig")) {
+      requestLoggingConfig = new GoogleCloudMlV1RequestLoggingConfig.fromJson(
+          _json["requestLoggingConfig"]);
+    }
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
     }
@@ -4274,6 +4622,9 @@ class GoogleCloudMlV1Version {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (acceleratorConfig != null) {
+      _json["acceleratorConfig"] = (acceleratorConfig).toJson();
+    }
     if (autoScaling != null) {
       _json["autoScaling"] = (autoScaling).toJson();
     }
@@ -4291,6 +4642,9 @@ class GoogleCloudMlV1Version {
     }
     if (etag != null) {
       _json["etag"] = etag;
+    }
+    if (explanationConfig != null) {
+      _json["explanationConfig"] = (explanationConfig).toJson();
     }
     if (framework != null) {
       _json["framework"] = framework;
@@ -4321,6 +4675,9 @@ class GoogleCloudMlV1Version {
     }
     if (pythonVersion != null) {
       _json["pythonVersion"] = pythonVersion;
+    }
+    if (requestLoggingConfig != null) {
+      _json["requestLoggingConfig"] = (requestLoggingConfig).toJson();
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
@@ -4355,7 +4712,7 @@ class GoogleCloudMlV1Version {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -4367,7 +4724,7 @@ class GoogleCloudMlV1Version {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -4375,7 +4732,7 @@ class GoogleCloudMlV1Version {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -4383,9 +4740,9 @@ class GoogleCloudMlV1Version {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<GoogleIamV1AuditLogConfig> auditLogConfigs;
@@ -4431,7 +4788,7 @@ class GoogleIamV1AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -4441,7 +4798,7 @@ class GoogleIamV1AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -4499,7 +4856,7 @@ class GoogleIamV1Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -4507,6 +4864,27 @@ class GoogleIamV1Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -4547,59 +4925,77 @@ class GoogleIamV1Binding {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<GoogleIamV1Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -4611,8 +5007,12 @@ class GoogleIamV1Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -4623,7 +5023,29 @@ class GoogleIamV1Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   GoogleIamV1Policy();

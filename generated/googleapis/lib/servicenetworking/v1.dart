@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.servicenetworking.v1;
 
@@ -210,11 +210,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -227,9 +227,9 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -241,14 +241,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -344,6 +344,116 @@ class ServicesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Disables VPC service controls for a connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The service that is managing peering connectivity for a service
+  /// producer's
+  /// organization. For Google services that support this functionality, this
+  /// value is `services/servicenetworking.googleapis.com`.
+  /// Value must have pattern "^services/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<Operation> disableVpcServiceControls(
+      DisableVpcServiceControlsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':disableVpcServiceControls';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Enables VPC service controls for a connection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The service that is managing peering connectivity for a service
+  /// producer's
+  /// organization. For Google services that support this functionality, this
+  /// value is `services/servicenetworking.googleapis.com`.
+  /// Value must have pattern "^services/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<Operation> enableVpcServiceControls(
+      EnableVpcServiceControlsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':enableVpcServiceControls';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Service producers can use this method to find a currently unused range
   /// within consumer allocated ranges.   This returned range is not reserved,
   /// and not guaranteed to remain unused.
@@ -357,9 +467,9 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. This is in a form services/{service}.
-  /// {service} the name of the private access management service, for example
-  /// 'service-peering.example.com'.
+  /// [parent] - Required. This is in a form services/{service}. {service} the
+  /// name of the private
+  /// access management service, for example 'service-peering.example.com'.
   /// Value must have pattern "^services/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -403,6 +513,65 @@ class ServicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Service producers use this method to validate if the consumer provided
+  /// network, project and the requested range is valid. This allows them to use
+  /// a fail-fast mechanism for consumer requests, and not have to wait for
+  /// AddSubnetwork operation completion to determine if user request is
+  /// invalid.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. This is in a form services/{service} where {service}
+  /// is the name of the
+  /// private access management service. For example
+  /// 'service-peering.example.com'.
+  /// Value must have pattern "^services/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ValidateConsumerConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http_1.Client] completes with an error when making a REST
+  /// call, this method will complete with the same error.
+  async.Future<ValidateConsumerConfigResponse> validate(
+      ValidateConsumerConfigRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':validate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ValidateConsumerConfigResponse.fromJson(data));
   }
 }
 
@@ -628,7 +797,7 @@ class AddSubnetworkRequest {
   /// VPC network in the project.
   core.String consumerNetwork;
 
-  /// An optional description of the subnet.
+  /// Optional. Description of the subnet.
   core.String description;
 
   /// Required. The prefix length of the subnet's IP address range.  Use CIDR
@@ -1133,7 +1302,19 @@ class BackendRule {
   /// seconds.
   core.double deadline;
 
-  /// The JWT audience is used when generating a JWT id token for the backend.
+  /// When disable_auth is false,  a JWT ID token will be generated with the
+  /// value from BackendRule.address as jwt_audience, overrode to the HTTP
+  /// "Authorization" request header and sent to the backend.
+  ///
+  /// When disable_auth is true, a JWT ID token won't be generated and the
+  /// original "Authorization" HTTP header will be preserved. If the header is
+  /// used to carry the original token and is expected by the backend, this
+  /// field must be set to true to preserve the header.
+  core.bool disableAuth;
+
+  /// The JWT audience is used when generating a JWT ID token for the backend.
+  /// This ID token will be added in the HTTP "authorization" header, and sent
+  /// to the backend.
   core.String jwtAudience;
 
   /// Minimum deadline in seconds needed for this method. Calls having deadline
@@ -1207,6 +1388,9 @@ class BackendRule {
     if (_json.containsKey("deadline")) {
       deadline = _json["deadline"].toDouble();
     }
+    if (_json.containsKey("disableAuth")) {
+      disableAuth = _json["disableAuth"];
+    }
     if (_json.containsKey("jwtAudience")) {
       jwtAudience = _json["jwtAudience"];
     }
@@ -1232,6 +1416,9 @@ class BackendRule {
     }
     if (deadline != null) {
       _json["deadline"] = deadline;
+    }
+    if (disableAuth != null) {
+      _json["disableAuth"] = disableAuth;
     }
     if (jwtAudience != null) {
       _json["jwtAudience"] = jwtAudience;
@@ -1364,8 +1551,8 @@ class Connection {
   /// service consumer's VPC network.
   core.String network;
 
-  /// Output only.
-  /// The name of the VPC Network Peering connection that was created by the
+  /// Output only. The name of the VPC Network Peering connection that was
+  /// created by the
   /// service producer.
   core.String peering;
 
@@ -1379,8 +1566,8 @@ class Connection {
   /// empty will restore previously allocated IP ranges.
   core.List<core.String> reservedPeeringRanges;
 
-  /// Output only.
-  /// The name of the peering service that's associated with this connection, in
+  /// Output only. The name of the peering service that's associated with this
+  /// connection, in
   /// the following format: `services/{service name}`.
   core.String service;
 
@@ -1416,6 +1603,32 @@ class Connection {
     }
     if (service != null) {
       _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Represents a consumer project.
+class ConsumerProject {
+  /// Required. Project number of the consumer that is launching the service
+  /// instance. It
+  /// can own the network that is peered with Google or, be a service project in
+  /// an XPN where the host project has the network.
+  core.String projectNum;
+
+  ConsumerProject();
+
+  ConsumerProject.fromJson(core.Map _json) {
+    if (_json.containsKey("projectNum")) {
+      projectNum = _json["projectNum"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (projectNum != null) {
+      _json["projectNum"] = projectNum;
     }
     return _json;
   }
@@ -1688,6 +1901,32 @@ class CustomHttpPattern {
   }
 }
 
+/// Request to disable VPC service controls.
+class DisableVpcServiceControlsRequest {
+  /// Required. The network that the consumer is using to connect with services.
+  /// Must be in the form of projects/{project}/global/networks/{network}
+  /// {project} is a project number, as in '12345'
+  /// {network} is network name.
+  core.String consumerNetwork;
+
+  DisableVpcServiceControlsRequest();
+
+  DisableVpcServiceControlsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerNetwork")) {
+      consumerNetwork = _json["consumerNetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerNetwork != null) {
+      _json["consumerNetwork"] = consumerNetwork;
+    }
+    return _json;
+  }
+}
+
 /// `Documentation` provides the information for describing a service.
 ///
 /// Example:
@@ -1770,6 +2009,12 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule> rules;
 
+  /// Specifies the service root url if the default one (the service name
+  /// from the yaml file) is not suitable. This can be seen in any fully
+  /// specified service urls as well as sections that show a base that other
+  /// urls are relative to.
+  core.String serviceRootUrl;
+
   /// A short summary of what the service does. Can only be provided by
   /// plain text.
   core.String summary;
@@ -1794,6 +2039,9 @@ class Documentation {
               (value) => new DocumentationRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("serviceRootUrl")) {
+      serviceRootUrl = _json["serviceRootUrl"];
+    }
     if (_json.containsKey("summary")) {
       summary = _json["summary"];
     }
@@ -1813,6 +2061,9 @@ class Documentation {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (serviceRootUrl != null) {
+      _json["serviceRootUrl"] = serviceRootUrl;
     }
     if (summary != null) {
       _json["summary"] = summary;
@@ -1885,6 +2136,32 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Request to enable VPC service controls.
+class EnableVpcServiceControlsRequest {
+  /// Required. The network that the consumer is using to connect with services.
+  /// Must be in the form of projects/{project}/global/networks/{network}
+  /// {project} is a project number, as in '12345'
+  /// {network} is network name.
+  core.String consumerNetwork;
+
+  EnableVpcServiceControlsRequest();
+
+  EnableVpcServiceControlsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerNetwork")) {
+      consumerNetwork = _json["consumerNetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerNetwork != null) {
+      _json["consumerNetwork"] = consumerNetwork;
+    }
     return _json;
   }
 }
@@ -3157,6 +3434,13 @@ class MetricDescriptor {
   /// points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time
+  /// series, which is identified partially by
+  /// a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -3170,9 +3454,27 @@ class MetricDescriptor {
   ///     "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable
-  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
-  /// supported units are a subset of [The Unified Code for Units of
+  /// The units in which the metric value is reported. It is only applicable
+  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`
+  /// defines the representation of the stored metric values.
+  ///
+  /// Different systems may scale the values to be more easily displayed (so a
+  /// value of `0.02KBy` _might_ be displayed as `20By`, and a value of
+  /// `3523KBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is
+  /// `KBy`, then the value of the metric is always in thousands of bytes, no
+  /// matter how it may be displayed..
+  ///
+  /// If you want a custom metric to record the exact number of CPU-seconds used
+  /// by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is
+  /// `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005
+  /// CPU-seconds, then the value is written as `12005`.
+  ///
+  /// Alternatively, if you want a custom metric to record data in a more
+  /// granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is
+  /// `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`),
+  /// or use `Kis{CPU}` and write `11.723` (which is `12005/1024`).
+  ///
+  /// The supported units are a subset of [The Unified Code for Units of
   /// Measure](http://unitsofmeasure.org/ucum.html) standard:
   ///
   /// **Basic units (UNIT)**
@@ -3186,33 +3488,40 @@ class MetricDescriptor {
   ///
   /// **Prefixes (PREFIX)**
   ///
-  /// * `k`     kilo    (10**3)
-  /// * `M`     mega    (10**6)
-  /// * `G`     giga    (10**9)
-  /// * `T`     tera    (10**12)
-  /// * `P`     peta    (10**15)
-  /// * `E`     exa     (10**18)
-  /// * `Z`     zetta   (10**21)
-  /// * `Y`     yotta   (10**24)
-  /// * `m`     milli   (10**-3)
-  /// * `u`     micro   (10**-6)
-  /// * `n`     nano    (10**-9)
-  /// * `p`     pico    (10**-12)
-  /// * `f`     femto   (10**-15)
-  /// * `a`     atto    (10**-18)
-  /// * `z`     zepto   (10**-21)
-  /// * `y`     yocto   (10**-24)
-  /// * `Ki`    kibi    (2**10)
-  /// * `Mi`    mebi    (2**20)
-  /// * `Gi`    gibi    (2**30)
-  /// * `Ti`    tebi    (2**40)
+  /// * `k`     kilo    (10^3)
+  /// * `M`     mega    (10^6)
+  /// * `G`     giga    (10^9)
+  /// * `T`     tera    (10^12)
+  /// * `P`     peta    (10^15)
+  /// * `E`     exa     (10^18)
+  /// * `Z`     zetta   (10^21)
+  /// * `Y`     yotta   (10^24)
+  ///
+  /// * `m`     milli   (10^-3)
+  /// * `u`     micro   (10^-6)
+  /// * `n`     nano    (10^-9)
+  /// * `p`     pico    (10^-12)
+  /// * `f`     femto   (10^-15)
+  /// * `a`     atto    (10^-18)
+  /// * `z`     zepto   (10^-21)
+  /// * `y`     yocto   (10^-24)
+  ///
+  /// * `Ki`    kibi    (2^10)
+  /// * `Mi`    mebi    (2^20)
+  /// * `Gi`    gibi    (2^30)
+  /// * `Ti`    tebi    (2^40)
+  /// * `Pi`    pebi    (2^50)
   ///
   /// **Grammar**
   ///
   /// The grammar also includes these connectors:
   ///
-  /// * `/`    division (as an infix operator, e.g. `1/s`).
-  /// * `.`    multiplication (as an infix operator, e.g. `GBy.d`)
+  /// * `/`    division or ratio (as an infix operator). For examples,
+  ///          `kBy/{email}` or `MiBy/10ms` (although you should almost never
+  ///          have `/s` in a metric `unit`; rates should always be computed at
+  ///          query time from the underlying cumulative or delta value).
+  /// * `.`    multiplication or composition (as an infix operator). For
+  ///          examples, `GBy.d` or `k{watt}.h`.
   ///
   /// The grammar for a unit is as follows:
   ///
@@ -3227,14 +3536,25 @@ class MetricDescriptor {
   ///
   /// Notes:
   ///
-  /// * `Annotation` is just a comment if it follows a `UNIT` and is
-  ///    equivalent to `1` if it is used alone. For examples,
-  ///    `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.
+  /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation
+  ///    is used alone, then the unit is equivalent to `1`. For examples,
+  ///    `{request}/s == 1/s`, `By{transmitted}/s == By/s`.
   /// * `NAME` is a sequence of non-blank printable ASCII characters not
-  ///    containing '{' or '}'.
-  /// * `1` represents dimensionless value 1, such as in `1/s`.
-  /// * `%` represents dimensionless value 1/100, and annotates values giving
-  ///    a percentage.
+  ///    containing `{` or `}`.
+  /// * `1` represents a unitary [dimensionless
+  ///    unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such
+  ///    as in `1/s`. It is typically used when none of the basic units are
+  ///    appropriate. For example, "new users per day" can be represented as
+  ///    `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new
+  ///    users). Alternatively, "thousands of page views per day" would be
+  ///    represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric
+  ///    value of `5.3` would mean "5300 page views per day").
+  /// * `%` represents dimensionless value of 1/100, and annotates values giving
+  /// a percentage (so the metric values are typically in the range of 0..100,
+  ///    and a metric value `3` means "3 percent").
+  /// * `10^2.%` indicates a metric contains a ratio, typically in the range
+  ///    0..1, that will be multiplied by 100 and displayed as a percentage
+  ///    (so a metric value `0.03` means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
@@ -3275,6 +3595,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3310,6 +3634,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -3333,8 +3660,7 @@ class MetricDescriptorMetadata {
   /// data loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead.
-  /// The launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
@@ -4147,10 +4473,7 @@ class QuotaLimit {
   /// display name generated from the configuration.
   core.String displayName;
 
-  /// Duration of this limit in textual notation. Example: "100s", "24h", "1d".
-  /// For duration longer than a day, only multiple of days is supported. We
-  /// support only "100s" and "1d" for now. Additional support will be added in
-  /// the future. "0" indicates indefinite duration.
+  /// Duration of this limit in textual notation. Must be "100s" or "1d".
   ///
   /// Used by group-based quotas only.
   core.String duration;
@@ -4313,21 +4636,47 @@ class Range {
   }
 }
 
-/// Request to search for an unused range within allocated ranges.
-class SearchRangeRequest {
-  /// Required. The prefix length of the IP range.
-  /// Use usual CIDR range notation.
-  /// For example, '30' to find unused x.x.x.x/30 CIDR range.
-  /// Actual range will be determined using allocated range for the consumer
-  /// peered network and returned in the result.
+/// Represents a range reservation.
+class RangeReservation {
+  /// Required. The size of the desired subnet. Use usual CIDR range notation.
+  /// For example,
+  /// '30' to find unused x.x.x.x/30 CIDR range. The goal is to determine if one
+  /// of the allocated ranges has enough free space for a subnet of the
+  /// requested
+  /// size.
   core.int ipPrefixLength;
 
-  /// Network name in the consumer project.   This network must have been
+  RangeReservation();
+
+  RangeReservation.fromJson(core.Map _json) {
+    if (_json.containsKey("ipPrefixLength")) {
+      ipPrefixLength = _json["ipPrefixLength"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipPrefixLength != null) {
+      _json["ipPrefixLength"] = ipPrefixLength;
+    }
+    return _json;
+  }
+}
+
+/// Request to search for an unused range within allocated ranges.
+class SearchRangeRequest {
+  /// Required. The prefix length of the IP range. Use usual CIDR range
+  /// notation. For
+  /// example, '30' to find unused x.x.x.x/30 CIDR range. Actual range will be
+  /// determined using allocated range for the consumer peered network and
+  /// returned in the result.
+  core.int ipPrefixLength;
+
+  /// Network name in the consumer project. This network must have been
   /// already peered with a shared VPC network using CreateConnection
-  /// method.
-  /// Must be in a form 'projects/{project}/global/networks/{network}'.
-  /// {project} is a project number, as in '12345'
-  /// {network} is network name.
+  /// method. Must be in a form 'projects/{project}/global/networks/{network}'.
+  /// {project} is a project number, as in '12345' {network} is network name.
   core.String network;
 
   SearchRangeRequest();
@@ -4432,8 +4781,9 @@ class Service {
   Http http;
 
   /// A unique ID for a specific instance of this message, typically assigned
-  /// by the client for tracking purpose. If empty, the server may choose to
-  /// generate one instead. Must be no longer than 60 characters.
+  /// by the client for tracking purpose. Must be no longer than 63 characters
+  /// and only lower case letters, digits, '.', '_' and '-' are allowed. If
+  /// empty, the server may choose to generate one instead.
   core.String id;
 
   /// Logging configuration.
@@ -5199,6 +5549,125 @@ class UsageRule {
     }
     if (skipServiceControl != null) {
       _json["skipServiceControl"] = skipServiceControl;
+    }
+    return _json;
+  }
+}
+
+class ValidateConsumerConfigRequest {
+  /// Required. The network that the consumer is using to connect with services.
+  /// Must be in
+  /// the form of projects/{project}/global/networks/{network} {project} is a
+  /// project number, as in '12345' {network} is network name.
+  core.String consumerNetwork;
+
+  /// NETWORK_NOT_IN_CONSUMERS_PROJECT, NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT,
+  /// and HOST_PROJECT_NOT_FOUND are done when consumer_project is provided.
+  ConsumerProject consumerProject;
+
+  /// RANGES_EXHAUSTED, RANGES_EXHAUSTED, and RANGES_DELETED_LATER are done
+  /// when range_reservation is provided.
+  RangeReservation rangeReservation;
+
+  /// The validations will be performed in the order listed in the
+  /// ValidationError enum. The first failure will return. If a validation is
+  /// not
+  /// requested, then the next one will be performed.
+  /// SERVICE_NETWORKING_NOT_ENABLED and NETWORK_NOT_PEERED checks are performed
+  /// for all requests where validation is requested. NETWORK_NOT_FOUND and
+  /// NETWORK_DISCONNECTED checks are done for requests that have
+  /// validate_network set to true.
+  core.bool validateNetwork;
+
+  ValidateConsumerConfigRequest();
+
+  ValidateConsumerConfigRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerNetwork")) {
+      consumerNetwork = _json["consumerNetwork"];
+    }
+    if (_json.containsKey("consumerProject")) {
+      consumerProject = new ConsumerProject.fromJson(_json["consumerProject"]);
+    }
+    if (_json.containsKey("rangeReservation")) {
+      rangeReservation =
+          new RangeReservation.fromJson(_json["rangeReservation"]);
+    }
+    if (_json.containsKey("validateNetwork")) {
+      validateNetwork = _json["validateNetwork"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerNetwork != null) {
+      _json["consumerNetwork"] = consumerNetwork;
+    }
+    if (consumerProject != null) {
+      _json["consumerProject"] = (consumerProject).toJson();
+    }
+    if (rangeReservation != null) {
+      _json["rangeReservation"] = (rangeReservation).toJson();
+    }
+    if (validateNetwork != null) {
+      _json["validateNetwork"] = validateNetwork;
+    }
+    return _json;
+  }
+}
+
+class ValidateConsumerConfigResponse {
+  core.bool isValid;
+
+  ///
+  /// Possible string values are:
+  /// - "VALIDATION_ERROR_UNSPECIFIED"
+  /// - "VALIDATION_NOT_REQUESTED" : In case none of the validations are
+  /// requested.
+  /// - "SERVICE_NETWORKING_NOT_ENABLED"
+  /// - "NETWORK_NOT_FOUND" : The network provided by the consumer does not
+  /// exist.
+  /// - "NETWORK_NOT_PEERED" : The network has not been peered with the producer
+  /// org.
+  /// - "NETWORK_PEERING_DELETED" : The peering was created and later deleted.
+  /// - "NETWORK_NOT_IN_CONSUMERS_PROJECT" : The network is a regular VPC but
+  /// the network is not in the consumer's
+  /// project.
+  /// - "NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT" : The consumer project is a
+  /// service project, and network is a shared VPC,
+  /// but the network is not in the host project of this consumer project.
+  /// - "HOST_PROJECT_NOT_FOUND" : The host project associated with the consumer
+  /// project
+  /// was not found.
+  /// - "CONSUMER_PROJECT_NOT_SERVICE_PROJECT" : The consumer project is not a
+  /// service project for
+  /// the specified host project.
+  /// - "RANGES_EXHAUSTED" : The reserved IP ranges do not have enough space to
+  /// create
+  /// a subnet of desired size.
+  /// - "RANGES_NOT_RESERVED" : The IP ranges were not reserved.
+  /// - "RANGES_DELETED_LATER" : The IP ranges were reserved but deleted later.
+  core.String validationError;
+
+  ValidateConsumerConfigResponse();
+
+  ValidateConsumerConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("isValid")) {
+      isValid = _json["isValid"];
+    }
+    if (_json.containsKey("validationError")) {
+      validationError = _json["validationError"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (isValid != null) {
+      _json["isValid"] = isValid;
+    }
+    if (validationError != null) {
+      _json["validationError"] = validationError;
     }
     return _json;
   }

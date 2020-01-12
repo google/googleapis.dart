@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.drive.v3;
 
@@ -1183,7 +1183,8 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Google Drive.
+  /// Google Drive. Only 200 revisions for the file can be kept forever. If the
+  /// limit is reached, try deleting pinned revisions.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
@@ -1269,7 +1270,8 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Google Drive.
+  /// Google Drive. Only 200 revisions for the file can be kept forever. If the
+  /// limit is reached, try deleting pinned revisions.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
@@ -1813,7 +1815,8 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Google Drive.
+  /// Google Drive. Only 200 revisions for the file can be kept forever. If the
+  /// limit is reached, try deleting pinned revisions.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
@@ -3890,7 +3893,8 @@ class Comment {
   /// properties.
   core.String anchor;
 
-  /// The user who created the comment.
+  /// The author of the comment. The author's email address and permission ID
+  /// will not be populated.
   User author;
 
   /// The plain text content of the comment. This field is used for setting the
@@ -4585,12 +4589,17 @@ class FileCapabilities {
   /// Whether the current user can download this file.
   core.bool canDownload;
 
-  /// Whether the current user can edit this file.
+  /// Whether the current user can edit this file. Other factors may limit the
+  /// type of changes a user can make to a file. For example, see
+  /// canChangeCopyRequiresWriterPermission or canModifyContent.
   core.bool canEdit;
 
   /// Whether the current user can list the children of this folder. This is
   /// always false when the item is not a folder.
   core.bool canListChildren;
+
+  /// Whether the current user can modify the content of this file.
+  core.bool canModifyContent;
 
   /// Whether the current user can move children of this folder outside of the
   /// shared drive. This is false when the item is not a folder. Only populated
@@ -4698,6 +4707,9 @@ class FileCapabilities {
     if (_json.containsKey("canListChildren")) {
       canListChildren = _json["canListChildren"];
     }
+    if (_json.containsKey("canModifyContent")) {
+      canModifyContent = _json["canModifyContent"];
+    }
     if (_json.containsKey("canMoveChildrenOutOfDrive")) {
       canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
     }
@@ -4790,6 +4802,9 @@ class FileCapabilities {
     }
     if (canListChildren != null) {
       _json["canListChildren"] = canListChildren;
+    }
+    if (canModifyContent != null) {
+      _json["canModifyContent"] = canModifyContent;
     }
     if (canMoveChildrenOutOfDrive != null) {
       _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
@@ -5268,8 +5283,8 @@ class File {
   /// not cleared if the new name does not contain a valid extension.
   core.String fullFileExtension;
 
-  /// Whether any users are granted file access directly on this file. This
-  /// field is only populated for shared drive files.
+  /// Whether there are permissions directly on this file. This field is only
+  /// populated for items in shared drives.
   core.bool hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail. This does not indicate whether the
@@ -6017,7 +6032,13 @@ class Permission {
   /// field only pertains to user and group permissions.
   core.bool deleted;
 
-  /// A displayable name for users, groups or domains.
+  /// The "pretty" name of the value of the permission. The following is a list
+  /// of examples for each type of permission:
+  /// - user - User's full name, as defined for their Google account, such as
+  /// "Joe Smith."
+  /// - group - Name of the Google Group, such as "The Company Administrators."
+  /// - domain - String domain name, such as "thecompany.com."
+  /// - anyone - No displayName is present.
   core.String displayName;
 
   /// The domain to which this permission refers.
@@ -6034,7 +6055,8 @@ class Permission {
   core.DateTime expirationTime;
 
   /// The ID of this permission. This is a unique identifier for the grantee,
-  /// and is published in User resources as permissionId.
+  /// and is published in User resources as permissionId. IDs should be treated
+  /// as opaque values.
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -6066,7 +6088,10 @@ class Permission {
   /// - user
   /// - group
   /// - domain
-  /// - anyone
+  /// - anyone  When creating a permission, if type is user or group, you must
+  /// provide an emailAddress for the user or group. When type is domain, you
+  /// must provide a domain. There isn't extra information required for a anyone
+  /// type.
   core.String type;
 
   Permission();
@@ -6224,7 +6249,8 @@ class Reply {
   /// - reopen
   core.String action;
 
-  /// The user who created the reply.
+  /// The author of the reply. The author's email address and permission ID will
+  /// not be populated.
   User author;
 
   /// The plain text content of the reply. This field is used for setting the

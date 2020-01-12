@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.drive.v2;
 
@@ -76,7 +76,6 @@ class DriveApi {
   PermissionsResourceApi get permissions =>
       new PermissionsResourceApi(_requester);
   PropertiesResourceApi get properties => new PropertiesResourceApi(_requester);
-  RealtimeResourceApi get realtime => new RealtimeResourceApi(_requester);
   RepliesResourceApi get replies => new RepliesResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
   TeamdrivesResourceApi get teamdrives => new TeamdrivesResourceApi(_requester);
@@ -1220,7 +1219,7 @@ class CommentsResourceApi {
     return _response.then((data) => new CommentList.fromJson(data));
   }
 
-  /// Updates an existing comment. This method supports patch semantics.
+  /// Updates an existing comment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4162,152 +4161,6 @@ class PropertiesResourceApi {
   }
 }
 
-class RealtimeResourceApi {
-  final commons.ApiRequester _requester;
-
-  RealtimeResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Exports the contents of the Realtime API data model associated with this
-  /// file as JSON.
-  ///
-  /// Request parameters:
-  ///
-  /// [fileId] - The ID of the file that the Realtime API data model is
-  /// associated with.
-  ///
-  /// [revision] - The revision of the Realtime API data model to export.
-  /// Revisions start at 1 (the initial empty data model) and are incremented
-  /// with each change. If this parameter is excluded, the most recent data
-  /// model will be returned.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future get(core.String fileId,
-      {core.int revision,
-      core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (fileId == null) {
-      throw new core.ArgumentError("Parameter fileId is required.");
-    }
-    if (revision != null) {
-      _queryParams["revision"] = ["${revision}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = downloadOptions;
-
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => null);
-    } else {
-      return _response;
-    }
-  }
-
-  /// Overwrites the Realtime API data model associated with this file with the
-  /// provided JSON data model.
-  ///
-  /// Request parameters:
-  ///
-  /// [fileId] - The ID of the file that the Realtime API data model is
-  /// associated with.
-  ///
-  /// [baseRevision] - The revision of the model to diff the uploaded model
-  /// against. If set, the uploaded model is diffed against the provided
-  /// revision and those differences are merged with any changes made to the
-  /// model after the provided revision. If not set, the uploaded model replaces
-  /// the current model on the server.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [uploadMedia] - The media to upload.
-  ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future update(core.String fileId,
-      {core.String baseRevision,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (fileId == null) {
-      throw new core.ArgumentError("Parameter fileId is required.");
-    }
-    if (baseRevision != null) {
-      _queryParams["baseRevision"] = [baseRevision];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-    _downloadOptions = null;
-
-    if (_uploadMedia == null) {
-      _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/drive/v2/files/' +
-          commons.Escaper.ecapeVariable('$fileId') +
-          '/realtime';
-    } else {
-      _url = '/upload/drive/v2/files/' +
-          commons.Escaper.ecapeVariable('$fileId') +
-          '/realtime';
-    }
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
 class RepliesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4570,7 +4423,7 @@ class RepliesResourceApi {
     return _response.then((data) => new CommentReplyList.fromJson(data));
   }
 
-  /// Updates an existing reply. This method supports patch semantics.
+  /// Updates an existing reply.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4865,7 +4718,7 @@ class RevisionsResourceApi {
     return _response.then((data) => new RevisionList.fromJson(data));
   }
 
-  /// Updates a revision. This method supports patch semantics.
+  /// Updates a revision.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5617,7 +5470,8 @@ class About {
   /// The amount of storage quota used by different Google services.
   core.List<AboutQuotaBytesByService> quotaBytesByService;
 
-  /// The total number of quota bytes.
+  /// The total number of quota bytes. This is only relevant when quotaType is
+  /// LIMITED.
   core.String quotaBytesTotal;
 
   /// The number of quota bytes used by Google Drive.
@@ -6712,7 +6566,8 @@ class Comment {
   /// properties.
   core.String anchor;
 
-  /// The user who wrote this comment.
+  /// The author of the comment. The author's email address and permission ID
+  /// will not be populated.
   User author;
 
   /// The ID of the comment.
@@ -6932,7 +6787,8 @@ class CommentList {
 
 /// A comment on a file in Google Drive.
 class CommentReply {
-  /// The user who wrote this reply.
+  /// The author of the reply. The author's email address and permission ID will
+  /// not be populated.
   User author;
 
   /// The plain text content used to create this reply. This is not HTML safe
@@ -7619,12 +7475,17 @@ class FileCapabilities {
   /// Whether the current user can download this file.
   core.bool canDownload;
 
-  /// Whether the current user can edit this file.
+  /// Whether the current user can edit this file. Other factors may limit the
+  /// type of changes a user can make to a file. For example, see
+  /// canChangeCopyRequiresWriterPermission or canModifyContent.
   core.bool canEdit;
 
   /// Whether the current user can list the children of this folder. This is
   /// always false when the item is not a folder.
   core.bool canListChildren;
+
+  /// Whether the current user can modify the content of this file.
+  core.bool canModifyContent;
 
   /// Whether the current user can move children of this folder outside of the
   /// shared drive. This is false when the item is not a folder. Only populated
@@ -7732,6 +7593,9 @@ class FileCapabilities {
     if (_json.containsKey("canListChildren")) {
       canListChildren = _json["canListChildren"];
     }
+    if (_json.containsKey("canModifyContent")) {
+      canModifyContent = _json["canModifyContent"];
+    }
     if (_json.containsKey("canMoveChildrenOutOfDrive")) {
       canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
     }
@@ -7824,6 +7688,9 @@ class FileCapabilities {
     }
     if (canListChildren != null) {
       _json["canListChildren"] = canListChildren;
+    }
+    if (canModifyContent != null) {
+      _json["canModifyContent"] = canModifyContent;
     }
     if (canMoveChildrenOutOfDrive != null) {
       _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
@@ -8395,8 +8262,8 @@ class File {
   /// shortcut files.
   core.String fullFileExtension;
 
-  /// Whether any users are granted file access directly on this file. This
-  /// field is only populated for items in shared drives.
+  /// Whether there are permissions directly on this file. This field is only
+  /// populated for items in shared drives.
   core.bool hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail. This does not indicate whether the
@@ -9868,7 +9735,8 @@ class Revision {
   /// only be populated and can only be modified on files with content stored in
   /// Drive which are not Google Docs. Revisions can also be pinned when they
   /// are created through the drive.files.insert/update/copy by using the pinned
-  /// query parameter.
+  /// query parameter. Pinned revisions are stored indefinitely using additional
+  /// storage quota, up to a maximum of 200 revisions.
   core.bool pinned;
 
   /// Whether subsequent revisions will be automatically republished. This is

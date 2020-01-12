@@ -15,7 +15,7 @@
     "description": "Accesses Android application developers' Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/Xzykam64w9J0PZpvN6-fPRpjjvM\"",
+    "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/9O7XZbHBE5GqJOpJZVNDC9tL97k\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2328,7 +2328,7 @@
                             ],
                             "parameters": {
                                 "endTime": {
-                                    "description": "The time, in milliseconds since the Epoch, of the newest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
+                                    "description": "The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"
@@ -2350,7 +2350,7 @@
                                     "type": "integer"
                                 },
                                 "startTime": {
-                                    "description": "The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
+                                    "description": "The time, in milliseconds since the Epoch, of the oldest voided purchase that you want to see in the response. The value of this parameter cannot be older than 30 days and is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response.",
                                     "format": "int64",
                                     "location": "query",
                                     "type": "string"
@@ -2483,7 +2483,7 @@
             }
         }
     },
-    "revision": "20190702",
+    "revision": "20191215",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -2893,6 +2893,10 @@
                 },
                 "sha1": {
                     "description": "A sha1 hash of the image that was uploaded.",
+                    "type": "string"
+                },
+                "sha256": {
+                    "description": "A sha256 hash of the image that was uploaded.",
                     "type": "string"
                 },
                 "url": {
@@ -3447,13 +3451,6 @@
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "googlePlusCommunities": {
-                    "description": "A list of all Google+ Communities, as URLs, that define testers for this track.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -3597,7 +3594,7 @@
                     "type": "string"
                 },
                 "purchaseToken": {
-                    "description": "The token that was generated when a purchase was made. This uniquely identifies a purchase.",
+                    "description": "The token which uniquely identifies a one-time purchase or subscription. To uniquely identify subscription renewals use order_id (available starting from version 3 of the API).",
                     "type": "string"
                 },
                 "voidedTimeMillis": {

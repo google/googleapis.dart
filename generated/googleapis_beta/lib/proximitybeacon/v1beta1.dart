@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.proximitybeacon.v1beta1;
 
@@ -107,9 +107,9 @@ class BeaconsResourceApi {
   /// will return a successful response code).
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -177,9 +177,9 @@ class BeaconsResourceApi {
   /// beacon will do nothing (but will return a successful response code).
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -247,9 +247,9 @@ class BeaconsResourceApi {
   /// again.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -316,9 +316,9 @@ class BeaconsResourceApi {
   /// other projects). This operation cannot be undone.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -379,9 +379,10 @@ class BeaconsResourceApi {
   /// Returns detailed information about the specified beacon.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **viewer**, **Is owner** or **Can edit**
-  /// permissions in the Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions
+  /// in
+  /// the Google Developers Console project.
   ///
   /// Requests may supply an Eddystone-EID beacon name in the form:
   /// `beacons/4!beaconId` where the `beaconId` is the base16 ephemeral ID
@@ -451,9 +452,10 @@ class BeaconsResourceApi {
   /// will be returned.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **viewer**, **Is owner** or **Can edit**
-  /// permissions in the Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions
+  /// in
+  /// the Google Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -592,9 +594,9 @@ class BeaconsResourceApi {
   /// These IDs are unique within the system. An ID can be registered only once.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -656,9 +658,9 @@ class BeaconsResourceApi {
   /// To update beacon status, use the separate methods on this API for
   /// activation, deactivation, and decommissioning.
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -738,9 +740,9 @@ class BeaconsAttachmentsResourceApi {
   /// specify `* / * ` to delete all.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -830,9 +832,9 @@ class BeaconsAttachmentsResourceApi {
   /// Attachment data can be up to 1024 bytes long.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// [request] - The metadata request object.
   ///
@@ -907,9 +909,9 @@ class BeaconsAttachmentsResourceApi {
   /// undone.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **Is owner** or **Can edit** permissions in the
-  /// Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **Is owner** or **Can edit** permissions in the Google
+  /// Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -976,9 +978,10 @@ class BeaconsAttachmentsResourceApi {
   /// the ones returned from the  `namespaces` endpoint.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **viewer**, **Is owner** or **Can edit**
-  /// permissions in the Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions
+  /// in
+  /// the Google Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -1066,9 +1069,10 @@ class BeaconsDiagnosticsResourceApi {
   /// the beacon name `beacons/-`.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **viewer**, **Is owner** or **Can edit**
-  /// permissions in the Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions
+  /// in
+  /// the Google Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -1163,9 +1167,10 @@ class NamespacesResourceApi {
   /// namespaced type, and the namespace must be owned by your project.
   ///
   /// Authenticate using an [OAuth access
-  /// token](https://developers.google.com/identity/protocols/OAuth2)
-  /// from a signed-in user with **viewer**, **Is owner** or **Can edit**
-  /// permissions in the Google Developers Console project.
+  /// token](https://developers.google.com/identity/protocols/OAuth2) from a
+  /// signed-in user with **viewer**, **Is owner** or **Can edit** permissions
+  /// in
+  /// the Google Developers Console project.
   ///
   /// Request parameters:
   ///
@@ -2056,11 +2061,13 @@ class EphemeralIdRegistration {
 /// at GitHub.
 class EphemeralIdRegistrationParams {
   /// Indicates the maximum rotation period supported by the service.
-  /// See EddystoneEidRegistration.rotation_period_exponent
+  /// See
+  /// EddystoneEidRegistration.rotation_period_exponent
   core.int maxRotationPeriodExponent;
 
   /// Indicates the minimum rotation period supported by the service.
-  /// See EddystoneEidRegistration.rotation_period_exponent
+  /// See
+  /// EddystoneEidRegistration.rotation_period_exponent
   core.int minRotationPeriodExponent;
 
   /// The beacon service's public key for use by a beacon to derive its

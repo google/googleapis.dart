@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.adexchangebuyer2.v2beta1;
 
@@ -862,6 +862,18 @@ class AccountsCreativesResourceApi {
   /// [accountId] - The account to list the creatives from.
   /// Specify "-" to list all creatives the current user has access to.
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListCreativesResponse.next_page_token
+  /// returned from the previous call to 'ListCreatives' method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer creatives
+  /// than requested
+  /// (due to timeout constraint) even if more are available via another call.
+  /// If unspecified, server will pick an appropriate default.
+  /// Acceptable values are 1 to 1000, inclusive.
+  ///
   /// [query] - An optional query string to filter creatives. If no filter is
   /// specified,
   /// all active creatives will be returned.
@@ -880,18 +892,6 @@ class AccountsCreativesResourceApi {
   /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND
   /// disapprovalReason:unacceptable_content) OR attribute:47'
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListCreativesResponse.next_page_token
-  /// returned from the previous call to 'ListCreatives' method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer creatives
-  /// than requested
-  /// (due to timeout constraint) even if more are available via another call.
-  /// If unspecified, server will pick an appropriate default.
-  /// Acceptable values are 1 to 1000, inclusive.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -903,9 +903,9 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(core.String accountId,
-      {core.String query,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -917,14 +917,14 @@ class AccountsCreativesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,18 +1499,18 @@ class AccountsProductsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
+  /// [pageToken] - The page token as returned from ListProductsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [filter] - An optional PQL query used to query for products. See
   /// https://developers.google.com/ad-manager/docs/pqlreference
   /// for documentation about PQL and examples.
   ///
   /// Nested repeated fields, such as product.targetingCriterion.inclusions,
   /// cannot be filtered.
-  ///
-  /// [pageToken] - The page token as returned from ListProductsResponse.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1523,9 +1523,9 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String accountId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1537,14 +1537,14 @@ class AccountsProductsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1930,12 +1930,6 @@ class AccountsProposalsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
-  /// [pageToken] - The page token as returned from ListProposalsResponse.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [filterSyntax] - Syntax the filter is written in. Current implementation
   /// defaults to PQL
   /// but in the future it will be LIST_FILTER.
@@ -1949,6 +1943,12 @@ class AccountsProposalsResourceApi {
   /// Nested repeated fields, such as proposal.deals.targetingCriterion,
   /// cannot be filtered.
   ///
+  /// [pageToken] - The page token as returned from ListProposalsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1960,10 +1960,10 @@ class AccountsProposalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(core.String accountId,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filterSyntax,
+      {core.String filterSyntax,
       core.String filter,
+      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1975,17 +1975,17 @@ class AccountsProposalsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filterSyntax != null) {
       _queryParams["filterSyntax"] = [filterSyntax];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4940,7 +4940,7 @@ class BidMetricsRow {
   /// The number of bids for which the buyer was billed.
   MetricValue billedImpressions;
 
-  /// The number of bids that won an impression.
+  /// The number of bids that won the auction.
   MetricValue impressionsWon;
 
   /// The number of bids for which the corresponding impression was measurable
@@ -5029,10 +5029,15 @@ class BidResponseWithoutBidsStatusRow {
   /// - "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT" : The response had no bids for the
   /// specified account, though it may have
   /// included bids on behalf of other accounts.
+  /// Applies if:
+  /// 1. Request is on behalf of a bidder and an account filter is present.
+  /// 2. Request is on behalf of a child seat.
   /// - "RESPONSES_WITHOUT_BIDS_FOR_DEAL" : The response had no bids for the
   /// specified deal, though it may have
   /// included bids on other deals on behalf of the account to which the deal
-  /// belongs.
+  /// belongs. If request is on behalf of a bidder and an account filter is not
+  /// present, this also includes responses that have bids on behalf of
+  /// accounts other than the account to which the deal belongs.
   core.String status;
 
   BidResponseWithoutBidsStatusRow();
@@ -5610,6 +5615,10 @@ class Creative {
   /// See serving_restrictions for details.
   /// - "APPROVED" : The creative has been approved.
   /// - "DISAPPROVED" : The creative has been disapproved.
+  /// - "PENDING_REVIEW" : Placeholder for transition to v1beta1. Currently not
+  /// used.
+  /// - "STATUS_TYPE_UNSPECIFIED" : Placeholder for transition to v1beta1.
+  /// Currently not used.
   core.String dealsStatus;
 
   /// The set of declared destination URLs for the creative.
@@ -5663,6 +5672,10 @@ class Creative {
   /// See serving_restrictions for details.
   /// - "APPROVED" : The creative has been approved.
   /// - "DISAPPROVED" : The creative has been disapproved.
+  /// - "PENDING_REVIEW" : Placeholder for transition to v1beta1. Currently not
+  /// used.
+  /// - "STATUS_TYPE_UNSPECIFIED" : Placeholder for transition to v1beta1.
+  /// Currently not used.
   core.String openAuctionStatus;
 
   /// All restricted categories for the ads that may be shown from this

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.docs.v1;
 
@@ -643,6 +643,189 @@ class ColumnBreak {
     }
     if (textStyle != null) {
       _json["textStyle"] = (textStyle).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Creates a Footer. The new footer is applied to
+/// the DocumentStyle.
+///
+/// If a footer of the specified type already exists, a 400 bad request error
+/// is returned.
+class CreateFooterRequest {
+  /// The type of footer to create.
+  /// Possible string values are:
+  /// - "HEADER_FOOTER_TYPE_UNSPECIFIED" : The header/footer type is
+  /// unspecified.
+  /// - "DEFAULT" : A default header/footer.
+  core.String type;
+
+  CreateFooterRequest();
+
+  CreateFooterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// The result of creating a footer.
+class CreateFooterResponse {
+  /// The ID of the created footer.
+  core.String footerId;
+
+  CreateFooterResponse();
+
+  CreateFooterResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("footerId")) {
+      footerId = _json["footerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (footerId != null) {
+      _json["footerId"] = footerId;
+    }
+    return _json;
+  }
+}
+
+/// Creates a Footnote segment
+/// and inserts a new FootnoteReference
+/// to it at the given location.
+///
+/// The new Footnote segment will contain a
+/// space followed by a newline character.
+class CreateFootnoteRequest {
+  /// Inserts the footnote reference at the end of the document body.
+  ///
+  /// Footnote references cannot be inserted inside a header, footer or
+  /// footnote. Since footnote references can only be inserted in the body, the
+  /// segment ID field
+  /// must be empty.
+  EndOfSegmentLocation endOfSegmentLocation;
+
+  /// Inserts the footnote reference at a specific index in the document.
+  ///
+  /// The footnote reference must be inserted inside the bounds of an existing
+  /// Paragraph. For instance, it cannot be
+  /// inserted at a table's start index (i.e. between the table and its
+  /// preceding paragraph).
+  ///
+  /// Footnote references cannot be inserted inside an equation,
+  /// header, footer or footnote. Since footnote references can only be
+  /// inserted in the body, the segment ID field must be empty.
+  Location location;
+
+  CreateFootnoteRequest();
+
+  CreateFootnoteRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("endOfSegmentLocation")) {
+      endOfSegmentLocation =
+          new EndOfSegmentLocation.fromJson(_json["endOfSegmentLocation"]);
+    }
+    if (_json.containsKey("location")) {
+      location = new Location.fromJson(_json["location"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endOfSegmentLocation != null) {
+      _json["endOfSegmentLocation"] = (endOfSegmentLocation).toJson();
+    }
+    if (location != null) {
+      _json["location"] = (location).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of creating a footnote.
+class CreateFootnoteResponse {
+  /// The ID of the created footnote.
+  core.String footnoteId;
+
+  CreateFootnoteResponse();
+
+  CreateFootnoteResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("footnoteId")) {
+      footnoteId = _json["footnoteId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (footnoteId != null) {
+      _json["footnoteId"] = footnoteId;
+    }
+    return _json;
+  }
+}
+
+/// Creates a Header. The new header is applied to
+/// the DocumentStyle.
+///
+/// If a header of the specified type already exists, a 400 bad request error
+/// is returned.
+class CreateHeaderRequest {
+  /// The type of header to create.
+  /// Possible string values are:
+  /// - "HEADER_FOOTER_TYPE_UNSPECIFIED" : The header/footer type is
+  /// unspecified.
+  /// - "DEFAULT" : A default header/footer.
+  core.String type;
+
+  CreateHeaderRequest();
+
+  CreateHeaderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// The result of creating a header.
+class CreateHeaderResponse {
+  /// The ID of the created header.
+  core.String headerId;
+
+  CreateHeaderResponse();
+
+  CreateHeaderResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("headerId")) {
+      headerId = _json["headerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (headerId != null) {
+      _json["headerId"] = headerId;
     }
     return _json;
   }
@@ -1400,25 +1583,34 @@ class Document {
 
 /// The style of the document.
 class DocumentStyle {
-  /// The background of the document.
+  /// The background of the document. Documents cannot have a transparent
+  /// background color.
   Background background;
 
   /// The ID of the default footer. If not set, there is no default footer.
+  ///
+  /// This property is read-only.
   core.String defaultFooterId;
 
   /// The ID of the default header. If not set, there is no default header.
+  ///
+  /// This property is read-only.
   core.String defaultHeaderId;
 
   /// The ID of the footer used only for even pages. The value of
   /// use_even_page_header_footer determines
   /// whether to use the default_footer_id or this value for the
   /// footer on even pages. If not set, there is no even page footer.
+  ///
+  /// This property is read-only.
   core.String evenPageFooterId;
 
   /// The ID of the header used only for even pages. The value of
   /// use_even_page_header_footer determines
   /// whether to use the default_header_id or this value for the
   /// header on even pages. If not set, there is no even page header.
+  ///
+  /// This property is read-only.
   core.String evenPageHeaderId;
 
   /// The ID of the footer used only for the first page. If not set then
@@ -1426,6 +1618,8 @@ class DocumentStyle {
   /// use_first_page_header_footer determines
   /// whether to use the default_footer_id or this value for the
   /// footer on the first page. If not set, there is no first page footer.
+  ///
+  /// This property is read-only.
   core.String firstPageFooterId;
 
   /// The ID of the header used only for the first page. If not set then
@@ -1433,18 +1627,42 @@ class DocumentStyle {
   /// The value of use_first_page_header_footer determines
   /// whether to use the default_header_id or this value for the
   /// header on the first page. If not set, there is no first page header.
+  ///
+  /// This property is read-only.
   core.String firstPageHeaderId;
 
   /// The bottom page margin.
+  ///
+  /// Updating the bottom page margin on the document style clears the bottom
+  /// page margin on all section styles.
   Dimension marginBottom;
 
+  /// The amount of space between the bottom of the page and the contents of the
+  /// footer.
+  Dimension marginFooter;
+
+  /// The amount of space between the top of the page and the contents of the
+  /// header.
+  Dimension marginHeader;
+
   /// The left page margin.
+  ///
+  /// Updating the left page margin on the document style clears the left page
+  /// margin on all section styles. It may also cause columns to resize in all
+  /// sections.
   Dimension marginLeft;
 
   /// The right page margin.
+  ///
+  /// Updating the right page margin on the document style clears the right page
+  /// margin on all section styles. It may also cause columns to resize in all
+  /// sections.
   Dimension marginRight;
 
   /// The top page margin.
+  ///
+  /// Updating the top page margin on the document style clears the top page
+  /// margin on all section styles.
   Dimension marginTop;
 
   /// The page number from which to start counting the number of pages.
@@ -1453,12 +1671,31 @@ class DocumentStyle {
   /// The size of a page in the document.
   Size pageSize;
 
+  /// Indicates whether DocumentStyle
+  /// margin_header,
+  /// SectionStyle
+  /// margin_header and
+  /// DocumentStyle
+  /// margin_footer,
+  /// SectionStyle
+  /// margin_footer are
+  /// respected. When false, the default values in the Docs editor for header
+  /// and
+  /// footer margin are used.
+  ///
+  /// This property is read-only.
+  core.bool useCustomHeaderFooterMargins;
+
   /// Indicates whether to use the even page header / footer IDs for the even
   /// pages.
+  ///
+  /// This property is read-only.
   core.bool useEvenPageHeaderFooter;
 
   /// Indicates whether to use the first page header / footer IDs for the first
   /// page.
+  ///
+  /// This property is read-only.
   core.bool useFirstPageHeaderFooter;
 
   DocumentStyle();
@@ -1488,6 +1725,12 @@ class DocumentStyle {
     if (_json.containsKey("marginBottom")) {
       marginBottom = new Dimension.fromJson(_json["marginBottom"]);
     }
+    if (_json.containsKey("marginFooter")) {
+      marginFooter = new Dimension.fromJson(_json["marginFooter"]);
+    }
+    if (_json.containsKey("marginHeader")) {
+      marginHeader = new Dimension.fromJson(_json["marginHeader"]);
+    }
     if (_json.containsKey("marginLeft")) {
       marginLeft = new Dimension.fromJson(_json["marginLeft"]);
     }
@@ -1502,6 +1745,9 @@ class DocumentStyle {
     }
     if (_json.containsKey("pageSize")) {
       pageSize = new Size.fromJson(_json["pageSize"]);
+    }
+    if (_json.containsKey("useCustomHeaderFooterMargins")) {
+      useCustomHeaderFooterMargins = _json["useCustomHeaderFooterMargins"];
     }
     if (_json.containsKey("useEvenPageHeaderFooter")) {
       useEvenPageHeaderFooter = _json["useEvenPageHeaderFooter"];
@@ -1538,6 +1784,12 @@ class DocumentStyle {
     if (marginBottom != null) {
       _json["marginBottom"] = (marginBottom).toJson();
     }
+    if (marginFooter != null) {
+      _json["marginFooter"] = (marginFooter).toJson();
+    }
+    if (marginHeader != null) {
+      _json["marginHeader"] = (marginHeader).toJson();
+    }
     if (marginLeft != null) {
       _json["marginLeft"] = (marginLeft).toJson();
     }
@@ -1552,6 +1804,9 @@ class DocumentStyle {
     }
     if (pageSize != null) {
       _json["pageSize"] = (pageSize).toJson();
+    }
+    if (useCustomHeaderFooterMargins != null) {
+      _json["useCustomHeaderFooterMargins"] = useCustomHeaderFooterMargins;
     }
     if (useEvenPageHeaderFooter != null) {
       _json["useEvenPageHeaderFooter"] = useEvenPageHeaderFooter;
@@ -3008,6 +3263,72 @@ class InsertPageBreakRequest {
   }
 }
 
+/// Inserts a section break at the given location.
+///
+/// A newline character will be inserted before the section break.
+class InsertSectionBreakRequest {
+  /// Inserts a newline and a section break at the end of the document body.
+  ///
+  /// Section breaks cannot be inserted inside a footnote, header or footer.
+  /// Because section breaks can only be inserted inside the body, the segment
+  /// ID field must be
+  /// empty.
+  EndOfSegmentLocation endOfSegmentLocation;
+
+  /// Inserts a newline and a section break at a specific index in the
+  /// document.
+  ///
+  /// The section break must be inserted inside the bounds of an existing
+  /// Paragraph. For instance, it cannot be
+  /// inserted at a table's start index (i.e. between the table and its
+  /// preceding paragraph).
+  ///
+  /// Section breaks cannot be inserted inside a table, equation, footnote,
+  /// header, or footer. Since section breaks can only be inserted inside the
+  /// body, the segment ID field
+  /// must be empty.
+  Location location;
+
+  /// The type of section to insert.
+  /// Possible string values are:
+  /// - "SECTION_TYPE_UNSPECIFIED" : The section type is unspecified.
+  /// - "CONTINUOUS" : The section starts immediately after the last paragraph
+  /// of the previous
+  /// section.
+  /// - "NEXT_PAGE" : The section starts on the next page.
+  core.String sectionType;
+
+  InsertSectionBreakRequest();
+
+  InsertSectionBreakRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("endOfSegmentLocation")) {
+      endOfSegmentLocation =
+          new EndOfSegmentLocation.fromJson(_json["endOfSegmentLocation"]);
+    }
+    if (_json.containsKey("location")) {
+      location = new Location.fromJson(_json["location"]);
+    }
+    if (_json.containsKey("sectionType")) {
+      sectionType = _json["sectionType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endOfSegmentLocation != null) {
+      _json["endOfSegmentLocation"] = (endOfSegmentLocation).toJson();
+    }
+    if (location != null) {
+      _json["location"] = (location).toJson();
+    }
+    if (sectionType != null) {
+      _json["sectionType"] = sectionType;
+    }
+    return _json;
+  }
+}
+
 /// Inserts an empty column into a table.
 class InsertTableColumnRequest {
   /// Whether to insert new column to the right of the reference cell location.
@@ -3475,6 +3796,38 @@ class Location {
     }
     if (segmentId != null) {
       _json["segmentId"] = segmentId;
+    }
+    return _json;
+  }
+}
+
+/// Merges cells in a Table.
+class MergeTableCellsRequest {
+  /// The table range specifying which cells of the table to merge.
+  ///
+  /// Any text in the cells being merged will be concatenated and stored in the
+  /// "head" cell of the range. This is the upper-left cell of the range when
+  /// the content direction is left to right, and the upper-right cell of the
+  /// range otherwise.
+  ///
+  /// If the range is non-rectangular (which can occur in some cases where the
+  /// range covers cells that are already merged or where the table is
+  /// non-rectangular), a 400 bad request error is returned.
+  TableRange tableRange;
+
+  MergeTableCellsRequest();
+
+  MergeTableCellsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("tableRange")) {
+      tableRange = new TableRange.fromJson(_json["tableRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tableRange != null) {
+      _json["tableRange"] = (tableRange).toJson();
     }
     return _json;
   }
@@ -4508,7 +4861,9 @@ class ParagraphStyle {
   core.String direction;
 
   /// The heading ID of the paragraph. If empty, then this paragraph is not a
-  /// heading. This property is read-only.
+  /// heading.
+  ///
+  /// This property is read-only.
   core.String headingId;
 
   /// The amount of indentation for the paragraph on the side that corresponds
@@ -4580,7 +4935,9 @@ class ParagraphStyle {
   core.String spacingMode;
 
   /// A list of the tab stops for this paragraph. The list of tab stops is not
-  /// inherited. This property is read-only.
+  /// inherited.
+  ///
+  /// This property is read-only.
   core.List<TabStop> tabStops;
 
   ParagraphStyle();
@@ -5289,8 +5646,137 @@ class ReplaceAllTextResponse {
   }
 }
 
+/// Replaces an existing image with a new image.
+///
+/// Replacing an image removes some image effects from the existing image in
+/// order to
+/// mirror the behavior of the Docs editor.
+class ReplaceImageRequest {
+  /// The ID of the existing image that will be replaced.
+  core.String imageObjectId;
+
+  /// The replacement method.
+  /// Possible string values are:
+  /// - "IMAGE_REPLACE_METHOD_UNSPECIFIED" : Unspecified image replace method.
+  /// This value must not be used.
+  /// - "CENTER_CROP" : Scales and centers the image to fill the bounds of the
+  /// original image.
+  /// The image may be cropped in order to fill the original image's bounds. The
+  /// rendered size of the image will be the same as that of the original image.
+  core.String imageReplaceMethod;
+
+  /// The URI of the new image.
+  ///
+  /// The image is fetched once at insertion time and a copy is stored for
+  /// display inside the document. Images must be less than 50MB in size, cannot
+  /// exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
+  ///
+  /// The provided URI can be at most 2 kB in length. The URI itself is saved
+  /// with the image, and exposed via the ImageProperties.source_uri field.
+  core.String uri;
+
+  ReplaceImageRequest();
+
+  ReplaceImageRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("imageObjectId")) {
+      imageObjectId = _json["imageObjectId"];
+    }
+    if (_json.containsKey("imageReplaceMethod")) {
+      imageReplaceMethod = _json["imageReplaceMethod"];
+    }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (imageObjectId != null) {
+      _json["imageObjectId"] = imageObjectId;
+    }
+    if (imageReplaceMethod != null) {
+      _json["imageReplaceMethod"] = imageReplaceMethod;
+    }
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+/// Replaces the contents of the specified
+/// NamedRange or
+/// NamedRanges with the given replacement
+/// content.
+///
+/// Note that an individual NamedRange may
+/// consist of multiple discontinuous
+/// ranges. In this case, only the
+/// content in the first range will be replaced. The other ranges and their
+/// content will be deleted.
+///
+/// In cases where replacing or deleting any ranges would result in an invalid
+/// document structure, a 400 bad request error is returned.
+class ReplaceNamedRangeContentRequest {
+  /// The ID of the named range whose content will be replaced.
+  ///
+  /// If there is no named range with the given ID a 400 bad request error is
+  /// returned.
+  core.String namedRangeId;
+
+  /// The name of the NamedRanges whose
+  /// content will be replaced.
+  ///
+  /// If there are multiple named ranges with the given name, then
+  /// the content of each one will be replaced. If there are no named ranges
+  /// with the given name, then the request will be a no-op.
+  core.String namedRangeName;
+
+  /// Replaces the content of the specified named range(s) with the given text.
+  core.String text;
+
+  ReplaceNamedRangeContentRequest();
+
+  ReplaceNamedRangeContentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("namedRangeId")) {
+      namedRangeId = _json["namedRangeId"];
+    }
+    if (_json.containsKey("namedRangeName")) {
+      namedRangeName = _json["namedRangeName"];
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (namedRangeId != null) {
+      _json["namedRangeId"] = namedRangeId;
+    }
+    if (namedRangeName != null) {
+      _json["namedRangeName"] = namedRangeName;
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    return _json;
+  }
+}
+
 /// A single update to apply to a document.
 class Request {
+  /// Creates a footer.
+  CreateFooterRequest createFooter;
+
+  /// Creates a footnote.
+  CreateFootnoteRequest createFootnote;
+
+  /// Creates a header.
+  CreateHeaderRequest createHeader;
+
   /// Creates a named range.
   CreateNamedRangeRequest createNamedRange;
 
@@ -5321,6 +5807,9 @@ class Request {
   /// Inserts a page break at the specified location.
   InsertPageBreakRequest insertPageBreak;
 
+  /// Inserts a section break at the specified location.
+  InsertSectionBreakRequest insertSectionBreak;
+
   /// Inserts a table at the specified location.
   InsertTableRequest insertTable;
 
@@ -5333,11 +5822,32 @@ class Request {
   /// Inserts text at the specified location.
   InsertTextRequest insertText;
 
+  /// Merges cells in a table.
+  MergeTableCellsRequest mergeTableCells;
+
   /// Replaces all instances of the specified text.
   ReplaceAllTextRequest replaceAllText;
 
+  /// Replaces an image in the document.
+  ReplaceImageRequest replaceImage;
+
+  /// Replaces the content in a named range.
+  ReplaceNamedRangeContentRequest replaceNamedRangeContent;
+
+  /// Unmerges cells in a table.
+  UnmergeTableCellsRequest unmergeTableCells;
+
+  /// Updates the style of the document.
+  UpdateDocumentStyleRequest updateDocumentStyle;
+
   /// Updates the paragraph style at the specified range.
   UpdateParagraphStyleRequest updateParagraphStyle;
+
+  /// Updates the section style of the specified range.
+  UpdateSectionStyleRequest updateSectionStyle;
+
+  /// Updates the style of table cells.
+  UpdateTableCellStyleRequest updateTableCellStyle;
 
   /// Updates the properties of columns in a table.
   UpdateTableColumnPropertiesRequest updateTableColumnProperties;
@@ -5351,6 +5861,16 @@ class Request {
   Request();
 
   Request.fromJson(core.Map _json) {
+    if (_json.containsKey("createFooter")) {
+      createFooter = new CreateFooterRequest.fromJson(_json["createFooter"]);
+    }
+    if (_json.containsKey("createFootnote")) {
+      createFootnote =
+          new CreateFootnoteRequest.fromJson(_json["createFootnote"]);
+    }
+    if (_json.containsKey("createHeader")) {
+      createHeader = new CreateHeaderRequest.fromJson(_json["createHeader"]);
+    }
     if (_json.containsKey("createNamedRange")) {
       createNamedRange =
           new CreateNamedRangeRequest.fromJson(_json["createNamedRange"]);
@@ -5391,6 +5911,10 @@ class Request {
       insertPageBreak =
           new InsertPageBreakRequest.fromJson(_json["insertPageBreak"]);
     }
+    if (_json.containsKey("insertSectionBreak")) {
+      insertSectionBreak =
+          new InsertSectionBreakRequest.fromJson(_json["insertSectionBreak"]);
+    }
     if (_json.containsKey("insertTable")) {
       insertTable = new InsertTableRequest.fromJson(_json["insertTable"]);
     }
@@ -5405,13 +5929,40 @@ class Request {
     if (_json.containsKey("insertText")) {
       insertText = new InsertTextRequest.fromJson(_json["insertText"]);
     }
+    if (_json.containsKey("mergeTableCells")) {
+      mergeTableCells =
+          new MergeTableCellsRequest.fromJson(_json["mergeTableCells"]);
+    }
     if (_json.containsKey("replaceAllText")) {
       replaceAllText =
           new ReplaceAllTextRequest.fromJson(_json["replaceAllText"]);
     }
+    if (_json.containsKey("replaceImage")) {
+      replaceImage = new ReplaceImageRequest.fromJson(_json["replaceImage"]);
+    }
+    if (_json.containsKey("replaceNamedRangeContent")) {
+      replaceNamedRangeContent = new ReplaceNamedRangeContentRequest.fromJson(
+          _json["replaceNamedRangeContent"]);
+    }
+    if (_json.containsKey("unmergeTableCells")) {
+      unmergeTableCells =
+          new UnmergeTableCellsRequest.fromJson(_json["unmergeTableCells"]);
+    }
+    if (_json.containsKey("updateDocumentStyle")) {
+      updateDocumentStyle =
+          new UpdateDocumentStyleRequest.fromJson(_json["updateDocumentStyle"]);
+    }
     if (_json.containsKey("updateParagraphStyle")) {
       updateParagraphStyle = new UpdateParagraphStyleRequest.fromJson(
           _json["updateParagraphStyle"]);
+    }
+    if (_json.containsKey("updateSectionStyle")) {
+      updateSectionStyle =
+          new UpdateSectionStyleRequest.fromJson(_json["updateSectionStyle"]);
+    }
+    if (_json.containsKey("updateTableCellStyle")) {
+      updateTableCellStyle = new UpdateTableCellStyleRequest.fromJson(
+          _json["updateTableCellStyle"]);
     }
     if (_json.containsKey("updateTableColumnProperties")) {
       updateTableColumnProperties =
@@ -5431,6 +5982,15 @@ class Request {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createFooter != null) {
+      _json["createFooter"] = (createFooter).toJson();
+    }
+    if (createFootnote != null) {
+      _json["createFootnote"] = (createFootnote).toJson();
+    }
+    if (createHeader != null) {
+      _json["createHeader"] = (createHeader).toJson();
+    }
     if (createNamedRange != null) {
       _json["createNamedRange"] = (createNamedRange).toJson();
     }
@@ -5461,6 +6021,9 @@ class Request {
     if (insertPageBreak != null) {
       _json["insertPageBreak"] = (insertPageBreak).toJson();
     }
+    if (insertSectionBreak != null) {
+      _json["insertSectionBreak"] = (insertSectionBreak).toJson();
+    }
     if (insertTable != null) {
       _json["insertTable"] = (insertTable).toJson();
     }
@@ -5473,11 +6036,32 @@ class Request {
     if (insertText != null) {
       _json["insertText"] = (insertText).toJson();
     }
+    if (mergeTableCells != null) {
+      _json["mergeTableCells"] = (mergeTableCells).toJson();
+    }
     if (replaceAllText != null) {
       _json["replaceAllText"] = (replaceAllText).toJson();
     }
+    if (replaceImage != null) {
+      _json["replaceImage"] = (replaceImage).toJson();
+    }
+    if (replaceNamedRangeContent != null) {
+      _json["replaceNamedRangeContent"] = (replaceNamedRangeContent).toJson();
+    }
+    if (unmergeTableCells != null) {
+      _json["unmergeTableCells"] = (unmergeTableCells).toJson();
+    }
+    if (updateDocumentStyle != null) {
+      _json["updateDocumentStyle"] = (updateDocumentStyle).toJson();
+    }
     if (updateParagraphStyle != null) {
       _json["updateParagraphStyle"] = (updateParagraphStyle).toJson();
+    }
+    if (updateSectionStyle != null) {
+      _json["updateSectionStyle"] = (updateSectionStyle).toJson();
+    }
+    if (updateTableCellStyle != null) {
+      _json["updateTableCellStyle"] = (updateTableCellStyle).toJson();
     }
     if (updateTableColumnProperties != null) {
       _json["updateTableColumnProperties"] =
@@ -5495,6 +6079,15 @@ class Request {
 
 /// A single response from an update.
 class Response {
+  /// The result of creating a footer.
+  CreateFooterResponse createFooter;
+
+  /// The result of creating a footnote.
+  CreateFootnoteResponse createFootnote;
+
+  /// The result of creating a header.
+  CreateHeaderResponse createHeader;
+
   /// The result of creating a named range.
   CreateNamedRangeResponse createNamedRange;
 
@@ -5510,6 +6103,16 @@ class Response {
   Response();
 
   Response.fromJson(core.Map _json) {
+    if (_json.containsKey("createFooter")) {
+      createFooter = new CreateFooterResponse.fromJson(_json["createFooter"]);
+    }
+    if (_json.containsKey("createFootnote")) {
+      createFootnote =
+          new CreateFootnoteResponse.fromJson(_json["createFootnote"]);
+    }
+    if (_json.containsKey("createHeader")) {
+      createHeader = new CreateHeaderResponse.fromJson(_json["createHeader"]);
+    }
     if (_json.containsKey("createNamedRange")) {
       createNamedRange =
           new CreateNamedRangeResponse.fromJson(_json["createNamedRange"]);
@@ -5531,6 +6134,15 @@ class Response {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (createFooter != null) {
+      _json["createFooter"] = (createFooter).toJson();
+    }
+    if (createFootnote != null) {
+      _json["createFootnote"] = (createFootnote).toJson();
+    }
+    if (createHeader != null) {
+      _json["createHeader"] = (createHeader).toJson();
+    }
     if (createNamedRange != null) {
       _json["createNamedRange"] = (createNamedRange).toJson();
     }
@@ -5701,6 +6313,69 @@ class SectionStyle {
   /// - "RIGHT_TO_LEFT" : The content goes from right to left.
   core.String contentDirection;
 
+  /// The bottom page margin of the section. If unset, uses margin_bottom from
+  /// DocumentStyle.
+  ///
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  Dimension marginBottom;
+
+  /// The footer margin of the section. If unset, uses margin_footer from
+  /// DocumentStyle. If
+  /// updated, use_custom_header_footer_margins is set
+  /// to true on DocumentStyle. The value of use_custom_header_footer_margins on
+  /// DocumentStyle indicates if a footer margin is being respected for this
+  /// section
+  ///
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  Dimension marginFooter;
+
+  /// The header margin of the section. If unset, uses margin_header from
+  /// DocumentStyle. If
+  /// updated, use_custom_header_footer_margins is set
+  /// to true on DocumentStyle. The value of use_custom_header_footer_margins on
+  /// DocumentStyle indicates if a header margin is being respected for this
+  /// section.
+  ///
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  Dimension marginHeader;
+
+  /// The left page margin of the section. If unset, uses margin_left from
+  /// DocumentStyle.
+  /// Updating left margin causes columns in this section to resize. Since
+  /// the margin affects column width, it is applied before column properties.
+  ///
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  Dimension marginLeft;
+
+  /// The right page margin of the section. If unset, uses margin_right from
+  /// DocumentStyle.
+  /// Updating right margin causes columns in this section to resize. Since
+  /// the margin affects column width, it is applied before column properties.
+  ///
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  Dimension marginRight;
+
+  /// The top page margin of the section. If unset, uses margin_top from
+  /// DocumentStyle.
+  ///
+  /// When updating this property, setting a concrete value is required.
+  /// Unsetting this property results in a 400 bad request error.
+  Dimension marginTop;
+
+  /// Output only. The type of section.
+  /// Possible string values are:
+  /// - "SECTION_TYPE_UNSPECIFIED" : The section type is unspecified.
+  /// - "CONTINUOUS" : The section starts immediately after the last paragraph
+  /// of the previous
+  /// section.
+  /// - "NEXT_PAGE" : The section starts on the next page.
+  core.String sectionType;
+
   SectionStyle();
 
   SectionStyle.fromJson(core.Map _json) {
@@ -5716,6 +6391,27 @@ class SectionStyle {
     if (_json.containsKey("contentDirection")) {
       contentDirection = _json["contentDirection"];
     }
+    if (_json.containsKey("marginBottom")) {
+      marginBottom = new Dimension.fromJson(_json["marginBottom"]);
+    }
+    if (_json.containsKey("marginFooter")) {
+      marginFooter = new Dimension.fromJson(_json["marginFooter"]);
+    }
+    if (_json.containsKey("marginHeader")) {
+      marginHeader = new Dimension.fromJson(_json["marginHeader"]);
+    }
+    if (_json.containsKey("marginLeft")) {
+      marginLeft = new Dimension.fromJson(_json["marginLeft"]);
+    }
+    if (_json.containsKey("marginRight")) {
+      marginRight = new Dimension.fromJson(_json["marginRight"]);
+    }
+    if (_json.containsKey("marginTop")) {
+      marginTop = new Dimension.fromJson(_json["marginTop"]);
+    }
+    if (_json.containsKey("sectionType")) {
+      sectionType = _json["sectionType"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5730,6 +6426,27 @@ class SectionStyle {
     }
     if (contentDirection != null) {
       _json["contentDirection"] = contentDirection;
+    }
+    if (marginBottom != null) {
+      _json["marginBottom"] = (marginBottom).toJson();
+    }
+    if (marginFooter != null) {
+      _json["marginFooter"] = (marginFooter).toJson();
+    }
+    if (marginHeader != null) {
+      _json["marginHeader"] = (marginHeader).toJson();
+    }
+    if (marginLeft != null) {
+      _json["marginLeft"] = (marginLeft).toJson();
+    }
+    if (marginRight != null) {
+      _json["marginRight"] = (marginRight).toJson();
+    }
+    if (marginTop != null) {
+      _json["marginTop"] = (marginTop).toJson();
+    }
+    if (sectionType != null) {
+      _json["sectionType"] = sectionType;
     }
     return _json;
   }
@@ -6627,8 +7344,13 @@ class TableCell {
 }
 
 /// A border around a table cell.
+///
+/// Table cell borders cannot be transparent. To hide a table cell border, make
+/// its width 0.
 class TableCellBorder {
   /// The color of the border.
+  ///
+  /// This color cannot be transparent.
   OptionalColor color;
 
   /// The dash style of the border.
@@ -6739,7 +7461,9 @@ class TableCellStyle {
   /// The top border of the cell.
   TableCellBorder borderTop;
 
-  /// The column span of the cell. This property is read-only.
+  /// The column span of the cell.
+  ///
+  /// This property is read-only.
   core.int columnSpan;
 
   /// The alignment of the content in the table cell. The default alignment
@@ -6772,7 +7496,9 @@ class TableCellStyle {
   /// The top padding of the cell.
   Dimension paddingTop;
 
-  /// The row span of the cell. This property is read-only.
+  /// The row span of the cell.
+  ///
+  /// This property is read-only.
   core.int rowSpan;
 
   TableCellStyle();
@@ -7075,6 +7801,62 @@ class TableOfContents {
     }
     if (suggestedInsertionIds != null) {
       _json["suggestedInsertionIds"] = suggestedInsertionIds;
+    }
+    return _json;
+  }
+}
+
+/// A table range represents a reference to a subset of a table.
+///
+/// It's important to note that the cells specified by a table range do not
+/// necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+/// where all the cells of the last row are merged together. The table looks
+/// like this:
+///
+///
+///      [             ]
+///
+/// A table range with table cell location = (table_start_location, row = 0,
+/// column = 0), row span = 3 and column span = 2 specifies the following cells:
+///
+///       x     x
+///      [ x    x    x ]
+class TableRange {
+  /// The column span of the table range.
+  core.int columnSpan;
+
+  /// The row span of the table range.
+  core.int rowSpan;
+
+  /// The cell location where the table range starts.
+  TableCellLocation tableCellLocation;
+
+  TableRange();
+
+  TableRange.fromJson(core.Map _json) {
+    if (_json.containsKey("columnSpan")) {
+      columnSpan = _json["columnSpan"];
+    }
+    if (_json.containsKey("rowSpan")) {
+      rowSpan = _json["rowSpan"];
+    }
+    if (_json.containsKey("tableCellLocation")) {
+      tableCellLocation =
+          new TableCellLocation.fromJson(_json["tableCellLocation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (columnSpan != null) {
+      _json["columnSpan"] = columnSpan;
+    }
+    if (rowSpan != null) {
+      _json["rowSpan"] = rowSpan;
+    }
+    if (tableCellLocation != null) {
+      _json["tableCellLocation"] = (tableCellLocation).toJson();
     }
     return _json;
   }
@@ -7618,6 +8400,81 @@ class TextStyleSuggestionState {
   }
 }
 
+/// Unmerges cells in a Table.
+class UnmergeTableCellsRequest {
+  /// The table range specifying which cells of the table to unmerge.
+  ///
+  /// All merged cells in this range will be unmerged, and cells that are
+  /// already
+  /// unmerged will not be affected. If the range has no merged cells, the
+  /// request will do nothing.
+  ///
+  /// If there is text in any of the merged cells, the text will remain in the
+  /// "head" cell of the resulting block of unmerged cells. The "head" cell is
+  /// the upper-left cell when the content direction is from left to right, and
+  /// the upper-right otherwise.
+  TableRange tableRange;
+
+  UnmergeTableCellsRequest();
+
+  UnmergeTableCellsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("tableRange")) {
+      tableRange = new TableRange.fromJson(_json["tableRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tableRange != null) {
+      _json["tableRange"] = (tableRange).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates the DocumentStyle.
+class UpdateDocumentStyleRequest {
+  /// The styles to set on the document.
+  ///
+  /// Certain document style changes may cause other changes in order to mirror
+  /// the behavior of the Docs editor. See the documentation of DocumentStyle
+  /// for more information.
+  DocumentStyle documentStyle;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `document_style` is
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field.
+  ///
+  /// For example to update the background, set `fields` to `"background"`.
+  core.String fields;
+
+  UpdateDocumentStyleRequest();
+
+  UpdateDocumentStyleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("documentStyle")) {
+      documentStyle = new DocumentStyle.fromJson(_json["documentStyle"]);
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (documentStyle != null) {
+      _json["documentStyle"] = (documentStyle).toJson();
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    return _json;
+  }
+}
+
 /// Update the styling of all paragraphs that overlap with the given range.
 class UpdateParagraphStyleRequest {
   /// The fields that should be updated.
@@ -7668,6 +8525,136 @@ class UpdateParagraphStyleRequest {
     }
     if (range != null) {
       _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates the SectionStyle.
+class UpdateSectionStyleRequest {
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `section_style` is
+  /// implied and must not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field.
+  ///
+  /// For example to update the left margin, set `fields` to `"margin_left"`.
+  core.String fields;
+
+  /// The range overlapping the sections to style.
+  ///
+  /// Because section breaks can only be inserted inside the body, the segment
+  /// ID field must be empty.
+  Range range;
+
+  /// The styles to  be set on the section.
+  ///
+  /// Certain section style changes may cause other changes in order to mirror
+  /// the behavior of the Docs editor. See the documentation of SectionStyle for
+  /// more information.
+  SectionStyle sectionStyle;
+
+  UpdateSectionStyleRequest();
+
+  UpdateSectionStyleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("range")) {
+      range = new Range.fromJson(_json["range"]);
+    }
+    if (_json.containsKey("sectionStyle")) {
+      sectionStyle = new SectionStyle.fromJson(_json["sectionStyle"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    if (sectionStyle != null) {
+      _json["sectionStyle"] = (sectionStyle).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates the style of a range of table cells.
+class UpdateTableCellStyleRequest {
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `tableCellStyle` is implied
+  /// and should not be specified. A single `"*"` can be used as short-hand for
+  /// listing every field.
+  ///
+  /// For example to update the table cell background color, set `fields` to
+  /// `"backgroundColor"`.
+  ///
+  /// To reset a property to its default value, include its field name in the
+  /// field mask but leave the field itself unset.
+  core.String fields;
+
+  /// The style to set on the table cells.
+  ///
+  /// When updating borders, if a cell shares a border with an adjacent cell,
+  /// the
+  /// corresponding border property of the adjacent cell is updated as well.
+  /// Borders that are merged and invisible are not updated.
+  ///
+  /// Since updating a border shared by adjacent cells in the same request can
+  /// cause conflicting border updates, border updates are applied in the
+  /// following order:
+  ///
+  /// - `border_right`
+  /// - `border_left`
+  /// - `border_bottom`
+  /// - `border_top`
+  TableCellStyle tableCellStyle;
+
+  /// The table range representing the subset of the table to which the updates
+  /// are applied.
+  TableRange tableRange;
+
+  /// The location where the table starts in the document. When specified, the
+  /// updates are applied to all the cells in the table.
+  Location tableStartLocation;
+
+  UpdateTableCellStyleRequest();
+
+  UpdateTableCellStyleRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("tableCellStyle")) {
+      tableCellStyle = new TableCellStyle.fromJson(_json["tableCellStyle"]);
+    }
+    if (_json.containsKey("tableRange")) {
+      tableRange = new TableRange.fromJson(_json["tableRange"]);
+    }
+    if (_json.containsKey("tableStartLocation")) {
+      tableStartLocation = new Location.fromJson(_json["tableStartLocation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (tableCellStyle != null) {
+      _json["tableCellStyle"] = (tableCellStyle).toJson();
+    }
+    if (tableRange != null) {
+      _json["tableRange"] = (tableRange).toJson();
+    }
+    if (tableStartLocation != null) {
+      _json["tableStartLocation"] = (tableStartLocation).toJson();
     }
     return _json;
   }
@@ -7815,6 +8802,8 @@ class UpdateTextStyleRequest {
   ///
   /// If the range fully contains a paragraph belonging to a list, the
   /// paragraph's bullet is also updated with the matching text style.
+  ///
+  /// Ranges cannot be inserted inside a relative UpdateTextStyleRequest.
   Range range;
 
   /// The styles to set on the text.

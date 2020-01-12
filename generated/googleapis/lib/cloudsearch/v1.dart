@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudsearch.v1;
 
@@ -31,11 +31,11 @@ class CloudsearchApi {
   static const CloudSearchScope =
       "https://www.googleapis.com/auth/cloud_search";
 
-  /// New Service: https://www.googleapis.com/auth/cloud_search.debug
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchDebugScope =
       "https://www.googleapis.com/auth/cloud_search.debug";
 
-  /// New Service: https://www.googleapis.com/auth/cloud_search.indexing
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchIndexingScope =
       "https://www.googleapis.com/auth/cloud_search.indexing";
 
@@ -43,24 +43,23 @@ class CloudsearchApi {
   static const CloudSearchQueryScope =
       "https://www.googleapis.com/auth/cloud_search.query";
 
-  /// New Service: https://www.googleapis.com/auth/cloud_search.settings
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchSettingsScope =
       "https://www.googleapis.com/auth/cloud_search.settings";
 
-  /// New Service:
-  /// https://www.googleapis.com/auth/cloud_search.settings.indexing
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchSettingsIndexingScope =
       "https://www.googleapis.com/auth/cloud_search.settings.indexing";
 
-  /// New Service: https://www.googleapis.com/auth/cloud_search.settings.query
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchSettingsQueryScope =
       "https://www.googleapis.com/auth/cloud_search.settings.query";
 
-  /// New Service: https://www.googleapis.com/auth/cloud_search.stats
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchStatsScope =
       "https://www.googleapis.com/auth/cloud_search.stats";
 
-  /// New Service: https://www.googleapis.com/auth/cloud_search.stats.indexing
+  /// Index and serve your organization's data with Cloud Search
   static const CloudSearchStatsIndexingScope =
       "https://www.googleapis.com/auth/cloud_search.stats.indexing";
 
@@ -112,6 +111,8 @@ class DebugDatasourcesItemsResourceApi {
       : _requester = client;
 
   /// Checks whether an item is accessible by specified principal.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -176,6 +177,8 @@ class DebugDatasourcesItemsResourceApi {
   /// Fetches the item whose viewUrl exactly matches that of the URL provided
   /// in the request.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -236,6 +239,8 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
       : _requester = client;
 
   /// List all unmapped identities for a specific item.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -328,18 +333,13 @@ class DebugIdentitysourcesItemsResourceApi {
 
   /// Lists names of items associated with an unmapped identity.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// Request parameters:
   ///
   /// [parent] - The name of the identity source, in the following format:
   /// identitysources/{source_id}}
   /// Value must have pattern "^identitysources/[^/]+$".
-  ///
-  /// [groupResourceName] - null
-  ///
-  /// [userResourceName] - null
-  ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request, if any.
   ///
   /// [pageSize] - Maximum number of items to fetch in a request.
   /// Defaults to 100.
@@ -347,6 +347,13 @@ class DebugIdentitysourcesItemsResourceApi {
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field.
   /// Otherwise, ignore this field.
+  ///
+  /// [groupResourceName] - null
+  ///
+  /// [userResourceName] - null
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous List
+  /// request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -360,11 +367,11 @@ class DebugIdentitysourcesItemsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListItemNamesForUnmappedIdentityResponse>
       listForunmappedidentity(core.String parent,
-          {core.String groupResourceName,
+          {core.int pageSize,
+          core.bool debugOptions_enableDebugging,
+          core.String groupResourceName,
           core.String userResourceName,
           core.String pageToken,
-          core.int pageSize,
-          core.bool debugOptions_enableDebugging,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -376,6 +383,14 @@ class DebugIdentitysourcesItemsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (debugOptions_enableDebugging != null) {
+      _queryParams["debugOptions.enableDebugging"] = [
+        "${debugOptions_enableDebugging}"
+      ];
+    }
     if (groupResourceName != null) {
       _queryParams["groupResourceName"] = [groupResourceName];
     }
@@ -384,14 +399,6 @@ class DebugIdentitysourcesItemsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams["debugOptions.enableDebugging"] = [
-        "${debugOptions_enableDebugging}"
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -419,6 +426,8 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
       : _requester = client;
 
   /// Lists unmapped user identities for an identity source.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -524,6 +533,8 @@ class IndexingDatasourcesResourceApi {
 
   /// Deletes the schema of a data source.
   ///
+  /// **Note:** This API requires an admin or service account to execute.
+  ///
   /// Request parameters:
   ///
   /// [name] - Name of the data source to delete Schema.  Format:
@@ -580,6 +591,8 @@ class IndexingDatasourcesResourceApi {
 
   /// Gets the schema of a data source.
   ///
+  /// **Note:** This API requires an admin or service account to execute.
+  ///
   /// Request parameters:
   ///
   /// [name] - Name of the data source to get Schema.  Format:
@@ -634,7 +647,11 @@ class IndexingDatasourcesResourceApi {
     return _response.then((data) => new Schema.fromJson(data));
   }
 
-  /// Updates the schema of a data source.
+  /// Updates the schema of a data source. This method does not perform
+  /// incremental updates to the schema. Instead, this method updates the schema
+  /// by overwriting the entire schema.
+  ///
+  /// **Note:** This API requires an admin or service account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -695,7 +712,9 @@ class IndexingDatasourcesItemsResourceApi {
       : _requester = client;
 
   /// Deletes Item resource for the
-  /// specified resource name.
+  /// specified resource name. This API requires an admin or service account
+  /// to execute. The service account used is the one whitelisted in the
+  /// corresponding data source.
   ///
   /// Request parameters:
   ///
@@ -785,6 +804,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// Deletes all items in a queue. This method is useful for deleting stale
   /// items.
   ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -837,6 +859,9 @@ class IndexingDatasourcesItemsResourceApi {
   }
 
   /// Gets Item resource by item name.
+  ///
+  /// This API requires an admin or service account to execute.  The service
+  /// account used is the one whitelisted in the corresponding data source.
   ///
   /// Request parameters:
   ///
@@ -904,6 +929,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// This method does not support partial updates.  Fields with no provided
   /// values are cleared out in the Cloud Search index.
   ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -958,6 +986,9 @@ class IndexingDatasourcesItemsResourceApi {
 
   /// Lists all or a subset of Item resources.
   ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
+  ///
   /// Request parameters:
   ///
   /// [name] - Name of the Data Source to list Items.  Format:
@@ -983,9 +1014,21 @@ class IndexingDatasourcesItemsResourceApi {
   /// following fields:
   /// name,
   /// version,
+  /// queue.
   /// metadata.hash,
+  /// metadata.title,
+  /// metadata.sourceRepositoryURL,
+  /// metadata.objectType,
+  /// metadata.createTime,
+  /// metadata.updateTime,
+  /// metadata.contentLanguage,
+  /// metadata.mimeType,
   /// structured_data.hash,
-  /// content.hash.
+  /// content.hash,
+  /// itemType,
+  /// itemStatus.code,
+  /// itemStatus.processingError.code,
+  /// itemStatus.repositoryError.type,
   /// <br />If this value is false, then all the fields are populated in Item.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1075,6 +1118,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// Items automatically become available (unreserved) after 4 hours even if no
   /// update or push method is called.
   ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1127,6 +1173,9 @@ class IndexingDatasourcesItemsResourceApi {
   }
 
   /// Pushes an item onto a queue for later polling and updating.
+  ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1185,6 +1234,9 @@ class IndexingDatasourcesItemsResourceApi {
   /// polled.  This method is useful for resetting the indexing queue
   /// after a connector has been restarted.
   ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1237,9 +1289,12 @@ class IndexingDatasourcesItemsResourceApi {
   }
 
   /// Creates an upload session for uploading item content. For items smaller
-  /// than 100 KiB, it's easier to embed the content
+  /// than 100 KB, it's easier to embed the content
   /// inline within
-  /// update.
+  /// an index request.
+  ///
+  /// This API requires an admin or service account to execute. The service
+  /// account used is the one whitelisted in the corresponding data source.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1301,19 +1356,28 @@ class MediaResourceApi {
   /// Uploads media for indexing.
   ///
   /// The upload endpoint supports direct and resumable upload protocols and
-  /// is intended for large items that can not be inlined during index requests.
-  /// To
-  /// index large content:
+  /// is intended for large items that can not be
+  /// [inlined during index
+  /// requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+  /// To index large content:
   ///
-  /// 1. Call upload to begin
-  ///    a session and get the item reference.
-  /// 1. Upload the content using the item reference's resource name.
-  /// 1. Call index with the item
-  ///    reference as the content.
+  /// 1. Call
+  ///    indexing.datasources.items.upload
+  ///    with the resource name to begin an upload session and retrieve the
+  ///    UploadItemRef.
+  /// 1. Call media.upload to upload the content using the same resource name
+  /// from step 1.
+  /// 1. Call indexing.datasources.items.index
+  ///    to index the item. Populate the
+  /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
+  ///    with the UploadItemRef from step 1.
+  ///
   ///
   /// For additional information, see
   /// [Create a content connector using the REST
   /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
+  ///
+  ///   **Note:** This API requires a service account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1439,6 +1503,8 @@ class QueryResourceApi {
   /// G Suite Apps, such as Gmail or Google Drive, or they can come from data
   /// that you have indexed from a third party.
   ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1481,6 +1547,8 @@ class QueryResourceApi {
   }
 
   /// Provides suggestions for autocompleting the query.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1531,18 +1599,9 @@ class QuerySourcesResourceApi {
 
   /// Returns list of sources that user can use for Search and Suggest APIs.
   ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
   /// Request parameters:
-  ///
-  /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
-  /// or "sr-Latn".
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// For translations.
-  ///
-  /// When specified, the documents in search results are biased towards the
-  /// specified language.
-  /// Suggest API does not use this parameter. It autocompletes only based on
-  /// characters in the query.
   ///
   /// [requestOptions_searchApplicationId] - Id of the application created using
   /// SearchApplicationsService.
@@ -1552,13 +1611,32 @@ class QuerySourcesResourceApi {
   /// "Australia/Sydney". These IDs are defined by
   /// [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
   /// project, and currently available in the file
-  /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml)
+  /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
+  /// This field is used to correctly interpret date and time queries.
+  /// If this field is not specified, the default time zone (UTC) is used.
   ///
   /// [pageToken] - Number of sources to return in the response.
   ///
   /// [requestOptions_debugOptions_enableDebugging] - If you are asked by Google
   /// to help with debugging, set this field.
   /// Otherwise, ignore this field.
+  ///
+  /// [requestOptions_languageCode] - The BCP-47 language code, such as "en-US"
+  /// or "sr-Latn".
+  /// For more information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// For translations.
+  ///
+  /// Set this field using the language set in browser or for the page. In the
+  /// event that the user's language preference is known, set this field to the
+  /// known user language.
+  ///
+  /// When specified, the documents in search results are biased towards the
+  /// specified language.
+  ///
+  /// The suggest API does not use this parameter. Instead, suggest
+  /// autocompletes
+  /// only based on characters in the query.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1571,11 +1649,11 @@ class QuerySourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQuerySourcesResponse> list(
-      {core.String requestOptions_languageCode,
-      core.String requestOptions_searchApplicationId,
+      {core.String requestOptions_searchApplicationId,
       core.String requestOptions_timeZone,
       core.String pageToken,
       core.bool requestOptions_debugOptions_enableDebugging,
+      core.String requestOptions_languageCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1584,11 +1662,6 @@ class QuerySourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (requestOptions_languageCode != null) {
-      _queryParams["requestOptions.languageCode"] = [
-        requestOptions_languageCode
-      ];
-    }
     if (requestOptions_searchApplicationId != null) {
       _queryParams["requestOptions.searchApplicationId"] = [
         requestOptions_searchApplicationId
@@ -1603,6 +1676,11 @@ class QuerySourcesResourceApi {
     if (requestOptions_debugOptions_enableDebugging != null) {
       _queryParams["requestOptions.debugOptions.enableDebugging"] = [
         "${requestOptions_debugOptions_enableDebugging}"
+      ];
+    }
+    if (requestOptions_languageCode != null) {
+      _queryParams["requestOptions.languageCode"] = [
+        requestOptions_languageCode
       ];
     }
     if ($fields != null) {
@@ -1640,6 +1718,8 @@ class SettingsDatasourcesResourceApi {
       : _requester = client;
 
   /// Creates a datasource.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1682,6 +1762,8 @@ class SettingsDatasourcesResourceApi {
   }
 
   /// Deletes a datasource.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -1737,6 +1819,8 @@ class SettingsDatasourcesResourceApi {
 
   /// Gets a datasource.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// Request parameters:
   ///
   /// [name] - Name of the datasource resource.
@@ -1791,17 +1875,19 @@ class SettingsDatasourcesResourceApi {
 
   /// Lists datasources.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// Request parameters:
+  ///
+  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
+  /// debugging, set this field.
+  /// Otherwise, ignore this field.
   ///
   /// [pageToken] - Starting index of the results.
   ///
   /// [pageSize] - Maximum number of datasources to fetch in a request.
   /// The max value is 100.
   /// <br />The default value is 10
-  ///
-  /// [debugOptions_enableDebugging] - If you are asked by Google to help with
-  /// debugging, set this field.
-  /// Otherwise, ignore this field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1814,9 +1900,9 @@ class SettingsDatasourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourceResponse> list(
-      {core.String pageToken,
+      {core.bool debugOptions_enableDebugging,
+      core.String pageToken,
       core.int pageSize,
-      core.bool debugOptions_enableDebugging,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1825,16 +1911,16 @@ class SettingsDatasourcesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (debugOptions_enableDebugging != null) {
+      _queryParams["debugOptions.enableDebugging"] = [
+        "${debugOptions_enableDebugging}"
+      ];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (debugOptions_enableDebugging != null) {
-      _queryParams["debugOptions.enableDebugging"] = [
-        "${debugOptions_enableDebugging}"
-      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1852,6 +1938,8 @@ class SettingsDatasourcesResourceApi {
   }
 
   /// Updates a datasource.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1912,6 +2000,8 @@ class SettingsSearchapplicationsResourceApi {
 
   /// Creates a search application.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1954,6 +2044,8 @@ class SettingsSearchapplicationsResourceApi {
   }
 
   /// Deletes a search application.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -2009,6 +2101,8 @@ class SettingsSearchapplicationsResourceApi {
 
   /// Gets the specified search application.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// Request parameters:
   ///
   /// [name] - Name of the search application.
@@ -2062,6 +2156,8 @@ class SettingsSearchapplicationsResourceApi {
   }
 
   /// Lists all search applications.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// Request parameters:
   ///
@@ -2127,6 +2223,8 @@ class SettingsSearchapplicationsResourceApi {
   /// Resets a search application to default settings. This will return an empty
   /// response.
   ///
+  /// **Note:** This API requires an admin account to execute.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -2179,6 +2277,8 @@ class SettingsSearchapplicationsResourceApi {
   }
 
   /// Updates a search application.
+  ///
+  /// **Note:** This API requires an admin account to execute.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2233,12 +2333,18 @@ class StatsResourceApi {
   final commons.ApiRequester _requester;
 
   StatsIndexResourceApi get index => new StatsIndexResourceApi(_requester);
+  StatsQueryResourceApi get query => new StatsQueryResourceApi(_requester);
+  StatsSessionResourceApi get session =>
+      new StatsSessionResourceApi(_requester);
+  StatsUserResourceApi get user => new StatsUserResourceApi(_requester);
 
   StatsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Gets indexed item statistics aggreggated across all data sources. This
   /// API only returns statistics for previous dates; it doesn't return
   /// statistics for the current day.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
   ///
   /// Request parameters:
   ///
@@ -2314,6 +2420,244 @@ class StatsResourceApi {
     return _response
         .then((data) => new GetCustomerIndexStatsResponse.fromJson(data));
   }
+
+  /// Get the query statistics for customer.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetCustomerQueryStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetCustomerQueryStatsResponse> getQuery(
+      {core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_month,
+      core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/stats/query';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetCustomerQueryStatsResponse.fromJson(data));
+  }
+
+  /// Get the # of search sessions, % of successful sessions with a click query
+  /// statistics for customer.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetCustomerSessionStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetCustomerSessionStatsResponse> getSession(
+      {core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_month,
+      core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/stats/session';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetCustomerSessionStatsResponse.fromJson(data));
+  }
+
+  /// Get the users statistics for customer.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetCustomerUserStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetCustomerUserStatsResponse> getUser(
+      {core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_month,
+      core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/stats/user';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetCustomerUserStatsResponse.fromJson(data));
+  }
 }
 
 class StatsIndexResourceApi {
@@ -2333,11 +2677,17 @@ class StatsIndexDatasourcesResourceApi {
 
   /// Gets indexed item statistics for a single data source.
   ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource id of the data source to retrieve statistics for,
   /// in the following format: "datasources/{source_id}"
   /// Value must have pattern "^datasources/[^/]+$".
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
@@ -2348,10 +2698,6 @@ class StatsIndexDatasourcesResourceApi {
   /// and month.
   ///
   /// [toDate_month] - Month of date. Must be from 1 to 12.
-  ///
-  /// [toDate_year] - Year of date. Must be from 1 to 9999.
-  ///
-  /// [fromDate_month] - Month of date. Must be from 1 to 12.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2364,12 +2710,12 @@ class StatsIndexDatasourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetDataSourceIndexStatsResponse> get(core.String name,
-      {core.int fromDate_day,
+      {core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
       core.int fromDate_year,
       core.int toDate_day,
       core.int toDate_month,
-      core.int toDate_year,
-      core.int fromDate_month,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2381,8 +2727,108 @@ class StatsIndexDatasourcesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
     if (fromDate_day != null) {
       _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/stats/index/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetDataSourceIndexStatsResponse.fromJson(data));
+  }
+}
+
+class StatsQueryResourceApi {
+  final commons.ApiRequester _requester;
+
+  StatsQuerySearchapplicationsResourceApi get searchapplications =>
+      new StatsQuerySearchapplicationsResourceApi(_requester);
+
+  StatsQueryResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class StatsQuerySearchapplicationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  StatsQuerySearchapplicationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the query statistics for search application.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource id of the search application query stats, in the
+  /// following
+  /// format: searchapplications/{application_id}
+  /// Value must have pattern "^searchapplications/[^/]+$".
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetSearchApplicationQueryStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetSearchApplicationQueryStatsResponse> get(core.String name,
+      {core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_month,
+      core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
     if (fromDate_year != null) {
       _queryParams["fromDate.year"] = ["${fromDate_year}"];
@@ -2399,11 +2845,14 @@ class StatsIndexDatasourcesResourceApi {
     if (fromDate_month != null) {
       _queryParams["fromDate.month"] = ["${fromDate_month}"];
     }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'v1/stats/index/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/stats/query/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2411,8 +2860,215 @@ class StatsIndexDatasourcesResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new GetDataSourceIndexStatsResponse.fromJson(data));
+    return _response.then(
+        (data) => new GetSearchApplicationQueryStatsResponse.fromJson(data));
+  }
+}
+
+class StatsSessionResourceApi {
+  final commons.ApiRequester _requester;
+
+  StatsSessionSearchapplicationsResourceApi get searchapplications =>
+      new StatsSessionSearchapplicationsResourceApi(_requester);
+
+  StatsSessionResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class StatsSessionSearchapplicationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  StatsSessionSearchapplicationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the # of search sessions, % of successful sessions with a click query
+  /// statistics for search application.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource id of the search application session stats, in the
+  /// following
+  /// format: searchapplications/{application_id}
+  /// Value must have pattern "^searchapplications/[^/]+$".
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetSearchApplicationSessionStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetSearchApplicationSessionStatsResponse> get(core.String name,
+      {core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_month,
+      core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/stats/session/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GetSearchApplicationSessionStatsResponse.fromJson(data));
+  }
+}
+
+class StatsUserResourceApi {
+  final commons.ApiRequester _requester;
+
+  StatsUserSearchapplicationsResourceApi get searchapplications =>
+      new StatsUserSearchapplicationsResourceApi(_requester);
+
+  StatsUserResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class StatsUserSearchapplicationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  StatsUserSearchapplicationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Get the users statistics for search application.
+  ///
+  /// **Note:** This API requires a standard end user account to execute.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource id of the search application session stats, in the
+  /// following
+  /// format: searchapplications/{application_id}
+  /// Value must have pattern "^searchapplications/[^/]+$".
+  ///
+  /// [fromDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [toDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [toDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [toDate_year] - Year of date. Must be from 1 to 9999.
+  ///
+  /// [fromDate_month] - Month of date. Must be from 1 to 12.
+  ///
+  /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
+  /// and month.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetSearchApplicationUserStatsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetSearchApplicationUserStatsResponse> get(core.String name,
+      {core.int fromDate_year,
+      core.int toDate_day,
+      core.int toDate_month,
+      core.int toDate_year,
+      core.int fromDate_month,
+      core.int fromDate_day,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (fromDate_year != null) {
+      _queryParams["fromDate.year"] = ["${fromDate_year}"];
+    }
+    if (toDate_day != null) {
+      _queryParams["toDate.day"] = ["${toDate_day}"];
+    }
+    if (toDate_month != null) {
+      _queryParams["toDate.month"] = ["${toDate_month}"];
+    }
+    if (toDate_year != null) {
+      _queryParams["toDate.year"] = ["${toDate_year}"];
+    }
+    if (fromDate_month != null) {
+      _queryParams["fromDate.month"] = ["${fromDate_month}"];
+    }
+    if (fromDate_day != null) {
+      _queryParams["fromDate.day"] = ["${fromDate_day}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/stats/user/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GetSearchApplicationUserStatsResponse.fromJson(data));
   }
 }
 
@@ -2565,6 +3221,122 @@ class CustomerIndexStats {
     if (itemCountByStatus != null) {
       _json["itemCountByStatus"] =
           itemCountByStatus.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class CustomerQueryStats {
+  /// Date for which query stats were calculated. Stats calculated on the next
+  /// day close to midnight are returned.
+  Date date;
+  core.List<QueryCountByStatus> queryCountByStatus;
+
+  CustomerQueryStats();
+
+  CustomerQueryStats.fromJson(core.Map _json) {
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("queryCountByStatus")) {
+      queryCountByStatus = (_json["queryCountByStatus"] as core.List)
+          .map<QueryCountByStatus>(
+              (value) => new QueryCountByStatus.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (queryCountByStatus != null) {
+      _json["queryCountByStatus"] =
+          queryCountByStatus.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class CustomerSessionStats {
+  /// Date for which session stats were calculated. Stats calculated on the next
+  /// day close to midnight are returned.
+  Date date;
+
+  /// The count of search sessions on the day
+  core.String searchSessionsCount;
+
+  CustomerSessionStats();
+
+  CustomerSessionStats.fromJson(core.Map _json) {
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("searchSessionsCount")) {
+      searchSessionsCount = _json["searchSessionsCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (searchSessionsCount != null) {
+      _json["searchSessionsCount"] = searchSessionsCount;
+    }
+    return _json;
+  }
+}
+
+class CustomerUserStats {
+  /// Date for which session stats were calculated. Stats calculated on the next
+  /// day close to midnight are returned.
+  Date date;
+
+  /// The count of unique active users in the past one day
+  core.String oneDayActiveUsersCount;
+
+  /// The count of unique active users in the past seven days
+  core.String sevenDaysActiveUsersCount;
+
+  /// The count of unique active users in the past thirty days
+  core.String thirtyDaysActiveUsersCount;
+
+  CustomerUserStats();
+
+  CustomerUserStats.fromJson(core.Map _json) {
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("oneDayActiveUsersCount")) {
+      oneDayActiveUsersCount = _json["oneDayActiveUsersCount"];
+    }
+    if (_json.containsKey("sevenDaysActiveUsersCount")) {
+      sevenDaysActiveUsersCount = _json["sevenDaysActiveUsersCount"];
+    }
+    if (_json.containsKey("thirtyDaysActiveUsersCount")) {
+      thirtyDaysActiveUsersCount = _json["thirtyDaysActiveUsersCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (oneDayActiveUsersCount != null) {
+      _json["oneDayActiveUsersCount"] = oneDayActiveUsersCount;
+    }
+    if (sevenDaysActiveUsersCount != null) {
+      _json["sevenDaysActiveUsersCount"] = sevenDaysActiveUsersCount;
+    }
+    if (thirtyDaysActiveUsersCount != null) {
+      _json["thirtyDaysActiveUsersCount"] = thirtyDaysActiveUsersCount;
     }
     return _json;
   }
@@ -3866,6 +4638,78 @@ class GetCustomerIndexStatsResponse {
   }
 }
 
+class GetCustomerQueryStatsResponse {
+  core.List<CustomerQueryStats> stats;
+
+  GetCustomerQueryStatsResponse();
+
+  GetCustomerQueryStatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("stats")) {
+      stats = (_json["stats"] as core.List)
+          .map<CustomerQueryStats>(
+              (value) => new CustomerQueryStats.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stats != null) {
+      _json["stats"] = stats.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class GetCustomerSessionStatsResponse {
+  core.List<CustomerSessionStats> stats;
+
+  GetCustomerSessionStatsResponse();
+
+  GetCustomerSessionStatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("stats")) {
+      stats = (_json["stats"] as core.List)
+          .map<CustomerSessionStats>(
+              (value) => new CustomerSessionStats.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stats != null) {
+      _json["stats"] = stats.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class GetCustomerUserStatsResponse {
+  core.List<CustomerUserStats> stats;
+
+  GetCustomerUserStatsResponse();
+
+  GetCustomerUserStatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("stats")) {
+      stats = (_json["stats"] as core.List)
+          .map<CustomerUserStats>(
+              (value) => new CustomerUserStats.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stats != null) {
+      _json["stats"] = stats.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class GetDataSourceIndexStatsResponse {
   /// Summary of indexed item counts, one for each day in the requested range.
   core.List<DataSourceIndexStats> stats;
@@ -3891,165 +4735,73 @@ class GetDataSourceIndexStatsResponse {
   }
 }
 
-/// Gmail Action restricts (i.e. read/replied/snoozed).
-class GmailActionRestrict {
-  ///
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "UNREAD" : is:unread
-  /// - "READ" : is:read
-  /// - "REPLIED_TO" : label:^io_re
-  /// - "MUTED" : label:mute
-  core.String type;
+class GetSearchApplicationQueryStatsResponse {
+  core.List<SearchApplicationQueryStats> stats;
 
-  GmailActionRestrict();
+  GetSearchApplicationQueryStatsResponse();
 
-  GmailActionRestrict.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+  GetSearchApplicationQueryStatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("stats")) {
+      stats = (_json["stats"] as core.List)
+          .map<SearchApplicationQueryStats>(
+              (value) => new SearchApplicationQueryStats.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (type != null) {
-      _json["type"] = type;
+    if (stats != null) {
+      _json["stats"] = stats.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/// Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).
-class GmailAttachmentRestrict {
-  ///
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "HAS_ATTACHMENT" : has:attachment
-  /// - "HAS_PHOTO" : has photos (changes to filename:(jpg OR jpeg OR png)  when
-  /// typed)
-  /// - "HAS_DRIVE" : has:drive
-  /// - "HAS_DOCUMENT" : has:document
-  /// - "HAS_SPREADSHEET" : has:spreadsheet
-  /// - "HAS_PRESENTATION" : has:presentation
-  /// - "HAS_YOUTUBE" : has:youtube
-  /// - "HAS_PDF" : filename:pdf
-  core.String type;
+class GetSearchApplicationSessionStatsResponse {
+  core.List<SearchApplicationSessionStats> stats;
 
-  GmailAttachmentRestrict();
+  GetSearchApplicationSessionStatsResponse();
 
-  GmailAttachmentRestrict.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+  GetSearchApplicationSessionStatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("stats")) {
+      stats = (_json["stats"] as core.List)
+          .map<SearchApplicationSessionStats>(
+              (value) => new SearchApplicationSessionStats.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (type != null) {
-      _json["type"] = type;
+    if (stats != null) {
+      _json["stats"] = stats.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/// Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).
-class GmailFolderRestrict {
-  ///
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "IN_SENT" : in:sent
-  /// - "IN_DRAFT" : in:draft
-  /// - "CHATS" : label:chats
-  /// - "IN_TRASH" : in:trash
-  /// - "USER_GENERATED_LABEL" : label:<user generated>
-  core.String type;
+class GetSearchApplicationUserStatsResponse {
+  core.List<SearchApplicationUserStats> stats;
 
-  GmailFolderRestrict();
+  GetSearchApplicationUserStatsResponse();
 
-  GmailFolderRestrict.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
+  GetSearchApplicationUserStatsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("stats")) {
+      stats = (_json["stats"] as core.List)
+          .map<SearchApplicationUserStats>(
+              (value) => new SearchApplicationUserStats.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-/// Gmail Intelligent restricts (i.e. smartlabels, important).
-class GmailIntelligentRestrict {
-  ///
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "SOCIAL" : category:social
-  /// - "UPDATES" : category:updates
-  /// - "FORUMS" : category:forums
-  /// - "PROMOTIONS" : category:promotions
-  /// - "IMPORTANT" : is:important
-  /// - "FLIGHT_RESERVATION" : label:^cob_sm_flightreservation
-  /// - "LODGING_RESERVATION" : label:^cob_sm_lodgingreservation
-  /// - "CAR_RESERVATION" : label:^cob_sm_rentalcarreservation
-  /// - "BUS_RESERVATION" : label:^cob_sm_busreservation
-  core.String type;
-
-  GmailIntelligentRestrict();
-
-  GmailIntelligentRestrict.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (type != null) {
-      _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-/// Gmail Time restricts (i.e. received today, this week).
-class GmailTimeRestrict {
-  ///
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "FROM_THIS_WEEK" : newer_than:7d
-  /// - "OLDER_THAN_ONE_YEAR" : older_than:1y
-  /// - "FROM_TODAY" : newer_than:1d
-  /// - "FROM_YESTERDAY" : newer_than:2d older_than:1d
-  /// - "FROM_THIS_MONTH" : newer_than:30d
-  /// - "FROM_CERTAIN_MONTH" : This will read as something like "From November"
-  /// and will have operator
-  /// before:X after:Y
-  /// - "OLDER_THAN_TODAY" : older_than:1d
-  /// - "OLDER_THAN_YESTERDAY" : older_than:2d
-  /// - "OLDER_THAN_A_WEEK" : older_than:7d
-  /// - "OLDER_THAN_A_MONTH" : older_than:30d
-  core.String type;
-
-  GmailTimeRestrict();
-
-  GmailTimeRestrict.fromJson(core.Map _json) {
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (type != null) {
-      _json["type"] = type;
+    if (stats != null) {
+      _json["stats"] = stats.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5965,7 +6717,7 @@ class PollItemsRequest {
   DebugOptions debugOptions;
 
   /// Maximum number of items to return.
-  /// <br />The maximum and the default value is 1000
+  /// <br />The maximum value is 100 and the default value is 20.
   core.int limit;
 
   /// Queue name to fetch items from.  If unspecified, PollItems will
@@ -6198,6 +6950,9 @@ class PropertyDefinition {
   /// properties.
   core.bool isSortable;
 
+  /// Indicates that the property can be used for generating query suggestions.
+  core.bool isSuggestable;
+
   /// Indicates that users can perform wildcard search for this
   /// property. Only supported for Text properties. IsReturnable must be true to
   /// set this option. In a given datasource maximum of 5 properties can be
@@ -6265,6 +7020,9 @@ class PropertyDefinition {
     if (_json.containsKey("isSortable")) {
       isSortable = _json["isSortable"];
     }
+    if (_json.containsKey("isSuggestable")) {
+      isSuggestable = _json["isSuggestable"];
+    }
     if (_json.containsKey("isWildcardSearchable")) {
       isWildcardSearchable = _json["isWildcardSearchable"];
     }
@@ -6320,6 +7078,9 @@ class PropertyDefinition {
     }
     if (isSortable != null) {
       _json["isSortable"] = isSortable;
+    }
+    if (isSuggestable != null) {
+      _json["isSuggestable"] = isSuggestable;
     }
     if (isWildcardSearchable != null) {
       _json["isWildcardSearchable"] = isWildcardSearchable;
@@ -6550,6 +7311,36 @@ class PushItemRequest {
   }
 }
 
+class QueryCountByStatus {
+  core.String count;
+
+  /// This represents the http status code.
+  core.int statusCode;
+
+  QueryCountByStatus();
+
+  QueryCountByStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("statusCode")) {
+      statusCode = _json["statusCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (statusCode != null) {
+      _json["statusCode"] = statusCode;
+    }
+    return _json;
+  }
+}
+
 class QueryInterpretation {
   ///
   /// Possible string values are:
@@ -6558,12 +7349,29 @@ class QueryInterpretation {
   /// is not used to fetch the search results.
   /// - "BLEND" : The natural language results is mixed with results from
   /// original query.
-  /// - "REPLACE" : The results only contain natural language results.
+  /// - "REPLACE" : The results from original query are replaced. The reason for
+  /// replacing
+  /// the results from original query is populated in the 'Reason' field below.
   core.String interpretationType;
 
-  /// The interpretation of the query used in search. For example, query "email
-  /// from john" will be interpreted as "from:john source:mail"
+  /// The interpretation of the query used in search. For example, queries with
+  /// natural language intent like "email from john" will be interpreted as
+  /// "from:john source:mail". This field will not be filled when the reason is
+  /// NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY.
   core.String interpretedQuery;
+
+  /// The reason for interpretation of the query. This field will not be
+  /// UNSPECIFIED if the interpretation type is not NONE.
+  /// Possible string values are:
+  /// - "UNSPECIFIED"
+  /// - "QUERY_HAS_NATURAL_LANGUAGE_INTENT" : Natural language interpretation of
+  /// the query is used to fetch the search
+  /// results.
+  /// - "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY" : A much broader version of
+  /// the query is used to retrieve the search
+  /// results since enough results were not found for the user query.
+  /// Interpreted query will be empty for this case.
+  core.String reason;
 
   QueryInterpretation();
 
@@ -6573,6 +7381,9 @@ class QueryInterpretation {
     }
     if (_json.containsKey("interpretedQuery")) {
       interpretedQuery = _json["interpretedQuery"];
+    }
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
     }
   }
 
@@ -6584,6 +7395,9 @@ class QueryInterpretation {
     }
     if (interpretedQuery != null) {
       _json["interpretedQuery"] = interpretedQuery;
+    }
+    if (reason != null) {
+      _json["reason"] = reason;
     }
     return _json;
   }
@@ -6597,11 +7411,20 @@ class QueryInterpretationOptions {
   /// interpretation only applies to predefined datasources.
   core.bool disableNlInterpretation;
 
+  /// Enable this flag to turn off all internal optimizations like natural
+  /// language (NL) interpretation of queries, supplemental result retrieval,
+  /// and usage of synonyms including custom ones.
+  /// Nl interpretation will be disabled if either one of the two flags is true.
+  core.bool enableVerbatimMode;
+
   QueryInterpretationOptions();
 
   QueryInterpretationOptions.fromJson(core.Map _json) {
     if (_json.containsKey("disableNlInterpretation")) {
       disableNlInterpretation = _json["disableNlInterpretation"];
+    }
+    if (_json.containsKey("enableVerbatimMode")) {
+      enableVerbatimMode = _json["enableVerbatimMode"];
     }
   }
 
@@ -6610,6 +7433,9 @@ class QueryInterpretationOptions {
         new core.Map<core.String, core.Object>();
     if (disableNlInterpretation != null) {
       _json["disableNlInterpretation"] = disableNlInterpretation;
+    }
+    if (enableVerbatimMode != null) {
+      _json["enableVerbatimMode"] = enableVerbatimMode;
     }
     return _json;
   }
@@ -6901,10 +7727,16 @@ class RequestOptions {
   /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
   /// For translations.
   ///
+  /// Set this field using the language set in browser or for the page. In the
+  /// event that the user's language preference is known, set this field to the
+  /// known user language.
+  ///
   /// When specified, the documents in search results are biased towards the
   /// specified language.
-  /// Suggest API does not use this parameter. It autocompletes only based on
-  /// characters in the query.
+  ///
+  /// The suggest API does not use this parameter. Instead, suggest
+  /// autocompletes
+  /// only based on characters in the query.
   core.String languageCode;
 
   /// Id of the application created using SearchApplicationsService.
@@ -6914,7 +7746,9 @@ class RequestOptions {
   /// "Australia/Sydney". These IDs are defined by
   /// [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
   /// project, and currently available in the file
-  /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml)
+  /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
+  /// This field is used to correctly interpret date and time queries.
+  /// If this field is not specified, the default time zone (UTC) is used.
   core.String timeZone;
 
   RequestOptions();
@@ -7009,13 +7843,6 @@ class RestrictItem {
   /// Drive Types.
   DriveMimeTypeRestrict driveMimeTypeRestrict;
   DriveTimeSpanRestrict driveTimeSpanRestrict;
-  GmailActionRestrict gmailActionRestrict;
-  GmailAttachmentRestrict gmailAttachmentRestrict;
-
-  /// Gmail Types.
-  GmailFolderRestrict gmailFolderRestrict;
-  GmailIntelligentRestrict gmailIntelligentRestrict;
-  GmailTimeRestrict gmailTimeRestrict;
 
   /// The search restrict (e.g. "after:2017-09-11 before:2017-09-12").
   core.String searchOperator;
@@ -7039,26 +7866,6 @@ class RestrictItem {
       driveTimeSpanRestrict =
           new DriveTimeSpanRestrict.fromJson(_json["driveTimeSpanRestrict"]);
     }
-    if (_json.containsKey("gmailActionRestrict")) {
-      gmailActionRestrict =
-          new GmailActionRestrict.fromJson(_json["gmailActionRestrict"]);
-    }
-    if (_json.containsKey("gmailAttachmentRestrict")) {
-      gmailAttachmentRestrict = new GmailAttachmentRestrict.fromJson(
-          _json["gmailAttachmentRestrict"]);
-    }
-    if (_json.containsKey("gmailFolderRestrict")) {
-      gmailFolderRestrict =
-          new GmailFolderRestrict.fromJson(_json["gmailFolderRestrict"]);
-    }
-    if (_json.containsKey("gmailIntelligentRestrict")) {
-      gmailIntelligentRestrict = new GmailIntelligentRestrict.fromJson(
-          _json["gmailIntelligentRestrict"]);
-    }
-    if (_json.containsKey("gmailTimeRestrict")) {
-      gmailTimeRestrict =
-          new GmailTimeRestrict.fromJson(_json["gmailTimeRestrict"]);
-    }
     if (_json.containsKey("searchOperator")) {
       searchOperator = _json["searchOperator"];
     }
@@ -7078,21 +7885,6 @@ class RestrictItem {
     }
     if (driveTimeSpanRestrict != null) {
       _json["driveTimeSpanRestrict"] = (driveTimeSpanRestrict).toJson();
-    }
-    if (gmailActionRestrict != null) {
-      _json["gmailActionRestrict"] = (gmailActionRestrict).toJson();
-    }
-    if (gmailAttachmentRestrict != null) {
-      _json["gmailAttachmentRestrict"] = (gmailAttachmentRestrict).toJson();
-    }
-    if (gmailFolderRestrict != null) {
-      _json["gmailFolderRestrict"] = (gmailFolderRestrict).toJson();
-    }
-    if (gmailIntelligentRestrict != null) {
-      _json["gmailIntelligentRestrict"] = (gmailIntelligentRestrict).toJson();
-    }
-    if (gmailTimeRestrict != null) {
-      _json["gmailTimeRestrict"] = (gmailTimeRestrict).toJson();
     }
     if (searchOperator != null) {
       _json["searchOperator"] = searchOperator;
@@ -7460,6 +8252,122 @@ class SearchApplication {
     if (sourceConfig != null) {
       _json["sourceConfig"] =
           sourceConfig.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class SearchApplicationQueryStats {
+  /// Date for which query stats were calculated. Stats calculated on the next
+  /// day close to midnight are returned.
+  Date date;
+  core.List<QueryCountByStatus> queryCountByStatus;
+
+  SearchApplicationQueryStats();
+
+  SearchApplicationQueryStats.fromJson(core.Map _json) {
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("queryCountByStatus")) {
+      queryCountByStatus = (_json["queryCountByStatus"] as core.List)
+          .map<QueryCountByStatus>(
+              (value) => new QueryCountByStatus.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (queryCountByStatus != null) {
+      _json["queryCountByStatus"] =
+          queryCountByStatus.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class SearchApplicationSessionStats {
+  /// Date for which session stats were calculated. Stats calculated on the next
+  /// day close to midnight are returned.
+  Date date;
+
+  /// The count of search sessions on the day
+  core.String searchSessionsCount;
+
+  SearchApplicationSessionStats();
+
+  SearchApplicationSessionStats.fromJson(core.Map _json) {
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("searchSessionsCount")) {
+      searchSessionsCount = _json["searchSessionsCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (searchSessionsCount != null) {
+      _json["searchSessionsCount"] = searchSessionsCount;
+    }
+    return _json;
+  }
+}
+
+class SearchApplicationUserStats {
+  /// Date for which session stats were calculated. Stats calculated on the next
+  /// day close to midnight are returned.
+  Date date;
+
+  /// The count of unique active users in the past one day
+  core.String oneDayActiveUsersCount;
+
+  /// The count of unique active users in the past seven days
+  core.String sevenDaysActiveUsersCount;
+
+  /// The count of unique active users in the past thirty days
+  core.String thirtyDaysActiveUsersCount;
+
+  SearchApplicationUserStats();
+
+  SearchApplicationUserStats.fromJson(core.Map _json) {
+    if (_json.containsKey("date")) {
+      date = new Date.fromJson(_json["date"]);
+    }
+    if (_json.containsKey("oneDayActiveUsersCount")) {
+      oneDayActiveUsersCount = _json["oneDayActiveUsersCount"];
+    }
+    if (_json.containsKey("sevenDaysActiveUsersCount")) {
+      sevenDaysActiveUsersCount = _json["sevenDaysActiveUsersCount"];
+    }
+    if (_json.containsKey("thirtyDaysActiveUsersCount")) {
+      thirtyDaysActiveUsersCount = _json["thirtyDaysActiveUsersCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (date != null) {
+      _json["date"] = (date).toJson();
+    }
+    if (oneDayActiveUsersCount != null) {
+      _json["oneDayActiveUsersCount"] = oneDayActiveUsersCount;
+    }
+    if (sevenDaysActiveUsersCount != null) {
+      _json["sevenDaysActiveUsersCount"] = sevenDaysActiveUsersCount;
+    }
+    if (thirtyDaysActiveUsersCount != null) {
+      _json["thirtyDaysActiveUsersCount"] = thirtyDaysActiveUsersCount;
     }
     return _json;
   }
@@ -8037,13 +8945,6 @@ class SourceConfig {
 /// and source diversity in search results, you can set a condition to reduce
 /// repetitive results by source.
 class SourceCrowdingConfig {
-  /// Use a field to control results crowding. For example, if you want to
-  /// control overly similar results from Gmail topics, use `thread_id`.
-  /// For similar pages from Google Sites, you can use `webspace_id`.
-  /// When matching query results contain the same field value in
-  /// `GenericMetadata`, crowding limits are set on those records.
-  core.String field;
-
   /// Maximum number of results allowed from a source.
   /// No limits will be set on results if this value is less than or equal to 0.
   core.int numResults;
@@ -8052,41 +8953,25 @@ class SourceCrowdingConfig {
   /// No limits will be set on results if this value is less than or equal to 0.
   core.int numSuggestions;
 
-  /// Control results by content source. This option limits the total number
-  /// of results from a given source and ignores field-based crowding control.
-  core.bool source;
-
   SourceCrowdingConfig();
 
   SourceCrowdingConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = _json["field"];
-    }
     if (_json.containsKey("numResults")) {
       numResults = _json["numResults"];
     }
     if (_json.containsKey("numSuggestions")) {
       numSuggestions = _json["numSuggestions"];
     }
-    if (_json.containsKey("source")) {
-      source = _json["source"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (field != null) {
-      _json["field"] = field;
-    }
     if (numResults != null) {
       _json["numResults"] = numResults;
     }
     if (numSuggestions != null) {
       _json["numSuggestions"] = numSuggestions;
-    }
-    if (source != null) {
-      _json["source"] = source;
     }
     return _json;
   }
@@ -8333,11 +9218,11 @@ class StructuredResult {
 
 /// Request of suggest API.
 class SuggestRequest {
-  /// The sources to use for suggestions. If not specified, all data sources
-  /// from the current search application are used.
-  /// Suggestions are based on Gmail titles. Suggestions from third party
-  /// sources
-  /// are not available.
+  /// The sources to use for suggestions. If not specified, the data sources
+  /// are taken from the current search application.
+  ///
+  /// NOTE: Suggestions are supported only for third party data sources and
+  /// people (i.e. PredefinedSource.PERSON).
   core.List<DataSourceRestriction> dataSourceRestrictions;
 
   /// Partial query for which autocomplete suggestions will be shown.
@@ -8808,7 +9693,8 @@ class UpdateSchemaRequest {
   /// The new schema for the source.
   Schema schema;
 
-  /// If true, the request will be validated without side effects.
+  /// If true, the schema will be checked for validity,
+  /// but will not be registered with the data source, even if valid.
   core.bool validateOnly;
 
   UpdateSchemaRequest();

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.dfareporting.v3_3;
 
@@ -3141,7 +3141,7 @@ class ChangeLogsResourceApi {
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "1000".
   ///
-  /// [minChangeTime] - Select only change logs whose change time is before the
+  /// [minChangeTime] - Select only change logs whose change time is after the
   /// specified minChangeTime.The time should be formatted as an RFC3339
   /// date/time string. For example, for 10:54 PM on July 18th, 2015, in the
   /// America/New York time zone, the format is "2015-07-18T22:54:00-04:00". In
@@ -13862,6 +13862,7 @@ class Account {
   /// - "48" for HRK
   /// - "49" for MXN
   /// - "50" for NGN
+  /// - "51" for EGP
   core.String currencyId;
 
   /// Default placement dimensions for this account.
@@ -17157,11 +17158,11 @@ class Conversion {
   /// A list of the alphanumeric encrypted user IDs. Any user ID with exposure
   /// prior to the conversion timestamp will be used in the inserted conversion.
   /// If no such user ID is found then the conversion will be rejected with
-  /// NO_COOKIE_MATCH_FOUND error. When set, encryptionInfo should also be
-  /// specified. This field may only be used when calling batchinsert; it is not
-  /// supported by batchupdate. This field is mutually exclusive with
-  /// encryptedUserId, matchId, mobileDeviceId and gclid. This or
-  /// encryptedUserId or matchId or mobileDeviceId or gclid is a required field.
+  /// INVALID_ARGUMENT error. When set, encryptionInfo should also be specified.
+  /// This field may only be used when calling batchinsert; it is not supported
+  /// by batchupdate. This field is mutually exclusive with encryptedUserId,
+  /// matchId, mobileDeviceId and gclid. This or encryptedUserId or matchId or
+  /// mobileDeviceId or gclid is a required field.
   core.List<core.String> encryptedUserIdCandidates;
 
   /// Floodlight Activity ID of this conversion. This is a required field.
@@ -29119,6 +29120,25 @@ class ReportsConfiguration {
   /// - "11" for "America/Los_Angeles"
   /// - "12" for "Pacific/Auckland"
   /// - "13" for "America/Sao_Paulo"
+  /// - "16" for "America/Asuncion"
+  /// - "17" for "America/Chicago"
+  /// - "18" for "America/Denver"
+  /// - "19" for "America/St_Johns"
+  /// - "20" for "Asia/Dhaka"
+  /// - "21" for "Asia/Jakarta"
+  /// - "22" for "Asia/Kabul"
+  /// - "23" for "Asia/Karachi"
+  /// - "24" for "Asia/Calcutta"
+  /// - "25" for "Asia/Pyongyang"
+  /// - "26" for "Asia/Rangoon"
+  /// - "27" for "Atlantic/Cape_Verde"
+  /// - "28" for "Atlantic/South_Georgia"
+  /// - "29" for "Australia/Adelaide"
+  /// - "30" for "Australia/Lord_Howe"
+  /// - "31" for "Europe/Moscow"
+  /// - "32" for "Pacific/Kiritimati"
+  /// - "35" for "Pacific/Norfolk"
+  /// - "36" for "Pacific/Tongatapu"
   core.String reportGenerationTimeZoneId;
 
   ReportsConfiguration();

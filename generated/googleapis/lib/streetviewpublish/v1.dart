@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.streetviewpublish.v1;
 
@@ -165,8 +165,8 @@ class PhotoResourceApi {
   ///
   /// [photoId] - Required. ID of the Photo.
   ///
-  /// [view] - Specifies if a download URL for the photo bytes should be
-  /// returned in the
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
@@ -308,8 +308,8 @@ class PhotoResourceApi {
   ///
   /// [id] - Required. A unique identifier for a photo.
   ///
-  /// [updateMask] - Mask that identifies fields on the photo metadata to
-  /// update.
+  /// [updateMask] - Required. Mask that identifies fields on the photo metadata
+  /// to update.
   /// If not present, the old Photo
   /// metadata is entirely replaced with the
   /// new Photo metadata in this request.
@@ -465,8 +465,12 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [view] - Specifies if a download URL for the photo bytes should be
-  /// returned in the
+  /// [photoIds] - Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
+  ///
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
@@ -479,10 +483,6 @@ class PhotosResourceApi {
   /// If language_code is unspecified, the user's language preference for Google
   /// services is used.
   ///
-  /// [photoIds] - Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -494,9 +494,9 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String view,
+      {core.List<core.String> photoIds,
+      core.String view,
       core.String languageCode,
-      core.List<core.String> photoIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -505,14 +505,14 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (photoIds != null) {
+      _queryParams["photoIds"] = photoIds;
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
-    }
-    if (photoIds != null) {
-      _queryParams["photoIds"] = photoIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -615,25 +615,6 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [view] - Specifies if a download URL for the photos bytes should be
-  /// returned in the
-  /// Photos response.
-  /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-  ///
-  /// [filter] - The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-  ///
-  /// The only filter supported at the moment is `placeId`.
-  ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more
-  /// information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  /// If language_code is unspecified, the user's language preference for Google
-  /// services is used.
-  ///
   /// [pageToken] - The
   /// nextPageToken
   /// value returned from a previous
@@ -646,6 +627,25 @@ class PhotosResourceApi {
   /// The number of photos returned in the response may be less than `pageSize`
   /// if the number of photos that belong to the user is less than `pageSize`.
   ///
+  /// [view] - Required. Specifies if a download URL for the photos bytes should
+  /// be returned in the
+  /// Photos response.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  ///
+  /// [filter] - Required. The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+  ///
+  /// The only filter supported at the moment is `placeId`.
+  ///
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// For more
+  /// information, see
+  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+  /// If language_code is unspecified, the user's language preference for Google
+  /// services is used.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -657,11 +657,11 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String view,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String view,
       core.String filter,
       core.String languageCode,
-      core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -670,6 +670,12 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
@@ -678,12 +684,6 @@ class PhotosResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1095,7 +1095,7 @@ class Photo {
   core.String downloadUrl;
 
   /// Output only. Status in Google Maps, whether this photo was published or
-  /// rejected.
+  /// rejected. Not currently populated.
   /// Possible string values are:
   /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
   /// - "PUBLISHED" : The photo is published to the public through Google Maps.
@@ -1499,7 +1499,7 @@ class UpdatePhotoRequest {
   /// new metadata.
   Photo photo;
 
-  /// Mask that identifies fields on the photo metadata to update.
+  /// Required. Mask that identifies fields on the photo metadata to update.
   /// If not present, the old Photo
   /// metadata is entirely replaced with the
   /// new Photo metadata in this request.

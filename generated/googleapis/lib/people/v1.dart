@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.people.v1;
 
@@ -36,6 +36,10 @@ class PeopleApi {
   /// View your email addresses
   static const UserEmailsReadScope =
       "https://www.googleapis.com/auth/user.emails.read";
+
+  /// See your education, work history and org info
+  static const UserOrganizationReadScope =
+      "https://www.googleapis.com/auth/user.organization.read";
 
   /// View your phone numbers
   static const UserPhonenumbersReadScope =
@@ -76,10 +80,12 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [maxMembers] - Specifies the maximum number of members to return for each
-  /// group.
+  /// [maxMembers] - Optional. Specifies the maximum number of members to return
+  /// for each group. Defaults
+  /// to 0 if not set, which will return zero members.
   ///
-  /// [resourceNames] - The resource names of the contact groups to get.
+  /// [resourceNames] - Required. The resource names of the contact groups to
+  /// get.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,11 +178,12 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - The resource name of the contact group to delete.
+  /// [resourceName] - Required. The resource name of the contact group to
+  /// delete.
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
-  /// [deleteContacts] - Set to true to also delete the contacts in the
-  /// specified group.
+  /// [deleteContacts] - Optional. Set to true to also delete the contacts in
+  /// the specified group.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -223,10 +230,12 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - The resource name of the contact group to get.
+  /// [resourceName] - Required. The resource name of the contact group to get.
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
-  /// [maxMembers] - Specifies the maximum number of members to return.
+  /// [maxMembers] - Optional. Specifies the maximum number of members to
+  /// return. Defaults to 0 if not
+  /// set, which will return zero members.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -273,15 +282,17 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [syncToken] - A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
-  /// [pageSize] - The maximum number of resources to return.
+  /// [pageSize] - Optional. The maximum number of resources to return. Valid
+  /// values are between 1 and
+  /// 1000, inclusive. Defaults to 30 if not set or set to 0.
+  ///
+  /// [syncToken] - A sync token, returned by a previous call to
+  /// `contactgroups.list`.
+  /// Only resources changed since the sync token was created will be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,9 +305,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String syncToken,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String syncToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -305,14 +316,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -400,7 +411,8 @@ class ContactGroupsMembersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - The resource name of the contact group to modify.
+  /// [resourceName] - Required. The resource name of the contact group to
+  /// modify.
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -462,8 +474,6 @@ class PeopleResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The resource name of the owning person resource.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -474,8 +484,7 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> createContact(Person request,
-      {core.String parent, core.String $fields}) {
+  async.Future<Person> createContact(Person request, {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -485,9 +494,6 @@ class PeopleResourceApi {
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
-    }
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -508,7 +514,7 @@ class PeopleResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - The resource name of the contact to delete.
+  /// [resourceName] - Required. The resource name of the contact to delete.
   /// Value must have pattern "^people/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -550,28 +556,18 @@ class PeopleResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Provides information about a person by specifying a resource name. Use
-  /// `people/me` to indicate the authenticated user.
-  /// <br>
-  /// The request throws a 400 error if 'personFields' is not specified.
+  /// Delete a contact's photo.
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - The resource name of the person to provide information
-  /// about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///  `people/`<var>account_id</var>.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  /// [resourceName] - Required. The resource name of the contact whose photo
+  /// will be deleted.
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [personFields] - **Required.** A field mask to restrict which fields on
-  /// the person are
-  /// returned. Multiple fields can be specified by separating them with commas.
-  /// Valid values are:
+  /// [personFields] - Optional. A field mask to restrict which fields on the
+  /// person are returned. Multiple
+  /// fields can be specified by separating them with commas. Defaults to empty
+  /// if not set, which will skip the post mutate get. Valid values are:
   ///
   /// * addresses
   /// * ageRanges
@@ -603,10 +599,107 @@ class PeopleResourceApi {
   /// * urls
   /// * userDefined
   ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeleteContactPhotoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeleteContactPhotoResponse> deleteContactPhoto(
+      core.String resourceName,
+      {core.String personFields,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resourceName') +
+        ':deleteContactPhoto';
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new DeleteContactPhotoResponse.fromJson(data));
+  }
+
+  /// Provides information about a person by specifying a resource name. Use
+  /// `people/me` to indicate the authenticated user.
+  /// <br>
+  /// The request throws a 400 error if 'personFields' is not specified.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceName] - Required. The resource name of the person to provide
+  /// information about.
+  ///
+  /// - To get information about the authenticated user, specify `people/me`.
+  /// - To get information about a google account, specify
+  ///  `people/`<var>account_id</var>.
+  /// - To get information about a contact, specify the resource name that
+  ///   identifies the contact as returned by
+  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  /// Value must have pattern "^people/[^/]+$".
+  ///
+  /// [personFields] - Required. A field mask to restrict which fields on the
+  /// person are returned. Multiple
+  /// fields can be specified by separating them with commas. Valid values are:
+  ///
+  /// * addresses
+  /// * ageRanges
+  /// * biographies
+  /// * birthdays
+  /// * braggingRights
+  /// * coverPhotos
+  /// * emailAddresses
+  /// * events
+  /// * genders
+  /// * imClients
+  /// * interests
+  /// * locales
+  /// * memberships
+  /// * metadata
+  /// * names
+  /// * nicknames
+  /// * occupations
+  /// * organizations
+  /// * phoneNumbers
+  /// * photos
+  /// * relations
+  /// * relationshipInterests
+  /// * relationshipStatuses
+  /// * residences
+  /// * sipAddresses
+  /// * skills
+  /// * taglines
+  /// * urls
+  /// * userDefined
+  ///
+  /// [requestMask_includeField] - Required. Comma-separated list of person
+  /// fields to be included in the response. Each
+  /// path should start with `person.`: for example, `person.names` or
+  /// `person.photos`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,10 +754,21 @@ class PeopleResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [personFields] - **Required.** A field mask to restrict which fields on
-  /// each person are
-  /// returned. Multiple fields can be specified by separating them with commas.
-  /// Valid values are:
+  /// [resourceNames] - Required. The resource names of the people to provide
+  /// information about.
+  ///
+  /// - To get information about the authenticated user, specify `people/me`.
+  /// - To get information about a google account, specify
+  ///   `people/`<var>account_id</var>.
+  /// - To get information about a contact, specify the resource name that
+  ///   identifies the contact as returned by
+  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  ///
+  /// You can include up to 50 resource names in one request.
+  ///
+  /// [personFields] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple
+  /// fields can be specified by separating them with commas. Valid values are:
   ///
   /// * addresses
   /// * ageRanges
@@ -696,22 +800,10 @@ class PeopleResourceApi {
   /// * urls
   /// * userDefined
   ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
-  ///
-  /// [resourceNames] - The resource names of the people to provide information
-  /// about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///   `people/`<var>account_id</var>.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  ///
-  /// You can include up to 50 resource names in one request.
+  /// [requestMask_includeField] - Required. Comma-separated list of person
+  /// fields to be included in the response. Each
+  /// path should start with `person.`: for example, `person.names` or
+  /// `person.photos`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -724,9 +816,9 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetPeopleResponse> getBatchGet(
-      {core.String personFields,
+      {core.List<core.String> resourceNames,
+      core.String personFields,
       core.String requestMask_includeField,
-      core.List<core.String> resourceNames,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -735,14 +827,14 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
+    }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -767,10 +859,11 @@ class PeopleResourceApi {
   /// The request throws a 400 error if `person.metadata.sources` is not
   /// specified for the contact to be updated.
   /// <br>
-  /// The request throws a 412 error if `person.metadata.sources.etag` is
-  /// different than the contact's etag, which indicates the contact has changed
-  /// since its data was read. Clients should get the latest person and re-apply
-  /// their updates to the latest person.
+  /// The request throws a 400 error with an error with reason
+  /// `"failedPrecondition"` if `person.metadata.sources.etag` is different than
+  /// the contact's etag, which indicates the contact has changed since its data
+  /// was read. Clients should get the latest person and re-apply their updates
+  /// to the latest person.
   ///
   /// [request] - The metadata request object.
   ///
@@ -782,9 +875,9 @@ class PeopleResourceApi {
   /// `people/`<var>person_id</var>.
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [updatePersonFields] - **Required.** A field mask to restrict which fields
-  /// on the person are
-  /// updated. Multiple fields can be specified by separating them with commas.
+  /// [updatePersonFields] - Required. A field mask to restrict which fields on
+  /// the person are updated. Multiple
+  /// fields can be specified by separating them with commas.
   /// All updated fields will be replaced. Valid values are:
   ///
   /// * addresses
@@ -852,6 +945,59 @@ class PeopleResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Person.fromJson(data));
   }
+
+  /// Update a contact's photo.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceName] - Required. Person resource name
+  /// Value must have pattern "^people/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UpdateContactPhotoResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UpdateContactPhotoResponse> updateContactPhoto(
+      UpdateContactPhotoRequest request, core.String resourceName,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resourceName == null) {
+      throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resourceName') +
+        ':updateContactPhoto';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UpdateContactPhotoResponse.fromJson(data));
+  }
 }
 
 class PeopleConnectionsResourceApi {
@@ -867,8 +1013,8 @@ class PeopleConnectionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [resourceName] - The resource name to return connections for. Only
-  /// `people/me` is valid.
+  /// [resourceName] - Required. The resource name to return connections for.
+  /// Only `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
   ///
   /// [requestSyncToken] - Whether the response should include a sync token,
@@ -879,24 +1025,23 @@ class PeopleConnectionsResourceApi {
   ///
   /// [pageToken] - The token of the page to be returned.
   ///
-  /// [pageSize] - The number of connections to include in the response. Valid
-  /// values are
-  /// between 1 and 2000, inclusive. Defaults to 100.
+  /// [requestMask_includeField] - Required. Comma-separated list of person
+  /// fields to be included in the response. Each
+  /// path should start with `person.`: for example, `person.names` or
+  /// `person.photos`.
   ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
+  /// [pageSize] - Optional. The number of connections to include in the
+  /// response. Valid values are
+  /// between 1 and 2000, inclusive. Defaults to 100 if not set or set to 0.
   ///
   /// [syncToken] - A sync token returned by a previous call to
   /// `people.connections.list`.
   /// Only resources changed since the sync token was created will be returned.
   /// Sync requests that specify `sync_token` have an additional rate limit.
   ///
-  /// [personFields] - **Required.** A field mask to restrict which fields on
-  /// each person are
-  /// returned. Multiple fields can be specified by separating them with commas.
-  /// Valid values are:
+  /// [personFields] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple
+  /// fields can be specified by separating them with commas. Valid values are:
   ///
   /// * addresses
   /// * ageRanges
@@ -950,8 +1095,8 @@ class PeopleConnectionsResourceApi {
   async.Future<ListConnectionsResponse> list(core.String resourceName,
       {core.bool requestSyncToken,
       core.String pageToken,
-      core.int pageSize,
       core.String requestMask_includeField,
+      core.int pageSize,
       core.String syncToken,
       core.String personFields,
       core.String sortOrder,
@@ -972,11 +1117,11 @@ class PeopleConnectionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
@@ -1021,7 +1166,8 @@ class Address {
   /// The extended address of the address; for example, the apartment number.
   core.String extendedAddress;
 
-  /// The read-only type of the address translated and formatted in the viewer's
+  /// Output only. The type of the address translated and formatted in the
+  /// viewer's
   /// account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -1325,30 +1471,33 @@ class ContactGroup {
   /// resource. Used for web cache validation.
   core.String etag;
 
-  /// The read-only name translated and formatted in the viewer's account locale
+  /// Output only. The name translated and formatted in the viewer's account
+  /// locale
   /// or the `Accept-Language` HTTP header locale for system groups names.
   /// Group names set by the owner are the same as name.
   core.String formattedName;
 
-  /// The read-only contact group type.
+  /// Output only. The contact group type.
   /// Possible string values are:
   /// - "GROUP_TYPE_UNSPECIFIED" : Unspecified.
   /// - "USER_CONTACT_GROUP" : User defined contact group.
   /// - "SYSTEM_CONTACT_GROUP" : System defined contact group.
   core.String groupType;
 
-  /// The total number of contacts in the group irrespective of max members in
+  /// Output only. The total number of contacts in the group irrespective of max
+  /// members in
   /// specified in the request.
   core.int memberCount;
 
-  /// The list of contact person resource names that are members of the contact
+  /// Output only. The list of contact person resource names that are members of
+  /// the contact
   /// group. The field is not populated for LIST requests and can only be
   /// updated
   /// through the
   /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
   core.List<core.String> memberResourceNames;
 
-  /// Metadata about the contact group.
+  /// Output only. Metadata about the contact group.
   ContactGroupMetadata metadata;
 
   /// The contact group name set by the group owner or a system provided name
@@ -1422,7 +1571,7 @@ class ContactGroup {
 
 /// A Google contact group membership.
 class ContactGroupMembership {
-  /// The read-only contact group ID for the contact group membership.
+  /// Output only. The contact group ID for the contact group membership.
   core.String contactGroupId;
 
   /// The resource name for the contact group, assigned by the server. An ASCII
@@ -1457,14 +1606,15 @@ class ContactGroupMembership {
   }
 }
 
-/// The read-only metadata about a contact group.
+/// The metadata about a contact group.
 class ContactGroupMetadata {
-  /// True if the contact group resource has been deleted. Populated only for
+  /// Output only. True if the contact group resource has been deleted.
+  /// Populated only for
   /// [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests
   /// that include a sync token.
   core.bool deleted;
 
-  /// The time the group was last updated.
+  /// Output only. The time the group was last updated.
   core.String updateTime;
 
   ContactGroupMetadata();
@@ -1532,7 +1682,7 @@ class ContactGroupResponse {
   }
 }
 
-/// A person's read-only cover photo. A large image shown on the person's
+/// A person's cover photo. A large image shown on the person's
 /// profile page that represents who they are or what they care about.
 class CoverPhoto {
   /// True if the cover photo is the default cover photo;
@@ -1577,7 +1727,7 @@ class CoverPhoto {
 
 /// A request to create a new contact group.
 class CreateContactGroupRequest {
-  /// The contact group to create.
+  /// Required. The contact group to create.
   ContactGroup contactGroup;
 
   CreateContactGroupRequest();
@@ -1598,14 +1748,19 @@ class CreateContactGroupRequest {
   }
 }
 
-/// Represents a whole calendar date, for example a date of birth. The time
-/// of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the
-/// [Proleptic Gregorian
-/// Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar).
-/// The day may be 0 to represent a year and month where the day is not
-/// significant. The year may be 0 to represent a month and day independent
-/// of year; for example, anniversary date.
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day
+/// and time zone are either specified elsewhere or are not significant. The
+/// date
+/// is relative to the Proleptic Gregorian Calendar. This can represent:
+///
+/// * A full date, with non-zero year, month and day values
+/// * A month and day value, with a zero year, e.g. an anniversary
+/// * A year on its own, with zero month and day values
+/// * A year and month value, with a zero day, e.g. a credit card expiration
+/// date
+///
+/// Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
   /// if specifying a year by itself or a year and month where the day is not
@@ -1650,7 +1805,31 @@ class Date {
   }
 }
 
-/// A read-only G Suite Domain membership.
+/// The response for deleteing a contact's photo.
+class DeleteContactPhotoResponse {
+  /// The updated person, if person_fields is set in the
+  /// DeleteContactPhotoRequest; otherwise this will be unset.
+  Person person;
+
+  DeleteContactPhotoResponse();
+
+  DeleteContactPhotoResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("person")) {
+      person = new Person.fromJson(_json["person"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (person != null) {
+      _json["person"] = (person).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A G Suite Domain membership.
 class DomainMembership {
   /// True if the person is in the viewer's G Suite domain.
   core.bool inViewerDomain;
@@ -1678,7 +1857,7 @@ class EmailAddress {
   /// The display name of the email.
   core.String displayName;
 
-  /// The read-only type of the email address translated and formatted in the
+  /// Output only. The type of the email address translated and formatted in the
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -1764,7 +1943,7 @@ class Event {
   /// The date of the event.
   Date date;
 
-  /// The read-only type of the event translated and formatted in the
+  /// Output only. The type of the event translated and formatted in the
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -1823,7 +2002,8 @@ class FieldMetadata {
   /// The source of the field.
   Source source;
 
-  /// True if the field is verified; false if the field is unverified. A
+  /// Output only. True if the field is verified; false if the field is
+  /// unverified. A
   /// verified field is typically a name, email address, phone number, or
   /// website that has been confirmed to be owned by the person.
   core.bool verified;
@@ -1860,7 +2040,8 @@ class FieldMetadata {
 
 /// A person's gender.
 class Gender {
-  /// The read-only value of the gender translated and formatted in the viewer's
+  /// Output only. The value of the gender translated and formatted in the
+  /// viewer's
   /// account locale or the `Accept-Language` HTTP header locale.
   core.String formattedValue;
 
@@ -1932,11 +2113,12 @@ class GetPeopleResponse {
 
 /// A person's instant messaging client.
 class ImClient {
-  /// The read-only protocol of the IM client formatted in the viewer's account
+  /// Output only. The protocol of the IM client formatted in the viewer's
+  /// account
   /// locale or the `Accept-Language` HTTP header locale.
   core.String formattedProtocol;
 
-  /// The read-only type of the IM client translated and formatted in the
+  /// Output only. The type of the IM client translated and formatted in the
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -2203,7 +2385,7 @@ class Membership {
   /// The contact group membership.
   ContactGroupMembership contactGroupMembership;
 
-  /// The read-only domain membership.
+  /// Output only. The domain membership.
   DomainMembership domainMembership;
 
   /// Metadata about the membership.
@@ -2245,12 +2427,12 @@ class Membership {
 /// removed from any group but they can only be added to a user group or
 /// "myContacts" or "starred" system groups.
 class ModifyContactGroupMembersRequest {
-  /// The resource names of the contact people to add in the form of in the form
+  /// The resource names of the contact people to add in the form of
   /// `people/`<var>person_id</var>.
   core.List<core.String> resourceNamesToAdd;
 
-  /// The resource names of the contact people to remove in the form of in the
-  /// form of `people/`<var>person_id</var>.
+  /// The resource names of the contact people to remove in the form of
+  /// `people/`<var>person_id</var>.
   core.List<core.String> resourceNamesToRemove;
 
   ModifyContactGroupMembersRequest();
@@ -2281,12 +2463,21 @@ class ModifyContactGroupMembersRequest {
 
 /// The response to a modify contact group members request.
 class ModifyContactGroupMembersResponse {
+  /// The contact people resource names that cannot be removed from their
+  /// last contact group.
+  core.List<core.String> canNotRemoveLastContactGroupResourceNames;
+
   /// The contact people resource names that were not found.
   core.List<core.String> notFoundResourceNames;
 
   ModifyContactGroupMembersResponse();
 
   ModifyContactGroupMembersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("canNotRemoveLastContactGroupResourceNames")) {
+      canNotRemoveLastContactGroupResourceNames =
+          (_json["canNotRemoveLastContactGroupResourceNames"] as core.List)
+              .cast<core.String>();
+    }
     if (_json.containsKey("notFoundResourceNames")) {
       notFoundResourceNames =
           (_json["notFoundResourceNames"] as core.List).cast<core.String>();
@@ -2296,6 +2487,10 @@ class ModifyContactGroupMembersResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (canNotRemoveLastContactGroupResourceNames != null) {
+      _json["canNotRemoveLastContactGroupResourceNames"] =
+          canNotRemoveLastContactGroupResourceNames;
+    }
     if (notFoundResourceNames != null) {
       _json["notFoundResourceNames"] = notFoundResourceNames;
     }
@@ -2305,11 +2500,13 @@ class ModifyContactGroupMembersResponse {
 
 /// A person's name. If the name is a mononym, the family name is empty.
 class Name {
-  /// The read-only display name formatted according to the locale specified by
+  /// Output only. The display name formatted according to the locale specified
+  /// by
   /// the viewer's account or the `Accept-Language` HTTP header.
   core.String displayName;
 
-  /// The read-only display name with the last name first formatted according to
+  /// Output only. The display name with the last name first formatted according
+  /// to
   /// the locale specified by the viewer's account or the
   /// `Accept-Language` HTTP header.
   core.String displayNameLastFirst;
@@ -2545,7 +2742,7 @@ class Organization {
   /// The end date when the person left the organization.
   Date endDate;
 
-  /// The read-only type of the organization translated and formatted in the
+  /// Output only. The type of the organization translated and formatted in the
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -2687,9 +2884,9 @@ class Person {
   /// The person's street addresses.
   core.List<Address> addresses;
 
-  /// **DEPRECATED** (Please use `person.ageRanges` instead)**
+  /// Output only. **DEPRECATED** (Please use `person.ageRanges` instead)**
   ///
-  /// The person's read-only age range.
+  /// The person's age range.
   /// Possible string values are:
   /// - "AGE_RANGE_UNSPECIFIED" : Unspecified.
   /// - "LESS_THAN_EIGHTEEN" : Younger than eighteen.
@@ -2697,7 +2894,7 @@ class Person {
   /// - "TWENTY_ONE_OR_OLDER" : Twenty-one and older.
   core.String ageRange;
 
-  /// The person's read-only age ranges.
+  /// Output only. The person's age ranges.
   core.List<AgeRangeType> ageRanges;
 
   /// The person's biographies.
@@ -2709,7 +2906,7 @@ class Person {
   /// The person's bragging rights.
   core.List<BraggingRights> braggingRights;
 
-  /// The person's read-only cover photos.
+  /// Output only. The person's cover photos.
   core.List<CoverPhoto> coverPhotos;
 
   /// The person's email addresses.
@@ -2737,7 +2934,7 @@ class Person {
   /// The person's group memberships.
   core.List<Membership> memberships;
 
-  /// Read-only metadata about the person.
+  /// Output only. Metadata about the person.
   PersonMetadata metadata;
 
   /// The person's names.
@@ -2755,16 +2952,16 @@ class Person {
   /// The person's phone numbers.
   core.List<PhoneNumber> phoneNumbers;
 
-  /// The person's read-only photos.
+  /// Output only. The person's photos.
   core.List<Photo> photos;
 
   /// The person's relations.
   core.List<Relation> relations;
 
-  /// The person's read-only relationship interests.
+  /// Output only. The person's relationship interests.
   core.List<RelationshipInterest> relationshipInterests;
 
-  /// The person's read-only relationship statuses.
+  /// Output only. The person's relationship statuses.
   core.List<RelationshipStatus> relationshipStatuses;
 
   /// The person's residences.
@@ -2781,7 +2978,7 @@ class Person {
   /// The person's skills.
   core.List<Skill> skills;
 
-  /// The person's read-only taglines.
+  /// Output only. The person's taglines.
   core.List<Tagline> taglines;
 
   /// The person's associated URLs.
@@ -3065,17 +3262,18 @@ class Person {
   }
 }
 
-/// The read-only metadata about a person.
+/// The metadata about a person.
 class PersonMetadata {
-  /// True if the person resource has been deleted. Populated only for
+  /// Output only. True if the person resource has been deleted. Populated only
+  /// for
   /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests
   /// that include a sync token.
   core.bool deleted;
 
-  /// Resource names of people linked to this resource.
+  /// Output only. Resource names of people linked to this resource.
   core.List<core.String> linkedPeopleResourceNames;
 
-  /// **DEPRECATED** (Please use
+  /// Output only. **DEPRECATED** (Please use
   /// `person.metadata.sources.profileMetadata.objectType` instead)
   ///
   /// The type of the person object.
@@ -3085,7 +3283,8 @@ class PersonMetadata {
   /// - "PAGE" : [Google+ Page.](http://www.google.com/+/brands/)
   core.String objectType;
 
-  /// Any former resource names this person has had. Populated only for
+  /// Output only. Any former resource names this person has had. Populated only
+  /// for
   /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests
   /// that include a sync token.
   ///
@@ -3203,12 +3402,12 @@ class PersonResponse {
 
 /// A person's phone number.
 class PhoneNumber {
-  /// The read-only canonicalized [ITU-T
+  /// Output only. The canonicalized [ITU-T
   /// E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
   /// form of the phone number.
   core.String canonicalForm;
 
-  /// The read-only type of the phone number translated and formatted in the
+  /// Output only. The type of the phone number translated and formatted in the
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -3277,7 +3476,7 @@ class PhoneNumber {
   }
 }
 
-/// A person's read-only photo. A picture shown next to the person's name to
+/// A person's photo. A picture shown next to the person's name to
 /// help others recognize the person.
 class Photo {
   /// True if the photo is a default photo;
@@ -3322,16 +3521,16 @@ class Photo {
   }
 }
 
-/// The read-only metadata about a profile.
+/// The metadata about a profile.
 class ProfileMetadata {
-  /// The profile object type.
+  /// Output only. The profile object type.
   /// Possible string values are:
   /// - "OBJECT_TYPE_UNSPECIFIED" : Unspecified.
   /// - "PERSON" : Person.
   /// - "PAGE" : [Google+ Page.](http://www.google.com/+/brands/)
   core.String objectType;
 
-  /// The user types.
+  /// Output only. The user types.
   core.List<core.String> userTypes;
 
   ProfileMetadata();
@@ -3360,8 +3559,9 @@ class ProfileMetadata {
 
 /// A person's relation to another person.
 class Relation {
-  /// The type of the relation translated and formatted in the viewer's account
-  /// locale or the locale specified in the Accept-Language HTTP header.
+  /// Output only. The type of the relation translated and formatted in the
+  /// viewer's
+  /// account locale or the locale specified in the Accept-Language HTTP header.
   core.String formattedType;
 
   /// Metadata about the relation.
@@ -3426,11 +3626,12 @@ class Relation {
   }
 }
 
-/// A person's read-only relationship interest .
+/// A person's relationship interest .
 class RelationshipInterest {
-  /// The value of the relationship interest translated and formatted in the
-  /// viewer's account locale or the locale specified in the Accept-Language
-  /// HTTP header.
+  /// Output only. The value of the relationship interest translated and
+  /// formatted
+  /// in the viewer's account locale or the locale specified in the
+  /// Accept-Language HTTP header.
   core.String formattedValue;
 
   /// Metadata about the relationship interest.
@@ -3476,9 +3677,10 @@ class RelationshipInterest {
   }
 }
 
-/// A person's read-only relationship status.
+/// A person's relationship status.
 class RelationshipStatus {
-  /// The read-only value of the relationship status translated and formatted in
+  /// Output only. The value of the relationship status translated and formatted
+  /// in
   /// the viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedValue;
 
@@ -3574,7 +3776,7 @@ class Residence {
 /// A person's SIP address. Session Initial Protocol addresses are used for VoIP
 /// communications to make voice or video calls over the internet.
 class SipAddress {
-  /// The read-only type of the SIP address translated and formatted in the
+  /// Output only. The type of the SIP address translated and formatted in the
   /// viewer's account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 
@@ -3674,7 +3876,7 @@ class Source {
   /// The unique identifier within the source type generated by the server.
   core.String id;
 
-  /// **Only populated in `person.metadata.sources`.**
+  /// Output only. **Only populated in `person.metadata.sources`.**
   ///
   /// Metadata about a source of type PROFILE.
   ProfileMetadata profileMetadata;
@@ -3695,7 +3897,7 @@ class Source {
   /// is the source id.
   core.String type;
 
-  /// **Only populated in `person.metadata.sources`.**
+  /// Output only. **Only populated in `person.metadata.sources`.**
   ///
   /// Last update timestamp of this source.
   core.String updateTime;
@@ -3798,7 +4000,7 @@ class Status {
   }
 }
 
-/// A read-only brief one-line description of the person.
+/// A brief one-line description of the person.
 class Tagline {
   /// Metadata about the tagline.
   FieldMetadata metadata;
@@ -3833,7 +4035,7 @@ class Tagline {
 /// A request to update an existing user contact group. All updated fields will
 /// be replaced.
 class UpdateContactGroupRequest {
-  /// The contact group to update.
+  /// Required. The contact group to update.
   ContactGroup contactGroup;
 
   UpdateContactGroupRequest();
@@ -3854,9 +4056,107 @@ class UpdateContactGroupRequest {
   }
 }
 
+/// A request to update an existing contact's photo.
+/// All requests must have a valid photo format: JPEG or PNG.
+class UpdateContactPhotoRequest {
+  /// Optional. A field mask to restrict which fields on the person are
+  /// returned. Multiple
+  /// fields can be specified by separating them with commas. Defaults to empty
+  /// if not set, which will skip the post mutate get. Valid values are:
+  ///
+  /// * addresses
+  /// * ageRanges
+  /// * biographies
+  /// * birthdays
+  /// * braggingRights
+  /// * coverPhotos
+  /// * emailAddresses
+  /// * events
+  /// * genders
+  /// * imClients
+  /// * interests
+  /// * locales
+  /// * memberships
+  /// * metadata
+  /// * names
+  /// * nicknames
+  /// * occupations
+  /// * organizations
+  /// * phoneNumbers
+  /// * photos
+  /// * relations
+  /// * relationshipInterests
+  /// * relationshipStatuses
+  /// * residences
+  /// * sipAddresses
+  /// * skills
+  /// * taglines
+  /// * urls
+  /// * userDefined
+  core.String personFields;
+
+  /// Required. Raw photo bytes
+  core.String photoBytes;
+  core.List<core.int> get photoBytesAsBytes {
+    return convert.base64.decode(photoBytes);
+  }
+
+  set photoBytesAsBytes(core.List<core.int> _bytes) {
+    photoBytes =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  UpdateContactPhotoRequest();
+
+  UpdateContactPhotoRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("personFields")) {
+      personFields = _json["personFields"];
+    }
+    if (_json.containsKey("photoBytes")) {
+      photoBytes = _json["photoBytes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (personFields != null) {
+      _json["personFields"] = personFields;
+    }
+    if (photoBytes != null) {
+      _json["photoBytes"] = photoBytes;
+    }
+    return _json;
+  }
+}
+
+/// The response for updating a contact's photo.
+class UpdateContactPhotoResponse {
+  /// The updated person, if person_fields is set in the
+  /// UpdateContactPhotoRequest; otherwise this will be unset.
+  Person person;
+
+  UpdateContactPhotoResponse();
+
+  UpdateContactPhotoResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("person")) {
+      person = new Person.fromJson(_json["person"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (person != null) {
+      _json["person"] = (person).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A person's associated URLs.
 class Url {
-  /// The read-only type of the URL translated and formatted in the viewer's
+  /// Output only. The type of the URL translated and formatted in the viewer's
   /// account locale or the `Accept-Language` HTTP header locale.
   core.String formattedType;
 

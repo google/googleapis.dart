@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.chat.v1;
 
@@ -426,9 +426,13 @@ class SpacesMessagesResourceApi {
   /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
   ///
-  /// [updateMask] - Required. The field paths to be updated.
+  /// [updateMask] - Required. The field paths to be updated, comma separated if
+  /// there are
+  /// multiple.
   ///
-  /// Currently supported field paths: "text", "cards".
+  /// Currently supported field paths:
+  /// * text
+  /// * cards
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

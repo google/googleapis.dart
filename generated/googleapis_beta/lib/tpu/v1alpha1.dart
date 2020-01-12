@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.tpu.v1alpha1;
 
@@ -107,11 +107,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -124,9 +124,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -138,14 +138,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1058,6 +1058,9 @@ class ListAcceleratorTypesResponse {
   /// The next page token or empty if none.
   core.String nextPageToken;
 
+  /// Locations that could not be reached.
+  core.List<core.String> unreachable;
+
   ListAcceleratorTypesResponse();
 
   ListAcceleratorTypesResponse.fromJson(core.Map _json) {
@@ -1068,6 +1071,9 @@ class ListAcceleratorTypesResponse {
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("unreachable")) {
+      unreachable = (_json["unreachable"] as core.List).cast<core.String>();
     }
   }
 
@@ -1080,6 +1086,9 @@ class ListAcceleratorTypesResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    if (unreachable != null) {
+      _json["unreachable"] = unreachable;
     }
     return _json;
   }
@@ -1205,6 +1214,9 @@ class ListTensorFlowVersionsResponse {
   /// The listed nodes.
   core.List<TensorFlowVersion> tensorflowVersions;
 
+  /// Locations that could not be reached.
+  core.List<core.String> unreachable;
+
   ListTensorFlowVersionsResponse();
 
   ListTensorFlowVersionsResponse.fromJson(core.Map _json) {
@@ -1217,6 +1229,9 @@ class ListTensorFlowVersionsResponse {
               (value) => new TensorFlowVersion.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("unreachable")) {
+      unreachable = (_json["unreachable"] as core.List).cast<core.String>();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1228,6 +1243,9 @@ class ListTensorFlowVersionsResponse {
     if (tensorflowVersions != null) {
       _json["tensorflowVersions"] =
           tensorflowVersions.map((value) => (value).toJson()).toList();
+    }
+    if (unreachable != null) {
+      _json["unreachable"] = unreachable;
     }
     return _json;
   }

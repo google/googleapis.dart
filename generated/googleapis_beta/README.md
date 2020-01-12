@@ -237,11 +237,12 @@ The Runtime Configurator allows you to dynamically configure and expose variable
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Admin API - sqladmin v1beta4
+#### Secret Manager API - secretmanager v1beta1
 
-Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.
+Stores, manages, and secures access to application secrets.
 
-Official API documentation: https://cloud.google.com/sql/docs/reference/latest
+
+Official API documentation: https://cloud.google.com/secret-manager/
 
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
 

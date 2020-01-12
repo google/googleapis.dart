@@ -20,7 +20,7 @@
     "description": "Obtains end-user authorization grants for use with other Google APIs.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
-    "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/VCyF6WfWVwIuhIs_gw3LA4B3w1E\"",
+    "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/VCyF6WfWVwIuhIs_gw3LA4B3w1E\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"

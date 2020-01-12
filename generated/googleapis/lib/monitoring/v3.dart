@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.monitoring.v3;
 
@@ -42,6 +42,7 @@ class MonitoringApi {
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  ServicesResourceApi get services => new ServicesResourceApi(_requester);
   UptimeCheckIpsResourceApi get uptimeCheckIps =>
       new UptimeCheckIpsResourceApi(_requester);
 
@@ -243,6 +244,10 @@ class ProjectsAlertPoliciesResourceApi {
   /// name, use the GetAlertPolicy operation, instead.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by alert policies to be included in the response.For more details, see
+  /// sorting and filtering.
+  ///
   /// [orderBy] - A comma-separated list of fields by which to sort the result.
   /// Supports the same set of field references as the filter field. Entries can
   /// be prefixed with a minus sign to sort by the field in descending order.For
@@ -255,10 +260,6 @@ class ProjectsAlertPoliciesResourceApi {
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by alert policies to be included in the response.For more details, see
-  /// sorting and filtering.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -270,10 +271,10 @@ class ProjectsAlertPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertPoliciesResponse> list(core.String name,
-      {core.String orderBy,
+      {core.String filter,
+      core.String orderBy,
       core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -285,6 +286,9 @@ class ProjectsAlertPoliciesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -293,9 +297,6 @@ class ProjectsAlertPoliciesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -626,14 +627,6 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [ancestorsOfGroup] - A group name:
   /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups that
   /// are ancestors of the specified group. The groups are returned in order,
@@ -652,6 +645,14 @@ class ProjectsGroupsResourceApi {
   /// returned by the childrenOfGroup filter, and includes children-of-children,
   /// and so forth.
   ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -663,11 +664,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String ancestorsOfGroup,
+      {core.String ancestorsOfGroup,
       core.String childrenOfGroup,
       core.String descendantsOfGroup,
+      core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -679,12 +680,6 @@ class ProjectsGroupsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (ancestorsOfGroup != null) {
       _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
     }
@@ -693,6 +688,12 @@ class ProjectsGroupsResourceApi {
     }
     if (descendantsOfGroup != null) {
       _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1107,7 +1108,7 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}/monitoredResourceDescriptors/{resource_type}".
   /// The {resource_type} is a predefined type, such as cloudsql_database.
   /// Value must have pattern
-  /// "^projects/[^/]+/monitoredResourceDescriptors/[^/]+$".
+  /// "^projects/[^/]+/monitoredResourceDescriptors/.+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1156,6 +1157,12 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - An optional filter describing the descriptors to be returned.
+  /// The filter can reference the descriptor's type and labels. For example,
+  /// the following filter returns only Google Compute Engine descriptors that
+  /// have an id label:
+  /// resource.type = starts_with("gce_") AND resource.label:id
+  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -1163,12 +1170,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
-  ///
-  /// [filter] - An optional filter describing the descriptors to be returned.
-  /// The filter can reference the descriptor's type and labels. For example,
-  /// the following filter returns only Google Compute Engine descriptors that
-  /// have an id label:
-  /// resource.type = starts_with("gce_") AND resource.label:id
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1181,9 +1182,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1195,14 +1196,14 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1600,10 +1601,6 @@ class ProjectsNotificationChannelsResourceApi {
   /// GetNotificationChannel operation.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - If provided, this field specifies the criteria that must be met
-  /// by notification channels to be included in the response.For more details,
-  /// see sorting and filtering.
-  ///
   /// [orderBy] - A comma-separated list of fields by which to sort the result.
   /// Supports the same set of fields as in filter. Entries can be prefixed with
   /// a minus sign to sort in descending rather than ascending order.For more
@@ -1617,6 +1614,10 @@ class ProjectsNotificationChannelsResourceApi {
   /// If not set to a positive number, a reasonable value will be chosen by the
   /// service.
   ///
+  /// [filter] - If provided, this field specifies the criteria that must be met
+  /// by notification channels to be included in the response.For more details,
+  /// see sorting and filtering.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1628,10 +1629,10 @@ class ProjectsNotificationChannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNotificationChannelsResponse> list(core.String name,
-      {core.String filter,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1643,9 +1644,6 @@ class ProjectsNotificationChannelsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -1654,6 +1652,9 @@ class ProjectsNotificationChannelsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1906,42 +1907,9 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [view] - Specifies which information is returned about the time series.
-  /// Possible string values are:
-  /// - "FULL" : A FULL.
-  /// - "HEADERS" : A HEADERS.
-  ///
-  /// [aggregation_groupByFields] - The set of fields to preserve when
-  /// crossSeriesReducer is specified. The groupByFields determine how the time
-  /// series are partitioned into subsets prior to applying the aggregation
-  /// function. Each subset contains time series that have the same value for
-  /// each of the grouping fields. Each individual time series is a member of
-  /// exactly one subset. The crossSeriesReducer is applied to each subset of
-  /// time series. It is not possible to reduce across different resource types,
-  /// so this field implicitly contains resource.type. Fields not specified in
-  /// groupByFields are aggregated away. If groupByFields is not specified and
-  /// all the time series have the same resource type, then the time series are
-  /// aggregated into a single output time series. If crossSeriesReducer is not
-  /// defined, this field is ignored.
-  ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
-  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
-  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
-  /// per-time series alignment, each time series will contain data points only
-  /// on the period boundaries. If perSeriesAligner is not specified or equals
-  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
-  /// an error is returned.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. If page_size is empty or more than 100,000 results, the effective
-  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
-  /// number of Points returned. If view is set to HEADERS, this is the maximum
-  /// number of TimeSeries returned.
-  ///
   /// [orderBy] - Unsupported: must be left blank. The points in each time
-  /// series are returned in reverse time order.
+  /// series are currently returned in reverse time order (most recent to
+  /// oldest).
   ///
   /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
   /// series. Not all reducer functions may be applied to all time series,
@@ -2011,6 +1979,40 @@ class ProjectsTimeSeriesResourceApi {
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
   ///
+  /// [view] - Specifies which information is returned about the time series.
+  /// Possible string values are:
+  /// - "FULL" : A FULL.
+  /// - "HEADERS" : A HEADERS.
+  ///
+  /// [aggregation_groupByFields] - The set of fields to preserve when
+  /// crossSeriesReducer is specified. The groupByFields determine how the time
+  /// series are partitioned into subsets prior to applying the aggregation
+  /// function. Each subset contains time series that have the same value for
+  /// each of the grouping fields. Each individual time series is a member of
+  /// exactly one subset. The crossSeriesReducer is applied to each subset of
+  /// time series. It is not possible to reduce across different resource types,
+  /// so this field implicitly contains resource.type. Fields not specified in
+  /// groupByFields are aggregated away. If groupByFields is not specified and
+  /// all the time series have the same resource type, then the time series are
+  /// aggregated into a single output time series. If crossSeriesReducer is not
+  /// defined, this field is ignored.
+  ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
+  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
+  /// per-time series alignment, each time series will contain data points only
+  /// on the period boundaries. If perSeriesAligner is not specified or equals
+  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
+  /// an error is returned.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return. If page_size is empty or more than 100,000 results, the effective
+  /// page_size is 100,000 results. If view is set to FULL, this is the maximum
+  /// number of Points returned. If view is set to HEADERS, this is the maximum
+  /// number of TimeSeries returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2022,17 +2024,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.String view,
-      core.List<core.String> aggregation_groupByFields,
-      core.String interval_endTime,
-      core.String aggregation_alignmentPeriod,
-      core.int pageSize,
-      core.String orderBy,
+      {core.String orderBy,
       core.String aggregation_crossSeriesReducer,
       core.String filter,
       core.String pageToken,
       core.String aggregation_perSeriesAligner,
       core.String interval_startTime,
+      core.String view,
+      core.List<core.String> aggregation_groupByFields,
+      core.String interval_endTime,
+      core.String aggregation_alignmentPeriod,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2043,23 +2045,6 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (aggregation_groupByFields != null) {
-      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
-    }
-    if (interval_endTime != null) {
-      _queryParams["interval.endTime"] = [interval_endTime];
-    }
-    if (aggregation_alignmentPeriod != null) {
-      _queryParams["aggregation.alignmentPeriod"] = [
-        aggregation_alignmentPeriod
-      ];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
@@ -2082,6 +2067,23 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (interval_startTime != null) {
       _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (aggregation_groupByFields != null) {
+      _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
+    }
+    if (interval_endTime != null) {
+      _queryParams["interval.endTime"] = [interval_endTime];
+    }
+    if (aggregation_alignmentPeriod != null) {
+      _queryParams["aggregation.alignmentPeriod"] = [
+        aggregation_alignmentPeriod
+      ];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2106,13 +2108,13 @@ class ProjectsUptimeCheckConfigsResourceApi {
   ProjectsUptimeCheckConfigsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new uptime check configuration.
+  /// Creates a new Uptime check configuration.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project in which to create the uptime check. The format  is
+  /// [parent] - The project in which to create the Uptime check. The format  is
   /// projects/[PROJECT_ID].
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -2159,13 +2161,13 @@ class ProjectsUptimeCheckConfigsResourceApi {
     return _response.then((data) => new UptimeCheckConfig.fromJson(data));
   }
 
-  /// Deletes an uptime check configuration. Note that this method will fail if
-  /// the uptime check configuration is referenced by an alert policy or other
+  /// Deletes an Uptime check configuration. Note that this method will fail if
+  /// the Uptime check configuration is referenced by an alert policy or other
   /// dependent configs that would be rendered invalid by the deletion.
   ///
   /// Request parameters:
   ///
-  /// [name] - The uptime check configuration to delete. The format  is
+  /// [name] - The Uptime check configuration to delete. The format  is
   /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
@@ -2205,11 +2207,11 @@ class ProjectsUptimeCheckConfigsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// Gets a single uptime check configuration.
+  /// Gets a single Uptime check configuration.
   ///
   /// Request parameters:
   ///
-  /// [name] - The uptime check configuration to retrieve. The format  is
+  /// [name] - The Uptime check configuration to retrieve. The format  is
   /// projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
@@ -2249,24 +2251,24 @@ class ProjectsUptimeCheckConfigsResourceApi {
     return _response.then((data) => new UptimeCheckConfig.fromJson(data));
   }
 
-  /// Lists the existing valid uptime check configurations for the project,
-  /// leaving out any invalid configurations.
+  /// Lists the existing valid Uptime check configurations for the project
+  /// (leaving out any invalid configurations).
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project whose uptime check configurations are listed. The
+  /// [parent] - The project whose Uptime check configurations are listed. The
   /// format  is projects/[PROJECT_ID].
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return more results from the previous method
-  /// call.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
   /// a single page. If the page_size is <=0, the server will decide the number
   /// of results to be returned.
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2279,7 +2281,7 @@ class ProjectsUptimeCheckConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUptimeCheckConfigsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2290,11 +2292,11 @@ class ProjectsUptimeCheckConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2314,23 +2316,24 @@ class ProjectsUptimeCheckConfigsResourceApi {
         .then((data) => new ListUptimeCheckConfigsResponse.fromJson(data));
   }
 
-  /// Updates an uptime check configuration. You can either replace the entire
+  /// Updates an Uptime check configuration. You can either replace the entire
   /// configuration with a new one or replace only certain fields in the current
-  /// configuration by specifying the fields to be updated via "updateMask".
+  /// configuration by specifying the fields to be updated via updateMask.
   /// Returns the updated configuration.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - A unique resource name for this UptimeCheckConfig. The format
-  /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field
-  /// should be omitted when creating the uptime check configuration; on create,
-  /// the resource name is assigned by the server and included in the response.
+  /// [name] - A unique resource name for this Uptime check configuration. The
+  /// format is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This
+  /// field should be omitted when creating the Uptime check configuration; on
+  /// create, the resource name is assigned by the server and included in the
+  /// response.
   /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
   ///
   /// [updateMask] - Optional. If present, only the listed fields in the current
-  /// uptime check configuration are updated with values from the new
+  /// Uptime check configuration are updated with values from the new
   /// configuration. If this field is empty, then the current configuration is
   /// completely replaced with the new configuration.
   ///
@@ -2379,12 +2382,613 @@ class ProjectsUptimeCheckConfigsResourceApi {
   }
 }
 
+class ServicesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ServicesServiceLevelObjectivesResourceApi get serviceLevelObjectives =>
+      new ServicesServiceLevelObjectivesResourceApi(_requester);
+
+  ServicesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Create a Service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Resource name of the parent workspace. Of the form
+  /// projects/{project_id}.
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [serviceId] - Optional. The Service id to use for this Service. If
+  /// omitted, an id will be generated instead. Must match the pattern a-z0-9-+
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Service].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Service> create(Service request, core.String parent,
+      {core.String serviceId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (serviceId != null) {
+      _queryParams["serviceId"] = [serviceId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v3/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Service.fromJson(data));
+  }
+
+  /// Soft delete this Service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the Service to delete. Of the form
+  /// projects/{project_id}/services/{service_id}.
+  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Get the named Service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the Service. Of the form
+  /// projects/{project_id}/services/{service_id}.
+  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Service].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Service> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Service.fromJson(data));
+  }
+
+  /// List Services for this workspace.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Resource name of the parent Workspace. Of the form
+  /// projects/{project_id}.
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [pageSize] - A non-negative number that is the maximum number of results
+  /// to return. When 0, use default page size.
+  ///
+  /// [filter] - A filter specifying what Services to return. The filter
+  /// currently supports the following fields:
+  /// - `identifier_case`
+  /// - `app_engine.module_id`
+  /// - `cloud_endpoints.service`
+  /// - `cluster_istio.location`
+  /// - `cluster_istio.cluster_name`
+  /// - `cluster_istio.service_namespace`
+  /// - `cluster_istio.service_name`
+  /// identifier_case refers to which option in the identifier oneof is
+  /// populated. For example, the filter identifier_case = "CUSTOM" would match
+  /// all services with a value for the custom field. Valid options are
+  /// "CUSTOM", "APP_ENGINE", "CLOUD_ENDPOINTS", and "CLUSTER_ISTIO".
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServicesResponse> list(core.String parent,
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v3/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListServicesResponse.fromJson(data));
+  }
+
+  /// Update this Service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for this Service. Of the form
+  /// projects/{project_id}/services/{service_id}.
+  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  ///
+  /// [updateMask] - A set of field paths defining which fields to use for the
+  /// update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Service].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Service> patch(Service request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Service.fromJson(data));
+  }
+}
+
+class ServicesServiceLevelObjectivesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ServicesServiceLevelObjectivesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Create a ServiceLevelObjective for the given Service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Resource name of the parent Service. Of the form
+  /// projects/{project_id}/services/{service_id}.
+  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  ///
+  /// [serviceLevelObjectiveId] - Optional. The ServiceLevelObjective id to use
+  /// for this ServiceLevelObjective. If omitted, an id will be generated
+  /// instead. Must match the pattern a-z0-9-+
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceLevelObjective].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceLevelObjective> create(
+      ServiceLevelObjective request, core.String parent,
+      {core.String serviceLevelObjectiveId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (serviceLevelObjectiveId != null) {
+      _queryParams["serviceLevelObjectiveId"] = [serviceLevelObjectiveId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/serviceLevelObjectives';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceLevelObjective.fromJson(data));
+  }
+
+  /// Delete the given ServiceLevelObjective.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the ServiceLevelObjective to delete. Of the form
+  /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.
+  /// Value must have pattern
+  /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Get a ServiceLevelObjective by name.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the ServiceLevelObjective to get. Of the form
+  /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.
+  /// Value must have pattern
+  /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
+  ///
+  /// [view] - View of the ServiceLevelObjective to return. If DEFAULT, return
+  /// the ServiceLevelObjective as originally defined. If EXPLICIT and the
+  /// ServiceLevelObjective is defined in terms of a BasicSli, replace the
+  /// BasicSli with a RequestBasedSli spelling out how the SLI is computed.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
+  /// - "FULL" : A FULL.
+  /// - "EXPLICIT" : A EXPLICIT.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceLevelObjective].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceLevelObjective> get(core.String name,
+      {core.String view, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceLevelObjective.fromJson(data));
+  }
+
+  /// List the ServiceLevelObjectives for the given Service.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Resource name of the parent Service. Of the form
+  /// projects/{project_id}/services/{service_id}.
+  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
+  /// [pageSize] - A non-negative number that is the maximum number of results
+  /// to return. When 0, use default page size.
+  ///
+  /// [view] - View of the ServiceLevelObjectives to return. If DEFAULT, return
+  /// each ServiceLevelObjective as originally defined. If EXPLICIT and the
+  /// ServiceLevelObjective is defined in terms of a BasicSli, replace the
+  /// BasicSli with a RequestBasedSli spelling out how the SLI is computed.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
+  /// - "FULL" : A FULL.
+  /// - "EXPLICIT" : A EXPLICIT.
+  ///
+  /// [filter] - A filter specifying what ServiceLevelObjectives to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServiceLevelObjectivesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceLevelObjectivesResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String view,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/serviceLevelObjectives';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListServiceLevelObjectivesResponse.fromJson(data));
+  }
+
+  /// Update the given ServiceLevelObjective.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for this ServiceLevelObjective. Of the form
+  /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.
+  /// Value must have pattern
+  /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
+  ///
+  /// [updateMask] - A set of field paths defining which fields to use for the
+  /// update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ServiceLevelObjective].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceLevelObjective> patch(
+      ServiceLevelObjective request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ServiceLevelObjective.fromJson(data));
+  }
+}
+
 class UptimeCheckIpsResourceApi {
   final commons.ApiRequester _requester;
 
   UptimeCheckIpsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Returns the list of IPs that checkers run from
+  /// Returns the list of IP addresses that checkers run from
   ///
   /// Request parameters:
   ///
@@ -2684,7 +3288,8 @@ class Aggregation {
 /// this state. For an overview of alert policies, see Introduction to Alerting.
 class AlertPolicy {
   /// How to combine the results of multiple conditions to determine if an
-  /// incident should be opened.
+  /// incident should be opened. If condition_time_series_query_language is
+  /// present, this must be COMBINE_UNSPECIFIED.
   /// Possible string values are:
   /// - "COMBINE_UNSPECIFIED" : An unspecified combiner.
   /// - "AND" : Combine conditions using the logical AND operator. An incident
@@ -2701,7 +3306,8 @@ class AlertPolicy {
   /// A list of conditions for the policy. The conditions are combined by AND or
   /// OR according to the combiner field. If the combined conditions evaluate to
   /// true, then an incident is created. A policy can have from one to six
-  /// conditions.
+  /// conditions. If |condition_time_series_uery_language| is present, it must
+  /// be the only |condition|.
   core.List<Condition> conditions;
 
   /// A read-only record of the creation of the alerting policy. If provided in
@@ -2756,6 +3362,10 @@ class AlertPolicy {
   /// underscores, and dashes. Keys must begin with a letter.
   core.Map<core.String, core.String> userLabels;
 
+  /// Read-only description of how the alert policy is invalid. OK if the alert
+  /// policy is valid. If not OK, the alert policy will not generate incidents.
+  Status validity;
+
   AlertPolicy();
 
   AlertPolicy.fromJson(core.Map _json) {
@@ -2793,6 +3403,9 @@ class AlertPolicy {
       userLabels =
           (_json["userLabels"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("validity")) {
+      validity = new Status.fromJson(_json["validity"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2829,18 +3442,60 @@ class AlertPolicy {
     if (userLabels != null) {
       _json["userLabels"] = userLabels;
     }
+    if (validity != null) {
+      _json["validity"] = (validity).toJson();
+    }
     return _json;
   }
 }
 
-/// A type of authentication to perform against the specified resource or URL
-/// that uses username and password. Currently, only Basic authentication is
-/// supported in Uptime Monitoring.
+/// App Engine service. Learn more at https://cloud.google.com/appengine.
+class AppEngine {
+  /// The ID of the App Engine module underlying this service. Corresponds to
+  /// the module_id resource label in the gae_app monitored resource:
+  /// https://cloud.google.com/monitoring/api/resources#tag_gae_app
+  core.String moduleId;
+
+  AppEngine();
+
+  AppEngine.fromJson(core.Map _json) {
+    if (_json.containsKey("moduleId")) {
+      moduleId = _json["moduleId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (moduleId != null) {
+      _json["moduleId"] = moduleId;
+    }
+    return _json;
+  }
+}
+
+/// Future parameters for the availability SLI.
+class AvailabilityCriteria {
+  AvailabilityCriteria();
+
+  AvailabilityCriteria.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// The authentication parameters to provide to the specified resource or URL
+/// that requires a username and password. Currently, only Basic HTTP
+/// authentication (https://tools.ietf.org/html/rfc7617) is supported in Uptime
+/// checks.
 class BasicAuthentication {
-  /// The password to authenticate.
+  /// The password to use when authenticating with the HTTP server.
   core.String password;
 
-  /// The username to authenticate.
+  /// The username to use when authenticating with the HTTP server.
   core.String username;
 
   BasicAuthentication();
@@ -2862,6 +3517,83 @@ class BasicAuthentication {
     }
     if (username != null) {
       _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
+/// An SLI measuring performance on a well-known service type. Performance will
+/// be computed on the basis of pre-defined metrics. The type of the
+/// service_resource determines the metrics to use and the
+/// service_resource.labels and metric_labels are used to construct a monitoring
+/// filter to filter that metric down to just the data relevant to this service.
+class BasicSli {
+  /// Good service is defined to be the count of requests made to this service
+  /// that return successfully.
+  AvailabilityCriteria availability;
+
+  /// Good service is defined to be the count of requests made to this service
+  /// that are fast enough with respect to latency.threshold.
+  LatencyCriteria latency;
+
+  /// OPTIONAL: The set of locations to which this SLI is relevant. Telemetry
+  /// from other locations will not be used to calculate performance for this
+  /// SLI. If omitted, this SLI applies to all locations in which the Service
+  /// has activity. For service types that don't support breaking down by
+  /// location, setting this field will result in an error.
+  core.List<core.String> location;
+
+  /// OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from
+  /// other methods will not be used to calculate performance for this SLI. If
+  /// omitted, this SLI applies to all the Service's methods. For service types
+  /// that don't support breaking down by method, setting this field will result
+  /// in an error.
+  core.List<core.String> method;
+
+  /// OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry
+  /// from other API versions will not be used to calculate performance for this
+  /// SLI. If omitted, this SLI applies to all API versions. For service types
+  /// that don't support breaking down by version, setting this field will
+  /// result in an error.
+  core.List<core.String> version;
+
+  BasicSli();
+
+  BasicSli.fromJson(core.Map _json) {
+    if (_json.containsKey("availability")) {
+      availability = new AvailabilityCriteria.fromJson(_json["availability"]);
+    }
+    if (_json.containsKey("latency")) {
+      latency = new LatencyCriteria.fromJson(_json["latency"]);
+    }
+    if (_json.containsKey("location")) {
+      location = (_json["location"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("method")) {
+      method = (_json["method"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("version")) {
+      version = (_json["version"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (availability != null) {
+      _json["availability"] = (availability).toJson();
+    }
+    if (latency != null) {
+      _json["latency"] = (latency).toJson();
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (method != null) {
+      _json["method"] = method;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -2916,6 +3648,86 @@ class BucketOptions {
     }
     if (linearBuckets != null) {
       _json["linearBuckets"] = (linearBuckets).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+class CloudEndpoints {
+  /// The name of the Cloud Endpoints service underlying this service.
+  /// Corresponds to the service resource label in the api monitored resource:
+  /// https://cloud.google.com/monitoring/api/resources#tag_api
+  core.String service;
+
+  CloudEndpoints();
+
+  CloudEndpoints.fromJson(core.Map _json) {
+    if (_json.containsKey("service")) {
+      service = _json["service"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (service != null) {
+      _json["service"] = service;
+    }
+    return _json;
+  }
+}
+
+/// Istio service. Learn more at http://istio.io.
+class ClusterIstio {
+  /// The name of the Kubernetes cluster in which this Istio service is defined.
+  /// Corresponds to the cluster_name resource label in k8s_cluster resources.
+  core.String clusterName;
+
+  /// The location of the Kubernetes cluster in which this Istio service is
+  /// defined. Corresponds to the location resource label in k8s_cluster
+  /// resources.
+  core.String location;
+
+  /// The name of the Istio service underlying this service. Corresponds to the
+  /// destination_service_name metric label in Istio metrics.
+  core.String serviceName;
+
+  /// The namespace of the Istio service underlying this service. Corresponds to
+  /// the destination_service_namespace metric label in Istio metrics.
+  core.String serviceNamespace;
+
+  ClusterIstio();
+
+  ClusterIstio.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterName")) {
+      clusterName = _json["clusterName"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("serviceName")) {
+      serviceName = _json["serviceName"];
+    }
+    if (_json.containsKey("serviceNamespace")) {
+      serviceNamespace = _json["serviceNamespace"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterName != null) {
+      _json["clusterName"] = clusterName;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (serviceName != null) {
+      _json["serviceName"] = serviceName;
+    }
+    if (serviceNamespace != null) {
+      _json["serviceNamespace"] = serviceNamespace;
     }
     return _json;
   }
@@ -3219,17 +4031,44 @@ class Condition {
   }
 }
 
-/// Used to perform string matching. It allows substring and regular
-/// expressions, together with their negations.
+/// Optional. Used to perform content matching. This allows matching based on
+/// substrings and regular expressions, together with their negations. Only the
+/// first 4&nbsp;MB of an HTTP or HTTPS check's response (and the first
+/// 1&nbsp;MB of a TCP check's response) are examined for purposes of content
+/// matching.
 class ContentMatcher {
-  /// String or regex content to match (max 1024 bytes)
+  /// String or regex content to match. Maximum 1024 bytes. An empty content
+  /// string indicates no content matching is to be performed.
   core.String content;
+
+  /// The type of content matcher that will be applied to the server output,
+  /// compared to the content string when the check is run.
+  /// Possible string values are:
+  /// - "CONTENT_MATCHER_OPTION_UNSPECIFIED" : No content matcher type specified
+  /// (maintained for backward compatibility, but deprecated for future use).
+  /// Treated as CONTAINS_STRING.
+  /// - "CONTAINS_STRING" : Selects substring matching. The match succeeds if
+  /// the output contains the content string. This is the default value for
+  /// checks without a matcher option, or where the value of matcher is
+  /// CONTENT_MATCHER_OPTION_UNSPECIFIED.
+  /// - "NOT_CONTAINS_STRING" : Selects negation of substring matching. The
+  /// match succeeds if the output does NOT contain the content string.
+  /// - "MATCHES_REGEX" : Selects regular-expression matching. The match
+  /// succeeds of the output matches the regular expression specified in the
+  /// content string.
+  /// - "NOT_MATCHES_REGEX" : Selects negation of regular-expression matching.
+  /// The match succeeds if the output does NOT match the regular expression
+  /// specified in the content string.
+  core.String matcher;
 
   ContentMatcher();
 
   ContentMatcher.fromJson(core.Map _json) {
     if (_json.containsKey("content")) {
       content = _json["content"];
+    }
+    if (_json.containsKey("matcher")) {
+      matcher = _json["matcher"];
     }
   }
 
@@ -3238,6 +4077,9 @@ class ContentMatcher {
         new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
+    }
+    if (matcher != null) {
+      _json["matcher"] = matcher;
     }
     return _json;
   }
@@ -3292,10 +4134,17 @@ class CreateCollectdTimeSeriesRequest {
 
 /// The CreateCollectdTimeSeries response.
 class CreateCollectdTimeSeriesResponse {
-  /// Records the error status for points that were not written due to an
-  /// error.Failed requests for which nothing is written will return an error
-  /// response instead.
+  /// Records the error status for points that were not written due to an error
+  /// in the request.Failed requests for which nothing is written will return an
+  /// error response instead. Requests where data points were rejected by the
+  /// backend will set summary instead.
   core.List<CollectdPayloadError> payloadErrors;
+
+  /// Aggregate statistics from writing the payloads. This field is omitted if
+  /// all points were successfully written, so that the response is empty. This
+  /// is for backwards compatibility with clients that log errors on any
+  /// non-empty response.
+  CreateTimeSeriesSummary summary;
 
   CreateCollectdTimeSeriesResponse();
 
@@ -3306,6 +4155,9 @@ class CreateCollectdTimeSeriesResponse {
               (value) => new CollectdPayloadError.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("summary")) {
+      summary = new CreateTimeSeriesSummary.fromJson(_json["summary"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3314,6 +4166,9 @@ class CreateCollectdTimeSeriesResponse {
     if (payloadErrors != null) {
       _json["payloadErrors"] =
           payloadErrors.map((value) => (value).toJson()).toList();
+    }
+    if (summary != null) {
+      _json["summary"] = (summary).toJson();
     }
     return _json;
   }
@@ -3346,6 +4201,63 @@ class CreateTimeSeriesRequest {
       _json["timeSeries"] =
           timeSeries.map((value) => (value).toJson()).toList();
     }
+    return _json;
+  }
+}
+
+/// Summary of the result of a failed request to write data to a time series.
+class CreateTimeSeriesSummary {
+  /// The number of points that failed to be written. Order is not guaranteed.
+  core.List<Error> errors;
+
+  /// The number of points that were successfully written.
+  core.int successPointCount;
+
+  /// The number of points in the request.
+  core.int totalPointCount;
+
+  CreateTimeSeriesSummary();
+
+  CreateTimeSeriesSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("errors")) {
+      errors = (_json["errors"] as core.List)
+          .map<Error>((value) => new Error.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("successPointCount")) {
+      successPointCount = _json["successPointCount"];
+    }
+    if (_json.containsKey("totalPointCount")) {
+      totalPointCount = _json["totalPointCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (errors != null) {
+      _json["errors"] = errors.map((value) => (value).toJson()).toList();
+    }
+    if (successPointCount != null) {
+      _json["successPointCount"] = successPointCount;
+    }
+    if (totalPointCount != null) {
+      _json["totalPointCount"] = totalPointCount;
+    }
+    return _json;
+  }
+}
+
+/// Custom view of service telemetry. Currently a place-holder pending final
+/// design.
+class Custom {
+  Custom();
+
+  Custom.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3457,6 +4369,45 @@ class Distribution {
   }
 }
 
+/// A DistributionCut defines a TimeSeries and thresholds used for measuring
+/// good service and total service. The TimeSeries must have ValueType =
+/// DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed
+/// good_service will be the count of values x in the Distribution such that
+/// range.min <= x < range.max.
+class DistributionCut {
+  /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+  /// specifying a TimeSeries aggregating values. Must have ValueType =
+  /// DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+  core.String distributionFilter;
+
+  /// Range of values considered "good." For a one-sided range, set one bound to
+  /// an infinite value.
+  GoogleMonitoringV3Range range;
+
+  DistributionCut();
+
+  DistributionCut.fromJson(core.Map _json) {
+    if (_json.containsKey("distributionFilter")) {
+      distributionFilter = _json["distributionFilter"];
+    }
+    if (_json.containsKey("range")) {
+      range = new GoogleMonitoringV3Range.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (distributionFilter != null) {
+      _json["distributionFilter"] = distributionFilter;
+    }
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A content string and a MIME type that describes the content string's format.
 class Documentation {
   /// The text of the documentation, interpreted according to mime_type. The
@@ -3542,6 +4493,38 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Detailed information about an error category.
+class Error {
+  /// The number of points that couldn't be written because of status.
+  core.int pointCount;
+
+  /// The status of the requested write operation.
+  Status status;
+
+  Error();
+
+  Error.fromJson(core.Map _json) {
+    if (_json.containsKey("pointCount")) {
+      pointCount = _json["pointCount"];
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (pointCount != null) {
+      _json["pointCount"] = pointCount;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
     return _json;
   }
 }
@@ -3880,6 +4863,40 @@ class GetNotificationChannelVerificationCodeResponse {
   }
 }
 
+/// Range of numerical values, inclusive of min and exclusive of max. If the
+/// open range "< range.max" is desired, set range.min = -infinity. If the open
+/// range ">= range.min" is desired, set range.max = infinity.
+class GoogleMonitoringV3Range {
+  /// Range maximum.
+  core.double max;
+
+  /// Range minimum.
+  core.double min;
+
+  GoogleMonitoringV3Range();
+
+  GoogleMonitoringV3Range.fromJson(core.Map _json) {
+    if (_json.containsKey("max")) {
+      max = _json["max"].toDouble();
+    }
+    if (_json.containsKey("min")) {
+      min = _json["min"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (max != null) {
+      _json["max"] = max;
+    }
+    if (min != null) {
+      _json["min"] = min;
+    }
+    return _json;
+  }
+}
+
 /// The description of a dynamic collection of monitored resources. Each group
 /// has a filter that is matched against monitored resources and their
 /// associated metadata. If a group's filter matches an available monitored
@@ -3967,13 +4984,13 @@ class Group {
   }
 }
 
-/// Information involved in an HTTP/HTTPS uptime check request.
+/// Information involved in an HTTP/HTTPS Uptime check request.
 class HttpCheck {
   /// The authentication information. Optional when creating an HTTP check;
   /// defaults to empty.
   BasicAuthentication authInfo;
 
-  /// The list of headers to send as part of the uptime check request. If two
+  /// The list of headers to send as part of the Uptime check request. If two
   /// headers have the same key and different values, they should be entered as
   /// a single header, with the value being a comma-separated list of all the
   /// desired values as described at
@@ -3987,22 +5004,29 @@ class HttpCheck {
   /// should be specified for any headers related to authentication that you do
   /// not wish to be seen when retrieving the configuration. The server will be
   /// responsible for encrypting the headers. On Get/List calls, if mask_headers
-  /// is set to True then the headers will be obscured with ******.
+  /// is set to true then the headers will be obscured with ******.
   core.bool maskHeaders;
 
-  /// The path to the page to run the check against. Will be combined with the
-  /// host (specified within the MonitoredResource) and port to construct the
-  /// full URL. Optional (defaults to "/"). If the provided path does not begin
-  /// with "/", it will be prepended automatically.
+  /// Optional (defaults to "/"). The path to the page against which to run the
+  /// check. Will be combined with the host (specified within the
+  /// monitored_resource) and port to construct the full URL. If the provided
+  /// path does not begin with "/", a "/" will be prepended automatically.
   core.String path;
 
-  /// The port to the page to run the check against. Will be combined with host
-  /// (specified within the MonitoredResource) and path to construct the full
-  /// URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+  /// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is
+  /// true). The TCP port on the HTTP server against which to run the check.
+  /// Will be combined with host (specified within the monitored_resource) and
+  /// path to construct the full URL.
   core.int port;
 
   /// If true, use HTTPS instead of HTTP to run the check.
   core.bool useSsl;
+
+  /// Boolean specifying whether to include SSL certificate validation as a part
+  /// of the Uptime check. Only applies to checks where monitored_resource is
+  /// set to uptime_url. If use_ssl is false, setting validate_ssl to true has
+  /// no effect.
+  core.bool validateSsl;
 
   HttpCheck();
 
@@ -4024,6 +5048,9 @@ class HttpCheck {
     }
     if (_json.containsKey("useSsl")) {
       useSsl = _json["useSsl"];
+    }
+    if (_json.containsKey("validateSsl")) {
+      validateSsl = _json["validateSsl"];
     }
   }
 
@@ -4048,11 +5075,14 @@ class HttpCheck {
     if (useSsl != null) {
       _json["useSsl"] = useSsl;
     }
+    if (validateSsl != null) {
+      _json["validateSsl"] = validateSsl;
+    }
     return _json;
   }
 }
 
-/// An internal checker allows uptime checks to run on private/internal GCP
+/// An internal checker allows Uptime checks to run on private/internal GCP
 /// resources.
 class InternalChecker {
   /// The checker's human-readable name. The display name should be unique
@@ -4060,13 +5090,13 @@ class InternalChecker {
   /// however, uniqueness is not enforced.
   core.String displayName;
 
-  /// The GCP zone the uptime check should egress from. Only respected for
-  /// internal uptime checks, where internal_network is specified.
+  /// The GCP zone the Uptime check should egress from. Only respected for
+  /// internal Uptime checks, where internal_network is specified.
   core.String gcpZone;
 
   /// A unique resource name for this InternalChecker. The format
-  /// is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID
-  /// is the stackdriver workspace project for the uptime check config
+  /// is:projects/[PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].[PROJECT_ID]
+  /// is the Stackdriver Workspace project for the Uptime check config
   /// associated with the internal checker.
   core.String name;
 
@@ -4074,8 +5104,8 @@ class InternalChecker {
   /// internal resource lives (ex: "default").
   core.String network;
 
-  /// The GCP project_id where the internal checker lives. Not necessary the
-  /// same as the workspace project.
+  /// The GCP project ID where the internal checker lives. Not necessary the
+  /// same as the Workspace project.
   core.String peerProjectId;
 
   /// The current operational state of the internal checker.
@@ -4084,13 +5114,15 @@ class InternalChecker {
   /// state.
   /// - "CREATING" : The checker is being created, provisioned, and configured.
   /// A checker in this state can be returned by ListInternalCheckers or
-  /// GetInternalChecker, as well as by examining the longrunning.Operation that
-  /// created it.
+  /// GetInternalChecker, as well as by examining the long running Operation
+  /// (https://cloud.google.com/apis/design/design_patterns#long_running_operations)
+  /// that created it.
   /// - "RUNNING" : The checker is running and available for use. A checker in
   /// this state can be returned by ListInternalCheckers or GetInternalChecker
-  /// as well as by examining the longrunning.Operation that created it. If a
-  /// checker is being torn down, it is neither visible nor usable, so there is
-  /// no "deleting" or "down" state.
+  /// as well as by examining the long running Operation
+  /// (https://cloud.google.com/apis/design/design_patterns#long_running_operations)
+  /// that created it. If a checker is being torn down, it is neither visible
+  /// nor usable, so there is no "deleting" or "down" state.
   core.String state;
 
   InternalChecker();
@@ -4146,12 +5178,17 @@ class LabelDescriptor {
   /// A human-readable description for the label.
   core.String description;
 
-  /// The label key.
+  /// The key for this label. The key must meet the following criteria:
+  /// Does not exceed 100 characters.
+  /// Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]*
+  /// The first character must be an upper- or lower-case letter.
+  /// The remaining characters must be letters, digits, or underscores.
   core.String key;
 
   /// The type of data that can be assigned to the label.
   /// Possible string values are:
-  /// - "STRING" : A variable-length string. This is the default.
+  /// - "STRING" : A variable-length string, not to exceed 1,024 characters.
+  /// This is the default value type.
   /// - "BOOL" : Boolean; true or false.
   /// - "INT64" : A 64-bit signed integer.
   core.String valueType;
@@ -4181,6 +5218,30 @@ class LabelDescriptor {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// Parameters for a latency threshold SLI.
+class LatencyCriteria {
+  /// Good service is defined to be the count of requests made to this service
+  /// that return in no more than threshold.
+  core.String threshold;
+
+  LatencyCriteria();
+
+  LatencyCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey("threshold")) {
+      threshold = _json["threshold"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (threshold != null) {
+      _json["threshold"] = threshold;
     }
     return _json;
   }
@@ -4506,6 +5567,80 @@ class ListNotificationChannelsResponse {
   }
 }
 
+/// The ListServiceLevelObjectives response.
+class ListServiceLevelObjectivesResponse {
+  /// If there are more results than have been returned, then this field is set
+  /// to a non-empty value. To see the additional results, use that value as
+  /// pageToken in the next call to this method.
+  core.String nextPageToken;
+
+  /// The ServiceLevelObjectives matching the specified filter.
+  core.List<ServiceLevelObjective> serviceLevelObjectives;
+
+  ListServiceLevelObjectivesResponse();
+
+  ListServiceLevelObjectivesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("serviceLevelObjectives")) {
+      serviceLevelObjectives = (_json["serviceLevelObjectives"] as core.List)
+          .map<ServiceLevelObjective>(
+              (value) => new ServiceLevelObjective.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (serviceLevelObjectives != null) {
+      _json["serviceLevelObjectives"] =
+          serviceLevelObjectives.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The ListServices response.
+class ListServicesResponse {
+  /// If there are more results than have been returned, then this field is set
+  /// to a non-empty value. To see the additional results, use that value as
+  /// pageToken in the next call to this method.
+  core.String nextPageToken;
+
+  /// The Services matching the specified filter.
+  core.List<Service> services;
+
+  ListServicesResponse();
+
+  ListServicesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("services")) {
+      services = (_json["services"] as core.List)
+          .map<Service>((value) => new Service.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (services != null) {
+      _json["services"] = services.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// The ListTimeSeries response.
 class ListTimeSeriesResponse {
   /// Query execution errors that may have caused the time series data returned
@@ -4565,11 +5700,11 @@ class ListUptimeCheckConfigsResponse {
   /// request message's page_token field).
   core.String nextPageToken;
 
-  /// The total number of uptime check configurations for the project,
+  /// The total number of Uptime check configurations for the project,
   /// irrespective of any pagination.
   core.int totalSize;
 
-  /// The returned uptime check configurations.
+  /// The returned Uptime check configurations.
   core.List<UptimeCheckConfig> uptimeCheckConfigs;
 
   ListUptimeCheckConfigsResponse();
@@ -4693,9 +5828,8 @@ class MetricAbsence {
   /// aggregating multiple streams on each resource to a single stream for each
   /// resource or when aggregating streams across all members of a group of
   /// resrouces). Multiple aggregations are applied in the order specified.This
-  /// field is similar to the one in the MetricService.ListTimeSeries request.
-  /// It is advisable to use the ListTimeSeries method when debugging this
-  /// field.
+  /// field is similar to the one in the ListTimeSeries request. It is advisable
+  /// to use the ListTimeSeries method when debugging this field.
   core.List<Aggregation> aggregations;
 
   /// The amount of time that a time series must fail to report new data to be
@@ -4706,11 +5840,11 @@ class MetricAbsence {
 
   /// A filter that identifies which time series should be compared with the
   /// threshold.The filter is similar to the one that is specified in the
-  /// MetricService.ListTimeSeries request (that call is useful to verify the
-  /// time series that will be retrieved / processed) and must specify the
-  /// metric type and optionally may contain restrictions on resource type,
-  /// resource labels, and metric labels. This field may not exceed 2048 Unicode
-  /// characters in length.
+  /// ListTimeSeries request (that call is useful to verify the time series that
+  /// will be retrieved / processed) and must specify the metric type and
+  /// optionally may contain restrictions on resource type, resource labels, and
+  /// metric labels. This field may not exceed 2048 Unicode characters in
+  /// length.
   core.String filter;
 
   /// The number/percent of time series for which the comparison must hold in
@@ -4824,6 +5958,12 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time series, which is identified partially
+  /// by a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -4836,9 +5976,21 @@ class MetricDescriptor {
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable if
-  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are
-  /// a subset of The Unified Code for Units of Measure
+  /// The units in which the metric value is reported. It is only applicable if
+  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
+  /// representation of the stored metric values.Different systems may scale the
+  /// values to be more easily displayed (so a value of 0.02KBy might be
+  /// displayed as 20By, and a value of 3523KBy might be displayed as 3.5MBy).
+  /// However, if the unit is KBy, then the value of the metric is always in
+  /// thousands of bytes, no matter how it may be displayed..If you want a
+  /// custom metric to record the exact number of CPU-seconds used by a job, you
+  /// can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or
+  /// equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then
+  /// the value is written as 12005.Alternatively, if you want a custom metric
+  /// to record data in a more granular way, you can create a DOUBLE CUMULATIVE
+  /// metric whose unit is ks{CPU}, and then write the value 12.005 (which is
+  /// 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The
+  /// supported units are a subset of The Unified Code for Units of Measure
   /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
   /// bit bit
   /// By byte
@@ -4846,29 +5998,33 @@ class MetricDescriptor {
   /// min minute
   /// h hour
   /// d dayPrefixes (PREFIX)
-  /// k kilo (10**3)
-  /// M mega (10**6)
-  /// G giga (10**9)
-  /// T tera (10**12)
-  /// P peta (10**15)
-  /// E exa (10**18)
-  /// Z zetta (10**21)
-  /// Y yotta (10**24)
-  /// m milli (10**-3)
-  /// u micro (10**-6)
-  /// n nano (10**-9)
-  /// p pico (10**-12)
-  /// f femto (10**-15)
-  /// a atto (10**-18)
-  /// z zepto (10**-21)
-  /// y yocto (10**-24)
-  /// Ki kibi (2**10)
-  /// Mi mebi (2**20)
-  /// Gi gibi (2**30)
-  /// Ti tebi (2**40)GrammarThe grammar also includes these connectors:
-  /// / division (as an infix operator, e.g. 1/s).
-  /// . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
-  /// is as follows:
+  /// k kilo (10^3)
+  /// M mega (10^6)
+  /// G giga (10^9)
+  /// T tera (10^12)
+  /// P peta (10^15)
+  /// E exa (10^18)
+  /// Z zetta (10^21)
+  /// Y yotta (10^24)
+  /// m milli (10^-3)
+  /// u micro (10^-6)
+  /// n nano (10^-9)
+  /// p pico (10^-12)
+  /// f femto (10^-15)
+  /// a atto (10^-18)
+  /// z zepto (10^-21)
+  /// y yocto (10^-24)
+  /// Ki kibi (2^10)
+  /// Mi mebi (2^20)
+  /// Gi gibi (2^30)
+  /// Ti tebi (2^40)
+  /// Pi pebi (2^50)GrammarThe grammar also includes these connectors:
+  /// / division or ratio (as an infix operator). For examples,  kBy/{email} or
+  /// MiBy/10ms (although you should almost never  have /s in a metric unit;
+  /// rates should always be computed at  query time from the underlying
+  /// cumulative or delta value).
+  /// . multiplication or composition (as an infix operator). For  examples,
+  /// GBy.d or k{watt}.h.The grammar for a unit is as follows:
   /// Expression = Component { "." Component } { "/" Component } ;
   ///
   /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
@@ -4878,14 +6034,25 @@ class MetricDescriptor {
   ///
   /// Annotation = "{" NAME "}" ;
   /// Notes:
-  /// Annotation is just a comment if it follows a UNIT and is  equivalent to 1
-  /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s
-  /// == By/s.
+  /// Annotation is just a comment if it follows a UNIT. If the annotation  is
+  /// used alone, then the unit is equivalent to 1. For examples,  {request}/s
+  /// == 1/s, By{transmitted}/s == By/s.
   /// NAME is a sequence of non-blank printable ASCII characters not  containing
-  /// '{' or '}'.
-  /// 1 represents dimensionless value 1, such as in 1/s.
-  /// % represents dimensionless value 1/100, and annotates values giving  a
-  /// percentage.
+  /// { or }.
+  /// 1 represents a unitary dimensionless  unit
+  /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such  as in
+  /// 1/s. It is typically used when none of the basic units are  appropriate.
+  /// For example, "new users per day" can be represented as  1/d or
+  /// {new-users}/d (and a metric value 5 would mean "5 new  users).
+  /// Alternatively, "thousands of page views per day" would be  represented as
+  /// 1000/d or k1/d or k{page_views}/d (and a metric  value of 5.3 would mean
+  /// "5300 page views per day").
+  /// % represents dimensionless value of 1/100, and annotates values giving  a
+  /// percentage (so the metric values are typically in the range of 0..100,
+  /// and a metric value 3 means "3 percent").
+  /// 10^2.% indicates a metric contains a ratio, typically in the range  0..1,
+  /// that will be multiplied by 100 and displayed as a percentage  (so a metric
+  /// value 0.03 means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some
@@ -4925,6 +6092,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -4960,6 +6131,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -4983,8 +6157,7 @@ class MetricDescriptorMetadata {
   /// loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead. The
-  /// launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
@@ -5051,6 +6224,42 @@ class MetricDescriptorMetadata {
   }
 }
 
+/// A MetricRange is used when each window is good when the value x of a single
+/// TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries
+/// must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+class MetricRange {
+  /// Range of values considered "good." For a one-sided range, set one bound to
+  /// an infinite value.
+  GoogleMonitoringV3Range range;
+
+  /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+  /// specifying the TimeSeries to use for evaluating window quality.
+  core.String timeSeries;
+
+  MetricRange();
+
+  MetricRange.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new GoogleMonitoringV3Range.fromJson(_json["range"]);
+    }
+    if (_json.containsKey("timeSeries")) {
+      timeSeries = _json["timeSeries"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    if (timeSeries != null) {
+      _json["timeSeries"] = timeSeries;
+    }
+    return _json;
+  }
+}
+
 /// A condition type that compares a collection of time series against a
 /// threshold.
 class MetricThreshold {
@@ -5059,9 +6268,8 @@ class MetricThreshold {
   /// aggregating multiple streams on each resource to a single stream for each
   /// resource or when aggregating streams across all members of a group of
   /// resrouces). Multiple aggregations are applied in the order specified.This
-  /// field is similar to the one in the MetricService.ListTimeSeries request.
-  /// It is advisable to use the ListTimeSeries method when debugging this
-  /// field.
+  /// field is similar to the one in the ListTimeSeries request. It is advisable
+  /// to use the ListTimeSeries method when debugging this field.
   core.List<Aggregation> aggregations;
 
   /// The comparison to apply between the time series (indicated by filter and
@@ -5087,20 +6295,16 @@ class MetricThreshold {
   /// single stream for each resource or when aggregating streams across all
   /// members of a group of resources).When computing ratios, the aggregations
   /// and denominator_aggregations fields must use the same alignment period and
-  /// produce time series that have the same periodicity and labels.This field
-  /// is similar to the one in the MetricService.ListTimeSeries request. It is
-  /// advisable to use the ListTimeSeries method when debugging this field.
+  /// produce time series that have the same periodicity and labels.
   core.List<Aggregation> denominatorAggregations;
 
   /// A filter that identifies a time series that should be used as the
   /// denominator of a ratio that will be compared with the threshold. If a
   /// denominator_filter is specified, the time series specified by the filter
-  /// field will be used as the numerator.The filter is similar to the one that
-  /// is specified in the MetricService.ListTimeSeries request (that call is
-  /// useful to verify the time series that will be retrieved / processed) and
-  /// must specify the metric type and optionally may contain restrictions on
-  /// resource type, resource labels, and metric labels. This field may not
-  /// exceed 2048 Unicode characters in length.
+  /// field will be used as the numerator.The filter must specify the metric
+  /// type and optionally may contain restrictions on resource type, resource
+  /// labels, and metric labels. This field may not exceed 2048 Unicode
+  /// characters in length.
   core.String denominatorFilter;
 
   /// The amount of time that a time series must violate the threshold to be
@@ -5116,11 +6320,11 @@ class MetricThreshold {
 
   /// A filter that identifies which time series should be compared with the
   /// threshold.The filter is similar to the one that is specified in the
-  /// MetricService.ListTimeSeries request (that call is useful to verify the
-  /// time series that will be retrieved / processed) and must specify the
-  /// metric type and optionally may contain restrictions on resource type,
-  /// resource labels, and metric labels. This field may not exceed 2048 Unicode
-  /// characters in length.
+  /// ListTimeSeries request (that call is useful to verify the time series that
+  /// will be retrieved / processed) and must specify the metric type and
+  /// optionally may contain restrictions on resource type, resource labels, and
+  /// metric labels. This field may not exceed 2048 Unicode characters in
+  /// length.
   core.String filter;
 
   /// A value against which to compare the time series.
@@ -5603,10 +6807,6 @@ class NotificationChannelDescriptor {
   /// In the above, [TYPE] is the value of the type field.
   core.String name;
 
-  /// The tiers that support this notification channel; the project service tier
-  /// must be one of the supported_tiers.
-  core.List<core.String> supportedTiers;
-
   /// The type of notification channel, such as "email", "sms", etc.
   /// Notification channel types are globally unique.
   core.String type;
@@ -5628,10 +6828,6 @@ class NotificationChannelDescriptor {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("supportedTiers")) {
-      supportedTiers =
-          (_json["supportedTiers"] as core.List).cast<core.String>();
-    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -5651,9 +6847,6 @@ class NotificationChannelDescriptor {
     }
     if (name != null) {
       _json["name"] = name;
-    }
-    if (supportedTiers != null) {
-      _json["supportedTiers"] = supportedTiers;
     }
     if (type != null) {
       _json["type"] = type;
@@ -5704,16 +6897,58 @@ class Option {
   }
 }
 
+/// A PerformanceThreshold is used when each window is good when that window has
+/// a sufficiently high performance.
+class PerformanceThreshold {
+  /// BasicSli to evaluate to judge window quality.
+  BasicSli basicSliPerformance;
+
+  /// RequestBasedSli to evaluate to judge window quality.
+  RequestBasedSli performance;
+
+  /// If window performance >= threshold, the window is counted as good.
+  core.double threshold;
+
+  PerformanceThreshold();
+
+  PerformanceThreshold.fromJson(core.Map _json) {
+    if (_json.containsKey("basicSliPerformance")) {
+      basicSliPerformance = new BasicSli.fromJson(_json["basicSliPerformance"]);
+    }
+    if (_json.containsKey("performance")) {
+      performance = new RequestBasedSli.fromJson(_json["performance"]);
+    }
+    if (_json.containsKey("threshold")) {
+      threshold = _json["threshold"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (basicSliPerformance != null) {
+      _json["basicSliPerformance"] = (basicSliPerformance).toJson();
+    }
+    if (performance != null) {
+      _json["performance"] = (performance).toJson();
+    }
+    if (threshold != null) {
+      _json["threshold"] = threshold;
+    }
+    return _json;
+  }
+}
+
 /// A single data point in a time series.
 class Point {
-  /// The time interval to which the data point applies. For GAUGE metrics, only
-  /// the end time of the interval is used. For DELTA metrics, the start and end
-  /// time should specify a non-zero interval, with subsequent points specifying
-  /// contiguous and non-overlapping intervals. For CUMULATIVE metrics, the
-  /// start and end time should specify a non-zero interval, with subsequent
-  /// points specifying the same start time and increasing end times, until an
-  /// event resets the cumulative value to zero and sets a new start time for
-  /// the following points.
+  /// The time interval to which the data point applies. For GAUGE metrics, the
+  /// start time is optional, but if it is supplied, it must equal the end time.
+  /// For DELTA metrics, the start and end time should specify a non-zero
+  /// interval, with subsequent points specifying contiguous and non-overlapping
+  /// intervals. For CUMULATIVE metrics, the start and end time should specify a
+  /// non-zero interval, with subsequent points specifying the same start time
+  /// and increasing end times, until an event resets the cumulative value to
+  /// zero and sets a new start time for the following points.
   TimeInterval interval;
 
   /// The value of the data point.
@@ -5775,11 +7010,47 @@ class Range {
   }
 }
 
+/// Service Level Indicators for which atomic units of service are counted
+/// directly.
+class RequestBasedSli {
+  /// distribution_cut is used when good_service is a count of values aggregated
+  /// in a Distribution that fall into a good range. The total_service is the
+  /// total count of all values aggregated in the Distribution.
+  DistributionCut distributionCut;
+
+  /// good_total_ratio is used when the ratio of good_service to total_service
+  /// is computed from two TimeSeries.
+  TimeSeriesRatio goodTotalRatio;
+
+  RequestBasedSli();
+
+  RequestBasedSli.fromJson(core.Map _json) {
+    if (_json.containsKey("distributionCut")) {
+      distributionCut = new DistributionCut.fromJson(_json["distributionCut"]);
+    }
+    if (_json.containsKey("goodTotalRatio")) {
+      goodTotalRatio = new TimeSeriesRatio.fromJson(_json["goodTotalRatio"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (distributionCut != null) {
+      _json["distributionCut"] = (distributionCut).toJson();
+    }
+    if (goodTotalRatio != null) {
+      _json["goodTotalRatio"] = (goodTotalRatio).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The resource submessage for group checks. It can be used instead of a
 /// monitored resource, when multiple resources are being monitored.
 class ResourceGroup {
-  /// The group of resources being monitored. Should be only the group_id, not
-  /// projects/<project_id>/groups/<group_id>.
+  /// The group of resources being monitored. Should be only the [GROUP_ID], and
+  /// not the full-path projects/[PROJECT_ID]/groups/[GROUP_ID].
   core.String groupId;
 
   /// The resource type of the group members.
@@ -5823,6 +7094,236 @@ class SendNotificationChannelVerificationCodeRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A Service is a discrete, autonomous, and network-accessible unit, designed
+/// to solve an individual concern (Wikipedia
+/// (https://en.wikipedia.org/wiki/Service-orientation)). In Stackdriver
+/// Monitoring, a Service acts as the root resource under which operational
+/// aspects of the service are accessible.
+class Service {
+  /// Type used for App Engine services.
+  AppEngine appEngine;
+
+  /// Type used for Cloud Endpoints services.
+  CloudEndpoints cloudEndpoints;
+
+  /// Type used for Istio services that live in a Kubernetes cluster.
+  ClusterIstio clusterIstio;
+
+  /// Custom service type.
+  Custom custom;
+
+  /// Name used for UI elements listing this Service.
+  core.String displayName;
+
+  /// Resource name for this Service. Of the form
+  /// projects/{project_id}/services/{service_id}.
+  core.String name;
+
+  /// Configuration for how to query telemetry on a Service.
+  Telemetry telemetry;
+
+  Service();
+
+  Service.fromJson(core.Map _json) {
+    if (_json.containsKey("appEngine")) {
+      appEngine = new AppEngine.fromJson(_json["appEngine"]);
+    }
+    if (_json.containsKey("cloudEndpoints")) {
+      cloudEndpoints = new CloudEndpoints.fromJson(_json["cloudEndpoints"]);
+    }
+    if (_json.containsKey("clusterIstio")) {
+      clusterIstio = new ClusterIstio.fromJson(_json["clusterIstio"]);
+    }
+    if (_json.containsKey("custom")) {
+      custom = new Custom.fromJson(_json["custom"]);
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("telemetry")) {
+      telemetry = new Telemetry.fromJson(_json["telemetry"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appEngine != null) {
+      _json["appEngine"] = (appEngine).toJson();
+    }
+    if (cloudEndpoints != null) {
+      _json["cloudEndpoints"] = (cloudEndpoints).toJson();
+    }
+    if (clusterIstio != null) {
+      _json["clusterIstio"] = (clusterIstio).toJson();
+    }
+    if (custom != null) {
+      _json["custom"] = (custom).toJson();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (telemetry != null) {
+      _json["telemetry"] = (telemetry).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A Service-Level Indicator (SLI) describes the "performance" of a service.
+/// For some services, the SLI is well-defined. In such cases, the SLI can be
+/// described easily by referencing the well-known SLI and providing the needed
+/// parameters. Alternatively, a "custom" SLI can be defined with a query to the
+/// underlying metric store. An SLI is defined to be good_service /
+/// total_service over any queried time interval. The value of performance
+/// always falls into the range 0 <= performance <= 1. A custom SLI describes
+/// how to compute this ratio, whether this is by dividing values from a pair of
+/// time series, cutting a Distribution into good and bad counts, or counting
+/// time windows in which the service complies with a criterion. For separation
+/// of concerns, a single Service-Level Indicator measures performance for only
+/// one aspect of service quality, such as fraction of successful queries or
+/// fast-enough queries.
+class ServiceLevelIndicator {
+  /// Basic SLI on a well-known service type.
+  BasicSli basicSli;
+
+  /// Request-based SLIs
+  RequestBasedSli requestBased;
+
+  /// Windows-based SLIs
+  WindowsBasedSli windowsBased;
+
+  ServiceLevelIndicator();
+
+  ServiceLevelIndicator.fromJson(core.Map _json) {
+    if (_json.containsKey("basicSli")) {
+      basicSli = new BasicSli.fromJson(_json["basicSli"]);
+    }
+    if (_json.containsKey("requestBased")) {
+      requestBased = new RequestBasedSli.fromJson(_json["requestBased"]);
+    }
+    if (_json.containsKey("windowsBased")) {
+      windowsBased = new WindowsBasedSli.fromJson(_json["windowsBased"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (basicSli != null) {
+      _json["basicSli"] = (basicSli).toJson();
+    }
+    if (requestBased != null) {
+      _json["requestBased"] = (requestBased).toJson();
+    }
+    if (windowsBased != null) {
+      _json["windowsBased"] = (windowsBased).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A Service-Level Objective (SLO) describes a level of desired good service.
+/// It consists of a service-level indicator (SLI), a performance goal, and a
+/// period over which the objective is to be evaluated against that goal. The
+/// SLO can use SLIs defined in a number of different manners. Typical SLOs
+/// might include "99% of requests in each rolling week have latency below 200
+/// milliseconds" or "99.5% of requests in each calendar month return
+/// successfully."
+class ServiceLevelObjective {
+  /// A calendar period, semantically "since the start of the current
+  /// <calendar_period>". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are
+  /// supported.
+  /// Possible string values are:
+  /// - "CALENDAR_PERIOD_UNSPECIFIED" : Undefined period, raises an error.
+  /// - "DAY" : A day.
+  /// - "WEEK" : A week. Weeks begin on Monday, following ISO 8601
+  /// (https://en.wikipedia.org/wiki/ISO_week_date).
+  /// - "FORTNIGHT" : A fortnight. The first calendar fortnight of the year
+  /// begins at the start of week 1 according to ISO 8601
+  /// (https://en.wikipedia.org/wiki/ISO_week_date).
+  /// - "MONTH" : A month.
+  /// - "QUARTER" : A quarter. Quarters start on dates 1-Jan, 1-Apr, 1-Jul, and
+  /// 1-Oct of each year.
+  /// - "HALF" : A half-year. Half-years start on dates 1-Jan and 1-Jul.
+  /// - "YEAR" : A year.
+  core.String calendarPeriod;
+
+  /// Name used for UI elements listing this SLO.
+  core.String displayName;
+
+  /// The fraction of service that must be good in order for this objective to
+  /// be met. 0 < goal <= 0.999.
+  core.double goal;
+
+  /// Resource name for this ServiceLevelObjective. Of the form
+  /// projects/{project_id}/services/{service_id}/serviceLevelObjectives/{slo_name}.
+  core.String name;
+
+  /// A rolling time period, semantically "in the past <rolling_period>". Must
+  /// be an integer multiple of 1 day no larger than 30 days.
+  core.String rollingPeriod;
+
+  /// The definition of good service, used to measure and calculate the quality
+  /// of the Service's performance with respect to a single aspect of service
+  /// quality.
+  ServiceLevelIndicator serviceLevelIndicator;
+
+  ServiceLevelObjective();
+
+  ServiceLevelObjective.fromJson(core.Map _json) {
+    if (_json.containsKey("calendarPeriod")) {
+      calendarPeriod = _json["calendarPeriod"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("goal")) {
+      goal = _json["goal"].toDouble();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("rollingPeriod")) {
+      rollingPeriod = _json["rollingPeriod"];
+    }
+    if (_json.containsKey("serviceLevelIndicator")) {
+      serviceLevelIndicator =
+          new ServiceLevelIndicator.fromJson(_json["serviceLevelIndicator"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (calendarPeriod != null) {
+      _json["calendarPeriod"] = calendarPeriod;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (goal != null) {
+      _json["goal"] = goal;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (rollingPeriod != null) {
+      _json["rollingPeriod"] = rollingPeriod;
+    }
+    if (serviceLevelIndicator != null) {
+      _json["serviceLevelIndicator"] = (serviceLevelIndicator).toJson();
+    }
     return _json;
   }
 }
@@ -5937,11 +7438,11 @@ class Status {
   }
 }
 
-/// Information required for a TCP uptime check request.
+/// Information required for a TCP Uptime check request.
 class TcpCheck {
-  /// The port to the page to run the check against. Will be combined with host
-  /// (specified within the MonitoredResource) to construct the full URL.
-  /// Required.
+  /// The TCP port on the server against which to run the check. Will be
+  /// combined with host (specified within the monitored_resource) to construct
+  /// the full URL. Required.
   core.int port;
 
   TcpCheck();
@@ -5962,16 +7463,41 @@ class TcpCheck {
   }
 }
 
+/// Configuration for how to query telemetry on a Service.
+class Telemetry {
+  /// The full name of the resource that defines this service. Formatted as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  core.String resourceName;
+
+  Telemetry();
+
+  Telemetry.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
 /// A closed time interval. It extends from the start time to the end time, and
 /// includes both: [startTime, endTime]. Valid time intervals depend on the
 /// MetricKind of the metric value. In no case can the end time be earlier than
 /// the start time.
 /// For a GAUGE metric, the startTime value is technically optional; if  no
 /// value is specified, the start time defaults to the value of the  end time,
-/// and the interval represents a single point in time. Such an  interval is
-/// valid only for GAUGE metrics, which are point-in-time  measurements.
-/// For DELTA and CUMULATIVE metrics, the start time must be later than  the end
-/// time.
+/// and the interval represents a single point in time. If both  start and end
+/// times are specified, they must be identical. Such an  interval is valid only
+/// for GAUGE metrics, which are point-in-time  measurements.
+/// For DELTA and CUMULATIVE metrics, the start time must be earlier  than the
+/// end time.
 /// In all cases, the start time of the next interval must be  at least a
 /// microsecond after the end time of the previous interval.  Because the
 /// interval is closed, if the start time of a new interval  is the same as the
@@ -6117,6 +7643,62 @@ class TimeSeries {
     }
     if (valueType != null) {
       _json["valueType"] = valueType;
+    }
+    return _json;
+  }
+}
+
+/// A TimeSeriesRatio specifies two TimeSeries to use for computing the
+/// good_service / total_service ratio. The specified TimeSeries must have
+/// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
+/// DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly
+/// two of good, bad, and total, and the relationship good_service +
+/// bad_service = total_service will be assumed.
+class TimeSeriesRatio {
+  /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+  /// specifying a TimeSeries quantifying bad service, either demanded service
+  /// that was not provided or demanded service that was of inadequate quality.
+  /// Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind
+  /// = DELTA or MetricKind = CUMULATIVE.
+  core.String badServiceFilter;
+
+  /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+  /// specifying a TimeSeries quantifying good service provided. Must have
+  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
+  /// DELTA or MetricKind = CUMULATIVE.
+  core.String goodServiceFilter;
+
+  /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+  /// specifying a TimeSeries quantifying total demanded service. Must have
+  /// ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
+  /// DELTA or MetricKind = CUMULATIVE.
+  core.String totalServiceFilter;
+
+  TimeSeriesRatio();
+
+  TimeSeriesRatio.fromJson(core.Map _json) {
+    if (_json.containsKey("badServiceFilter")) {
+      badServiceFilter = _json["badServiceFilter"];
+    }
+    if (_json.containsKey("goodServiceFilter")) {
+      goodServiceFilter = _json["goodServiceFilter"];
+    }
+    if (_json.containsKey("totalServiceFilter")) {
+      totalServiceFilter = _json["totalServiceFilter"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (badServiceFilter != null) {
+      _json["badServiceFilter"] = badServiceFilter;
+    }
+    if (goodServiceFilter != null) {
+      _json["goodServiceFilter"] = goodServiceFilter;
+    }
+    if (totalServiceFilter != null) {
+      _json["totalServiceFilter"] = totalServiceFilter;
     }
     return _json;
   }
@@ -6296,14 +7878,14 @@ class TypedValue {
 /// This message configures which resources and services to monitor for
 /// availability.
 class UptimeCheckConfig {
-  /// The expected content on the page the check is run against. Currently, only
-  /// the first entry in the list is supported, and other entries will be
-  /// ignored. The server will look for an exact match of the string in the page
-  /// response's content. This field is optional and should only be specified if
-  /// a content match is required.
+  /// The content that is expected to appear in the data returned by the target
+  /// server against which the check is run. Currently, only the first entry in
+  /// the content_matchers list is supported, and additional entries will be
+  /// ignored. This field is optional and should only be specified if a content
+  /// match is required as part of the/ Uptime check.
   core.List<ContentMatcher> contentMatchers;
 
-  /// A human-friendly name for the uptime check configuration. The display name
+  /// A human-friendly name for the Uptime check configuration. The display name
   /// should be unique within a Stackdriver Workspace in order to make it easier
   /// to identify; however, uniqueness is not enforced. Required.
   core.String displayName;
@@ -6313,22 +7895,29 @@ class UptimeCheckConfig {
 
   /// The internal checkers that this check will egress from. If is_internal is
   /// true and this list is empty, the check will egress from all the
-  /// InternalCheckers configured for the project that owns this CheckConfig.
+  /// InternalCheckers configured for the project that owns this
+  /// UptimeCheckConfig.
   core.List<InternalChecker> internalCheckers;
+
+  /// If this is true, then checks are made only from the 'internal_checkers'.
+  /// If it is false, then checks are made only from the 'selected_regions'. It
+  /// is an error to provide 'selected_regions' when is_internal is true, or to
+  /// provide 'internal_checkers' when is_internal is false.
+  core.bool isInternal;
 
   /// The monitored resource (https://cloud.google.com/monitoring/api/resources)
   /// associated with the configuration. The following monitored resource types
-  /// are supported for uptime checks:  uptime_url  gce_instance  gae_app
-  /// aws_ec2_instance  aws_elb_load_balancer
+  /// are supported for Uptime checks:  uptime_url,  gce_instance,  gae_app,
+  /// aws_ec2_instance,  aws_elb_load_balancer
   MonitoredResource monitoredResource;
 
-  /// A unique resource name for this UptimeCheckConfig. The format
+  /// A unique resource name for this Uptime check configuration. The format
   /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field
-  /// should be omitted when creating the uptime check configuration; on create,
+  /// should be omitted when creating the Uptime check configuration; on create,
   /// the resource name is assigned by the server and included in the response.
   core.String name;
 
-  /// How often, in seconds, the uptime check is performed. Currently, the only
+  /// How often, in seconds, the Uptime check is performed. Currently, the only
   /// supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes),
   /// and 900s (15 minutes). Optional, defaults to 60s.
   core.String period;
@@ -6338,9 +7927,9 @@ class UptimeCheckConfig {
 
   /// The list of regions from which the check will be run. Some regions contain
   /// one location, and others contain more than one. If this field is
-  /// specified, enough regions to include a minimum of 3 locations must be
-  /// provided, or an error message is returned. Not specifying this field will
-  /// result in uptime checks running from all regions.
+  /// specified, enough regions must be provided to include a minimum of 3
+  /// locations. Not specifying this field will result in Uptime checks running
+  /// from all available regions.
   core.List<core.String> selectedRegions;
 
   /// Contains information needed to make a TCP check.
@@ -6368,6 +7957,9 @@ class UptimeCheckConfig {
       internalCheckers = (_json["internalCheckers"] as core.List)
           .map<InternalChecker>((value) => new InternalChecker.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("isInternal")) {
+      isInternal = _json["isInternal"];
     }
     if (_json.containsKey("monitoredResource")) {
       monitoredResource =
@@ -6411,6 +8003,9 @@ class UptimeCheckConfig {
       _json["internalCheckers"] =
           internalCheckers.map((value) => (value).toJson()).toList();
     }
+    if (isInternal != null) {
+      _json["isInternal"] = isInternal;
+    }
     if (monitoredResource != null) {
       _json["monitoredResource"] = (monitoredResource).toJson();
     }
@@ -6439,10 +8034,10 @@ class UptimeCheckConfig {
 /// Contains the region, location, and list of IP addresses where checkers in
 /// the location run from.
 class UptimeCheckIp {
-  /// The IP address from which the uptime check originates. This is a full IP
-  /// address (not an IP address range). Most IP addresses, as of this
-  /// publication, are in IPv4 format; however, one should not rely on the IP
-  /// addresses being in IPv4 format indefinitely and should support
+  /// The IP address from which the Uptime check originates. This is a fully
+  /// specified IP address (not an IP address range). Most IP addresses, as of
+  /// this publication, are in IPv4 format; however, one should not rely on the
+  /// IP addresses being in IPv4 format indefinitely, and should support
   /// interpreting this field in either IPv4 or IPv6 format.
   core.String ipAddress;
 
@@ -6454,7 +8049,7 @@ class UptimeCheckIp {
   /// A broad region category in which the IP address is located.
   /// Possible string values are:
   /// - "REGION_UNSPECIFIED" : Default value if no region is specified. Will
-  /// result in uptime checks running from all regions.
+  /// result in Uptime checks running from all regions.
   /// - "USA" : Allows checks to run from locations within the United States of
   /// America.
   /// - "EUROPE" : Allows checks to run from locations within the continent of
@@ -6519,6 +8114,73 @@ class VerifyNotificationChannelRequest {
         new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
+    }
+    return _json;
+  }
+}
+
+/// A WindowsBasedSli defines good_service as the count of time windows for
+/// which the provided service was of good quality. Criteria for determining if
+/// service was good are embedded in the window_criterion.
+class WindowsBasedSli {
+  /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+  /// specifying a TimeSeries with ValueType = BOOL. The window is good if any
+  /// true values appear in the window.
+  core.String goodBadMetricFilter;
+
+  /// A window is good if its performance is high enough.
+  PerformanceThreshold goodTotalRatioThreshold;
+
+  /// A window is good if the metric's value is in a good range, averaged across
+  /// returned streams.
+  MetricRange metricMeanInRange;
+
+  /// A window is good if the metric's value is in a good range, summed across
+  /// returned streams.
+  MetricRange metricSumInRange;
+
+  /// Duration over which window quality is evaluated. Must be an integer
+  /// fraction of a day and at least 60s.
+  core.String windowPeriod;
+
+  WindowsBasedSli();
+
+  WindowsBasedSli.fromJson(core.Map _json) {
+    if (_json.containsKey("goodBadMetricFilter")) {
+      goodBadMetricFilter = _json["goodBadMetricFilter"];
+    }
+    if (_json.containsKey("goodTotalRatioThreshold")) {
+      goodTotalRatioThreshold =
+          new PerformanceThreshold.fromJson(_json["goodTotalRatioThreshold"]);
+    }
+    if (_json.containsKey("metricMeanInRange")) {
+      metricMeanInRange = new MetricRange.fromJson(_json["metricMeanInRange"]);
+    }
+    if (_json.containsKey("metricSumInRange")) {
+      metricSumInRange = new MetricRange.fromJson(_json["metricSumInRange"]);
+    }
+    if (_json.containsKey("windowPeriod")) {
+      windowPeriod = _json["windowPeriod"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (goodBadMetricFilter != null) {
+      _json["goodBadMetricFilter"] = goodBadMetricFilter;
+    }
+    if (goodTotalRatioThreshold != null) {
+      _json["goodTotalRatioThreshold"] = (goodTotalRatioThreshold).toJson();
+    }
+    if (metricMeanInRange != null) {
+      _json["metricMeanInRange"] = (metricMeanInRange).toJson();
+    }
+    if (metricSumInRange != null) {
+      _json["metricSumInRange"] = (metricSumInRange).toJson();
+    }
+    if (windowPeriod != null) {
+      _json["windowPeriod"] = windowPeriod;
     }
     return _json;
   }

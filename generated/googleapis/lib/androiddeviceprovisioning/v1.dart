@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.androiddeviceprovisioning.v1;
 
@@ -1619,7 +1619,7 @@ class ClaimDevicesRequest {
 /// A reseller, vendor, or customer in the zero-touch reseller and customer
 /// APIs.
 class Company {
-  /// Input only. Optional. Email address of customer's users in the admin role.
+  /// Optional. Input only. Email address of customer's users in the admin role.
   /// Each email address must be associated with a Google Account.
   core.List<core.String> adminEmails;
 

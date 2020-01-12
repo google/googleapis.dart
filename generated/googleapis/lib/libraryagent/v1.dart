@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.libraryagent.v1;
 
@@ -43,7 +43,7 @@ class ShelvesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the shelf to retrieve.
+  /// [name] - Required. The name of the shelf to retrieve.
   /// Value must have pattern "^shelves/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -153,7 +153,7 @@ class ShelvesBooksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the book to borrow.
+  /// [name] - Required. The name of the book to borrow.
   /// Value must have pattern "^shelves/[^/]+/books/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -198,7 +198,7 @@ class ShelvesBooksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the book to retrieve.
+  /// [name] - Required. The name of the book to retrieve.
   /// Value must have pattern "^shelves/[^/]+/books/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -245,7 +245,7 @@ class ShelvesBooksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the shelf whose books we'd like to list.
+  /// [parent] - Required. The name of the shelf whose books we'd like to list.
   /// Value must have pattern "^shelves/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
@@ -312,7 +312,7 @@ class ShelvesBooksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the book to return.
+  /// [name] - Required. The name of the book to return.
   /// Value must have pattern "^shelves/[^/]+/books/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.firebasehosting.v1beta1;
 
@@ -664,6 +664,80 @@ class SitesVersionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
+  /// Lists the versions that have been created on the specified site.
+  /// Will include filtering in the future.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list files, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^sites/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than
+  /// this value.
+  /// If unspecified, at most 25 versions will be returned.
+  /// The maximum value is 100; values above 100 will be coerced to 100
+  ///
+  /// [filter] - The filter string used to return a subset of versions in the
+  /// response.
+  /// Currently supported fields for filtering are: name, status,
+  /// and create_time. Filter processing will be implemented in accordance
+  /// with go/filtering.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVersionsResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/versions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListVersionsResponse.fromJson(data));
+  }
+
   /// Updates the specified metadata for a version. Note that this method will
   /// fail with `FAILED_PRECONDITION` in the event of an invalid state
   /// transition. The only valid transition for a version is currently from a
@@ -1267,13 +1341,17 @@ class Empty {
 /// A [`header`](/docs/hosting/full-config#headers) defines custom headers to
 /// add to a response should the request URL path match the pattern.
 class Header {
-  /// Required. The user-supplied
-  /// [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+  /// The user-supplied [glob
+  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
   /// against the request URL path.
   core.String glob;
 
   /// Required. The additional headers to add to the response.
   core.Map<core.String, core.String> headers;
+
+  /// The user-supplied RE2 regular expression to match against the request
+  /// URL path.
+  core.String regex;
 
   Header();
 
@@ -1283,6 +1361,9 @@ class Header {
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("regex")) {
+      regex = _json["regex"];
     }
   }
 
@@ -1294,6 +1375,9 @@ class Header {
     }
     if (headers != null) {
       _json["headers"] = headers;
+    }
+    if (regex != null) {
+      _json["regex"] = regex;
     }
     return _json;
   }
@@ -1401,6 +1485,39 @@ class ListVersionFilesResponse {
   }
 }
 
+class ListVersionsResponse {
+  /// The pagination token, if more results exist
+  core.String nextPageToken;
+
+  /// The list of versions, if any exist.
+  core.List<Version> versions;
+
+  ListVersionsResponse();
+
+  ListVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("versions")) {
+      versions = (_json["versions"] as core.List)
+          .map<Version>((value) => new Version.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (versions != null) {
+      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class PopulateVersionFilesRequest {
   /// A set of file paths to the hashes corresponding to assets that should be
   /// added to the version. Note that a file path to an empty hash will remove
@@ -1462,12 +1579,47 @@ class PopulateVersionFilesResponse {
   }
 }
 
+/// Version preview configuration. If active and unexpired,
+/// this version will be accessible via a custom URL even
+/// if it is not the currently released version.
+class PreviewConfig {
+  /// If true, preview URLs are enabled for this version.
+  core.bool active;
+
+  /// Indicates the expiration time for previewing this
+  /// version; preview URL requests received after this time will 404.
+  core.String expireTime;
+
+  PreviewConfig();
+
+  PreviewConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    return _json;
+  }
+}
+
 /// A [`redirect`](/docs/hosting/full-config#redirects) represents the
 /// configuration for returning an HTTP redirect response given a matching
 /// request URL path.
 class Redirect {
-  /// Required. The user-supplied
-  /// [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+  /// The user-supplied [glob
+  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
   /// against the request URL path.
   core.String glob;
 
@@ -1480,6 +1632,10 @@ class Redirect {
   /// <br>"statusCode": 301,
   /// <br>"location": "https://example.com/foo/:capture"</code>
   core.String location;
+
+  /// The user-supplied RE2 regular expression to match against the request
+  /// URL path.
+  core.String regex;
 
   /// Required. The status HTTP code to return in the response. It must be a
   /// valid 3xx status code.
@@ -1494,6 +1650,9 @@ class Redirect {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("regex")) {
+      regex = _json["regex"];
+    }
     if (_json.containsKey("statusCode")) {
       statusCode = _json["statusCode"];
     }
@@ -1507,6 +1666,9 @@ class Redirect {
     }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (regex != null) {
+      _json["regex"] = regex;
     }
     if (statusCode != null) {
       _json["statusCode"] = statusCode;
@@ -1551,7 +1713,7 @@ class Release {
   /// as if the site never existed.
   core.String type;
 
-  /// Output only.  The configuration and content that was released.
+  /// Output only. The configuration and content that was released.
   Version version;
 
   Release();
@@ -1614,13 +1776,17 @@ class Rewrite {
   /// name exactly.
   core.String function;
 
-  /// Required. The user-supplied
-  /// [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+  /// The user-supplied [glob
+  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
   /// against the request URL path.
   core.String glob;
 
   /// The URL path to rewrite the request to.
   core.String path;
+
+  /// The user-supplied RE2 regular expression to match against the request
+  /// URL path.
+  core.String regex;
 
   /// The request will be forwarded to Cloud Run.
   CloudRunRewrite run;
@@ -1639,6 +1805,9 @@ class Rewrite {
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
+    }
+    if (_json.containsKey("regex")) {
+      regex = _json["regex"];
     }
     if (_json.containsKey("run")) {
       run = new CloudRunRewrite.fromJson(_json["run"]);
@@ -1659,6 +1828,9 @@ class Rewrite {
     }
     if (path != null) {
       _json["path"] = path;
+    }
+    if (regex != null) {
+      _json["regex"] = regex;
     }
     if (run != null) {
       _json["run"] = (run).toJson();
@@ -1830,6 +2002,12 @@ class Version {
   /// [`CreateVersion`](../sites.versions/create) endpoint.
   core.String name;
 
+  /// Version preview configuration for the site version. This configuration
+  /// specfies whether previewing is enabled for this site version. Version
+  /// previews allow you to preview your site at a custom URL before
+  /// releasing it as the live version.
+  PreviewConfig preview;
+
   /// The deploy status of a version.
   /// <br>
   /// <br>For a successful deploy, call the
@@ -1900,6 +2078,9 @@ class Version {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("preview")) {
+      preview = new PreviewConfig.fromJson(_json["preview"]);
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -1940,6 +2121,9 @@ class Version {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (preview != null) {
+      _json["preview"] = (preview).toJson();
     }
     if (status != null) {
       _json["status"] = status;

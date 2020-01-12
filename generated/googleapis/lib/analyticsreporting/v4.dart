@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.analyticsreporting.v4;
 
@@ -147,7 +147,13 @@ class UserActivityResourceApi {
 /// e-commerce, data for one transaction might be sent through multiple hits.
 /// These hits will be merged into one ECOMMERCE Activity.
 class Activity {
-  /// Timestamp of the activity.
+  /// Timestamp of the activity. If activities for a visit cross midnight and
+  /// occur in two separate dates, then two sessions (one per date)
+  /// share the session identifier.
+  /// For example, say session ID 113472 has activity within 2019-08-20, and
+  /// session ID 243742 has activity within 2019-08-25 and 2019-08-26. Session
+  /// ID
+  /// 113472 is one session, and session ID 243742 is two sessions.
   core.String activityTime;
 
   /// Type of this activity.
@@ -442,7 +448,7 @@ class CohortGroup {
   /// - The cohort definition date ranges need not be aligned to the calendar
   ///   week and month boundaries.
   /// - The `viewId` must be an
-  /// [app view
+  ///   [app view
   /// ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)
   core.bool lifetimeValue;
 
@@ -2015,7 +2021,7 @@ class ReportRequest {
   core.List<DimensionFilterClause> dimensionFilterClauses;
 
   /// The dimensions requested.
-  /// Requests can have a total of 7 dimensions.
+  /// Requests can have a total of 9 dimensions.
   core.List<Dimension> dimensions;
 
   /// Dimension or metric filters that restrict the data returned for your

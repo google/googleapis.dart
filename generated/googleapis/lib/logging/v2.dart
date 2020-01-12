@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.logging.v2;
 
@@ -19,7 +19,8 @@ const core.String USER_AGENT = 'dart-api-client logging/v2';
 /// Writes log entries and manages your Stackdriver Logging configuration. The
 /// table entries below are presented in alphabetical order, not in order of
 /// common use. For explanations of the concepts found in the table entries,
-/// read the Stackdriver Logging documentation.
+/// read the <a href=https://cloud.google.com/logging/docs>Stackdriver Logging
+/// documentation</a>.
 class LoggingApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -317,7 +318,7 @@ class BillingAccountsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -376,7 +377,8 @@ class BillingAccountsLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -1245,7 +1247,7 @@ class ExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -1548,7 +1550,7 @@ class FoldersExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -1606,7 +1608,8 @@ class FoldersLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -2143,7 +2146,8 @@ class LogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -2575,7 +2579,7 @@ class OrganizationsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -2634,7 +2638,8 @@ class OrganizationsLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -3420,7 +3425,7 @@ class ProjectsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -3478,7 +3483,8 @@ class ProjectsLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -4597,6 +4603,33 @@ class SinksResourceApi {
   }
 }
 
+/// Options that change functionality of a sink exporting data to BigQuery.
+class BigQueryOptions {
+  /// Optional. Whether to use BigQuery's partition tables. By default, Logging
+  /// creates dated tables based on the log entries' timestamps, e.g.
+  /// syslog_20170523. With partitioned tables the date suffix is no longer
+  /// present and special query syntax has to be used instead. In both cases,
+  /// tables are sharded based on UTC timezone.
+  core.bool usePartitionedTables;
+
+  BigQueryOptions();
+
+  BigQueryOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("usePartitionedTables")) {
+      usePartitionedTables = _json["usePartitionedTables"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (usePartitionedTables != null) {
+      _json["usePartitionedTables"] = usePartitionedTables;
+    }
+    return _json;
+  }
+}
+
 /// BucketOptions describes the bucket boundaries used to create a histogram for
 /// the distribution. The buckets can be in a linear sequence, an exponential
 /// sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -5042,7 +5075,7 @@ class ListExclusionsResponse {
 /// The parameters to ListLogEntries.
 class ListLogEntriesRequest {
   /// Optional. A filter that chooses which log entries to return. See Advanced
-  /// Logs Filters. Only log entries that match the filter are returned. An
+  /// Logs Queries. Only log entries that match the filter are returned. An
   /// empty filter matches all log entries in the resources listed in
   /// resource_names. Referencing a parent resource that is not listed in
   /// resource_names will cause the filter to return no results. The maximum
@@ -5212,8 +5245,8 @@ class ListLogMetricsResponse {
 
 /// Result returned from ListLogs.
 class ListLogsResponse {
-  /// A list of log names. For example, "projects/my-project/syslog" or
-  /// "organizations/123/cloudresourcemanager.googleapis.com%2Factivity".
+  /// A list of log names. For example, "projects/my-project/logs/syslog" or
+  /// "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity".
   core.List<core.String> logNames;
 
   /// If there might be more results than those appearing in this response, then
@@ -5673,10 +5706,11 @@ class LogEntrySourceLocation {
 }
 
 /// Specifies a set of log entries that are not to be stored in Logging. If your
-/// project receives a large volume of logs, you might be able to use exclusions
-/// to reduce your chargeable logs. Exclusions are processed after log sinks, so
-/// you can export log entries before they are excluded. Audit log entries and
-/// log entries from Amazon Web Services are never excluded.
+/// GCP resource receives a large volume of logs, you can use exclusions to
+/// reduce your chargeable logs. Exclusions are processed after log sinks, so
+/// you can export log entries before they are excluded. Note that
+/// organization-level and folder-level exclusions don't apply to child
+/// resources, and that you can't exclude audit log entries.
 class LogExclusion {
   /// Output only. The creation timestamp of the exclusion.This field may not be
   /// present for older exclusions.
@@ -5692,15 +5726,15 @@ class LogExclusion {
 
   /// Required. An advanced logs filter that matches the log entries to be
   /// excluded. By using the sample function, you can exclude less than 100% of
-  /// the matching log entries. For example, the following filter matches 99% of
-  /// low-severity log entries from load
-  /// balancers:"resource.type=http_load_balancer severity<ERROR
-  /// sample(insertId, 0.99)"
+  /// the matching log entries. For example, the following query matches 99% of
+  /// low-severity log entries from Google Cloud Storage
+  /// buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
   core.String filter;
 
   /// Required. A client-assigned identifier, such as "load-balancer-exclusion".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. First character has to be
+  /// alphanumeric.
   core.String name;
 
   /// Output only. The last update timestamp of the exclusion.This field may not
@@ -5993,9 +6027,16 @@ class LogMetric {
 /// exported. The sink must be created within a project, organization, billing
 /// account, or folder.
 class LogSink {
+  /// Optional. Options that affect sinks exporting data to BigQuery.
+  BigQueryOptions bigqueryOptions;
+
   /// Output only. The creation timestamp of the sink.This field may not be
   /// present for older sinks.
   core.String createTime;
+
+  /// Optional. A description of this sink. The maximum length of the
+  /// description is 8000 characters.
+  core.String description;
 
   /// Required. The export destination:
   /// "storage.googleapis.com/[GCS_BUCKET]"
@@ -6005,6 +6046,13 @@ class LogSink {
   /// permission to write to the destination or else the log entries are not
   /// exported. For more information, see Exporting Logs with Sinks.
   core.String destination;
+
+  /// Optional. If set to True, then this sink is disabled and it does not
+  /// export any log entries.
+  core.bool disabled;
+
+  /// Do not use. This field is ignored.
+  core.String endTime;
 
   /// Optional. An advanced logs filter. The only exported log entries are those
   /// that are in the resource owning the sink and that match the filter. For
@@ -6030,6 +6078,7 @@ class LogSink {
   /// Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
   /// characters and can include only the following characters: upper and
   /// lower-case alphanumeric characters, underscores, hyphens, and periods.
+  /// First character has to be alphanumeric.
   core.String name;
 
   /// Deprecated. The log entry format to use for this sink's exported log
@@ -6040,6 +6089,9 @@ class LogSink {
   /// - "V2" : LogEntry version 2 format.
   /// - "V1" : LogEntry version 1 format.
   core.String outputVersionFormat;
+
+  /// Do not use. This field is ignored.
+  core.String startTime;
 
   /// Output only. The last update timestamp of the sink.This field may not be
   /// present for older sinks.
@@ -6058,11 +6110,23 @@ class LogSink {
   LogSink();
 
   LogSink.fromJson(core.Map _json) {
+    if (_json.containsKey("bigqueryOptions")) {
+      bigqueryOptions = new BigQueryOptions.fromJson(_json["bigqueryOptions"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
+    }
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
     }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
@@ -6076,6 +6140,9 @@ class LogSink {
     if (_json.containsKey("outputVersionFormat")) {
       outputVersionFormat = _json["outputVersionFormat"];
     }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
     if (_json.containsKey("updateTime")) {
       updateTime = _json["updateTime"];
     }
@@ -6087,11 +6154,23 @@ class LogSink {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bigqueryOptions != null) {
+      _json["bigqueryOptions"] = (bigqueryOptions).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (destination != null) {
       _json["destination"] = destination;
+    }
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -6104,6 +6183,9 @@ class LogSink {
     }
     if (outputVersionFormat != null) {
       _json["outputVersionFormat"] = outputVersionFormat;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     if (updateTime != null) {
       _json["updateTime"] = updateTime;
@@ -6181,6 +6263,12 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time series, which is identified partially
+  /// by a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -6193,39 +6281,17 @@ class MetricDescriptor {
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable if
-  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are
-  /// a subset of The Unified Code for Units of Measure
-  /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
-  /// bit bit
-  /// By byte
-  /// s second
-  /// min minute
-  /// h hour
-  /// d dayPrefixes (PREFIX)
-  /// k kilo (10**3)
-  /// M mega (10**6)
-  /// G giga (10**9)
-  /// T tera (10**12)
-  /// P peta (10**15)
-  /// E exa (10**18)
-  /// Z zetta (10**21)
-  /// Y yotta (10**24)
-  /// m milli (10**-3)
-  /// u micro (10**-6)
-  /// n nano (10**-9)
-  /// p pico (10**-12)
-  /// f femto (10**-15)
-  /// a atto (10**-18)
-  /// z zepto (10**-21)
-  /// y yocto (10**-24)
-  /// Ki kibi (2**10)
-  /// Mi mebi (2**20)
-  /// Gi gibi (2**30)
-  /// Ti tebi (2**40)GrammarThe grammar also includes these connectors:
-  /// / division (as an infix operator, e.g. 1/s).
-  /// . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
-  /// is as follows:
+  /// Ki kibi (2^10)
+  /// Mi mebi (2^20)
+  /// Gi gibi (2^30)
+  /// Ti tebi (2^40)
+  /// Pi pebi (2^50)GrammarThe grammar also includes these connectors:
+  /// / division or ratio (as an infix operator). For examples,  kBy/{email} or
+  /// MiBy/10ms (although you should almost never  have /s in a metric unit;
+  /// rates should always be computed at  query time from the underlying
+  /// cumulative or delta value).
+  /// . multiplication or composition (as an infix operator). For  examples,
+  /// GBy.d or k{watt}.h.The grammar for a unit is as follows:
   /// Expression = Component { "." Component } { "/" Component } ;
   ///
   /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
@@ -6235,14 +6301,25 @@ class MetricDescriptor {
   ///
   /// Annotation = "{" NAME "}" ;
   /// Notes:
-  /// Annotation is just a comment if it follows a UNIT and is  equivalent to 1
-  /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s
-  /// == By/s.
+  /// Annotation is just a comment if it follows a UNIT. If the annotation  is
+  /// used alone, then the unit is equivalent to 1. For examples,  {request}/s
+  /// == 1/s, By{transmitted}/s == By/s.
   /// NAME is a sequence of non-blank printable ASCII characters not  containing
-  /// '{' or '}'.
-  /// 1 represents dimensionless value 1, such as in 1/s.
-  /// % represents dimensionless value 1/100, and annotates values giving  a
-  /// percentage.
+  /// { or }.
+  /// 1 represents a unitary dimensionless  unit
+  /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such  as in
+  /// 1/s. It is typically used when none of the basic units are  appropriate.
+  /// For example, "new users per day" can be represented as  1/d or
+  /// {new-users}/d (and a metric value 5 would mean "5 new  users).
+  /// Alternatively, "thousands of page views per day" would be  represented as
+  /// 1000/d or k1/d or k{page_views}/d (and a metric  value of 5.3 would mean
+  /// "5300 page views per day").
+  /// % represents dimensionless value of 1/100, and annotates values giving  a
+  /// percentage (so the metric values are typically in the range of 0..100,
+  /// and a metric value 3 means "3 percent").
+  /// 10^2.% indicates a metric contains a ratio, typically in the range  0..1,
+  /// that will be multiplied by 100 and displayed as a percentage  (so a metric
+  /// value 0.03 means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some
@@ -6282,6 +6359,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -6317,6 +6398,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -6340,8 +6424,7 @@ class MetricDescriptorMetadata {
   /// loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead. The
-  /// launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of

@@ -81,14 +81,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed2385() {
+buildUnnamed4000() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed2385(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed4000(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -99,7 +99,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed2385();
+    o.violatingSites = buildUnnamed4000();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -108,7 +108,7 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed2385(o.violatingSites);
+    checkUnnamed4000(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }

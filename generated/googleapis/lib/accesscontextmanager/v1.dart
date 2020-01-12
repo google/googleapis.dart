@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.accesscontextmanager.v1;
 
@@ -588,8 +588,8 @@ class AccessPoliciesAccessLevelsResourceApi {
   /// `accessPolicies/{policy_id}/accessLevels/{short_name}`
   /// Value must have pattern "^accessPolicies/[^/]+/accessLevels/[^/]+$".
   ///
-  /// [updateMask] - Required.  Mask to control which fields get updated. Must
-  /// be non-empty.
+  /// [updateMask] - Required. Mask to control which fields get updated. Must be
+  /// non-empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1096,11 +1096,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1113,9 +1113,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1127,14 +1127,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1798,8 +1798,7 @@ class OsConstraint {
 
   /// Only allows requests from devices with a verified Chrome OS.
   /// Verifications includes requirements that the device is enterprise-managed,
-  /// conformant to Dasher domain policies, and the caller has permission to
-  /// call
+  /// conformant to domain policies, and the caller has permission to call
   /// the API targeted by the request.
   core.bool requireVerifiedChromeOs;
 

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.youtubeAnalytics.v2;
 
@@ -375,6 +375,11 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
+  /// result set that
+  /// should be returned. In an API response, the `nextPageToken` property
+  /// identifies the next page that can be retrieved.
+  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
   /// authorized request. **Note:**
   /// This parameter is intended exclusively for YouTube content partners that
@@ -403,11 +408,6 @@ class GroupsResourceApi {
   /// authenticated
   /// user.
   ///
-  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
-  /// result set that
-  /// should be returned. In an API response, the `nextPageToken` property
-  /// identifies the next page that can be retrieved.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -419,10 +419,10 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
-      {core.String onBehalfOfContentOwner,
+      {core.String pageToken,
+      core.String onBehalfOfContentOwner,
       core.String id,
       core.bool mine,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -431,6 +431,9 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -439,9 +442,6 @@ class GroupsResourceApi {
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

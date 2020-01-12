@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.clouddebugger.v2;
 
@@ -136,7 +136,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - Identifies the debuggee.
+  /// [debuggeeId] - Required. Identifies the debuggee.
   ///
   /// [successOnTimeout] - If set to `true` (recommended), returns
   /// `google.rpc.Code.OK` status and
@@ -213,7 +213,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - Identifies the debuggee being debugged.
+  /// [debuggeeId] - Required. Identifies the debuggee being debugged.
   ///
   /// [id] - Breakpoint identifier, unique in the scope of the debuggee.
   ///
@@ -290,15 +290,15 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [includeInactive] - When set to `true`, the result includes all debuggees.
   /// Otherwise, the
   /// result includes only debuggees that are active.
   ///
-  /// [project] - Project number of a Google Cloud project whose debuggees to
-  /// list.
+  /// [project] - Required. Project number of a Google Cloud project whose
+  /// debuggees to list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,11 +357,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee whose breakpoint to delete.
+  /// [debuggeeId] - Required. ID of the debuggee whose breakpoint to delete.
   ///
-  /// [breakpointId] - ID of the breakpoint to delete.
+  /// [breakpointId] - Required. ID of the breakpoint to delete.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -414,11 +414,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee whose breakpoint to get.
+  /// [debuggeeId] - Required. ID of the debuggee whose breakpoint to get.
   ///
-  /// [breakpointId] - ID of the breakpoint to get.
+  /// [breakpointId] - Required. ID of the breakpoint to get.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -472,7 +472,15 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee whose breakpoints to list.
+  /// [debuggeeId] - Required. ID of the debuggee whose breakpoints to list.
+  ///
+  /// [includeInactive] - When set to `true`, the response includes active and
+  /// inactive
+  /// breakpoints. Otherwise, it includes only active breakpoints.
+  ///
+  /// [includeAllUsers] - When set to `true`, the response includes the list of
+  /// breakpoints set by
+  /// any user. Otherwise, it includes only breakpoints set by the caller.
   ///
   /// [stripResults] - This field is deprecated. The following fields are always
   /// stripped out of
@@ -485,7 +493,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
   /// should be called again with the same `wait_token`.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [action_value] - Only breakpoints with the specified action will pass the
@@ -493,14 +501,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// Possible string values are:
   /// - "CAPTURE" : A CAPTURE.
   /// - "LOG" : A LOG.
-  ///
-  /// [includeInactive] - When set to `true`, the response includes active and
-  /// inactive
-  /// breakpoints. Otherwise, it includes only active breakpoints.
-  ///
-  /// [includeAllUsers] - When set to `true`, the response includes the list of
-  /// breakpoints set by
-  /// any user. Otherwise, it includes only breakpoints set by the caller.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -513,12 +513,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool stripResults,
+      {core.bool includeInactive,
+      core.bool includeAllUsers,
+      core.bool stripResults,
       core.String waitToken,
       core.String clientVersion,
       core.String action_value,
-      core.bool includeInactive,
-      core.bool includeAllUsers,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -529,6 +529,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
+    }
+    if (includeInactive != null) {
+      _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
     }
     if (stripResults != null) {
       _queryParams["stripResults"] = ["${stripResults}"];
@@ -541,12 +547,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
-    }
-    if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
-    }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -571,9 +571,10 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee where the breakpoint is to be set.
+  /// [debuggeeId] - Required. ID of the debuggee where the breakpoint is to be
+  /// set.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1514,7 +1515,7 @@ class ProjectRepoId {
 
 /// Request to register a debuggee.
 class RegisterDebuggeeRequest {
-  /// Debuggee information to register.
+  /// Required. Debuggee information to register.
   /// The fields `project`, `uniquifier`, `description` and `agent_version`
   /// of the debuggee must be set.
   Debuggee debuggee;
@@ -1599,7 +1600,7 @@ class RepoId {
 /// Response for setting a breakpoint.
 class SetBreakpointResponse {
   /// Breakpoint resource.
-  /// The field `id` is guaranteed to be set (in addition to the echoed fileds).
+  /// The field `id` is guaranteed to be set (in addition to the echoed fields).
   Breakpoint breakpoint;
 
   SetBreakpointResponse();
@@ -1831,7 +1832,7 @@ class StatusMessage {
 
 /// Request to update an active breakpoint.
 class UpdateActiveBreakpointRequest {
-  /// Updated breakpoint information.
+  /// Required. Updated breakpoint information.
   /// The field `id` must be set.
   /// The agent must echo all Breakpoint specification fields in the update.
   Breakpoint breakpoint;

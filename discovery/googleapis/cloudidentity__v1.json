@@ -2,11 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/cloud-identity.groups": {
-                    "description": "See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group"
-                },
                 "https://www.googleapis.com/auth/cloud-identity.groups.readonly": {
                     "description": "See any Cloud Identity Groups that you can access, including group members and their emails"
+                },
+                "https://www.googleapis.com/auth/cloud-platform": {
+                    "description": "View and manage your data across Google Cloud Platform services"
+                },
+                "https://www.googleapis.com/auth/cloud-identity.groups": {
+                    "description": "See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group"
                 }
             }
         }
@@ -28,32 +31,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
@@ -102,12 +79,126 @@
             ],
             "location": "query",
             "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
         }
     },
     "protocol": "rest",
     "resources": {
         "groups": {
             "methods": {
+                "list": {
+                    "description": "List groups within a customer or a domain.",
+                    "httpMethod": "GET",
+                    "id": "cloudidentity.groups.list",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "pageToken": {
+                            "description": "The next_page_token value returned from a previous list request, if any.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The default page size is 200 (max 1000) for the BASIC view, and 50\n(max 500) for the FULL view.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "view": {
+                            "description": "Group resource view to be returned. Defaults to [View.BASIC]().",
+                            "enum": [
+                                "VIEW_UNSPECIFIED",
+                                "BASIC",
+                                "FULL"
+                            ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "parent": {
+                            "description": "`Required`. May be made Optional in the future.\nCustomer ID to list all groups from.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/groups",
+                    "response": {
+                        "$ref": "ListGroupsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.groups",
+                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "lookup": {
+                    "description": "Looks up [resource\nname](https://cloud.google.com/apis/design/resource_names) of a Group by\nits EntityKey.",
+                    "httpMethod": "GET",
+                    "id": "cloudidentity.groups.lookup",
+                    "parameterOrder": [],
+                    "parameters": {
+                        "groupKey.namespace": {
+                            "description": "Namespaces provide isolation for IDs, so an ID only needs to be unique\nwithin its namespace.\n\nNamespaces are currently only created as part of IdentitySource creation\nfrom Admin Console. A namespace `\"identitysources/{identity_source_id}\"` is\ncreated corresponding to every Identity Source `identity_source_id`.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "groupKey.id": {
+                            "description": "The ID of the entity within the given namespace. The ID must be unique\nwithin its namespace.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/groups:lookup",
+                    "response": {
+                        "$ref": "LookupGroupNameResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.groups",
+                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "create": {
+                    "description": "Creates a Group.",
+                    "httpMethod": "POST",
+                    "id": "cloudidentity.groups.create",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v1/groups",
+                    "request": {
+                        "$ref": "Group"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.groups",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
                 "search": {
                     "description": "Searches for Groups.",
                     "httpMethod": "GET",
@@ -147,40 +238,8 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-identity.groups",
-                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
-                    ]
-                },
-                "patch": {
-                    "description": "Updates a Group.",
-                    "httpMethod": "PATCH",
-                    "id": "cloudidentity.groups.patch",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "updateMask": {
-                            "description": "Editable fields: `display_name`, `description`",
-                            "format": "google-fieldmask",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "name": {
-                            "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup in the format: `groups/{group_id}`, where group_id is the unique ID\nassigned to the Group.\n\nMust be left blank while creating a Group.",
-                            "location": "path",
-                            "pattern": "^groups/[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/{+name}",
-                    "request": {
-                        "$ref": "Group"
-                    },
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-identity.groups"
+                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
                 "get": {
@@ -205,7 +264,42 @@
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-identity.groups",
-                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
+                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "patch": {
+                    "description": "Updates a Group.",
+                    "httpMethod": "PATCH",
+                    "id": "cloudidentity.groups.patch",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "updateMask": {
+                            "description": "Editable fields: `display_name`, `description`",
+                            "format": "google-fieldmask",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup in the format: `groups/{group_id}`, where group_id is the unique ID\nassigned to the Group.\n\nMust be left blank while creating a Group.",
+                            "location": "path",
+                            "pattern": "^groups/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}",
+                    "request": {
+                        "$ref": "Group"
+                    },
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-identity.groups",
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
                 "delete": {
@@ -229,92 +323,8 @@
                         "$ref": "Operation"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/cloud-identity.groups"
-                    ]
-                },
-                "list": {
-                    "description": "List groups within a customer or a domain.",
-                    "httpMethod": "GET",
-                    "id": "cloudidentity.groups.list",
-                    "parameterOrder": [],
-                    "parameters": {
-                        "parent": {
-                            "description": "`Required`. May be made Optional in the future.\nCustomer ID to list all groups from.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "pageToken": {
-                            "description": "The next_page_token value returned from a previous list request, if any.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "pageSize": {
-                            "description": "The default page size is 200 (max 1000) for the BASIC view, and 50\n(max 500) for the FULL view.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
-                        "view": {
-                            "description": "Group resource view to be returned. Defaults to [View.BASIC]().",
-                            "enum": [
-                                "VIEW_UNSPECIFIED",
-                                "BASIC",
-                                "FULL"
-                            ],
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/groups",
-                    "response": {
-                        "$ref": "ListGroupsResponse"
-                    },
-                    "scopes": [
                         "https://www.googleapis.com/auth/cloud-identity.groups",
-                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
-                    ]
-                },
-                "create": {
-                    "description": "Creates a Group.",
-                    "httpMethod": "POST",
-                    "id": "cloudidentity.groups.create",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v1/groups",
-                    "request": {
-                        "$ref": "Group"
-                    },
-                    "response": {
-                        "$ref": "Operation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-identity.groups"
-                    ]
-                },
-                "lookup": {
-                    "description": "Looks up [resource\nname](https://cloud.google.com/apis/design/resource_names) of a Group by\nits EntityKey.",
-                    "httpMethod": "GET",
-                    "id": "cloudidentity.groups.lookup",
-                    "parameterOrder": [],
-                    "parameters": {
-                        "groupKey.namespace": {
-                            "description": "Namespaces provide isolation for IDs, so an ID only needs to be unique\nwithin its namespace.\n\nNamespaces are currently only created as part of IdentitySource creation\nfrom Admin Console. A namespace `\"identitysources/{identity_source_id}\"` is\ncreated corresponding to every Identity Source `identity_source_id`.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "groupKey.id": {
-                            "description": "The ID of the entity within the given namespace. The ID must be unique\nwithin its namespace.",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/groups:lookup",
-                    "response": {
-                        "$ref": "LookupGroupNameResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-identity.groups",
-                        "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
+                        "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 }
             },
@@ -342,7 +352,8 @@
                                 "$ref": "Operation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-identity.groups"
+                                "https://www.googleapis.com/auth/cloud-identity.groups",
+                                "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
                         "get": {
@@ -367,7 +378,8 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-identity.groups",
-                                "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
+                                "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                                "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
                         "list": {
@@ -378,18 +390,6 @@
                                 "parent"
                             ],
                             "parameters": {
-                                "parent": {
-                                    "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup to list Memberships within.\n\nFormat: `groups/{group_id}`, where `group_id` is the unique ID assigned to\nthe Group.",
-                                    "location": "path",
-                                    "pattern": "^groups/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "pageToken": {
-                                    "description": "The next_page_token value returned from a previous list request, if any.",
-                                    "location": "query",
-                                    "type": "string"
-                                },
                                 "pageSize": {
                                     "description": "The default page size is 200 (max 1000) for the BASIC view, and 50\n(max 500) for the FULL view.",
                                     "format": "int32",
@@ -405,6 +405,18 @@
                                     ],
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "parent": {
+                                    "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup to list Memberships within.\n\nFormat: `groups/{group_id}`, where `group_id` is the unique ID assigned to\nthe Group.",
+                                    "location": "path",
+                                    "pattern": "^groups/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "pageToken": {
+                                    "description": "The next_page_token value returned from a previous list request, if any.",
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/{+parent}/memberships",
@@ -413,7 +425,8 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-identity.groups",
-                                "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
+                                "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                                "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
                         "create": {
@@ -440,7 +453,8 @@
                                 "$ref": "Operation"
                             },
                             "scopes": [
-                                "https://www.googleapis.com/auth/cloud-identity.groups"
+                                "https://www.googleapis.com/auth/cloud-identity.groups",
+                                "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
                         "lookup": {
@@ -451,13 +465,6 @@
                                 "parent"
                             ],
                             "parameters": {
-                                "parent": {
-                                    "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup to lookup Membership within.\n\nFormat: `groups/{group_id}`, where `group_id` is the unique ID assigned to\nthe Group.",
-                                    "location": "path",
-                                    "pattern": "^groups/[^/]+$",
-                                    "required": true,
-                                    "type": "string"
-                                },
                                 "memberKey.id": {
                                     "description": "The ID of the entity within the given namespace. The ID must be unique\nwithin its namespace.",
                                     "location": "query",
@@ -467,6 +474,13 @@
                                     "description": "Namespaces provide isolation for IDs, so an ID only needs to be unique\nwithin its namespace.\n\nNamespaces are currently only created as part of IdentitySource creation\nfrom Admin Console. A namespace `\"identitysources/{identity_source_id}\"` is\ncreated corresponding to every Identity Source `identity_source_id`.",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "parent": {
+                                    "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup to lookup Membership within.\n\nFormat: `groups/{group_id}`, where `group_id` is the unique ID assigned to\nthe Group.",
+                                    "location": "path",
+                                    "pattern": "^groups/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
                                 }
                             },
                             "path": "v1/{+parent}/memberships:lookup",
@@ -475,7 +489,8 @@
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/cloud-identity.groups",
-                                "https://www.googleapis.com/auth/cloud-identity.groups.readonly"
+                                "https://www.googleapis.com/auth/cloud-identity.groups.readonly",
+                                "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         }
                     }
@@ -483,21 +498,13 @@
             }
         }
     },
-    "revision": "20190629",
+    "revision": "20200104",
     "rootUrl": "https://cloudidentity.googleapis.com/",
     "schemas": {
         "Operation": {
             "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
             "id": "Operation",
             "properties": {
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-                    "type": "object"
-                },
                 "done": {
                     "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
                     "type": "boolean"
@@ -517,6 +524,14 @@
                 "error": {
                     "$ref": "Status",
                     "description": "The error result of the operation in case of failure or cancellation."
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -545,16 +560,16 @@
         "SearchGroupsResponse": {
             "id": "SearchGroupsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "Token to retrieve the next page of results, or empty if there are no\nmore results available for specified query.",
+                    "type": "string"
+                },
                 "groups": {
                     "description": "List of Groups satisfying the search query.",
                     "items": {
                         "$ref": "Group"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "Token to retrieve the next page of results, or empty if there are no\nmore results available for specified query.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -588,15 +603,6 @@
             "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
             "id": "Status",
             "properties": {
-                "code": {
-                    "description": "The status code, which should be an enum value of google.rpc.Code.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-                    "type": "string"
-                },
                 "details": {
                     "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
                     "items": {
@@ -607,6 +613,15 @@
                         "type": "object"
                     },
                     "type": "array"
+                },
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -632,15 +647,59 @@
             "description": "Response message for ListGroups operation.",
             "id": "ListGroupsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "Token to retrieve the next page of results, or empty if there are no\nmore results available for listing.",
+                    "type": "string"
+                },
                 "groups": {
                     "description": "Groups returned in response to list request.\nThe results are not sorted.",
                     "items": {
                         "$ref": "Group"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Group": {
+            "description": "Resource representing a Group.",
+            "id": "Group",
+            "properties": {
+                "parent": {
+                    "description": "Required. Immutable. The entity under which this Group resides in Cloud Identity resource\nhierarchy. Must be set when creating a Group, read-only afterwards.\n\nCurrently allowed types: `identitysources`.",
+                    "type": "string"
                 },
-                "nextPageToken": {
-                    "description": "Token to retrieve the next page of results, or empty if there are no\nmore results available for listing.",
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required. `Required`. Labels for Group resource.\nFor creating Groups under a namespace, set label key to\n'labels/system/groups/external' and label value as empty.",
+                    "type": "object"
+                },
+                "createTime": {
+                    "description": "Output only. The time when the Group was created.\nOutput only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. The time when the Group was last updated.\nOutput only.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup in the format: `groups/{group_id}`, where group_id is the unique ID\nassigned to the Group.\n\nMust be left blank while creating a Group.",
+                    "type": "string"
+                },
+                "groupKey": {
+                    "$ref": "EntityKey",
+                    "description": "Required. Immutable. EntityKey of the Group.\n\nMust be set when creating a Group, read-only afterwards."
+                },
+                "description": {
+                    "description": "An extended description to help users determine the purpose of a Group. For\nexample, you can include information about who should join the Group, the\ntypes of messages to send to the Group, links to FAQs about the Group, or\nrelated Groups. Maximum length is 4,096 characters.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The Group's display name.",
                     "type": "string"
                 }
             },
@@ -650,17 +709,8 @@
             "description": "Resource representing a Membership within a Group",
             "id": "Membership",
             "properties": {
-                "preferredMemberKey": {
-                    "$ref": "EntityKey",
-                    "description": "EntityKey of the entity to be added as the member. Must be set while\ncreating a Membership, read-only afterwards.\n\nCurrently allowed entity types: `Users`, `Groups`."
-                },
-                "createTime": {
-                    "description": "Creation timestamp of the Membership. Output only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
                 "updateTime": {
-                    "description": "Last updated timestamp of the Membership. Output only.",
+                    "description": "Output only. Last updated timestamp of the Membership. Output only.",
                     "format": "google-datetime",
                     "type": "string"
                 },
@@ -672,52 +722,17 @@
                     "type": "array"
                 },
                 "name": {
-                    "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nMembership in the format: `groups/{group_id}/memberships/{member_id}`,\nwhere group_id is the unique ID assigned to the Group to which Membership\nbelongs to, and member_id is the unique ID assigned to the member\n\nMust be left blank while creating a Membership.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Group": {
-            "description": "Resource representing a Group.",
-            "id": "Group",
-            "properties": {
-                "displayName": {
-                    "description": "The Group's display name.",
+                    "description": "Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the\nMembership in the format: `groups/{group_id}/memberships/{member_id}`,\nwhere group_id is the unique ID assigned to the Group to which Membership\nbelongs to, and member_id is the unique ID assigned to the member\n\nMust be left blank while creating a Membership.",
                     "type": "string"
                 },
-                "description": {
-                    "description": "An extended description to help users determine the purpose of a Group. For\nexample, you can include information about who should join the Group, the\ntypes of messages to send to the Group, links to FAQs about the Group, or\nrelated Groups. Maximum length is 4,096 characters.",
-                    "type": "string"
-                },
-                "parent": {
-                    "description": "The entity under which this Group resides in Cloud Identity resource\nhierarchy. Must be set when creating a Group, read-only afterwards.\n\nCurrently allowed types: `identitysources`.",
-                    "type": "string"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "`Required`. Labels for Group resource.\nFor creating Groups under a namespace, set label key to\n'labels/system/groups/external' and label value as empty.",
-                    "type": "object"
+                "preferredMemberKey": {
+                    "$ref": "EntityKey",
+                    "description": "Required. Immutable. EntityKey of the entity to be added as the member. Must be set while\ncreating a Membership, read-only afterwards.\n\nCurrently allowed entity types: `Users`, `Groups`."
                 },
                 "createTime": {
-                    "description": "The time when the Group was created.\nOutput only.",
+                    "description": "Output only. Creation timestamp of the Membership. Output only.",
                     "format": "google-datetime",
                     "type": "string"
-                },
-                "updateTime": {
-                    "description": "The time when the Group was last updated.\nOutput only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "[Resource name](https://cloud.google.com/apis/design/resource_names) of the\nGroup in the format: `groups/{group_id}`, where group_id is the unique ID\nassigned to the Group.\n\nMust be left blank while creating a Group.",
-                    "type": "string"
-                },
-                "groupKey": {
-                    "$ref": "EntityKey",
-                    "description": "EntityKey of the Group.\n\nMust be set when creating a Group, read-only afterwards."
                 }
             },
             "type": "object"

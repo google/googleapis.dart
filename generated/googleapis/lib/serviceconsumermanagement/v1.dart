@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.serviceconsumermanagement.v1;
 
@@ -279,20 +279,6 @@ class ServicesResourceApi {
   /// {service} the name of a service, for example 'service.googleapis.com'.
   /// Value must have pattern "^services/[^/]+$".
   ///
-  /// [pageToken] - The continuation token, which is used to page through large
-  /// result sets.
-  /// To get the next page of results, set this parameter to the value of
-  /// `nextPageToken` from the previous response.
-  ///
-  /// Optional.
-  ///
-  /// [pageSize] - The maximum number of results returned by this request.
-  /// Currently, the
-  /// default maximum is set to 1000. If `page_size` isn't provided or the size
-  /// provided is a number larger than 1000, it's automatically set to 1000.
-  ///
-  /// Optional.
-  ///
   /// [query] - Set a query `{expression}` for querying tenancy units. Your
   /// `{expression}`
   /// must be in the format: `field_name=literal_string`. The `field_name` is
@@ -312,6 +298,20 @@ class ServicesResourceApi {
   ///
   /// Optional.
   ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets.
+  /// To get the next page of results, set this parameter to the value of
+  /// `nextPageToken` from the previous response.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of results returned by this request.
+  /// Currently, the
+  /// default maximum is set to 1000. If `page_size` isn't provided or the size
+  /// provided is a number larger than 1000, it's automatically set to 1000.
+  ///
+  /// Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -323,9 +323,9 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<SearchTenancyUnitsResponse> search(core.String parent,
-      {core.String pageToken,
+      {core.String query,
+      core.String pageToken,
       core.int pageSize,
-      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -337,14 +337,14 @@ class ServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (query != null) {
+      _queryParams["query"] = [query];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (query != null) {
-      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -564,6 +564,10 @@ class ServicesTenancyUnitsResourceApi {
   }
 
   /// Creates a tenancy unit with no tenant resources.
+  /// If tenancy unit already exists, it will be returned,
+  /// however, in this case, returned TenancyUnit does not have tenant_resources
+  /// field set and ListTenancyUnit has to be used to get a complete
+  /// TenancyUnit with all fields populated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -749,14 +753,14 @@ class ServicesTenancyUnitsResourceApi {
   /// {service} the name of a service, such as 'service.googleapis.com'.
   /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+$".
   ///
-  /// [filter] - Filter expression over tenancy resources field. Optional.
-  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// result sets.
   /// To get the next page of results, set this parameter to the value of
   /// `nextPageToken` from the previous response.
   ///
   /// [pageSize] - The maximum number of results returned by this request.
+  ///
+  /// [filter] - Filter expression over tenancy resources field. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -769,9 +773,9 @@ class ServicesTenancyUnitsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListTenancyUnitsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -783,14 +787,14 @@ class ServicesTenancyUnitsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1460,7 +1464,19 @@ class BackendRule {
   /// seconds.
   core.double deadline;
 
-  /// The JWT audience is used when generating a JWT id token for the backend.
+  /// When disable_auth is false,  a JWT ID token will be generated with the
+  /// value from BackendRule.address as jwt_audience, overrode to the HTTP
+  /// "Authorization" request header and sent to the backend.
+  ///
+  /// When disable_auth is true, a JWT ID token won't be generated and the
+  /// original "Authorization" HTTP header will be preserved. If the header is
+  /// used to carry the original token and is expected by the backend, this
+  /// field must be set to true to preserve the header.
+  core.bool disableAuth;
+
+  /// The JWT audience is used when generating a JWT ID token for the backend.
+  /// This ID token will be added in the HTTP "authorization" header, and sent
+  /// to the backend.
   core.String jwtAudience;
 
   /// Minimum deadline in seconds needed for this method. Calls having deadline
@@ -1534,6 +1550,9 @@ class BackendRule {
     if (_json.containsKey("deadline")) {
       deadline = _json["deadline"].toDouble();
     }
+    if (_json.containsKey("disableAuth")) {
+      disableAuth = _json["disableAuth"];
+    }
     if (_json.containsKey("jwtAudience")) {
       jwtAudience = _json["jwtAudience"];
     }
@@ -1559,6 +1578,9 @@ class BackendRule {
     }
     if (deadline != null) {
       _json["deadline"] = deadline;
+    }
+    if (disableAuth != null) {
+      _json["disableAuth"] = disableAuth;
     }
     if (jwtAudience != null) {
       _json["jwtAudience"] = jwtAudience;
@@ -2105,6 +2127,12 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule> rules;
 
+  /// Specifies the service root url if the default one (the service name
+  /// from the yaml file) is not suitable. This can be seen in any fully
+  /// specified service urls as well as sections that show a base that other
+  /// urls are relative to.
+  core.String serviceRootUrl;
+
   /// A short summary of what the service does. Can only be provided by
   /// plain text.
   core.String summary;
@@ -2129,6 +2157,9 @@ class Documentation {
               (value) => new DocumentationRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("serviceRootUrl")) {
+      serviceRootUrl = _json["serviceRootUrl"];
+    }
     if (_json.containsKey("summary")) {
       summary = _json["summary"];
     }
@@ -2148,6 +2179,9 @@ class Documentation {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (serviceRootUrl != null) {
+      _json["serviceRootUrl"] = serviceRootUrl;
     }
     if (summary != null) {
       _json["summary"] = summary;
@@ -3445,6 +3479,13 @@ class MetricDescriptor {
   /// points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time
+  /// series, which is identified partially by
+  /// a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -3458,9 +3499,27 @@ class MetricDescriptor {
   ///     "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable
-  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
-  /// supported units are a subset of [The Unified Code for Units of
+  /// The units in which the metric value is reported. It is only applicable
+  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`
+  /// defines the representation of the stored metric values.
+  ///
+  /// Different systems may scale the values to be more easily displayed (so a
+  /// value of `0.02KBy` _might_ be displayed as `20By`, and a value of
+  /// `3523KBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is
+  /// `KBy`, then the value of the metric is always in thousands of bytes, no
+  /// matter how it may be displayed..
+  ///
+  /// If you want a custom metric to record the exact number of CPU-seconds used
+  /// by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is
+  /// `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005
+  /// CPU-seconds, then the value is written as `12005`.
+  ///
+  /// Alternatively, if you want a custom metric to record data in a more
+  /// granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is
+  /// `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`),
+  /// or use `Kis{CPU}` and write `11.723` (which is `12005/1024`).
+  ///
+  /// The supported units are a subset of [The Unified Code for Units of
   /// Measure](http://unitsofmeasure.org/ucum.html) standard:
   ///
   /// **Basic units (UNIT)**
@@ -3474,33 +3533,40 @@ class MetricDescriptor {
   ///
   /// **Prefixes (PREFIX)**
   ///
-  /// * `k`     kilo    (10**3)
-  /// * `M`     mega    (10**6)
-  /// * `G`     giga    (10**9)
-  /// * `T`     tera    (10**12)
-  /// * `P`     peta    (10**15)
-  /// * `E`     exa     (10**18)
-  /// * `Z`     zetta   (10**21)
-  /// * `Y`     yotta   (10**24)
-  /// * `m`     milli   (10**-3)
-  /// * `u`     micro   (10**-6)
-  /// * `n`     nano    (10**-9)
-  /// * `p`     pico    (10**-12)
-  /// * `f`     femto   (10**-15)
-  /// * `a`     atto    (10**-18)
-  /// * `z`     zepto   (10**-21)
-  /// * `y`     yocto   (10**-24)
-  /// * `Ki`    kibi    (2**10)
-  /// * `Mi`    mebi    (2**20)
-  /// * `Gi`    gibi    (2**30)
-  /// * `Ti`    tebi    (2**40)
+  /// * `k`     kilo    (10^3)
+  /// * `M`     mega    (10^6)
+  /// * `G`     giga    (10^9)
+  /// * `T`     tera    (10^12)
+  /// * `P`     peta    (10^15)
+  /// * `E`     exa     (10^18)
+  /// * `Z`     zetta   (10^21)
+  /// * `Y`     yotta   (10^24)
+  ///
+  /// * `m`     milli   (10^-3)
+  /// * `u`     micro   (10^-6)
+  /// * `n`     nano    (10^-9)
+  /// * `p`     pico    (10^-12)
+  /// * `f`     femto   (10^-15)
+  /// * `a`     atto    (10^-18)
+  /// * `z`     zepto   (10^-21)
+  /// * `y`     yocto   (10^-24)
+  ///
+  /// * `Ki`    kibi    (2^10)
+  /// * `Mi`    mebi    (2^20)
+  /// * `Gi`    gibi    (2^30)
+  /// * `Ti`    tebi    (2^40)
+  /// * `Pi`    pebi    (2^50)
   ///
   /// **Grammar**
   ///
   /// The grammar also includes these connectors:
   ///
-  /// * `/`    division (as an infix operator, e.g. `1/s`).
-  /// * `.`    multiplication (as an infix operator, e.g. `GBy.d`)
+  /// * `/`    division or ratio (as an infix operator). For examples,
+  ///          `kBy/{email}` or `MiBy/10ms` (although you should almost never
+  ///          have `/s` in a metric `unit`; rates should always be computed at
+  ///          query time from the underlying cumulative or delta value).
+  /// * `.`    multiplication or composition (as an infix operator). For
+  ///          examples, `GBy.d` or `k{watt}.h`.
   ///
   /// The grammar for a unit is as follows:
   ///
@@ -3515,14 +3581,25 @@ class MetricDescriptor {
   ///
   /// Notes:
   ///
-  /// * `Annotation` is just a comment if it follows a `UNIT` and is
-  ///    equivalent to `1` if it is used alone. For examples,
-  ///    `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.
+  /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation
+  ///    is used alone, then the unit is equivalent to `1`. For examples,
+  ///    `{request}/s == 1/s`, `By{transmitted}/s == By/s`.
   /// * `NAME` is a sequence of non-blank printable ASCII characters not
-  ///    containing '{' or '}'.
-  /// * `1` represents dimensionless value 1, such as in `1/s`.
-  /// * `%` represents dimensionless value 1/100, and annotates values giving
-  ///    a percentage.
+  ///    containing `{` or `}`.
+  /// * `1` represents a unitary [dimensionless
+  ///    unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such
+  ///    as in `1/s`. It is typically used when none of the basic units are
+  ///    appropriate. For example, "new users per day" can be represented as
+  ///    `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new
+  ///    users). Alternatively, "thousands of page views per day" would be
+  ///    represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric
+  ///    value of `5.3` would mean "5300 page views per day").
+  /// * `%` represents dimensionless value of 1/100, and annotates values giving
+  /// a percentage (so the metric values are typically in the range of 0..100,
+  ///    and a metric value `3` means "3 percent").
+  /// * `10^2.%` indicates a metric contains a ratio, typically in the range
+  ///    0..1, that will be multiplied by 100 and displayed as a percentage
+  ///    (so a metric value `0.03` means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
@@ -3563,6 +3640,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3598,6 +3679,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -3621,8 +3705,7 @@ class MetricDescriptorMetadata {
   /// data loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead.
-  /// The launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
@@ -4470,10 +4553,7 @@ class QuotaLimit {
   /// display name generated from the configuration.
   core.String displayName;
 
-  /// Duration of this limit in textual notation. Example: "100s", "24h", "1d".
-  /// For duration longer than a day, only multiple of days is supported. We
-  /// support only "100s" and "1d" for now. Additional support will be added in
-  /// the future. "0" indicates indefinite duration.
+  /// Duration of this limit in textual notation. Must be "100s" or "1d".
   ///
   /// Used by group-based quotas only.
   core.String duration;
@@ -4737,8 +4817,9 @@ class Service {
   Http http;
 
   /// A unique ID for a specific instance of this message, typically assigned
-  /// by the client for tracking purpose. If empty, the server may choose to
-  /// generate one instead. Must be no longer than 60 characters.
+  /// by the client for tracking purpose. Must be no longer than 63 characters
+  /// and only lower case letters, digits, '.', '_' and '-' are allowed. If
+  /// empty, the server may choose to generate one instead.
   core.String id;
 
   /// Logging configuration.
@@ -5826,6 +5907,32 @@ class V1Beta1EnableConsumerResponse {
   }
 }
 
+/// Response message for the `GenerateServiceIdentity` method.
+///
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1Beta1GenerateServiceIdentityResponse {
+  /// ServiceIdentity that was created or retrieved.
+  V1Beta1ServiceIdentity identity;
+
+  V1Beta1GenerateServiceIdentityResponse();
+
+  V1Beta1GenerateServiceIdentityResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("identity")) {
+      identity = new V1Beta1ServiceIdentity.fromJson(_json["identity"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (identity != null) {
+      _json["identity"] = (identity).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Response message for ImportProducerOverrides
 class V1Beta1ImportProducerOverridesResponse {
   /// The overrides that were created from the imported data.
@@ -5957,6 +6064,105 @@ class V1Beta1RefreshConsumerResponse {
   }
 }
 
+/// A service identity in the Identity and Access Management API.
+class V1Beta1ServiceIdentity {
+  /// The email address of the service identity.
+  core.String email;
+
+  /// P4 service identity resource name.
+  ///
+  /// An example name would be:
+  /// `services/serviceconsumermanagement.googleapis.com/projects/123/serviceIdentities/default`
+  core.String name;
+
+  /// The P4 service identity configuration tag. This must be defined in
+  /// activation_grants. If not specified when creating the account, the tag is
+  /// set to "default".
+  core.String tag;
+
+  /// The unique and stable id of the service identity.
+  core.String uniqueId;
+
+  V1Beta1ServiceIdentity();
+
+  V1Beta1ServiceIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+    if (_json.containsKey("uniqueId")) {
+      uniqueId = _json["uniqueId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    if (uniqueId != null) {
+      _json["uniqueId"] = uniqueId;
+    }
+    return _json;
+  }
+}
+
+/// A default identity in the Identity and Access Management API.
+class V1DefaultIdentity {
+  /// The email address of the default identity.
+  core.String email;
+
+  /// Default identity resource name.
+  ///
+  /// An example name would be:
+  /// `services/serviceconsumermanagement.googleapis.com/projects/123/defaultIdentity`
+  core.String name;
+
+  /// The unique and stable id of the default identity.
+  core.String uniqueId;
+
+  V1DefaultIdentity();
+
+  V1DefaultIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("uniqueId")) {
+      uniqueId = _json["uniqueId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (uniqueId != null) {
+      _json["uniqueId"] = uniqueId;
+    }
+    return _json;
+  }
+}
+
 /// Response message for the `DisableConsumer` method.
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
@@ -5983,6 +6189,69 @@ class V1EnableConsumerResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `GenerateDefaultIdentity` method.
+///
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1GenerateDefaultIdentityResponse {
+  /// Status of the role attachment. Under development (go/si-attach-role),
+  /// currently always return ATTACH_STATUS_UNSPECIFIED)
+  /// Possible string values are:
+  /// - "ATTACH_STATUS_UNSPECIFIED" : Indicates that the AttachStatus was not
+  /// set.
+  /// - "ATTACHED" : The default identity was attached to a role successfully in
+  /// this request.
+  /// - "ATTACH_SKIPPED" : The request specified that no attempt should be made
+  /// to attach the role.
+  /// - "PREVIOUSLY_ATTACHED" : Role was attached to the consumer project at
+  /// some point in time. Tenant
+  /// manager doesn't make assertion about the current state of the identity
+  /// with respect to the consumer.
+  ///
+  /// Role attachment should happen only once after activation and cannot be
+  /// reattached after customer removes it. (go/si-attach-role)
+  /// - "ATTACH_DENIED_BY_ORG_POLICY" : Role attachment was denied in this
+  /// request by customer set org policy.
+  /// (go/si-attach-role)
+  core.String attachStatus;
+
+  /// DefaultIdentity that was created or retrieved.
+  V1DefaultIdentity identity;
+
+  /// Role attached to consumer project. Empty if not attached in this
+  /// request. (Under development, currently always return empty.)
+  core.String role;
+
+  V1GenerateDefaultIdentityResponse();
+
+  V1GenerateDefaultIdentityResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("attachStatus")) {
+      attachStatus = _json["attachStatus"];
+    }
+    if (_json.containsKey("identity")) {
+      identity = new V1DefaultIdentity.fromJson(_json["identity"]);
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attachStatus != null) {
+      _json["attachStatus"] = attachStatus;
+    }
+    if (identity != null) {
+      _json["identity"] = (identity).toJson();
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
     return _json;
   }
 }
@@ -6058,8 +6327,7 @@ class V1ServiceAccount {
   /// The email address of the service account.
   core.String email;
 
-  /// The IAM resource name of the service account in the following format:
-  /// projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}.
+  /// Deprecated. See b/136209818.
   core.String iamAccountName;
 
   /// P4 SA resource name.

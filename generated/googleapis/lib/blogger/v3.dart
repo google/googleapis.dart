@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.blogger.v3;
 
@@ -55,7 +55,7 @@ class BlogUserInfosResourceApi {
   /// Request parameters:
   ///
   /// [userId] - ID of the user whose blogs are to be fetched. Either the word
-  /// 'self' (sans quote marks) or the user's profile identifier.
+  /// 'self' or the user's profile identifier.
   ///
   /// [blogId] - The ID of the blog to get.
   ///
@@ -230,7 +230,7 @@ class BlogsResourceApi {
   /// Request parameters:
   ///
   /// [userId] - ID of the user whose blogs are to be fetched. Either the word
-  /// 'self' (sans quote marks) or the user's profile identifier.
+  /// 'self' or the user's profile identifier.
   ///
   /// [fetchUserInfo] - Whether the response is a list of blogs with per-user
   /// information instead of just blogs.
@@ -1356,8 +1356,7 @@ class PostUserInfosResourceApi {
   /// Request parameters:
   ///
   /// [userId] - ID of the user for the per-user information to be fetched.
-  /// Either the word 'self' (sans quote marks) or the user's profile
-  /// identifier.
+  /// Either the word 'self' or the user's profile identifier.
   ///
   /// [blogId] - The ID of the blog.
   ///
@@ -1424,8 +1423,7 @@ class PostUserInfosResourceApi {
   /// Request parameters:
   ///
   /// [userId] - ID of the user for the per-user information to be fetched.
-  /// Either the word 'self' (sans quote marks) or the user's profile
-  /// identifier.
+  /// Either the word 'self' or the user's profile identifier.
   ///
   /// [blogId] - ID of the blog to fetch posts from.
   ///

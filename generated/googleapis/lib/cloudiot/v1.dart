@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudiot.v1;
 
@@ -73,7 +73,7 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the registry. For example,
+  /// [parent] - Required. The name of the registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
@@ -128,8 +128,8 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project and cloud region where this device registry must be
-  /// created.
+  /// [parent] - Required. The project and cloud region where this device
+  /// registry must be created.
   /// For example, `projects/example-project/locations/us-central1`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -180,7 +180,7 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device registry. For example,
+  /// [name] - Required. The name of the device registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
@@ -225,7 +225,7 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device registry. For example,
+  /// [name] - Required. The name of the device registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
@@ -327,7 +327,7 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project and cloud region path. For example,
+  /// [parent] - Required. The project and cloud region path. For example,
   /// `projects/example-project/locations/us-central1`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -399,8 +399,8 @@ class ProjectsLocationsRegistriesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
-  /// [updateMask] - Only updates the `device_registry` fields indicated by this
-  /// mask.
+  /// [updateMask] - Required. Only updates the `device_registry` fields
+  /// indicated by this mask.
   /// The field mask must not be empty, and it must not contain fields that
   /// are immutable or only set by the server.
   /// Mutable top-level fields: `event_notification_config`, `http_config`,
@@ -569,7 +569,7 @@ class ProjectsLocationsRegistriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the registry. For example,
+  /// [parent] - Required. The name of the registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
@@ -638,8 +638,8 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the device registry where this device should be
-  /// created.
+  /// [parent] - Required. The name of the device registry where this device
+  /// should be created.
   /// For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
@@ -690,7 +690,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device. For example,
+  /// [name] - Required. The name of the device. For example,
   /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
@@ -737,7 +737,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device. For example,
+  /// [name] - Required. The name of the device. For example,
   /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
@@ -792,24 +792,20 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The device registry path. Required. For example,
+  /// [parent] - Required. The device registry path. Required. For example,
   /// `projects/my-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
-  ///
-  /// [deviceIds] - A list of device string IDs. For example, `['device0',
-  /// 'device12']`.
-  /// If empty, this field is ignored. Maximum IDs: 10,000
-  ///
-  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
-  /// ignored. Maximum
-  /// IDs: 10,000.
   ///
   /// [gatewayListOptions_associationsDeviceId] - If set, returns only the
   /// gateways with which the specified device is
   /// associated. The device ID can be numeric (`num_id`) or the user-defined
   /// string (`id`). For example, if `456` is specified, returns only the
   /// gateways to which the device with `num_id` 456 is bound.
+  ///
+  /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
+  /// ignored. Maximum
+  /// IDs: 10,000.
   ///
   /// [gatewayListOptions_gatewayType] - If `GATEWAY` is specified, only
   /// gateways are returned. If `NON_GATEWAY`
@@ -826,21 +822,25 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// (`id`). For example, if `123` is specified, only devices bound to the
   /// gateway with `num_id` 123 are returned.
   ///
-  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
-  /// indicates
-  /// that this is a continuation of a prior `ListDevices` call and
-  /// the system should return the next page of data.
-  ///
   /// [fieldMask] - The fields of the `Device` resource to be returned in the
   /// response. The
   /// fields `id` and `num_id` are always returned, along with any
   /// other fields specified.
+  ///
+  /// [pageToken] - The value returned by the last `ListDevicesResponse`;
+  /// indicates
+  /// that this is a continuation of a prior `ListDevices` call and
+  /// the system should return the next page of data.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
   /// this value
   /// is zero, the service will select a default size. A call may return fewer
   /// objects than requested. A non-empty `next_page_token` in the response
   /// indicates that more data is available.
+  ///
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`.
+  /// If empty, this field is ignored. Maximum IDs: 10,000
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -853,14 +853,14 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.List<core.String> deviceIds,
+      {core.String gatewayListOptions_associationsDeviceId,
       core.List<core.String> deviceNumIds,
-      core.String gatewayListOptions_associationsDeviceId,
       core.String gatewayListOptions_gatewayType,
       core.String gatewayListOptions_associationsGatewayId,
-      core.String pageToken,
       core.String fieldMask,
+      core.String pageToken,
       core.int pageSize,
+      core.List<core.String> deviceIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -872,16 +872,13 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
-    }
     if (gatewayListOptions_associationsDeviceId != null) {
       _queryParams["gatewayListOptions.associationsDeviceId"] = [
         gatewayListOptions_associationsDeviceId
       ];
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if (gatewayListOptions_gatewayType != null) {
       _queryParams["gatewayListOptions.gatewayType"] = [
@@ -893,14 +890,17 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
         gatewayListOptions_associationsGatewayId
       ];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (fieldMask != null) {
       _queryParams["fieldMask"] = [fieldMask];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -926,7 +926,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device. For example,
+  /// [name] - Required. The name of the device. For example,
   /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
@@ -990,7 +990,8 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
   ///
-  /// [updateMask] - Only updates the `device` fields indicated by this mask.
+  /// [updateMask] - Required. Only updates the `device` fields indicated by
+  /// this mask.
   /// The field mask must not be empty, and it must not contain fields that
   /// are immutable or only set by the server.
   /// Mutable top-level fields: `credentials`, `blocked`, and `metadata`
@@ -1056,7 +1057,7 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device. For example,
+  /// [name] - Required. The name of the device. For example,
   /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
@@ -1120,7 +1121,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device. For example,
+  /// [name] - Required. The name of the device. For example,
   /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
@@ -1188,7 +1189,7 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the device. For example,
+  /// [name] - Required. The name of the device. For example,
   /// `projects/p0/locations/us-central1/registries/registry0/devices/device0`
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
@@ -1434,10 +1435,14 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The device registry path. Required. For example,
+  /// [parent] - Required. The device registry path. Required. For example,
   /// `projects/my-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  ///
+  /// [deviceIds] - A list of device string IDs. For example, `['device0',
+  /// 'device12']`.
+  /// If empty, this field is ignored. Maximum IDs: 10,000
   ///
   /// [deviceNumIds] - A list of device numeric IDs. If empty, this field is
   /// ignored. Maximum
@@ -1480,10 +1485,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// objects than requested. A non-empty `next_page_token` in the response
   /// indicates that more data is available.
   ///
-  /// [deviceIds] - A list of device string IDs. For example, `['device0',
-  /// 'device12']`.
-  /// If empty, this field is ignored. Maximum IDs: 10,000
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1495,14 +1496,14 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.List<core.String> deviceNumIds,
+      {core.List<core.String> deviceIds,
+      core.List<core.String> deviceNumIds,
       core.String gatewayListOptions_associationsDeviceId,
       core.String gatewayListOptions_gatewayType,
       core.String gatewayListOptions_associationsGatewayId,
       core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
-      core.List<core.String> deviceIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1513,6 +1514,9 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
     }
     if (deviceNumIds != null) {
       _queryParams["deviceNumIds"] = deviceNumIds;
@@ -1541,9 +1545,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1563,12 +1564,13 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
 
 /// Request for `BindDeviceToGateway`.
 class BindDeviceToGatewayRequest {
-  /// The device to associate with the specified gateway. The value of
+  /// Required. The device to associate with the specified gateway. The value of
   /// `device_id` can be either the device numeric ID or the user-defined device
   /// identifier.
   core.String deviceId;
 
-  /// The value of `gateway_id` can be either the device numeric ID or the
+  /// Required. The value of `gateway_id` can be either the device numeric ID or
+  /// the
   /// user-defined device identifier.
   core.String gatewayId;
 
@@ -1627,7 +1629,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1635,6 +1637,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -2389,13 +2412,55 @@ class GatewayConfig {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`. This field is only used by Cloud IAM.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
     return _json;
   }
 }
@@ -2560,7 +2625,7 @@ class ListDevicesResponse {
 
 /// Request for `ModifyCloudToDeviceConfig`.
 class ModifyCloudToDeviceConfigRequest {
-  /// The configuration data for the device.
+  /// Required. The configuration data for the device.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes {
     return convert.base64.decode(binaryData);
@@ -2631,56 +2696,74 @@ class MqttConfig {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -2692,8 +2775,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -2704,7 +2791,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -2868,7 +2977,7 @@ class RegistryCredential {
 
 /// Request for `SendCommandToDevice`.
 class SendCommandToDeviceRequest {
-  /// The command data to send to the device.
+  /// Required. The command data to send to the device.
   core.String binaryData;
   core.List<core.int> get binaryDataAsBytes {
     return convert.base64.decode(binaryData);
@@ -3082,12 +3191,14 @@ class TestIamPermissionsResponse {
 
 /// Request for `UnbindDeviceFromGateway`.
 class UnbindDeviceFromGatewayRequest {
-  /// The device to disassociate from the specified gateway. The value of
+  /// Required. The device to disassociate from the specified gateway. The value
+  /// of
   /// `device_id` can be either the device numeric ID or the user-defined device
   /// identifier.
   core.String deviceId;
 
-  /// The value of `gateway_id` can be either the device numeric ID or the
+  /// Required. The value of `gateway_id` can be either the device numeric ID or
+  /// the
   /// user-defined device identifier.
   core.String gatewayId;
 

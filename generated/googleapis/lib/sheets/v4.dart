@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.sheets.v4;
 
@@ -538,6 +538,21 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
+  /// [responseDateTimeRenderOption] - Determines how dates, times, and
+  /// durations in the response should be
+  /// rendered. This is ignored if response_value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
+  ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were appended. By default, responses
+  /// do not include the updated values.
+  ///
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -557,21 +572,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "RAW" : A RAW.
   /// - "USER_ENTERED" : A USER_ENTERED.
   ///
-  /// [responseDateTimeRenderOption] - Determines how dates, times, and
-  /// durations in the response should be
-  /// rendered. This is ignored if response_value_render_option is
-  /// FORMATTED_VALUE.
-  /// The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
-  /// Possible string values are:
-  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
-  ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were appended. By default, responses
-  /// do not include the updated values.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -584,11 +584,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String responseValueRenderOption,
+      {core.String responseDateTimeRenderOption,
+      core.bool includeValuesInResponse,
+      core.String responseValueRenderOption,
       core.String insertDataOption,
       core.String valueInputOption,
-      core.String responseDateTimeRenderOption,
-      core.bool includeValuesInResponse,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -606,6 +606,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseDateTimeRenderOption != null) {
+      _queryParams["responseDateTimeRenderOption"] = [
+        responseDateTimeRenderOption
+      ];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -614,14 +622,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
-    }
-    if (responseDateTimeRenderOption != null) {
-      _queryParams["responseDateTimeRenderOption"] = [
-        responseDateTimeRenderOption
-      ];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -760,6 +760,20 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
+  /// [ranges] - The A1 notation of the values to retrieve.
+  ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [valueRenderOption] - How values should be represented in the output.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
   /// Possible string values are:
@@ -777,20 +791,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
-  ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -802,10 +802,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.String valueRenderOption,
-      core.String dateTimeRenderOption,
-      core.List<core.String> ranges,
+      {core.List<core.String> ranges,
       core.String majorDimension,
+      core.String valueRenderOption,
+      core.String dateTimeRenderOption,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -817,17 +817,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
-    }
-    if (dateTimeRenderOption != null) {
-      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
+    }
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
+    if (dateTimeRenderOption != null) {
+      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1178,6 +1178,14 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to update.
   ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
   /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
@@ -1202,14 +1210,6 @@ class SpreadsheetsValuesResourceApi {
   /// the response will include all values in the requested range (excluding
   /// trailing empty rows and columns).
   ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1222,10 +1222,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String valueInputOption,
+      {core.String responseValueRenderOption,
+      core.String valueInputOption,
       core.String responseDateTimeRenderOption,
       core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1243,6 +1243,9 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
     }
@@ -1253,9 +1256,6 @@ class SpreadsheetsValuesResourceApi {
     }
     if (includeValuesInResponse != null) {
       _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1674,6 +1674,56 @@ class AddSheetResponse {
   }
 }
 
+/// Adds a slicer to a sheet in the spreadsheet.
+class AddSlicerRequest {
+  /// The slicer that should be added to the spreadsheet, including
+  /// the position where it should be placed. The slicerId field is optional; if
+  /// one is not set, an id
+  /// will be randomly generated. (It is an error to specify the ID
+  /// of a slicer that already exists.)
+  Slicer slicer;
+
+  AddSlicerRequest();
+
+  AddSlicerRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("slicer")) {
+      slicer = new Slicer.fromJson(_json["slicer"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (slicer != null) {
+      _json["slicer"] = (slicer).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of adding a slicer to a spreadsheet.
+class AddSlicerResponse {
+  /// The newly added slicer.
+  Slicer slicer;
+
+  AddSlicerResponse();
+
+  AddSlicerResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("slicer")) {
+      slicer = new Slicer.fromJson(_json["slicer"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (slicer != null) {
+      _json["slicer"] = (slicer).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Adds new cells after the last row with data in a sheet,
 /// inserting new rows into the sheet if necessary.
 class AppendCellsRequest {
@@ -2005,6 +2055,84 @@ class BandingProperties {
   }
 }
 
+/// Formatting options for baseline value.
+class BaselineValueFormat {
+  /// The comparison type of key value with baseline value.
+  /// Possible string values are:
+  /// - "COMPARISON_TYPE_UNDEFINED" : Default value, do not use.
+  /// - "ABSOLUTE_DIFFERENCE" : Use absolute difference between key and baseline
+  /// value.
+  /// - "PERCENTAGE_DIFFERENCE" : Use percentage difference between key and
+  /// baseline value.
+  core.String comparisonType;
+
+  /// Description which is appended after the baseline value.
+  /// This field is optional.
+  core.String description;
+
+  /// Color to be used, in case baseline value represents a negative change for
+  /// key value. This field is optional.
+  Color negativeColor;
+
+  /// Specifies the horizontal text positioning of baseline value.
+  /// This field is optional. If not specified, default positioning is used.
+  TextPosition position;
+
+  /// Color to be used, in case baseline value represents a positive change for
+  /// key value. This field is optional.
+  Color positiveColor;
+
+  /// Text formatting options for baseline value.
+  TextFormat textFormat;
+
+  BaselineValueFormat();
+
+  BaselineValueFormat.fromJson(core.Map _json) {
+    if (_json.containsKey("comparisonType")) {
+      comparisonType = _json["comparisonType"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("negativeColor")) {
+      negativeColor = new Color.fromJson(_json["negativeColor"]);
+    }
+    if (_json.containsKey("position")) {
+      position = new TextPosition.fromJson(_json["position"]);
+    }
+    if (_json.containsKey("positiveColor")) {
+      positiveColor = new Color.fromJson(_json["positiveColor"]);
+    }
+    if (_json.containsKey("textFormat")) {
+      textFormat = new TextFormat.fromJson(_json["textFormat"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (comparisonType != null) {
+      _json["comparisonType"] = comparisonType;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (negativeColor != null) {
+      _json["negativeColor"] = (negativeColor).toJson();
+    }
+    if (position != null) {
+      _json["position"] = (position).toJson();
+    }
+    if (positiveColor != null) {
+      _json["positiveColor"] = (positiveColor).toJson();
+    }
+    if (textFormat != null) {
+      _json["textFormat"] = (textFormat).toJson();
+    }
+    return _json;
+  }
+}
+
 /// An axis of the chart.
 /// A chart may not have more than one axis per
 /// axis position.
@@ -2034,6 +2162,9 @@ class BasicChartAxis {
   /// The axis title text position.
   TextPosition titleTextPosition;
 
+  /// The view window options for this axis.
+  ChartAxisViewWindowOptions viewWindowOptions;
+
   BasicChartAxis();
 
   BasicChartAxis.fromJson(core.Map _json) {
@@ -2048,6 +2179,10 @@ class BasicChartAxis {
     }
     if (_json.containsKey("titleTextPosition")) {
       titleTextPosition = new TextPosition.fromJson(_json["titleTextPosition"]);
+    }
+    if (_json.containsKey("viewWindowOptions")) {
+      viewWindowOptions =
+          new ChartAxisViewWindowOptions.fromJson(_json["viewWindowOptions"]);
     }
   }
 
@@ -2065,6 +2200,9 @@ class BasicChartAxis {
     }
     if (titleTextPosition != null) {
       _json["titleTextPosition"] = (titleTextPosition).toJson();
+    }
+    if (viewWindowOptions != null) {
+      _json["viewWindowOptions"] = (viewWindowOptions).toJson();
     }
     return _json;
   }
@@ -4121,6 +4259,98 @@ class CellFormat {
   }
 }
 
+/// The options that define a "view window" for a chart (such as the visible
+/// values in an axis).
+class ChartAxisViewWindowOptions {
+  /// The maximum numeric value to be shown in this view window. If unset, will
+  /// automatically determine a maximum value that looks good for the data.
+  core.double viewWindowMax;
+
+  /// The minimum numeric value to be shown in this view window. If unset, will
+  /// automatically determine a minimum value that looks good for the data.
+  core.double viewWindowMin;
+
+  /// The view window's mode.
+  /// Possible string values are:
+  /// - "DEFAULT_VIEW_WINDOW_MODE" : The default view window mode used in the
+  /// Sheets editor for this chart
+  /// type. In most cases, if set, the default mode is equivalent to
+  /// `PRETTY`.
+  /// - "VIEW_WINDOW_MODE_UNSUPPORTED" : Do not use. Represents that the
+  /// currently set mode is not supported by
+  /// the API.
+  /// - "EXPLICIT" : Follows the min and max exactly if specified. If a value is
+  /// unspecified,
+  /// it will fall back to the `PRETTY` value.
+  /// - "PRETTY" : Chooses a min and max that make the chart look good. Both min
+  /// and max are
+  /// ignored in this mode.
+  core.String viewWindowMode;
+
+  ChartAxisViewWindowOptions();
+
+  ChartAxisViewWindowOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("viewWindowMax")) {
+      viewWindowMax = _json["viewWindowMax"].toDouble();
+    }
+    if (_json.containsKey("viewWindowMin")) {
+      viewWindowMin = _json["viewWindowMin"].toDouble();
+    }
+    if (_json.containsKey("viewWindowMode")) {
+      viewWindowMode = _json["viewWindowMode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (viewWindowMax != null) {
+      _json["viewWindowMax"] = viewWindowMax;
+    }
+    if (viewWindowMin != null) {
+      _json["viewWindowMin"] = viewWindowMin;
+    }
+    if (viewWindowMode != null) {
+      _json["viewWindowMode"] = viewWindowMode;
+    }
+    return _json;
+  }
+}
+
+/// Custom number formatting options for chart attributes.
+class ChartCustomNumberFormatOptions {
+  /// Custom prefix to be prepended to the chart attribute.
+  /// This field is optional.
+  core.String prefix;
+
+  /// Custom suffix to be appended to the chart attribute.
+  /// This field is optional.
+  core.String suffix;
+
+  ChartCustomNumberFormatOptions();
+
+  ChartCustomNumberFormatOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("prefix")) {
+      prefix = _json["prefix"];
+    }
+    if (_json.containsKey("suffix")) {
+      suffix = _json["suffix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (prefix != null) {
+      _json["prefix"] = prefix;
+    }
+    if (suffix != null) {
+      _json["suffix"] = suffix;
+    }
+    return _json;
+  }
+}
+
 /// The data included in a domain or series.
 class ChartData {
   /// The source ranges of the data.
@@ -4237,6 +4467,9 @@ class ChartSpec {
   /// A pie chart specification.
   PieChartSpec pieChart;
 
+  /// A scorecard chart specification.
+  ScorecardChartSpec scorecardChart;
+
   /// The subtitle of the chart.
   core.String subtitle;
 
@@ -4302,6 +4535,9 @@ class ChartSpec {
     if (_json.containsKey("pieChart")) {
       pieChart = new PieChartSpec.fromJson(_json["pieChart"]);
     }
+    if (_json.containsKey("scorecardChart")) {
+      scorecardChart = new ScorecardChartSpec.fromJson(_json["scorecardChart"]);
+    }
     if (_json.containsKey("subtitle")) {
       subtitle = _json["subtitle"];
     }
@@ -4364,6 +4600,9 @@ class ChartSpec {
     }
     if (pieChart != null) {
       _json["pieChart"] = (pieChart).toJson();
+    }
+    if (scorecardChart != null) {
+      _json["scorecardChart"] = (scorecardChart).toJson();
     }
     if (subtitle != null) {
       _json["subtitle"] = subtitle;
@@ -4638,6 +4877,49 @@ class Color {
     }
     if (red != null) {
       _json["red"] = red;
+    }
+    return _json;
+  }
+}
+
+/// A color value.
+class ColorStyle {
+  /// RGB color.
+  Color rgbColor;
+
+  /// Theme color.
+  /// Possible string values are:
+  /// - "THEME_COLOR_TYPE_UNSPECIFIED" : Unspecified theme color
+  /// - "TEXT" : Represents the primary text color
+  /// - "BACKGROUND" : Represents the primary background color
+  /// - "ACCENT1" : Represents the first accent color
+  /// - "ACCENT2" : Represents the second accent color
+  /// - "ACCENT3" : Represents the third accent color
+  /// - "ACCENT4" : Represents the fourth accent color
+  /// - "ACCENT5" : Represents the fifth accent color
+  /// - "ACCENT6" : Represents the sixth accent color
+  /// - "LINK" : Represents the color to use for hyperlinks
+  core.String themeColor;
+
+  ColorStyle();
+
+  ColorStyle.fromJson(core.Map _json) {
+    if (_json.containsKey("rgbColor")) {
+      rgbColor = new Color.fromJson(_json["rgbColor"]);
+    }
+    if (_json.containsKey("themeColor")) {
+      themeColor = _json["themeColor"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rgbColor != null) {
+      _json["rgbColor"] = (rgbColor).toJson();
+    }
+    if (themeColor != null) {
+      _json["themeColor"] = themeColor;
     }
     return _json;
   }
@@ -5360,6 +5642,76 @@ class DeleteDimensionRequest {
         new core.Map<core.String, core.Object>();
     if (range != null) {
       _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Removes rows within this range that contain values in the specified columns
+/// that are duplicates of values in any previous row. Rows with identical
+/// values
+/// but different letter cases, formatting, or formulas are considered to be
+/// duplicates.
+///
+/// This request also removes duplicate rows hidden from view (for example, due
+/// to a filter). When removing duplicates, the first instance of each duplicate
+/// row scanning from the top downwards is kept in the resulting range. Content
+/// outside of the specified range isn't removed, and rows considered duplicates
+/// do not have to be adjacent to each other in the range.
+class DeleteDuplicatesRequest {
+  /// The columns in the range to analyze for duplicate values. If no columns
+  /// are
+  /// selected then all columns are analyzed for duplicates.
+  core.List<DimensionRange> comparisonColumns;
+
+  /// The range to remove duplicates rows from.
+  GridRange range;
+
+  DeleteDuplicatesRequest();
+
+  DeleteDuplicatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("comparisonColumns")) {
+      comparisonColumns = (_json["comparisonColumns"] as core.List)
+          .map<DimensionRange>((value) => new DimensionRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("range")) {
+      range = new GridRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (comparisonColumns != null) {
+      _json["comparisonColumns"] =
+          comparisonColumns.map((value) => (value).toJson()).toList();
+    }
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of removing duplicates in a range.
+class DeleteDuplicatesResponse {
+  /// The number of duplicate rows removed.
+  core.int duplicatesRemovedCount;
+
+  DeleteDuplicatesResponse();
+
+  DeleteDuplicatesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("duplicatesRemovedCount")) {
+      duplicatesRemovedCount = _json["duplicatesRemovedCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (duplicatesRemovedCount != null) {
+      _json["duplicatesRemovedCount"] = duplicatesRemovedCount;
     }
     return _json;
   }
@@ -6326,12 +6678,26 @@ class ExtendedValue {
 /// Criteria for showing/hiding rows in a filter or filter view.
 class FilterCriteria {
   /// A condition that must be true for values to be shown.
-  /// (This does not override hiddenValues -- if a value is listed there,
+  /// (This does not override hidden_values -- if a value is listed there,
   ///  it will still be hidden.)
   BooleanCondition condition;
 
   /// Values that should be hidden.
   core.List<core.String> hiddenValues;
+
+  /// The background fill color to filter by; only cells with this fill color
+  /// are
+  /// shown. Mutually exclusive with all other filter criteria. Requests to set
+  /// this field will fail with a 400 error if any other filter criteria field
+  /// is
+  /// set.
+  Color visibleBackgroundColor;
+
+  /// The text color to filter by; only cells with this text color are shown.
+  /// Mutually exclusive with all other filter criteria. Requests to set this
+  /// field will fail with a 400 error if any other filter criteria field is
+  /// set.
+  Color visibleForegroundColor;
 
   FilterCriteria();
 
@@ -6341,6 +6707,14 @@ class FilterCriteria {
     }
     if (_json.containsKey("hiddenValues")) {
       hiddenValues = (_json["hiddenValues"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("visibleBackgroundColor")) {
+      visibleBackgroundColor =
+          new Color.fromJson(_json["visibleBackgroundColor"]);
+    }
+    if (_json.containsKey("visibleForegroundColor")) {
+      visibleForegroundColor =
+          new Color.fromJson(_json["visibleForegroundColor"]);
     }
   }
 
@@ -6352,6 +6726,12 @@ class FilterCriteria {
     }
     if (hiddenValues != null) {
       _json["hiddenValues"] = hiddenValues;
+    }
+    if (visibleBackgroundColor != null) {
+      _json["visibleBackgroundColor"] = (visibleBackgroundColor).toJson();
+    }
+    if (visibleForegroundColor != null) {
+      _json["visibleForegroundColor"] = (visibleForegroundColor).toJson();
     }
     return _json;
   }
@@ -7341,6 +7721,39 @@ class IterativeCalculationSettings {
     }
     if (maxIterations != null) {
       _json["maxIterations"] = maxIterations;
+    }
+    return _json;
+  }
+}
+
+/// Formatting options for key value.
+class KeyValueFormat {
+  /// Specifies the horizontal text positioning of key value.
+  /// This field is optional. If not specified, default positioning is used.
+  TextPosition position;
+
+  /// Text formatting options for key value.
+  TextFormat textFormat;
+
+  KeyValueFormat();
+
+  KeyValueFormat.fromJson(core.Map _json) {
+    if (_json.containsKey("position")) {
+      position = new TextPosition.fromJson(_json["position"]);
+    }
+    if (_json.containsKey("textFormat")) {
+      textFormat = new TextFormat.fromJson(_json["textFormat"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (position != null) {
+      _json["position"] = (position).toJson();
+    }
+    if (textFormat != null) {
+      _json["textFormat"] = (textFormat).toJson();
     }
     return _json;
   }
@@ -8744,6 +9157,9 @@ class Request {
   /// Adds a sheet.
   AddSheetRequest addSheet;
 
+  /// Adds a slicer.
+  AddSlicerRequest addSlicer;
+
   /// Appends cells after the last row with data in a sheet.
   AppendCellsRequest appendCells;
 
@@ -8783,6 +9199,10 @@ class Request {
 
   /// Deletes a group over the specified range.
   DeleteDimensionGroupRequest deleteDimensionGroup;
+
+  /// Removes rows containing duplicate values in specified columns of a cell
+  /// range.
+  DeleteDuplicatesRequest deleteDuplicates;
 
   /// Deletes an embedded object (e.g, chart, image) in a sheet.
   DeleteEmbeddedObjectRequest deleteEmbeddedObject;
@@ -8844,6 +9264,9 @@ class Request {
   /// Converts a column of text into many columns of text.
   TextToColumnsRequest textToColumns;
 
+  /// Trims cells of whitespace (such as spaces, tabs, or new lines).
+  TrimWhitespaceRequest trimWhitespace;
+
   /// Unmerges merged cells.
   UnmergeCellsRequest unmergeCells;
 
@@ -8886,6 +9309,9 @@ class Request {
   /// Updates a sheet's properties.
   UpdateSheetPropertiesRequest updateSheetProperties;
 
+  /// Updates a slicer's specifications.
+  UpdateSlicerSpecRequest updateSlicerSpec;
+
   /// Updates the spreadsheet's properties.
   UpdateSpreadsheetPropertiesRequest updateSpreadsheetProperties;
 
@@ -8918,6 +9344,9 @@ class Request {
     }
     if (_json.containsKey("addSheet")) {
       addSheet = new AddSheetRequest.fromJson(_json["addSheet"]);
+    }
+    if (_json.containsKey("addSlicer")) {
+      addSlicer = new AddSlicerRequest.fromJson(_json["addSlicer"]);
     }
     if (_json.containsKey("appendCells")) {
       appendCells = new AppendCellsRequest.fromJson(_json["appendCells"]);
@@ -8966,6 +9395,10 @@ class Request {
     if (_json.containsKey("deleteDimensionGroup")) {
       deleteDimensionGroup = new DeleteDimensionGroupRequest.fromJson(
           _json["deleteDimensionGroup"]);
+    }
+    if (_json.containsKey("deleteDuplicates")) {
+      deleteDuplicates =
+          new DeleteDuplicatesRequest.fromJson(_json["deleteDuplicates"]);
     }
     if (_json.containsKey("deleteEmbeddedObject")) {
       deleteEmbeddedObject = new DeleteEmbeddedObjectRequest.fromJson(
@@ -9037,6 +9470,10 @@ class Request {
     if (_json.containsKey("textToColumns")) {
       textToColumns = new TextToColumnsRequest.fromJson(_json["textToColumns"]);
     }
+    if (_json.containsKey("trimWhitespace")) {
+      trimWhitespace =
+          new TrimWhitespaceRequest.fromJson(_json["trimWhitespace"]);
+    }
     if (_json.containsKey("unmergeCells")) {
       unmergeCells = new UnmergeCellsRequest.fromJson(_json["unmergeCells"]);
     }
@@ -9091,6 +9528,10 @@ class Request {
       updateSheetProperties = new UpdateSheetPropertiesRequest.fromJson(
           _json["updateSheetProperties"]);
     }
+    if (_json.containsKey("updateSlicerSpec")) {
+      updateSlicerSpec =
+          new UpdateSlicerSpecRequest.fromJson(_json["updateSlicerSpec"]);
+    }
     if (_json.containsKey("updateSpreadsheetProperties")) {
       updateSpreadsheetProperties =
           new UpdateSpreadsheetPropertiesRequest.fromJson(
@@ -9124,6 +9565,9 @@ class Request {
     }
     if (addSheet != null) {
       _json["addSheet"] = (addSheet).toJson();
+    }
+    if (addSlicer != null) {
+      _json["addSlicer"] = (addSlicer).toJson();
     }
     if (appendCells != null) {
       _json["appendCells"] = (appendCells).toJson();
@@ -9164,6 +9608,9 @@ class Request {
     }
     if (deleteDimensionGroup != null) {
       _json["deleteDimensionGroup"] = (deleteDimensionGroup).toJson();
+    }
+    if (deleteDuplicates != null) {
+      _json["deleteDuplicates"] = (deleteDuplicates).toJson();
     }
     if (deleteEmbeddedObject != null) {
       _json["deleteEmbeddedObject"] = (deleteEmbeddedObject).toJson();
@@ -9225,6 +9672,9 @@ class Request {
     if (textToColumns != null) {
       _json["textToColumns"] = (textToColumns).toJson();
     }
+    if (trimWhitespace != null) {
+      _json["trimWhitespace"] = (trimWhitespace).toJson();
+    }
     if (unmergeCells != null) {
       _json["unmergeCells"] = (unmergeCells).toJson();
     }
@@ -9269,6 +9719,9 @@ class Request {
     if (updateSheetProperties != null) {
       _json["updateSheetProperties"] = (updateSheetProperties).toJson();
     }
+    if (updateSlicerSpec != null) {
+      _json["updateSlicerSpec"] = (updateSlicerSpec).toJson();
+    }
     if (updateSpreadsheetProperties != null) {
       _json["updateSpreadsheetProperties"] =
           (updateSpreadsheetProperties).toJson();
@@ -9300,6 +9753,9 @@ class Response {
   /// A reply from adding a sheet.
   AddSheetResponse addSheet;
 
+  /// A reply from adding a slicer.
+  AddSlicerResponse addSlicer;
+
   /// A reply from creating a developer metadata entry.
   CreateDeveloperMetadataResponse createDeveloperMetadata;
 
@@ -9312,6 +9768,9 @@ class Response {
   /// A reply from deleting a dimension group.
   DeleteDimensionGroupResponse deleteDimensionGroup;
 
+  /// A reply from removing rows containing duplicate values.
+  DeleteDuplicatesResponse deleteDuplicates;
+
   /// A reply from duplicating a filter view.
   DuplicateFilterViewResponse duplicateFilterView;
 
@@ -9320,6 +9779,9 @@ class Response {
 
   /// A reply from doing a find/replace.
   FindReplaceResponse findReplace;
+
+  /// A reply from trimming whitespace.
+  TrimWhitespaceResponse trimWhitespace;
 
   /// A reply from updating a conditional format rule.
   UpdateConditionalFormatRuleResponse updateConditionalFormatRule;
@@ -9358,6 +9820,9 @@ class Response {
     if (_json.containsKey("addSheet")) {
       addSheet = new AddSheetResponse.fromJson(_json["addSheet"]);
     }
+    if (_json.containsKey("addSlicer")) {
+      addSlicer = new AddSlicerResponse.fromJson(_json["addSlicer"]);
+    }
     if (_json.containsKey("createDeveloperMetadata")) {
       createDeveloperMetadata = new CreateDeveloperMetadataResponse.fromJson(
           _json["createDeveloperMetadata"]);
@@ -9375,6 +9840,10 @@ class Response {
       deleteDimensionGroup = new DeleteDimensionGroupResponse.fromJson(
           _json["deleteDimensionGroup"]);
     }
+    if (_json.containsKey("deleteDuplicates")) {
+      deleteDuplicates =
+          new DeleteDuplicatesResponse.fromJson(_json["deleteDuplicates"]);
+    }
     if (_json.containsKey("duplicateFilterView")) {
       duplicateFilterView = new DuplicateFilterViewResponse.fromJson(
           _json["duplicateFilterView"]);
@@ -9385,6 +9854,10 @@ class Response {
     }
     if (_json.containsKey("findReplace")) {
       findReplace = new FindReplaceResponse.fromJson(_json["findReplace"]);
+    }
+    if (_json.containsKey("trimWhitespace")) {
+      trimWhitespace =
+          new TrimWhitespaceResponse.fromJson(_json["trimWhitespace"]);
     }
     if (_json.containsKey("updateConditionalFormatRule")) {
       updateConditionalFormatRule =
@@ -9426,6 +9899,9 @@ class Response {
     if (addSheet != null) {
       _json["addSheet"] = (addSheet).toJson();
     }
+    if (addSlicer != null) {
+      _json["addSlicer"] = (addSlicer).toJson();
+    }
     if (createDeveloperMetadata != null) {
       _json["createDeveloperMetadata"] = (createDeveloperMetadata).toJson();
     }
@@ -9439,6 +9915,9 @@ class Response {
     if (deleteDimensionGroup != null) {
       _json["deleteDimensionGroup"] = (deleteDimensionGroup).toJson();
     }
+    if (deleteDuplicates != null) {
+      _json["deleteDuplicates"] = (deleteDuplicates).toJson();
+    }
     if (duplicateFilterView != null) {
       _json["duplicateFilterView"] = (duplicateFilterView).toJson();
     }
@@ -9447,6 +9926,9 @@ class Response {
     }
     if (findReplace != null) {
       _json["findReplace"] = (findReplace).toJson();
+    }
+    if (trimWhitespace != null) {
+      _json["trimWhitespace"] = (trimWhitespace).toJson();
     }
     if (updateConditionalFormatRule != null) {
       _json["updateConditionalFormatRule"] =
@@ -9483,6 +9965,120 @@ class RowData {
         new core.Map<core.String, core.Object>();
     if (values != null) {
       _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A scorecard chart. Scorecard charts are used to highlight key performance
+/// indicators, known as KPIs, on the spreadsheet. A scorecard chart can
+/// represent things like total sales, average cost, or a top selling item. You
+/// can specify a single data value, or aggregate over a range of data.
+/// Percentage or absolute difference from a baseline value can be highlighted,
+/// like changes over time.
+class ScorecardChartSpec {
+  /// The aggregation type for key and baseline chart data in scorecard chart.
+  /// This field is optional.
+  /// Possible string values are:
+  /// - "CHART_AGGREGATE_TYPE_UNSPECIFIED" : Default value, do not use.
+  /// - "AVERAGE" : Average aggregate function.
+  /// - "COUNT" : Count aggregate function.
+  /// - "MAX" : Maximum aggregate function.
+  /// - "MEDIAN" : Median aggregate function.
+  /// - "MIN" : Minimum aggregate function.
+  /// - "SUM" : Sum aggregate function.
+  core.String aggregateType;
+
+  /// The data for scorecard baseline value.
+  /// This field is optional.
+  ChartData baselineValueData;
+
+  /// Formatting options for baseline value.
+  /// This field is needed only if baseline_value_data is specified.
+  BaselineValueFormat baselineValueFormat;
+
+  /// Custom formatting options for numeric key/baseline values in scorecard
+  /// chart. This field is used only when number_format_source is set to
+  /// CUSTOM. This field is optional.
+  ChartCustomNumberFormatOptions customFormatOptions;
+
+  /// The data for scorecard key value.
+  ChartData keyValueData;
+
+  /// Formatting options for key value.
+  KeyValueFormat keyValueFormat;
+
+  /// The number format source used in the scorecard chart.
+  /// This field is optional.
+  /// Possible string values are:
+  /// - "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED" : Default value, do not use.
+  /// - "FROM_DATA" : Inherit number formatting from data.
+  /// - "CUSTOM" : Apply custom formatting as specified by
+  /// ChartCustomNumberFormatOptions.
+  core.String numberFormatSource;
+
+  /// Value to scale scorecard key and baseline value. For example, a factor of
+  /// 10 can be used to divide all values in the chart by 10.
+  /// This field is optional.
+  core.double scaleFactor;
+
+  ScorecardChartSpec();
+
+  ScorecardChartSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("aggregateType")) {
+      aggregateType = _json["aggregateType"];
+    }
+    if (_json.containsKey("baselineValueData")) {
+      baselineValueData = new ChartData.fromJson(_json["baselineValueData"]);
+    }
+    if (_json.containsKey("baselineValueFormat")) {
+      baselineValueFormat =
+          new BaselineValueFormat.fromJson(_json["baselineValueFormat"]);
+    }
+    if (_json.containsKey("customFormatOptions")) {
+      customFormatOptions = new ChartCustomNumberFormatOptions.fromJson(
+          _json["customFormatOptions"]);
+    }
+    if (_json.containsKey("keyValueData")) {
+      keyValueData = new ChartData.fromJson(_json["keyValueData"]);
+    }
+    if (_json.containsKey("keyValueFormat")) {
+      keyValueFormat = new KeyValueFormat.fromJson(_json["keyValueFormat"]);
+    }
+    if (_json.containsKey("numberFormatSource")) {
+      numberFormatSource = _json["numberFormatSource"];
+    }
+    if (_json.containsKey("scaleFactor")) {
+      scaleFactor = _json["scaleFactor"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (aggregateType != null) {
+      _json["aggregateType"] = aggregateType;
+    }
+    if (baselineValueData != null) {
+      _json["baselineValueData"] = (baselineValueData).toJson();
+    }
+    if (baselineValueFormat != null) {
+      _json["baselineValueFormat"] = (baselineValueFormat).toJson();
+    }
+    if (customFormatOptions != null) {
+      _json["customFormatOptions"] = (customFormatOptions).toJson();
+    }
+    if (keyValueData != null) {
+      _json["keyValueData"] = (keyValueData).toJson();
+    }
+    if (keyValueFormat != null) {
+      _json["keyValueFormat"] = (keyValueFormat).toJson();
+    }
+    if (numberFormatSource != null) {
+      _json["numberFormatSource"] = numberFormatSource;
+    }
+    if (scaleFactor != null) {
+      _json["scaleFactor"] = scaleFactor;
     }
     return _json;
   }
@@ -9651,6 +10247,9 @@ class Sheet {
   /// by group depth.
   core.List<DimensionGroup> rowGroups;
 
+  /// The slicers on this sheet.
+  core.List<Slicer> slicers;
+
   Sheet();
 
   Sheet.fromJson(core.Map _json) {
@@ -9712,6 +10311,11 @@ class Sheet {
           .map<DimensionGroup>((value) => new DimensionGroup.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("slicers")) {
+      slicers = (_json["slicers"] as core.List)
+          .map<Slicer>((value) => new Slicer.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -9758,6 +10362,9 @@ class Sheet {
     }
     if (rowGroups != null) {
       _json["rowGroups"] = rowGroups.map((value) => (value).toJson()).toList();
+    }
+    if (slicers != null) {
+      _json["slicers"] = slicers.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -9868,6 +10475,143 @@ class SheetProperties {
   }
 }
 
+/// A slicer in a sheet.
+class Slicer {
+  /// The position of the slicer. Note that slicer can be positioned only on
+  /// existing sheet. Also, width and height of slicer can be automatically
+  /// adjusted to keep it within permitted limits.
+  EmbeddedObjectPosition position;
+
+  /// The ID of the slicer.
+  core.int slicerId;
+
+  /// The specification of the slicer.
+  SlicerSpec spec;
+
+  Slicer();
+
+  Slicer.fromJson(core.Map _json) {
+    if (_json.containsKey("position")) {
+      position = new EmbeddedObjectPosition.fromJson(_json["position"]);
+    }
+    if (_json.containsKey("slicerId")) {
+      slicerId = _json["slicerId"];
+    }
+    if (_json.containsKey("spec")) {
+      spec = new SlicerSpec.fromJson(_json["spec"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (position != null) {
+      _json["position"] = (position).toJson();
+    }
+    if (slicerId != null) {
+      _json["slicerId"] = slicerId;
+    }
+    if (spec != null) {
+      _json["spec"] = (spec).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The specifications of a slicer.
+class SlicerSpec {
+  /// True if the filter should apply to pivot tables.
+  /// If not set, default to `True`.
+  core.bool applyToPivotTables;
+
+  /// The background color of the slicer.
+  Color backgroundColor;
+
+  /// The column index in the data table on which the filter is applied to.
+  core.int columnIndex;
+
+  /// The data range of the slicer.
+  GridRange dataRange;
+
+  /// The filtering criteria of the slicer.
+  FilterCriteria filterCriteria;
+
+  /// The horizontal alignment of title in the slicer.
+  /// If unspecified, defaults to `LEFT`
+  /// Possible string values are:
+  /// - "HORIZONTAL_ALIGN_UNSPECIFIED" : The horizontal alignment is not
+  /// specified. Do not use this.
+  /// - "LEFT" : The text is explicitly aligned to the left of the cell.
+  /// - "CENTER" : The text is explicitly aligned to the center of the cell.
+  /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
+  core.String horizontalAlignment;
+
+  /// The text format of title in the slicer.
+  TextFormat textFormat;
+
+  /// The title of the slicer.
+  core.String title;
+
+  SlicerSpec();
+
+  SlicerSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("applyToPivotTables")) {
+      applyToPivotTables = _json["applyToPivotTables"];
+    }
+    if (_json.containsKey("backgroundColor")) {
+      backgroundColor = new Color.fromJson(_json["backgroundColor"]);
+    }
+    if (_json.containsKey("columnIndex")) {
+      columnIndex = _json["columnIndex"];
+    }
+    if (_json.containsKey("dataRange")) {
+      dataRange = new GridRange.fromJson(_json["dataRange"]);
+    }
+    if (_json.containsKey("filterCriteria")) {
+      filterCriteria = new FilterCriteria.fromJson(_json["filterCriteria"]);
+    }
+    if (_json.containsKey("horizontalAlignment")) {
+      horizontalAlignment = _json["horizontalAlignment"];
+    }
+    if (_json.containsKey("textFormat")) {
+      textFormat = new TextFormat.fromJson(_json["textFormat"]);
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (applyToPivotTables != null) {
+      _json["applyToPivotTables"] = applyToPivotTables;
+    }
+    if (backgroundColor != null) {
+      _json["backgroundColor"] = (backgroundColor).toJson();
+    }
+    if (columnIndex != null) {
+      _json["columnIndex"] = columnIndex;
+    }
+    if (dataRange != null) {
+      _json["dataRange"] = (dataRange).toJson();
+    }
+    if (filterCriteria != null) {
+      _json["filterCriteria"] = (filterCriteria).toJson();
+    }
+    if (horizontalAlignment != null) {
+      _json["horizontalAlignment"] = horizontalAlignment;
+    }
+    if (textFormat != null) {
+      _json["textFormat"] = (textFormat).toJson();
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
 /// Sorts data in rows based on a sort order per column.
 class SortRangeRequest {
   /// The range to sort.
@@ -9905,8 +10649,18 @@ class SortRangeRequest {
 
 /// A sort order associated with a specific column or row.
 class SortSpec {
+  /// The background fill color to sort by. Mutually exclusive with sorting by
+  /// text color. Requests to set this field will fail with a 400 error if
+  /// foreground color is also set.
+  Color backgroundColor;
+
   /// The dimension the sort should be applied to.
   core.int dimensionIndex;
+
+  /// The text color to sort by. Mutually exclusive with sorting by background
+  /// fill color. Requests to set this field will fail with a 400 error if
+  /// background color is also set.
+  Color foregroundColor;
 
   /// The order data should be sorted.
   /// Possible string values are:
@@ -9918,8 +10672,14 @@ class SortSpec {
   SortSpec();
 
   SortSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("backgroundColor")) {
+      backgroundColor = new Color.fromJson(_json["backgroundColor"]);
+    }
     if (_json.containsKey("dimensionIndex")) {
       dimensionIndex = _json["dimensionIndex"];
+    }
+    if (_json.containsKey("foregroundColor")) {
+      foregroundColor = new Color.fromJson(_json["foregroundColor"]);
     }
     if (_json.containsKey("sortOrder")) {
       sortOrder = _json["sortOrder"];
@@ -9929,8 +10689,14 @@ class SortSpec {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (backgroundColor != null) {
+      _json["backgroundColor"] = (backgroundColor).toJson();
+    }
     if (dimensionIndex != null) {
       _json["dimensionIndex"] = dimensionIndex;
+    }
+    if (foregroundColor != null) {
+      _json["foregroundColor"] = (foregroundColor).toJson();
     }
     if (sortOrder != null) {
       _json["sortOrder"] = sortOrder;
@@ -10100,6 +10866,9 @@ class SpreadsheetProperties {
   /// Note: when updating this field, not all locales/languages are supported.
   core.String locale;
 
+  /// Theme applied to the spreadsheet.
+  SpreadsheetTheme spreadsheetTheme;
+
   /// The time zone of the spreadsheet, in CLDR format such as
   /// `America/New_York`. If the time zone isn't recognized, this may
   /// be a custom time zone such as `GMT-07:00`.
@@ -10123,6 +10892,10 @@ class SpreadsheetProperties {
     }
     if (_json.containsKey("locale")) {
       locale = _json["locale"];
+    }
+    if (_json.containsKey("spreadsheetTheme")) {
+      spreadsheetTheme =
+          new SpreadsheetTheme.fromJson(_json["spreadsheetTheme"]);
     }
     if (_json.containsKey("timeZone")) {
       timeZone = _json["timeZone"];
@@ -10148,11 +10921,50 @@ class SpreadsheetProperties {
     if (locale != null) {
       _json["locale"] = locale;
     }
+    if (spreadsheetTheme != null) {
+      _json["spreadsheetTheme"] = (spreadsheetTheme).toJson();
+    }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// Represents spreadsheet theme
+class SpreadsheetTheme {
+  /// / Name of the primary font family.
+  core.String primaryFontFamily;
+
+  /// The spreadsheet theme color pairs. For update users need to give all pairs
+  /// of theme colors.
+  core.List<ThemeColorPair> themeColors;
+
+  SpreadsheetTheme();
+
+  SpreadsheetTheme.fromJson(core.Map _json) {
+    if (_json.containsKey("primaryFontFamily")) {
+      primaryFontFamily = _json["primaryFontFamily"];
+    }
+    if (_json.containsKey("themeColors")) {
+      themeColors = (_json["themeColors"] as core.List)
+          .map<ThemeColorPair>((value) => new ThemeColorPair.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (primaryFontFamily != null) {
+      _json["primaryFontFamily"] = primaryFontFamily;
+    }
+    if (themeColors != null) {
+      _json["themeColors"] =
+          themeColors.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -10400,6 +11212,50 @@ class TextToColumnsRequest {
   }
 }
 
+/// A pair mapping a spreadsheet theme color type to the concrete color it
+/// represents.
+class ThemeColorPair {
+  /// The concrete color corresponding to the theme color type.
+  ColorStyle color;
+
+  /// The type of the spreadsheet theme color.
+  /// Possible string values are:
+  /// - "THEME_COLOR_TYPE_UNSPECIFIED" : Unspecified theme color
+  /// - "TEXT" : Represents the primary text color
+  /// - "BACKGROUND" : Represents the primary background color
+  /// - "ACCENT1" : Represents the first accent color
+  /// - "ACCENT2" : Represents the second accent color
+  /// - "ACCENT3" : Represents the third accent color
+  /// - "ACCENT4" : Represents the fourth accent color
+  /// - "ACCENT5" : Represents the fifth accent color
+  /// - "ACCENT6" : Represents the sixth accent color
+  /// - "LINK" : Represents the color to use for hyperlinks
+  core.String colorType;
+
+  ThemeColorPair();
+
+  ThemeColorPair.fromJson(core.Map _json) {
+    if (_json.containsKey("color")) {
+      color = new ColorStyle.fromJson(_json["color"]);
+    }
+    if (_json.containsKey("colorType")) {
+      colorType = _json["colorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (color != null) {
+      _json["color"] = (color).toJson();
+    }
+    if (colorType != null) {
+      _json["colorType"] = colorType;
+    }
+    return _json;
+  }
+}
+
 /// A color scale for a treemap chart.
 class TreemapChartColorScale {
   /// The background color for cells with a color value greater than or equal
@@ -10607,6 +11463,58 @@ class TreemapChartSpec {
     }
     if (textFormat != null) {
       _json["textFormat"] = (textFormat).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
+/// the specified range. This request removes all whitespace from the start and
+/// end of each cell's text, and reduces any subsequence of remaining whitespace
+/// characters to a single space. If the resulting trimmed text starts with a
+/// '+'
+/// or '=' character, the text remains as a string value and isn't interpreted
+/// as a formula.
+class TrimWhitespaceRequest {
+  /// The range whose cells to trim.
+  GridRange range;
+
+  TrimWhitespaceRequest();
+
+  TrimWhitespaceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("range")) {
+      range = new GridRange.fromJson(_json["range"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (range != null) {
+      _json["range"] = (range).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The result of trimming whitespace in cells.
+class TrimWhitespaceResponse {
+  /// The number of cells that were trimmed of whitespace.
+  core.int cellsChangedCount;
+
+  TrimWhitespaceResponse();
+
+  TrimWhitespaceResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("cellsChangedCount")) {
+      cellsChangedCount = _json["cellsChangedCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cellsChangedCount != null) {
+      _json["cellsChangedCount"] = cellsChangedCount;
     }
     return _json;
   }
@@ -11324,6 +12232,52 @@ class UpdateSheetPropertiesRequest {
     }
     if (properties != null) {
       _json["properties"] = (properties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates a slicer's specifications.
+/// (This does not move or resize a slicer. To move or resize a slicer use
+/// UpdateEmbeddedObjectPositionRequest.
+class UpdateSlicerSpecRequest {
+  /// The fields that should be updated.  At least one field must be specified.
+  /// The root `SlicerSpec` is implied and should not be specified. A single
+  /// "*"`
+  /// can be used as short-hand for listing every field.
+  core.String fields;
+
+  /// The id of the slicer to update.
+  core.int slicerId;
+
+  /// The specification to apply to the slicer.
+  SlicerSpec spec;
+
+  UpdateSlicerSpecRequest();
+
+  UpdateSlicerSpecRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("slicerId")) {
+      slicerId = _json["slicerId"];
+    }
+    if (_json.containsKey("spec")) {
+      spec = new SlicerSpec.fromJson(_json["spec"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (slicerId != null) {
+      _json["slicerId"] = slicerId;
+    }
+    if (spec != null) {
+      _json["spec"] = (spec).toJson();
     }
     return _json;
   }

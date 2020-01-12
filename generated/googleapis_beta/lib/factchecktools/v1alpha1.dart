@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.factchecktools.v1alpha1;
 
@@ -291,13 +291,6 @@ class PagesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [offset] - An integer that specifies the current offset (that is, starting
-  /// result
-  /// location) in search results. This field is only considered if `page_token`
-  /// is unset, and if the request is not for a specific URL. For example, 0
-  /// means to return results starting from the first matching result, and 10
-  /// means to return from the 11th result.
-  ///
   /// [pageToken] - The pagination token. You may provide the `next_page_token`
   /// returned from a
   /// previous List request, if any, in order to get the next page. All other
@@ -317,6 +310,13 @@ class PagesResourceApi {
   /// provided, we will return that URL instead. Cannot be specified along with
   /// an organization.
   ///
+  /// [offset] - An integer that specifies the current offset (that is, starting
+  /// result
+  /// location) in search results. This field is only considered if `page_token`
+  /// is unset, and if the request is not for a specific URL. For example, 0
+  /// means to return results starting from the first matching result, and 10
+  /// means to return from the 11th result.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -331,11 +331,11 @@ class PagesResourceApi {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
       list(
-          {core.int offset,
-          core.String pageToken,
+          {core.String pageToken,
           core.String organization,
           core.int pageSize,
           core.String url,
+          core.int offset,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -344,9 +344,6 @@ class PagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (offset != null) {
-      _queryParams["offset"] = ["${offset}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -358,6 +355,9 @@ class PagesResourceApi {
     }
     if (url != null) {
       _queryParams["url"] = [url];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = ["${offset}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -557,6 +557,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /// Corresponds to `ClaimReview.reviewRating.image`.
   core.String imageUrl;
 
+  /// Corresponds to `ClaimReview.reviewRating.ratingExplanation`.
+  core.String ratingExplanation;
+
   /// A numeric rating of this claim, in the range worstRating — bestRating
   /// inclusive.<br>
   /// Corresponds to `ClaimReview.reviewRating.ratingValue`.
@@ -580,6 +583,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     if (_json.containsKey("imageUrl")) {
       imageUrl = _json["imageUrl"];
     }
+    if (_json.containsKey("ratingExplanation")) {
+      ratingExplanation = _json["ratingExplanation"];
+    }
     if (_json.containsKey("ratingValue")) {
       ratingValue = _json["ratingValue"];
     }
@@ -599,6 +605,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     }
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
+    }
+    if (ratingExplanation != null) {
+      _json["ratingExplanation"] = ratingExplanation;
     }
     if (ratingValue != null) {
       _json["ratingValue"] = ratingValue;

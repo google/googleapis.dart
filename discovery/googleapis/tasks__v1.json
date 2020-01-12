@@ -17,7 +17,7 @@
     "description": "Manages your tasks and task lists.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/tasks/firstapp",
-    "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/sib0TfOU9SmOWm02eMFRVq-fFck\"",
+    "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/3RIOA7IUZUT5Y47ov2CgQXaVNjU\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/tasks-16.png",
         "x32": "https://www.google.com/images/icons/product/tasks-32.png"
@@ -515,7 +515,7 @@
             }
         }
     },
-    "revision": "20190628",
+    "revision": "20191210",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Task": {

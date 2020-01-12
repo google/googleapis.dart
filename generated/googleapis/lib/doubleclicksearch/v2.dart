@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.doubleclicksearch.v2;
 
@@ -1206,7 +1206,7 @@ class ReportFiles {
 /// report files.
 class Report {
   /// Asynchronous report only. Contains a list of generated report files once
-  /// the report has succesfully completed.
+  /// the report has successfully completed.
   core.List<ReportFiles> files;
 
   /// Asynchronous report only. Id of the report.

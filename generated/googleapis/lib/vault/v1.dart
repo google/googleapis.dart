@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.vault.v1;
 
@@ -28,6 +28,7 @@ class VaultApi {
   final commons.ApiRequester _requester;
 
   MattersResourceApi get matters => new MattersResourceApi(_requester);
+  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
 
   VaultApi(http.Client client,
       {core.String rootUrl = "https://vault.googleapis.com/",
@@ -1604,6 +1605,58 @@ class MattersSavedQueriesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ListSavedQueriesResponse.fromJson(data));
+  }
+}
+
+class OperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a long-running operation. This method indicates that the client is
+  /// no longer interested in the operation result. It does not cancel the
+  /// operation. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern "^operations/.+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 

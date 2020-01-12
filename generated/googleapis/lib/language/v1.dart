@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.language.v1;
 
@@ -317,7 +317,7 @@ class DocumentsResourceApi {
 
 /// The entity analysis request message.
 class AnalyzeEntitiesRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -401,7 +401,7 @@ class AnalyzeEntitiesResponse {
 
 /// The entity-level sentiment analysis request message.
 class AnalyzeEntitySentimentRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -485,7 +485,7 @@ class AnalyzeEntitySentimentResponse {
 
 /// The sentiment analysis request message.
 class AnalyzeSentimentRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate sentence offsets.
@@ -578,7 +578,7 @@ class AnalyzeSentimentResponse {
 
 /// The syntax analysis request message.
 class AnalyzeSyntaxRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -674,7 +674,7 @@ class AnalyzeSyntaxResponse {
 /// The request message for the text annotation API, which can perform multiple
 /// analysis types (sentiment, entities, and syntax) in one call.
 class AnnotateTextRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -696,7 +696,7 @@ class AnnotateTextRequest {
   /// that uses this encoding natively.
   core.String encodingType;
 
-  /// The enabled features.
+  /// Required. The enabled features.
   Features features;
 
   AnnotateTextRequest();
@@ -851,7 +851,7 @@ class ClassificationCategory {
 
 /// The document classification request message.
 class ClassifyTextRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   ClassifyTextRequest();

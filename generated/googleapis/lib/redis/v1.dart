@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.redis.v1;
 
@@ -103,11 +103,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -120,9 +120,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -134,14 +134,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -513,6 +513,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// location (region) or all locations.
   ///
   /// The location should have the following format:
+  ///
   /// * `projects/{project_id}/locations/{location_id}`
   ///
   /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -526,16 +527,15 @@ class ProjectsLocationsInstancesResourceApi {
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request,
-  /// if any.
+  /// [pageToken] - The `next_page_token` value returned from a previous
+  /// ListInstances request, if any.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
   /// If not specified, a default value of 1000 will be used by the service.
   /// Regardless of the page_size value, the response may include a partial list
   /// and a caller should only rely on response's
-  /// next_page_token
+  /// `next_page_token`
   /// to determine if there are more instances left to be queried.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -601,8 +601,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// location_id here refers to a GCP region; however, users may choose which
   /// specific zone (or collection of zones for cross-zone instances) an
   /// instance
-  /// should be provisioned in. Refer to [location_id] and
-  /// [alternative_location_id] fields for more details.
+  /// should be provisioned in. Refer to location_id and
+  /// alternative_location_id fields for more details.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
@@ -1189,7 +1189,7 @@ class Instance {
   /// Optional. Only applicable to STANDARD_HA tier which protects the instance
   /// against zonal failures by provisioning it across two zones. If provided,
   /// it
-  /// must be a different zone from the one provided in [location_id].
+  /// must be a different zone from the one provided in location_id.
   core.String alternativeLocationId;
 
   /// Optional. The full name of the Google Compute Engine
@@ -1203,9 +1203,9 @@ class Instance {
 
   /// Output only. The current zone where the Redis endpoint is placed. For
   /// Basic
-  /// Tier instances, this will always be the same as the [location_id]
+  /// Tier instances, this will always be the same as the location_id
   /// provided by the user at creation time. For Standard Tier instances,
-  /// this can be either [location_id] or [alternative_location_id] and can
+  /// this can be either location_id or alternative_location_id and can
   /// change after a failover event.
   core.String currentLocationId;
 
@@ -1223,8 +1223,8 @@ class Instance {
   /// provided,
   /// the service will choose a zone for the instance. For STANDARD_HA tier,
   /// instances will be created across two zones for protection against zonal
-  /// failures. If [alternative_location_id] is also provided, it must be
-  /// different from [location_id].
+  /// failures. If alternative_location_id is also provided, it must be
+  /// different from location_id.
   core.String locationId;
 
   /// Required. Redis memory size in GiB.
@@ -1238,8 +1238,8 @@ class Instance {
   /// location_id here refers to a GCP region; however, users may choose which
   /// specific zone (or collection of zones for cross-zone instances) an
   /// instance
-  /// should be provisioned in. Refer to [location_id] and
-  /// [alternative_location_id] fields for more details.
+  /// should be provisioned in. Refer to location_id and
+  /// alternative_location_id fields for more details.
   core.String name;
 
   /// Output only. Cloud IAM identity used by import / export operations to
@@ -1269,9 +1269,8 @@ class Instance {
   core.Map<core.String, core.String> redisConfigs;
 
   /// Optional. The version of Redis software.
-  /// If not provided, latest supported version will be used. Updating the
-  /// version will perform an upgrade/downgrade to the new version. Currently,
-  /// the supported values are:
+  /// If not provided, latest supported version will be used. Currently, the
+  /// supported values are:
   ///
   ///  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
   ///  *   `REDIS_3_2` for Redis 3.2 compatibility
@@ -1443,11 +1442,11 @@ class ListInstancesResponse {
   /// regions
   /// available to the project are queried, and the results aggregated.
   /// If in such an aggregated query a location is unavailable, a dummy Redis
-  /// entry is included in the response with the "name" field set to a value of
-  /// the form projects/{project_id}/locations/{location_id}/instances/- and the
-  /// "status" field set to ERROR and "status_message" field set to "location
-  /// not
-  /// available for ListInstances".
+  /// entry is included in the response with the `name` field set to a value of
+  /// the form `projects/{project_id}/locations/{location_id}/instances/`- and
+  /// the `status` field set to ERROR and `status_message` field set to
+  /// "location
+  /// not available for ListInstances".
   core.List<Instance> instances;
 
   /// Token to retrieve the next page of results, or empty if there are no more

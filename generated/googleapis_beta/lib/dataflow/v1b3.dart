@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.dataflow.v1b3;
 
@@ -50,68 +50,10 @@ class ProjectsResourceApi {
   ProjectsJobsResourceApi get jobs => new ProjectsJobsResourceApi(_requester);
   ProjectsLocationsResourceApi get locations =>
       new ProjectsLocationsResourceApi(_requester);
-  ProjectsSnapshotsResourceApi get snapshots =>
-      new ProjectsSnapshotsResourceApi(_requester);
   ProjectsTemplatesResourceApi get templates =>
       new ProjectsTemplatesResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Deletes a snapshot.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The ID of the Cloud Platform project that the snapshot
-  /// belongs to.
-  ///
-  /// [snapshotId] - The ID of the snapshot.
-  ///
-  /// [location] - The location that contains this snapshot.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DeleteSnapshotResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DeleteSnapshotResponse> deleteSnapshots(core.String projectId,
-      {core.String snapshotId, core.String location, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (snapshotId != null) {
-      _queryParams["snapshotId"] = [snapshotId];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/snapshots';
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeleteSnapshotResponse.fromJson(data));
-  }
 
   /// Send a worker_message to the service.
   ///
@@ -184,13 +126,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains this job.
@@ -211,6 +146,13 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -222,11 +164,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String filter,
-      core.String location,
+      {core.String location,
       core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -237,9 +179,6 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (location != null) {
       _queryParams["location"] = [location];
@@ -252,6 +191,9 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -517,17 +459,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-  /// contains this job.
-  ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
   /// to request additional results in a long list.
@@ -544,6 +475,17 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -555,11 +497,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId,
-      {core.String filter,
-      core.String location,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
+      core.String location,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -571,12 +513,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -585,6 +521,12 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -601,64 +543,6 @@ class ProjectsJobsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListJobsResponse.fromJson(data));
-  }
-
-  /// Snapshot the state of a streaming job.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The project which owns the job to be snapshotted.
-  ///
-  /// [jobId] - The job to be snapshotted.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Snapshot].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Snapshot> snapshot(
-      SnapshotJobRequest request, core.String projectId, core.String jobId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
-        ':snapshot';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Snapshot.fromJson(data));
   }
 
   /// Updates the state of an existing Cloud Dataflow job.
@@ -1111,8 +995,6 @@ class ProjectsLocationsResourceApi {
 
   ProjectsLocationsJobsResourceApi get jobs =>
       new ProjectsLocationsJobsResourceApi(_requester);
-  ProjectsLocationsSnapshotsResourceApi get snapshots =>
-      new ProjectsLocationsSnapshotsResourceApi(_requester);
   ProjectsLocationsSqlResourceApi get sql =>
       new ProjectsLocationsSqlResourceApi(_requester);
   ProjectsLocationsTemplatesResourceApi get templates =>
@@ -1192,8 +1074,6 @@ class ProjectsLocationsJobsResourceApi {
       new ProjectsLocationsJobsDebugResourceApi(_requester);
   ProjectsLocationsJobsMessagesResourceApi get messages =>
       new ProjectsLocationsJobsMessagesResourceApi(_requester);
-  ProjectsLocationsJobsSnapshotsResourceApi get snapshots =>
-      new ProjectsLocationsJobsSnapshotsResourceApi(_requester);
   ProjectsLocationsJobsWorkItemsResourceApi get workItems =>
       new ProjectsLocationsJobsWorkItemsResourceApi(_requester);
 
@@ -1221,14 +1101,14 @@ class ProjectsLocationsJobsResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains this job.
   ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1242,7 +1122,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(
       Job request, core.String projectId, core.String location,
-      {core.String view, core.String replaceJobId, core.String $fields}) {
+      {core.String replaceJobId, core.String view, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1259,11 +1139,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1539,71 +1419,6 @@ class ProjectsLocationsJobsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListJobsResponse.fromJson(data));
-  }
-
-  /// Snapshot the state of a streaming job.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The project which owns the job to be snapshotted.
-  ///
-  /// [location] - The location that contains this job.
-  ///
-  /// [jobId] - The job to be snapshotted.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Snapshot].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Snapshot> snapshot(SnapshotJobRequest request,
-      core.String projectId, core.String location, core.String jobId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (location == null) {
-      throw new core.ArgumentError("Parameter location is required.");
-    }
-    if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
-        '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
-        ':snapshot';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Snapshot.fromJson(data));
   }
 
   /// Updates the state of an existing Cloud Dataflow job.
@@ -1949,73 +1764,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
   }
 }
 
-class ProjectsLocationsJobsSnapshotsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsJobsSnapshotsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Lists snapshots.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The project ID to list snapshots for.
-  ///
-  /// [location] - The location to list snapshots in.
-  ///
-  /// [jobId] - If specified, list snapshots created from this job.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListSnapshotsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListSnapshotsResponse> list(
-      core.String projectId, core.String location, core.String jobId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (location == null) {
-      throw new core.ArgumentError("Parameter location is required.");
-    }
-    if (jobId == null) {
-      throw new core.ArgumentError("Parameter jobId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
-        '/jobs/' +
-        commons.Escaper.ecapeVariable('$jobId') +
-        '/snapshots';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
-  }
-}
-
 class ProjectsLocationsJobsWorkItemsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2158,191 +1906,6 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ReportWorkItemStatusResponse.fromJson(data));
-  }
-}
-
-class ProjectsLocationsSnapshotsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsSnapshotsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Deletes a snapshot.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The ID of the Cloud Platform project that the snapshot
-  /// belongs to.
-  ///
-  /// [location] - The location that contains this snapshot.
-  ///
-  /// [snapshotId] - The ID of the snapshot.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [DeleteSnapshotResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<DeleteSnapshotResponse> delete(
-      core.String projectId, core.String location, core.String snapshotId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (location == null) {
-      throw new core.ArgumentError("Parameter location is required.");
-    }
-    if (snapshotId == null) {
-      throw new core.ArgumentError("Parameter snapshotId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
-        '/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshotId');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeleteSnapshotResponse.fromJson(data));
-  }
-
-  /// Gets information about a snapshot.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The ID of the Cloud Platform project that the snapshot
-  /// belongs to.
-  ///
-  /// [location] - The location that contains this snapshot.
-  ///
-  /// [snapshotId] - The ID of the snapshot.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Snapshot].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Snapshot> get(
-      core.String projectId, core.String location, core.String snapshotId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (location == null) {
-      throw new core.ArgumentError("Parameter location is required.");
-    }
-    if (snapshotId == null) {
-      throw new core.ArgumentError("Parameter snapshotId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
-        '/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshotId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Snapshot.fromJson(data));
-  }
-
-  /// Lists snapshots.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The project ID to list snapshots for.
-  ///
-  /// [location] - The location to list snapshots in.
-  ///
-  /// [jobId] - If specified, list snapshots created from this job.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListSnapshotsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListSnapshotsResponse> list(
-      core.String projectId, core.String location,
-      {core.String jobId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (location == null) {
-      throw new core.ArgumentError("Parameter location is required.");
-    }
-    if (jobId != null) {
-      _queryParams["jobId"] = [jobId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
-        '/snapshots';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
   }
 }
 
@@ -2567,6 +2130,10 @@ class ProjectsLocationsTemplatesResourceApi {
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
   /// which to direct the request.
   ///
+  /// [gcsPath] - A Cloud Storage path to the template from which to create
+  /// the job.
+  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
   /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS.
   /// The file must be a Json serialized DynamicTemplateFieSpec object.
   ///
@@ -2577,10 +2144,6 @@ class ProjectsLocationsTemplatesResourceApi {
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed.
   /// Defaults to false.
-  ///
-  /// [gcsPath] - A Cloud Storage path to the template from which to create
-  /// the job.
-  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2594,10 +2157,10 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request,
       core.String projectId, core.String location,
-      {core.String dynamicTemplate_gcsPath,
+      {core.String gcsPath,
+      core.String dynamicTemplate_gcsPath,
       core.String dynamicTemplate_stagingLocation,
       core.bool validateOnly,
-      core.String gcsPath,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2615,6 +2178,9 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
     if (dynamicTemplate_gcsPath != null) {
       _queryParams["dynamicTemplate.gcsPath"] = [dynamicTemplate_gcsPath];
     }
@@ -2625,9 +2191,6 @@ class ProjectsLocationsTemplatesResourceApi {
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2646,125 +2209,6 @@ class ProjectsLocationsTemplatesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new LaunchTemplateResponse.fromJson(data));
-  }
-}
-
-class ProjectsSnapshotsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsSnapshotsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Gets information about a snapshot.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The ID of the Cloud Platform project that the snapshot
-  /// belongs to.
-  ///
-  /// [snapshotId] - The ID of the snapshot.
-  ///
-  /// [location] - The location that contains this snapshot.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Snapshot].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Snapshot> get(core.String projectId, core.String snapshotId,
-      {core.String location, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (snapshotId == null) {
-      throw new core.ArgumentError("Parameter snapshotId is required.");
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/snapshots/' +
-        commons.Escaper.ecapeVariable('$snapshotId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Snapshot.fromJson(data));
-  }
-
-  /// Lists snapshots.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The project ID to list snapshots for.
-  ///
-  /// [jobId] - If specified, list snapshots created from this job.
-  ///
-  /// [location] - The location to list snapshots in.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListSnapshotsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListSnapshotsResponse> list(core.String projectId,
-      {core.String jobId, core.String location, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (jobId != null) {
-      _queryParams["jobId"] = [jobId];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1b3/projects/' +
-        commons.Escaper.ecapeVariable('$projectId') +
-        '/snapshots';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
   }
 }
 
@@ -2833,6 +2277,10 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
+  ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
   /// Possible string values are:
   /// - "METADATA_ONLY" : A METADATA_ONLY.
@@ -2840,10 +2288,6 @@ class ProjectsTemplatesResourceApi {
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
-  ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
-  /// which to direct the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2856,9 +2300,9 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(core.String projectId,
-      {core.String view,
+      {core.String location,
+      core.String view,
       core.String gcsPath,
-      core.String location,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2870,14 +2314,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2905,14 +2349,6 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed.
-  /// Defaults to false.
-  ///
-  /// [gcsPath] - A Cloud Storage path to the template from which to create
-  /// the job.
-  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
-  ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
   /// which to direct the request.
@@ -2923,6 +2359,14 @@ class ProjectsTemplatesResourceApi {
   /// [dynamicTemplate_stagingLocation] - Cloud Storage path for staging
   /// dependencies.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
+  ///
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed.
+  /// Defaults to false.
+  ///
+  /// [gcsPath] - A Cloud Storage path to the template from which to create
+  /// the job.
+  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2936,11 +2380,11 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.bool validateOnly,
-      core.String gcsPath,
-      core.String location,
+      {core.String location,
       core.String dynamicTemplate_gcsPath,
       core.String dynamicTemplate_stagingLocation,
+      core.bool validateOnly,
+      core.String gcsPath,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2955,12 +2399,6 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
@@ -2971,6 +2409,12 @@ class ProjectsTemplatesResourceApi {
       _queryParams["dynamicTemplate.stagingLocation"] = [
         dynamicTemplate_stagingLocation
       ];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4164,19 +3608,6 @@ class DatastoreIODetails {
   }
 }
 
-/// Response from deleting a snapshot.
-class DeleteSnapshotResponse {
-  DeleteSnapshotResponse();
-
-  DeleteSnapshotResponse.fromJson(core.Map _json) {}
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
 /// Specification of one of the bundles produced as a result of splitting
 /// a Source (e.g. when executing a SourceSplitRequest, or when
 /// splitting an active task using WorkItemStatus.dynamic_source_split),
@@ -4603,6 +4034,22 @@ class Environment {
   /// specified in order for the job to have workers.
   core.List<WorkerPool> workerPools;
 
+  /// The Compute Engine region
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
+  /// with worker_zone. If neither worker_region nor worker_zone is specified,
+  /// default to the control plane's region.
+  core.String workerRegion;
+
+  /// The Compute Engine zone
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1-a". Mutually
+  /// exclusive
+  /// with worker_region. If neither worker_region nor worker_zone is specified,
+  /// a zone in the control plane's region is chosen based on available
+  /// capacity.
+  core.String workerZone;
+
   Environment();
 
   Environment.fromJson(core.Map _json) {
@@ -4647,6 +4094,12 @@ class Environment {
           .map<WorkerPool>((value) => new WorkerPool.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("workerRegion")) {
+      workerRegion = _json["workerRegion"];
+    }
+    if (_json.containsKey("workerZone")) {
+      workerZone = _json["workerZone"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4688,6 +4141,12 @@ class Environment {
     if (workerPools != null) {
       _json["workerPools"] =
           workerPools.map((value) => (value).toJson()).toList();
+    }
+    if (workerRegion != null) {
+      _json["workerRegion"] = workerRegion;
+    }
+    if (workerZone != null) {
+      _json["workerZone"] = workerZone;
     }
     return _json;
   }
@@ -5100,9 +4559,19 @@ class GetTemplateResponse {
   /// parameters, etc.
   TemplateMetadata metadata;
 
+  /// Describes the runtime metadata with SDKInfo and available parameters.
+  RuntimeMetadata runtimeMetadata;
+
   /// The status of the get template request. Any problems with the
   /// request will be indicated in the error_details.
   Status status;
+
+  /// Template Type.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown Template Type.
+  /// - "LEGACY" : Legacy Template.
+  /// - "FLEX" : Flex Template.
+  core.String templateType;
 
   GetTemplateResponse();
 
@@ -5110,8 +4579,14 @@ class GetTemplateResponse {
     if (_json.containsKey("metadata")) {
       metadata = new TemplateMetadata.fromJson(_json["metadata"]);
     }
+    if (_json.containsKey("runtimeMetadata")) {
+      runtimeMetadata = new RuntimeMetadata.fromJson(_json["runtimeMetadata"]);
+    }
     if (_json.containsKey("status")) {
       status = new Status.fromJson(_json["status"]);
+    }
+    if (_json.containsKey("templateType")) {
+      templateType = _json["templateType"];
     }
   }
 
@@ -5121,8 +4596,14 @@ class GetTemplateResponse {
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
+    if (runtimeMetadata != null) {
+      _json["runtimeMetadata"] = (runtimeMetadata).toJson();
+    }
     if (status != null) {
       _json["status"] = (status).toJson();
+    }
+    if (templateType != null) {
+      _json["templateType"] = templateType;
     }
     return _json;
   }
@@ -6549,31 +6030,6 @@ class ListJobsResponse {
   }
 }
 
-/// List of snapshots.
-class ListSnapshotsResponse {
-  /// Returned snapshots.
-  core.List<Snapshot> snapshots;
-
-  ListSnapshotsResponse();
-
-  ListSnapshotsResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("snapshots")) {
-      snapshots = (_json["snapshots"] as core.List)
-          .map<Snapshot>((value) => new Snapshot.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (snapshots != null) {
-      _json["snapshots"] = snapshots.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
 /// MapTask consists of an ordered set of instructions, each of which
 /// describes one particular low-level operation for the worker to
 /// perform in order to accomplish the MapTask's WorkItem.
@@ -7236,6 +6692,22 @@ class ParameterMetadata {
   /// Required. The name of the parameter.
   core.String name;
 
+  /// Optional. The type of the parameter.
+  /// Used for selecting input picker.
+  /// Possible string values are:
+  /// - "DEFAULT" : Default input type.
+  /// - "TEXT" : The parameter specifies generic text input.
+  /// - "GCS_READ_BUCKET" : The parameter specifies a GCS Bucket to read from.
+  /// - "GCS_WRITE_BUCKET" : The parameter specifies a GCS Bucket to write to.
+  /// - "GCS_READ_FILE" : The parameter specifies a GCS file path to read from.
+  /// - "GCS_WRITE_FILE" : The parameter specifies a GCS file path to write to.
+  /// - "GCS_READ_FOLDER" : The parameter specifies a GCS folder path to read
+  /// from.
+  /// - "GCS_WRITE_FOLDER" : The parameter specifies a GCS folder to write to.
+  /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
+  /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
+  core.String paramType;
+
   /// Optional. Regexes that the parameter must match.
   core.List<core.String> regexes;
 
@@ -7253,6 +6725,9 @@ class ParameterMetadata {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("paramType")) {
+      paramType = _json["paramType"];
     }
     if (_json.containsKey("regexes")) {
       regexes = (_json["regexes"] as core.List).cast<core.String>();
@@ -7273,6 +6748,9 @@ class ParameterMetadata {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (paramType != null) {
+      _json["paramType"] = paramType;
     }
     if (regexes != null) {
       _json["regexes"] = regexes;
@@ -7841,6 +7319,13 @@ class RuntimeEnvironment {
   /// Use with caution.
   core.bool bypassTempDirValidation;
 
+  /// Configuration for VM IPs.
+  /// Possible string values are:
+  /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
+  /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
+  /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
+  core.String ipConfiguration;
+
   /// Optional. Name for the Cloud KMS key for the job.
   /// Key format is:
   /// projects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>
@@ -7872,9 +7357,27 @@ class RuntimeEnvironment {
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   core.String tempLocation;
 
+  /// The Compute Engine region
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
+  /// with worker_zone. If neither worker_region nor worker_zone is specified,
+  /// default to the control plane's region.
+  core.String workerRegion;
+
+  /// The Compute Engine zone
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1-a". Mutually
+  /// exclusive
+  /// with worker_region. If neither worker_region nor worker_zone is specified,
+  /// a zone in the control plane's region is chosen based on available
+  /// capacity.
+  /// If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+  core.String workerZone;
+
   /// The Compute Engine [availability
   /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
   /// for launching worker instances to run your pipeline.
+  /// In the future, worker_zone will take precedence.
   core.String zone;
 
   RuntimeEnvironment();
@@ -7890,6 +7393,9 @@ class RuntimeEnvironment {
     }
     if (_json.containsKey("bypassTempDirValidation")) {
       bypassTempDirValidation = _json["bypassTempDirValidation"];
+    }
+    if (_json.containsKey("ipConfiguration")) {
+      ipConfiguration = _json["ipConfiguration"];
     }
     if (_json.containsKey("kmsKeyName")) {
       kmsKeyName = _json["kmsKeyName"];
@@ -7915,6 +7421,12 @@ class RuntimeEnvironment {
     if (_json.containsKey("tempLocation")) {
       tempLocation = _json["tempLocation"];
     }
+    if (_json.containsKey("workerRegion")) {
+      workerRegion = _json["workerRegion"];
+    }
+    if (_json.containsKey("workerZone")) {
+      workerZone = _json["workerZone"];
+    }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
     }
@@ -7931,6 +7443,9 @@ class RuntimeEnvironment {
     }
     if (bypassTempDirValidation != null) {
       _json["bypassTempDirValidation"] = bypassTempDirValidation;
+    }
+    if (ipConfiguration != null) {
+      _json["ipConfiguration"] = ipConfiguration;
     }
     if (kmsKeyName != null) {
       _json["kmsKeyName"] = kmsKeyName;
@@ -7956,8 +7471,86 @@ class RuntimeEnvironment {
     if (tempLocation != null) {
       _json["tempLocation"] = tempLocation;
     }
+    if (workerRegion != null) {
+      _json["workerRegion"] = workerRegion;
+    }
+    if (workerZone != null) {
+      _json["workerZone"] = workerZone;
+    }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// RuntimeMetadata describing a runtime environment.
+class RuntimeMetadata {
+  /// The parameters for the template.
+  core.List<ParameterMetadata> parameters;
+
+  /// SDK Info for the template.
+  SDKInfo sdkInfo;
+
+  RuntimeMetadata();
+
+  RuntimeMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("parameters")) {
+      parameters = (_json["parameters"] as core.List)
+          .map<ParameterMetadata>(
+              (value) => new ParameterMetadata.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("sdkInfo")) {
+      sdkInfo = new SDKInfo.fromJson(_json["sdkInfo"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parameters != null) {
+      _json["parameters"] =
+          parameters.map((value) => (value).toJson()).toList();
+    }
+    if (sdkInfo != null) {
+      _json["sdkInfo"] = (sdkInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+/// SDK Information.
+class SDKInfo {
+  /// Required. The SDK Language.
+  /// Possible string values are:
+  /// - "UNKNOWN" : UNKNOWN Language.
+  /// - "JAVA" : Java.
+  /// - "PYTHON" : Python.
+  core.String language;
+
+  /// Optional. The SDK version.
+  core.String version;
+
+  SDKInfo();
+
+  SDKInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -8370,115 +7963,6 @@ class Sink {
     }
     if (spec != null) {
       _json["spec"] = spec;
-    }
-    return _json;
-  }
-}
-
-/// Represents a snapshot of a job.
-class Snapshot {
-  /// The time this snapshot was created.
-  core.String creationTime;
-
-  /// The unique ID of this snapshot.
-  core.String id;
-
-  /// The project this snapshot belongs to.
-  core.String projectId;
-
-  /// The job this snapshot was created from.
-  core.String sourceJobId;
-
-  /// State of the snapshot.
-  /// Possible string values are:
-  /// - "UNKNOWN_SNAPSHOT_STATE" : Unknown state.
-  /// - "PENDING" : Snapshot intent to create has been persisted, snapshotting
-  /// of state has not
-  /// yet started.
-  /// - "RUNNING" : Snapshotting is being performed.
-  /// - "READY" : Snapshot has been created and is ready to be used.
-  /// - "FAILED" : Snapshot failed to be created.
-  /// - "DELETED" : Snapshot has been deleted.
-  core.String state;
-
-  /// The time after which this snapshot will be automatically deleted.
-  core.String ttl;
-
-  Snapshot();
-
-  Snapshot.fromJson(core.Map _json) {
-    if (_json.containsKey("creationTime")) {
-      creationTime = _json["creationTime"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("projectId")) {
-      projectId = _json["projectId"];
-    }
-    if (_json.containsKey("sourceJobId")) {
-      sourceJobId = _json["sourceJobId"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-    if (_json.containsKey("ttl")) {
-      ttl = _json["ttl"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (creationTime != null) {
-      _json["creationTime"] = creationTime;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (projectId != null) {
-      _json["projectId"] = projectId;
-    }
-    if (sourceJobId != null) {
-      _json["sourceJobId"] = sourceJobId;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    if (ttl != null) {
-      _json["ttl"] = ttl;
-    }
-    return _json;
-  }
-}
-
-/// Request to create a snapshot of a job.
-class SnapshotJobRequest {
-  /// The location that contains this job.
-  core.String location;
-
-  /// TTL for the snapshot.
-  core.String ttl;
-
-  SnapshotJobRequest();
-
-  SnapshotJobRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("location")) {
-      location = _json["location"];
-    }
-    if (_json.containsKey("ttl")) {
-      ttl = _json["ttl"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (location != null) {
-      _json["location"] = location;
-    }
-    if (ttl != null) {
-      _json["ttl"] = ttl;
     }
     return _json;
   }
@@ -9546,6 +9030,12 @@ class StreamingComputationTask {
 
 /// A task that carries configuration information for streaming computations.
 class StreamingConfigTask {
+  /// Chunk size for commit streams from the harness to windmill.
+  core.String commitStreamChunkSizeBytes;
+
+  /// Chunk size for get data streams from the harness to windmill.
+  core.String getDataStreamChunkSizeBytes;
+
   /// Maximum size for work item commit supported windmill storage layer.
   core.String maxWorkItemCommitBytes;
 
@@ -9568,6 +9058,12 @@ class StreamingConfigTask {
   StreamingConfigTask();
 
   StreamingConfigTask.fromJson(core.Map _json) {
+    if (_json.containsKey("commitStreamChunkSizeBytes")) {
+      commitStreamChunkSizeBytes = _json["commitStreamChunkSizeBytes"];
+    }
+    if (_json.containsKey("getDataStreamChunkSizeBytes")) {
+      getDataStreamChunkSizeBytes = _json["getDataStreamChunkSizeBytes"];
+    }
     if (_json.containsKey("maxWorkItemCommitBytes")) {
       maxWorkItemCommitBytes = _json["maxWorkItemCommitBytes"];
     }
@@ -9594,6 +9090,12 @@ class StreamingConfigTask {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (commitStreamChunkSizeBytes != null) {
+      _json["commitStreamChunkSizeBytes"] = commitStreamChunkSizeBytes;
+    }
+    if (getDataStreamChunkSizeBytes != null) {
+      _json["getDataStreamChunkSizeBytes"] = getDataStreamChunkSizeBytes;
+    }
     if (maxWorkItemCommitBytes != null) {
       _json["maxWorkItemCommitBytes"] = maxWorkItemCommitBytes;
     }

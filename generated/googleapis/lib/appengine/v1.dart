@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.appengine.v1;
 
@@ -454,14 +454,14 @@ class AppsAuthorizedCertificatesResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [view] - Controls the set of fields returned in the LIST response.
   /// Possible string values are:
   /// - "BASIC_CERTIFICATE" : A BASIC_CERTIFICATE.
   /// - "FULL_CERTIFICATE" : A FULL_CERTIFICATE.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -474,9 +474,9 @@ class AppsAuthorizedCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedCertificatesResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String view,
+      core.String pageToken,
       core.int pageSize,
-      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -488,14 +488,14 @@ class AppsAuthorizedCertificatesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -836,9 +836,9 @@ class AppsDomainMappingsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -851,7 +851,7 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainMappingsResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -862,11 +862,11 @@ class AppsDomainMappingsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1186,13 +1186,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [matchingAddress] - A valid IP Address. If set, only rules matching this
   /// address will be returned. The first returned rule will be the rule that
   /// fires on requests from this IP.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1205,9 +1205,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String matchingAddress,
+      core.String pageToken,
       core.int pageSize,
-      core.String matchingAddress,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1219,14 +1219,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (matchingAddress != null) {
+      _queryParams["matchingAddress"] = [matchingAddress];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (matchingAddress != null) {
-      _queryParams["matchingAddress"] = [matchingAddress];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1373,11 +1373,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1390,9 +1390,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1404,14 +1404,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1501,11 +1501,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1518,9 +1518,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1532,14 +1532,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1735,8 +1735,6 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
-  ///
   /// [migrateTraffic] - Set to true to gradually shift traffic to one or more
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
@@ -1751,6 +1749,8 @@ class AppsServicesResourceApi {
   /// Splitting Traffic
   /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
   ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1763,7 +1763,7 @@ class AppsServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Service request, core.String appsId, core.String servicesId,
-      {core.String updateMask, core.bool migrateTraffic, core.String $fields}) {
+      {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1780,11 +1780,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (migrateTraffic != null) {
       _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2268,7 +2268,17 @@ class AppsServicesVersionsInstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Stops a running instance.
+  /// Stops a running instance.The instance might be automatically recreated
+  /// based on the scaling settings of the version. For more information, see
+  /// "How Instances are Managed" (standard environment
+  /// (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed)
+  /// | flexible environment
+  /// (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To
+  /// ensure that instances are not re-created and avoid getting billed, you can
+  /// stop all instances within the target version by changing the serving
+  /// status of the version to STOPPED with the apps.services.versions.patch
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch)
+  /// method.
   ///
   /// Request parameters:
   ///
@@ -2415,9 +2425,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [versionsId] - Part of `parent`. See documentation of `appsId`.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2431,7 +2441,7 @@ class AppsServicesVersionsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
       core.String appsId, core.String servicesId, core.String versionsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2448,11 +2458,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

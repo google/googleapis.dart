@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.admin.datatransfer_v1;
 
@@ -91,7 +91,7 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Apps account.
+  /// [customerId] - Immutable ID of the G Suite account.
   ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
@@ -243,7 +243,7 @@ class TransfersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Apps account.
+  /// [customerId] - Immutable ID of the G Suite account.
   ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
@@ -332,7 +332,7 @@ class Application {
 
   /// The list of all possible transfer parameters for this application. These
   /// parameters can be used to select the data of the user in this application
-  /// to be transfered.
+  /// to be transferred.
   core.List<ApplicationTransferParam> transferParams;
 
   Application();
@@ -387,7 +387,7 @@ class ApplicationDataTransfer {
   core.String applicationId;
 
   /// The transfer parameters for the application. These parameters are used to
-  /// select the data which will get transfered in context of this application.
+  /// select the data which will get transferred in context of this application.
   core.List<ApplicationTransferParam> applicationTransferParams;
 
   /// Current status of transfer for this application. (Read-only)
@@ -433,7 +433,7 @@ class ApplicationTransferParam {
   /// The type of the transfer parameter. eg: 'PRIVACY_LEVEL'
   core.String key;
 
-  /// The value of the coressponding transfer parameter. eg: 'PRIVATE' or
+  /// The value of the corresponding transfer parameter. eg: 'PRIVATE' or
   /// 'SHARED'
   core.List<core.String> value;
 
@@ -532,10 +532,10 @@ class DataTransfer {
   /// Identifies the resource as a DataTransfer request.
   core.String kind;
 
-  /// ID of the user to whom the data is being transfered.
+  /// ID of the user to whom the data is being transferred.
   core.String newOwnerUserId;
 
-  /// ID of the user whose data is being transfered.
+  /// ID of the user whose data is being transferred.
   core.String oldOwnerUserId;
 
   /// Overall transfer status (Read-only).

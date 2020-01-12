@@ -1,8 +1,8 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
-library googleapis_beta.sqladmin.v1beta4;
+library googleapis_beta.sql.v1beta4;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -14,11 +14,10 @@ import 'package:http/http.dart' as http;
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-const core.String USER_AGENT = 'dart-api-client sqladmin/v1beta4';
+const core.String USER_AGENT = 'dart-api-client sql/v1beta4';
 
-/// Creates and manages Cloud SQL instances, which provide fully managed MySQL
-/// or PostgreSQL databases.
-class SqladminApi {
+/// API for Cloud SQL database instance management
+class SqlApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
       "https://www.googleapis.com/auth/cloud-platform";
@@ -34,13 +33,14 @@ class SqladminApi {
   FlagsResourceApi get flags => new FlagsResourceApi(_requester);
   InstancesResourceApi get instances => new InstancesResourceApi(_requester);
   OperationsResourceApi get operations => new OperationsResourceApi(_requester);
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   SslCertsResourceApi get sslCerts => new SslCertsResourceApi(_requester);
   TiersResourceApi get tiers => new TiersResourceApi(_requester);
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
-  SqladminApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "sql/v1beta4/"})
+  SqlApi(http.Client client,
+      {core.String rootUrl = "https://sqladmin.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -59,7 +59,13 @@ class BackupRunsResourceApi {
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
   /// [id] - The ID of the Backup Run to delete. To find a Backup Run ID, use
-  /// the list method.
+  /// the <a
+  /// href="/sql/docs/db_path/admin-api/rest/v1beta4/backupRuns/list">list</a>
+  /// method.
+  ///
+  /// [resourceName] - The name of the backupRun to delete.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/backupRuns/{backupRun}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -73,7 +79,7 @@ class BackupRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String instance, core.String id,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -90,11 +96,14 @@ class BackupRunsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -120,6 +129,10 @@ class BackupRunsResourceApi {
   ///
   /// [id] - The ID of this Backup Run.
   ///
+  /// [resourceName] - Name of the resource backupRun.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/backupRuns/{backupRun}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -132,7 +145,7 @@ class BackupRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<BackupRun> get(
       core.String project, core.String instance, core.String id,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -149,11 +162,14 @@ class BackupRunsResourceApi {
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -180,6 +196,10 @@ class BackupRunsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL should create this
+  /// backupRun.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -192,7 +212,7 @@ class BackupRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       BackupRun request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -209,11 +229,14 @@ class BackupRunsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -229,7 +252,8 @@ class BackupRunsResourceApi {
   }
 
   /// Lists all backup runs associated with a given instance and configuration
-  /// in the reverse chronological order of the backup initiation time.
+  /// in
+  /// the reverse chronological order of the backup initiation time.
   ///
   /// Request parameters:
   ///
@@ -237,10 +261,14 @@ class BackupRunsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of
+  /// results to view.
+  ///
   /// [maxResults] - Maximum number of backup runs per response.
   ///
-  /// [pageToken] - A previously-returned page token representing part of the
-  /// larger set of results to view.
+  /// [parent] - The parent, which owns this collection of backupRuns.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -254,7 +282,10 @@ class BackupRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<BackupRunsListResponse> list(
       core.String project, core.String instance,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+      {core.String pageToken,
+      core.int maxResults,
+      core.String parent,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -268,17 +299,20 @@ class BackupRunsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -309,6 +343,10 @@ class DatabasesResourceApi {
   ///
   /// [database] - Name of the database to be deleted in the instance.
   ///
+  /// [resourceName] - The name of the database to delete.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/databases/{database}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -321,7 +359,7 @@ class DatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String instance, core.String database,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -338,11 +376,14 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -359,7 +400,8 @@ class DatabasesResourceApi {
   }
 
   /// Retrieves a resource containing information about a database inside a
-  /// Cloud SQL instance.
+  /// Cloud
+  /// SQL instance.
   ///
   /// Request parameters:
   ///
@@ -368,6 +410,10 @@ class DatabasesResourceApi {
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
   /// [database] - Name of the database in the instance.
+  ///
+  /// [resourceName] - Name of the resource database.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/databases/{database}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -381,7 +427,7 @@ class DatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Database> get(
       core.String project, core.String instance, core.String database,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -398,11 +444,14 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -429,6 +478,9 @@ class DatabasesResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL should add this database.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -441,7 +493,7 @@ class DatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Database request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -458,11 +510,14 @@ class DatabasesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -485,6 +540,9 @@ class DatabasesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent, which owns this collection of databases.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -497,7 +555,7 @@ class DatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<DatabasesListResponse> list(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -511,11 +569,14 @@ class DatabasesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -530,8 +591,9 @@ class DatabasesResourceApi {
     return _response.then((data) => new DatabasesListResponse.fromJson(data));
   }
 
-  /// Updates a resource containing information about a database inside a Cloud
-  /// SQL instance. This method supports patch semantics.
+  /// Partially updates a resource containing information about a database
+  /// inside
+  /// a Cloud SQL instance. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -542,6 +604,10 @@ class DatabasesResourceApi {
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
   /// [database] - Name of the database to be updated in the instance.
+  ///
+  /// [resourceName] - The name of the database for Cloud SQL to update.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/databases/{database}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -555,7 +621,7 @@ class DatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Database request, core.String project,
       core.String instance, core.String database,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -575,11 +641,14 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -608,6 +677,10 @@ class DatabasesResourceApi {
   ///
   /// [database] - Name of the database to be updated in the instance.
   ///
+  /// [resourceName] - The name of the database for Cloud SQL to update.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/databases/{database}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -620,7 +693,7 @@ class DatabasesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(Database request, core.String project,
       core.String instance, core.String database,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -640,11 +713,14 @@ class DatabasesResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -671,8 +747,8 @@ class FlagsResourceApi {
   /// Request parameters:
   ///
   /// [databaseVersion] - Database type and version you want to retrieve flags
-  /// for. By default, this method returns flags for all database types and
-  /// versions.
+  /// for. By default, this
+  /// method returns flags for all database types and versions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -700,7 +776,7 @@ class FlagsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'flags';
+    _url = 'sql/v1beta4/flags';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -729,6 +805,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL should add this server CA.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -740,7 +819,7 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> addServerCa(core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -754,11 +833,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -783,7 +865,11 @@ class InstancesResourceApi {
   /// instance.
   ///
   /// [instance] - The ID of the Cloud SQL instance to be cloned (source). This
-  /// does not include the project ID.
+  /// does not
+  /// include the project ID.
+  ///
+  /// [parent] - The parent resource where Cloud SQL should clone this instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -797,7 +883,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> clone(
       InstancesCloneRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -814,11 +900,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -842,6 +931,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [resourceName] - The name of database instance to delete.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -853,7 +945,7 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -867,11 +959,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -896,6 +991,10 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance name.
   ///
+  /// [parent] - The parent resource where Cloud SQL demotes this master
+  /// database instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -908,7 +1007,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> demoteMaster(InstancesDemoteMasterRequest request,
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -925,11 +1024,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -956,6 +1058,10 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL exports this database
+  /// instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -968,7 +1074,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> export(
       InstancesExportRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -985,11 +1091,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1014,6 +1123,11 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL sends this database
+  /// instance during a
+  /// failover. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1026,7 +1140,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> failover(InstancesFailoverRequest request,
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1043,11 +1157,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1070,6 +1187,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [resourceName] - Name of the resource database instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1081,7 +1201,7 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatabaseInstance> get(core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1095,11 +1215,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -1113,7 +1236,7 @@ class InstancesResourceApi {
     return _response.then((data) => new DatabaseInstance.fromJson(data));
   }
 
-  /// Imports data into a Cloud SQL instance from a SQL dump or CSV file in
+  /// Imports data into a Cloud SQL instance from a SQL dump  or CSV file in
   /// Cloud Storage.
   ///
   /// [request] - The metadata request object.
@@ -1123,6 +1246,10 @@ class InstancesResourceApi {
   /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [parent] - The parent resource where Cloud SQL imports this database
+  /// instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1136,7 +1263,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> import(
       InstancesImportRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1153,11 +1280,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1179,7 +1309,12 @@ class InstancesResourceApi {
   /// Request parameters:
   ///
   /// [project] - Project ID of the project to which the newly created Cloud SQL
-  /// instances should belong.
+  /// instances
+  /// should belong.
+  ///
+  /// [parent] - The parent resource where Cloud SQL creates this database
+  /// instance.
+  /// Format: projects/{project}/locations/{location}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1192,7 +1327,7 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(DatabaseInstance request, core.String project,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1206,12 +1341,16 @@ class InstancesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances';
+    _url = 'sql/v1beta4/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1222,21 +1361,22 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Lists instances under a given project in the alphabetical order of the
-  /// instance name.
+  /// Lists instances under a given project.
   ///
   /// Request parameters:
   ///
   /// [project] - Project ID of the project for which to list Cloud SQL
   /// instances.
   ///
-  /// [filter] - An expression for filtering the results of the request, such as
-  /// by name or label.
-  ///
   /// [maxResults] - The maximum number of results to return per response.
   ///
+  /// [filter] - An expression for filtering the results of the request, such as
+  /// by name or
+  /// label.
+  ///
   /// [pageToken] - A previously-returned page token representing part of the
-  /// larger set of results to view.
+  /// larger set of
+  /// results to view.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1249,8 +1389,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstancesListResponse> list(core.String project,
-      {core.String filter,
-      core.int maxResults,
+      {core.int maxResults,
+      core.String filter,
       core.String pageToken,
       core.String $fields}) {
     var _url;
@@ -1263,11 +1403,11 @@ class InstancesResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1276,8 +1416,9 @@ class InstancesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/instances';
+    _url = 'sql/v1beta4/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1290,15 +1431,19 @@ class InstancesResourceApi {
 
   /// Lists all of the trusted Certificate Authorities (CAs) for the specified
   /// instance. There can be up to three CAs listed: the CA that was used to
-  /// sign the certificate that is currently in use, a CA that has been added
-  /// but not yet used to sign a certificate, and a CA used to sign a
-  /// certificate that has previously rotated out.
+  /// sign
+  /// the certificate that is currently in use, a CA that has been added but not
+  /// yet used to sign a certificate, and a CA used to sign a certificate that
+  /// has previously rotated out.
   ///
   /// Request parameters:
   ///
   /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [parent] - The parent, which owns this collection of server CAs.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1312,7 +1457,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<InstancesListServerCasResponse> listServerCas(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1326,11 +1471,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1346,10 +1494,8 @@ class InstancesResourceApi {
         .then((data) => new InstancesListServerCasResponse.fromJson(data));
   }
 
-  /// Updates settings of a Cloud SQL instance. Caution: This is not a partial
-  /// update, so you must include values for all the settings that you want to
-  /// retain. For partial updates, use patch.. This method supports patch
-  /// semantics.
+  /// Updates settings of a Cloud SQL instance.
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1358,6 +1504,10 @@ class InstancesResourceApi {
   /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [resourceName] - The name of the database instance for Cloud SQL to
+  /// update.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1371,7 +1521,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       DatabaseInstance request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1388,11 +1538,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -1414,6 +1567,10 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [parent] - The parent resource where Cloud SQL promotes this replica
+  /// database
+  /// instance. Format: projects/{project}/locations/{location}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1426,7 +1583,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> promoteReplica(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1440,11 +1597,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1468,6 +1628,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL resets this SSL config.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1480,7 +1643,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> resetSslConfig(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1494,11 +1657,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1522,6 +1688,10 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL restarts this database
+  /// instance.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1533,7 +1703,7 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> restart(core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1547,11 +1717,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1576,6 +1749,11 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL restores this database
+  /// instance from
+  /// backup. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1588,7 +1766,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> restoreBackup(InstancesRestoreBackupRequest request,
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1605,11 +1783,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1635,6 +1816,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL rotates these server CAs.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1647,7 +1831,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> rotateServerCa(InstancesRotateServerCaRequest request,
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1664,11 +1848,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1691,6 +1878,11 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [parent] - The parent resource where Cloud SQL starts this database
+  /// instance
+  /// replication. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1703,7 +1895,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> startReplica(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1717,11 +1909,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1744,6 +1939,11 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [parent] - The parent resource where Cloud SQL stops this database
+  /// instance
+  /// replication. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1755,7 +1955,7 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> stopReplica(core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1769,11 +1969,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1798,6 +2001,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL truncates this log.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1810,7 +2016,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> truncateLog(InstancesTruncateLogRequest request,
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1827,11 +2033,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1846,9 +2055,11 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Updates settings of a Cloud SQL instance. Caution: This is not a partial
-  /// update, so you must include values for all the settings that you want to
-  /// retain. For partial updates, use patch.
+  /// Updates settings of a Cloud SQL instance. <aside
+  /// class="caution"><strong>Caution:</strong> This is not a partial update, so
+  /// you must include values for all the settings that you want to retain. For
+  /// partial updates, use <a
+  /// href="/sql/docs/db_path/admin-api/rest/v1beta4/instances/patch">patch</a>.</aside>
   ///
   /// [request] - The metadata request object.
   ///
@@ -1857,6 +2068,10 @@ class InstancesResourceApi {
   /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [resourceName] - The name of the database instance for Cloud SQL to
+  /// update.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1870,7 +2085,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       DatabaseInstance request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1887,11 +2102,14 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -1919,6 +2137,9 @@ class OperationsResourceApi {
   ///
   /// [operation] - Instance operation ID.
   ///
+  /// [resourceName] - The name of the operation for Cloud SQL to get.
+  /// Format: projects/{project}/locations/{location}/operations/{operation}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1930,7 +2151,7 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(core.String project, core.String operation,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1944,11 +2165,14 @@ class OperationsResourceApi {
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -1971,10 +2195,17 @@ class OperationsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [pageToken] - A previously-returned page token representing part of the
+  /// larger set of
+  /// results to view.
+  ///
   /// [maxResults] - Maximum number of operations per response.
   ///
-  /// [pageToken] - A previously-returned page token representing part of the
-  /// larger set of results to view.
+  /// [parent] - Indirect parent. The direct parent should combine with the
+  /// instance name,
+  /// which owns this collection of operations.
+  /// Format:
+  /// projects/{project}/locations/{location}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1986,9 +2217,12 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperationsListResponse> list(
-      core.String project, core.String instance,
-      {core.int maxResults, core.String pageToken, core.String $fields}) {
+  async.Future<OperationsListResponse> list(core.String project,
+      {core.String instance,
+      core.String pageToken,
+      core.int maxResults,
+      core.String parent,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1999,22 +2233,25 @@ class OperationsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (instance == null) {
-      throw new core.ArgumentError("Parameter instance is required.");
-    }
-    _queryParams["instance"] = [instance];
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (instance != null) {
+      _queryParams["instance"] = [instance];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'projects/' + commons.Escaper.ecapeVariable('$project') + '/operations';
+    _url = 'sql/v1beta4/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/operations';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2026,37 +2263,54 @@ class OperationsResourceApi {
   }
 }
 
-class SslCertsResourceApi {
+class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  SslCertsResourceApi(commons.ApiRequester client) : _requester = client;
+  ProjectsInstancesResourceApi get instances =>
+      new ProjectsInstancesResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
 
-  /// Generates a short-lived X509 certificate containing the provided public
-  /// key and signed by a private key specific to the target instance. Users may
-  /// use the certificate to authenticate as themselves when connecting to the
-  /// database.
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsInstancesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Reschedules the maintenance on the given instance.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [project] - Project ID of the Cloud SQL project.
+  /// [project] - ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [parent] - The parent resource where Cloud SQL reshedule this database
+  /// instance's
+  /// maintenance. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [SslCert].
+  /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SslCert> createEphemeral(SslCertsCreateEphemeralRequest request,
-      core.String project, core.String instance,
-      {core.String $fields}) {
+  async.Future<Operation> rescheduleMaintenance(
+      SqlInstancesRescheduleMaintenanceRequestBody request,
+      core.String project,
+      core.String instance,
+      {core.String parent,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2073,11 +2327,172 @@ class SslCertsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/rescheduleMaintenance';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesResourceApi get instances =>
+      new ProjectsLocationsInstancesResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsInstancesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Reschedules the maintenance on the given instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource where Cloud SQL reshedule this database
+  /// instance's
+  /// maintenance. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [project] - ID of the project that contains the instance.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> rescheduleMaintenance(
+      SqlInstancesRescheduleMaintenanceRequestBody request, core.String parent,
+      {core.String instance, core.String project, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (instance != null) {
+      _queryParams["instance"] = [instance];
+    }
+    if (project != null) {
+      _queryParams["project"] = [project];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'sql/v1beta4/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/rescheduleMaintenance';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class SslCertsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SslCertsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Generates a short-lived X509 certificate containing the provided public
+  /// key
+  /// and signed by a private key specific to the target instance. Users may use
+  /// the certificate to authenticate as themselves when connecting to the
+  /// database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID of the Cloud SQL project.
+  ///
+  /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [parent] - The parent resource where Cloud SQL creates this ephemeral
+  /// certificate.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SslCert].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SslCert> createEphemeral(SslCertsCreateEphemeralRequest request,
+      core.String project, core.String instance,
+      {core.String parent, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2103,6 +2518,10 @@ class SslCertsResourceApi {
   ///
   /// [sha1Fingerprint] - Sha1 FingerPrint.
   ///
+  /// [resourceName] - The name of SSL certificate to delete.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/sslCerts/{sslCert}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2115,7 +2534,7 @@ class SslCertsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String instance, core.String sha1Fingerprint,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2132,11 +2551,14 @@ class SslCertsResourceApi {
     if (sha1Fingerprint == null) {
       throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2152,8 +2574,8 @@ class SslCertsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves a particular SSL certificate. Does not include the private key
-  /// (required for usage). The private key must be saved from the response to
+  /// Retrieves a particular SSL certificate.  Does not include the private key
+  /// (required for usage).  The private key must be saved from the response to
   /// initial creation.
   ///
   /// Request parameters:
@@ -2163,6 +2585,10 @@ class SslCertsResourceApi {
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
   /// [sha1Fingerprint] - Sha1 FingerPrint.
+  ///
+  /// [resourceName] - Name of the resource ssl certificate.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}/sslCerts/{sslCert}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2176,7 +2602,7 @@ class SslCertsResourceApi {
   /// this method will complete with the same error.
   async.Future<SslCert> get(
       core.String project, core.String instance, core.String sha1Fingerprint,
-      {core.String $fields}) {
+      {core.String resourceName, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2193,11 +2619,14 @@ class SslCertsResourceApi {
     if (sha1Fingerprint == null) {
       throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
     }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2214,7 +2643,8 @@ class SslCertsResourceApi {
   }
 
   /// Creates an SSL certificate and returns it along with the private key and
-  /// server certificate authority. The new certificate will not be usable until
+  /// server certificate authority.  The new certificate will not be usable
+  /// until
   /// the instance is restarted.
   ///
   /// [request] - The metadata request object.
@@ -2224,6 +2654,10 @@ class SslCertsResourceApi {
   /// [project] - Project ID of the project that contains the instance.
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
+  ///
+  /// [parent] - The parent resource where Cloud SQL creates this SSL
+  /// certificate.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2237,7 +2671,7 @@ class SslCertsResourceApi {
   /// this method will complete with the same error.
   async.Future<SslCertsInsertResponse> insert(
       SslCertsInsertRequest request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2254,11 +2688,14 @@ class SslCertsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2281,6 +2718,9 @@ class SslCertsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent, which owns this collection of SSL certificates.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2293,7 +2733,7 @@ class SslCertsResourceApi {
   /// this method will complete with the same error.
   async.Future<SslCertsListResponse> list(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2307,11 +2747,14 @@ class SslCertsResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2333,7 +2776,8 @@ class TiersResourceApi {
   TiersResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Lists all available machine types (tiers) for Cloud SQL, for example,
-  /// db-n1-standard-1. For related information, see Pricing.
+  /// db-n1-standard-1. For related information, see <a
+  /// href="/sql/pricing">Pricing</a>.
   ///
   /// Request parameters:
   ///
@@ -2365,7 +2809,9 @@ class TiersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/tiers';
+    _url = 'sql/v1beta4/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/tiers';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2390,9 +2836,12 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
-  /// [host] - Host of the user in the instance.
-  ///
   /// [name] - Name of the user in the instance.
+  ///
+  /// [resourceName] - The name of the user to delete.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}/users
+  ///
+  /// [host] - Host of the user in the instance.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2405,8 +2854,10 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String instance,
-      core.String host, core.String name,
-      {core.String $fields}) {
+      {core.String name,
+      core.String resourceName,
+      core.String host,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2420,19 +2871,20 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (host == null) {
-      throw new core.ArgumentError("Parameter host is required.");
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
-    _queryParams["host"] = [host];
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
     }
-    _queryParams["name"] = [name];
+    if (host != null) {
+      _queryParams["host"] = [host];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2457,6 +2909,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent resource where Cloud SQL creates this user.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2469,7 +2924,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       User request, core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2486,11 +2941,14 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2513,6 +2971,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [parent] - The parent, which owns this collection of users.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2525,7 +2986,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<UsersListResponse> list(
       core.String project, core.String instance,
-      {core.String $fields}) {
+      {core.String parent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2539,11 +3000,14 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2568,9 +3032,12 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [host] - Optional. Host of the user in the instance.
+  ///
   /// [name] - Name of the user in the instance.
   ///
-  /// [host] - Host of the user in the instance.
+  /// [resourceName] - The name of the user for Cloud SQL to update.
+  /// Format: projects/{project}/locations/{location}/instances/{instance}/users
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2583,8 +3050,11 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      User request, core.String project, core.String instance, core.String name,
-      {core.String host, core.String $fields}) {
+      User request, core.String project, core.String instance,
+      {core.String host,
+      core.String name,
+      core.String resourceName,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2601,18 +3071,20 @@ class UsersResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    _queryParams["name"] = [name];
     if (host != null) {
       _queryParams["host"] = [host];
+    }
+    if (name != null) {
+      _queryParams["name"] = [name];
+    }
+    if (resourceName != null) {
+      _queryParams["resourceName"] = [resourceName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'projects/' +
+    _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2630,14 +3102,16 @@ class UsersResourceApi {
 
 /// An entry for an Access Control list.
 class AclEntry {
-  /// The time when this access control entry expires in RFC 3339 format, for
-  /// example 2012-11-15T16:19:00.094Z.
-  core.DateTime expirationTime;
+  /// The time when this access control entry expires in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String expirationTime;
 
-  /// This is always sql#aclEntry.
+  /// This is always <code>sql#aclEntry</code>.
   core.String kind;
 
-  /// An optional label to identify this entry.
+  /// Optional. A label to identify this entry.
   core.String name;
 
   /// The whitelisted value for the access control list.
@@ -2647,7 +3121,7 @@ class AclEntry {
 
   AclEntry.fromJson(core.Map _json) {
     if (_json.containsKey("expirationTime")) {
-      expirationTime = core.DateTime.parse(_json["expirationTime"]);
+      expirationTime = _json["expirationTime"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2664,7 +3138,7 @@ class AclEntry {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (expirationTime != null) {
-      _json["expirationTime"] = (expirationTime).toIso8601String();
+      _json["expirationTime"] = expirationTime;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -2682,6 +3156,12 @@ class AclEntry {
 /// An Admin API warning message.
 class ApiWarning {
   /// Code to uniquely identify the warning type.
+  /// Possible string values are:
+  /// - "SQL_API_WARNING_CODE_UNSPECIFIED" : An unknown or unset warning type
+  /// from Cloud SQL API.
+  /// - "REGION_UNREACHABLE" : Warning when one or more regions are not
+  /// reachable.  The returned result
+  /// set may be incomplete.
   core.String code;
 
   /// The warning message.
@@ -2720,17 +3200,17 @@ class BackupConfiguration {
   /// Whether this configuration is enabled.
   core.bool enabled;
 
-  /// This is always sql#backupConfiguration.
+  /// This is always <code>sql#backupConfiguration</code>.
   core.String kind;
 
-  /// The location of the backup.
+  /// Location of the backup
   core.String location;
 
   /// Reserved for future use.
   core.bool replicationLogArchivingEnabled;
 
   /// Start time for the daily backup configuration in UTC timezone in the 24
-  /// hour format - HH:MM.
+  /// hour format - <code>HH:MM</code>.
   core.String startTime;
 
   BackupConfiguration();
@@ -2786,13 +3266,25 @@ class BackupRun {
   /// The description of this run, only applicable to on-demand backups.
   core.String description;
 
-  /// The time the backup operation completed in UTC timezone in RFC 3339
-  /// format, for example 2012-11-15T16:19:00.094Z.
-  core.DateTime endTime;
+  /// Encryption configuration specific to a backup.
+  /// Applies only to Second Generation instances.
+  DiskEncryptionConfiguration diskEncryptionConfiguration;
 
-  /// The time the run was enqueued in UTC timezone in RFC 3339 format, for
-  /// example 2012-11-15T16:19:00.094Z.
-  core.DateTime enqueuedTime;
+  /// Encryption status specific to a backup.
+  /// Applies only to Second Generation instances.
+  DiskEncryptionStatus diskEncryptionStatus;
+
+  /// The time the backup operation completed in UTC timezone in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String endTime;
+
+  /// The time the run was enqueued in UTC timezone in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String enqueuedTime;
 
   /// Information about why the backup operation failed. This is only present if
   /// the run has the FAILED status.
@@ -2805,28 +3297,50 @@ class BackupRun {
   /// Name of the database instance.
   core.String instance;
 
-  /// This is always sql#backupRun.
+  /// This is always <code>sql#backupRun</code>.
   core.String kind;
 
-  /// The location of the backup.
+  /// Location of the backups.
   core.String location;
 
   /// The URI of this resource.
   core.String selfLink;
 
-  /// The time the backup operation actually started in UTC timezone in RFC 3339
-  /// format, for example 2012-11-15T16:19:00.094Z.
-  core.DateTime startTime;
+  /// The time the backup operation actually started in UTC timezone in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String startTime;
 
   /// The status of this run.
+  /// Possible string values are:
+  /// - "SQL_BACKUP_RUN_STATUS_UNSPECIFIED" : The status of the run is unknown.
+  /// - "ENQUEUED" : The backup operation was enqueued.
+  /// - "OVERDUE" : The backup is overdue across a given backup window.
+  /// Indicates a
+  /// problem. Example: Long-running operation in progress during
+  /// the whole window.
+  /// - "RUNNING" : The backup is in progress.
+  /// - "FAILED" : The backup failed.
+  /// - "SUCCESSFUL" : The backup was successful.
+  /// - "SKIPPED" : The backup was skipped (without problems) for a given backup
+  /// window. Example: Instance was idle.
+  /// - "DELETION_PENDING" : The backup is about to be deleted.
+  /// - "DELETION_FAILED" : The backup deletion failed.
+  /// - "DELETED" : The backup has been deleted.
   core.String status;
 
   /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND".
+  /// Possible string values are:
+  /// - "SQL_BACKUP_RUN_TYPE_UNSPECIFIED" : This is an unknown BackupRun type.
+  /// - "AUTOMATED" : The backup schedule automatically triggers a backup.
+  /// - "ON_DEMAND" : The user manually triggers a backup.
   core.String type;
 
   /// The start time of the backup window during which this the backup was
-  /// attempted in RFC 3339 format, for example 2012-11-15T16:19:00.094Z.
-  core.DateTime windowStartTime;
+  /// attempted in <a href="https://tools.ietf.org/html/rfc3339">RFC 3339</a>
+  /// format, for example <code>2012-11-15T16:19:00.094Z</code>.
+  core.String windowStartTime;
 
   BackupRun();
 
@@ -2834,11 +3348,19 @@ class BackupRun {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("diskEncryptionConfiguration")) {
+      diskEncryptionConfiguration = new DiskEncryptionConfiguration.fromJson(
+          _json["diskEncryptionConfiguration"]);
+    }
+    if (_json.containsKey("diskEncryptionStatus")) {
+      diskEncryptionStatus =
+          new DiskEncryptionStatus.fromJson(_json["diskEncryptionStatus"]);
+    }
     if (_json.containsKey("endTime")) {
-      endTime = core.DateTime.parse(_json["endTime"]);
+      endTime = _json["endTime"];
     }
     if (_json.containsKey("enqueuedTime")) {
-      enqueuedTime = core.DateTime.parse(_json["enqueuedTime"]);
+      enqueuedTime = _json["enqueuedTime"];
     }
     if (_json.containsKey("error")) {
       error = new OperationError.fromJson(_json["error"]);
@@ -2859,7 +3381,7 @@ class BackupRun {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("startTime")) {
-      startTime = core.DateTime.parse(_json["startTime"]);
+      startTime = _json["startTime"];
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -2868,7 +3390,7 @@ class BackupRun {
       type = _json["type"];
     }
     if (_json.containsKey("windowStartTime")) {
-      windowStartTime = core.DateTime.parse(_json["windowStartTime"]);
+      windowStartTime = _json["windowStartTime"];
     }
   }
 
@@ -2878,11 +3400,18 @@ class BackupRun {
     if (description != null) {
       _json["description"] = description;
     }
+    if (diskEncryptionConfiguration != null) {
+      _json["diskEncryptionConfiguration"] =
+          (diskEncryptionConfiguration).toJson();
+    }
+    if (diskEncryptionStatus != null) {
+      _json["diskEncryptionStatus"] = (diskEncryptionStatus).toJson();
+    }
     if (endTime != null) {
-      _json["endTime"] = (endTime).toIso8601String();
+      _json["endTime"] = endTime;
     }
     if (enqueuedTime != null) {
-      _json["enqueuedTime"] = (enqueuedTime).toIso8601String();
+      _json["enqueuedTime"] = enqueuedTime;
     }
     if (error != null) {
       _json["error"] = (error).toJson();
@@ -2903,7 +3432,7 @@ class BackupRun {
       _json["selfLink"] = selfLink;
     }
     if (startTime != null) {
-      _json["startTime"] = (startTime).toIso8601String();
+      _json["startTime"] = startTime;
     }
     if (status != null) {
       _json["status"] = status;
@@ -2912,7 +3441,7 @@ class BackupRun {
       _json["type"] = type;
     }
     if (windowStartTime != null) {
-      _json["windowStartTime"] = (windowStartTime).toIso8601String();
+      _json["windowStartTime"] = windowStartTime;
     }
     return _json;
   }
@@ -2923,7 +3452,7 @@ class BackupRunsListResponse {
   /// A list of backup runs in reverse chronological order of the enqueued time.
   core.List<BackupRun> items;
 
-  /// This is always sql#backupRunsList.
+  /// This is always <code>sql#backupRunsList</code>.
   core.String kind;
 
   /// The continuation token, used to page through large result sets. Provide
@@ -2970,7 +3499,7 @@ class BinLogCoordinates {
   /// Position (offset) within the binary log file.
   core.String binLogPosition;
 
-  /// This is always sql#binLogCoordinates.
+  /// This is always <code>sql#binLogCoordinates</code>.
   core.String kind;
 
   BinLogCoordinates();
@@ -3006,14 +3535,15 @@ class BinLogCoordinates {
 /// Database instance clone context.
 class CloneContext {
   /// Binary log coordinates, if specified, identify the position up to which
-  /// the source instance should be cloned. If not specified, the source
-  /// instance is cloned up to the most recent binary log coordinates.
+  /// the
+  /// source instance should be cloned. If not specified, the source instance is
+  /// cloned up to the most recent binary log coordinates.
   BinLogCoordinates binLogCoordinates;
 
   /// Name of the Cloud SQL instance to be created as a clone.
   core.String destinationInstanceName;
 
-  /// This is always sql#cloneContext.
+  /// This is always <code>sql#cloneContext</code>.
   core.String kind;
 
   /// Reserved for future use.
@@ -3071,7 +3601,7 @@ class Database {
   /// The name of the Cloud SQL instance. This does not include the project ID.
   core.String instance;
 
-  /// This is always sql#database.
+  /// This is always <code>sql#database</code>.
   core.String kind;
 
   /// The name of the database in the Cloud SQL instance. This does not include
@@ -3079,11 +3609,13 @@ class Database {
   core.String name;
 
   /// The project ID of the project containing the Cloud SQL database. The
-  /// Google apps domain is prefixed if applicable.
+  /// Google
+  /// apps domain is prefixed if applicable.
   core.String project;
 
   /// The URI of this resource.
   core.String selfLink;
+  SqlServerDatabaseDetails sqlserverDatabaseDetails;
 
   Database();
 
@@ -3111,6 +3643,10 @@ class Database {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("sqlserverDatabaseDetails")) {
+      sqlserverDatabaseDetails = new SqlServerDatabaseDetails.fromJson(
+          _json["sqlserverDatabaseDetails"]);
     }
   }
 
@@ -3141,6 +3677,9 @@ class Database {
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
+    if (sqlserverDatabaseDetails != null) {
+      _json["sqlserverDatabaseDetails"] = (sqlserverDatabaseDetails).toJson();
+    }
     return _json;
   }
 }
@@ -3149,12 +3688,15 @@ class Database {
 class DatabaseFlags {
   /// The name of the flag. These flags are passed at instance startup, so
   /// include both server options and system variables for MySQL. Flags should
-  /// be specified with underscores, not hyphens. For more information, see
-  /// Configuring Database Flags in the Cloud SQL documentation.
+  /// be
+  /// specified with underscores, not hyphens. For more information, see <a
+  /// href="/sql/docs/mysql/flags">Configuring Database Flags</a> in the Cloud
+  /// SQL documentation.
   core.String name;
 
-  /// The value of the flag. Booleans should be set to on for true and off for
-  /// false. This field must be omitted if the flag doesn't take a value.
+  /// The value of the flag. Booleans should be set to <code>on</code> for true
+  /// and <code>off</code> for false. This field must be omitted if the flag
+  /// doesn't take a value.
   core.String value;
 
   DatabaseFlags();
@@ -3186,13 +3728,13 @@ class DatabaseFlags {
 class DatabaseInstanceFailoverReplica {
   /// The availability status of the failover replica. A false status indicates
   /// that the failover replica is out of sync. The master can only failover to
-  /// the falover replica when the status is true.
+  /// the failover replica when the status is true.
   core.bool available;
 
   /// The name of the failover replica. If specified at instance creation, a
-  /// failover replica is created for the instance. The name doesn't include the
-  /// project ID. This property is applicable only to Second Generation
-  /// instances.
+  /// failover replica is created for the instance. The name
+  /// doesn't include the project ID. This property is applicable only to
+  /// Second Generation instances.
   core.String name;
 
   DatabaseInstanceFailoverReplica();
@@ -3221,11 +3763,19 @@ class DatabaseInstanceFailoverReplica {
 
 /// A Cloud SQL instance resource.
 class DatabaseInstance {
-  /// FIRST_GEN: First Generation instance. MySQL only.
-  /// SECOND_GEN: Second Generation instance or PostgreSQL instance.
-  /// EXTERNAL: A database server that is not managed by Google.
-  /// This property is read-only; use the tier property in the settings object
-  /// to determine the database type and Second or First Generation.
+  /// <code>FIRST_GEN</code>: First Generation instance. MySQL only. <br
+  /// /><code>SECOND_GEN</code>: Second Generation instance or PostgreSQL
+  /// instance. <br /><code>EXTERNAL</code>: A database server that is not
+  /// managed by Google. <br>This property is read-only; use the
+  /// <code>tier</code> property in the <code>settings</code> object to
+  /// determine
+  /// the database type and Second or First Generation.
+  /// Possible string values are:
+  /// - "SQL_BACKEND_TYPE_UNSPECIFIED" : This is an unknown backend type for
+  /// instance.
+  /// - "FIRST_GEN" : V1 speckle instance.
+  /// - "SECOND_GEN" : V2 speckle instance.
+  /// - "EXTERNAL" : On premises instance.
   core.String backendType;
 
   /// Connection name of the Cloud SQL instance used in connection strings.
@@ -3234,26 +3784,47 @@ class DatabaseInstance {
   /// The current disk usage of the instance in bytes. This property has been
   /// deprecated. Users should use the
   /// "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud
-  /// Monitoring API instead. Please see this announcement for details.
+  /// Monitoring API instead. Please see <a
+  /// href="https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ">this
+  /// announcement</a> for details.
   core.String currentDiskSize;
 
-  /// The database engine type and version. The databaseVersion field can not be
-  /// changed after instance creation. MySQL Second Generation instances:
-  /// MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances: POSTGRES_9_6
-  /// (default) or POSTGRES_11 Beta. MySQL First Generation instances: MYSQL_5_6
-  /// (default) or MYSQL_5_5
+  /// The database engine type and version. The <code>databaseVersion</code>
+  /// field can not be changed after instance creation.  MySQL Second Generation
+  /// instances: <code>MYSQL_5_7</code> (default) or <code>MYSQL_5_6</code>.
+  /// PostgreSQL instances: <code>POSTGRES_9_6</code> (default) or
+  /// <code>POSTGRES_11 Beta</code> MySQL First Generation
+  /// instances: <code>MYSQL_5_6</code> (default) or <code>MYSQL_5_5</code>
+  /// Possible string values are:
+  /// - "SQL_DATABASE_VERSION_UNSPECIFIED" : This is an unknown database
+  /// version.
+  /// - "OBSOLETE_MYSQL_5_0" : The database version is MySQL 5.0.
+  /// - "MYSQL_5_1" : The database version is MySQL 5.1.
+  /// - "MYSQL_5_5" : The database version is MySQL 5.5.
+  /// - "MARIADB_10_0" : The database version is MariaDB 10.0.
+  /// - "MYSQL_5_6" : The database version is MySQL 5.6.
+  /// - "MYSQL_5_7" : The database version is MySQL 5.7.
+  /// - "OBSOLETE_POSTGRES_9_5" : The database version is PostgreSQL 9.5.
+  /// - "SQLSERVER_ENTERPRISE_2016" : The database version is SQL Server 2016.
+  /// - "POSTGRES_9_6" : The database version is PostgreSQL 9.6.
+  /// - "POSTGRES_11" : The database version is PostgreSQL 11.
+  /// - "SQLSERVER_2017_STANDARD" : The database version is SQL Server 2017.
+  /// - "SQLSERVER_2017_ENTERPRISE"
+  /// - "SQLSERVER_2017_EXPRESS"
+  /// - "SQLSERVER_2017_WEB"
+  /// - "POSTGRES_10" : The database version is PostgreSQL 10.
   core.String databaseVersion;
 
-  /// Disk encryption configuration specific to an instance. Applies only to
-  /// Second Generation instances.
+  /// Disk encryption configuration specific to an instance.
+  /// Applies only to Second Generation instances.
   DiskEncryptionConfiguration diskEncryptionConfiguration;
 
-  /// Disk encryption status specific to an instance. Applies only to Second
-  /// Generation instances.
+  /// Disk encryption status specific to an instance.
+  /// Applies only to Second Generation instances.
   DiskEncryptionStatus diskEncryptionStatus;
 
   /// This field is deprecated and will be removed from a future version of the
-  /// API. Use the settings.settingsVersion field instead.
+  /// API. Use the <code>settings.settingsVersion</code> field instead.
   core.String etag;
 
   /// The name and status of the failover replica. This property is applicable
@@ -3262,25 +3833,35 @@ class DatabaseInstance {
 
   /// The Compute Engine zone that the instance is currently serving from. This
   /// value could be different from the zone that was specified when the
-  /// instance was created if the instance has failed over to its secondary
-  /// zone.
+  /// instance
+  /// was created if the instance has failed over to its secondary zone.
   core.String gceZone;
 
   /// The instance type. This can be one of the following.
-  /// CLOUD_SQL_INSTANCE: A Cloud SQL instance that is not replicating from a
-  /// master.
-  /// ON_PREMISES_INSTANCE: An instance running on the customer's premises.
-  /// READ_REPLICA_INSTANCE: A Cloud SQL instance configured as a read-replica.
+  /// <br><code>CLOUD_SQL_INSTANCE</code>: A Cloud SQL instance that is not
+  /// replicating from a master. <br><code>ON_PREMISES_INSTANCE</code>: An
+  /// instance running on the
+  /// customer's premises. <br><code>READ_REPLICA_INSTANCE</code>: A Cloud SQL
+  /// instance configured as a read-replica.
+  /// Possible string values are:
+  /// - "SQL_INSTANCE_TYPE_UNSPECIFIED" : This is an unknown Cloud SQL instance
+  /// type.
+  /// - "CLOUD_SQL_INSTANCE" : A regular Cloud SQL instance.
+  /// - "ON_PREMISES_INSTANCE" : An instance running on the customer's premises
+  /// that is not managed by
+  /// Cloud SQL.
+  /// - "READ_REPLICA_INSTANCE" : A Cloud SQL instance acting as a read-replica.
   core.String instanceType;
 
   /// The assigned IP addresses for the instance.
   core.List<IpMapping> ipAddresses;
 
   /// The IPv6 address assigned to the instance. This property is applicable
-  /// only to First Generation instances.
+  /// only
+  /// to First Generation instances.
   core.String ipv6Address;
 
-  /// This is always sql#instance.
+  /// This is always <code>sql#instance</code>.
   core.String kind;
 
   /// The name of the instance which will act as master in the replication
@@ -3297,14 +3878,17 @@ class DatabaseInstance {
   OnPremisesConfiguration onPremisesConfiguration;
 
   /// The project ID of the project containing the Cloud SQL instance. The
-  /// Google apps domain is prefixed if applicable.
+  /// Google
+  /// apps domain is prefixed if applicable.
   core.String project;
 
-  /// The geographical region. Can be us-central (FIRST_GEN instances only),
-  /// us-central1 (SECOND_GEN instances only), asia-east1 or europe-west1.
-  /// Defaults to us-central or us-central1 depending on the instance type
-  /// (First Generation or Second Generation). The region can not be changed
-  /// after instance creation.
+  /// The geographical region. Can be <code>us-central</code>
+  /// (<code>FIRST_GEN</code> instances only), <code>us-central1</code>
+  /// (<code>SECOND_GEN</code> instances only), <code>asia-east1</code> or
+  /// <code>europe-west1</code>. Defaults to <code>us-central</code> or
+  /// <code>us-central1</code> depending on the instance type (First Generation
+  /// or Second Generation). The region can not be changed after instance
+  /// creation.
   core.String region;
 
   /// Configuration specific to failover replicas and read replicas.
@@ -3315,6 +3899,9 @@ class DatabaseInstance {
 
   /// Initial root password. Use only on creation.
   core.String rootPassword;
+
+  /// The start time of any upcoming scheduled maintenance for this instance.
+  SqlScheduledMaintenance scheduledMaintenance;
 
   /// The URI of this resource.
   core.String selfLink;
@@ -3330,14 +3917,23 @@ class DatabaseInstance {
   Settings settings;
 
   /// The current serving state of the Cloud SQL instance. This can be one of
-  /// the following.
-  /// RUNNABLE: The instance is running, or is ready to run when accessed.
-  /// SUSPENDED: The instance is not available, for example due to problems with
-  /// billing.
-  /// PENDING_CREATE: The instance is being created.
-  /// MAINTENANCE: The instance is down for maintenance.
-  /// FAILED: The instance creation failed.
-  /// UNKNOWN_STATE: The state of the instance is unknown.
+  /// the
+  /// following. <br><code>RUNNABLE</code>: The instance is running, or is ready
+  /// to run when accessed. <br><code>SUSPENDED</code>: The instance is not
+  /// available, for example due to problems with billing.
+  /// <br><code>PENDING_CREATE</code>: The instance is being created.
+  /// <br><code>MAINTENANCE</code>: The instance is down for maintenance.
+  /// <br><code>FAILED</code>: The instance creation failed.
+  /// <br><code>UNKNOWN_STATE</code>: The state of the instance is unknown.
+  /// Possible string values are:
+  /// - "SQL_INSTANCE_STATE_UNSPECIFIED" : The state of the instance is unknown.
+  /// - "RUNNABLE" : The instance is running.
+  /// - "SUSPENDED" : The instance is currently offline, but it may run again in
+  /// the future.
+  /// - "PENDING_DELETE" : The instance is being deleted.
+  /// - "PENDING_CREATE" : The instance is being created.
+  /// - "MAINTENANCE" : The instance is down for maintenance.
+  /// - "FAILED" : The instance failed to be created.
   core.String state;
 
   /// If the instance state is SUSPENDED, the reason for the suspension.
@@ -3418,6 +4014,10 @@ class DatabaseInstance {
     }
     if (_json.containsKey("rootPassword")) {
       rootPassword = _json["rootPassword"];
+    }
+    if (_json.containsKey("scheduledMaintenance")) {
+      scheduledMaintenance =
+          new SqlScheduledMaintenance.fromJson(_json["scheduledMaintenance"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -3511,6 +4111,9 @@ class DatabaseInstance {
     if (rootPassword != null) {
       _json["rootPassword"] = rootPassword;
     }
+    if (scheduledMaintenance != null) {
+      _json["scheduledMaintenance"] = (scheduledMaintenance).toJson();
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -3538,7 +4141,7 @@ class DatabasesListResponse {
   /// List of database resources in the instance.
   core.List<Database> items;
 
-  /// This is always sql#databasesList.
+  /// This is always <code>sql#databasesList</code>.
   core.String kind;
 
   DatabasesListResponse();
@@ -3569,15 +4172,15 @@ class DatabasesListResponse {
 
 /// Read-replica configuration for connecting to the on-premises master.
 class DemoteMasterConfiguration {
-  /// This is always sql#demoteMasterConfiguration.
+  /// This is always <code>sql#demoteMasterConfiguration</code>.
   core.String kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
   /// master. Replication configuration information such as the username,
   /// password, certificates, and keys are not stored in the instance metadata.
   /// The configuration information is used only to set up the replication
-  /// connection and is stored by MySQL in a file named master.info in the data
-  /// directory.
+  /// connection and is stored by MySQL in a file named <code>master.info</code>
+  /// in the data directory.
   DemoteMasterMySqlReplicaConfiguration mysqlReplicaConfiguration;
 
   DemoteMasterConfiguration();
@@ -3608,7 +4211,7 @@ class DemoteMasterConfiguration {
 
 /// Database instance demote master context.
 class DemoteMasterContext {
-  /// This is always sql#demoteMasterContext.
+  /// This is always <code>sql#demoteMasterContext</code>.
   core.String kind;
 
   /// The name of the instance which will act as on-premises master in the
@@ -3619,13 +4222,13 @@ class DemoteMasterContext {
   /// master.
   DemoteMasterConfiguration replicaConfiguration;
 
-  /// Verify GTID consistency for demote operation. Default value: True. Second
-  /// Generation instances only. Setting this flag to false enables you to
-  /// bypass GTID consistency check between on-premises master and Cloud SQL
-  /// instance during the demotion operation but also exposes you to the risk of
-  /// future replication failures. Change the value only if you know the reason
-  /// for the GTID divergence and are confident that doing so will not cause any
-  /// replication issues.
+  /// Verify GTID consistency for demote operation. Default value:
+  /// <code>True</code>. Second Generation instances only.  Setting this flag to
+  /// false enables you to bypass GTID consistency check between on-premises
+  /// master and Cloud SQL instance during the demotion operation but also
+  /// exposes you to the risk of future replication failures. Change the value
+  /// only if you know the reason for the GTID divergence and are confident that
+  /// doing so will not cause any replication issues.
   core.bool verifyGtidConsistency;
 
   DemoteMasterContext();
@@ -3674,11 +4277,12 @@ class DemoteMasterMySqlReplicaConfiguration {
   core.String clientCertificate;
 
   /// PEM representation of the slave's private key. The corresponsing public
-  /// key is encoded in the client's certificate. The format of the slave's
-  /// private key can be either PKCS #1 or PKCS #8.
+  /// key
+  /// is encoded in the client's certificate. The format of the slave's private
+  /// key can be either PKCS #1 or PKCS #8.
   core.String clientKey;
 
-  /// This is always sql#demoteMasterMysqlReplicaConfiguration.
+  /// This is always <code>sql#demoteMasterMysqlReplicaConfiguration</code>.
   core.String kind;
 
   /// The password for the replication connection.
@@ -3735,12 +4339,12 @@ class DemoteMasterMySqlReplicaConfiguration {
   }
 }
 
-/// Disk encryption configuration.
+/// Disk encryption configuration for an instance.
 class DiskEncryptionConfiguration {
-  /// This is always sql#diskEncryptionConfiguration.
+  /// This is always <code>sql#diskEncryptionConfiguration</code>.
   core.String kind;
 
-  /// KMS key resource name
+  /// Resource name of KMS key for disk encryption
   core.String kmsKeyName;
 
   DiskEncryptionConfiguration();
@@ -3767,12 +4371,12 @@ class DiskEncryptionConfiguration {
   }
 }
 
-/// Disk encryption status.
+/// Disk encryption status for an instance.
 class DiskEncryptionStatus {
-  /// This is always sql#diskEncryptionStatus.
+  /// This is always <code>sql#diskEncryptionStatus</code>.
   core.String kind;
 
-  /// KMS key version used to encrypt the Cloud SQL instance disk
+  /// KMS key version used to encrypt the Cloud SQL instance resource
   core.String kmsKeyVersionName;
 
   DiskEncryptionStatus();
@@ -3824,10 +4428,12 @@ class ExportContextCsvExportOptions {
 
 /// Options for exporting from MySQL.
 class ExportContextSqlExportOptionsMysqlExportOptions {
-  /// Option to include SQL statement required to set up replication. If set to
-  /// 1, the dump file includes a CHANGE MASTER TO statement with the binary log
-  /// coordinates. If set to 2, the CHANGE MASTER TO statement is written as a
-  /// SQL comment, and has no effect. All other values are ignored.
+  /// Option to include SQL statement required to set up replication.
+  /// If set to <code>1</code>, the dump file includes
+  ///  a CHANGE MASTER TO statement with the binary log coordinates.
+  /// If set to <code>2</code>, the CHANGE MASTER TO statement is written as
+  ///  a SQL comment, and has no effect.
+  /// All other values are ignored.
   core.int masterData;
 
   ExportContextSqlExportOptionsMysqlExportOptions();
@@ -3898,33 +4504,41 @@ class ExportContext {
   /// Options for exporting data as CSV.
   ExportContextCsvExportOptions csvExportOptions;
 
-  /// Databases to be exported.
-  /// MySQL instances: If fileType is SQL and no database is specified, all
-  /// databases are exported, except for the mysql system database. If fileType
-  /// is CSV, you can specify one database, either by using this property or by
-  /// using the csvExportOptions.selectQuery property, which takes precedence
-  /// over this property.
-  /// PostgreSQL instances: Specify exactly one database to be exported. If
-  /// fileType is CSV, this database must match the database used in the
-  /// csvExportOptions.selectQuery property.
+  /// Databases to be exported. <br /> <b>MySQL instances:</b> If
+  /// <code>fileType</code> is <code>SQL</code> and no database is specified,
+  /// all
+  /// databases are exported, except for the <code>mysql</code> system database.
+  /// If <code>fileType</code> is <code>CSV</code>, you can specify one
+  /// database,
+  /// either by using this property or by using the
+  /// <code>csvExportOptions.selectQuery</code> property, which takes precedence
+  /// over this property. <br /> <b>PostgreSQL instances:</b> You must specify
+  /// one database to be exported. If <code>fileType</code> is <code>CSV</code>,
+  /// this database must match the one specified in the
+  /// <code>csvExportOptions.selectQuery</code> property.
   core.List<core.String> databases;
 
-  /// The file type for the specified uri.
-  /// SQL: The file contains SQL statements.
-  /// CSV: The file contains CSV data.
+  /// The file type for the specified uri. <br><code>SQL</code>: The file
+  /// contains SQL statements. <br><code>CSV</code>: The file contains CSV data.
+  /// Possible string values are:
+  /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
+  /// - "SQL" : File containing SQL statements.
+  /// - "CSV" : File in CSV format.
+  /// - "BAK"
   core.String fileType;
 
-  /// This is always sql#exportContext.
+  /// This is always <code>sql#exportContext</code>.
   core.String kind;
 
   /// Options for exporting data as SQL statements.
   ExportContextSqlExportOptions sqlExportOptions;
 
   /// The path to the file in Google Cloud Storage where the export will be
-  /// stored. The URI is in the form gs://bucketName/fileName. If the file
-  /// already exists, the requests succeeds, but the operation fails. If
-  /// fileType is SQL and the filename ends with .gz, the contents are
-  /// compressed.
+  /// stored. The URI is in the form <code>gs:
+  /// //bucketName/fileName</code>. If the file already exists, the requests
+  /// // succeeds, but the operation fails. If <code>fileType</code> is
+  /// // <code>SQL</code> and the filename ends with .gz, the contents are
+  /// // compressed.
   core.String uri;
 
   ExportContext();
@@ -3979,7 +4593,7 @@ class ExportContext {
 
 /// Database instance failover context.
 class FailoverContext {
-  /// This is always sql#failoverContext.
+  /// This is always <code>sql#failoverContext</code>.
   core.String kind;
 
   /// The current settings version of this instance. Request will be rejected if
@@ -4012,36 +4626,51 @@ class FailoverContext {
 
 /// A flag resource.
 class Flag {
-  /// For STRING flags, a list of strings that the value can be set to.
+  /// For <code>STRING</code> flags, a list of strings that the value can be set
+  /// to.
   core.List<core.String> allowedStringValues;
 
-  /// The database version this flag applies to. Can be MYSQL_5_5, MYSQL_5_6, or
-  /// MYSQL_5_7. MYSQL_5_7 is applicable only to Second Generation instances.
+  /// The database version this flag applies to. Can be <code>MYSQL_5_5</code>,
+  /// <code>MYSQL_5_6</code>, or <code>MYSQL_5_7</code>. <code>MYSQL_5_7</code>
+  /// is applicable only to Second Generation instances.
   core.List<core.String> appliesTo;
 
-  /// True if the flag is only released in Beta.
+  /// Whether or not the flag is considered in beta.
   core.bool inBeta;
 
-  /// This is always sql#flag.
+  /// This is always <code>sql#flag</code>.
   core.String kind;
 
-  /// For INTEGER flags, the maximum allowed value.
+  /// For <code>INTEGER</code> flags, the maximum allowed value.
   core.String maxValue;
 
-  /// For INTEGER flags, the minimum allowed value.
+  /// For <code>INTEGER</code> flags, the minimum allowed value.
   core.String minValue;
 
   /// This is the name of the flag. Flag names always use underscores, not
-  /// hyphens, e.g. max_allowed_packet
+  /// hyphens, e.g. <code>max_allowed_packet</code>
   core.String name;
 
   /// Indicates whether changing this flag will trigger a database restart. Only
   /// applicable to Second Generation instances.
   core.bool requiresRestart;
 
-  /// The type of the flag. Flags are typed to being BOOLEAN, STRING, INTEGER or
-  /// NONE. NONE is used for flags which do not take a value, such as
-  /// skip_grant_tables.
+  /// The type of the flag. Flags are typed to being <code>BOOLEAN</code>,
+  /// <code>STRING</code>, <code>INTEGER</code> or <code>NONE</code>.
+  /// <code>NONE</code> is used for flags which do not take a value, such as
+  /// <code>skip_grant_tables</code>.
+  /// Possible string values are:
+  /// - "SQL_FLAG_TYPE_UNSPECIFIED" : This is an unknown flag type.
+  /// - "BOOLEAN" : Boolean type flag.
+  /// - "STRING" : String type flag.
+  /// - "INTEGER" : Integer type flag.
+  /// - "NONE" : Flag type used for a server startup option.
+  /// - "MYSQL_TIMEZONE_OFFSET" : Type introduced specically for MySQL TimeZone
+  /// offset. Accept a string value
+  /// with the format [-12:59, 13:00].
+  /// - "FLOAT" : Float type flag.
+  /// - "REPEATED_STRING" : Comma-separated list of the strings in a SqlFlagType
+  /// enum.
   core.String type;
 
   Flag();
@@ -4116,7 +4745,7 @@ class FlagsListResponse {
   /// List of flags.
   core.List<Flag> items;
 
-  /// This is always sql#flagsList.
+  /// This is always <code>sql#flagsList</code>.
   core.String kind;
 
   FlagsListResponse();
@@ -4140,6 +4769,74 @@ class FlagsListResponse {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class ImportContextBakImportOptionsEncryptionOptions {
+  /// Path to the Certificate (.cer) in Cloud Storage, in the form
+  /// <code>gs://bucketName/fileName</code>. The instance must have
+  /// write permissions to the bucket and read access to the file.
+  core.String certPath;
+
+  /// Password that encrypts the private key
+  core.String pvkPassword;
+
+  /// Path to the Certificate Private Key (.pvk)  in Cloud Storage, in the
+  /// form <code>gs://bucketName/fileName</code>. The instance must have
+  /// write permissions to the bucket and read access to the file.
+  core.String pvkPath;
+
+  ImportContextBakImportOptionsEncryptionOptions();
+
+  ImportContextBakImportOptionsEncryptionOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("certPath")) {
+      certPath = _json["certPath"];
+    }
+    if (_json.containsKey("pvkPassword")) {
+      pvkPassword = _json["pvkPassword"];
+    }
+    if (_json.containsKey("pvkPath")) {
+      pvkPath = _json["pvkPath"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (certPath != null) {
+      _json["certPath"] = certPath;
+    }
+    if (pvkPassword != null) {
+      _json["pvkPassword"] = pvkPassword;
+    }
+    if (pvkPath != null) {
+      _json["pvkPath"] = pvkPath;
+    }
+    return _json;
+  }
+}
+
+/// Import parameters specific to SQL Server .BAK files
+class ImportContextBakImportOptions {
+  ImportContextBakImportOptionsEncryptionOptions encryptionOptions;
+
+  ImportContextBakImportOptions();
+
+  ImportContextBakImportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("encryptionOptions")) {
+      encryptionOptions =
+          new ImportContextBakImportOptionsEncryptionOptions.fromJson(
+              _json["encryptionOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (encryptionOptions != null) {
+      _json["encryptionOptions"] = (encryptionOptions).toJson();
     }
     return _json;
   }
@@ -4180,35 +4877,48 @@ class ImportContextCsvImportOptions {
 
 /// Database instance import context.
 class ImportContext {
+  /// Import parameters specific to SQL Server .BAK files
+  ImportContextBakImportOptions bakImportOptions;
+
   /// Options for importing data as CSV.
   ImportContextCsvImportOptions csvImportOptions;
 
-  /// The target database for the import. If fileType is SQL, this field is
-  /// required only if the import file does not specify a database, and is
-  /// overridden by any database specification in the import file. If fileType
-  /// is CSV, one database must be specified.
+  /// The target database for the import. If <code>fileType</code> is
+  /// <code>SQL</code>, this field is required only if the import file does not
+  /// specify a database, and is overridden by any database specification in the
+  /// import file. If <code>fileType</code> is <code>CSV</code>, one database
+  /// must be specified.
   core.String database;
 
-  /// The file type for the specified uri.
-  /// SQL: The file contains SQL statements.
-  /// CSV: The file contains CSV data.
+  /// The file type for the specified uri. <br><code>SQL</code>: The file
+  /// contains SQL statements. <br><code>CSV</code>: The file contains CSV data.
+  /// Possible string values are:
+  /// - "SQL_FILE_TYPE_UNSPECIFIED" : Unknown file type.
+  /// - "SQL" : File containing SQL statements.
+  /// - "CSV" : File in CSV format.
+  /// - "BAK"
   core.String fileType;
 
   /// The PostgreSQL user for this import operation. PostgreSQL instances only.
   core.String importUser;
 
-  /// This is always sql#importContext.
+  /// This is always <code>sql#importContext</code>.
   core.String kind;
 
   /// Path to the import file in Cloud Storage, in the form
-  /// gs://bucketName/fileName. Compressed gzip files (.gz) are supported when
-  /// fileType is SQL. The instance must have write permissions to the bucket
-  /// and read access to the file.
+  /// <code>gs:
+  /// //bucketName/fileName</code>. Compressed gzip files (.gz) are supported
+  /// // when <code>fileType</code> is <code>SQL</code>. The instance must have
+  /// // write permissions to the bucket and read access to the file.
   core.String uri;
 
   ImportContext();
 
   ImportContext.fromJson(core.Map _json) {
+    if (_json.containsKey("bakImportOptions")) {
+      bakImportOptions =
+          new ImportContextBakImportOptions.fromJson(_json["bakImportOptions"]);
+    }
     if (_json.containsKey("csvImportOptions")) {
       csvImportOptions =
           new ImportContextCsvImportOptions.fromJson(_json["csvImportOptions"]);
@@ -4233,6 +4943,9 @@ class ImportContext {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bakImportOptions != null) {
+      _json["bakImportOptions"] = (bakImportOptions).toJson();
+    }
     if (csvImportOptions != null) {
       _json["csvImportOptions"] = (csvImportOptions).toJson();
     }
@@ -4376,7 +5089,7 @@ class InstancesListResponse {
   /// List of database instance resources.
   core.List<DatabaseInstance> items;
 
-  /// This is always sql#instancesList.
+  /// This is always <code>sql#instancesList</code>.
   core.String kind;
 
   /// The continuation token, used to page through large result sets. Provide
@@ -4434,7 +5147,7 @@ class InstancesListServerCasResponse {
   /// List of server CA certificates for the instance.
   core.List<SslCert> certs;
 
-  /// This is always sql#instancesListServerCas.
+  /// This is always <code>sql#instancesListServerCas</code>.
   core.String kind;
 
   InstancesListServerCasResponse();
@@ -4544,8 +5257,10 @@ class InstancesTruncateLogRequest {
 /// IP Management configuration.
 class IpConfiguration {
   /// The list of external networks that are allowed to connect to the instance
-  /// using the IP. In CIDR notation, also known as 'slash' notation (e.g.
-  /// 192.168.100.0/24).
+  /// using the IP. In <a
+  /// href="http://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation">CIDR
+  /// notation</a>, also known as 'slash' notation (e.g.
+  /// <code>192.168.100.0/24</code>).
   core.List<AclEntry> authorizedNetworks;
 
   /// Whether the instance should be assigned an IP address or not.
@@ -4553,8 +5268,8 @@ class IpConfiguration {
 
   /// The resource link for the VPC network from which the Cloud SQL instance is
   /// accessible for private IP. For example,
-  /// /projects/myProject/global/networks/default. This setting can be updated,
-  /// but it cannot be removed after it is set.
+  /// <code>/projects/myProject/global/networks/default</code>. This setting can
+  /// be updated, but it cannot be removed after it is set.
   core.String privateNetwork;
 
   /// Whether SSL connections over IP should be enforced or not.
@@ -4604,15 +5319,32 @@ class IpMapping {
   /// The IP address assigned.
   core.String ipAddress;
 
-  /// The due time for this IP to be retired in RFC 3339 format, for example
-  /// 2012-11-15T16:19:00.094Z. This field is only available when the IP is
-  /// scheduled to be retired.
-  core.DateTime timeToRetire;
+  /// The due time for this IP to be retired in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>. This field is only available when
+  /// the IP is scheduled to be retired.
+  core.String timeToRetire;
 
-  /// The type of this IP address. A PRIMARY address is a public address that
-  /// can accept incoming connections. A PRIVATE address is a private address
-  /// that can accept incoming connections. An OUTGOING address is the source
-  /// address of connections originating from the instance, if supported.
+  /// The type of this IP address. A <code>PRIMARY</code> address is a public
+  /// address that can accept incoming connections. A <code>PRIVATE</code>
+  /// address is a private address that can accept incoming connections. An
+  /// <code>OUTGOING</code> address is the source address of connections
+  /// originating from the instance, if supported.
+  /// Possible string values are:
+  /// - "SQL_IP_ADDRESS_TYPE_UNSPECIFIED" : This is an unknown IP address type.
+  /// - "PRIMARY" : IP address the customer is supposed to connect to. Usually
+  /// this is the
+  /// load balancer's IP address
+  /// - "OUTGOING" : Source IP address of the connection a read replica
+  /// establishes to its
+  /// external master. This IP address can be whitelisted by the customer
+  /// in case it has a firewall that filters incoming connection to its
+  /// on premises master.
+  /// - "PRIVATE" : Private IP used when using private IPs and network peering.
+  /// - "MIGRATED_1ST_GEN" : V1 IP of a migrated instance. We want the user to
+  /// decommission this IP as soon as the migration is complete.
+  /// Note: V1 instances with V1 ip addresses will be counted as PRIMARY.
   core.String type;
 
   IpMapping();
@@ -4622,7 +5354,7 @@ class IpMapping {
       ipAddress = _json["ipAddress"];
     }
     if (_json.containsKey("timeToRetire")) {
-      timeToRetire = core.DateTime.parse(_json["timeToRetire"]);
+      timeToRetire = _json["timeToRetire"];
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4636,7 +5368,7 @@ class IpMapping {
       _json["ipAddress"] = ipAddress;
     }
     if (timeToRetire != null) {
-      _json["timeToRetire"] = (timeToRetire).toIso8601String();
+      _json["timeToRetire"] = timeToRetire;
     }
     if (type != null) {
       _json["type"] = type;
@@ -4655,7 +5387,7 @@ class LocationPreference {
   /// Cloud SQL instance.
   core.String followGaeApplication;
 
-  /// This is always sql#locationPreference.
+  /// This is always <code>sql#locationPreference</code>.
   core.String kind;
 
   /// The preferred Compute Engine zone (e.g. us-central1-a, us-central1-b,
@@ -4701,11 +5433,24 @@ class MaintenanceWindow {
   /// hour of day - 0 to 23.
   core.int hour;
 
-  /// This is always sql#maintenanceWindow.
+  /// This is always <code>sql#maintenanceWindow</code>.
   core.String kind;
 
-  /// Maintenance timing setting: canary (Earlier) or stable (Later).
-  ///  Learn more.
+  /// Maintenance timing setting: <code>canary</code> (Earlier) or
+  /// <code>stable</code> (Later). <br /><a
+  /// href="/sql/docs/db_path/instance-settings#maintenance-timing-2ndgen">
+  /// Learn more</a>.
+  /// Possible string values are:
+  /// - "SQL_UPDATE_TRACK_UNSPECIFIED" : This is an unknown maintenance timing
+  /// preference.
+  /// - "canary" : For instance update that requires a restart, this update
+  /// track indicates
+  /// your instance prefer to restart for new version early in maintenance
+  /// window.
+  /// - "stable" : For instance update that requires a restart, this update
+  /// track indicates
+  /// your instance prefer to let Cloud SQL choose the timing of restart (within
+  /// its Maintenance window, if applicable).
   core.String updateTrack;
 
   MaintenanceWindow();
@@ -4753,21 +5498,23 @@ class MySqlReplicaConfiguration {
   core.String clientCertificate;
 
   /// PEM representation of the slave's private key. The corresponsing public
-  /// key is encoded in the client's certificate.
+  /// key
+  /// is encoded in the client's certificate.
   core.String clientKey;
 
   /// Seconds to wait between connect retries. MySQL's default is 60 seconds.
   core.int connectRetryInterval;
 
   /// Path to a SQL dump file in Google Cloud Storage from which the slave
-  /// instance is to be created. The URI is in the form
-  /// gs://bucketName/fileName. Compressed gzip files (.gz) are also supported.
-  /// Dumps should have the binlog co-ordinates from which replication should
-  /// begin. This can be accomplished by setting --master-data to 1 when using
-  /// mysqldump.
+  /// instance is to be created. The URI is in the form gs:
+  /// //bucketName/fileName. Compressed gzip files (.gz) are also supported.
+  /// // Dumps should have the binlog co-ordinates from which replication should
+  /// // begin. This can be accomplished by setting --master-data to 1 when
+  /// using
+  /// // mysqldump.
   core.String dumpFilePath;
 
-  /// This is always sql#mysqlReplicaConfiguration.
+  /// This is always <code>sql#mysqlReplicaConfiguration</code>.
   core.String kind;
 
   /// Interval in milliseconds between replication heartbeats.
@@ -4866,15 +5613,35 @@ class MySqlReplicaConfiguration {
 
 /// On-premises instance configuration.
 class OnPremisesConfiguration {
+  /// PEM representation of the trusted CA's x509 certificate.
+  core.String caCertificate;
+
+  /// PEM representation of the slave's x509 certificate.
+  core.String clientCertificate;
+
+  /// PEM representation of the slave's private key. The corresponsing public
+  /// key
+  /// is encoded in the client's certificate.
+  core.String clientKey;
+
   /// The host and port of the on-premises instance in host:port format
   core.String hostPort;
 
-  /// This is always sql#onPremisesConfiguration.
+  /// This is always <code>sql#onPremisesConfiguration</code>.
   core.String kind;
 
   OnPremisesConfiguration();
 
   OnPremisesConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("caCertificate")) {
+      caCertificate = _json["caCertificate"];
+    }
+    if (_json.containsKey("clientCertificate")) {
+      clientCertificate = _json["clientCertificate"];
+    }
+    if (_json.containsKey("clientKey")) {
+      clientKey = _json["clientKey"];
+    }
     if (_json.containsKey("hostPort")) {
       hostPort = _json["hostPort"];
     }
@@ -4886,6 +5653,15 @@ class OnPremisesConfiguration {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (caCertificate != null) {
+      _json["caCertificate"] = caCertificate;
+    }
+    if (clientCertificate != null) {
+      _json["clientCertificate"] = clientCertificate;
+    }
+    if (clientKey != null) {
+      _json["clientKey"] = clientKey;
+    }
     if (hostPort != null) {
       _json["hostPort"] = hostPort;
     }
@@ -4896,13 +5672,15 @@ class OnPremisesConfiguration {
   }
 }
 
-/// An Operation resource. For successful operations that return an Operation
-/// resource, only the fields relevant to the operation are populated in the
-/// resource.
+/// An Operation resource.&nbsp;For successful operations that return an
+/// Operation resource, only the fields relevant to the operation are populated
+/// in the resource.
 class Operation {
-  /// The time this operation finished in UTC timezone in RFC 3339 format, for
-  /// example 2012-11-15T16:19:00.094Z.
-  core.DateTime endTime;
+  /// The time this operation finished in UTC timezone in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String endTime;
 
   /// If errors occurred during processing of this operation, this field will be
   /// populated.
@@ -4914,11 +5692,13 @@ class Operation {
   /// The context for import operation, if applicable.
   ImportContext importContext;
 
-  /// The time this operation was enqueued in UTC timezone in RFC 3339 format,
-  /// for example 2012-11-15T16:19:00.094Z.
-  core.DateTime insertTime;
+  /// The time this operation was enqueued in UTC timezone in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String insertTime;
 
-  /// This is always sql#operation.
+  /// This is always <code>sql#operation</code>.
   core.String kind;
 
   /// An identifier that uniquely identifies the operation. You can use this
@@ -4926,20 +5706,74 @@ class Operation {
   /// the operation.
   core.String name;
 
-  /// The type of the operation. Valid values are CREATE, DELETE, UPDATE,
-  /// RESTART, IMPORT, EXPORT, BACKUP_VOLUME, RESTORE_VOLUME, CREATE_USER,
-  /// DELETE_USER, CREATE_DATABASE, DELETE_DATABASE .
+  /// The type of the operation. Valid values are <code>CREATE</code>,
+  /// <code>DELETE</code>, <code>UPDATE</code>, <code>RESTART</code>,
+  /// <code>IMPORT</code>, <code>EXPORT</code>, <code>BACKUP_VOLUME</code>,
+  /// <code>RESTORE_VOLUME</code>, <code>CREATE_USER</code>,
+  /// <code>DELETE_USER</code>, <code>CREATE_DATABASE</code>,
+  /// <code>DELETE_DATABASE</code> .
+  /// Possible string values are:
+  /// - "SQL_OPERATION_TYPE_UNSPECIFIED" : Unknown operation type.
+  /// - "IMPORT" : Imports data into a Cloud SQL instance.
+  /// - "EXPORT" : Exports data from a Cloud SQL instance to a Cloud Storage
+  /// bucket.
+  /// - "CREATE" : Creates a new Cloud SQL instance.
+  /// - "UPDATE" : Updates the settings of a Cloud SQL instance.
+  /// - "DELETE" : Deletes a Cloud SQL instance.
+  /// - "RESTART" : Restarts the Cloud SQL instance.
+  /// - "BACKUP"
+  /// - "SNAPSHOT"
+  /// - "BACKUP_VOLUME" : Performs instance backup.
+  /// - "DELETE_VOLUME" : Deletes an instance backup.
+  /// - "RESTORE_VOLUME" : Restores an instance backup.
+  /// - "INJECT_USER" : Injects a privileged user in mysql for MOB instances.
+  /// - "CLONE" : Clones a Cloud SQL instance.
+  /// - "STOP_REPLICA" : Stops replication on a Cloud SQL read replica instance.
+  /// - "START_REPLICA" : Starts replication on a Cloud SQL read replica
+  /// instance.
+  /// - "PROMOTE_REPLICA" : Promotes a Cloud SQL replica instance.
+  /// - "CREATE_REPLICA" : Creates a Cloud SQL replica instance.
+  /// - "CREATE_USER" : Creates a new user in a Cloud SQL instance.
+  /// - "DELETE_USER" : Deletes a user from a Cloud SQL instance.
+  /// - "UPDATE_USER" : Updates an existing user in a Cloud SQL instance.
+  /// - "CREATE_DATABASE" : Creates a database in the Cloud SQL instance.
+  /// - "DELETE_DATABASE" : Deletes a database in the Cloud SQL instance.
+  /// - "UPDATE_DATABASE" : Updates a database in the Cloud SQL instance.
+  /// - "FAILOVER" : Performs failover of an HA-enabled Cloud SQL
+  /// failover replica.
+  /// - "DELETE_BACKUP" : Deletes the backup taken by a backup run.
+  /// - "RECREATE_REPLICA"
+  /// - "TRUNCATE_LOG" : Truncates a general or slow log table in MySQL.
+  /// - "DEMOTE_MASTER" : Demotes the stand-alone instance to be a Cloud SQL
+  /// read replica for an external database server.
+  /// - "MAINTENANCE" : Indicates that the instance is currently in maintenance.
+  /// Maintenance
+  /// typically causes the instance to be unavailable for 1-3 minutes.
+  /// - "ENABLE_PRIVATE_IP" : This field is deprecated, and will be removed in
+  /// future version of API.
+  /// - "DEFER_MAINTENANCE"
+  /// - "CREATE_CLONE" : Creates clone instance.
+  /// - "RESCHEDULE_MAINTENANCE" : Reschedule maintenance to another time.
   core.String operationType;
 
   /// The URI of this resource.
   core.String selfLink;
 
-  /// The time this operation actually started in UTC timezone in RFC 3339
-  /// format, for example 2012-11-15T16:19:00.094Z.
-  core.DateTime startTime;
+  /// The time this operation actually started in UTC timezone in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String startTime;
 
-  /// The status of an operation. Valid values are PENDING, RUNNING, DONE,
-  /// UNKNOWN.
+  /// The status of an operation. Valid values are <code>PENDING</code>,
+  /// <code>RUNNING</code>, <code>DONE</code>,
+  /// <code>SQL_OPERATION_STATUS_UNSPECIFIED</code>.
+  /// Possible string values are:
+  /// - "SQL_OPERATION_STATUS_UNSPECIFIED" : The state of the operation is
+  /// unknown.
+  /// - "PENDING" : The operation has been queued, but has not started yet.
+  /// - "RUNNING" : The operation is running.
+  /// - "DONE" : The operation completed.
   core.String status;
 
   /// Name of the database instance related to this operation.
@@ -4956,7 +5790,7 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey("endTime")) {
-      endTime = core.DateTime.parse(_json["endTime"]);
+      endTime = _json["endTime"];
     }
     if (_json.containsKey("error")) {
       error = new OperationErrors.fromJson(_json["error"]);
@@ -4968,7 +5802,7 @@ class Operation {
       importContext = new ImportContext.fromJson(_json["importContext"]);
     }
     if (_json.containsKey("insertTime")) {
-      insertTime = core.DateTime.parse(_json["insertTime"]);
+      insertTime = _json["insertTime"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4983,7 +5817,7 @@ class Operation {
       selfLink = _json["selfLink"];
     }
     if (_json.containsKey("startTime")) {
-      startTime = core.DateTime.parse(_json["startTime"]);
+      startTime = _json["startTime"];
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -5006,7 +5840,7 @@ class Operation {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
     if (endTime != null) {
-      _json["endTime"] = (endTime).toIso8601String();
+      _json["endTime"] = endTime;
     }
     if (error != null) {
       _json["error"] = (error).toJson();
@@ -5018,7 +5852,7 @@ class Operation {
       _json["importContext"] = (importContext).toJson();
     }
     if (insertTime != null) {
-      _json["insertTime"] = (insertTime).toIso8601String();
+      _json["insertTime"] = insertTime;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5033,7 +5867,7 @@ class Operation {
       _json["selfLink"] = selfLink;
     }
     if (startTime != null) {
-      _json["startTime"] = (startTime).toIso8601String();
+      _json["startTime"] = startTime;
     }
     if (status != null) {
       _json["status"] = status;
@@ -5059,7 +5893,7 @@ class OperationError {
   /// Identifies the specific error that occurred.
   core.String code;
 
-  /// This is always sql#operationError.
+  /// This is always <code>sql#operationError</code>.
   core.String kind;
 
   /// Additional information about the error encountered.
@@ -5100,7 +5934,7 @@ class OperationErrors {
   /// The list of errors encountered while processing this operation.
   core.List<OperationError> errors;
 
-  /// This is always sql#operationErrors.
+  /// This is always <code>sql#operationErrors</code>.
   core.String kind;
 
   OperationErrors();
@@ -5134,7 +5968,7 @@ class OperationsListResponse {
   /// List of operation resources.
   core.List<Operation> items;
 
-  /// This is always sql#operationsList.
+  /// This is always <code>sql#operationsList</code>.
   core.String kind;
 
   /// The continuation token, used to page through large result sets. Provide
@@ -5176,22 +6010,22 @@ class OperationsListResponse {
 /// Read-replica configuration for connecting to the master.
 class ReplicaConfiguration {
   /// Specifies if the replica is the failover target. If the field is set to
-  /// true the replica will be designated as a failover replica. In case the
-  /// master instance fails, the replica instance will be promoted as the new
-  /// master instance.
-  /// Only one replica can be specified as failover target, and the replica has
-  /// to be in different zone with the master instance.
+  /// <code>true</code> the replica will be designated as a failover replica. In
+  /// case the master instance fails, the replica instance will be promoted as
+  /// the new master instance.  <p>Only one replica can be specified as failover
+  /// target, and the replica has to be in different zone with the master
+  /// instance.
   core.bool failoverTarget;
 
-  /// This is always sql#replicaConfiguration.
+  /// This is always <code>sql#replicaConfiguration</code>.
   core.String kind;
 
   /// MySQL specific configuration when replicating from a MySQL on-premises
   /// master. Replication configuration information such as the username,
   /// password, certificates, and keys are not stored in the instance metadata.
   /// The configuration information is used only to set up the replication
-  /// connection and is stored by MySQL in a file named master.info in the data
-  /// directory.
+  /// connection and is stored by MySQL in a file named <code>master.info</code>
+  /// in the data directory.
   MySqlReplicaConfiguration mysqlReplicaConfiguration;
 
   ReplicaConfiguration();
@@ -5225,7 +6059,49 @@ class ReplicaConfiguration {
   }
 }
 
+class Reschedule {
+  /// Required. The type of the reschedule.
+  /// Possible string values are:
+  /// - "RESCHEDULE_TYPE_UNSPECIFIED"
+  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
+  /// now.
+  /// - "NEXT_AVAILABLE_WINDOW" : If the user wants to use the existing
+  /// maintenance policy to find the
+  /// next available window.
+  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
+  /// specific time.
+  core.String rescheduleType;
+
+  /// Optional. Timestamp when the maintenance shall be rescheduled to if
+  /// reschedule_type=SPECIFIC_TIME.
+  core.String scheduleTime;
+
+  Reschedule();
+
+  Reschedule.fromJson(core.Map _json) {
+    if (_json.containsKey("rescheduleType")) {
+      rescheduleType = _json["rescheduleType"];
+    }
+    if (_json.containsKey("scheduleTime")) {
+      scheduleTime = _json["scheduleTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (rescheduleType != null) {
+      _json["rescheduleType"] = rescheduleType;
+    }
+    if (scheduleTime != null) {
+      _json["scheduleTime"] = scheduleTime;
+    }
+    return _json;
+  }
+}
+
 /// Database instance restore from backup context.
+/// Backup context contains source instance id and project id.
 class RestoreBackupContext {
   /// The ID of the backup run to restore from.
   core.String backupRunId;
@@ -5233,7 +6109,7 @@ class RestoreBackupContext {
   /// The ID of the instance that the backup was taken from.
   core.String instanceId;
 
-  /// This is always sql#restoreBackupContext.
+  /// This is always <code>sql#restoreBackupContext</code>.
   core.String kind;
 
   /// The full project ID of the source instance.
@@ -5277,7 +6153,7 @@ class RestoreBackupContext {
 
 /// Instance rotate server CA context.
 class RotateServerCaContext {
-  /// This is always sql#rotateServerCaContext.
+  /// This is always <code>sql#rotateServerCaContext</code>.
   core.String kind;
 
   /// The fingerprint of the next version to be rotated to. If left unspecified,
@@ -5311,15 +6187,22 @@ class RotateServerCaContext {
 /// Database instance settings.
 class Settings {
   /// The activation policy specifies when the instance is activated; it is
-  /// applicable only when the instance state is RUNNABLE. Valid values:
-  /// ALWAYS: The instance is on, and remains so even in the absence of
-  /// connection requests.
-  /// NEVER: The instance is off; it is not activated, even if a connection
-  /// request arrives.
-  /// ON_DEMAND: First Generation instances only. The instance responds to
-  /// incoming requests, and turns itself off when not in use. Instances with
-  /// PER_USE pricing turn off after 15 minutes of inactivity. Instances with
-  /// PER_PACKAGE pricing turn off after 12 hours of inactivity.
+  /// applicable only when the instance state is <code>RUNNABLE</code>. Valid
+  /// values: <br><code>ALWAYS</code>: The instance is on, and remains so even
+  /// in
+  /// the absence of connection requests. <br><code>NEVER</code>: The instance
+  /// is
+  /// off; it is not activated, even if a connection request arrives.
+  /// <br><code>ON_DEMAND</code>: First Generation instances only. The instance
+  /// responds to incoming requests, and turns itself off when not in use.
+  /// Instances with <code>PER_USE</code> pricing turn off after 15 minutes of
+  /// inactivity. Instances with <code>PER_PACKAGE</code> pricing turn off after
+  /// 12 hours of inactivity.
+  /// Possible string values are:
+  /// - "SQL_ACTIVATION_POLICY_UNSPECIFIED" : Unknown activation plan.
+  /// - "ALWAYS" : The instance is always up and running.
+  /// - "NEVER" : The instance should never spin up.
+  /// - "ON_DEMAND" : The instance spins up upon receiving requests.
   core.String activationPolicy;
 
   /// The App Engine app IDs that can access this instance. First Generation
@@ -5327,11 +6210,17 @@ class Settings {
   core.List<core.String> authorizedGaeApplications;
 
   /// Availability type (PostgreSQL instances only). Potential values:
-  /// ZONAL: The instance serves data from only one zone. Outages in that zone
-  /// affect data accessibility.
-  /// REGIONAL: The instance can serve data from more than one zone in a region
-  /// (it is highly available).
-  /// For more information, see Overview of the High Availability Configuration.
+  /// <br><code>ZONAL</code>: The instance serves data from only one zone.
+  /// Outages in that zone affect data accessibility. <br><code>REGIONAL</code>:
+  /// The instance can serve data from more than one zone in a region (it is
+  /// highly available). <br>For more information, see <a
+  /// href="https://cloud.google.com/sql/docs/postgres/high-availability">Overview
+  /// of the High Availability Configuration</a>.
+  /// Possible string values are:
+  /// - "SQL_AVAILABILITY_TYPE_UNSPECIFIED" : This is an unknown Availability
+  /// type.
+  /// - "ZONAL" : Zonal available instance.
+  /// - "REGIONAL" : Regional available instance.
   core.String availabilityType;
 
   /// The daily backup configuration for the instance.
@@ -5346,8 +6235,15 @@ class Settings {
   /// for First Generation instances.
   core.String dataDiskSizeGb;
 
-  /// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First
-  /// Generation instances.
+  /// The type of data disk: <code>PD_SSD</code> (default) or
+  /// <code>PD_HDD</code>. Not used for First Generation instances.
+  /// Possible string values are:
+  /// - "SQL_DATA_DISK_TYPE_UNSPECIFIED" : This is an unknown data disk type.
+  /// - "PD_SSD" : An SSD data disk.
+  /// - "PD_HDD" : An HDD data disk.
+  /// - "OBSOLETE_LOCAL_SSD" : This field is deprecated and will be removed from
+  /// a future version of the
+  /// API.
   core.String dataDiskType;
 
   /// The database flags passed to the instance at startup.
@@ -5359,15 +6255,16 @@ class Settings {
 
   /// The settings for IP Management. This allows to enable or disable the
   /// instance IP and manage which external networks can connect to the
-  /// instance. The IPv4 address cannot be disabled for Second Generation
-  /// instances.
+  /// instance.
+  /// The IPv4 address cannot be disabled for Second Generation instances.
   IpConfiguration ipConfiguration;
 
-  /// This is always sql#settings.
+  /// This is always <code>sql#settings</code>.
   core.String kind;
 
   /// The location preference settings. This allows the instance to be located
-  /// as near as possible to either an App Engine app or Compute Engine zone for
+  /// as
+  /// near as possible to either an App Engine app or Compute Engine zone for
   /// better performance. App Engine co-location is only applicable to First
   /// Generation instances.
   LocationPreference locationPreference;
@@ -5377,19 +6274,38 @@ class Settings {
   /// instances.
   MaintenanceWindow maintenanceWindow;
 
-  /// The pricing plan for this instance. This can be either PER_USE or PACKAGE.
-  /// Only PER_USE is supported for Second Generation instances.
+  /// The pricing plan for this instance. This can be either
+  /// <code>PER_USE</code>
+  /// or <code>PACKAGE</code>. Only <code>PER_USE</code> is supported for Second
+  /// Generation instances.
+  /// Possible string values are:
+  /// - "SQL_PRICING_PLAN_UNSPECIFIED" : This is an unknown pricing plan for
+  /// this instance.
+  /// - "PACKAGE" : The instance is billed at a monthly flat rate.
+  /// - "PER_USE" : The instance is billed per usage.
   core.String pricingPlan;
 
   /// The type of replication this instance uses. This can be either
-  /// ASYNCHRONOUS or SYNCHRONOUS. This property is only applicable to First
-  /// Generation instances.
+  /// <code>ASYNCHRONOUS</code> or <code>SYNCHRONOUS</code>. This property is
+  /// only applicable to First Generation instances.
+  /// Possible string values are:
+  /// - "SQL_REPLICATION_TYPE_UNSPECIFIED" : This is an unknown replication type
+  /// for a Cloud SQL instance.
+  /// - "SYNCHRONOUS" : The synchronous replication mode for First Generation
+  /// instances. It is the
+  /// default value.
+  /// - "ASYNCHRONOUS" : The asynchronous replication mode for First Generation
+  /// instances. It
+  /// provides a slight performance gain, but if an outage occurs while this
+  /// option is set to asynchronous, you can lose up to a few seconds of updates
+  /// to your data.
   core.String replicationType;
 
   /// The version of instance settings. This is a required field for update
   /// method to make sure concurrent updates are handled properly. During
-  /// update, use the most recent settingsVersion value for this instance and do
-  /// not try to update this value.
+  /// update,
+  /// use the most recent settingsVersion value for this instance and do not try
+  /// to update this value.
   core.String settingsVersion;
 
   /// Configuration to increase storage size automatically. The default value is
@@ -5401,10 +6317,12 @@ class Settings {
   /// for First Generation instances.
   core.String storageAutoResizeLimit;
 
-  /// The tier (or machine type) for this instance, for example db-n1-standard-1
-  /// (MySQL instances) or db-custom-1-3840 (PostgreSQL instances). For MySQL
-  /// instances, this property determines whether the instance is First or
-  /// Second Generation. For more information, see Instance Settings.
+  /// The tier (or machine type) for this instance, for example
+  /// <code>db-n1-standard-1</code> (MySQL instances) or
+  /// <code>db-custom-1-3840</code> (PostgreSQL instances). For MySQL instances,
+  /// this property determines whether the instance is First or Second
+  /// Generation. For more information, see <a
+  /// href="/sql/docs/db_path/instance-settings">Instance Settings</a>.
   core.String tier;
 
   /// User-provided labels, represented as a dictionary where each label is a
@@ -5551,6 +6469,101 @@ class Settings {
   }
 }
 
+/// Reschedule options for maintenance windows.
+class SqlInstancesRescheduleMaintenanceRequestBody {
+  /// Required. The type of the reschedule the user wants.
+  Reschedule reschedule;
+
+  SqlInstancesRescheduleMaintenanceRequestBody();
+
+  SqlInstancesRescheduleMaintenanceRequestBody.fromJson(core.Map _json) {
+    if (_json.containsKey("reschedule")) {
+      reschedule = new Reschedule.fromJson(_json["reschedule"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (reschedule != null) {
+      _json["reschedule"] = (reschedule).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Any scheduled maintenancce for this instance.
+class SqlScheduledMaintenance {
+  core.bool canDefer;
+
+  /// If the scheduled maintenance can be rescheduled.
+  core.bool canReschedule;
+
+  /// The start time of any upcoming scheduled maintenance for this instance.
+  core.String startTime;
+
+  SqlScheduledMaintenance();
+
+  SqlScheduledMaintenance.fromJson(core.Map _json) {
+    if (_json.containsKey("canDefer")) {
+      canDefer = _json["canDefer"];
+    }
+    if (_json.containsKey("canReschedule")) {
+      canReschedule = _json["canReschedule"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (canDefer != null) {
+      _json["canDefer"] = canDefer;
+    }
+    if (canReschedule != null) {
+      _json["canReschedule"] = canReschedule;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
+/// Represents a Sql Server database on the Cloud SQL instance.
+class SqlServerDatabaseDetails {
+  /// The version of SQL Server with which the database is to be made compatible
+  core.int compatibilityLevel;
+
+  /// The recovery model of a SQL Server database
+  core.String recoveryModel;
+
+  SqlServerDatabaseDetails();
+
+  SqlServerDatabaseDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("compatibilityLevel")) {
+      compatibilityLevel = _json["compatibilityLevel"];
+    }
+    if (_json.containsKey("recoveryModel")) {
+      recoveryModel = _json["recoveryModel"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (compatibilityLevel != null) {
+      _json["compatibilityLevel"] = compatibilityLevel;
+    }
+    if (recoveryModel != null) {
+      _json["recoveryModel"] = recoveryModel;
+    }
+    return _json;
+  }
+}
+
 /// SslCerts Resource
 class SslCert {
   /// PEM representation.
@@ -5559,21 +6572,25 @@ class SslCert {
   /// Serial number, as extracted from the certificate.
   core.String certSerialNumber;
 
-  /// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+  /// User supplied name.  Constrained to [a-zA-Z.-_ ]+.
   core.String commonName;
 
-  /// The time when the certificate was created in RFC 3339 format, for example
-  /// 2012-11-15T16:19:00.094Z
-  core.DateTime createTime;
+  /// The time when the certificate was created in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>
+  core.String createTime;
 
-  /// The time when the certificate expires in RFC 3339 format, for example
-  /// 2012-11-15T16:19:00.094Z.
-  core.DateTime expirationTime;
+  /// The time when the certificate expires in <a
+  /// href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+  /// example
+  /// <code>2012-11-15T16:19:00.094Z</code>.
+  core.String expirationTime;
 
   /// Name of the database instance.
   core.String instance;
 
-  /// This is always sql#sslCert.
+  /// This is always <code>sql#sslCert</code>.
   core.String kind;
 
   /// The URI of this resource.
@@ -5595,10 +6612,10 @@ class SslCert {
       commonName = _json["commonName"];
     }
     if (_json.containsKey("createTime")) {
-      createTime = core.DateTime.parse(_json["createTime"]);
+      createTime = _json["createTime"];
     }
     if (_json.containsKey("expirationTime")) {
-      expirationTime = core.DateTime.parse(_json["expirationTime"]);
+      expirationTime = _json["expirationTime"];
     }
     if (_json.containsKey("instance")) {
       instance = _json["instance"];
@@ -5627,10 +6644,10 @@ class SslCert {
       _json["commonName"] = commonName;
     }
     if (createTime != null) {
-      _json["createTime"] = (createTime).toIso8601String();
+      _json["createTime"] = createTime;
     }
     if (expirationTime != null) {
-      _json["expirationTime"] = (expirationTime).toIso8601String();
+      _json["expirationTime"] = expirationTime;
     }
     if (instance != null) {
       _json["instance"] = instance;
@@ -5653,7 +6670,7 @@ class SslCertDetail {
   /// The public information about the cert.
   SslCert certInfo;
 
-  /// The private key for the client cert, in pem format. Keep private in order
+  /// The private key for the client cert, in pem format.  Keep private in order
   /// to protect your security.
   core.String certPrivateKey;
 
@@ -5706,7 +6723,7 @@ class SslCertsCreateEphemeralRequest {
 
 /// SslCerts insert request.
 class SslCertsInsertRequest {
-  /// User supplied name. Must be a distinct name from the other certificates
+  /// User supplied name.  Must be a distinct name from the other certificates
   /// for this instance.
   core.String commonName;
 
@@ -5730,18 +6747,19 @@ class SslCertsInsertRequest {
 
 /// SslCert insert response.
 class SslCertsInsertResponse {
-  /// The new client certificate and private key. For First Generation
+  /// The new client certificate and private key.  For First Generation
   /// instances, the new certificate does not take effect until the instance is
   /// restarted.
   SslCertDetail clientCert;
 
-  /// This is always sql#sslCertsInsert.
+  /// This is always <code>sql#sslCertsInsert</code>.
   core.String kind;
 
   /// The operation to track the ssl certs insert request.
   Operation operation;
 
-  /// The server Certificate Authority's certificate. If this is missing you can
+  /// The server Certificate Authority's certificate.  If this is missing you
+  /// can
   /// force a new one to be generated by calling resetSslConfig method on
   /// instances resource.
   SslCert serverCaCert;
@@ -5787,7 +6805,7 @@ class SslCertsListResponse {
   /// List of client certificates for the instance.
   core.List<SslCert> items;
 
-  /// This is always sql#sslCertsList.
+  /// This is always <code>sql#sslCertsList</code>.
   core.String kind;
 
   SslCertsListResponse();
@@ -5824,14 +6842,14 @@ class Tier {
   /// The maximum RAM usage of this tier in bytes.
   core.String RAM;
 
-  /// This is always sql#tier.
+  /// This is always <code>sql#tier</code>.
   core.String kind;
 
   /// The applicable regions for this tier.
   core.List<core.String> region;
 
   /// An identifier for the machine type, for example, db-n1-standard-1. For
-  /// related information, see Pricing.
+  /// related information, see <a href="/sql/pricing">Pricing</a>.
   core.String tier;
 
   Tier();
@@ -5881,7 +6899,7 @@ class TiersListResponse {
   /// List of tiers.
   core.List<Tier> items;
 
-  /// This is always sql#tiersList.
+  /// This is always <code>sql#tiersList</code>.
   core.String kind;
 
   TiersListResponse();
@@ -5912,11 +6930,11 @@ class TiersListResponse {
 
 /// Database Instance truncate log context.
 class TruncateLogContext {
-  /// This is always sql#truncateLogContext.
+  /// This is always <code>sql#truncateLogContext</code>.
   core.String kind;
 
-  /// The type of log to truncate. Valid values are MYSQL_GENERAL_TABLE and
-  /// MYSQL_SLOW_TABLE.
+  /// The type of log to truncate. Valid values are
+  /// <code>MYSQL_GENERAL_TABLE</code> and <code>MYSQL_SLOW_TABLE</code>.
   core.String logType;
 
   TruncateLogContext();
@@ -5949,28 +6967,32 @@ class User {
   /// API.
   core.String etag;
 
-  /// The host name from which the user can connect. For insert operations, host
-  /// defaults to an empty string. For update operations, host is specified as
-  /// part of the request URL. The host name cannot be updated after insertion.
+  /// The host name from which the user can connect. For <code>insert</code>
+  /// operations, host defaults to an empty string. For <code>update</code>
+  /// operations, host is specified as part of the request URL. The host name
+  /// cannot be updated after insertion.
   core.String host;
 
   /// The name of the Cloud SQL instance. This does not include the project ID.
-  /// Can be omitted for update since it is already specified on the URL.
+  /// Can be omitted for <code>update</code> since it is already specified on
+  /// the
+  /// URL.
   core.String instance;
 
-  /// This is always sql#user.
+  /// This is always <code>sql#user</code>.
   core.String kind;
 
-  /// The name of the user in the Cloud SQL instance. Can be omitted for update
-  /// since it is already specified in the URL.
+  /// The name of the user in the Cloud SQL instance. Can be omitted for
+  /// <code>update</code> since it is already specified in the URL.
   core.String name;
 
   /// The password for the user.
   core.String password;
 
   /// The project ID of the project containing the Cloud SQL database. The
-  /// Google apps domain is prefixed if applicable. Can be omitted for update
-  /// since it is already specified on the URL.
+  /// Google
+  /// apps domain is prefixed if applicable. Can be omitted for
+  /// <code>update</code> since it is already specified on the URL.
   core.String project;
 
   User();
@@ -6032,7 +7054,7 @@ class UsersListResponse {
   /// List of user resources in the instance.
   core.List<User> items;
 
-  /// This is always sql#usersList.
+  /// This is always <code>sql#usersList</code>.
   core.String kind;
 
   /// An identifier that uniquely identifies the operation. You can use this

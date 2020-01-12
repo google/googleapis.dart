@@ -5,7 +5,7 @@
     "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/speed/docs/insights/v5/get-started",
-    "etag": "\"9eZ1uxVRThTDhLJCZHhqs3eQWz4/Ta6I-MdyzU28jP7YoMs8WuXC-dg\"",
+    "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/4DI3WaLwaEauvMSEGIXZfIpbpzY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
         "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
@@ -114,7 +114,7 @@
                         "url": {
                             "description": "The URL to fetch and analyze",
                             "location": "query",
-                            "pattern": "(?i)http(s)?://.*",
+                            "pattern": "(?i)(url:|origin:)?http(s)?://.*",
                             "required": true,
                             "type": "string"
                         },
@@ -137,9 +137,16 @@
             }
         }
     },
-    "revision": "20190507",
+    "revision": "20191206",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
+        "GoogleprotobufListValue": {
+            "id": "GoogleprotobufListValue",
+            "items": {
+                "$ref": "GoogleprotobufValue"
+            },
+            "type": "array"
+        },
         "GoogleprotobufValue": {
             "id": "GoogleprotobufValue",
             "type": "any"
@@ -173,6 +180,11 @@
                 "id": {
                     "description": "The audit's id.",
                     "type": "string"
+                },
+                "numericValue": {
+                    "description": "A numeric value that has a meaning specific to the audit, e.g. the number of nodes in the DOM or the timestamp of a specific load event. More information can be found in the audit details, if present.",
+                    "format": "double",
+                    "type": "number"
                 },
                 "score": {
                     "type": "any"
@@ -422,11 +434,8 @@
                     "type": "string"
                 },
                 "runWarnings": {
-                    "description": "List of all run warnings in the LHR. Will always output to at least `[]`.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
+                    "$ref": "GoogleprotobufListValue",
+                    "description": "List of all run warnings in the LHR. Will always output to at least `[]`."
                 },
                 "runtimeError": {
                     "description": "A top-level error message that, if present, indicates a serious enough problem that this Lighthouse result may need to be discarded.",

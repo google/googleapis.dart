@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.classroom.v1;
 
@@ -307,6 +307,14 @@ class CoursesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [studentId] - Restricts returned courses to those having a student with
+  /// the specified
+  /// identifier. The identifier can be one of the following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
+  ///
   /// [pageToken] - nextPageToken
   /// value returned from a previous
   /// list call,
@@ -333,14 +341,6 @@ class CoursesResourceApi {
   /// specified states
   /// The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED.
   ///
-  /// [studentId] - Restricts returned courses to those having a student with
-  /// the specified
-  /// identifier. The identifier can be one of the following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -352,11 +352,11 @@ class CoursesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoursesResponse> list(
-      {core.String pageToken,
+      {core.String studentId,
+      core.String pageToken,
       core.int pageSize,
       core.String teacherId,
       core.List<core.String> courseStates,
-      core.String studentId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -365,6 +365,9 @@ class CoursesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (studentId != null) {
+      _queryParams["studentId"] = [studentId];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -376,9 +379,6 @@ class CoursesResourceApi {
     }
     if (courseStates != null) {
       _queryParams["courseStates"] = courseStates;
-    }
-    if (studentId != null) {
-      _queryParams["studentId"] = [studentId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1787,6 +1787,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the
+  /// student with the specified identifier. The identifier can be one of the
+  /// following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
+  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are
   /// restricted by the requested value.
@@ -1814,15 +1823,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// submissions
   /// match one of the specified submission states.
   ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the
-  /// student with the specified identifier. The identifier can be one of the
-  /// following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1835,11 +1835,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String late,
+      {core.String userId,
+      core.String late,
       core.String pageToken,
       core.int pageSize,
       core.List<core.String> states,
-      core.String userId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1854,6 +1854,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
+    }
     if (late != null) {
       _queryParams["late"] = [late];
     }
@@ -1865,9 +1868,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (states != null) {
       _queryParams["states"] = states;
-    }
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

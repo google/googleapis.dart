@@ -50,40 +50,40 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4660() {
+buildUnnamed4609() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4660(core.List<core.String> o) {
+checkUnnamed4609(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4661() {
+buildUnnamed4610() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4661(core.List<core.String> o) {
+checkUnnamed4610(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4662() {
+buildUnnamed4611() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4662(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4611(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -94,9 +94,9 @@ buildAutoText() {
   var o = new api.AutoText();
   buildCounterAutoText++;
   if (buildCounterAutoText < 3) {
-    o.suggestedDeletionIds = buildUnnamed4660();
-    o.suggestedInsertionIds = buildUnnamed4661();
-    o.suggestedTextStyleChanges = buildUnnamed4662();
+    o.suggestedDeletionIds = buildUnnamed4609();
+    o.suggestedInsertionIds = buildUnnamed4610();
+    o.suggestedTextStyleChanges = buildUnnamed4611();
     o.textStyle = buildTextStyle();
     o.type = "foo";
   }
@@ -107,9 +107,9 @@ buildAutoText() {
 checkAutoText(api.AutoText o) {
   buildCounterAutoText++;
   if (buildCounterAutoText < 3) {
-    checkUnnamed4660(o.suggestedDeletionIds);
-    checkUnnamed4661(o.suggestedInsertionIds);
-    checkUnnamed4662(o.suggestedTextStyleChanges);
+    checkUnnamed4609(o.suggestedDeletionIds);
+    checkUnnamed4610(o.suggestedInsertionIds);
+    checkUnnamed4611(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -154,14 +154,14 @@ checkBackgroundSuggestionState(api.BackgroundSuggestionState o) {
   buildCounterBackgroundSuggestionState--;
 }
 
-buildUnnamed4663() {
+buildUnnamed4612() {
   var o = new core.List<api.Request>();
   o.add(buildRequest());
   o.add(buildRequest());
   return o;
 }
 
-checkUnnamed4663(core.List<api.Request> o) {
+checkUnnamed4612(core.List<api.Request> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRequest(o[0]);
   checkRequest(o[1]);
@@ -172,7 +172,7 @@ buildBatchUpdateDocumentRequest() {
   var o = new api.BatchUpdateDocumentRequest();
   buildCounterBatchUpdateDocumentRequest++;
   if (buildCounterBatchUpdateDocumentRequest < 3) {
-    o.requests = buildUnnamed4663();
+    o.requests = buildUnnamed4612();
     o.writeControl = buildWriteControl();
   }
   buildCounterBatchUpdateDocumentRequest--;
@@ -182,20 +182,20 @@ buildBatchUpdateDocumentRequest() {
 checkBatchUpdateDocumentRequest(api.BatchUpdateDocumentRequest o) {
   buildCounterBatchUpdateDocumentRequest++;
   if (buildCounterBatchUpdateDocumentRequest < 3) {
-    checkUnnamed4663(o.requests);
+    checkUnnamed4612(o.requests);
     checkWriteControl(o.writeControl);
   }
   buildCounterBatchUpdateDocumentRequest--;
 }
 
-buildUnnamed4664() {
+buildUnnamed4613() {
   var o = new core.List<api.Response>();
   o.add(buildResponse());
   o.add(buildResponse());
   return o;
 }
 
-checkUnnamed4664(core.List<api.Response> o) {
+checkUnnamed4613(core.List<api.Response> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponse(o[0]);
   checkResponse(o[1]);
@@ -207,7 +207,7 @@ buildBatchUpdateDocumentResponse() {
   buildCounterBatchUpdateDocumentResponse++;
   if (buildCounterBatchUpdateDocumentResponse < 3) {
     o.documentId = "foo";
-    o.replies = buildUnnamed4664();
+    o.replies = buildUnnamed4613();
     o.writeControl = buildWriteControl();
   }
   buildCounterBatchUpdateDocumentResponse--;
@@ -218,20 +218,20 @@ checkBatchUpdateDocumentResponse(api.BatchUpdateDocumentResponse o) {
   buildCounterBatchUpdateDocumentResponse++;
   if (buildCounterBatchUpdateDocumentResponse < 3) {
     unittest.expect(o.documentId, unittest.equals('foo'));
-    checkUnnamed4664(o.replies);
+    checkUnnamed4613(o.replies);
     checkWriteControl(o.writeControl);
   }
   buildCounterBatchUpdateDocumentResponse--;
 }
 
-buildUnnamed4665() {
+buildUnnamed4614() {
   var o = new core.List<api.StructuralElement>();
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-checkUnnamed4665(core.List<api.StructuralElement> o) {
+checkUnnamed4614(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0]);
   checkStructuralElement(o[1]);
@@ -242,7 +242,7 @@ buildBody() {
   var o = new api.Body();
   buildCounterBody++;
   if (buildCounterBody < 3) {
-    o.content = buildUnnamed4665();
+    o.content = buildUnnamed4614();
   }
   buildCounterBody--;
   return o;
@@ -251,7 +251,7 @@ buildBody() {
 checkBody(api.Body o) {
   buildCounterBody++;
   if (buildCounterBody < 3) {
-    checkUnnamed4665(o.content);
+    checkUnnamed4614(o.content);
   }
   buildCounterBody--;
 }
@@ -321,40 +321,40 @@ checkColor(api.Color o) {
   buildCounterColor--;
 }
 
-buildUnnamed4666() {
+buildUnnamed4615() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4666(core.List<core.String> o) {
+checkUnnamed4615(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4667() {
+buildUnnamed4616() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4667(core.List<core.String> o) {
+checkUnnamed4616(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4668() {
+buildUnnamed4617() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4668(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4617(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -365,9 +365,9 @@ buildColumnBreak() {
   var o = new api.ColumnBreak();
   buildCounterColumnBreak++;
   if (buildCounterColumnBreak < 3) {
-    o.suggestedDeletionIds = buildUnnamed4666();
-    o.suggestedInsertionIds = buildUnnamed4667();
-    o.suggestedTextStyleChanges = buildUnnamed4668();
+    o.suggestedDeletionIds = buildUnnamed4615();
+    o.suggestedInsertionIds = buildUnnamed4616();
+    o.suggestedTextStyleChanges = buildUnnamed4617();
     o.textStyle = buildTextStyle();
   }
   buildCounterColumnBreak--;
@@ -377,12 +377,128 @@ buildColumnBreak() {
 checkColumnBreak(api.ColumnBreak o) {
   buildCounterColumnBreak++;
   if (buildCounterColumnBreak < 3) {
-    checkUnnamed4666(o.suggestedDeletionIds);
-    checkUnnamed4667(o.suggestedInsertionIds);
-    checkUnnamed4668(o.suggestedTextStyleChanges);
+    checkUnnamed4615(o.suggestedDeletionIds);
+    checkUnnamed4616(o.suggestedInsertionIds);
+    checkUnnamed4617(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
   }
   buildCounterColumnBreak--;
+}
+
+core.int buildCounterCreateFooterRequest = 0;
+buildCreateFooterRequest() {
+  var o = new api.CreateFooterRequest();
+  buildCounterCreateFooterRequest++;
+  if (buildCounterCreateFooterRequest < 3) {
+    o.type = "foo";
+  }
+  buildCounterCreateFooterRequest--;
+  return o;
+}
+
+checkCreateFooterRequest(api.CreateFooterRequest o) {
+  buildCounterCreateFooterRequest++;
+  if (buildCounterCreateFooterRequest < 3) {
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterCreateFooterRequest--;
+}
+
+core.int buildCounterCreateFooterResponse = 0;
+buildCreateFooterResponse() {
+  var o = new api.CreateFooterResponse();
+  buildCounterCreateFooterResponse++;
+  if (buildCounterCreateFooterResponse < 3) {
+    o.footerId = "foo";
+  }
+  buildCounterCreateFooterResponse--;
+  return o;
+}
+
+checkCreateFooterResponse(api.CreateFooterResponse o) {
+  buildCounterCreateFooterResponse++;
+  if (buildCounterCreateFooterResponse < 3) {
+    unittest.expect(o.footerId, unittest.equals('foo'));
+  }
+  buildCounterCreateFooterResponse--;
+}
+
+core.int buildCounterCreateFootnoteRequest = 0;
+buildCreateFootnoteRequest() {
+  var o = new api.CreateFootnoteRequest();
+  buildCounterCreateFootnoteRequest++;
+  if (buildCounterCreateFootnoteRequest < 3) {
+    o.endOfSegmentLocation = buildEndOfSegmentLocation();
+    o.location = buildLocation();
+  }
+  buildCounterCreateFootnoteRequest--;
+  return o;
+}
+
+checkCreateFootnoteRequest(api.CreateFootnoteRequest o) {
+  buildCounterCreateFootnoteRequest++;
+  if (buildCounterCreateFootnoteRequest < 3) {
+    checkEndOfSegmentLocation(o.endOfSegmentLocation);
+    checkLocation(o.location);
+  }
+  buildCounterCreateFootnoteRequest--;
+}
+
+core.int buildCounterCreateFootnoteResponse = 0;
+buildCreateFootnoteResponse() {
+  var o = new api.CreateFootnoteResponse();
+  buildCounterCreateFootnoteResponse++;
+  if (buildCounterCreateFootnoteResponse < 3) {
+    o.footnoteId = "foo";
+  }
+  buildCounterCreateFootnoteResponse--;
+  return o;
+}
+
+checkCreateFootnoteResponse(api.CreateFootnoteResponse o) {
+  buildCounterCreateFootnoteResponse++;
+  if (buildCounterCreateFootnoteResponse < 3) {
+    unittest.expect(o.footnoteId, unittest.equals('foo'));
+  }
+  buildCounterCreateFootnoteResponse--;
+}
+
+core.int buildCounterCreateHeaderRequest = 0;
+buildCreateHeaderRequest() {
+  var o = new api.CreateHeaderRequest();
+  buildCounterCreateHeaderRequest++;
+  if (buildCounterCreateHeaderRequest < 3) {
+    o.type = "foo";
+  }
+  buildCounterCreateHeaderRequest--;
+  return o;
+}
+
+checkCreateHeaderRequest(api.CreateHeaderRequest o) {
+  buildCounterCreateHeaderRequest++;
+  if (buildCounterCreateHeaderRequest < 3) {
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterCreateHeaderRequest--;
+}
+
+core.int buildCounterCreateHeaderResponse = 0;
+buildCreateHeaderResponse() {
+  var o = new api.CreateHeaderResponse();
+  buildCounterCreateHeaderResponse++;
+  if (buildCounterCreateHeaderResponse < 3) {
+    o.headerId = "foo";
+  }
+  buildCounterCreateHeaderResponse--;
+  return o;
+}
+
+checkCreateHeaderResponse(api.CreateHeaderResponse o) {
+  buildCounterCreateHeaderResponse++;
+  if (buildCounterCreateHeaderResponse < 3) {
+    unittest.expect(o.headerId, unittest.equals('foo'));
+  }
+  buildCounterCreateHeaderResponse--;
 }
 
 core.int buildCounterCreateNamedRangeRequest = 0;
@@ -637,118 +753,118 @@ checkDimension(api.Dimension o) {
   buildCounterDimension--;
 }
 
-buildUnnamed4669() {
+buildUnnamed4618() {
   var o = new core.Map<core.String, api.Footer>();
   o["x"] = buildFooter();
   o["y"] = buildFooter();
   return o;
 }
 
-checkUnnamed4669(core.Map<core.String, api.Footer> o) {
+checkUnnamed4618(core.Map<core.String, api.Footer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFooter(o["x"]);
   checkFooter(o["y"]);
 }
 
-buildUnnamed4670() {
+buildUnnamed4619() {
   var o = new core.Map<core.String, api.Footnote>();
   o["x"] = buildFootnote();
   o["y"] = buildFootnote();
   return o;
 }
 
-checkUnnamed4670(core.Map<core.String, api.Footnote> o) {
+checkUnnamed4619(core.Map<core.String, api.Footnote> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFootnote(o["x"]);
   checkFootnote(o["y"]);
 }
 
-buildUnnamed4671() {
+buildUnnamed4620() {
   var o = new core.Map<core.String, api.Header>();
   o["x"] = buildHeader();
   o["y"] = buildHeader();
   return o;
 }
 
-checkUnnamed4671(core.Map<core.String, api.Header> o) {
+checkUnnamed4620(core.Map<core.String, api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeader(o["x"]);
   checkHeader(o["y"]);
 }
 
-buildUnnamed4672() {
+buildUnnamed4621() {
   var o = new core.Map<core.String, api.InlineObject>();
   o["x"] = buildInlineObject();
   o["y"] = buildInlineObject();
   return o;
 }
 
-checkUnnamed4672(core.Map<core.String, api.InlineObject> o) {
+checkUnnamed4621(core.Map<core.String, api.InlineObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInlineObject(o["x"]);
   checkInlineObject(o["y"]);
 }
 
-buildUnnamed4673() {
+buildUnnamed4622() {
   var o = new core.Map<core.String, api.List>();
   o["x"] = buildList();
   o["y"] = buildList();
   return o;
 }
 
-checkUnnamed4673(core.Map<core.String, api.List> o) {
+checkUnnamed4622(core.Map<core.String, api.List> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkList(o["x"]);
   checkList(o["y"]);
 }
 
-buildUnnamed4674() {
+buildUnnamed4623() {
   var o = new core.Map<core.String, api.NamedRanges>();
   o["x"] = buildNamedRanges();
   o["y"] = buildNamedRanges();
   return o;
 }
 
-checkUnnamed4674(core.Map<core.String, api.NamedRanges> o) {
+checkUnnamed4623(core.Map<core.String, api.NamedRanges> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedRanges(o["x"]);
   checkNamedRanges(o["y"]);
 }
 
-buildUnnamed4675() {
+buildUnnamed4624() {
   var o = new core.Map<core.String, api.PositionedObject>();
   o["x"] = buildPositionedObject();
   o["y"] = buildPositionedObject();
   return o;
 }
 
-checkUnnamed4675(core.Map<core.String, api.PositionedObject> o) {
+checkUnnamed4624(core.Map<core.String, api.PositionedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPositionedObject(o["x"]);
   checkPositionedObject(o["y"]);
 }
 
-buildUnnamed4676() {
+buildUnnamed4625() {
   var o = new core.Map<core.String, api.SuggestedDocumentStyle>();
   o["x"] = buildSuggestedDocumentStyle();
   o["y"] = buildSuggestedDocumentStyle();
   return o;
 }
 
-checkUnnamed4676(core.Map<core.String, api.SuggestedDocumentStyle> o) {
+checkUnnamed4625(core.Map<core.String, api.SuggestedDocumentStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedDocumentStyle(o["x"]);
   checkSuggestedDocumentStyle(o["y"]);
 }
 
-buildUnnamed4677() {
+buildUnnamed4626() {
   var o = new core.Map<core.String, api.SuggestedNamedStyles>();
   o["x"] = buildSuggestedNamedStyles();
   o["y"] = buildSuggestedNamedStyles();
   return o;
 }
 
-checkUnnamed4677(core.Map<core.String, api.SuggestedNamedStyles> o) {
+checkUnnamed4626(core.Map<core.String, api.SuggestedNamedStyles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedNamedStyles(o["x"]);
   checkSuggestedNamedStyles(o["y"]);
@@ -762,17 +878,17 @@ buildDocument() {
     o.body = buildBody();
     o.documentId = "foo";
     o.documentStyle = buildDocumentStyle();
-    o.footers = buildUnnamed4669();
-    o.footnotes = buildUnnamed4670();
-    o.headers = buildUnnamed4671();
-    o.inlineObjects = buildUnnamed4672();
-    o.lists = buildUnnamed4673();
-    o.namedRanges = buildUnnamed4674();
+    o.footers = buildUnnamed4618();
+    o.footnotes = buildUnnamed4619();
+    o.headers = buildUnnamed4620();
+    o.inlineObjects = buildUnnamed4621();
+    o.lists = buildUnnamed4622();
+    o.namedRanges = buildUnnamed4623();
     o.namedStyles = buildNamedStyles();
-    o.positionedObjects = buildUnnamed4675();
+    o.positionedObjects = buildUnnamed4624();
     o.revisionId = "foo";
-    o.suggestedDocumentStyleChanges = buildUnnamed4676();
-    o.suggestedNamedStylesChanges = buildUnnamed4677();
+    o.suggestedDocumentStyleChanges = buildUnnamed4625();
+    o.suggestedNamedStylesChanges = buildUnnamed4626();
     o.suggestionsViewMode = "foo";
     o.title = "foo";
   }
@@ -786,17 +902,17 @@ checkDocument(api.Document o) {
     checkBody(o.body);
     unittest.expect(o.documentId, unittest.equals('foo'));
     checkDocumentStyle(o.documentStyle);
-    checkUnnamed4669(o.footers);
-    checkUnnamed4670(o.footnotes);
-    checkUnnamed4671(o.headers);
-    checkUnnamed4672(o.inlineObjects);
-    checkUnnamed4673(o.lists);
-    checkUnnamed4674(o.namedRanges);
+    checkUnnamed4618(o.footers);
+    checkUnnamed4619(o.footnotes);
+    checkUnnamed4620(o.headers);
+    checkUnnamed4621(o.inlineObjects);
+    checkUnnamed4622(o.lists);
+    checkUnnamed4623(o.namedRanges);
     checkNamedStyles(o.namedStyles);
-    checkUnnamed4675(o.positionedObjects);
+    checkUnnamed4624(o.positionedObjects);
     unittest.expect(o.revisionId, unittest.equals('foo'));
-    checkUnnamed4676(o.suggestedDocumentStyleChanges);
-    checkUnnamed4677(o.suggestedNamedStylesChanges);
+    checkUnnamed4625(o.suggestedDocumentStyleChanges);
+    checkUnnamed4626(o.suggestedNamedStylesChanges);
     unittest.expect(o.suggestionsViewMode, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
@@ -816,11 +932,14 @@ buildDocumentStyle() {
     o.firstPageFooterId = "foo";
     o.firstPageHeaderId = "foo";
     o.marginBottom = buildDimension();
+    o.marginFooter = buildDimension();
+    o.marginHeader = buildDimension();
     o.marginLeft = buildDimension();
     o.marginRight = buildDimension();
     o.marginTop = buildDimension();
     o.pageNumberStart = 42;
     o.pageSize = buildSize();
+    o.useCustomHeaderFooterMargins = true;
     o.useEvenPageHeaderFooter = true;
     o.useFirstPageHeaderFooter = true;
   }
@@ -839,11 +958,14 @@ checkDocumentStyle(api.DocumentStyle o) {
     unittest.expect(o.firstPageFooterId, unittest.equals('foo'));
     unittest.expect(o.firstPageHeaderId, unittest.equals('foo'));
     checkDimension(o.marginBottom);
+    checkDimension(o.marginFooter);
+    checkDimension(o.marginHeader);
     checkDimension(o.marginLeft);
     checkDimension(o.marginRight);
     checkDimension(o.marginTop);
     unittest.expect(o.pageNumberStart, unittest.equals(42));
     checkSize(o.pageSize);
+    unittest.expect(o.useCustomHeaderFooterMargins, unittest.isTrue);
     unittest.expect(o.useEvenPageHeaderFooter, unittest.isTrue);
     unittest.expect(o.useFirstPageHeaderFooter, unittest.isTrue);
   }
@@ -1082,27 +1204,27 @@ checkEndOfSegmentLocation(api.EndOfSegmentLocation o) {
   buildCounterEndOfSegmentLocation--;
 }
 
-buildUnnamed4678() {
+buildUnnamed4627() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4678(core.List<core.String> o) {
+checkUnnamed4627(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4679() {
+buildUnnamed4628() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4679(core.List<core.String> o) {
+checkUnnamed4628(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1113,8 +1235,8 @@ buildEquation() {
   var o = new api.Equation();
   buildCounterEquation++;
   if (buildCounterEquation < 3) {
-    o.suggestedDeletionIds = buildUnnamed4678();
-    o.suggestedInsertionIds = buildUnnamed4679();
+    o.suggestedDeletionIds = buildUnnamed4627();
+    o.suggestedInsertionIds = buildUnnamed4628();
   }
   buildCounterEquation--;
   return o;
@@ -1123,20 +1245,20 @@ buildEquation() {
 checkEquation(api.Equation o) {
   buildCounterEquation++;
   if (buildCounterEquation < 3) {
-    checkUnnamed4678(o.suggestedDeletionIds);
-    checkUnnamed4679(o.suggestedInsertionIds);
+    checkUnnamed4627(o.suggestedDeletionIds);
+    checkUnnamed4628(o.suggestedInsertionIds);
   }
   buildCounterEquation--;
 }
 
-buildUnnamed4680() {
+buildUnnamed4629() {
   var o = new core.List<api.StructuralElement>();
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-checkUnnamed4680(core.List<api.StructuralElement> o) {
+checkUnnamed4629(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0]);
   checkStructuralElement(o[1]);
@@ -1147,7 +1269,7 @@ buildFooter() {
   var o = new api.Footer();
   buildCounterFooter++;
   if (buildCounterFooter < 3) {
-    o.content = buildUnnamed4680();
+    o.content = buildUnnamed4629();
     o.footerId = "foo";
   }
   buildCounterFooter--;
@@ -1157,20 +1279,20 @@ buildFooter() {
 checkFooter(api.Footer o) {
   buildCounterFooter++;
   if (buildCounterFooter < 3) {
-    checkUnnamed4680(o.content);
+    checkUnnamed4629(o.content);
     unittest.expect(o.footerId, unittest.equals('foo'));
   }
   buildCounterFooter--;
 }
 
-buildUnnamed4681() {
+buildUnnamed4630() {
   var o = new core.List<api.StructuralElement>();
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-checkUnnamed4681(core.List<api.StructuralElement> o) {
+checkUnnamed4630(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0]);
   checkStructuralElement(o[1]);
@@ -1181,7 +1303,7 @@ buildFootnote() {
   var o = new api.Footnote();
   buildCounterFootnote++;
   if (buildCounterFootnote < 3) {
-    o.content = buildUnnamed4681();
+    o.content = buildUnnamed4630();
     o.footnoteId = "foo";
   }
   buildCounterFootnote--;
@@ -1191,46 +1313,46 @@ buildFootnote() {
 checkFootnote(api.Footnote o) {
   buildCounterFootnote++;
   if (buildCounterFootnote < 3) {
-    checkUnnamed4681(o.content);
+    checkUnnamed4630(o.content);
     unittest.expect(o.footnoteId, unittest.equals('foo'));
   }
   buildCounterFootnote--;
 }
 
-buildUnnamed4682() {
+buildUnnamed4631() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4682(core.List<core.String> o) {
+checkUnnamed4631(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4683() {
+buildUnnamed4632() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4683(core.List<core.String> o) {
+checkUnnamed4632(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4684() {
+buildUnnamed4633() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4684(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4633(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -1243,9 +1365,9 @@ buildFootnoteReference() {
   if (buildCounterFootnoteReference < 3) {
     o.footnoteId = "foo";
     o.footnoteNumber = "foo";
-    o.suggestedDeletionIds = buildUnnamed4682();
-    o.suggestedInsertionIds = buildUnnamed4683();
-    o.suggestedTextStyleChanges = buildUnnamed4684();
+    o.suggestedDeletionIds = buildUnnamed4631();
+    o.suggestedInsertionIds = buildUnnamed4632();
+    o.suggestedTextStyleChanges = buildUnnamed4633();
     o.textStyle = buildTextStyle();
   }
   buildCounterFootnoteReference--;
@@ -1257,22 +1379,22 @@ checkFootnoteReference(api.FootnoteReference o) {
   if (buildCounterFootnoteReference < 3) {
     unittest.expect(o.footnoteId, unittest.equals('foo'));
     unittest.expect(o.footnoteNumber, unittest.equals('foo'));
-    checkUnnamed4682(o.suggestedDeletionIds);
-    checkUnnamed4683(o.suggestedInsertionIds);
-    checkUnnamed4684(o.suggestedTextStyleChanges);
+    checkUnnamed4631(o.suggestedDeletionIds);
+    checkUnnamed4632(o.suggestedInsertionIds);
+    checkUnnamed4633(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
   }
   buildCounterFootnoteReference--;
 }
 
-buildUnnamed4685() {
+buildUnnamed4634() {
   var o = new core.List<api.StructuralElement>();
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-checkUnnamed4685(core.List<api.StructuralElement> o) {
+checkUnnamed4634(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0]);
   checkStructuralElement(o[1]);
@@ -1283,7 +1405,7 @@ buildHeader() {
   var o = new api.Header();
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
-    o.content = buildUnnamed4685();
+    o.content = buildUnnamed4634();
     o.headerId = "foo";
   }
   buildCounterHeader--;
@@ -1293,46 +1415,46 @@ buildHeader() {
 checkHeader(api.Header o) {
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
-    checkUnnamed4685(o.content);
+    checkUnnamed4634(o.content);
     unittest.expect(o.headerId, unittest.equals('foo'));
   }
   buildCounterHeader--;
 }
 
-buildUnnamed4686() {
+buildUnnamed4635() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4686(core.List<core.String> o) {
+checkUnnamed4635(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4687() {
+buildUnnamed4636() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4687(core.List<core.String> o) {
+checkUnnamed4636(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4688() {
+buildUnnamed4637() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4688(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4637(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -1343,9 +1465,9 @@ buildHorizontalRule() {
   var o = new api.HorizontalRule();
   buildCounterHorizontalRule++;
   if (buildCounterHorizontalRule < 3) {
-    o.suggestedDeletionIds = buildUnnamed4686();
-    o.suggestedInsertionIds = buildUnnamed4687();
-    o.suggestedTextStyleChanges = buildUnnamed4688();
+    o.suggestedDeletionIds = buildUnnamed4635();
+    o.suggestedInsertionIds = buildUnnamed4636();
+    o.suggestedTextStyleChanges = buildUnnamed4637();
     o.textStyle = buildTextStyle();
   }
   buildCounterHorizontalRule--;
@@ -1355,9 +1477,9 @@ buildHorizontalRule() {
 checkHorizontalRule(api.HorizontalRule o) {
   buildCounterHorizontalRule++;
   if (buildCounterHorizontalRule < 3) {
-    checkUnnamed4686(o.suggestedDeletionIds);
-    checkUnnamed4687(o.suggestedInsertionIds);
-    checkUnnamed4688(o.suggestedTextStyleChanges);
+    checkUnnamed4635(o.suggestedDeletionIds);
+    checkUnnamed4636(o.suggestedInsertionIds);
+    checkUnnamed4637(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
   }
   buildCounterHorizontalRule--;
@@ -1425,27 +1547,27 @@ checkImagePropertiesSuggestionState(api.ImagePropertiesSuggestionState o) {
   buildCounterImagePropertiesSuggestionState--;
 }
 
-buildUnnamed4689() {
+buildUnnamed4638() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4689(core.List<core.String> o) {
+checkUnnamed4638(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4690() {
+buildUnnamed4639() {
   var o = new core.Map<core.String, api.SuggestedInlineObjectProperties>();
   o["x"] = buildSuggestedInlineObjectProperties();
   o["y"] = buildSuggestedInlineObjectProperties();
   return o;
 }
 
-checkUnnamed4690(core.Map<core.String, api.SuggestedInlineObjectProperties> o) {
+checkUnnamed4639(core.Map<core.String, api.SuggestedInlineObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedInlineObjectProperties(o["x"]);
   checkSuggestedInlineObjectProperties(o["y"]);
@@ -1458,8 +1580,8 @@ buildInlineObject() {
   if (buildCounterInlineObject < 3) {
     o.inlineObjectProperties = buildInlineObjectProperties();
     o.objectId = "foo";
-    o.suggestedDeletionIds = buildUnnamed4689();
-    o.suggestedInlineObjectPropertiesChanges = buildUnnamed4690();
+    o.suggestedDeletionIds = buildUnnamed4638();
+    o.suggestedInlineObjectPropertiesChanges = buildUnnamed4639();
     o.suggestedInsertionId = "foo";
   }
   buildCounterInlineObject--;
@@ -1471,47 +1593,47 @@ checkInlineObject(api.InlineObject o) {
   if (buildCounterInlineObject < 3) {
     checkInlineObjectProperties(o.inlineObjectProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkUnnamed4689(o.suggestedDeletionIds);
-    checkUnnamed4690(o.suggestedInlineObjectPropertiesChanges);
+    checkUnnamed4638(o.suggestedDeletionIds);
+    checkUnnamed4639(o.suggestedInlineObjectPropertiesChanges);
     unittest.expect(o.suggestedInsertionId, unittest.equals('foo'));
   }
   buildCounterInlineObject--;
 }
 
-buildUnnamed4691() {
+buildUnnamed4640() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4691(core.List<core.String> o) {
+checkUnnamed4640(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4692() {
+buildUnnamed4641() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4692(core.List<core.String> o) {
+checkUnnamed4641(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4693() {
+buildUnnamed4642() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4693(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4642(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -1523,9 +1645,9 @@ buildInlineObjectElement() {
   buildCounterInlineObjectElement++;
   if (buildCounterInlineObjectElement < 3) {
     o.inlineObjectId = "foo";
-    o.suggestedDeletionIds = buildUnnamed4691();
-    o.suggestedInsertionIds = buildUnnamed4692();
-    o.suggestedTextStyleChanges = buildUnnamed4693();
+    o.suggestedDeletionIds = buildUnnamed4640();
+    o.suggestedInsertionIds = buildUnnamed4641();
+    o.suggestedTextStyleChanges = buildUnnamed4642();
     o.textStyle = buildTextStyle();
   }
   buildCounterInlineObjectElement--;
@@ -1536,9 +1658,9 @@ checkInlineObjectElement(api.InlineObjectElement o) {
   buildCounterInlineObjectElement++;
   if (buildCounterInlineObjectElement < 3) {
     unittest.expect(o.inlineObjectId, unittest.equals('foo'));
-    checkUnnamed4691(o.suggestedDeletionIds);
-    checkUnnamed4692(o.suggestedInsertionIds);
-    checkUnnamed4693(o.suggestedTextStyleChanges);
+    checkUnnamed4640(o.suggestedDeletionIds);
+    checkUnnamed4641(o.suggestedInsertionIds);
+    checkUnnamed4642(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
   }
   buildCounterInlineObjectElement--;
@@ -1665,6 +1787,29 @@ checkInsertPageBreakRequest(api.InsertPageBreakRequest o) {
     checkLocation(o.location);
   }
   buildCounterInsertPageBreakRequest--;
+}
+
+core.int buildCounterInsertSectionBreakRequest = 0;
+buildInsertSectionBreakRequest() {
+  var o = new api.InsertSectionBreakRequest();
+  buildCounterInsertSectionBreakRequest++;
+  if (buildCounterInsertSectionBreakRequest < 3) {
+    o.endOfSegmentLocation = buildEndOfSegmentLocation();
+    o.location = buildLocation();
+    o.sectionType = "foo";
+  }
+  buildCounterInsertSectionBreakRequest--;
+  return o;
+}
+
+checkInsertSectionBreakRequest(api.InsertSectionBreakRequest o) {
+  buildCounterInsertSectionBreakRequest++;
+  if (buildCounterInsertSectionBreakRequest < 3) {
+    checkEndOfSegmentLocation(o.endOfSegmentLocation);
+    checkLocation(o.location);
+    unittest.expect(o.sectionType, unittest.equals('foo'));
+  }
+  buildCounterInsertSectionBreakRequest--;
 }
 
 core.int buildCounterInsertTableColumnRequest = 0;
@@ -1821,27 +1966,27 @@ checkLinkedContentReferenceSuggestionState(
   buildCounterLinkedContentReferenceSuggestionState--;
 }
 
-buildUnnamed4694() {
+buildUnnamed4643() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4694(core.List<core.String> o) {
+checkUnnamed4643(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4695() {
+buildUnnamed4644() {
   var o = new core.Map<core.String, api.SuggestedListProperties>();
   o["x"] = buildSuggestedListProperties();
   o["y"] = buildSuggestedListProperties();
   return o;
 }
 
-checkUnnamed4695(core.Map<core.String, api.SuggestedListProperties> o) {
+checkUnnamed4644(core.Map<core.String, api.SuggestedListProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedListProperties(o["x"]);
   checkSuggestedListProperties(o["y"]);
@@ -1853,9 +1998,9 @@ buildList() {
   buildCounterList++;
   if (buildCounterList < 3) {
     o.listProperties = buildListProperties();
-    o.suggestedDeletionIds = buildUnnamed4694();
+    o.suggestedDeletionIds = buildUnnamed4643();
     o.suggestedInsertionId = "foo";
-    o.suggestedListPropertiesChanges = buildUnnamed4695();
+    o.suggestedListPropertiesChanges = buildUnnamed4644();
   }
   buildCounterList--;
   return o;
@@ -1865,21 +2010,21 @@ checkList(api.List o) {
   buildCounterList++;
   if (buildCounterList < 3) {
     checkListProperties(o.listProperties);
-    checkUnnamed4694(o.suggestedDeletionIds);
+    checkUnnamed4643(o.suggestedDeletionIds);
     unittest.expect(o.suggestedInsertionId, unittest.equals('foo'));
-    checkUnnamed4695(o.suggestedListPropertiesChanges);
+    checkUnnamed4644(o.suggestedListPropertiesChanges);
   }
   buildCounterList--;
 }
 
-buildUnnamed4696() {
+buildUnnamed4645() {
   var o = new core.List<api.NestingLevel>();
   o.add(buildNestingLevel());
   o.add(buildNestingLevel());
   return o;
 }
 
-checkUnnamed4696(core.List<api.NestingLevel> o) {
+checkUnnamed4645(core.List<api.NestingLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestingLevel(o[0]);
   checkNestingLevel(o[1]);
@@ -1890,7 +2035,7 @@ buildListProperties() {
   var o = new api.ListProperties();
   buildCounterListProperties++;
   if (buildCounterListProperties < 3) {
-    o.nestingLevels = buildUnnamed4696();
+    o.nestingLevels = buildUnnamed4645();
   }
   buildCounterListProperties--;
   return o;
@@ -1899,19 +2044,19 @@ buildListProperties() {
 checkListProperties(api.ListProperties o) {
   buildCounterListProperties++;
   if (buildCounterListProperties < 3) {
-    checkUnnamed4696(o.nestingLevels);
+    checkUnnamed4645(o.nestingLevels);
   }
   buildCounterListProperties--;
 }
 
-buildUnnamed4697() {
+buildUnnamed4646() {
   var o = new core.List<api.NestingLevelSuggestionState>();
   o.add(buildNestingLevelSuggestionState());
   o.add(buildNestingLevelSuggestionState());
   return o;
 }
 
-checkUnnamed4697(core.List<api.NestingLevelSuggestionState> o) {
+checkUnnamed4646(core.List<api.NestingLevelSuggestionState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestingLevelSuggestionState(o[0]);
   checkNestingLevelSuggestionState(o[1]);
@@ -1922,7 +2067,7 @@ buildListPropertiesSuggestionState() {
   var o = new api.ListPropertiesSuggestionState();
   buildCounterListPropertiesSuggestionState++;
   if (buildCounterListPropertiesSuggestionState < 3) {
-    o.nestingLevelsSuggestionStates = buildUnnamed4697();
+    o.nestingLevelsSuggestionStates = buildUnnamed4646();
   }
   buildCounterListPropertiesSuggestionState--;
   return o;
@@ -1931,7 +2076,7 @@ buildListPropertiesSuggestionState() {
 checkListPropertiesSuggestionState(api.ListPropertiesSuggestionState o) {
   buildCounterListPropertiesSuggestionState++;
   if (buildCounterListPropertiesSuggestionState < 3) {
-    checkUnnamed4697(o.nestingLevelsSuggestionStates);
+    checkUnnamed4646(o.nestingLevelsSuggestionStates);
   }
   buildCounterListPropertiesSuggestionState--;
 }
@@ -1957,14 +2102,33 @@ checkLocation(api.Location o) {
   buildCounterLocation--;
 }
 
-buildUnnamed4698() {
+core.int buildCounterMergeTableCellsRequest = 0;
+buildMergeTableCellsRequest() {
+  var o = new api.MergeTableCellsRequest();
+  buildCounterMergeTableCellsRequest++;
+  if (buildCounterMergeTableCellsRequest < 3) {
+    o.tableRange = buildTableRange();
+  }
+  buildCounterMergeTableCellsRequest--;
+  return o;
+}
+
+checkMergeTableCellsRequest(api.MergeTableCellsRequest o) {
+  buildCounterMergeTableCellsRequest++;
+  if (buildCounterMergeTableCellsRequest < 3) {
+    checkTableRange(o.tableRange);
+  }
+  buildCounterMergeTableCellsRequest--;
+}
+
+buildUnnamed4647() {
   var o = new core.List<api.Range>();
   o.add(buildRange());
   o.add(buildRange());
   return o;
 }
 
-checkUnnamed4698(core.List<api.Range> o) {
+checkUnnamed4647(core.List<api.Range> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRange(o[0]);
   checkRange(o[1]);
@@ -1977,7 +2141,7 @@ buildNamedRange() {
   if (buildCounterNamedRange < 3) {
     o.name = "foo";
     o.namedRangeId = "foo";
-    o.ranges = buildUnnamed4698();
+    o.ranges = buildUnnamed4647();
   }
   buildCounterNamedRange--;
   return o;
@@ -1988,19 +2152,19 @@ checkNamedRange(api.NamedRange o) {
   if (buildCounterNamedRange < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.namedRangeId, unittest.equals('foo'));
-    checkUnnamed4698(o.ranges);
+    checkUnnamed4647(o.ranges);
   }
   buildCounterNamedRange--;
 }
 
-buildUnnamed4699() {
+buildUnnamed4648() {
   var o = new core.List<api.NamedRange>();
   o.add(buildNamedRange());
   o.add(buildNamedRange());
   return o;
 }
 
-checkUnnamed4699(core.List<api.NamedRange> o) {
+checkUnnamed4648(core.List<api.NamedRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedRange(o[0]);
   checkNamedRange(o[1]);
@@ -2012,7 +2176,7 @@ buildNamedRanges() {
   buildCounterNamedRanges++;
   if (buildCounterNamedRanges < 3) {
     o.name = "foo";
-    o.namedRanges = buildUnnamed4699();
+    o.namedRanges = buildUnnamed4648();
   }
   buildCounterNamedRanges--;
   return o;
@@ -2022,7 +2186,7 @@ checkNamedRanges(api.NamedRanges o) {
   buildCounterNamedRanges++;
   if (buildCounterNamedRanges < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4699(o.namedRanges);
+    checkUnnamed4648(o.namedRanges);
   }
   buildCounterNamedRanges--;
 }
@@ -2073,14 +2237,14 @@ checkNamedStyleSuggestionState(api.NamedStyleSuggestionState o) {
   buildCounterNamedStyleSuggestionState--;
 }
 
-buildUnnamed4700() {
+buildUnnamed4649() {
   var o = new core.List<api.NamedStyle>();
   o.add(buildNamedStyle());
   o.add(buildNamedStyle());
   return o;
 }
 
-checkUnnamed4700(core.List<api.NamedStyle> o) {
+checkUnnamed4649(core.List<api.NamedStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedStyle(o[0]);
   checkNamedStyle(o[1]);
@@ -2091,7 +2255,7 @@ buildNamedStyles() {
   var o = new api.NamedStyles();
   buildCounterNamedStyles++;
   if (buildCounterNamedStyles < 3) {
-    o.styles = buildUnnamed4700();
+    o.styles = buildUnnamed4649();
   }
   buildCounterNamedStyles--;
   return o;
@@ -2100,19 +2264,19 @@ buildNamedStyles() {
 checkNamedStyles(api.NamedStyles o) {
   buildCounterNamedStyles++;
   if (buildCounterNamedStyles < 3) {
-    checkUnnamed4700(o.styles);
+    checkUnnamed4649(o.styles);
   }
   buildCounterNamedStyles--;
 }
 
-buildUnnamed4701() {
+buildUnnamed4650() {
   var o = new core.List<api.NamedStyleSuggestionState>();
   o.add(buildNamedStyleSuggestionState());
   o.add(buildNamedStyleSuggestionState());
   return o;
 }
 
-checkUnnamed4701(core.List<api.NamedStyleSuggestionState> o) {
+checkUnnamed4650(core.List<api.NamedStyleSuggestionState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedStyleSuggestionState(o[0]);
   checkNamedStyleSuggestionState(o[1]);
@@ -2123,7 +2287,7 @@ buildNamedStylesSuggestionState() {
   var o = new api.NamedStylesSuggestionState();
   buildCounterNamedStylesSuggestionState++;
   if (buildCounterNamedStylesSuggestionState < 3) {
-    o.stylesSuggestionStates = buildUnnamed4701();
+    o.stylesSuggestionStates = buildUnnamed4650();
   }
   buildCounterNamedStylesSuggestionState--;
   return o;
@@ -2132,7 +2296,7 @@ buildNamedStylesSuggestionState() {
 checkNamedStylesSuggestionState(api.NamedStylesSuggestionState o) {
   buildCounterNamedStylesSuggestionState++;
   if (buildCounterNamedStylesSuggestionState < 3) {
-    checkUnnamed4701(o.stylesSuggestionStates);
+    checkUnnamed4650(o.stylesSuggestionStates);
   }
   buildCounterNamedStylesSuggestionState--;
 }
@@ -2203,14 +2367,14 @@ checkNestingLevelSuggestionState(api.NestingLevelSuggestionState o) {
   buildCounterNestingLevelSuggestionState--;
 }
 
-buildUnnamed4702() {
+buildUnnamed4651() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4702(core.List<core.String> o) {
+checkUnnamed4651(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2221,7 +2385,7 @@ buildObjectReferences() {
   var o = new api.ObjectReferences();
   buildCounterObjectReferences++;
   if (buildCounterObjectReferences < 3) {
-    o.objectIds = buildUnnamed4702();
+    o.objectIds = buildUnnamed4651();
   }
   buildCounterObjectReferences--;
   return o;
@@ -2230,7 +2394,7 @@ buildObjectReferences() {
 checkObjectReferences(api.ObjectReferences o) {
   buildCounterObjectReferences++;
   if (buildCounterObjectReferences < 3) {
-    checkUnnamed4702(o.objectIds);
+    checkUnnamed4651(o.objectIds);
   }
   buildCounterObjectReferences--;
 }
@@ -2254,40 +2418,40 @@ checkOptionalColor(api.OptionalColor o) {
   buildCounterOptionalColor--;
 }
 
-buildUnnamed4703() {
+buildUnnamed4652() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4703(core.List<core.String> o) {
+checkUnnamed4652(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4704() {
+buildUnnamed4653() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4704(core.List<core.String> o) {
+checkUnnamed4653(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4705() {
+buildUnnamed4654() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4705(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4654(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -2298,9 +2462,9 @@ buildPageBreak() {
   var o = new api.PageBreak();
   buildCounterPageBreak++;
   if (buildCounterPageBreak < 3) {
-    o.suggestedDeletionIds = buildUnnamed4703();
-    o.suggestedInsertionIds = buildUnnamed4704();
-    o.suggestedTextStyleChanges = buildUnnamed4705();
+    o.suggestedDeletionIds = buildUnnamed4652();
+    o.suggestedInsertionIds = buildUnnamed4653();
+    o.suggestedTextStyleChanges = buildUnnamed4654();
     o.textStyle = buildTextStyle();
   }
   buildCounterPageBreak--;
@@ -2310,74 +2474,74 @@ buildPageBreak() {
 checkPageBreak(api.PageBreak o) {
   buildCounterPageBreak++;
   if (buildCounterPageBreak < 3) {
-    checkUnnamed4703(o.suggestedDeletionIds);
-    checkUnnamed4704(o.suggestedInsertionIds);
-    checkUnnamed4705(o.suggestedTextStyleChanges);
+    checkUnnamed4652(o.suggestedDeletionIds);
+    checkUnnamed4653(o.suggestedInsertionIds);
+    checkUnnamed4654(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
   }
   buildCounterPageBreak--;
 }
 
-buildUnnamed4706() {
+buildUnnamed4655() {
   var o = new core.List<api.ParagraphElement>();
   o.add(buildParagraphElement());
   o.add(buildParagraphElement());
   return o;
 }
 
-checkUnnamed4706(core.List<api.ParagraphElement> o) {
+checkUnnamed4655(core.List<api.ParagraphElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParagraphElement(o[0]);
   checkParagraphElement(o[1]);
 }
 
-buildUnnamed4707() {
+buildUnnamed4656() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4707(core.List<core.String> o) {
+checkUnnamed4656(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4708() {
+buildUnnamed4657() {
   var o = new core.Map<core.String, api.SuggestedBullet>();
   o["x"] = buildSuggestedBullet();
   o["y"] = buildSuggestedBullet();
   return o;
 }
 
-checkUnnamed4708(core.Map<core.String, api.SuggestedBullet> o) {
+checkUnnamed4657(core.Map<core.String, api.SuggestedBullet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedBullet(o["x"]);
   checkSuggestedBullet(o["y"]);
 }
 
-buildUnnamed4709() {
+buildUnnamed4658() {
   var o = new core.Map<core.String, api.SuggestedParagraphStyle>();
   o["x"] = buildSuggestedParagraphStyle();
   o["y"] = buildSuggestedParagraphStyle();
   return o;
 }
 
-checkUnnamed4709(core.Map<core.String, api.SuggestedParagraphStyle> o) {
+checkUnnamed4658(core.Map<core.String, api.SuggestedParagraphStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedParagraphStyle(o["x"]);
   checkSuggestedParagraphStyle(o["y"]);
 }
 
-buildUnnamed4710() {
+buildUnnamed4659() {
   var o = new core.Map<core.String, api.ObjectReferences>();
   o["x"] = buildObjectReferences();
   o["y"] = buildObjectReferences();
   return o;
 }
 
-checkUnnamed4710(core.Map<core.String, api.ObjectReferences> o) {
+checkUnnamed4659(core.Map<core.String, api.ObjectReferences> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectReferences(o["x"]);
   checkObjectReferences(o["y"]);
@@ -2389,12 +2553,12 @@ buildParagraph() {
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
     o.bullet = buildBullet();
-    o.elements = buildUnnamed4706();
+    o.elements = buildUnnamed4655();
     o.paragraphStyle = buildParagraphStyle();
-    o.positionedObjectIds = buildUnnamed4707();
-    o.suggestedBulletChanges = buildUnnamed4708();
-    o.suggestedParagraphStyleChanges = buildUnnamed4709();
-    o.suggestedPositionedObjectIds = buildUnnamed4710();
+    o.positionedObjectIds = buildUnnamed4656();
+    o.suggestedBulletChanges = buildUnnamed4657();
+    o.suggestedParagraphStyleChanges = buildUnnamed4658();
+    o.suggestedPositionedObjectIds = buildUnnamed4659();
   }
   buildCounterParagraph--;
   return o;
@@ -2404,12 +2568,12 @@ checkParagraph(api.Paragraph o) {
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
     checkBullet(o.bullet);
-    checkUnnamed4706(o.elements);
+    checkUnnamed4655(o.elements);
     checkParagraphStyle(o.paragraphStyle);
-    checkUnnamed4707(o.positionedObjectIds);
-    checkUnnamed4708(o.suggestedBulletChanges);
-    checkUnnamed4709(o.suggestedParagraphStyleChanges);
-    checkUnnamed4710(o.suggestedPositionedObjectIds);
+    checkUnnamed4656(o.positionedObjectIds);
+    checkUnnamed4657(o.suggestedBulletChanges);
+    checkUnnamed4658(o.suggestedParagraphStyleChanges);
+    checkUnnamed4659(o.suggestedPositionedObjectIds);
   }
   buildCounterParagraph--;
 }
@@ -2476,14 +2640,14 @@ checkParagraphElement(api.ParagraphElement o) {
   buildCounterParagraphElement--;
 }
 
-buildUnnamed4711() {
+buildUnnamed4660() {
   var o = new core.List<api.TabStop>();
   o.add(buildTabStop());
   o.add(buildTabStop());
   return o;
 }
 
-checkUnnamed4711(core.List<api.TabStop> o) {
+checkUnnamed4660(core.List<api.TabStop> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTabStop(o[0]);
   checkTabStop(o[1]);
@@ -2514,7 +2678,7 @@ buildParagraphStyle() {
     o.spaceAbove = buildDimension();
     o.spaceBelow = buildDimension();
     o.spacingMode = "foo";
-    o.tabStops = buildUnnamed4711();
+    o.tabStops = buildUnnamed4660();
   }
   buildCounterParagraphStyle--;
   return o;
@@ -2543,7 +2707,7 @@ checkParagraphStyle(api.ParagraphStyle o) {
     checkDimension(o.spaceAbove);
     checkDimension(o.spaceBelow);
     unittest.expect(o.spacingMode, unittest.equals('foo'));
-    checkUnnamed4711(o.tabStops);
+    checkUnnamed4660(o.tabStops);
   }
   buildCounterParagraphStyle--;
 }
@@ -2605,27 +2769,27 @@ checkParagraphStyleSuggestionState(api.ParagraphStyleSuggestionState o) {
   buildCounterParagraphStyleSuggestionState--;
 }
 
-buildUnnamed4712() {
+buildUnnamed4661() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4712(core.List<core.String> o) {
+checkUnnamed4661(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4713() {
+buildUnnamed4662() {
   var o = new core.Map<core.String, api.SuggestedPositionedObjectProperties>();
   o["x"] = buildSuggestedPositionedObjectProperties();
   o["y"] = buildSuggestedPositionedObjectProperties();
   return o;
 }
 
-checkUnnamed4713(
+checkUnnamed4662(
     core.Map<core.String, api.SuggestedPositionedObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedPositionedObjectProperties(o["x"]);
@@ -2639,9 +2803,9 @@ buildPositionedObject() {
   if (buildCounterPositionedObject < 3) {
     o.objectId = "foo";
     o.positionedObjectProperties = buildPositionedObjectProperties();
-    o.suggestedDeletionIds = buildUnnamed4712();
+    o.suggestedDeletionIds = buildUnnamed4661();
     o.suggestedInsertionId = "foo";
-    o.suggestedPositionedObjectPropertiesChanges = buildUnnamed4713();
+    o.suggestedPositionedObjectPropertiesChanges = buildUnnamed4662();
   }
   buildCounterPositionedObject--;
   return o;
@@ -2652,9 +2816,9 @@ checkPositionedObject(api.PositionedObject o) {
   if (buildCounterPositionedObject < 3) {
     unittest.expect(o.objectId, unittest.equals('foo'));
     checkPositionedObjectProperties(o.positionedObjectProperties);
-    checkUnnamed4712(o.suggestedDeletionIds);
+    checkUnnamed4661(o.suggestedDeletionIds);
     unittest.expect(o.suggestedInsertionId, unittest.equals('foo'));
-    checkUnnamed4713(o.suggestedPositionedObjectPropertiesChanges);
+    checkUnnamed4662(o.suggestedPositionedObjectPropertiesChanges);
   }
   buildCounterPositionedObject--;
 }
@@ -2814,11 +2978,60 @@ checkReplaceAllTextResponse(api.ReplaceAllTextResponse o) {
   buildCounterReplaceAllTextResponse--;
 }
 
+core.int buildCounterReplaceImageRequest = 0;
+buildReplaceImageRequest() {
+  var o = new api.ReplaceImageRequest();
+  buildCounterReplaceImageRequest++;
+  if (buildCounterReplaceImageRequest < 3) {
+    o.imageObjectId = "foo";
+    o.imageReplaceMethod = "foo";
+    o.uri = "foo";
+  }
+  buildCounterReplaceImageRequest--;
+  return o;
+}
+
+checkReplaceImageRequest(api.ReplaceImageRequest o) {
+  buildCounterReplaceImageRequest++;
+  if (buildCounterReplaceImageRequest < 3) {
+    unittest.expect(o.imageObjectId, unittest.equals('foo'));
+    unittest.expect(o.imageReplaceMethod, unittest.equals('foo'));
+    unittest.expect(o.uri, unittest.equals('foo'));
+  }
+  buildCounterReplaceImageRequest--;
+}
+
+core.int buildCounterReplaceNamedRangeContentRequest = 0;
+buildReplaceNamedRangeContentRequest() {
+  var o = new api.ReplaceNamedRangeContentRequest();
+  buildCounterReplaceNamedRangeContentRequest++;
+  if (buildCounterReplaceNamedRangeContentRequest < 3) {
+    o.namedRangeId = "foo";
+    o.namedRangeName = "foo";
+    o.text = "foo";
+  }
+  buildCounterReplaceNamedRangeContentRequest--;
+  return o;
+}
+
+checkReplaceNamedRangeContentRequest(api.ReplaceNamedRangeContentRequest o) {
+  buildCounterReplaceNamedRangeContentRequest++;
+  if (buildCounterReplaceNamedRangeContentRequest < 3) {
+    unittest.expect(o.namedRangeId, unittest.equals('foo'));
+    unittest.expect(o.namedRangeName, unittest.equals('foo'));
+    unittest.expect(o.text, unittest.equals('foo'));
+  }
+  buildCounterReplaceNamedRangeContentRequest--;
+}
+
 core.int buildCounterRequest = 0;
 buildRequest() {
   var o = new api.Request();
   buildCounterRequest++;
   if (buildCounterRequest < 3) {
+    o.createFooter = buildCreateFooterRequest();
+    o.createFootnote = buildCreateFootnoteRequest();
+    o.createHeader = buildCreateHeaderRequest();
     o.createNamedRange = buildCreateNamedRangeRequest();
     o.createParagraphBullets = buildCreateParagraphBulletsRequest();
     o.deleteContentRange = buildDeleteContentRangeRequest();
@@ -2829,12 +3042,20 @@ buildRequest() {
     o.deleteTableRow = buildDeleteTableRowRequest();
     o.insertInlineImage = buildInsertInlineImageRequest();
     o.insertPageBreak = buildInsertPageBreakRequest();
+    o.insertSectionBreak = buildInsertSectionBreakRequest();
     o.insertTable = buildInsertTableRequest();
     o.insertTableColumn = buildInsertTableColumnRequest();
     o.insertTableRow = buildInsertTableRowRequest();
     o.insertText = buildInsertTextRequest();
+    o.mergeTableCells = buildMergeTableCellsRequest();
     o.replaceAllText = buildReplaceAllTextRequest();
+    o.replaceImage = buildReplaceImageRequest();
+    o.replaceNamedRangeContent = buildReplaceNamedRangeContentRequest();
+    o.unmergeTableCells = buildUnmergeTableCellsRequest();
+    o.updateDocumentStyle = buildUpdateDocumentStyleRequest();
     o.updateParagraphStyle = buildUpdateParagraphStyleRequest();
+    o.updateSectionStyle = buildUpdateSectionStyleRequest();
+    o.updateTableCellStyle = buildUpdateTableCellStyleRequest();
     o.updateTableColumnProperties = buildUpdateTableColumnPropertiesRequest();
     o.updateTableRowStyle = buildUpdateTableRowStyleRequest();
     o.updateTextStyle = buildUpdateTextStyleRequest();
@@ -2846,6 +3067,9 @@ buildRequest() {
 checkRequest(api.Request o) {
   buildCounterRequest++;
   if (buildCounterRequest < 3) {
+    checkCreateFooterRequest(o.createFooter);
+    checkCreateFootnoteRequest(o.createFootnote);
+    checkCreateHeaderRequest(o.createHeader);
     checkCreateNamedRangeRequest(o.createNamedRange);
     checkCreateParagraphBulletsRequest(o.createParagraphBullets);
     checkDeleteContentRangeRequest(o.deleteContentRange);
@@ -2856,12 +3080,20 @@ checkRequest(api.Request o) {
     checkDeleteTableRowRequest(o.deleteTableRow);
     checkInsertInlineImageRequest(o.insertInlineImage);
     checkInsertPageBreakRequest(o.insertPageBreak);
+    checkInsertSectionBreakRequest(o.insertSectionBreak);
     checkInsertTableRequest(o.insertTable);
     checkInsertTableColumnRequest(o.insertTableColumn);
     checkInsertTableRowRequest(o.insertTableRow);
     checkInsertTextRequest(o.insertText);
+    checkMergeTableCellsRequest(o.mergeTableCells);
     checkReplaceAllTextRequest(o.replaceAllText);
+    checkReplaceImageRequest(o.replaceImage);
+    checkReplaceNamedRangeContentRequest(o.replaceNamedRangeContent);
+    checkUnmergeTableCellsRequest(o.unmergeTableCells);
+    checkUpdateDocumentStyleRequest(o.updateDocumentStyle);
     checkUpdateParagraphStyleRequest(o.updateParagraphStyle);
+    checkUpdateSectionStyleRequest(o.updateSectionStyle);
+    checkUpdateTableCellStyleRequest(o.updateTableCellStyle);
     checkUpdateTableColumnPropertiesRequest(o.updateTableColumnProperties);
     checkUpdateTableRowStyleRequest(o.updateTableRowStyle);
     checkUpdateTextStyleRequest(o.updateTextStyle);
@@ -2874,6 +3106,9 @@ buildResponse() {
   var o = new api.Response();
   buildCounterResponse++;
   if (buildCounterResponse < 3) {
+    o.createFooter = buildCreateFooterResponse();
+    o.createFootnote = buildCreateFootnoteResponse();
+    o.createHeader = buildCreateHeaderResponse();
     o.createNamedRange = buildCreateNamedRangeResponse();
     o.insertInlineImage = buildInsertInlineImageResponse();
     o.insertInlineSheetsChart = buildInsertInlineSheetsChartResponse();
@@ -2886,6 +3121,9 @@ buildResponse() {
 checkResponse(api.Response o) {
   buildCounterResponse++;
   if (buildCounterResponse < 3) {
+    checkCreateFooterResponse(o.createFooter);
+    checkCreateFootnoteResponse(o.createFootnote);
+    checkCreateHeaderResponse(o.createHeader);
     checkCreateNamedRangeResponse(o.createNamedRange);
     checkInsertInlineImageResponse(o.insertInlineImage);
     checkInsertInlineSheetsChartResponse(o.insertInlineSheetsChart);
@@ -2917,27 +3155,27 @@ checkRgbColor(api.RgbColor o) {
   buildCounterRgbColor--;
 }
 
-buildUnnamed4714() {
+buildUnnamed4663() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4714(core.List<core.String> o) {
+checkUnnamed4663(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4715() {
+buildUnnamed4664() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4715(core.List<core.String> o) {
+checkUnnamed4664(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2949,8 +3187,8 @@ buildSectionBreak() {
   buildCounterSectionBreak++;
   if (buildCounterSectionBreak < 3) {
     o.sectionStyle = buildSectionStyle();
-    o.suggestedDeletionIds = buildUnnamed4714();
-    o.suggestedInsertionIds = buildUnnamed4715();
+    o.suggestedDeletionIds = buildUnnamed4663();
+    o.suggestedInsertionIds = buildUnnamed4664();
   }
   buildCounterSectionBreak--;
   return o;
@@ -2960,8 +3198,8 @@ checkSectionBreak(api.SectionBreak o) {
   buildCounterSectionBreak++;
   if (buildCounterSectionBreak < 3) {
     checkSectionStyle(o.sectionStyle);
-    checkUnnamed4714(o.suggestedDeletionIds);
-    checkUnnamed4715(o.suggestedInsertionIds);
+    checkUnnamed4663(o.suggestedDeletionIds);
+    checkUnnamed4664(o.suggestedInsertionIds);
   }
   buildCounterSectionBreak--;
 }
@@ -2987,14 +3225,14 @@ checkSectionColumnProperties(api.SectionColumnProperties o) {
   buildCounterSectionColumnProperties--;
 }
 
-buildUnnamed4716() {
+buildUnnamed4665() {
   var o = new core.List<api.SectionColumnProperties>();
   o.add(buildSectionColumnProperties());
   o.add(buildSectionColumnProperties());
   return o;
 }
 
-checkUnnamed4716(core.List<api.SectionColumnProperties> o) {
+checkUnnamed4665(core.List<api.SectionColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSectionColumnProperties(o[0]);
   checkSectionColumnProperties(o[1]);
@@ -3005,9 +3243,16 @@ buildSectionStyle() {
   var o = new api.SectionStyle();
   buildCounterSectionStyle++;
   if (buildCounterSectionStyle < 3) {
-    o.columnProperties = buildUnnamed4716();
+    o.columnProperties = buildUnnamed4665();
     o.columnSeparatorStyle = "foo";
     o.contentDirection = "foo";
+    o.marginBottom = buildDimension();
+    o.marginFooter = buildDimension();
+    o.marginHeader = buildDimension();
+    o.marginLeft = buildDimension();
+    o.marginRight = buildDimension();
+    o.marginTop = buildDimension();
+    o.sectionType = "foo";
   }
   buildCounterSectionStyle--;
   return o;
@@ -3016,9 +3261,16 @@ buildSectionStyle() {
 checkSectionStyle(api.SectionStyle o) {
   buildCounterSectionStyle++;
   if (buildCounterSectionStyle < 3) {
-    checkUnnamed4716(o.columnProperties);
+    checkUnnamed4665(o.columnProperties);
     unittest.expect(o.columnSeparatorStyle, unittest.equals('foo'));
     unittest.expect(o.contentDirection, unittest.equals('foo'));
+    checkDimension(o.marginBottom);
+    checkDimension(o.marginFooter);
+    checkDimension(o.marginHeader);
+    checkDimension(o.marginLeft);
+    checkDimension(o.marginRight);
+    checkDimension(o.marginTop);
+    unittest.expect(o.sectionType, unittest.equals('foo'));
   }
   buildCounterSectionStyle--;
 }
@@ -3432,40 +3684,40 @@ checkTabStop(api.TabStop o) {
   buildCounterTabStop--;
 }
 
-buildUnnamed4717() {
+buildUnnamed4666() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4717(core.List<core.String> o) {
+checkUnnamed4666(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4718() {
+buildUnnamed4667() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4718(core.List<core.String> o) {
+checkUnnamed4667(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4719() {
+buildUnnamed4668() {
   var o = new core.List<api.TableRow>();
   o.add(buildTableRow());
   o.add(buildTableRow());
   return o;
 }
 
-checkUnnamed4719(core.List<api.TableRow> o) {
+checkUnnamed4668(core.List<api.TableRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableRow(o[0]);
   checkTableRow(o[1]);
@@ -3478,9 +3730,9 @@ buildTable() {
   if (buildCounterTable < 3) {
     o.columns = 42;
     o.rows = 42;
-    o.suggestedDeletionIds = buildUnnamed4717();
-    o.suggestedInsertionIds = buildUnnamed4718();
-    o.tableRows = buildUnnamed4719();
+    o.suggestedDeletionIds = buildUnnamed4666();
+    o.suggestedInsertionIds = buildUnnamed4667();
+    o.tableRows = buildUnnamed4668();
     o.tableStyle = buildTableStyle();
   }
   buildCounterTable--;
@@ -3492,61 +3744,61 @@ checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     unittest.expect(o.columns, unittest.equals(42));
     unittest.expect(o.rows, unittest.equals(42));
-    checkUnnamed4717(o.suggestedDeletionIds);
-    checkUnnamed4718(o.suggestedInsertionIds);
-    checkUnnamed4719(o.tableRows);
+    checkUnnamed4666(o.suggestedDeletionIds);
+    checkUnnamed4667(o.suggestedInsertionIds);
+    checkUnnamed4668(o.tableRows);
     checkTableStyle(o.tableStyle);
   }
   buildCounterTable--;
 }
 
-buildUnnamed4720() {
+buildUnnamed4669() {
   var o = new core.List<api.StructuralElement>();
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-checkUnnamed4720(core.List<api.StructuralElement> o) {
+checkUnnamed4669(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0]);
   checkStructuralElement(o[1]);
 }
 
-buildUnnamed4721() {
+buildUnnamed4670() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4721(core.List<core.String> o) {
+checkUnnamed4670(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4722() {
+buildUnnamed4671() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4722(core.List<core.String> o) {
+checkUnnamed4671(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4723() {
+buildUnnamed4672() {
   var o = new core.Map<core.String, api.SuggestedTableCellStyle>();
   o["x"] = buildSuggestedTableCellStyle();
   o["y"] = buildSuggestedTableCellStyle();
   return o;
 }
 
-checkUnnamed4723(core.Map<core.String, api.SuggestedTableCellStyle> o) {
+checkUnnamed4672(core.Map<core.String, api.SuggestedTableCellStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTableCellStyle(o["x"]);
   checkSuggestedTableCellStyle(o["y"]);
@@ -3557,12 +3809,12 @@ buildTableCell() {
   var o = new api.TableCell();
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
-    o.content = buildUnnamed4720();
+    o.content = buildUnnamed4669();
     o.endIndex = 42;
     o.startIndex = 42;
-    o.suggestedDeletionIds = buildUnnamed4721();
-    o.suggestedInsertionIds = buildUnnamed4722();
-    o.suggestedTableCellStyleChanges = buildUnnamed4723();
+    o.suggestedDeletionIds = buildUnnamed4670();
+    o.suggestedInsertionIds = buildUnnamed4671();
+    o.suggestedTableCellStyleChanges = buildUnnamed4672();
     o.tableCellStyle = buildTableCellStyle();
   }
   buildCounterTableCell--;
@@ -3572,12 +3824,12 @@ buildTableCell() {
 checkTableCell(api.TableCell o) {
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
-    checkUnnamed4720(o.content);
+    checkUnnamed4669(o.content);
     unittest.expect(o.endIndex, unittest.equals(42));
     unittest.expect(o.startIndex, unittest.equals(42));
-    checkUnnamed4721(o.suggestedDeletionIds);
-    checkUnnamed4722(o.suggestedInsertionIds);
-    checkUnnamed4723(o.suggestedTableCellStyleChanges);
+    checkUnnamed4670(o.suggestedDeletionIds);
+    checkUnnamed4671(o.suggestedInsertionIds);
+    checkUnnamed4672(o.suggestedTableCellStyleChanges);
     checkTableCellStyle(o.tableCellStyle);
   }
   buildCounterTableCell--;
@@ -3732,40 +3984,40 @@ checkTableColumnProperties(api.TableColumnProperties o) {
   buildCounterTableColumnProperties--;
 }
 
-buildUnnamed4724() {
+buildUnnamed4673() {
   var o = new core.List<api.StructuralElement>();
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-checkUnnamed4724(core.List<api.StructuralElement> o) {
+checkUnnamed4673(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0]);
   checkStructuralElement(o[1]);
 }
 
-buildUnnamed4725() {
+buildUnnamed4674() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4725(core.List<core.String> o) {
+checkUnnamed4674(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4726() {
+buildUnnamed4675() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4726(core.List<core.String> o) {
+checkUnnamed4675(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3776,9 +4028,9 @@ buildTableOfContents() {
   var o = new api.TableOfContents();
   buildCounterTableOfContents++;
   if (buildCounterTableOfContents < 3) {
-    o.content = buildUnnamed4724();
-    o.suggestedDeletionIds = buildUnnamed4725();
-    o.suggestedInsertionIds = buildUnnamed4726();
+    o.content = buildUnnamed4673();
+    o.suggestedDeletionIds = buildUnnamed4674();
+    o.suggestedInsertionIds = buildUnnamed4675();
   }
   buildCounterTableOfContents--;
   return o;
@@ -3787,60 +4039,83 @@ buildTableOfContents() {
 checkTableOfContents(api.TableOfContents o) {
   buildCounterTableOfContents++;
   if (buildCounterTableOfContents < 3) {
-    checkUnnamed4724(o.content);
-    checkUnnamed4725(o.suggestedDeletionIds);
-    checkUnnamed4726(o.suggestedInsertionIds);
+    checkUnnamed4673(o.content);
+    checkUnnamed4674(o.suggestedDeletionIds);
+    checkUnnamed4675(o.suggestedInsertionIds);
   }
   buildCounterTableOfContents--;
 }
 
-buildUnnamed4727() {
+core.int buildCounterTableRange = 0;
+buildTableRange() {
+  var o = new api.TableRange();
+  buildCounterTableRange++;
+  if (buildCounterTableRange < 3) {
+    o.columnSpan = 42;
+    o.rowSpan = 42;
+    o.tableCellLocation = buildTableCellLocation();
+  }
+  buildCounterTableRange--;
+  return o;
+}
+
+checkTableRange(api.TableRange o) {
+  buildCounterTableRange++;
+  if (buildCounterTableRange < 3) {
+    unittest.expect(o.columnSpan, unittest.equals(42));
+    unittest.expect(o.rowSpan, unittest.equals(42));
+    checkTableCellLocation(o.tableCellLocation);
+  }
+  buildCounterTableRange--;
+}
+
+buildUnnamed4676() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4727(core.List<core.String> o) {
+checkUnnamed4676(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4728() {
+buildUnnamed4677() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4728(core.List<core.String> o) {
+checkUnnamed4677(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4729() {
+buildUnnamed4678() {
   var o = new core.Map<core.String, api.SuggestedTableRowStyle>();
   o["x"] = buildSuggestedTableRowStyle();
   o["y"] = buildSuggestedTableRowStyle();
   return o;
 }
 
-checkUnnamed4729(core.Map<core.String, api.SuggestedTableRowStyle> o) {
+checkUnnamed4678(core.Map<core.String, api.SuggestedTableRowStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTableRowStyle(o["x"]);
   checkSuggestedTableRowStyle(o["y"]);
 }
 
-buildUnnamed4730() {
+buildUnnamed4679() {
   var o = new core.List<api.TableCell>();
   o.add(buildTableCell());
   o.add(buildTableCell());
   return o;
 }
 
-checkUnnamed4730(core.List<api.TableCell> o) {
+checkUnnamed4679(core.List<api.TableCell> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableCell(o[0]);
   checkTableCell(o[1]);
@@ -3853,10 +4128,10 @@ buildTableRow() {
   if (buildCounterTableRow < 3) {
     o.endIndex = 42;
     o.startIndex = 42;
-    o.suggestedDeletionIds = buildUnnamed4727();
-    o.suggestedInsertionIds = buildUnnamed4728();
-    o.suggestedTableRowStyleChanges = buildUnnamed4729();
-    o.tableCells = buildUnnamed4730();
+    o.suggestedDeletionIds = buildUnnamed4676();
+    o.suggestedInsertionIds = buildUnnamed4677();
+    o.suggestedTableRowStyleChanges = buildUnnamed4678();
+    o.tableCells = buildUnnamed4679();
     o.tableRowStyle = buildTableRowStyle();
   }
   buildCounterTableRow--;
@@ -3868,10 +4143,10 @@ checkTableRow(api.TableRow o) {
   if (buildCounterTableRow < 3) {
     unittest.expect(o.endIndex, unittest.equals(42));
     unittest.expect(o.startIndex, unittest.equals(42));
-    checkUnnamed4727(o.suggestedDeletionIds);
-    checkUnnamed4728(o.suggestedInsertionIds);
-    checkUnnamed4729(o.suggestedTableRowStyleChanges);
-    checkUnnamed4730(o.tableCells);
+    checkUnnamed4676(o.suggestedDeletionIds);
+    checkUnnamed4677(o.suggestedInsertionIds);
+    checkUnnamed4678(o.suggestedTableRowStyleChanges);
+    checkUnnamed4679(o.tableCells);
     checkTableRowStyle(o.tableRowStyle);
   }
   buildCounterTableRow--;
@@ -3915,14 +4190,14 @@ checkTableRowStyleSuggestionState(api.TableRowStyleSuggestionState o) {
   buildCounterTableRowStyleSuggestionState--;
 }
 
-buildUnnamed4731() {
+buildUnnamed4680() {
   var o = new core.List<api.TableColumnProperties>();
   o.add(buildTableColumnProperties());
   o.add(buildTableColumnProperties());
   return o;
 }
 
-checkUnnamed4731(core.List<api.TableColumnProperties> o) {
+checkUnnamed4680(core.List<api.TableColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableColumnProperties(o[0]);
   checkTableColumnProperties(o[1]);
@@ -3933,7 +4208,7 @@ buildTableStyle() {
   var o = new api.TableStyle();
   buildCounterTableStyle++;
   if (buildCounterTableStyle < 3) {
-    o.tableColumnProperties = buildUnnamed4731();
+    o.tableColumnProperties = buildUnnamed4680();
   }
   buildCounterTableStyle--;
   return o;
@@ -3942,45 +4217,45 @@ buildTableStyle() {
 checkTableStyle(api.TableStyle o) {
   buildCounterTableStyle++;
   if (buildCounterTableStyle < 3) {
-    checkUnnamed4731(o.tableColumnProperties);
+    checkUnnamed4680(o.tableColumnProperties);
   }
   buildCounterTableStyle--;
 }
 
-buildUnnamed4732() {
+buildUnnamed4681() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4732(core.List<core.String> o) {
+checkUnnamed4681(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4733() {
+buildUnnamed4682() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4733(core.List<core.String> o) {
+checkUnnamed4682(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4734() {
+buildUnnamed4683() {
   var o = new core.Map<core.String, api.SuggestedTextStyle>();
   o["x"] = buildSuggestedTextStyle();
   o["y"] = buildSuggestedTextStyle();
   return o;
 }
 
-checkUnnamed4734(core.Map<core.String, api.SuggestedTextStyle> o) {
+checkUnnamed4683(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o["x"]);
   checkSuggestedTextStyle(o["y"]);
@@ -3992,9 +4267,9 @@ buildTextRun() {
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
     o.content = "foo";
-    o.suggestedDeletionIds = buildUnnamed4732();
-    o.suggestedInsertionIds = buildUnnamed4733();
-    o.suggestedTextStyleChanges = buildUnnamed4734();
+    o.suggestedDeletionIds = buildUnnamed4681();
+    o.suggestedInsertionIds = buildUnnamed4682();
+    o.suggestedTextStyleChanges = buildUnnamed4683();
     o.textStyle = buildTextStyle();
   }
   buildCounterTextRun--;
@@ -4005,9 +4280,9 @@ checkTextRun(api.TextRun o) {
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
     unittest.expect(o.content, unittest.equals('foo'));
-    checkUnnamed4732(o.suggestedDeletionIds);
-    checkUnnamed4733(o.suggestedInsertionIds);
-    checkUnnamed4734(o.suggestedTextStyleChanges);
+    checkUnnamed4681(o.suggestedDeletionIds);
+    checkUnnamed4682(o.suggestedInsertionIds);
+    checkUnnamed4683(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle);
   }
   buildCounterTextRun--;
@@ -4091,6 +4366,46 @@ checkTextStyleSuggestionState(api.TextStyleSuggestionState o) {
   buildCounterTextStyleSuggestionState--;
 }
 
+core.int buildCounterUnmergeTableCellsRequest = 0;
+buildUnmergeTableCellsRequest() {
+  var o = new api.UnmergeTableCellsRequest();
+  buildCounterUnmergeTableCellsRequest++;
+  if (buildCounterUnmergeTableCellsRequest < 3) {
+    o.tableRange = buildTableRange();
+  }
+  buildCounterUnmergeTableCellsRequest--;
+  return o;
+}
+
+checkUnmergeTableCellsRequest(api.UnmergeTableCellsRequest o) {
+  buildCounterUnmergeTableCellsRequest++;
+  if (buildCounterUnmergeTableCellsRequest < 3) {
+    checkTableRange(o.tableRange);
+  }
+  buildCounterUnmergeTableCellsRequest--;
+}
+
+core.int buildCounterUpdateDocumentStyleRequest = 0;
+buildUpdateDocumentStyleRequest() {
+  var o = new api.UpdateDocumentStyleRequest();
+  buildCounterUpdateDocumentStyleRequest++;
+  if (buildCounterUpdateDocumentStyleRequest < 3) {
+    o.documentStyle = buildDocumentStyle();
+    o.fields = "foo";
+  }
+  buildCounterUpdateDocumentStyleRequest--;
+  return o;
+}
+
+checkUpdateDocumentStyleRequest(api.UpdateDocumentStyleRequest o) {
+  buildCounterUpdateDocumentStyleRequest++;
+  if (buildCounterUpdateDocumentStyleRequest < 3) {
+    checkDocumentStyle(o.documentStyle);
+    unittest.expect(o.fields, unittest.equals('foo'));
+  }
+  buildCounterUpdateDocumentStyleRequest--;
+}
+
 core.int buildCounterUpdateParagraphStyleRequest = 0;
 buildUpdateParagraphStyleRequest() {
   var o = new api.UpdateParagraphStyleRequest();
@@ -4114,14 +4429,62 @@ checkUpdateParagraphStyleRequest(api.UpdateParagraphStyleRequest o) {
   buildCounterUpdateParagraphStyleRequest--;
 }
 
-buildUnnamed4735() {
+core.int buildCounterUpdateSectionStyleRequest = 0;
+buildUpdateSectionStyleRequest() {
+  var o = new api.UpdateSectionStyleRequest();
+  buildCounterUpdateSectionStyleRequest++;
+  if (buildCounterUpdateSectionStyleRequest < 3) {
+    o.fields = "foo";
+    o.range = buildRange();
+    o.sectionStyle = buildSectionStyle();
+  }
+  buildCounterUpdateSectionStyleRequest--;
+  return o;
+}
+
+checkUpdateSectionStyleRequest(api.UpdateSectionStyleRequest o) {
+  buildCounterUpdateSectionStyleRequest++;
+  if (buildCounterUpdateSectionStyleRequest < 3) {
+    unittest.expect(o.fields, unittest.equals('foo'));
+    checkRange(o.range);
+    checkSectionStyle(o.sectionStyle);
+  }
+  buildCounterUpdateSectionStyleRequest--;
+}
+
+core.int buildCounterUpdateTableCellStyleRequest = 0;
+buildUpdateTableCellStyleRequest() {
+  var o = new api.UpdateTableCellStyleRequest();
+  buildCounterUpdateTableCellStyleRequest++;
+  if (buildCounterUpdateTableCellStyleRequest < 3) {
+    o.fields = "foo";
+    o.tableCellStyle = buildTableCellStyle();
+    o.tableRange = buildTableRange();
+    o.tableStartLocation = buildLocation();
+  }
+  buildCounterUpdateTableCellStyleRequest--;
+  return o;
+}
+
+checkUpdateTableCellStyleRequest(api.UpdateTableCellStyleRequest o) {
+  buildCounterUpdateTableCellStyleRequest++;
+  if (buildCounterUpdateTableCellStyleRequest < 3) {
+    unittest.expect(o.fields, unittest.equals('foo'));
+    checkTableCellStyle(o.tableCellStyle);
+    checkTableRange(o.tableRange);
+    checkLocation(o.tableStartLocation);
+  }
+  buildCounterUpdateTableCellStyleRequest--;
+}
+
+buildUnnamed4684() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed4735(core.List<core.int> o) {
+checkUnnamed4684(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -4132,7 +4495,7 @@ buildUpdateTableColumnPropertiesRequest() {
   var o = new api.UpdateTableColumnPropertiesRequest();
   buildCounterUpdateTableColumnPropertiesRequest++;
   if (buildCounterUpdateTableColumnPropertiesRequest < 3) {
-    o.columnIndices = buildUnnamed4735();
+    o.columnIndices = buildUnnamed4684();
     o.fields = "foo";
     o.tableColumnProperties = buildTableColumnProperties();
     o.tableStartLocation = buildLocation();
@@ -4145,7 +4508,7 @@ checkUpdateTableColumnPropertiesRequest(
     api.UpdateTableColumnPropertiesRequest o) {
   buildCounterUpdateTableColumnPropertiesRequest++;
   if (buildCounterUpdateTableColumnPropertiesRequest < 3) {
-    checkUnnamed4735(o.columnIndices);
+    checkUnnamed4684(o.columnIndices);
     unittest.expect(o.fields, unittest.equals('foo'));
     checkTableColumnProperties(o.tableColumnProperties);
     checkLocation(o.tableStartLocation);
@@ -4153,14 +4516,14 @@ checkUpdateTableColumnPropertiesRequest(
   buildCounterUpdateTableColumnPropertiesRequest--;
 }
 
-buildUnnamed4736() {
+buildUnnamed4685() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed4736(core.List<core.int> o) {
+checkUnnamed4685(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -4172,7 +4535,7 @@ buildUpdateTableRowStyleRequest() {
   buildCounterUpdateTableRowStyleRequest++;
   if (buildCounterUpdateTableRowStyleRequest < 3) {
     o.fields = "foo";
-    o.rowIndices = buildUnnamed4736();
+    o.rowIndices = buildUnnamed4685();
     o.tableRowStyle = buildTableRowStyle();
     o.tableStartLocation = buildLocation();
   }
@@ -4184,7 +4547,7 @@ checkUpdateTableRowStyleRequest(api.UpdateTableRowStyleRequest o) {
   buildCounterUpdateTableRowStyleRequest++;
   if (buildCounterUpdateTableRowStyleRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
-    checkUnnamed4736(o.rowIndices);
+    checkUnnamed4685(o.rowIndices);
     checkTableRowStyle(o.tableRowStyle);
     checkLocation(o.tableStartLocation);
   }
@@ -4334,6 +4697,54 @@ main() {
       var o = buildColumnBreak();
       var od = new api.ColumnBreak.fromJson(o.toJson());
       checkColumnBreak(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreateFooterRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreateFooterRequest();
+      var od = new api.CreateFooterRequest.fromJson(o.toJson());
+      checkCreateFooterRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreateFooterResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreateFooterResponse();
+      var od = new api.CreateFooterResponse.fromJson(o.toJson());
+      checkCreateFooterResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreateFootnoteRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreateFootnoteRequest();
+      var od = new api.CreateFootnoteRequest.fromJson(o.toJson());
+      checkCreateFootnoteRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreateFootnoteResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreateFootnoteResponse();
+      var od = new api.CreateFootnoteResponse.fromJson(o.toJson());
+      checkCreateFootnoteResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreateHeaderRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreateHeaderRequest();
+      var od = new api.CreateHeaderRequest.fromJson(o.toJson());
+      checkCreateHeaderRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-CreateHeaderResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildCreateHeaderResponse();
+      var od = new api.CreateHeaderResponse.fromJson(o.toJson());
+      checkCreateHeaderResponse(od);
     });
   });
 
@@ -4643,6 +5054,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-InsertSectionBreakRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildInsertSectionBreakRequest();
+      var od = new api.InsertSectionBreakRequest.fromJson(o.toJson());
+      checkInsertSectionBreakRequest(od);
+    });
+  });
+
   unittest.group("obj-schema-InsertTableColumnRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildInsertTableColumnRequest();
@@ -4729,6 +5148,14 @@ main() {
       var o = buildLocation();
       var od = new api.Location.fromJson(o.toJson());
       checkLocation(od);
+    });
+  });
+
+  unittest.group("obj-schema-MergeTableCellsRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildMergeTableCellsRequest();
+      var od = new api.MergeTableCellsRequest.fromJson(o.toJson());
+      checkMergeTableCellsRequest(od);
     });
   });
 
@@ -4923,6 +5350,22 @@ main() {
       var o = buildReplaceAllTextResponse();
       var od = new api.ReplaceAllTextResponse.fromJson(o.toJson());
       checkReplaceAllTextResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-ReplaceImageRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReplaceImageRequest();
+      var od = new api.ReplaceImageRequest.fromJson(o.toJson());
+      checkReplaceImageRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-ReplaceNamedRangeContentRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildReplaceNamedRangeContentRequest();
+      var od = new api.ReplaceNamedRangeContentRequest.fromJson(o.toJson());
+      checkReplaceNamedRangeContentRequest(od);
     });
   });
 
@@ -5190,6 +5633,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-TableRange", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildTableRange();
+      var od = new api.TableRange.fromJson(o.toJson());
+      checkTableRange(od);
+    });
+  });
+
   unittest.group("obj-schema-TableRow", () {
     unittest.test("to-json--from-json", () {
       var o = buildTableRow();
@@ -5246,11 +5697,43 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-UnmergeTableCellsRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUnmergeTableCellsRequest();
+      var od = new api.UnmergeTableCellsRequest.fromJson(o.toJson());
+      checkUnmergeTableCellsRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-UpdateDocumentStyleRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUpdateDocumentStyleRequest();
+      var od = new api.UpdateDocumentStyleRequest.fromJson(o.toJson());
+      checkUpdateDocumentStyleRequest(od);
+    });
+  });
+
   unittest.group("obj-schema-UpdateParagraphStyleRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildUpdateParagraphStyleRequest();
       var od = new api.UpdateParagraphStyleRequest.fromJson(o.toJson());
       checkUpdateParagraphStyleRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-UpdateSectionStyleRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUpdateSectionStyleRequest();
+      var od = new api.UpdateSectionStyleRequest.fromJson(o.toJson());
+      checkUpdateSectionStyleRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-UpdateTableCellStyleRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildUpdateTableCellStyleRequest();
+      var od = new api.UpdateTableCellStyleRequest.fromJson(o.toJson());
+      checkUpdateTableCellStyleRequest(od);
     });
   });
 

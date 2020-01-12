@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.spanner.v1;
 
@@ -172,6 +172,8 @@ class ProjectsInstanceConfigsResourceApi {
 class ProjectsInstancesResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsInstancesBackupsResourceApi get backups =>
+      new ProjectsInstancesBackupsResourceApi(_requester);
   ProjectsInstancesDatabasesResourceApi get databases =>
       new ProjectsInstancesDatabasesResourceApi(_requester);
   ProjectsInstancesOperationsResourceApi get operations =>
@@ -330,6 +332,11 @@ class ProjectsInstancesResourceApi {
   /// `projects/<project>/instances/<instance>`.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
   ///
+  /// [fieldMask] - If field_mask is present, specifies the subset of Instance
+  /// fields that
+  /// should be returned.
+  /// If absent, all Instance fields are returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -340,7 +347,8 @@ class ProjectsInstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Instance> get(core.String name, {core.String $fields}) {
+  async.Future<Instance> get(core.String name,
+      {core.String fieldMask, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -350,6 +358,9 @@ class ProjectsInstancesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -434,6 +445,14 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a
+  /// previous ListInstancesResponse.
+  ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -455,14 +474,6 @@ class ProjectsInstancesResourceApi {
   ///                                  it has the label "env" with its value
   ///                                  containing "dev".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a
-  /// previous ListInstancesResponse.
-  ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -474,9 +485,9 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -488,14 +499,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -724,6 +735,423 @@ class ProjectsInstancesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+}
+
+class ProjectsInstancesBackupsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesBackupsOperationsResourceApi get operations =>
+      new ProjectsInstancesBackupsOperationsResourceApi(_requester);
+
+  ProjectsInstancesBackupsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a database resource.
+  /// Returns an empty policy if a database exists but does
+  /// not have a policy set.
+  ///
+  /// Authorization requires `spanner.databases.getIamPolicy` permission on
+  /// resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which the policy is
+  /// being retrieved. The format is `projects/<project ID>/instances/<instance
+  /// ID>` for instance resources and `projects/<project ID>/instances/<instance
+  /// ID>/databases/<database ID>` for database resources.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/backups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Sets the access control policy on a database resource.
+  /// Replaces any existing policy.
+  ///
+  /// Authorization requires `spanner.databases.setIamPolicy`
+  /// permission on resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which the policy is
+  /// being set. The format is `projects/<project ID>/instances/<instance ID>`
+  /// for instance resources and `projects/<project ID>/instances/<instance
+  /// ID>/databases/<database ID>` for databases resources.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/backups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Returns permissions that the caller has on the specified database
+  /// resource.
+  ///
+  /// Attempting this RPC on a non-existent Cloud Spanner database will
+  /// result in a NOT_FOUND error if the user has
+  /// `spanner.databases.list` permission on the containing Cloud
+  /// Spanner instance. Otherwise returns an empty set of permissions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The Cloud Spanner resource for which permissions
+  /// are being tested. The format is `projects/<project ID>/instances/<instance
+  /// ID>` for instance resources and `projects/<project ID>/instances/<instance
+  /// ID>/databases/<database ID>` for database resources.
+  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/backups/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
+  }
+}
+
+class ProjectsInstancesBackupsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsInstancesBackupsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// makes a best effort to cancel the operation, but success is not
+  /// guaranteed.  If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+  /// Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with
+  /// an Operation.error value with a google.rpc.Status.code of 1,
+  /// corresponding to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Deletes a long-running operation. This method indicates that the client is
+  /// no longer interested in the operation result. It does not cancel the
+  /// operation. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Lists operations that match the specified filter in the request. If the
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// NOTE: the `name` binding allows API services to override the binding
+  /// to use different resource name schemes, such as `users / * /operations`.
+  /// To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration.
+  /// For backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding
+  /// is the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/backups/[^/]+/operations$".
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(core.String name,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListOperationsResponse.fromJson(data));
   }
 }
 
@@ -1409,11 +1837,11 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1426,9 +1854,9 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1440,14 +1868,14 @@ class ProjectsInstancesDatabasesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1470,6 +1898,63 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
 
   ProjectsInstancesDatabasesSessionsResourceApi(commons.ApiRequester client)
       : _requester = client;
+
+  /// Creates multiple new sessions.
+  ///
+  /// This API can be used to initialize a session cache on the clients.
+  /// See https://goo.gl/TgSFN2 for best practices on session cache management.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [database] - Required. The database in which the new sessions are created.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchCreateSessionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchCreateSessionsResponse> batchCreate(
+      BatchCreateSessionsRequest request, core.String database,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (database == null) {
+      throw new core.ArgumentError("Parameter database is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$database') +
+        '/sessions:batchCreate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchCreateSessionsResponse.fromJson(data));
+  }
 
   /// Begins a new transaction. This step can often be skipped:
   /// Read, ExecuteSql and
@@ -1598,8 +2083,8 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// transaction internally, and count toward the one transaction
   /// limit.
   ///
-  /// Cloud Spanner limits the number of sessions that can exist at any given
-  /// time; thus, it is a good idea to delete idle and/or unneeded sessions.
+  /// Active sessions use additional server resources, so it is a good idea to
+  /// delete idle and unneeded sessions.
   /// Aside from explicit deletes, Cloud Spanner can delete sessions for which
   /// no
   /// operations are sent for more than an hour. If a session is deleted,
@@ -1710,22 +2195,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// to be run with lower latency than submitting them sequentially with
   /// ExecuteSql.
   ///
-  /// Statements are executed in order, sequentially.
-  /// ExecuteBatchDmlResponse will contain a
-  /// ResultSet for each DML statement that has successfully executed. If a
-  /// statement fails, its error status will be returned as part of the
-  /// ExecuteBatchDmlResponse. Execution will
-  /// stop at the first failed statement; the remaining statements will not run.
-  ///
-  /// ExecuteBatchDml is expected to return an OK status with a response even if
-  /// there was an error while processing one of the DML statements. Clients
+  /// Statements are executed in sequential order. A request can succeed even if
+  /// a statement fails. The ExecuteBatchDmlResponse.status field in the
+  /// response provides information about the statement that failed. Clients
   /// must
-  /// inspect response.status to determine if there were any errors while
-  /// processing the request.
+  /// inspect this field to determine whether an error occurred.
   ///
-  /// See more details in
-  /// ExecuteBatchDmlRequest and
-  /// ExecuteBatchDmlResponse.
+  /// Execution stops after the first failed statement; the remaining statements
+  /// are not executed.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1955,14 +2432,6 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a previous
-  /// ListSessionsResponse.
-  ///
-  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1975,6 +2444,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   ///   * `labels.env:dev` --> The session has the label "env" and the value of
   ///                        the label contains the string "dev".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
+  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1986,9 +2463,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2000,14 +2477,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2504,11 +2981,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2521,9 +2998,9 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2535,14 +3012,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2557,6 +3034,67 @@ class ProjectsInstancesOperationsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListOperationsResponse.fromJson(data));
+  }
+}
+
+/// The request for BatchCreateSessions.
+class BatchCreateSessionsRequest {
+  /// Required. The number of sessions to be created in this batch call.
+  /// The API may return fewer than the requested number of sessions. If a
+  /// specific number of sessions are desired, the client can make additional
+  /// calls to BatchCreateSessions (adjusting
+  /// session_count as necessary).
+  core.int sessionCount;
+
+  /// Parameters to be applied to each created session.
+  Session sessionTemplate;
+
+  BatchCreateSessionsRequest();
+
+  BatchCreateSessionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("sessionCount")) {
+      sessionCount = _json["sessionCount"];
+    }
+    if (_json.containsKey("sessionTemplate")) {
+      sessionTemplate = new Session.fromJson(_json["sessionTemplate"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sessionCount != null) {
+      _json["sessionCount"] = sessionCount;
+    }
+    if (sessionTemplate != null) {
+      _json["sessionTemplate"] = (sessionTemplate).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response for BatchCreateSessions.
+class BatchCreateSessionsResponse {
+  /// The freshly created sessions.
+  core.List<Session> session;
+
+  BatchCreateSessionsResponse();
+
+  BatchCreateSessionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("session")) {
+      session = (_json["session"] as core.List)
+          .map<Session>((value) => new Session.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (session != null) {
+      _json["session"] = session.map((value) => (value).toJson()).toList();
+    }
+    return _json;
   }
 }
 
@@ -2601,7 +3139,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2609,6 +3147,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -3060,25 +3619,34 @@ class Empty {
   }
 }
 
-/// The request for ExecuteBatchDml
+/// The request for ExecuteBatchDml.
 class ExecuteBatchDmlRequest {
-  /// A per-transaction sequence number used to identify this request. This is
-  /// used in the same space as the seqno in
-  /// ExecuteSqlRequest. See more details
-  /// in ExecuteSqlRequest.
+  /// Required. A per-transaction sequence number used to identify this request.
+  /// This field
+  /// makes each request idempotent such that if the request is received
+  /// multiple
+  /// times, at most one will succeed.
+  ///
+  /// The sequence number must be monotonically increasing within the
+  /// transaction. If a request arrives for the first time with an out-of-order
+  /// sequence number, the transaction may be aborted. Replays of previously
+  /// handled requests will yield the same response as the first execution.
   core.String seqno;
 
-  /// The list of statements to execute in this batch. Statements are executed
-  /// serially, such that the effects of statement i are visible to statement
-  /// i+1. Each statement must be a DML statement. Execution will stop at the
-  /// first failed statement; the remaining statements will not run.
+  /// Required. The list of statements to execute in this batch. Statements are
+  /// executed
+  /// serially, such that the effects of statement `i` are visible to statement
+  /// `i+1`. Each statement must be a DML statement. Execution stops at the
+  /// first failed statement; the remaining statements are not executed.
   ///
-  /// REQUIRES: `statements_size()` > 0.
+  /// Callers must provide at least one statement.
   core.List<Statement> statements;
 
-  /// The transaction to use. A ReadWrite transaction is required. Single-use
-  /// transactions are not supported (to avoid replay).  The caller must either
-  /// supply an existing transaction ID or begin a new transaction.
+  /// Required. The transaction to use. Must be a read-write transaction.
+  ///
+  /// To protect against replays, single-use transactions are not supported. The
+  /// caller must either supply an existing transaction ID or begin a new
+  /// transaction.
   TransactionSelector transaction;
 
   ExecuteBatchDmlRequest();
@@ -3115,39 +3683,40 @@ class ExecuteBatchDmlRequest {
 }
 
 /// The response for ExecuteBatchDml. Contains a list
-/// of ResultSet, one for each DML statement that has successfully executed.
-/// If a statement fails, the error is returned as part of the response payload.
-/// Clients can determine whether all DML statements have run successfully, or
-/// if
-/// a statement failed, using one of the following approaches:
+/// of ResultSet messages, one for each DML statement that has successfully
+/// executed, in the same order as the statements in the request. If a statement
+/// fails, the status in the response body identifies the cause of the failure.
 ///
-///   1. Check if `'status'` field is `OkStatus`.
-///   2. Check if `result_sets_size()` equals the number of statements in
-///      ExecuteBatchDmlRequest.
+/// To check for DML statements that failed, use the following approach:
 ///
-/// Example 1: A request with 5 DML statements, all executed successfully.
+/// 1. Check the status in the response message. The google.rpc.Code enum
+///    value `OK` indicates that all statements were executed successfully.
+/// 2. If the status was not `OK`, check the number of result sets in the
+///    response. If the response contains `N` ResultSet messages, then
+///    statement `N+1` in the request failed.
 ///
-/// Result: A response with 5 ResultSets, one for each statement in the same
-/// order, and an `OkStatus`.
+/// Example 1:
 ///
-/// Example 2: A request with 5 DML statements. The 3rd statement has a syntax
-/// error.
+/// * Request: 5 DML statements, all executed successfully.
+/// * Response: 5 ResultSet messages, with the status `OK`.
 ///
-/// Result: A response with 2 ResultSets, for the first 2 statements that
-/// run successfully, and a syntax error (`INVALID_ARGUMENT`) status. From
-/// `result_set_size()` client can determine that the 3rd statement has failed.
+/// Example 2:
+///
+/// * Request: 5 DML statements. The third statement has a syntax error.
+/// * Response: 2 ResultSet messages, and a syntax error (`INVALID_ARGUMENT`)
+///   status. The number of ResultSet messages indicates that the third
+///   statement failed, and the fourth and fifth statements were not executed.
 class ExecuteBatchDmlResponse {
-  /// ResultSets, one for each statement in the request that ran successfully,
-  /// in
-  /// the same order as the statements in the request. Each ResultSet will
-  /// not contain any rows. The ResultSetStats in each ResultSet will
-  /// contain the number of rows modified by the statement.
+  /// One ResultSet for each statement in the request that ran successfully,
+  /// in the same order as the statements in the request. Each ResultSet does
+  /// not contain any rows. The ResultSetStats in each ResultSet contain
+  /// the number of rows modified by the statement.
   ///
-  /// Only the first ResultSet in the response contains a valid
+  /// Only the first ResultSet in the response contains valid
   /// ResultSetMetadata.
   core.List<ResultSet> resultSets;
 
-  /// If all DML statements are executed successfully, status will be OK.
+  /// If all DML statements are executed successfully, the status is `OK`.
   /// Otherwise, the error status of the first failed statement.
   Status status;
 
@@ -3191,20 +3760,18 @@ class ExecuteSqlRequest {
   /// about SQL types.
   core.Map<core.String, Type> paramTypes;
 
-  /// The SQL string can contain parameter placeholders. A parameter
-  /// placeholder consists of `'@'` followed by the parameter
-  /// name. Parameter names consist of any combination of letters,
-  /// numbers, and underscores.
+  /// Parameter names and values that bind to placeholders in the SQL string.
+  ///
+  /// A parameter placeholder consists of the `@` character followed by the
+  /// parameter name (for example, `@firstName`). Parameter names can contain
+  /// letters, numbers, and underscores.
   ///
   /// Parameters can appear anywhere that a literal value is expected.  The same
   /// parameter name can be used more than once, for example:
-  ///   `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// It is an error to execute an SQL statement with unbound parameters.
+  /// `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// Parameter values are specified using `params`, which is a JSON
-  /// object whose keys are parameter names, and whose values are the
-  /// corresponding parameter values.
+  /// It is an error to execute a SQL statement with unbound parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3253,6 +3820,7 @@ class ExecuteSqlRequest {
   }
 
   /// A per-transaction sequence number used to identify this request. This
+  /// field
   /// makes each request idempotent such that if the request is received
   /// multiple
   /// times, at most one will succeed.
@@ -3268,19 +3836,16 @@ class ExecuteSqlRequest {
   /// Required. The SQL string.
   core.String sql;
 
-  /// The transaction to use. If none is provided, the default is a
-  /// temporary read-only transaction with strong concurrency.
-  ///
   /// The transaction to use.
   ///
   /// For queries, if none is provided, the default is a temporary read-only
   /// transaction with strong concurrency.
   ///
-  /// Standard DML statements require a ReadWrite transaction. Single-use
-  /// transactions are not supported (to avoid replay).  The caller must
-  /// either supply an existing transaction ID or begin a new transaction.
+  /// Standard DML statements require a read-write transaction. To protect
+  /// against replays, single-use transactions are not supported.  The caller
+  /// must either supply an existing transaction ID or begin a new transaction.
   ///
-  /// Partitioned DML requires an existing PartitionedDml transaction ID.
+  /// Partitioned DML requires an existing Partitioned DML transaction ID.
   TransactionSelector transaction;
 
   ExecuteSqlRequest();
@@ -3473,13 +4038,55 @@ class GetDatabaseDdlResponse {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`. This field is only used by Cloud IAM.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
     return _json;
   }
 }
@@ -3495,6 +4102,23 @@ class Instance {
   /// Required. The descriptive name for this instance as it appears in UIs.
   /// Must be unique per project and between 4 and 30 characters in length.
   core.String displayName;
+
+  /// Output only. A set of endpoint URIs based on your instance config
+  /// that you can use instead of the global endpoint `spanner.googleapis.com`.
+  ///
+  /// For example, if your instance config is `us-central1` (a regional config
+  /// in Iowa), then your instance specific endpoints may include
+  /// `us-central1-spanner.googleapis.com`. By calling these endpoints instead
+  /// of
+  /// the global endpoint, you optimize network routing which could reduce
+  /// network latency.
+  ///
+  /// The client libraries, JDBC drivers, and other SDK clients automatically
+  /// call these instance specific endpoints.
+  ///
+  /// If you are using DNS whitelists, firewalls, or filtering to control access
+  /// to endpoints, make sure you grant access to `*spanner.googleapis.com`.
+  core.List<core.String> endpointUris;
 
   /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
   /// resources into groups that reflect a customer's organizational needs and
@@ -3526,8 +4150,9 @@ class Instance {
   /// segment of the name must be between 2 and 64 characters in length.
   core.String name;
 
-  /// Required. The number of nodes allocated to this instance. This may be zero
-  /// in API responses for instances that are not yet in state `READY`.
+  /// The number of nodes allocated to this instance. This
+  /// may be zero in API responses for instances that are not yet in state
+  /// `READY`.
   ///
   /// See [the
   /// documentation](https://cloud.google.com/spanner/docs/instances#node_count)
@@ -3557,6 +4182,9 @@ class Instance {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("endpointUris")) {
+      endpointUris = (_json["endpointUris"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
     }
@@ -3579,6 +4207,9 @@ class Instance {
     }
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (endpointUris != null) {
+      _json["endpointUris"] = endpointUris;
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -4051,12 +4682,21 @@ class Mutation {
   /// Like insert, except that if the row already exists, then
   /// its column values are overwritten with the ones provided. Any
   /// column values not explicitly written are preserved.
+  ///
+  /// When using insert_or_update, just as when using insert, all `NOT
+  /// NULL` columns in the table must be given a value. This holds true
+  /// even when the row already exists and will therefore actually be updated.
   Write insertOrUpdate;
 
   /// Like insert, except that if the row already exists, it is
   /// deleted, and the column values provided are inserted
   /// instead. Unlike insert_or_update, this means any values not
   /// explicitly written become `NULL`.
+  ///
+  /// In an interleaved table, if you create the child table with the
+  /// `ON DELETE CASCADE` annotation, then replacing a parent row
+  /// also deletes the child rows. Otherwise, you must delete the
+  /// child rows before you replace the parent row.
   Write replace;
 
   /// Update existing rows in a table. If any of the rows does not
@@ -4436,20 +5076,18 @@ class PartitionQueryRequest {
   /// about SQL types.
   core.Map<core.String, Type> paramTypes;
 
-  /// The SQL query string can contain parameter placeholders. A parameter
-  /// placeholder consists of `'@'` followed by the parameter
-  /// name. Parameter names consist of any combination of letters,
-  /// numbers, and underscores.
+  /// Parameter names and values that bind to placeholders in the SQL string.
+  ///
+  /// A parameter placeholder consists of the `@` character followed by the
+  /// parameter name (for example, `@firstName`). Parameter names can contain
+  /// letters, numbers, and underscores.
   ///
   /// Parameters can appear anywhere that a literal value is expected.  The same
   /// parameter name can be used more than once, for example:
-  ///   `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// It is an error to execute an SQL query with unbound parameters.
+  /// `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// Parameter values are specified using `params`, which is a JSON
-  /// object whose keys are parameter names, and whose values are the
-  /// corresponding parameter values.
+  /// It is an error to execute a SQL statement with unbound parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -4458,7 +5096,8 @@ class PartitionQueryRequest {
   /// Additional options that affect how many partitions are created.
   PartitionOptions partitionOptions;
 
-  /// The query request to generate partitions for. The request will fail if
+  /// Required. The query request to generate partitions for. The request will
+  /// fail if
   /// the query is not root partitionable. The query plan of a root
   /// partitionable query has a single distributed union operator. A distributed
   /// union operator conceptually divides one or more tables into multiple
@@ -4763,56 +5402,74 @@ class PlanNode {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -4824,8 +5481,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -4836,7 +5497,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -5013,7 +5696,7 @@ class ReadOnly {
 /// The request for Read and
 /// StreamingRead.
 class ReadRequest {
-  /// The columns of table to be returned for each row matching
+  /// Required. The columns of table to be returned for each row matching
   /// this request.
   core.List<core.String> columns;
 
@@ -5551,20 +6234,18 @@ class Statement {
   /// about SQL types.
   core.Map<core.String, Type> paramTypes;
 
-  /// The DML string can contain parameter placeholders. A parameter
-  /// placeholder consists of `'@'` followed by the parameter
-  /// name. Parameter names consist of any combination of letters,
-  /// numbers, and underscores.
+  /// Parameter names and values that bind to placeholders in the DML string.
+  ///
+  /// A parameter placeholder consists of the `@` character followed by the
+  /// parameter name (for example, `@firstName`). Parameter names can contain
+  /// letters, numbers, and underscores.
   ///
   /// Parameters can appear anywhere that a literal value is expected.  The
   /// same parameter name can be used more than once, for example:
-  ///   `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// It is an error to execute an SQL statement with unbound parameters.
+  /// `"WHERE id > @msg_id AND id < @msg_id + 100"`
   ///
-  /// Parameter values are specified using `params`, which is a JSON
-  /// object whose keys are parameter names, and whose values are the
-  /// corresponding parameter values.
+  /// It is an error to execute a SQL statement with unbound parameters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -6336,7 +7017,7 @@ class UpdateDatabaseDdlRequest {
   /// `ALREADY_EXISTS`.
   core.String operationId;
 
-  /// DDL statements to be applied to the database.
+  /// Required. DDL statements to be applied to the database.
   core.List<core.String> statements;
 
   UpdateDatabaseDdlRequest();
@@ -6419,20 +7100,15 @@ class UpdateInstanceMetadata {
 
 /// The request for UpdateInstance.
 class UpdateInstanceRequest {
-  /// Required. A mask specifying which fields in
-  /// [][google.spanner.admin.instance.v1.UpdateInstanceRequest.instance] should
-  /// be updated.
+  /// Required. A mask specifying which fields in Instance should be updated.
   /// The field mask must always be specified; this prevents any future fields
   /// in
-  /// [][google.spanner.admin.instance.v1.Instance] from being erased
-  /// accidentally by clients that do not know
+  /// Instance from being erased accidentally by clients that do not know
   /// about them.
   core.String fieldMask;
 
   /// Required. The instance to update, which must always include the instance
-  /// name.  Otherwise, only fields mentioned in
-  /// [][google.spanner.admin.instance.v1.UpdateInstanceRequest.field_mask] need
-  /// be included.
+  /// name.  Otherwise, only fields mentioned in field_mask need be included.
   Instance instance;
 
   UpdateInstanceRequest();

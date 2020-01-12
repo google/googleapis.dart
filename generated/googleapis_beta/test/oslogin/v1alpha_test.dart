@@ -84,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed5272() {
+buildUnnamed5151() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed5272(core.List<api.PosixAccount> o) {
+checkUnnamed5151(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed5273() {
+buildUnnamed5152() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed5273(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed5152(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed5272();
-    o.sshPublicKeys = buildUnnamed5273();
+    o.posixAccounts = buildUnnamed5151();
+    o.sshPublicKeys = buildUnnamed5152();
   }
   buildCounterLoginProfile--;
   return o;
@@ -127,8 +127,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5272(o.posixAccounts);
-    checkUnnamed5273(o.sshPublicKeys);
+    checkUnnamed5151(o.posixAccounts);
+    checkUnnamed5152(o.sshPublicKeys);
   }
   buildCounterLoginProfile--;
 }
@@ -142,6 +142,7 @@ buildPosixAccount() {
     o.gecos = "foo";
     o.gid = "foo";
     o.homeDirectory = "foo";
+    o.name = "foo";
     o.operatingSystemType = "foo";
     o.primary = true;
     o.shell = "foo";
@@ -160,6 +161,7 @@ checkPosixAccount(api.PosixAccount o) {
     unittest.expect(o.gecos, unittest.equals('foo'));
     unittest.expect(o.gid, unittest.equals('foo'));
     unittest.expect(o.homeDirectory, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.operatingSystemType, unittest.equals('foo'));
     unittest.expect(o.primary, unittest.isTrue);
     unittest.expect(o.shell, unittest.equals('foo'));
@@ -178,6 +180,7 @@ buildSshPublicKey() {
     o.expirationTimeUsec = "foo";
     o.fingerprint = "foo";
     o.key = "foo";
+    o.name = "foo";
   }
   buildCounterSshPublicKey--;
   return o;
@@ -189,6 +192,7 @@ checkSshPublicKey(api.SshPublicKey o) {
     unittest.expect(o.expirationTimeUsec, unittest.equals('foo'));
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.key, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterSshPublicKey--;
 }

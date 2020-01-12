@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.androidenterprise.v1;
 
@@ -2803,8 +2803,7 @@ class ManagedconfigurationssettingsResourceApi {
   ManagedconfigurationssettingsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists all the managed configurations settings for the specified app. Only
-  /// the ID and the name is set.
+  /// Lists all the managed configurations settings for the specified app.
   ///
   /// Request parameters:
   ///
@@ -5245,8 +5244,6 @@ class Administrator {
 
 /// A token authorizing an admin to access an iframe.
 class AdministratorWebToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#administratorWebToken".
   core.String kind;
 
   /// An opaque token to be passed to the Play front-end to generate an iframe.
@@ -5280,15 +5277,14 @@ class AdministratorWebToken {
 /// data the admin is allowed to modify and the URI the iframe is allowed to
 /// communiate with.
 class AdministratorWebTokenSpec {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#administratorWebTokenSpec".
   core.String kind;
 
   /// Options for displaying the Managed Configuration page.
   AdministratorWebTokenSpecManagedConfigurations managedConfigurations;
 
   /// The URI of the parent frame hosting the iframe. To prevent XSS, the iframe
-  /// may not be hosted at other URIs. This URI must be https.
+  /// may not be hosted at other URIs. This URI must be https. Use whitespaces
+  /// to separate multiple parent URIs.
   core.String parent;
 
   /// Deprecated. Use PlaySearch.approveApps.
@@ -5493,8 +5489,6 @@ class AdministratorWebTokenSpecWebApps {
 /// Represents the list of app restrictions available to be pre-configured for
 /// the product.
 class AppRestrictionsSchema {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#appRestrictionsSchema".
   core.String kind;
 
   /// The set of restrictions that make up this schema.
@@ -5848,9 +5842,6 @@ class ApprovalUrlInfo {
   /// A URL that displays a product's permissions and that can also be used to
   /// approve the product with the Products.approve call.
   core.String approvalUrl;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#approvalUrlInfo".
   core.String kind;
 
   ApprovalUrlInfo();
@@ -5880,8 +5871,6 @@ class ApprovalUrlInfo {
 /// An AuthenticationToken is used by the EMM's device policy client on a device
 /// to provision the given EMM-managed user on that device.
 class AuthenticationToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#authenticationToken".
   core.String kind;
 
   /// The authentication token to be passed to the device policy client on the
@@ -5969,7 +5958,8 @@ class AutoInstallPolicy {
 
   /// The minimum version of the app. If a lower version of the app is
   /// installed, then the app will be auto-updated according to the auto-install
-  /// constraints, instead of waiting for the regular auto-update.
+  /// constraints, instead of waiting for the regular auto-update. You can set a
+  /// minimum version code for at most 20 apps per device.
   core.int minimumVersionCode;
 
   AutoInstallPolicy();
@@ -6017,8 +6007,6 @@ class AutoInstallPolicy {
 /// is attributed to the user. The variable set will be used to replace
 /// placeholders in the managed configuration settings.
 class ConfigurationVariables {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#configurationVariables".
   core.String kind;
 
   /// The ID of the managed configurations settings.
@@ -6066,9 +6054,6 @@ class Device {
   /// The Google Play Services Android ID for the device encoded as a lowercase
   /// hex string. For example, "123456789abcdef0".
   core.String androidId;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#device".
   core.String kind;
 
   /// Identifies the extent to which the device is controlled by a managed
@@ -6221,9 +6206,6 @@ class DeviceState {
   /// (including Google Play), while "disabled" means that it cannot. A new
   /// device is initially in the "disabled" state.
   core.String accountState;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#deviceState".
   core.String kind;
 
   DeviceState();
@@ -6305,9 +6287,6 @@ class Enterprise {
 
   /// The unique ID for the enterprise.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#enterprise".
   core.String kind;
 
   /// The name of the enterprise, for example, "Example, Inc".
@@ -6366,9 +6345,6 @@ class Enterprise {
 class EnterpriseAccount {
   /// The email address of the service account.
   core.String accountEmail;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#enterpriseAccount".
   core.String kind;
 
   EnterpriseAccount();
@@ -6488,8 +6464,6 @@ class EnterprisesSendTestPushNotificationResponse {
 /// "userPurchase" as the entitlement reason. These entitlements cannot be
 /// removed via the API.
 class Entitlement {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#entitlement".
   core.String kind;
 
   /// The ID of the product that the entitlement is for. For example,
@@ -6598,9 +6572,6 @@ class GroupLicense {
   /// Google Play. Unapproved products will not be visible to end users in
   /// collections, and new entitlements to them should not normally be created.
   core.String approval;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#groupLicense".
   core.String kind;
 
   /// The total number of provisioned licenses for this product. Returned by
@@ -6785,9 +6756,6 @@ class Install {
   /// state "installed" means that the app has been installed. This field is
   /// read-only.
   core.String installState;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#install".
   core.String kind;
 
   /// The ID of the product that the install is for. For example,
@@ -7073,9 +7041,6 @@ class ManagedConfiguration {
   /// Contains the ID of the managed configuration profile and the set of
   /// configuration variables (if any) defined for the user.
   ConfigurationVariables configurationVariables;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfiguration".
   core.String kind;
 
   /// The set of managed properties for this configuration.
@@ -7207,16 +7172,11 @@ class ManagedConfigurationsForUserListResponse {
 /// set of users. The app's developer would have defined configurable properties
 /// in the managed configurations schema.
 class ManagedConfigurationsSettings {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfigurationsSettings".
   core.String kind;
 
   /// The last updated time of the managed configuration settings in
   /// milliseconds since 1970-01-01T00:00:00Z.
   core.String lastUpdatedTimestampMillis;
-
-  /// The set of managed properties for this configuration.
-  core.List<ManagedProperty> managedProperty;
 
   /// The ID of the managed configurations settings.
   core.String mcmId;
@@ -7232,11 +7192,6 @@ class ManagedConfigurationsSettings {
     }
     if (_json.containsKey("lastUpdatedTimestampMillis")) {
       lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
-    }
-    if (_json.containsKey("managedProperty")) {
-      managedProperty = (_json["managedProperty"] as core.List)
-          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
-          .toList();
     }
     if (_json.containsKey("mcmId")) {
       mcmId = _json["mcmId"];
@@ -7254,10 +7209,6 @@ class ManagedConfigurationsSettings {
     }
     if (lastUpdatedTimestampMillis != null) {
       _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
-    }
-    if (managedProperty != null) {
-      _json["managedProperty"] =
-          managedProperty.map((value) => (value).toJson()).toList();
     }
     if (mcmId != null) {
       _json["mcmId"] = mcmId;
@@ -7658,8 +7609,6 @@ class Notification {
 /// collection of notifications for enterprises associated with the service
 /// account authenticated for the request.
 class NotificationSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#notificationSet".
   core.String kind;
 
   /// The notifications received, or empty if no notifications are present.
@@ -7750,9 +7699,6 @@ class Permission {
   /// A longer description of the Permissions resource, giving more details of
   /// what it affects.
   core.String description;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#permission".
   core.String kind;
 
   /// The name of the permission.
@@ -7920,9 +7866,6 @@ class Product {
   /// A link to an image that can be used as an icon for the product. This image
   /// is suitable for use at up to 512px x 512px.
   core.String iconUrl;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#product".
   core.String kind;
 
   /// The approximate time (within 7 days) the app was last published, expressed
@@ -8243,8 +8186,6 @@ class ProductPermission {
 /// Information about the permissions required by a specific app and whether
 /// they have been accepted by the enterprise.
 class ProductPermissions {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#productPermissions".
   core.String kind;
 
   /// The permissions required by the app.
@@ -8353,8 +8294,6 @@ class ProductPolicy {
 
 /// A set of products.
 class ProductSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#productSet".
   core.String kind;
 
   /// The list of product IDs making up the set of products.
@@ -8626,9 +8565,6 @@ class ProductsListResponse {
 class ServiceAccount {
   /// Credentials that can be used to authenticate as this ServiceAccount.
   ServiceAccountKey key;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#serviceAccount".
   core.String kind;
 
   /// The account name of the service account, in the form of an email address.
@@ -8675,9 +8611,6 @@ class ServiceAccountKey {
   /// An opaque, unique identifier for this ServiceAccountKey. Assigned by the
   /// server.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#serviceAccountKey".
   core.String kind;
 
   /// Public key data for the credentials file. This is an X.509 cert. If you
@@ -8763,9 +8696,6 @@ class SignupInfo {
   /// An opaque token that will be required, along with the Enterprise Token,
   /// for obtaining the enterprise resource from CompleteSignup.
   core.String completionToken;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#signupInfo".
   core.String kind;
 
   /// A URL under which the Admin can sign up for an enterprise. The page
@@ -8808,9 +8738,6 @@ class StoreCluster {
   /// Unique ID of this cluster. Assigned by the server. Immutable once
   /// assigned.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storeCluster".
   core.String kind;
 
   /// Ordered list of localized strings giving the name of this page. The text
@@ -8884,9 +8811,6 @@ class StoreLayout {
   /// Not specifying a homepage is equivalent to setting the store layout type
   /// to "basic".
   core.String homepageId;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storeLayout".
   core.String kind;
 
   /// The store layout type. By default, this value is set to "basic" if the
@@ -9001,9 +8925,6 @@ class StoreLayoutPagesListResponse {
 class StorePage {
   /// Unique ID of this page. Assigned by the server. Immutable once assigned.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storePage".
   core.String kind;
 
   /// Ordered list of pages a user should be able to reach from this page. The
@@ -9151,9 +9072,6 @@ class User {
 
   /// The unique ID for the user.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#user".
   core.String kind;
 
   /// The entity that manages the user. With googleManaged users, the source of
@@ -9224,8 +9142,6 @@ class User {
 /// their email address and token (activation code) the appropriate EMM app can
 /// be automatically downloaded.
 class UserToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#userToken".
   core.String kind;
 
   /// The token (activation code) to be entered by the user. This consists of a
@@ -9305,8 +9221,6 @@ class UsersListResponse {
 /// could be a placeholder, and its value could be Alice. Placeholders should
 /// start with a '$' sign and should be alphanumeric only.
 class VariableSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#variableSet".
   core.String kind;
 
   /// The placeholder string; defined by EMM.

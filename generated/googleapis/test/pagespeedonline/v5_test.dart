@@ -50,7 +50,36 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1622() {
+buildGoogleprotobufListValue() {
+  var o = new api.GoogleprotobufListValue();
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
+  return o;
+}
+
+checkGoogleprotobufListValue(api.GoogleprotobufListValue o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted1 = (o[0]) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1["bool"], unittest.equals(true));
+  unittest.expect(casted1["string"], unittest.equals('foo'));
+  var casted2 = (o[1]) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2["bool"], unittest.equals(true));
+  unittest.expect(casted2["string"], unittest.equals('foo'));
+}
+
+buildUnnamed2222() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -65,18 +94,18 @@ buildUnnamed1622() {
   return o;
 }
 
-checkUnnamed1622(core.Map<core.String, core.Object> o) {
+checkUnnamed2222(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
-  unittest.expect(casted2, unittest.hasLength(3));
-  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted2["bool"], unittest.equals(true));
-  unittest.expect(casted2["string"], unittest.equals('foo'));
+  var casted3 = (o["x"]) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3["bool"], unittest.equals(true));
+  unittest.expect(casted3["string"], unittest.equals('foo'));
+  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4["bool"], unittest.equals(true));
+  unittest.expect(casted4["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterLighthouseAuditResultV5 = 0;
@@ -85,11 +114,12 @@ buildLighthouseAuditResultV5() {
   buildCounterLighthouseAuditResultV5++;
   if (buildCounterLighthouseAuditResultV5 < 3) {
     o.description = "foo";
-    o.details = buildUnnamed1622();
+    o.details = buildUnnamed2222();
     o.displayValue = "foo";
     o.errorMessage = "foo";
     o.explanation = "foo";
     o.id = "foo";
+    o.numericValue = 42.0;
     o.score = {
       'list': [1, 2, 3],
       'bool': true,
@@ -111,23 +141,24 @@ checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
   buildCounterLighthouseAuditResultV5++;
   if (buildCounterLighthouseAuditResultV5 < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1622(o.details);
+    checkUnnamed2222(o.details);
     unittest.expect(o.displayValue, unittest.equals('foo'));
     unittest.expect(o.errorMessage, unittest.equals('foo'));
     unittest.expect(o.explanation, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    var casted3 = (o.score) as core.Map;
-    unittest.expect(casted3, unittest.hasLength(3));
-    unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted3["bool"], unittest.equals(true));
-    unittest.expect(casted3["string"], unittest.equals('foo'));
+    unittest.expect(o.numericValue, unittest.equals(42.0));
+    var casted5 = (o.score) as core.Map;
+    unittest.expect(casted5, unittest.hasLength(3));
+    unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
+    unittest.expect(casted5["bool"], unittest.equals(true));
+    unittest.expect(casted5["string"], unittest.equals('foo'));
     unittest.expect(o.scoreDisplayMode, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    var casted4 = (o.warnings) as core.Map;
-    unittest.expect(casted4, unittest.hasLength(3));
-    unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted4["bool"], unittest.equals(true));
-    unittest.expect(casted4["string"], unittest.equals('foo'));
+    var casted6 = (o.warnings) as core.Map;
+    unittest.expect(casted6, unittest.hasLength(3));
+    unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
+    unittest.expect(casted6["bool"], unittest.equals(true));
+    unittest.expect(casted6["string"], unittest.equals('foo'));
   }
   buildCounterLighthouseAuditResultV5--;
 }
@@ -155,14 +186,14 @@ checkLighthouseCategoryV5AuditRefs(api.LighthouseCategoryV5AuditRefs o) {
   buildCounterLighthouseCategoryV5AuditRefs--;
 }
 
-buildUnnamed1623() {
+buildUnnamed2223() {
   var o = new core.List<api.LighthouseCategoryV5AuditRefs>();
   o.add(buildLighthouseCategoryV5AuditRefs());
   o.add(buildLighthouseCategoryV5AuditRefs());
   return o;
 }
 
-checkUnnamed1623(core.List<api.LighthouseCategoryV5AuditRefs> o) {
+checkUnnamed2223(core.List<api.LighthouseCategoryV5AuditRefs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLighthouseCategoryV5AuditRefs(o[0]);
   checkLighthouseCategoryV5AuditRefs(o[1]);
@@ -173,7 +204,7 @@ buildLighthouseCategoryV5() {
   var o = new api.LighthouseCategoryV5();
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
-    o.auditRefs = buildUnnamed1623();
+    o.auditRefs = buildUnnamed2223();
     o.description = "foo";
     o.id = "foo";
     o.manualDescription = "foo";
@@ -191,28 +222,28 @@ buildLighthouseCategoryV5() {
 checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
-    checkUnnamed1623(o.auditRefs);
+    checkUnnamed2223(o.auditRefs);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.manualDescription, unittest.equals('foo'));
-    var casted5 = (o.score) as core.Map;
-    unittest.expect(casted5, unittest.hasLength(3));
-    unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted5["bool"], unittest.equals(true));
-    unittest.expect(casted5["string"], unittest.equals('foo'));
+    var casted7 = (o.score) as core.Map;
+    unittest.expect(casted7, unittest.hasLength(3));
+    unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
+    unittest.expect(casted7["bool"], unittest.equals(true));
+    unittest.expect(casted7["string"], unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterLighthouseCategoryV5--;
 }
 
-buildUnnamed1624() {
+buildUnnamed2224() {
   var o = new core.Map<core.String, api.LighthouseAuditResultV5>();
   o["x"] = buildLighthouseAuditResultV5();
   o["y"] = buildLighthouseAuditResultV5();
   return o;
 }
 
-checkUnnamed1624(core.Map<core.String, api.LighthouseAuditResultV5> o) {
+checkUnnamed2224(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLighthouseAuditResultV5(o["x"]);
   checkLighthouseAuditResultV5(o["y"]);
@@ -267,7 +298,7 @@ checkLighthouseResultV5CategoryGroupsValue(
   buildCounterLighthouseResultV5CategoryGroupsValue--;
 }
 
-buildUnnamed1625() {
+buildUnnamed2225() {
   var o =
       new core.Map<core.String, api.LighthouseResultV5CategoryGroupsValue>();
   o["x"] = buildLighthouseResultV5CategoryGroupsValue();
@@ -275,7 +306,7 @@ buildUnnamed1625() {
   return o;
 }
 
-checkUnnamed1625(
+checkUnnamed2225(
     core.Map<core.String, api.LighthouseResultV5CategoryGroupsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLighthouseResultV5CategoryGroupsValue(o["x"]);
@@ -304,11 +335,11 @@ checkLighthouseResultV5ConfigSettings(api.LighthouseResultV5ConfigSettings o) {
   if (buildCounterLighthouseResultV5ConfigSettings < 3) {
     unittest.expect(o.emulatedFormFactor, unittest.equals('foo'));
     unittest.expect(o.locale, unittest.equals('foo'));
-    var casted6 = (o.onlyCategories) as core.Map;
-    unittest.expect(casted6, unittest.hasLength(3));
-    unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-    unittest.expect(casted6["bool"], unittest.equals(true));
-    unittest.expect(casted6["string"], unittest.equals('foo'));
+    var casted8 = (o.onlyCategories) as core.Map;
+    unittest.expect(casted8, unittest.hasLength(3));
+    unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
+    unittest.expect(casted8["bool"], unittest.equals(true));
+    unittest.expect(casted8["string"], unittest.equals('foo'));
   }
   buildCounterLighthouseResultV5ConfigSettings--;
 }
@@ -407,35 +438,6 @@ checkLighthouseResultV5I18n(api.LighthouseResultV5I18n o) {
   buildCounterLighthouseResultV5I18n--;
 }
 
-buildUnnamed1626() {
-  var o = new core.List<core.Object>();
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  o.add({
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo'
-  });
-  return o;
-}
-
-checkUnnamed1626(core.List<core.Object> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o[0]) as core.Map;
-  unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o[1]) as core.Map;
-  unittest.expect(casted8, unittest.hasLength(3));
-  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted8["bool"], unittest.equals(true));
-  unittest.expect(casted8["string"], unittest.equals('foo'));
-}
-
 core.int buildCounterLighthouseResultV5RuntimeError = 0;
 buildLighthouseResultV5RuntimeError() {
   var o = new api.LighthouseResultV5RuntimeError();
@@ -457,14 +459,14 @@ checkLighthouseResultV5RuntimeError(api.LighthouseResultV5RuntimeError o) {
   buildCounterLighthouseResultV5RuntimeError--;
 }
 
-buildUnnamed1627() {
+buildUnnamed2226() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1627(core.Map<core.String, core.String> o) {
+checkUnnamed2226(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -475,7 +477,7 @@ buildLighthouseResultV5StackPacks() {
   var o = new api.LighthouseResultV5StackPacks();
   buildCounterLighthouseResultV5StackPacks++;
   if (buildCounterLighthouseResultV5StackPacks < 3) {
-    o.descriptions = buildUnnamed1627();
+    o.descriptions = buildUnnamed2226();
     o.iconDataURL = "foo";
     o.id = "foo";
     o.title = "foo";
@@ -487,7 +489,7 @@ buildLighthouseResultV5StackPacks() {
 checkLighthouseResultV5StackPacks(api.LighthouseResultV5StackPacks o) {
   buildCounterLighthouseResultV5StackPacks++;
   if (buildCounterLighthouseResultV5StackPacks < 3) {
-    checkUnnamed1627(o.descriptions);
+    checkUnnamed2226(o.descriptions);
     unittest.expect(o.iconDataURL, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -495,14 +497,14 @@ checkLighthouseResultV5StackPacks(api.LighthouseResultV5StackPacks o) {
   buildCounterLighthouseResultV5StackPacks--;
 }
 
-buildUnnamed1628() {
+buildUnnamed2227() {
   var o = new core.List<api.LighthouseResultV5StackPacks>();
   o.add(buildLighthouseResultV5StackPacks());
   o.add(buildLighthouseResultV5StackPacks());
   return o;
 }
 
-checkUnnamed1628(core.List<api.LighthouseResultV5StackPacks> o) {
+checkUnnamed2227(core.List<api.LighthouseResultV5StackPacks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLighthouseResultV5StackPacks(o[0]);
   checkLighthouseResultV5StackPacks(o[1]);
@@ -532,9 +534,9 @@ buildLighthouseResultV5() {
   var o = new api.LighthouseResultV5();
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
-    o.audits = buildUnnamed1624();
+    o.audits = buildUnnamed2224();
     o.categories = buildLighthouseResultV5Categories();
-    o.categoryGroups = buildUnnamed1625();
+    o.categoryGroups = buildUnnamed2225();
     o.configSettings = buildLighthouseResultV5ConfigSettings();
     o.environment = buildLighthouseResultV5Environment();
     o.fetchTime = "foo";
@@ -542,9 +544,9 @@ buildLighthouseResultV5() {
     o.i18n = buildLighthouseResultV5I18n();
     o.lighthouseVersion = "foo";
     o.requestedUrl = "foo";
-    o.runWarnings = buildUnnamed1626();
+    o.runWarnings = buildGoogleprotobufListValue();
     o.runtimeError = buildLighthouseResultV5RuntimeError();
-    o.stackPacks = buildUnnamed1628();
+    o.stackPacks = buildUnnamed2227();
     o.timing = buildLighthouseResultV5Timing();
     o.userAgent = "foo";
   }
@@ -555,9 +557,9 @@ buildLighthouseResultV5() {
 checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
-    checkUnnamed1624(o.audits);
+    checkUnnamed2224(o.audits);
     checkLighthouseResultV5Categories(o.categories);
-    checkUnnamed1625(o.categoryGroups);
+    checkUnnamed2225(o.categoryGroups);
     checkLighthouseResultV5ConfigSettings(o.configSettings);
     checkLighthouseResultV5Environment(o.environment);
     unittest.expect(o.fetchTime, unittest.equals('foo'));
@@ -565,9 +567,9 @@ checkLighthouseResultV5(api.LighthouseResultV5 o) {
     checkLighthouseResultV5I18n(o.i18n);
     unittest.expect(o.lighthouseVersion, unittest.equals('foo'));
     unittest.expect(o.requestedUrl, unittest.equals('foo'));
-    checkUnnamed1626(o.runWarnings);
+    checkGoogleprotobufListValue(o.runWarnings);
     checkLighthouseResultV5RuntimeError(o.runtimeError);
-    checkUnnamed1628(o.stackPacks);
+    checkUnnamed2227(o.stackPacks);
     checkLighthouseResultV5Timing(o.timing);
     unittest.expect(o.userAgent, unittest.equals('foo'));
   }
@@ -601,7 +603,7 @@ checkPagespeedApiLoadingExperienceV5MetricsValueDistributions(
   buildCounterPagespeedApiLoadingExperienceV5MetricsValueDistributions--;
 }
 
-buildUnnamed1629() {
+buildUnnamed2228() {
   var o = new core
       .List<api.PagespeedApiLoadingExperienceV5MetricsValueDistributions>();
   o.add(buildPagespeedApiLoadingExperienceV5MetricsValueDistributions());
@@ -609,7 +611,7 @@ buildUnnamed1629() {
   return o;
 }
 
-checkUnnamed1629(
+checkUnnamed2228(
     core.List<api.PagespeedApiLoadingExperienceV5MetricsValueDistributions> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPagespeedApiLoadingExperienceV5MetricsValueDistributions(o[0]);
@@ -622,7 +624,7 @@ buildPagespeedApiLoadingExperienceV5MetricsValue() {
   buildCounterPagespeedApiLoadingExperienceV5MetricsValue++;
   if (buildCounterPagespeedApiLoadingExperienceV5MetricsValue < 3) {
     o.category = "foo";
-    o.distributions = buildUnnamed1629();
+    o.distributions = buildUnnamed2228();
     o.percentile = 42;
   }
   buildCounterPagespeedApiLoadingExperienceV5MetricsValue--;
@@ -634,13 +636,13 @@ checkPagespeedApiLoadingExperienceV5MetricsValue(
   buildCounterPagespeedApiLoadingExperienceV5MetricsValue++;
   if (buildCounterPagespeedApiLoadingExperienceV5MetricsValue < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed1629(o.distributions);
+    checkUnnamed2228(o.distributions);
     unittest.expect(o.percentile, unittest.equals(42));
   }
   buildCounterPagespeedApiLoadingExperienceV5MetricsValue--;
 }
 
-buildUnnamed1630() {
+buildUnnamed2229() {
   var o = new core
       .Map<core.String, api.PagespeedApiLoadingExperienceV5MetricsValue>();
   o["x"] = buildPagespeedApiLoadingExperienceV5MetricsValue();
@@ -648,7 +650,7 @@ buildUnnamed1630() {
   return o;
 }
 
-checkUnnamed1630(
+checkUnnamed2229(
     core.Map<core.String, api.PagespeedApiLoadingExperienceV5MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPagespeedApiLoadingExperienceV5MetricsValue(o["x"]);
@@ -662,7 +664,7 @@ buildPagespeedApiLoadingExperienceV5() {
   if (buildCounterPagespeedApiLoadingExperienceV5 < 3) {
     o.id = "foo";
     o.initialUrl = "foo";
-    o.metrics = buildUnnamed1630();
+    o.metrics = buildUnnamed2229();
     o.overallCategory = "foo";
   }
   buildCounterPagespeedApiLoadingExperienceV5--;
@@ -674,7 +676,7 @@ checkPagespeedApiLoadingExperienceV5(api.PagespeedApiLoadingExperienceV5 o) {
   if (buildCounterPagespeedApiLoadingExperienceV5 < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.initialUrl, unittest.equals('foo'));
-    checkUnnamed1630(o.metrics);
+    checkUnnamed2229(o.metrics);
     unittest.expect(o.overallCategory, unittest.equals('foo'));
   }
   buildCounterPagespeedApiLoadingExperienceV5--;
@@ -735,20 +737,28 @@ checkPagespeedApiPagespeedResponseV5(api.PagespeedApiPagespeedResponseV5 o) {
   buildCounterPagespeedApiPagespeedResponseV5--;
 }
 
-buildUnnamed1631() {
+buildUnnamed2230() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1631(core.List<core.String> o) {
+checkUnnamed2230(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 main() {
+  unittest.group("obj-schema-GoogleprotobufListValue", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleprotobufListValue();
+      var od = new api.GoogleprotobufListValue.fromJson(o.toJson());
+      checkGoogleprotobufListValue(od);
+    });
+  });
+
   unittest.group("obj-schema-LighthouseAuditResultV5", () {
     unittest.test("to-json--from-json", () {
       var o = buildLighthouseAuditResultV5();
@@ -908,7 +918,7 @@ main() {
       api.PagespeedapiResourceApi res =
           new api.PagespeedonlineApi(mock).pagespeedapi;
       var arg_url = "foo";
-      var arg_category = buildUnnamed1631();
+      var arg_category = buildUnnamed2230();
       var arg_locale = "foo";
       var arg_strategy = "foo";
       var arg_utmCampaign = "foo";
