@@ -140,7 +140,7 @@ class ByteRange {
 }
 
 /// Represents a general error reported by the API endpoint.
-class ApiRequestError extends core.Error {
+class ApiRequestError implements core.Exception {
   final core.String message;
 
   ApiRequestError(this.message);
