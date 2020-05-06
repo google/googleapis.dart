@@ -25,22 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
@@ -56,16 +40,16 @@
             "location": "query",
             "type": "string"
         },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
         },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
@@ -96,6 +80,22 @@
             "enumDescriptions": [
                 "v1 error format",
                 "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
             ],
             "location": "query",
             "type": "string"
@@ -175,70 +175,6 @@
                     "resources": {
                         "operations": {
                             "methods": {
-                                "list": {
-                                    "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
-                                    "httpMethod": "GET",
-                                    "id": "tpu.projects.locations.operations.list",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "The name of the operation's parent resource.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "pageToken": {
-                                            "description": "The standard list page token.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "The standard list page size.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "filter": {
-                                            "description": "The standard list filter.",
-                                            "location": "query",
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1alpha1/{+name}/operations",
-                                    "response": {
-                                        "$ref": "ListOperationsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "get": {
-                                    "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-                                    "httpMethod": "GET",
-                                    "id": "tpu.projects.locations.operations.get",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "The name of the operation resource.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1alpha1/{+name}",
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
                                 "cancel": {
                                     "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
                                     "httpMethod": "POST",
@@ -282,6 +218,70 @@
                                     "path": "v1alpha1/{+name}",
                                     "response": {
                                         "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+                                    "httpMethod": "GET",
+                                    "id": "tpu.projects.locations.operations.list",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "The standard list filter.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "The name of the operation's parent resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "The standard list page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The standard list page size.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "path": "v1alpha1/{+name}/operations",
+                                    "response": {
+                                        "$ref": "ListOperationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+                                    "httpMethod": "GET",
+                                    "id": "tpu.projects.locations.operations.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The name of the operation resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1alpha1/{+name}",
+                                    "response": {
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -364,57 +364,6 @@
                         },
                         "nodes": {
                             "methods": {
-                                "start": {
-                                    "description": "Starts a node.",
-                                    "httpMethod": "POST",
-                                    "id": "tpu.projects.locations.nodes.start",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "The resource name.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1alpha1/{+name}:start",
-                                    "request": {
-                                        "$ref": "StartNodeRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "delete": {
-                                    "description": "Deletes a node.",
-                                    "httpMethod": "DELETE",
-                                    "id": "tpu.projects.locations.nodes.delete",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "The resource name.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1alpha1/{+name}",
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
                                 "list": {
                                     "description": "Lists nodes.",
                                     "httpMethod": "GET",
@@ -450,6 +399,33 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "reimage": {
+                                    "description": "Reimages a node's OS.",
+                                    "httpMethod": "POST",
+                                    "id": "tpu.projects.locations.nodes.reimage",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The resource name.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1alpha1/{+name}:reimage",
+                                    "request": {
+                                        "$ref": "ReimageNodeRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "create": {
                                     "description": "Creates a node.",
                                     "httpMethod": "POST",
@@ -474,33 +450,6 @@
                                     "path": "v1alpha1/{+parent}/nodes",
                                     "request": {
                                         "$ref": "Node"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "reimage": {
-                                    "description": "Reimages a node's OS.",
-                                    "httpMethod": "POST",
-                                    "id": "tpu.projects.locations.nodes.reimage",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "The resource name.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1alpha1/{+name}:reimage",
-                                    "request": {
-                                        "$ref": "ReimageNodeRequest"
                                     },
                                     "response": {
                                         "$ref": "Operation"
@@ -553,6 +502,57 @@
                                     "request": {
                                         "$ref": "StopNodeRequest"
                                     },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "start": {
+                                    "description": "Starts a node.",
+                                    "httpMethod": "POST",
+                                    "id": "tpu.projects.locations.nodes.start",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The resource name.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1alpha1/{+name}:start",
+                                    "request": {
+                                        "$ref": "StartNodeRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a node.",
+                                    "httpMethod": "DELETE",
+                                    "id": "tpu.projects.locations.nodes.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The resource name.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1alpha1/{+name}",
                                     "response": {
                                         "$ref": "Operation"
                                     },
@@ -640,9 +640,259 @@
             }
         }
     },
-    "revision": "20190619",
+    "revision": "20200318",
     "rootUrl": "https://tpu.googleapis.com/",
     "schemas": {
+        "StopNodeRequest": {
+            "description": "Request for StopNode.",
+            "id": "StopNodeRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "TensorFlowVersion": {
+            "description": "A tensorflow version that a Node can be configured with.",
+            "id": "TensorFlowVersion",
+            "properties": {
+                "name": {
+                    "description": "The resource name.",
+                    "type": "string"
+                },
+                "version": {
+                    "description": "the tensorflow version.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AcceleratorType": {
+            "description": "A accelerator type that a Node can be configured with.",
+            "id": "AcceleratorType",
+            "properties": {
+                "type": {
+                    "description": "the accelerator type.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The resource name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListNodesResponse": {
+            "description": "Response for ListNodes.",
+            "id": "ListNodesResponse",
+            "properties": {
+                "nodes": {
+                    "description": "The listed nodes.",
+                    "items": {
+                        "$ref": "Node"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The next page token or empty if none.",
+                    "type": "string"
+                },
+                "unreachable": {
+                    "description": "Locations that could not be reached.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
+            "id": "Status",
+            "properties": {
+                "details": {
+                    "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListTensorFlowVersionsResponse": {
+            "description": "Response for ListTensorFlowVersions.",
+            "id": "ListTensorFlowVersionsResponse",
+            "properties": {
+                "tensorflowVersions": {
+                    "description": "The listed nodes.",
+                    "items": {
+                        "$ref": "TensorFlowVersion"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Locations that could not be reached.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The next page token or empty if none.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+            "id": "Empty",
+            "properties": {},
+            "type": "object"
+        },
+        "ReimageNodeRequest": {
+            "description": "Request for ReimageNode.",
+            "id": "ReimageNodeRequest",
+            "properties": {
+                "tensorflowVersion": {
+                    "description": "The version for reimage to create.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "description": "A resource that represents Google Cloud Platform location.",
+            "id": "Location",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+                    "type": "object"
+                },
+                "name": {
+                    "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
+                    "type": "string"
+                },
+                "locationId": {
+                    "description": "The canonical id for this location. For example: `\"us-east1\"`.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
+                    "type": "string"
+                },
+                "metadata": {
+                    "additionalProperties": {
+                        "description": "Properties of the object. Contains field @type with type URL.",
+                        "type": "any"
+                    },
+                    "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "StartNodeRequest": {
+            "description": "Request for StartNode.",
+            "id": "StartNodeRequest",
+            "properties": {},
+            "type": "object"
+        },
+        "ListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "ListOperationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListAcceleratorTypesResponse": {
+            "description": "Response for ListAcceleratorTypes.",
+            "id": "ListAcceleratorTypesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The next page token or empty if none.",
+                    "type": "string"
+                },
+                "unreachable": {
+                    "description": "Locations that could not be reached.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "acceleratorTypes": {
+                    "description": "The listed nodes.",
+                    "items": {
+                        "$ref": "AcceleratorType"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OperationMetadata": {
+            "description": "Represents the metadata of the long-running operation.",
+            "id": "OperationMetadata",
+            "properties": {
+                "cancelRequested": {
+                    "description": "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+                    "type": "boolean"
+                },
+                "verb": {
+                    "description": "[Output only] Name of the verb executed by the operation.",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "[Output only] The time the operation was created.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "statusDetail": {
+                    "description": "[Output only] Human-readable status of the operation, if any.",
+                    "type": "string"
+                },
+                "apiVersion": {
+                    "description": "[Output only] API version used to start the operation.",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "[Output only] Server-defined resource path for the target of the operation.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "[Output only] The time the operation finished running.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListLocationsResponse": {
             "description": "The response message for Locations.ListLocations.",
             "id": "ListLocationsResponse",
@@ -678,16 +928,6 @@
             "description": "A TPU instance.",
             "id": "Node",
             "properties": {
-                "networkEndpoints": {
-                    "description": "Output only. The network endpoints where TPU workers can be accessed and\nsent work. It is recommended that Tensorflow clients of the node reach out\nto the 0th entry in this map first.",
-                    "items": {
-                        "$ref": "NetworkEndpoint"
-                    },
-                    "type": "array"
-                },
-                "schedulingConfig": {
-                    "$ref": "SchedulingConfig"
-                },
                 "state": {
                     "description": "Output only. The current state for the TPU Node.",
                     "enum": [
@@ -787,7 +1027,7 @@
                     "type": "string"
                 },
                 "cidrBlock": {
-                    "description": "The CIDR block that the TPU node will use when selecting an IP address.\nThis CIDR block must be a /29 block; the Compute Engine networks API\nforbids a smaller block, and using a larger block would be wasteful (a\nnode can only consume one IP address). Errors will occur if the CIDR block\nhas already been used for a currently existing TPU node, the CIDR block\nconflicts with any subnetworks in the user's provided network, or the\nprovided network is peered with another network that is using that CIDR\nblock.\nRequired.",
+                    "description": "The CIDR block that the TPU node will use when selecting an IP address.\nThis CIDR block must be a /29 block; the Compute Engine networks API\nforbids a smaller block, and using a larger block would be wasteful (a\nnode can only consume one IP address). Errors will occur if the CIDR block\nhas already been used for a currently existing TPU node, the CIDR block\nconflicts with any subnetworks in the user's provided network, or the\nprovided network is peered with another network that is using that CIDR\nblock.",
                     "type": "string"
                 },
                 "tensorflowVersion": {
@@ -797,6 +1037,16 @@
                 "description": {
                     "description": "The user-supplied description of the TPU. Maximum of 512 characters.",
                     "type": "string"
+                },
+                "networkEndpoints": {
+                    "description": "Output only. The network endpoints where TPU workers can be accessed and\nsent work. It is recommended that Tensorflow clients of the node reach out\nto the 0th entry in this map first.",
+                    "items": {
+                        "$ref": "NetworkEndpoint"
+                    },
+                    "type": "array"
+                },
+                "schedulingConfig": {
+                    "$ref": "SchedulingConfig"
                 }
             },
             "type": "object"
@@ -821,6 +1071,10 @@
             "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
             "id": "Operation",
             "properties": {
+                "done": {
+                    "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
+                    "type": "boolean"
+                },
                 "response": {
                     "additionalProperties": {
                         "description": "Properties of the object. Contains field @type with type URL.",
@@ -844,246 +1098,6 @@
                     },
                     "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
                     "type": "object"
-                },
-                "done": {
-                    "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "StopNodeRequest": {
-            "description": "Request for StopNode.",
-            "id": "StopNodeRequest",
-            "properties": {},
-            "type": "object"
-        },
-        "TensorFlowVersion": {
-            "description": "A tensorflow version that a Node can be configured with.",
-            "id": "TensorFlowVersion",
-            "properties": {
-                "version": {
-                    "description": "the tensorflow version.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The resource name.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "AcceleratorType": {
-            "description": "A accelerator type that a Node can be configured with.",
-            "id": "AcceleratorType",
-            "properties": {
-                "type": {
-                    "description": "the accelerator type.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The resource name.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListNodesResponse": {
-            "description": "Response for ListNodes.",
-            "id": "ListNodesResponse",
-            "properties": {
-                "nodes": {
-                    "description": "The listed nodes.",
-                    "items": {
-                        "$ref": "Node"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The next page token or empty if none.",
-                    "type": "string"
-                },
-                "unreachable": {
-                    "description": "Locations that could not be reached.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Status": {
-            "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
-            "id": "Status",
-            "properties": {
-                "message": {
-                    "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
-                "code": {
-                    "description": "The status code, which should be an enum value of google.rpc.Code.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "ListTensorFlowVersionsResponse": {
-            "description": "Response for ListTensorFlowVersions.",
-            "id": "ListTensorFlowVersionsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The next page token or empty if none.",
-                    "type": "string"
-                },
-                "tensorflowVersions": {
-                    "description": "The listed nodes.",
-                    "items": {
-                        "$ref": "TensorFlowVersion"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-            "id": "Empty",
-            "properties": {},
-            "type": "object"
-        },
-        "ReimageNodeRequest": {
-            "description": "Request for ReimageNode.",
-            "id": "ReimageNodeRequest",
-            "properties": {
-                "tensorflowVersion": {
-                    "description": "The version for reimage to create.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Location": {
-            "description": "A resource that represents Google Cloud Platform location.",
-            "id": "Location",
-            "properties": {
-                "metadata": {
-                    "additionalProperties": {
-                        "description": "Properties of the object. Contains field @type with type URL.",
-                        "type": "any"
-                    },
-                    "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-                    "type": "object"
-                },
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-                    "type": "object"
-                },
-                "name": {
-                    "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
-                    "type": "string"
-                },
-                "locationId": {
-                    "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "StartNodeRequest": {
-            "description": "Request for StartNode.",
-            "id": "StartNodeRequest",
-            "properties": {},
-            "type": "object"
-        },
-        "ListOperationsResponse": {
-            "description": "The response message for Operations.ListOperations.",
-            "id": "ListOperationsResponse",
-            "properties": {
-                "operations": {
-                    "description": "A list of operations that matches the specified filter in the request.",
-                    "items": {
-                        "$ref": "Operation"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "OperationMetadata": {
-            "description": "Represents the metadata of the long-running operation.",
-            "id": "OperationMetadata",
-            "properties": {
-                "endTime": {
-                    "description": "[Output only] The time the operation finished running.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "cancelRequested": {
-                    "description": "[Output only] Identifies whether the user has requested cancellation\nof the operation. Operations that have successfully been cancelled\nhave Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
-                    "type": "boolean"
-                },
-                "verb": {
-                    "description": "[Output only] Name of the verb executed by the operation.",
-                    "type": "string"
-                },
-                "createTime": {
-                    "description": "[Output only] The time the operation was created.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "statusDetail": {
-                    "description": "[Output only] Human-readable status of the operation, if any.",
-                    "type": "string"
-                },
-                "apiVersion": {
-                    "description": "[Output only] API version used to start the operation.",
-                    "type": "string"
-                },
-                "target": {
-                    "description": "[Output only] Server-defined resource path for the target of the operation.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListAcceleratorTypesResponse": {
-            "description": "Response for ListAcceleratorTypes.",
-            "id": "ListAcceleratorTypesResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The next page token or empty if none.",
-                    "type": "string"
-                },
-                "acceleratorTypes": {
-                    "description": "The listed nodes.",
-                    "items": {
-                        "$ref": "AcceleratorType"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

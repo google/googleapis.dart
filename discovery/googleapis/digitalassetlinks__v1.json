@@ -15,34 +15,14 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         },
@@ -51,13 +31,8 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -74,6 +49,16 @@
             "location": "query",
             "type": "string"
         },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -87,6 +72,21 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -181,77 +181,9 @@
             }
         }
     },
-    "revision": "20190619",
+    "revision": "20200505",
     "rootUrl": "https://digitalassetlinks.googleapis.com/",
     "schemas": {
-        "Asset": {
-            "description": "Uniquely identifies an asset.\n\nA digital asset is an identifiable and addressable online entity that\ntypically provides some service or content.  Examples of assets are websites,\nAndroid apps, Twitter feeds, and Plus Pages.",
-            "id": "Asset",
-            "properties": {
-                "web": {
-                    "$ref": "WebAsset",
-                    "description": "Set if this is a web asset."
-                },
-                "androidApp": {
-                    "$ref": "AndroidAppAsset",
-                    "description": "Set if this is an Android App asset."
-                }
-            },
-            "type": "object"
-        },
-        "CheckResponse": {
-            "description": "Response message for the CheckAssetLinks call.",
-            "id": "CheckResponse",
-            "properties": {
-                "linked": {
-                    "description": "Set to true if the assets specified in the request are linked by the\nrelation specified in the request.",
-                    "type": "boolean"
-                },
-                "debugString": {
-                    "description": "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below.",
-                    "type": "string"
-                },
-                "maxAge": {
-                    "description": "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "errorCode": {
-                    "description": "Error codes that describe the result of the Check operation.",
-                    "enumDescriptions": [
-                        "",
-                        "Unable to parse query.",
-                        "Unable to fetch the asset links data.",
-                        "Invalid HTTPS certificate .",
-                        "HTTP redirects (e.g, 301) are not allowed.",
-                        "Asset links data exceeds maximum size.",
-                        "Can't parse HTTP response.",
-                        "HTTP Content-type should be application/json.",
-                        "JSON content is malformed.",
-                        "A secure asset includes an insecure asset (security downgrade).",
-                        "Too many includes (maybe a loop)."
-                    ],
-                    "items": {
-                        "enum": [
-                            "ERROR_CODE_UNSPECIFIED",
-                            "ERROR_CODE_INVALID_QUERY",
-                            "ERROR_CODE_FETCH_ERROR",
-                            "ERROR_CODE_FAILED_SSL_VALIDATION",
-                            "ERROR_CODE_REDIRECT",
-                            "ERROR_CODE_TOO_LARGE",
-                            "ERROR_CODE_MALFORMED_HTTP_RESPONSE",
-                            "ERROR_CODE_WRONG_CONTENT_TYPE",
-                            "ERROR_CODE_MALFORMED_CONTENT",
-                            "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE",
-                            "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "WebAsset": {
             "description": "Describes a web asset.",
             "id": "WebAsset",
@@ -267,10 +199,6 @@
             "description": "Response message for the List call.",
             "id": "ListResponse",
             "properties": {
-                "debugString": {
-                    "description": "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below.",
-                    "type": "string"
-                },
                 "maxAge": {
                     "description": "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED",
                     "format": "google-duration",
@@ -315,6 +243,10 @@
                         "$ref": "Statement"
                     },
                     "type": "array"
+                },
+                "debugString": {
+                    "description": "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -342,13 +274,13 @@
             "description": "Describes an android app asset.",
             "id": "AndroidAppAsset",
             "properties": {
-                "certificate": {
-                    "$ref": "CertificateInfo",
-                    "description": "Because there is no global enforcement of package name uniqueness, we also\nrequire a signing certificate, which in combination with the package name\nuniquely identifies an app.\n\nSome apps' signing keys are rotated, so they may be signed by different\nkeys over time.  We treat these as distinct assets, since we use (package\nname, cert) as the unique ID.  This should not normally pose any problems\nas both versions of the app will make the same or similar statements.\nOther assets making statements about the app will have to be updated when a\nkey is rotated, however.\n\n(Note that the syntaxes for publishing and querying for statements contain\nsyntactic sugar to easily let you specify apps that are known by multiple\ncertificates.)\nREQUIRED"
-                },
                 "packageName": {
                     "description": "Android App assets are naturally identified by their Java package name.\nFor example, the Google Maps app uses the package name\n`com.google.android.apps.maps`.\nREQUIRED",
                     "type": "string"
+                },
+                "certificate": {
+                    "$ref": "CertificateInfo",
+                    "description": "Because there is no global enforcement of package name uniqueness, we also\nrequire a signing certificate, which in combination with the package name\nuniquely identifies an app.\n\nSome apps' signing keys are rotated, so they may be signed by different\nkeys over time.  We treat these as distinct assets, since we use (package\nname, cert) as the unique ID.  This should not normally pose any problems\nas both versions of the app will make the same or similar statements.\nOther assets making statements about the app will have to be updated when a\nkey is rotated, however.\n\n(Note that the syntaxes for publishing and querying for statements contain\nsyntactic sugar to easily let you specify apps that are known by multiple\ncertificates.)\nREQUIRED"
                 }
             },
             "type": "object"
@@ -359,6 +291,74 @@
             "properties": {
                 "sha256Fingerprint": {
                     "description": "The uppercase SHA-265 fingerprint of the certificate.  From the PEM\n certificate, it can be acquired like this:\n\n    $ keytool -printcert -file $CERTFILE | grep SHA256:\n    SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \\\n        42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n\nor like this:\n\n    $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256\n    SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \\\n        16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5\n\nIn this example, the contents of this field would be `14:6D:E9:83:C5:73:\n06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:\n44:E5`.\n\nIf these tools are not available to you, you can convert the PEM\ncertificate into the DER format, compute the SHA-256 hash of that string\nand represent the result as a hexstring (that is, uppercase hexadecimal\nrepresentations of each octet, separated by colons).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Asset": {
+            "description": "Uniquely identifies an asset.\n\nA digital asset is an identifiable and addressable online entity that\ntypically provides some service or content.  Examples of assets are websites,\nAndroid apps, Twitter feeds, and Plus Pages.",
+            "id": "Asset",
+            "properties": {
+                "web": {
+                    "$ref": "WebAsset",
+                    "description": "Set if this is a web asset."
+                },
+                "androidApp": {
+                    "$ref": "AndroidAppAsset",
+                    "description": "Set if this is an Android App asset."
+                }
+            },
+            "type": "object"
+        },
+        "CheckResponse": {
+            "description": "Response message for the CheckAssetLinks call.",
+            "id": "CheckResponse",
+            "properties": {
+                "maxAge": {
+                    "description": "From serving time, how much longer the response should be considered valid\nbarring further updates.\nREQUIRED",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "errorCode": {
+                    "description": "Error codes that describe the result of the Check operation.",
+                    "enumDescriptions": [
+                        "",
+                        "Unable to parse query.",
+                        "Unable to fetch the asset links data.",
+                        "Invalid HTTPS certificate .",
+                        "HTTP redirects (e.g, 301) are not allowed.",
+                        "Asset links data exceeds maximum size.",
+                        "Can't parse HTTP response.",
+                        "HTTP Content-type should be application/json.",
+                        "JSON content is malformed.",
+                        "A secure asset includes an insecure asset (security downgrade).",
+                        "Too many includes (maybe a loop)."
+                    ],
+                    "items": {
+                        "enum": [
+                            "ERROR_CODE_UNSPECIFIED",
+                            "ERROR_CODE_INVALID_QUERY",
+                            "ERROR_CODE_FETCH_ERROR",
+                            "ERROR_CODE_FAILED_SSL_VALIDATION",
+                            "ERROR_CODE_REDIRECT",
+                            "ERROR_CODE_TOO_LARGE",
+                            "ERROR_CODE_MALFORMED_HTTP_RESPONSE",
+                            "ERROR_CODE_WRONG_CONTENT_TYPE",
+                            "ERROR_CODE_MALFORMED_CONTENT",
+                            "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE",
+                            "ERROR_CODE_FETCH_BUDGET_EXHAUSTED"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "linked": {
+                    "description": "Set to true if the assets specified in the request are linked by the\nrelation specified in the request.",
+                    "type": "boolean"
+                },
+                "debugString": {
+                    "description": "Human-readable message containing information intended to help end users\nunderstand, reproduce and debug the result.\n\n\nThe message will be in English and we are currently not planning to offer\nany translations.\n\nPlease note that no guarantees are made about the contents or format of\nthis string.  Any aspect of it may be subject to change without notice.\nYou should not attempt to programmatically parse this data.  For\nprogrammatic access, use the error_code field below.",
                     "type": "string"
                 }
             },
