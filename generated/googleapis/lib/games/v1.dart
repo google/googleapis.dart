@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.games.v1;
 
@@ -39,9 +39,6 @@ class GamesApi {
   MetagameResourceApi get metagame => new MetagameResourceApi(_requester);
   PlayersResourceApi get players => new PlayersResourceApi(_requester);
   PushtokensResourceApi get pushtokens => new PushtokensResourceApi(_requester);
-  QuestMilestonesResourceApi get questMilestones =>
-      new QuestMilestonesResourceApi(_requester);
-  QuestsResourceApi get quests => new QuestsResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
   RoomsResourceApi get rooms => new RoomsResourceApi(_requester);
   ScoresResourceApi get scores => new ScoresResourceApi(_requester);
@@ -381,9 +378,6 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
-  /// [builtinGameId] - Override used only by built-in games in Play Games
-  /// application.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -395,7 +389,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
-      {core.String builtinGameId, core.String $fields}) {
+      {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -405,9 +399,6 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
-    }
-    if (builtinGameId != null) {
-      _queryParams["builtinGameId"] = [builtinGameId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -433,9 +424,6 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [builtinGameId] - Override used only by built-in games in Play Games
-  /// application.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -448,8 +436,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
       AchievementUpdateMultipleRequest request,
-      {core.String builtinGameId,
-      core.String $fields}) {
+      {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -459,9 +446,6 @@ class AchievementsResourceApi {
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
-    }
-    if (builtinGameId != null) {
-      _queryParams["builtinGameId"] = [builtinGameId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -552,9 +536,6 @@ class ApplicationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [builtinGameId] - Override used only by built-in games in Play Games
-  /// application.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -563,7 +544,7 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({core.String builtinGameId, core.String $fields}) {
+  async.Future played({core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -571,9 +552,6 @@ class ApplicationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (builtinGameId != null) {
-      _queryParams["builtinGameId"] = [builtinGameId];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -1118,15 +1096,16 @@ class PlayersResourceApi {
   ///
   /// [collection] - Collection of players being retrieved
   /// Possible string values are:
-  /// - "connected" : Retrieve a list of players that are also playing this game
-  /// in reverse chronological order.
-  /// - "playedWith" : (DEPRECATED: please use played_with!) Retrieve a list of
-  /// players you have played a multiplayer game (realtime or turn-based) with
-  /// recently.
-  /// - "played_with" : Retrieve a list of players you have played a multiplayer
-  /// game (realtime or turn-based) with recently.
-  /// - "visible" : Retrieve a list of players in the user's social graph that
-  /// are visible to this game.
+  /// - "connected" : (DEPRECATED) Retrieve a list of players that are also
+  /// playing this game in reverse chronological order.
+  /// - "friends_all" : Retrieve a list of players who are friends of the user
+  /// in alphabetical order.
+  /// - "playedWith" : (DEPRECATED) Retrieve a list of players you have played a
+  /// multiplayer game (realtime or turn-based) with recently.
+  /// - "played_with" : (DEPRECATED) Retrieve a list of players you have played
+  /// a multiplayer game (realtime or turn-based) with recently.
+  /// - "visible" : (DEPRECATED: please use FRIENDS_ALL) Retrieve a list of
+  /// players in the user's social graph that are visible to this game.
   ///
   /// [language] - The preferred language to use for strings returned by this
   /// method.
@@ -1276,198 +1255,6 @@ class PushtokensResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => null);
-  }
-}
-
-class QuestMilestonesResourceApi {
-  final commons.ApiRequester _requester;
-
-  QuestMilestonesResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Report that a reward for the milestone corresponding to milestoneId for
-  /// the quest corresponding to questId has been claimed by the currently
-  /// authorized user.
-  ///
-  /// Request parameters:
-  ///
-  /// [questId] - The ID of the quest.
-  ///
-  /// [milestoneId] - The ID of the milestone.
-  ///
-  /// [requestId] - A numeric ID to ensure that the request is handled correctly
-  /// across retries. Your client application must generate this ID randomly.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future claim(
-      core.String questId, core.String milestoneId, core.String requestId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (questId == null) {
-      throw new core.ArgumentError("Parameter questId is required.");
-    }
-    if (milestoneId == null) {
-      throw new core.ArgumentError("Parameter milestoneId is required.");
-    }
-    if (requestId == null) {
-      throw new core.ArgumentError("Parameter requestId is required.");
-    }
-    _queryParams["requestId"] = [requestId];
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'quests/' +
-        commons.Escaper.ecapeVariable('$questId') +
-        '/milestones/' +
-        commons.Escaper.ecapeVariable('$milestoneId') +
-        '/claim';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
-class QuestsResourceApi {
-  final commons.ApiRequester _requester;
-
-  QuestsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Indicates that the currently authorized user will participate in the
-  /// quest.
-  ///
-  /// Request parameters:
-  ///
-  /// [questId] - The ID of the quest.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Quest].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Quest> accept(core.String questId,
-      {core.String language, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (questId == null) {
-      throw new core.ArgumentError("Parameter questId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'quests/' + commons.Escaper.ecapeVariable('$questId') + '/accept';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Quest.fromJson(data));
-  }
-
-  /// Get a list of quests for your application and the currently authenticated
-  /// player.
-  ///
-  /// Request parameters:
-  ///
-  /// [playerId] - A player ID. A value of me may be used in place of the
-  /// authenticated player's ID.
-  ///
-  /// [language] - The preferred language to use for strings returned by this
-  /// method.
-  ///
-  /// [maxResults] - The maximum number of quest resources to return in the
-  /// response, used for paging. For any response, the actual number of quest
-  /// resources returned may be less than the specified maxResults. Acceptable
-  /// values are 1 to 50, inclusive. (Default: 50).
-  /// Value must be between "1" and "50".
-  ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [QuestListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<QuestListResponse> list(core.String playerId,
-      {core.String language,
-      core.int maxResults,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (playerId == null) {
-      throw new core.ArgumentError("Parameter playerId is required.");
-    }
-    if (language != null) {
-      _queryParams["language"] = [language];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/quests';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new QuestListResponse.fromJson(data));
   }
 }
 
@@ -2074,7 +1861,6 @@ class ScoresResourceApi {
   /// Possible string values are:
   /// - "PUBLIC" : List all scores in the public leaderboard.
   /// - "SOCIAL" : List only social scores.
-  /// - "SOCIAL_1P" : List only social scores, not respecting the fACL.
   ///
   /// [timeSpan] - The time span for the scores and ranks you're requesting.
   /// Possible string values are:
@@ -2162,7 +1948,6 @@ class ScoresResourceApi {
   /// Possible string values are:
   /// - "PUBLIC" : List all scores in the public leaderboard.
   /// - "SOCIAL" : List only social scores.
-  /// - "SOCIAL_1P" : List only social scores, not respecting the fACL.
   ///
   /// [timeSpan] - The time span for the scores and ranks you're requesting.
   /// Possible string values are:
@@ -3644,7 +3429,7 @@ class AchievementUpdateMultipleRequest {
 /// This is a JSON template for an achievement unlock response.
 class AchievementUpdateMultipleResponse {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementUpdateListResponse.
+  /// string games#achievementUpdateMultipleResponse.
   core.String kind;
 
   /// The updated state of the achievements.
@@ -5966,6 +5751,10 @@ class Player {
   /// An object to represent Play Game experience information for the player.
   PlayerExperienceInfo experienceInfo;
 
+  /// The friend status of the given player, relative to the requester. This is
+  /// unset if the player is not sharing their friends list with the game.
+  core.String friendStatus;
+
   /// Uniquely identifies the type of this resource. Value is always the fixed
   /// string games#player.
   core.String kind;
@@ -6014,6 +5803,9 @@ class Player {
       experienceInfo =
           new PlayerExperienceInfo.fromJson(_json["experienceInfo"]);
     }
+    if (_json.containsKey("friendStatus")) {
+      friendStatus = _json["friendStatus"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -6054,6 +5846,9 @@ class Player {
     }
     if (experienceInfo != null) {
       _json["experienceInfo"] = (experienceInfo).toJson();
+    }
+    if (friendStatus != null) {
+      _json["friendStatus"] = friendStatus;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -6849,17 +6644,20 @@ class PlayerScoreSubmissionList {
 
 /// This is a JSON template for profile settings
 class ProfileSettings {
+  /// Whether the player's friends list is visible to the game.
+  core.String friendsListVisibility;
+
   /// Uniquely identifies the type of this resource. Value is always the fixed
   /// string games#profileSettings.
   core.String kind;
-
-  /// The player's current profile visibility. This field is visible to both 1P
-  /// and 3P APIs.
   core.bool profileVisible;
 
   ProfileSettings();
 
   ProfileSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("friendsListVisibility")) {
+      friendsListVisibility = _json["friendsListVisibility"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -6871,6 +6669,9 @@ class ProfileSettings {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (friendsListVisibility != null) {
+      _json["friendsListVisibility"] = friendsListVisibility;
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -7006,425 +6807,6 @@ class PushTokenId {
     }
     if (kind != null) {
       _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a Quest resource.
-class Quest {
-  /// The timestamp at which the user accepted the quest in milliseconds since
-  /// the epoch in UTC. Only present if the player has accepted the quest.
-  core.String acceptedTimestampMillis;
-
-  /// The ID of the application this quest is part of.
-  core.String applicationId;
-
-  /// The banner image URL for the quest.
-  core.String bannerUrl;
-
-  /// The description of the quest.
-  core.String description;
-
-  /// The timestamp at which the quest ceases to be active in milliseconds since
-  /// the epoch in UTC.
-  core.String endTimestampMillis;
-
-  /// The icon image URL for the quest.
-  core.String iconUrl;
-
-  /// The ID of the quest.
-  core.String id;
-
-  /// Indicates whether the banner image being returned is a default image, or
-  /// is game-provided.
-  core.bool isDefaultBannerUrl;
-
-  /// Indicates whether the icon image being returned is a default image, or is
-  /// game-provided.
-  core.bool isDefaultIconUrl;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#quest.
-  core.String kind;
-
-  /// The timestamp at which the quest was last updated by the user in
-  /// milliseconds since the epoch in UTC. Only present if the player has
-  /// accepted the quest.
-  core.String lastUpdatedTimestampMillis;
-
-  /// The quest milestones.
-  core.List<QuestMilestone> milestones;
-
-  /// The name of the quest.
-  core.String name;
-
-  /// The timestamp at which the user should be notified that the quest will end
-  /// soon in milliseconds since the epoch in UTC.
-  core.String notifyTimestampMillis;
-
-  /// The timestamp at which the quest becomes active in milliseconds since the
-  /// epoch in UTC.
-  core.String startTimestampMillis;
-
-  /// The state of the quest.
-  /// Possible values are:
-  /// - "UPCOMING": The quest is upcoming. The user can see the quest, but
-  /// cannot accept it until it is open.
-  /// - "OPEN": The quest is currently open and may be accepted at this time.
-  /// - "ACCEPTED": The user is currently participating in this quest.
-  /// - "COMPLETED": The user has completed the quest.
-  /// - "FAILED": The quest was attempted but was not completed before the
-  /// deadline expired.
-  /// - "EXPIRED": The quest has expired and was not accepted.
-  /// - "DELETED": The quest should be deleted from the local database.
-  core.String state;
-
-  Quest();
-
-  Quest.fromJson(core.Map _json) {
-    if (_json.containsKey("acceptedTimestampMillis")) {
-      acceptedTimestampMillis = _json["acceptedTimestampMillis"];
-    }
-    if (_json.containsKey("applicationId")) {
-      applicationId = _json["applicationId"];
-    }
-    if (_json.containsKey("bannerUrl")) {
-      bannerUrl = _json["bannerUrl"];
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("endTimestampMillis")) {
-      endTimestampMillis = _json["endTimestampMillis"];
-    }
-    if (_json.containsKey("iconUrl")) {
-      iconUrl = _json["iconUrl"];
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("isDefaultBannerUrl")) {
-      isDefaultBannerUrl = _json["isDefaultBannerUrl"];
-    }
-    if (_json.containsKey("isDefaultIconUrl")) {
-      isDefaultIconUrl = _json["isDefaultIconUrl"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("lastUpdatedTimestampMillis")) {
-      lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
-    }
-    if (_json.containsKey("milestones")) {
-      milestones = (_json["milestones"] as core.List)
-          .map<QuestMilestone>((value) => new QuestMilestone.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("notifyTimestampMillis")) {
-      notifyTimestampMillis = _json["notifyTimestampMillis"];
-    }
-    if (_json.containsKey("startTimestampMillis")) {
-      startTimestampMillis = _json["startTimestampMillis"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (acceptedTimestampMillis != null) {
-      _json["acceptedTimestampMillis"] = acceptedTimestampMillis;
-    }
-    if (applicationId != null) {
-      _json["applicationId"] = applicationId;
-    }
-    if (bannerUrl != null) {
-      _json["bannerUrl"] = bannerUrl;
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (endTimestampMillis != null) {
-      _json["endTimestampMillis"] = endTimestampMillis;
-    }
-    if (iconUrl != null) {
-      _json["iconUrl"] = iconUrl;
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (isDefaultBannerUrl != null) {
-      _json["isDefaultBannerUrl"] = isDefaultBannerUrl;
-    }
-    if (isDefaultIconUrl != null) {
-      _json["isDefaultIconUrl"] = isDefaultIconUrl;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (lastUpdatedTimestampMillis != null) {
-      _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
-    }
-    if (milestones != null) {
-      _json["milestones"] =
-          milestones.map((value) => (value).toJson()).toList();
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (notifyTimestampMillis != null) {
-      _json["notifyTimestampMillis"] = notifyTimestampMillis;
-    }
-    if (startTimestampMillis != null) {
-      _json["startTimestampMillis"] = startTimestampMillis;
-    }
-    if (state != null) {
-      _json["state"] = state;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a Quest Criterion Contribution resource.
-class QuestContribution {
-  /// The formatted value of the contribution as a string. Format depends on the
-  /// configuration for the associated event definition in the Play Games
-  /// Developer Console.
-  core.String formattedValue;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#questContribution.
-  core.String kind;
-
-  /// The value of the contribution.
-  core.String value;
-
-  QuestContribution();
-
-  QuestContribution.fromJson(core.Map _json) {
-    if (_json.containsKey("formattedValue")) {
-      formattedValue = _json["formattedValue"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (formattedValue != null) {
-      _json["formattedValue"] = formattedValue;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (value != null) {
-      _json["value"] = value;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a Quest Criterion resource.
-class QuestCriterion {
-  /// The total number of times the associated event must be incremented for the
-  /// player to complete this quest.
-  QuestContribution completionContribution;
-
-  /// The number of increments the player has made toward the completion count
-  /// event increments required to complete the quest. This value will not
-  /// exceed the completion contribution.
-  /// There will be no currentContribution until the player has accepted the
-  /// quest.
-  QuestContribution currentContribution;
-
-  /// The ID of the event the criterion corresponds to.
-  core.String eventId;
-
-  /// The value of the event associated with this quest at the time that the
-  /// quest was accepted. This value may change if event increments that took
-  /// place before the start of quest are uploaded after the quest starts.
-  /// There will be no initialPlayerProgress until the player has accepted the
-  /// quest.
-  QuestContribution initialPlayerProgress;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#questCriterion.
-  core.String kind;
-
-  QuestCriterion();
-
-  QuestCriterion.fromJson(core.Map _json) {
-    if (_json.containsKey("completionContribution")) {
-      completionContribution =
-          new QuestContribution.fromJson(_json["completionContribution"]);
-    }
-    if (_json.containsKey("currentContribution")) {
-      currentContribution =
-          new QuestContribution.fromJson(_json["currentContribution"]);
-    }
-    if (_json.containsKey("eventId")) {
-      eventId = _json["eventId"];
-    }
-    if (_json.containsKey("initialPlayerProgress")) {
-      initialPlayerProgress =
-          new QuestContribution.fromJson(_json["initialPlayerProgress"]);
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (completionContribution != null) {
-      _json["completionContribution"] = (completionContribution).toJson();
-    }
-    if (currentContribution != null) {
-      _json["currentContribution"] = (currentContribution).toJson();
-    }
-    if (eventId != null) {
-      _json["eventId"] = eventId;
-    }
-    if (initialPlayerProgress != null) {
-      _json["initialPlayerProgress"] = (initialPlayerProgress).toJson();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a list of quest objects.
-class QuestListResponse {
-  /// The quests.
-  core.List<Quest> items;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#questListResponse.
-  core.String kind;
-
-  /// Token corresponding to the next page of results.
-  core.String nextPageToken;
-
-  QuestListResponse();
-
-  QuestListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("items")) {
-      items = (_json["items"] as core.List)
-          .map<Quest>((value) => new Quest.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (items != null) {
-      _json["items"] = items.map((value) => (value).toJson()).toList();
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for a Quest Milestone resource.
-class QuestMilestone {
-  /// The completion reward data of the milestone, represented as a
-  /// Base64-encoded string. This is a developer-specified binary blob with size
-  /// between 0 and 2 KB before encoding.
-  core.String completionRewardData;
-  core.List<core.int> get completionRewardDataAsBytes {
-    return convert.base64.decode(completionRewardData);
-  }
-
-  set completionRewardDataAsBytes(core.List<core.int> _bytes) {
-    completionRewardData =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// The criteria of the milestone.
-  core.List<QuestCriterion> criteria;
-
-  /// The milestone ID.
-  core.String id;
-
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#questMilestone.
-  core.String kind;
-
-  /// The current state of the milestone.
-  /// Possible values are:
-  /// - "COMPLETED_NOT_CLAIMED" - The milestone is complete, but has not yet
-  /// been claimed.
-  /// - "CLAIMED" - The milestone is complete and has been claimed.
-  /// - "NOT_COMPLETED" - The milestone has not yet been completed.
-  /// - "NOT_STARTED" - The milestone is for a quest that has not yet been
-  /// accepted.
-  core.String state;
-
-  QuestMilestone();
-
-  QuestMilestone.fromJson(core.Map _json) {
-    if (_json.containsKey("completionRewardData")) {
-      completionRewardData = _json["completionRewardData"];
-    }
-    if (_json.containsKey("criteria")) {
-      criteria = (_json["criteria"] as core.List)
-          .map<QuestCriterion>((value) => new QuestCriterion.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("id")) {
-      id = _json["id"];
-    }
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("state")) {
-      state = _json["state"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (completionRewardData != null) {
-      _json["completionRewardData"] = completionRewardData;
-    }
-    if (criteria != null) {
-      _json["criteria"] = criteria.map((value) => (value).toJson()).toList();
-    }
-    if (id != null) {
-      _json["id"] = id;
-    }
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (state != null) {
-      _json["state"] = state;
     }
     return _json;
   }

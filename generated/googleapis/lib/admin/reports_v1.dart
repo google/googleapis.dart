@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.admin.reports_v1;
 
@@ -50,48 +50,166 @@ class ActivitiesResourceApi {
 
   ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves a list of activities for a specific customer and application.
+  /// Retrieves a list of activities for a specific customer's account and
+  /// application such as the Admin console application or the Google Drive
+  /// application. For more information, see the guides for administrator and
+  /// Google Drive activity reports. For more information about the activity
+  /// report's parameters, see the activity parameters reference guides.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Represents the profile id or the user email for which the data
-  /// should be filtered. When 'all' is specified as the userKey, it returns
-  /// usageReports for all users.
+  /// [userKey] - Represents the profile ID or the user email for which the data
+  /// should be filtered. Can be all for all information, or userKey for a
+  /// user's unique G Suite profile ID or their primary email address.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)".
+  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)".
+  /// Possible string values are:
+  /// - "access_transparency" : The G Suite Access Transparency activity reports
+  /// return information about different types of Access Transparency activity
+  /// events.
+  /// - "admin" : The Admin console application's activity reports return
+  /// account information about different types of administrator activity
+  /// events.
+  /// - "calendar" : The G Suite Calendar application's activity reports return
+  /// information about various Calendar activity events.
+  /// - "chat" : The Chat activity reports return information about various Chat
+  /// activity events.
+  /// - "drive" : The Google Drive application's activity reports return
+  /// information about various Google Drive activity events. The Drive activity
+  /// report is only available for G Suite Business customers.
+  /// - "gcp" : The Google Cloud Platform application's activity reports return
+  /// information about various GCP activity events.
+  /// - "gplus" : The Google+ application's activity reports return information
+  /// about various Google+ activity events.
+  /// - "groups" : The Google Groups application's activity reports return
+  /// information about various Groups activity events.
+  /// - "groups_enterprise" : The Enterprise Groups activity reports return
+  /// information about various Enterprise group activity events.
+  /// - "jamboard" : The Jamboard activity reports return information about
+  /// various Jamboard activity events.
+  /// - "login" : The Login application's activity reports return account
+  /// information about different types of Login activity events.
+  /// - "meet" : The Meet Audit activity report return information about
+  /// different types of Meet Audit activity events.
+  /// - "mobile" : The Mobile Audit activity report return information about
+  /// different types of Mobile Audit activity events.
+  /// - "rules" : The Rules activity report return information about different
+  /// types of Rules activity events.
+  /// - "saml" : The SAML activity report return information about different
+  /// types of SAML activity events.
+  /// - "token" : The Token application's activity reports return account
+  /// information about different types of Token activity events.
+  /// - "user_accounts" : The User Accounts application's activity reports
+  /// return account information about different types of User Accounts activity
+  /// events.
   ///
-  /// [actorIpAddress] - IP Address of host where the event was performed.
-  /// Supports both IPv4 and IPv6 addresses.
+  /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
+  /// event was performed. This is an additional way to filter a report's
+  /// summary using the IP address of the user whose activity is being reported.
+  /// This IP address may or may not reflect the user's physical location. For
+  /// example, the IP address can be the user's proxy server's address or a
+  /// virtual private network (VPN) address. This parameter supports both IPv4
+  /// and IPv6 address versions.
   ///
-  /// [customerId] - Represents the customer for which the data is to be
-  /// fetched.
+  /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern "C.+".
   ///
-  /// [endTime] - Return events which occurred at or before this time.
+  /// [endTime] - Sets the end of the range of time shown in the report. The
+  /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
+  /// default value is the approximate time of the API request. An API report
+  /// has three basic time concepts:
+  /// - Date of the API's request for a report: When the API created and
+  /// retrieved the report.
+  /// - Report's start time: The beginning of the timespan shown in the report.
+  /// The startTime must be before the endTime (if specified) and the current
+  /// time when the request is made, or the API returns an error.
+  /// - Report's end time: The end of the timespan shown in the report. For
+  /// example, the timespan of events summarized in a report can start in April
+  /// and end in May. The report itself can be requested in August.  If the
+  /// endTime is not specified, the report returns all activities from the
+  /// startTime until the current time or the most recent 180 days if the
+  /// startTime is more than 180 days in the past.
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
-  /// [eventName] - Name of the event being queried.
+  /// [eventName] - The name of the event being queried by the API. Each
+  /// eventName is related to a specific G Suite service or feature which the
+  /// API organizes into types of events. An example is the Google Calendar
+  /// events in the Admin console application's reports. The Calendar Settings
+  /// type structure has all of the Calendar eventName activities reported by
+  /// the API. When an administrator changes a Calendar setting, the API reports
+  /// this activity in the Calendar Settings type and eventName parameters. For
+  /// more information about eventName query strings and parameters, see the
+  /// list of event names for various applications above in applicationName.
   ///
-  /// [filters] - Event parameters in the form [parameter1
-  /// name][operator][parameter1 value],[parameter2 name][operator][parameter2
-  /// value],...
+  /// [filters] - The filters query string is a comma-separated list. The list
+  /// is composed of event parameters that are manipulated by relational
+  /// operators. Event parameters are in the form [parameter1 name][relational
+  /// operator][parameter1 value],[parameter2 name][relational
+  /// operator][parameter2 value],...
+  /// These event parameters are associated with a specific eventName. An empty
+  /// report is returned if the filtered request's parameter does not belong to
+  /// the eventName. For more information about eventName parameters, see the
+  /// list of event names for various applications above in applicationName.
+  ///
+  /// In the following Admin Activity example, the <> operator is URL-encoded in
+  /// the request's query string (%3C%3E):
+  /// GET...&eventName=CHANGE_CALENDAR_SETTING
+  /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS
+  ///
+  /// In the following Drive example, the list can be a view or edit event's
+  /// doc_id parameter with a value that is manipulated by an 'equal to' (==) or
+  /// 'not equal to' (<>) relational operator. In the first example, the report
+  /// returns each edited document's doc_id. In the second example, the report
+  /// returns each viewed document's doc_id that equals the value 12345 and does
+  /// not return any viewed document's which have a doc_id value of 98765. The
+  /// <> operator is URL-encoded in the request's query string (%3C%3E):
+  ///
+  /// GET...&eventName=edit&filters=doc_id
+  /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765
+  ///
+  /// The relational operators include:
+  /// - == - 'equal to'.
+  /// - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+  /// - < - 'less than'. It is URL-encoded (%3C).
+  /// - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+  /// - > - 'greater than'. It is URL-encoded (%3E).
+  /// - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
+  /// Note: The API doesn't accept multiple values of a parameter. If a
+  /// particular parameter is supplied more than once in the API request, the
+  /// API only accepts the last value of that request parameter.
+  /// In addition, if an invalid request parameter is supplied in the API
+  /// request, the API ignores that request parameter and returns the response
+  /// corresponding to the remaining valid request parameters. If no parameters
+  /// are requested, all parameters are returned.
   /// Value must have pattern
   /// "(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)".
   ///
-  /// [maxResults] - Number of activity records to be shown in each page.
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page. The maxResults
+  /// query string is optional in the request. The default value is 1000.
   /// Value must be between "1" and "1000".
   ///
-  /// [orgUnitID] - the organizational unit's(OU) ID to filter activities from
-  /// users belonging to a specific OU or one of its sub-OU(s)
+  /// [orgUnitID] - ID of the organizational unit to report on. Activity records
+  /// will be shown only for users who belong to the specified organizational
+  /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
   /// Value must have pattern "(id:[a-z0-9]+)".
   ///
-  /// [pageToken] - Token to specify next page.
+  /// [pageToken] - The token to specify next page. A report with multiple pages
+  /// has a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
   ///
-  /// [startTime] - Return events which occurred at or after this time.
+  /// [startTime] - Sets the beginning of the range of time shown in the report.
+  /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
+  /// The report returns all activities from startTime until endTime. The
+  /// startTime must be before the endTime (if specified) and the current time
+  /// when the request is made, or the API returns an error.
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
@@ -175,50 +293,165 @@ class ActivitiesResourceApi {
     return _response.then((data) => new Activities.fromJson(data));
   }
 
-  /// Push changes to activities
+  /// Start receiving notifications for account activities. For more
+  /// information, see Receiving Push Notifications.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Represents the profile id or the user email for which the data
-  /// should be filtered. When 'all' is specified as the userKey, it returns
-  /// usageReports for all users.
+  /// [userKey] - Represents the profile ID or the user email for which the data
+  /// should be filtered. Can be all for all information, or userKey for a
+  /// user's unique G Suite profile ID or their primary email address.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)".
+  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)".
+  /// Possible string values are:
+  /// - "access_transparency" : The G Suite Access Transparency activity reports
+  /// return information about different types of Access Transparency activity
+  /// events.
+  /// - "admin" : The Admin console application's activity reports return
+  /// account information about different types of administrator activity
+  /// events.
+  /// - "calendar" : The G Suite Calendar application's activity reports return
+  /// information about various Calendar activity events.
+  /// - "chat" : The Chat activity reports return information about various Chat
+  /// activity events.
+  /// - "drive" : The Google Drive application's activity reports return
+  /// information about various Google Drive activity events. The Drive activity
+  /// report is only available for G Suite Business customers.
+  /// - "gcp" : The Google Cloud Platform application's activity reports return
+  /// information about various GCP activity events.
+  /// - "gplus" : The Google+ application's activity reports return information
+  /// about various Google+ activity events.
+  /// - "groups" : The Google Groups application's activity reports return
+  /// information about various Groups activity events.
+  /// - "groups_enterprise" : The Enterprise Groups activity reports return
+  /// information about various Enterprise group activity events.
+  /// - "jamboard" : The Jamboard activity reports return information about
+  /// various Jamboard activity events.
+  /// - "login" : The Login application's activity reports return account
+  /// information about different types of Login activity events.
+  /// - "meet" : The Meet Audit activity report return information about
+  /// different types of Meet Audit activity events.
+  /// - "mobile" : The Mobile Audit activity report return information about
+  /// different types of Mobile Audit activity events.
+  /// - "rules" : The Rules activity report return information about different
+  /// types of Rules activity events.
+  /// - "saml" : The SAML activity report return information about different
+  /// types of SAML activity events.
+  /// - "token" : The Token application's activity reports return account
+  /// information about different types of Token activity events.
+  /// - "user_accounts" : The User Accounts application's activity reports
+  /// return account information about different types of User Accounts activity
+  /// events.
   ///
-  /// [actorIpAddress] - IP Address of host where the event was performed.
-  /// Supports both IPv4 and IPv6 addresses.
+  /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
+  /// event was performed. This is an additional way to filter a report's
+  /// summary using the IP address of the user whose activity is being reported.
+  /// This IP address may or may not reflect the user's physical location. For
+  /// example, the IP address can be the user's proxy server's address or a
+  /// virtual private network (VPN) address. This parameter supports both IPv4
+  /// and IPv6 address versions.
   ///
-  /// [customerId] - Represents the customer for which the data is to be
-  /// fetched.
+  /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern "C.+".
   ///
-  /// [endTime] - Return events which occurred at or before this time.
+  /// [endTime] - Sets the end of the range of time shown in the report. The
+  /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
+  /// default value is the approximate time of the API request. An API report
+  /// has three basic time concepts:
+  /// - Date of the API's request for a report: When the API created and
+  /// retrieved the report.
+  /// - Report's start time: The beginning of the timespan shown in the report.
+  /// The startTime must be before the endTime (if specified) and the current
+  /// time when the request is made, or the API returns an error.
+  /// - Report's end time: The end of the timespan shown in the report. For
+  /// example, the timespan of events summarized in a report can start in April
+  /// and end in May. The report itself can be requested in August.  If the
+  /// endTime is not specified, the report returns all activities from the
+  /// startTime until the current time or the most recent 180 days if the
+  /// startTime is more than 180 days in the past.
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
-  /// [eventName] - Name of the event being queried.
+  /// [eventName] - The name of the event being queried by the API. Each
+  /// eventName is related to a specific G Suite service or feature which the
+  /// API organizes into types of events. An example is the Google Calendar
+  /// events in the Admin console application's reports. The Calendar Settings
+  /// type structure has all of the Calendar eventName activities reported by
+  /// the API. When an administrator changes a Calendar setting, the API reports
+  /// this activity in the Calendar Settings type and eventName parameters. For
+  /// more information about eventName query strings and parameters, see the
+  /// list of event names for various applications above in applicationName.
   ///
-  /// [filters] - Event parameters in the form [parameter1
-  /// name][operator][parameter1 value],[parameter2 name][operator][parameter2
-  /// value],...
+  /// [filters] - The filters query string is a comma-separated list. The list
+  /// is composed of event parameters that are manipulated by relational
+  /// operators. Event parameters are in the form [parameter1 name][relational
+  /// operator][parameter1 value],[parameter2 name][relational
+  /// operator][parameter2 value],...
+  /// These event parameters are associated with a specific eventName. An empty
+  /// report is returned if the filtered request's parameter does not belong to
+  /// the eventName. For more information about eventName parameters, see the
+  /// list of event names for various applications above in applicationName.
+  ///
+  /// In the following Admin Activity example, the <> operator is URL-encoded in
+  /// the request's query string (%3C%3E):
+  /// GET...&eventName=CHANGE_CALENDAR_SETTING
+  /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS
+  ///
+  /// In the following Drive example, the list can be a view or edit event's
+  /// doc_id parameter with a value that is manipulated by an 'equal to' (==) or
+  /// 'not equal to' (<>) relational operator. In the first example, the report
+  /// returns each edited document's doc_id. In the second example, the report
+  /// returns each viewed document's doc_id that equals the value 12345 and does
+  /// not return any viewed document's which have a doc_id value of 98765. The
+  /// <> operator is URL-encoded in the request's query string (%3C%3E):
+  ///
+  /// GET...&eventName=edit&filters=doc_id
+  /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765
+  ///
+  /// The relational operators include:
+  /// - == - 'equal to'.
+  /// - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+  /// - < - 'less than'. It is URL-encoded (%3C).
+  /// - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+  /// - > - 'greater than'. It is URL-encoded (%3E).
+  /// - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
+  /// Note: The API doesn't accept multiple values of a parameter. If a
+  /// particular parameter is supplied more than once in the API request, the
+  /// API only accepts the last value of that request parameter.
+  /// In addition, if an invalid request parameter is supplied in the API
+  /// request, the API ignores that request parameter and returns the response
+  /// corresponding to the remaining valid request parameters. If no parameters
+  /// are requested, all parameters are returned.
   /// Value must have pattern
   /// "(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)".
   ///
-  /// [maxResults] - Number of activity records to be shown in each page.
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page. The maxResults
+  /// query string is optional in the request. The default value is 1000.
   /// Value must be between "1" and "1000".
   ///
-  /// [orgUnitID] - the organizational unit's(OU) ID to filter activities from
-  /// users belonging to a specific OU or one of its sub-OU(s)
+  /// [orgUnitID] - ID of the organizational unit to report on. Activity records
+  /// will be shown only for users who belong to the specified organizational
+  /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
   /// Value must have pattern "(id:[a-z0-9]+)".
   ///
-  /// [pageToken] - Token to specify next page.
+  /// [pageToken] - The token to specify next page. A report with multiple pages
+  /// has a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
   ///
-  /// [startTime] - Return events which occurred at or after this time.
+  /// [startTime] - Sets the beginning of the range of time shown in the report.
+  /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
+  /// The report returns all activities from startTime until endTime. The
+  /// startTime must be before the endTime (if specified) and the current time
+  /// when the request is made, or the API returns an error.
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
@@ -361,23 +594,44 @@ class CustomerUsageReportsResourceApi {
   CustomerUsageReportsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Retrieves a report which is a collection of properties / statistics for a
-  /// specific customer.
+  /// Retrieves a report which is a collection of properties and statistics for
+  /// a specific customer's account. For more information, see the Customers
+  /// Usage Report guide. For more information about the customer report's
+  /// parameters, see the Customers Usage parameters reference guides.
   ///
   /// Request parameters:
   ///
-  /// [date] - Represents the date in yyyy-mm-dd format for which the data is to
-  /// be fetched.
+  /// [date] - Represents the date the usage occurred. The timestamp is in the
+  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
+  /// for this.
   /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
   ///
-  /// [customerId] - Represents the customer for which the data is to be
-  /// fetched.
+  /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern "C.+".
   ///
-  /// [pageToken] - Token to specify next page.
+  /// [pageToken] - Token to specify next page. A report with multiple pages has
+  /// a nextPageToken property in the response. For your follow-on requests
+  /// getting all of the report's pages, enter the nextPageToken value in the
+  /// pageToken query string.
   ///
-  /// [parameters] - Represents the application name, parameter name pairs to
-  /// fetch in csv as app_name1:param_name1, app_name2:param_name2.
+  /// [parameters] - The parameters query string is a comma-separated list of
+  /// event parameters that refine a report's results. The parameter is
+  /// associated with a specific application. The application values for the
+  /// Customers usage report include accounts, app_maker, apps_scripts,
+  /// calendar, classroom, cros, docs, gmail, gplus, device_management, meet,
+  /// and sites.
+  /// A parameters query string is in the CSV form of app_name1:param_name1,
+  /// app_name2:param_name2.
+  /// Note: The API doesn't accept multiple values of a parameter. If a
+  /// particular parameter is supplied more than once in the API request, the
+  /// API only accepts the last value of that request parameter.
+  /// In addition, if an invalid request parameter is supplied in the API
+  /// request, the API ignores that request parameter and returns the response
+  /// corresponding to the remaining valid request parameters.
+  ///
+  /// An example of an invalid request parameter is one that does not belong to
+  /// the application. If no parameters are requested, all parameters are
+  /// returned.
   /// Value must have pattern
   /// "(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+)".
   ///
@@ -437,37 +691,87 @@ class EntityUsageReportsResourceApi {
   EntityUsageReportsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Retrieves a report which is a collection of properties / statistics for a
-  /// set of objects.
+  /// Retrieves a report which is a collection of properties and statistics for
+  /// entities used by users within the account. For more information, see the
+  /// Entities Usage Report guide. For more information about the entities
+  /// report's parameters, see the Entities Usage parameters reference guides.
   ///
   /// Request parameters:
   ///
-  /// [entityType] - Type of object. Should be one of - gplus_communities.
+  /// [entityType] - Represents the type of entity for the report.
   /// Value must have pattern "(gplus_communities)".
+  /// Possible string values are:
+  /// - "gplus_communities" : Returns a report on Google+ communities.
   ///
-  /// [entityKey] - Represents the key of object for which the data should be
-  /// filtered.
+  /// [entityKey] - Represents the key of the object to filter the data with.
+  /// Possible string values are:
+  /// - "all" : Returns activity events for all users.
+  /// - "entityKey" : Represents an app-specific identifier for the entity. For
+  /// details on how to obtain the entityKey for a particular entityType, see
+  /// the Entities Usage parameters reference guides.
   ///
-  /// [date] - Represents the date in yyyy-mm-dd format for which the data is to
-  /// be fetched.
+  /// [date] - Represents the date the usage occurred. The timestamp is in the
+  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
+  /// for this.
   /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
   ///
-  /// [customerId] - Represents the customer for which the data is to be
-  /// fetched.
+  /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern "C.+".
   ///
-  /// [filters] - Represents the set of filters including parameter operator
-  /// value.
+  /// [filters] - The filters query string is a comma-separated list of an
+  /// application's event parameters where the parameter's value is manipulated
+  /// by a relational operator. The filters query string includes the name of
+  /// the application whose usage is returned in the report. The application
+  /// values for the Entities usage report include accounts, docs, and gmail.
+  /// Filters are in the form [application name]:[parameter name][relational
+  /// operator][parameter value],....
+  ///
+  /// In this example, the <> 'not equal to' operator is URL-encoded in the
+  /// request's query string (%3C%3E):
+  /// GET
+  /// https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/dates/2017-12-01
+  /// ?parameters=gplus:community_name,gplus:num_total_members
+  /// &filters=gplus:num_total_members>0
+  ///
+  ///
+  /// The relational operators include:
+  /// - == - 'equal to'.
+  /// - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+  /// - < - 'less than'. It is URL-encoded (%3C).
+  /// - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+  /// - > - 'greater than'. It is URL-encoded (%3E).
+  /// - >= - 'greater than or equal to'. It is URL-encoded (%3E=).  Filters can
+  /// only be applied to numeric parameters.
   /// Value must have pattern
   /// "(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
   ///
-  /// [maxResults] - Maximum number of results to return. Maximum allowed is
-  /// 1000
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page.
+  /// Value must be between "1" and "1000".
   ///
-  /// [pageToken] - Token to specify next page.
+  /// [pageToken] - Token to specify next page. A report with multiple pages has
+  /// a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
   ///
-  /// [parameters] - Represents the application name, parameter name pairs to
-  /// fetch in csv as app_name1:param_name1, app_name2:param_name2.
+  /// [parameters] - The parameters query string is a comma-separated list of
+  /// event parameters that refine a report's results. The parameter is
+  /// associated with a specific application. The application values for the
+  /// Entities usage report are only gplus.
+  /// A parameter query string is in the CSV form of [app_name1:param_name1],
+  /// [app_name2:param_name2]....
+  /// Note: The API doesn't accept multiple values of a parameter. If a
+  /// particular parameter is supplied more than once in the API request, the
+  /// API only accepts the last value of that request parameter.
+  /// In addition, if an invalid request parameter is supplied in the API
+  /// request, the API ignores that request parameter and returns the response
+  /// corresponding to the remaining valid request parameters.
+  ///
+  /// An example of an invalid request parameter is one that does not belong to
+  /// the application. If no parameters are requested, all parameters are
+  /// returned.
   /// Value must have pattern "(((gplus)):[^,]+,)*(((gplus)):[^,]+)".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -545,38 +849,86 @@ class UserUsageReportResourceApi {
 
   UserUsageReportResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieves a report which is a collection of properties / statistics for a
-  /// set of users.
+  /// Retrieves a report which is a collection of properties and statistics for
+  /// a set of users with the account. For more information, see the User Usage
+  /// Report guide. For more information about the user report's parameters, see
+  /// the Users Usage parameters reference guides.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Represents the profile id or the user email for which the data
-  /// should be filtered.
+  /// [userKey] - Represents the profile ID or the user email for which the data
+  /// should be filtered. Can be all for all information, or userKey for a
+  /// user's unique G Suite profile ID or their primary email address.
   ///
-  /// [date] - Represents the date in yyyy-mm-dd format for which the data is to
-  /// be fetched.
+  /// [date] - Represents the date the usage occurred. The timestamp is in the
+  /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
+  /// for this.
   /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
   ///
-  /// [customerId] - Represents the customer for which the data is to be
-  /// fetched.
+  /// [customerId] - The unique ID of the customer to retrieve data for.
   /// Value must have pattern "C.+".
   ///
-  /// [filters] - Represents the set of filters including parameter operator
-  /// value.
+  /// [filters] - The filters query string is a comma-separated list of an
+  /// application's event parameters where the parameter's value is manipulated
+  /// by a relational operator. The filters query string includes the name of
+  /// the application whose usage is returned in the report. The application
+  /// values for the Users Usage Report include accounts, docs, and gmail.
+  /// Filters are in the form [application name]:[parameter name][relational
+  /// operator][parameter value],....
+  ///
+  /// In this example, the <> 'not equal to' operator is URL-encoded in the
+  /// request's query string (%3C%3E):
+  /// GET
+  /// https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-03
+  /// ?parameters=accounts:last_login_time
+  /// &filters=accounts:last_login_time>2010-10-28T10:26:35.000Z
+  ///
+  ///
+  /// The relational operators include:
+  /// - == - 'equal to'.
+  /// - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+  /// - < - 'less than'. It is URL-encoded (%3C).
+  /// - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+  /// - > - 'greater than'. It is URL-encoded (%3E).
+  /// - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
   /// Value must have pattern
   /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
   ///
-  /// [maxResults] - Maximum number of results to return. Maximum allowed is
-  /// 1000
+  /// [maxResults] - Determines how many activity records are shown on each
+  /// response page. For example, if the request sets maxResults=1 and the
+  /// report has two activities, the report has two pages. The response's
+  /// nextPageToken property has the token to the second page.
+  /// The maxResults query string is optional.
+  /// Value must be between "1" and "1000".
   ///
-  /// [orgUnitID] - the organizational unit's ID to filter usage parameters from
-  /// users belonging to a specific OU or one of its sub-OU(s).
+  /// [orgUnitID] - ID of the organizational unit to report on. User activity
+  /// will be shown only for users who belong to the specified organizational
+  /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
   /// Value must have pattern "(id:[a-z0-9]+)".
   ///
-  /// [pageToken] - Token to specify next page.
+  /// [pageToken] - Token to specify next page. A report with multiple pages has
+  /// a nextPageToken property in the response. In your follow-on request
+  /// getting the next page of the report, enter the nextPageToken value in the
+  /// pageToken query string.
   ///
-  /// [parameters] - Represents the application name, parameter name pairs to
-  /// fetch in csv as app_name1:param_name1, app_name2:param_name2.
+  /// [parameters] - The parameters query string is a comma-separated list of
+  /// event parameters that refine a report's results. The parameter is
+  /// associated with a specific application. The application values for the
+  /// Customers usage report include accounts, app_maker, apps_scripts,
+  /// calendar, classroom, cros, docs, gmail, gplus, device_management, meet,
+  /// and sites.
+  /// A parameters query string is in the CSV form of app_name1:param_name1,
+  /// app_name2:param_name2.
+  /// Note: The API doesn't accept multiple values of a parameter.
+  /// If a particular parameter is supplied more than once in the API request,
+  /// the API only accepts the last value of that request parameter. In
+  /// addition, if an invalid request parameter is supplied in the API request,
+  /// the API ignores that request parameter and returns the response
+  /// corresponding to the remaining valid request parameters.
+  ///
+  /// An example of an invalid request parameter is one that does not belong to
+  /// the application. If no parameters are requested, all parameters are
+  /// returned.
   /// Value must have pattern
   /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
   ///
@@ -653,13 +1005,15 @@ class Activities {
   /// ETag of the resource.
   core.String etag;
 
-  /// Each record in read response.
+  /// Each activity record in the response.
   core.List<Activity> items;
 
-  /// Kind of list response this is.
+  /// The type of API resource. For an activity report, the value is
+  /// reports#activities.
   core.String kind;
 
-  /// Token for retrieving the next page
+  /// Token for retrieving the follow-on next page of the report. The
+  /// nextPageToken value is used in the request's pageToken query string.
   core.String nextPageToken;
 
   Activities();
@@ -702,16 +1056,19 @@ class Activities {
 
 /// User doing the action.
 class ActivityActor {
-  /// User or OAuth 2LO request.
+  /// The type of actor.
   core.String callerType;
 
-  /// Email address of the user.
+  /// The primary email address of the actor. May be absent if there is no email
+  /// address associated with the actor.
   core.String email;
 
-  /// For OAuth 2LO API requests, consumer_key of the requestor.
+  /// Only present when callerType is KEY. Can be the consumer_key of the
+  /// requestor for OAuth 2LO API requests or an identifier for robot accounts.
   core.String key;
 
-  /// Obfuscated user id of the user.
+  /// The unique G Suite profile ID of the actor. May be absent if the actor is
+  /// not a G Suite user.
   core.String profileId;
 
   ActivityActor();
@@ -750,9 +1107,12 @@ class ActivityActor {
   }
 }
 
-/// Nested value of the parameter.
+/// Nested parameter value pairs associated with this parameter. Complex value
+/// type for a parameter are returned as a list of parameter values. For
+/// example, the address parameter may have a value as [{parameter: [{name:
+/// city, value: abc}]}]
 class ActivityEventsParametersMessageValue {
-  /// Looping to get parameter values.
+  /// Parameter values
   core.List<NestedParameter> parameter;
 
   ActivityEventsParametersMessageValue();
@@ -776,7 +1136,7 @@ class ActivityEventsParametersMessageValue {
 }
 
 class ActivityEventsParametersMultiMessageValue {
-  /// Parameter value.
+  /// Parameter values
   core.List<NestedParameter> parameter;
 
   ActivityEventsParametersMultiMessageValue();
@@ -803,19 +1163,22 @@ class ActivityEventsParameters {
   /// Boolean value of the parameter.
   core.bool boolValue;
 
-  /// Integral value of the parameter.
+  /// Integer value of the parameter.
   core.String intValue;
 
-  /// Nested value of the parameter.
+  /// Nested parameter value pairs associated with this parameter. Complex value
+  /// type for a parameter are returned as a list of parameter values. For
+  /// example, the address parameter may have a value as [{parameter: [{name:
+  /// city, value: abc}]}]
   ActivityEventsParametersMessageValue messageValue;
 
-  /// Multi-int value of the parameter.
+  /// Integer values of the parameter.
   core.List<core.String> multiIntValue;
 
-  /// Nested values of the parameter.
+  /// List of messageValue objects.
   core.List<ActivityEventsParametersMultiMessageValue> multiMessageValue;
 
-  /// Multi-string value of the parameter.
+  /// String values of the parameter.
   core.List<core.String> multiValue;
 
   /// The name of the parameter.
@@ -890,13 +1253,28 @@ class ActivityEventsParameters {
 }
 
 class ActivityEvents {
-  /// Name of event.
+  /// Name of the event. This is the specific name of the activity reported by
+  /// the API. And each eventName is related to a specific G Suite service or
+  /// feature which the API organizes into types of events.
+  /// For eventName request parameters in general:
+  /// - If no eventName is given, the report returns all possible instances of
+  /// an eventName.
+  /// - When you request an eventName, the API's response returns all activities
+  /// which contain that eventName. It is possible that the returned activities
+  /// will have other eventName properties in addition to the one requested.
+  /// For more information about eventName properties, see the list of event
+  /// names for various applications above in applicationName.
   core.String name;
 
-  /// Parameter value pairs for various applications.
+  /// Parameter value pairs for various applications. For more information about
+  /// eventName parameters, see the list of event names for various applications
+  /// above in applicationName.
   core.List<ActivityEventsParameters> parameters;
 
-  /// Type of event.
+  /// Type of event. The G Suite service or feature that an administrator
+  /// changes is identified in the type property which identifies an event using
+  /// the eventName property. For a full list of the API's type categories, see
+  /// the list of event names for various applications above in applicationName.
   core.String type;
 
   ActivityEvents();
@@ -935,13 +1313,14 @@ class ActivityEvents {
 
 /// Unique identifier for each activity record.
 class ActivityId {
-  /// Application name to which the event belongs.
+  /// Application name to which the event belongs. For possible values see the
+  /// list of applications above in applicationName.
   core.String applicationName;
 
-  /// Obfuscated customer ID of the source customer.
+  /// The unique identifier for a G suite account.
   core.String customerId;
 
-  /// Time of occurrence of the activity.
+  /// Time of occurrence of the activity. This is in UNIX epoch time in seconds.
   core.DateTime time;
 
   /// Unique qualifier if multiple events have the same time.
@@ -991,19 +1370,25 @@ class Activity {
   /// ETag of the entry.
   core.String etag;
 
-  /// Activity events.
+  /// Activity events in the report.
   core.List<ActivityEvents> events;
 
   /// Unique identifier for each activity record.
   ActivityId id;
 
-  /// IP Address of the user doing the action.
+  /// IP address of the user doing the action. This is the Internet Protocol
+  /// (IP) address of the user when logging into G Suite which may or may not
+  /// reflect the user's physical location. For example, the IP address can be
+  /// the user's proxy server's address or a virtual private network (VPN)
+  /// address. The API supports IPv4 and IPv6.
   core.String ipAddress;
 
-  /// Kind of resource this is.
+  /// The type of API resource. For an activity report, the value is
+  /// audit#activity.
   core.String kind;
 
-  /// Domain of source customer.
+  /// This is the domain that is affected by the report's event. For example
+  /// domain of Admin console or the Drive application's document owner.
   core.String ownerDomain;
 
   Activity();
@@ -1175,13 +1560,13 @@ class NestedParameter {
   /// Boolean value of the parameter.
   core.bool boolValue;
 
-  /// Integral value of the parameter.
+  /// Integer value of the parameter.
   core.String intValue;
 
   /// Multiple boolean values of the parameter.
   core.List<core.bool> multiBoolValue;
 
-  /// Multiple integral values of the parameter.
+  /// Multiple integer values of the parameter.
   core.List<core.String> multiIntValue;
 
   /// Multiple string values of the parameter.
@@ -1249,20 +1634,20 @@ class NestedParameter {
 
 /// Information about the type of the item.
 class UsageReportEntity {
-  /// Obfuscated customer id for the record.
+  /// The unique identifier of the customer's account.
   core.String customerId;
 
   /// Object key. Only relevant if entity.type = "OBJECT" Note: external-facing
   /// name of report is "Entities" rather than "Objects".
   core.String entityId;
 
-  /// Obfuscated user id for the record.
+  /// The user's immutable G Suite profile identifier.
   core.String profileId;
 
-  /// The type of item, can be customer, user, or entity (aka. object).
+  /// The type of item. The value is customer.
   core.String type;
 
-  /// user's email. Only relevant if entity.type = "USER"
+  /// The user's email address. Only relevant if entity.type = "USER"
   core.String userEmail;
 
   UsageReportEntity();
@@ -1311,10 +1696,11 @@ class UsageReportParameters {
   /// Boolean value of the parameter.
   core.bool boolValue;
 
-  /// RFC 3339 formatted value of the parameter.
+  /// The RFC 3339 formatted value of the parameter, for example
+  /// 2010-10-28T10:26:35.000Z.
   core.DateTime datetimeValue;
 
-  /// Integral value of the parameter.
+  /// Integer value of the parameter.
   core.String intValue;
 
   /// Nested message value of the parameter.
@@ -1322,8 +1708,6 @@ class UsageReportParameters {
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> msgValue;
-
-  /// The name of the parameter.
   core.String name;
 
   /// String value of the parameter.
@@ -1382,7 +1766,7 @@ class UsageReportParameters {
 
 /// JSON template for a usage report.
 class UsageReport {
-  /// The date to which the record belongs.
+  /// The date of the report request.
   core.String date;
 
   /// Information about the type of the item.
@@ -1391,10 +1775,12 @@ class UsageReport {
   /// ETag of the resource.
   core.String etag;
 
-  /// The kind of object.
+  /// The type of API resource. For a usage report, the value is
+  /// admin#reports#usageReport.
   core.String kind;
 
-  /// Parameter value pairs for various applications.
+  /// Parameter value pairs for various applications. For the Customers usage
+  /// report parameters and values, see the customer usage parameters reference.
   core.List<UsageReportParameters> parameters;
 
   UsageReport();
@@ -1477,13 +1863,18 @@ class UsageReportsWarningsData {
 }
 
 class UsageReportsWarnings {
-  /// Machine readable code / warning type.
+  /// Machine readable code or warning type. The warning code value is 200.
   core.String code;
 
-  /// Key-Value pairs to give detailed information on the warning.
+  /// Key-value pairs to give detailed information on the warning.
   core.List<UsageReportsWarningsData> data;
 
-  /// Human readable message for the warning.
+  /// The human readable messages for a warning are:
+  /// - Data is not available warning - Sorry, data for date yyyy-mm-dd for
+  /// application "application name" is not available.
+  /// - Partial data is available warning - Data for date yyyy-mm-dd for
+  /// application "application name" is not available right now, please try
+  /// again after a few hours.
   core.String message;
 
   UsageReportsWarnings();
@@ -1519,21 +1910,24 @@ class UsageReportsWarnings {
   }
 }
 
-/// JSON template for a collection of usage reports.
 class UsageReports {
   /// ETag of the resource.
   core.String etag;
 
-  /// The kind of object.
+  /// The type of API resource. For a usage report, the value is
+  /// admin#reports#usageReports.
   core.String kind;
 
-  /// Token for retrieving the next page
+  /// Token to specify next page. A report with multiple pages has a
+  /// nextPageToken property in the response. For your follow-on requests
+  /// getting all of the report's pages, enter the nextPageToken value in the
+  /// pageToken query string.
   core.String nextPageToken;
 
   /// Various application parameter records.
   core.List<UsageReport> usageReports;
 
-  /// Warnings if any.
+  /// Warnings, if any.
   core.List<UsageReportsWarnings> warnings;
 
   UsageReports();

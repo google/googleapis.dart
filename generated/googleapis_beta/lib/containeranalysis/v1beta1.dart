@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.containeranalysis.v1beta1;
 
@@ -61,8 +61,8 @@ class ProjectsNotesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project in the form of `projects/[PROJECT_ID]`,
-  /// under which
+  /// [parent] - Required. The name of the project in the form of
+  /// `projects/[PROJECT_ID]`, under which
   /// the notes are to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -116,12 +116,12 @@ class ProjectsNotesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project in the form of `projects/[PROJECT_ID]`,
-  /// under which
+  /// [parent] - Required. The name of the project in the form of
+  /// `projects/[PROJECT_ID]`, under which
   /// the note is to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [noteId] - The ID to use for this note.
+  /// [noteId] - Required. The ID to use for this note.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,7 +172,7 @@ class ProjectsNotesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the note in the form of
+  /// [name] - Required. The name of the note in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
@@ -216,7 +216,7 @@ class ProjectsNotesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the note in the form of
+  /// [name] - Required. The name of the note in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
@@ -321,17 +321,18 @@ class ProjectsNotesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project to list notes for in the form of
+  /// [parent] - Required. The name of the project to list notes for in the form
+  /// of
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of notes to return in the list. Must be positive. Max
   /// allowed page
   /// size is 1000. If not specified, page size defaults to 20.
   ///
   /// [filter] - The filter expression.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -344,9 +345,9 @@ class ProjectsNotesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNotesResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -358,14 +359,14 @@ class ProjectsNotesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -390,7 +391,7 @@ class ProjectsNotesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the note in the form of
+  /// [name] - Required. The name of the note in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
@@ -576,7 +577,8 @@ class ProjectsNotesOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the note to list occurrences for in the form of
+  /// [name] - Required. The name of the note to list occurrences for in the
+  /// form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
   /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
   ///
@@ -651,8 +653,8 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project in the form of `projects/[PROJECT_ID]`,
-  /// under which
+  /// [parent] - Required. The name of the project in the form of
+  /// `projects/[PROJECT_ID]`, under which
   /// the occurrences are to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -706,8 +708,8 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project in the form of `projects/[PROJECT_ID]`,
-  /// under which
+  /// [parent] - Required. The name of the project in the form of
+  /// `projects/[PROJECT_ID]`, under which
   /// the occurrence is to be created.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -760,7 +762,7 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the occurrence in the form of
+  /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
@@ -804,7 +806,7 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the occurrence in the form of
+  /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
@@ -910,7 +912,7 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the occurrence in the form of
+  /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
@@ -955,8 +957,8 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project to get a vulnerability summary for in
-  /// the form of
+  /// [parent] - Required. The name of the project to get a vulnerability
+  /// summary for in the form of
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -1011,17 +1013,18 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project to list occurrences for in the form of
+  /// [parent] - Required. The name of the project to list occurrences for in
+  /// the form of
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [filter] - The filter expression.
   ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of occurrences to return in the list. Must be
   /// positive. Max allowed
   /// page size is 1000. If not specified, page size defaults to 20.
-  ///
-  /// [filter] - The filter expression.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1034,9 +1037,9 @@ class ProjectsOccurrencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOccurrencesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1048,14 +1051,14 @@ class ProjectsOccurrencesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1080,7 +1083,7 @@ class ProjectsOccurrencesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the occurrence in the form of
+  /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
   /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
   ///
@@ -1262,7 +1265,7 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the scan configuration in the form of
+  /// [name] - Required. The name of the scan configuration in the form of
   /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
   /// Value must have pattern "^projects/[^/]+/scanConfigs/[^/]+$".
   ///
@@ -1306,16 +1309,16 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The name of the project to list scan configurations for in the
-  /// form of
+  /// [parent] - Required. The name of the project to list scan configurations
+  /// for in the form of
   /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Token to provide to skip to a particular spot in the list.
-  ///
   /// [pageSize] - The number of scan configs to return in the list.
   ///
-  /// [filter] - The filter expression.
+  /// [filter] - Required. The filter expression.
+  ///
+  /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1328,9 +1331,9 @@ class ProjectsScanConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScanConfigsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1342,14 +1345,14 @@ class ProjectsScanConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1374,7 +1377,7 @@ class ProjectsScanConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the scan configuration in the form of
+  /// [name] - Required. The name of the scan configuration in the form of
   /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
   /// Value must have pattern "^projects/[^/]+/scanConfigs/[^/]+$".
   ///
@@ -1507,6 +1510,50 @@ class Artifact {
   }
 }
 
+/// Defines a hash object for use in Materials and Products.
+class ArtifactHashes {
+  core.String sha256;
+
+  ArtifactHashes();
+
+  ArtifactHashes.fromJson(core.Map _json) {
+    if (_json.containsKey("sha256")) {
+      sha256 = _json["sha256"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sha256 != null) {
+      _json["sha256"] = sha256;
+    }
+    return _json;
+  }
+}
+
+/// Defines an object to declare an in-toto artifact rule
+class ArtifactRule {
+  core.List<core.String> artifactRule;
+
+  ArtifactRule();
+
+  ArtifactRule.fromJson(core.Map _json) {
+    if (_json.containsKey("artifactRule")) {
+      artifactRule = (_json["artifactRule"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (artifactRule != null) {
+      _json["artifactRule"] = artifactRule;
+    }
+    return _json;
+  }
+}
+
 /// Occurrence that represents a single "attestation". The authenticity of an
 /// attestation can be verified using the attached signature. If the verifier
 /// trusts the public key of the signer, then verifying the signature is
@@ -1542,151 +1589,6 @@ class Attestation {
     }
     if (pgpSignedAttestation != null) {
       _json["pgpSignedAttestation"] = (pgpSignedAttestation).toJson();
-    }
-    return _json;
-  }
-}
-
-/// Specifies the audit configuration for a service.
-/// The configuration determines which permission types are logged, and what
-/// identities, if any, are exempted from logging.
-/// An AuditConfig must have one or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service,
-/// the union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-///     {
-///       "audit_configs": [
-///         {
-///           "service": "allServices"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///               "exempted_members": [
-///                 "user:foo@gmail.com"
-///               ]
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///             },
-///             {
-///               "log_type": "ADMIN_READ",
-///             }
-///           ]
-///         },
-///         {
-///           "service": "fooservice.googleapis.com"
-///           "audit_log_configs": [
-///             {
-///               "log_type": "DATA_READ",
-///             },
-///             {
-///               "log_type": "DATA_WRITE",
-///               "exempted_members": [
-///                 "user:bar@gmail.com"
-///               ]
-///             }
-///           ]
-///         }
-///       ]
-///     }
-///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
-class AuditConfig {
-  /// The configuration for logging of each type of permission.
-  core.List<AuditLogConfig> auditLogConfigs;
-
-  /// Specifies a service that will be enabled for audit logging.
-  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-  /// `allServices` is a special value that covers all services.
-  core.String service;
-
-  AuditConfig();
-
-  AuditConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = (_json["auditLogConfigs"] as core.List)
-          .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] =
-          auditLogConfigs.map((value) => (value).toJson()).toList();
-    }
-    if (service != null) {
-      _json["service"] = service;
-    }
-    return _json;
-  }
-}
-
-/// Provides the configuration for logging a type of permissions.
-/// Example:
-///
-///     {
-///       "audit_log_configs": [
-///         {
-///           "log_type": "DATA_READ",
-///           "exempted_members": [
-///             "user:foo@gmail.com"
-///           ]
-///         },
-///         {
-///           "log_type": "DATA_WRITE",
-///         }
-///       ]
-///     }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
-class AuditLogConfig {
-  /// Specifies the identities that do not cause logging for this type of
-  /// permission.
-  /// Follows the same format of Binding.members.
-  core.List<core.String> exemptedMembers;
-
-  /// The log type that this config enables.
-  /// Possible string values are:
-  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
-  core.String logType;
-
-  AuditLogConfig();
-
-  AuditLogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("logType")) {
-      logType = _json["logType"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
-    }
-    if (logType != null) {
-      _json["logType"] = logType;
     }
     return _json;
   }
@@ -1762,7 +1664,7 @@ class Basis {
 
 /// Request to create notes in batch.
 class BatchCreateNotesRequest {
-  /// The notes to create. Max allowed length is 1000.
+  /// Required. The notes to create. Max allowed length is 1000.
   core.Map<core.String, Note> notes;
 
   BatchCreateNotesRequest();
@@ -1813,7 +1715,7 @@ class BatchCreateNotesResponse {
 
 /// Request to create occurrences in batch.
 class BatchCreateOccurrencesRequest {
-  /// The occurrences to create. Max allowed length is 1000.
+  /// Required. The occurrences to create. Max allowed length is 1000.
   core.List<Occurrence> occurrences;
 
   BatchCreateOccurrencesRequest();
@@ -1881,7 +1783,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1889,6 +1791,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -2182,6 +2105,30 @@ class BuildSignature {
     }
     if (signature != null) {
       _json["signature"] = signature;
+    }
+    return _json;
+  }
+}
+
+/// Defines an object for the byproducts field in in-toto links. The suggested
+/// fields are "stderr", "stdout", and "return-value".
+class ByProducts {
+  core.Map<core.String, core.String> customValues;
+
+  ByProducts();
+
+  ByProducts.fromJson(core.Map _json) {
+    if (_json.containsKey("customValues")) {
+      customValues =
+          (_json["customValues"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customValues != null) {
+      _json["customValues"] = customValues;
     }
     return _json;
   }
@@ -2634,8 +2581,6 @@ class Detail {
   /// obsolete details.
   core.bool isObsolete;
 
-  /// Deprecated, do not use. Use fixed_location instead.
-  ///
   /// The max version of the package in which the vulnerability exists.
   Version maxAffectedVersion;
 
@@ -2651,6 +2596,11 @@ class Detail {
 
   /// The severity (eg: distro assigned severity) for this vulnerability.
   core.String severityName;
+
+  /// The time this information was last changed at the source. This is an
+  /// upstream timestamp from the underlying information source - e.g. Ubuntu
+  /// security tracker.
+  core.String sourceUpdateTime;
 
   Detail();
 
@@ -2683,6 +2633,9 @@ class Detail {
     if (_json.containsKey("severityName")) {
       severityName = _json["severityName"];
     }
+    if (_json.containsKey("sourceUpdateTime")) {
+      sourceUpdateTime = _json["sourceUpdateTime"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2714,6 +2667,9 @@ class Detail {
     }
     if (severityName != null) {
       _json["severityName"] = severityName;
+    }
+    if (sourceUpdateTime != null) {
+      _json["sourceUpdateTime"] = sourceUpdateTime;
     }
     return _json;
   }
@@ -2826,6 +2782,7 @@ class Discovery {
   /// of a resource.
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
+  /// - "INTOTO" : This represents an in-toto link.
   core.String analysisKind;
 
   Discovery();
@@ -2943,28 +2900,76 @@ class Empty {
   }
 }
 
-/// Represents an expression text. Example:
+/// Defines an object for the environment field in in-toto links. The suggested
+/// fields are "variables", "filesystem", and "workdir".
+class Environment {
+  core.Map<core.String, core.String> customValues;
+
+  Environment();
+
+  Environment.fromJson(core.Map _json) {
+    if (_json.containsKey("customValues")) {
+      customValues =
+          (_json["customValues"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customValues != null) {
+      _json["customValues"] = customValues;
+    }
+    return _json;
+  }
+}
+
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -3260,13 +3265,55 @@ class GerritSourceContext {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
     return _json;
   }
 }
@@ -3444,6 +3491,98 @@ class GrafeasV1beta1ImageDetails {
         new core.Map<core.String, core.Object>();
     if (derivedImage != null) {
       _json["derivedImage"] = (derivedImage).toJson();
+    }
+    return _json;
+  }
+}
+
+class GrafeasV1beta1IntotoArtifact {
+  ArtifactHashes hashes;
+  core.String resourceUri;
+
+  GrafeasV1beta1IntotoArtifact();
+
+  GrafeasV1beta1IntotoArtifact.fromJson(core.Map _json) {
+    if (_json.containsKey("hashes")) {
+      hashes = new ArtifactHashes.fromJson(_json["hashes"]);
+    }
+    if (_json.containsKey("resourceUri")) {
+      resourceUri = _json["resourceUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hashes != null) {
+      _json["hashes"] = (hashes).toJson();
+    }
+    if (resourceUri != null) {
+      _json["resourceUri"] = resourceUri;
+    }
+    return _json;
+  }
+}
+
+/// This corresponds to a signed in-toto link - it is made up of one or more
+/// signatures and the in-toto link itself. This is used for occurrences of a
+/// Grafeas in-toto note.
+class GrafeasV1beta1IntotoDetails {
+  core.List<GrafeasV1beta1IntotoSignature> signatures;
+  Link signed;
+
+  GrafeasV1beta1IntotoDetails();
+
+  GrafeasV1beta1IntotoDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("signatures")) {
+      signatures = (_json["signatures"] as core.List)
+          .map<GrafeasV1beta1IntotoSignature>(
+              (value) => new GrafeasV1beta1IntotoSignature.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("signed")) {
+      signed = new Link.fromJson(_json["signed"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (signatures != null) {
+      _json["signatures"] =
+          signatures.map((value) => (value).toJson()).toList();
+    }
+    if (signed != null) {
+      _json["signed"] = (signed).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A signature object consists of the KeyID used and the signature itself.
+class GrafeasV1beta1IntotoSignature {
+  core.String keyid;
+  core.String sig;
+
+  GrafeasV1beta1IntotoSignature();
+
+  GrafeasV1beta1IntotoSignature.fromJson(core.Map _json) {
+    if (_json.containsKey("keyid")) {
+      keyid = _json["keyid"];
+    }
+    if (_json.containsKey("sig")) {
+      sig = _json["sig"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (keyid != null) {
+      _json["keyid"] = keyid;
+    }
+    if (sig != null) {
+      _json["sig"] = sig;
     }
     return _json;
   }
@@ -3657,6 +3796,88 @@ class Hint {
   }
 }
 
+/// This contains the fields corresponding to the definition of a software
+/// supply
+/// chain step in an in-toto layout. This information goes into a Grafeas note.
+class InToto {
+  /// This field contains the expected command used to perform the step.
+  core.List<core.String> expectedCommand;
+
+  /// The following fields contain in-toto artifact rules identifying the
+  /// artifacts that enter this supply chain step, and exit the supply chain
+  /// step, i.e. materials and products of the step.
+  core.List<ArtifactRule> expectedMaterials;
+  core.List<ArtifactRule> expectedProducts;
+
+  /// This field contains the public keys that can be used to verify the
+  /// signatures on the step metadata.
+  core.List<SigningKey> signingKeys;
+
+  /// This field identifies the name of the step in the supply chain.
+  core.String stepName;
+
+  /// This field contains a value that indicates the minimum number of keys that
+  /// need to be used to sign the step's in-toto link.
+  core.String threshold;
+
+  InToto();
+
+  InToto.fromJson(core.Map _json) {
+    if (_json.containsKey("expectedCommand")) {
+      expectedCommand =
+          (_json["expectedCommand"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("expectedMaterials")) {
+      expectedMaterials = (_json["expectedMaterials"] as core.List)
+          .map<ArtifactRule>((value) => new ArtifactRule.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("expectedProducts")) {
+      expectedProducts = (_json["expectedProducts"] as core.List)
+          .map<ArtifactRule>((value) => new ArtifactRule.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("signingKeys")) {
+      signingKeys = (_json["signingKeys"] as core.List)
+          .map<SigningKey>((value) => new SigningKey.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("stepName")) {
+      stepName = _json["stepName"];
+    }
+    if (_json.containsKey("threshold")) {
+      threshold = _json["threshold"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expectedCommand != null) {
+      _json["expectedCommand"] = expectedCommand;
+    }
+    if (expectedMaterials != null) {
+      _json["expectedMaterials"] =
+          expectedMaterials.map((value) => (value).toJson()).toList();
+    }
+    if (expectedProducts != null) {
+      _json["expectedProducts"] =
+          expectedProducts.map((value) => (value).toJson()).toList();
+    }
+    if (signingKeys != null) {
+      _json["signingKeys"] =
+          signingKeys.map((value) => (value).toJson()).toList();
+    }
+    if (stepName != null) {
+      _json["stepName"] = stepName;
+    }
+    if (threshold != null) {
+      _json["threshold"] = threshold;
+    }
+    return _json;
+  }
+}
+
 /// This represents how a particular software package may be installed on a
 /// system.
 class Installation {
@@ -3772,6 +3993,101 @@ class Layer {
     }
     if (directive != null) {
       _json["directive"] = directive;
+    }
+    return _json;
+  }
+}
+
+/// This corresponds to an in-toto link.
+class Link {
+  /// ByProducts are data generated as part of a software supply chain step, but
+  /// are not the actual result of the step.
+  ByProducts byproducts;
+
+  /// This field contains the full command executed for the step. This can also
+  /// be empty if links are generated for operations that aren't directly mapped
+  /// to a specific command. Each term in the command is an independent string
+  /// in the list. An example of a command in the in-toto metadata field is:
+  /// "command": ["git", "clone", "https://github.com/in-toto/demo-project.git"]
+  core.List<core.String> command;
+
+  /// This is a field that can be used to capture information about the
+  /// environment. It is suggested for this field to contain information that
+  /// details environment variables, filesystem information, and the present
+  /// working directory. The recommended structure of this field is:
+  /// "environment": {
+  ///   "custom_values": {
+  ///     "variables": "<ENV>",
+  ///     "filesystem": "<FS>",
+  ///     "workdir": "<CWD>",
+  ///     "<ANY OTHER RELEVANT FIELDS>": "..."
+  ///   }
+  /// }
+  Environment environment;
+
+  /// Materials are the supply chain artifacts that go into the step and are
+  /// used
+  /// for the operation performed. The key of the map is the path of the
+  /// artifact
+  /// and the structure contains the recorded hash information. An example is:
+  /// "materials": [
+  ///   {
+  ///     "resource_uri": "foo/bar",
+  ///     "hashes": {
+  ///       "sha256": "ebebf...",
+  ///       <OTHER HASH ALGORITHMS>: <HASH VALUE>
+  ///     }
+  ///   }
+  /// ]
+  core.List<GrafeasV1beta1IntotoArtifact> materials;
+
+  /// Products are the supply chain artifacts generated as a result of the step.
+  /// The structure is identical to that of materials.
+  core.List<GrafeasV1beta1IntotoArtifact> products;
+
+  Link();
+
+  Link.fromJson(core.Map _json) {
+    if (_json.containsKey("byproducts")) {
+      byproducts = new ByProducts.fromJson(_json["byproducts"]);
+    }
+    if (_json.containsKey("command")) {
+      command = (_json["command"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("environment")) {
+      environment = new Environment.fromJson(_json["environment"]);
+    }
+    if (_json.containsKey("materials")) {
+      materials = (_json["materials"] as core.List)
+          .map<GrafeasV1beta1IntotoArtifact>(
+              (value) => new GrafeasV1beta1IntotoArtifact.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("products")) {
+      products = (_json["products"] as core.List)
+          .map<GrafeasV1beta1IntotoArtifact>(
+              (value) => new GrafeasV1beta1IntotoArtifact.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (byproducts != null) {
+      _json["byproducts"] = (byproducts).toJson();
+    }
+    if (command != null) {
+      _json["command"] = command;
+    }
+    if (environment != null) {
+      _json["environment"] = (environment).toJson();
+    }
+    if (materials != null) {
+      _json["materials"] = materials.map((value) => (value).toJson()).toList();
+    }
+    if (products != null) {
+      _json["products"] = products.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3990,6 +4306,9 @@ class Note {
   /// Time of expiration for this note. Empty if note does not expire.
   core.String expirationTime;
 
+  /// A note describing an in-toto link.
+  InToto intoto;
+
   /// Output only. The type of analysis. This field can be used as a filter in
   /// list requests.
   /// Possible string values are:
@@ -4004,6 +4323,7 @@ class Note {
   /// of a resource.
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
+  /// - "INTOTO" : This represents an in-toto link.
   core.String kind;
 
   /// A detailed description of this note.
@@ -4057,6 +4377,9 @@ class Note {
     }
     if (_json.containsKey("expirationTime")) {
       expirationTime = _json["expirationTime"];
+    }
+    if (_json.containsKey("intoto")) {
+      intoto = new InToto.fromJson(_json["intoto"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4114,6 +4437,9 @@ class Note {
     if (expirationTime != null) {
       _json["expirationTime"] = expirationTime;
     }
+    if (intoto != null) {
+      _json["intoto"] = (intoto).toJson();
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4170,6 +4496,9 @@ class Occurrence {
   /// Describes the installation of a package on the linked resource.
   GrafeasV1beta1PackageDetails installation;
 
+  /// Describes a specific in-toto link.
+  GrafeasV1beta1IntotoDetails intoto;
+
   /// Output only. This explicitly denotes which of the occurrence details are
   /// specified. This field can be used as a filter in list requests.
   /// Possible string values are:
@@ -4184,6 +4513,7 @@ class Occurrence {
   /// of a resource.
   /// - "ATTESTATION" : This represents a logical "role" that can attest to
   /// artifacts.
+  /// - "INTOTO" : This represents an in-toto link.
   core.String kind;
 
   /// Output only. The name of the occurrence in the form of
@@ -4235,6 +4565,9 @@ class Occurrence {
       installation =
           new GrafeasV1beta1PackageDetails.fromJson(_json["installation"]);
     }
+    if (_json.containsKey("intoto")) {
+      intoto = new GrafeasV1beta1IntotoDetails.fromJson(_json["intoto"]);
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -4282,6 +4615,9 @@ class Occurrence {
     }
     if (installation != null) {
       _json["installation"] = (installation).toJson();
+    }
+    if (intoto != null) {
+      _json["intoto"] = (intoto).toJson();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4466,59 +4802,74 @@ class PgpSignedAttestation {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Specifies cloud audit logging configuration for this policy.
-  core.List<AuditConfig> auditConfigs;
-
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -4530,8 +4881,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -4542,17 +4897,34 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
 
   Policy.fromJson(core.Map _json) {
-    if (_json.containsKey("auditConfigs")) {
-      auditConfigs = (_json["auditConfigs"] as core.List)
-          .map<AuditConfig>((value) => new AuditConfig.fromJson(value))
-          .toList();
-    }
     if (_json.containsKey("bindings")) {
       bindings = (_json["bindings"] as core.List)
           .map<Binding>((value) => new Binding.fromJson(value))
@@ -4569,10 +4941,6 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (auditConfigs != null) {
-      _json["auditConfigs"] =
-          auditConfigs.map((value) => (value).toJson()).toList();
-    }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -4801,22 +5169,11 @@ class SetIamPolicyRequest {
   /// might reject them.
   Policy policy;
 
-  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
-  /// Only
-  /// the fields in the mask will be modified. If no mask is provided, the
-  /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
-  core.String updateMask;
-
   SetIamPolicyRequest();
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey("policy")) {
       policy = new Policy.fromJson(_json["policy"]);
-    }
-    if (_json.containsKey("updateMask")) {
-      updateMask = _json["updateMask"];
     }
   }
 
@@ -4825,9 +5182,6 @@ class SetIamPolicyRequest {
         new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
-    }
-    if (updateMask != null) {
-      _json["updateMask"] = updateMask;
     }
     return _json;
   }
@@ -4913,6 +5267,68 @@ class Signature {
     }
     if (signature != null) {
       _json["signature"] = signature;
+    }
+    return _json;
+  }
+}
+
+/// This defines the format used to record keys used in the software supply
+/// chain. An in-toto link is attested using one or more keys defined in the
+/// in-toto layout. An example of this is:
+/// {
+/// "key_id": "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...",
+///   "key_type": "rsa",
+/// "public_key_value": "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0B...",
+///   "key_scheme": "rsassa-pss-sha256"
+/// }
+/// The format for in-toto's key definition can be found in section 4.2 of the
+/// in-toto specification.
+class SigningKey {
+  /// key_id is an identifier for the signing key.
+  core.String keyId;
+
+  /// This field contains the corresponding signature scheme.
+  /// Eg: "rsassa-pss-sha256".
+  core.String keyScheme;
+
+  /// This field identifies the specific signing method. Eg: "rsa", "ed25519",
+  /// and "ecdsa".
+  core.String keyType;
+
+  /// This field contains the actual public key.
+  core.String publicKeyValue;
+
+  SigningKey();
+
+  SigningKey.fromJson(core.Map _json) {
+    if (_json.containsKey("keyId")) {
+      keyId = _json["keyId"];
+    }
+    if (_json.containsKey("keyScheme")) {
+      keyScheme = _json["keyScheme"];
+    }
+    if (_json.containsKey("keyType")) {
+      keyType = _json["keyType"];
+    }
+    if (_json.containsKey("publicKeyValue")) {
+      publicKeyValue = _json["publicKeyValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (keyId != null) {
+      _json["keyId"] = keyId;
+    }
+    if (keyScheme != null) {
+      _json["keyScheme"] = keyScheme;
+    }
+    if (keyType != null) {
+      _json["keyType"] = keyType;
+    }
+    if (publicKeyValue != null) {
+      _json["publicKeyValue"] = publicKeyValue;
     }
     return _json;
   }
@@ -5224,6 +5640,11 @@ class Vulnerability {
   /// - "CRITICAL" : Critical severity.
   core.String severity;
 
+  /// The time this information was last changed at the source. This is an
+  /// upstream timestamp from the underlying information source - e.g. Ubuntu
+  /// security tracker.
+  core.String sourceUpdateTime;
+
   /// Windows details get their own format because the information format and
   /// model don't match a normal detail. Specifically Windows updates are done
   /// as
@@ -5248,6 +5669,9 @@ class Vulnerability {
     if (_json.containsKey("severity")) {
       severity = _json["severity"];
     }
+    if (_json.containsKey("sourceUpdateTime")) {
+      sourceUpdateTime = _json["sourceUpdateTime"];
+    }
     if (_json.containsKey("windowsDetails")) {
       windowsDetails = (_json["windowsDetails"] as core.List)
           .map<WindowsDetail>((value) => new WindowsDetail.fromJson(value))
@@ -5269,6 +5693,9 @@ class Vulnerability {
     }
     if (severity != null) {
       _json["severity"] = severity;
+    }
+    if (sourceUpdateTime != null) {
+      _json["sourceUpdateTime"] = sourceUpdateTime;
     }
     if (windowsDetails != null) {
       _json["windowsDetails"] =

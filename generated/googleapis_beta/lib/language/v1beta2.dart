@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.language.v1beta2;
 
@@ -317,7 +317,7 @@ class DocumentsResourceApi {
 
 /// The entity analysis request message.
 class AnalyzeEntitiesRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -401,7 +401,7 @@ class AnalyzeEntitiesResponse {
 
 /// The entity-level sentiment analysis request message.
 class AnalyzeEntitySentimentRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -485,7 +485,7 @@ class AnalyzeEntitySentimentResponse {
 
 /// The sentiment analysis request message.
 class AnalyzeSentimentRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate sentence offsets for the
@@ -579,7 +579,7 @@ class AnalyzeSentimentResponse {
 
 /// The syntax analysis request message.
 class AnalyzeSyntaxRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -675,7 +675,7 @@ class AnalyzeSyntaxResponse {
 /// The request message for the text annotation API, which can perform multiple
 /// analysis types (sentiment, entities, and syntax) in one call.
 class AnnotateTextRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   /// The encoding type used by the API to calculate offsets.
@@ -697,7 +697,7 @@ class AnnotateTextRequest {
   /// that uses this encoding natively.
   core.String encodingType;
 
-  /// The enabled features.
+  /// Required. The enabled features.
   Features features;
 
   AnnotateTextRequest();
@@ -823,7 +823,7 @@ class ClassificationCategory {
   core.double confidence;
 
   /// The name of the category representing the document, from the [predefined
-  /// taxonomy](/natural-language/docs/categories).
+  /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
   core.String name;
 
   ClassificationCategory();
@@ -852,7 +852,7 @@ class ClassificationCategory {
 
 /// The document classification request message.
 class ClassifyTextRequest {
-  /// Input document.
+  /// Required. Input document.
   Document document;
 
   ClassifyTextRequest();
@@ -1025,6 +1025,18 @@ class DependencyEdge {
 ///
 /// Represents the input to API methods.
 class Document {
+  /// Indicates how detected boilerplate(e.g. advertisements, copyright
+  /// declarations, banners) should be handled for this document. If not
+  /// specified, boilerplate will be treated the same as content.
+  /// Possible string values are:
+  /// - "BOILERPLATE_HANDLING_UNSPECIFIED" : The boilerplate handling is not
+  /// specified.
+  /// - "SKIP_BOILERPLATE" : Do not analyze detected boilerplate. Reference web
+  /// URI is required for
+  /// detecting boilerplate.
+  /// - "KEEP_BOILERPLATE" : Treat boilerplate the same as content.
+  core.String boilerplateHandling;
+
   /// The content of the input in string format.
   /// Cloud audit logging exempt since it is based on user data.
   core.String content;
@@ -1038,12 +1050,16 @@ class Document {
   /// The language of the document (if not specified, the language is
   /// automatically detected). Both ISO and BCP-47 language codes are
   /// accepted.<br>
-  /// [Language Support](/natural-language/docs/languages)
-  /// lists currently supported languages for each API method.
-  /// If the language (either specified by the caller or automatically detected)
-  /// is not supported by the called API method, an `INVALID_ARGUMENT` error
-  /// is returned.
+  /// [Language
+  /// Support](https://cloud.google.com/natural-language/docs/languages) lists
+  /// currently supported languages for each API method. If the language (either
+  /// specified by the caller or automatically detected) is not supported by the
+  /// called API method, an `INVALID_ARGUMENT` error is returned.
   core.String language;
+
+  /// The web URI where the document comes from. This URI is not used for
+  /// fetching the content, but as a hint for analyzing the document.
+  core.String referenceWebUri;
 
   /// Required. If the type is not set or is `TYPE_UNSPECIFIED`,
   /// returns an `INVALID_ARGUMENT` error.
@@ -1056,6 +1072,9 @@ class Document {
   Document();
 
   Document.fromJson(core.Map _json) {
+    if (_json.containsKey("boilerplateHandling")) {
+      boilerplateHandling = _json["boilerplateHandling"];
+    }
     if (_json.containsKey("content")) {
       content = _json["content"];
     }
@@ -1065,6 +1084,9 @@ class Document {
     if (_json.containsKey("language")) {
       language = _json["language"];
     }
+    if (_json.containsKey("referenceWebUri")) {
+      referenceWebUri = _json["referenceWebUri"];
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -1073,6 +1095,9 @@ class Document {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (boilerplateHandling != null) {
+      _json["boilerplateHandling"] = boilerplateHandling;
+    }
     if (content != null) {
       _json["content"] = content;
     }
@@ -1081,6 +1106,9 @@ class Document {
     }
     if (language != null) {
       _json["language"] = language;
+    }
+    if (referenceWebUri != null) {
+      _json["referenceWebUri"] = referenceWebUri;
     }
     if (type != null) {
       _json["type"] = type;
@@ -1278,7 +1306,8 @@ class EntityMention {
 class Features {
   /// Classify the full document into categories. If this is true,
   /// the API will use the default model which classifies into a
-  /// [predefined taxonomy](/natural-language/docs/categories).
+  /// [predefined
+  /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
   core.bool classifyText;
 
   /// Extract document-level sentiment.

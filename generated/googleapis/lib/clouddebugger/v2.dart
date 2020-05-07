@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.clouddebugger.v2;
 
@@ -136,7 +136,10 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - Identifies the debuggee.
+  /// [debuggeeId] - Required. Identifies the debuggee.
+  ///
+  /// [agentId] - Identifies the agent.
+  /// This is the ID returned in the RegisterDebuggee response.
   ///
   /// [successOnTimeout] - If set to `true` (recommended), returns
   /// `google.rpc.Code.OK` status and
@@ -163,7 +166,8 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool successOnTimeout,
+      {core.String agentId,
+      core.bool successOnTimeout,
       core.String waitToken,
       core.String $fields}) {
     var _url;
@@ -175,6 +179,9 @@ class ControllerDebuggeesBreakpointsResourceApi {
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
+    }
+    if (agentId != null) {
+      _queryParams["agentId"] = [agentId];
     }
     if (successOnTimeout != null) {
       _queryParams["successOnTimeout"] = ["${successOnTimeout}"];
@@ -213,7 +220,7 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - Identifies the debuggee being debugged.
+  /// [debuggeeId] - Required. Identifies the debuggee being debugged.
   ///
   /// [id] - Breakpoint identifier, unique in the scope of the debuggee.
   ///
@@ -290,15 +297,15 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [includeInactive] - When set to `true`, the result includes all debuggees.
   /// Otherwise, the
   /// result includes only debuggees that are active.
   ///
-  /// [project] - Project number of a Google Cloud project whose debuggees to
-  /// list.
+  /// [project] - Required. Project number of a Google Cloud project whose
+  /// debuggees to list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,11 +364,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee whose breakpoint to delete.
+  /// [debuggeeId] - Required. ID of the debuggee whose breakpoint to delete.
   ///
-  /// [breakpointId] - ID of the breakpoint to delete.
+  /// [breakpointId] - Required. ID of the breakpoint to delete.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -414,11 +421,11 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee whose breakpoint to get.
+  /// [debuggeeId] - Required. ID of the debuggee whose breakpoint to get.
   ///
-  /// [breakpointId] - ID of the breakpoint to get.
+  /// [breakpointId] - Required. ID of the breakpoint to get.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -472,7 +479,15 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee whose breakpoints to list.
+  /// [debuggeeId] - Required. ID of the debuggee whose breakpoints to list.
+  ///
+  /// [includeInactive] - When set to `true`, the response includes active and
+  /// inactive
+  /// breakpoints. Otherwise, it includes only active breakpoints.
+  ///
+  /// [includeAllUsers] - When set to `true`, the response includes the list of
+  /// breakpoints set by
+  /// any user. Otherwise, it includes only breakpoints set by the caller.
   ///
   /// [stripResults] - This field is deprecated. The following fields are always
   /// stripped out of
@@ -485,7 +500,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
   /// should be called again with the same `wait_token`.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
   /// [action_value] - Only breakpoints with the specified action will pass the
@@ -493,14 +508,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// Possible string values are:
   /// - "CAPTURE" : A CAPTURE.
   /// - "LOG" : A LOG.
-  ///
-  /// [includeInactive] - When set to `true`, the response includes active and
-  /// inactive
-  /// breakpoints. Otherwise, it includes only active breakpoints.
-  ///
-  /// [includeAllUsers] - When set to `true`, the response includes the list of
-  /// breakpoints set by
-  /// any user. Otherwise, it includes only breakpoints set by the caller.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -513,12 +520,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool stripResults,
+      {core.bool includeInactive,
+      core.bool includeAllUsers,
+      core.bool stripResults,
       core.String waitToken,
       core.String clientVersion,
       core.String action_value,
-      core.bool includeInactive,
-      core.bool includeAllUsers,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -529,6 +536,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
+    }
+    if (includeInactive != null) {
+      _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
     }
     if (stripResults != null) {
       _queryParams["stripResults"] = ["${stripResults}"];
@@ -541,12 +554,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
-    }
-    if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
-    }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -571,10 +578,18 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [debuggeeId] - ID of the debuggee where the breakpoint is to be set.
+  /// [debuggeeId] - Required. ID of the debuggee where the breakpoint is to be
+  /// set.
   ///
-  /// [clientVersion] - The client version making the call.
+  /// [clientVersion] - Required. The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  ///
+  /// [canaryOption] - The canary option set by the user upon setting
+  /// breakpoint.
+  /// Possible string values are:
+  /// - "CANARY_OPTION_UNSPECIFIED" : A CANARY_OPTION_UNSPECIFIED.
+  /// - "CANARY_OPTION_TRY_ENABLE" : A CANARY_OPTION_TRY_ENABLE.
+  /// - "CANARY_OPTION_TRY_DISABLE" : A CANARY_OPTION_TRY_DISABLE.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -588,7 +603,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// this method will complete with the same error.
   async.Future<SetBreakpointResponse> set(
       Breakpoint request, core.String debuggeeId,
-      {core.String clientVersion, core.String $fields}) {
+      {core.String clientVersion,
+      core.String canaryOption,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -604,6 +621,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (canaryOption != null) {
+      _queryParams["canaryOption"] = [canaryOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -663,6 +683,9 @@ class AliasContext {
   }
 }
 
+/// ------------------------------------------------------------------------------
+/// ## Breakpoint (the resource)
+///
 /// Represents the breakpoint specification, status and results.
 class Breakpoint {
   /// Action that the agent should perform when the code at the
@@ -674,6 +697,10 @@ class Breakpoint {
   /// - "LOG" : Log each breakpoint hit. The breakpoint remains active until
   /// deleted or expired.
   core.String action;
+
+  /// The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value
+  /// is meaningless when the breakpoint is not in CANARY_ACTIVE state.
+  core.String canaryExpireTime;
 
   /// Condition that triggers the breakpoint.
   /// The condition is a compound boolean expression composed using expressions
@@ -737,6 +764,17 @@ class Breakpoint {
   /// recently entered function.
   core.List<StackFrame> stackFrames;
 
+  /// The current state of the breakpoint.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Breakpoint state UNSPECIFIED.
+  /// - "STATE_CANARY_PENDING_AGENTS" : Enabling canary but no agents are
+  /// available.
+  /// - "STATE_CANARY_ACTIVE" : Enabling canary and successfully assigning
+  /// canary agents.
+  /// - "STATE_ROLLING_TO_ALL" : Breakpoint rolling out to all agents.
+  /// - "STATE_IS_FINAL" : Breakpoint is hit/complete/failed.
+  core.String state;
+
   /// Breakpoint status.
   ///
   /// The status includes an error flag and a human readable message.
@@ -776,6 +814,9 @@ class Breakpoint {
   Breakpoint.fromJson(core.Map _json) {
     if (_json.containsKey("action")) {
       action = _json["action"];
+    }
+    if (_json.containsKey("canaryExpireTime")) {
+      canaryExpireTime = _json["canaryExpireTime"];
     }
     if (_json.containsKey("condition")) {
       condition = _json["condition"];
@@ -817,6 +858,9 @@ class Breakpoint {
           .map<StackFrame>((value) => new StackFrame.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
     if (_json.containsKey("status")) {
       status = new StatusMessage.fromJson(_json["status"]);
     }
@@ -835,6 +879,9 @@ class Breakpoint {
         new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
+    }
+    if (canaryExpireTime != null) {
+      _json["canaryExpireTime"] = canaryExpireTime;
     }
     if (condition != null) {
       _json["condition"] = condition;
@@ -873,6 +920,9 @@ class Breakpoint {
     if (stackFrames != null) {
       _json["stackFrames"] =
           stackFrames.map((value) => (value).toJson()).toList();
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     if (status != null) {
       _json["status"] = (status).toJson();
@@ -1018,6 +1068,26 @@ class Debuggee {
   /// `google.com/java-gcp/v1.1`).
   core.String agentVersion;
 
+  /// Used when setting breakpoint canary for this debuggee.
+  /// Possible string values are:
+  /// - "CANARY_MODE_UNSPECIFIED" : CANARY_MODE_UNSPECIFIED is equivalent to
+  /// CANARY_MODE_ALWAYS_DISABLED so
+  /// that if the debuggee is not configured to use the canary feature, the
+  /// feature will be disabled.
+  /// - "CANARY_MODE_ALWAYS_ENABLED" : Always enable breakpoint canary
+  /// regardless of the value of breakpoint's
+  /// canary option.
+  /// - "CANARY_MODE_ALWAYS_DISABLED" : Always disable breakpoint canary
+  /// regardless of the value of breakpoint's
+  /// canary option.
+  /// - "CANARY_MODE_DEFAULT_ENABLED" : Depends on the breakpoint's canary
+  /// option. Enable canary by default if
+  /// the breakpoint's canary option is not specified.
+  /// - "CANARY_MODE_DEFAULT_DISABLED" : Depends on the breakpoint's canary
+  /// option. Disable canary by default if
+  /// the breakpoint's canary option is not specified.
+  core.String canaryMode;
+
   /// Human readable description of the debuggee.
   /// Including a human-readable project name, environment name and version
   /// information is recommended.
@@ -1069,6 +1139,9 @@ class Debuggee {
     if (_json.containsKey("agentVersion")) {
       agentVersion = _json["agentVersion"];
     }
+    if (_json.containsKey("canaryMode")) {
+      canaryMode = _json["canaryMode"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -1111,6 +1184,9 @@ class Debuggee {
         new core.Map<core.String, core.Object>();
     if (agentVersion != null) {
       _json["agentVersion"] = agentVersion;
+    }
+    if (canaryMode != null) {
+      _json["canaryMode"] = canaryMode;
     }
     if (description != null) {
       _json["description"] = description;
@@ -1514,7 +1590,7 @@ class ProjectRepoId {
 
 /// Request to register a debuggee.
 class RegisterDebuggeeRequest {
-  /// Debuggee information to register.
+  /// Required. Debuggee information to register.
   /// The fields `project`, `uniquifier`, `description` and `agent_version`
   /// of the debuggee must be set.
   Debuggee debuggee;
@@ -1539,6 +1615,10 @@ class RegisterDebuggeeRequest {
 
 /// Response for registering a debuggee.
 class RegisterDebuggeeResponse {
+  /// A unique ID generated for the agent.
+  /// Each RegisterDebuggee request will generate a new agent ID.
+  core.String agentId;
+
   /// Debuggee resource.
   /// The field `id` is guaranteed to be set (in addition to the echoed fields).
   /// If the field `is_disabled` is set to `true`, the agent should disable
@@ -1549,6 +1629,9 @@ class RegisterDebuggeeResponse {
   RegisterDebuggeeResponse();
 
   RegisterDebuggeeResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("agentId")) {
+      agentId = _json["agentId"];
+    }
     if (_json.containsKey("debuggee")) {
       debuggee = new Debuggee.fromJson(_json["debuggee"]);
     }
@@ -1557,6 +1640,9 @@ class RegisterDebuggeeResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (agentId != null) {
+      _json["agentId"] = agentId;
+    }
     if (debuggee != null) {
       _json["debuggee"] = (debuggee).toJson();
     }
@@ -1599,7 +1685,7 @@ class RepoId {
 /// Response for setting a breakpoint.
 class SetBreakpointResponse {
   /// Breakpoint resource.
-  /// The field `id` is guaranteed to be set (in addition to the echoed fileds).
+  /// The field `id` is guaranteed to be set (in addition to the echoed fields).
   Breakpoint breakpoint;
 
   SetBreakpointResponse();
@@ -1794,6 +1880,9 @@ class StatusMessage {
   /// related to its expressions.
   /// - "BREAKPOINT_AGE" : Status applies to the breakpoint and is related to
   /// its age.
+  /// - "BREAKPOINT_CANARY_FAILED" : Status applies to the breakpoint when the
+  /// breakpoint failed to exit the
+  /// canary state.
   /// - "VARIABLE_NAME" : Status applies to the entire variable.
   /// - "VARIABLE_VALUE" : Status applies to variable value (variable name is
   /// valid).
@@ -1831,7 +1920,7 @@ class StatusMessage {
 
 /// Request to update an active breakpoint.
 class UpdateActiveBreakpointRequest {
-  /// Updated breakpoint information.
+  /// Required. Updated breakpoint information.
   /// The field `id` must be set.
   /// The agent must echo all Breakpoint specification fields in the update.
   Breakpoint breakpoint;

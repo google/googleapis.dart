@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudtrace.v2;
 
@@ -16,11 +16,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudtrace/v2';
 
-/// Sends application trace data to Stackdriver Trace for viewing. Trace data is
+/// Sends application trace data to Cloud Trace for viewing. Trace data is
 /// collected for all App Engine applications by default. Trace data from other
 /// applications can be provided using this API. This library is used to
-/// interact with the Trace API directly. If you are looking to instrument your
-/// application for Stackdriver Trace, we recommend using OpenCensus.
+/// interact with the Cloud Trace API directly. If you are looking to instrument
+/// your application for Cloud Trace, we recommend using OpenCensus.
 class CloudtraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -60,6 +60,8 @@ class ProjectsTracesResourceApi {
 
   /// Sends new spans to new or existing traces. You cannot update
   /// existing spans.
+  /// In this case, writing traces is not considered an active developer
+  /// method since traces are machine generated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -121,6 +123,8 @@ class ProjectsTracesSpansResourceApi {
       : _requester = client;
 
   /// Creates a new span.
+  /// In this case, writing traces is not considered an active developer
+  /// method since traces are machine generated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -258,10 +262,9 @@ class Attributes {
   /// long. The value can be a string up to 256 bytes, a signed 64-bit integer,
   /// or the Boolean values `true` and `false`. For example:
   ///
-  ///     "/instance_id": "my-instance"
-  ///     "/http/user_agent": ""
-  ///     "/http/request_bytes": 300
-  ///     "abc.com/myattribute": true
+  ///     "/instance_id": { "string_value": { "value": "my-instance" } }
+  ///     "/http/request_bytes": { "int_value": 300 }
+  ///     "abc.com/myattribute": { "bool_value": false }
   core.Map<core.String, AttributeValue> attributeMap;
 
   /// The number of attributes that were discarded. Attributes can be discarded
@@ -299,7 +302,7 @@ class Attributes {
 
 /// The request message for the `BatchWriteSpans` method.
 class BatchWriteSpansRequest {
-  /// A list of new spans. The span names must not match existing
+  /// Required. A list of new spans. The span names must not match existing
   /// spans, or the results are undefined.
   core.List<Span> spans;
 
@@ -541,11 +544,11 @@ class Span {
   /// span.
   Attributes attributes;
 
-  /// An optional number of child spans that were generated while this span
+  /// Optional. The number of child spans that were generated while this span
   /// was active. If set, allows implementation to detect missing child spans.
   core.int childSpanCount;
 
-  /// A description of the span's operation (up to 128 bytes).
+  /// Required. A description of the span's operation (up to 128 bytes).
   /// Stackdriver Trace displays the description in the
   /// Google Cloud Platform Console.
   /// For example, the display name can be a qualified method name or a file
@@ -555,7 +558,8 @@ class Span {
   /// This makes it easier to correlate spans in different traces.
   TruncatableString displayName;
 
-  /// The end time of the span. On the client side, this is the time kept by
+  /// Required. The end time of the span. On the client side, this is the time
+  /// kept by
   /// the local machine where the span execution ends. On the server side, this
   /// is the time when the server application handler stops running.
   core.String endTime;
@@ -577,25 +581,52 @@ class Span {
   /// then this field must be empty.
   core.String parentSpanId;
 
-  /// (Optional) Set this parameter to indicate whether this span is in
+  /// Optional. Set this parameter to indicate whether this span is in
   /// the same process as its parent. If you do not set this parameter,
   /// Stackdriver Trace is unable to take advantage of this helpful
   /// information.
   core.bool sameProcessAsParentSpan;
 
-  /// The [SPAN_ID] portion of the span's resource name.
+  /// Required. The [SPAN_ID] portion of the span's resource name.
   core.String spanId;
+
+  /// Distinguishes between spans generated in a particular context. For
+  /// example,
+  /// two spans with the same name may be distinguished using `CLIENT` (caller)
+  /// and `SERVER` (callee) to identify an RPC call.
+  /// Possible string values are:
+  /// - "SPAN_KIND_UNSPECIFIED" : Unspecified. Do NOT use as default.
+  /// Implementations MAY assume SpanKind.INTERNAL to be default.
+  /// - "INTERNAL" : Indicates that the span is used internally. Default value.
+  /// - "SERVER" : Indicates that the span covers server-side handling of an RPC
+  /// or other
+  /// remote network request.
+  /// - "CLIENT" : Indicates that the span covers the client-side wrapper around
+  /// an RPC or
+  /// other remote request.
+  /// - "PRODUCER" : Indicates that the span describes producer sending a
+  /// message to a broker.
+  /// Unlike client and  server, there is no direct critical path latency
+  /// relationship between producer and consumer spans (e.g. publishing a
+  /// message to a pubsub service).
+  /// - "CONSUMER" : Indicates that the span describes consumer recieving a
+  /// message from a
+  /// broker. Unlike client and  server, there is no direct critical path
+  /// latency relationship between producer and consumer spans (e.g. receiving
+  /// a message from a pubsub service subscription).
+  core.String spanKind;
 
   /// Stack trace captured at the start of the span.
   StackTrace stackTrace;
 
-  /// The start time of the span. On the client side, this is the time kept by
+  /// Required. The start time of the span. On the client side, this is the time
+  /// kept by
   /// the local machine where the span execution starts. On the server side,
   /// this
   /// is the time when the server's application handler starts running.
   core.String startTime;
 
-  /// An optional final status for this span.
+  /// Optional. The final status for this span.
   Status status;
 
   /// A set of time events. You can have up to 32 annotations and 128 message
@@ -631,6 +662,9 @@ class Span {
     }
     if (_json.containsKey("spanId")) {
       spanId = _json["spanId"];
+    }
+    if (_json.containsKey("spanKind")) {
+      spanKind = _json["spanKind"];
     }
     if (_json.containsKey("stackTrace")) {
       stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
@@ -675,6 +709,9 @@ class Span {
     }
     if (spanId != null) {
       _json["spanId"] = spanId;
+    }
+    if (spanKind != null) {
+      _json["spanKind"] = spanKind;
     }
     if (stackTrace != null) {
       _json["stackTrace"] = (stackTrace).toJson();

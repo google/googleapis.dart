@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.licensing.v1;
 
@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client licensing/v1';
 
-/// Views and manages licenses for your domain.
+/// Licensing API to view and manage licenses for your domain
 class LicensingApi {
   /// View and manage G Suite licenses for your domain
   static const AppsLicensingScope =
@@ -40,15 +40,22 @@ class LicenseAssignmentsResourceApi {
   LicenseAssignmentsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Revoke License.
+  /// Revoke a license.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [skuId] - Name for sku
+  /// [skuId] - A product SKU's unique identifier. For more information about
+  /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [userId] - email id or unique Id of the user
+  /// [userId] - The user's current primary email address. If the user's email
+  /// address changes, use the new email address in your API requests.
+  /// Since a userId is subject to change, do not use a userId value as a key
+  /// for persistent data. This key could break if the current user's email
+  /// address changes.
+  /// If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -98,15 +105,22 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Get license assignment of a particular product and sku for a user
+  /// Get a specific user's license by product SKU.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [skuId] - Name for sku
+  /// [skuId] - A product SKU's unique identifier. For more information about
+  /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [userId] - email id or unique Id of the user
+  /// [userId] - The user's current primary email address. If the user's email
+  /// address changes, use the new email address in your API requests.
+  /// Since a userId is subject to change, do not use a userId value as a key
+  /// for persistent data. This key could break if the current user's email
+  /// address changes.
+  /// If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -156,15 +170,17 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
 
-  /// Assign License.
+  /// Assign a license.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [skuId] - Name for sku
+  /// [skuId] - A product SKU's unique identifier. For more information about
+  /// available SKUs in this version of the API, see Products and SKUs.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -213,21 +229,26 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
 
-  /// List license assignments for given product of the customer.
+  /// List all users assigned licenses for a specific product SKU.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [customerId] - CustomerId represents the customer for whom
-  /// licenseassignments are queried
+  /// [customerId] - Customer's customerId. A previous version of this API
+  /// accepted the primary domain name as a value for this field.
+  /// If the customer is suspended, the server returns an error.
   ///
-  /// [maxResults] - Maximum number of campaigns to return at one time. Must be
-  /// positive. Optional. Default value is 100.
+  /// [maxResults] - The maxResults query string determines how many entries are
+  /// returned on each page of a large response. This is an optional parameter.
+  /// The value must be a positive number.
   /// Value must be between "1" and "1000".
   ///
-  /// [pageToken] - Token to fetch the next page.Optional. By default server
-  /// will return first page
+  /// [pageToken] - Token to fetch the next page of data. The maxResults query
+  /// string is related to the pageToken since maxResults determines how many
+  /// entries are returned on each page. This is an optional query string. If
+  /// not specified, the server returns the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -277,23 +298,29 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignmentList.fromJson(data));
   }
 
-  /// List license assignments for given product and sku of the customer.
+  /// List all users assigned licenses for a specific product SKU.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [skuId] - Name for sku
+  /// [skuId] - A product SKU's unique identifier. For more information about
+  /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [customerId] - CustomerId represents the customer for whom
-  /// licenseassignments are queried
+  /// [customerId] - Customer's customerId. A previous version of this API
+  /// accepted the primary domain name as a value for this field.
+  /// If the customer is suspended, the server returns an error.
   ///
-  /// [maxResults] - Maximum number of campaigns to return at one time. Must be
-  /// positive. Optional. Default value is 100.
+  /// [maxResults] - The maxResults query string determines how many entries are
+  /// returned on each page of a large response. This is an optional parameter.
+  /// The value must be a positive number.
   /// Value must be between "1" and "1000".
   ///
-  /// [pageToken] - Token to fetch the next page.Optional. By default server
-  /// will return first page
+  /// [pageToken] - Token to fetch the next page of data. The maxResults query
+  /// string is related to the pageToken since maxResults determines how many
+  /// entries are returned on each page. This is an optional query string. If
+  /// not specified, the server returns the first page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -349,17 +376,25 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignmentList.fromJson(data));
   }
 
-  /// Assign License. This method supports patch semantics.
+  /// Reassign a user's product SKU with a different SKU in the same product.
+  /// This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [skuId] - Name for sku for which license would be revoked
+  /// [skuId] - A product SKU's unique identifier. For more information about
+  /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [userId] - email id or unique Id of the user
+  /// [userId] - The user's current primary email address. If the user's email
+  /// address changes, use the new email address in your API requests.
+  /// Since a userId is subject to change, do not use a userId value as a key
+  /// for persistent data. This key could break if the current user's email
+  /// address changes.
+  /// If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -412,17 +447,24 @@ class LicenseAssignmentsResourceApi {
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
 
-  /// Assign License.
+  /// Reassign a user's product SKU with a different SKU in the same product.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [productId] - Name for product
+  /// [productId] - A product's unique identifier. For more information about
+  /// products in this version of the API, see Products and SKUs.
   ///
-  /// [skuId] - Name for sku for which license would be revoked
+  /// [skuId] - A product SKU's unique identifier. For more information about
+  /// available SKUs in this version of the API, see Products and SKUs.
   ///
-  /// [userId] - email id or unique Id of the user
+  /// [userId] - The user's current primary email address. If the user's email
+  /// address changes, use the new email address in your API requests.
+  /// Since a userId is subject to change, do not use a userId value as a key
+  /// for persistent data. This key could break if the current user's email
+  /// address changes.
+  /// If the userId is suspended, the license status changes.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -476,7 +518,7 @@ class LicenseAssignmentsResourceApi {
   }
 }
 
-/// Template for LiscenseAssignment Resource
+/// Representation of a license assignment.
 class LicenseAssignment {
   /// ETag of the resource.
   core.String etags;
@@ -484,7 +526,8 @@ class LicenseAssignment {
   /// Identifies the resource as a LicenseAssignment.
   core.String kind;
 
-  /// Id of the product.
+  /// A product's unique identifier. For more information about products in this
+  /// version of the API, see Product and SKU IDs.
   core.String productId;
 
   /// Display Name of the product.
@@ -493,13 +536,18 @@ class LicenseAssignment {
   /// Link to this page.
   core.String selfLink;
 
-  /// Id of the sku of the product.
+  /// A product SKU's unique identifier. For more information about available
+  /// SKUs in this version of the API, see Products and SKUs.
   core.String skuId;
 
   /// Display Name of the sku of the product.
   core.String skuName;
 
-  /// Email id of the user.
+  /// The user's current primary email address. If the user's email address
+  /// changes, use the new email address in your API requests. Since a userId is
+  /// subject to change, do not use a userId value as a key for persistent data.
+  /// This key could break if the current user's email address changes. If the
+  /// userId is suspended, the license status changes.
   core.String userId;
 
   LicenseAssignment();
@@ -562,7 +610,7 @@ class LicenseAssignment {
   }
 }
 
-/// Template for LicenseAssignment Insert request
+/// Representation of a license assignment.
 class LicenseAssignmentInsert {
   /// Email id of the user
   core.String userId;
@@ -596,8 +644,10 @@ class LicenseAssignmentList {
   /// Identifies the resource as a collection of LicenseAssignments.
   core.String kind;
 
-  /// The continuation token, used to page through large result sets. Provide
-  /// this value in a subsequent request to return the next page of results.
+  /// The token that you must submit in a subsequent request to retrieve
+  /// additional license results matching your query parameters. The maxResults
+  /// query string is related to the nextPageToken since maxResults determines
+  /// how many entries are returned on each next page.
   core.String nextPageToken;
 
   LicenseAssignmentList();

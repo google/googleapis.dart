@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.storagetransfer.v1;
 
@@ -151,7 +151,7 @@ class TransferJobsResourceApi {
   /// Request parameters:
   ///
   /// [jobName] - Required. The job to get.
-  /// Value must have pattern "^transferJobs/.+$".
+  /// Value must have pattern "^transferJobs/.*$".
   ///
   /// [projectId] - Required. The ID of the Google Cloud Platform Console
   /// project that owns the
@@ -201,19 +201,22 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of:
-  /// {"project_id":"my_project_id",
-  ///  "job_names":["jobid1","jobid2",...],
-  ///  "job_statuses":["status1","status2",...]}.
-  /// Since `job_names` and `job_statuses` support multiple values, their values
-  /// must be specified with array notation. `project_id` is required.
-  /// `job_names` and `job_statuses` are optional.  The valid values for
-  /// `job_statuses` are case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
-  ///
   /// [pageToken] - The list page token.
   ///
   /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
+  /// [filter] - Required. A list of query parameters specified as JSON text in
+  /// the form of:
+  /// {"project<span>_</span>id":"my_project_id",
+  ///  "job_names":["jobid1","jobid2",...],
+  ///  "job_statuses":["status1","status2",...]}.
+  /// Since `job_names` and `job_statuses` support multiple values, their values
+  /// must be specified with array notation. `project`<span>`_`</span>`id` is
+  /// required.  `job_names` and `job_statuses` are optional.  The valid values
+  /// for `job_statuses` are case-insensitive:
+  /// ENABLED,
+  /// DISABLED, and
+  /// DELETED.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -226,9 +229,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -237,14 +240,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -263,15 +266,21 @@ class TransferJobsResourceApi {
   }
 
   /// Updates a transfer job. Updating a job's transfer spec does not affect
-  /// transfer operations that are running already. Updating the scheduling
-  /// of a job is not allowed.
+  /// transfer operations that are running already. Updating a job's schedule
+  /// is not allowed.
+  ///
+  /// **Note:** The job's status field can be modified
+  /// using this RPC (for example, to set a job's status to
+  /// DELETED,
+  /// DISABLED, or
+  /// ENABLED).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [jobName] - Required. The name of job to update.
-  /// Value must have pattern "^transferJobs/.+$".
+  /// Value must have pattern "^transferJobs/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -327,7 +336,7 @@ class TransferOperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^transferOperations/.+$".
+  /// Value must have pattern "^transferOperations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -365,49 +374,6 @@ class TransferOperationsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /// This method is not supported and the server returns `UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^transferOperations/.+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Empty.fromJson(data));
-  }
-
   /// Gets the latest state of a long-running operation.  Clients can use this
   /// method to poll the operation result at intervals as recommended by the API
   /// service.
@@ -415,7 +381,7 @@ class TransferOperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^transferOperations/.+$".
+  /// Value must have pattern "^transferOperations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -453,17 +419,7 @@ class TransferOperationsResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Lists operations that match the specified filter in the request. If the
-  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
-  /// NOTE: the `name` binding allows API services to override the binding
-  /// to use different resource name schemes, such as `users / * /operations`.
-  /// To
-  /// override the binding, API services can add a binding such as
-  /// `"/v1/{name=users / * }/operations"` to their service configuration.
-  /// For backwards compatibility, the default name includes the operations
-  /// collection id, however overriding users must ensure the name binding
-  /// is the parent resource, without the operations collection id.
+  /// Lists transfer operations.
   ///
   /// Request parameters:
   ///
@@ -471,15 +427,16 @@ class TransferOperationsResourceApi {
   /// Value must have pattern "^transferOperations$".
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of: {"project_id":"my_project_id",
+  /// the form of: {"project<span>_</span>id":"my_project_id",
   ///  "job_names":["jobid1","jobid2",...],
   ///  "operation_names":["opid1","opid2",...],
   ///  "transfer_statuses":["status1","status2",...]}.
   /// Since `job_names`, `operation_names`, and `transfer_statuses` support
-  /// multiple values, they must be specified with array notation. `project_id`
-  /// is required. `job_names`, `operation_names`, and `transfer_statuses` are
-  /// optional. The valid values for `transfer_statuses` are case-insensitive:
-  /// `IN_PROGRESS`, `PAUSED`, `SUCCESS`, `FAILED`, and `ABORTED`.
+  /// multiple values, they must be specified with array notation.
+  /// `project`<span>`_`</span>`id` is required. `job_names`, `operation_names`,
+  /// and `transfer_statuses` are optional. The valid values for
+  /// `transfer_statuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS,
+  /// FAILED, and ABORTED.
   ///
   /// [pageToken] - The list page token.
   ///
@@ -541,7 +498,7 @@ class TransferOperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the transfer operation.
-  /// Value must have pattern "^transferOperations/.+$".
+  /// Value must have pattern "^transferOperations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -591,7 +548,7 @@ class TransferOperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the transfer operation.
-  /// Value must have pattern "^transferOperations/.+$".
+  /// Value must have pattern "^transferOperations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -637,7 +594,7 @@ class TransferOperationsResourceApi {
 
 /// AWS access key (see
 /// [AWS Security
-/// Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
+/// Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
 class AwsAccessKey {
   /// Required. AWS access key ID.
   core.String accessKeyId;
@@ -680,7 +637,7 @@ class AwsS3Data {
 
   /// Required. S3 Bucket name (see
   /// [Creating a
-  /// bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+  /// bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
   core.String bucketName;
 
   AwsS3Data();
@@ -702,6 +659,80 @@ class AwsS3Data {
     }
     if (bucketName != null) {
       _json["bucketName"] = bucketName;
+    }
+    return _json;
+  }
+}
+
+/// An AzureBlobStorageData resource can be a data source, but not a data sink.
+/// An AzureBlobStorageData resource represents one Azure container. The storage
+/// account determines the [Azure
+/// endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints).
+/// In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob
+/// Storage blob's key
+/// name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
+class AzureBlobStorageData {
+  /// Required. Credentials used to authenticate API requests to Azure.
+  AzureCredentials azureCredentials;
+
+  /// Required. The container to transfer from the Azure Storage account.
+  core.String container;
+
+  /// Required. The name of the Azure Storage account.
+  core.String storageAccount;
+
+  AzureBlobStorageData();
+
+  AzureBlobStorageData.fromJson(core.Map _json) {
+    if (_json.containsKey("azureCredentials")) {
+      azureCredentials =
+          new AzureCredentials.fromJson(_json["azureCredentials"]);
+    }
+    if (_json.containsKey("container")) {
+      container = _json["container"];
+    }
+    if (_json.containsKey("storageAccount")) {
+      storageAccount = _json["storageAccount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (azureCredentials != null) {
+      _json["azureCredentials"] = (azureCredentials).toJson();
+    }
+    if (container != null) {
+      _json["container"] = container;
+    }
+    if (storageAccount != null) {
+      _json["storageAccount"] = storageAccount;
+    }
+    return _json;
+  }
+}
+
+/// Azure credentials
+class AzureCredentials {
+  /// Required. Azure shared access signature. (see
+  /// [Grant limited access to Azure Storage resources using shared access
+  /// signatures
+  /// (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+  core.String sasToken;
+
+  AzureCredentials();
+
+  AzureCredentials.fromJson(core.Map _json) {
+    if (_json.containsKey("sasToken")) {
+      sasToken = _json["sasToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sasToken != null) {
+      _json["sasToken"] = sasToken;
     }
     return _json;
   }
@@ -963,8 +994,8 @@ class ErrorSummary {
 
   /// Error samples.
   ///
-  /// No more than 100 error log entries may be recorded for a given
-  /// error code for a single task.
+  /// At most 5 error log entries will be recorded for a given
+  /// error code for a single transfer operation.
   core.List<ErrorLogEntry> errorLogEntries;
 
   ErrorSummary();
@@ -1000,11 +1031,12 @@ class ErrorSummary {
   }
 }
 
-/// In a GcsData resource, an object's name is the Google Cloud Storage object's
-/// name and its `lastModificationTime` refers to the object's updated time,
-/// which changes when the content or the metadata of the object is updated.
+/// In a GcsData resource, an object's name is the Cloud Storage object's
+/// name and its "last modification time" refers to the object's `updated`
+/// property of Cloud Storage objects, which changes when the content or the
+/// metadata of the object is updated.
 class GcsData {
-  /// Required. Google Cloud Storage bucket name (see
+  /// Required. Cloud Storage bucket name (see
   /// [Bucket Name
   /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
   core.String bucketName;
@@ -1054,19 +1086,19 @@ class GoogleServiceAccount {
 /// transferred
 /// over HTTP.  The information of the objects to be transferred is contained in
 /// a file referenced by a URL. The first line in the file must be
-/// "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
-/// specify the information of the list of objects, one object per list entry.
-/// Each entry has the following tab-delimited fields:
+/// `"TsvHttpData-1.0"`, which specifies the format of the file.  Subsequent
+/// lines specify the information of the list of objects, one object per list
+/// entry. Each entry has the following tab-delimited fields:
 ///
-/// * HTTP URL - The location of the object.
+/// * **HTTP URL** — The location of the object.
 ///
-/// * Length - The size of the object in bytes.
+/// * **Length** — The size of the object in bytes.
 ///
-/// * MD5 - The base64-encoded MD5 hash of the object.
+/// * **MD5** — The base64-encoded MD5 hash of the object.
 ///
 /// For an example of a valid TSV file, see
 /// [Transferring data from
-/// URLs](https://cloud.google.com/storage/transfer/create-url-list).
+/// URLs](https://cloud.google.com/storage-transfer/docs/create-url-list).
 ///
 /// When transferring data based on a URL list, keep the following in mind:
 ///
@@ -1079,10 +1111,11 @@ class GoogleServiceAccount {
 ///
 /// * If the specified MD5 does not match the MD5 computed from the transferred
 /// bytes, the object transfer will fail. For more information, see
-/// [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+/// [Generating MD5
+/// hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
 ///
 /// * Ensure that each URL you specify is publicly accessible. For
-/// example, in Google Cloud Storage you can
+/// example, in Cloud Storage you can
 /// [share an object publicly]
 /// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
 /// a link to it.
@@ -1091,9 +1124,7 @@ class GoogleServiceAccount {
 /// HTTP server to support `Range` requests and to return a `Content-Length`
 /// header in each response.
 ///
-/// * [ObjectConditions](#ObjectConditions) have no effect when filtering
-/// objects
-/// to transfer.
+/// * ObjectConditions have no effect when filtering objects to transfer.
 class HttpData {
   /// Required. The URL that points to the file that stores the object list
   /// entries. This file must allow public access.  Currently, only URLs with
@@ -1188,27 +1219,99 @@ class ListTransferJobsResponse {
   }
 }
 
+/// Specification to configure notifications published to Cloud Pub/Sub.
+/// Notifications will be published to the customer-provided topic using the
+/// following `PubsubMessage.attributes`:
+///
+/// * `"eventType"`: one of the EventType values
+/// * `"payloadFormat"`: one of the PayloadFormat values
+/// * `"projectId"`: the project_id of the
+/// `TransferOperation`
+/// * `"transferJobName"`: the
+/// transfer_job_name of the
+/// `TransferOperation`
+/// * `"transferOperationName"`: the name of the
+/// `TransferOperation`
+///
+/// The `PubsubMessage.data` will contain a TransferOperation resource
+/// formatted according to the specified `PayloadFormat`.
+class NotificationConfig {
+  /// Event types for which a notification is desired. If empty, send
+  /// notifications for all event types.
+  core.List<core.String> eventTypes;
+
+  /// Required. The desired format of the notification message payloads.
+  /// Possible string values are:
+  /// - "PAYLOAD_FORMAT_UNSPECIFIED" : Illegal value, to avoid allowing a
+  /// default.
+  /// - "NONE" : No payload is included with the notification.
+  /// - "JSON" : `TransferOperation` is [formatted as a JSON
+  /// response](https://developers.google.com/protocol-buffers/docs/proto3#json),
+  /// in application/json.
+  core.String payloadFormat;
+
+  /// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish
+  /// notifications. Must be of the format: `projects/{project}/topics/{topic}`.
+  /// Not matching this format will result in an
+  /// INVALID_ARGUMENT error.
+  core.String pubsubTopic;
+
+  NotificationConfig();
+
+  NotificationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("eventTypes")) {
+      eventTypes = (_json["eventTypes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("payloadFormat")) {
+      payloadFormat = _json["payloadFormat"];
+    }
+    if (_json.containsKey("pubsubTopic")) {
+      pubsubTopic = _json["pubsubTopic"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (eventTypes != null) {
+      _json["eventTypes"] = eventTypes;
+    }
+    if (payloadFormat != null) {
+      _json["payloadFormat"] = payloadFormat;
+    }
+    if (pubsubTopic != null) {
+      _json["pubsubTopic"] = pubsubTopic;
+    }
+    return _json;
+  }
+}
+
 /// Conditions that determine which objects will be transferred. Applies only
-/// to S3 and GCS objects.
+/// to S3 and Cloud Storage objects.
+///
+/// The "last modification time" refers to the time of the
+/// last change to the object's content or metadata — specifically, this is
+/// the `updated` property of Cloud Storage objects and the `LastModified`
+/// field of S3 objects.
 class ObjectConditions {
-  /// `excludePrefixes` must follow the requirements described for
-  /// `includePrefixes`.
+  /// `exclude_prefixes` must follow the requirements described for
+  /// include_prefixes.
   ///
-  /// The max size of `excludePrefixes` is 1000.
+  /// The max size of `exclude_prefixes` is 1000.
   core.List<core.String> excludePrefixes;
 
-  /// If `includePrefixes` is specified, objects that satisfy the object
-  /// conditions must have names that start with one of the `includePrefixes`
-  /// and that do not start with any of the `excludePrefixes`. If
-  /// `includePrefixes` is not specified, all objects except those that have
-  /// names starting with one of the `excludePrefixes` must satisfy the object
+  /// If `include_prefixes` is specified, objects that satisfy the object
+  /// conditions must have names that start with one of the `include_prefixes`
+  /// and that do not start with any of the exclude_prefixes. If
+  /// `include_prefixes` is not specified, all objects except those that have
+  /// names starting with one of the `exclude_prefixes` must satisfy the object
   /// conditions.
   ///
   /// Requirements:
   ///
   ///   * Each include-prefix and exclude-prefix can contain any sequence of
-  ///     Unicode characters, of max length 1024 bytes when UTF8-encoded, and
-  ///     must not contain Carriage Return or Line Feed characters.  Wildcard
+  ///     Unicode characters, to a max length of 1024 bytes when UTF8-encoded,
+  /// and must not contain Carriage Return or Line Feed characters.  Wildcard
   ///     matching and regular expression matching are not supported.
   ///
   ///   * Each include-prefix and exclude-prefix must omit the leading slash.
@@ -1220,40 +1323,54 @@ class ObjectConditions {
   ///     if specified.
   ///
   ///   * Each include-prefix must include a distinct portion of the object
-  ///     namespace, i.e., no include-prefix may be a prefix of another
+  ///     namespace. No include-prefix may be a prefix of another
   ///     include-prefix.
   ///
   ///   * Each exclude-prefix must exclude a distinct portion of the object
-  ///     namespace, i.e., no exclude-prefix may be a prefix of another
+  ///     namespace. No exclude-prefix may be a prefix of another
   ///     exclude-prefix.
   ///
-  /// * If `includePrefixes` is specified, then each exclude-prefix must start
-  ///     with the value of a path explicitly included by `includePrefixes`.
+  /// * If `include_prefixes` is specified, then each exclude-prefix must start
+  ///     with the value of a path explicitly included by `include_prefixes`.
   ///
-  /// The max size of `includePrefixes` is 1000.
+  /// The max size of `include_prefixes` is 1000.
   core.List<core.String> includePrefixes;
 
-  /// If specified, only objects with a `lastModificationTime` on or after
-  /// `NOW` - `maxTimeElapsedSinceLastModification` and objects that don't have
-  /// a `lastModificationTime` are transferred.
+  /// If specified, only objects with a "last modification time" before this
+  /// timestamp and objects that don't have a "last modification time" will be
+  /// transferred.
+  core.String lastModifiedBefore;
+
+  /// If specified, only objects with a "last modification time" on or after
+  /// this timestamp and objects that don't have a "last modification time" are
+  /// transferred.
   ///
-  /// Note that, for each `TransferOperation` started by this `TransferJob`,
-  /// `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
-  /// `lastModificationTime` refers to the time of the last change to the
-  /// object's content or metadata - specifically, this would be the `updated`
-  /// property of GCS objects and the `LastModified` field of S3 objects.
+  /// The `last_modified_since` and `last_modified_before` fields can be used
+  /// together for chunked data processing. For example, consider a script that
+  /// processes each day's worth of data at a time. For that you'd set each
+  /// of the fields as follows:
+  ///
+  /// *  `last_modified_since` to the start of the day
+  ///
+  /// *  `last_modified_before` to the end of the day
+  core.String lastModifiedSince;
+
+  /// If specified, only objects with a "last modification time" on or after
+  /// `NOW` - `max_time_elapsed_since_last_modification` and objects that don't
+  /// have a "last modification time" are transferred.
+  ///
+  /// For each TransferOperation started by this TransferJob,
+  /// `NOW` refers to the start_time of the
+  /// `TransferOperation`.
   core.String maxTimeElapsedSinceLastModification;
 
-  /// If specified, only objects with a `lastModificationTime` before
-  /// `NOW` - `minTimeElapsedSinceLastModification` and objects that don't have
-  /// a
-  /// `lastModificationTime` are transferred.
+  /// If specified, only objects with a "last modification time" before
+  /// `NOW` - `min_time_elapsed_since_last_modification` and objects that don't
+  ///  have a "last modification time" are transferred.
   ///
-  /// Note that, for each `TransferOperation` started by this `TransferJob`,
-  /// `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
-  /// `lastModificationTime` refers to the time of the last change to the
-  /// object's content or metadata - specifically, this would be the `updated`
-  /// property of GCS objects and the `LastModified` field of S3 objects.
+  /// For each TransferOperation started by this TransferJob, `NOW`
+  /// refers to the start_time of the
+  /// `TransferOperation`.
   core.String minTimeElapsedSinceLastModification;
 
   ObjectConditions();
@@ -1266,6 +1383,12 @@ class ObjectConditions {
     if (_json.containsKey("includePrefixes")) {
       includePrefixes =
           (_json["includePrefixes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("lastModifiedBefore")) {
+      lastModifiedBefore = _json["lastModifiedBefore"];
+    }
+    if (_json.containsKey("lastModifiedSince")) {
+      lastModifiedSince = _json["lastModifiedSince"];
     }
     if (_json.containsKey("maxTimeElapsedSinceLastModification")) {
       maxTimeElapsedSinceLastModification =
@@ -1285,6 +1408,12 @@ class ObjectConditions {
     }
     if (includePrefixes != null) {
       _json["includePrefixes"] = includePrefixes;
+    }
+    if (lastModifiedBefore != null) {
+      _json["lastModifiedBefore"] = lastModifiedBefore;
+    }
+    if (lastModifiedSince != null) {
+      _json["lastModifiedSince"] = lastModifiedSince;
     }
     if (maxTimeElapsedSinceLastModification != null) {
       _json["maxTimeElapsedSinceLastModification"] =
@@ -1405,23 +1534,46 @@ class ResumeTransferOperationRequest {
 
 /// Transfers can be scheduled to recur or to run just once.
 class Schedule {
-  /// The last day the recurring transfer will be run. If `scheduleEndDate`
-  /// is the same as `scheduleStartDate`, the transfer will be executed only
-  /// once.
+  /// The last day a transfer runs. Date boundaries are determined relative to
+  /// UTC time. A job will run once per 24 hours within the following
+  /// guidelines:
+  ///
+  /// *   If `schedule_end_date` and schedule_start_date are the same and in
+  ///     the future relative to UTC, the transfer is executed only one time.
+  /// *   If `schedule_end_date` is later than `schedule_start_date`  and
+  ///     `schedule_end_date` is in the future relative to UTC, the job will
+  ///     run each day at start_time_of_day through `schedule_end_date`.
   Date scheduleEndDate;
 
-  /// Required. The first day the recurring transfer is scheduled to run. If
-  /// `scheduleStartDate` is in the past, the transfer will run for the first
-  /// time on the following day.
+  /// Required. The start date of a transfer. Date boundaries are determined
+  /// relative to UTC time. If `schedule_start_date` and start_time_of_day
+  /// are in the past relative to the job's creation time, the transfer starts
+  /// the day after you schedule the transfer request.
+  ///
+  /// **Note:** When starting jobs at or near midnight UTC it is possible that
+  /// a job will start later than expected. For example, if you send an outbound
+  /// request on June 1 one millisecond prior to midnight UTC and the Storage
+  /// Transfer Service server receives the request on June 2, then it will
+  /// create
+  /// a TransferJob with `schedule_start_date` set to June 2 and a
+  /// `start_time_of_day` set to midnight UTC. The first scheduled
+  /// TransferOperation will take place on June 3 at midnight UTC.
   Date scheduleStartDate;
 
-  /// The time in UTC at which the transfer will be scheduled to start in a day.
-  /// Transfers may start later than this time. If not specified, recurring and
-  /// one-time transfers that are scheduled to run today will run immediately;
-  /// recurring transfers that are scheduled to run on a future date will start
-  /// at approximately midnight UTC on that date. Note that when configuring a
-  /// transfer with the Cloud Platform Console, the transfer's start time in a
-  /// day is specified in your local timezone.
+  /// The time in UTC that a transfer job is scheduled to run. Transfers may
+  /// start later than this time.
+  ///
+  /// If `start_time_of_day` is not specified:
+  ///
+  /// *   One-time transfers run immediately.
+  /// *   Recurring transfers run immediately, and each day at midnight UTC,
+  ///     through schedule_end_date.
+  ///
+  /// If `start_time_of_day` is specified:
+  ///
+  /// *   One-time transfers run at the specified time.
+  /// *   Recurring transfers run at the specified time each day, through
+  ///     `schedule_end_date`.
   TimeOfDay startTimeOfDay;
 
   Schedule();
@@ -1746,12 +1898,25 @@ class TransferJob {
   /// Output only. The time that the transfer job was last modified.
   core.String lastModificationTime;
 
-  /// A globally unique name assigned by Storage Transfer Service when the
-  /// job is created. This field should be left empty in requests to create a
-  /// new
-  /// transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`
-  /// error.
+  /// A unique name (within the transfer project) assigned when the job is
+  /// created.  If this field is empty in a CreateTransferJobRequest, Storage
+  /// Transfer Service will assign a unique name. Otherwise, the specified name
+  /// is used as the unique name for this job.
+  ///
+  /// If the specified name is in use by a job, the creation request fails with
+  /// an ALREADY_EXISTS error.
+  ///
+  /// This name must start with `"transferJobs/"` prefix and end with a letter
+  /// or
+  /// a number, and should be no more than 128 characters.
+  /// Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
+  ///
+  /// Invalid job names will fail with an
+  /// INVALID_ARGUMENT error.
   core.String name;
+
+  /// Notification configuration.
+  NotificationConfig notificationConfig;
 
   /// The ID of the Google Cloud Platform Project that owns the job.
   core.String projectId;
@@ -1762,11 +1927,11 @@ class TransferJob {
   /// Status of the job. This value MUST be specified for
   /// `CreateTransferJobRequests`.
   ///
-  /// NOTE: The effect of the new job status takes place during a subsequent job
-  /// run. For example, if you change the job status from `ENABLED` to
-  /// `DISABLED`, and an operation spawned by the transfer is running, the
-  /// status
-  /// change would not affect the current operation.
+  /// **Note:** The effect of the new job status takes place during a subsequent
+  /// job run. For example, if you change the job status from
+  /// ENABLED to DISABLED, and an operation
+  /// spawned by the transfer is running, the status change would not affect the
+  /// current operation.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : Zero is an illegal value.
   /// - "ENABLED" : New transfers will be performed based on the schedule.
@@ -1798,6 +1963,10 @@ class TransferJob {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("notificationConfig")) {
+      notificationConfig =
+          new NotificationConfig.fromJson(_json["notificationConfig"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -1831,6 +2000,9 @@ class TransferJob {
     if (name != null) {
       _json["name"] = name;
     }
+    if (notificationConfig != null) {
+      _json["notificationConfig"] = (notificationConfig).toJson();
+    }
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -1861,6 +2033,9 @@ class TransferOperation {
   /// A globally unique ID assigned by the system.
   core.String name;
 
+  /// Notification configuration.
+  NotificationConfig notificationConfig;
+
   /// The ID of the Google Cloud Platform Project that owns the operation.
   core.String projectId;
 
@@ -1875,6 +2050,8 @@ class TransferOperation {
   /// - "SUCCESS" : Completed successfully.
   /// - "FAILED" : Terminated due to an unrecoverable failure.
   /// - "ABORTED" : Aborted by the user.
+  /// - "QUEUED" : Temporarily delayed by the system. No user action is
+  /// required.
   core.String status;
 
   /// The name of the transfer job that triggers this transfer operation.
@@ -1899,6 +2076,10 @@ class TransferOperation {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("notificationConfig")) {
+      notificationConfig =
+          new NotificationConfig.fromJson(_json["notificationConfig"]);
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
@@ -1933,6 +2114,9 @@ class TransferOperation {
     if (name != null) {
       _json["name"] = name;
     }
+    if (notificationConfig != null) {
+      _json["notificationConfig"] = (notificationConfig).toJson();
+    }
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
@@ -1956,13 +2140,16 @@ class TransferOperation {
 /// to be performed on objects in a transfer.
 class TransferOptions {
   /// Whether objects should be deleted from the source after they are
-  /// transferred to the sink.  Note that this option and
-  /// `deleteObjectsUniqueInSink` are mutually exclusive.
+  /// transferred to the sink.
+  ///
+  /// **Note:** This option and delete_objects_unique_in_sink are mutually
+  /// exclusive.
   core.bool deleteObjectsFromSourceAfterTransfer;
 
-  /// Whether objects that exist only in the sink should be deleted.  Note that
-  /// this option and `deleteObjectsFromSourceAfterTransfer` are mutually
-  /// exclusive.
+  /// Whether objects that exist only in the sink should be deleted.
+  ///
+  /// **Note:** This option and delete_objects_from_source_after_transfer are
+  /// mutually exclusive.
   core.bool deleteObjectsUniqueInSink;
 
   /// Whether overwriting objects that already exist in the sink is allowed.
@@ -2007,10 +2194,13 @@ class TransferSpec {
   /// An AWS S3 data source.
   AwsS3Data awsS3DataSource;
 
-  /// A Google Cloud Storage data sink.
+  /// An Azure Blob Storage data source.
+  AzureBlobStorageData azureBlobStorageDataSource;
+
+  /// A Cloud Storage data sink.
   GcsData gcsDataSink;
 
-  /// A Google Cloud Storage data source.
+  /// A Cloud Storage data source.
   GcsData gcsDataSource;
 
   /// An HTTP URL data source.
@@ -2018,12 +2208,14 @@ class TransferSpec {
 
   /// Only objects that satisfy these object conditions are included in the set
   /// of data source and data sink objects.  Object conditions based on
-  /// objects' `lastModificationTime` do not exclude objects in a data sink.
+  /// objects' "last modification time" do not exclude objects in a data sink.
   ObjectConditions objectConditions;
 
-  /// If the option `deleteObjectsUniqueInSink` is `true`, object conditions
-  /// based on objects' `lastModificationTime` are ignored and do not exclude
-  /// objects in a data source or a data sink.
+  /// If the option
+  /// delete_objects_unique_in_sink
+  /// is `true`, object conditions based on objects' "last modification time"
+  /// are
+  /// ignored and do not exclude objects in a data source or a data sink.
   TransferOptions transferOptions;
 
   TransferSpec();
@@ -2031,6 +2223,10 @@ class TransferSpec {
   TransferSpec.fromJson(core.Map _json) {
     if (_json.containsKey("awsS3DataSource")) {
       awsS3DataSource = new AwsS3Data.fromJson(_json["awsS3DataSource"]);
+    }
+    if (_json.containsKey("azureBlobStorageDataSource")) {
+      azureBlobStorageDataSource = new AzureBlobStorageData.fromJson(
+          _json["azureBlobStorageDataSource"]);
     }
     if (_json.containsKey("gcsDataSink")) {
       gcsDataSink = new GcsData.fromJson(_json["gcsDataSink"]);
@@ -2055,6 +2251,10 @@ class TransferSpec {
         new core.Map<core.String, core.Object>();
     if (awsS3DataSource != null) {
       _json["awsS3DataSource"] = (awsS3DataSource).toJson();
+    }
+    if (azureBlobStorageDataSource != null) {
+      _json["azureBlobStorageDataSource"] =
+          (azureBlobStorageDataSource).toJson();
     }
     if (gcsDataSink != null) {
       _json["gcsDataSink"] = (gcsDataSink).toJson();
@@ -2083,17 +2283,23 @@ class UpdateTransferJobRequest {
   core.String projectId;
 
   /// Required. The job to update. `transferJob` is expected to specify only
-  /// three fields: `description`, `transferSpec`, and `status`.  An
-  /// UpdateTransferJobRequest that specifies other fields will be rejected with
-  /// an error `INVALID_ARGUMENT`.
+  /// four fields: description,
+  /// transfer_spec,
+  /// notification_config, and
+  /// status.  An `UpdateTransferJobRequest` that specifies
+  /// other fields will be rejected with the error
+  /// INVALID_ARGUMENT.
   TransferJob transferJob;
 
   /// The field mask of the fields in `transferJob` that are to be updated in
   /// this request.  Fields in `transferJob` that can be updated are:
-  /// `description`, `transferSpec`, and `status`.  To update the `transferSpec`
-  /// of the job, a complete transfer specification has to be provided. An
-  /// incomplete specification which misses any required fields will be rejected
-  /// with the error `INVALID_ARGUMENT`.
+  /// description,
+  /// transfer_spec,
+  /// notification_config, and
+  /// status.  To update the `transfer_spec` of the job, a
+  /// complete transfer specification must be provided. An incomplete
+  /// specification missing any required fields will be rejected with the error
+  /// INVALID_ARGUMENT.
   core.String updateTransferJobFieldMask;
 
   UpdateTransferJobRequest();

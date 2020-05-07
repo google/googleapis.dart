@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.remotebuildexecution.v2;
 
@@ -66,7 +66,7 @@ class ActionResultsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [hash] - The hash. In the case of SHA-256, it will always be a lowercase
   /// hex string
@@ -74,16 +74,16 @@ class ActionResultsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
-  /// [inlineOutputFiles] - A hint to the server to inline the contents of the
-  /// listed output files.
-  /// Each path needs to exactly match one path in `output_files` in the
-  /// Command message.
-  ///
   /// [inlineStdout] - A hint to the server to request inlining stdout in the
   /// ActionResult message.
   ///
   /// [inlineStderr] - A hint to the server to request inlining stderr in the
   /// ActionResult message.
+  ///
+  /// [inlineOutputFiles] - A hint to the server to inline the contents of the
+  /// listed output files.
+  /// Each path needs to exactly match one path in `output_files` in the
+  /// Command message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -97,9 +97,9 @@ class ActionResultsResourceApi {
   /// this method will complete with the same error.
   async.Future<BuildBazelRemoteExecutionV2ActionResult> get(
       core.String instanceName, core.String hash, core.String sizeBytes,
-      {core.List<core.String> inlineOutputFiles,
-      core.bool inlineStdout,
+      {core.bool inlineStdout,
       core.bool inlineStderr,
+      core.List<core.String> inlineOutputFiles,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -117,14 +117,14 @@ class ActionResultsResourceApi {
     if (sizeBytes == null) {
       throw new core.ArgumentError("Parameter sizeBytes is required.");
     }
-    if (inlineOutputFiles != null) {
-      _queryParams["inlineOutputFiles"] = inlineOutputFiles;
-    }
     if (inlineStdout != null) {
       _queryParams["inlineStdout"] = ["${inlineStdout}"];
     }
     if (inlineStderr != null) {
       _queryParams["inlineStderr"] = ["${inlineStderr}"];
+    }
+    if (inlineOutputFiles != null) {
+      _queryParams["inlineOutputFiles"] = inlineOutputFiles;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -176,7 +176,7 @@ class ActionResultsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [hash] - The hash. In the case of SHA-256, it will always be a lowercase
   /// hex string
@@ -339,7 +339,7 @@ class ActionsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -425,7 +425,7 @@ class BlobsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -509,7 +509,7 @@ class BlobsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -562,6 +562,9 @@ class BlobsResourceApi {
   /// are
   /// already present in the CAS and do not need to be uploaded again.
   ///
+  /// Servers SHOULD increase the TTLs of the referenced blobs if necessary and
+  /// applicable.
+  ///
   /// There are no method-specific errors.
   ///
   /// [request] - The metadata request object.
@@ -575,7 +578,7 @@ class BlobsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -642,6 +645,8 @@ class BlobsResourceApi {
   /// If part of the tree is missing from the CAS, the server will return the
   /// portion present and omit the rest.
   ///
+  /// Errors:
+  ///
   /// * `NOT_FOUND`: The requested tree root is not present in the CAS.
   ///
   /// Request parameters:
@@ -653,7 +658,7 @@ class BlobsResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [hash] - The hash. In the case of SHA-256, it will always be a lowercase
   /// hex string
@@ -661,16 +666,16 @@ class BlobsResourceApi {
   ///
   /// [sizeBytes] - The size of the blob, in bytes.
   ///
+  /// [pageToken] - A page token, which must be a value received in a previous
+  /// GetTreeResponse.
+  /// If present, the server will use that token as an offset, returning only
+  /// that page and the ones that succeed it.
+  ///
   /// [pageSize] - A maximum page size to request. If present, the server will
   /// request no more
   /// than this many items. Regardless of whether a page size is specified, the
   /// server may place its own limit on the number of items to be returned and
   /// require the client to retrieve more items using a subsequent request.
-  ///
-  /// [pageToken] - A page token, which must be a value received in a previous
-  /// GetTreeResponse.
-  /// If present, the server will use it to return the following page of
-  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -684,7 +689,7 @@ class BlobsResourceApi {
   /// this method will complete with the same error.
   async.Future<BuildBazelRemoteExecutionV2GetTreeResponse> getTree(
       core.String instanceName, core.String hash, core.String sizeBytes,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -701,11 +706,11 @@ class BlobsResourceApi {
     if (sizeBytes == null) {
       throw new core.ArgumentError("Parameter sizeBytes is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -748,7 +753,7 @@ class OperationsResourceApi {
   ///
   /// [name] - The name of the Operation
   /// returned by Execute.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -818,7 +823,7 @@ class V2ResourceApi {
   /// storage, caches, etc.). The server MAY require use of this field to select
   /// between them in an implementation-defined fashion, otherwise it can be
   /// omitted.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -905,6 +910,19 @@ class BuildBazelRemoteExecutionV2Action {
   /// ContentAddressableStorage.
   BuildBazelRemoteExecutionV2Digest inputRootDigest;
 
+  /// List of required supported NodeProperty
+  /// keys. In order to ensure that equivalent `Action`s always hash to the same
+  /// value, the supported node properties MUST be lexicographically sorted by
+  /// name.
+  /// Sorting of strings is done by code point, equivalently, by the UTF-8
+  /// bytes.
+  ///
+  /// The interpretation of these properties is server-dependent. If a property
+  /// is
+  /// not recognized by the server, the server will return an `INVALID_ARGUMENT`
+  /// error.
+  core.List<core.String> outputNodeProperties;
+
   /// A timeout after which the execution should be killed. If the timeout is
   /// absent, then the client is specifying that the execution should continue
   /// as long as the server will let it. The server SHOULD impose a timeout if
@@ -938,6 +956,10 @@ class BuildBazelRemoteExecutionV2Action {
       inputRootDigest = new BuildBazelRemoteExecutionV2Digest.fromJson(
           _json["inputRootDigest"]);
     }
+    if (_json.containsKey("outputNodeProperties")) {
+      outputNodeProperties =
+          (_json["outputNodeProperties"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("timeout")) {
       timeout = _json["timeout"];
     }
@@ -954,6 +976,9 @@ class BuildBazelRemoteExecutionV2Action {
     }
     if (inputRootDigest != null) {
       _json["inputRootDigest"] = (inputRootDigest).toJson();
+    }
+    if (outputNodeProperties != null) {
+      _json["outputNodeProperties"] = outputNodeProperties;
     }
     if (timeout != null) {
       _json["timeout"] = timeout;
@@ -995,9 +1020,9 @@ class BuildBazelRemoteExecutionV2ActionResult {
   core.int exitCode;
 
   /// The output directories of the action. For each output directory requested
-  /// in the `output_directories` field of the Action, if the corresponding
-  /// directory existed after the action completed, a single entry will be
-  /// present in the output list, which will contain the digest of a
+  /// in the `output_directories` or `output_paths` field of the Action, if the
+  /// corresponding directory existed after the action completed, a single entry
+  /// will be present in the output list, which will contain the digest of a
   /// Tree message containing the
   /// directory tree, and the path equal exactly to the corresponding Action
   /// output_directories member.
@@ -1054,7 +1079,9 @@ class BuildBazelRemoteExecutionV2ActionResult {
   ///   }
   /// }
   /// ```
-  /// If an output of the same name was found, but was not a directory, the
+  /// If an output of the same name as listed in `output_files` of
+  /// the Command was found in `output_directories`, but was not a directory,
+  /// the
   /// server will return a FAILED_PRECONDITION.
   core.List<BuildBazelRemoteExecutionV2OutputDirectory> outputDirectories;
 
@@ -1073,6 +1100,9 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// If the action does not produce the requested output, then that output
   /// will be omitted from the list. The server is free to arrange the output
   /// list as desired; clients MUST NOT assume that the output list is sorted.
+  ///
+  /// DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API
+  /// should still populate this field in addition to `output_symlinks`.
   core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputDirectorySymlinks;
 
   /// The output files of the action that are symbolic links to other files.
@@ -1080,31 +1110,52 @@ class BuildBazelRemoteExecutionV2ActionResult {
   /// may be links to other output files, or input files, or even absolute paths
   /// outside of the working directory, if the server supports
   /// SymlinkAbsolutePathStrategy.ALLOWED.
-  /// For each output file requested in the `output_files` field of the Action,
-  /// if the corresponding file existed after
+  /// For each output file requested in the `output_files` or `output_paths`
+  /// field of the Action, if the corresponding file existed after
   /// the action completed, a single entry will be present either in this field,
   /// or in the `output_files` field, if the file was not a symbolic link.
   ///
-  /// If an output symbolic link of the same name was found, but its target
-  /// type was not a regular file, the server will return a FAILED_PRECONDITION.
+  /// If an output symbolic link of the same name as listed in `output_files` of
+  /// the Command was found, but its target type was not a regular file, the
+  /// server will return a FAILED_PRECONDITION.
   /// If the action does not produce the requested output, then that output
   /// will be omitted from the list. The server is free to arrange the output
   /// list as desired; clients MUST NOT assume that the output list is sorted.
+  ///
+  /// DEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API
+  /// should still populate this field in addition to `output_symlinks`.
   core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputFileSymlinks;
 
   /// The output files of the action. For each output file requested in the
-  /// `output_files` field of the Action, if the corresponding file existed
-  /// after
-  /// the action completed, a single entry will be present either in this field,
-  /// or the `output_file_symlinks` field if the file was a symbolic link to
-  /// another file.
+  /// `output_files` or `output_paths` field of the Action, if the corresponding
+  /// file existed after the action completed, a single entry will be present
+  /// either in this field, or the `output_file_symlinks` field if the file was
+  /// a symbolic link to another file (`output_symlinks` field after v2.1).
   ///
-  /// If an output of the same name was found, but was a directory rather
+  /// If an output listed in `output_files` was found, but was a directory
+  /// rather
   /// than a regular file, the server will return a FAILED_PRECONDITION.
   /// If the action does not produce the requested output, then that output
   /// will be omitted from the list. The server is free to arrange the output
   /// list as desired; clients MUST NOT assume that the output list is sorted.
   core.List<BuildBazelRemoteExecutionV2OutputFile> outputFiles;
+
+  /// New in v2.1: this field will only be populated if the command
+  /// `output_paths` field was used, and not the pre v2.1 `output_files` or
+  /// `output_directories` fields.
+  /// The output paths of the action that are symbolic links to other paths.
+  /// Those
+  /// may be links to other outputs, or inputs, or even absolute paths
+  /// outside of the working directory, if the server supports
+  /// SymlinkAbsolutePathStrategy.ALLOWED.
+  /// A single entry for each output requested in `output_paths`
+  /// field of the Action, if the corresponding path existed after
+  /// the action completed and was a symbolic link.
+  ///
+  /// If the action does not produce a requested output, then that output
+  /// will be omitted from the list. The server is free to arrange the output
+  /// list as desired; clients MUST NOT assume that the output list is sorted.
+  core.List<BuildBazelRemoteExecutionV2OutputSymlink> outputSymlinks;
 
   /// The digest for a blob containing the standard error of the action, which
   /// can be retrieved from the
@@ -1183,6 +1234,12 @@ class BuildBazelRemoteExecutionV2ActionResult {
               new BuildBazelRemoteExecutionV2OutputFile.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("outputSymlinks")) {
+      outputSymlinks = (_json["outputSymlinks"] as core.List)
+          .map<BuildBazelRemoteExecutionV2OutputSymlink>((value) =>
+              new BuildBazelRemoteExecutionV2OutputSymlink.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("stderrDigest")) {
       stderrDigest =
           new BuildBazelRemoteExecutionV2Digest.fromJson(_json["stderrDigest"]);
@@ -1223,6 +1280,10 @@ class BuildBazelRemoteExecutionV2ActionResult {
     if (outputFiles != null) {
       _json["outputFiles"] =
           outputFiles.map((value) => (value).toJson()).toList();
+    }
+    if (outputSymlinks != null) {
+      _json["outputSymlinks"] =
+          outputSymlinks.map((value) => (value).toJson()).toList();
     }
     if (stderrDigest != null) {
       _json["stderrDigest"] = (stderrDigest).toJson();
@@ -1614,6 +1675,8 @@ class BuildBazelRemoteExecutionV2Command {
   /// Directories leading up to the output directories (but not the output
   /// directories themselves) are created by the worker prior to execution, even
   /// if they are not explicitly part of the input root.
+  ///
+  /// DEPRECATED since 2.1: Use `output_paths` instead.
   core.List<core.String> outputDirectories;
 
   /// A list of the output files that the client expects to retrieve from the
@@ -1639,7 +1702,41 @@ class BuildBazelRemoteExecutionV2Command {
   ///
   /// Directories leading up to the output files are created by the worker prior
   /// to execution, even if they are not explicitly part of the input root.
+  ///
+  /// DEPRECATED since v2.1: Use `output_paths` instead.
   core.List<core.String> outputFiles;
+
+  /// A list of the output paths that the client expects to retrieve from the
+  /// action. Only the listed paths will be returned to the client as output.
+  /// The type of the output (file or directory) is not specified, and will be
+  /// determined by the server after action execution. If the resulting path is
+  /// a file, it will be returned in an
+  /// OutputFile) typed field.
+  /// If the path is a directory, the entire directory structure will be
+  /// returned
+  /// as a Tree message digest, see
+  /// OutputDirectory)
+  /// Other files or directories that may be created during command execution
+  /// are discarded.
+  ///
+  /// The paths are relative to the working directory of the action execution.
+  /// The paths are specified using a single forward slash (`/`) as a path
+  /// separator, even if the execution platform natively uses a different
+  /// separator. The path MUST NOT include a trailing slash, nor a leading
+  /// slash,
+  /// being a relative path.
+  ///
+  /// In order to ensure consistent hashing of the same Action, the output paths
+  /// MUST be deduplicated and sorted lexicographically by code point (or,
+  /// equivalently, by UTF-8 bytes).
+  ///
+  /// Directories leading up to the output paths are created by the worker prior
+  /// to execution, even if they are not explicitly part of the input root.
+  ///
+  /// New in v2.1: this field supersedes the DEPRECATED `output_files` and
+  /// `output_directories` fields. If `output_paths` is used, `output_files` and
+  /// `output_directories` will be ignored!
+  core.List<core.String> outputPaths;
 
   /// The platform requirements for the execution environment. The server MAY
   /// choose to execute the action on any worker satisfying the requirements, so
@@ -1673,6 +1770,9 @@ class BuildBazelRemoteExecutionV2Command {
     if (_json.containsKey("outputFiles")) {
       outputFiles = (_json["outputFiles"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("outputPaths")) {
+      outputPaths = (_json["outputPaths"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("platform")) {
       platform =
           new BuildBazelRemoteExecutionV2Platform.fromJson(_json["platform"]);
@@ -1697,6 +1797,9 @@ class BuildBazelRemoteExecutionV2Command {
     }
     if (outputFiles != null) {
       _json["outputFiles"] = outputFiles;
+    }
+    if (outputPaths != null) {
+      _json["outputPaths"] = outputPaths;
     }
     if (platform != null) {
       _json["platform"] = (platform).toJson();
@@ -1743,9 +1846,7 @@ class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
 }
 
 /// A content digest. A digest for a given blob consists of the size of the blob
-/// and its hash. The hash algorithm to use is defined by the server, but
-/// servers
-/// SHOULD use SHA-256.
+/// and its hash. The hash algorithm to use is defined by the server.
 ///
 /// The size is considered to be an integral part of the digest and cannot be
 /// separated. That is, even if the `hash` field is correctly specified but
@@ -1832,6 +1933,9 @@ class BuildBazelRemoteExecutionV2Digest {
 /// * The files, directories and symlinks in the directory must each be sorted
 ///   in lexicographical order by path. The path strings must be sorted by code
 ///   point, equivalently, by UTF-8 bytes.
+/// * The NodeProperties of files,
+///   directories, and symlinks must be sorted in lexicographical order by
+///   property name.
 ///
 /// A `Directory` that obeys the restrictions is said to be in canonical form.
 ///
@@ -1848,7 +1952,13 @@ class BuildBazelRemoteExecutionV2Digest {
 ///       digest: {
 ///         hash: "4a73bc9d03...",
 ///         size: 65534
-///       }
+///       },
+///       node_properties: [
+///         {
+///           "name": "MTime",
+///           "value": "2017-01-15T01:30:15.01Z"
+///         }
+///       ]
 ///     }
 ///   ],
 ///   directories: [
@@ -1883,6 +1993,9 @@ class BuildBazelRemoteExecutionV2Directory {
   /// The files in the directory.
   core.List<BuildBazelRemoteExecutionV2FileNode> files;
 
+  /// The node properties of the Directory.
+  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+
   /// The symlinks in the directory.
   core.List<BuildBazelRemoteExecutionV2SymlinkNode> symlinks;
 
@@ -1899,6 +2012,12 @@ class BuildBazelRemoteExecutionV2Directory {
       files = (_json["files"] as core.List)
           .map<BuildBazelRemoteExecutionV2FileNode>((value) =>
               new BuildBazelRemoteExecutionV2FileNode.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nodeProperties")) {
+      nodeProperties = (_json["nodeProperties"] as core.List)
+          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
+              new BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
           .toList();
     }
     if (_json.containsKey("symlinks")) {
@@ -1918,6 +2037,10 @@ class BuildBazelRemoteExecutionV2Directory {
     }
     if (files != null) {
       _json["files"] = files.map((value) => (value).toJson()).toList();
+    }
+    if (nodeProperties != null) {
+      _json["nodeProperties"] =
+          nodeProperties.map((value) => (value).toJson()).toList();
     }
     if (symlinks != null) {
       _json["symlinks"] = symlinks.map((value) => (value).toJson()).toList();
@@ -2299,13 +2422,15 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
   /// Remote execution may only support a single digest function.
   /// Possible string values are:
   /// - "UNKNOWN" : It is an error for the server to return this value.
-  /// - "SHA256" : The Sha-256 digest function.
-  /// - "SHA1" : The Sha-1 digest function.
+  /// - "SHA256" : The SHA-256 digest function.
+  /// - "SHA1" : The SHA-1 digest function.
   /// - "MD5" : The MD5 digest function.
   /// - "VSO" : The Microsoft "VSO-Hash" paged SHA256 digest function.
   /// See
   /// https://github.com/microsoft/BuildXL/blob/master/Documentation/Specs/PagedHash.md
   /// .
+  /// - "SHA384" : The SHA-384 digest function.
+  /// - "SHA512" : The SHA-512 digest function.
   core.String digestFunction;
 
   /// Whether remote execution is enabled for the particular server/instance.
@@ -2313,6 +2438,9 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
 
   /// Supported execution priority range.
   BuildBazelRemoteExecutionV2PriorityCapabilities executionPriorityCapabilities;
+
+  /// Supported node properties.
+  core.List<core.String> supportedNodeProperties;
 
   BuildBazelRemoteExecutionV2ExecutionCapabilities();
 
@@ -2328,6 +2456,10 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
           new BuildBazelRemoteExecutionV2PriorityCapabilities.fromJson(
               _json["executionPriorityCapabilities"]);
     }
+    if (_json.containsKey("supportedNodeProperties")) {
+      supportedNodeProperties =
+          (_json["supportedNodeProperties"] as core.List).cast<core.String>();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2342,6 +2474,9 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
     if (executionPriorityCapabilities != null) {
       _json["executionPriorityCapabilities"] =
           (executionPriorityCapabilities).toJson();
+    }
+    if (supportedNodeProperties != null) {
+      _json["supportedNodeProperties"] = supportedNodeProperties;
     }
     return _json;
   }
@@ -2392,6 +2527,9 @@ class BuildBazelRemoteExecutionV2FileNode {
   /// The name of the file.
   core.String name;
 
+  /// The node properties of the FileNode.
+  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+
   BuildBazelRemoteExecutionV2FileNode();
 
   BuildBazelRemoteExecutionV2FileNode.fromJson(core.Map _json) {
@@ -2403,6 +2541,12 @@ class BuildBazelRemoteExecutionV2FileNode {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("nodeProperties")) {
+      nodeProperties = (_json["nodeProperties"] as core.List)
+          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
+              new BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+          .toList();
     }
   }
 
@@ -2417,6 +2561,10 @@ class BuildBazelRemoteExecutionV2FileNode {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (nodeProperties != null) {
+      _json["nodeProperties"] =
+          nodeProperties.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2554,6 +2702,42 @@ class BuildBazelRemoteExecutionV2LogFile {
   }
 }
 
+/// A single property for FileNodes,
+/// DirectoryNodes, and
+/// SymlinkNodes. The server is
+/// responsible for specifying the property `name`s that it accepts. If
+/// permitted by the server, the same `name` may occur multiple times.
+class BuildBazelRemoteExecutionV2NodeProperty {
+  /// The property name.
+  core.String name;
+
+  /// The property value.
+  core.String value;
+
+  BuildBazelRemoteExecutionV2NodeProperty();
+
+  BuildBazelRemoteExecutionV2NodeProperty.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// An `OutputDirectory` is the output in an `ActionResult` corresponding to a
 /// directory's full contents rather than a single file.
 class BuildBazelRemoteExecutionV2OutputDirectory {
@@ -2621,6 +2805,10 @@ class BuildBazelRemoteExecutionV2OutputFile {
   /// True if file is executable, false otherwise.
   core.bool isExecutable;
 
+  /// The supported node properties of the OutputFile, if requested by the
+  /// Action.
+  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+
   /// The full path of the file relative to the working directory, including the
   /// filename. The path separator is a forward slash `/`. Since this is a
   /// relative path, it MUST NOT begin with a leading forward slash.
@@ -2637,6 +2825,12 @@ class BuildBazelRemoteExecutionV2OutputFile {
     }
     if (_json.containsKey("isExecutable")) {
       isExecutable = _json["isExecutable"];
+    }
+    if (_json.containsKey("nodeProperties")) {
+      nodeProperties = (_json["nodeProperties"] as core.List)
+          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
+              new BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -2655,6 +2849,10 @@ class BuildBazelRemoteExecutionV2OutputFile {
     if (isExecutable != null) {
       _json["isExecutable"] = isExecutable;
     }
+    if (nodeProperties != null) {
+      _json["nodeProperties"] =
+          nodeProperties.map((value) => (value).toJson()).toList();
+    }
     if (path != null) {
       _json["path"] = path;
     }
@@ -2668,6 +2866,10 @@ class BuildBazelRemoteExecutionV2OutputFile {
 ///
 /// `OutputSymlink` is binary-compatible with `SymlinkNode`.
 class BuildBazelRemoteExecutionV2OutputSymlink {
+  /// The supported node properties of the OutputSymlink, if requested by the
+  /// Action.
+  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+
   /// The full path of the symlink relative to the working directory, including
   /// the
   /// filename. The path separator is a forward slash `/`. Since this is a
@@ -2686,6 +2888,12 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
   BuildBazelRemoteExecutionV2OutputSymlink();
 
   BuildBazelRemoteExecutionV2OutputSymlink.fromJson(core.Map _json) {
+    if (_json.containsKey("nodeProperties")) {
+      nodeProperties = (_json["nodeProperties"] as core.List)
+          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
+              new BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("path")) {
       path = _json["path"];
     }
@@ -2697,6 +2905,10 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (nodeProperties != null) {
+      _json["nodeProperties"] =
+          nodeProperties.map((value) => (value).toJson()).toList();
+    }
     if (path != null) {
       _json["path"] = path;
     }
@@ -3023,6 +3235,9 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
   /// The name of the symlink.
   core.String name;
 
+  /// The node properties of the SymlinkNode.
+  core.List<BuildBazelRemoteExecutionV2NodeProperty> nodeProperties;
+
   /// The target path of the symlink. The path separator is a forward slash `/`.
   /// The target path can be relative to the parent directory of the symlink or
   /// it can be an absolute path starting with `/`. Support for absolute paths
@@ -3038,6 +3253,12 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("nodeProperties")) {
+      nodeProperties = (_json["nodeProperties"] as core.List)
+          .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
+              new BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("target")) {
       target = _json["target"];
     }
@@ -3048,6 +3269,10 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
         new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
+    }
+    if (nodeProperties != null) {
+      _json["nodeProperties"] =
+          nodeProperties.map((value) => (value).toJson()).toList();
     }
     if (target != null) {
       _json["target"] = target;
@@ -3201,9 +3426,18 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
   /// (includes pulling the Docker image, if necessary).
   core.String dockerPrep;
 
+  /// The timestamp when docker preparation begins.
+  core.String dockerPrepStartTime;
+
   /// The time spent downloading the input files and constructing the working
   /// directory.
   core.String download;
+
+  /// The timestamp when downloading the input files begins.
+  core.String downloadStartTime;
+
+  /// The timestamp when execution begins.
+  core.String execStartTime;
 
   /// The time spent executing the command (i.e., doing useful work).
   core.String execution;
@@ -3220,14 +3454,26 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
   /// The time spent uploading the output files.
   core.String upload;
 
+  /// The timestamp when uploading the output files begins.
+  core.String uploadStartTime;
+
   GoogleDevtoolsRemotebuildbotCommandDurations();
 
   GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(core.Map _json) {
     if (_json.containsKey("dockerPrep")) {
       dockerPrep = _json["dockerPrep"];
     }
+    if (_json.containsKey("dockerPrepStartTime")) {
+      dockerPrepStartTime = _json["dockerPrepStartTime"];
+    }
     if (_json.containsKey("download")) {
       download = _json["download"];
+    }
+    if (_json.containsKey("downloadStartTime")) {
+      downloadStartTime = _json["downloadStartTime"];
+    }
+    if (_json.containsKey("execStartTime")) {
+      execStartTime = _json["execStartTime"];
     }
     if (_json.containsKey("execution")) {
       execution = _json["execution"];
@@ -3244,6 +3490,9 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
     if (_json.containsKey("upload")) {
       upload = _json["upload"];
     }
+    if (_json.containsKey("uploadStartTime")) {
+      uploadStartTime = _json["uploadStartTime"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3252,8 +3501,17 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
     if (dockerPrep != null) {
       _json["dockerPrep"] = dockerPrep;
     }
+    if (dockerPrepStartTime != null) {
+      _json["dockerPrepStartTime"] = dockerPrepStartTime;
+    }
     if (download != null) {
       _json["download"] = download;
+    }
+    if (downloadStartTime != null) {
+      _json["downloadStartTime"] = downloadStartTime;
+    }
+    if (execStartTime != null) {
+      _json["execStartTime"] = execStartTime;
     }
     if (execution != null) {
       _json["execution"] = execution;
@@ -3269,6 +3527,9 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
     }
     if (upload != null) {
       _json["upload"] = upload;
+    }
+    if (uploadStartTime != null) {
+      _json["uploadStartTime"] = uploadStartTime;
     }
     return _json;
   }
@@ -3357,6 +3618,28 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
   /// - "WORKING_DIR_NOT_IN_BASE_DIR" : Working directory is not under the base
   /// directory
   /// - "DOCKER_UNAVAILABLE" : There are issues with docker service/runtime.
+  /// - "NO_CUDA_CAPABLE_DEVICE" : The command failed with "no cuda-capable
+  /// device is detected" error.
+  /// - "REMOTE_CAS_DOWNLOAD_ERROR" : The bot encountered errors from remote CAS
+  /// when downloading blobs.
+  /// - "REMOTE_CAS_UPLOAD_ERROR" : The bot encountered errors from remote CAS
+  /// when uploading blobs.
+  /// - "LOCAL_CASPROXY_NOT_RUNNING" : The local casproxy is not running.
+  /// - "DOCKER_CREATE_CONTAINER_ERROR" : The bot couldn't start the container.
+  /// - "DOCKER_INVALID_ULIMIT" : The docker ulimit is not valid.
+  /// - "DOCKER_UNKNOWN_RUNTIME" : The docker runtime is unknown.
+  /// - "DOCKER_UNKNOWN_CAPABILITY" : The docker capability is unknown.
+  /// - "DOCKER_UNKNOWN_ERROR" : The command failed with unknown docker errors.
+  /// - "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" : Docker failed to run containers
+  /// with CreateComputeSystem error.
+  /// - "DOCKER_PREPARELAYER_ERROR" : Docker failed to run containers with
+  /// hcsshim::PrepareLayer error.
+  /// - "DOCKER_INCOMPATIBLE_OS_ERROR" : Docker incompatible operating system
+  /// error.
+  /// - "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" : Docker failed to create OCI
+  /// runtime because of file not found.
+  /// - "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" : Docker failed to create OCI
+  /// runtime because of permission denied.
   core.String code;
 
   /// The error message.
@@ -3381,6 +3664,139 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// ResourceUsage is the system resource usage of the host machine.
+class GoogleDevtoolsRemotebuildbotResourceUsage {
+  core.double cpuUsedPercent;
+  GoogleDevtoolsRemotebuildbotResourceUsageStat diskUsage;
+  GoogleDevtoolsRemotebuildbotResourceUsageStat memoryUsage;
+
+  GoogleDevtoolsRemotebuildbotResourceUsage();
+
+  GoogleDevtoolsRemotebuildbotResourceUsage.fromJson(core.Map _json) {
+    if (_json.containsKey("cpuUsedPercent")) {
+      cpuUsedPercent = _json["cpuUsedPercent"].toDouble();
+    }
+    if (_json.containsKey("diskUsage")) {
+      diskUsage = new GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
+          _json["diskUsage"]);
+    }
+    if (_json.containsKey("memoryUsage")) {
+      memoryUsage = new GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
+          _json["memoryUsage"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cpuUsedPercent != null) {
+      _json["cpuUsedPercent"] = cpuUsedPercent;
+    }
+    if (diskUsage != null) {
+      _json["diskUsage"] = (diskUsage).toJson();
+    }
+    if (memoryUsage != null) {
+      _json["memoryUsage"] = (memoryUsage).toJson();
+    }
+    return _json;
+  }
+}
+
+class GoogleDevtoolsRemotebuildbotResourceUsageStat {
+  core.String total;
+  core.String used;
+
+  GoogleDevtoolsRemotebuildbotResourceUsageStat();
+
+  GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(core.Map _json) {
+    if (_json.containsKey("total")) {
+      total = _json["total"];
+    }
+    if (_json.containsKey("used")) {
+      used = _json["used"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (total != null) {
+      _json["total"] = total;
+    }
+    if (used != null) {
+      _json["used"] = used;
+    }
+    return _json;
+  }
+}
+
+/// AcceleratorConfig defines the accelerator cards to attach to the VM.
+class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
+  /// The number of guest accelerator cards exposed to each VM.
+  core.String acceleratorCount;
+
+  /// The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for
+  /// nVidia Tesla K80.
+  core.String acceleratorType;
+
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig();
+
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("acceleratorCount")) {
+      acceleratorCount = _json["acceleratorCount"];
+    }
+    if (_json.containsKey("acceleratorType")) {
+      acceleratorType = _json["acceleratorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (acceleratorCount != null) {
+      _json["acceleratorCount"] = acceleratorCount;
+    }
+    if (acceleratorType != null) {
+      _json["acceleratorType"] = acceleratorType;
+    }
+    return _json;
+  }
+}
+
+/// Autoscale defines the autoscaling policy of a worker pool.
+class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
+  /// The maximal number of workers. Must be equal to or greater than min_size.
+  core.String maxSize;
+
+  /// The minimal number of workers. Must be greater than 0.
+  core.String minSize;
+
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale();
+
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("maxSize")) {
+      maxSize = _json["maxSize"];
+    }
+    if (_json.containsKey("minSize")) {
+      minSize = _json["minSize"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxSize != null) {
+      _json["maxSize"] = maxSize;
+    }
+    if (minSize != null) {
+      _json["minSize"] = minSize;
     }
     return _json;
   }
@@ -3715,21 +4131,31 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
 }
 
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
-  /// Optional. A filter to constrain the pools returned. Filters have the form:
+  /// Optional. A filter expression that filters resources listed in
+  /// the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value
+  /// must be a string, a number, or a boolean. String values are
+  /// case-insensitive.
+  /// The comparison operator must be either `:`, `=`, `!=`, `>`, `>=`, `<=` or
+  /// `<`.
+  /// The `:` operator can be used with string fields to match substrings.
+  /// For non-string fields it is equivalent to the `=` operator.
+  /// The `:*` comparison can be used to test  whether a key has been defined.
   ///
-  /// <field> <operator> <value> [[AND|OR] <field> <operator> <value>]...
+  /// You can also filter on nested fields.
   ///
-  /// <field> is the path for a field or map key in the Pool proto message.
-  /// e.g. "configuration.disk_size_gb" or "configuration.labels.key".
-  /// <operator> can be one of "<", "<=", ">=", ">", "=", "!=", ":".
-  /// ":" is a HAS operation for strings and repeated primitive fields.
-  /// <value> is the value to test, case-insensitive for strings. "*" stands for
-  /// any value and can be used to test for key presence.
-  /// Parenthesis determine AND/OR precedence. In space separated restrictions,
-  /// AND is implicit, e.g. "a = b x = y" is equivalent to "a = b AND x = y".
+  /// To filter on multiple expressions, you can separate expression using
+  /// `AND` and `OR` operators, using parentheses to specify precedence. If
+  /// neither operator is specified, `AND` is assumed.
   ///
-  /// Example filter:
-  /// configuration.labels.key1 = * AND (state = RUNNING OR state = UPDATING)
+  /// Examples:
+  ///
+  /// Include only pools with more than 100 reserved workers:
+  /// `(worker_count > 100) (worker_config.reserved = true)`
+  ///
+  /// Include only pools with a certain label or machines of the n1-standard
+  /// family:
+  /// `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`
   core.String filter;
 
   /// Resource name of the instance.
@@ -3791,6 +4217,68 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
   }
 }
 
+/// The request used for `UpdateInstance`.
+class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
+  /// Specifies the instance to update.
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance instance;
+
+  /// Deprecated, use instance.logging_enabled instead.
+  /// Whether to enable Stackdriver logging for this instance.
+  core.bool loggingEnabled;
+
+  /// Deprecated, use instance.Name instead.
+  /// Name of the instance to update.
+  /// Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+  core.String name;
+
+  /// The update mask applies to instance. For the `FieldMask` definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  /// If an empty update_mask is provided, only the non-default valued field in
+  /// the worker pool field will be updated. Note that in order to update a
+  /// field
+  /// to the default value (zero, false, empty string) an explicit update_mask
+  /// must be provided.
+  core.String updateMask;
+
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest();
+
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("instance")) {
+      instance =
+          new GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance.fromJson(
+              _json["instance"]);
+    }
+    if (_json.containsKey("loggingEnabled")) {
+      loggingEnabled = _json["loggingEnabled"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (instance != null) {
+      _json["instance"] = (instance).toJson();
+    }
+    if (loggingEnabled != null) {
+      _json["loggingEnabled"] = loggingEnabled;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
 /// The request used for UpdateWorkerPool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
   /// The update mask applies to worker_pool. For the `FieldMask` definition,
@@ -3836,6 +4324,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
 /// Defines the configuration to be used for a creating workers in
 /// the worker pool.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
+  /// The accelerator card attached to each VM.
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig accelerator;
+
   /// Required. Size of the disk attached to the worker, in GB.
   /// See https://cloud.google.com/compute/docs/disks/
   core.String diskSizeGb;
@@ -3843,15 +4334,15 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// Required. Disk Type to use for the worker.
   /// See [Storage
   /// options](https://cloud.google.com/compute/docs/disks/#introduction).
-  /// Currently only `pd-standard` is supported.
+  /// Currently only `pd-standard` and `pd-ssd` are supported.
   core.String diskType;
 
   /// Labels associated with the workers.
   /// Label keys and values can be no longer than 63 characters, can only
   /// contain
   /// lowercase letters, numeric characters, underscores and dashes.
-  /// International letters are permitted. Keys must start with a letter but
-  /// values are optional.
+  /// International letters are permitted. Label keys must start with a letter.
+  /// Label values are optional.
   /// There can not be more than 64 labels per resource.
   core.Map<core.String, core.String> labels;
 
@@ -3861,9 +4352,20 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// supported.
   core.String machineType;
 
+  /// The maximum number of actions a worker can execute concurrently.
+  core.String maxConcurrentActions;
+
   /// Minimum CPU platform to use when creating the worker.
   /// See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
   core.String minCpuPlatform;
+
+  /// Determines the type of network access granted to workers. Possible values:
+  ///
+  /// - "public": Workers can connect to the public internet.
+  /// - "private": Workers can only connect to Google APIs and services.
+  /// - "restricted-private": Workers can only connect to Google APIs that are
+  ///   reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
+  core.String networkAccess;
 
   /// Determines whether the worker is reserved (equivalent to a Compute Engine
   /// on-demand VM and therefore won't be preempted).
@@ -3875,6 +4377,11 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig.fromJson(
       core.Map _json) {
+    if (_json.containsKey("accelerator")) {
+      accelerator =
+          new GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
+              .fromJson(_json["accelerator"]);
+    }
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
     }
@@ -3887,8 +4394,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (_json.containsKey("machineType")) {
       machineType = _json["machineType"];
     }
+    if (_json.containsKey("maxConcurrentActions")) {
+      maxConcurrentActions = _json["maxConcurrentActions"];
+    }
     if (_json.containsKey("minCpuPlatform")) {
       minCpuPlatform = _json["minCpuPlatform"];
+    }
+    if (_json.containsKey("networkAccess")) {
+      networkAccess = _json["networkAccess"];
     }
     if (_json.containsKey("reserved")) {
       reserved = _json["reserved"];
@@ -3898,6 +4411,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accelerator != null) {
+      _json["accelerator"] = (accelerator).toJson();
+    }
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
     }
@@ -3910,8 +4426,14 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (machineType != null) {
       _json["machineType"] = machineType;
     }
+    if (maxConcurrentActions != null) {
+      _json["maxConcurrentActions"] = maxConcurrentActions;
+    }
     if (minCpuPlatform != null) {
       _json["minCpuPlatform"] = minCpuPlatform;
+    }
+    if (networkAccess != null) {
+      _json["networkAccess"] = networkAccess;
     }
     if (reserved != null) {
       _json["reserved"] = reserved;
@@ -3922,6 +4444,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
 
 /// A worker pool resource in the Remote Build Execution API.
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
+  /// The autoscale policy to apply on a pool.
+  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale autoscale;
+
   /// WorkerPool resource name formatted as:
   /// `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
   /// name should not be populated when creating a worker pool since it is
@@ -3956,13 +4481,18 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig workerConfig;
 
   /// The desired number of workers in the worker pool. Must be a value between
-  /// 0 and 1000.
+  /// 0 and 15000.
   core.String workerCount;
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool();
 
   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool.fromJson(
       core.Map _json) {
+    if (_json.containsKey("autoscale")) {
+      autoscale =
+          new GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
+              _json["autoscale"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3982,6 +4512,9 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoscale != null) {
+      _json["autoscale"] = (autoscale).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -3993,972 +4526,6 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
     }
     if (workerCount != null) {
       _json["workerCount"] = workerCount;
-    }
-    return _json;
-  }
-}
-
-/// An ActionResult represents the result of an
-/// Action being run.
-class GoogleDevtoolsRemoteexecutionV1testActionResult {
-  /// The exit code of the command.
-  core.int exitCode;
-
-  /// The output directories of the action. For each output directory requested
-  /// in the `output_directories` field of the Action, if the corresponding
-  /// directory existed after the action completed, a single entry will be
-  /// present in the output list, which will contain the digest of
-  /// a Tree message containing
-  /// the directory tree, and the path equal exactly to the corresponding Action
-  /// output_directories member.
-  /// As an example, suppose the Action had an output directory `a/b/dir` and
-  /// the
-  /// execution produced the following contents in `a/b/dir`: a file named `bar`
-  /// and a directory named `foo` with an executable file named `baz`. Then,
-  /// output_directory will contain (hashes shortened for readability):
-  ///
-  /// ```json
-  /// // OutputDirectory proto:
-  /// {
-  ///   path: "a/b/dir"
-  ///   tree_digest: {
-  ///     hash: "4a73bc9d03...",
-  ///     size: 55
-  ///   }
-  /// }
-  /// // Tree proto with hash "4a73bc9d03..." and size 55:
-  /// {
-  ///   root: {
-  ///     files: [
-  ///       {
-  ///         name: "bar",
-  ///         digest: {
-  ///           hash: "4a73bc9d03...",
-  ///           size: 65534
-  ///         }
-  ///       }
-  ///     ],
-  ///     directories: [
-  ///       {
-  ///         name: "foo",
-  ///         digest: {
-  ///           hash: "4cf2eda940...",
-  ///           size: 43
-  ///         }
-  ///       }
-  ///     ]
-  ///   }
-  ///   children : {
-  ///     // (Directory proto with hash "4cf2eda940..." and size 43)
-  ///     files: [
-  ///       {
-  ///         name: "baz",
-  ///         digest: {
-  ///           hash: "b2c941073e...",
-  ///           size: 1294,
-  ///         },
-  ///         is_executable: true
-  ///       }
-  ///     ]
-  ///   }
-  /// }
-  /// ```
-  core.List<GoogleDevtoolsRemoteexecutionV1testOutputDirectory>
-      outputDirectories;
-
-  /// The output files of the action. For each output file requested in the
-  /// `output_files` field of the Action, if the corresponding file existed
-  /// after
-  /// the action completed, a single entry will be present in the output list.
-  ///
-  /// If the action does not produce the requested output, or produces a
-  /// directory where a regular file is expected or vice versa, then that output
-  /// will be omitted from the list. The server is free to arrange the output
-  /// list as desired; clients MUST NOT assume that the output list is sorted.
-  core.List<GoogleDevtoolsRemoteexecutionV1testOutputFile> outputFiles;
-
-  /// The digest for a blob containing the standard error of the action, which
-  /// can be retrieved from the
-  /// ContentAddressableStorage.
-  /// See `stderr_raw` for when this will be set.
-  GoogleDevtoolsRemoteexecutionV1testDigest stderrDigest;
-
-  /// The standard error buffer of the action. The server will determine, based
-  /// on the size of the buffer, whether to return it in raw form or to return
-  /// a digest in `stderr_digest` that points to the buffer. If neither is set,
-  /// then the buffer is empty. The client SHOULD NOT assume it will get one of
-  /// the raw buffer or a digest on any given request and should be prepared to
-  /// handle either.
-  core.String stderrRaw;
-  core.List<core.int> get stderrRawAsBytes {
-    return convert.base64.decode(stderrRaw);
-  }
-
-  set stderrRawAsBytes(core.List<core.int> _bytes) {
-    stderrRaw =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// The digest for a blob containing the standard output of the action, which
-  /// can be retrieved from the
-  /// ContentAddressableStorage.
-  /// See `stdout_raw` for when this will be set.
-  GoogleDevtoolsRemoteexecutionV1testDigest stdoutDigest;
-
-  /// The standard output buffer of the action. The server will determine, based
-  /// on the size of the buffer, whether to return it in raw form or to return
-  /// a digest in `stdout_digest` that points to the buffer. If neither is set,
-  /// then the buffer is empty. The client SHOULD NOT assume it will get one of
-  /// the raw buffer or a digest on any given request and should be prepared to
-  /// handle either.
-  core.String stdoutRaw;
-  core.List<core.int> get stdoutRawAsBytes {
-    return convert.base64.decode(stdoutRaw);
-  }
-
-  set stdoutRawAsBytes(core.List<core.int> _bytes) {
-    stdoutRaw =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  GoogleDevtoolsRemoteexecutionV1testActionResult();
-
-  GoogleDevtoolsRemoteexecutionV1testActionResult.fromJson(core.Map _json) {
-    if (_json.containsKey("exitCode")) {
-      exitCode = _json["exitCode"];
-    }
-    if (_json.containsKey("outputDirectories")) {
-      outputDirectories = (_json["outputDirectories"] as core.List)
-          .map<GoogleDevtoolsRemoteexecutionV1testOutputDirectory>((value) =>
-              new GoogleDevtoolsRemoteexecutionV1testOutputDirectory.fromJson(
-                  value))
-          .toList();
-    }
-    if (_json.containsKey("outputFiles")) {
-      outputFiles = (_json["outputFiles"] as core.List)
-          .map<GoogleDevtoolsRemoteexecutionV1testOutputFile>((value) =>
-              new GoogleDevtoolsRemoteexecutionV1testOutputFile.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("stderrDigest")) {
-      stderrDigest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["stderrDigest"]);
-    }
-    if (_json.containsKey("stderrRaw")) {
-      stderrRaw = _json["stderrRaw"];
-    }
-    if (_json.containsKey("stdoutDigest")) {
-      stdoutDigest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["stdoutDigest"]);
-    }
-    if (_json.containsKey("stdoutRaw")) {
-      stdoutRaw = _json["stdoutRaw"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (exitCode != null) {
-      _json["exitCode"] = exitCode;
-    }
-    if (outputDirectories != null) {
-      _json["outputDirectories"] =
-          outputDirectories.map((value) => (value).toJson()).toList();
-    }
-    if (outputFiles != null) {
-      _json["outputFiles"] =
-          outputFiles.map((value) => (value).toJson()).toList();
-    }
-    if (stderrDigest != null) {
-      _json["stderrDigest"] = (stderrDigest).toJson();
-    }
-    if (stderrRaw != null) {
-      _json["stderrRaw"] = stderrRaw;
-    }
-    if (stdoutDigest != null) {
-      _json["stdoutDigest"] = (stdoutDigest).toJson();
-    }
-    if (stdoutRaw != null) {
-      _json["stdoutRaw"] = stdoutRaw;
-    }
-    return _json;
-  }
-}
-
-/// A `Command` is the actual command executed by a worker running an
-/// Action.
-///
-/// Except as otherwise required, the environment (such as which system
-/// libraries or binaries are available, and what filesystems are mounted where)
-/// is defined by and specific to the implementation of the remote execution
-/// API.
-class GoogleDevtoolsRemoteexecutionV1testCommand {
-  /// The arguments to the command. The first argument must be the path to the
-  /// executable, which must be either a relative path, in which case it is
-  /// evaluated with respect to the input root, or an absolute path.
-  ///
-  /// The working directory will always be the input root.
-  core.List<core.String> arguments;
-
-  /// The environment variables to set when running the program. The worker may
-  /// provide its own default environment variables; these defaults can be
-  /// overridden using this field. Additional variables can also be specified.
-  ///
-  /// In order to ensure that equivalent `Command`s always hash to the same
-  /// value, the environment variables MUST be lexicographically sorted by name.
-  /// Sorting of strings is done by code point, equivalently, by the UTF-8
-  /// bytes.
-  core.List<GoogleDevtoolsRemoteexecutionV1testCommandEnvironmentVariable>
-      environmentVariables;
-
-  GoogleDevtoolsRemoteexecutionV1testCommand();
-
-  GoogleDevtoolsRemoteexecutionV1testCommand.fromJson(core.Map _json) {
-    if (_json.containsKey("arguments")) {
-      arguments = (_json["arguments"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("environmentVariables")) {
-      environmentVariables = (_json["environmentVariables"] as core.List)
-          .map<GoogleDevtoolsRemoteexecutionV1testCommandEnvironmentVariable>(
-              (value) =>
-                  new GoogleDevtoolsRemoteexecutionV1testCommandEnvironmentVariable
-                      .fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (arguments != null) {
-      _json["arguments"] = arguments;
-    }
-    if (environmentVariables != null) {
-      _json["environmentVariables"] =
-          environmentVariables.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// An `EnvironmentVariable` is one variable to set in the running program's
-/// environment.
-class GoogleDevtoolsRemoteexecutionV1testCommandEnvironmentVariable {
-  /// The variable name.
-  core.String name;
-
-  /// The variable value.
-  core.String value;
-
-  GoogleDevtoolsRemoteexecutionV1testCommandEnvironmentVariable();
-
-  GoogleDevtoolsRemoteexecutionV1testCommandEnvironmentVariable.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (value != null) {
-      _json["value"] = value;
-    }
-    return _json;
-  }
-}
-
-/// A content digest. A digest for a given blob consists of the size of the blob
-/// and its hash. The hash algorithm to use is defined by the server, but
-/// servers
-/// SHOULD use SHA-256.
-///
-/// The size is considered to be an integral part of the digest and cannot be
-/// separated. That is, even if the `hash` field is correctly specified but
-/// `size_bytes` is not, the server MUST reject the request.
-///
-/// The reason for including the size in the digest is as follows: in a great
-/// many cases, the server needs to know the size of the blob it is about to
-/// work
-/// with prior to starting an operation with it, such as flattening Merkle tree
-/// structures or streaming it to a worker. Technically, the server could
-/// implement a separate metadata store, but this results in a significantly
-/// more
-/// complicated implementation as opposed to having the client specify the size
-/// up-front (or storing the size along with the digest in every message where
-/// digests are embedded). This does mean that the API leaks some implementation
-/// details of (what we consider to be) a reasonable server implementation, but
-/// we consider this to be a worthwhile tradeoff.
-///
-/// When a `Digest` is used to refer to a proto message, it always refers to the
-/// message in binary encoded form. To ensure consistent hashing, clients and
-/// servers MUST ensure that they serialize messages according to the following
-/// rules, even if there are alternate valid encodings for the same message.
-/// - Fields are serialized in tag order.
-/// - There are no unknown fields.
-/// - There are no duplicate fields.
-/// - Fields are serialized according to the default semantics for their type.
-///
-/// Most protocol buffer implementations will always follow these rules when
-/// serializing, but care should be taken to avoid shortcuts. For instance,
-/// concatenating two messages to merge them may produce duplicate fields.
-class GoogleDevtoolsRemoteexecutionV1testDigest {
-  /// The hash. In the case of SHA-256, it will always be a lowercase hex string
-  /// exactly 64 characters long.
-  core.String hash;
-
-  /// The size of the blob, in bytes.
-  core.String sizeBytes;
-
-  GoogleDevtoolsRemoteexecutionV1testDigest();
-
-  GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(core.Map _json) {
-    if (_json.containsKey("hash")) {
-      hash = _json["hash"];
-    }
-    if (_json.containsKey("sizeBytes")) {
-      sizeBytes = _json["sizeBytes"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (hash != null) {
-      _json["hash"] = hash;
-    }
-    if (sizeBytes != null) {
-      _json["sizeBytes"] = sizeBytes;
-    }
-    return _json;
-  }
-}
-
-/// A `Directory` represents a directory node in a file tree, containing zero or
-/// more children FileNodes
-/// and DirectoryNodes.
-/// Each `Node` contains its name in the directory, the digest of its content
-/// (either a file blob or a `Directory` proto), as well as possibly some
-/// metadata about the file or directory.
-///
-/// In order to ensure that two equivalent directory trees hash to the same
-/// value, the following restrictions MUST be obeyed when constructing a
-/// a `Directory`:
-///   - Every child in the directory must have a path of exactly one segment.
-///     Multiple levels of directory hierarchy may not be collapsed.
-/// - Each child in the directory must have a unique path segment (file name).
-///   - The files and directories in the directory must each be sorted in
-///     lexicographical order by path. The path strings must be sorted by code
-///     point, equivalently, by UTF-8 bytes.
-///
-/// A `Directory` that obeys the restrictions is said to be in canonical form.
-///
-/// As an example, the following could be used for a file named `bar` and a
-/// directory named `foo` with an executable file named `baz` (hashes shortened
-/// for readability):
-///
-/// ```json
-/// // (Directory proto)
-/// {
-///   files: [
-///     {
-///       name: "bar",
-///       digest: {
-///         hash: "4a73bc9d03...",
-///         size: 65534
-///       }
-///     }
-///   ],
-///   directories: [
-///     {
-///       name: "foo",
-///       digest: {
-///         hash: "4cf2eda940...",
-///         size: 43
-///       }
-///     }
-///   ]
-/// }
-///
-/// // (Directory proto with hash "4cf2eda940..." and size 43)
-/// {
-///   files: [
-///     {
-///       name: "baz",
-///       digest: {
-///         hash: "b2c941073e...",
-///         size: 1294,
-///       },
-///       is_executable: true
-///     }
-///   ]
-/// }
-/// ```
-class GoogleDevtoolsRemoteexecutionV1testDirectory {
-  /// The subdirectories in the directory.
-  core.List<GoogleDevtoolsRemoteexecutionV1testDirectoryNode> directories;
-
-  /// The files in the directory.
-  core.List<GoogleDevtoolsRemoteexecutionV1testFileNode> files;
-
-  GoogleDevtoolsRemoteexecutionV1testDirectory();
-
-  GoogleDevtoolsRemoteexecutionV1testDirectory.fromJson(core.Map _json) {
-    if (_json.containsKey("directories")) {
-      directories = (_json["directories"] as core.List)
-          .map<GoogleDevtoolsRemoteexecutionV1testDirectoryNode>((value) =>
-              new GoogleDevtoolsRemoteexecutionV1testDirectoryNode.fromJson(
-                  value))
-          .toList();
-    }
-    if (_json.containsKey("files")) {
-      files = (_json["files"] as core.List)
-          .map<GoogleDevtoolsRemoteexecutionV1testFileNode>((value) =>
-              new GoogleDevtoolsRemoteexecutionV1testFileNode.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (directories != null) {
-      _json["directories"] =
-          directories.map((value) => (value).toJson()).toList();
-    }
-    if (files != null) {
-      _json["files"] = files.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A `DirectoryNode` represents a child of a
-/// Directory which is itself
-/// a `Directory` and its associated metadata.
-class GoogleDevtoolsRemoteexecutionV1testDirectoryNode {
-  /// The digest of the
-  /// Directory object
-  /// represented. See Digest
-  /// for information about how to take the digest of a proto message.
-  GoogleDevtoolsRemoteexecutionV1testDigest digest;
-
-  /// The name of the directory.
-  core.String name;
-
-  GoogleDevtoolsRemoteexecutionV1testDirectoryNode();
-
-  GoogleDevtoolsRemoteexecutionV1testDirectoryNode.fromJson(core.Map _json) {
-    if (_json.containsKey("digest")) {
-      digest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["digest"]);
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (digest != null) {
-      _json["digest"] = (digest).toJson();
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
-/// Metadata about an ongoing
-/// execution, which
-/// will be contained in the metadata
-/// field of the
-/// Operation.
-class GoogleDevtoolsRemoteexecutionV1testExecuteOperationMetadata {
-  /// The digest of the Action
-  /// being executed.
-  GoogleDevtoolsRemoteexecutionV1testDigest actionDigest;
-
-  ///
-  /// Possible string values are:
-  /// - "UNKNOWN"
-  /// - "CACHE_CHECK" : Checking the result against the cache.
-  /// - "QUEUED" : Currently idle, awaiting a free machine to execute.
-  /// - "EXECUTING" : Currently being executed by a worker.
-  /// - "COMPLETED" : Finished execution.
-  core.String stage;
-
-  /// If set, the client can use this name with
-  /// ByteStream.Read to stream the
-  /// standard error.
-  core.String stderrStreamName;
-
-  /// If set, the client can use this name with
-  /// ByteStream.Read to stream the
-  /// standard output.
-  core.String stdoutStreamName;
-
-  GoogleDevtoolsRemoteexecutionV1testExecuteOperationMetadata();
-
-  GoogleDevtoolsRemoteexecutionV1testExecuteOperationMetadata.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("actionDigest")) {
-      actionDigest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["actionDigest"]);
-    }
-    if (_json.containsKey("stage")) {
-      stage = _json["stage"];
-    }
-    if (_json.containsKey("stderrStreamName")) {
-      stderrStreamName = _json["stderrStreamName"];
-    }
-    if (_json.containsKey("stdoutStreamName")) {
-      stdoutStreamName = _json["stdoutStreamName"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (actionDigest != null) {
-      _json["actionDigest"] = (actionDigest).toJson();
-    }
-    if (stage != null) {
-      _json["stage"] = stage;
-    }
-    if (stderrStreamName != null) {
-      _json["stderrStreamName"] = stderrStreamName;
-    }
-    if (stdoutStreamName != null) {
-      _json["stdoutStreamName"] = stdoutStreamName;
-    }
-    return _json;
-  }
-}
-
-/// The response message for
-/// Execution.Execute,
-/// which will be contained in the response
-/// field of the
-/// Operation.
-class GoogleDevtoolsRemoteexecutionV1testExecuteResponse {
-  /// True if the result was served from cache, false if it was executed.
-  core.bool cachedResult;
-
-  /// The result of the action.
-  GoogleDevtoolsRemoteexecutionV1testActionResult result;
-
-  /// An optional list of additional log outputs the server wishes to provide. A
-  /// server can use this to return execution-specific logs however it wishes.
-  /// This is intended primarily to make it easier for users to debug issues
-  /// that
-  /// may be outside of the actual job execution, such as by identifying the
-  /// worker executing the action or by providing logs from the worker's setup
-  /// phase. The keys SHOULD be human readable so that a client can display them
-  /// to a user.
-  core.Map<core.String, GoogleDevtoolsRemoteexecutionV1testLogFile> serverLogs;
-
-  /// If the status has a code other than `OK`, it indicates that the action did
-  /// not finish execution. For example, if the operation times out during
-  /// execution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST
-  /// use this field for errors in execution, rather than the error field on the
-  /// `Operation` object.
-  ///
-  /// If the status code is other than `OK`, then the result MUST NOT be cached.
-  /// For an error status, the `result` field is optional; the server may
-  /// populate the output-, stdout-, and stderr-related fields if it has any
-  /// information available, such as the stdout and stderr of a timed-out
-  /// action.
-  GoogleRpcStatus status;
-
-  GoogleDevtoolsRemoteexecutionV1testExecuteResponse();
-
-  GoogleDevtoolsRemoteexecutionV1testExecuteResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("cachedResult")) {
-      cachedResult = _json["cachedResult"];
-    }
-    if (_json.containsKey("result")) {
-      result = new GoogleDevtoolsRemoteexecutionV1testActionResult.fromJson(
-          _json["result"]);
-    }
-    if (_json.containsKey("serverLogs")) {
-      serverLogs = commons.mapMap<core.Map,
-              GoogleDevtoolsRemoteexecutionV1testLogFile>(
-          _json["serverLogs"].cast<core.String, core.Map>(),
-          (core.Map item) =>
-              new GoogleDevtoolsRemoteexecutionV1testLogFile.fromJson(item));
-    }
-    if (_json.containsKey("status")) {
-      status = new GoogleRpcStatus.fromJson(_json["status"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (cachedResult != null) {
-      _json["cachedResult"] = cachedResult;
-    }
-    if (result != null) {
-      _json["result"] = (result).toJson();
-    }
-    if (serverLogs != null) {
-      _json["serverLogs"] = commons.mapMap<
-              GoogleDevtoolsRemoteexecutionV1testLogFile,
-              core.Map<core.String, core.Object>>(serverLogs,
-          (GoogleDevtoolsRemoteexecutionV1testLogFile item) => (item).toJson());
-    }
-    if (status != null) {
-      _json["status"] = (status).toJson();
-    }
-    return _json;
-  }
-}
-
-/// A `FileNode` represents a single file and associated metadata.
-class GoogleDevtoolsRemoteexecutionV1testFileNode {
-  /// The digest of the file's content.
-  GoogleDevtoolsRemoteexecutionV1testDigest digest;
-
-  /// True if file is executable, false otherwise.
-  core.bool isExecutable;
-
-  /// The name of the file.
-  core.String name;
-
-  GoogleDevtoolsRemoteexecutionV1testFileNode();
-
-  GoogleDevtoolsRemoteexecutionV1testFileNode.fromJson(core.Map _json) {
-    if (_json.containsKey("digest")) {
-      digest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["digest"]);
-    }
-    if (_json.containsKey("isExecutable")) {
-      isExecutable = _json["isExecutable"];
-    }
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (digest != null) {
-      _json["digest"] = (digest).toJson();
-    }
-    if (isExecutable != null) {
-      _json["isExecutable"] = isExecutable;
-    }
-    if (name != null) {
-      _json["name"] = name;
-    }
-    return _json;
-  }
-}
-
-/// A `LogFile` is a log stored in the CAS.
-class GoogleDevtoolsRemoteexecutionV1testLogFile {
-  /// The digest of the log contents.
-  GoogleDevtoolsRemoteexecutionV1testDigest digest;
-
-  /// This is a hint as to the purpose of the log, and is set to true if the log
-  /// is human-readable text that can be usefully displayed to a user, and false
-  /// otherwise. For instance, if a command-line client wishes to print the
-  /// server logs to the terminal for a failed action, this allows it to avoid
-  /// displaying a binary file.
-  core.bool humanReadable;
-
-  GoogleDevtoolsRemoteexecutionV1testLogFile();
-
-  GoogleDevtoolsRemoteexecutionV1testLogFile.fromJson(core.Map _json) {
-    if (_json.containsKey("digest")) {
-      digest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["digest"]);
-    }
-    if (_json.containsKey("humanReadable")) {
-      humanReadable = _json["humanReadable"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (digest != null) {
-      _json["digest"] = (digest).toJson();
-    }
-    if (humanReadable != null) {
-      _json["humanReadable"] = humanReadable;
-    }
-    return _json;
-  }
-}
-
-/// An `OutputDirectory` is the output in an `ActionResult` corresponding to a
-/// directory's full contents rather than a single file.
-class GoogleDevtoolsRemoteexecutionV1testOutputDirectory {
-  /// DEPRECATED: This field is deprecated and should no longer be used.
-  GoogleDevtoolsRemoteexecutionV1testDigest digest;
-
-  /// The full path of the directory relative to the working directory. The path
-  /// separator is a forward slash `/`. Since this is a relative path, it MUST
-  /// NOT begin with a leading forward slash. The empty string value is allowed,
-  /// and it denotes the entire working directory.
-  core.String path;
-
-  /// The digest of the encoded
-  /// Tree proto containing the
-  /// directory's contents.
-  GoogleDevtoolsRemoteexecutionV1testDigest treeDigest;
-
-  GoogleDevtoolsRemoteexecutionV1testOutputDirectory();
-
-  GoogleDevtoolsRemoteexecutionV1testOutputDirectory.fromJson(core.Map _json) {
-    if (_json.containsKey("digest")) {
-      digest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["digest"]);
-    }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
-    }
-    if (_json.containsKey("treeDigest")) {
-      treeDigest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["treeDigest"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (digest != null) {
-      _json["digest"] = (digest).toJson();
-    }
-    if (path != null) {
-      _json["path"] = path;
-    }
-    if (treeDigest != null) {
-      _json["treeDigest"] = (treeDigest).toJson();
-    }
-    return _json;
-  }
-}
-
-/// An `OutputFile` is similar to a
-/// FileNode, but it is
-/// tailored for output as part of an `ActionResult`. It allows a full file path
-/// rather than only a name, and allows the server to include content inline.
-///
-/// `OutputFile` is binary-compatible with `FileNode`.
-class GoogleDevtoolsRemoteexecutionV1testOutputFile {
-  /// The raw content of the file.
-  ///
-  /// This field may be used by the server to provide the content of a file
-  /// inline in an
-  /// ActionResult and
-  /// avoid requiring that the client make a separate call to
-  /// [ContentAddressableStorage.GetBlob] to retrieve it.
-  ///
-  /// The client SHOULD NOT assume that it will get raw content with any
-  /// request,
-  /// and always be prepared to retrieve it via `digest`.
-  core.String content;
-  core.List<core.int> get contentAsBytes {
-    return convert.base64.decode(content);
-  }
-
-  set contentAsBytes(core.List<core.int> _bytes) {
-    content =
-        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
-  }
-
-  /// The digest of the file's content.
-  GoogleDevtoolsRemoteexecutionV1testDigest digest;
-
-  /// True if file is executable, false otherwise.
-  core.bool isExecutable;
-
-  /// The full path of the file relative to the input root, including the
-  /// filename. The path separator is a forward slash `/`. Since this is a
-  /// relative path, it MUST NOT begin with a leading forward slash.
-  core.String path;
-
-  GoogleDevtoolsRemoteexecutionV1testOutputFile();
-
-  GoogleDevtoolsRemoteexecutionV1testOutputFile.fromJson(core.Map _json) {
-    if (_json.containsKey("content")) {
-      content = _json["content"];
-    }
-    if (_json.containsKey("digest")) {
-      digest = new GoogleDevtoolsRemoteexecutionV1testDigest.fromJson(
-          _json["digest"]);
-    }
-    if (_json.containsKey("isExecutable")) {
-      isExecutable = _json["isExecutable"];
-    }
-    if (_json.containsKey("path")) {
-      path = _json["path"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (content != null) {
-      _json["content"] = content;
-    }
-    if (digest != null) {
-      _json["digest"] = (digest).toJson();
-    }
-    if (isExecutable != null) {
-      _json["isExecutable"] = isExecutable;
-    }
-    if (path != null) {
-      _json["path"] = path;
-    }
-    return _json;
-  }
-}
-
-/// An optional Metadata to attach to any RPC request to tell the server about
-/// an
-/// external context of the request. The server may use this for logging or
-/// other
-/// purposes. To use it, the client attaches the header to the call using the
-/// canonical proto serialization:
-/// name: google.devtools.remoteexecution.v1test.requestmetadata-bin
-/// contents: the base64 encoded binary RequestMetadata message.
-class GoogleDevtoolsRemoteexecutionV1testRequestMetadata {
-  /// An identifier that ties multiple requests to the same action.
-  /// For example, multiple requests to the CAS, Action Cache, and Execution
-  /// API are used in order to compile foo.cc.
-  core.String actionId;
-
-  /// An identifier to tie multiple tool invocations together. For example,
-  /// runs of foo_test, bar_test and baz_test on a post-submit of a given patch.
-  core.String correlatedInvocationsId;
-
-  /// The details for the tool invoking the requests.
-  GoogleDevtoolsRemoteexecutionV1testToolDetails toolDetails;
-
-  /// An identifier that ties multiple actions together to a final result.
-  /// For example, multiple actions are required to build and run foo_test.
-  core.String toolInvocationId;
-
-  GoogleDevtoolsRemoteexecutionV1testRequestMetadata();
-
-  GoogleDevtoolsRemoteexecutionV1testRequestMetadata.fromJson(core.Map _json) {
-    if (_json.containsKey("actionId")) {
-      actionId = _json["actionId"];
-    }
-    if (_json.containsKey("correlatedInvocationsId")) {
-      correlatedInvocationsId = _json["correlatedInvocationsId"];
-    }
-    if (_json.containsKey("toolDetails")) {
-      toolDetails = new GoogleDevtoolsRemoteexecutionV1testToolDetails.fromJson(
-          _json["toolDetails"]);
-    }
-    if (_json.containsKey("toolInvocationId")) {
-      toolInvocationId = _json["toolInvocationId"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (actionId != null) {
-      _json["actionId"] = actionId;
-    }
-    if (correlatedInvocationsId != null) {
-      _json["correlatedInvocationsId"] = correlatedInvocationsId;
-    }
-    if (toolDetails != null) {
-      _json["toolDetails"] = (toolDetails).toJson();
-    }
-    if (toolInvocationId != null) {
-      _json["toolInvocationId"] = toolInvocationId;
-    }
-    return _json;
-  }
-}
-
-/// Details for the tool used to call the API.
-class GoogleDevtoolsRemoteexecutionV1testToolDetails {
-  /// Name of the tool, e.g. bazel.
-  core.String toolName;
-
-  /// Version of the tool used for the request, e.g. 5.0.3.
-  core.String toolVersion;
-
-  GoogleDevtoolsRemoteexecutionV1testToolDetails();
-
-  GoogleDevtoolsRemoteexecutionV1testToolDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("toolName")) {
-      toolName = _json["toolName"];
-    }
-    if (_json.containsKey("toolVersion")) {
-      toolVersion = _json["toolVersion"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (toolName != null) {
-      _json["toolName"] = toolName;
-    }
-    if (toolVersion != null) {
-      _json["toolVersion"] = toolVersion;
-    }
-    return _json;
-  }
-}
-
-/// A `Tree` contains all the
-/// Directory protos in a
-/// single directory Merkle tree, compressed into one message.
-class GoogleDevtoolsRemoteexecutionV1testTree {
-  /// All the child directories: the directories referred to by the root and,
-  /// recursively, all its children. In order to reconstruct the directory tree,
-  /// the client must take the digests of each of the child directories and then
-  /// build up a tree starting from the `root`.
-  core.List<GoogleDevtoolsRemoteexecutionV1testDirectory> children;
-
-  /// The root directory in the tree.
-  GoogleDevtoolsRemoteexecutionV1testDirectory root;
-
-  GoogleDevtoolsRemoteexecutionV1testTree();
-
-  GoogleDevtoolsRemoteexecutionV1testTree.fromJson(core.Map _json) {
-    if (_json.containsKey("children")) {
-      children = (_json["children"] as core.List)
-          .map<GoogleDevtoolsRemoteexecutionV1testDirectory>((value) =>
-              new GoogleDevtoolsRemoteexecutionV1testDirectory.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("root")) {
-      root = new GoogleDevtoolsRemoteexecutionV1testDirectory.fromJson(
-          _json["root"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (children != null) {
-      _json["children"] = children.map((value) => (value).toJson()).toList();
-    }
-    if (root != null) {
-      _json["root"] = (root).toJson();
     }
     return _json;
   }

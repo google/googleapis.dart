@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.firebaserules.v1;
 
@@ -86,7 +86,7 @@ class ProjectsResourceApi {
   ///
   /// For tests against a `Ruleset`, this must be the `Ruleset` resource name:
   /// Format: `projects/{project_id}/rulesets/{ruleset_id}`
-  /// Value must have pattern "^projects/.+$".
+  /// Value must have pattern "^projects/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -215,7 +215,7 @@ class ProjectsReleasesResourceApi {
   /// [name] - Resource name for the `Release` to delete.
   ///
   /// Format: `projects/{project_id}/releases/{release_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.+$".
+  /// Value must have pattern "^projects/[^/]+/releases/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -260,7 +260,7 @@ class ProjectsReleasesResourceApi {
   /// [name] - Resource name of the `Release`.
   ///
   /// Format: `projects/{project_id}/releases/{release_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.+$".
+  /// Value must have pattern "^projects/[^/]+/releases/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -305,7 +305,7 @@ class ProjectsReleasesResourceApi {
   /// [name] - Resource name of the `Release`.
   ///
   /// Format: `projects/{project_id}/releases/{release_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.+$".
+  /// Value must have pattern "^projects/[^/]+/releases/.*$".
   ///
   /// [executableVersion] - The requested runtime executable version.
   /// Defaults to FIREBASE_RULES_EXECUTABLE_V1.
@@ -369,6 +369,14 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Next page token for the next batch of `Release` instances.
+  ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load fewer
+  /// than `page_size` results due to the size of the output. To traverse all of
+  /// the releases, the caller should iterate until the `page_token` on the
+  /// response is empty.
+  ///
   /// [filter] - `Release` filter. The list method supports filters with
   /// restrictions on the
   /// `Release.name`, `Release.ruleset_name`, and `Release.test_suite_name`.
@@ -396,14 +404,6 @@ class ProjectsReleasesResourceApi {
   /// relative to the project. Fully qualified prefixed may also be used. e.g.
   /// `test_suite_name=projects/foo/testsuites/uuid1`
   ///
-  /// [pageToken] - Next page token for the next batch of `Release` instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-  /// Note: `page_size` is just a hint and the service may choose to load fewer
-  /// than `page_size` results due to the size of the output. To traverse all of
-  /// the releases, the caller should iterate until the `page_token` on the
-  /// response is empty.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -415,9 +415,9 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReleasesResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -429,14 +429,14 @@ class ProjectsReleasesResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -466,7 +466,7 @@ class ProjectsReleasesResourceApi {
   /// [name] - Resource name for the project which owns this `Release`.
   ///
   /// Format: `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.+$".
+  /// Value must have pattern "^projects/[^/]+/releases/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -678,6 +678,14 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
+  ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load less
+  /// than `page_size` due to the size of the output. To traverse all of the
+  /// releases, caller should iterate until the `page_token` is empty.
+  ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
   /// restrictions on
   /// `Ruleset.name`.
@@ -686,14 +694,6 @@ class ProjectsRulesetsResourceApi {
   /// parses strings that conform to the RFC 3339 date/time specifications.
   ///
   /// Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*`
-  ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-  /// Note: `page_size` is just a hint and the service may choose to load less
-  /// than `page_size` due to the size of the output. To traverse all of the
-  /// releases, caller should iterate until the `page_token` is empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -706,9 +706,9 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -720,14 +720,14 @@ class ProjectsRulesetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -797,6 +797,53 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Describes where in a file an expression is found and what it was
+/// evaluated to over the course of its use.
+class ExpressionReport {
+  /// Subexpressions
+  core.List<ExpressionReport> children;
+
+  /// Position of expression in original rules source.
+  SourcePosition sourcePosition;
+
+  /// Values that this expression evaluated to when encountered.
+  core.List<ValueCount> values;
+
+  ExpressionReport();
+
+  ExpressionReport.fromJson(core.Map _json) {
+    if (_json.containsKey("children")) {
+      children = (_json["children"] as core.List)
+          .map<ExpressionReport>(
+              (value) => new ExpressionReport.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("sourcePosition")) {
+      sourcePosition = new SourcePosition.fromJson(_json["sourcePosition"]);
+    }
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List)
+          .map<ValueCount>((value) => new ValueCount.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (children != null) {
+      _json["children"] = children.map((value) => (value).toJson()).toList();
+    }
+    if (sourcePosition != null) {
+      _json["sourcePosition"] = (sourcePosition).toJson();
+    }
+    if (values != null) {
+      _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -1153,6 +1200,30 @@ class ListRulesetsResponse {
   }
 }
 
+/// Metadata for a Ruleset.
+class Metadata {
+  /// Services that this ruleset has declarations for (e.g.,
+  /// "cloud.firestore"). There may be 0+ of these.
+  core.List<core.String> services;
+
+  Metadata();
+
+  Metadata.fromJson(core.Map _json) {
+    if (_json.containsKey("services")) {
+      services = (_json["services"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (services != null) {
+      _json["services"] = services;
+    }
+    return _json;
+  }
+}
+
 /// `Release` is a named reference to a `Ruleset`. Once a `Release` refers to a
 /// `Ruleset`, rules-enabled services will be able to enforce the `Ruleset`.
 class Release {
@@ -1274,6 +1345,10 @@ class Ruleset {
   /// Output only.
   core.String createTime;
 
+  /// The metadata for this ruleset.
+  /// Output only.
+  Metadata metadata;
+
   /// Name of the `Ruleset`. The ruleset_id is auto generated by the service.
   /// Format: `projects/{project_id}/rulesets/{ruleset_id}`
   /// Output only.
@@ -1288,6 +1363,9 @@ class Ruleset {
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("metadata")) {
+      metadata = new Metadata.fromJson(_json["metadata"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1301,6 +1379,9 @@ class Ruleset {
         new core.Map<core.String, core.Object>();
     if (createTime != null) {
       _json["createTime"] = createTime;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1343,6 +1424,12 @@ class SourcePosition {
   /// First column on the source line associated with the source fragment.
   core.int column;
 
+  /// Start position relative to the beginning of the file.
+  core.int currentOffset;
+
+  /// End position relative to the beginning of the file.
+  core.int endOffset;
+
   /// Name of the `File`.
   core.String fileName;
 
@@ -1354,6 +1441,12 @@ class SourcePosition {
   SourcePosition.fromJson(core.Map _json) {
     if (_json.containsKey("column")) {
       column = _json["column"];
+    }
+    if (_json.containsKey("currentOffset")) {
+      currentOffset = _json["currentOffset"];
+    }
+    if (_json.containsKey("endOffset")) {
+      endOffset = _json["endOffset"];
     }
     if (_json.containsKey("fileName")) {
       fileName = _json["fileName"];
@@ -1368,6 +1461,12 @@ class SourcePosition {
         new core.Map<core.String, core.Object>();
     if (column != null) {
       _json["column"] = column;
+    }
+    if (currentOffset != null) {
+      _json["currentOffset"] = currentOffset;
+    }
+    if (endOffset != null) {
+      _json["endOffset"] = endOffset;
     }
     if (fileName != null) {
       _json["fileName"] = fileName;
@@ -1396,10 +1495,30 @@ class TestCase {
   /// - "DENY" : Expect a denied result.
   core.String expectation;
 
+  /// Specifies what should be included in the response.
+  /// Possible string values are:
+  /// - "LEVEL_UNSPECIFIED" : No level has been specified. Defaults to "NONE"
+  /// behavior.
+  /// - "NONE" : Do not include any additional information.
+  /// - "FULL" : Include detailed reporting on expressions evaluated.
+  /// - "VISITED" : Only include the expressions that were visited during
+  /// evaluation.
+  core.String expressionReportLevel;
+
   /// Optional function mocks for service-defined functions. If not set, any
   /// service defined function is expected to return an error, which may or may
   /// not influence the test outcome.
   core.List<FunctionMock> functionMocks;
+
+  /// Specifies whether paths (such as request.path) are encoded and how.
+  /// Possible string values are:
+  /// - "ENCODING_UNSPECIFIED" : No encoding has been specified. Defaults to
+  /// "URL_ENCODED" behavior.
+  /// - "URL_ENCODED" : Treats path segments as URL encoded but with non-encoded
+  /// separators
+  /// ("/"). This is the default behavior.
+  /// - "PLAIN" : Treats total path as non-URL encoded e.g. raw.
+  core.String pathEncoding;
 
   /// Request context.
   ///
@@ -1440,10 +1559,16 @@ class TestCase {
     if (_json.containsKey("expectation")) {
       expectation = _json["expectation"];
     }
+    if (_json.containsKey("expressionReportLevel")) {
+      expressionReportLevel = _json["expressionReportLevel"];
+    }
     if (_json.containsKey("functionMocks")) {
       functionMocks = (_json["functionMocks"] as core.List)
           .map<FunctionMock>((value) => new FunctionMock.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("pathEncoding")) {
+      pathEncoding = _json["pathEncoding"];
     }
     if (_json.containsKey("request")) {
       request = _json["request"];
@@ -1459,9 +1584,15 @@ class TestCase {
     if (expectation != null) {
       _json["expectation"] = expectation;
     }
+    if (expressionReportLevel != null) {
+      _json["expressionReportLevel"] = expressionReportLevel;
+    }
     if (functionMocks != null) {
       _json["functionMocks"] =
           functionMocks.map((value) => (value).toJson()).toList();
+    }
+    if (pathEncoding != null) {
+      _json["pathEncoding"] = pathEncoding;
     }
     if (request != null) {
       _json["request"] = request;
@@ -1494,6 +1625,13 @@ class TestResult {
   ///
   /// E.g. `error_position { line: 19 column: 37 }`
   SourcePosition errorPosition;
+
+  /// The mapping from expression in the ruleset AST to the values they were
+  /// evaluated to. Partially-nested to mirror AST structure. Note that this
+  /// field is actually tracking expressions and not permission statements in
+  /// contrast to the "visited_expressions" field above. Literal expressions
+  /// are omitted.
+  core.List<ExpressionReport> expressionReports;
 
   /// The set of function calls made to service-defined methods.
   ///
@@ -1530,6 +1668,12 @@ class TestResult {
     if (_json.containsKey("errorPosition")) {
       errorPosition = new SourcePosition.fromJson(_json["errorPosition"]);
     }
+    if (_json.containsKey("expressionReports")) {
+      expressionReports = (_json["expressionReports"] as core.List)
+          .map<ExpressionReport>(
+              (value) => new ExpressionReport.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("functionCalls")) {
       functionCalls = (_json["functionCalls"] as core.List)
           .map<FunctionCall>((value) => new FunctionCall.fromJson(value))
@@ -1554,6 +1698,10 @@ class TestResult {
     }
     if (errorPosition != null) {
       _json["errorPosition"] = (errorPosition).toJson();
+    }
+    if (expressionReports != null) {
+      _json["expressionReports"] =
+          expressionReports.map((value) => (value).toJson()).toList();
     }
     if (functionCalls != null) {
       _json["functionCalls"] =
@@ -1700,6 +1848,42 @@ class UpdateReleaseRequest {
     }
     if (updateMask != null) {
       _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Tuple for how many times an Expression was evaluated to a particular
+/// ExpressionValue.
+class ValueCount {
+  /// The amount of times that expression returned.
+  core.int count;
+
+  /// The return value of the expression
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object value;
+
+  ValueCount();
+
+  ValueCount.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

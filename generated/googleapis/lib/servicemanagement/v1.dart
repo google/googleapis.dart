@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.servicemanagement.v1;
 
@@ -60,7 +60,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -102,14 +102,6 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Not used.
-  ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The maximum number of operations to return. If unspecified,
-  /// defaults to
-  /// 50. The maximum value is 100.
-  ///
   /// [filter] - A string for filtering Operations.
   ///   The following filter fields are supported&#58;
   ///
@@ -132,6 +124,14 @@ class OperationsResourceApi {
   /// * `serviceName={some-service}.googleapis.com AND (status=done OR
   /// startTime>="2017-02-01")`
   ///
+  /// [name] - Not used.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The maximum number of operations to return. If unspecified,
+  /// defaults to
+  /// 50. The maximum value is 100.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -143,10 +143,10 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String name,
+      {core.String filter,
+      core.String name,
       core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -155,6 +155,9 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (name != null) {
       _queryParams["name"] = [name];
     }
@@ -163,9 +166,6 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -196,7 +196,14 @@ class ServicesResourceApi {
   ServicesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new managed service.
-  /// Please note one producer project can own no more than 20 services.
+  ///
+  /// A managed service is immutable, and is subject to mandatory 30-day
+  /// data retention. You cannot move a service or recreate it within 30 days
+  /// after deletion.
+  ///
+  /// One producer project can own no more than 500 services. For security and
+  /// reliability purposes, a production service should be hosted in a
+  /// dedicated producer project.
   ///
   /// Operation<response: ManagedService>
   ///
@@ -250,7 +257,7 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
@@ -301,8 +308,8 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - Name of the service to disable. Specifying an unknown
-  /// service name
+  /// [serviceName] - Required. Name of the service to disable. Specifying an
+  /// unknown service name
   /// will cause the request to fail.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -359,8 +366,8 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - Name of the service to enable. Specifying an unknown
-  /// service name will
+  /// [serviceName] - Required. Name of the service to enable. Specifying an
+  /// unknown service name will
   /// cause the request to fail.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -467,8 +474,8 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the `ServiceManager`
-  /// overview for naming
+  /// [serviceName] - Required. The name of the service.  See the
+  /// `ServiceManager` overview for naming
   /// requirements.  For example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -512,11 +519,11 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
-  /// [configId] - The id of the service configuration resource.
+  /// [configId] - Required. The id of the service configuration resource.
   ///
   /// This field must be specified for the server to return all fields,
   /// including
@@ -642,6 +649,8 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [producerProjectId] - Include services produced by the specified project.
+  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -656,8 +665,6 @@ class ServicesResourceApi {
   /// size is 50
   /// if not specified. Maximum value is 100.
   ///
-  /// [producerProjectId] - Include services produced by the specified project.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -669,10 +676,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.String consumerId,
+      {core.String producerProjectId,
+      core.String consumerId,
       core.String pageToken,
       core.int pageSize,
-      core.String producerProjectId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -681,6 +688,9 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (producerProjectId != null) {
+      _queryParams["producerProjectId"] = [producerProjectId];
+    }
     if (consumerId != null) {
       _queryParams["consumerId"] = [consumerId];
     }
@@ -689,9 +699,6 @@ class ServicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (producerProjectId != null) {
-      _queryParams["producerProjectId"] = [producerProjectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -710,6 +717,9 @@ class ServicesResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED`
+  /// errors.
   ///
   /// [request] - The metadata request object.
   ///
@@ -765,7 +775,7 @@ class ServicesResourceApi {
 
   /// Returns permissions that a caller has on the specified resource.
   /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
+  /// permissions, not a `NOT_FOUND` error.
   ///
   /// Note: This operation is designed to be used for building permission-aware
   /// UIs and command-line tools, not for authorization checking. This operation
@@ -833,7 +843,7 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service. See the
+  /// [serviceName] - Required. The name of the service. See the
   /// [overview](/service-management/overview)
   /// for naming requirements. For example: `example.googleapis.com`.
   ///
@@ -895,7 +905,7 @@ class ServicesConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
@@ -945,11 +955,11 @@ class ServicesConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
-  /// [configId] - The id of the service configuration resource.
+  /// [configId] - Required. The id of the service configuration resource.
   ///
   /// This field must be specified for the server to return all fields,
   /// including
@@ -1013,7 +1023,7 @@ class ServicesConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
@@ -1088,7 +1098,7 @@ class ServicesConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
@@ -1201,6 +1211,9 @@ class ServicesConsumersResourceApi {
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
   ///
+  /// Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED`
+  /// errors.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -1255,7 +1268,7 @@ class ServicesConsumersResourceApi {
 
   /// Returns permissions that a caller has on the specified resource.
   /// If the resource does not exist, this will return an empty set of
-  /// permissions, not a NOT_FOUND error.
+  /// permissions, not a `NOT_FOUND` error.
   ///
   /// Note: This operation is designed to be used for building permission-aware
   /// UIs and command-line tools, not for authorization checking. This operation
@@ -1340,20 +1353,9 @@ class ServicesRolloutsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
-  ///
-  /// [baseRolloutId] - Unimplemented. Do not use this feature until this
-  /// comment is removed.
-  ///
-  /// The rollout id that rollout to be created based on.
-  ///
-  /// Rollout should be constructed based on current successful rollout, this
-  /// field indicates the current successful rollout id that new rollout based
-  /// on
-  /// to construct, if current successful rollout changed when server receives
-  /// the request, request will be rejected for safety.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1366,7 +1368,7 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<Operation> create(Rollout request, core.String serviceName,
-      {core.String baseRolloutId, core.String $fields}) {
+      {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1379,9 +1381,6 @@ class ServicesRolloutsResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
-    }
-    if (baseRolloutId != null) {
-      _queryParams["baseRolloutId"] = [baseRolloutId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1404,11 +1403,11 @@ class ServicesRolloutsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
-  /// [rolloutId] - The id of the rollout resource.
+  /// [rolloutId] - Required. The id of the rollout resource.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1458,7 +1457,7 @@ class ServicesRolloutsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [serviceName] - The name of the service.  See the
+  /// [serviceName] - Required. The name of the service.  See the
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
@@ -1468,7 +1467,7 @@ class ServicesRolloutsResourceApi {
   /// size is 50
   /// if not specified. Maximum value is 100.
   ///
-  /// [filter] - Use `filter` to return subset of rollouts.
+  /// [filter] - Required. Use `filter` to return subset of rollouts.
   /// The following filters are supported:
   ///   -- To limit the results to only those in
   ///      [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS',
@@ -1691,7 +1690,7 @@ class Api {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -1703,7 +1702,7 @@ class Api {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -1711,7 +1710,7 @@ class Api {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -1719,9 +1718,9 @@ class Api {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -1766,7 +1765,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -1776,7 +1775,7 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -1823,11 +1822,15 @@ class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
   /// that are allowed to access. A JWT containing any of these audiences will
-  /// be accepted. When this setting is absent, only JWTs with audience
-  /// "https://Service_name/API_name"
-  /// will be accepted. For example, if no audiences are in the setting,
-  /// LibraryService API will only accept JWTs with the following audience
-  /// "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
+  /// be accepted. When this setting is absent, JWTs with audiences:
+  ///   - "https://[service.name]/[google.protobuf.Api.name]"
+  ///   - "https://[service.name]/"
+  /// will be accepted.
+  /// For example, if no audiences are in the setting, LibraryService API will
+  /// accept JWTs with the following audiences:
+  ///   -
+  /// https://library-example.googleapis.com/google.example.library.v1.LibraryService
+  ///   - https://library-example.googleapis.com/
   ///
   /// Example:
   ///
@@ -1867,6 +1870,25 @@ class AuthProvider {
   /// Example: https://www.googleapis.com/oauth2/v1/certs
   core.String jwksUri;
 
+  /// Defines the locations to extract the JWT.
+  ///
+  /// JWT locations can be either from HTTP headers or URL query parameters.
+  /// The rule is that the first match wins. The checking order is: checking
+  /// all headers first, then URL query parameters.
+  ///
+  /// If not specified,  default to use following 3 locations:
+  ///    1) Authorization: Bearer
+  ///    2) x-goog-iap-jwt-assertion
+  ///    3) access_token query parameter
+  ///
+  /// Default locations can be specified as followings:
+  ///    jwt_locations:
+  ///    - header: Authorization
+  ///      value_prefix: "Bearer "
+  ///    - header: x-goog-iap-jwt-assertion
+  ///    - query: access_token
+  core.List<JwtLocation> jwtLocations;
+
   AuthProvider();
 
   AuthProvider.fromJson(core.Map _json) {
@@ -1884,6 +1906,11 @@ class AuthProvider {
     }
     if (_json.containsKey("jwksUri")) {
       jwksUri = _json["jwksUri"];
+    }
+    if (_json.containsKey("jwtLocations")) {
+      jwtLocations = (_json["jwtLocations"] as core.List)
+          .map<JwtLocation>((value) => new JwtLocation.fromJson(value))
+          .toList();
     }
   }
 
@@ -1904,6 +1931,10 @@ class AuthProvider {
     }
     if (jwksUri != null) {
       _json["jwksUri"] = jwksUri;
+    }
+    if (jwtLocations != null) {
+      _json["jwtLocations"] =
+          jwtLocations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2107,14 +2138,40 @@ class Backend {
 /// A backend rule provides configuration for an individual API element.
 class BackendRule {
   /// The address of the API backend.
+  ///
+  /// The scheme is used to determine the backend protocol and security.
+  /// The following schemes are accepted:
+  ///
+  ///    SCHEME        PROTOCOL    SECURITY
+  ///    http://       HTTP        None
+  ///    https://      HTTP        TLS
+  ///    grpc://       gRPC        None
+  ///    grpcs://      gRPC        TLS
+  ///
+  /// It is recommended to explicitly include a scheme. Leaving out the scheme
+  /// may cause constrasting behaviors across platforms.
+  ///
+  /// If the port is unspecified, the default is:
+  /// - 80 for schemes without TLS
+  /// - 443 for schemes with TLS
+  ///
+  /// For HTTP backends, use protocol
+  /// to specify the protocol version.
   core.String address;
 
-  /// The number of seconds to wait for a response from a request.  The default
-  /// deadline for gRPC is infinite (no deadline) and HTTP requests is 5
-  /// seconds.
+  /// The number of seconds to wait for a response from a request. The default
+  /// varies based on the request protocol and deployment environment.
   core.double deadline;
 
-  /// The JWT audience is used when generating a JWT id token for the backend.
+  /// When disable_auth is true, a JWT ID token won't be generated and the
+  /// original "Authorization" HTTP header will be preserved. If the header is
+  /// used to carry the original token and is expected by the backend, this
+  /// field must be set to true to preserve the header.
+  core.bool disableAuth;
+
+  /// The JWT audience is used when generating a JWT ID token for the backend.
+  /// This ID token will be added in the HTTP "authorization" header, and sent
+  /// to the backend.
   core.String jwtAudience;
 
   /// Minimum deadline in seconds needed for this method. Calls having deadline
@@ -2174,6 +2231,64 @@ class BackendRule {
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
   core.String pathTranslation;
 
+  /// The protocol used for sending a request to the backend.
+  /// The supported values are "http/1.1" and "h2".
+  ///
+  /// The default value is inferred from the scheme in the
+  /// address field:
+  ///
+  ///    SCHEME        PROTOCOL
+  ///    http://       http/1.1
+  ///    https://      http/1.1
+  ///    grpc://       h2
+  ///    grpcs://      h2
+  ///
+  /// For secure HTTP backends (https://) that support HTTP/2, set this field
+  /// to "h2" for improved performance.
+  ///
+  /// Configuring this field to non-default values is only supported for secure
+  /// HTTP backends. This field will be ignored for all other backends.
+  ///
+  /// See
+  /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
+  /// for more details on the supported values.
+  core.String protocol;
+
+  /// Unimplemented. Do not use.
+  ///
+  /// The new name the selected proto elements should be renamed to.
+  ///
+  /// The package, the service and the method can all be renamed.
+  /// The backend server should implement the renamed proto. However, clients
+  /// should call the original method, and ESF routes the traffic to the renamed
+  /// method.
+  ///
+  /// HTTP clients should call the URL mapped to the original method.
+  /// gRPC and Stubby clients should call the original method with package name.
+  ///
+  /// For legacy reasons, ESF allows Stubby clients to call with the
+  /// short name (without the package name). However, for API Versioning(or
+  /// multiple methods mapped to the same short name), all Stubby clients must
+  /// call the method's full name with the package name, otherwise the first one
+  /// (selector) wins.
+  ///
+  /// If this `rename_to` is specified with a trailing `*`, the `selector` must
+  /// be specified with a trailing `*` as well. The all element short names
+  /// matched by the `*` in the selector will be kept in the `rename_to`.
+  ///
+  /// For example,
+  ///     rename_rules:
+  ///     - selector: |-
+  ///         google.example.library.v1.*
+  ///       rename_to: google.example.library.*
+  ///
+  /// The selector matches `google.example.library.v1.Library.CreateShelf` and
+  /// `google.example.library.v1.Library.CreateBook`, they will be renamed to
+  /// `google.example.library.Library.CreateShelf` and
+  /// `google.example.library.Library.CreateBook`. It essentially renames the
+  /// proto package name section of the matched proto service and methods.
+  core.String renameTo;
+
   /// Selects the methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
@@ -2188,6 +2303,9 @@ class BackendRule {
     if (_json.containsKey("deadline")) {
       deadline = _json["deadline"].toDouble();
     }
+    if (_json.containsKey("disableAuth")) {
+      disableAuth = _json["disableAuth"];
+    }
     if (_json.containsKey("jwtAudience")) {
       jwtAudience = _json["jwtAudience"];
     }
@@ -2199,6 +2317,12 @@ class BackendRule {
     }
     if (_json.containsKey("pathTranslation")) {
       pathTranslation = _json["pathTranslation"];
+    }
+    if (_json.containsKey("protocol")) {
+      protocol = _json["protocol"];
+    }
+    if (_json.containsKey("renameTo")) {
+      renameTo = _json["renameTo"];
     }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
@@ -2214,6 +2338,9 @@ class BackendRule {
     if (deadline != null) {
       _json["deadline"] = deadline;
     }
+    if (disableAuth != null) {
+      _json["disableAuth"] = disableAuth;
+    }
     if (jwtAudience != null) {
       _json["jwtAudience"] = jwtAudience;
     }
@@ -2226,6 +2353,12 @@ class BackendRule {
     if (pathTranslation != null) {
       _json["pathTranslation"] = pathTranslation;
     }
+    if (protocol != null) {
+      _json["protocol"] = protocol;
+    }
+    if (renameTo != null) {
+      _json["renameTo"] = renameTo;
+    }
     if (selector != null) {
       _json["selector"] = selector;
     }
@@ -2236,22 +2369,33 @@ class BackendRule {
 /// Billing related configuration of the service.
 ///
 /// The following example shows how to configure monitored resources and metrics
-/// for billing:
+/// for billing, `consumer_destinations` is the only supported destination and
+/// the monitored resources need at least one label key
+/// `cloud.googleapis.com/location` to indicate the location of the billing
+/// usage, using different monitored resources between monitoring and billing is
+/// recommended so they can be evolved independently:
+///
 ///
 ///     monitored_resources:
-///     - type: library.googleapis.com/branch
+///     - type: library.googleapis.com/billing_branch
 ///       labels:
-///       - key: /city
-///         description: The city where the library branch is located in.
-///       - key: /name
-///         description: The name of the branch.
+///       - key: cloud.googleapis.com/location
+///         description: |
+///           Predefined label to support billing location restriction.
+///       - key: city
+///         description: |
+/// Custom label to define the city where the library branch is located
+///           in.
+///       - key: name
+///         description: Custom label to define the name of the library branch.
 ///     metrics:
 ///     - name: library.googleapis.com/book/borrowed_count
 ///       metric_kind: DELTA
 ///       value_type: INT64
+///       unit: "1"
 ///     billing:
 ///       consumer_destinations:
-///       - monitored_resource: library.googleapis.com/branch
+///       - monitored_resource: library.googleapis.com/billing_branch
 ///         metrics:
 ///         - library.googleapis.com/book/borrowed_count
 class Billing {
@@ -2322,9 +2466,18 @@ class BillingDestination {
 /// Associates `members` with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
-  /// NOTE: An unsatisfied condition will not allow user access via current
-  /// binding. Different bindings, including their conditions, are examined
-  /// independently.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request.
+  ///
+  /// If the condition evaluates to `false`, then this binding does not apply to
+  /// the current request. However, a different role binding might grant the
+  /// same
+  /// role to one or more of the members in this binding.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -2337,7 +2490,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2345,6 +2498,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -2964,7 +3138,8 @@ class Diagnostic {
 
 /// Request message for DisableService method.
 class DisableServiceRequest {
-  /// The identity of consumer resource which service disablement will be
+  /// Required. The identity of consumer resource which service disablement will
+  /// be
   /// applied to.
   ///
   /// The Google Service Management implementation accepts the following
@@ -2989,6 +3164,19 @@ class DisableServiceRequest {
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
     }
+    return _json;
+  }
+}
+
+/// Operation payload for DisableService method.
+class DisableServiceResponse {
+  DisableServiceResponse();
+
+  DisableServiceResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3075,6 +3263,12 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule> rules;
 
+  /// Specifies the service root url if the default one (the service name
+  /// from the yaml file) is not suitable. This can be seen in any fully
+  /// specified service urls as well as sections that show a base that other
+  /// urls are relative to.
+  core.String serviceRootUrl;
+
   /// A short summary of what the service does. Can only be provided by
   /// plain text.
   core.String summary;
@@ -3099,6 +3293,9 @@ class Documentation {
               (value) => new DocumentationRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("serviceRootUrl")) {
+      serviceRootUrl = _json["serviceRootUrl"];
+    }
     if (_json.containsKey("summary")) {
       summary = _json["summary"];
     }
@@ -3118,6 +3315,9 @@ class Documentation {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (serviceRootUrl != null) {
+      _json["serviceRootUrl"] = serviceRootUrl;
     }
     if (summary != null) {
       _json["summary"] = summary;
@@ -3175,7 +3375,8 @@ class DocumentationRule {
 
 /// Request message for EnableService method.
 class EnableServiceRequest {
-  /// The identity of consumer resource which service enablement will be
+  /// Required. The identity of consumer resource which service enablement will
+  /// be
   /// applied to.
   ///
   /// The Google Service Management implementation accepts the following
@@ -3200,6 +3401,19 @@ class EnableServiceRequest {
     if (consumerId != null) {
       _json["consumerId"] = consumerId;
     }
+    return _json;
+  }
+}
+
+/// Operation payload for EnableService method.
+class EnableServiceResponse {
+  EnableServiceResponse();
+
+  EnableServiceResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -3402,28 +3616,52 @@ class EnumValue {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -3632,7 +3870,7 @@ class FlowErrorDetails {
 
 /// Request message for GenerateConfigReport method.
 class GenerateConfigReportRequest {
-  /// Service configuration for which we want to generate the report.
+  /// Required. Service configuration for which we want to generate the report.
   /// For this version of API, the supported types are
   /// google.api.servicemanagement.v1.ConfigRef,
   /// google.api.servicemanagement.v1.ConfigSource,
@@ -3642,7 +3880,7 @@ class GenerateConfigReportRequest {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> newConfig;
 
-  /// Service configuration against which the comparison will be done.
+  /// Optional. Service configuration against which the comparison will be done.
   /// For this version of API, the supported types are
   /// google.api.servicemanagement.v1.ConfigRef,
   /// google.api.servicemanagement.v1.ConfigSource,
@@ -3739,13 +3977,59 @@ class GenerateConfigReportResponse {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
     return _json;
   }
 }
@@ -4074,6 +4358,10 @@ class HttpRule {
   /// the nesting may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
+  /// When this flag is set to true, HTTP requests will be allowed to invoke a
+  /// half-duplex streaming method.
+  core.bool allowHalfDuplex;
+
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
   /// pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -4125,6 +4413,9 @@ class HttpRule {
           .map<HttpRule>((value) => new HttpRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("allowHalfDuplex")) {
+      allowHalfDuplex = _json["allowHalfDuplex"];
+    }
     if (_json.containsKey("body")) {
       body = _json["body"];
     }
@@ -4161,6 +4452,9 @@ class HttpRule {
       _json["additionalBindings"] =
           additionalBindings.map((value) => (value).toJson()).toList();
     }
+    if (allowHalfDuplex != null) {
+      _json["allowHalfDuplex"] = allowHalfDuplex;
+    }
     if (body != null) {
       _json["body"] = body;
     }
@@ -4187,6 +4481,54 @@ class HttpRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/// Specifies a location to extract JWT from an API request.
+class JwtLocation {
+  /// Specifies HTTP header name to extract JWT token.
+  core.String header;
+
+  /// Specifies URL query parameter name to extract JWT token.
+  core.String query;
+
+  /// The value prefix. The value format is "value_prefix{token}"
+  /// Only applies to "in" header type. Must be empty for "in" query type.
+  /// If not empty, the header value has to match (case sensitive) this prefix.
+  /// If not matched, JWT will not be extracted. If matched, JWT will be
+  /// extracted after the prefix is removed.
+  ///
+  /// For example, for "Authorization: Bearer {JWT}",
+  /// value_prefix="Bearer " with a space at the end.
+  core.String valuePrefix;
+
+  JwtLocation();
+
+  JwtLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("header")) {
+      header = _json["header"];
+    }
+    if (_json.containsKey("query")) {
+      query = _json["query"];
+    }
+    if (_json.containsKey("valuePrefix")) {
+      valuePrefix = _json["valuePrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (header != null) {
+      _json["header"] = header;
+    }
+    if (query != null) {
+      _json["query"] = query;
+    }
+    if (valuePrefix != null) {
+      _json["valuePrefix"] = valuePrefix;
     }
     return _json;
   }
@@ -4692,6 +5034,10 @@ class MetricDescriptor {
   /// Optional. The launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use
   /// these features, you must sign up in advance and sign a Trusted Tester
@@ -4742,6 +5088,13 @@ class MetricDescriptor {
   /// points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time
+  /// series, which is identified partially by
+  /// a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -4755,9 +5108,27 @@ class MetricDescriptor {
   ///     "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable
-  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
-  /// supported units are a subset of [The Unified Code for Units of
+  /// The units in which the metric value is reported. It is only applicable
+  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`
+  /// defines the representation of the stored metric values.
+  ///
+  /// Different systems may scale the values to be more easily displayed (so a
+  /// value of `0.02KBy` _might_ be displayed as `20By`, and a value of
+  /// `3523KBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is
+  /// `KBy`, then the value of the metric is always in thousands of bytes, no
+  /// matter how it may be displayed..
+  ///
+  /// If you want a custom metric to record the exact number of CPU-seconds used
+  /// by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is
+  /// `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005
+  /// CPU-seconds, then the value is written as `12005`.
+  ///
+  /// Alternatively, if you want a custom metric to record data in a more
+  /// granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is
+  /// `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`),
+  /// or use `Kis{CPU}` and write `11.723` (which is `12005/1024`).
+  ///
+  /// The supported units are a subset of [The Unified Code for Units of
   /// Measure](http://unitsofmeasure.org/ucum.html) standard:
   ///
   /// **Basic units (UNIT)**
@@ -4771,33 +5142,40 @@ class MetricDescriptor {
   ///
   /// **Prefixes (PREFIX)**
   ///
-  /// * `k`     kilo    (10**3)
-  /// * `M`     mega    (10**6)
-  /// * `G`     giga    (10**9)
-  /// * `T`     tera    (10**12)
-  /// * `P`     peta    (10**15)
-  /// * `E`     exa     (10**18)
-  /// * `Z`     zetta   (10**21)
-  /// * `Y`     yotta   (10**24)
-  /// * `m`     milli   (10**-3)
-  /// * `u`     micro   (10**-6)
-  /// * `n`     nano    (10**-9)
-  /// * `p`     pico    (10**-12)
-  /// * `f`     femto   (10**-15)
-  /// * `a`     atto    (10**-18)
-  /// * `z`     zepto   (10**-21)
-  /// * `y`     yocto   (10**-24)
-  /// * `Ki`    kibi    (2**10)
-  /// * `Mi`    mebi    (2**20)
-  /// * `Gi`    gibi    (2**30)
-  /// * `Ti`    tebi    (2**40)
+  /// * `k`     kilo    (10^3)
+  /// * `M`     mega    (10^6)
+  /// * `G`     giga    (10^9)
+  /// * `T`     tera    (10^12)
+  /// * `P`     peta    (10^15)
+  /// * `E`     exa     (10^18)
+  /// * `Z`     zetta   (10^21)
+  /// * `Y`     yotta   (10^24)
+  ///
+  /// * `m`     milli   (10^-3)
+  /// * `u`     micro   (10^-6)
+  /// * `n`     nano    (10^-9)
+  /// * `p`     pico    (10^-12)
+  /// * `f`     femto   (10^-15)
+  /// * `a`     atto    (10^-18)
+  /// * `z`     zepto   (10^-21)
+  /// * `y`     yocto   (10^-24)
+  ///
+  /// * `Ki`    kibi    (2^10)
+  /// * `Mi`    mebi    (2^20)
+  /// * `Gi`    gibi    (2^30)
+  /// * `Ti`    tebi    (2^40)
+  /// * `Pi`    pebi    (2^50)
   ///
   /// **Grammar**
   ///
   /// The grammar also includes these connectors:
   ///
-  /// * `/`    division (as an infix operator, e.g. `1/s`).
-  /// * `.`    multiplication (as an infix operator, e.g. `GBy.d`)
+  /// * `/`    division or ratio (as an infix operator). For examples,
+  ///          `kBy/{email}` or `MiBy/10ms` (although you should almost never
+  ///          have `/s` in a metric `unit`; rates should always be computed at
+  ///          query time from the underlying cumulative or delta value).
+  /// * `.`    multiplication or composition (as an infix operator). For
+  ///          examples, `GBy.d` or `k{watt}.h`.
   ///
   /// The grammar for a unit is as follows:
   ///
@@ -4812,14 +5190,25 @@ class MetricDescriptor {
   ///
   /// Notes:
   ///
-  /// * `Annotation` is just a comment if it follows a `UNIT` and is
-  ///    equivalent to `1` if it is used alone. For examples,
-  ///    `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.
+  /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation
+  ///    is used alone, then the unit is equivalent to `1`. For examples,
+  ///    `{request}/s == 1/s`, `By{transmitted}/s == By/s`.
   /// * `NAME` is a sequence of non-blank printable ASCII characters not
-  ///    containing '{' or '}'.
-  /// * `1` represents dimensionless value 1, such as in `1/s`.
-  /// * `%` represents dimensionless value 1/100, and annotates values giving
-  ///    a percentage.
+  ///    containing `{` or `}`.
+  /// * `1` represents a unitary [dimensionless
+  ///    unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such
+  ///    as in `1/s`. It is typically used when none of the basic units are
+  ///    appropriate. For example, "new users per day" can be represented as
+  ///    `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new
+  ///    users). Alternatively, "thousands of page views per day" would be
+  ///    represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric
+  ///    value of `5.3` would mean "5300 page views per day").
+  /// * `%` represents dimensionless value of 1/100, and annotates values giving
+  /// a percentage (so the metric values are typically in the range of 0..100,
+  ///    and a metric value `3` means "3 percent").
+  /// * `10^2.%` indicates a metric contains a ratio, typically in the range
+  ///    0..1, that will be multiplied by 100 and displayed as a percentage
+  ///    (so a metric value `0.03` means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
@@ -4860,6 +5249,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -4895,6 +5288,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -4918,10 +5314,13 @@ class MetricDescriptorMetadata {
   /// data loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead.
-  /// The launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use
   /// these features, you must sign up in advance and sign a Trusted Tester
@@ -5171,6 +5570,10 @@ class MonitoredResourceDescriptor {
   /// Optional. The launch stage of the monitored resource definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use
   /// these features, you must sign up in advance and sign a Trusted Tester
@@ -5671,59 +6074,82 @@ class Page {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// For some types of Google Cloud resources, a `binding` can also specify a
+/// `condition`, which is a logical expression that allows access to a resource
+/// only if the expression evaluates to `true`. A condition can add constraints
+/// based on attributes of the request, the resource, or both. To learn which
+/// resources support conditions in their IAM policies, see the
+/// [IAM
+/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": [
+///             "user:eve@example.com"
+///           ],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -5735,8 +6161,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -5747,7 +6177,33 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
+  ///
+  /// To learn which resources support conditions in their IAM policies, see the
+  /// [IAM
+  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -5905,10 +6361,7 @@ class QuotaLimit {
   /// display name generated from the configuration.
   core.String displayName;
 
-  /// Duration of this limit in textual notation. Example: "100s", "24h", "1d".
-  /// For duration longer than a day, only multiple of days is supported. We
-  /// support only "100s" and "1d" for now. Additional support will be added in
-  /// the future. "0" indicates indefinite duration.
+  /// Duration of this limit in textual notation. Must be "100s" or "1d".
   ///
   /// Used by group-based quotas only.
   core.String duration;
@@ -6044,16 +6497,17 @@ class Rollout {
   /// Creation time of the rollout. Readonly.
   core.String createTime;
 
-  /// The user who created the Rollout. Readonly.
+  /// This field is deprecated and will be deleted. Please remove usage of
+  /// this field.
   core.String createdBy;
 
   /// The strategy associated with a rollout to delete a `ManagedService`.
   /// Readonly.
   DeleteServiceStrategy deleteServiceStrategy;
 
-  /// Optional unique identifier of this Rollout. Only lower case letters,
-  /// digits
-  ///  and '-' are allowed.
+  /// Optional. Unique identifier of this Rollout. Must be no longer than 63
+  /// characters
+  /// and only lower case letters, digits, '.', '_' and '-' are allowed.
   ///
   /// If not specified by client, the server will generate one. The generated id
   /// will have the form of <date><revision number>, where "date" is the create
@@ -6188,6 +6642,7 @@ class Service {
   /// The semantic version of the service configuration. The config version
   /// affects the interpretation of the service configuration. For example,
   /// certain features are enabled by default for certain config versions.
+  ///
   /// The latest config version is `3`.
   core.int configVersion;
 
@@ -6222,8 +6677,9 @@ class Service {
   Http http;
 
   /// A unique ID for a specific instance of this message, typically assigned
-  /// by the client for tracking purpose. If empty, the server may choose to
-  /// generate one instead. Must be no longer than 60 characters.
+  /// by the client for tracking purpose. Must be no longer than 63 characters
+  /// and only lower case letters, digits, '.', '_' and '-' are allowed. If
+  /// empty, the server may choose to generate one instead.
   core.String id;
 
   /// Logging configuration.
@@ -6478,6 +6934,62 @@ class Service {
   }
 }
 
+/// The per-product per-project service identity for a service.
+///
+///
+/// Use this field to configure per-product per-project service identity.
+/// Example of a service identity configuration.
+///
+///     usage:
+///       service_identity:
+///       - service_account_parent: "projects/123456789"
+///         display_name: "Cloud XXX Service Agent"
+/// description: "Used as the identity of Cloud XXX to access resources"
+class ServiceIdentity {
+  /// Optional. A user-specified opaque description of the service account.
+  /// Must be less than or equal to 256 UTF-8 bytes.
+  core.String description;
+
+  /// Optional. A user-specified name for the service account.
+  /// Must be less than or equal to 100 UTF-8 bytes.
+  core.String displayName;
+
+  /// A service account project that hosts the service accounts.
+  ///
+  /// An example name would be:
+  /// `projects/123456789`
+  core.String serviceAccountParent;
+
+  ServiceIdentity();
+
+  ServiceIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("serviceAccountParent")) {
+      serviceAccountParent = _json["serviceAccountParent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (serviceAccountParent != null) {
+      _json["serviceAccountParent"] = serviceAccountParent;
+    }
+    return _json;
+  }
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -6490,8 +7002,8 @@ class SetIamPolicyRequest {
   /// Only
   /// the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
+  ///
+  /// `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -6671,7 +7183,7 @@ class Step {
 
 /// Request message for SubmitConfigSource method.
 class SubmitConfigSourceRequest {
-  /// The source configuration for the service.
+  /// Required. The source configuration for the service.
   ConfigSource configSource;
 
   /// Optional. If set, this will result in the generation of a
@@ -6927,7 +7439,7 @@ class TestIamPermissionsResponse {
 
 /// Strategy that specifies how clients of Google Service Controller want to
 /// send traffic to use different config versions. This is generally
-/// used by API proxy to split traffic based on your configured precentage for
+/// used by API proxy to split traffic based on your configured percentage for
 /// each config version.
 ///
 /// One example of how to gradually rollout a new service configuration using
@@ -7101,6 +7613,9 @@ class Usage {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<UsageRule> rules;
 
+  /// The configuration of a per-product per-project service identity.
+  ServiceIdentity serviceIdentity;
+
   Usage();
 
   Usage.fromJson(core.Map _json) {
@@ -7115,6 +7630,9 @@ class Usage {
           .map<UsageRule>((value) => new UsageRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("serviceIdentity")) {
+      serviceIdentity = new ServiceIdentity.fromJson(_json["serviceIdentity"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7128,6 +7646,9 @@ class Usage {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (serviceIdentity != null) {
+      _json["serviceIdentity"] = (serviceIdentity).toJson();
     }
     return _json;
   }

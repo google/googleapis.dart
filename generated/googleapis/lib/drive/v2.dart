@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.drive.v2;
 
@@ -76,7 +76,6 @@ class DriveApi {
   PermissionsResourceApi get permissions =>
       new PermissionsResourceApi(_requester);
   PropertiesResourceApi get properties => new PropertiesResourceApi(_requester);
-  RealtimeResourceApi get realtime => new RealtimeResourceApi(_requester);
   RepliesResourceApi get replies => new RepliesResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
   TeamdrivesResourceApi get teamdrives => new TeamdrivesResourceApi(_requester);
@@ -280,7 +279,7 @@ class ChangesResourceApi {
   ///
   /// [changeId] - The ID of the change.
   ///
-  /// [driveId] - The shared drive from which the change will be returned.
+  /// [driveId] - The shared drive from which the change is returned.
   ///
   /// [supportsAllDrives] - Deprecated - Whether the requesting application
   /// supports both My Drives and shared drives. This parameter will only be
@@ -349,7 +348,7 @@ class ChangesResourceApi {
   /// Request parameters:
   ///
   /// [driveId] - The ID of the shared drive for which the starting pageToken
-  /// for listing future changes from that shared drive will be returned.
+  /// for listing future changes from that shared drive is returned.
   ///
   /// [supportsAllDrives] - Deprecated - Whether the requesting application
   /// supports both My Drives and shared drives. This parameter will only be
@@ -414,9 +413,9 @@ class ChangesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [driveId] - The shared drive from which changes will be returned. If
-  /// specified the change IDs will be reflective of the shared drive; use the
-  /// combined drive ID and change ID as an identifier.
+  /// [driveId] - The shared drive from which changes are returned. If specified
+  /// the change IDs will be reflective of the shared drive; use the combined
+  /// drive ID and change ID as an identifier.
   ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
@@ -429,13 +428,13 @@ class ChangesResourceApi {
   ///
   /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
   /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// be effective until June 1, 2020. Afterwards shared drive items are
   /// included in the results.
   ///
   /// [includeSubscribed] - Whether to include changes outside the My Drive
   /// hierarchy in the result. When set to false, changes to files such as those
   /// in the Application Data folder or shared files which have not been added
-  /// to My Drive will be omitted from the result.
+  /// to My Drive are omitted from the result.
   ///
   /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
   /// instead.
@@ -554,9 +553,9 @@ class ChangesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [driveId] - The shared drive from which changes will be returned. If
-  /// specified the change IDs will be reflective of the shared drive; use the
-  /// combined drive ID and change ID as an identifier.
+  /// [driveId] - The shared drive from which changes are returned. If specified
+  /// the change IDs will be reflective of the shared drive; use the combined
+  /// drive ID and change ID as an identifier.
   ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
@@ -569,13 +568,13 @@ class ChangesResourceApi {
   ///
   /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
   /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// be effective until June 1, 2020. Afterwards shared drive items are
   /// included in the results.
   ///
   /// [includeSubscribed] - Whether to include changes outside the My Drive
   /// hierarchy in the result. When set to false, changes to files such as those
   /// in the Application Data folder or shared files which have not been added
-  /// to My Drive will be omitted from the result.
+  /// to My Drive are omitted from the result.
   ///
   /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
   /// instead.
@@ -753,6 +752,11 @@ class ChildrenResourceApi {
   ///
   /// [childId] - The ID of the child.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the item's last parent is
+  /// removed, the item is placed under its owner's root.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -762,7 +766,7 @@ class ChildrenResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String folderId, core.String childId,
-      {core.String $fields}) {
+      {core.bool enforceSingleParent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -775,6 +779,9 @@ class ChildrenResourceApi {
     }
     if (childId == null) {
       throw new core.ArgumentError("Parameter childId is required.");
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -855,6 +862,14 @@ class ChildrenResourceApi {
   ///
   /// [folderId] - The ID of the folder.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the child's owner makes the
+  /// request, the child is removed from all current folders and placed in the
+  /// requested folder. Any other requests that increase the number of the
+  /// child's parents fail, except when the canAddMyDriveParent file capability
+  /// is true and a single parent is being added.
+  ///
   /// [supportsAllDrives] - Deprecated - Whether the requesting application
   /// supports both My Drives and shared drives. This parameter will only be
   /// effective until June 1, 2020. Afterwards all applications are assumed to
@@ -874,7 +889,8 @@ class ChildrenResourceApi {
   /// this method will complete with the same error.
   async.Future<ChildReference> insert(
       ChildReference request, core.String folderId,
-      {core.bool supportsAllDrives,
+      {core.bool enforceSingleParent,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields}) {
     var _url;
@@ -889,6 +905,9 @@ class ChildrenResourceApi {
     }
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (supportsAllDrives != null) {
       _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
@@ -1220,7 +1239,7 @@ class CommentsResourceApi {
     return _response.then((data) => new CommentList.fromJson(data));
   }
 
-  /// Updates an existing comment. This method supports patch semantics.
+  /// Updates an existing comment.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1707,6 +1726,11 @@ class FilesResourceApi {
   /// [convert] - Whether to convert this file to the corresponding Google Docs
   /// format.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. Requests that specify more than one
+  /// parent fail.
+  ///
   /// [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
   ///
   /// [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
@@ -1745,6 +1769,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future<File> copy(File request, core.String fileId,
       {core.bool convert,
+      core.bool enforceSingleParent,
       core.bool ocr,
       core.String ocrLanguage,
       core.bool pinned,
@@ -1769,6 +1794,9 @@ class FilesResourceApi {
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (ocr != null) {
       _queryParams["ocr"] = ["${ocr}"];
@@ -2133,6 +2161,11 @@ class FilesResourceApi {
   /// [convert] - Whether to convert this file to the corresponding Google Docs
   /// format.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. Requests that specify more than one
+  /// parent fail.
+  ///
   /// [ocr] - Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
   ///
   /// [ocrLanguage] - If ocr is true, hints at the language to use. Valid values
@@ -2180,6 +2213,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future<File> insert(File request,
       {core.bool convert,
+      core.bool enforceSingleParent,
       core.bool ocr,
       core.String ocrLanguage,
       core.bool pinned,
@@ -2204,6 +2238,9 @@ class FilesResourceApi {
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (ocr != null) {
       _queryParams["ocr"] = ["${ocr}"];
@@ -2421,6 +2458,14 @@ class FilesResourceApi {
   ///
   /// [convert] - This parameter is deprecated and has no function.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the item's owner makes a request
+  /// to add a single parent, the item is removed from all current folders and
+  /// placed in the requested folder. Other requests that increase the number of
+  /// parents fail, except when the canAddMyDriveParent file capability is true
+  /// and a single parent is being added.
+  ///
   /// [modifiedDateBehavior] - Determines the behavior in which modifiedDate is
   /// updated. This overrides setModifiedDate.
   /// Possible string values are:
@@ -2489,6 +2534,7 @@ class FilesResourceApi {
   async.Future<File> patch(File request, core.String fileId,
       {core.String addParents,
       core.bool convert,
+      core.bool enforceSingleParent,
       core.String modifiedDateBehavior,
       core.bool newRevision,
       core.bool ocr,
@@ -2521,6 +2567,9 @@ class FilesResourceApi {
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (modifiedDateBehavior != null) {
       _queryParams["modifiedDateBehavior"] = [modifiedDateBehavior];
@@ -2765,6 +2814,14 @@ class FilesResourceApi {
   ///
   /// [convert] - This parameter is deprecated and has no function.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the item's owner makes a request
+  /// to add a single parent, the item is removed from all current folders and
+  /// placed in the requested folder. Other requests that increase the number of
+  /// parents fail, except when the canAddMyDriveParent file capability is true
+  /// and a single parent is being added.
+  ///
   /// [modifiedDateBehavior] - Determines the behavior in which modifiedDate is
   /// updated. This overrides setModifiedDate.
   /// Possible string values are:
@@ -2839,6 +2896,7 @@ class FilesResourceApi {
   async.Future<File> update(File request, core.String fileId,
       {core.String addParents,
       core.bool convert,
+      core.bool enforceSingleParent,
       core.String modifiedDateBehavior,
       core.bool newRevision,
       core.bool ocr,
@@ -2873,6 +2931,9 @@ class FilesResourceApi {
     }
     if (convert != null) {
       _queryParams["convert"] = ["${convert}"];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (modifiedDateBehavior != null) {
       _queryParams["modifiedDateBehavior"] = [modifiedDateBehavior];
@@ -3066,6 +3127,11 @@ class ParentsResourceApi {
   ///
   /// [parentId] - The ID of the parent.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the item's last parent is
+  /// removed, the item is placed under its owner's root.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3075,7 +3141,7 @@ class ParentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String parentId,
-      {core.String $fields}) {
+      {core.bool enforceSingleParent, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -3088,6 +3154,9 @@ class ParentsResourceApi {
     }
     if (parentId == null) {
       throw new core.ArgumentError("Parameter parentId is required.");
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3168,6 +3237,14 @@ class ParentsResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the child's owner makes the
+  /// request, the child is removed from all current folders and placed in the
+  /// requested folder. Any other requests that increase the number of the
+  /// child's parents fail, except when the canAddMyDriveParent file capability
+  /// is true and a single parent is being added.
+  ///
   /// [supportsAllDrives] - Deprecated - Whether the requesting application
   /// supports both My Drives and shared drives. This parameter will only be
   /// effective until June 1, 2020. Afterwards all applications are assumed to
@@ -3187,7 +3264,8 @@ class ParentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ParentReference> insert(
       ParentReference request, core.String fileId,
-      {core.bool supportsAllDrives,
+      {core.bool enforceSingleParent,
+      core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
       core.String $fields}) {
     var _url;
@@ -3202,6 +3280,9 @@ class ParentsResourceApi {
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (supportsAllDrives != null) {
       _queryParams["supportsAllDrives"] = ["${supportsAllDrives}"];
@@ -3476,6 +3557,19 @@ class PermissionsResourceApi {
   /// [emailMessage] - A plain text custom message to include in notification
   /// emails.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. See moveToNewOwnersRoot for details.
+  ///
+  /// [moveToNewOwnersRoot] - This parameter only takes effect if the item is
+  /// not in a shared drive and the request is attempting to transfer the
+  /// ownership of the item. When set to true, the item will be moved to the new
+  /// owner's My Drive root folder and all prior parents removed. If set to
+  /// false, when enforceSingleParent=true, parents are not changed. If set to
+  /// false, when enforceSingleParent=false, existing parents are not changed;
+  /// however, the file will be added to the new owner's My Drive root folder,
+  /// unless it is already in the new owner's My Drive.
+  ///
   /// [sendNotificationEmails] - Whether to send notification emails when
   /// sharing to users or groups. This parameter is ignored and an email is sent
   /// if the role is owner.
@@ -3504,6 +3598,8 @@ class PermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Permission> insert(Permission request, core.String fileId,
       {core.String emailMessage,
+      core.bool enforceSingleParent,
+      core.bool moveToNewOwnersRoot,
       core.bool sendNotificationEmails,
       core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
@@ -3524,6 +3620,12 @@ class PermissionsResourceApi {
     }
     if (emailMessage != null) {
       _queryParams["emailMessage"] = [emailMessage];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+    }
+    if (moveToNewOwnersRoot != null) {
+      _queryParams["moveToNewOwnersRoot"] = ["${moveToNewOwnersRoot}"];
     }
     if (sendNotificationEmails != null) {
       _queryParams["sendNotificationEmails"] = ["${sendNotificationEmails}"];
@@ -4162,152 +4264,6 @@ class PropertiesResourceApi {
   }
 }
 
-class RealtimeResourceApi {
-  final commons.ApiRequester _requester;
-
-  RealtimeResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Exports the contents of the Realtime API data model associated with this
-  /// file as JSON.
-  ///
-  /// Request parameters:
-  ///
-  /// [fileId] - The ID of the file that the Realtime API data model is
-  /// associated with.
-  ///
-  /// [revision] - The revision of the Realtime API data model to export.
-  /// Revisions start at 1 (the initial empty data model) and are incremented
-  /// with each change. If this parameter is excluded, the most recent data
-  /// model will be returned.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future get(core.String fileId,
-      {core.int revision,
-      core.String $fields,
-      commons.DownloadOptions downloadOptions =
-          commons.DownloadOptions.Metadata}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (fileId == null) {
-      throw new core.ArgumentError("Parameter fileId is required.");
-    }
-    if (revision != null) {
-      _queryParams["revision"] = ["${revision}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = downloadOptions;
-
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => null);
-    } else {
-      return _response;
-    }
-  }
-
-  /// Overwrites the Realtime API data model associated with this file with the
-  /// provided JSON data model.
-  ///
-  /// Request parameters:
-  ///
-  /// [fileId] - The ID of the file that the Realtime API data model is
-  /// associated with.
-  ///
-  /// [baseRevision] - The revision of the model to diff the uploaded model
-  /// against. If set, the uploaded model is diffed against the provided
-  /// revision and those differences are merged with any changes made to the
-  /// model after the provided revision. If not set, the uploaded model replaces
-  /// the current model on the server.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// [uploadMedia] - The media to upload.
-  ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future update(core.String fileId,
-      {core.String baseRevision,
-      core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (fileId == null) {
-      throw new core.ArgumentError("Parameter fileId is required.");
-    }
-    if (baseRevision != null) {
-      _queryParams["baseRevision"] = [baseRevision];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
-    _downloadOptions = null;
-
-    if (_uploadMedia == null) {
-      _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/realtime';
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/drive/v2/files/' +
-          commons.Escaper.ecapeVariable('$fileId') +
-          '/realtime';
-    } else {
-      _url = '/upload/drive/v2/files/' +
-          commons.Escaper.ecapeVariable('$fileId') +
-          '/realtime';
-    }
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
 class RepliesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -4570,7 +4526,7 @@ class RepliesResourceApi {
     return _response.then((data) => new CommentReplyList.fromJson(data));
   }
 
-  /// Updates an existing reply. This method supports patch semantics.
+  /// Updates an existing reply.
   ///
   /// [request] - The metadata request object.
   ///
@@ -4865,7 +4821,7 @@ class RevisionsResourceApi {
     return _response.then((data) => new RevisionList.fromJson(data));
   }
 
-  /// Updates a revision. This method supports patch semantics.
+  /// Updates a revision.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5617,7 +5573,8 @@ class About {
   /// The amount of storage quota used by different Google services.
   core.List<AboutQuotaBytesByService> quotaBytesByService;
 
-  /// The total number of quota bytes.
+  /// The total number of quota bytes. This is only relevant when quotaType is
+  /// LIMITED.
   core.String quotaBytesTotal;
 
   /// The number of quota bytes used by Google Drive.
@@ -6712,7 +6669,8 @@ class Comment {
   /// properties.
   core.String anchor;
 
-  /// The user who wrote this comment.
+  /// The author of the comment. The author's email address and permission ID
+  /// will not be populated.
   User author;
 
   /// The ID of the comment.
@@ -6932,7 +6890,8 @@ class CommentList {
 
 /// A comment on a file in Google Drive.
 class CommentReply {
-  /// The user who wrote this reply.
+  /// The author of the reply. The author's email address and permission ID will
+  /// not be populated.
   User author;
 
   /// The plain text content used to create this reply. This is not HTML safe
@@ -7594,6 +7553,10 @@ class FileCapabilities {
   /// false when the item is not a folder.
   core.bool canAddChildren;
 
+  /// Whether the current user can add a parent for the item without removing an
+  /// existing parent in the same request. Not populated for shared drive files.
+  core.bool canAddMyDriveParent;
+
   /// Whether the current user can change the copyRequiresWriterPermission
   /// restriction of this file.
   core.bool canChangeCopyRequiresWriterPermission;
@@ -7619,12 +7582,17 @@ class FileCapabilities {
   /// Whether the current user can download this file.
   core.bool canDownload;
 
-  /// Whether the current user can edit this file.
+  /// Whether the current user can edit this file. Other factors may limit the
+  /// type of changes a user can make to a file. For example, see
+  /// canChangeCopyRequiresWriterPermission or canModifyContent.
   core.bool canEdit;
 
   /// Whether the current user can list the children of this folder. This is
   /// always false when the item is not a folder.
   core.bool canListChildren;
+
+  /// Whether the current user can modify the content of this file.
+  core.bool canModifyContent;
 
   /// Whether the current user can move children of this folder outside of the
   /// shared drive. This is false when the item is not a folder. Only populated
@@ -7682,6 +7650,10 @@ class FileCapabilities {
   /// drive, use canDeleteChildren or canTrashChildren instead.
   core.bool canRemoveChildren;
 
+  /// Whether the current user can remove a parent from the item without adding
+  /// another parent in the same request. Not populated for shared drive files.
+  core.bool canRemoveMyDriveParent;
+
   /// Whether the current user can rename this file.
   core.bool canRename;
 
@@ -7703,6 +7675,9 @@ class FileCapabilities {
   FileCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
+    }
+    if (_json.containsKey("canAddMyDriveParent")) {
+      canAddMyDriveParent = _json["canAddMyDriveParent"];
     }
     if (_json.containsKey("canChangeCopyRequiresWriterPermission")) {
       canChangeCopyRequiresWriterPermission =
@@ -7731,6 +7706,9 @@ class FileCapabilities {
     }
     if (_json.containsKey("canListChildren")) {
       canListChildren = _json["canListChildren"];
+    }
+    if (_json.containsKey("canModifyContent")) {
+      canModifyContent = _json["canModifyContent"];
     }
     if (_json.containsKey("canMoveChildrenOutOfDrive")) {
       canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
@@ -7774,6 +7752,9 @@ class FileCapabilities {
     if (_json.containsKey("canRemoveChildren")) {
       canRemoveChildren = _json["canRemoveChildren"];
     }
+    if (_json.containsKey("canRemoveMyDriveParent")) {
+      canRemoveMyDriveParent = _json["canRemoveMyDriveParent"];
+    }
     if (_json.containsKey("canRename")) {
       canRename = _json["canRename"];
     }
@@ -7796,6 +7777,9 @@ class FileCapabilities {
         new core.Map<core.String, core.Object>();
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
+    }
+    if (canAddMyDriveParent != null) {
+      _json["canAddMyDriveParent"] = canAddMyDriveParent;
     }
     if (canChangeCopyRequiresWriterPermission != null) {
       _json["canChangeCopyRequiresWriterPermission"] =
@@ -7824,6 +7808,9 @@ class FileCapabilities {
     }
     if (canListChildren != null) {
       _json["canListChildren"] = canListChildren;
+    }
+    if (canModifyContent != null) {
+      _json["canModifyContent"] = canModifyContent;
     }
     if (canMoveChildrenOutOfDrive != null) {
       _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
@@ -7866,6 +7853,9 @@ class FileCapabilities {
     }
     if (canRemoveChildren != null) {
       _json["canRemoveChildren"] = canRemoveChildren;
+    }
+    if (canRemoveMyDriveParent != null) {
+      _json["canRemoveMyDriveParent"] = canRemoveMyDriveParent;
     }
     if (canRename != null) {
       _json["canRename"] = canRename;
@@ -7979,7 +7969,8 @@ class FileImageMediaMetadata {
   /// The metering mode used to create the photo.
   core.String meteringMode;
 
-  /// The rotation in clockwise degrees from the image's original orientation.
+  /// The number of clockwise 90 degree rotations applied from the image's
+  /// original orientation.
   core.int rotation;
 
   /// The type of sensor used to create the photo.
@@ -8225,6 +8216,41 @@ class FileLabels {
   }
 }
 
+/// Shortcut file details. Only populated for shortcut files, which have the
+/// mimeType field set to application/vnd.google-apps.shortcut.
+class FileShortcutDetails {
+  /// The ID of the file that this shortcut points to.
+  core.String targetId;
+
+  /// The MIME type of the file that this shortcut points to. The value of this
+  /// field is a snapshot of the target's MIME type, captured when the shortcut
+  /// is created.
+  core.String targetMimeType;
+
+  FileShortcutDetails();
+
+  FileShortcutDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("targetId")) {
+      targetId = _json["targetId"];
+    }
+    if (_json.containsKey("targetMimeType")) {
+      targetMimeType = _json["targetMimeType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (targetId != null) {
+      _json["targetId"] = targetId;
+    }
+    if (targetMimeType != null) {
+      _json["targetMimeType"] = targetMimeType;
+    }
+    return _json;
+  }
+}
+
 /// A thumbnail for the file. This will only be used if a standard thumbnail
 /// cannot be generated.
 class FileThumbnail {
@@ -8395,8 +8421,8 @@ class File {
   /// shortcut files.
   core.String fullFileExtension;
 
-  /// Whether any users are granted file access directly on this file. This
-  /// field is only populated for items in shared drives.
+  /// Whether there are permissions directly on this file. This field is only
+  /// populated for items in shared drives.
   core.bool hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail. This does not indicate whether the
@@ -8519,6 +8545,10 @@ class File {
 
   /// User that shared the item with the current user, if available.
   User sharingUser;
+
+  /// Shortcut file details. Only populated for shortcut files, which have the
+  /// mimeType field set to application/vnd.google-apps.shortcut.
+  FileShortcutDetails shortcutDetails;
 
   /// The list of spaces which contain the file. Supported values are 'drive',
   /// 'appDataFolder' and 'photos'.
@@ -8752,6 +8782,10 @@ class File {
     if (_json.containsKey("sharingUser")) {
       sharingUser = new User.fromJson(_json["sharingUser"]);
     }
+    if (_json.containsKey("shortcutDetails")) {
+      shortcutDetails =
+          new FileShortcutDetails.fromJson(_json["shortcutDetails"]);
+    }
     if (_json.containsKey("spaces")) {
       spaces = (_json["spaces"] as core.List).cast<core.String>();
     }
@@ -8963,6 +8997,9 @@ class File {
     }
     if (sharingUser != null) {
       _json["sharingUser"] = (sharingUser).toJson();
+    }
+    if (shortcutDetails != null) {
+      _json["shortcutDetails"] = (shortcutDetails).toJson();
     }
     if (spaces != null) {
       _json["spaces"] = spaces;
@@ -9260,7 +9297,7 @@ class PermissionPermissionDetails {
   core.bool inherited;
 
   /// The ID of the item from which this permission is inherited. This is an
-  /// output-only field and is only populated for members of the shared drive.
+  /// output-only field.
   core.String inheritedFrom;
 
   /// The permission type for this user. While new values may be added in
@@ -9407,6 +9444,7 @@ class Permission {
 
   /// The time at which this permission will expire (RFC 3339 date-time).
   /// Expiration dates have the following restrictions:
+  /// - They cannot be set on shared drive items
   /// - They can only be set on user and group permissions
   /// - The date must be in the future
   /// - The date cannot be more than a year in the future
@@ -9824,8 +9862,6 @@ class PropertyList {
 
 /// A revision of a file.
 class Revision {
-  /// Short term download URL for the file. This will only be populated on files
-  /// with content stored in Drive.
   core.String downloadUrl;
 
   /// The ETag of the revision.
@@ -9868,7 +9904,8 @@ class Revision {
   /// only be populated and can only be modified on files with content stored in
   /// Drive which are not Google Docs. Revisions can also be pinned when they
   /// are created through the drive.files.insert/update/copy by using the pinned
-  /// query parameter.
+  /// query parameter. Pinned revisions are stored indefinitely using additional
+  /// storage quota, up to a maximum of 200 revisions.
   core.bool pinned;
 
   /// Whether subsequent revisions will be automatically republished. This is

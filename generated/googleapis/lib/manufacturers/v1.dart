@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.manufacturers.v1;
 
@@ -452,6 +452,10 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#release.
   core.String releaseDate;
 
+  /// Rich product content. For more information, see
+  /// https://support.google.com/manufacturers/answer/9389865
+  core.List<core.String> richProductContent;
+
   /// The scent of the product. For more information, see
   ///  https://support.google.com/manufacturers/answer/6124116#scent.
   core.String scent;
@@ -578,6 +582,10 @@ class Attributes {
     if (_json.containsKey("releaseDate")) {
       releaseDate = _json["releaseDate"];
     }
+    if (_json.containsKey("richProductContent")) {
+      richProductContent =
+          (_json["richProductContent"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("scent")) {
       scent = _json["scent"];
     }
@@ -690,6 +698,9 @@ class Attributes {
     }
     if (releaseDate != null) {
       _json["releaseDate"] = releaseDate;
+    }
+    if (richProductContent != null) {
+      _json["richProductContent"] = richProductContent;
     }
     if (scent != null) {
       _json["scent"] = scent;

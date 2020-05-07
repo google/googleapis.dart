@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.genomics.v1;
 
@@ -57,7 +57,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -110,7 +110,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1145,6 +1145,9 @@ class WorkerAssignedEvent {
   /// The worker's instance name.
   core.String instance;
 
+  /// The machine type that was assigned for the worker.
+  core.String machineType;
+
   /// The zone the worker is running in.
   core.String zone;
 
@@ -1153,6 +1156,9 @@ class WorkerAssignedEvent {
   WorkerAssignedEvent.fromJson(core.Map _json) {
     if (_json.containsKey("instance")) {
       instance = _json["instance"];
+    }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -1164,6 +1170,9 @@ class WorkerAssignedEvent {
         new core.Map<core.String, core.Object>();
     if (instance != null) {
       _json["instance"] = instance;
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
     }
     if (zone != null) {
       _json["zone"] = zone;

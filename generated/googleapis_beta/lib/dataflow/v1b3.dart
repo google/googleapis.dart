@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.dataflow.v1b3;
 
@@ -184,6 +184,14 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
+  /// [view] - Level of information requested in response. Default is
+  /// `JOB_VIEW_SUMMARY`.
+  /// Possible string values are:
+  /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
+  /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
+  /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+  /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
   /// [filter] - The kind of filter to use.
   /// Possible string values are:
   /// - "UNKNOWN" : A UNKNOWN.
@@ -203,14 +211,6 @@ class ProjectsJobsResourceApi {
   /// The actual number of jobs returned will be the lesser of max_responses
   /// and an unspecified server-defined limit.
   ///
-  /// [view] - Level of information requested in response. Default is
-  /// `JOB_VIEW_SUMMARY`.
-  /// Possible string values are:
-  /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
-  /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
-  /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
-  /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -222,11 +222,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String filter,
+      {core.String view,
+      core.String filter,
       core.String location,
       core.String pageToken,
       core.int pageSize,
-      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -237,6 +237,9 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -249,9 +252,6 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -287,18 +287,18 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-  /// contains this job.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
-  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+  /// contains this job.
+  ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -311,9 +311,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(Job request, core.String projectId,
-      {core.String location,
+      {core.String view,
+      core.String location,
       core.String replaceJobId,
-      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -328,14 +328,14 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -517,13 +517,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
   /// [location] - The [regional endpoint]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
   /// contains this job.
@@ -544,6 +537,13 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -555,11 +555,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId,
-      {core.String filter,
-      core.String location,
+      {core.String location,
       core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -570,9 +570,6 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if (location != null) {
       _queryParams["location"] = [location];
@@ -585,6 +582,9 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1109,6 +1109,8 @@ class ProjectsJobsWorkItemsResourceApi {
 class ProjectsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsFlexTemplatesResourceApi get flexTemplates =>
+      new ProjectsLocationsFlexTemplatesResourceApi(_requester);
   ProjectsLocationsJobsResourceApi get jobs =>
       new ProjectsLocationsJobsResourceApi(_requester);
   ProjectsLocationsSnapshotsResourceApi get snapshots =>
@@ -1182,6 +1184,77 @@ class ProjectsLocationsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new SendWorkerMessagesResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsFlexTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsFlexTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Launch a job with a FlexTemplate.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Cloud Platform project that the job
+  /// belongs to.
+  ///
+  /// [location] - Required. The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request. E.g., us-central1, us-west1.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LaunchFlexTemplateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LaunchFlexTemplateResponse> launch(
+      LaunchFlexTemplateRequest request,
+      core.String projectId,
+      core.String location,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (location == null) {
+      throw new core.ArgumentError("Parameter location is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1b3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$location') +
+        '/flexTemplates:launch';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new LaunchFlexTemplateResponse.fromJson(data));
   }
 }
 
@@ -1852,23 +1925,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [endTime] - Return only messages with timestamps < end_time. The default
-  /// is now
-  /// (i.e. return up to the latest messages available).
-  ///
-  /// [pageToken] - If supplied, this should be the value of next_page_token
-  /// returned
-  /// by an earlier call. This will cause the next page of results to
-  /// be returned.
-  ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time.
-  /// The default is the job creation time (i.e. beginning of messages).
-  ///
-  /// [pageSize] - If specified, determines the maximum number of messages to
-  /// return.  If unspecified, the service may choose an appropriate
-  /// default, or may return an arbitrarily large number of results.
-  ///
   /// [minimumImportance] - Filter to only get messages with importance >= level
   /// Possible string values are:
   /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
@@ -1877,6 +1933,23 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// - "JOB_MESSAGE_BASIC" : A JOB_MESSAGE_BASIC.
   /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
   /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
+  ///
+  /// [endTime] - Return only messages with timestamps < end_time. The default
+  /// is now
+  /// (i.e. return up to the latest messages available).
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time.
+  /// The default is the job creation time (i.e. beginning of messages).
+  ///
+  /// [pageToken] - If supplied, this should be the value of next_page_token
+  /// returned
+  /// by an earlier call. This will cause the next page of results to
+  /// be returned.
+  ///
+  /// [pageSize] - If specified, determines the maximum number of messages to
+  /// return.  If unspecified, the service may choose an appropriate
+  /// default, or may return an arbitrarily large number of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1890,11 +1963,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String location, core.String jobId,
-      {core.String endTime,
-      core.String pageToken,
+      {core.String minimumImportance,
+      core.String endTime,
       core.String startTime,
+      core.String pageToken,
       core.int pageSize,
-      core.String minimumImportance,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1912,20 +1985,20 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (minimumImportance != null) {
+      _queryParams["minimumImportance"] = [minimumImportance];
+    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (minimumImportance != null) {
-      _queryParams["minimumImportance"] = [minimumImportance];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2718,9 +2791,9 @@ class ProjectsSnapshotsResourceApi {
   ///
   /// [projectId] - The project ID to list snapshots for.
   ///
-  /// [jobId] - If specified, list snapshots created from this job.
-  ///
   /// [location] - The location to list snapshots in.
+  ///
+  /// [jobId] - If specified, list snapshots created from this job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2733,7 +2806,7 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSnapshotsResponse> list(core.String projectId,
-      {core.String jobId, core.String location, core.String $fields}) {
+      {core.String location, core.String jobId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2744,11 +2817,11 @@ class ProjectsSnapshotsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (jobId != null) {
-      _queryParams["jobId"] = [jobId];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (jobId != null) {
+      _queryParams["jobId"] = [jobId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2833,6 +2906,10 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [location] - The [regional endpoint]
+  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+  /// which to direct the request.
+  ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
   /// Possible string values are:
   /// - "METADATA_ONLY" : A METADATA_ONLY.
@@ -2840,10 +2917,6 @@ class ProjectsTemplatesResourceApi {
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
-  ///
-  /// [location] - The [regional endpoint]
-  /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
-  /// which to direct the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2856,9 +2929,9 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(core.String projectId,
-      {core.String view,
+      {core.String location,
+      core.String view,
       core.String gcsPath,
-      core.String location,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2870,14 +2943,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2905,10 +2978,6 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [validateOnly] - If true, the request is validated but not actually
-  /// executed.
-  /// Defaults to false.
-  ///
   /// [gcsPath] - A Cloud Storage path to the template from which to create
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
@@ -2924,6 +2993,10 @@ class ProjectsTemplatesResourceApi {
   /// dependencies.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
+  /// [validateOnly] - If true, the request is validated but not actually
+  /// executed.
+  /// Defaults to false.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2936,11 +3009,11 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.bool validateOnly,
-      core.String gcsPath,
+      {core.String gcsPath,
       core.String location,
       core.String dynamicTemplate_gcsPath,
       core.String dynamicTemplate_stagingLocation,
+      core.bool validateOnly,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2955,9 +3028,6 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (validateOnly != null) {
-      _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
     }
@@ -2971,6 +3041,9 @@ class ProjectsTemplatesResourceApi {
       _queryParams["dynamicTemplate.stagingLocation"] = [
         dynamicTemplate_stagingLocation
       ];
+    }
+    if (validateOnly != null) {
+      _queryParams["validateOnly"] = ["${validateOnly}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3616,6 +3689,47 @@ class ConcatPosition {
     }
     if (position != null) {
       _json["position"] = (position).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Container Spec.
+class ContainerSpec {
+  /// Name of the docker container image. E.g., gcr.io/project/some-image
+  core.String image;
+
+  /// Metadata describing a template including description and validation rules.
+  TemplateMetadata metadata;
+
+  /// Required. SDK info of the Flex Template.
+  SDKInfo sdkInfo;
+
+  ContainerSpec();
+
+  ContainerSpec.fromJson(core.Map _json) {
+    if (_json.containsKey("image")) {
+      image = _json["image"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new TemplateMetadata.fromJson(_json["metadata"]);
+    }
+    if (_json.containsKey("sdkInfo")) {
+      sdkInfo = new SDKInfo.fromJson(_json["sdkInfo"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (image != null) {
+      _json["image"] = image;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
+    }
+    if (sdkInfo != null) {
+      _json["sdkInfo"] = (sdkInfo).toJson();
     }
     return _json;
   }
@@ -4603,6 +4717,22 @@ class Environment {
   /// specified in order for the job to have workers.
   core.List<WorkerPool> workerPools;
 
+  /// The Compute Engine region
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
+  /// with worker_zone. If neither worker_region nor worker_zone is specified,
+  /// default to the control plane's region.
+  core.String workerRegion;
+
+  /// The Compute Engine zone
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1-a". Mutually
+  /// exclusive
+  /// with worker_region. If neither worker_region nor worker_zone is specified,
+  /// a zone in the control plane's region is chosen based on available
+  /// capacity.
+  core.String workerZone;
+
   Environment();
 
   Environment.fromJson(core.Map _json) {
@@ -4647,6 +4777,12 @@ class Environment {
           .map<WorkerPool>((value) => new WorkerPool.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("workerRegion")) {
+      workerRegion = _json["workerRegion"];
+    }
+    if (_json.containsKey("workerZone")) {
+      workerZone = _json["workerZone"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4688,6 +4824,12 @@ class Environment {
     if (workerPools != null) {
       _json["workerPools"] =
           workerPools.map((value) => (value).toJson()).toList();
+    }
+    if (workerRegion != null) {
+      _json["workerRegion"] = workerRegion;
+    }
+    if (workerZone != null) {
+      _json["workerZone"] = workerZone;
     }
     return _json;
   }
@@ -5100,9 +5242,19 @@ class GetTemplateResponse {
   /// parameters, etc.
   TemplateMetadata metadata;
 
+  /// Describes the runtime metadata with SDKInfo and available parameters.
+  RuntimeMetadata runtimeMetadata;
+
   /// The status of the get template request. Any problems with the
   /// request will be indicated in the error_details.
   Status status;
+
+  /// Template Type.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Unknown Template Type.
+  /// - "LEGACY" : Legacy Template.
+  /// - "FLEX" : Flex Template.
+  core.String templateType;
 
   GetTemplateResponse();
 
@@ -5110,8 +5262,14 @@ class GetTemplateResponse {
     if (_json.containsKey("metadata")) {
       metadata = new TemplateMetadata.fromJson(_json["metadata"]);
     }
+    if (_json.containsKey("runtimeMetadata")) {
+      runtimeMetadata = new RuntimeMetadata.fromJson(_json["runtimeMetadata"]);
+    }
     if (_json.containsKey("status")) {
       status = new Status.fromJson(_json["status"]);
+    }
+    if (_json.containsKey("templateType")) {
+      templateType = _json["templateType"];
     }
   }
 
@@ -5121,8 +5279,14 @@ class GetTemplateResponse {
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
+    if (runtimeMetadata != null) {
+      _json["runtimeMetadata"] = (runtimeMetadata).toJson();
+    }
     if (status != null) {
       _json["status"] = (status).toJson();
+    }
+    if (templateType != null) {
+      _json["templateType"] = templateType;
     }
     return _json;
   }
@@ -6240,6 +6404,116 @@ class KeyRangeLocation {
   }
 }
 
+/// Launch FlexTemplate Parameter.
+class LaunchFlexTemplateParameter {
+  /// Spec about the container image to launch.
+  ContainerSpec containerSpec;
+
+  /// Gcs path to a file with json serialized ContainerSpec as content.
+  core.String containerSpecGcsPath;
+
+  /// Required. The job name to use for the created job.
+  core.String jobName;
+
+  /// The parameters for FlexTemplate.
+  /// Ex. {"num_workers":"5"}
+  core.Map<core.String, core.String> parameters;
+
+  LaunchFlexTemplateParameter();
+
+  LaunchFlexTemplateParameter.fromJson(core.Map _json) {
+    if (_json.containsKey("containerSpec")) {
+      containerSpec = new ContainerSpec.fromJson(_json["containerSpec"]);
+    }
+    if (_json.containsKey("containerSpecGcsPath")) {
+      containerSpecGcsPath = _json["containerSpecGcsPath"];
+    }
+    if (_json.containsKey("jobName")) {
+      jobName = _json["jobName"];
+    }
+    if (_json.containsKey("parameters")) {
+      parameters =
+          (_json["parameters"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (containerSpec != null) {
+      _json["containerSpec"] = (containerSpec).toJson();
+    }
+    if (containerSpecGcsPath != null) {
+      _json["containerSpecGcsPath"] = containerSpecGcsPath;
+    }
+    if (jobName != null) {
+      _json["jobName"] = jobName;
+    }
+    if (parameters != null) {
+      _json["parameters"] = parameters;
+    }
+    return _json;
+  }
+}
+
+/// A request to launch a Cloud Dataflow job from a FlexTemplate.
+class LaunchFlexTemplateRequest {
+  /// Required. Parameter to launch a job form Flex Template.
+  LaunchFlexTemplateParameter launchParameter;
+
+  /// If true, the request is validated but not actually executed.
+  /// Defaults to false.
+  core.bool validateOnly;
+
+  LaunchFlexTemplateRequest();
+
+  LaunchFlexTemplateRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("launchParameter")) {
+      launchParameter =
+          new LaunchFlexTemplateParameter.fromJson(_json["launchParameter"]);
+    }
+    if (_json.containsKey("validateOnly")) {
+      validateOnly = _json["validateOnly"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (launchParameter != null) {
+      _json["launchParameter"] = (launchParameter).toJson();
+    }
+    if (validateOnly != null) {
+      _json["validateOnly"] = validateOnly;
+    }
+    return _json;
+  }
+}
+
+/// Response to the request to launch a job from Flex Template.
+class LaunchFlexTemplateResponse {
+  /// The job that was launched, if the request was not a dry run and
+  /// the job was successfully launched.
+  Job job;
+
+  LaunchFlexTemplateResponse();
+
+  LaunchFlexTemplateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("job")) {
+      job = new Job.fromJson(_json["job"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (job != null) {
+      _json["job"] = (job).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Parameters to provide to the template being launched.
 class LaunchTemplateParameters {
   /// The runtime environment for the job.
@@ -6500,8 +6774,11 @@ class ListJobMessagesResponse {
   }
 }
 
-/// Response to a request to list Cloud Dataflow jobs.  This may be a partial
-/// response, depending on the page size in the ListJobsRequest.
+/// Response to a request to list Cloud Dataflow jobs in a project. This might
+/// be a partial response, depending on the page size in the ListJobsRequest.
+/// However, if the project does not have any jobs, an instance of
+/// ListJobsResponse is not returned and the requests's response
+/// body is empty {}.
 class ListJobsResponse {
   /// Zero or more messages describing the [regional endpoints]
   /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
@@ -6631,6 +6908,57 @@ class MapTask {
     }
     if (systemName != null) {
       _json["systemName"] = systemName;
+    }
+    return _json;
+  }
+}
+
+/// Information about the memory usage of a worker or a container within a
+/// worker.
+class MemInfo {
+  /// Instantenous memory limit in bytes.
+  core.String currentLimitBytes;
+
+  /// Instantenous memory (RSS) size in bytes.
+  core.String currentRssBytes;
+
+  /// Timestamp of the measurement.
+  core.String timestamp;
+
+  /// Total memory (RSS) usage since start up in GB * ms.
+  core.String totalGbMs;
+
+  MemInfo();
+
+  MemInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("currentLimitBytes")) {
+      currentLimitBytes = _json["currentLimitBytes"];
+    }
+    if (_json.containsKey("currentRssBytes")) {
+      currentRssBytes = _json["currentRssBytes"];
+    }
+    if (_json.containsKey("timestamp")) {
+      timestamp = _json["timestamp"];
+    }
+    if (_json.containsKey("totalGbMs")) {
+      totalGbMs = _json["totalGbMs"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (currentLimitBytes != null) {
+      _json["currentLimitBytes"] = currentLimitBytes;
+    }
+    if (currentRssBytes != null) {
+      _json["currentRssBytes"] = currentRssBytes;
+    }
+    if (timestamp != null) {
+      _json["timestamp"] = timestamp;
+    }
+    if (totalGbMs != null) {
+      _json["totalGbMs"] = totalGbMs;
     }
     return _json;
   }
@@ -7236,6 +7564,22 @@ class ParameterMetadata {
   /// Required. The name of the parameter.
   core.String name;
 
+  /// Optional. The type of the parameter.
+  /// Used for selecting input picker.
+  /// Possible string values are:
+  /// - "DEFAULT" : Default input type.
+  /// - "TEXT" : The parameter specifies generic text input.
+  /// - "GCS_READ_BUCKET" : The parameter specifies a GCS Bucket to read from.
+  /// - "GCS_WRITE_BUCKET" : The parameter specifies a GCS Bucket to write to.
+  /// - "GCS_READ_FILE" : The parameter specifies a GCS file path to read from.
+  /// - "GCS_WRITE_FILE" : The parameter specifies a GCS file path to write to.
+  /// - "GCS_READ_FOLDER" : The parameter specifies a GCS folder path to read
+  /// from.
+  /// - "GCS_WRITE_FOLDER" : The parameter specifies a GCS folder to write to.
+  /// - "PUBSUB_TOPIC" : The parameter specifies a Pub/Sub Topic.
+  /// - "PUBSUB_SUBSCRIPTION" : The parameter specifies a Pub/Sub Subscription.
+  core.String paramType;
+
   /// Optional. Regexes that the parameter must match.
   core.List<core.String> regexes;
 
@@ -7253,6 +7597,9 @@ class ParameterMetadata {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("paramType")) {
+      paramType = _json["paramType"];
     }
     if (_json.containsKey("regexes")) {
       regexes = (_json["regexes"] as core.List).cast<core.String>();
@@ -7273,6 +7620,9 @@ class ParameterMetadata {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (paramType != null) {
+      _json["paramType"] = paramType;
     }
     if (regexes != null) {
       _json["regexes"] = regexes;
@@ -7608,6 +7958,47 @@ class PubsubLocation {
   }
 }
 
+/// Represents a Pubsub snapshot.
+class PubsubSnapshotMetadata {
+  /// The expire time of the Pubsub snapshot.
+  core.String expireTime;
+
+  /// The name of the Pubsub snapshot.
+  core.String snapshotName;
+
+  /// The name of the Pubsub topic.
+  core.String topicName;
+
+  PubsubSnapshotMetadata();
+
+  PubsubSnapshotMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("snapshotName")) {
+      snapshotName = _json["snapshotName"];
+    }
+    if (_json.containsKey("topicName")) {
+      topicName = _json["topicName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (snapshotName != null) {
+      _json["snapshotName"] = snapshotName;
+    }
+    if (topicName != null) {
+      _json["topicName"] = topicName;
+    }
+    return _json;
+  }
+}
+
 /// An instruction that reads records.
 /// Takes no inputs, produces one output.
 class ReadInstruction {
@@ -7790,15 +8181,32 @@ class ReportedParallelism {
 /// metrics accumulated from a variety of sources. For more information, see
 /// go/df-resource-signals.
 class ResourceUtilizationReport {
+  /// Per container information.
+  /// Key: container name.
+  core.Map<core.String, ResourceUtilizationReport> containers;
+
   /// CPU utilization samples.
   core.List<CPUTime> cpuTime;
+
+  /// Memory utilization samples.
+  core.List<MemInfo> memoryInfo;
 
   ResourceUtilizationReport();
 
   ResourceUtilizationReport.fromJson(core.Map _json) {
+    if (_json.containsKey("containers")) {
+      containers = commons.mapMap<core.Map, ResourceUtilizationReport>(
+          _json["containers"].cast<core.String, core.Map>(),
+          (core.Map item) => new ResourceUtilizationReport.fromJson(item));
+    }
     if (_json.containsKey("cpuTime")) {
       cpuTime = (_json["cpuTime"] as core.List)
           .map<CPUTime>((value) => new CPUTime.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("memoryInfo")) {
+      memoryInfo = (_json["memoryInfo"] as core.List)
+          .map<MemInfo>((value) => new MemInfo.fromJson(value))
           .toList();
     }
   }
@@ -7806,8 +8214,17 @@ class ResourceUtilizationReport {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (containers != null) {
+      _json["containers"] = commons.mapMap<ResourceUtilizationReport,
+              core.Map<core.String, core.Object>>(
+          containers, (ResourceUtilizationReport item) => (item).toJson());
+    }
     if (cpuTime != null) {
       _json["cpuTime"] = cpuTime.map((value) => (value).toJson()).toList();
+    }
+    if (memoryInfo != null) {
+      _json["memoryInfo"] =
+          memoryInfo.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -7841,6 +8258,13 @@ class RuntimeEnvironment {
   /// Use with caution.
   core.bool bypassTempDirValidation;
 
+  /// Configuration for VM IPs.
+  /// Possible string values are:
+  /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
+  /// - "WORKER_IP_PUBLIC" : Workers should have public IP addresses.
+  /// - "WORKER_IP_PRIVATE" : Workers should have private IP addresses.
+  core.String ipConfiguration;
+
   /// Optional. Name for the Cloud KMS key for the job.
   /// Key format is:
   /// projects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>
@@ -7872,9 +8296,27 @@ class RuntimeEnvironment {
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   core.String tempLocation;
 
+  /// The Compute Engine region
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1". Mutually exclusive
+  /// with worker_zone. If neither worker_region nor worker_zone is specified,
+  /// default to the control plane's region.
+  core.String workerRegion;
+
+  /// The Compute Engine zone
+  /// (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+  /// which worker processing should occur, e.g. "us-west1-a". Mutually
+  /// exclusive
+  /// with worker_region. If neither worker_region nor worker_zone is specified,
+  /// a zone in the control plane's region is chosen based on available
+  /// capacity.
+  /// If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+  core.String workerZone;
+
   /// The Compute Engine [availability
   /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
   /// for launching worker instances to run your pipeline.
+  /// In the future, worker_zone will take precedence.
   core.String zone;
 
   RuntimeEnvironment();
@@ -7890,6 +8332,9 @@ class RuntimeEnvironment {
     }
     if (_json.containsKey("bypassTempDirValidation")) {
       bypassTempDirValidation = _json["bypassTempDirValidation"];
+    }
+    if (_json.containsKey("ipConfiguration")) {
+      ipConfiguration = _json["ipConfiguration"];
     }
     if (_json.containsKey("kmsKeyName")) {
       kmsKeyName = _json["kmsKeyName"];
@@ -7915,6 +8360,12 @@ class RuntimeEnvironment {
     if (_json.containsKey("tempLocation")) {
       tempLocation = _json["tempLocation"];
     }
+    if (_json.containsKey("workerRegion")) {
+      workerRegion = _json["workerRegion"];
+    }
+    if (_json.containsKey("workerZone")) {
+      workerZone = _json["workerZone"];
+    }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
     }
@@ -7931,6 +8382,9 @@ class RuntimeEnvironment {
     }
     if (bypassTempDirValidation != null) {
       _json["bypassTempDirValidation"] = bypassTempDirValidation;
+    }
+    if (ipConfiguration != null) {
+      _json["ipConfiguration"] = ipConfiguration;
     }
     if (kmsKeyName != null) {
       _json["kmsKeyName"] = kmsKeyName;
@@ -7956,8 +8410,123 @@ class RuntimeEnvironment {
     if (tempLocation != null) {
       _json["tempLocation"] = tempLocation;
     }
+    if (workerRegion != null) {
+      _json["workerRegion"] = workerRegion;
+    }
+    if (workerZone != null) {
+      _json["workerZone"] = workerZone;
+    }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// RuntimeMetadata describing a runtime environment.
+class RuntimeMetadata {
+  /// The parameters for the template.
+  core.List<ParameterMetadata> parameters;
+
+  /// SDK Info for the template.
+  SDKInfo sdkInfo;
+
+  RuntimeMetadata();
+
+  RuntimeMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("parameters")) {
+      parameters = (_json["parameters"] as core.List)
+          .map<ParameterMetadata>(
+              (value) => new ParameterMetadata.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("sdkInfo")) {
+      sdkInfo = new SDKInfo.fromJson(_json["sdkInfo"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (parameters != null) {
+      _json["parameters"] =
+          parameters.map((value) => (value).toJson()).toList();
+    }
+    if (sdkInfo != null) {
+      _json["sdkInfo"] = (sdkInfo).toJson();
+    }
+    return _json;
+  }
+}
+
+/// SDK Information.
+class SDKInfo {
+  /// Required. The SDK Language.
+  /// Possible string values are:
+  /// - "UNKNOWN" : UNKNOWN Language.
+  /// - "JAVA" : Java.
+  /// - "PYTHON" : Python.
+  core.String language;
+
+  /// Optional. The SDK version.
+  core.String version;
+
+  SDKInfo();
+
+  SDKInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (version != null) {
+      _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+/// Defines a SDK harness container for executing Dataflow pipelines.
+class SdkHarnessContainerImage {
+  /// A docker container image that resides in Google Container Registry.
+  core.String containerImage;
+
+  /// If true, recommends the Dataflow service to use only one core per SDK
+  /// container instance with this image. If false (or unset) recommends using
+  /// more than one core per SDK container instance with this image for
+  /// efficiency. Note that Dataflow service may choose to override this
+  /// property
+  /// if needed.
+  core.bool useSingleCorePerContainer;
+
+  SdkHarnessContainerImage();
+
+  SdkHarnessContainerImage.fromJson(core.Map _json) {
+    if (_json.containsKey("containerImage")) {
+      containerImage = _json["containerImage"];
+    }
+    if (_json.containsKey("useSingleCorePerContainer")) {
+      useSingleCorePerContainer = _json["useSingleCorePerContainer"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (containerImage != null) {
+      _json["containerImage"] = containerImage;
+    }
+    if (useSingleCorePerContainer != null) {
+      _json["useSingleCorePerContainer"] = useSingleCorePerContainer;
     }
     return _json;
   }
@@ -8380,11 +8949,21 @@ class Snapshot {
   /// The time this snapshot was created.
   core.String creationTime;
 
+  /// User specified description of the snapshot. Maybe empty.
+  core.String description;
+
+  /// The disk byte size of the snapshot. Only available for snapshots in READY
+  /// state.
+  core.String diskSizeBytes;
+
   /// The unique ID of this snapshot.
   core.String id;
 
   /// The project this snapshot belongs to.
   core.String projectId;
+
+  /// PubSub snapshot metadata.
+  core.List<PubsubSnapshotMetadata> pubsubMetadata;
 
   /// The job this snapshot was created from.
   core.String sourceJobId;
@@ -8410,11 +8989,23 @@ class Snapshot {
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("diskSizeBytes")) {
+      diskSizeBytes = _json["diskSizeBytes"];
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
+    }
+    if (_json.containsKey("pubsubMetadata")) {
+      pubsubMetadata = (_json["pubsubMetadata"] as core.List)
+          .map<PubsubSnapshotMetadata>(
+              (value) => new PubsubSnapshotMetadata.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("sourceJobId")) {
       sourceJobId = _json["sourceJobId"];
@@ -8433,11 +9024,21 @@ class Snapshot {
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (diskSizeBytes != null) {
+      _json["diskSizeBytes"] = diskSizeBytes;
+    }
     if (id != null) {
       _json["id"] = id;
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
+    }
+    if (pubsubMetadata != null) {
+      _json["pubsubMetadata"] =
+          pubsubMetadata.map((value) => (value).toJson()).toList();
     }
     if (sourceJobId != null) {
       _json["sourceJobId"] = sourceJobId;
@@ -8454,8 +9055,14 @@ class Snapshot {
 
 /// Request to create a snapshot of a job.
 class SnapshotJobRequest {
+  /// User specified description of the snapshot. Maybe empty.
+  core.String description;
+
   /// The location that contains this job.
   core.String location;
+
+  /// If true, perform snapshots for sources which support this.
+  core.bool snapshotSources;
 
   /// TTL for the snapshot.
   core.String ttl;
@@ -8463,8 +9070,14 @@ class SnapshotJobRequest {
   SnapshotJobRequest();
 
   SnapshotJobRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("location")) {
       location = _json["location"];
+    }
+    if (_json.containsKey("snapshotSources")) {
+      snapshotSources = _json["snapshotSources"];
     }
     if (_json.containsKey("ttl")) {
       ttl = _json["ttl"];
@@ -8474,8 +9087,14 @@ class SnapshotJobRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (snapshotSources != null) {
+      _json["snapshotSources"] = snapshotSources;
     }
     if (ttl != null) {
       _json["ttl"] = ttl;
@@ -9546,6 +10165,12 @@ class StreamingComputationTask {
 
 /// A task that carries configuration information for streaming computations.
 class StreamingConfigTask {
+  /// Chunk size for commit streams from the harness to windmill.
+  core.String commitStreamChunkSizeBytes;
+
+  /// Chunk size for get data streams from the harness to windmill.
+  core.String getDataStreamChunkSizeBytes;
+
   /// Maximum size for work item commit supported windmill storage layer.
   core.String maxWorkItemCommitBytes;
 
@@ -9568,6 +10193,12 @@ class StreamingConfigTask {
   StreamingConfigTask();
 
   StreamingConfigTask.fromJson(core.Map _json) {
+    if (_json.containsKey("commitStreamChunkSizeBytes")) {
+      commitStreamChunkSizeBytes = _json["commitStreamChunkSizeBytes"];
+    }
+    if (_json.containsKey("getDataStreamChunkSizeBytes")) {
+      getDataStreamChunkSizeBytes = _json["getDataStreamChunkSizeBytes"];
+    }
     if (_json.containsKey("maxWorkItemCommitBytes")) {
       maxWorkItemCommitBytes = _json["maxWorkItemCommitBytes"];
     }
@@ -9594,6 +10225,12 @@ class StreamingConfigTask {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (commitStreamChunkSizeBytes != null) {
+      _json["commitStreamChunkSizeBytes"] = commitStreamChunkSizeBytes;
+    }
+    if (getDataStreamChunkSizeBytes != null) {
+      _json["getDataStreamChunkSizeBytes"] = getDataStreamChunkSizeBytes;
+    }
     if (maxWorkItemCommitBytes != null) {
       _json["maxWorkItemCommitBytes"] = maxWorkItemCommitBytes;
     }
@@ -11179,6 +11816,12 @@ class WorkerPool {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> poolArgs;
 
+  /// Set of SDK harness containers needed to execute this pipeline. This will
+  /// only be set in the Fn API path. For non-cross-language pipelines this
+  /// should have only one entry. Cross-language pipelines will have two or more
+  /// entries.
+  core.List<SdkHarnessContainerImage> sdkHarnessContainerImages;
+
   /// Subnetwork to which VMs will be assigned, if desired.  Expected to be of
   /// the form "regions/REGION/subnetworks/SUBNETWORK".
   core.String subnetwork;
@@ -11218,6 +11861,8 @@ class WorkerPool {
 
   /// Required. Docker container image that executes the Cloud Dataflow worker
   /// harness, residing in Google Container Registry.
+  ///
+  /// Deprecated for the Fn API path. Use sdk_harness_container_images instead.
   core.String workerHarnessContainerImage;
 
   /// Zone to run the worker pools in.  If empty or unspecified, the service
@@ -11281,6 +11926,13 @@ class WorkerPool {
     if (_json.containsKey("poolArgs")) {
       poolArgs =
           (_json["poolArgs"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("sdkHarnessContainerImages")) {
+      sdkHarnessContainerImages =
+          (_json["sdkHarnessContainerImages"] as core.List)
+              .map<SdkHarnessContainerImage>(
+                  (value) => new SdkHarnessContainerImage.fromJson(value))
+              .toList();
     }
     if (_json.containsKey("subnetwork")) {
       subnetwork = _json["subnetwork"];
@@ -11350,6 +12002,10 @@ class WorkerPool {
     }
     if (poolArgs != null) {
       _json["poolArgs"] = poolArgs;
+    }
+    if (sdkHarnessContainerImages != null) {
+      _json["sdkHarnessContainerImages"] =
+          sdkHarnessContainerImages.map((value) => (value).toJson()).toList();
     }
     if (subnetwork != null) {
       _json["subnetwork"] = subnetwork;

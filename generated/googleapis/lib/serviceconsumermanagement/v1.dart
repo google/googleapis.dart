@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.serviceconsumermanagement.v1;
 
@@ -56,7 +56,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -106,7 +106,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -564,6 +564,10 @@ class ServicesTenancyUnitsResourceApi {
   }
 
   /// Creates a tenancy unit with no tenant resources.
+  /// If tenancy unit already exists, it will be returned,
+  /// however, in this case, returned TenancyUnit does not have tenant_resources
+  /// field set and ListTenancyUnit has to be used to get a complete
+  /// TenancyUnit with all fields populated.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1169,11 +1173,15 @@ class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
   /// that are allowed to access. A JWT containing any of these audiences will
-  /// be accepted. When this setting is absent, only JWTs with audience
-  /// "https://Service_name/API_name"
-  /// will be accepted. For example, if no audiences are in the setting,
-  /// LibraryService API will only accept JWTs with the following audience
-  /// "https://library-example.googleapis.com/google.example.library.v1.LibraryService".
+  /// be accepted. When this setting is absent, JWTs with audiences:
+  ///   - "https://[service.name]/[google.protobuf.Api.name]"
+  ///   - "https://[service.name]/"
+  /// will be accepted.
+  /// For example, if no audiences are in the setting, LibraryService API will
+  /// accept JWTs with the following audiences:
+  ///   -
+  /// https://library-example.googleapis.com/google.example.library.v1.LibraryService
+  ///   - https://library-example.googleapis.com/
   ///
   /// Example:
   ///
@@ -1213,6 +1221,25 @@ class AuthProvider {
   /// Example: https://www.googleapis.com/oauth2/v1/certs
   core.String jwksUri;
 
+  /// Defines the locations to extract the JWT.
+  ///
+  /// JWT locations can be either from HTTP headers or URL query parameters.
+  /// The rule is that the first match wins. The checking order is: checking
+  /// all headers first, then URL query parameters.
+  ///
+  /// If not specified,  default to use following 3 locations:
+  ///    1) Authorization: Bearer
+  ///    2) x-goog-iap-jwt-assertion
+  ///    3) access_token query parameter
+  ///
+  /// Default locations can be specified as followings:
+  ///    jwt_locations:
+  ///    - header: Authorization
+  ///      value_prefix: "Bearer "
+  ///    - header: x-goog-iap-jwt-assertion
+  ///    - query: access_token
+  core.List<JwtLocation> jwtLocations;
+
   AuthProvider();
 
   AuthProvider.fromJson(core.Map _json) {
@@ -1230,6 +1257,11 @@ class AuthProvider {
     }
     if (_json.containsKey("jwksUri")) {
       jwksUri = _json["jwksUri"];
+    }
+    if (_json.containsKey("jwtLocations")) {
+      jwtLocations = (_json["jwtLocations"] as core.List)
+          .map<JwtLocation>((value) => new JwtLocation.fromJson(value))
+          .toList();
     }
   }
 
@@ -1250,6 +1282,10 @@ class AuthProvider {
     }
     if (jwksUri != null) {
       _json["jwksUri"] = jwksUri;
+    }
+    if (jwtLocations != null) {
+      _json["jwtLocations"] =
+          jwtLocations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1453,14 +1489,40 @@ class Backend {
 /// A backend rule provides configuration for an individual API element.
 class BackendRule {
   /// The address of the API backend.
+  ///
+  /// The scheme is used to determine the backend protocol and security.
+  /// The following schemes are accepted:
+  ///
+  ///    SCHEME        PROTOCOL    SECURITY
+  ///    http://       HTTP        None
+  ///    https://      HTTP        TLS
+  ///    grpc://       gRPC        None
+  ///    grpcs://      gRPC        TLS
+  ///
+  /// It is recommended to explicitly include a scheme. Leaving out the scheme
+  /// may cause constrasting behaviors across platforms.
+  ///
+  /// If the port is unspecified, the default is:
+  /// - 80 for schemes without TLS
+  /// - 443 for schemes with TLS
+  ///
+  /// For HTTP backends, use protocol
+  /// to specify the protocol version.
   core.String address;
 
-  /// The number of seconds to wait for a response from a request.  The default
-  /// deadline for gRPC is infinite (no deadline) and HTTP requests is 5
-  /// seconds.
+  /// The number of seconds to wait for a response from a request. The default
+  /// varies based on the request protocol and deployment environment.
   core.double deadline;
 
-  /// The JWT audience is used when generating a JWT id token for the backend.
+  /// When disable_auth is true, a JWT ID token won't be generated and the
+  /// original "Authorization" HTTP header will be preserved. If the header is
+  /// used to carry the original token and is expected by the backend, this
+  /// field must be set to true to preserve the header.
+  core.bool disableAuth;
+
+  /// The JWT audience is used when generating a JWT ID token for the backend.
+  /// This ID token will be added in the HTTP "authorization" header, and sent
+  /// to the backend.
   core.String jwtAudience;
 
   /// Minimum deadline in seconds needed for this method. Calls having deadline
@@ -1520,6 +1582,64 @@ class BackendRule {
   /// https://example.appspot.com/api/company/widgetworks/user/johndoe?timezone=EST
   core.String pathTranslation;
 
+  /// The protocol used for sending a request to the backend.
+  /// The supported values are "http/1.1" and "h2".
+  ///
+  /// The default value is inferred from the scheme in the
+  /// address field:
+  ///
+  ///    SCHEME        PROTOCOL
+  ///    http://       http/1.1
+  ///    https://      http/1.1
+  ///    grpc://       h2
+  ///    grpcs://      h2
+  ///
+  /// For secure HTTP backends (https://) that support HTTP/2, set this field
+  /// to "h2" for improved performance.
+  ///
+  /// Configuring this field to non-default values is only supported for secure
+  /// HTTP backends. This field will be ignored for all other backends.
+  ///
+  /// See
+  /// https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids
+  /// for more details on the supported values.
+  core.String protocol;
+
+  /// Unimplemented. Do not use.
+  ///
+  /// The new name the selected proto elements should be renamed to.
+  ///
+  /// The package, the service and the method can all be renamed.
+  /// The backend server should implement the renamed proto. However, clients
+  /// should call the original method, and ESF routes the traffic to the renamed
+  /// method.
+  ///
+  /// HTTP clients should call the URL mapped to the original method.
+  /// gRPC and Stubby clients should call the original method with package name.
+  ///
+  /// For legacy reasons, ESF allows Stubby clients to call with the
+  /// short name (without the package name). However, for API Versioning(or
+  /// multiple methods mapped to the same short name), all Stubby clients must
+  /// call the method's full name with the package name, otherwise the first one
+  /// (selector) wins.
+  ///
+  /// If this `rename_to` is specified with a trailing `*`, the `selector` must
+  /// be specified with a trailing `*` as well. The all element short names
+  /// matched by the `*` in the selector will be kept in the `rename_to`.
+  ///
+  /// For example,
+  ///     rename_rules:
+  ///     - selector: |-
+  ///         google.example.library.v1.*
+  ///       rename_to: google.example.library.*
+  ///
+  /// The selector matches `google.example.library.v1.Library.CreateShelf` and
+  /// `google.example.library.v1.Library.CreateBook`, they will be renamed to
+  /// `google.example.library.Library.CreateShelf` and
+  /// `google.example.library.Library.CreateBook`. It essentially renames the
+  /// proto package name section of the matched proto service and methods.
+  core.String renameTo;
+
   /// Selects the methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
@@ -1534,6 +1654,9 @@ class BackendRule {
     if (_json.containsKey("deadline")) {
       deadline = _json["deadline"].toDouble();
     }
+    if (_json.containsKey("disableAuth")) {
+      disableAuth = _json["disableAuth"];
+    }
     if (_json.containsKey("jwtAudience")) {
       jwtAudience = _json["jwtAudience"];
     }
@@ -1545,6 +1668,12 @@ class BackendRule {
     }
     if (_json.containsKey("pathTranslation")) {
       pathTranslation = _json["pathTranslation"];
+    }
+    if (_json.containsKey("protocol")) {
+      protocol = _json["protocol"];
+    }
+    if (_json.containsKey("renameTo")) {
+      renameTo = _json["renameTo"];
     }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
@@ -1560,6 +1689,9 @@ class BackendRule {
     if (deadline != null) {
       _json["deadline"] = deadline;
     }
+    if (disableAuth != null) {
+      _json["disableAuth"] = disableAuth;
+    }
     if (jwtAudience != null) {
       _json["jwtAudience"] = jwtAudience;
     }
@@ -1571,6 +1703,12 @@ class BackendRule {
     }
     if (pathTranslation != null) {
       _json["pathTranslation"] = pathTranslation;
+    }
+    if (protocol != null) {
+      _json["protocol"] = protocol;
+    }
+    if (renameTo != null) {
+      _json["renameTo"] = renameTo;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -2105,6 +2243,12 @@ class Documentation {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<DocumentationRule> rules;
 
+  /// Specifies the service root url if the default one (the service name
+  /// from the yaml file) is not suitable. This can be seen in any fully
+  /// specified service urls as well as sections that show a base that other
+  /// urls are relative to.
+  core.String serviceRootUrl;
+
   /// A short summary of what the service does. Can only be provided by
   /// plain text.
   core.String summary;
@@ -2129,6 +2273,9 @@ class Documentation {
               (value) => new DocumentationRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("serviceRootUrl")) {
+      serviceRootUrl = _json["serviceRootUrl"];
+    }
     if (_json.containsKey("summary")) {
       summary = _json["summary"];
     }
@@ -2148,6 +2295,9 @@ class Documentation {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (serviceRootUrl != null) {
+      _json["serviceRootUrl"] = serviceRootUrl;
     }
     if (summary != null) {
       _json["summary"] = summary;
@@ -2879,6 +3029,10 @@ class HttpRule {
   /// the nesting may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
+  /// When this flag is set to true, HTTP requests will be allowed to invoke a
+  /// half-duplex streaming method.
+  core.bool allowHalfDuplex;
+
   /// The name of the request field whose value is mapped to the HTTP request
   /// body, or `*` for mapping all request fields not captured by the path
   /// pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -2930,6 +3084,9 @@ class HttpRule {
           .map<HttpRule>((value) => new HttpRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("allowHalfDuplex")) {
+      allowHalfDuplex = _json["allowHalfDuplex"];
+    }
     if (_json.containsKey("body")) {
       body = _json["body"];
     }
@@ -2966,6 +3123,9 @@ class HttpRule {
       _json["additionalBindings"] =
           additionalBindings.map((value) => (value).toJson()).toList();
     }
+    if (allowHalfDuplex != null) {
+      _json["allowHalfDuplex"] = allowHalfDuplex;
+    }
     if (body != null) {
       _json["body"] = body;
     }
@@ -2992,6 +3152,54 @@ class HttpRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/// Specifies a location to extract JWT from an API request.
+class JwtLocation {
+  /// Specifies HTTP header name to extract JWT token.
+  core.String header;
+
+  /// Specifies URL query parameter name to extract JWT token.
+  core.String query;
+
+  /// The value prefix. The value format is "value_prefix{token}"
+  /// Only applies to "in" header type. Must be empty for "in" query type.
+  /// If not empty, the header value has to match (case sensitive) this prefix.
+  /// If not matched, JWT will not be extracted. If matched, JWT will be
+  /// extracted after the prefix is removed.
+  ///
+  /// For example, for "Authorization: Bearer {JWT}",
+  /// value_prefix="Bearer " with a space at the end.
+  core.String valuePrefix;
+
+  JwtLocation();
+
+  JwtLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("header")) {
+      header = _json["header"];
+    }
+    if (_json.containsKey("query")) {
+      query = _json["query"];
+    }
+    if (_json.containsKey("valuePrefix")) {
+      valuePrefix = _json["valuePrefix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (header != null) {
+      _json["header"] = header;
+    }
+    if (query != null) {
+      _json["query"] = query;
+    }
+    if (valuePrefix != null) {
+      _json["valuePrefix"] = valuePrefix;
     }
     return _json;
   }
@@ -3395,6 +3603,10 @@ class MetricDescriptor {
   /// Optional. The launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use
   /// these features, you must sign up in advance and sign a Trusted Tester
@@ -3445,6 +3657,13 @@ class MetricDescriptor {
   /// points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time
+  /// series, which is identified partially by
+  /// a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -3458,9 +3677,27 @@ class MetricDescriptor {
   ///     "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable
-  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The
-  /// supported units are a subset of [The Unified Code for Units of
+  /// The units in which the metric value is reported. It is only applicable
+  /// if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`
+  /// defines the representation of the stored metric values.
+  ///
+  /// Different systems may scale the values to be more easily displayed (so a
+  /// value of `0.02KBy` _might_ be displayed as `20By`, and a value of
+  /// `3523KBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is
+  /// `KBy`, then the value of the metric is always in thousands of bytes, no
+  /// matter how it may be displayed..
+  ///
+  /// If you want a custom metric to record the exact number of CPU-seconds used
+  /// by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is
+  /// `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005
+  /// CPU-seconds, then the value is written as `12005`.
+  ///
+  /// Alternatively, if you want a custom metric to record data in a more
+  /// granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is
+  /// `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`),
+  /// or use `Kis{CPU}` and write `11.723` (which is `12005/1024`).
+  ///
+  /// The supported units are a subset of [The Unified Code for Units of
   /// Measure](http://unitsofmeasure.org/ucum.html) standard:
   ///
   /// **Basic units (UNIT)**
@@ -3474,33 +3711,40 @@ class MetricDescriptor {
   ///
   /// **Prefixes (PREFIX)**
   ///
-  /// * `k`     kilo    (10**3)
-  /// * `M`     mega    (10**6)
-  /// * `G`     giga    (10**9)
-  /// * `T`     tera    (10**12)
-  /// * `P`     peta    (10**15)
-  /// * `E`     exa     (10**18)
-  /// * `Z`     zetta   (10**21)
-  /// * `Y`     yotta   (10**24)
-  /// * `m`     milli   (10**-3)
-  /// * `u`     micro   (10**-6)
-  /// * `n`     nano    (10**-9)
-  /// * `p`     pico    (10**-12)
-  /// * `f`     femto   (10**-15)
-  /// * `a`     atto    (10**-18)
-  /// * `z`     zepto   (10**-21)
-  /// * `y`     yocto   (10**-24)
-  /// * `Ki`    kibi    (2**10)
-  /// * `Mi`    mebi    (2**20)
-  /// * `Gi`    gibi    (2**30)
-  /// * `Ti`    tebi    (2**40)
+  /// * `k`     kilo    (10^3)
+  /// * `M`     mega    (10^6)
+  /// * `G`     giga    (10^9)
+  /// * `T`     tera    (10^12)
+  /// * `P`     peta    (10^15)
+  /// * `E`     exa     (10^18)
+  /// * `Z`     zetta   (10^21)
+  /// * `Y`     yotta   (10^24)
+  ///
+  /// * `m`     milli   (10^-3)
+  /// * `u`     micro   (10^-6)
+  /// * `n`     nano    (10^-9)
+  /// * `p`     pico    (10^-12)
+  /// * `f`     femto   (10^-15)
+  /// * `a`     atto    (10^-18)
+  /// * `z`     zepto   (10^-21)
+  /// * `y`     yocto   (10^-24)
+  ///
+  /// * `Ki`    kibi    (2^10)
+  /// * `Mi`    mebi    (2^20)
+  /// * `Gi`    gibi    (2^30)
+  /// * `Ti`    tebi    (2^40)
+  /// * `Pi`    pebi    (2^50)
   ///
   /// **Grammar**
   ///
   /// The grammar also includes these connectors:
   ///
-  /// * `/`    division (as an infix operator, e.g. `1/s`).
-  /// * `.`    multiplication (as an infix operator, e.g. `GBy.d`)
+  /// * `/`    division or ratio (as an infix operator). For examples,
+  ///          `kBy/{email}` or `MiBy/10ms` (although you should almost never
+  ///          have `/s` in a metric `unit`; rates should always be computed at
+  ///          query time from the underlying cumulative or delta value).
+  /// * `.`    multiplication or composition (as an infix operator). For
+  ///          examples, `GBy.d` or `k{watt}.h`.
   ///
   /// The grammar for a unit is as follows:
   ///
@@ -3515,14 +3759,25 @@ class MetricDescriptor {
   ///
   /// Notes:
   ///
-  /// * `Annotation` is just a comment if it follows a `UNIT` and is
-  ///    equivalent to `1` if it is used alone. For examples,
-  ///    `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.
+  /// * `Annotation` is just a comment if it follows a `UNIT`. If the annotation
+  ///    is used alone, then the unit is equivalent to `1`. For examples,
+  ///    `{request}/s == 1/s`, `By{transmitted}/s == By/s`.
   /// * `NAME` is a sequence of non-blank printable ASCII characters not
-  ///    containing '{' or '}'.
-  /// * `1` represents dimensionless value 1, such as in `1/s`.
-  /// * `%` represents dimensionless value 1/100, and annotates values giving
-  ///    a percentage.
+  ///    containing `{` or `}`.
+  /// * `1` represents a unitary [dimensionless
+  ///    unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such
+  ///    as in `1/s`. It is typically used when none of the basic units are
+  ///    appropriate. For example, "new users per day" can be represented as
+  ///    `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new
+  ///    users). Alternatively, "thousands of page views per day" would be
+  ///    represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric
+  ///    value of `5.3` would mean "5300 page views per day").
+  /// * `%` represents dimensionless value of 1/100, and annotates values giving
+  /// a percentage (so the metric values are typically in the range of 0..100,
+  ///    and a metric value `3` means "3 percent").
+  /// * `10^2.%` indicates a metric contains a ratio, typically in the range
+  ///    0..1, that will be multiplied by 100 and displayed as a percentage
+  ///    (so a metric value `0.03` means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc.
@@ -3563,6 +3818,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -3598,6 +3857,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -3621,10 +3883,13 @@ class MetricDescriptorMetadata {
   /// data loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead.
-  /// The launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use
   /// these features, you must sign up in advance and sign a Trusted Tester
@@ -3874,6 +4139,10 @@ class MonitoredResourceDescriptor {
   /// Optional. The launch stage of the monitored resource definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use
   /// these features, you must sign up in advance and sign a Trusted Tester
@@ -4470,10 +4739,7 @@ class QuotaLimit {
   /// display name generated from the configuration.
   core.String displayName;
 
-  /// Duration of this limit in textual notation. Example: "100s", "24h", "1d".
-  /// For duration longer than a day, only multiple of days is supported. We
-  /// support only "100s" and "1d" for now. Additional support will be added in
-  /// the future. "0" indicates indefinite duration.
+  /// Duration of this limit in textual notation. Must be "100s" or "1d".
   ///
   /// Used by group-based quotas only.
   core.String duration;
@@ -4703,6 +4969,7 @@ class Service {
   /// The semantic version of the service configuration. The config version
   /// affects the interpretation of the service configuration. For example,
   /// certain features are enabled by default for certain config versions.
+  ///
   /// The latest config version is `3`.
   core.int configVersion;
 
@@ -4737,8 +5004,9 @@ class Service {
   Http http;
 
   /// A unique ID for a specific instance of this message, typically assigned
-  /// by the client for tracking purpose. If empty, the server may choose to
-  /// generate one instead. Must be no longer than 60 characters.
+  /// by the client for tracking purpose. Must be no longer than 63 characters
+  /// and only lower case letters, digits, '.', '_' and '-' are allowed. If
+  /// empty, the server may choose to generate one instead.
   core.String id;
 
   /// Logging configuration.
@@ -5026,6 +5294,62 @@ class ServiceAccountConfig {
     }
     if (tenantProjectRoles != null) {
       _json["tenantProjectRoles"] = tenantProjectRoles;
+    }
+    return _json;
+  }
+}
+
+/// The per-product per-project service identity for a service.
+///
+///
+/// Use this field to configure per-product per-project service identity.
+/// Example of a service identity configuration.
+///
+///     usage:
+///       service_identity:
+///       - service_account_parent: "projects/123456789"
+///         display_name: "Cloud XXX Service Agent"
+/// description: "Used as the identity of Cloud XXX to access resources"
+class ServiceIdentity {
+  /// Optional. A user-specified opaque description of the service account.
+  /// Must be less than or equal to 256 UTF-8 bytes.
+  core.String description;
+
+  /// Optional. A user-specified name for the service account.
+  /// Must be less than or equal to 100 UTF-8 bytes.
+  core.String displayName;
+
+  /// A service account project that hosts the service accounts.
+  ///
+  /// An example name would be:
+  /// `projects/123456789`
+  core.String serviceAccountParent;
+
+  ServiceIdentity();
+
+  ServiceIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("serviceAccountParent")) {
+      serviceAccountParent = _json["serviceAccountParent"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (serviceAccountParent != null) {
+      _json["serviceAccountParent"] = serviceAccountParent;
     }
     return _json;
   }
@@ -5640,6 +5964,9 @@ class Usage {
   /// **NOTE:** All service configuration rules follow "last one wins" order.
   core.List<UsageRule> rules;
 
+  /// The configuration of a per-product per-project service identity.
+  ServiceIdentity serviceIdentity;
+
   Usage();
 
   Usage.fromJson(core.Map _json) {
@@ -5654,6 +5981,9 @@ class Usage {
           .map<UsageRule>((value) => new UsageRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("serviceIdentity")) {
+      serviceIdentity = new ServiceIdentity.fromJson(_json["serviceIdentity"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5667,6 +5997,9 @@ class Usage {
     }
     if (rules != null) {
       _json["rules"] = rules.map((value) => (value).toJson()).toList();
+    }
+    if (serviceIdentity != null) {
+      _json["serviceIdentity"] = (serviceIdentity).toJson();
     }
     return _json;
   }
@@ -5826,6 +6159,32 @@ class V1Beta1EnableConsumerResponse {
   }
 }
 
+/// Response message for the `GenerateServiceIdentity` method.
+///
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1Beta1GenerateServiceIdentityResponse {
+  /// ServiceIdentity that was created or retrieved.
+  V1Beta1ServiceIdentity identity;
+
+  V1Beta1GenerateServiceIdentityResponse();
+
+  V1Beta1GenerateServiceIdentityResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("identity")) {
+      identity = new V1Beta1ServiceIdentity.fromJson(_json["identity"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (identity != null) {
+      _json["identity"] = (identity).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Response message for ImportProducerOverrides
 class V1Beta1ImportProducerOverridesResponse {
   /// The overrides that were created from the imported data.
@@ -5854,6 +6213,7 @@ class V1Beta1ImportProducerOverridesResponse {
 
 /// A quota override
 class V1Beta1QuotaOverride {
+  ///
   /// If this map is nonempty, then this override applies only to specific
   /// values
   /// for dimensions defined in the limit unit.
@@ -5863,17 +6223,20 @@ class V1Beta1QuotaOverride {
   /// the override is only applied to quota consumed in that region.
   ///
   /// This map has the following restrictions:
-  /// - Keys that are not defined in the limit's unit are not valid keys.
-  ///   Any string appearing in {brackets} in the unit (besides {project} or
-  ///   {user}) is a defined key.
-  /// - "project" is not a valid key; the project is already specified in
-  ///   the parent resource name.
-  /// - "user" is not a valid key; the API does not support quota overrides
-  ///   that apply only to a specific user.
-  /// - If "region" appears as a key, its value must be a valid Cloud region.
-  /// - If "zone" appears as a key, its value must be a valid Cloud zone.
-  /// - If any valid key other than "region" or "zone" appears in the map, then
-  /// all valid keys other than "region" or "zone" must also appear in the map.
+  ///
+  /// *   Keys that are not defined in the limit's unit are not valid keys.
+  ///     Any string appearing in {brackets} in the unit (besides {project} or
+  ///     {user}) is a defined key.
+  /// *   "project" is not a valid key; the project is already specified in
+  ///     the parent resource name.
+  /// *   "user" is not a valid key; the API does not support quota overrides
+  ///     that apply only to a specific user.
+  /// *   If "region" appears as a key, its value must be a valid Cloud region.
+  /// *   If "zone" appears as a key, its value must be a valid Cloud zone.
+  /// *   If any valid key other than "region" or "zone" appears in the map,
+  /// then
+  ///     all valid keys other than "region" or "zone" must also appear in the
+  ///     map.
   core.Map<core.String, core.String> dimensions;
 
   /// The name of the metric to which this override applies.
@@ -5957,6 +6320,105 @@ class V1Beta1RefreshConsumerResponse {
   }
 }
 
+/// A service identity in the Identity and Access Management API.
+class V1Beta1ServiceIdentity {
+  /// The email address of the service identity.
+  core.String email;
+
+  /// P4 service identity resource name.
+  ///
+  /// An example name would be:
+  /// `services/serviceconsumermanagement.googleapis.com/projects/123/serviceIdentities/default`
+  core.String name;
+
+  /// The P4 service identity configuration tag. This must be defined in
+  /// activation_grants. If not specified when creating the account, the tag is
+  /// set to "default".
+  core.String tag;
+
+  /// The unique and stable id of the service identity.
+  core.String uniqueId;
+
+  V1Beta1ServiceIdentity();
+
+  V1Beta1ServiceIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("tag")) {
+      tag = _json["tag"];
+    }
+    if (_json.containsKey("uniqueId")) {
+      uniqueId = _json["uniqueId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (tag != null) {
+      _json["tag"] = tag;
+    }
+    if (uniqueId != null) {
+      _json["uniqueId"] = uniqueId;
+    }
+    return _json;
+  }
+}
+
+/// A default identity in the Identity and Access Management API.
+class V1DefaultIdentity {
+  /// The email address of the default identity.
+  core.String email;
+
+  /// Default identity resource name.
+  ///
+  /// An example name would be:
+  /// `services/serviceconsumermanagement.googleapis.com/projects/123/defaultIdentity`
+  core.String name;
+
+  /// The unique and stable id of the default identity.
+  core.String uniqueId;
+
+  V1DefaultIdentity();
+
+  V1DefaultIdentity.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("uniqueId")) {
+      uniqueId = _json["uniqueId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (uniqueId != null) {
+      _json["uniqueId"] = uniqueId;
+    }
+    return _json;
+  }
+}
+
 /// Response message for the `DisableConsumer` method.
 /// This response message is assigned to the `response` field of the returned
 /// Operation when that operation is done.
@@ -5983,6 +6445,69 @@ class V1EnableConsumerResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for the `GenerateDefaultIdentity` method.
+///
+/// This response message is assigned to the `response` field of the returned
+/// Operation when that operation is done.
+class V1GenerateDefaultIdentityResponse {
+  /// Status of the role attachment. Under development (go/si-attach-role),
+  /// currently always return ATTACH_STATUS_UNSPECIFIED)
+  /// Possible string values are:
+  /// - "ATTACH_STATUS_UNSPECIFIED" : Indicates that the AttachStatus was not
+  /// set.
+  /// - "ATTACHED" : The default identity was attached to a role successfully in
+  /// this request.
+  /// - "ATTACH_SKIPPED" : The request specified that no attempt should be made
+  /// to attach the role.
+  /// - "PREVIOUSLY_ATTACHED" : Role was attached to the consumer project at
+  /// some point in time. Tenant
+  /// manager doesn't make assertion about the current state of the identity
+  /// with respect to the consumer.
+  ///
+  /// Role attachment should happen only once after activation and cannot be
+  /// reattached after customer removes it. (go/si-attach-role)
+  /// - "ATTACH_DENIED_BY_ORG_POLICY" : Role attachment was denied in this
+  /// request by customer set org policy.
+  /// (go/si-attach-role)
+  core.String attachStatus;
+
+  /// DefaultIdentity that was created or retrieved.
+  V1DefaultIdentity identity;
+
+  /// Role attached to consumer project. Empty if not attached in this
+  /// request. (Under development, currently always return empty.)
+  core.String role;
+
+  V1GenerateDefaultIdentityResponse();
+
+  V1GenerateDefaultIdentityResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("attachStatus")) {
+      attachStatus = _json["attachStatus"];
+    }
+    if (_json.containsKey("identity")) {
+      identity = new V1DefaultIdentity.fromJson(_json["identity"]);
+    }
+    if (_json.containsKey("role")) {
+      role = _json["role"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attachStatus != null) {
+      _json["attachStatus"] = attachStatus;
+    }
+    if (identity != null) {
+      _json["identity"] = (identity).toJson();
+    }
+    if (role != null) {
+      _json["role"] = role;
+    }
     return _json;
   }
 }
@@ -6058,8 +6583,7 @@ class V1ServiceAccount {
   /// The email address of the service account.
   core.String email;
 
-  /// The IAM resource name of the service account in the following format:
-  /// projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}.
+  /// Deprecated. See b/136209818.
   core.String iamAccountName;
 
   /// P4 SA resource name.

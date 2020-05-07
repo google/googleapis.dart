@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.bigquerydatatransfer.v1;
 
@@ -21,6 +21,10 @@ const core.String USER_AGENT = 'dart-api-client bigquerydatatransfer/v1';
 class BigquerydatatransferApi {
   /// View and manage your data in Google BigQuery
   static const BigqueryScope = "https://www.googleapis.com/auth/bigquery";
+
+  /// View your data in Google BigQuery
+  static const BigqueryReadonlyScope =
+      "https://www.googleapis.com/auth/bigquery.readonly";
 
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -71,8 +75,9 @@ class ProjectsDataSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The data source in the form:
-  /// `projects/{project_id}/dataSources/{data_source_id}`
+  /// [name] - Required. The data source in the form:
+  /// `projects/{project_id}/dataSources/{data_source_id}` or
+  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
   /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -123,9 +128,10 @@ class ProjectsDataSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/dataSources/{data_source_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/dataSources/{data_source_id}` or
+  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -169,9 +175,10 @@ class ProjectsDataSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The BigQuery project id for which data sources should be
-  /// returned.
-  /// Must be in the form: `projects/{project_id}`
+  /// [parent] - Required. The BigQuery project id for which data sources should
+  /// be returned.
+  /// Must be in the form: `projects/{project_id}` or
+  /// `projects/{project_id}/locations/{location_id}
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
@@ -291,11 +298,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -308,9 +315,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -322,14 +329,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -365,8 +372,9 @@ class ProjectsLocationsDataSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The data source in the form:
-  /// `projects/{project_id}/dataSources/{data_source_id}`
+  /// [name] - Required. The data source in the form:
+  /// `projects/{project_id}/dataSources/{data_source_id}` or
+  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
   ///
@@ -418,9 +426,10 @@ class ProjectsLocationsDataSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/dataSources/{data_source_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/dataSources/{data_source_id}` or
+  /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
   ///
@@ -465,9 +474,10 @@ class ProjectsLocationsDataSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The BigQuery project id for which data sources should be
-  /// returned.
-  /// Must be in the form: `projects/{project_id}`
+  /// [parent] - Required. The BigQuery project id for which data sources should
+  /// be returned.
+  /// Must be in the form: `projects/{project_id}` or
+  /// `projects/{project_id}/locations/{location_id}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
@@ -541,11 +551,11 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The BigQuery project id where the transfer configuration should
-  /// be created.
-  /// Must be in the format projects/{project_id}/locations/{location_id}
-  /// If specified location and location of the destination bigquery dataset
-  /// do not match - the request will fail.
+  /// [parent] - Required. The BigQuery project id where the transfer
+  /// configuration should be created.
+  /// Must be in the format projects/{project_id}/locations/{location_id} or
+  /// projects/{project_id}. If specified location and location of the
+  /// destination bigquery dataset do not match - the request will fail.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [versionInfo] - Optional version info. If users want to find a very recent
@@ -574,6 +584,12 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [serviceAccountName] - Optional service account name. If this field is
+  /// set, transfer config will
+  /// be created with this service account credentials. It requires that
+  /// requesting user calling this API has permissions to act as this service
+  /// account.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -588,6 +604,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
       TransferConfig request, core.String parent,
       {core.String versionInfo,
       core.String authorizationCode,
+      core.String serviceAccountName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -607,6 +624,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (serviceAccountName != null) {
+      _queryParams["serviceAccountName"] = [serviceAccountName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -630,9 +650,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -676,9 +697,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -722,8 +744,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The BigQuery project id for which data sources
-  /// should be returned: `projects/{project_id}`.
+  /// [parent] - Required. The BigQuery project id for which data sources
+  /// should be returned: `projects/{project_id}` or
+  /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
@@ -808,16 +831,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
-  /// [versionInfo] - Optional version info. If users want to find a very recent
-  /// access token,
-  /// that is, immediately after approving access, users have to set the
-  /// version_info claim in the token request. To obtain the version_info, users
-  /// must use the "none+gsession" response type. which be return a
-  /// version_info back in the authorization response which be be put in a JWT
-  /// claim in the token request.
-  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -836,6 +849,24 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [updateMask] - Required. Required list of fields to be updated in this
+  /// request.
+  ///
+  /// [serviceAccountName] - Optional service account name. If this field is set
+  /// and
+  /// "service_account_name" is set in update_mask, transfer config will be
+  /// updated to use this service account credentials. It requires that
+  /// requesting user calling this API has permissions to act as this service
+  /// account.
+  ///
+  /// [versionInfo] - Optional version info. If users want to find a very recent
+  /// access token,
+  /// that is, immediately after approving access, users have to set the
+  /// version_info claim in the token request. To obtain the version_info, users
+  /// must use the "none+gsession" response type. which be return a
+  /// version_info back in the authorization response which be be put in a JWT
+  /// claim in the token request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -847,9 +878,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String updateMask,
+      {core.String authorizationCode,
+      core.String updateMask,
+      core.String serviceAccountName,
       core.String versionInfo,
-      core.String authorizationCode,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -864,14 +896,17 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (authorizationCode != null) {
+      _queryParams["authorizationCode"] = [authorizationCode];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
+    if (serviceAccountName != null) {
+      _queryParams["serviceAccountName"] = [serviceAccountName];
+    }
     if (versionInfo != null) {
       _queryParams["versionInfo"] = [versionInfo];
-    }
-    if (authorizationCode != null) {
-      _queryParams["authorizationCode"] = [authorizationCode];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -898,8 +933,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// [parent] - Required. Transfer configuration name in the form:
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -958,7 +994,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -1022,9 +1059,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
@@ -1068,9 +1106,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
@@ -1114,10 +1153,11 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of transfer configuration for which transfer runs should
-  /// be retrieved.
+  /// [parent] - Required. Name of transfer configuration for which transfer
+  /// runs should be retrieved.
   /// Format of transfer configuration resource name is:
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
@@ -1205,8 +1245,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Transfer run name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.
+  /// [parent] - Required. Transfer run name in the form:
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
@@ -1292,11 +1333,11 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The BigQuery project id where the transfer configuration should
-  /// be created.
-  /// Must be in the format projects/{project_id}/locations/{location_id}
-  /// If specified location and location of the destination bigquery dataset
-  /// do not match - the request will fail.
+  /// [parent] - Required. The BigQuery project id where the transfer
+  /// configuration should be created.
+  /// Must be in the format projects/{project_id}/locations/{location_id} or
+  /// projects/{project_id}. If specified location and location of the
+  /// destination bigquery dataset do not match - the request will fail.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [versionInfo] - Optional version info. If users want to find a very recent
@@ -1325,6 +1366,12 @@ class ProjectsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [serviceAccountName] - Optional service account name. If this field is
+  /// set, transfer config will
+  /// be created with this service account credentials. It requires that
+  /// requesting user calling this API has permissions to act as this service
+  /// account.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1339,6 +1386,7 @@ class ProjectsTransferConfigsResourceApi {
       TransferConfig request, core.String parent,
       {core.String versionInfo,
       core.String authorizationCode,
+      core.String serviceAccountName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1358,6 +1406,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (serviceAccountName != null) {
+      _queryParams["serviceAccountName"] = [serviceAccountName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1381,9 +1432,10 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1426,9 +1478,10 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1471,9 +1524,13 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The BigQuery project id for which data sources
-  /// should be returned: `projects/{project_id}`.
+  /// [parent] - Required. The BigQuery project id for which data sources
+  /// should be returned: `projects/{project_id}` or
+  /// `projects/{project_id}/locations/{location_id}`
   /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
@@ -1484,9 +1541,6 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
-  ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1499,9 +1553,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> dataSourceIds,
+      core.String pageToken,
       core.int pageSize,
-      core.List<core.String> dataSourceIds,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1513,14 +1567,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1582,7 +1636,15 @@ class ProjectsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
+  /// [updateMask] - Required. Required list of fields to be updated in this
+  /// request.
+  ///
+  /// [serviceAccountName] - Optional service account name. If this field is set
+  /// and
+  /// "service_account_name" is set in update_mask, transfer config will be
+  /// updated to use this service account credentials. It requires that
+  /// requesting user calling this API has permissions to act as this service
+  /// account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1598,6 +1660,7 @@ class ProjectsTransferConfigsResourceApi {
       {core.String versionInfo,
       core.String authorizationCode,
       core.String updateMask,
+      core.String serviceAccountName,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1620,6 +1683,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (serviceAccountName != null) {
+      _queryParams["serviceAccountName"] = [serviceAccountName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1646,8 +1712,9 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// [parent] - Required. Transfer configuration name in the form:
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1705,7 +1772,8 @@ class ProjectsTransferConfigsResourceApi {
   /// Request parameters:
   ///
   /// [parent] - Transfer configuration name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1766,9 +1834,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
@@ -1812,9 +1881,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The field will contain name of the resource requested, for
-  /// example:
-  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`
+  /// [name] - Required. The field will contain name of the resource requested,
+  /// for example:
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
@@ -1858,16 +1928,12 @@ class ProjectsTransferConfigsRunsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of transfer configuration for which transfer runs should
-  /// be retrieved.
+  /// [parent] - Required. Name of transfer configuration for which transfer
+  /// runs should be retrieved.
   /// Format of transfer configuration resource name is:
-  /// `projects/{project_id}/transferConfigs/{config_id}`.
+  /// `projects/{project_id}/transferConfigs/{config_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
-  ///
-  /// [runAttempt] - Indicates how run attempts are to be pulled.
-  /// Possible string values are:
-  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-  /// - "LATEST" : A LATEST.
   ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
@@ -1882,6 +1948,11 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
+  /// [runAttempt] - Indicates how run attempts are to be pulled.
+  /// Possible string values are:
+  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+  /// - "LATEST" : A LATEST.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1893,10 +1964,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String runAttempt,
-      core.String pageToken,
+      {core.String pageToken,
       core.List<core.String> states,
       core.int pageSize,
+      core.String runAttempt,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1908,9 +1979,6 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1919,6 +1987,9 @@ class ProjectsTransferConfigsRunsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1948,8 +2019,9 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Transfer run name in the form:
-  /// `projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.
+  /// [parent] - Required. Transfer run name in the form:
+  /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
+  /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
@@ -2073,6 +2145,10 @@ class DataSource {
   /// - "GOOGLE_PLUS_AUTHORIZATION_CODE" : Return an authorization code for a
   /// given Google+ page that can then be
   /// exchanged for a refresh token on the backend.
+  /// - "FIRST_PARTY_OAUTH" : Use First Party OAuth based on Loas Owned Clients.
+  /// First Party OAuth
+  /// doesn't require a refresh token to get an offline access token. Instead,
+  /// it uses a client-signed JWT assertion to retrieve an access token.
   core.String authorizationType;
 
   /// Data source client id which should be used to receive refresh token.
@@ -2460,6 +2536,30 @@ class DataSourceParameter {
   }
 }
 
+/// Represents preferences for sending email notifications for transfer run
+/// events.
+class EmailPreferences {
+  /// If true, email notifications will be sent on transfer run failures.
+  core.bool enableFailureEmail;
+
+  EmailPreferences();
+
+  EmailPreferences.fromJson(core.Map _json) {
+    if (_json.containsKey("enableFailureEmail")) {
+      enableFailureEmail = _json["enableFailureEmail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableFailureEmail != null) {
+      _json["enableFailureEmail"] = enableFailureEmail;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -2788,11 +2888,11 @@ class ScheduleOptions {
 
 /// A request to schedule transfer runs for a time range.
 class ScheduleTransferRunsRequest {
-  /// End time of the range of transfer runs. For example,
+  /// Required. End time of the range of transfer runs. For example,
   /// `"2017-05-30T00:00:00+00:00"`.
   core.String endTime;
 
-  /// Start time of the range of transfer runs. For example,
+  /// Required. Start time of the range of transfer runs. For example,
   /// `"2017-05-25T00:00:00+00:00"`.
   core.String startTime;
 
@@ -3030,6 +3130,10 @@ class TransferConfig {
   /// User specified display name for the data transfer.
   core.String displayName;
 
+  /// Email notifications will be sent according to these preferences
+  /// to the email address of the user who owns this transfer config.
+  EmailPreferences emailPreferences;
+
   /// The resource name of the transfer config.
   /// Transfer config names have the form of
   /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
@@ -3041,6 +3145,10 @@ class TransferConfig {
 
   /// Output only. Next time when data transfer will run.
   core.String nextRunTime;
+
+  /// Pub/Sub topic where notifications will be sent after transfer runs
+  /// associated with this transfer config finish.
+  core.String notificationPubsubTopic;
 
   /// Data transfer specific parameters.
   ///
@@ -3103,11 +3211,18 @@ class TransferConfig {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("emailPreferences")) {
+      emailPreferences =
+          new EmailPreferences.fromJson(_json["emailPreferences"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("nextRunTime")) {
       nextRunTime = _json["nextRunTime"];
+    }
+    if (_json.containsKey("notificationPubsubTopic")) {
+      notificationPubsubTopic = _json["notificationPubsubTopic"];
     }
     if (_json.containsKey("params")) {
       params = (_json["params"] as core.Map).cast<core.String, core.Object>();
@@ -3150,11 +3265,17 @@ class TransferConfig {
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
+    if (emailPreferences != null) {
+      _json["emailPreferences"] = (emailPreferences).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
     }
     if (nextRunTime != null) {
       _json["nextRunTime"] = nextRunTime;
+    }
+    if (notificationPubsubTopic != null) {
+      _json["notificationPubsubTopic"] = notificationPubsubTopic;
     }
     if (params != null) {
       _json["params"] = params;
@@ -3232,6 +3353,11 @@ class TransferRun {
   /// Output only. The BigQuery target dataset id.
   core.String destinationDatasetId;
 
+  /// Output only. Email notifications will be sent according to these
+  /// preferences to the email address of the user who owns the transfer config
+  /// this run was derived from.
+  EmailPreferences emailPreferences;
+
   /// Output only. Time when transfer run ended.
   /// Parameter ignored by server for input requests.
   core.String endTime;
@@ -3244,6 +3370,10 @@ class TransferRun {
   /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.
   /// The name is ignored when creating a transfer run.
   core.String name;
+
+  /// Output only. Pub/Sub topic where a notification will be sent after this
+  /// transfer run finishes
+  core.String notificationPubsubTopic;
 
   /// Output only. Data transfer specific parameters.
   ///
@@ -3295,6 +3425,10 @@ class TransferRun {
     if (_json.containsKey("destinationDatasetId")) {
       destinationDatasetId = _json["destinationDatasetId"];
     }
+    if (_json.containsKey("emailPreferences")) {
+      emailPreferences =
+          new EmailPreferences.fromJson(_json["emailPreferences"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
     }
@@ -3303,6 +3437,9 @@ class TransferRun {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("notificationPubsubTopic")) {
+      notificationPubsubTopic = _json["notificationPubsubTopic"];
     }
     if (_json.containsKey("params")) {
       params = (_json["params"] as core.Map).cast<core.String, core.Object>();
@@ -3339,6 +3476,9 @@ class TransferRun {
     if (destinationDatasetId != null) {
       _json["destinationDatasetId"] = destinationDatasetId;
     }
+    if (emailPreferences != null) {
+      _json["emailPreferences"] = (emailPreferences).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -3347,6 +3487,9 @@ class TransferRun {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (notificationPubsubTopic != null) {
+      _json["notificationPubsubTopic"] = notificationPubsubTopic;
     }
     if (params != null) {
       _json["params"] = params;

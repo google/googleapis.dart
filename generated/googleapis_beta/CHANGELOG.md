@@ -1,3 +1,27 @@
+## 0.50.0
+ * [api-new] bigqueryconnection:v1beta1
+ * [api-new] billingbudgets:v1beta1
+ * [api-new] datacatalog:v1beta1
+ * [api-new] firebaseml:v1beta2
+ * [api-new] gameservices:v1beta
+ * [api-new] lifesciences:v2beta
+ * [api-new] memcache:v1beta2
+ * [api-new] networkmanagement:v1beta1
+ * [api-new] prod_tt_sasportal:v1alpha1
+ * [api-new] recommender:v1beta1
+ * [api-new] sasportal:v1alpha1
+ * [api-new] servicedirectory:v1beta1
+ * [api-new] speech:v2beta1
+ * [api-new] sql:v1beta4
+ * [api-removed] proximitybeacon:v1beta1
+ * [api-removed] replicapool:v1beta1
+ * [api-removed] sqladmin:v1beta4
+ * [api-removed] cloudprivatecatalog:v1beta1
+ * [api-removed] cloudprivatecatalogproducer:v1beta1
+ * [api-removed] healthcare:v1beta1
+ * [api-removed] accessapproval:v1beta1
+ * [api-removed] binaryauthorization:v1beta1
+
 ## 0.49.0
  * [api-new] accessapproval:v1beta1
  * [api-new] cloudprivatecatalog:v1beta1

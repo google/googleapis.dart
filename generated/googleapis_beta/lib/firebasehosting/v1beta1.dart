@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.firebasehosting.v1beta1;
 
@@ -37,6 +37,7 @@ class FirebasehostingApi {
 
   final commons.ApiRequester _requester;
 
+  ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   SitesResourceApi get sites => new SitesResourceApi(_requester);
 
   FirebasehostingApi(http.Client client,
@@ -46,9 +47,1110 @@ class FirebasehostingApi {
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
+class ProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsResourceApi get operations =>
+      new ProjectsOperationsResourceApi(_requester);
+  ProjectsSitesResourceApi get sites =>
+      new ProjectsSitesResourceApi(_requester);
+
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsOperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class ProjectsSitesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesChannelsResourceApi get channels =>
+      new ProjectsSitesChannelsResourceApi(_requester);
+  ProjectsSitesDomainsResourceApi get domains =>
+      new ProjectsSitesDomainsResourceApi(_requester);
+  ProjectsSitesReleasesResourceApi get releases =>
+      new ProjectsSitesReleasesResourceApi(_requester);
+  ProjectsSitesVersionsResourceApi get versions =>
+      new ProjectsSitesVersionsResourceApi(_requester);
+
+  ProjectsSitesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the Hosting metadata for a specific site.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The site for which to get the SiteConfig, in the
+  /// format:
+  /// <code>sites/<var>site-name</var>/config</code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/config$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SiteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SiteConfig> getConfig(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SiteConfig.fromJson(data));
+  }
+
+  /// Sets the Hosting metadata for a specific site.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The site for which to update the SiteConfig, in the
+  /// format:
+  /// <code>sites/<var>site-name</var>/config</code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/config$".
+  ///
+  /// [updateMask] - A set of field names from your [site
+  /// configuration](../sites.SiteConfig)
+  /// that you want to update.
+  /// <br>A field will be overwritten if, and only if, it's in the mask.
+  /// <br>If a mask is not provided then a default mask of only
+  /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SiteConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SiteConfig> updateConfig(SiteConfig request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SiteConfig.fromJson(data));
+  }
+}
+
+class ProjectsSitesChannelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesChannelsReleasesResourceApi get releases =>
+      new ProjectsSitesChannelsReleasesResourceApi(_requester);
+
+  ProjectsSitesChannelsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsSitesChannelsReleasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesChannelsReleasesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new release which makes the content of the specified version
+  /// actively display on the appropriate URL(s).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site that the release belongs to, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [versionName] - The unique identifier for a version, in the format:
+  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// The <var>site-name</var> in this version identifier must match the
+  /// <var>site-name</var> in the `parent` parameter.
+  /// <br>
+  /// <br>This query parameter must be empty if the `type` field in the
+  /// request body is `SITE_DISABLE`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Release].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Release> create(Release request, core.String parent,
+      {core.String versionName, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (versionName != null) {
+      _queryParams["versionName"] = [versionName];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/releases';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Release.fromJson(data));
+  }
+
+  /// Lists the releases that have been created on the specified site.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list files, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The page size to return. Defaults to 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReleasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReleasesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/releases';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListReleasesResponse.fromJson(data));
+  }
+}
+
+class ProjectsSitesDomainsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesDomainsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a domain mapping on the specified site.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to create the domain association for, in
+  /// the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Domain].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Domain> create(Domain request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/domains';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Domain.fromJson(data));
+  }
+
+  /// Deletes the existing domain mapping on the specified site.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the domain association to delete.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a domain mapping on the specified site.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the domain configuration to get.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Domain].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Domain> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Domain.fromJson(data));
+  }
+
+  /// Lists the domains for the specified site.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list domains, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The page size to return. Defaults to 50.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDomainsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDomainsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/domains';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListDomainsResponse.fromJson(data));
+  }
+
+  /// Updates the specified domain mapping, creating the mapping as if it does
+  /// not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the domain association to update or create,
+  /// if an
+  /// association doesn't already exist.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Domain].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Domain> update(Domain request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Domain.fromJson(data));
+  }
+}
+
+class ProjectsSitesReleasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesReleasesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new release which makes the content of the specified version
+  /// actively display on the appropriate URL(s).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site that the release belongs to, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [versionName] - The unique identifier for a version, in the format:
+  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// The <var>site-name</var> in this version identifier must match the
+  /// <var>site-name</var> in the `parent` parameter.
+  /// <br>
+  /// <br>This query parameter must be empty if the `type` field in the
+  /// request body is `SITE_DISABLE`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Release].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Release> create(Release request, core.String parent,
+      {core.String versionName, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (versionName != null) {
+      _queryParams["versionName"] = [versionName];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/releases';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Release.fromJson(data));
+  }
+
+  /// Lists the releases that have been created on the specified site.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list files, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The page size to return. Defaults to 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReleasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReleasesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/releases';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListReleasesResponse.fromJson(data));
+  }
+}
+
+class ProjectsSitesVersionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesVersionsFilesResourceApi get files =>
+      new ProjectsSitesVersionsFilesResourceApi(_requester);
+
+  ProjectsSitesVersionsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new version for a site.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to create the version for, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [sizeBytes] - The self-reported size of the version. This value is used
+  /// for a pre-emptive
+  /// quota check for legacy version uploads.
+  ///
+  /// [versionId] - A unique id for the new version. This is only specified for
+  /// legacy version
+  /// creations.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Version> create(Version request, core.String parent,
+      {core.String sizeBytes, core.String versionId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (sizeBytes != null) {
+      _queryParams["sizeBytes"] = [sizeBytes];
+    }
+    if (versionId != null) {
+      _queryParams["versionId"] = [versionId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/versions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Version.fromJson(data));
+  }
+
+  /// Deletes the specified version.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the version to be deleted, in the format:
+  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Lists the versions that have been created on the specified site.
+  /// Will include filtering in the future.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list files, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than
+  /// this value.
+  /// If unspecified, at most 25 versions will be returned.
+  /// The maximum value is 100; values above 100 will be coerced to 100
+  ///
+  /// [filter] - The filter string used to return a subset of versions in the
+  /// response.
+  /// Currently supported fields for filtering are: name, status,
+  /// and create_time. Filter processing will be implemented in accordance
+  /// with go/filtering.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVersionsResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/versions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListVersionsResponse.fromJson(data));
+  }
+
+  /// Updates the specified metadata for a version. Note that this method will
+  /// fail with `FAILED_PRECONDITION` in the event of an invalid state
+  /// transition. The only valid transition for a version is currently from a
+  /// `CREATED` status to a `FINALIZED` status.
+  /// Use [`DeleteVersion`](../sites.versions/delete) to set the status of a
+  /// version to `DELETED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The unique identifier for a version, in the format:
+  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// This name is provided in the response body when you call the
+  /// [`CreateVersion`](../sites.versions/create) endpoint.
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  ///
+  /// [updateMask] - A set of field names from your [version](../sites.versions)
+  /// that you want
+  /// to update.
+  /// <br>A field will be overwritten if, and only if, it's in the mask.
+  /// <br>If a mask is not provided then a default mask of only
+  /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Version].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Version> patch(Version request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Version.fromJson(data));
+  }
+
+  /// Adds content files to a version.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The version to add files to, in the format:
+  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PopulateVersionFilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PopulateVersionFilesResponse> populateFiles(
+      PopulateVersionFilesRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':populateFiles';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new PopulateVersionFilesResponse.fromJson(data));
+  }
+}
+
+class ProjectsSitesVersionsFilesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsSitesVersionsFilesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the remaining files to be uploaded for the specified version.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent to list files for, in the format:
+  /// <code>sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  /// This will be the
+  /// encoded version of a firebase.hosting.proto.metadata.ListFilesPageToken.
+  ///
+  /// [pageSize] - The page size to return. Defaults to 1000.
+  ///
+  /// [status] - The type of files in the version that should be listed.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : A STATUS_UNSPECIFIED.
+  /// - "EXPECTED" : A EXPECTED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVersionFilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVersionFilesResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String status,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (status != null) {
+      _queryParams["status"] = [status];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/files';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListVersionFilesResponse.fromJson(data));
+  }
+}
+
 class SitesResourceApi {
   final commons.ApiRequester _requester;
 
+  SitesChannelsResourceApi get channels =>
+      new SitesChannelsResourceApi(_requester);
   SitesDomainsResourceApi get domains =>
       new SitesDomainsResourceApi(_requester);
   SitesReleasesResourceApi get releases =>
@@ -162,6 +1264,143 @@ class SitesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SiteConfig.fromJson(data));
+  }
+}
+
+class SitesChannelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  SitesChannelsReleasesResourceApi get releases =>
+      new SitesChannelsReleasesResourceApi(_requester);
+
+  SitesChannelsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class SitesChannelsReleasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  SitesChannelsReleasesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new release which makes the content of the specified version
+  /// actively display on the appropriate URL(s).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The site that the release belongs to, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [versionName] - The unique identifier for a version, in the format:
+  /// <code>/sites/<var>site-name</var>/versions/<var>versionID</var></code>
+  /// The <var>site-name</var> in this version identifier must match the
+  /// <var>site-name</var> in the `parent` parameter.
+  /// <br>
+  /// <br>This query parameter must be empty if the `type` field in the
+  /// request body is `SITE_DISABLE`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Release].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Release> create(Release request, core.String parent,
+      {core.String versionName, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (versionName != null) {
+      _queryParams["versionName"] = [versionName];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/releases';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Release.fromJson(data));
+  }
+
+  /// Lists the releases that have been created on the specified site.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list files, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The page size to return. Defaults to 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListReleasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReleasesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/releases';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListReleasesResponse.fromJson(data));
   }
 }
 
@@ -425,13 +1664,13 @@ class SitesReleasesResourceApi {
   SitesReleasesResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates a new release which makes the content of the specified version
-  /// actively display on the site.
+  /// actively display on the appropriate URL(s).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The site that the release belongs to, in the format:
+  /// [parent] - Required. The site that the release belongs to, in the format:
   /// <code>sites/<var>site-name</var></code>
   /// Value must have pattern "^sites/[^/]+$".
   ///
@@ -662,6 +1901,80 @@ class SitesVersionsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Lists the versions that have been created on the specified site.
+  /// Will include filtering in the future.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for which to list files, in the format:
+  /// <code>sites/<var>site-name</var></code>
+  /// Value must have pattern "^sites/[^/]+$".
+  ///
+  /// [filter] - The filter string used to return a subset of versions in the
+  /// response.
+  /// Currently supported fields for filtering are: name, status,
+  /// and create_time. Filter processing will be implemented in accordance
+  /// with go/filtering.
+  ///
+  /// [pageToken] - The next_page_token from a previous request, if provided.
+  ///
+  /// [pageSize] - The maximum number of versions to return. The service may
+  /// return fewer than
+  /// this value.
+  /// If unspecified, at most 25 versions will be returned.
+  /// The maximum value is 100; values above 100 will be coerced to 100
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVersionsResponse> list(core.String parent,
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/versions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListVersionsResponse.fromJson(data));
   }
 
   /// Updates the specified metadata for a version. Note that this method will
@@ -1022,9 +2335,11 @@ class Domain {
   /// Output only. Additional status of the domain association.
   /// Possible string values are:
   /// - "DOMAIN_STATUS_UNSPECIFIED" : Unspecified domain association status.
-  /// - "DOMAIN_CHANGE_PENDING" : An operation is in progress on the domain
-  /// association and no further
-  /// operations can be performed until it is complete.
+  /// - "DOMAIN_CHANGE_PENDING" : An external operation is in progress on the
+  /// domain association and no
+  /// further operations can be performed until it is complete. Formerly used
+  /// for
+  /// metabase updates.  Not currently used
   /// - "DOMAIN_ACTIVE" : The domain association is active and no additional
   /// action is required.
   /// - "DOMAIN_VERIFICATION_REQUIRED" : The domain was previously verified in
@@ -1267,13 +2582,17 @@ class Empty {
 /// A [`header`](/docs/hosting/full-config#headers) defines custom headers to
 /// add to a response should the request URL path match the pattern.
 class Header {
-  /// Required. The user-supplied
-  /// [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+  /// The user-supplied [glob
+  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
   /// against the request URL path.
   core.String glob;
 
   /// Required. The additional headers to add to the response.
   core.Map<core.String, core.String> headers;
+
+  /// The user-supplied RE2 regular expression to match against the request
+  /// URL path.
+  core.String regex;
 
   Header();
 
@@ -1283,6 +2602,9 @@ class Header {
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("regex")) {
+      regex = _json["regex"];
     }
   }
 
@@ -1295,10 +2617,14 @@ class Header {
     if (headers != null) {
       _json["headers"] = headers;
     }
+    if (regex != null) {
+      _json["regex"] = regex;
+    }
     return _json;
   }
 }
 
+/// The response to listing Domains.
 class ListDomainsResponse {
   /// The list of domains, if any exist.
   core.List<Domain> domains;
@@ -1332,6 +2658,7 @@ class ListDomainsResponse {
   }
 }
 
+/// The response when listing Releases.
 class ListReleasesResponse {
   /// If there are additional releases remaining beyond the ones in this
   /// response, then supply this token in the next
@@ -1368,6 +2695,7 @@ class ListReleasesResponse {
   }
 }
 
+/// The response when listing a Version's Files..
 class ListVersionFilesResponse {
   /// The list path/hashes in the specified version.
   core.List<VersionFile> files;
@@ -1401,6 +2729,124 @@ class ListVersionFilesResponse {
   }
 }
 
+/// The response when listing Versions.
+class ListVersionsResponse {
+  /// The pagination token, if more results exist
+  core.String nextPageToken;
+
+  /// The list of versions, if any exist.
+  core.List<Version> versions;
+
+  ListVersionsResponse();
+
+  ListVersionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("versions")) {
+      versions = (_json["versions"] as core.List)
+          .map<Version>((value) => new Version.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (versions != null) {
+      _json["versions"] = versions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status error;
+
+  /// Service-specific metadata associated with the operation.  It typically
+  /// contains progress information and common metadata such as create time.
+  /// Some services might not provide such metadata.  Any method that returns a
+  /// long-running operation should document the metadata type, if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that
+  /// originally returns it. If you use the default HTTP mapping, the
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
+  core.String name;
+
+  /// The normal response of the operation in case of success.  If the original
+  /// method returns no data on success, such as `Delete`, the response is
+  /// `google.protobuf.Empty`.  If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx`
+  /// is the original method name.  For example, if the original method name
+  /// is `TakeSnapshot()`, the inferred response type is
+  /// `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata =
+          (_json["metadata"] as core.Map).cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response =
+          (_json["response"] as core.Map).cast<core.String, core.Object>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/// The request to populate a Version's Files.
 class PopulateVersionFilesRequest {
   /// A set of file paths to the hashes corresponding to assets that should be
   /// added to the version. Note that a file path to an empty hash will remove
@@ -1426,6 +2872,7 @@ class PopulateVersionFilesRequest {
   }
 }
 
+/// The response to a PopulateVersionFilesRequest.
 class PopulateVersionFilesResponse {
   /// The content hashes of the specified files that need to be uploaded to the
   /// specified endpoint.
@@ -1462,12 +2909,47 @@ class PopulateVersionFilesResponse {
   }
 }
 
+/// Version preview configuration. If active and unexpired,
+/// this version will be accessible via a custom URL even
+/// if it is not the currently released version.
+class PreviewConfig {
+  /// If true, preview URLs are enabled for this version.
+  core.bool active;
+
+  /// Indicates the expiration time for previewing this
+  /// version; preview URL requests received after this time will 404.
+  core.String expireTime;
+
+  PreviewConfig();
+
+  PreviewConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("active")) {
+      active = _json["active"];
+    }
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (active != null) {
+      _json["active"] = active;
+    }
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    return _json;
+  }
+}
+
 /// A [`redirect`](/docs/hosting/full-config#redirects) represents the
 /// configuration for returning an HTTP redirect response given a matching
 /// request URL path.
 class Redirect {
-  /// Required. The user-supplied
-  /// [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+  /// The user-supplied [glob
+  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
   /// against the request URL path.
   core.String glob;
 
@@ -1480,6 +2962,10 @@ class Redirect {
   /// <br>"statusCode": 301,
   /// <br>"location": "https://example.com/foo/:capture"</code>
   core.String location;
+
+  /// The user-supplied RE2 regular expression to match against the request
+  /// URL path.
+  core.String regex;
 
   /// Required. The status HTTP code to return in the response. It must be a
   /// valid 3xx status code.
@@ -1494,6 +2980,9 @@ class Redirect {
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
+    if (_json.containsKey("regex")) {
+      regex = _json["regex"];
+    }
     if (_json.containsKey("statusCode")) {
       statusCode = _json["statusCode"];
     }
@@ -1507,6 +2996,9 @@ class Redirect {
     }
     if (location != null) {
       _json["location"] = location;
+    }
+    if (regex != null) {
+      _json["regex"] = regex;
     }
     if (statusCode != null) {
       _json["statusCode"] = statusCode;
@@ -1551,7 +3043,7 @@ class Release {
   /// as if the site never existed.
   core.String type;
 
-  /// Output only.  The configuration and content that was released.
+  /// Output only. The configuration and content that was released.
   Version version;
 
   Release();
@@ -1614,13 +3106,17 @@ class Rewrite {
   /// name exactly.
   core.String function;
 
-  /// Required. The user-supplied
-  /// [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+  /// The user-supplied [glob
+  /// pattern](/docs/hosting/full-config#glob_pattern_matching) to match
   /// against the request URL path.
   core.String glob;
 
   /// The URL path to rewrite the request to.
   core.String path;
+
+  /// The user-supplied RE2 regular expression to match against the request
+  /// URL path.
+  core.String regex;
 
   /// The request will be forwarded to Cloud Run.
   CloudRunRewrite run;
@@ -1639,6 +3135,9 @@ class Rewrite {
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
+    }
+    if (_json.containsKey("regex")) {
+      regex = _json["regex"];
     }
     if (_json.containsKey("run")) {
       run = new CloudRunRewrite.fromJson(_json["run"]);
@@ -1659,6 +3158,9 @@ class Rewrite {
     }
     if (path != null) {
       _json["path"] = path;
+    }
+    if (regex != null) {
+      _json["regex"] = regex;
     }
     if (run != null) {
       _json["run"] = (run).toJson();
@@ -1767,6 +3269,10 @@ class ServingConfig {
 /// A `SiteConfig` contains metadata associated with a specific site that
 /// controls Firebase Hosting serving behavior
 class SiteConfig {
+  /// Whether or not web requests made by site visitors are logged via Cloud
+  /// Logging.
+  core.bool cloudLoggingEnabled;
+
   /// The number of FINALIZED versions that will be held for a site before
   /// automatic deletion. When a new version is deployed, content for versions
   /// in storage in excess of this number will be deleted, and will no longer be
@@ -1777,6 +3283,9 @@ class SiteConfig {
   SiteConfig();
 
   SiteConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudLoggingEnabled")) {
+      cloudLoggingEnabled = _json["cloudLoggingEnabled"];
+    }
     if (_json.containsKey("maxVersions")) {
       maxVersions = _json["maxVersions"];
     }
@@ -1785,8 +3294,67 @@ class SiteConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cloudLoggingEnabled != null) {
+      _json["cloudLoggingEnabled"] = cloudLoggingEnabled;
+    }
     if (maxVersions != null) {
       _json["maxVersions"] = maxVersions;
+    }
+    return _json;
+  }
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
+///
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int code;
+
+  /// A list of messages that carry the error details.  There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -1830,6 +3398,12 @@ class Version {
   /// [`CreateVersion`](../sites.versions/create) endpoint.
   core.String name;
 
+  /// Version preview configuration for the site version. This configuration
+  /// specfies whether previewing is enabled for this site version. Version
+  /// previews allow you to preview your site at a custom URL before
+  /// releasing it as the live version.
+  PreviewConfig preview;
+
   /// The deploy status of a version.
   /// <br>
   /// <br>For a successful deploy, call the
@@ -1861,6 +3435,9 @@ class Version {
   /// - "EXPIRED" : The version is outside the site-configured limit for the
   /// number of
   /// retained versions, so the version's content is scheduled for deletion.
+  /// - "CLONING" : The version is being cloned from another version. All
+  /// content is still
+  /// being copied over.
   core.String status;
 
   /// Output only. The total stored bytesize of the version.
@@ -1899,6 +3476,9 @@ class Version {
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
+    }
+    if (_json.containsKey("preview")) {
+      preview = new PreviewConfig.fromJson(_json["preview"]);
     }
     if (_json.containsKey("status")) {
       status = _json["status"];
@@ -1940,6 +3520,9 @@ class Version {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (preview != null) {
+      _json["preview"] = (preview).toJson();
     }
     if (status != null) {
       _json["status"] = status;

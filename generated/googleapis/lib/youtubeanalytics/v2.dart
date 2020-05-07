@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.youtubeAnalytics.v2;
 
@@ -60,6 +60,10 @@ class GroupItemsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [id] - The `id` parameter specifies the YouTube group item ID of the group
+  /// item
+  /// that is being deleted.
+  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
   /// authorized request. **Note:**
   /// This parameter is intended exclusively for YouTube content partners that
@@ -73,10 +77,6 @@ class GroupItemsResourceApi {
   /// individual channel. The account that the user authenticates with must be
   /// linked to the specified YouTube content owner.
   ///
-  /// [id] - The `id` parameter specifies the YouTube group item ID of the group
-  /// item
-  /// that is being deleted.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -88,8 +88,8 @@ class GroupItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EmptyResponse> delete(
-      {core.String onBehalfOfContentOwner,
-      core.String id,
+      {core.String id,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -98,11 +98,11 @@ class GroupItemsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (id != null) {
       _queryParams["id"] = [id];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -182,6 +182,10 @@ class GroupItemsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [groupId] - The `groupId` parameter specifies the unique ID of the group
+  /// for which you
+  /// want to retrieve group items.
+  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
   /// authorized request. **Note:**
   /// This parameter is intended exclusively for YouTube content partners that
@@ -195,10 +199,6 @@ class GroupItemsResourceApi {
   /// individual channel. The account that the user authenticates with must be
   /// linked to the specified YouTube content owner.
   ///
-  /// [groupId] - The `groupId` parameter specifies the unique ID of the group
-  /// for which you
-  /// want to retrieve group items.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -210,8 +210,8 @@ class GroupItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupItemsResponse> list(
-      {core.String onBehalfOfContentOwner,
-      core.String groupId,
+      {core.String groupId,
+      core.String onBehalfOfContentOwner,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -220,11 +220,11 @@ class GroupItemsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
-    }
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
+    }
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -375,6 +375,11 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
+  /// result set that
+  /// should be returned. In an API response, the `nextPageToken` property
+  /// identifies the next page that can be retrieved.
+  ///
   /// [onBehalfOfContentOwner] - This parameter can only be used in a properly
   /// authorized request. **Note:**
   /// This parameter is intended exclusively for YouTube content partners that
@@ -403,11 +408,6 @@ class GroupsResourceApi {
   /// authenticated
   /// user.
   ///
-  /// [pageToken] - The `pageToken` parameter identifies a specific page in the
-  /// result set that
-  /// should be returned. In an API response, the `nextPageToken` property
-  /// identifies the next page that can be retrieved.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -419,10 +419,10 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
-      {core.String onBehalfOfContentOwner,
+      {core.String pageToken,
+      core.String onBehalfOfContentOwner,
       core.String id,
       core.bool mine,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -431,6 +431,9 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
     }
@@ -439,9 +442,6 @@ class GroupsResourceApi {
     }
     if (mine != null) {
       _queryParams["mine"] = ["${mine}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -527,6 +527,16 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [includeHistoricalChannelData] - If set to true historical data (i.e.
+  /// channel data from before the linking
+  /// of the channel to the content owner) will be retrieved.",
+  ///
+  /// [sort] - A comma-separated list of dimensions or metrics that determine
+  /// the sort
+  /// order for YouTube Analytics data. By default the sort order is ascending.
+  /// The '`-`' prefix causes descending sort order.",
+  /// pattern: [-0-9a-zA-Z,]+
+  ///
   /// [ids] - Identifies the YouTube channel or content owner for which you are
   /// retrieving YouTube Analytics data.
   ///
@@ -538,16 +548,8 @@ class ReportsResourceApi {
   ///   of the content owner.
   /// required: true, pattern: [a-zA-Z]+==[a-zA-Z0-9_+-]+
   ///
-  /// [includeHistoricalChannelData] - If set to true historical data (i.e.
-  /// channel data from before the linking
-  /// of the channel to the content owner) will be retrieved.",
-  ///
-  /// [currency] - The currency to which financial metrics should be converted.
-  /// The default is
-  /// US Dollar (USD). If the result contains no financial metrics, this flag
-  /// will be ignored. Responds with an error if the specified currency is not
-  /// recognized.",
-  /// pattern: [A-Z]{3}
+  /// [maxResults] - The maximum number of rows to include in the response.",
+  /// minValue: 1
   ///
   /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a
@@ -564,14 +566,6 @@ class ReportsResourceApi {
   /// document for definitions of those dimensions."
   /// pattern: [0-9a-zA-Z,]+
   ///
-  /// [endDate] - The end date for fetching YouTube Analytics data. The value
-  /// should be in
-  /// `YYYY-MM-DD` format.
-  /// required: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}
-  ///
-  /// [maxResults] - The maximum number of rows to include in the response.",
-  /// minValue: 1
-  ///
   /// [filters] - A list of filters that should be applied when retrieving
   /// YouTube Analytics
   /// data. The [Available Reports](/youtube/analytics/v2/available_reports)
@@ -584,16 +578,22 @@ class ReportsResourceApi {
   /// `video==dMH0bHeiRNg;country==IT` restricts the result set to include data
   /// for the given video in Italy.",
   ///
-  /// [sort] - A comma-separated list of dimensions or metrics that determine
-  /// the sort
-  /// order for YouTube Analytics data. By default the sort order is ascending.
-  /// The '`-`' prefix causes descending sort order.",
-  /// pattern: [-0-9a-zA-Z,]+
+  /// [endDate] - The end date for fetching YouTube Analytics data. The value
+  /// should be in
+  /// `YYYY-MM-DD` format.
+  /// required: true, pattern: [0-9]{4}-[0-9]{2}-[0-9]{2}
   ///
   /// [startDate] - The start date for fetching YouTube Analytics data. The
   /// value should be in
   /// `YYYY-MM-DD` format.
   /// required: true, pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}
+  ///
+  /// [currency] - The currency to which financial metrics should be converted.
+  /// The default is
+  /// US Dollar (USD). If the result contains no financial metrics, this flag
+  /// will be ignored. Responds with an error if the specified currency is not
+  /// recognized.",
+  /// pattern: [A-Z]{3}
   ///
   /// [metrics] - A comma-separated list of YouTube Analytics metrics, such as
   /// `views` or
@@ -616,16 +616,16 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QueryResponse> query(
-      {core.String ids,
-      core.bool includeHistoricalChannelData,
-      core.String currency,
+      {core.bool includeHistoricalChannelData,
+      core.String sort,
+      core.String ids,
+      core.int maxResults,
       core.int startIndex,
       core.String dimensions,
-      core.String endDate,
-      core.int maxResults,
       core.String filters,
-      core.String sort,
+      core.String endDate,
       core.String startDate,
+      core.String currency,
       core.String metrics,
       core.String $fields}) {
     var _url;
@@ -635,16 +635,19 @@ class ReportsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (ids != null) {
-      _queryParams["ids"] = [ids];
-    }
     if (includeHistoricalChannelData != null) {
       _queryParams["includeHistoricalChannelData"] = [
         "${includeHistoricalChannelData}"
       ];
     }
-    if (currency != null) {
-      _queryParams["currency"] = [currency];
+    if (sort != null) {
+      _queryParams["sort"] = [sort];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = [ids];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
@@ -652,20 +655,17 @@ class ReportsResourceApi {
     if (dimensions != null) {
       _queryParams["dimensions"] = [dimensions];
     }
-    if (endDate != null) {
-      _queryParams["endDate"] = [endDate];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (filters != null) {
       _queryParams["filters"] = [filters];
     }
-    if (sort != null) {
-      _queryParams["sort"] = [sort];
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
     }
     if (startDate != null) {
       _queryParams["startDate"] = [startDate];
+    }
+    if (currency != null) {
+      _queryParams["currency"] = [currency];
     }
     if (metrics != null) {
       _queryParams["metrics"] = [metrics];

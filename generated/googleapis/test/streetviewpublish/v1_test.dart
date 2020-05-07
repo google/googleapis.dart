@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed764() {
+buildUnnamed706() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed764(core.List<core.String> o) {
+checkUnnamed706(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -68,7 +68,7 @@ buildBatchDeletePhotosRequest() {
   var o = new api.BatchDeletePhotosRequest();
   buildCounterBatchDeletePhotosRequest++;
   if (buildCounterBatchDeletePhotosRequest < 3) {
-    o.photoIds = buildUnnamed764();
+    o.photoIds = buildUnnamed706();
   }
   buildCounterBatchDeletePhotosRequest--;
   return o;
@@ -77,19 +77,19 @@ buildBatchDeletePhotosRequest() {
 checkBatchDeletePhotosRequest(api.BatchDeletePhotosRequest o) {
   buildCounterBatchDeletePhotosRequest++;
   if (buildCounterBatchDeletePhotosRequest < 3) {
-    checkUnnamed764(o.photoIds);
+    checkUnnamed706(o.photoIds);
   }
   buildCounterBatchDeletePhotosRequest--;
 }
 
-buildUnnamed765() {
+buildUnnamed707() {
   var o = new core.List<api.Status>();
   o.add(buildStatus());
   o.add(buildStatus());
   return o;
 }
 
-checkUnnamed765(core.List<api.Status> o) {
+checkUnnamed707(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStatus(o[0]);
   checkStatus(o[1]);
@@ -100,7 +100,7 @@ buildBatchDeletePhotosResponse() {
   var o = new api.BatchDeletePhotosResponse();
   buildCounterBatchDeletePhotosResponse++;
   if (buildCounterBatchDeletePhotosResponse < 3) {
-    o.status = buildUnnamed765();
+    o.status = buildUnnamed707();
   }
   buildCounterBatchDeletePhotosResponse--;
   return o;
@@ -109,19 +109,19 @@ buildBatchDeletePhotosResponse() {
 checkBatchDeletePhotosResponse(api.BatchDeletePhotosResponse o) {
   buildCounterBatchDeletePhotosResponse++;
   if (buildCounterBatchDeletePhotosResponse < 3) {
-    checkUnnamed765(o.status);
+    checkUnnamed707(o.status);
   }
   buildCounterBatchDeletePhotosResponse--;
 }
 
-buildUnnamed766() {
+buildUnnamed708() {
   var o = new core.List<api.PhotoResponse>();
   o.add(buildPhotoResponse());
   o.add(buildPhotoResponse());
   return o;
 }
 
-checkUnnamed766(core.List<api.PhotoResponse> o) {
+checkUnnamed708(core.List<api.PhotoResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhotoResponse(o[0]);
   checkPhotoResponse(o[1]);
@@ -132,7 +132,7 @@ buildBatchGetPhotosResponse() {
   var o = new api.BatchGetPhotosResponse();
   buildCounterBatchGetPhotosResponse++;
   if (buildCounterBatchGetPhotosResponse < 3) {
-    o.results = buildUnnamed766();
+    o.results = buildUnnamed708();
   }
   buildCounterBatchGetPhotosResponse--;
   return o;
@@ -141,19 +141,19 @@ buildBatchGetPhotosResponse() {
 checkBatchGetPhotosResponse(api.BatchGetPhotosResponse o) {
   buildCounterBatchGetPhotosResponse++;
   if (buildCounterBatchGetPhotosResponse < 3) {
-    checkUnnamed766(o.results);
+    checkUnnamed708(o.results);
   }
   buildCounterBatchGetPhotosResponse--;
 }
 
-buildUnnamed767() {
+buildUnnamed709() {
   var o = new core.List<api.UpdatePhotoRequest>();
   o.add(buildUpdatePhotoRequest());
   o.add(buildUpdatePhotoRequest());
   return o;
 }
 
-checkUnnamed767(core.List<api.UpdatePhotoRequest> o) {
+checkUnnamed709(core.List<api.UpdatePhotoRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdatePhotoRequest(o[0]);
   checkUpdatePhotoRequest(o[1]);
@@ -164,7 +164,7 @@ buildBatchUpdatePhotosRequest() {
   var o = new api.BatchUpdatePhotosRequest();
   buildCounterBatchUpdatePhotosRequest++;
   if (buildCounterBatchUpdatePhotosRequest < 3) {
-    o.updatePhotoRequests = buildUnnamed767();
+    o.updatePhotoRequests = buildUnnamed709();
   }
   buildCounterBatchUpdatePhotosRequest--;
   return o;
@@ -173,19 +173,19 @@ buildBatchUpdatePhotosRequest() {
 checkBatchUpdatePhotosRequest(api.BatchUpdatePhotosRequest o) {
   buildCounterBatchUpdatePhotosRequest++;
   if (buildCounterBatchUpdatePhotosRequest < 3) {
-    checkUnnamed767(o.updatePhotoRequests);
+    checkUnnamed709(o.updatePhotoRequests);
   }
   buildCounterBatchUpdatePhotosRequest--;
 }
 
-buildUnnamed768() {
+buildUnnamed710() {
   var o = new core.List<api.PhotoResponse>();
   o.add(buildPhotoResponse());
   o.add(buildPhotoResponse());
   return o;
 }
 
-checkUnnamed768(core.List<api.PhotoResponse> o) {
+checkUnnamed710(core.List<api.PhotoResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhotoResponse(o[0]);
   checkPhotoResponse(o[1]);
@@ -196,7 +196,7 @@ buildBatchUpdatePhotosResponse() {
   var o = new api.BatchUpdatePhotosResponse();
   buildCounterBatchUpdatePhotosResponse++;
   if (buildCounterBatchUpdatePhotosResponse < 3) {
-    o.results = buildUnnamed768();
+    o.results = buildUnnamed710();
   }
   buildCounterBatchUpdatePhotosResponse--;
   return o;
@@ -205,7 +205,7 @@ buildBatchUpdatePhotosResponse() {
 checkBatchUpdatePhotosResponse(api.BatchUpdatePhotosResponse o) {
   buildCounterBatchUpdatePhotosResponse++;
   if (buildCounterBatchUpdatePhotosResponse < 3) {
-    checkUnnamed768(o.results);
+    checkUnnamed710(o.results);
   }
   buildCounterBatchUpdatePhotosResponse--;
 }
@@ -286,14 +286,14 @@ checkLevel(api.Level o) {
   buildCounterLevel--;
 }
 
-buildUnnamed769() {
+buildUnnamed711() {
   var o = new core.List<api.Photo>();
   o.add(buildPhoto());
   o.add(buildPhoto());
   return o;
 }
 
-checkUnnamed769(core.List<api.Photo> o) {
+checkUnnamed711(core.List<api.Photo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPhoto(o[0]);
   checkPhoto(o[1]);
@@ -305,7 +305,7 @@ buildListPhotosResponse() {
   buildCounterListPhotosResponse++;
   if (buildCounterListPhotosResponse < 3) {
     o.nextPageToken = "foo";
-    o.photos = buildUnnamed769();
+    o.photos = buildUnnamed711();
   }
   buildCounterListPhotosResponse--;
   return o;
@@ -315,12 +315,12 @@ checkListPhotosResponse(api.ListPhotosResponse o) {
   buildCounterListPhotosResponse++;
   if (buildCounterListPhotosResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed769(o.photos);
+    checkUnnamed711(o.photos);
   }
   buildCounterListPhotosResponse--;
 }
 
-buildUnnamed770() {
+buildUnnamed712() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -335,7 +335,7 @@ buildUnnamed770() {
   return o;
 }
 
-checkUnnamed770(core.Map<core.String, core.Object> o) {
+checkUnnamed712(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -349,7 +349,7 @@ checkUnnamed770(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed771() {
+buildUnnamed713() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -364,7 +364,7 @@ buildUnnamed771() {
   return o;
 }
 
-checkUnnamed771(core.Map<core.String, core.Object> o) {
+checkUnnamed713(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -385,9 +385,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed770();
+    o.metadata = buildUnnamed712();
     o.name = "foo";
-    o.response = buildUnnamed771();
+    o.response = buildUnnamed713();
   }
   buildCounterOperation--;
   return o;
@@ -398,34 +398,34 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed770(o.metadata);
+    checkUnnamed712(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed771(o.response);
+    checkUnnamed713(o.response);
   }
   buildCounterOperation--;
 }
 
-buildUnnamed772() {
+buildUnnamed714() {
   var o = new core.List<api.Connection>();
   o.add(buildConnection());
   o.add(buildConnection());
   return o;
 }
 
-checkUnnamed772(core.List<api.Connection> o) {
+checkUnnamed714(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnection(o[0]);
   checkConnection(o[1]);
 }
 
-buildUnnamed773() {
+buildUnnamed715() {
   var o = new core.List<api.Place>();
   o.add(buildPlace());
   o.add(buildPlace());
   return o;
 }
 
-checkUnnamed773(core.List<api.Place> o) {
+checkUnnamed715(core.List<api.Place> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlace(o[0]);
   checkPlace(o[1]);
@@ -437,11 +437,11 @@ buildPhoto() {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
     o.captureTime = "foo";
-    o.connections = buildUnnamed772();
+    o.connections = buildUnnamed714();
     o.downloadUrl = "foo";
     o.mapsPublishStatus = "foo";
     o.photoId = buildPhotoId();
-    o.places = buildUnnamed773();
+    o.places = buildUnnamed715();
     o.pose = buildPose();
     o.shareLink = "foo";
     o.thumbnailUrl = "foo";
@@ -457,11 +457,11 @@ checkPhoto(api.Photo o) {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
     unittest.expect(o.captureTime, unittest.equals('foo'));
-    checkUnnamed772(o.connections);
+    checkUnnamed714(o.connections);
     unittest.expect(o.downloadUrl, unittest.equals('foo'));
     unittest.expect(o.mapsPublishStatus, unittest.equals('foo'));
     checkPhotoId(o.photoId);
-    checkUnnamed773(o.places);
+    checkUnnamed715(o.places);
     checkPose(o.pose);
     unittest.expect(o.shareLink, unittest.equals('foo'));
     unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
@@ -566,7 +566,7 @@ checkPose(api.Pose o) {
   buildCounterPose--;
 }
 
-buildUnnamed774() {
+buildUnnamed716() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -581,7 +581,7 @@ buildUnnamed774() {
   return o;
 }
 
-checkUnnamed774(core.Map<core.String, core.Object> o) {
+checkUnnamed716(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -595,17 +595,17 @@ checkUnnamed774(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed775() {
+buildUnnamed717() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed774());
-  o.add(buildUnnamed774());
+  o.add(buildUnnamed716());
+  o.add(buildUnnamed716());
   return o;
 }
 
-checkUnnamed775(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed717(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed774(o[0]);
-  checkUnnamed774(o[1]);
+  checkUnnamed716(o[0]);
+  checkUnnamed716(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -614,7 +614,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed775();
+    o.details = buildUnnamed717();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -625,7 +625,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed775(o.details);
+    checkUnnamed717(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -671,14 +671,14 @@ checkUploadRef(api.UploadRef o) {
   buildCounterUploadRef--;
 }
 
-buildUnnamed776() {
+buildUnnamed718() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed776(core.List<core.String> o) {
+checkUnnamed718(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1179,7 +1179,7 @@ main() {
       api.PhotosResourceApi res = new api.StreetviewpublishApi(mock).photos;
       var arg_view = "foo";
       var arg_languageCode = "foo";
-      var arg_photoIds = buildUnnamed776();
+      var arg_photoIds = buildUnnamed718();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1290,11 +1290,11 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.PhotosResourceApi res = new api.StreetviewpublishApi(mock).photos;
-      var arg_view = "foo";
-      var arg_filter = "foo";
       var arg_languageCode = "foo";
-      var arg_pageToken = "foo";
+      var arg_filter = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_view = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1326,14 +1326,14 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1344,11 +1344,11 @@ main() {
       }), true);
       res
           .list(
-              view: arg_view,
-              filter: arg_filter,
               languageCode: arg_languageCode,
-              pageToken: arg_pageToken,
+              filter: arg_filter,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListPhotosResponse(response);

@@ -138,27 +138,27 @@ checkButton(api.Button o) {
   buildCounterButton--;
 }
 
-buildUnnamed3202() {
+buildUnnamed3359() {
   var o = new core.List<api.CardAction>();
   o.add(buildCardAction());
   o.add(buildCardAction());
   return o;
 }
 
-checkUnnamed3202(core.List<api.CardAction> o) {
+checkUnnamed3359(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardAction(o[0]);
   checkCardAction(o[1]);
 }
 
-buildUnnamed3203() {
+buildUnnamed3360() {
   var o = new core.List<api.Section>();
   o.add(buildSection());
   o.add(buildSection());
   return o;
 }
 
-checkUnnamed3203(core.List<api.Section> o) {
+checkUnnamed3360(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSection(o[0]);
   checkSection(o[1]);
@@ -169,10 +169,10 @@ buildCard() {
   var o = new api.Card();
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    o.cardActions = buildUnnamed3202();
+    o.cardActions = buildUnnamed3359();
     o.header = buildCardHeader();
     o.name = "foo";
-    o.sections = buildUnnamed3203();
+    o.sections = buildUnnamed3360();
   }
   buildCounterCard--;
   return o;
@@ -181,10 +181,10 @@ buildCard() {
 checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    checkUnnamed3202(o.cardActions);
+    checkUnnamed3359(o.cardActions);
     checkCardHeader(o.header);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3203(o.sections);
+    checkUnnamed3360(o.sections);
   }
   buildCounterCard--;
 }
@@ -285,14 +285,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed3204() {
+buildUnnamed3361() {
   var o = new core.List<api.ActionParameter>();
   o.add(buildActionParameter());
   o.add(buildActionParameter());
   return o;
 }
 
-checkUnnamed3204(core.List<api.ActionParameter> o) {
+checkUnnamed3361(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActionParameter(o[0]);
   checkActionParameter(o[1]);
@@ -304,7 +304,7 @@ buildFormAction() {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = "foo";
-    o.parameters = buildUnnamed3204();
+    o.parameters = buildUnnamed3361();
   }
   buildCounterFormAction--;
   return o;
@@ -314,7 +314,7 @@ checkFormAction(api.FormAction o) {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     unittest.expect(o.actionMethodName, unittest.equals('foo'));
-    checkUnnamed3204(o.parameters);
+    checkUnnamed3361(o.parameters);
   }
   buildCounterFormAction--;
 }
@@ -400,14 +400,14 @@ checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue--;
 }
 
-buildUnnamed3205() {
+buildUnnamed3362() {
   var o = new core.List<api.Membership>();
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-checkUnnamed3205(core.List<api.Membership> o) {
+checkUnnamed3362(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0]);
   checkMembership(o[1]);
@@ -418,7 +418,7 @@ buildListMembershipsResponse() {
   var o = new api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed3205();
+    o.memberships = buildUnnamed3362();
     o.nextPageToken = "foo";
   }
   buildCounterListMembershipsResponse--;
@@ -428,20 +428,20 @@ buildListMembershipsResponse() {
 checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed3205(o.memberships);
+    checkUnnamed3362(o.memberships);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
 }
 
-buildUnnamed3206() {
+buildUnnamed3363() {
   var o = new core.List<api.Space>();
   o.add(buildSpace());
   o.add(buildSpace());
   return o;
 }
 
-checkUnnamed3206(core.List<api.Space> o) {
+checkUnnamed3363(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0]);
   checkSpace(o[1]);
@@ -453,7 +453,7 @@ buildListSpacesResponse() {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = "foo";
-    o.spaces = buildUnnamed3206();
+    o.spaces = buildUnnamed3363();
   }
   buildCounterListSpacesResponse--;
   return o;
@@ -463,7 +463,7 @@ checkListSpacesResponse(api.ListSpacesResponse o) {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3206(o.spaces);
+    checkUnnamed3363(o.spaces);
   }
   buildCounterListSpacesResponse--;
 }
@@ -493,27 +493,27 @@ checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-buildUnnamed3207() {
+buildUnnamed3364() {
   var o = new core.List<api.Annotation>();
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-checkUnnamed3207(core.List<api.Annotation> o) {
+checkUnnamed3364(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0]);
   checkAnnotation(o[1]);
 }
 
-buildUnnamed3208() {
+buildUnnamed3365() {
   var o = new core.List<api.Card>();
   o.add(buildCard());
   o.add(buildCard());
   return o;
 }
 
-checkUnnamed3208(core.List<api.Card> o) {
+checkUnnamed3365(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0]);
   checkCard(o[1]);
@@ -525,9 +525,9 @@ buildMessage() {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed3207();
+    o.annotations = buildUnnamed3364();
     o.argumentText = "foo";
-    o.cards = buildUnnamed3208();
+    o.cards = buildUnnamed3365();
     o.createTime = "foo";
     o.fallbackText = "foo";
     o.name = "foo";
@@ -545,9 +545,9 @@ checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     checkActionResponse(o.actionResponse);
-    checkUnnamed3207(o.annotations);
+    checkUnnamed3364(o.annotations);
     unittest.expect(o.argumentText, unittest.equals('foo'));
-    checkUnnamed3208(o.cards);
+    checkUnnamed3365(o.cards);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.fallbackText, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -600,14 +600,14 @@ checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
-buildUnnamed3209() {
+buildUnnamed3366() {
   var o = new core.List<api.WidgetMarkup>();
   o.add(buildWidgetMarkup());
   o.add(buildWidgetMarkup());
   return o;
 }
 
-checkUnnamed3209(core.List<api.WidgetMarkup> o) {
+checkUnnamed3366(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0]);
   checkWidgetMarkup(o[1]);
@@ -619,7 +619,7 @@ buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = "foo";
-    o.widgets = buildUnnamed3209();
+    o.widgets = buildUnnamed3366();
   }
   buildCounterSection--;
   return o;
@@ -629,7 +629,7 @@ checkSection(api.Section o) {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     unittest.expect(o.header, unittest.equals('foo'));
-    checkUnnamed3209(o.widgets);
+    checkUnnamed3366(o.widgets);
   }
   buildCounterSection--;
 }
@@ -722,6 +722,7 @@ buildUser() {
   buildCounterUser++;
   if (buildCounterUser < 3) {
     o.displayName = "foo";
+    o.domainId = "foo";
     o.name = "foo";
     o.type = "foo";
   }
@@ -733,6 +734,7 @@ checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.domainId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -760,14 +762,14 @@ checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-buildUnnamed3210() {
+buildUnnamed3367() {
   var o = new core.List<api.Button>();
   o.add(buildButton());
   o.add(buildButton());
   return o;
 }
 
-checkUnnamed3210(core.List<api.Button> o) {
+checkUnnamed3367(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0]);
   checkButton(o[1]);
@@ -778,7 +780,7 @@ buildWidgetMarkup() {
   var o = new api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed3210();
+    o.buttons = buildUnnamed3367();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -790,7 +792,7 @@ buildWidgetMarkup() {
 checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed3210(o.buttons);
+    checkUnnamed3367(o.buttons);
     checkImage(o.image);
     checkKeyValue(o.keyValue);
     checkTextParagraph(o.textParagraph);

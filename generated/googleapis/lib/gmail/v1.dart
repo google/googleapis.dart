@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.gmail.v1;
 
@@ -28,6 +28,22 @@ const core.String USER_AGENT = 'dart-api-client gmail/v1';
 class GmailApi {
   /// Read, compose, send, and permanently delete all your email from Gmail
   static const MailGoogleComScope = "https://mail.google.com/";
+
+  /// Manage drafts and send emails when you interact with the add-on
+  static const GmailAddonsCurrentActionComposeScope =
+      "https://www.googleapis.com/auth/gmail.addons.current.action.compose";
+
+  /// View your email messages when you interact with the add-on
+  static const GmailAddonsCurrentMessageActionScope =
+      "https://www.googleapis.com/auth/gmail.addons.current.message.action";
+
+  /// View your email message metadata when the add-on is running
+  static const GmailAddonsCurrentMessageMetadataScope =
+      "https://www.googleapis.com/auth/gmail.addons.current.message.metadata";
+
+  /// View your email messages when the add-on is running
+  static const GmailAddonsCurrentMessageReadonlyScope =
+      "https://www.googleapis.com/auth/gmail.addons.current.message.readonly";
 
   /// Manage drafts and send emails
   static const GmailComposeScope =
@@ -2351,7 +2367,7 @@ class UsersSettingsDelegatesResourceApi {
   /// without sending any verification email. The delegate user must be a member
   /// of the same G Suite organization as the delegator user.
   ///
-  /// Gmail imposes limtations on the number of delegates and delegators each
+  /// Gmail imposes limitations on the number of delegates and delegators each
   /// user in a G Suite organization can have. These limits depend on your
   /// organization, but in general each user can have up to 25 delegates and up
   /// to 10 delegators.
@@ -4977,7 +4993,9 @@ class ListDelegatesResponse {
 }
 
 class ListDraftsResponse {
-  /// List of drafts.
+  /// List of drafts. Note that the Message property in each Draft resource only
+  /// contains an id and a threadId. The messages.get method can fetch
+  /// additional message details.
   core.List<Draft> drafts;
 
   /// Token to retrieve the next page of results in the list.
@@ -5114,7 +5132,9 @@ class ListHistoryResponse {
 }
 
 class ListLabelsResponse {
-  /// List of labels.
+  /// List of labels. Note that each label resource only contains an id, name,
+  /// messageListVisibility, labelListVisibility, and type. The labels.get
+  /// method can fetch additional label details.
   core.List<Label> labels;
 
   ListLabelsResponse();

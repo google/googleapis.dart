@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.adexperiencereport.v1;
 
@@ -18,9 +18,6 @@ const core.String USER_AGENT = 'dart-api-client adexperiencereport/v1';
 /// Views Ad Experience Report data, and gets a list of sites that have a
 /// significant number of annoying ads.
 class AdexperiencereportApi {
-  /// Test scope for access to the Zoo service
-  static const XapiZooScope = "https://www.googleapis.com/auth/xapi.zoo";
-
   final commons.ApiRequester _requester;
 
   SitesResourceApi get sites => new SitesResourceApi(_requester);
@@ -39,18 +36,14 @@ class SitesResourceApi {
 
   SitesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets a summary of the ad experience rating of a site.
+  /// Gets a site's Ad Experience Report summary.
   ///
   /// Request parameters:
   ///
-  /// [name] - The required site name. It should be the site property whose ad
-  /// experiences
-  /// may have been reviewed, and it should be URL-encoded. For example,
-  /// sites/https%3A%2F%2Fwww.google.com. The server will return an error of
-  /// BAD_REQUEST if this field is not filled in. Note that if the site property
-  /// is not yet verified in Search Console, the reportUrl field returned by the
-  /// API will lead to the verification page, prompting the user to go through
-  /// that process before they can gain access to the Ad Experience Report.
+  /// [name] - Required. The name of the site whose summary to get, e.g.
+  /// `sites/http%3A%2F%2Fwww.google.com%2F`.
+  ///
+  /// Format: `sites/{site}`
   /// Value must have pattern "^sites/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -96,7 +89,8 @@ class ViolatingSitesResourceApi {
 
   ViolatingSitesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists sites with Ad Experience Report statuses of "Failing" or "Warning".
+  /// Lists sites that are failing in the Ad Experience Report on at least one
+  /// platform.
   ///
   /// Request parameters:
   ///
@@ -134,20 +128,28 @@ class ViolatingSitesResourceApi {
   }
 }
 
-/// Summary of the ad experience rating of a site for a specific platform.
+/// A site's Ad Experience Report summary on a single platform.
 class PlatformSummary {
-  /// The status of the site reviewed for the Better Ads Standards.
+  /// The site's Ad Experience Report status on this platform.
   /// Possible string values are:
   /// - "UNKNOWN" : Not reviewed.
   /// - "PASSING" : Passing.
-  /// - "WARNING" : Warning.
+  /// - "WARNING" : Warning. No longer a possible status.
   /// - "FAILING" : Failing.
   core.String betterAdsStatus;
 
-  /// The date on which ad filtering begins.
+  /// The time at which
+  /// [enforcement](https://support.google.com/webtools/answer/7308033) against
+  /// the site began or will begin on this platform.
+  ///
+  /// Not set when the
+  /// filter_status
+  /// is OFF.
   core.String enforcementTime;
 
-  /// The ad filtering status of the site.
+  /// The site's [enforcement
+  /// status](https://support.google.com/webtools/answer/7308033) on this
+  /// platform.
   /// Possible string values are:
   /// - "UNKNOWN" : N/A.
   /// - "ON" : Ad filtering is on.
@@ -156,16 +158,27 @@ class PlatformSummary {
   /// - "PENDING" : Ad filtering is pending.
   core.String filterStatus;
 
-  /// The last time that the site changed status.
+  /// The time at which the site's status last changed on this platform.
   core.String lastChangeTime;
 
-  /// The assigned regions for the site and platform.
+  /// The site's regions on this platform.
+  ///
+  /// No longer populated, because there is no longer any semantic difference
+  /// between sites in different regions.
   core.List<core.String> region;
 
-  /// A link that leads to a full ad experience report.
+  /// A link to the full Ad Experience Report for the site on this platform..
+  ///
+  /// Not set in
+  /// ViolatingSitesResponse.
+  ///
+  /// Note that you must complete the [Search Console verification
+  /// process](https://support.google.com/webmasters/answer/9008080) for the
+  /// site
+  /// before you can access the full report.
   core.String reportUrl;
 
-  /// Whether the site is currently under review.
+  /// Whether the site is currently under review on this platform.
   core.bool underReview;
 
   PlatformSummary();
@@ -224,13 +237,13 @@ class PlatformSummary {
 
 /// Response message for GetSiteSummary.
 class SiteSummaryResponse {
-  /// Summary for the desktop review of the site.
+  /// The site's Ad Experience Report summary on desktop.
   PlatformSummary desktopSummary;
 
-  /// Summary for the mobile review of the site.
+  /// The site's Ad Experience Report summary on mobile.
   PlatformSummary mobileSummary;
 
-  /// The name of the site reviewed.
+  /// The name of the reviewed site, e.g. `google.com`.
   core.String reviewedSite;
 
   SiteSummaryResponse();
@@ -265,7 +278,7 @@ class SiteSummaryResponse {
 
 /// Response message for ListViolatingSites.
 class ViolatingSitesResponse {
-  /// A list of summaries of violating sites.
+  /// The list of violating sites.
   core.List<SiteSummaryResponse> violatingSites;
 
   ViolatingSitesResponse();

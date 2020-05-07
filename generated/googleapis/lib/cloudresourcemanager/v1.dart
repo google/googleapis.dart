@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudresourcemanager.v1;
 
@@ -440,8 +440,8 @@ class LiensResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name/identifier of the Lien to delete.
-  /// Value must have pattern "^liens/.+$".
+  /// [name] - Required. The name/identifier of the Lien to delete.
+  /// Value must have pattern "^liens/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -488,8 +488,8 @@ class LiensResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name/identifier of the Lien.
-  /// Value must have pattern "^liens/.+$".
+  /// [name] - Required. The name/identifier of the Lien.
+  /// Value must have pattern "^liens/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -541,8 +541,12 @@ class LiensResourceApi {
   /// [pageSize] - The maximum number of items to return. This is a suggestion
   /// for the server.
   ///
-  /// [parent] - The name of the resource to list all attached Liens.
+  /// [parent] - Required. The name of the resource to list all attached Liens.
   /// For example, `projects/1234`.
+  ///
+  /// (google.api.field_policy).resource_type annotation is not set since the
+  /// parent depends on the meta api implementation. This field could be a
+  /// project or other sub project resources.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -603,7 +607,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1312,13 +1316,11 @@ class ProjectsResourceApi {
   }
 
   /// Request that a new Project be created. The result is an Operation which
-  /// can be used to track the creation process. It is automatically deleted
-  /// after a few hours, so there is no need to call DeleteOperation.
-  ///
-  /// Our SLO permits Project creation to take up to 30 seconds at the 90th
-  /// percentile. As of 2016-08-29, we are observing 6 seconds 50th percentile
-  /// latency. 95th percentile latency is around 11 seconds. We recommend
-  /// polling at the 5th second with an exponential backoff.
+  /// can be used to track the creation process. This process usually takes a
+  /// few
+  /// seconds, but can sometimes take much longer. The tracking Operation is
+  /// automatically deleted after a few hours, so there is no need to call
+  /// DeleteOperation.
   ///
   /// Authorization requires the Google IAM permission
   /// `resourcemanager.projects.create` on the specified parent for the new
@@ -1730,18 +1732,6 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// ListProjects
-  /// that indicates from where listing should continue.
-  ///
-  /// Optional.
-  ///
-  /// [pageSize] - The maximum number of Projects to return in the response.
-  /// The server can return fewer Projects than requested.
-  /// If unspecified, server picks an appropriate default.
-  ///
-  /// Optional.
-  ///
   /// [filter] - An expression for filtering the results of the request.  Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -1778,6 +1768,18 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// ListProjects
+  /// that indicates from where listing should continue.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of Projects to return in the response.
+  /// The server can return fewer Projects than requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1789,9 +1791,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1800,14 +1802,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1939,7 +1941,11 @@ class ProjectsResourceApi {
   /// + Project does not support `allUsers` and `allAuthenticatedUsers` as
   /// `members` in a `Binding` of a `Policy`.
   ///
-  /// + The owner role can be granted only to `user` and `serviceAccount`.
+  /// + The owner role can be granted to a `user`, `serviceAccount`, or a group
+  /// that is part of an organization. For example,
+  /// group@myownpersonaldomain.com could be added as an owner to a project in
+  /// the myownpersonaldomain.com organization, but not the examplepetstore.com
+  /// organization.
   ///
   /// + Service accounts can be made owners of a project directly
   /// without any restrictions. However, to be added as an owner, a user must be
@@ -2297,7 +2303,7 @@ class Ancestor {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -2309,7 +2315,7 @@ class Ancestor {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -2317,7 +2323,7 @@ class Ancestor {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -2325,9 +2331,9 @@ class Ancestor {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -2372,7 +2378,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -2382,7 +2388,7 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -2440,7 +2446,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2448,6 +2454,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -2739,28 +2766,52 @@ class Empty {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -2971,7 +3022,7 @@ class GetEffectiveOrgPolicyRequest {
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
   /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
-  /// `GetIamPolicy`. This field is only used by Cloud IAM.
+  /// `GetIamPolicy`.
   GetPolicyOptions options;
 
   GetIamPolicyRequest();
@@ -3018,10 +3069,14 @@ class GetOrgPolicyRequest {
 /// Encapsulates settings provided to GetIamPolicy.
 class GetPolicyOptions {
   /// Optional. The policy format version to be returned.
-  /// Acceptable values are 0 and 1.
-  /// If the value is 0, or the field is omitted, policy format version 1 will
-  /// be
-  /// returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
   core.int requestedPolicyVersion;
 
   GetPolicyOptions();
@@ -3359,9 +3414,9 @@ class ListOrgPoliciesResponse {
 /// if the value contains a ":". Values prefixed with "is:" are treated the
 /// same as values with no prefix.
 /// Ancestry subtrees must be in one of the following formats:
-///     - “projects/<project-id>”, e.g. “projects/tokyo-rain-123”
-///     - “folders/<folder-id>”, e.g. “folders/1234”
-///     - “organizations/<organization-id>”, e.g. “organizations/1234”
+///     - "projects/<project-id>", e.g. "projects/tokyo-rain-123"
+///     - "folders/<folder-id>", e.g. "folders/1234"
+///     - "organizations/<organization-id>", e.g. "organizations/1234"
 /// The `supports_under` field of the associated `Constraint`  defines whether
 /// ancestry prefixes can be used. You can set `allowed_values` and
 /// `denied_values` in the same `Policy` if `all_values` is
@@ -3414,7 +3469,7 @@ class ListPolicy {
   ///
   /// Example 1 (no inherited values):
   ///   `organizations/foo` has a `Policy` with values:
-  ///     {allowed_values: “E1” allowed_values:”E2”}
+  ///     {allowed_values: "E1" allowed_values:"E2"}
   ///   `projects/bar` has `inherit_from_parent` `false` and values:
   ///     {allowed_values: "E3" allowed_values: "E4"}
   /// The accepted values at `organizations/foo` are `E1`, `E2`.
@@ -3422,9 +3477,9 @@ class ListPolicy {
   ///
   /// Example 2 (inherited values):
   ///   `organizations/foo` has a `Policy` with values:
-  ///     {allowed_values: “E1” allowed_values:”E2”}
+  ///     {allowed_values: "E1" allowed_values:"E2"}
   ///   `projects/bar` has a `Policy` with values:
-  ///     {value: “E3” value: ”E4” inherit_from_parent: true}
+  ///     {value: "E3" value: "E4" inherit_from_parent: true}
   /// The accepted values at `organizations/foo` are `E1`, `E2`.
   /// The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
   ///
@@ -3438,7 +3493,7 @@ class ListPolicy {
   ///
   /// Example 4 (RestoreDefault):
   ///   `organizations/foo` has a `Policy` with values:
-  ///     {allowed_values: “E1” allowed_values:”E2”}
+  ///     {allowed_values: "E1" allowed_values:"E2"}
   ///   `projects/bar` has a `Policy` with values:
   ///     {RestoreDefault: {}}
   /// The accepted values at `organizations/foo` are `E1`, `E2`.
@@ -3455,7 +3510,7 @@ class ListPolicy {
   ///
   /// Example 6 (ListConstraint allowing all):
   ///   `organizations/foo` has a `Policy` with values:
-  ///     {allowed_values: “E1” allowed_values: ”E2”}
+  ///     {allowed_values: "E1" allowed_values: "E2"}
   ///   `projects/bar` has a `Policy` with:
   ///     {all: ALLOW}
   /// The accepted values at `organizations/foo` are `E1`, E2`.
@@ -3463,7 +3518,7 @@ class ListPolicy {
   ///
   /// Example 7 (ListConstraint allowing none):
   ///   `organizations/foo` has a `Policy` with values:
-  ///     {allowed_values: “E1” allowed_values: ”E2”}
+  ///     {allowed_values: "E1" allowed_values: "E2"}
   ///   `projects/bar` has a `Policy` with:
   ///     {all: DENY}
   /// The accepted values at `organizations/foo` are `E1`, E2`.
@@ -3779,18 +3834,15 @@ class OrgPolicy {
 /// (e.g., company) resources belong.
 class Organization {
   /// Timestamp when the Organization was created. Assigned by the server.
-  /// @OutputOnly
   core.String creationTime;
 
   /// A human-readable string that refers to the Organization in the
   /// GCP Console UI. This string is set by the server and cannot be
   /// changed. The string will be set to the primary domain (for example,
   /// "google.com") of the G Suite customer that owns the organization.
-  /// @OutputOnly
   core.String displayName;
 
   /// The organization's current lifecycle state. Assigned by the server.
-  /// @OutputOnly
   /// Possible string values are:
   /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state.  This is only useful
   /// for distinguishing unset values.
@@ -3799,7 +3851,7 @@ class Organization {
   /// the user.
   core.String lifecycleState;
 
-  /// Output Only. The resource name of the organization. This is the
+  /// Output only. The resource name of the organization. This is the
   /// organization's relative path in the API. Its format is
   /// "organizations/[organization_id]". For example, "organizations/1234".
   core.String name;
@@ -3878,59 +3930,77 @@ class OrganizationOwner {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -3942,8 +4012,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -3954,7 +4028,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -4187,7 +4283,7 @@ class ResourceId {
   core.String id;
 
   /// Required field representing the resource type this id is for.
-  /// At present, the valid types are: "organization" and "folder".
+  /// At present, the valid types are: "organization", "folder", and "project".
   core.String type;
 
   ResourceId();
@@ -4347,8 +4443,8 @@ class SetIamPolicyRequest {
   /// Only
   /// the fields in the mask will be modified. If no mask is provided, the
   /// following default mask is used:
-  /// paths: "bindings, etag"
-  /// This field is only used by Cloud IAM.
+  ///
+  /// `paths: "bindings, etag"`
   core.String updateMask;
 
   SetIamPolicyRequest();

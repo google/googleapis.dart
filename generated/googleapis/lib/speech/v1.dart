@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.speech.v1;
 
@@ -47,7 +47,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^.+$".
+  /// Value must have pattern "^.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -451,6 +451,11 @@ class LongRunningRecognizeMetadata {
   /// Time when the request was received.
   core.String startTime;
 
+  /// Output only. The URI of the audio file being transcribed. Empty if the
+  /// audio was sent
+  /// as byte content.
+  core.String uri;
+
   LongRunningRecognizeMetadata();
 
   LongRunningRecognizeMetadata.fromJson(core.Map _json) {
@@ -462,6 +467,9 @@ class LongRunningRecognizeMetadata {
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
+    }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
     }
   }
 
@@ -477,6 +485,9 @@ class LongRunningRecognizeMetadata {
     if (startTime != null) {
       _json["startTime"] = startTime;
     }
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
     return _json;
   }
 }
@@ -484,10 +495,10 @@ class LongRunningRecognizeMetadata {
 /// The top-level message sent by the client for the `LongRunningRecognize`
 /// method.
 class LongRunningRecognizeRequest {
-  /// *Required* The audio data to be recognized.
+  /// Required. The audio data to be recognized.
   RecognitionAudio audio;
 
-  /// *Required* Provides information to the recognizer that specifies how to
+  /// Required. Provides information to the recognizer that specifies how to
   /// process the request.
   RecognitionConfig config;
 
@@ -522,7 +533,7 @@ class LongRunningRecognizeRequest {
 /// returned by the `GetOperation` call of the `google::longrunning::Operations`
 /// service.
 class LongRunningRecognizeResponse {
-  /// Output only. Sequential list of transcription results corresponding to
+  /// Sequential list of transcription results corresponding to
   /// sequential portions of audio.
   core.List<SpeechRecognitionResult> results;
 
@@ -633,7 +644,7 @@ class Operation {
 /// Contains audio data in the encoding specified in the `RecognitionConfig`.
 /// Either `content` or `uri` must be supplied. Supplying both or neither
 /// returns google.rpc.Code.INVALID_ARGUMENT. See
-/// [content limits](/speech-to-text/quotas#content).
+/// [content limits](https://cloud.google.com/speech-to-text/quotas#content).
 class RecognitionAudio {
   /// The audio data bytes encoded as specified in
   /// `RecognitionConfig`. Note: as with all bytes fields, proto buffers use a
@@ -684,7 +695,7 @@ class RecognitionAudio {
 /// Provides information to the recognizer that specifies how to process the
 /// request.
 class RecognitionConfig {
-  /// *Optional* The number of channels in the input audio data.
+  /// The number of channels in the input audio data.
   /// ONLY set this for MULTI-CHANNEL recognition.
   /// Valid values for LINEAR16 and FLAC are `1`-`8`.
   /// Valid values for OGG_OPUS are '1'-'254'.
@@ -695,13 +706,21 @@ class RecognitionConfig {
   /// `enable_separate_recognition_per_channel` to 'true'.
   core.int audioChannelCount;
 
-  /// *Optional* If 'true', adds punctuation to recognition result hypotheses.
+  /// Config to enable speaker diarization and set additional
+  /// parameters to make diarization better suited for your application.
+  /// Note: When this is enabled, we send all the words from the beginning of
+  /// the
+  /// audio for the top alternative in every consecutive STREAMING responses.
+  /// This is done in order to improve our speaker tags as our models learn to
+  /// identify the speakers in the conversation over time.
+  /// For non-streaming requests, the diarization results will be provided only
+  /// in the top alternative of the FINAL SpeechRecognitionResult.
+  SpeakerDiarizationConfig diarizationConfig;
+
+  /// If 'true', adds punctuation to recognition result hypotheses.
   /// This feature is only available in select languages. Setting this for
   /// requests in other languages has no effect at all.
   /// The default 'false' value does not add punctuation to result hypotheses.
-  /// Note: This is currently offered as an experimental service, complimentary
-  /// to all users. In the future this may be exclusively available as a
-  /// premium feature.
   core.bool enableAutomaticPunctuation;
 
   /// This needs to be set to `true` explicitly and `audio_channel_count` > 1
@@ -712,7 +731,7 @@ class RecognitionConfig {
   /// `audio_channel_count` multiplied by the length of the audio.
   core.bool enableSeparateRecognitionPerChannel;
 
-  /// *Optional* If `true`, the top result includes a list of words and
+  /// If `true`, the top result includes a list of words and
   /// the start and end time offsets (timestamps) for those words. If
   /// `false`, no word-level time offset information is returned. The default is
   /// `false`.
@@ -756,14 +775,16 @@ class RecognitionConfig {
   /// wideband is supported. `sample_rate_hertz` must be 16000.
   core.String encoding;
 
-  /// *Required* The language of the supplied audio as a
+  /// Required. The language of the supplied audio as a
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   /// Example: "en-US".
-  /// See [Language Support](/speech-to-text/docs/languages)
-  /// for a list of the currently supported language codes.
+  /// See [Language
+  /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a
+  /// list
+  /// of the currently supported language codes.
   core.String languageCode;
 
-  /// *Optional* Maximum number of recognition hypotheses to be returned.
+  /// Maximum number of recognition hypotheses to be returned.
   /// Specifically, the maximum number of `SpeechRecognitionAlternative`
   /// messages
   /// within each `SpeechRecognitionResult`.
@@ -772,10 +793,10 @@ class RecognitionConfig {
   /// one. If omitted, will return a maximum of one.
   core.int maxAlternatives;
 
-  /// *Optional* Metadata regarding this request.
+  /// Metadata regarding this request.
   RecognitionMetadata metadata;
 
-  /// *Optional* Which model to select for the given request. Select the model
+  /// Which model to select for the given request. Select the model
   /// best suited to your domain to get best results. If a model is not
   /// explicitly specified, then we auto-select a model based on the parameters
   /// in the RecognitionConfig.
@@ -809,7 +830,7 @@ class RecognitionConfig {
   /// </table>
   core.String model;
 
-  /// *Optional* If set to `true`, the server will attempt to filter out
+  /// If set to `true`, the server will attempt to filter out
   /// profanities, replacing all but the initial character in each filtered word
   /// with asterisks, e.g. "f***". If set to `false` or omitted, profanities
   /// won't be filtered out.
@@ -824,12 +845,14 @@ class RecognitionConfig {
   /// required for all other audio formats. For details, see AudioEncoding.
   core.int sampleRateHertz;
 
-  /// *Optional* array of SpeechContext.
+  /// Array of SpeechContext.
   /// A means to provide context to assist the speech recognition. For more
-  /// information, see [Phrase Hints](/speech-to-text/docs/basics#phrase-hints).
+  /// information, see
+  /// [speech
+  /// adaptation](https://cloud.google.com/speech-to-text/docs/context-strength).
   core.List<SpeechContext> speechContexts;
 
-  /// *Optional* Set to true to use an enhanced model for speech recognition.
+  /// Set to true to use an enhanced model for speech recognition.
   /// If `use_enhanced` is set to true and the `model` field is not set, then
   /// an appropriate enhanced model is chosen if an enhanced model exists for
   /// the audio.
@@ -844,6 +867,10 @@ class RecognitionConfig {
   RecognitionConfig.fromJson(core.Map _json) {
     if (_json.containsKey("audioChannelCount")) {
       audioChannelCount = _json["audioChannelCount"];
+    }
+    if (_json.containsKey("diarizationConfig")) {
+      diarizationConfig =
+          new SpeakerDiarizationConfig.fromJson(_json["diarizationConfig"]);
     }
     if (_json.containsKey("enableAutomaticPunctuation")) {
       enableAutomaticPunctuation = _json["enableAutomaticPunctuation"];
@@ -891,6 +918,9 @@ class RecognitionConfig {
         new core.Map<core.String, core.Object>();
     if (audioChannelCount != null) {
       _json["audioChannelCount"] = audioChannelCount;
+    }
+    if (diarizationConfig != null) {
+      _json["diarizationConfig"] = (diarizationConfig).toJson();
     }
     if (enableAutomaticPunctuation != null) {
       _json["enableAutomaticPunctuation"] = enableAutomaticPunctuation;
@@ -985,10 +1015,6 @@ class RecognitionMetadata {
   /// - "FARFIELD" : The speaker is more than 3 meters away from the microphone.
   core.String microphoneDistance;
 
-  /// Obfuscated (privacy-protected) ID of the user, to identify number of
-  /// unique users using the service.
-  core.String obfuscatedId;
-
   /// The original media the speech was recorded on.
   /// Possible string values are:
   /// - "ORIGINAL_MEDIA_TYPE_UNSPECIFIED" : Unknown original media type.
@@ -1033,9 +1059,6 @@ class RecognitionMetadata {
     if (_json.containsKey("microphoneDistance")) {
       microphoneDistance = _json["microphoneDistance"];
     }
-    if (_json.containsKey("obfuscatedId")) {
-      obfuscatedId = _json["obfuscatedId"];
-    }
     if (_json.containsKey("originalMediaType")) {
       originalMediaType = _json["originalMediaType"];
     }
@@ -1065,9 +1088,6 @@ class RecognitionMetadata {
     if (microphoneDistance != null) {
       _json["microphoneDistance"] = microphoneDistance;
     }
-    if (obfuscatedId != null) {
-      _json["obfuscatedId"] = obfuscatedId;
-    }
     if (originalMediaType != null) {
       _json["originalMediaType"] = originalMediaType;
     }
@@ -1086,10 +1106,10 @@ class RecognitionMetadata {
 
 /// The top-level message sent by the client for the `Recognize` method.
 class RecognizeRequest {
-  /// *Required* The audio data to be recognized.
+  /// Required. The audio data to be recognized.
   RecognitionAudio audio;
 
-  /// *Required* Provides information to the recognizer that specifies how to
+  /// Required. Provides information to the recognizer that specifies how to
   /// process the request.
   RecognitionConfig config;
 
@@ -1121,7 +1141,7 @@ class RecognizeRequest {
 /// contains the result as zero or more sequential `SpeechRecognitionResult`
 /// messages.
 class RecognizeResponse {
-  /// Output only. Sequential list of transcription results corresponding to
+  /// Sequential list of transcription results corresponding to
   /// sequential portions of audio.
   core.List<SpeechRecognitionResult> results;
 
@@ -1146,16 +1166,72 @@ class RecognizeResponse {
   }
 }
 
+/// Config to enable speaker diarization.
+class SpeakerDiarizationConfig {
+  /// If 'true', enables speaker detection for each recognized word in
+  /// the top alternative of the recognition result using a speaker_tag provided
+  /// in the WordInfo.
+  core.bool enableSpeakerDiarization;
+
+  /// Maximum number of speakers in the conversation. This range gives you more
+  /// flexibility by allowing the system to automatically determine the correct
+  /// number of speakers. If not set, the default value is 6.
+  core.int maxSpeakerCount;
+
+  /// Minimum number of speakers in the conversation. This range gives you more
+  /// flexibility by allowing the system to automatically determine the correct
+  /// number of speakers. If not set, the default value is 2.
+  core.int minSpeakerCount;
+
+  /// Output only. Unused.
+  core.int speakerTag;
+
+  SpeakerDiarizationConfig();
+
+  SpeakerDiarizationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableSpeakerDiarization")) {
+      enableSpeakerDiarization = _json["enableSpeakerDiarization"];
+    }
+    if (_json.containsKey("maxSpeakerCount")) {
+      maxSpeakerCount = _json["maxSpeakerCount"];
+    }
+    if (_json.containsKey("minSpeakerCount")) {
+      minSpeakerCount = _json["minSpeakerCount"];
+    }
+    if (_json.containsKey("speakerTag")) {
+      speakerTag = _json["speakerTag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableSpeakerDiarization != null) {
+      _json["enableSpeakerDiarization"] = enableSpeakerDiarization;
+    }
+    if (maxSpeakerCount != null) {
+      _json["maxSpeakerCount"] = maxSpeakerCount;
+    }
+    if (minSpeakerCount != null) {
+      _json["minSpeakerCount"] = minSpeakerCount;
+    }
+    if (speakerTag != null) {
+      _json["speakerTag"] = speakerTag;
+    }
+    return _json;
+  }
+}
+
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases
 /// in the results.
 class SpeechContext {
-  /// *Optional* A list of strings containing words and phrases "hints" so that
+  /// A list of strings containing words and phrases "hints" so that
   /// the speech recognition is more likely to recognize them. This can be used
   /// to improve the accuracy for specific words and phrases, for example, if
   /// specific commands are typically spoken by the user. This can also be used
   /// to add additional words to the vocabulary of the recognizer. See
-  /// [usage limits](/speech-to-text/quotas#content).
+  /// [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
   ///
   /// List items can also be set to classes for groups of words that represent
   /// common concepts that occur in natural language. For example, rather than
@@ -1184,7 +1260,7 @@ class SpeechContext {
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class SpeechRecognitionAlternative {
-  /// Output only. The confidence estimate between 0.0 and 1.0. A higher number
+  /// The confidence estimate between 0.0 and 1.0. A higher number
   /// indicates an estimated greater likelihood that the recognized words are
   /// correct. This field is set only for the top alternative of a non-streaming
   /// result or, of a streaming result where `is_final=true`.
@@ -1195,10 +1271,10 @@ class SpeechRecognitionAlternative {
   /// set.
   core.double confidence;
 
-  /// Output only. Transcript text representing the words that the user spoke.
+  /// Transcript text representing the words that the user spoke.
   core.String transcript;
 
-  /// Output only. A list of word-specific information for each recognized word.
+  /// A list of word-specific information for each recognized word.
   /// Note: When `enable_speaker_diarization` is true, you will see all the
   /// words
   /// from the beginning of the audio.
@@ -1238,7 +1314,7 @@ class SpeechRecognitionAlternative {
 
 /// A speech recognition result corresponding to a portion of the audio.
 class SpeechRecognitionResult {
-  /// Output only. May contain one or more recognition hypotheses (up to the
+  /// May contain one or more recognition hypotheses (up to the
   /// maximum specified in `max_alternatives`).
   /// These alternatives are ordered in terms of accuracy, with the top (first)
   /// alternative being the most probable, as ranked by the recognizer.
@@ -1335,7 +1411,7 @@ class Status {
 
 /// Word-specific information for recognized words.
 class WordInfo {
-  /// Output only. Time offset relative to the beginning of the audio,
+  /// Time offset relative to the beginning of the audio,
   /// and corresponding to the end of the spoken word.
   /// This field is only set if `enable_word_time_offsets=true` and only
   /// in the top hypothesis.
@@ -1343,7 +1419,15 @@ class WordInfo {
   /// vary.
   core.String endTime;
 
-  /// Output only. Time offset relative to the beginning of the audio,
+  /// Output only. A distinct integer value is assigned for every speaker within
+  /// the audio. This field specifies which one of those speakers was detected
+  /// to
+  /// have spoken this word. Value ranges from '1' to diarization_speaker_count.
+  /// speaker_tag is set if enable_speaker_diarization = 'true' and only in the
+  /// top alternative.
+  core.int speakerTag;
+
+  /// Time offset relative to the beginning of the audio,
   /// and corresponding to the start of the spoken word.
   /// This field is only set if `enable_word_time_offsets=true` and only
   /// in the top hypothesis.
@@ -1351,7 +1435,7 @@ class WordInfo {
   /// vary.
   core.String startTime;
 
-  /// Output only. The word corresponding to this set of information.
+  /// The word corresponding to this set of information.
   core.String word;
 
   WordInfo();
@@ -1359,6 +1443,9 @@ class WordInfo {
   WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("speakerTag")) {
+      speakerTag = _json["speakerTag"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1373,6 +1460,9 @@ class WordInfo {
         new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (speakerTag != null) {
+      _json["speakerTag"] = speakerTag;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;

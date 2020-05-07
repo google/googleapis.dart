@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.fcm.v1;
 
@@ -118,6 +118,11 @@ class AndroidConfig {
   /// google.firebase.fcm.v1.Message.data.
   core.Map<core.String, core.String> data;
 
+  /// If set to true, messages will be allowed to be delivered to the app while
+  /// the device is in direct boot mode. See [Support Direct Boot
+  /// mode](https://developer.android.com/training/articles/direct-boot).
+  core.bool directBootOk;
+
   /// Options for features provided by the FCM SDK for Android.
   AndroidFcmOptions fcmOptions;
 
@@ -173,6 +178,9 @@ class AndroidConfig {
     if (_json.containsKey("data")) {
       data = (_json["data"] as core.Map).cast<core.String, core.String>();
     }
+    if (_json.containsKey("directBootOk")) {
+      directBootOk = _json["directBootOk"];
+    }
     if (_json.containsKey("fcmOptions")) {
       fcmOptions = new AndroidFcmOptions.fromJson(_json["fcmOptions"]);
     }
@@ -198,6 +206,9 @@ class AndroidConfig {
     }
     if (data != null) {
       _json["data"] = data;
+    }
+    if (directBootOk != null) {
+      _json["directBootOk"] = directBootOk;
     }
     if (fcmOptions != null) {
       _json["fcmOptions"] = (fcmOptions).toJson();
@@ -277,16 +288,113 @@ class AndroidNotification {
   /// The notification's icon color, expressed in #rrggbb format.
   core.String color;
 
+  /// If set to true, use the Android framework's default LED light settings for
+  /// the notification. Default values are specified in
+  /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
+  /// If `default_light_settings` is set to true and `light_settings` is also
+  /// set, the user-specified `light_settings` is used instead of the
+  /// default value.
+  core.bool defaultLightSettings;
+
+  /// If set to true, use the Android framework's default sound for the
+  /// notification. Default values are specified in
+  /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
+  core.bool defaultSound;
+
+  /// If set to true, use the Android framework's default vibrate pattern for
+  /// the
+  /// notification. Default values are specified in
+  /// [config.xml](https://android.googlesource.com/platform/frameworks/base/+/master/core/res/res/values/config.xml).
+  /// If `default_vibrate_timings` is set to true and `vibrate_timings` is also
+  /// set, the default value is used instead of the user-specified
+  /// `vibrate_timings`.
+  core.bool defaultVibrateTimings;
+
+  /// Set the time that the event in the notification occurred. Notifications in
+  /// the panel are sorted by this time. A point in time is represented using
+  /// [protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/Timestamp).
+  core.String eventTime;
+
   /// The notification's icon.
   /// Sets the notification icon to myicon for drawable resource myicon.
   /// If you don't send this key in the request, FCM displays the launcher icon
   /// specified in your app manifest.
   core.String icon;
 
+  /// Contains the URL of an image that is going to be displayed in a
+  /// notification. If present, it will override
+  /// google.firebase.fcm.v1.Notification.image.
+  core.String image;
+
+  /// Settings to control the notification's LED blinking rate and color if LED
+  /// is available on the device. The total blinking time is controlled by the
+  /// OS.
+  LightSettings lightSettings;
+
+  /// Set whether or not this notification is relevant only to the current
+  /// device. Some notifications can be bridged to other devices for remote
+  /// display, such as a Wear OS watch. This hint can be set to recommend this
+  /// notification not be bridged. See [Wear OS
+  /// guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
+  core.bool localOnly;
+
+  /// Sets the number of items this notification represents. May be displayed as
+  /// a badge count for launchers that support badging.See [Notification
+  /// Badge](https://developer.android.com/training/notify-user/badges).
+  /// For example, this might be useful if you're using just one notification to
+  /// represent multiple new messages but you want the count here to represent
+  /// the number of total new messages.
+  /// If zero or unspecified, systems that support badging use the default,
+  /// which
+  /// is to increment a number displayed on the long-press menu each time a new
+  /// notification arrives.
+  core.int notificationCount;
+
+  /// Set the relative priority for this notification. Priority is an indication
+  /// of how much of the user's attention should be consumed by this
+  /// notification. Low-priority notifications may be hidden from the user in
+  /// certain situations, while the user might be interrupted for a
+  /// higher-priority notification. The effect of setting the same priorities
+  /// may
+  /// differ slightly on different platforms. Note this priority differs from
+  /// `AndroidMessagePriority`. This priority is processed by the client after
+  /// the message has been delivered, whereas
+  /// [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages#androidmessagepriority)
+  /// is an FCM concept that controls when the message is delivered.
+  /// Possible string values are:
+  /// - "PRIORITY_UNSPECIFIED" : If priority is unspecified, notification
+  /// priority is set to
+  /// `PRIORITY_DEFAULT`.
+  /// - "PRIORITY_MIN" : Lowest notification priority. Notifications with this
+  /// `PRIORITY_MIN`
+  /// might not be shown to the user except under special circumstances,
+  /// such as detailed notification logs.
+  /// - "PRIORITY_LOW" : Lower notification priority. The UI may choose to show
+  /// the notifications
+  /// smaller, or at a different position in the list, compared with
+  /// notifications with `PRIORITY_DEFAULT`.
+  /// - "PRIORITY_DEFAULT" : Default notification priority. If the application
+  /// does not prioritize its
+  /// own notifications, use this value for all notifications.
+  /// - "PRIORITY_HIGH" : Higher notification priority. Use this for more
+  /// important notifications
+  /// or alerts. The UI may choose to show these notifications larger, or at a
+  /// different position in the notification lists, compared with notifications
+  /// with `PRIORITY_DEFAULT`.
+  /// - "PRIORITY_MAX" : Highest notification priority. Use this for the
+  /// application's most
+  /// important items that require the user's prompt attention or input.
+  core.String notificationPriority;
+
   /// The sound to play when the device receives the notification.
   /// Supports "default" or the filename of a sound resource bundled in the app.
   /// Sound files must reside in /res/raw/.
   core.String sound;
+
+  /// When set to false or unset, the notification is automatically
+  /// dismissed when the user clicks it in the panel. When set to true, the
+  /// notification persists even when the user clicks it.
+  core.bool sticky;
 
   /// Identifier used to replace existing notifications in the notification
   /// drawer.
@@ -294,6 +402,11 @@ class AndroidNotification {
   /// If specified and a notification with the same tag is already being shown,
   /// the new notification replaces the existing one in the notification drawer.
   core.String tag;
+
+  /// Sets the "ticker" text, which is sent to accessibility services.
+  /// Prior to API level 21 (`Lollipop`), sets the text that is displayed in the
+  /// status bar when the notification first arrives.
+  core.String ticker;
 
   /// The notification's title. If present, it will override
   /// google.firebase.fcm.v1.Notification.title.
@@ -309,6 +422,32 @@ class AndroidNotification {
   /// localize the title text to the user's current localization.
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String titleLocKey;
+
+  /// Set the vibration pattern to use. Pass in an array of
+  /// [protobuf.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  /// to turn on or off the vibrator. The first value indicates the `Duration`
+  /// to
+  /// wait before turning the vibrator on. The next value indicates the
+  /// `Duration` to keep the vibrator on. Subsequent values alternate between
+  /// `Duration` to turn the vibrator off and to turn the vibrator on.
+  /// If `vibrate_timings` is set and `default_vibrate_timings` is set to
+  /// `true`,
+  /// the default value is used instead of the user-specified `vibrate_timings`.
+  core.List<core.String> vibrateTimings;
+
+  /// Set the
+  /// [Notification.visibility](https://developer.android.com/reference/android/app/Notification.html#visibility)
+  /// of the notification.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : If unspecified, default to
+  /// `Visibility.PRIVATE`.
+  /// - "PRIVATE" : Show this notification on all lockscreens, but conceal
+  /// sensitive or
+  /// private information on secure lockscreens.
+  /// - "PUBLIC" : Show this notification in its entirety on all lockscreens.
+  /// - "SECRET" : Do not reveal any part of this notification on a secure
+  /// lockscreen.
+  core.String visibility;
 
   AndroidNotification();
 
@@ -331,14 +470,47 @@ class AndroidNotification {
     if (_json.containsKey("color")) {
       color = _json["color"];
     }
+    if (_json.containsKey("defaultLightSettings")) {
+      defaultLightSettings = _json["defaultLightSettings"];
+    }
+    if (_json.containsKey("defaultSound")) {
+      defaultSound = _json["defaultSound"];
+    }
+    if (_json.containsKey("defaultVibrateTimings")) {
+      defaultVibrateTimings = _json["defaultVibrateTimings"];
+    }
+    if (_json.containsKey("eventTime")) {
+      eventTime = _json["eventTime"];
+    }
     if (_json.containsKey("icon")) {
       icon = _json["icon"];
+    }
+    if (_json.containsKey("image")) {
+      image = _json["image"];
+    }
+    if (_json.containsKey("lightSettings")) {
+      lightSettings = new LightSettings.fromJson(_json["lightSettings"]);
+    }
+    if (_json.containsKey("localOnly")) {
+      localOnly = _json["localOnly"];
+    }
+    if (_json.containsKey("notificationCount")) {
+      notificationCount = _json["notificationCount"];
+    }
+    if (_json.containsKey("notificationPriority")) {
+      notificationPriority = _json["notificationPriority"];
     }
     if (_json.containsKey("sound")) {
       sound = _json["sound"];
     }
+    if (_json.containsKey("sticky")) {
+      sticky = _json["sticky"];
+    }
     if (_json.containsKey("tag")) {
       tag = _json["tag"];
+    }
+    if (_json.containsKey("ticker")) {
+      ticker = _json["ticker"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -348,6 +520,13 @@ class AndroidNotification {
     }
     if (_json.containsKey("titleLocKey")) {
       titleLocKey = _json["titleLocKey"];
+    }
+    if (_json.containsKey("vibrateTimings")) {
+      vibrateTimings =
+          (_json["vibrateTimings"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("visibility")) {
+      visibility = _json["visibility"];
     }
   }
 
@@ -372,14 +551,47 @@ class AndroidNotification {
     if (color != null) {
       _json["color"] = color;
     }
+    if (defaultLightSettings != null) {
+      _json["defaultLightSettings"] = defaultLightSettings;
+    }
+    if (defaultSound != null) {
+      _json["defaultSound"] = defaultSound;
+    }
+    if (defaultVibrateTimings != null) {
+      _json["defaultVibrateTimings"] = defaultVibrateTimings;
+    }
+    if (eventTime != null) {
+      _json["eventTime"] = eventTime;
+    }
     if (icon != null) {
       _json["icon"] = icon;
+    }
+    if (image != null) {
+      _json["image"] = image;
+    }
+    if (lightSettings != null) {
+      _json["lightSettings"] = (lightSettings).toJson();
+    }
+    if (localOnly != null) {
+      _json["localOnly"] = localOnly;
+    }
+    if (notificationCount != null) {
+      _json["notificationCount"] = notificationCount;
+    }
+    if (notificationPriority != null) {
+      _json["notificationPriority"] = notificationPriority;
     }
     if (sound != null) {
       _json["sound"] = sound;
     }
+    if (sticky != null) {
+      _json["sticky"] = sticky;
+    }
     if (tag != null) {
       _json["tag"] = tag;
+    }
+    if (ticker != null) {
+      _json["ticker"] = ticker;
     }
     if (title != null) {
       _json["title"] = title;
@@ -389,6 +601,12 @@ class AndroidNotification {
     }
     if (titleLocKey != null) {
       _json["titleLocKey"] = titleLocKey;
+    }
+    if (vibrateTimings != null) {
+      _json["vibrateTimings"] = vibrateTimings;
+    }
+    if (visibility != null) {
+      _json["visibility"] = visibility;
     }
     return _json;
   }
@@ -400,12 +618,14 @@ class ApnsConfig {
   ApnsFcmOptions fcmOptions;
 
   /// HTTP request headers defined in Apple Push Notification Service. Refer to
-  /// [APNs request headers](https://goo.gl/C6Yhia) for
-  /// supported headers, e.g. "apns-priority": "10".
+  /// [APNs request
+  /// headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
+  /// for supported headers, e.g. "apns-priority": "10".
   core.Map<core.String, core.String> headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
-  /// payload. See [Payload Key Reference](https://goo.gl/32Pl5W).
+  /// payload. See [Payload Key
+  /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
   /// If present, it overrides google.firebase.fcm.v1.Notification.title
   /// and google.firebase.fcm.v1.Notification.body.
   ///
@@ -448,11 +668,19 @@ class ApnsFcmOptions {
   /// Label associated with the message's analytics data.
   core.String analyticsLabel;
 
+  /// Contains the URL of an image that is going to be displayed in a
+  /// notification. If present, it will override
+  /// google.firebase.fcm.v1.Notification.image.
+  core.String image;
+
   ApnsFcmOptions();
 
   ApnsFcmOptions.fromJson(core.Map _json) {
     if (_json.containsKey("analyticsLabel")) {
       analyticsLabel = _json["analyticsLabel"];
+    }
+    if (_json.containsKey("image")) {
+      image = _json["image"];
     }
   }
 
@@ -461,6 +689,188 @@ class ApnsFcmOptions {
         new core.Map<core.String, core.Object>();
     if (analyticsLabel != null) {
       _json["analyticsLabel"] = analyticsLabel;
+    }
+    if (image != null) {
+      _json["image"] = image;
+    }
+    return _json;
+  }
+}
+
+/// Represents a color in the RGBA color space. This representation is designed
+/// for simplicity of conversion to/from color representations in various
+/// languages over compactness; for example, the fields of this representation
+/// can be trivially provided to the constructor of "java.awt.Color" in Java; it
+/// can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+/// method in iOS; and, with just a little work, it can be easily formatted into
+/// a CSS "rgba()" string in JavaScript, as well.
+///
+/// Note: this proto does not carry information about the absolute color space
+/// that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+/// DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB
+/// color
+/// space.
+///
+/// Example (Java):
+///
+///      import com.google.type.Color;
+///
+///      // ...
+///      public static java.awt.Color fromProto(Color protocolor) {
+///        float alpha = protocolor.hasAlpha()
+///            ? protocolor.getAlpha().getValue()
+///            : 1.0;
+///
+///        return new java.awt.Color(
+///            protocolor.getRed(),
+///            protocolor.getGreen(),
+///            protocolor.getBlue(),
+///            alpha);
+///      }
+///
+///      public static Color toProto(java.awt.Color color) {
+///        float red = (float) color.getRed();
+///        float green = (float) color.getGreen();
+///        float blue = (float) color.getBlue();
+///        float denominator = 255.0;
+///        Color.Builder resultBuilder =
+///            Color
+///                .newBuilder()
+///                .setRed(red / denominator)
+///                .setGreen(green / denominator)
+///                .setBlue(blue / denominator);
+///        int alpha = color.getAlpha();
+///        if (alpha != 255) {
+///          result.setAlpha(
+///              FloatValue
+///                  .newBuilder()
+///                  .setValue(((float) alpha) / denominator)
+///                  .build());
+///        }
+///        return resultBuilder.build();
+///      }
+///      // ...
+///
+/// Example (iOS / Obj-C):
+///
+///      // ...
+///      static UIColor* fromProto(Color* protocolor) {
+///         float red = [protocolor red];
+///         float green = [protocolor green];
+///         float blue = [protocolor blue];
+///         FloatValue* alpha_wrapper = [protocolor alpha];
+///         float alpha = 1.0;
+///         if (alpha_wrapper != nil) {
+///           alpha = [alpha_wrapper value];
+///         }
+/// return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+///      }
+///
+///      static Color* toProto(UIColor* color) {
+///          CGFloat red, green, blue, alpha;
+///          if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) {
+///            return nil;
+///          }
+///          Color* result = [[Color alloc] init];
+///          [result setRed:red];
+///          [result setGreen:green];
+///          [result setBlue:blue];
+///          if (alpha <= 0.9999) {
+///            [result setAlpha:floatWrapperWithValue(alpha)];
+///          }
+///          [result autorelease];
+///          return result;
+///     }
+///     // ...
+///
+///  Example (JavaScript):
+///
+///     // ...
+///
+///     var protoToCssColor = function(rgb_color) {
+///        var redFrac = rgb_color.red || 0.0;
+///        var greenFrac = rgb_color.green || 0.0;
+///        var blueFrac = rgb_color.blue || 0.0;
+///        var red = Math.floor(redFrac * 255);
+///        var green = Math.floor(greenFrac * 255);
+///        var blue = Math.floor(blueFrac * 255);
+///
+///        if (!('alpha' in rgb_color)) {
+///           return rgbToCssColor_(red, green, blue);
+///        }
+///
+///        var alphaFrac = rgb_color.alpha.value || 0.0;
+///        var rgbParams = [red, green, blue].join(',');
+///        return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+///     };
+///
+///     var rgbToCssColor_ = function(red, green, blue) {
+///       var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+///       var hexString = rgbNumber.toString(16);
+///       var missingZeros = 6 - hexString.length;
+///       var resultBuilder = ['#'];
+///       for (var i = 0; i < missingZeros; i++) {
+///          resultBuilder.push('0');
+///       }
+///       resultBuilder.push(hexString);
+///       return resultBuilder.join('');
+///     };
+///
+///     // ...
+class Color {
+  /// The fraction of this color that should be applied to the pixel. That is,
+  /// the final pixel color is defined by the equation:
+  ///
+  ///   pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
+  ///
+  /// This means that a value of 1.0 corresponds to a solid color, whereas
+  /// a value of 0.0 corresponds to a completely transparent color. This
+  /// uses a wrapper message rather than a simple float scalar so that it is
+  /// possible to distinguish between a default value and the value being unset.
+  /// If omitted, this color object is to be rendered as a solid color
+  /// (as if the alpha value had been explicitly given with a value of 1.0).
+  core.double alpha;
+
+  /// The amount of blue in the color as a value in the interval [0, 1].
+  core.double blue;
+
+  /// The amount of green in the color as a value in the interval [0, 1].
+  core.double green;
+
+  /// The amount of red in the color as a value in the interval [0, 1].
+  core.double red;
+
+  Color();
+
+  Color.fromJson(core.Map _json) {
+    if (_json.containsKey("alpha")) {
+      alpha = _json["alpha"].toDouble();
+    }
+    if (_json.containsKey("blue")) {
+      blue = _json["blue"].toDouble();
+    }
+    if (_json.containsKey("green")) {
+      green = _json["green"].toDouble();
+    }
+    if (_json.containsKey("red")) {
+      red = _json["red"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alpha != null) {
+      _json["alpha"] = alpha;
+    }
+    if (blue != null) {
+      _json["blue"] = blue;
+    }
+    if (green != null) {
+      _json["green"] = green;
+    }
+    if (red != null) {
+      _json["red"] = red;
     }
     return _json;
   }
@@ -489,6 +899,52 @@ class FcmOptions {
   }
 }
 
+/// Settings to control notification LED.
+class LightSettings {
+  /// Required. Set `color` of the LED with
+  /// [google.type.Color](https://github.com/googleapis/googleapis/blob/master/google/type/color.proto).
+  Color color;
+
+  /// Required. Along with `light_on_duration `, define the blink rate of LED
+  /// flashes. Resolution defined by
+  /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  core.String lightOffDuration;
+
+  /// Required. Along with `light_off_duration`, define the blink rate of LED
+  /// flashes. Resolution defined by
+  /// [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+  core.String lightOnDuration;
+
+  LightSettings();
+
+  LightSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("color")) {
+      color = new Color.fromJson(_json["color"]);
+    }
+    if (_json.containsKey("lightOffDuration")) {
+      lightOffDuration = _json["lightOffDuration"];
+    }
+    if (_json.containsKey("lightOnDuration")) {
+      lightOnDuration = _json["lightOnDuration"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (color != null) {
+      _json["color"] = (color).toJson();
+    }
+    if (lightOffDuration != null) {
+      _json["lightOffDuration"] = lightOffDuration;
+    }
+    if (lightOnDuration != null) {
+      _json["lightOnDuration"] = lightOnDuration;
+    }
+    return _json;
+  }
+}
+
 /// Message to send by Firebase Cloud Messaging Service.
 class Message {
   /// Input only. Android specific options for messages sent through
@@ -503,7 +959,9 @@ class Message {
   /// e.g. "'foo' in topics && 'bar' in topics".
   core.String condition;
 
-  /// Input only. Arbitrary key/value payload.
+  /// Input only. Arbitrary key/value payload. The key should not be a reserved
+  /// word ("from", "message_type", or any word starting with "google" or
+  /// "gcm").
   core.Map<core.String, core.String> data;
 
   /// Input only. Template for FCM SDK feature options to use across all
@@ -605,6 +1063,16 @@ class Notification {
   /// The notification's body text.
   core.String body;
 
+  /// Contains the URL of an image that is going to be downloaded on the device
+  /// and displayed in a notification.
+  /// JPEG, PNG, BMP have full support across platforms. Animated GIF and video
+  /// only work on iOS. WebP and HEIF have varying levels of support across
+  /// platforms and platform versions.
+  /// Android has 1MB image size limit.
+  /// Quota usage and implications/costs for hosting image on Firebase Storage:
+  /// https://firebase.google.com/pricing
+  core.String image;
+
   /// The notification's title.
   core.String title;
 
@@ -613,6 +1081,9 @@ class Notification {
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey("body")) {
       body = _json["body"];
+    }
+    if (_json.containsKey("image")) {
+      image = _json["image"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -624,6 +1095,9 @@ class Notification {
         new core.Map<core.String, core.Object>();
     if (body != null) {
       _json["body"] = body;
+    }
+    if (image != null) {
+      _json["image"] = image;
     }
     if (title != null) {
       _json["title"] = title;
@@ -728,6 +1202,9 @@ class WebpushConfig {
 
 /// Options for features provided by the FCM SDK for Web.
 class WebpushFcmOptions {
+  /// Label associated with the message's analytics data.
+  core.String analyticsLabel;
+
   /// The link to open when the user clicks on the notification.
   /// For all URL values, HTTPS is required.
   core.String link;
@@ -735,6 +1212,9 @@ class WebpushFcmOptions {
   WebpushFcmOptions();
 
   WebpushFcmOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("analyticsLabel")) {
+      analyticsLabel = _json["analyticsLabel"];
+    }
     if (_json.containsKey("link")) {
       link = _json["link"];
     }
@@ -743,6 +1223,9 @@ class WebpushFcmOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (analyticsLabel != null) {
+      _json["analyticsLabel"] = analyticsLabel;
+    }
     if (link != null) {
       _json["link"] = link;
     }

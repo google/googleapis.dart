@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.commentanalyzer.v1alpha1;
 
@@ -133,6 +133,7 @@ class CommentsResourceApi {
 }
 
 /// The comment analysis request message.
+/// LINT.IfChange
 class AnalyzeCommentRequest {
   /// Opaque token that is echoed from the request to the response.
   core.String clientToken;
@@ -153,28 +154,26 @@ class AnalyzeCommentRequest {
   /// service may store comments/context for debugging purposes.
   core.bool doNotStore;
 
-  /// The language(s) of the comment and context (if none are specified, the
-  /// language is automatically detected). If multiple languages are specified,
-  /// the text is checked in all of them that are supported. Both ISO and BCP-47
-  /// language codes are accepted.
-  /// Current Language Restrictions:
-  ///  * Only English text ("en") is supported.
-  /// If none of the languages specified by the caller are supported, an
-  /// `UNIMPLEMENTED` error is returned.
+  /// The language(s) of the comment and context. If none are specified, we
+  /// attempt to automatically detect the language. Specifying multiple
+  /// languages
+  /// means the text contains multiple lanugages. Both ISO and BCP-47 language
+  /// codes are accepted.
+  ///
+  /// The server returns an error if no language was specified and language
+  /// detection fails. The server also returns an error if the languages (either
+  /// specified by the caller, or auto-detected) are not *all* supported by the
+  /// service.
   core.List<core.String> languages;
 
   /// Specification of requested attributes. The AttributeParameters serve as
   /// configuration for each associated attribute. The map keys are attribute
-  /// names. The following attributes are available:
-  /// "ATTACK_ON_AUTHOR" - Attack on author of original article or post.
-  /// "ATTACK_ON_COMMENTER" - Attack on fellow commenter.
-  /// "ATTACK_ON_PUBLISHER" - Attack on publisher of article/post.
-  /// "INCOHERENT" - Difficult to understand, nonsensical.
-  /// "INFLAMMATORY" - Intending to provoke or inflame.
-  /// "OBSCENE" - Obscene, such as cursing.
-  /// "OFF_TOPIC" - Not related to the original topic.
-  /// "SPAM" - Commercial/advertising spam content.
-  /// "UNSUBSTANTIAL" - Trivial.
+  /// names. The available attributes may be different on each RFE installation,
+  /// and can be seen by calling ListAttributes (see above).
+  /// For the prod installation, known as Perspective API, at
+  /// blade:commentanalyzer-esf and commentanalyzer.googleapis.com, see
+  /// go/checker-models (internal) and
+  /// https://github.com/conversationai/perspectiveapi/blob/master/2-api/models.md#all-attribute-types.
   core.Map<core.String, AttributeParameters> requestedAttributes;
 
   /// Session ID. Used to join related RPCs into a single session. For example,
@@ -277,10 +276,10 @@ class AnalyzeCommentResponse {
   /// The language(s) used by CommentAnalyzer service to choose which Model to
   /// use when analyzing the comment. Might better be called
   /// "effective_languages". The logic used to make the choice is as follows:
-  ///   if Request.languages.empty()
-  ///     effective_languages = detected_languages
-  ///   else
+  ///   if !Request.languages.empty()
   ///     effective_languages = Request.languages
+  ///   else
+  ///     effective_languages = detected_languages[0]
   core.List<core.String> languages;
 
   AnalyzeCommentResponse();
@@ -623,14 +622,9 @@ class SuggestCommentScoreRequest {
   /// The context of the comment.
   Context context;
 
-  /// The language(s) of the comment and context (if none are specified, the
-  /// language is automatically detected). If multiple languages are specified,
-  /// the text is checked in all of them that are supported. Both ISO and BCP-47
-  /// language codes are accepted.
-  /// Current Language Restrictions:
-  ///  * Only English text ("en") is supported.
-  /// If none of the languages specified by the caller are supported, an
-  /// `UNIMPLEMENTED` error is returned.
+  /// The language(s) of the comment and context. If none are specified, we
+  /// attempt to automatically detect the language. Both ISO and BCP-47 language
+  /// codes are accepted.
   core.List<core.String> languages;
 
   /// Session ID. Used to join related RPCs into a single session. For example,

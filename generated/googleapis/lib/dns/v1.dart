@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.dns.v1;
 
@@ -42,6 +42,7 @@ class DnsApi {
       new ManagedZoneOperationsResourceApi(_requester);
   ManagedZonesResourceApi get managedZones =>
       new ManagedZonesResourceApi(_requester);
+  PoliciesResourceApi get policies => new PoliciesResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   ResourceRecordSetsResourceApi get resourceRecordSets =>
       new ResourceRecordSetsResourceApi(_requester);
@@ -946,6 +947,367 @@ class ManagedZonesResourceApi {
   }
 }
 
+class PoliciesResourceApi {
+  final commons.ApiRequester _requester;
+
+  PoliciesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Create a new Policy
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> create(Policy request, core.String project,
+      {core.String clientOperationId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (clientOperationId != null) {
+      _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/policies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Delete a previously created Policy. Will fail if the policy is still being
+  /// referenced by a network.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [policy] - User given friendly name of the policy addressed by this
+  /// request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String project, core.String policy,
+      {core.String clientOperationId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (policy == null) {
+      throw new core.ArgumentError("Parameter policy is required.");
+    }
+    if (clientOperationId != null) {
+      _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/policies/' +
+        commons.Escaper.ecapeVariable('$policy');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
+  /// Fetch the representation of an existing Policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [policy] - User given friendly name of the policy addressed by this
+  /// request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> get(core.String project, core.String policy,
+      {core.String clientOperationId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (policy == null) {
+      throw new core.ArgumentError("Parameter policy is required.");
+    }
+    if (clientOperationId != null) {
+      _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/policies/' +
+        commons.Escaper.ecapeVariable('$policy');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Enumerate all Policies associated with a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PoliciesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PoliciesListResponse> list(core.String project,
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/policies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PoliciesListResponse.fromJson(data));
+  }
+
+  /// Apply a partial update to an existing Policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [policy] - User given friendly name of the policy addressed by this
+  /// request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PoliciesPatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PoliciesPatchResponse> patch(
+      Policy request, core.String project, core.String policy,
+      {core.String clientOperationId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (policy == null) {
+      throw new core.ArgumentError("Parameter policy is required.");
+    }
+    if (clientOperationId != null) {
+      _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/policies/' +
+        commons.Escaper.ecapeVariable('$policy');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PoliciesPatchResponse.fromJson(data));
+  }
+
+  /// Update an existing Policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [policy] - User given friendly name of the policy addressed by this
+  /// request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PoliciesUpdateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PoliciesUpdateResponse> update(
+      Policy request, core.String project, core.String policy,
+      {core.String clientOperationId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (policy == null) {
+      throw new core.ArgumentError("Parameter policy is required.");
+    }
+    if (clientOperationId != null) {
+      _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/policies/' +
+        commons.Escaper.ecapeVariable('$policy');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PoliciesUpdateResponse.fromJson(data));
+  }
+}
+
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1566,6 +1928,11 @@ class ManagedZone {
   /// DNSSEC configuration.
   ManagedZoneDnsSecConfig dnssecConfig;
 
+  /// The presence for this field indicates that outbound forwarding is enabled
+  /// for this zone. The value of this field contains the set of destinations to
+  /// forward to.
+  ManagedZoneForwardingConfig forwardingConfig;
+
   /// Unique identifier for the resource; defined by the server (output only)
   core.String id;
 
@@ -1589,6 +1956,10 @@ class ManagedZone {
   /// Delegate your managed_zone to these virtual name servers; defined by the
   /// server (output only)
   core.List<core.String> nameServers;
+
+  /// The presence of this field indicates that DNS Peering is enabled for this
+  /// zone. The value of this field contains the network to peer with.
+  ManagedZonePeeringConfig peeringConfig;
 
   /// For privately visible zones, the set of Virtual Private Cloud resources
   /// that the zone is visible from.
@@ -1617,6 +1988,10 @@ class ManagedZone {
       dnssecConfig =
           new ManagedZoneDnsSecConfig.fromJson(_json["dnssecConfig"]);
     }
+    if (_json.containsKey("forwardingConfig")) {
+      forwardingConfig =
+          new ManagedZoneForwardingConfig.fromJson(_json["forwardingConfig"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -1634,6 +2009,10 @@ class ManagedZone {
     }
     if (_json.containsKey("nameServers")) {
       nameServers = (_json["nameServers"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("peeringConfig")) {
+      peeringConfig =
+          new ManagedZonePeeringConfig.fromJson(_json["peeringConfig"]);
     }
     if (_json.containsKey("privateVisibilityConfig")) {
       privateVisibilityConfig = new ManagedZonePrivateVisibilityConfig.fromJson(
@@ -1659,6 +2038,9 @@ class ManagedZone {
     if (dnssecConfig != null) {
       _json["dnssecConfig"] = (dnssecConfig).toJson();
     }
+    if (forwardingConfig != null) {
+      _json["forwardingConfig"] = (forwardingConfig).toJson();
+    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -1677,6 +2059,9 @@ class ManagedZone {
     if (nameServers != null) {
       _json["nameServers"] = nameServers;
     }
+    if (peeringConfig != null) {
+      _json["peeringConfig"] = (peeringConfig).toJson();
+    }
     if (privateVisibilityConfig != null) {
       _json["privateVisibilityConfig"] = (privateVisibilityConfig).toJson();
     }
@@ -1688,16 +2073,16 @@ class ManagedZone {
 }
 
 class ManagedZoneDnsSecConfig {
-  /// Specifies parameters that will be used for generating initial DnsKeys for
-  /// this ManagedZone. Can only be changed while state is OFF.
+  /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
+  /// Can only be changed while the state is OFF.
   core.List<DnsKeySpec> defaultKeySpecs;
 
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "dns#managedZoneDnsSecConfig".
   core.String kind;
 
-  /// Specifies the mechanism used to provide authenticated denial-of-existence
-  /// responses. Can only be changed while state is OFF.
+  /// Specifies the mechanism for authenticated denial-of-existence responses.
+  /// Can only be changed while the state is OFF.
   /// Possible string values are:
   /// - "nsec"
   /// - "nsec3"
@@ -1744,6 +2129,75 @@ class ManagedZoneDnsSecConfig {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+class ManagedZoneForwardingConfig {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZoneForwardingConfig".
+  core.String kind;
+
+  /// List of target name servers to forward to. Cloud DNS will select the best
+  /// available name server if more than one target is given.
+  core.List<ManagedZoneForwardingConfigNameServerTarget> targetNameServers;
+
+  ManagedZoneForwardingConfig();
+
+  ManagedZoneForwardingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("targetNameServers")) {
+      targetNameServers = (_json["targetNameServers"] as core.List)
+          .map<ManagedZoneForwardingConfigNameServerTarget>((value) =>
+              new ManagedZoneForwardingConfigNameServerTarget.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (targetNameServers != null) {
+      _json["targetNameServers"] =
+          targetNameServers.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ManagedZoneForwardingConfigNameServerTarget {
+  /// IPv4 address of a target name server.
+  core.String ipv4Address;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZoneForwardingConfigNameServerTarget".
+  core.String kind;
+
+  ManagedZoneForwardingConfigNameServerTarget();
+
+  ManagedZoneForwardingConfigNameServerTarget.fromJson(core.Map _json) {
+    if (_json.containsKey("ipv4Address")) {
+      ipv4Address = _json["ipv4Address"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipv4Address != null) {
+      _json["ipv4Address"] = ipv4Address;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
     }
     return _json;
   }
@@ -1804,6 +2258,86 @@ class ManagedZoneOperationsListResponse {
     if (operations != null) {
       _json["operations"] =
           operations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class ManagedZonePeeringConfig {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZonePeeringConfig".
+  core.String kind;
+
+  /// The network with which to peer.
+  ManagedZonePeeringConfigTargetNetwork targetNetwork;
+
+  ManagedZonePeeringConfig();
+
+  ManagedZonePeeringConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("targetNetwork")) {
+      targetNetwork = new ManagedZonePeeringConfigTargetNetwork.fromJson(
+          _json["targetNetwork"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (targetNetwork != null) {
+      _json["targetNetwork"] = (targetNetwork).toJson();
+    }
+    return _json;
+  }
+}
+
+class ManagedZonePeeringConfigTargetNetwork {
+  /// The time at which the zone was deactivated, in RFC 3339 date-time format.
+  /// An empty string indicates that the peering connection is active. The
+  /// producer network can deactivate a zone. The zone is automatically
+  /// deactivated if the producer network that the zone targeted is deleted.
+  /// Output only.
+  core.String deactivateTime;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZonePeeringConfigTargetNetwork".
+  core.String kind;
+
+  /// The fully qualified URL of the VPC network to forward queries to. This
+  /// should be formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String networkUrl;
+
+  ManagedZonePeeringConfigTargetNetwork();
+
+  ManagedZonePeeringConfigTargetNetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("deactivateTime")) {
+      deactivateTime = _json["deactivateTime"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("networkUrl")) {
+      networkUrl = _json["networkUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deactivateTime != null) {
+      _json["deactivateTime"] = deactivateTime;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (networkUrl != null) {
+      _json["networkUrl"] = networkUrl;
     }
     return _json;
   }
@@ -2105,6 +2639,328 @@ class OperationManagedZoneContext {
   }
 }
 
+class PoliciesListResponse {
+  ResponseHeader header;
+
+  /// Type of resource.
+  core.String kind;
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order. To fetch them,
+  /// make another list request using this value as your page token.
+  ///
+  /// In this way you can retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned will be an inconsistent view of the collection. There is
+  /// no way to retrieve a consistent snapshot of a collection larger than the
+  /// maximum page size.
+  core.String nextPageToken;
+
+  /// The policy resources.
+  core.List<Policy> policies;
+
+  PoliciesListResponse();
+
+  PoliciesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("header")) {
+      header = new ResponseHeader.fromJson(_json["header"]);
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("policies")) {
+      policies = (_json["policies"] as core.List)
+          .map<Policy>((value) => new Policy.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (header != null) {
+      _json["header"] = (header).toJson();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (policies != null) {
+      _json["policies"] = policies.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PoliciesPatchResponse {
+  ResponseHeader header;
+  Policy policy;
+
+  PoliciesPatchResponse();
+
+  PoliciesPatchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("header")) {
+      header = new ResponseHeader.fromJson(_json["header"]);
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (header != null) {
+      _json["header"] = (header).toJson();
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
+class PoliciesUpdateResponse {
+  ResponseHeader header;
+  Policy policy;
+
+  PoliciesUpdateResponse();
+
+  PoliciesUpdateResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("header")) {
+      header = new ResponseHeader.fromJson(_json["header"]);
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (header != null) {
+      _json["header"] = (header).toJson();
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A policy is a collection of DNS rules applied to one or more Virtual Private
+/// Cloud resources.
+class Policy {
+  /// Sets an alternative name server for the associated networks. When
+  /// specified, all DNS queries are forwarded to a name server that you choose.
+  /// Names such as .internal are not available when an alternative name server
+  /// is specified.
+  PolicyAlternativeNameServerConfig alternativeNameServerConfig;
+
+  /// A mutable string of at most 1024 characters associated with this resource
+  /// for the user's convenience. Has no effect on the policy's function.
+  core.String description;
+
+  /// Allows networks bound to this policy to receive DNS queries sent by VMs or
+  /// applications over VPN connections. When enabled, a virtual IP address will
+  /// be allocated from each of the sub-networks that are bound to this policy.
+  core.bool enableInboundForwarding;
+
+  /// Controls whether logging is enabled for the networks bound to this policy.
+  /// Defaults to no logging if not set.
+  core.bool enableLogging;
+
+  /// Unique identifier for the resource; defined by the server (output only).
+  core.String id;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#policy".
+  core.String kind;
+
+  /// User assigned name for this policy.
+  core.String name;
+
+  /// List of network names specifying networks to which this policy is applied.
+  core.List<PolicyNetwork> networks;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("alternativeNameServerConfig")) {
+      alternativeNameServerConfig =
+          new PolicyAlternativeNameServerConfig.fromJson(
+              _json["alternativeNameServerConfig"]);
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("enableInboundForwarding")) {
+      enableInboundForwarding = _json["enableInboundForwarding"];
+    }
+    if (_json.containsKey("enableLogging")) {
+      enableLogging = _json["enableLogging"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("networks")) {
+      networks = (_json["networks"] as core.List)
+          .map<PolicyNetwork>((value) => new PolicyNetwork.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alternativeNameServerConfig != null) {
+      _json["alternativeNameServerConfig"] =
+          (alternativeNameServerConfig).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (enableInboundForwarding != null) {
+      _json["enableInboundForwarding"] = enableInboundForwarding;
+    }
+    if (enableLogging != null) {
+      _json["enableLogging"] = enableLogging;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (networks != null) {
+      _json["networks"] = networks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PolicyAlternativeNameServerConfig {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#policyAlternativeNameServerConfig".
+  core.String kind;
+
+  /// Sets an alternative name server for the associated networks. When
+  /// specified, all DNS queries are forwarded to a name server that you choose.
+  /// Names such as .internal are not available when an alternative name server
+  /// is specified.
+  core.List<PolicyAlternativeNameServerConfigTargetNameServer>
+      targetNameServers;
+
+  PolicyAlternativeNameServerConfig();
+
+  PolicyAlternativeNameServerConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("targetNameServers")) {
+      targetNameServers = (_json["targetNameServers"] as core.List)
+          .map<PolicyAlternativeNameServerConfigTargetNameServer>((value) =>
+              new PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (targetNameServers != null) {
+      _json["targetNameServers"] =
+          targetNameServers.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class PolicyAlternativeNameServerConfigTargetNameServer {
+  /// IPv4 address to forward to.
+  core.String ipv4Address;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#policyAlternativeNameServerConfigTargetNameServer".
+  core.String kind;
+
+  PolicyAlternativeNameServerConfigTargetNameServer();
+
+  PolicyAlternativeNameServerConfigTargetNameServer.fromJson(core.Map _json) {
+    if (_json.containsKey("ipv4Address")) {
+      ipv4Address = _json["ipv4Address"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipv4Address != null) {
+      _json["ipv4Address"] = ipv4Address;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+class PolicyNetwork {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#policyNetwork".
+  core.String kind;
+
+  /// The fully qualified URL of the VPC network to bind to. This should be
+  /// formatted like
+  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+  core.String networkUrl;
+
+  PolicyNetwork();
+
+  PolicyNetwork.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("networkUrl")) {
+      networkUrl = _json["networkUrl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (networkUrl != null) {
+      _json["networkUrl"] = networkUrl;
+    }
+    return _json;
+  }
+}
+
 /// A project resource. The project is a top level container for resources
 /// including Cloud DNS ManagedZones. Projects can be created only in the APIs
 /// console.
@@ -2179,6 +3035,12 @@ class Quota {
   /// attached.
   core.int networksPerManagedZone;
 
+  /// Maximum allowed number of networks per policy.
+  core.int networksPerPolicy;
+
+  /// Maximum allowed number of policies per project.
+  core.int policies;
+
   /// Maximum allowed number of ResourceRecords per ResourceRecordSet.
   core.int resourceRecordsPerRrset;
 
@@ -2192,6 +3054,12 @@ class Quota {
 
   /// Maximum allowed number of ResourceRecordSets per zone in the project.
   core.int rrsetsPerManagedZone;
+
+  /// Maximum allowed number of target name servers per managed forwarding zone.
+  core.int targetNameServersPerManagedZone;
+
+  /// Maximum allowed number of alternative target name servers per policy.
+  core.int targetNameServersPerPolicy;
 
   /// Maximum allowed size for total rrdata in one ChangesCreateRequest in
   /// bytes.
@@ -2218,6 +3086,12 @@ class Quota {
     if (_json.containsKey("networksPerManagedZone")) {
       networksPerManagedZone = _json["networksPerManagedZone"];
     }
+    if (_json.containsKey("networksPerPolicy")) {
+      networksPerPolicy = _json["networksPerPolicy"];
+    }
+    if (_json.containsKey("policies")) {
+      policies = _json["policies"];
+    }
     if (_json.containsKey("resourceRecordsPerRrset")) {
       resourceRecordsPerRrset = _json["resourceRecordsPerRrset"];
     }
@@ -2229,6 +3103,13 @@ class Quota {
     }
     if (_json.containsKey("rrsetsPerManagedZone")) {
       rrsetsPerManagedZone = _json["rrsetsPerManagedZone"];
+    }
+    if (_json.containsKey("targetNameServersPerManagedZone")) {
+      targetNameServersPerManagedZone =
+          _json["targetNameServersPerManagedZone"];
+    }
+    if (_json.containsKey("targetNameServersPerPolicy")) {
+      targetNameServersPerPolicy = _json["targetNameServersPerPolicy"];
     }
     if (_json.containsKey("totalRrdataSizePerChange")) {
       totalRrdataSizePerChange = _json["totalRrdataSizePerChange"];
@@ -2258,6 +3139,12 @@ class Quota {
     if (networksPerManagedZone != null) {
       _json["networksPerManagedZone"] = networksPerManagedZone;
     }
+    if (networksPerPolicy != null) {
+      _json["networksPerPolicy"] = networksPerPolicy;
+    }
+    if (policies != null) {
+      _json["policies"] = policies;
+    }
     if (resourceRecordsPerRrset != null) {
       _json["resourceRecordsPerRrset"] = resourceRecordsPerRrset;
     }
@@ -2269,6 +3156,13 @@ class Quota {
     }
     if (rrsetsPerManagedZone != null) {
       _json["rrsetsPerManagedZone"] = rrsetsPerManagedZone;
+    }
+    if (targetNameServersPerManagedZone != null) {
+      _json["targetNameServersPerManagedZone"] =
+          targetNameServersPerManagedZone;
+    }
+    if (targetNameServersPerPolicy != null) {
+      _json["targetNameServersPerPolicy"] = targetNameServersPerPolicy;
     }
     if (totalRrdataSizePerChange != null) {
       _json["totalRrdataSizePerChange"] = totalRrdataSizePerChange;

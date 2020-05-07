@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.composer.v1;
 
@@ -721,8 +721,7 @@ class Environment {
   /// Configuration parameters for this environment.
   EnvironmentConfig config;
 
-  /// Output only.
-  /// The time at which this environment was created.
+  /// Output only. The time at which this environment was created.
   core.String createTime;
 
   /// Optional. User-defined labels for this environment.
@@ -737,6 +736,9 @@ class Environment {
 
   /// The resource name of the environment, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+  ///
+  /// EnvironmentId must start with a lowercase letter followed by up to 63
+  /// lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
   core.String name;
 
   /// The current state of the environment.
@@ -752,12 +754,11 @@ class Environment {
   /// - "ERROR" : The environment has encountered an error and cannot be used.
   core.String state;
 
-  /// Output only.
-  /// The time at which this environment was last modified.
+  /// Output only. The time at which this environment was last modified.
   core.String updateTime;
 
-  /// Output only.
-  /// The UUID (Universally Unique IDentifier) associated with this environment.
+  /// Output only. The UUID (Universally Unique IDentifier) associated with this
+  /// environment.
   /// This value is generated when the environment is created.
   core.String uuid;
 
@@ -817,21 +818,20 @@ class Environment {
 
 /// Configuration information for an environment.
 class EnvironmentConfig {
-  /// Output only.
-  /// The URI of the Apache Airflow Web UI hosted within this environment (see
+  /// Output only. The URI of the Apache Airflow Web UI hosted within this
+  /// environment (see
   /// [Airflow web
   /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
   core.String airflowUri;
 
-  /// Output only.
-  /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud
+  /// Output only. The Cloud Storage prefix of the DAGs for this environment.
+  /// Although Cloud
   /// Storage objects reside in a flat namespace, a hierarchical file tree
   /// can be simulated using "/"-delimited object name prefixes. DAG objects for
   /// this environment reside in a simulated directory with the given prefix.
   core.String dagGcsPrefix;
 
-  /// Output only.
-  /// The Kubernetes Engine cluster used to run this environment.
+  /// Output only. The Kubernetes Engine cluster used to run this environment.
   core.String gkeCluster;
 
   /// The configuration used for the Kubernetes Engine cluster.
@@ -840,6 +840,9 @@ class EnvironmentConfig {
   /// The number of nodes in the Kubernetes Engine cluster that will be
   /// used to run this environment.
   core.int nodeCount;
+
+  /// The configuration used for the Private IP Cloud Composer environment.
+  PrivateEnvironmentConfig privateEnvironmentConfig;
 
   /// The configuration settings for software inside the environment.
   SoftwareConfig softwareConfig;
@@ -861,6 +864,10 @@ class EnvironmentConfig {
     }
     if (_json.containsKey("nodeCount")) {
       nodeCount = _json["nodeCount"];
+    }
+    if (_json.containsKey("privateEnvironmentConfig")) {
+      privateEnvironmentConfig = new PrivateEnvironmentConfig.fromJson(
+          _json["privateEnvironmentConfig"]);
     }
     if (_json.containsKey("softwareConfig")) {
       softwareConfig = new SoftwareConfig.fromJson(_json["softwareConfig"]);
@@ -885,8 +892,106 @@ class EnvironmentConfig {
     if (nodeCount != null) {
       _json["nodeCount"] = nodeCount;
     }
+    if (privateEnvironmentConfig != null) {
+      _json["privateEnvironmentConfig"] = (privateEnvironmentConfig).toJson();
+    }
     if (softwareConfig != null) {
       _json["softwareConfig"] = (softwareConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration for controlling how IPs are allocated in the
+/// GKE cluster running the Apache Airflow software.
+class IPAllocationPolicy {
+  /// Optional. The IP address range used to allocate IP addresses to pods in
+  /// the GKE cluster.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true.
+  ///
+  /// Set to blank to have GKE choose a range with the default size.
+  ///
+  /// Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+  /// netmask.
+  ///
+  /// Set to a
+  /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+  /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+  /// to use.
+  core.String clusterIpv4CidrBlock;
+
+  /// Optional. The name of the GKE cluster's secondary range used to allocate
+  /// IP addresses to pods.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true.
+  core.String clusterSecondaryRangeName;
+
+  /// Optional. The IP address range of the services IP addresses in this
+  /// GKE cluster.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true.
+  ///
+  /// Set to blank to have GKE choose a range with the default size.
+  ///
+  /// Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+  /// netmask.
+  ///
+  /// Set to a
+  /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+  /// notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+  /// `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+  /// to use.
+  core.String servicesIpv4CidrBlock;
+
+  /// Optional. The name of the services' secondary range used to allocate
+  /// IP addresses to the GKE cluster.
+  ///
+  /// This field is applicable only when `use_ip_aliases` is true.
+  core.String servicesSecondaryRangeName;
+
+  /// Optional. Whether or not to enable Alias IPs in the GKE cluster.
+  /// If `true`, a VPC-native cluster is created.
+  core.bool useIpAliases;
+
+  IPAllocationPolicy();
+
+  IPAllocationPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("clusterIpv4CidrBlock")) {
+      clusterIpv4CidrBlock = _json["clusterIpv4CidrBlock"];
+    }
+    if (_json.containsKey("clusterSecondaryRangeName")) {
+      clusterSecondaryRangeName = _json["clusterSecondaryRangeName"];
+    }
+    if (_json.containsKey("servicesIpv4CidrBlock")) {
+      servicesIpv4CidrBlock = _json["servicesIpv4CidrBlock"];
+    }
+    if (_json.containsKey("servicesSecondaryRangeName")) {
+      servicesSecondaryRangeName = _json["servicesSecondaryRangeName"];
+    }
+    if (_json.containsKey("useIpAliases")) {
+      useIpAliases = _json["useIpAliases"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusterIpv4CidrBlock != null) {
+      _json["clusterIpv4CidrBlock"] = clusterIpv4CidrBlock;
+    }
+    if (clusterSecondaryRangeName != null) {
+      _json["clusterSecondaryRangeName"] = clusterSecondaryRangeName;
+    }
+    if (servicesIpv4CidrBlock != null) {
+      _json["servicesIpv4CidrBlock"] = servicesIpv4CidrBlock;
+    }
+    if (servicesSecondaryRangeName != null) {
+      _json["servicesSecondaryRangeName"] = servicesSecondaryRangeName;
+    }
+    if (useIpAliases != null) {
+      _json["useIpAliases"] = useIpAliases;
     }
     return _json;
   }
@@ -1048,6 +1153,10 @@ class NodeConfig {
   /// If unspecified, defaults to 100GB. Cannot be updated.
   core.int diskSizeGb;
 
+  /// Optional. The configuration for controlling how IPs are allocated in the
+  /// GKE cluster.
+  IPAllocationPolicy ipAllocationPolicy;
+
   /// Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which
   /// to deploy the VMs used to run the Apache Airflow software, specified as a
   /// [relative resource
@@ -1079,6 +1188,9 @@ class NodeConfig {
   /// both fields. If exactly one of this field and `nodeConfig.location` is
   /// specified, the location information from the specified field will be
   /// propagated to the unspecified field.
+  ///
+  /// The `machineTypeId` must not be a [shared-core machine
+  /// type](/compute/docs/machine-types#sharedcore).
   ///
   /// If this field is unspecified, the `machineTypeId` defaults
   /// to "n1-standard-1".
@@ -1131,6 +1243,10 @@ class NodeConfig {
     if (_json.containsKey("diskSizeGb")) {
       diskSizeGb = _json["diskSizeGb"];
     }
+    if (_json.containsKey("ipAllocationPolicy")) {
+      ipAllocationPolicy =
+          new IPAllocationPolicy.fromJson(_json["ipAllocationPolicy"]);
+    }
     if (_json.containsKey("location")) {
       location = _json["location"];
     }
@@ -1159,6 +1275,9 @@ class NodeConfig {
         new core.Map<core.String, core.Object>();
     if (diskSizeGb != null) {
       _json["diskSizeGb"] = diskSizeGb;
+    }
+    if (ipAllocationPolicy != null) {
+      _json["ipAllocationPolicy"] = (ipAllocationPolicy).toJson();
     }
     if (location != null) {
       _json["location"] = location;
@@ -1270,17 +1389,15 @@ class Operation {
 
 /// Metadata describing an operation.
 class OperationMetadata {
-  /// Output only.
-  /// The time the operation was submitted to the server.
+  /// Output only. The time the operation was submitted to the server.
   core.String createTime;
 
-  /// Output only.
-  /// The time when the operation terminated, regardless of its success.
+  /// Output only. The time when the operation terminated, regardless of its
+  /// success.
   /// This field is unset if the operation is still ongoing.
   core.String endTime;
 
-  /// Output only.
-  /// The type of operation being performed.
+  /// Output only. The type of operation being performed.
   /// Possible string values are:
   /// - "TYPE_UNSPECIFIED" : Unused.
   /// - "CREATE" : A resource creation operation.
@@ -1288,17 +1405,15 @@ class OperationMetadata {
   /// - "UPDATE" : A resource update operation.
   core.String operationType;
 
-  /// Output only.
-  /// The resource being operated on, as a [relative resource name](
+  /// Output only. The resource being operated on, as a [relative resource
+  /// name](
   /// /apis/design/resource_names#relative_resource_name).
   core.String resource;
 
-  /// Output only.
-  /// The UUID of the resource being operated on.
+  /// Output only. The UUID of the resource being operated on.
   core.String resourceUuid;
 
-  /// Output only.
-  /// The current operation state.
+  /// Output only. The current operation state.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unused.
   /// - "PENDING" : The operation has been created but is not yet started.
@@ -1351,6 +1466,126 @@ class OperationMetadata {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Configuration options for the private GKE cluster in a Cloud Composer
+/// environment.
+class PrivateClusterConfig {
+  /// Optional. If `true`, access to the public endpoint of the GKE cluster is
+  /// denied.
+  core.bool enablePrivateEndpoint;
+
+  /// Optional. The CIDR block from which IPv4 range for GKE master will be
+  /// reserved. If
+  /// left blank, the default value of '172.16.0.0/23' is used.
+  core.String masterIpv4CidrBlock;
+
+  /// Output only. The IP range in CIDR notation to use for the hosted master
+  /// network. This
+  /// range is used for assigning internal IP addresses to the GKE cluster
+  /// master or set of masters and to the internal load balancer virtual IP.
+  /// This range must not overlap with any other ranges in use
+  /// within the cluster's network.
+  core.String masterIpv4ReservedRange;
+
+  PrivateClusterConfig();
+
+  PrivateClusterConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enablePrivateEndpoint")) {
+      enablePrivateEndpoint = _json["enablePrivateEndpoint"];
+    }
+    if (_json.containsKey("masterIpv4CidrBlock")) {
+      masterIpv4CidrBlock = _json["masterIpv4CidrBlock"];
+    }
+    if (_json.containsKey("masterIpv4ReservedRange")) {
+      masterIpv4ReservedRange = _json["masterIpv4ReservedRange"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enablePrivateEndpoint != null) {
+      _json["enablePrivateEndpoint"] = enablePrivateEndpoint;
+    }
+    if (masterIpv4CidrBlock != null) {
+      _json["masterIpv4CidrBlock"] = masterIpv4CidrBlock;
+    }
+    if (masterIpv4ReservedRange != null) {
+      _json["masterIpv4ReservedRange"] = masterIpv4ReservedRange;
+    }
+    return _json;
+  }
+}
+
+/// The configuration information for configuring a Private IP Cloud Composer
+/// environment.
+class PrivateEnvironmentConfig {
+  /// Optional. The CIDR block from which IP range in tenant project will be
+  /// reserved for
+  /// Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
+  core.String cloudSqlIpv4CidrBlock;
+
+  /// Optional. If `true`, a Private IP Cloud Composer environment is created.
+  /// If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be
+  /// set to true.
+  core.bool enablePrivateEnvironment;
+
+  /// Optional. Configuration for the private GKE cluster for a Private IP
+  /// Cloud Composer environment.
+  PrivateClusterConfig privateClusterConfig;
+
+  /// Optional. The CIDR block from which IP range for web server will be
+  /// reserved. Needs
+  /// to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and
+  /// `cloud_sql_ipv4_cidr_block`.
+  core.String webServerIpv4CidrBlock;
+
+  /// Output only. The IP range reserved for the tenant project's App Engine
+  /// VMs.
+  core.String webServerIpv4ReservedRange;
+
+  PrivateEnvironmentConfig();
+
+  PrivateEnvironmentConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudSqlIpv4CidrBlock")) {
+      cloudSqlIpv4CidrBlock = _json["cloudSqlIpv4CidrBlock"];
+    }
+    if (_json.containsKey("enablePrivateEnvironment")) {
+      enablePrivateEnvironment = _json["enablePrivateEnvironment"];
+    }
+    if (_json.containsKey("privateClusterConfig")) {
+      privateClusterConfig =
+          new PrivateClusterConfig.fromJson(_json["privateClusterConfig"]);
+    }
+    if (_json.containsKey("webServerIpv4CidrBlock")) {
+      webServerIpv4CidrBlock = _json["webServerIpv4CidrBlock"];
+    }
+    if (_json.containsKey("webServerIpv4ReservedRange")) {
+      webServerIpv4ReservedRange = _json["webServerIpv4ReservedRange"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudSqlIpv4CidrBlock != null) {
+      _json["cloudSqlIpv4CidrBlock"] = cloudSqlIpv4CidrBlock;
+    }
+    if (enablePrivateEnvironment != null) {
+      _json["enablePrivateEnvironment"] = enablePrivateEnvironment;
+    }
+    if (privateClusterConfig != null) {
+      _json["privateClusterConfig"] = (privateClusterConfig).toJson();
+    }
+    if (webServerIpv4CidrBlock != null) {
+      _json["webServerIpv4CidrBlock"] = webServerIpv4CidrBlock;
+    }
+    if (webServerIpv4ReservedRange != null) {
+      _json["webServerIpv4ReservedRange"] = webServerIpv4ReservedRange;
     }
     return _json;
   }

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.streetviewpublish.v1;
 
@@ -165,8 +165,8 @@ class PhotoResourceApi {
   ///
   /// [photoId] - Required. ID of the Photo.
   ///
-  /// [view] - Specifies if a download URL for the photo bytes should be
-  /// returned in the
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
@@ -231,7 +231,7 @@ class PhotoResourceApi {
   /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
   /// the photo must meet the following requirements:
   ///
-  /// * Photo Sphere XMP metadata must be included in the photo medadata. See
+  /// * Photo Sphere XMP metadata must be included in the photo metadata. See
   /// https://developers.google.com/streetview/spherical-metadata for the
   /// required fields.
   /// * The pixel size of the photo must meet the size requirements listed in
@@ -308,8 +308,8 @@ class PhotoResourceApi {
   ///
   /// [id] - Required. A unique identifier for a photo.
   ///
-  /// [updateMask] - Mask that identifies fields on the photo metadata to
-  /// update.
+  /// [updateMask] - Required. Mask that identifies fields on the photo metadata
+  /// to update.
   /// If not present, the old Photo
   /// metadata is entirely replaced with the
   /// new Photo metadata in this request.
@@ -465,8 +465,8 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [view] - Specifies if a download URL for the photo bytes should be
-  /// returned in the
+  /// [view] - Required. Specifies if a download URL for the photo bytes should
+  /// be returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
@@ -615,18 +615,6 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [view] - Specifies if a download URL for the photos bytes should be
-  /// returned in the
-  /// Photos response.
-  /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-  ///
-  /// [filter] - The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-  ///
-  /// The only filter supported at the moment is `placeId`.
-  ///
   /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
   /// For more
   /// information, see
@@ -634,17 +622,29 @@ class PhotosResourceApi {
   /// If language_code is unspecified, the user's language preference for Google
   /// services is used.
   ///
-  /// [pageToken] - The
-  /// nextPageToken
-  /// value returned from a previous
-  /// ListPhotos
-  /// request, if any.
+  /// [filter] - Required. The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+  ///
+  /// The only filter supported at the moment is `placeId`.
   ///
   /// [pageSize] - The maximum number of photos to return.
   /// `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
   /// the default page size of 100 is used.
   /// The number of photos returned in the response may be less than `pageSize`
   /// if the number of photos that belong to the user is less than `pageSize`.
+  ///
+  /// [pageToken] - The
+  /// nextPageToken
+  /// value returned from a previous
+  /// ListPhotos
+  /// request, if any.
+  ///
+  /// [view] - Required. Specifies if a download URL for the photos bytes should
+  /// be returned in the
+  /// Photos response.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -657,11 +657,11 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String view,
+      {core.String languageCode,
       core.String filter,
-      core.String languageCode,
-      core.String pageToken,
       core.int pageSize,
+      core.String pageToken,
+      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -670,20 +670,20 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (languageCode != null) {
-      _queryParams["languageCode"] = [languageCode];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1095,7 +1095,7 @@ class Photo {
   core.String downloadUrl;
 
   /// Output only. Status in Google Maps, whether this photo was published or
-  /// rejected.
+  /// rejected. Not currently populated.
   /// Possible string values are:
   /// - "UNSPECIFIED_MAPS_PUBLISH_STATUS" : The status of the photo is unknown.
   /// - "PUBLISHED" : The photo is published to the public through Google Maps.
@@ -1499,7 +1499,7 @@ class UpdatePhotoRequest {
   /// new metadata.
   Photo photo;
 
-  /// Mask that identifies fields on the photo metadata to update.
+  /// Required. Mask that identifies fields on the photo metadata to update.
   /// If not present, the old Photo
   /// metadata is entirely replaced with the
   /// new Photo metadata in this request.

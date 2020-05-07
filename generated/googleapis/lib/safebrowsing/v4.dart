@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.safebrowsing.v4;
 
@@ -17,7 +17,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client safebrowsing/v4';
 
 /// Enables client applications to check web resources (most commonly URLs)
-/// against Google-generated lists of unsafe web resources.
+/// against Google-generated lists of unsafe web resources. The Safe Browsing
+/// APIs are for non-commercial use only. If you need to use APIs to detect
+/// malicious URLs for commercial purposes – meaning “for sale or
+/// revenue-generating purposes” – please refer to the Web Risk API.
 class SafebrowsingApi {
   final commons.ApiRequester _requester;
 
@@ -51,11 +54,11 @@ class EncodedFullHashesResourceApi {
   ///
   /// [encodedRequest] - A serialized FindFullHashesRequest proto.
   ///
-  /// [clientVersion] - The version of the client implementation.
-  ///
   /// [clientId] - A client ID that (hopefully) uniquely identifies the client
   /// implementation
   /// of the Safe Browsing API.
+  ///
+  /// [clientVersion] - The version of the client implementation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -68,7 +71,7 @@ class EncodedFullHashesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
-      {core.String clientVersion, core.String clientId, core.String $fields}) {
+      {core.String clientId, core.String clientVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -79,11 +82,11 @@ class EncodedFullHashesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -111,11 +114,11 @@ class EncodedUpdatesResourceApi {
   ///
   /// [encodedRequest] - A serialized FetchThreatListUpdatesRequest proto.
   ///
-  /// [clientVersion] - The version of the client implementation.
-  ///
   /// [clientId] - A client ID that uniquely identifies the client
   /// implementation of the Safe
   /// Browsing API.
+  ///
+  /// [clientVersion] - The version of the client implementation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -128,7 +131,7 @@ class EncodedUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest,
-      {core.String clientVersion, core.String clientId, core.String $fields}) {
+      {core.String clientId, core.String clientVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -139,11 +142,11 @@ class EncodedUpdatesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -483,8 +486,8 @@ class Constraints {
   core.String language;
 
   /// Sets the maximum number of entries that the client is willing to have
-  /// in the local database. This should be a power of 2 between 2**10 and
-  /// 2**20. If zero, no database size limit is set.
+  /// in the local database for the specified list. This should be a power of
+  /// 2 between 2**10 and 2**20. If zero, no database size limit is set.
   core.int maxDatabaseEntries;
 
   /// The maximum size in number of entries. The update will not contain more

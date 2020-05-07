@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.adexchangebuyer2.v2beta1;
 
@@ -177,6 +177,11 @@ class AccountsClientsResourceApi {
   /// [accountId] - Unique numerical account ID of the sponsor buyer to list the
   /// clients for.
   ///
+  /// [partnerClientId] - Optional unique identifier (from the standpoint of an
+  /// Ad Exchange sponsor
+  /// buyer partner) of the client to return.
+  /// If specified, at most one client will be returned in the response.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
@@ -184,11 +189,6 @@ class AccountsClientsResourceApi {
   /// returned from the previous call to the
   /// accounts.clients.list
   /// method.
-  ///
-  /// [partnerClientId] - Optional unique identifier (from the standpoint of an
-  /// Ad Exchange sponsor
-  /// buyer partner) of the client to return.
-  /// If specified, at most one client will be returned in the response.
   ///
   /// [pageSize] - Requested page size. The server may return fewer clients than
   /// requested.
@@ -205,8 +205,8 @@ class AccountsClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListClientsResponse> list(core.String accountId,
-      {core.String pageToken,
-      core.String partnerClientId,
+      {core.String partnerClientId,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -219,11 +219,11 @@ class AccountsClientsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (partnerClientId != null) {
       _queryParams["partnerClientId"] = [partnerClientId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -862,6 +862,18 @@ class AccountsCreativesResourceApi {
   /// [accountId] - The account to list the creatives from.
   /// Specify "-" to list all creatives the current user has access to.
   ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListCreativesResponse.next_page_token
+  /// returned from the previous call to 'ListCreatives' method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer creatives
+  /// than requested
+  /// (due to timeout constraint) even if more are available via another call.
+  /// If unspecified, server will pick an appropriate default.
+  /// Acceptable values are 1 to 1000, inclusive.
+  ///
   /// [query] - An optional query string to filter creatives. If no filter is
   /// specified,
   /// all active creatives will be returned.
@@ -880,18 +892,6 @@ class AccountsCreativesResourceApi {
   /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND
   /// disapprovalReason:unacceptable_content) OR attribute:47'
   ///
-  /// [pageToken] - A token identifying a page of results the server should
-  /// return.
-  /// Typically, this is the value of
-  /// ListCreativesResponse.next_page_token
-  /// returned from the previous call to 'ListCreatives' method.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer creatives
-  /// than requested
-  /// (due to timeout constraint) even if more are available via another call.
-  /// If unspecified, server will pick an appropriate default.
-  /// Acceptable values are 1 to 1000, inclusive.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -903,9 +903,9 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(core.String accountId,
-      {core.String query,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String query,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -917,14 +917,14 @@ class AccountsCreativesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1360,6 +1360,11 @@ class AccountsFinalizedProposalsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
+  /// [filter] - An optional PQL filter query used to query for proposals.
+  ///
+  /// Nested repeated fields, such as proposal.deals.targetingCriterion,
+  /// cannot be filtered.
+  ///
   /// [pageToken] - The page token as returned from ListProposalsResponse.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
@@ -1374,11 +1379,6 @@ class AccountsFinalizedProposalsResourceApi {
   /// - "PQL" : A PQL.
   /// - "LIST_FILTER" : A LIST_FILTER.
   ///
-  /// [filter] - An optional PQL filter query used to query for proposals.
-  ///
-  /// Nested repeated fields, such as proposal.deals.targetingCriterion,
-  /// cannot be filtered.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1390,10 +1390,10 @@ class AccountsFinalizedProposalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProposalsResponse> list(core.String accountId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
       core.String filterSyntax,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1405,6 +1405,9 @@ class AccountsFinalizedProposalsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1413,9 +1416,6 @@ class AccountsFinalizedProposalsResourceApi {
     }
     if (filterSyntax != null) {
       _queryParams["filterSyntax"] = [filterSyntax];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1499,18 +1499,18 @@ class AccountsProductsResourceApi {
   ///
   /// [accountId] - Account ID of the buyer.
   ///
+  /// [pageToken] - The page token as returned from ListProductsResponse.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
   /// [filter] - An optional PQL query used to query for products. See
   /// https://developers.google.com/ad-manager/docs/pqlreference
   /// for documentation about PQL and examples.
   ///
   /// Nested repeated fields, such as product.targetingCriterion.inclusions,
   /// cannot be filtered.
-  ///
-  /// [pageToken] - The page token as returned from ListProductsResponse.
-  ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1523,9 +1523,9 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String accountId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1537,14 +1537,14 @@ class AccountsProductsResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -4940,7 +4940,7 @@ class BidMetricsRow {
   /// The number of bids for which the buyer was billed.
   MetricValue billedImpressions;
 
-  /// The number of bids that won an impression.
+  /// The number of bids that won the auction.
   MetricValue impressionsWon;
 
   /// The number of bids for which the corresponding impression was measurable
@@ -5029,10 +5029,15 @@ class BidResponseWithoutBidsStatusRow {
   /// - "RESPONSES_WITHOUT_BIDS_FOR_ACCOUNT" : The response had no bids for the
   /// specified account, though it may have
   /// included bids on behalf of other accounts.
+  /// Applies if:
+  /// 1. Request is on behalf of a bidder and an account filter is present.
+  /// 2. Request is on behalf of a child seat.
   /// - "RESPONSES_WITHOUT_BIDS_FOR_DEAL" : The response had no bids for the
   /// specified deal, though it may have
   /// included bids on other deals on behalf of the account to which the deal
-  /// belongs.
+  /// belongs. If request is on behalf of a bidder and an account filter is not
+  /// present, this also includes responses that have bids on behalf of
+  /// accounts other than the account to which the deal belongs.
   core.String status;
 
   BidResponseWithoutBidsStatusRow();
@@ -5610,6 +5615,10 @@ class Creative {
   /// See serving_restrictions for details.
   /// - "APPROVED" : The creative has been approved.
   /// - "DISAPPROVED" : The creative has been disapproved.
+  /// - "PENDING_REVIEW" : Placeholder for transition to v1beta1. Currently not
+  /// used.
+  /// - "STATUS_TYPE_UNSPECIFIED" : Placeholder for transition to v1beta1.
+  /// Currently not used.
   core.String dealsStatus;
 
   /// The set of declared destination URLs for the creative.
@@ -5663,6 +5672,10 @@ class Creative {
   /// See serving_restrictions for details.
   /// - "APPROVED" : The creative has been approved.
   /// - "DISAPPROVED" : The creative has been disapproved.
+  /// - "PENDING_REVIEW" : Placeholder for transition to v1beta1. Currently not
+  /// used.
+  /// - "STATUS_TYPE_UNSPECIFIED" : Placeholder for transition to v1beta1.
+  /// Currently not used.
   core.String openAuctionStatus;
 
   /// All restricted categories for the ads that may be shown from this
@@ -7065,6 +7078,8 @@ class Disapproval {
   /// - "NON_SSL_COMPLIANT" : Non-SSL compliant.
   /// - "TEMPORARY_PAUSE" : Temporary pausing of creative.
   /// - "BAIL_BONDS" : Promotes services related to bail bonds.
+  /// - "EXPERIMENTAL_MEDICAL_TREATMENT" : Promotes speculative and/or
+  /// experimental medical treatments.
   core.String reason;
 
   Disapproval();
@@ -7152,9 +7167,24 @@ class FilterSet {
   /// - "APP" : The ad impression appears in an app.
   core.String environment;
 
-  /// The list of formats on which to filter; may be empty. The filters
-  /// represented by multiple formats are ORed together (i.e., if non-empty,
-  /// results must match any one of the formats).
+  /// Creative format bidded on or allowed to bid on, can be empty.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : A placeholder for an undefined format; indicates
+  /// that no format filter
+  /// will be applied.
+  /// - "NATIVE_DISPLAY" : The ad impression is a native ad, and display (i.e.,
+  /// image) format.
+  /// - "NATIVE_VIDEO" : The ad impression is a native ad, and video format.
+  /// - "NON_NATIVE_DISPLAY" : The ad impression is not a native ad, and display
+  /// (i.e., image) format.
+  /// - "NON_NATIVE_VIDEO" : The ad impression is not a native ad, and video
+  /// format.
+  core.String format;
+
+  /// Creative formats bidded on or allowed to bid on, can be empty. Although
+  /// this field is a list, it can only be populated with a single item. A
+  /// HTTP 400 bad request error will be returned in the response if you specify
+  /// multiple items.
   core.List<core.String> formats;
 
   /// A user-defined name of the filter set. Filter set names must be unique
@@ -7229,6 +7259,9 @@ class FilterSet {
     if (_json.containsKey("environment")) {
       environment = _json["environment"];
     }
+    if (_json.containsKey("format")) {
+      format = _json["format"];
+    }
     if (_json.containsKey("formats")) {
       formats = (_json["formats"] as core.List).cast<core.String>();
     }
@@ -7276,6 +7309,9 @@ class FilterSet {
     }
     if (environment != null) {
       _json["environment"] = environment;
+    }
+    if (format != null) {
+      _json["format"] = format;
     }
     if (formats != null) {
       _json["formats"] = formats;
@@ -9703,7 +9739,8 @@ class Proposal {
 /// Note: this resource requires whitelisting for access. Please contact your
 /// account manager for access to Marketplace resources.
 ///
-/// Represents a publisher profile in Marketplace.
+/// Represents a publisher profile
+/// (https://support.google.com/admanager/answer/6035806?hl=en) in Marketplace.
 ///
 /// All fields are read only. All string fields are free-form text entered by
 /// the
@@ -9734,6 +9771,15 @@ class PublisherProfile {
 
   /// URL to publisher's Google+ page.
   core.String googlePlusUrl;
+
+  /// Indicates if this profile is the parent profile of the seller. A parent
+  /// profile represents all the inventory from the seller, as opposed to child
+  /// profile that is created to brand a portion of inventory. One seller should
+  /// have only one parent publisher profile, and can have multiple child
+  /// profiles. Publisher profiles for the same seller will have same value of
+  /// field google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller.
+  /// See https://support.google.com/admanager/answer/6035806?hl=en for details.
+  core.bool isParent;
 
   /// A Google public URL to the logo for this publisher profile. The logo is
   /// stored as a PNG, JPG, or GIF image.
@@ -9787,6 +9833,9 @@ class PublisherProfile {
     if (_json.containsKey("googlePlusUrl")) {
       googlePlusUrl = _json["googlePlusUrl"];
     }
+    if (_json.containsKey("isParent")) {
+      isParent = _json["isParent"];
+    }
     if (_json.containsKey("logoUrl")) {
       logoUrl = _json["logoUrl"];
     }
@@ -9836,6 +9885,9 @@ class PublisherProfile {
     }
     if (googlePlusUrl != null) {
       _json["googlePlusUrl"] = googlePlusUrl;
+    }
+    if (isParent != null) {
+      _json["isParent"] = isParent;
     }
     if (logoUrl != null) {
       _json["logoUrl"] = logoUrl;

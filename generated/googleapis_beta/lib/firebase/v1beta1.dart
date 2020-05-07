@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.firebase.v1beta1;
 
@@ -138,7 +138,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,8 +217,6 @@ class ProjectsResourceApi {
   /// <br>This method does not modify any billing account information on the
   /// underlying GCP `Project`.
   /// <br>
-  /// <br>All fields listed in the [request body](#request-body) are required.
-  /// <br>
   /// <br>To call `AddFirebase`, a member must be an Editor or Owner for the
   /// existing GCP `Project`. Service accounts cannot call `AddFirebase`.
   ///
@@ -268,6 +266,114 @@ class ProjectsResourceApi {
     _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$project') +
         ':addFirebase';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Links a FirebaseProject with an existing
+  /// [Google Analytics account](http://www.google.com/analytics/).
+  /// <br>
+  /// <br>Using this call, you can either:
+  /// <ul>
+  /// <li>Specify an `analyticsAccountId` to provision a new Google Analytics
+  /// property within the specified account and associate the new property with
+  /// your `FirebaseProject`.</li>
+  /// <li>Specify an existing `analyticsPropertyId` to associate the property
+  /// with your `FirebaseProject`.</li>
+  /// </ul>
+  /// <br>
+  /// Note that when you call `AddGoogleAnalytics`:
+  /// <ol>
+  /// <li>The first check determines if any existing data streams in the
+  /// Google Analytics property correspond to any existing Firebase Apps in your
+  /// `FirebaseProject` (based on the `packageName` or `bundleId` associated
+  /// with
+  /// the data stream). Then, as applicable, the data streams and apps are
+  /// linked. Note that this auto-linking only applies to Android Apps and iOS
+  /// Apps.</li>
+  /// <li>If no corresponding data streams are found for your Firebase Apps,
+  /// new data streams are provisioned in the Google Analytics property
+  /// for each of your Firebase Apps. Note that a new data stream is always
+  /// provisioned for a Web App even if it was previously associated with a
+  /// data stream in your Analytics property.</li>
+  /// </ol>
+  /// Learn more about the hierarchy and structure of Google Analytics
+  /// accounts in the
+  /// [Analytics
+  /// documentation](https://support.google.com/analytics/answer/9303323).
+  /// <br>
+  /// <br>The result of this call is an [`Operation`](../../v1beta1/operations).
+  /// Poll the `Operation` to track the provisioning process by calling
+  /// GetOperation until
+  /// [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When
+  /// `done` is `true`, the `Operation` has either succeeded or failed. If the
+  /// `Operation` succeeded, its
+  /// [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to
+  /// an AnalyticsDetails; if the `Operation` failed, its
+  /// [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+  /// google.rpc.Status.
+  /// <br>
+  /// <br>To call `AddGoogleAnalytics`, a member must be an Owner for
+  /// the existing `FirebaseProject` and have the
+  /// [`Edit` permission](https://support.google.com/analytics/answer/2884495)
+  /// for the Google Analytics account.
+  /// <br>
+  /// <br>If a `FirebaseProject` already has Google Analytics enabled, and you
+  /// call `AddGoogleAnalytics` using an `analyticsPropertyId` that's different
+  /// from the currently associated property, then the call will fail. Analytics
+  /// may have already been enabled in the Firebase console or by specifying
+  /// `timeZone` and `regionCode` in the call to
+  /// [`AddFirebase`](../../v1beta1/projects/addFirebase).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent `FirebaseProject` to link to an existing Google
+  /// Analytics
+  /// account, in the format:
+  /// <br><code>projects/<var>projectId</var></code>
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addGoogleAnalytics(
+      AddGoogleAnalyticsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':addGoogleAnalytics';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -370,6 +476,55 @@ class ProjectsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new AdminSdkConfig.fromJson(data));
+  }
+
+  /// Gets the Google Analytics details currently associated with a
+  /// FirebaseProject.
+  /// <br>
+  /// <br>If the `FirebaseProject` is not yet linked to Google Analytics, then
+  /// the response to `GetAnalyticsDetails` is NOT_FOUND.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The fully qualified resource name, in the format:
+  /// <br><code>projects/<var>projectId</var>/analyticsDetails</code>
+  /// Value must have pattern "^projects/[^/]+/analyticsDetails$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyticsDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyticsDetails> getAnalyticsDetails(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AnalyticsDetails.fromJson(data));
   }
 
   /// Lists each FirebaseProject accessible to the caller.
@@ -505,6 +660,77 @@ class ProjectsResourceApi {
     return _response.then((data) => new FirebaseProject.fromJson(data));
   }
 
+  /// Unlinks the specified `FirebaseProject` from its Google Analytics account.
+  /// <br>
+  /// <br>This call removes the association of the specified `FirebaseProject`
+  /// with its current Google Analytics property. However, this call does not
+  /// delete the Google Analytics resources, such as the Google Analytics
+  /// property or any data streams.
+  /// <br>
+  /// <br>These resources may be re-associated later to the `FirebaseProject` by
+  /// calling
+  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and
+  /// specifying the same `analyticsPropertyId`. For Android Apps and iOS Apps,
+  /// this call re-links data streams with their corresponding apps. However,
+  /// for Web Apps, this call provisions a <em>new</em> data stream for each Web
+  /// App.
+  /// <br>
+  /// <br>To call `RemoveAnalytics`, a member must be an Owner for
+  /// the `FirebaseProject`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent `FirebaseProject` to unlink from its Google
+  /// Analytics account,
+  /// in the format:
+  /// <br><code>projects/<var>projectId</var></code>
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> removeAnalytics(
+      RemoveAnalyticsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        ':removeAnalytics';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
   /// A convenience method that lists all available Apps for the specified
   /// FirebaseProject.
   /// <br>
@@ -597,7 +823,7 @@ class ProjectsAndroidAppsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent Project for which to list Apps, in the format:
+  /// [parent] - The parent Project in which to create an App, in the format:
   /// <br><code>projects/<var>projectId</var></code>
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -934,7 +1160,10 @@ class ProjectsAndroidAppsShaResourceApi {
   ///
   /// [name] - The fully qualified resource name of the `sha-key`, in the
   /// format:
-  /// <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>shaHash</var></code>
+  /// <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>shaId</var></code>
+  /// <br>You can obtain the full name from the response of
+  /// [`ListShaCertificates`](../projects.androidApps.sha/list) or the original
+  /// [`CreateShaCertificate`](../projects.androidApps.sha/create).
   /// Value must have pattern "^projects/[^/]+/androidApps/[^/]+/sha/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1035,20 +1264,21 @@ class ProjectsAvailableLocationsResourceApi {
   /// Returns a list of valid Google Cloud Platform (GCP) resource locations for
   /// the specified Project (including a FirebaseProject).
   /// <br>
-  /// <br>The default GCP resource location of a project defines the
-  /// geographical
-  /// location where project resources, such as Cloud Firestore, will be
-  /// provisioned by default.
+  /// <br>One of these locations can be selected as the Project's [_default_ GCP
+  /// resource location](https://firebase.google.com/docs/projects/locations),
+  /// which is the geographical location where project resources, such as Cloud
+  /// Firestore, will be provisioned by default. However, if the default GCP
+  /// resource location has already been set for the Project, then this setting
+  /// cannot be changed.
   /// <br>
-  /// <br>The returned list are the available
-  /// [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations). <br>
-  /// <br>This call checks for any location restrictions for the specified
-  /// Project and, thus, might return a subset of all possible GCP resource
-  /// locations. To list all GCP resource locations (regardless of any
-  /// restrictions), call the endpoint without specifying a `projectId` (that
-  /// is,
-  /// `/v1beta1/{parent=projects/-}/listAvailableLocations`).
+  /// <br>This call checks for any possible
+  /// [location
+  /// restrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)
+  /// for the specified Project and, thus, might return a subset of all possible
+  /// GCP resource locations. To list all GCP resource locations (regardless of
+  /// any restrictions), call the endpoint without specifying a `projectId`
+  /// (that
+  /// is, `/v1beta1/{parent=projects/-}/listAvailableLocations`).
   /// <br>
   /// <br>To call `ListAvailableLocations` with a specified project, a member
   /// must be at minimum a Viewer of the project. Calls without a specified
@@ -1237,7 +1467,7 @@ class ProjectsIosAppsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent Project for which to list Apps, in the format:
+  /// [parent] - The parent Project in which to create an App, in the format:
   /// <br><code>projects/<var>projectId</var></code>
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -1520,7 +1750,7 @@ class ProjectsWebAppsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent Project for which to list Apps, in the format:
+  /// [parent] - The parent Project in which to create an App, in the format:
   /// <br><code>projects/<var>projectId</var></code>
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -1792,7 +2022,7 @@ class ProjectsWebAppsResourceApi {
 class AddFirebaseRequest {
   /// Deprecated. Instead, to set your project's default GCP resource location,
   /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-  /// after you add Firebase services to your project.
+  /// after you add Firebase resources to your project.
   /// <br>
   /// <br>The ID of the project's default GCP resource location. The location
   /// must be one of the available
@@ -1800,14 +2030,23 @@ class AddFirebaseRequest {
   /// locations](https://firebase.google.com/docs/projects/locations).
   core.String locationId;
 
-  /// The region code (CLDR) that the account will use for Firebase Analytics
+  /// Deprecated. Instead, to link your Project with a Google Analytics account,
+  /// call [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
+  /// after you add Firebase resources to your Project.
+  /// <br>
+  /// <br>The region code (CLDR) that the account will use for Firebase
+  /// Analytics
   /// data.
   /// <br>For example: US, GB, or DE
   /// <br>
   /// <br>In Java, use `com.google.i18n.identifiers.RegionCode`.
   core.String regionCode;
 
-  /// The time zone that the account will use for Firebase Analytics data.
+  /// Deprecated. Instead, to link your Project with a Google Analytics account,
+  /// call [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
+  /// after you add Firebase resources to your Project.
+  /// <br>
+  /// <br>The time zone that the account will use for Firebase Analytics data.
   /// <br>For example: America/Los_Angeles or Africa/Abidjan
   core.String timeZone;
 
@@ -1836,6 +2075,44 @@ class AddFirebaseRequest {
     }
     if (timeZone != null) {
       _json["timeZone"] = timeZone;
+    }
+    return _json;
+  }
+}
+
+class AddGoogleAnalyticsRequest {
+  /// The ID for the existing
+  /// [Google Analytics account](http://www.google.com/analytics/) that you
+  /// want to link with your `FirebaseProject`.
+  /// <br>
+  /// <br>Specifying this field will provision a new Google Analytics
+  /// property in your Google Analytics account and associate the new property
+  /// with your `FirebaseProject`.
+  core.String analyticsAccountId;
+
+  /// The ID for the existing Google Analytics property that you want to
+  /// associate with your `FirebaseProject`.
+  core.String analyticsPropertyId;
+
+  AddGoogleAnalyticsRequest();
+
+  AddGoogleAnalyticsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("analyticsAccountId")) {
+      analyticsAccountId = _json["analyticsAccountId"];
+    }
+    if (_json.containsKey("analyticsPropertyId")) {
+      analyticsPropertyId = _json["analyticsPropertyId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (analyticsAccountId != null) {
+      _json["analyticsAccountId"] = analyticsAccountId;
+    }
+    if (analyticsPropertyId != null) {
+      _json["analyticsPropertyId"] = analyticsPropertyId;
     }
     return _json;
   }
@@ -1894,6 +2171,91 @@ class AdminSdkConfig {
     }
     if (storageBucket != null) {
       _json["storageBucket"] = storageBucket;
+    }
+    return _json;
+  }
+}
+
+class AnalyticsDetails {
+  /// The Analytics Property object associated with the specified
+  /// `FirebaseProject`.
+  /// <br>
+  /// <br>This object contains the details of the Google Analytics property
+  /// associated with the specified `FirebaseProject`.
+  AnalyticsProperty analyticsProperty;
+
+  /// For Android Apps and iOS Apps: A map of `app` to `streamId` for each
+  /// Firebase App in the specified `FirebaseProject`. Each `app` and
+  /// `streamId` appears only once.<br>
+  /// <br>
+  /// For Web Apps: A map of `app` to `streamId` and `measurementId` for each
+  /// Firebase App in the specified `FirebaseProject`. Each `app`, `streamId`,
+  /// and `measurementId` appears only once.
+  core.List<StreamMapping> streamMappings;
+
+  AnalyticsDetails();
+
+  AnalyticsDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("analyticsProperty")) {
+      analyticsProperty =
+          new AnalyticsProperty.fromJson(_json["analyticsProperty"]);
+    }
+    if (_json.containsKey("streamMappings")) {
+      streamMappings = (_json["streamMappings"] as core.List)
+          .map<StreamMapping>((value) => new StreamMapping.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (analyticsProperty != null) {
+      _json["analyticsProperty"] = (analyticsProperty).toJson();
+    }
+    if (streamMappings != null) {
+      _json["streamMappings"] =
+          streamMappings.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Details of a Google Analytics property
+class AnalyticsProperty {
+  /// The display name of the Google Analytics property associated with the
+  /// specified `FirebaseProject`.
+  core.String displayName;
+
+  /// The globally unique, Google-assigned identifier of the Google Analytics
+  /// property associated with the specified `FirebaseProject`.
+  /// <br>
+  /// <br>If you called
+  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link
+  /// your `FirebaseProject` with a Google Analytics account, the value in this
+  /// `id` field is the same as the ID of the property either specified or
+  /// provisioned with that call to `AddGoogleAnalytics`.
+  core.String id;
+
+  AnalyticsProperty();
+
+  AnalyticsProperty.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (id != null) {
+      _json["id"] = id;
     }
     return _json;
   }
@@ -2658,25 +3020,55 @@ class ListWebAppsResponse {
 
 /// A GCP resource location that can be selected for a Project.
 class Location {
-  /// The ID of the default GCP resource location. It must be one of the
-  /// available
-  /// [GCP resource
-  /// locations](https://firebase.google.com/docs/projects/locations).
+  /// Products and services that are available in the GCP resource location.
+  core.List<core.String> features;
+
+  /// The ID of the GCP resource location. It will be one of the available [GCP
+  /// resource
+  /// locations](https://firebase.google.com/docs/projects/locations#types).
   core.String locationId;
+
+  /// Indicates whether the GCP resource location is a [regional or
+  /// multi-regional
+  /// location](https://firebase.google.com/docs/projects/locations#types)
+  /// for data replication.
+  /// Possible string values are:
+  /// - "LOCATION_TYPE_UNSPECIFIED" : Used internally for distinguishing unset
+  /// values and is not intended for
+  /// external use.
+  /// - "REGIONAL" : The location is a regional location.
+  /// <br>Data in a regional location is replicated in multiple zones within a
+  /// region.
+  /// - "MULTI_REGIONAL" : The location is a multi-regional location.
+  /// <br>Data in a multi-region location is replicated in multiple regions.
+  /// Within each region, data is replicated in multiple zones.
+  core.String type;
 
   Location();
 
   Location.fromJson(core.Map _json) {
+    if (_json.containsKey("features")) {
+      features = (_json["features"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (features != null) {
+      _json["features"] = features;
+    }
     if (locationId != null) {
       _json["locationId"] = locationId;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -2794,7 +3186,7 @@ class ProjectInfo {
   /// To set your project's default GCP resource location, call
   /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after
   /// you
-  /// add Firebase services to your project.
+  /// add Firebase resources to your project.
   core.String locationId;
 
   /// The resource name of the GCP `Project` to which Firebase resources can be
@@ -2827,6 +3219,37 @@ class ProjectInfo {
     }
     if (project != null) {
       _json["project"] = project;
+    }
+    return _json;
+  }
+}
+
+class RemoveAnalyticsRequest {
+  /// Optional. The ID of the Google Analytics property associated with the
+  /// specified `FirebaseProject`.
+  /// <ul>
+  /// <li>If not set, then the Google Analytics property that is currently
+  /// associated with the specified `FirebaseProject` is removed.</li>
+  /// <li>If set, and the specified `FirebaseProject` is currently associated
+  /// with a <em>different</em> Google Analytics property, then the response is
+  /// a
+  /// `412 Precondition Failed` error.</li>
+  /// </ul>
+  core.String analyticsPropertyId;
+
+  RemoveAnalyticsRequest();
+
+  RemoveAnalyticsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("analyticsPropertyId")) {
+      analyticsPropertyId = _json["analyticsPropertyId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (analyticsPropertyId != null) {
+      _json["analyticsPropertyId"] = analyticsPropertyId;
     }
     return _json;
   }
@@ -2883,7 +3306,7 @@ class ShaCertificate {
   core.String certType;
 
   /// The fully qualified resource name of the `sha-key`, in the format:
-  /// <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>shaHash</var></code>
+  /// <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var>/sha/<var>shaId</var></code>
   core.String name;
 
   /// The certificate hash for the App.
@@ -3067,6 +3490,65 @@ class StatusProto {
   }
 }
 
+/// A mapping of a Firebase App to a Google Analytics data stream
+class StreamMapping {
+  /// The fully qualified resource name of the Firebase App associated with the
+  /// Google Analytics data stream, in the format:
+  /// <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>
+  /// or
+  /// <code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>
+  /// or
+  /// <code>projects/<var>projectId</var>/webApps/<var>appId</var></code>
+  core.String app;
+
+  /// Applicable for Firebase Web Apps only.<br>
+  /// <br>The unique Google-assigned identifier of the Google Analytics web
+  /// stream associated with the Firebase Web App. Firebase SDKs use this ID to
+  /// interact with Google Analytics APIs.
+  /// <br>
+  /// <br>Learn more about this ID and Google Analytics web streams in the
+  /// [Analytics
+  /// documentation](https://support.google.com/analytics/topic/9303475).
+  core.String measurementId;
+
+  /// The unique Google-assigned identifier of the Google Analytics data stream
+  /// associated with the Firebase App.
+  /// <br>
+  /// <br>Learn more about Google Analytics data streams in the
+  /// [Analytics
+  /// documentation](https://support.google.com/analytics/answer/9303323).
+  core.String streamId;
+
+  StreamMapping();
+
+  StreamMapping.fromJson(core.Map _json) {
+    if (_json.containsKey("app")) {
+      app = _json["app"];
+    }
+    if (_json.containsKey("measurementId")) {
+      measurementId = _json["measurementId"];
+    }
+    if (_json.containsKey("streamId")) {
+      streamId = _json["streamId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (app != null) {
+      _json["app"] = app;
+    }
+    if (measurementId != null) {
+      _json["measurementId"] = measurementId;
+    }
+    if (streamId != null) {
+      _json["streamId"] = streamId;
+    }
+    return _json;
+  }
+}
+
 /// Message that groups a protocol type_id (as defined by MessageSet),
 /// with an encoded message of that type.  Its use is similar to
 /// MessageSet, except it represents a single (type, encoded message)
@@ -3211,6 +3693,21 @@ class WebAppConfig {
   /// after you add Firebase services to your project.
   core.String locationId;
 
+  /// The unique Google-assigned identifier of the Google Analytics web stream
+  /// associated with the Firebase Web App. Firebase SDKs use this ID to
+  /// interact
+  /// with Google Analytics APIs.
+  /// <br>
+  /// <br>This field is only present if the App is linked to a web stream in a
+  /// Google Analytics App + Web property. Learn more about this ID and Google
+  /// Analytics web streams in the [Analytics
+  /// documentation](https://support.google.com/analytics/topic/9303475).
+  /// <br>
+  /// <br>To generate a `measurementId` and link the Web App with a Google
+  /// Analytics web stream, call
+  /// [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics).
+  core.String measurementId;
+
   /// The sender ID for use with Firebase Cloud Messaging.
   core.String messagingSenderId;
 
@@ -3238,6 +3735,9 @@ class WebAppConfig {
     }
     if (_json.containsKey("locationId")) {
       locationId = _json["locationId"];
+    }
+    if (_json.containsKey("measurementId")) {
+      measurementId = _json["measurementId"];
     }
     if (_json.containsKey("messagingSenderId")) {
       messagingSenderId = _json["messagingSenderId"];
@@ -3267,6 +3767,9 @@ class WebAppConfig {
     }
     if (locationId != null) {
       _json["locationId"] = locationId;
+    }
+    if (measurementId != null) {
+      _json["measurementId"] = measurementId;
     }
     if (messagingSenderId != null) {
       _json["messagingSenderId"] = messagingSenderId;

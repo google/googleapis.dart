@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.gamesManagement.v1management;
 
@@ -29,7 +29,6 @@ class GamesManagementApi {
       new ApplicationsResourceApi(_requester);
   EventsResourceApi get events => new EventsResourceApi(_requester);
   PlayersResourceApi get players => new PlayersResourceApi(_requester);
-  QuestsResourceApi get quests => new QuestsResourceApi(_requester);
   RoomsResourceApi get rooms => new RoomsResourceApi(_requester);
   ScoresResourceApi get scores => new ScoresResourceApi(_requester);
   TurnBasedMatchesResourceApi get turnBasedMatches =>
@@ -340,8 +339,7 @@ class EventsResourceApi {
 
   /// Resets all player progress on the event with the given ID for the
   /// currently authenticated player. This method is only accessible to
-  /// whitelisted tester accounts for your application. All quests for this
-  /// player that use the event will also be reset.
+  /// whitelisted tester accounts for your application.
   ///
   /// Request parameters:
   ///
@@ -385,7 +383,7 @@ class EventsResourceApi {
 
   /// Resets all player progress on all events for the currently authenticated
   /// player. This method is only accessible to whitelisted tester accounts for
-  /// your application. All quests for this player will also be reset.
+  /// your application.
   ///
   /// Request parameters:
   ///
@@ -423,8 +421,7 @@ class EventsResourceApi {
   }
 
   /// Resets all draft events for all players. This method is only available to
-  /// user accounts for your developer console. All quests that use any of these
-  /// events will also be reset.
+  /// user accounts for your developer console.
   ///
   /// Request parameters:
   ///
@@ -463,7 +460,7 @@ class EventsResourceApi {
 
   /// Resets the event with the given ID for all players. This method is only
   /// available to user accounts for your developer console. Only draft events
-  /// can be reset. All quests that use the event will also be reset.
+  /// can be reset.
   ///
   /// Request parameters:
   ///
@@ -509,7 +506,7 @@ class EventsResourceApi {
 
   /// Resets events with the given IDs for all players. This method is only
   /// available to user accounts for your developer console. Only draft events
-  /// may be reset. All quests that use any of the events will also be reset.
+  /// may be reset.
   ///
   /// [request] - The metadata request object.
   ///
@@ -659,225 +656,6 @@ class PlayersResourceApi {
         commons.Escaper.ecapeVariable('$playerId');
 
     var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-}
-
-class QuestsResourceApi {
-  final commons.ApiRequester _requester;
-
-  QuestsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Resets all player progress on the quest with the given ID for the
-  /// currently authenticated player. This method is only accessible to
-  /// whitelisted tester accounts for your application.
-  ///
-  /// Request parameters:
-  ///
-  /// [questId] - The ID of the quest.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future reset(core.String questId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (questId == null) {
-      throw new core.ArgumentError("Parameter questId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'quests/' + commons.Escaper.ecapeVariable('$questId') + '/reset';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Resets all player progress on all quests for the currently authenticated
-  /// player. This method is only accessible to whitelisted tester accounts for
-  /// your application.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future resetAll({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'quests/reset';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Resets all draft quests for all players. This method is only available to
-  /// user accounts for your developer console.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'quests/resetAllForAllPlayers';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Resets all player progress on the quest with the given ID for all players.
-  /// This method is only available to user accounts for your developer console.
-  /// Only draft quests can be reset.
-  ///
-  /// Request parameters:
-  ///
-  /// [questId] - The ID of the quest.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String questId, {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (questId == null) {
-      throw new core.ArgumentError("Parameter questId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'quests/' +
-        commons.Escaper.ecapeVariable('$questId') +
-        '/resetForAllPlayers';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Resets quests with the given IDs for all players. This method is only
-  /// available to user accounts for your developer console. Only draft quests
-  /// may be reset.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future resetMultipleForAllPlayers(
-      QuestsResetMultipleForAllRequest request,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'quests/resetMultipleForAllPlayers';
-
-    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -1705,6 +1483,10 @@ class Player {
   /// An object to represent Play Game experience information for the player.
   GamesPlayerExperienceInfoResource experienceInfo;
 
+  /// The friend status of the given player, relative to the requester. This is
+  /// unset if the player is not sharing their friends list with the game.
+  core.String friendStatus;
+
   /// Uniquely identifies the type of this resource. Value is always the fixed
   /// string gamesManagement#player.
   core.String kind;
@@ -1753,6 +1535,9 @@ class Player {
       experienceInfo = new GamesPlayerExperienceInfoResource.fromJson(
           _json["experienceInfo"]);
     }
+    if (_json.containsKey("friendStatus")) {
+      friendStatus = _json["friendStatus"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -1794,6 +1579,9 @@ class Player {
     }
     if (experienceInfo != null) {
       _json["experienceInfo"] = (experienceInfo).toJson();
+    }
+    if (friendStatus != null) {
+      _json["friendStatus"] = friendStatus;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1908,9 +1696,6 @@ class ProfileSettings {
   /// Uniquely identifies the type of this resource. Value is always the fixed
   /// string gamesManagement#profileSettings.
   core.String kind;
-
-  /// The player's current profile visibility. This field is visible to both 1P
-  /// and 3P APIs.
   core.bool profileVisible;
 
   ProfileSettings();
@@ -1932,39 +1717,6 @@ class ProfileSettings {
     }
     if (profileVisible != null) {
       _json["profileVisible"] = profileVisible;
-    }
-    return _json;
-  }
-}
-
-/// This is a JSON template for multiple quests reset all request.
-class QuestsResetMultipleForAllRequest {
-  /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesManagement#questsResetMultipleForAllRequest.
-  core.String kind;
-
-  /// The IDs of quests to reset.
-  core.List<core.String> questIds;
-
-  QuestsResetMultipleForAllRequest();
-
-  QuestsResetMultipleForAllRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("quest_ids")) {
-      questIds = (_json["quest_ids"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (questIds != null) {
-      _json["quest_ids"] = questIds;
     }
     return _json;
   }

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.adexchangebuyer.v1_4;
 
@@ -2727,7 +2727,25 @@ class CreateOrdersResponse {
 }
 
 class CreativeAdTechnologyProviders {
+  /// The detected ad technology provider IDs for this creative. See
+  /// https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv for
+  /// mapping of provider ID to provided name, a privacy policy URL, and a list
+  /// of domains which can be attributed to the provider. If this creative
+  /// contains provider IDs that are outside of those listed in the
+  /// `BidRequest.adslot.consented_providers_settings.consented_providers` field
+  /// on the  Authorized Buyers Real-Time Bidding protocol or the
+  /// `BidRequest.user.ext.consented_providers_settings.consented_providers`
+  /// field on the OpenRTB protocol, a bid submitted for a European Economic
+  /// Area (EEA) user with this creative is not compliant with the GDPR policies
+  /// as mentioned in the "Third-party Ad Technology Vendors" section of
+  /// Authorized Buyers Program Guidelines.
   core.List<core.String> detectedProviderIds;
+
+  /// Whether the creative contains an unidentified ad technology provider. If
+  /// true, a bid submitted for a European Economic Area (EEA) user with this
+  /// creative is not compliant with the GDPR policies as mentioned in the
+  /// "Third-party Ad Technology Vendors" section of Authorized Buyers Program
+  /// Guidelines.
   core.bool hasUnidentifiedProvider;
 
   CreativeAdTechnologyProviders();
@@ -3860,7 +3878,7 @@ class DealServingMetadataDealPauseStatus {
 }
 
 class DealTerms {
-  /// Visibilty of the URL in bid requests.
+  /// Visibility of the URL in bid requests.
   core.String brandingType;
 
   /// Indicates that this ExternalDealId exists under at least two different
@@ -5531,6 +5549,12 @@ class PretargetingConfig {
   /// Request containing any of these language codes will match.
   core.List<core.String> languages;
 
+  /// The maximum QPS allocated to this pretargeting configuration, used for
+  /// pretargeting-level QPS limits. By default, this is not set, which
+  /// indicates that there is no QPS limit at the configuration level (a global
+  /// or account-level limit may still be imposed).
+  core.String maximumQps;
+
   /// Requests where the predicted viewability is below the specified decile
   /// will not match. E.g. if the buyer sets this value to 5, requests from
   /// slots where the predicted viewability is below 50% will not match. If the
@@ -5638,6 +5662,9 @@ class PretargetingConfig {
     if (_json.containsKey("languages")) {
       languages = (_json["languages"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("maximumQps")) {
+      maximumQps = _json["maximumQps"];
+    }
     if (_json.containsKey("minimumViewabilityDecile")) {
       minimumViewabilityDecile = _json["minimumViewabilityDecile"];
     }
@@ -5735,6 +5762,9 @@ class PretargetingConfig {
     }
     if (languages != null) {
       _json["languages"] = languages;
+    }
+    if (maximumQps != null) {
+      _json["maximumQps"] = maximumQps;
     }
     if (minimumViewabilityDecile != null) {
       _json["minimumViewabilityDecile"] = minimumViewabilityDecile;

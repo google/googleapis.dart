@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.youtube.v3;
 
@@ -29,6 +29,11 @@ const core.String USER_AGENT = 'dart-api-client youtube/v3';
 class YoutubeApi {
   /// Manage your YouTube account
   static const YoutubeScope = "https://www.googleapis.com/auth/youtube";
+
+  /// See a list of your current active channel members, their current level,
+  /// and when they became a member
+  static const YoutubeChannelMembershipsCreatorScope =
+      "https://www.googleapis.com/auth/youtube.channel-memberships.creator";
 
   /// See, edit, and permanently delete your YouTube videos, ratings, comments
   /// and captions
@@ -80,6 +85,9 @@ class YoutubeApi {
       new LiveChatModeratorsResourceApi(_requester);
   LiveStreamsResourceApi get liveStreams =>
       new LiveStreamsResourceApi(_requester);
+  MembersResourceApi get members => new MembersResourceApi(_requester);
+  MembershipsLevelsResourceApi get membershipsLevels =>
+      new MembershipsLevelsResourceApi(_requester);
   PlaylistItemsResourceApi get playlistItems =>
       new PlaylistItemsResourceApi(_requester);
   PlaylistsResourceApi get playlists => new PlaylistsResourceApi(_requester);
@@ -3971,6 +3979,155 @@ class LiveStreamsResourceApi {
   }
 }
 
+class MembersResourceApi {
+  final commons.ApiRequester _requester;
+
+  MembersResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Lists members for a channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - The part parameter specifies the member resource parts that the
+  /// API response will include. Set the parameter value to snippet.
+  ///
+  /// [filterByMemberChannelId] - The filterByMemberChannelId parameter
+  /// represents a comma separated list of channel IDs. Only data about members
+  /// that are part of this list will be included in the response. It can be
+  /// used to efficiently check whether specific users are entitled to perks
+  /// offered via third parties.
+  ///
+  /// [hasAccessToLevel] - The hasAccessToLevel parameter specifies, when set,
+  /// the ID of a pricing level that members from the results set should have
+  /// access to. When not set, all members will be considered, regardless of
+  /// their active pricing level.
+  ///
+  /// [maxResults] - The maxResults parameter specifies the maximum number of
+  /// items that should be returned in the result set.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [mode] - The mode parameter specifies which channel members to return.
+  /// Possible string values are:
+  /// - "all_current" : Return all current members, from newest to oldest.
+  /// - "updates" : Return only members that joined after the first call with
+  /// this mode was made.
+  ///
+  /// [pageToken] - The pageToken parameter identifies a specific page in the
+  /// result set that should be returned. In an API response, the nextPageToken
+  /// and prevPageToken properties identify other pages that could be retrieved.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MemberListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MemberListResponse> list(core.String part,
+      {core.String filterByMemberChannelId,
+      core.String hasAccessToLevel,
+      core.int maxResults,
+      core.String mode,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if (filterByMemberChannelId != null) {
+      _queryParams["filterByMemberChannelId"] = [filterByMemberChannelId];
+    }
+    if (hasAccessToLevel != null) {
+      _queryParams["hasAccessToLevel"] = [hasAccessToLevel];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (mode != null) {
+      _queryParams["mode"] = [mode];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'members';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new MemberListResponse.fromJson(data));
+  }
+}
+
+class MembershipsLevelsResourceApi {
+  final commons.ApiRequester _requester;
+
+  MembershipsLevelsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists pricing levels for a channel.
+  ///
+  /// Request parameters:
+  ///
+  /// [part] - The part parameter specifies the membershipsLevel resource parts
+  /// that the API response will include. Supported values are id and snippet.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MembershipsLevelListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MembershipsLevelListResponse> list(core.String part,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (part == null) {
+      throw new core.ArgumentError("Parameter part is required.");
+    }
+    _queryParams["part"] = [part];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'membershipsLevels';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new MembershipsLevelListResponse.fromJson(data));
+  }
+}
+
 class PlaylistItemsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -7714,6 +7871,7 @@ class CdnSettings {
   /// - "dash"
   /// - "hls"
   /// - "rtmp"
+  /// - "webrtc"
   core.String ingestionType;
 
   /// The resolution of the inbound video data.
@@ -9097,14 +9255,15 @@ class ChannelStatus {
   /// - "eligible"
   /// - "longUploadsUnspecified"
   core.String longUploadsStatus;
+  core.bool madeForKids;
 
   /// Privacy status of the channel.
   /// Possible string values are:
   /// - "private"
   /// - "public"
   /// - "unlisted"
-  /// - "unlisted_new"
   core.String privacyStatus;
+  core.bool selfDeclaredMadeForKids;
 
   ChannelStatus();
 
@@ -9115,8 +9274,14 @@ class ChannelStatus {
     if (_json.containsKey("longUploadsStatus")) {
       longUploadsStatus = _json["longUploadsStatus"];
     }
+    if (_json.containsKey("madeForKids")) {
+      madeForKids = _json["madeForKids"];
+    }
     if (_json.containsKey("privacyStatus")) {
       privacyStatus = _json["privacyStatus"];
+    }
+    if (_json.containsKey("selfDeclaredMadeForKids")) {
+      selfDeclaredMadeForKids = _json["selfDeclaredMadeForKids"];
     }
   }
 
@@ -9129,8 +9294,14 @@ class ChannelStatus {
     if (longUploadsStatus != null) {
       _json["longUploadsStatus"] = longUploadsStatus;
     }
+    if (madeForKids != null) {
+      _json["madeForKids"] = madeForKids;
+    }
     if (privacyStatus != null) {
       _json["privacyStatus"] = privacyStatus;
+    }
+    if (selfDeclaredMadeForKids != null) {
+      _json["selfDeclaredMadeForKids"] = selfDeclaredMadeForKids;
     }
     return _json;
   }
@@ -9730,7 +9901,7 @@ class CommentThreadSnippet {
 }
 
 /// Ratings schemes. The country-specific ratings are mostly for movies and
-/// shows. NEXT_ID: 71
+/// shows. NEXT_ID: 72
 class ContentRating {
   /// The video's Australian Classification Board (ACB) or Australian
   /// Communications and Media Authority (ACMA) rating. ACMA ratings are used to
@@ -10388,11 +10559,24 @@ class ContentRating {
   /// of Latvia).
   /// Possible string values are:
   /// - "nkclv12plus"
+  /// - "nkclv16plus"
   /// - "nkclv18plus"
   /// - "nkclv7plus"
   /// - "nkclvU"
   /// - "nkclvUnrated"
   core.String nkclvRating;
+
+  ///
+  /// Possible string values are:
+  /// - "nmc15plus"
+  /// - "nmc18plus"
+  /// - "nmc18tc"
+  /// - "nmcG"
+  /// - "nmcPg"
+  /// - "nmcPg13"
+  /// - "nmcPg15"
+  /// - "nmcUnrated"
+  core.String nmcRating;
 
   /// The video's Office of Film and Literature Classification (OFLC - New
   /// Zealand) rating.
@@ -10699,6 +10883,9 @@ class ContentRating {
     if (_json.containsKey("nkclvRating")) {
       nkclvRating = _json["nkclvRating"];
     }
+    if (_json.containsKey("nmcRating")) {
+      nmcRating = _json["nmcRating"];
+    }
     if (_json.containsKey("oflcRating")) {
       oflcRating = _json["oflcRating"];
     }
@@ -10913,6 +11100,9 @@ class ContentRating {
     }
     if (nkclvRating != null) {
       _json["nkclvRating"] = nkclvRating;
+    }
+    if (nmcRating != null) {
+      _json["nmcRating"] = nmcRating;
     }
     if (oflcRating != null) {
       _json["oflcRating"] = oflcRating;
@@ -11980,6 +12170,27 @@ class LanguageTag {
   }
 }
 
+class LevelDetails {
+  core.String displayName;
+
+  LevelDetails();
+
+  LevelDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    return _json;
+  }
+}
+
 /// A liveBroadcast resource represents an event that will be streamed, via live
 /// video, on YouTube.
 class LiveBroadcast {
@@ -12085,6 +12296,7 @@ class LiveBroadcastContentDetails {
 
   /// This setting indicates whether auto start is enabled for this broadcast.
   core.bool enableAutoStart;
+  core.bool enableAutoStop;
 
   /// This setting indicates whether HTTP POST closed captioning is enabled for
   /// this broadcast. The ingestion URL of the closed captions is returned
@@ -12127,6 +12339,12 @@ class LiveBroadcastContentDetails {
   /// - "normal"
   /// - "ultraLow"
   core.String latencyPreference;
+
+  /// The mesh for projecting the video if projection is mesh. The mesh value
+  /// must be a UTF-8 string containing the base-64 encoding of 3D mesh data
+  /// that follows the  Spherical Video V2 RFC specification for an mshp box,
+  /// excluding the box size and type but including the following four reserved
+  /// zero bytes for the version and flags.
   core.String mesh;
   core.List<core.int> get meshAsBytes {
     return convert.base64.decode(mesh);
@@ -12191,6 +12409,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("enableAutoStart")) {
       enableAutoStart = _json["enableAutoStart"];
     }
+    if (_json.containsKey("enableAutoStop")) {
+      enableAutoStop = _json["enableAutoStop"];
+    }
     if (_json.containsKey("enableClosedCaptions")) {
       enableClosedCaptions = _json["enableClosedCaptions"];
     }
@@ -12244,6 +12465,9 @@ class LiveBroadcastContentDetails {
     }
     if (enableAutoStart != null) {
       _json["enableAutoStart"] = enableAutoStart;
+    }
+    if (enableAutoStop != null) {
+      _json["enableAutoStop"] = enableAutoStop;
     }
     if (enableClosedCaptions != null) {
       _json["enableClosedCaptions"] = enableClosedCaptions;
@@ -12391,6 +12615,20 @@ class LiveBroadcastSnippet {
   /// in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
   core.DateTime actualStartTime;
 
+  ///
+  /// Possible string values are:
+  /// - "fludd"
+  /// - "fluddArchive"
+  /// - "gplusHoa"
+  /// - "lcrEncoder"
+  /// - "mobile"
+  /// - "persistent"
+  /// - "premiere"
+  /// - "unspecified"
+  /// - "webcam"
+  /// - "ytHoa"
+  core.String broadcastType;
+
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// publishing the broadcast.
   core.String channelId;
@@ -12436,6 +12674,9 @@ class LiveBroadcastSnippet {
     if (_json.containsKey("actualStartTime")) {
       actualStartTime = core.DateTime.parse(_json["actualStartTime"]);
     }
+    if (_json.containsKey("broadcastType")) {
+      broadcastType = _json["broadcastType"];
+    }
     if (_json.containsKey("channelId")) {
       channelId = _json["channelId"];
     }
@@ -12473,6 +12714,9 @@ class LiveBroadcastSnippet {
     }
     if (actualStartTime != null) {
       _json["actualStartTime"] = (actualStartTime).toIso8601String();
+    }
+    if (broadcastType != null) {
+      _json["broadcastType"] = broadcastType;
     }
     if (channelId != null) {
       _json["channelId"] = channelId;
@@ -12570,6 +12814,7 @@ class LiveBroadcastStatus {
   /// - "low"
   /// - "normal"
   core.String liveBroadcastPriority;
+  core.bool madeForKids;
 
   /// The broadcast's privacy status. Note that the broadcast represents exactly
   /// one YouTube video, so the privacy settings are identical to those
@@ -12580,7 +12825,6 @@ class LiveBroadcastStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
-  /// - "unlisted_new"
   core.String privacyStatus;
 
   /// The broadcast's recording status.
@@ -12589,6 +12833,7 @@ class LiveBroadcastStatus {
   /// - "recorded"
   /// - "recording"
   core.String recordingStatus;
+  core.bool selfDeclaredMadeForKids;
 
   LiveBroadcastStatus();
 
@@ -12599,11 +12844,17 @@ class LiveBroadcastStatus {
     if (_json.containsKey("liveBroadcastPriority")) {
       liveBroadcastPriority = _json["liveBroadcastPriority"];
     }
+    if (_json.containsKey("madeForKids")) {
+      madeForKids = _json["madeForKids"];
+    }
     if (_json.containsKey("privacyStatus")) {
       privacyStatus = _json["privacyStatus"];
     }
     if (_json.containsKey("recordingStatus")) {
       recordingStatus = _json["recordingStatus"];
+    }
+    if (_json.containsKey("selfDeclaredMadeForKids")) {
+      selfDeclaredMadeForKids = _json["selfDeclaredMadeForKids"];
     }
   }
 
@@ -12616,11 +12867,17 @@ class LiveBroadcastStatus {
     if (liveBroadcastPriority != null) {
       _json["liveBroadcastPriority"] = liveBroadcastPriority;
     }
+    if (madeForKids != null) {
+      _json["madeForKids"] = madeForKids;
+    }
     if (privacyStatus != null) {
       _json["privacyStatus"] = privacyStatus;
     }
     if (recordingStatus != null) {
       _json["recordingStatus"] = recordingStatus;
+    }
+    if (selfDeclaredMadeForKids != null) {
+      _json["selfDeclaredMadeForKids"] = selfDeclaredMadeForKids;
     }
     return _json;
   }
@@ -14313,6 +14570,468 @@ class LocalizedString {
   }
 }
 
+/// A member resource represents a member for a YouTube channel. A member
+/// provides recurring monetary support to a creator and receives special
+/// benefits.
+class Member {
+  /// Etag of this resource.
+  core.String etag;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "youtube#member".
+  core.String kind;
+
+  /// The snippet object contains basic details about the member.
+  MemberSnippet snippet;
+
+  Member();
+
+  Member.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new MemberSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class MemberListResponse {
+  /// Etag of this resource.
+  core.String etag;
+
+  /// Serialized EventId of the request which produced this response.
+  core.String eventId;
+
+  /// A list of members that match the request criteria.
+  core.List<Member> items;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "youtube#memberListResponse".
+  core.String kind;
+
+  /// The token that can be used as the value of the pageToken parameter to
+  /// retrieve the next page in the result set.
+  core.String nextPageToken;
+  PageInfo pageInfo;
+  TokenPagination tokenPagination;
+
+  /// The visitorId identifies the visitor.
+  core.String visitorId;
+
+  MemberListResponse();
+
+  MemberListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<Member>((value) => new Member.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("pageInfo")) {
+      pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
+    }
+    if (_json.containsKey("tokenPagination")) {
+      tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (pageInfo != null) {
+      _json["pageInfo"] = (pageInfo).toJson();
+    }
+    if (tokenPagination != null) {
+      _json["tokenPagination"] = (tokenPagination).toJson();
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class MemberSnippet {
+  /// The id of the channel that's offering memberships.
+  core.String creatorChannelId;
+
+  /// Details about the member.
+  ChannelProfileDetails memberDetails;
+
+  /// Details about the user's membership.
+  MembershipsDetails membershipsDetails;
+
+  MemberSnippet();
+
+  MemberSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("creatorChannelId")) {
+      creatorChannelId = _json["creatorChannelId"];
+    }
+    if (_json.containsKey("memberDetails")) {
+      memberDetails =
+          new ChannelProfileDetails.fromJson(_json["memberDetails"]);
+    }
+    if (_json.containsKey("membershipsDetails")) {
+      membershipsDetails =
+          new MembershipsDetails.fromJson(_json["membershipsDetails"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creatorChannelId != null) {
+      _json["creatorChannelId"] = creatorChannelId;
+    }
+    if (memberDetails != null) {
+      _json["memberDetails"] = (memberDetails).toJson();
+    }
+    if (membershipsDetails != null) {
+      _json["membershipsDetails"] = (membershipsDetails).toJson();
+    }
+    return _json;
+  }
+}
+
+class MembershipsDetails {
+  /// Ids of all levels that the user has access to. This includes the currently
+  /// active level and all other levels that are included because of a higher
+  /// purchase.
+  core.List<core.String> accessibleLevels;
+
+  /// Id of the highest level that the user has access to at the moment.
+  core.String highestAccessibleLevel;
+
+  /// Display name of the highest level that the user has access to at the
+  /// moment.
+  core.String highestAccessibleLevelDisplayName;
+
+  /// Data about memberships duration without taking into consideration pricing
+  /// levels.
+  MembershipsDuration membershipsDuration;
+
+  /// Data about memberships duration on particular pricing levels.
+  core.List<MembershipsDurationAtLevel> membershipsDurationAtLevels;
+
+  MembershipsDetails();
+
+  MembershipsDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("accessibleLevels")) {
+      accessibleLevels =
+          (_json["accessibleLevels"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("highestAccessibleLevel")) {
+      highestAccessibleLevel = _json["highestAccessibleLevel"];
+    }
+    if (_json.containsKey("highestAccessibleLevelDisplayName")) {
+      highestAccessibleLevelDisplayName =
+          _json["highestAccessibleLevelDisplayName"];
+    }
+    if (_json.containsKey("membershipsDuration")) {
+      membershipsDuration =
+          new MembershipsDuration.fromJson(_json["membershipsDuration"]);
+    }
+    if (_json.containsKey("membershipsDurationAtLevels")) {
+      membershipsDurationAtLevels =
+          (_json["membershipsDurationAtLevels"] as core.List)
+              .map<MembershipsDurationAtLevel>(
+                  (value) => new MembershipsDurationAtLevel.fromJson(value))
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accessibleLevels != null) {
+      _json["accessibleLevels"] = accessibleLevels;
+    }
+    if (highestAccessibleLevel != null) {
+      _json["highestAccessibleLevel"] = highestAccessibleLevel;
+    }
+    if (highestAccessibleLevelDisplayName != null) {
+      _json["highestAccessibleLevelDisplayName"] =
+          highestAccessibleLevelDisplayName;
+    }
+    if (membershipsDuration != null) {
+      _json["membershipsDuration"] = (membershipsDuration).toJson();
+    }
+    if (membershipsDurationAtLevels != null) {
+      _json["membershipsDurationAtLevels"] =
+          membershipsDurationAtLevels.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class MembershipsDuration {
+  /// The date and time when the user became a continuous member across all
+  /// levels.
+  core.String memberSince;
+
+  /// The cumulative time the user has been a member across all levels in
+  /// complete months (the time is rounded down to the nearest integer).
+  core.int memberTotalDurationMonths;
+
+  MembershipsDuration();
+
+  MembershipsDuration.fromJson(core.Map _json) {
+    if (_json.containsKey("memberSince")) {
+      memberSince = _json["memberSince"];
+    }
+    if (_json.containsKey("memberTotalDurationMonths")) {
+      memberTotalDurationMonths = _json["memberTotalDurationMonths"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (memberSince != null) {
+      _json["memberSince"] = memberSince;
+    }
+    if (memberTotalDurationMonths != null) {
+      _json["memberTotalDurationMonths"] = memberTotalDurationMonths;
+    }
+    return _json;
+  }
+}
+
+class MembershipsDurationAtLevel {
+  /// Pricing level id.
+  core.String level;
+
+  /// The date and time when the user became a continuous member for the given
+  /// level.
+  core.String memberSince;
+
+  /// The cumulative time the user has been a member for the given level in
+  /// complete months (the time is rounded down to the nearest integer).
+  core.int memberTotalDurationMonths;
+
+  MembershipsDurationAtLevel();
+
+  MembershipsDurationAtLevel.fromJson(core.Map _json) {
+    if (_json.containsKey("level")) {
+      level = _json["level"];
+    }
+    if (_json.containsKey("memberSince")) {
+      memberSince = _json["memberSince"];
+    }
+    if (_json.containsKey("memberTotalDurationMonths")) {
+      memberTotalDurationMonths = _json["memberTotalDurationMonths"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (level != null) {
+      _json["level"] = level;
+    }
+    if (memberSince != null) {
+      _json["memberSince"] = memberSince;
+    }
+    if (memberTotalDurationMonths != null) {
+      _json["memberTotalDurationMonths"] = memberTotalDurationMonths;
+    }
+    return _json;
+  }
+}
+
+/// A membershipsLevel resource represents an offer made by YouTube creators for
+/// their fans. Users can become members of the channel by joining one of the
+/// available levels. They will provide recurring monetary support and receives
+/// special benefits.
+class MembershipsLevel {
+  /// Etag of this resource.
+  core.String etag;
+
+  /// The ID that YouTube assigns to uniquely identify the memberships level.
+  core.String id;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "youtube#membershipsLevel".
+  core.String kind;
+
+  /// The snippet object contains basic details about the level.
+  MembershipsLevelSnippet snippet;
+
+  MembershipsLevel();
+
+  MembershipsLevel.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("snippet")) {
+      snippet = new MembershipsLevelSnippet.fromJson(_json["snippet"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (snippet != null) {
+      _json["snippet"] = (snippet).toJson();
+    }
+    return _json;
+  }
+}
+
+class MembershipsLevelListResponse {
+  /// Etag of this resource.
+  core.String etag;
+
+  /// Serialized EventId of the request which produced this response.
+  core.String eventId;
+
+  /// A list of pricing levels offered by a creator to the fans.
+  core.List<MembershipsLevel> items;
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "youtube#membershipsLevelListResponse".
+  core.String kind;
+
+  /// The visitorId identifies the visitor.
+  core.String visitorId;
+
+  MembershipsLevelListResponse();
+
+  MembershipsLevelListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("eventId")) {
+      eventId = _json["eventId"];
+    }
+    if (_json.containsKey("items")) {
+      items = (_json["items"] as core.List)
+          .map<MembershipsLevel>(
+              (value) => new MembershipsLevel.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("visitorId")) {
+      visitorId = _json["visitorId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (eventId != null) {
+      _json["eventId"] = eventId;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (visitorId != null) {
+      _json["visitorId"] = visitorId;
+    }
+    return _json;
+  }
+}
+
+class MembershipsLevelSnippet {
+  /// The id of the channel that's offering channel memberships.
+  core.String creatorChannelId;
+  LevelDetails levelDetails;
+
+  MembershipsLevelSnippet();
+
+  MembershipsLevelSnippet.fromJson(core.Map _json) {
+    if (_json.containsKey("creatorChannelId")) {
+      creatorChannelId = _json["creatorChannelId"];
+    }
+    if (_json.containsKey("levelDetails")) {
+      levelDetails = new LevelDetails.fromJson(_json["levelDetails"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (creatorChannelId != null) {
+      _json["creatorChannelId"] = creatorChannelId;
+    }
+    if (levelDetails != null) {
+      _json["levelDetails"] = (levelDetails).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Settings and Info of the monitor stream
 class MonitorStreamInfo {
   /// If you have set the enableMonitorStream property to true, then this
@@ -14954,7 +15673,6 @@ class PlaylistItemStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
-  /// - "unlisted_new"
   core.String privacyStatus;
 
   PlaylistItemStatus();
@@ -15229,7 +15947,6 @@ class PlaylistStatus {
   /// - "private"
   /// - "public"
   /// - "unlisted"
-  /// - "unlisted_new"
   core.String privacyStatus;
 
   PlaylistStatus();
@@ -18677,13 +19394,13 @@ class VideoStatus {
   /// - "creativeCommon"
   /// - "youtube"
   core.String license;
+  core.bool madeForKids;
 
   /// The video's privacy status.
   /// Possible string values are:
   /// - "private"
   /// - "public"
   /// - "unlisted"
-  /// - "unlisted_new"
   core.String privacyStatus;
 
   /// This value indicates if the extended video statistics on the watch page
@@ -18711,6 +19428,7 @@ class VideoStatus {
   /// - "uploaderAccountClosed"
   /// - "uploaderAccountSuspended"
   core.String rejectionReason;
+  core.bool selfDeclaredMadeForKids;
 
   /// The status of the uploaded video.
   /// Possible string values are:
@@ -18733,6 +19451,9 @@ class VideoStatus {
     if (_json.containsKey("license")) {
       license = _json["license"];
     }
+    if (_json.containsKey("madeForKids")) {
+      madeForKids = _json["madeForKids"];
+    }
     if (_json.containsKey("privacyStatus")) {
       privacyStatus = _json["privacyStatus"];
     }
@@ -18744,6 +19465,9 @@ class VideoStatus {
     }
     if (_json.containsKey("rejectionReason")) {
       rejectionReason = _json["rejectionReason"];
+    }
+    if (_json.containsKey("selfDeclaredMadeForKids")) {
+      selfDeclaredMadeForKids = _json["selfDeclaredMadeForKids"];
     }
     if (_json.containsKey("uploadStatus")) {
       uploadStatus = _json["uploadStatus"];
@@ -18762,6 +19486,9 @@ class VideoStatus {
     if (license != null) {
       _json["license"] = license;
     }
+    if (madeForKids != null) {
+      _json["madeForKids"] = madeForKids;
+    }
     if (privacyStatus != null) {
       _json["privacyStatus"] = privacyStatus;
     }
@@ -18773,6 +19500,9 @@ class VideoStatus {
     }
     if (rejectionReason != null) {
       _json["rejectionReason"] = rejectionReason;
+    }
+    if (selfDeclaredMadeForKids != null) {
+      _json["selfDeclaredMadeForKids"] = selfDeclaredMadeForKids;
     }
     if (uploadStatus != null) {
       _json["uploadStatus"] = uploadStatus;

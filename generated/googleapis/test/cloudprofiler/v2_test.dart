@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4345() {
+buildUnnamed4689() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4345(core.List<core.String> o) {
+checkUnnamed4689(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -69,7 +69,7 @@ buildCreateProfileRequest() {
   buildCounterCreateProfileRequest++;
   if (buildCounterCreateProfileRequest < 3) {
     o.deployment = buildDeployment();
-    o.profileType = buildUnnamed4345();
+    o.profileType = buildUnnamed4689();
   }
   buildCounterCreateProfileRequest--;
   return o;
@@ -79,19 +79,19 @@ checkCreateProfileRequest(api.CreateProfileRequest o) {
   buildCounterCreateProfileRequest++;
   if (buildCounterCreateProfileRequest < 3) {
     checkDeployment(o.deployment);
-    checkUnnamed4345(o.profileType);
+    checkUnnamed4689(o.profileType);
   }
   buildCounterCreateProfileRequest--;
 }
 
-buildUnnamed4346() {
+buildUnnamed4690() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4346(core.Map<core.String, core.String> o) {
+checkUnnamed4690(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -102,7 +102,7 @@ buildDeployment() {
   var o = new api.Deployment();
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
-    o.labels = buildUnnamed4346();
+    o.labels = buildUnnamed4690();
     o.projectId = "foo";
     o.target = "foo";
   }
@@ -113,21 +113,21 @@ buildDeployment() {
 checkDeployment(api.Deployment o) {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
-    checkUnnamed4346(o.labels);
+    checkUnnamed4690(o.labels);
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.target, unittest.equals('foo'));
   }
   buildCounterDeployment--;
 }
 
-buildUnnamed4347() {
+buildUnnamed4691() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed4347(core.Map<core.String, core.String> o) {
+checkUnnamed4691(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -140,7 +140,7 @@ buildProfile() {
   if (buildCounterProfile < 3) {
     o.deployment = buildDeployment();
     o.duration = "foo";
-    o.labels = buildUnnamed4347();
+    o.labels = buildUnnamed4691();
     o.name = "foo";
     o.profileBytes = "foo";
     o.profileType = "foo";
@@ -154,7 +154,7 @@ checkProfile(api.Profile o) {
   if (buildCounterProfile < 3) {
     checkDeployment(o.deployment);
     unittest.expect(o.duration, unittest.equals('foo'));
-    checkUnnamed4347(o.labels);
+    checkUnnamed4691(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.profileBytes, unittest.equals('foo'));
     unittest.expect(o.profileType, unittest.equals('foo'));

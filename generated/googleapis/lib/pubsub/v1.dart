@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.pubsub.v1;
 
@@ -81,14 +81,14 @@ class ProjectsSnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional user-provided name for this snapshot.
-  /// If the name is not provided in the request, the server will assign a
-  /// random
-  /// name for this snapshot on the same project as the subscription.
-  /// Note that for REST API requests, you must specify a name.  See the
-  /// <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-  /// resource name rules</a>.
-  /// Format is `projects/{project}/snapshots/{snap}`.
+  /// [name] - Required. User-provided name for this snapshot. If the name is
+  /// not provided in the
+  /// request, the server will assign a random name for this snapshot on the
+  /// same
+  /// project as the subscription. Note that for REST API requests, you must
+  /// specify a name.  See the <a
+  /// href="https://cloud.google.com/pubsub/docs/admin#resource_names"> resource
+  /// name rules</a>. Format is `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -145,7 +145,7 @@ class ProjectsSnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [snapshot] - The name of the snapshot to delete.
+  /// [snapshot] - Required. The name of the snapshot to delete.
   /// Format is `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
@@ -194,7 +194,7 @@ class ProjectsSnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [snapshot] - The name of the snapshot to get.
+  /// [snapshot] - Required. The name of the snapshot to get.
   /// Format is `projects/{project}/snapshots/{snap}`.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
@@ -245,6 +245,17 @@ class ProjectsSnapshotsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -256,7 +267,7 @@ class ProjectsSnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -266,6 +277,11 @@ class ProjectsSnapshotsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -293,7 +309,7 @@ class ProjectsSnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - The name of the project in which to list snapshots.
+  /// [project] - Required. The name of the project in which to list snapshots.
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -405,6 +421,9 @@ class ProjectsSnapshotsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -538,7 +557,8 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The subscription whose message is being acknowledged.
+  /// [subscription] - Required. The subscription whose message is being
+  /// acknowledged.
   /// Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
@@ -604,7 +624,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the subscription. It must have the format
+  /// [name] - Required. The name of the subscription. It must have the format
   /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
   /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -662,7 +682,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The subscription to delete.
+  /// [subscription] - Required. The subscription to delete.
   /// Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
@@ -706,7 +726,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The name of the subscription to get.
+  /// [subscription] - Required. The name of the subscription to get.
   /// Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
@@ -758,6 +778,17 @@ class ProjectsSubscriptionsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -769,7 +800,7 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -779,6 +810,11 @@ class ProjectsSubscriptionsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -801,7 +837,8 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - The name of the project in which to list subscriptions.
+  /// [project] - Required. The name of the project in which to list
+  /// subscriptions.
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -868,7 +905,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The name of the subscription.
+  /// [subscription] - Required. The name of the subscription.
   /// Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
@@ -926,7 +963,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The name of the subscription.
+  /// [subscription] - Required. The name of the subscription.
   /// Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
@@ -980,7 +1017,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the subscription. It must have the format
+  /// [name] - Required. The name of the subscription. It must have the format
   /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
   /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -1037,7 +1074,8 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The subscription from which messages should be pulled.
+  /// [subscription] - Required. The subscription from which messages should be
+  /// pulled.
   /// Format is `projects/{project}/subscriptions/{sub}`.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
@@ -1096,7 +1134,7 @@ class ProjectsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [subscription] - The subscription to affect.
+  /// [subscription] - Required. The subscription to affect.
   /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1143,6 +1181,9 @@ class ProjectsSubscriptionsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -1276,7 +1317,7 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the topic. It must have the format
+  /// [name] - Required. The name of the topic. It must have the format
   /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
   /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
   /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -1332,7 +1373,7 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - Name of the topic to delete.
+  /// [topic] - Required. Name of the topic to delete.
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
@@ -1376,7 +1417,7 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - The name of the topic to get.
+  /// [topic] - Required. The name of the topic to get.
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
@@ -1427,6 +1468,17 @@ class ProjectsTopicsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1438,7 +1490,7 @@ class ProjectsTopicsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1448,6 +1500,11 @@ class ProjectsTopicsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1470,7 +1527,7 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [project] - The name of the project in which to list topics.
+  /// [project] - Required. The name of the project in which to list topics.
   /// Format is `projects/{project-id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -1532,7 +1589,7 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the topic. It must have the format
+  /// [name] - Required. The name of the topic. It must have the format
   /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
   /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
   /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -1587,7 +1644,8 @@ class ProjectsTopicsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - The messages in the request will be published on this topic.
+  /// [topic] - Required. The messages in the request will be published on this
+  /// topic.
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
@@ -1634,6 +1692,9 @@ class ProjectsTopicsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -1764,7 +1825,7 @@ class ProjectsTopicsSnapshotsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - The name of the topic that snapshots are attached to.
+  /// [topic] - Required. The name of the topic that snapshots are attached to.
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
@@ -1831,7 +1892,8 @@ class ProjectsTopicsSubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [topic] - The name of the topic that subscriptions are attached to.
+  /// [topic] - Required. The name of the topic that subscriptions are attached
+  /// to.
   /// Format is `projects/{project}/topics/{topic}`.
   /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
   ///
@@ -1891,8 +1953,8 @@ class ProjectsTopicsSubscriptionsResourceApi {
 
 /// Request for the Acknowledge method.
 class AcknowledgeRequest {
-  /// The acknowledgment ID for the messages being acknowledged that was
-  /// returned
+  /// Required. The acknowledgment ID for the messages being acknowledged that
+  /// was returned
   /// by the Pub/Sub system in the `Pull` response. Must not be empty.
   core.List<core.String> ackIds;
 
@@ -1932,7 +1994,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1940,6 +2002,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -1986,7 +2069,7 @@ class CreateSnapshotRequest {
   /// managing labels</a>.
   core.Map<core.String, core.String> labels;
 
-  /// The subscription whose backlog the snapshot retains.
+  /// Required. The subscription whose backlog the snapshot retains.
   /// Specifically, the created snapshot is guaranteed to retain:
   ///  (a) The existing backlog on the subscription. More precisely, this is
   ///      defined as the messages in the subscription's backlog that are
@@ -2016,6 +2099,62 @@ class CreateSnapshotRequest {
     }
     if (subscription != null) {
       _json["subscription"] = subscription;
+    }
+    return _json;
+  }
+}
+
+/// Dead lettering is done on a best effort basis. The same message might be
+/// dead lettered multiple times.
+///
+/// If validation on any of the fields fails at subscription creation/updation,
+/// the create/update subscription request will fail.
+class DeadLetterPolicy {
+  /// The name of the topic to which dead letter messages should be published.
+  /// Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service
+  /// account associated with the enclosing subscription's parent project (i.e.,
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+  /// permission to Publish() to this topic.
+  ///
+  /// The operation will fail if the topic does not exist.
+  /// Users should ensure that there is a subscription attached to this topic
+  /// since messages published to a topic with no subscriptions are lost.
+  core.String deadLetterTopic;
+
+  /// The maximum number of delivery attempts for any message. The value must be
+  /// between 5 and 100.
+  ///
+  /// The number of delivery attempts is defined as 1 + (the sum of number of
+  /// NACKs and number of times the acknowledgement deadline has been exceeded
+  /// for the message).
+  ///
+  /// A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+  /// client libraries may automatically extend ack_deadlines.
+  ///
+  /// This field will be honored on a best effort basis.
+  ///
+  /// If this parameter is 0, a default value of 5 is used.
+  core.int maxDeliveryAttempts;
+
+  DeadLetterPolicy();
+
+  DeadLetterPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("deadLetterTopic")) {
+      deadLetterTopic = _json["deadLetterTopic"];
+    }
+    if (_json.containsKey("maxDeliveryAttempts")) {
+      maxDeliveryAttempts = _json["maxDeliveryAttempts"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deadLetterTopic != null) {
+      _json["deadLetterTopic"] = deadLetterTopic;
+    }
+    if (maxDeliveryAttempts != null) {
+      _json["maxDeliveryAttempts"] = maxDeliveryAttempts;
     }
     return _json;
   }
@@ -2071,28 +2210,52 @@ class ExpirationPolicy {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -2338,7 +2501,8 @@ class MessageStoragePolicy {
 
 /// Request for the ModifyAckDeadline method.
 class ModifyAckDeadlineRequest {
-  /// The new ack deadline with respect to the time this request was sent to
+  /// Required. The new ack deadline with respect to the time this request was
+  /// sent to
   /// the Pub/Sub system. For example, if the value is 10, the new
   /// ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
   /// was made. Specifying zero might immediately make the message available for
@@ -2348,7 +2512,7 @@ class ModifyAckDeadlineRequest {
   /// The maximum deadline you can specify is 600 seconds (10 minutes).
   core.int ackDeadlineSeconds;
 
-  /// List of acknowledgment IDs.
+  /// Required. List of acknowledgment IDs.
   core.List<core.String> ackIds;
 
   ModifyAckDeadlineRequest();
@@ -2377,7 +2541,7 @@ class ModifyAckDeadlineRequest {
 
 /// Request for the ModifyPushConfig method.
 class ModifyPushConfigRequest {
-  /// The push configuration for future deliveries.
+  /// Required. The push configuration for future deliveries.
   ///
   /// An empty `pushConfig` indicates that the Pub/Sub system should
   /// stop pushing messages from the given subscription and allow
@@ -2446,56 +2610,74 @@ class OidcToken {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -2507,8 +2689,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -2519,7 +2705,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -2556,7 +2764,7 @@ class Policy {
 
 /// Request for the Publish method.
 class PublishRequest {
-  /// The messages to publish.
+  /// Required. The messages to publish.
   core.List<PubsubMessage> messages;
 
   PublishRequest();
@@ -2614,7 +2822,8 @@ class PublishResponse {
 /// <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
 /// for more information about message limits.
 class PubsubMessage {
-  /// Optional attributes for this message.
+  /// Attributes for this message. If this field is empty, the message must
+  /// contain non-empty data.
   core.Map<core.String, core.String> attributes;
 
   /// The message data field. If this field is empty, the message must contain
@@ -2679,14 +2888,21 @@ class PubsubMessage {
 
 /// Request for the `Pull` method.
 class PullRequest {
-  /// The maximum number of messages returned for this request. The Pub/Sub
-  /// system may return fewer than the number specified.
+  /// Required. The maximum number of messages to return for this request. Must
+  /// be a
+  /// positive integer. The Pub/Sub system may return fewer than the number
+  /// specified.
   core.int maxMessages;
 
-  /// If this field set to true, the system will respond immediately even if
+  /// Optional. If this field set to true, the system will respond immediately
+  /// even if
   /// it there are no messages available to return in the `Pull` response.
   /// Otherwise, the system may wait (for a bounded amount of time) until at
   /// least one message is available, rather than returning no messages.
+  /// Warning:
+  /// setting this field to `true` is discouraged because it adversely impacts
+  /// the performance of `Pull` operations. We recommend that users do not set
+  /// this field.
   core.bool returnImmediately;
 
   PullRequest();
@@ -2745,27 +2961,27 @@ class PullResponse {
 
 /// Configuration for a push delivery endpoint.
 class PushConfig {
-  /// Endpoint configuration attributes.
+  /// Endpoint configuration attributes that can be used to control different
+  /// aspects of the message delivery.
   ///
-  /// Every endpoint has a set of API supported attributes that can be used to
-  /// control different aspects of the message delivery.
-  ///
-  /// The currently supported attribute is `x-goog-version`, which you can
+  /// The only currently supported attribute is `x-goog-version`, which you can
   /// use to change the format of the pushed message. This attribute
   /// indicates the version of the data expected by the endpoint. This
   /// controls the shape of the pushed message (i.e., its fields and metadata).
-  /// The endpoint version is based on the version of the Pub/Sub API.
   ///
   /// If not present during the `CreateSubscription` call, it will default to
-  /// the version of the API used to make such call. If not present during a
+  /// the version of the Pub/Sub API used to make such call. If not present in a
   /// `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
   /// calls will always return a valid version, even if the subscription was
   /// created without this attribute.
   ///
-  /// The possible values for this attribute are:
+  /// The only supported values for the `x-goog-version` attribute are:
   ///
   /// * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
   /// * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+  ///
+  /// For example:
+  /// <pre><code>attributes { "x-goog-version": "v1" } </code></pre>
   core.Map<core.String, core.String> attributes;
 
   /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an
@@ -2812,6 +3028,24 @@ class ReceivedMessage {
   /// This ID can be used to acknowledge the received message.
   core.String ackId;
 
+  /// Delivery attempt counter is 1 + (the sum of number of NACKs and number of
+  /// ack_deadline exceeds) for this message.
+  ///
+  /// A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
+  /// exceeds event is whenever a message is not acknowledged within
+  /// ack_deadline. Note that ack_deadline is initially
+  /// Subscription.ackDeadlineSeconds, but may get extended automatically by
+  /// the client library.
+  ///
+  /// The first delivery of a given message will have this value as 1. The value
+  /// is calculated at best effort and is approximate.
+  ///
+  /// If a DeadLetterPolicy is not set on the subscription, this will be 0.
+  /// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
+  /// API might be changed in backward-incompatible ways and is not recommended
+  /// for production use. It is not subject to any SLA or deprecation policy.
+  core.int deliveryAttempt;
+
   /// The message.
   PubsubMessage message;
 
@@ -2820,6 +3054,9 @@ class ReceivedMessage {
   ReceivedMessage.fromJson(core.Map _json) {
     if (_json.containsKey("ackId")) {
       ackId = _json["ackId"];
+    }
+    if (_json.containsKey("deliveryAttempt")) {
+      deliveryAttempt = _json["deliveryAttempt"];
     }
     if (_json.containsKey("message")) {
       message = new PubsubMessage.fromJson(_json["message"]);
@@ -2831,6 +3068,9 @@ class ReceivedMessage {
         new core.Map<core.String, core.Object>();
     if (ackId != null) {
       _json["ackId"] = ackId;
+    }
+    if (deliveryAttempt != null) {
+      _json["deliveryAttempt"] = deliveryAttempt;
     }
     if (message != null) {
       _json["message"] = (message).toJson();
@@ -3015,6 +3255,19 @@ class Subscription {
   /// system will eventually redeliver the message.
   core.int ackDeadlineSeconds;
 
+  /// A policy that specifies the conditions for dead lettering messages in
+  /// this subscription. If dead_letter_policy is not set, dead lettering
+  /// is disabled.
+  ///
+  /// The Cloud Pub/Sub service account associated with this subscriptions's
+  /// parent project (i.e.,
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+  /// permission to Acknowledge() messages on this subscription.
+  /// <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
+  /// API might be changed in backward-incompatible ways and is not recommended
+  /// for production use. It is not subject to any SLA or deprecation policy.
+  DeadLetterPolicy deadLetterPolicy;
+
   /// A policy that specifies the conditions for this subscription's expiration.
   /// A subscription is considered active as long as any connected subscriber is
   /// successfully consuming messages from the subscription or is issuing
@@ -3038,7 +3291,7 @@ class Subscription {
   /// minutes.
   core.String messageRetentionDuration;
 
-  /// The name of the subscription. It must have the format
+  /// Required. The name of the subscription. It must have the format
   /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
   /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -3061,7 +3314,8 @@ class Subscription {
   /// Seek to a timestamp</a>.
   core.bool retainAckedMessages;
 
-  /// The name of the topic from which this subscription is receiving messages.
+  /// Required. The name of the topic from which this subscription is receiving
+  /// messages.
   /// Format is `projects/{project}/topics/{topic}`.
   /// The value of this field will be `_deleted-topic_` if the topic has been
   /// deleted.
@@ -3072,6 +3326,10 @@ class Subscription {
   Subscription.fromJson(core.Map _json) {
     if (_json.containsKey("ackDeadlineSeconds")) {
       ackDeadlineSeconds = _json["ackDeadlineSeconds"];
+    }
+    if (_json.containsKey("deadLetterPolicy")) {
+      deadLetterPolicy =
+          new DeadLetterPolicy.fromJson(_json["deadLetterPolicy"]);
     }
     if (_json.containsKey("expirationPolicy")) {
       expirationPolicy =
@@ -3102,6 +3360,9 @@ class Subscription {
         new core.Map<core.String, core.Object>();
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
+    }
+    if (deadLetterPolicy != null) {
+      _json["deadLetterPolicy"] = (deadLetterPolicy).toJson();
     }
     if (expirationPolicy != null) {
       _json["expirationPolicy"] = (expirationPolicy).toJson();
@@ -3197,7 +3458,7 @@ class Topic {
   /// are in effect.
   MessageStoragePolicy messageStoragePolicy;
 
-  /// The name of the topic. It must have the format
+  /// Required. The name of the topic. It must have the format
   /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
   /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
   /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -3244,10 +3505,10 @@ class Topic {
 
 /// Request for the UpdateSnapshot method.
 class UpdateSnapshotRequest {
-  /// The updated snapshot object.
+  /// Required. The updated snapshot object.
   Snapshot snapshot;
 
-  /// Indicates which fields in the provided snapshot to update.
+  /// Required. Indicates which fields in the provided snapshot to update.
   /// Must be specified and non-empty.
   core.String updateMask;
 
@@ -3277,10 +3538,10 @@ class UpdateSnapshotRequest {
 
 /// Request for the UpdateSubscription method.
 class UpdateSubscriptionRequest {
-  /// The updated subscription object.
+  /// Required. The updated subscription object.
   Subscription subscription;
 
-  /// Indicates which fields in the provided subscription to update.
+  /// Required. Indicates which fields in the provided subscription to update.
   /// Must be specified and non-empty.
   core.String updateMask;
 
@@ -3310,15 +3571,15 @@ class UpdateSubscriptionRequest {
 
 /// Request for the UpdateTopic method.
 class UpdateTopicRequest {
-  /// The updated topic object.
+  /// Required. The updated topic object.
   Topic topic;
 
-  /// Indicates which fields in the provided topic to update. Must be specified
+  /// Required. Indicates which fields in the provided topic to update. Must be
+  /// specified
   /// and non-empty. Note that if `update_mask` contains
-  /// "message_storage_policy" then the new value will be determined based on
-  /// the
-  /// policy configured at the project or organization level. The
-  /// `message_storage_policy` must not be set in the `topic` provided above.
+  /// "message_storage_policy" but the `message_storage_policy` is not set in
+  /// the `topic` provided above, then the updated value is determined by the
+  /// policy configured at the project or organization level.
   core.String updateMask;
 
   UpdateTopicRequest();

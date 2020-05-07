@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.servicecontrol.v1;
 
@@ -190,7 +190,8 @@ class ServicesResourceApi {
   /// the aggregation time window to avoid data loss risk more than 0.01%
   /// for business and compliance reasons.
   ///
-  /// NOTE: the ReportRequest has the size limit of 1MB.
+  /// NOTE: the ReportRequest has the size limit (wire-format byte size) of
+  /// 1MB.
   ///
   /// This method requires the `servicemanagement.services.report` permission
   /// on the specified service. For more information, see
@@ -256,7 +257,8 @@ class AllocateInfo {
   /// A list of label keys that were unused by the server in processing the
   /// request. Thus, for similar requests repeated in a certain future time
   /// window, the caller can choose to ignore these labels in the requests
-  /// to achieve better client-side cache hits and quota aggregation.
+  /// to achieve better client-side cache hits and quota aggregation for rate
+  /// quota. This field is not populated for allocation quota checks.
   core.List<core.String> unusedArguments;
 
   AllocateInfo();
@@ -384,6 +386,92 @@ class AllocateQuotaResponse {
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
+    }
+    return _json;
+  }
+}
+
+/// The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.
+class AttributeValue {
+  /// A Boolean value represented by `true` or `false`.
+  core.bool boolValue;
+
+  /// A 64-bit signed integer.
+  core.String intValue;
+
+  /// A string up to 256 bytes long.
+  TruncatableString stringValue;
+
+  AttributeValue();
+
+  AttributeValue.fromJson(core.Map _json) {
+    if (_json.containsKey("boolValue")) {
+      boolValue = _json["boolValue"];
+    }
+    if (_json.containsKey("intValue")) {
+      intValue = _json["intValue"];
+    }
+    if (_json.containsKey("stringValue")) {
+      stringValue = new TruncatableString.fromJson(_json["stringValue"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (boolValue != null) {
+      _json["boolValue"] = boolValue;
+    }
+    if (intValue != null) {
+      _json["intValue"] = intValue;
+    }
+    if (stringValue != null) {
+      _json["stringValue"] = (stringValue).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A set of attributes, each in the format `[KEY]:[VALUE]`.
+class Attributes {
+  /// The set of attributes. Each attribute's key can be up to 128 bytes
+  /// long. The value can be a string up to 256 bytes, a signed 64-bit integer,
+  /// or the Boolean values `true` and `false`. For example:
+  ///
+  ///     "/instance_id": "my-instance"
+  ///     "/http/user_agent": ""
+  ///     "/http/request_bytes": 300
+  ///     "abc.com/myattribute": true
+  core.Map<core.String, AttributeValue> attributeMap;
+
+  /// The number of attributes that were discarded. Attributes can be discarded
+  /// because their keys are too long or because there are too many attributes.
+  /// If this value is 0 then all attributes are valid.
+  core.int droppedAttributesCount;
+
+  Attributes();
+
+  Attributes.fromJson(core.Map _json) {
+    if (_json.containsKey("attributeMap")) {
+      attributeMap = commons.mapMap<core.Map, AttributeValue>(
+          _json["attributeMap"].cast<core.String, core.Map>(),
+          (core.Map item) => new AttributeValue.fromJson(item));
+    }
+    if (_json.containsKey("droppedAttributesCount")) {
+      droppedAttributesCount = _json["droppedAttributesCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attributeMap != null) {
+      _json["attributeMap"] =
+          commons.mapMap<AttributeValue, core.Map<core.String, core.Object>>(
+              attributeMap, (AttributeValue item) => (item).toJson());
+    }
+    if (droppedAttributesCount != null) {
+      _json["droppedAttributesCount"] = droppedAttributesCount;
     }
     return _json;
   }
@@ -703,6 +791,10 @@ class AuthenticationInfo {
   /// with a "permission denied" error.
   core.String principalEmail;
 
+  /// String representation of identity of requesting party.
+  /// Populated for both first and third party identities.
+  core.String principalSubject;
+
   /// Identity delegation history of an authenticated service account that makes
   /// the request. It contains information on the real authorities that try to
   /// access GCP resources by delegating on a service account. When multiple
@@ -736,6 +828,9 @@ class AuthenticationInfo {
     if (_json.containsKey("principalEmail")) {
       principalEmail = _json["principalEmail"];
     }
+    if (_json.containsKey("principalSubject")) {
+      principalSubject = _json["principalSubject"];
+    }
     if (_json.containsKey("serviceAccountDelegationInfo")) {
       serviceAccountDelegationInfo =
           (_json["serviceAccountDelegationInfo"] as core.List)
@@ -760,6 +855,9 @@ class AuthenticationInfo {
     }
     if (principalEmail != null) {
       _json["principalEmail"] = principalEmail;
+    }
+    if (principalSubject != null) {
+      _json["principalSubject"] = principalSubject;
     }
     if (serviceAccountDelegationInfo != null) {
       _json["serviceAccountDelegationInfo"] = serviceAccountDelegationInfo
@@ -1081,7 +1179,7 @@ class CheckResponse {
   /// The actual config id used to process the request.
   core.String serviceConfigId;
 
-  /// Unimplemented. The current service rollout id used to process the request.
+  /// The current service rollout id used to process the request.
   core.String serviceRolloutId;
 
   CheckResponse();
@@ -1772,6 +1870,10 @@ class LogEntry {
   /// - "EMERGENCY" : (800) One or more systems are unusable.
   core.String severity;
 
+  /// Optional. Source code location information associated with the log entry,
+  /// if any.
+  LogEntrySourceLocation sourceLocation;
+
   /// The log entry payload, represented as a structure that
   /// is expressed as a JSON object.
   ///
@@ -1819,6 +1921,10 @@ class LogEntry {
     if (_json.containsKey("severity")) {
       severity = _json["severity"];
     }
+    if (_json.containsKey("sourceLocation")) {
+      sourceLocation =
+          new LogEntrySourceLocation.fromJson(_json["sourceLocation"]);
+    }
     if (_json.containsKey("structPayload")) {
       structPayload =
           (_json["structPayload"] as core.Map).cast<core.String, core.Object>();
@@ -1857,6 +1963,9 @@ class LogEntry {
     }
     if (severity != null) {
       _json["severity"] = severity;
+    }
+    if (sourceLocation != null) {
+      _json["sourceLocation"] = (sourceLocation).toJson();
     }
     if (structPayload != null) {
       _json["structPayload"] = structPayload;
@@ -1929,6 +2038,57 @@ class LogEntryOperation {
   }
 }
 
+/// Additional information about the source code location that produced the log
+/// entry.
+class LogEntrySourceLocation {
+  /// Optional. Source file name. Depending on the runtime environment, this
+  /// might be a simple name or a fully-qualified name.
+  core.String file;
+
+  /// Optional. Human-readable name of the function or method being invoked,
+  /// with
+  /// optional context such as the class or package name. This information may
+  /// be
+  /// used in contexts such as the logs viewer, where a file and line number are
+  /// less meaningful. The format can vary by language. For example:
+  /// `qual.if.ied.Class.method` (Java), `dir/package.func` (Go), `function`
+  /// (Python).
+  core.String function;
+
+  /// Optional. Line within the source file. 1-based; 0 indicates no line number
+  /// available.
+  core.String line;
+
+  LogEntrySourceLocation();
+
+  LogEntrySourceLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("file")) {
+      file = _json["file"];
+    }
+    if (_json.containsKey("function")) {
+      function = _json["function"];
+    }
+    if (_json.containsKey("line")) {
+      line = _json["line"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (file != null) {
+      _json["file"] = file;
+    }
+    if (function != null) {
+      _json["function"] = function;
+    }
+    if (line != null) {
+      _json["line"] = line;
+    }
+    return _json;
+  }
+}
+
 /// Represents a single metric value.
 class MetricValue {
   /// A boolean value.
@@ -1950,6 +2110,7 @@ class MetricValue {
   /// The labels describing the metric value.
   /// See comments on google.api.servicecontrol.v1.Operation.labels for
   /// the overriding relationship.
+  /// Note that this map must not contain monitored resource labels.
   core.Map<core.String, core.String> labels;
 
   /// A money value.
@@ -2202,21 +2363,17 @@ class Operation {
   /// check will be performed.
   QuotaProperties quotaProperties;
 
-  /// DO NOT USE. This field is deprecated, use "resources" field instead.
-  /// The resource name of the parent of a resource in the resource hierarchy.
-  ///
-  /// This can be in one of the following formats:
-  ///     - “projects/<project-id or project-number>”
-  ///     - “folders/<folder-id>”
-  ///     - “organizations/<organization-id>”
-  core.String resourceContainer;
-
   /// The resources that are involved in the operation.
   /// The maximum supported number of entries in this field is 100.
   core.List<ResourceInfo> resources;
 
   /// Required. Start time of the operation.
   core.String startTime;
+
+  /// Unimplemented. A list of Cloud Trace spans. The span names shall contain
+  /// the id of the destination project which can be either the produce or the
+  /// consumer project.
+  core.List<TraceSpan> traceSpans;
 
   /// User defined labels for the resource that this operation is associated
   /// with. Only a combination of 1000 user labels per consumer project are
@@ -2257,9 +2414,6 @@ class Operation {
     if (_json.containsKey("quotaProperties")) {
       quotaProperties = new QuotaProperties.fromJson(_json["quotaProperties"]);
     }
-    if (_json.containsKey("resourceContainer")) {
-      resourceContainer = _json["resourceContainer"];
-    }
     if (_json.containsKey("resources")) {
       resources = (_json["resources"] as core.List)
           .map<ResourceInfo>((value) => new ResourceInfo.fromJson(value))
@@ -2267,6 +2421,11 @@ class Operation {
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
+    }
+    if (_json.containsKey("traceSpans")) {
+      traceSpans = (_json["traceSpans"] as core.List)
+          .map<TraceSpan>((value) => new TraceSpan.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("userLabels")) {
       userLabels =
@@ -2306,14 +2465,15 @@ class Operation {
     if (quotaProperties != null) {
       _json["quotaProperties"] = (quotaProperties).toJson();
     }
-    if (resourceContainer != null) {
-      _json["resourceContainer"] = resourceContainer;
-    }
     if (resources != null) {
       _json["resources"] = resources.map((value) => (value).toJson()).toList();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
+    }
+    if (traceSpans != null) {
+      _json["traceSpans"] =
+          traceSpans.map((value) => (value).toJson()).toList();
     }
     if (userLabels != null) {
       _json["userLabels"] = userLabels;
@@ -2324,8 +2484,8 @@ class Operation {
 
 /// This message defines attributes for a node that handles a network request.
 /// The node can be either a service or an application that sends, forwards,
-/// or receives the request. Service peers should fill in the `service`,
-/// `principal`, and `labels` as appropriate.
+/// or receives the request. Service peers should fill in
+/// `principal` and `labels` as appropriate.
 class Peer {
   /// The IP address of the peer.
   core.String ip;
@@ -2346,11 +2506,6 @@ class Peer {
   /// physical location where this peer is running.
   core.String regionCode;
 
-  /// The canonical service name of the peer.
-  ///
-  /// NOTE: different systems may have different service naming schemes.
-  core.String service;
-
   Peer();
 
   Peer.fromJson(core.Map _json) {
@@ -2368,9 +2523,6 @@ class Peer {
     }
     if (_json.containsKey("regionCode")) {
       regionCode = _json["regionCode"];
-    }
-    if (_json.containsKey("service")) {
-      service = _json["service"];
     }
   }
 
@@ -2391,9 +2543,6 @@ class Peer {
     }
     if (regionCode != null) {
       _json["regionCode"] = regionCode;
-    }
-    if (service != null) {
-      _json["service"] = service;
     }
     return _json;
   }
@@ -2572,10 +2721,11 @@ class QuotaOperation {
   /// of the service that generated the operation, and guarantees idempotency in
   /// case of retries.
   ///
-  /// UUID version 4 is recommended, though not required. In scenarios where an
-  /// operation is computed from existing information and an idempotent id is
-  /// desirable for deduplication purpose, UUID version 5 is recommended. See
-  /// RFC 4122 for details.
+  /// In order to ensure best performance and latency in the Quota backends,
+  /// operation_ids are optimally associated with time, so that related
+  /// operations can be accessed fast in storage. For this reason, the
+  /// recommended token for services that intend to operate at a high QPS is
+  /// Unix time in nanos + UUID
   core.String operationId;
 
   /// Represents information about this operation. Each MetricValueSet
@@ -2615,6 +2765,18 @@ class QuotaOperation {
   /// quota
   /// available and does not change the available quota. No lock is placed on
   /// the available quota either.
+  /// - "QUERY_ONLY" : Unimplemented. When used in AllocateQuotaRequest, this
+  /// returns the
+  /// effective quota limit(s) in the response, and no quota check will be
+  /// performed. Not supported for other requests, and even for
+  /// AllocateQuotaRequest, this is currently supported only for whitelisted
+  /// services.
+  /// - "ADJUST_ONLY" : The operation allocates quota for the amount specified
+  /// in the service
+  /// configuration or specified using the quota metrics. If the requested
+  /// amount is higher than the available quota, request does not fail and
+  /// remaining quota would become negative (going over the limit)
+  /// Not supported for Rate Quota.
   core.String quotaMode;
 
   QuotaOperation();
@@ -2780,9 +2942,9 @@ class ReportRequest {
   /// be used only when multiple operations are natually available at the time
   /// of the report.
   ///
-  /// If multiple operations are in a single request, the total request size
-  /// should be no larger than 1MB. See ReportResponse.report_errors for
-  /// partial failure behavior.
+  /// There is no limit on the number of operations in the same ReportRequest,
+  /// however the ReportRequest size should be no larger than 1MB. See
+  /// ReportResponse.report_errors for partial failure behavior.
   core.List<Operation> operations;
 
   /// Specifies which version of service config should be used to process the
@@ -2850,7 +3012,7 @@ class ReportResponse {
   /// The actual config id used to process the request.
   core.String serviceConfigId;
 
-  /// Unimplemented. The current service rollout id used to process the request.
+  /// The current service rollout id used to process the request.
   core.String serviceRolloutId;
 
   ReportResponse();
@@ -2903,9 +3065,6 @@ class Request {
   /// Derived from the HTTP request `Authorization` header or equivalent.
   Auth auth;
 
-  /// The HTTP URL fragment. No URL decoding is performed.
-  core.String fragment;
-
   /// The HTTP request headers. If multiple headers share the same key, they
   /// must be merged according to the HTTP spec. All header keys must be
   /// lowercased, because HTTP header keys are case-insensitive.
@@ -2931,7 +3090,7 @@ class Request {
   /// for details.
   core.String protocol;
 
-  /// The HTTP URL query in the format of `name1=value`&name2=value2`, as it
+  /// The HTTP URL query in the format of `name1=value1&name2=value2`, as it
   /// appears in the first line of the HTTP request. No decoding is performed.
   core.String query;
 
@@ -2954,9 +3113,6 @@ class Request {
   Request.fromJson(core.Map _json) {
     if (_json.containsKey("auth")) {
       auth = new Auth.fromJson(_json["auth"]);
-    }
-    if (_json.containsKey("fragment")) {
-      fragment = _json["fragment"];
     }
     if (_json.containsKey("headers")) {
       headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
@@ -2998,9 +3154,6 @@ class Request {
         new core.Map<core.String, core.Object>();
     if (auth != null) {
       _json["auth"] = (auth).toJson();
-    }
-    if (fragment != null) {
-      _json["fragment"] = fragment;
     }
     if (headers != null) {
       _json["headers"] = headers;
@@ -3162,8 +3315,10 @@ class Resource {
   /// hostname that actually serves the request.
   core.String service;
 
-  /// The type of the resource. The scheme is platform-specific because
+  /// The type of the resource. The syntax is platform-specific because
   /// different platforms define their resources differently.
+  ///
+  /// For Google APIs, the type format must be "{service}/{kind}".
   core.String type;
 
   Resource();
@@ -3331,6 +3486,43 @@ class ServiceAccountDelegationInfo {
   }
 }
 
+/// The context of a span, attached to
+/// Exemplars
+/// in Distribution values during aggregation.
+///
+/// It contains the name of a span with format:
+///
+///     projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+class SpanContext {
+  /// The resource name of the span. The format is:
+  ///
+  ///     projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+  ///
+  /// `[TRACE_ID]` is a unique identifier for a trace within a project;
+  /// it is a 32-character hexadecimal encoding of a 16-byte array.
+  ///
+  /// `[SPAN_ID]` is a unique identifier for a span within a trace; it
+  /// is a 16-character hexadecimal encoding of an 8-byte array.
+  core.String spanName;
+
+  SpanContext();
+
+  SpanContext.fromJson(core.Map _json) {
+    if (_json.containsKey("spanName")) {
+      spanName = _json["spanName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (spanName != null) {
+      _json["spanName"] = spanName;
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -3409,6 +3601,211 @@ class ThirdPartyPrincipal {
         new core.Map<core.String, core.Object>();
     if (thirdPartyClaims != null) {
       _json["thirdPartyClaims"] = thirdPartyClaims;
+    }
+    return _json;
+  }
+}
+
+/// A span represents a single operation within a trace. Spans can be
+/// nested to form a trace tree. Often, a trace contains a root span
+/// that describes the end-to-end latency, and one or more subspans for
+/// its sub-operations. A trace can also contain multiple root spans,
+/// or none at all. Spans do not need to be contiguous&mdash;there may be
+/// gaps or overlaps between spans in a trace.
+class TraceSpan {
+  /// A set of attributes on the span. You can have up to 32 attributes per
+  /// span.
+  Attributes attributes;
+
+  /// An optional number of child spans that were generated while this span
+  /// was active. If set, allows implementation to detect missing child spans.
+  core.int childSpanCount;
+
+  /// A description of the span's operation (up to 128 bytes).
+  /// Stackdriver Trace displays the description in the
+  /// Google Cloud Platform Console.
+  /// For example, the display name can be a qualified method name or a file
+  /// name
+  /// and a line number where the operation is called. A best practice is to use
+  /// the same display name within an application and at the same call point.
+  /// This makes it easier to correlate spans in different traces.
+  TruncatableString displayName;
+
+  /// The end time of the span. On the client side, this is the time kept by
+  /// the local machine where the span execution ends. On the server side, this
+  /// is the time when the server application handler stops running.
+  core.String endTime;
+
+  /// The resource name of the span in the following format:
+  ///
+  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// identifier for a trace within a project;
+  /// it is a 32-character hexadecimal encoding of a 16-byte array.
+  ///
+  /// [SPAN_ID] is a unique identifier for a span within a trace; it
+  /// is a 16-character hexadecimal encoding of an 8-byte array.
+  core.String name;
+
+  /// The [SPAN_ID] of this span's parent span. If this is a root span,
+  /// then this field must be empty.
+  core.String parentSpanId;
+
+  /// (Optional) Set this parameter to indicate whether this span is in
+  /// the same process as its parent. If you do not set this parameter,
+  /// Stackdriver Trace is unable to take advantage of this helpful
+  /// information.
+  core.bool sameProcessAsParentSpan;
+
+  /// The [SPAN_ID] portion of the span's resource name.
+  core.String spanId;
+
+  /// Distinguishes between spans generated in a particular context. For
+  /// example,
+  /// two spans with the same name may be distinguished using `CLIENT` (caller)
+  /// and `SERVER` (callee) to identify an RPC call.
+  /// Possible string values are:
+  /// - "SPAN_KIND_UNSPECIFIED" : Unspecified. Do NOT use as default.
+  /// Implementations MAY assume SpanKind.INTERNAL to be default.
+  /// - "INTERNAL" : Indicates that the span is used internally. Default value.
+  /// - "SERVER" : Indicates that the span covers server-side handling of an RPC
+  /// or other
+  /// remote network request.
+  /// - "CLIENT" : Indicates that the span covers the client-side wrapper around
+  /// an RPC or
+  /// other remote request.
+  /// - "PRODUCER" : Indicates that the span describes producer sending a
+  /// message to a broker.
+  /// Unlike client and  server, there is no direct critical path latency
+  /// relationship between producer and consumer spans (e.g. publishing a
+  /// message to a pubsub service).
+  /// - "CONSUMER" : Indicates that the span describes consumer receiving a
+  /// message from a
+  /// broker. Unlike client and  server, there is no direct critical path
+  /// latency relationship between producer and consumer spans (e.g. receiving
+  /// a message from a pubsub service subscription).
+  core.String spanKind;
+
+  /// The start time of the span. On the client side, this is the time kept by
+  /// the local machine where the span execution starts. On the server side,
+  /// this
+  /// is the time when the server's application handler starts running.
+  core.String startTime;
+
+  /// An optional final status for this span.
+  Status status;
+
+  TraceSpan();
+
+  TraceSpan.fromJson(core.Map _json) {
+    if (_json.containsKey("attributes")) {
+      attributes = new Attributes.fromJson(_json["attributes"]);
+    }
+    if (_json.containsKey("childSpanCount")) {
+      childSpanCount = _json["childSpanCount"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = new TruncatableString.fromJson(_json["displayName"]);
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parentSpanId")) {
+      parentSpanId = _json["parentSpanId"];
+    }
+    if (_json.containsKey("sameProcessAsParentSpan")) {
+      sameProcessAsParentSpan = _json["sameProcessAsParentSpan"];
+    }
+    if (_json.containsKey("spanId")) {
+      spanId = _json["spanId"];
+    }
+    if (_json.containsKey("spanKind")) {
+      spanKind = _json["spanKind"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("status")) {
+      status = new Status.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (attributes != null) {
+      _json["attributes"] = (attributes).toJson();
+    }
+    if (childSpanCount != null) {
+      _json["childSpanCount"] = childSpanCount;
+    }
+    if (displayName != null) {
+      _json["displayName"] = (displayName).toJson();
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parentSpanId != null) {
+      _json["parentSpanId"] = parentSpanId;
+    }
+    if (sameProcessAsParentSpan != null) {
+      _json["sameProcessAsParentSpan"] = sameProcessAsParentSpan;
+    }
+    if (spanId != null) {
+      _json["spanId"] = spanId;
+    }
+    if (spanKind != null) {
+      _json["spanKind"] = spanKind;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents a string that might be shortened to a specified length.
+class TruncatableString {
+  /// The number of bytes removed from the original string. If this
+  /// value is 0, then the string was not shortened.
+  core.int truncatedByteCount;
+
+  /// The shortened string. For example, if the original string is 500
+  /// bytes long and the limit of the string is 128 bytes, then
+  /// `value` contains the first 128 bytes of the 500-byte string.
+  ///
+  /// Truncation always happens on a UTF8 character boundary. If there
+  /// are multi-byte characters in the string, then the length of the
+  /// shortened string might be less than the size limit.
+  core.String value;
+
+  TruncatableString();
+
+  TruncatableString.fromJson(core.Map _json) {
+    if (_json.containsKey("truncatedByteCount")) {
+      truncatedByteCount = _json["truncatedByteCount"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (truncatedByteCount != null) {
+      _json["truncatedByteCount"] = truncatedByteCount;
+    }
+    if (value != null) {
+      _json["value"] = value;
     }
     return _json;
   }

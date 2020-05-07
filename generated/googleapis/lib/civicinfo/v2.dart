@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.civicinfo.v2;
 
@@ -1494,176 +1494,6 @@ class InternalSourceSummaryProto {
   }
 }
 
-class LivegraphBacktraceRecordInfo {
-  core.String dataSourcePublishMsec;
-  core.String expId;
-  LivegraphBacktraceRecordInfoExpInfo expInfo;
-  core.bool isRecon;
-  core.bool isWlmThrottled;
-  core.String numberOfTriples;
-  core.String priority;
-  core.String process;
-  core.String proxyReceiveMsec;
-  core.String proxySentMsec;
-  core.String recordId;
-  core.bool shouldMonitorLatency;
-  core.String subscriberReceiveMsec;
-  core.String topicBuildFinishMsec;
-  core.String topicBuildStartMsec;
-  core.String version;
-
-  LivegraphBacktraceRecordInfo();
-
-  LivegraphBacktraceRecordInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("dataSourcePublishMsec")) {
-      dataSourcePublishMsec = _json["dataSourcePublishMsec"];
-    }
-    if (_json.containsKey("expId")) {
-      expId = _json["expId"];
-    }
-    if (_json.containsKey("expInfo")) {
-      expInfo =
-          new LivegraphBacktraceRecordInfoExpInfo.fromJson(_json["expInfo"]);
-    }
-    if (_json.containsKey("isRecon")) {
-      isRecon = _json["isRecon"];
-    }
-    if (_json.containsKey("isWlmThrottled")) {
-      isWlmThrottled = _json["isWlmThrottled"];
-    }
-    if (_json.containsKey("numberOfTriples")) {
-      numberOfTriples = _json["numberOfTriples"];
-    }
-    if (_json.containsKey("priority")) {
-      priority = _json["priority"];
-    }
-    if (_json.containsKey("process")) {
-      process = _json["process"];
-    }
-    if (_json.containsKey("proxyReceiveMsec")) {
-      proxyReceiveMsec = _json["proxyReceiveMsec"];
-    }
-    if (_json.containsKey("proxySentMsec")) {
-      proxySentMsec = _json["proxySentMsec"];
-    }
-    if (_json.containsKey("recordId")) {
-      recordId = _json["recordId"];
-    }
-    if (_json.containsKey("shouldMonitorLatency")) {
-      shouldMonitorLatency = _json["shouldMonitorLatency"];
-    }
-    if (_json.containsKey("subscriberReceiveMsec")) {
-      subscriberReceiveMsec = _json["subscriberReceiveMsec"];
-    }
-    if (_json.containsKey("topicBuildFinishMsec")) {
-      topicBuildFinishMsec = _json["topicBuildFinishMsec"];
-    }
-    if (_json.containsKey("topicBuildStartMsec")) {
-      topicBuildStartMsec = _json["topicBuildStartMsec"];
-    }
-    if (_json.containsKey("version")) {
-      version = _json["version"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (dataSourcePublishMsec != null) {
-      _json["dataSourcePublishMsec"] = dataSourcePublishMsec;
-    }
-    if (expId != null) {
-      _json["expId"] = expId;
-    }
-    if (expInfo != null) {
-      _json["expInfo"] = (expInfo).toJson();
-    }
-    if (isRecon != null) {
-      _json["isRecon"] = isRecon;
-    }
-    if (isWlmThrottled != null) {
-      _json["isWlmThrottled"] = isWlmThrottled;
-    }
-    if (numberOfTriples != null) {
-      _json["numberOfTriples"] = numberOfTriples;
-    }
-    if (priority != null) {
-      _json["priority"] = priority;
-    }
-    if (process != null) {
-      _json["process"] = process;
-    }
-    if (proxyReceiveMsec != null) {
-      _json["proxyReceiveMsec"] = proxyReceiveMsec;
-    }
-    if (proxySentMsec != null) {
-      _json["proxySentMsec"] = proxySentMsec;
-    }
-    if (recordId != null) {
-      _json["recordId"] = recordId;
-    }
-    if (shouldMonitorLatency != null) {
-      _json["shouldMonitorLatency"] = shouldMonitorLatency;
-    }
-    if (subscriberReceiveMsec != null) {
-      _json["subscriberReceiveMsec"] = subscriberReceiveMsec;
-    }
-    if (topicBuildFinishMsec != null) {
-      _json["topicBuildFinishMsec"] = topicBuildFinishMsec;
-    }
-    if (topicBuildStartMsec != null) {
-      _json["topicBuildStartMsec"] = topicBuildStartMsec;
-    }
-    if (version != null) {
-      _json["version"] = version;
-    }
-    return _json;
-  }
-}
-
-class LivegraphBacktraceRecordInfoExpInfo {
-  core.List<core.String> deletedIns;
-
-  LivegraphBacktraceRecordInfoExpInfo();
-
-  LivegraphBacktraceRecordInfoExpInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("deletedIns")) {
-      deletedIns = (_json["deletedIns"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (deletedIns != null) {
-      _json["deletedIns"] = deletedIns;
-    }
-    return _json;
-  }
-}
-
-class MessageSet {
-  LivegraphBacktraceRecordInfo recordMessageSetExt;
-
-  MessageSet();
-
-  MessageSet.fromJson(core.Map _json) {
-    if (_json.containsKey("recordMessageSetExt")) {
-      recordMessageSetExt = new LivegraphBacktraceRecordInfo.fromJson(
-          _json["recordMessageSetExt"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (recordMessageSetExt != null) {
-      _json["recordMessageSetExt"] = (recordMessageSetExt).toJson();
-    }
-    return _json;
-  }
-}
-
 /// Information about an Office held by one or more Officials.
 class Office {
   /// The OCD ID of the division with which this office is associated.
@@ -1839,7 +1669,6 @@ class PointProto {
   core.int latE7;
   core.int lngE7;
   FieldMetadataProto metadata;
-  MessageSet temporaryData;
 
   PointProto();
 
@@ -1852,9 +1681,6 @@ class PointProto {
     }
     if (_json.containsKey("metadata")) {
       metadata = new FieldMetadataProto.fromJson(_json["metadata"]);
-    }
-    if (_json.containsKey("temporaryData")) {
-      temporaryData = new MessageSet.fromJson(_json["temporaryData"]);
     }
   }
 
@@ -1869,9 +1695,6 @@ class PointProto {
     }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
-    }
-    if (temporaryData != null) {
-      _json["temporaryData"] = (temporaryData).toJson();
     }
     return _json;
   }
@@ -2527,8 +2350,8 @@ class StreetSegment {
   core.bool published;
   core.String schoolDistrict;
   core.String startHouseNumber;
-  core.String startLatE7;
-  core.String startLngE7;
+  core.int startLatE7;
+  core.int startLngE7;
   core.String state;
   core.String stateHouseDistrict;
   core.String stateSenateDistrict;

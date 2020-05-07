@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.accesscontextmanager.v1;
 
@@ -504,6 +504,13 @@ class AccessPoliciesAccessLevelsResourceApi {
   /// `accessPolicies/{policy_id}`
   /// Value must have pattern "^accessPolicies/[^/]+$".
   ///
+  /// [pageToken] - Next page token for the next batch of Access Level
+  /// instances.
+  /// Defaults to the first page of results.
+  ///
+  /// [pageSize] - Number of Access Levels to include in
+  /// the list. Default 100.
+  ///
   /// [accessLevelFormat] - Whether to return `BasicLevels` in the Cloud Common
   /// Expression language, as
   /// `CustomLevels`, rather than as `BasicLevels`. Defaults to returning
@@ -512,13 +519,6 @@ class AccessPoliciesAccessLevelsResourceApi {
   /// - "LEVEL_FORMAT_UNSPECIFIED" : A LEVEL_FORMAT_UNSPECIFIED.
   /// - "AS_DEFINED" : A AS_DEFINED.
   /// - "CEL" : A CEL.
-  ///
-  /// [pageToken] - Next page token for the next batch of Access Level
-  /// instances.
-  /// Defaults to the first page of results.
-  ///
-  /// [pageSize] - Number of Access Levels to include in
-  /// the list. Default 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -531,9 +531,9 @@ class AccessPoliciesAccessLevelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAccessLevelsResponse> list(core.String parent,
-      {core.String accessLevelFormat,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String accessLevelFormat,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -545,14 +545,14 @@ class AccessPoliciesAccessLevelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (accessLevelFormat != null) {
-      _queryParams["accessLevelFormat"] = [accessLevelFormat];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accessLevelFormat != null) {
+      _queryParams["accessLevelFormat"] = [accessLevelFormat];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -585,11 +585,12 @@ class AccessPoliciesAccessLevelsResourceApi {
   /// [name] - Required. Resource name for the Access Level. The `short_name`
   /// component
   /// must begin with a letter and only include alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/accessLevels/{short_name}`
+  /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length
+  /// of the `short_name` component is 50 characters.
   /// Value must have pattern "^accessPolicies/[^/]+/accessLevels/[^/]+$".
   ///
-  /// [updateMask] - Required.  Mask to control which fields get updated. Must
-  /// be non-empty.
+  /// [updateMask] - Required. Mask to control which fields get updated. Must be
+  /// non-empty.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -633,6 +634,72 @@ class AccessPoliciesAccessLevelsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Replace all existing Access Levels in an Access
+  /// Policy with
+  /// the Access Levels provided. This
+  /// is done atomically. The longrunning operation from this RPC will have a
+  /// successful status once all replacements have propagated to long-lasting
+  /// storage. Replacements containing errors will result in an error response
+  /// for the first error encountered.  Replacement will be cancelled on error,
+  /// existing Access Levels will not be
+  /// affected. Operation.response field will contain
+  /// ReplaceAccessLevelsResponse. Removing Access Levels contained in existing
+  /// Service Perimeters will result in
+  /// error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the access policy which owns these
+  /// Access Levels.
+  ///
+  /// Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern "^accessPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> replaceAll(
+      ReplaceAccessLevelsRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/accessLevels:replaceAll';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class AccessPoliciesServicePerimetersResourceApi {
@@ -641,7 +708,77 @@ class AccessPoliciesServicePerimetersResourceApi {
   AccessPoliciesServicePerimetersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create an Service Perimeter. The
+  /// Commit the dry-run spec for all the Service Perimeters in an
+  /// Access Policy.
+  /// A commit operation on a Service Perimeter involves copying its `spec`
+  /// field
+  /// to that Service Perimeter's `status` field. Only Service Perimeters with
+  /// `use_explicit_dry_run_spec` field set to true are affected by a commit
+  /// operation. The longrunning operation from this RPC will have a successful
+  /// status once the dry-run specs for all the Service Perimeters have been
+  /// committed. If a commit fails, it will cause the longrunning operation to
+  /// return an error response and the entire commit operation will be
+  /// cancelled.
+  /// When successful, Operation.response field will contain
+  /// CommitServicePerimetersResponse. The `dry_run` and the `spec` fields will
+  /// be cleared after a successful commit operation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the parent Access Policy which owns
+  /// all
+  /// Service Perimeters in scope for
+  /// the commit operation.
+  ///
+  /// Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern "^accessPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> commit(
+      CommitServicePerimetersRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/servicePerimeters:commit';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Create a Service Perimeter. The
   /// longrunning operation from this RPC will have a successful status once the
   /// Service Perimeter has
   /// propagated to long-lasting storage. Service Perimeters containing
@@ -700,7 +837,7 @@ class AccessPoliciesServicePerimetersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Delete an Service Perimeter by resource
+  /// Delete a Service Perimeter by resource
   /// name. The longrunning operation from this RPC will have a successful
   /// status
   /// once the Service Perimeter has been
@@ -750,7 +887,7 @@ class AccessPoliciesServicePerimetersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Get an Service Perimeter by resource
+  /// Get a Service Perimeter by resource
   /// name.
   ///
   /// Request parameters:
@@ -862,7 +999,7 @@ class AccessPoliciesServicePerimetersResourceApi {
         .then((data) => new ListServicePerimetersResponse.fromJson(data));
   }
 
-  /// Update an Service Perimeter. The
+  /// Update a Service Perimeter. The
   /// longrunning operation from this RPC will have a successful status once the
   /// changes to the Service Perimeter have
   /// propagated to long-lasting storage. Service Perimeter containing
@@ -923,6 +1060,70 @@ class AccessPoliciesServicePerimetersResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
+
+  /// Replace all existing Service Perimeters in an
+  /// Access Policy
+  /// with the Service Perimeters provided.
+  /// This is done atomically. The longrunning operation from this
+  /// RPC will have a successful status once all replacements have propagated to
+  /// long-lasting storage. Replacements containing errors will result in an
+  /// error response for the first error encountered. Replacement will be
+  /// cancelled on error, existing Service Perimeters will not be
+  /// affected. Operation.response field will contain
+  /// ReplaceServicePerimetersResponse.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name for the access policy which owns these
+  /// Service Perimeters.
+  ///
+  /// Format: `accessPolicies/{policy_id}`
+  /// Value must have pattern "^accessPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> replaceAll(
+      ReplaceServicePerimetersRequest request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/servicePerimeters:replaceAll';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class OperationsResourceApi {
@@ -946,7 +1147,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -996,7 +1197,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1041,7 +1242,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1152,28 +1353,27 @@ class OperationsResourceApi {
   }
 }
 
-/// An `AccessLevel` is a label that can be applied to requests to GCP services,
-/// along with a list of requirements necessary for the label to be applied.
+/// An `AccessLevel` is a label that can be applied to requests to Google Cloud
+/// services, along with a list of requirements necessary for the label to be
+/// applied.
 class AccessLevel {
   /// A `BasicLevel` composed of `Conditions`.
   BasicLevel basic;
 
-  /// Output only. Time the `AccessLevel` was created in UTC.
-  core.String createTime;
+  /// A `CustomLevel` written in the Common Expression Language.
+  CustomLevel custom;
 
   /// Description of the `AccessLevel` and its use. Does not affect behavior.
   core.String description;
 
   /// Required. Resource name for the Access Level. The `short_name` component
   /// must begin with a letter and only include alphanumeric and '_'. Format:
-  /// `accessPolicies/{policy_id}/accessLevels/{short_name}`
+  /// `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length
+  /// of the `short_name` component is 50 characters.
   core.String name;
 
   /// Human readable title. Must be unique within the Policy.
   core.String title;
-
-  /// Output only. Time the `AccessLevel` was updated in UTC.
-  core.String updateTime;
 
   AccessLevel();
 
@@ -1181,8 +1381,8 @@ class AccessLevel {
     if (_json.containsKey("basic")) {
       basic = new BasicLevel.fromJson(_json["basic"]);
     }
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey("custom")) {
+      custom = new CustomLevel.fromJson(_json["custom"]);
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -1193,9 +1393,6 @@ class AccessLevel {
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1204,8 +1401,8 @@ class AccessLevel {
     if (basic != null) {
       _json["basic"] = (basic).toJson();
     }
-    if (createTime != null) {
-      _json["createTime"] = createTime;
+    if (custom != null) {
+      _json["custom"] = (custom).toJson();
     }
     if (description != null) {
       _json["description"] = description;
@@ -1216,23 +1413,22 @@ class AccessLevel {
     if (title != null) {
       _json["title"] = title;
     }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
-    }
     return _json;
   }
 }
 
 /// `AccessPolicy` is a container for `AccessLevels` (which define the necessary
-/// attributes to use GCP services) and `ServicePerimeters` (which define
-/// regions
-/// of services able to freely pass data within a perimeter). An access policy
-/// is
-/// globally visible within an organization, and the restrictions it specifies
-/// apply to all projects within an organization.
+/// attributes to use Google Cloud services) and `ServicePerimeters` (which
+/// define regions of services able to freely pass data within a perimeter). An
+/// access policy is globally visible within an organization, and the
+/// restrictions it specifies apply to all projects within an organization.
 class AccessPolicy {
-  /// Output only. Time the `AccessPolicy` was created in UTC.
-  core.String createTime;
+  /// Output only. An opaque identifier for the current version of the
+  /// `AccessPolicy`. This will always be a strongly validated etag, meaning
+  /// that
+  /// two Access Polices will be identical if and only if their etags are
+  /// identical. Clients should not expect this to be in any specific format.
+  core.String etag;
 
   /// Output only. Resource name of the `AccessPolicy`. Format:
   /// `accessPolicies/{policy_id}`
@@ -1246,14 +1442,11 @@ class AccessPolicy {
   /// Required. Human readable title. Does not affect behavior.
   core.String title;
 
-  /// Output only. Time the `AccessPolicy` was updated in UTC.
-  core.String updateTime;
-
   AccessPolicy();
 
   AccessPolicy.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1264,16 +1457,13 @@ class AccessPolicy {
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
+    if (etag != null) {
+      _json["etag"] = etag;
     }
     if (name != null) {
       _json["name"] = name;
@@ -1283,9 +1473,6 @@ class AccessPolicy {
     }
     if (title != null) {
       _json["title"] = title;
-    }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
     }
     return _json;
   }
@@ -1344,6 +1531,64 @@ class CancelOperationRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A request to commit dry-run specs in all Service Perimeters belonging to
+/// an Access Policy.
+class CommitServicePerimetersRequest {
+  /// Optional. The etag for the version of the Access Policy that this
+  /// commit operation is to be performed on. If, at the time of commit, the
+  /// etag for the Access Policy stored in Access Context Manager is different
+  /// from the specified etag, then the commit operation will not be performed
+  /// and the call will fail. This field is not required. If etag is not
+  /// provided, the operation will be performed as if a valid etag is provided.
+  core.String etag;
+
+  CommitServicePerimetersRequest();
+
+  CommitServicePerimetersRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    return _json;
+  }
+}
+
+/// A response to CommitServicePerimetersRequest. This will be put inside of
+/// Operation.response field.
+class CommitServicePerimetersResponse {
+  /// List of all the Service Perimeter instances in
+  /// the Access Policy.
+  core.List<ServicePerimeter> servicePerimeters;
+
+  CommitServicePerimetersResponse();
+
+  CommitServicePerimetersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("servicePerimeters")) {
+      servicePerimeters = (_json["servicePerimeters"] as core.List)
+          .map<ServicePerimeter>(
+              (value) => new ServicePerimeter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (servicePerimeters != null) {
+      _json["servicePerimeters"] =
+          servicePerimeters.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -1441,6 +1686,31 @@ class Condition {
     }
     if (requiredAccessLevels != null) {
       _json["requiredAccessLevels"] = requiredAccessLevels;
+    }
+    return _json;
+  }
+}
+
+/// `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
+/// to represent the necessary conditions for the level to apply to a request.
+/// See CEL spec at: https://github.com/google/cel-spec
+class CustomLevel {
+  /// Required. A Cloud CEL expression evaluating to a boolean.
+  Expr expr;
+
+  CustomLevel();
+
+  CustomLevel.fromJson(core.Map _json) {
+    if (_json.containsKey("expr")) {
+      expr = new Expr.fromJson(_json["expr"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expr != null) {
+      _json["expr"] = (expr).toJson();
     }
     return _json;
   }
@@ -1548,6 +1818,92 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
+///
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
+class Expr {
+  /// Optional. Description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
+  core.String expression;
+
+  /// Optional. String indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// Optional. Title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
     return _json;
   }
 }
@@ -1794,12 +2150,13 @@ class OsConstraint {
   /// - "DESKTOP_WINDOWS" : A desktop Windows operating system.
   /// - "DESKTOP_LINUX" : A desktop Linux operating system.
   /// - "DESKTOP_CHROME_OS" : A desktop ChromeOS operating system.
+  /// - "ANDROID" : An Android operating system.
+  /// - "IOS" : An iOS operating system.
   core.String osType;
 
   /// Only allows requests from devices with a verified Chrome OS.
   /// Verifications includes requirements that the device is enterprise-managed,
-  /// conformant to Dasher domain policies, and the caller has permission to
-  /// call
+  /// conformant to domain policies, and the caller has permission to call
   /// the API targeted by the request.
   core.bool requireVerifiedChromeOs;
 
@@ -1833,20 +2190,161 @@ class OsConstraint {
   }
 }
 
-/// `ServicePerimeter` describes a set of GCP resources which can freely import
-/// and export data amongst themselves, but not export outside of the
+/// A request to replace all existing Access Levels in an Access Policy with
+/// the Access Levels provided. This is done atomically.
+class ReplaceAccessLevelsRequest {
+  /// Required. The desired Access Levels that should
+  /// replace all existing Access Levels in the
+  /// Access Policy.
+  core.List<AccessLevel> accessLevels;
+
+  /// Optional. The etag for the version of the Access Policy that this
+  /// replace operation is to be performed on. If, at the time of replace, the
+  /// etag for the Access Policy stored in Access Context Manager is different
+  /// from the specified etag, then the replace operation will not be performed
+  /// and the call will fail. This field is not required. If etag is not
+  /// provided, the operation will be performed as if a valid etag is provided.
+  core.String etag;
+
+  ReplaceAccessLevelsRequest();
+
+  ReplaceAccessLevelsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("accessLevels")) {
+      accessLevels = (_json["accessLevels"] as core.List)
+          .map<AccessLevel>((value) => new AccessLevel.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accessLevels != null) {
+      _json["accessLevels"] =
+          accessLevels.map((value) => (value).toJson()).toList();
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    return _json;
+  }
+}
+
+/// A response to ReplaceAccessLevelsRequest. This will be put inside of
+/// Operation.response field.
+class ReplaceAccessLevelsResponse {
+  /// List of the Access Level instances.
+  core.List<AccessLevel> accessLevels;
+
+  ReplaceAccessLevelsResponse();
+
+  ReplaceAccessLevelsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("accessLevels")) {
+      accessLevels = (_json["accessLevels"] as core.List)
+          .map<AccessLevel>((value) => new AccessLevel.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accessLevels != null) {
+      _json["accessLevels"] =
+          accessLevels.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A request to replace all existing Service Perimeters in an Access Policy
+/// with the Service Perimeters provided. This is done atomically.
+class ReplaceServicePerimetersRequest {
+  /// Optional. The etag for the version of the Access Policy that this
+  /// replace operation is to be performed on. If, at the time of replace, the
+  /// etag for the Access Policy stored in Access Context Manager is different
+  /// from the specified etag, then the replace operation will not be performed
+  /// and the call will fail. This field is not required. If etag is not
+  /// provided, the operation will be performed as if a valid etag is provided.
+  core.String etag;
+
+  /// Required. The desired Service Perimeters that should
+  /// replace all existing Service Perimeters in the
+  /// Access Policy.
+  core.List<ServicePerimeter> servicePerimeters;
+
+  ReplaceServicePerimetersRequest();
+
+  ReplaceServicePerimetersRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("servicePerimeters")) {
+      servicePerimeters = (_json["servicePerimeters"] as core.List)
+          .map<ServicePerimeter>(
+              (value) => new ServicePerimeter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (servicePerimeters != null) {
+      _json["servicePerimeters"] =
+          servicePerimeters.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A response to ReplaceServicePerimetersRequest. This will be put inside of
+/// Operation.response field.
+class ReplaceServicePerimetersResponse {
+  /// List of the Service Perimeter instances.
+  core.List<ServicePerimeter> servicePerimeters;
+
+  ReplaceServicePerimetersResponse();
+
+  ReplaceServicePerimetersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("servicePerimeters")) {
+      servicePerimeters = (_json["servicePerimeters"] as core.List)
+          .map<ServicePerimeter>(
+              (value) => new ServicePerimeter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (servicePerimeters != null) {
+      _json["servicePerimeters"] =
+          servicePerimeters.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// `ServicePerimeter` describes a set of Google Cloud resources which can
+/// freely
+/// import and export data amongst themselves, but not export outside of the
 /// `ServicePerimeter`. If a request with a source within this
 /// `ServicePerimeter`
 /// has a target outside of the `ServicePerimeter`, the request will be blocked.
 /// Otherwise the request is allowed. There are two types of Service Perimeter -
-/// Regular and Bridge. Regular Service Perimeters cannot overlap, a single GCP
-/// project can only belong to a single regular Service Perimeter. Service
-/// Perimeter Bridges can contain only GCP projects as members, a single GCP
-/// project may belong to multiple Service Perimeter Bridges.
+/// Regular and Bridge. Regular Service Perimeters cannot overlap, a single
+/// Google Cloud project can only belong to a single regular Service Perimeter.
+/// Service Perimeter Bridges can contain only Google Cloud projects as members,
+/// a single Google Cloud project may belong to multiple Service Perimeter
+/// Bridges.
 class ServicePerimeter {
-  /// Output only. Time the `ServicePerimeter` was created in UTC.
-  core.String createTime;
-
   /// Description of the `ServicePerimeter` and its use. Does not affect
   /// behavior.
   core.String description;
@@ -1867,6 +2365,13 @@ class ServicePerimeter {
   /// - "PERIMETER_TYPE_BRIDGE" : Perimeter Bridge.
   core.String perimeterType;
 
+  /// Proposed (or dry run) ServicePerimeter configuration. This configuration
+  /// allows to specify and test ServicePerimeter configuration without
+  /// enforcing
+  /// actual access restrictions. Only allowed to be set when the
+  /// "use_explicit_dry_run_spec" flag is set.
+  ServicePerimeterConfig spec;
+
   /// Current ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine perimeter
   /// content and boundaries.
@@ -1875,15 +2380,23 @@ class ServicePerimeter {
   /// Human readable title. Must be unique within the Policy.
   core.String title;
 
-  /// Output only. Time the `ServicePerimeter` was updated in UTC.
-  core.String updateTime;
+  /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly
+  /// exists  for all Service Perimeters, and that spec is identical to the
+  /// status for those Service Perimeters. When this flag is set, it inhibits
+  /// the
+  /// generation of the implicit spec, thereby allowing the user to explicitly
+  /// provide a configuration ("spec") to use in a dry-run version of the
+  /// Service
+  /// Perimeter. This allows the user to test changes to the enforced config
+  /// ("status") without actually enforcing them. This testing is done through
+  /// analyzing the differences between currently enforced and suggested
+  /// restrictions. use_explicit_dry_run_spec must bet set to True if any of the
+  /// fields in the spec are set to non-default values.
+  core.bool useExplicitDryRunSpec;
 
   ServicePerimeter();
 
   ServicePerimeter.fromJson(core.Map _json) {
-    if (_json.containsKey("createTime")) {
-      createTime = _json["createTime"];
-    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -1893,23 +2406,23 @@ class ServicePerimeter {
     if (_json.containsKey("perimeterType")) {
       perimeterType = _json["perimeterType"];
     }
+    if (_json.containsKey("spec")) {
+      spec = new ServicePerimeterConfig.fromJson(_json["spec"]);
+    }
     if (_json.containsKey("status")) {
       status = new ServicePerimeterConfig.fromJson(_json["status"]);
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
-    if (_json.containsKey("updateTime")) {
-      updateTime = _json["updateTime"];
+    if (_json.containsKey("useExplicitDryRunSpec")) {
+      useExplicitDryRunSpec = _json["useExplicitDryRunSpec"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (createTime != null) {
-      _json["createTime"] = createTime;
-    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -1919,41 +2432,48 @@ class ServicePerimeter {
     if (perimeterType != null) {
       _json["perimeterType"] = perimeterType;
     }
+    if (spec != null) {
+      _json["spec"] = (spec).toJson();
+    }
     if (status != null) {
       _json["status"] = (status).toJson();
     }
     if (title != null) {
       _json["title"] = title;
     }
-    if (updateTime != null) {
-      _json["updateTime"] = updateTime;
+    if (useExplicitDryRunSpec != null) {
+      _json["useExplicitDryRunSpec"] = useExplicitDryRunSpec;
     }
     return _json;
   }
 }
 
-/// `ServicePerimeterConfig` specifies a set of GCP resources that describe
-/// specific Service Perimeter configuration.
+/// `ServicePerimeterConfig` specifies a set of Google Cloud resources that
+/// describe specific Service Perimeter configuration.
 class ServicePerimeterConfig {
   /// A list of `AccessLevel` resource names that allow resources within the
   /// `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed
   /// must be in the same policy as this `ServicePerimeter`. Referencing a
   /// nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are
-  /// listed, resources within the perimeter can only be accessed via GCP calls
-  /// with request origins within the perimeter. Example:
+  /// listed, resources within the perimeter can only be accessed via Google
+  /// Cloud calls with request origins within the perimeter. Example:
   /// `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`.
   /// For Service Perimeter Bridge, must be empty.
   core.List<core.String> accessLevels;
 
-  /// A list of GCP resources that are inside of the service perimeter.
+  /// A list of Google Cloud resources that are inside of the service perimeter.
   /// Currently only projects are allowed. Format: `projects/{project_number}`
   core.List<core.String> resources;
 
-  /// GCP services that are subject to the Service Perimeter restrictions. For
-  /// example, if `storage.googleapis.com` is specified, access to the storage
-  /// buckets inside the perimeter must meet the perimeter's access
-  /// restrictions.
+  /// Google Cloud services that are subject to the Service Perimeter
+  /// restrictions. For example, if `storage.googleapis.com` is specified,
+  /// access
+  /// to the storage buckets inside the perimeter must meet the perimeter's
+  /// access restrictions.
   core.List<core.String> restrictedServices;
+
+  /// Configuration for APIs allowed within Perimeter.
+  VpcAccessibleServices vpcAccessibleServices;
 
   ServicePerimeterConfig();
 
@@ -1968,6 +2488,10 @@ class ServicePerimeterConfig {
       restrictedServices =
           (_json["restrictedServices"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("vpcAccessibleServices")) {
+      vpcAccessibleServices =
+          new VpcAccessibleServices.fromJson(_json["vpcAccessibleServices"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1981,6 +2505,9 @@ class ServicePerimeterConfig {
     }
     if (restrictedServices != null) {
       _json["restrictedServices"] = restrictedServices;
+    }
+    if (vpcAccessibleServices != null) {
+      _json["vpcAccessibleServices"] = (vpcAccessibleServices).toJson();
     }
     return _json;
   }
@@ -2037,6 +2564,42 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Specifies how APIs are allowed to communicate within the Service
+/// Perimeter.
+class VpcAccessibleServices {
+  /// The list of APIs usable within the Service Perimeter. Must be empty
+  /// unless 'enable_restriction' is True.
+  core.List<core.String> allowedServices;
+
+  /// Whether to restrict API calls within the Service Perimeter to the list of
+  /// APIs specified in 'allowed_services'.
+  core.bool enableRestriction;
+
+  VpcAccessibleServices();
+
+  VpcAccessibleServices.fromJson(core.Map _json) {
+    if (_json.containsKey("allowedServices")) {
+      allowedServices =
+          (_json["allowedServices"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("enableRestriction")) {
+      enableRestriction = _json["enableRestriction"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (allowedServices != null) {
+      _json["allowedServices"] = allowedServices;
+    }
+    if (enableRestriction != null) {
+      _json["enableRestriction"] = enableRestriction;
     }
     return _json;
   }

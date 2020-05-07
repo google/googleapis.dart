@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.storage.v1;
 
@@ -62,7 +62,7 @@ class StorageApi {
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
   StorageApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
+      {core.String rootUrl = "https://storage.googleapis.com/",
       core.String servicePath = "storage/v1/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
@@ -640,6 +640,10 @@ class BucketsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
+  /// [optionsRequestedPolicyVersion] - The IAM policy format version to be
+  /// returned. If the optionsRequestedPolicyVersion is for an older version
+  /// that doesn't support part of the requested IAM policy, the request fails.
+  ///
   /// [provisionalUserProject] - The project to be billed for this request if
   /// the target bucket is requester-pays bucket.
   ///
@@ -657,7 +661,8 @@ class BucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String bucket,
-      {core.String provisionalUserProject,
+      {core.int optionsRequestedPolicyVersion,
+      core.String provisionalUserProject,
       core.String userProject,
       core.String $fields}) {
     var _url;
@@ -669,6 +674,11 @@ class BucketsResourceApi {
 
     if (bucket == null) {
       throw new core.ArgumentError("Parameter bucket is required.");
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams["optionsRequestedPolicyVersion"] = [
+        "${optionsRequestedPolicyVersion}"
+      ];
     }
     if (provisionalUserProject != null) {
       _queryParams["provisionalUserProject"] = [provisionalUserProject];
@@ -2714,6 +2724,11 @@ class ObjectsResourceApi {
   /// metadata is not otherwise provided. Overrides the object metadata's name
   /// value, if any.
   ///
+  /// [destinationKmsKeyName] - Resource name of the Cloud KMS key, of the form
+  /// projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key,
+  /// that will be used to encrypt the object. Overrides the object metadata's
+  /// kms_key_name value, if any.
+  ///
   /// [destinationPredefinedAcl] - Apply a predefined set of access controls to
   /// the destination object.
   /// Possible string values are:
@@ -2790,7 +2805,8 @@ class ObjectsResourceApi {
       core.String sourceObject,
       core.String destinationBucket,
       core.String destinationObject,
-      {core.String destinationPredefinedAcl,
+      {core.String destinationKmsKeyName,
+      core.String destinationPredefinedAcl,
       core.String ifGenerationMatch,
       core.String ifGenerationNotMatch,
       core.String ifMetagenerationMatch,
@@ -2825,6 +2841,9 @@ class ObjectsResourceApi {
     }
     if (destinationObject == null) {
       throw new core.ArgumentError("Parameter destinationObject is required.");
+    }
+    if (destinationKmsKeyName != null) {
+      _queryParams["destinationKmsKeyName"] = [destinationKmsKeyName];
     }
     if (destinationPredefinedAcl != null) {
       _queryParams["destinationPredefinedAcl"] = [destinationPredefinedAcl];
@@ -3384,6 +3403,10 @@ class ObjectsResourceApi {
   /// their name, truncated after the delimiter, returned in prefixes. Duplicate
   /// prefixes are omitted.
   ///
+  /// [endOffset] - Filter results to objects whose names are lexicographically
+  /// before endOffset. If startOffset is also set, the objects listed will have
+  /// names between startOffset (inclusive) and endOffset (exclusive).
+  ///
   /// [includeTrailingDelimiter] - If true, objects that end in exactly one
   /// instance of delimiter will have their metadata included in items in
   /// addition to prefixes.
@@ -3406,6 +3429,11 @@ class ObjectsResourceApi {
   /// [provisionalUserProject] - The project to be billed for this request if
   /// the target bucket is requester-pays bucket.
   ///
+  /// [startOffset] - Filter results to objects whose names are
+  /// lexicographically equal to or after startOffset. If endOffset is also set,
+  /// the objects listed will have names between startOffset (inclusive) and
+  /// endOffset (exclusive).
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -3424,12 +3452,14 @@ class ObjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Objects> list(core.String bucket,
       {core.String delimiter,
+      core.String endOffset,
       core.bool includeTrailingDelimiter,
       core.int maxResults,
       core.String pageToken,
       core.String prefix,
       core.String projection,
       core.String provisionalUserProject,
+      core.String startOffset,
       core.String userProject,
       core.bool versions,
       core.String $fields}) {
@@ -3445,6 +3475,9 @@ class ObjectsResourceApi {
     }
     if (delimiter != null) {
       _queryParams["delimiter"] = [delimiter];
+    }
+    if (endOffset != null) {
+      _queryParams["endOffset"] = [endOffset];
     }
     if (includeTrailingDelimiter != null) {
       _queryParams["includeTrailingDelimiter"] = [
@@ -3465,6 +3498,9 @@ class ObjectsResourceApi {
     }
     if (provisionalUserProject != null) {
       _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
+    if (startOffset != null) {
+      _queryParams["startOffset"] = [startOffset];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -4169,6 +4205,10 @@ class ObjectsResourceApi {
   /// their name, truncated after the delimiter, returned in prefixes. Duplicate
   /// prefixes are omitted.
   ///
+  /// [endOffset] - Filter results to objects whose names are lexicographically
+  /// before endOffset. If startOffset is also set, the objects listed will have
+  /// names between startOffset (inclusive) and endOffset (exclusive).
+  ///
   /// [includeTrailingDelimiter] - If true, objects that end in exactly one
   /// instance of delimiter will have their metadata included in items in
   /// addition to prefixes.
@@ -4191,6 +4231,11 @@ class ObjectsResourceApi {
   /// [provisionalUserProject] - The project to be billed for this request if
   /// the target bucket is requester-pays bucket.
   ///
+  /// [startOffset] - Filter results to objects whose names are
+  /// lexicographically equal to or after startOffset. If endOffset is also set,
+  /// the objects listed will have names between startOffset (inclusive) and
+  /// endOffset (exclusive).
+  ///
   /// [userProject] - The project to be billed for this request. Required for
   /// Requester Pays buckets.
   ///
@@ -4209,12 +4254,14 @@ class ObjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Channel> watchAll(Channel request, core.String bucket,
       {core.String delimiter,
+      core.String endOffset,
       core.bool includeTrailingDelimiter,
       core.int maxResults,
       core.String pageToken,
       core.String prefix,
       core.String projection,
       core.String provisionalUserProject,
+      core.String startOffset,
       core.String userProject,
       core.bool versions,
       core.String $fields}) {
@@ -4233,6 +4280,9 @@ class ObjectsResourceApi {
     }
     if (delimiter != null) {
       _queryParams["delimiter"] = [delimiter];
+    }
+    if (endOffset != null) {
+      _queryParams["endOffset"] = [endOffset];
     }
     if (includeTrailingDelimiter != null) {
       _queryParams["includeTrailingDelimiter"] = [
@@ -4253,6 +4303,9 @@ class ObjectsResourceApi {
     }
     if (provisionalUserProject != null) {
       _queryParams["provisionalUserProject"] = [provisionalUserProject];
+    }
+    if (startOffset != null) {
+      _queryParams["startOffset"] = [startOffset];
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
@@ -4775,7 +4828,11 @@ class BucketEncryption {
   }
 }
 
-/// The bucket's Bucket Policy Only configuration.
+/// The bucket's uniform bucket-level access configuration. The feature was
+/// formerly known as Bucket Policy Only. For backward compatibility, this field
+/// will be populated with identical information as the uniformBucketLevelAccess
+/// field. We recommend using the uniformBucketLevelAccess field to enable and
+/// disable the feature.
 class BucketIamConfigurationBucketPolicyOnly {
   /// If set, access is controlled only by bucket-level or above IAM policies.
   core.bool enabled;
@@ -4848,7 +4905,11 @@ class BucketIamConfigurationUniformBucketLevelAccess {
 
 /// The bucket's IAM configuration.
 class BucketIamConfiguration {
-  /// The bucket's Bucket Policy Only configuration.
+  /// The bucket's uniform bucket-level access configuration. The feature was
+  /// formerly known as Bucket Policy Only. For backward compatibility, this
+  /// field will be populated with identical information as the
+  /// uniformBucketLevelAccess field. We recommend using the
+  /// uniformBucketLevelAccess field to enable and disable the feature.
   BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
 
   /// The bucket's uniform bucket-level access configuration.
@@ -4926,6 +4987,16 @@ class BucketLifecycleRuleCondition {
   /// before midnight of the specified date in UTC.
   core.DateTime createdBefore;
 
+  /// A timestamp in RFC 3339 format. This condition is satisfied when the
+  /// custom time on an object is before this timestamp.
+  core.DateTime customTimeBefore;
+
+  /// Number of days elapsed since the user-specified timestamp set on an
+  /// object. The condition is satisfied if the days elapsed is at least this
+  /// number. If no custom timestamp is specified on an object, the condition
+  /// does not apply.
+  core.int daysSinceCustomTime;
+
   /// Relevant only for versioned objects. If the value is true, this condition
   /// matches live objects; if the value is false, it matches archived objects.
   core.bool isLive;
@@ -4940,7 +5011,7 @@ class BucketLifecycleRuleCondition {
 
   /// Objects having any of the storage classes specified by this condition will
   /// be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE,
-  /// STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+  /// ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
   core.List<core.String> matchesStorageClass;
 
   /// Relevant only for versioned objects. If the value is N, this condition is
@@ -4956,6 +5027,12 @@ class BucketLifecycleRuleCondition {
     }
     if (_json.containsKey("createdBefore")) {
       createdBefore = core.DateTime.parse(_json["createdBefore"]);
+    }
+    if (_json.containsKey("customTimeBefore")) {
+      customTimeBefore = core.DateTime.parse(_json["customTimeBefore"]);
+    }
+    if (_json.containsKey("daysSinceCustomTime")) {
+      daysSinceCustomTime = _json["daysSinceCustomTime"];
     }
     if (_json.containsKey("isLive")) {
       isLive = _json["isLive"];
@@ -4981,6 +5058,12 @@ class BucketLifecycleRuleCondition {
     if (createdBefore != null) {
       _json["createdBefore"] =
           "${(createdBefore).year.toString().padLeft(4, '0')}-${(createdBefore).month.toString().padLeft(2, '0')}-${(createdBefore).day.toString().padLeft(2, '0')}";
+    }
+    if (customTimeBefore != null) {
+      _json["customTimeBefore"] = (customTimeBefore).toIso8601String();
+    }
+    if (daysSinceCustomTime != null) {
+      _json["daysSinceCustomTime"] = daysSinceCustomTime;
     }
     if (isLive != null) {
       _json["isLive"] = isLive;
@@ -5330,8 +5413,8 @@ class Bucket {
   /// The bucket's default storage class, used whenever no storageClass is
   /// specified for a newly-created object. This defines how objects in the
   /// bucket are stored and determines the SLA and the cost of storage. Values
-  /// include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and
-  /// DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
+  /// include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE,
+  /// and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the
   /// bucket is created, it will default to STANDARD. For more information, see
   /// storage classes.
   core.String storageClass;
@@ -5349,6 +5432,17 @@ class Bucket {
   /// when accessing bucket contents as a web site. See the Static Website
   /// Examples for more information.
   BucketWebsite website;
+
+  /// The zone or zones from which the bucket is intended to use zonal quota.
+  /// Requests for data from outside the specified affinities are still allowed
+  /// but won't be able to use zonal quota. The zone or zones need to be within
+  /// the bucket location otherwise the requests will fail with a 400 Bad
+  /// Request response.
+  core.List<core.String> zoneAffinity;
+
+  /// If set, objects placed in this bucket are required to be separated by
+  /// disaster domain.
+  core.bool zoneSeparation;
 
   Bucket();
 
@@ -5441,6 +5535,12 @@ class Bucket {
     if (_json.containsKey("website")) {
       website = new BucketWebsite.fromJson(_json["website"]);
     }
+    if (_json.containsKey("zoneAffinity")) {
+      zoneAffinity = (_json["zoneAffinity"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("zoneSeparation")) {
+      zoneSeparation = _json["zoneSeparation"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5524,6 +5624,12 @@ class Bucket {
     }
     if (website != null) {
       _json["website"] = (website).toJson();
+    }
+    if (zoneAffinity != null) {
+      _json["zoneAffinity"] = zoneAffinity;
+    }
+    if (zoneSeparation != null) {
+      _json["zoneSeparation"] = zoneSeparation;
     }
     return _json;
   }
@@ -6476,6 +6582,9 @@ class Object {
   /// CRC32c checksum, see Hashes and ETags: Best Practices.
   core.String crc32c;
 
+  /// A timestamp in RFC 3339 format specified by the user for an object.
+  core.DateTime customTime;
+
   /// Metadata of customer-supplied encryption key, if the object is encrypted
   /// by such a key.
   ObjectCustomerEncryption customerEncryption;
@@ -6605,6 +6714,9 @@ class Object {
     if (_json.containsKey("crc32c")) {
       crc32c = _json["crc32c"];
     }
+    if (_json.containsKey("customTime")) {
+      customTime = core.DateTime.parse(_json["customTime"]);
+    }
     if (_json.containsKey("customerEncryption")) {
       customerEncryption =
           new ObjectCustomerEncryption.fromJson(_json["customerEncryption"]);
@@ -6706,6 +6818,9 @@ class Object {
     }
     if (crc32c != null) {
       _json["crc32c"] = crc32c;
+    }
+    if (customTime != null) {
+      _json["customTime"] = (customTime).toIso8601String();
     }
     if (customerEncryption != null) {
       _json["customerEncryption"] = (customerEncryption).toJson();
@@ -7164,6 +7279,9 @@ class Policy {
   /// input.
   core.String resourceId;
 
+  /// The IAM policy format version.
+  core.int version;
+
   Policy();
 
   Policy.fromJson(core.Map _json) {
@@ -7181,6 +7299,9 @@ class Policy {
     if (_json.containsKey("resourceId")) {
       resourceId = _json["resourceId"];
     }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7197,6 +7318,9 @@ class Policy {
     }
     if (resourceId != null) {
       _json["resourceId"] = resourceId;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }

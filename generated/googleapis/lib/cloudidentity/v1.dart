@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudidentity.v1;
 
@@ -27,6 +27,10 @@ class CloudidentityApi {
   /// and their emails
   static const CloudIdentityGroupsReadonlyScope =
       "https://www.googleapis.com/auth/cloud-identity.groups.readonly";
+
+  /// View and manage your data across Google Cloud Platform services
+  static const CloudPlatformScope =
+      "https://www.googleapis.com/auth/cloud-platform";
 
   final commons.ApiRequester _requester;
 
@@ -93,7 +97,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - [Resource
+  /// [name] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group in the format: `groups/{group_id}`, where `group_id` is the unique
   /// ID
@@ -140,7 +144,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - [Resource
+  /// [name] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group in the format: `groups/{group_id}`, where `group_id` is the unique
   /// ID
@@ -183,25 +187,24 @@ class GroupsResourceApi {
     return _response.then((data) => new Group.fromJson(data));
   }
 
-  /// List groups within a customer or a domain.
+  /// Lists groups within a customer or a domain.
   ///
   /// Request parameters:
   ///
-  /// [parent] - `Required`. May be made Optional in the future.
-  /// Customer ID to list all groups from.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous list
   /// request, if any.
-  ///
-  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
-  /// and 50
-  /// (max 500) for the FULL view.
   ///
   /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [parent] - Required. Customer ID to list all groups from.
+  ///
+  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
+  /// and 50
+  /// (max 500) for the FULL view.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -214,10 +217,10 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(
-      {core.String parent,
-      core.String pageToken,
-      core.int pageSize,
+      {core.String pageToken,
       core.String view,
+      core.String parent,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -226,17 +229,17 @@ class GroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (parent != null) {
-      _queryParams["parent"] = [parent];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (parent != null) {
+      _queryParams["parent"] = [parent];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -320,7 +323,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - [Resource
+  /// [name] - Output only. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group in the format: `groups/{group_id}`, where group_id is the unique ID
   /// assigned to the Group.
@@ -328,7 +331,7 @@ class GroupsResourceApi {
   /// Must be left blank while creating a Group.
   /// Value must have pattern "^groups/[^/]+$".
   ///
-  /// [updateMask] - Editable fields: `display_name`, `description`
+  /// [updateMask] - Required. Editable fields: `display_name`, `description`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -380,21 +383,21 @@ class GroupsResourceApi {
   /// [pageToken] - The next_page_token value returned from a previous search
   /// request, if any.
   ///
-  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
-  /// and 50
-  /// (max 500) for the FULL view.
-  ///
-  /// [query] - `Required`. Query string for performing search on groups. Users
-  /// can search
-  /// on parent and label attributes of groups.
-  /// EXACT match ('==') is supported on parent, and CONTAINS match ('in') is
-  /// supported on labels.
-  ///
   /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [query] - Required. `Required`. Query string for performing search on
+  /// groups. Users can search
+  /// on parent and label attributes of groups.
+  /// EXACT match ('==') is supported on parent, and CONTAINS match ('in') is
+  /// supported on labels.
+  ///
+  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
+  /// and 50
+  /// (max 500) for the FULL view.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -408,9 +411,9 @@ class GroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<SearchGroupsResponse> search(
       {core.String pageToken,
-      core.int pageSize,
-      core.String query,
       core.String view,
+      core.String query,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -422,14 +425,14 @@ class GroupsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (query != null) {
       _queryParams["query"] = [query];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -459,7 +462,7 @@ class GroupsMembershipsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - [Resource
+  /// [parent] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group to create Membership within. Format: `groups/{group_id}`, where
   /// `group_id` is the unique ID assigned to the Group.
@@ -511,7 +514,7 @@ class GroupsMembershipsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - [Resource
+  /// [name] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Membership to be deleted.
   ///
@@ -560,7 +563,7 @@ class GroupsMembershipsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - [Resource
+  /// [name] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Membership to be retrieved.
   ///
@@ -605,11 +608,11 @@ class GroupsMembershipsResourceApi {
     return _response.then((data) => new Membership.fromJson(data));
   }
 
-  /// List Memberships within a Group.
+  /// Lists Memberships within a Group.
   ///
   /// Request parameters:
   ///
-  /// [parent] - [Resource
+  /// [parent] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group to list Memberships within.
   ///
@@ -617,12 +620,12 @@ class GroupsMembershipsResourceApi {
   /// the Group.
   /// Value must have pattern "^groups/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request, if any.
-  ///
   /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
   /// and 50
   /// (max 500) for the FULL view.
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
   ///
   /// [view] - Membership resource view to be returned. Defaults to View.BASIC.
   /// Possible string values are:
@@ -641,8 +644,8 @@ class GroupsMembershipsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMembershipsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
+      core.String pageToken,
       core.String view,
       core.String $fields}) {
     var _url;
@@ -655,11 +658,11 @@ class GroupsMembershipsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (view != null) {
       _queryParams["view"] = [view];
@@ -687,7 +690,7 @@ class GroupsMembershipsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - [Resource
+  /// [parent] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group to lookup Membership within.
   ///
@@ -800,7 +803,7 @@ class EntityKey {
 
 /// Resource representing a Group.
 class Group {
-  /// The time when the Group was created.
+  /// Output only. The time when the Group was created.
   /// Output only.
   core.String createTime;
 
@@ -814,31 +817,32 @@ class Group {
   /// The Group's display name.
   core.String displayName;
 
-  /// EntityKey of the Group.
+  /// Required. Immutable. EntityKey of the Group.
   ///
   /// Must be set when creating a Group, read-only afterwards.
   EntityKey groupKey;
 
-  /// `Required`. Labels for Group resource.
+  /// Required. `Required`. Labels for Group resource.
   /// For creating Groups under a namespace, set label key to
   /// 'labels/system/groups/external' and label value as empty.
   core.Map<core.String, core.String> labels;
 
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the
+  /// Output only. [Resource
+  /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Group in the format: `groups/{group_id}`, where group_id is the unique ID
   /// assigned to the Group.
   ///
   /// Must be left blank while creating a Group.
   core.String name;
 
-  /// The entity under which this Group resides in Cloud Identity resource
+  /// Required. Immutable. The entity under which this Group resides in Cloud
+  /// Identity resource
   /// hierarchy. Must be set when creating a Group, read-only afterwards.
   ///
   /// Currently allowed types: `identitysources`.
   core.String parent;
 
-  /// The time when the Group was last updated.
+  /// Output only. The time when the Group was last updated.
   /// Output only.
   core.String updateTime;
 
@@ -1029,11 +1033,11 @@ class LookupMembershipNameResponse {
 
 /// Resource representing a Membership within a Group
 class Membership {
-  /// Creation timestamp of the Membership. Output only.
+  /// Output only. Creation timestamp of the Membership. Output only.
   core.String createTime;
 
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the
+  /// Output only. [Resource
+  /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// Membership in the format: `groups/{group_id}/memberships/{member_id}`,
   /// where group_id is the unique ID assigned to the Group to which Membership
   /// belongs to, and member_id is the unique ID assigned to the member
@@ -1041,7 +1045,8 @@ class Membership {
   /// Must be left blank while creating a Membership.
   core.String name;
 
-  /// EntityKey of the entity to be added as the member. Must be set while
+  /// Required. Immutable. EntityKey of the entity to be added as the member.
+  /// Must be set while
   /// creating a Membership, read-only afterwards.
   ///
   /// Currently allowed entity types: `Users`, `Groups`.
@@ -1052,7 +1057,7 @@ class Membership {
   /// Currently supported MembershipRoles: `"MEMBER"`.
   core.List<MembershipRole> roles;
 
-  /// Last updated timestamp of the Membership. Output only.
+  /// Output only. Last updated timestamp of the Membership. Output only.
   core.String updateTime;
 
   Membership();

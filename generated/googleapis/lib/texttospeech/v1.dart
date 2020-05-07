@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.texttospeech.v1;
 
@@ -96,7 +96,7 @@ class VoicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [languageCode] - Optional (but recommended)
+  /// [languageCode] - Optional. Recommended.
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
   /// specified, the ListVoices call will only return voices that can be used to
   /// synthesize this language_code. E.g. when specifying "en-NZ", you will get
@@ -173,7 +173,7 @@ class AudioConfig {
   /// semitones from the original pitch.
   core.double pitch;
 
-  /// The synthesis sample rate (in hertz) for this audio. Optional. When this
+  /// Optional. The synthesis sample rate (in hertz) for this audio. When this
   /// is
   /// specified in SynthesizeSpeechRequest, if this is different from the
   /// voice's
@@ -453,9 +453,10 @@ class Voice {
 
 /// Description of which voice to use for a synthesis request.
 class VoiceSelectionParams {
-  /// The language (and optionally also the region) of the voice expressed as a
+  /// Required. The language (and potentially also the region) of the voice
+  /// expressed as a
   /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.
-  /// "en-US". Required. This should not include a script tag (e.g. use
+  /// "en-US". This should not include a script tag (e.g. use
   /// "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred
   /// from the input provided in the SynthesisInput.  The TTS service
   /// will use this parameter to help choose an appropriate voice.  Note that
@@ -466,11 +467,11 @@ class VoiceSelectionParams {
   /// Bokmal) instead of "no" (Norwegian)".
   core.String languageCode;
 
-  /// The name of the voice. Optional; if not set, the service will choose a
+  /// The name of the voice. If not set, the service will choose a
   /// voice based on the other parameters such as language_code and gender.
   core.String name;
 
-  /// The preferred gender of the voice. Optional; if not set, the service will
+  /// The preferred gender of the voice. If not set, the service will
   /// choose a voice based on the other parameters such as language_code and
   /// name. Note that this is only a preference, not requirement; if a
   /// voice of the appropriate gender is not available, the synthesizer should

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudshell.v1;
 
@@ -55,7 +55,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -105,7 +105,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -150,7 +150,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -205,11 +205,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -222,9 +222,9 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -236,14 +236,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -304,7 +304,8 @@ class Environment {
   /// "gcr.io/dev-con/cloud-devshell:latest".
   core.String dockerImage;
 
-  /// Output only. The environment's identifier, which is always "default".
+  /// Output only. The environment's identifier, unique among the user's
+  /// environments.
   core.String id;
 
   /// Output only. Full name of this resource, in the format
@@ -322,6 +323,15 @@ class Environment {
   /// removed from the environment using the CreatePublicKey and DeletePublicKey
   /// methods.
   core.List<PublicKey> publicKeys;
+
+  /// Indicates the size of the backing VM running the environment.  If set to
+  /// something other than DEFAULT, it will be reverted to the default VM size
+  /// after vm_size_expire_time.
+  /// Possible string values are:
+  /// - "VM_SIZE_UNSPECIFIED" : The VM size is unknown.
+  /// - "DEFAULT" : The default VM size.
+  /// - "BOOSTED" : The boosted VM size.
+  core.String size;
 
   /// Output only. Host to which clients can connect to initiate SSH sessions
   /// with the environment.
@@ -350,6 +360,18 @@ class Environment {
   /// if another environment is started.
   core.String state;
 
+  /// Output only. The time when the Environment will expire back to the default
+  /// VM size.
+  core.String vmSizeExpireTime;
+
+  /// Output only. Host to which clients can connect to initiate HTTPS or WSS
+  /// connections with the environment.
+  core.String webHost;
+
+  /// Output only. Ports to which clients can connect to initiate HTTPS or WSS
+  /// connections with the environment.
+  core.List<core.int> webPorts;
+
   Environment();
 
   Environment.fromJson(core.Map _json) {
@@ -367,6 +389,9 @@ class Environment {
           .map<PublicKey>((value) => new PublicKey.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("size")) {
+      size = _json["size"];
+    }
     if (_json.containsKey("sshHost")) {
       sshHost = _json["sshHost"];
     }
@@ -378,6 +403,15 @@ class Environment {
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
+    }
+    if (_json.containsKey("vmSizeExpireTime")) {
+      vmSizeExpireTime = _json["vmSizeExpireTime"];
+    }
+    if (_json.containsKey("webHost")) {
+      webHost = _json["webHost"];
+    }
+    if (_json.containsKey("webPorts")) {
+      webPorts = (_json["webPorts"] as core.List).cast<core.int>();
     }
   }
 
@@ -397,6 +431,9 @@ class Environment {
       _json["publicKeys"] =
           publicKeys.map((value) => (value).toJson()).toList();
     }
+    if (size != null) {
+      _json["size"] = size;
+    }
     if (sshHost != null) {
       _json["sshHost"] = sshHost;
     }
@@ -408,6 +445,15 @@ class Environment {
     }
     if (state != null) {
       _json["state"] = state;
+    }
+    if (vmSizeExpireTime != null) {
+      _json["vmSizeExpireTime"] = vmSizeExpireTime;
+    }
+    if (webHost != null) {
+      _json["webHost"] = webHost;
+    }
+    if (webPorts != null) {
+      _json["webPorts"] = webPorts;
     }
     return _json;
   }
@@ -606,9 +652,20 @@ class StartEnvironmentMetadata {
   /// unarchived. This can happen
   /// when the user returns to Cloud Shell after not having used it for a
   /// while, and suggests that startup will take longer than normal.
-  /// - "FINISHED" : Startup is complete and the user should be able to
-  /// establish an SSH
-  /// connection to their environment.
+  /// - "AWAITING_VM" : Startup is waiting for a VM to be assigned to the
+  /// environment. This
+  /// should normally happen very quickly, but an environment might stay in
+  /// this state for an extended period of time if the system is experiencing
+  /// heavy load.
+  /// - "AWAITING_COMPUTE_RESOURCES" : Startup is waiting for compute resources
+  /// to be assigned to the
+  /// environment. This should normally happen very quickly, but an environment
+  /// might stay in this state for an extended period of time if the system is
+  /// experiencing heavy load.
+  /// - "FINISHED" : Startup has completed. If the start operation was
+  /// successful, the user
+  /// should be able to establish an SSH connection to their environment.
+  /// Otherwise, the operation will contain details of the failure.
   core.String state;
 
   StartEnvironmentMetadata();

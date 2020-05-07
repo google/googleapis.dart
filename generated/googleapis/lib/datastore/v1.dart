@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.datastore.v1;
 
@@ -55,7 +55,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -106,7 +107,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -159,7 +161,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,7 +220,7 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID against which to make the request.
+  /// [projectId] - Required. Project ID against which to make the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -274,7 +277,7 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Project ID against which to make the request.
+  /// [projectId] - Required. Project ID against which to make the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -327,7 +330,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -379,7 +383,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -430,7 +435,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -481,7 +487,8 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The ID of the project against which to make the request.
+  /// [projectId] - Required. The ID of the project against which to make the
+  /// request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -531,6 +538,134 @@ class ProjectsIndexesResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsIndexesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates the specified index.
+  /// A newly created index's initial state is `CREATING`. On completion of the
+  /// returned google.longrunning.Operation, the state will be `READY`.
+  /// If the index already exists, the call will return an `ALREADY_EXISTS`
+  /// status.
+  ///
+  /// During index creation, the process could result in an error, in which
+  /// case the index will move to the `ERROR` state. The process can be
+  /// recovered
+  /// by fixing the data that caused the error, removing the index with
+  /// delete, then
+  /// re-creating the index with create.
+  ///
+  /// Indexes with a single property cannot be created.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID against which to make the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+      GoogleDatastoreAdminV1Index request, core.String projectId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/indexes';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
+  /// Deletes an existing index.
+  /// An index can only be deleted if it is in a `READY` or `ERROR` state. On
+  /// successful execution of the request, the index will be in a `DELETING`
+  /// state. And on completion of the
+  /// returned google.longrunning.Operation, the index will be removed.
+  ///
+  /// During index deletion, the process could result in an error, in which
+  /// case the index will move to the `ERROR` state. The process can be
+  /// recovered
+  /// by fixing the data that caused the error, followed by calling
+  /// delete again.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Project ID against which to make the request.
+  ///
+  /// [indexId] - The resource ID of the index to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+      core.String projectId, core.String indexId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (indexId == null) {
+      throw new core.ArgumentError("Parameter indexId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/indexes/' +
+        commons.Escaper.ecapeVariable('$indexId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
 
   /// Gets an index.
   ///
@@ -824,11 +959,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -841,9 +976,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -855,14 +990,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -884,7 +1019,8 @@ class ProjectsOperationsResourceApi {
 
 /// The request for Datastore.AllocateIds.
 class AllocateIdsRequest {
-  /// A list of keys with incomplete key paths for which to allocate IDs.
+  /// Required. A list of keys with incomplete key paths for which to allocate
+  /// IDs.
   /// No key may be reserved/read-only.
   core.List<Key> keys;
 
@@ -1541,7 +1677,7 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
   /// Client-assigned labels.
   core.Map<core.String, core.String> labels;
 
-  /// Location for the export metadata and data files.
+  /// Required. Location for the export metadata and data files.
   ///
   /// The full resource URL of the external storage location. Currently, only
   /// Google Cloud Storage is supported. So output_url_prefix should be of the
@@ -1693,7 +1829,8 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
   /// specified then all entities from the export are imported.
   GoogleDatastoreAdminV1EntityFilter entityFilter;
 
-  /// The full resource URL of the external storage location. Currently, only
+  /// Required. The full resource URL of the external storage location.
+  /// Currently, only
   /// Google Cloud Storage is supported. So input_url should be of the form:
   /// `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
   /// `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is
@@ -1745,32 +1882,28 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
 
 /// A minimal index definition.
 class GoogleDatastoreAdminV1Index {
-  /// The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
-  /// Required.
+  /// Required. The index's ancestor mode.  Must not be
+  /// ANCESTOR_MODE_UNSPECIFIED.
   /// Possible string values are:
   /// - "ANCESTOR_MODE_UNSPECIFIED" : The ancestor mode is unspecified.
   /// - "NONE" : Do not include the entity's ancestors in the index.
   /// - "ALL_ANCESTORS" : Include all the entity's ancestors in the index.
   core.String ancestor;
 
-  /// The resource ID of the index.
-  /// Output only.
+  /// Output only. The resource ID of the index.
   core.String indexId;
 
-  /// The entity kind to which this index applies.
-  /// Required.
+  /// Required. The entity kind to which this index applies.
   core.String kind;
 
-  /// Project ID.
-  /// Output only.
+  /// Output only. Project ID.
   core.String projectId;
 
-  /// An ordered sequence of property names and their index attributes.
-  /// Required.
+  /// Required. An ordered sequence of property names and their index
+  /// attributes.
   core.List<GoogleDatastoreAdminV1IndexedProperty> properties;
 
-  /// The state of the index.
-  /// Output only.
+  /// Output only. The state of the index.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : The state is unspecified.
   /// - "CREATING" : The index is being created, and cannot be used by queries.
@@ -1890,8 +2023,8 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
 
 /// A property of an index.
 class GoogleDatastoreAdminV1IndexedProperty {
-  /// The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
-  /// Required.
+  /// Required. The indexed property's direction.  Must not be
+  /// DIRECTION_UNSPECIFIED.
   /// Possible string values are:
   /// - "DIRECTION_UNSPECIFIED" : The direction is unspecified.
   /// - "ASCENDING" : The property's values are indexed so as to support
@@ -1902,8 +2035,7 @@ class GoogleDatastoreAdminV1IndexedProperty {
   /// descending order and also query by <, >, <=, >=, and =.
   core.String direction;
 
-  /// The property name to index.
-  /// Required.
+  /// Required. The property name to index.
   core.String name;
 
   GoogleDatastoreAdminV1IndexedProperty();
@@ -2388,7 +2520,7 @@ class GoogleLongrunningOperation {
   /// The server-assigned name, which is only unique within the same service
   /// that
   /// originally returns it. If you use the default HTTP mapping, the
-  /// `name` should have the format of `operations/some/unique/name`.
+  /// `name` should be a resource name ending with `operations/{unique_id}`.
   core.String name;
 
   /// The normal response of the operation in case of success.  If the original
@@ -2678,7 +2810,7 @@ class LatLng {
 
 /// The request for Datastore.Lookup.
 class LookupRequest {
-  /// Keys of entities to look up.
+  /// Required. Keys of entities to look up.
   core.List<Key> keys;
 
   /// The options for this lookup request.
@@ -3465,7 +3597,8 @@ class ReserveIdsRequest {
   /// If not empty, the ID of the database against which to make the request.
   core.String databaseId;
 
-  /// A list of keys with complete key paths whose numeric IDs should not be
+  /// Required. A list of keys with complete key paths whose numeric IDs should
+  /// not be
   /// auto-allocated.
   core.List<Key> keys;
 
@@ -3510,7 +3643,7 @@ class ReserveIdsResponse {
 
 /// The request for Datastore.Rollback.
 class RollbackRequest {
-  /// The transaction identifier, returned by a call to
+  /// Required. The transaction identifier, returned by a call to
   /// Datastore.BeginTransaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
@@ -3641,58 +3774,11 @@ class RunQueryResponse {
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
-/// used by [gRPC](https://github.com/grpc). The error model is designed to be:
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
 ///
-/// - Simple to use and understand for most users
-/// - Flexible enough to meet unexpected needs
-///
-/// # Overview
-///
-/// The `Status` message contains three pieces of data: error code, error
-/// message, and error details. The error code should be an enum value of
-/// google.rpc.Code, but it may accept additional error codes if needed.  The
-/// error message should be a developer-facing English message that helps
-/// developers *understand* and *resolve* the error. If a localized user-facing
-/// error message is needed, put the localized message in the error details or
-/// localize it in the client. The optional error details may contain arbitrary
-/// information about the error. There is a predefined set of error detail types
-/// in the package `google.rpc` that can be used for common error conditions.
-///
-/// # Language mapping
-///
-/// The `Status` message is the logical representation of the error model, but
-/// it
-/// is not necessarily the actual wire format. When the `Status` message is
-/// exposed in different client libraries and different wire protocols, it can
-/// be
-/// mapped differently. For example, it will likely be mapped to some exceptions
-/// in Java, but more likely mapped to some error codes in C.
-///
-/// # Other uses
-///
-/// The error model and the `Status` message can be used in a variety of
-/// environments, either with or without APIs, to provide a
-/// consistent developer experience across different environments.
-///
-/// Example uses of this error model include:
-///
-/// - Partial errors. If a service needs to return partial errors to the client,
-/// it may embed the `Status` in the normal response to indicate the partial
-///     errors.
-///
-/// - Workflow errors. A typical workflow has multiple steps. Each step may
-///     have a `Status` message for error reporting.
-///
-/// - Batch operations. If a client uses batch request and batch response, the
-///     `Status` message should be used directly inside batch response, one for
-///     each error sub-response.
-///
-/// - Asynchronous operations. If an API call embeds asynchronous operation
-///     results in its response, the status of those operations should be
-///     represented directly using the `Status` message.
-///
-/// - Logging. If some API errors are stored in logs, the message `Status` could
-/// be used directly after any stripping needed for security/privacy reasons.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
   /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.appengine.v1beta;
 
@@ -455,14 +455,14 @@ class AppsAuthorizedCertificatesResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [view] - Controls the set of fields returned in the LIST response.
   /// Possible string values are:
   /// - "BASIC_CERTIFICATE" : A BASIC_CERTIFICATE.
   /// - "FULL_CERTIFICATE" : A FULL_CERTIFICATE.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -475,9 +475,9 @@ class AppsAuthorizedCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedCertificatesResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String view,
+      core.String pageToken,
       core.int pageSize,
-      core.String view,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -489,14 +489,14 @@ class AppsAuthorizedCertificatesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1740,6 +1740,8 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
   /// [migrateTraffic] - Set to true to gradually shift traffic to one or more
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
@@ -1754,8 +1756,6 @@ class AppsServicesResourceApi {
   /// Splitting Traffic
   /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1768,7 +1768,7 @@ class AppsServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Service request, core.String appsId, core.String servicesId,
-      {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
+      {core.String updateMask, core.bool migrateTraffic, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1785,11 +1785,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (migrateTraffic != null) {
-      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
-    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (migrateTraffic != null) {
+      _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2273,7 +2273,17 @@ class AppsServicesVersionsInstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Stops a running instance.
+  /// Stops a running instance.The instance might be automatically recreated
+  /// based on the scaling settings of the version. For more information, see
+  /// "How Instances are Managed" (standard environment
+  /// (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed)
+  /// | flexible environment
+  /// (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To
+  /// ensure that instances are not re-created and avoid getting billed, you can
+  /// stop all instances within the target version by changing the serving
+  /// status of the version to STOPPED with the apps.services.versions.patch
+  /// (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch)
+  /// method.
   ///
   /// Request parameters:
   ///
@@ -4064,10 +4074,6 @@ class IdentityAwareProxy {
   /// OAuth2 client ID to use for the authentication flow.
   core.String oauth2ClientId;
 
-  /// InputOnly OAuth client info required to generate client id to be used for
-  /// IAP.
-  OAuth2ClientInfo oauth2ClientInfo;
-
   /// OAuth2 client secret to use for the authentication flow.For security
   /// reasons, this value cannot be retrieved via the API. Instead, the SHA-256
   /// hash of the value is returned in the oauth2_client_secret_sha256
@@ -4086,10 +4092,6 @@ class IdentityAwareProxy {
     if (_json.containsKey("oauth2ClientId")) {
       oauth2ClientId = _json["oauth2ClientId"];
     }
-    if (_json.containsKey("oauth2ClientInfo")) {
-      oauth2ClientInfo =
-          new OAuth2ClientInfo.fromJson(_json["oauth2ClientInfo"]);
-    }
     if (_json.containsKey("oauth2ClientSecret")) {
       oauth2ClientSecret = _json["oauth2ClientSecret"];
     }
@@ -4106,9 +4108,6 @@ class IdentityAwareProxy {
     }
     if (oauth2ClientId != null) {
       _json["oauth2ClientId"] = oauth2ClientId;
-    }
-    if (oauth2ClientInfo != null) {
-      _json["oauth2ClientInfo"] = (oauth2ClientInfo).toJson();
     }
     if (oauth2ClientSecret != null) {
       _json["oauth2ClientSecret"] = oauth2ClientSecret;
@@ -4839,9 +4838,10 @@ class ManagedCertificate {
   /// - "FAILED_PERMANENT" : All renewal attempts have been exhausted, likely
   /// due to an invalid DNS setup.
   /// - "FAILED_RETRYING_CAA_FORBIDDEN" : Most recent renewal failed due to an
-  /// explicit CAA record that does not include the in-use CA, Let's Encrypt.
-  /// Renewals will continue to fail until the CAA is reconfigured. The last
-  /// successfully provisioned certificate may still be serving.
+  /// explicit CAA record that does not include one of the in-use CAs (Google CA
+  /// and Let's Encrypt). Renewals will continue to fail until the CAA is
+  /// reconfigured. The last successfully provisioned certificate may still be
+  /// serving.
   /// - "FAILED_RETRYING_CAA_CHECKING" : Most recent renewal failed due to a CAA
   /// retrieval failure. This means that the domain's DNS provider does not
   /// properly handle CAA records, failing requests for CAA records when no CAA
@@ -5027,47 +5027,6 @@ class NetworkUtilization {
     }
     if (targetSentPacketsPerSecond != null) {
       _json["targetSentPacketsPerSecond"] = targetSentPacketsPerSecond;
-    }
-    return _json;
-  }
-}
-
-class OAuth2ClientInfo {
-  /// Application name to be used in OAuth consent screen.
-  core.String applicationName;
-
-  /// Nameof the client to be generated. Optional - If not provided, the name
-  /// will be autogenerated by the backend.
-  core.String clientName;
-
-  /// Developer's information to be used in OAuth consent screen.
-  core.String developerEmailAddress;
-
-  OAuth2ClientInfo();
-
-  OAuth2ClientInfo.fromJson(core.Map _json) {
-    if (_json.containsKey("applicationName")) {
-      applicationName = _json["applicationName"];
-    }
-    if (_json.containsKey("clientName")) {
-      clientName = _json["clientName"];
-    }
-    if (_json.containsKey("developerEmailAddress")) {
-      developerEmailAddress = _json["developerEmailAddress"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (applicationName != null) {
-      _json["applicationName"] = applicationName;
-    }
-    if (clientName != null) {
-      _json["clientName"] = clientName;
-    }
-    if (developerEmailAddress != null) {
-      _json["developerEmailAddress"] = developerEmailAddress;
     }
     return _json;
   }

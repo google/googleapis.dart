@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudtasks.v2;
 
@@ -186,9 +186,7 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The location name in which the queue will be created.
+  /// [parent] - Required. The location name in which the queue will be created.
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID`
   ///
   /// The list of allowed locations can be obtained by calling Cloud
@@ -253,9 +251,7 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The queue name. For example:
+  /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
@@ -299,9 +295,7 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The resource name of the queue. For example:
+  /// [name] - Required. The resource name of the queue. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
@@ -409,19 +403,9 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The location name.
+  /// [parent] - Required. The location name.
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
-  ///
-  /// [pageSize] - Requested page size.
-  ///
-  /// The maximum page size is 9800. If unspecified, the page size will
-  /// be the maximum. Fewer queues than requested might be returned,
-  /// even if more queues exist; use the
-  /// next_page_token in the
-  /// response to determine if more queues exist.
   ///
   /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
   /// field can be used as a filter and several operators as supported.
@@ -444,6 +428,14 @@ class ProjectsLocationsQueuesResourceApi {
   /// method. It is an error to switch the value of the
   /// filter while iterating through pages.
   ///
+  /// [pageSize] - Requested page size.
+  ///
+  /// The maximum page size is 9800. If unspecified, the page size will
+  /// be the maximum. Fewer queues than requested might be returned,
+  /// even if more queues exist; use the
+  /// next_page_token in the
+  /// response to determine if more queues exist.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -455,9 +447,9 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueuesResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -469,14 +461,14 @@ class ProjectsLocationsQueuesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -596,9 +588,7 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The queue name. For example:
+  /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
@@ -654,9 +644,7 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The queue name. For example:
+  /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
@@ -718,9 +706,7 @@ class ProjectsLocationsQueuesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The queue name. For example:
+  /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
   ///
@@ -906,9 +892,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The queue name. For example:
+  /// [parent] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   ///
   /// The queue must already exist.
@@ -962,9 +946,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The task name. For example:
+  /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
@@ -1009,9 +991,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The task name. For example:
+  /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
@@ -1086,21 +1066,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The queue name. For example:
+  /// [parent] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
-  ///
-  /// [pageSize] - Maximum page size.
-  ///
-  /// Fewer tasks than requested might be returned, even if more tasks exist;
-  /// use
-  /// next_page_token in the response to
-  /// determine if more tasks exist.
-  ///
-  /// The maximum page size is 1000. If unspecified, the page size will be the
-  /// maximum.
   ///
   /// [responseView] - The response_view specifies which subset of the Task will
   /// be
@@ -1130,6 +1098,16 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// The page token is valid for only 2 hours.
   ///
+  /// [pageSize] - Maximum page size.
+  ///
+  /// Fewer tasks than requested might be returned, even if more tasks exist;
+  /// use
+  /// next_page_token in the response to
+  /// determine if more tasks exist.
+  ///
+  /// The maximum page size is 1000. If unspecified, the page size will be the
+  /// maximum.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1141,9 +1119,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTasksResponse> list(core.String parent,
-      {core.int pageSize,
-      core.String responseView,
+      {core.String responseView,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1155,14 +1133,14 @@ class ProjectsLocationsQueuesTasksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (responseView != null) {
       _queryParams["responseView"] = [responseView];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1208,9 +1186,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The task name. For example:
+  /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
@@ -1284,11 +1260,10 @@ class ProjectsLocationsQueuesTasksResourceApi {
 /// The AppEngineRouting used to construct the URL that the task is
 /// delivered to can be set at the queue-level or task-level:
 ///
-/// * If set,
-///    app_engine_routing_override
-///    is used for all tasks in the queue, no matter what the setting
-///    is for the
-///    task-level app_engine_routing.
+/// * If app_engine_routing_override is set on the
+///   queue, this value is used for all
+///   tasks in the queue, no matter what the setting is for the task-level
+///   app_engine_routing.
 ///
 ///
 /// The `url` that the task will be sent to is:
@@ -1321,10 +1296,10 @@ class ProjectsLocationsQueuesTasksResourceApi {
 class AppEngineHttpRequest {
   /// Task-level setting for App Engine routing.
   ///
-  /// If set,
-  /// app_engine_routing_override
-  /// is used for all tasks in the queue, no matter what the setting is for the
-  /// task-level app_engine_routing.
+  /// * If app_engine_routing_override is set on the
+  ///   queue, this value is used for all
+  ///   tasks in the queue, no matter what the setting is for the task-level
+  ///   app_engine_routing.
   AppEngineRouting appEngineRouting;
 
   /// HTTP request body.
@@ -1376,7 +1351,7 @@ class AppEngineHttpRequest {
   /// In addition, Cloud Tasks sets some headers when the task is dispatched,
   /// such as headers containing information about the task; see
   /// [request
-  /// headers](https://cloud.google.com/appengine/docs/python/taskqueue/push/creating-handlers#reading_request_headers).
+  /// headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers).
   /// These headers are set only when the task is dispatched, so they are not
   /// visible when the task is returned in a Cloud Tasks response.
   ///
@@ -1388,14 +1363,11 @@ class AppEngineHttpRequest {
   /// The HTTP method to use for the request. The default is POST.
   ///
   /// The app's request handler for the task's target URL must be able to handle
-  /// HTTP requests with this http_method, otherwise the task attempt will fail
-  /// with error code 405 (Method Not Allowed). See
-  /// [Writing a push task request
+  /// HTTP requests with this http_method, otherwise the task attempt fails with
+  /// error code 405 (Method Not Allowed). See [Writing a push task request
   /// handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
-  /// and the documentation for the request handlers in the language your app is
-  /// written in e.g.
-  /// [Python Request
-  /// Handler](https://cloud.google.com/appengine/docs/python/tools/webapp/requesthandlerclass).
+  /// and the App Engine documentation for your runtime on [How Requests are
+  /// Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
   /// Possible string values are:
   /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
   /// - "POST" : HTTP POST
@@ -1473,6 +1445,13 @@ class AppEngineHttpRequest {
 /// routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),
 /// and [App Engine Flex request
 /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
+///
+/// Using AppEngineRouting requires
+/// [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
+/// Google IAM permission for the project
+/// and the following scope:
+///
+/// `https://www.googleapis.com/auth/cloud-platform`
 class AppEngineRouting {
   /// Output only. The host that the task is sent to.
   ///
@@ -1651,7 +1630,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1659,6 +1638,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -1730,9 +1730,7 @@ class CreateTaskRequest {
   /// permission on the Queue resource.
   core.String responseView;
 
-  /// Required.
-  ///
-  /// The task to add.
+  /// Required. The task to add.
   ///
   /// Task names have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`.
@@ -1812,28 +1810,52 @@ class Empty {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -1876,13 +1898,221 @@ class Expr {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
+    return _json;
+  }
+}
+
+/// HTTP request.
+///
+/// The task will be pushed to the worker as an HTTP request. If the worker
+/// or the redirected worker acknowledges the task by returning a successful
+/// HTTP
+/// response code ([`200` - `299`]), the task will be removed from the queue. If
+/// any other HTTP response code is returned or no response is received, the
+/// task will be retried according to the following:
+///
+/// * User-specified throttling: retry configuration,
+///   rate limits, and the queue's state.
+///
+/// * System throttling: To prevent the worker from overloading, Cloud Tasks may
+///   temporarily reduce the queue's effective rate. User-specified settings
+///   will not be changed.
+///
+///  System throttling happens because:
+///
+///   * Cloud Tasks backs off on all errors. Normally the backoff specified in
+///     rate limits will be used. But if the worker returns
+///     `429` (Too Many Requests), `503` (Service Unavailable), or the rate of
+///     errors is high, Cloud Tasks will use a higher backoff rate. The retry
+///     specified in the `Retry-After` HTTP response header is considered.
+///
+///   * To prevent traffic spikes and to smooth sudden increases in traffic,
+///     dispatches ramp up slowly when the queue is newly created or idle and
+///     if large numbers of tasks suddenly become available to dispatch (due to
+///     spikes in create task rates, the queue being unpaused, or many tasks
+///     that are scheduled at the same time).
+class HttpRequest {
+  /// HTTP request body.
+  ///
+  /// A request body is allowed only if the
+  /// HTTP method is POST, PUT, or PATCH. It is an
+  /// error to set body on a task with an incompatible HttpMethod.
+  core.String body;
+  core.List<core.int> get bodyAsBytes {
+    return convert.base64.decode(body);
+  }
+
+  set bodyAsBytes(core.List<core.int> _bytes) {
+    body =
+        convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// HTTP request headers.
+  ///
+  /// This map contains the header field names and values.
+  /// Headers can be set when the
+  /// task is created.
+  ///
+  /// These headers represent a subset of the headers that will accompany the
+  /// task's HTTP request. Some HTTP request headers will be ignored or
+  /// replaced.
+  ///
+  /// A partial list of headers that will be ignored or replaced is:
+  ///
+  /// * Host: This will be computed by Cloud Tasks and derived from
+  ///   HttpRequest.url.
+  /// * Content-Length: This will be computed by Cloud Tasks.
+  /// * User-Agent: This will be set to `"Google-Cloud-Tasks"`.
+  /// * X-Google-*: Google use only.
+  /// * X-AppEngine-*: Google use only.
+  ///
+  /// `Content-Type` won't be set by Cloud Tasks. You can explicitly set
+  /// `Content-Type` to a media type when the
+  ///  task is created.
+  /// For example, `Content-Type` can be set to `"application/octet-stream"` or
+  ///  `"application/json"`.
+  ///
+  /// Headers which can have multiple values (according to RFC2616) can be
+  /// specified using comma-separated values.
+  ///
+  /// The size of the headers must be less than 80KB.
+  core.Map<core.String, core.String> headers;
+
+  /// The HTTP method to use for the request. The default is POST.
+  /// Possible string values are:
+  /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
+  /// - "POST" : HTTP POST
+  /// - "GET" : HTTP GET
+  /// - "HEAD" : HTTP HEAD
+  /// - "PUT" : HTTP PUT
+  /// - "DELETE" : HTTP DELETE
+  /// - "PATCH" : HTTP PATCH
+  /// - "OPTIONS" : HTTP OPTIONS
+  core.String httpMethod;
+
+  /// If specified, an
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+  /// will be generated and attached as an `Authorization` header in the HTTP
+  /// request.
+  ///
+  /// This type of authorization should generally only be used when calling
+  /// Google APIs hosted on *.googleapis.com.
+  OAuthToken oauthToken;
+
+  /// If specified, an
+  /// [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
+  /// token will be generated and attached as an `Authorization` header in the
+  /// HTTP request.
+  ///
+  /// This type of authorization can be used for many scenarios, including
+  /// calling Cloud Run, or endpoints where you intend to validate the token
+  /// yourself.
+  OidcToken oidcToken;
+
+  /// Required. The full url path that the request will be sent to.
+  ///
+  /// This string must begin with either "http://" or "https://". Some examples
+  /// are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will
+  /// encode some characters for safety and compatibility. The maximum allowed
+  /// URL length is 2083 characters after encoding.
+  ///
+  /// The `Location` header response from a redirect response [`300` - `399`]
+  /// may be followed. The redirect is not counted as a separate attempt.
+  core.String url;
+
+  HttpRequest();
+
+  HttpRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("body")) {
+      body = _json["body"];
+    }
+    if (_json.containsKey("headers")) {
+      headers = (_json["headers"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("httpMethod")) {
+      httpMethod = _json["httpMethod"];
+    }
+    if (_json.containsKey("oauthToken")) {
+      oauthToken = new OAuthToken.fromJson(_json["oauthToken"]);
+    }
+    if (_json.containsKey("oidcToken")) {
+      oidcToken = new OidcToken.fromJson(_json["oidcToken"]);
+    }
+    if (_json.containsKey("url")) {
+      url = _json["url"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (body != null) {
+      _json["body"] = body;
+    }
+    if (headers != null) {
+      _json["headers"] = headers;
+    }
+    if (httpMethod != null) {
+      _json["httpMethod"] = httpMethod;
+    }
+    if (oauthToken != null) {
+      _json["oauthToken"] = (oauthToken).toJson();
+    }
+    if (oidcToken != null) {
+      _json["oidcToken"] = (oidcToken).toJson();
+    }
+    if (url != null) {
+      _json["url"] = url;
+    }
     return _json;
   }
 }
@@ -2071,6 +2301,91 @@ class Location {
   }
 }
 
+/// Contains information needed for generating an
+/// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+/// This type of authorization should generally only be used when calling Google
+/// APIs hosted on *.googleapis.com.
+class OAuthToken {
+  /// OAuth scope to be used for generating OAuth access token.
+  /// If not specified, "https://www.googleapis.com/auth/cloud-platform"
+  /// will be used.
+  core.String scope;
+
+  /// [Service account
+  /// email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating OAuth token.
+  /// The service account must be within the same project as the queue. The
+  /// caller must have iam.serviceAccounts.actAs permission for the service
+  /// account.
+  core.String serviceAccountEmail;
+
+  OAuthToken();
+
+  OAuthToken.fromJson(core.Map _json) {
+    if (_json.containsKey("scope")) {
+      scope = _json["scope"];
+    }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (scope != null) {
+      _json["scope"] = scope;
+    }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    return _json;
+  }
+}
+
+/// Contains information needed for generating an
+/// [OpenID Connect
+/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+/// This type of authorization can be used for many scenarios, including
+/// calling Cloud Run, or endpoints where you intend to validate the token
+/// yourself.
+class OidcToken {
+  /// Audience to be used when generating OIDC token. If not specified, the URI
+  /// specified in target will be used.
+  core.String audience;
+
+  /// [Service account
+  /// email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating OIDC token.
+  /// The service account must be within the same project as the queue. The
+  /// caller must have iam.serviceAccounts.actAs permission for the service
+  /// account.
+  core.String serviceAccountEmail;
+
+  OidcToken();
+
+  OidcToken.fromJson(core.Map _json) {
+    if (_json.containsKey("audience")) {
+      audience = _json["audience"];
+    }
+    if (_json.containsKey("serviceAccountEmail")) {
+      serviceAccountEmail = _json["serviceAccountEmail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (audience != null) {
+      _json["audience"] = audience;
+    }
+    if (serviceAccountEmail != null) {
+      _json["serviceAccountEmail"] = serviceAccountEmail;
+    }
+    return _json;
+  }
+}
+
 /// Request message for PauseQueue.
 class PauseQueueRequest {
   PauseQueueRequest();
@@ -2084,56 +2399,74 @@ class PauseQueueRequest {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -2145,8 +2478,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -2157,7 +2494,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -2213,6 +2572,7 @@ class Queue {
   /// task-level app_engine_routing.
   /// These settings apply only to
   /// App Engine tasks in this queue.
+  /// Http tasks are not affected.
   ///
   /// If set, `app_engine_routing_override` is used for all
   /// App Engine tasks in the queue, no matter what the
@@ -2292,6 +2652,11 @@ class Queue {
   /// documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
   RetryConfig retryConfig;
 
+  /// Configuration options for writing logs to
+  /// [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this
+  /// field is unset, then no logs are written.
+  StackdriverLoggingConfig stackdriverLoggingConfig;
+
   /// Output only. The state of the queue.
   ///
   /// `state` can only be changed by called
@@ -2348,6 +2713,10 @@ class Queue {
     if (_json.containsKey("retryConfig")) {
       retryConfig = new RetryConfig.fromJson(_json["retryConfig"]);
     }
+    if (_json.containsKey("stackdriverLoggingConfig")) {
+      stackdriverLoggingConfig = new StackdriverLoggingConfig.fromJson(
+          _json["stackdriverLoggingConfig"]);
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -2370,6 +2739,9 @@ class Queue {
     }
     if (retryConfig != null) {
       _json["retryConfig"] = (retryConfig).toJson();
+    }
+    if (stackdriverLoggingConfig != null) {
+      _json["stackdriverLoggingConfig"] = (stackdriverLoggingConfig).toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -2408,7 +2780,7 @@ class RateLimits {
   /// value of
   /// max_dispatches_per_second.
   ///
-  /// For App Engine queues that were created or updated using
+  /// For queues that were created or updated using
   /// `queue.yaml/xml`, `max_burst_size` is equal to
   /// [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/queueref#bucket_size).
   /// Since `max_burst_size` is output only, if
@@ -2443,8 +2815,7 @@ class RateLimits {
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default.
   ///
-  /// * For App Engine queues, the maximum allowed value
-  ///   is 500.
+  /// * The maximum allowed value is 500.
   ///
   ///
   /// This field has the same meaning as
@@ -2537,7 +2908,7 @@ class RetryConfig {
   /// A task's retry interval starts at
   /// min_backoff, then doubles
   /// `max_doublings` times, then increases linearly, and finally
-  /// retries retries at intervals of
+  /// retries at intervals of
   /// max_backoff up to
   /// max_attempts times.
   ///
@@ -2715,6 +3086,33 @@ class SetIamPolicyRequest {
   }
 }
 
+/// Configuration options for writing logs to
+/// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+class StackdriverLoggingConfig {
+  /// Specifies the fraction of operations to write to
+  /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+  /// This field may contain any value between 0.0 and 1.0, inclusive.
+  /// 0.0 is the default and means that no operations are logged.
+  core.double samplingRatio;
+
+  StackdriverLoggingConfig();
+
+  StackdriverLoggingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("samplingRatio")) {
+      samplingRatio = _json["samplingRatio"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (samplingRatio != null) {
+      _json["samplingRatio"] = samplingRatio;
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -2801,6 +3199,8 @@ class Task {
   ///
   /// The default and maximum values depend on the type of request:
   ///
+  /// * For HTTP tasks, the default is 10 minutes. The deadline
+  ///   must be in the interval [15 seconds, 30 minutes].
   ///
   /// * For App Engine tasks, 0 indicates that the
   ///   request has the default deadline. The default deadline depends on the
@@ -2825,6 +3225,11 @@ class Task {
   /// Only dispatch_time will be set.
   /// The other Attempt information is not retained by Cloud Tasks.
   Attempt firstAttempt;
+
+  /// HTTP request that is sent to the worker.
+  ///
+  /// An HTTP task is a task that has HttpRequest set.
+  HttpRequest httpRequest;
 
   /// Output only. The status of the task's last attempt.
   Attempt lastAttempt;
@@ -2854,9 +3259,7 @@ class Task {
   /// Output only. The number of attempts which have received a response.
   core.int responseCount;
 
-  /// The time when the task is scheduled to be attempted.
-  ///
-  /// For App Engine queues, this is when the task will be attempted or retried.
+  /// The time when the task is scheduled to be attempted or retried.
   ///
   /// `schedule_time` will be truncated to the nearest microsecond.
   core.String scheduleTime;
@@ -2899,6 +3302,9 @@ class Task {
     if (_json.containsKey("firstAttempt")) {
       firstAttempt = new Attempt.fromJson(_json["firstAttempt"]);
     }
+    if (_json.containsKey("httpRequest")) {
+      httpRequest = new HttpRequest.fromJson(_json["httpRequest"]);
+    }
     if (_json.containsKey("lastAttempt")) {
       lastAttempt = new Attempt.fromJson(_json["lastAttempt"]);
     }
@@ -2933,6 +3339,9 @@ class Task {
     }
     if (firstAttempt != null) {
       _json["firstAttempt"] = (firstAttempt).toJson();
+    }
+    if (httpRequest != null) {
+      _json["httpRequest"] = (httpRequest).toJson();
     }
     if (lastAttempt != null) {
       _json["lastAttempt"] = (lastAttempt).toJson();
