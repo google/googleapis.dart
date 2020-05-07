@@ -13,7 +13,60 @@ import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
-
+///
+/// * Simple function to call that takes the credentials, text to syntesise, language, gender, and format. Returns a
+/// * Future<SynthesizeSpeechResponse>, takes in all required parameters
+/// * text : any string
+/// * language:  The languages that this voice supports, expressed as
+///              [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.
+///              "en-US", "es-419", "cmn-tw").
+///  * gender:  Possible string values are:
+///             "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender.
+///             In VoiceSelectionParams, this means that the client doesn't care which
+///             gender the selected voice will have. In the Voice field of
+///             ListVoicesResponse, this may mean that the voice doesn't fit any of the
+///             other categories in this enum, or that the gender of the voice isn't
+///             known.
+///             "MALE" : A male voice.
+///             "FEMALE" : A female voice.
+///             "NEUTRAL" : A gender-neutral voice.
+///  * format:  The format of the audio byte stream.
+///             Possible string values are:
+///             "AUDIO_ENCODING_UNSPECIFIED" : Not specified. Will return result
+///             google.rpc.Code.INVALID_ARGUMENT.
+///             "LINEAR16" : Uncompressed 16-bit signed little-endian samples (Linear
+///             PCM).
+///             Audio content returned as LINEAR16 also contains a WAV header.
+///             "MP3" : MP3 audio at 32kbps.
+///             "OGG_OPUS" : Opus encoded audio wrapped in an ogg container. The result
+///             will be a file which can be played natively on Android, and in browsers (at least
+///             Chrome and Firefox). The quality of the encoding is considerably higher
+///             than MP3 while using approximately the same bitrate.
+///
+Future<SynthesizeSpeechResponse> googleTexttoSpeech(
+      ServiceAccountCredentials credentials,
+      String text,
+      String language,
+      String gender,
+      String format,
+      {List<String> scopes = const [TexttospeechApi.CloudPlatformScope]}) {
+    return clientViaServiceAccount(_credentials, _SCOPES).then((httpClient) {
+      var tts = new TexttospeechApi(httpClient);
+      var ttsResource = tts.text;
+      var request = SynthesizeSpeechRequest();
+      var input = SynthesisInput();
+      var audio = AudioConfig();
+      var voice = VoiceSelectionParams();
+      voice.languageCode = language;
+      voice.ssmlGender = gender;
+      audio.audioEncoding = format;
+      request.audioConfig = audio;
+      request.voice = voice;
+      input.text = text;
+      request.input = input;
+      ttsResource.synthesize(request);
+    });
+  }
 const core.String USER_AGENT = 'dart-api-client texttospeech/v1';
 
 /// Synthesizes natural-sounding speech by applying powerful neural network
