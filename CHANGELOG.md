@@ -1,3 +1,12 @@
+## 0.2.0
+
+ - Changed `ApiRequestError` (and its subclass `DetailedApiRequestError`) from
+   extending `Error` to implementing `Exception`.
+
+The change from extending `Error` to implementing `Exception` should not affect
+`try {...} on DetailedApiRequestError {` blocks. But anyone catching `Error`,
+`Exception` or testing with `is Error` might be affected.
+
 ## 0.1.9
 
  - Added a `x-goog-api-client` header for client library identification.
