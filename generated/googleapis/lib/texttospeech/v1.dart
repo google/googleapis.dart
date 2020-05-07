@@ -50,7 +50,7 @@ Future<SynthesizeSpeechResponse> googleTexttoSpeech(
       String gender,
       String format,
       {List<String> scopes = const [TexttospeechApi.CloudPlatformScope]}) {
-    return clientViaServiceAccount(_credentials, _SCOPES).then((httpClient) {
+    return clientViaServiceAccount(credentials, scopes).then((httpClient) {
       var tts = new TexttospeechApi(httpClient);
       var ttsResource = tts.text;
       var request = SynthesizeSpeechRequest();
