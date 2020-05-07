@@ -50,14 +50,46 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4922() {
+core.int buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart = 0;
+buildGoogleCloudDialogflowV2AnnotatedMessagePart() {
+  var o = new api.GoogleCloudDialogflowV2AnnotatedMessagePart();
+  buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart++;
+  if (buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart < 3) {
+    o.entityType = "foo";
+    o.formattedValue = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
+    o.text = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2AnnotatedMessagePart(
+    api.GoogleCloudDialogflowV2AnnotatedMessagePart o) {
+  buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart++;
+  if (buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart < 3) {
+    unittest.expect(o.entityType, unittest.equals('foo'));
+    var casted1 = (o.formattedValue) as core.Map;
+    unittest.expect(casted1, unittest.hasLength(3));
+    unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
+    unittest.expect(casted1["bool"], unittest.equals(true));
+    unittest.expect(casted1["string"], unittest.equals('foo'));
+    unittest.expect(o.text, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2AnnotatedMessagePart--;
+}
+
+buildUnnamed5679() {
   var o = new core.List<api.GoogleCloudDialogflowV2EntityType>();
   o.add(buildGoogleCloudDialogflowV2EntityType());
   o.add(buildGoogleCloudDialogflowV2EntityType());
   return o;
 }
 
-checkUnnamed4922(core.List<api.GoogleCloudDialogflowV2EntityType> o) {
+checkUnnamed5679(core.List<api.GoogleCloudDialogflowV2EntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2EntityType(o[0]);
   checkGoogleCloudDialogflowV2EntityType(o[1]);
@@ -68,7 +100,7 @@ buildGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse() {
   var o = new api.GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse();
   buildCounterGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse < 3) {
-    o.entityTypes = buildUnnamed4922();
+    o.entityTypes = buildUnnamed5679();
   }
   buildCounterGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse--;
   return o;
@@ -78,19 +110,19 @@ checkGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse(
     api.GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse o) {
   buildCounterGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse < 3) {
-    checkUnnamed4922(o.entityTypes);
+    checkUnnamed5679(o.entityTypes);
   }
   buildCounterGoogleCloudDialogflowV2BatchUpdateEntityTypesResponse--;
 }
 
-buildUnnamed4923() {
+buildUnnamed5680() {
   var o = new core.List<api.GoogleCloudDialogflowV2Intent>();
   o.add(buildGoogleCloudDialogflowV2Intent());
   o.add(buildGoogleCloudDialogflowV2Intent());
   return o;
 }
 
-checkUnnamed4923(core.List<api.GoogleCloudDialogflowV2Intent> o) {
+checkUnnamed5680(core.List<api.GoogleCloudDialogflowV2Intent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2Intent(o[0]);
   checkGoogleCloudDialogflowV2Intent(o[1]);
@@ -101,7 +133,7 @@ buildGoogleCloudDialogflowV2BatchUpdateIntentsResponse() {
   var o = new api.GoogleCloudDialogflowV2BatchUpdateIntentsResponse();
   buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse < 3) {
-    o.intents = buildUnnamed4923();
+    o.intents = buildUnnamed5680();
   }
   buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse--;
   return o;
@@ -111,12 +143,12 @@ checkGoogleCloudDialogflowV2BatchUpdateIntentsResponse(
     api.GoogleCloudDialogflowV2BatchUpdateIntentsResponse o) {
   buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse < 3) {
-    checkUnnamed4923(o.intents);
+    checkUnnamed5680(o.intents);
   }
   buildCounterGoogleCloudDialogflowV2BatchUpdateIntentsResponse--;
 }
 
-buildUnnamed4924() {
+buildUnnamed5681() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -131,18 +163,18 @@ buildUnnamed4924() {
   return o;
 }
 
-checkUnnamed4924(core.Map<core.String, core.Object> o) {
+checkUnnamed5681(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map;
-  unittest.expect(casted1, unittest.hasLength(3));
-  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted1["bool"], unittest.equals(true));
-  unittest.expect(casted1["string"], unittest.equals('foo'));
-  var casted2 = (o["y"]) as core.Map;
+  var casted2 = (o["x"]) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
   unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted2["bool"], unittest.equals(true));
   unittest.expect(casted2["string"], unittest.equals('foo'));
+  var casted3 = (o["y"]) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3["bool"], unittest.equals(true));
+  unittest.expect(casted3["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2Context = 0;
@@ -152,7 +184,7 @@ buildGoogleCloudDialogflowV2Context() {
   if (buildCounterGoogleCloudDialogflowV2Context < 3) {
     o.lifespanCount = 42;
     o.name = "foo";
-    o.parameters = buildUnnamed4924();
+    o.parameters = buildUnnamed5681();
   }
   buildCounterGoogleCloudDialogflowV2Context--;
   return o;
@@ -163,19 +195,45 @@ checkGoogleCloudDialogflowV2Context(api.GoogleCloudDialogflowV2Context o) {
   if (buildCounterGoogleCloudDialogflowV2Context < 3) {
     unittest.expect(o.lifespanCount, unittest.equals(42));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4924(o.parameters);
+    checkUnnamed5681(o.parameters);
   }
   buildCounterGoogleCloudDialogflowV2Context--;
 }
 
-buildUnnamed4925() {
+core.int buildCounterGoogleCloudDialogflowV2ConversationEvent = 0;
+buildGoogleCloudDialogflowV2ConversationEvent() {
+  var o = new api.GoogleCloudDialogflowV2ConversationEvent();
+  buildCounterGoogleCloudDialogflowV2ConversationEvent++;
+  if (buildCounterGoogleCloudDialogflowV2ConversationEvent < 3) {
+    o.conversation = "foo";
+    o.errorStatus = buildGoogleRpcStatus();
+    o.newMessagePayload = buildGoogleCloudDialogflowV2Message();
+    o.type = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2ConversationEvent--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2ConversationEvent(
+    api.GoogleCloudDialogflowV2ConversationEvent o) {
+  buildCounterGoogleCloudDialogflowV2ConversationEvent++;
+  if (buildCounterGoogleCloudDialogflowV2ConversationEvent < 3) {
+    unittest.expect(o.conversation, unittest.equals('foo'));
+    checkGoogleRpcStatus(o.errorStatus);
+    checkGoogleCloudDialogflowV2Message(o.newMessagePayload);
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2ConversationEvent--;
+}
+
+buildUnnamed5682() {
   var o = new core.List<api.GoogleCloudDialogflowV2EntityTypeEntity>();
   o.add(buildGoogleCloudDialogflowV2EntityTypeEntity());
   o.add(buildGoogleCloudDialogflowV2EntityTypeEntity());
   return o;
 }
 
-checkUnnamed4925(core.List<api.GoogleCloudDialogflowV2EntityTypeEntity> o) {
+checkUnnamed5682(core.List<api.GoogleCloudDialogflowV2EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2EntityTypeEntity(o[0]);
   checkGoogleCloudDialogflowV2EntityTypeEntity(o[1]);
@@ -188,7 +246,8 @@ buildGoogleCloudDialogflowV2EntityType() {
   if (buildCounterGoogleCloudDialogflowV2EntityType < 3) {
     o.autoExpansionMode = "foo";
     o.displayName = "foo";
-    o.entities = buildUnnamed4925();
+    o.enableFuzzyExtraction = true;
+    o.entities = buildUnnamed5682();
     o.kind = "foo";
     o.name = "foo";
   }
@@ -202,21 +261,22 @@ checkGoogleCloudDialogflowV2EntityType(
   if (buildCounterGoogleCloudDialogflowV2EntityType < 3) {
     unittest.expect(o.autoExpansionMode, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed4925(o.entities);
+    unittest.expect(o.enableFuzzyExtraction, unittest.isTrue);
+    checkUnnamed5682(o.entities);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2EntityType--;
 }
 
-buildUnnamed4926() {
+buildUnnamed5683() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4926(core.List<core.String> o) {
+checkUnnamed5683(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -227,7 +287,7 @@ buildGoogleCloudDialogflowV2EntityTypeEntity() {
   var o = new api.GoogleCloudDialogflowV2EntityTypeEntity();
   buildCounterGoogleCloudDialogflowV2EntityTypeEntity++;
   if (buildCounterGoogleCloudDialogflowV2EntityTypeEntity < 3) {
-    o.synonyms = buildUnnamed4926();
+    o.synonyms = buildUnnamed5683();
     o.value = "foo";
   }
   buildCounterGoogleCloudDialogflowV2EntityTypeEntity--;
@@ -238,13 +298,13 @@ checkGoogleCloudDialogflowV2EntityTypeEntity(
     api.GoogleCloudDialogflowV2EntityTypeEntity o) {
   buildCounterGoogleCloudDialogflowV2EntityTypeEntity++;
   if (buildCounterGoogleCloudDialogflowV2EntityTypeEntity < 3) {
-    checkUnnamed4926(o.synonyms);
+    checkUnnamed5683(o.synonyms);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2EntityTypeEntity--;
 }
 
-buildUnnamed4927() {
+buildUnnamed5684() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -259,18 +319,18 @@ buildUnnamed4927() {
   return o;
 }
 
-checkUnnamed4927(core.Map<core.String, core.Object> o) {
+checkUnnamed5684(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map;
-  unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3["bool"], unittest.equals(true));
-  unittest.expect(casted3["string"], unittest.equals('foo'));
-  var casted4 = (o["y"]) as core.Map;
+  var casted4 = (o["x"]) as core.Map;
   unittest.expect(casted4, unittest.hasLength(3));
   unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted4["bool"], unittest.equals(true));
   unittest.expect(casted4["string"], unittest.equals('foo'));
+  var casted5 = (o["y"]) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5["bool"], unittest.equals(true));
+  unittest.expect(casted5["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2EventInput = 0;
@@ -280,7 +340,7 @@ buildGoogleCloudDialogflowV2EventInput() {
   if (buildCounterGoogleCloudDialogflowV2EventInput < 3) {
     o.languageCode = "foo";
     o.name = "foo";
-    o.parameters = buildUnnamed4927();
+    o.parameters = buildUnnamed5684();
   }
   buildCounterGoogleCloudDialogflowV2EventInput--;
   return o;
@@ -292,7 +352,7 @@ checkGoogleCloudDialogflowV2EventInput(
   if (buildCounterGoogleCloudDialogflowV2EventInput < 3) {
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4927(o.parameters);
+    checkUnnamed5684(o.parameters);
   }
   buildCounterGoogleCloudDialogflowV2EventInput--;
 }
@@ -319,106 +379,106 @@ checkGoogleCloudDialogflowV2ExportAgentResponse(
   buildCounterGoogleCloudDialogflowV2ExportAgentResponse--;
 }
 
-buildUnnamed4928() {
+buildUnnamed5685() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4928(core.List<core.String> o) {
+checkUnnamed5685(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4929() {
+buildUnnamed5686() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4929(core.List<core.String> o) {
+checkUnnamed5686(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4930() {
+buildUnnamed5687() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentFollowupIntentInfo>();
   o.add(buildGoogleCloudDialogflowV2IntentFollowupIntentInfo());
   o.add(buildGoogleCloudDialogflowV2IntentFollowupIntentInfo());
   return o;
 }
 
-checkUnnamed4930(
+checkUnnamed5687(
     core.List<api.GoogleCloudDialogflowV2IntentFollowupIntentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentFollowupIntentInfo(o[0]);
   checkGoogleCloudDialogflowV2IntentFollowupIntentInfo(o[1]);
 }
 
-buildUnnamed4931() {
+buildUnnamed5688() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4931(core.List<core.String> o) {
+checkUnnamed5688(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4932() {
+buildUnnamed5689() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentMessage>();
   o.add(buildGoogleCloudDialogflowV2IntentMessage());
   o.add(buildGoogleCloudDialogflowV2IntentMessage());
   return o;
 }
 
-checkUnnamed4932(core.List<api.GoogleCloudDialogflowV2IntentMessage> o) {
+checkUnnamed5689(core.List<api.GoogleCloudDialogflowV2IntentMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessage(o[0]);
   checkGoogleCloudDialogflowV2IntentMessage(o[1]);
 }
 
-buildUnnamed4933() {
+buildUnnamed5690() {
   var o = new core.List<api.GoogleCloudDialogflowV2Context>();
   o.add(buildGoogleCloudDialogflowV2Context());
   o.add(buildGoogleCloudDialogflowV2Context());
   return o;
 }
 
-checkUnnamed4933(core.List<api.GoogleCloudDialogflowV2Context> o) {
+checkUnnamed5690(core.List<api.GoogleCloudDialogflowV2Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2Context(o[0]);
   checkGoogleCloudDialogflowV2Context(o[1]);
 }
 
-buildUnnamed4934() {
+buildUnnamed5691() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentParameter>();
   o.add(buildGoogleCloudDialogflowV2IntentParameter());
   o.add(buildGoogleCloudDialogflowV2IntentParameter());
   return o;
 }
 
-checkUnnamed4934(core.List<api.GoogleCloudDialogflowV2IntentParameter> o) {
+checkUnnamed5691(core.List<api.GoogleCloudDialogflowV2IntentParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentParameter(o[0]);
   checkGoogleCloudDialogflowV2IntentParameter(o[1]);
 }
 
-buildUnnamed4935() {
+buildUnnamed5692() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentTrainingPhrase>();
   o.add(buildGoogleCloudDialogflowV2IntentTrainingPhrase());
   o.add(buildGoogleCloudDialogflowV2IntentTrainingPhrase());
   return o;
 }
 
-checkUnnamed4935(core.List<api.GoogleCloudDialogflowV2IntentTrainingPhrase> o) {
+checkUnnamed5692(core.List<api.GoogleCloudDialogflowV2IntentTrainingPhrase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentTrainingPhrase(o[0]);
   checkGoogleCloudDialogflowV2IntentTrainingPhrase(o[1]);
@@ -430,22 +490,22 @@ buildGoogleCloudDialogflowV2Intent() {
   buildCounterGoogleCloudDialogflowV2Intent++;
   if (buildCounterGoogleCloudDialogflowV2Intent < 3) {
     o.action = "foo";
-    o.defaultResponsePlatforms = buildUnnamed4928();
+    o.defaultResponsePlatforms = buildUnnamed5685();
     o.displayName = "foo";
-    o.events = buildUnnamed4929();
-    o.followupIntentInfo = buildUnnamed4930();
-    o.inputContextNames = buildUnnamed4931();
+    o.events = buildUnnamed5686();
+    o.followupIntentInfo = buildUnnamed5687();
+    o.inputContextNames = buildUnnamed5688();
     o.isFallback = true;
-    o.messages = buildUnnamed4932();
+    o.messages = buildUnnamed5689();
     o.mlDisabled = true;
     o.name = "foo";
-    o.outputContexts = buildUnnamed4933();
-    o.parameters = buildUnnamed4934();
+    o.outputContexts = buildUnnamed5690();
+    o.parameters = buildUnnamed5691();
     o.parentFollowupIntentName = "foo";
     o.priority = 42;
     o.resetContexts = true;
     o.rootFollowupIntentName = "foo";
-    o.trainingPhrases = buildUnnamed4935();
+    o.trainingPhrases = buildUnnamed5692();
     o.webhookState = "foo";
   }
   buildCounterGoogleCloudDialogflowV2Intent--;
@@ -456,22 +516,22 @@ checkGoogleCloudDialogflowV2Intent(api.GoogleCloudDialogflowV2Intent o) {
   buildCounterGoogleCloudDialogflowV2Intent++;
   if (buildCounterGoogleCloudDialogflowV2Intent < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed4928(o.defaultResponsePlatforms);
+    checkUnnamed5685(o.defaultResponsePlatforms);
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed4929(o.events);
-    checkUnnamed4930(o.followupIntentInfo);
-    checkUnnamed4931(o.inputContextNames);
+    checkUnnamed5686(o.events);
+    checkUnnamed5687(o.followupIntentInfo);
+    checkUnnamed5688(o.inputContextNames);
     unittest.expect(o.isFallback, unittest.isTrue);
-    checkUnnamed4932(o.messages);
+    checkUnnamed5689(o.messages);
     unittest.expect(o.mlDisabled, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4933(o.outputContexts);
-    checkUnnamed4934(o.parameters);
+    checkUnnamed5690(o.outputContexts);
+    checkUnnamed5691(o.parameters);
     unittest.expect(o.parentFollowupIntentName, unittest.equals('foo'));
     unittest.expect(o.priority, unittest.equals(42));
     unittest.expect(o.resetContexts, unittest.isTrue);
     unittest.expect(o.rootFollowupIntentName, unittest.equals('foo'));
-    checkUnnamed4935(o.trainingPhrases);
+    checkUnnamed5692(o.trainingPhrases);
     unittest.expect(o.webhookState, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2Intent--;
@@ -499,7 +559,7 @@ checkGoogleCloudDialogflowV2IntentFollowupIntentInfo(
   buildCounterGoogleCloudDialogflowV2IntentFollowupIntentInfo--;
 }
 
-buildUnnamed4936() {
+buildUnnamed5693() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -514,18 +574,18 @@ buildUnnamed4936() {
   return o;
 }
 
-checkUnnamed4936(core.Map<core.String, core.Object> o) {
+checkUnnamed5693(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
+  var casted6 = (o["x"]) as core.Map;
   unittest.expect(casted6, unittest.hasLength(3));
   unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted6["bool"], unittest.equals(true));
   unittest.expect(casted6["string"], unittest.equals('foo'));
+  var casted7 = (o["y"]) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
+  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7["bool"], unittest.equals(true));
+  unittest.expect(casted7["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2IntentMessage = 0;
@@ -534,6 +594,8 @@ buildGoogleCloudDialogflowV2IntentMessage() {
   buildCounterGoogleCloudDialogflowV2IntentMessage++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessage < 3) {
     o.basicCard = buildGoogleCloudDialogflowV2IntentMessageBasicCard();
+    o.browseCarouselCard =
+        buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard();
     o.card = buildGoogleCloudDialogflowV2IntentMessageCard();
     o.carouselSelect =
         buildGoogleCloudDialogflowV2IntentMessageCarouselSelect();
@@ -541,12 +603,14 @@ buildGoogleCloudDialogflowV2IntentMessage() {
     o.linkOutSuggestion =
         buildGoogleCloudDialogflowV2IntentMessageLinkOutSuggestion();
     o.listSelect = buildGoogleCloudDialogflowV2IntentMessageListSelect();
-    o.payload = buildUnnamed4936();
+    o.mediaContent = buildGoogleCloudDialogflowV2IntentMessageMediaContent();
+    o.payload = buildUnnamed5693();
     o.platform = "foo";
     o.quickReplies = buildGoogleCloudDialogflowV2IntentMessageQuickReplies();
     o.simpleResponses =
         buildGoogleCloudDialogflowV2IntentMessageSimpleResponses();
     o.suggestions = buildGoogleCloudDialogflowV2IntentMessageSuggestions();
+    o.tableCard = buildGoogleCloudDialogflowV2IntentMessageTableCard();
     o.text = buildGoogleCloudDialogflowV2IntentMessageText();
   }
   buildCounterGoogleCloudDialogflowV2IntentMessage--;
@@ -558,23 +622,27 @@ checkGoogleCloudDialogflowV2IntentMessage(
   buildCounterGoogleCloudDialogflowV2IntentMessage++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessage < 3) {
     checkGoogleCloudDialogflowV2IntentMessageBasicCard(o.basicCard);
+    checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard(
+        o.browseCarouselCard);
     checkGoogleCloudDialogflowV2IntentMessageCard(o.card);
     checkGoogleCloudDialogflowV2IntentMessageCarouselSelect(o.carouselSelect);
     checkGoogleCloudDialogflowV2IntentMessageImage(o.image);
     checkGoogleCloudDialogflowV2IntentMessageLinkOutSuggestion(
         o.linkOutSuggestion);
     checkGoogleCloudDialogflowV2IntentMessageListSelect(o.listSelect);
-    checkUnnamed4936(o.payload);
+    checkGoogleCloudDialogflowV2IntentMessageMediaContent(o.mediaContent);
+    checkUnnamed5693(o.payload);
     unittest.expect(o.platform, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2IntentMessageQuickReplies(o.quickReplies);
     checkGoogleCloudDialogflowV2IntentMessageSimpleResponses(o.simpleResponses);
     checkGoogleCloudDialogflowV2IntentMessageSuggestions(o.suggestions);
+    checkGoogleCloudDialogflowV2IntentMessageTableCard(o.tableCard);
     checkGoogleCloudDialogflowV2IntentMessageText(o.text);
   }
   buildCounterGoogleCloudDialogflowV2IntentMessage--;
 }
 
-buildUnnamed4937() {
+buildUnnamed5694() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2IntentMessageBasicCardButton>();
   o.add(buildGoogleCloudDialogflowV2IntentMessageBasicCardButton());
@@ -582,7 +650,7 @@ buildUnnamed4937() {
   return o;
 }
 
-checkUnnamed4937(
+checkUnnamed5694(
     core.List<api.GoogleCloudDialogflowV2IntentMessageBasicCardButton> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageBasicCardButton(o[0]);
@@ -594,7 +662,7 @@ buildGoogleCloudDialogflowV2IntentMessageBasicCard() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageBasicCard();
   buildCounterGoogleCloudDialogflowV2IntentMessageBasicCard++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageBasicCard < 3) {
-    o.buttons = buildUnnamed4937();
+    o.buttons = buildUnnamed5694();
     o.formattedText = "foo";
     o.image = buildGoogleCloudDialogflowV2IntentMessageImage();
     o.subtitle = "foo";
@@ -608,7 +676,7 @@ checkGoogleCloudDialogflowV2IntentMessageBasicCard(
     api.GoogleCloudDialogflowV2IntentMessageBasicCard o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageBasicCard++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageBasicCard < 3) {
-    checkUnnamed4937(o.buttons);
+    checkUnnamed5694(o.buttons);
     unittest.expect(o.formattedText, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2IntentMessageImage(o.image);
     unittest.expect(o.subtitle, unittest.equals('foo'));
@@ -666,14 +734,121 @@ checkGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction(
   buildCounterGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction--;
 }
 
-buildUnnamed4938() {
+buildUnnamed5695() {
+  var o = new core.List<
+      api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>();
+  o.add(
+      buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem());
+  o.add(
+      buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem());
+  return o;
+}
+
+checkUnnamed5695(
+    core.List<
+            api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+      o[0]);
+  checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+      o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard = 0;
+buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard() {
+  var o = new api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard();
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard < 3) {
+    o.imageDisplayOptions = "foo";
+    o.items = buildUnnamed5695();
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard(
+    api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard < 3) {
+    unittest.expect(o.imageDisplayOptions, unittest.equals('foo'));
+    checkUnnamed5695(o.items);
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem =
+    0;
+buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem() {
+  var o = new api
+      .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem <
+      3) {
+    o.description = "foo";
+    o.footer = "foo";
+    o.image = buildGoogleCloudDialogflowV2IntentMessageImage();
+    o.openUriAction =
+        buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
+    o.title = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+    api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+        o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem <
+      3) {
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.footer, unittest.equals('foo'));
+    checkGoogleCloudDialogflowV2IntentMessageImage(o.image);
+    checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
+        o.openUriAction);
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction =
+    0;
+buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction() {
+  var o = new api
+      .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction <
+      3) {
+    o.url = "foo";
+    o.urlTypeHint = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
+    api.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+        o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction <
+      3) {
+    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(o.urlTypeHint, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction--;
+}
+
+buildUnnamed5696() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentMessageCardButton>();
   o.add(buildGoogleCloudDialogflowV2IntentMessageCardButton());
   o.add(buildGoogleCloudDialogflowV2IntentMessageCardButton());
   return o;
 }
 
-checkUnnamed4938(
+checkUnnamed5696(
     core.List<api.GoogleCloudDialogflowV2IntentMessageCardButton> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageCardButton(o[0]);
@@ -685,7 +860,7 @@ buildGoogleCloudDialogflowV2IntentMessageCard() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageCard();
   buildCounterGoogleCloudDialogflowV2IntentMessageCard++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageCard < 3) {
-    o.buttons = buildUnnamed4938();
+    o.buttons = buildUnnamed5696();
     o.imageUri = "foo";
     o.subtitle = "foo";
     o.title = "foo";
@@ -698,7 +873,7 @@ checkGoogleCloudDialogflowV2IntentMessageCard(
     api.GoogleCloudDialogflowV2IntentMessageCard o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageCard++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageCard < 3) {
-    checkUnnamed4938(o.buttons);
+    checkUnnamed5696(o.buttons);
     unittest.expect(o.imageUri, unittest.equals('foo'));
     unittest.expect(o.subtitle, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -728,7 +903,7 @@ checkGoogleCloudDialogflowV2IntentMessageCardButton(
   buildCounterGoogleCloudDialogflowV2IntentMessageCardButton--;
 }
 
-buildUnnamed4939() {
+buildUnnamed5697() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>();
   o.add(buildGoogleCloudDialogflowV2IntentMessageCarouselSelectItem());
@@ -736,7 +911,7 @@ buildUnnamed4939() {
   return o;
 }
 
-checkUnnamed4939(
+checkUnnamed5697(
     core.List<api.GoogleCloudDialogflowV2IntentMessageCarouselSelectItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageCarouselSelectItem(o[0]);
@@ -748,7 +923,7 @@ buildGoogleCloudDialogflowV2IntentMessageCarouselSelect() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageCarouselSelect();
   buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelect++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelect < 3) {
-    o.items = buildUnnamed4939();
+    o.items = buildUnnamed5697();
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelect--;
   return o;
@@ -758,7 +933,7 @@ checkGoogleCloudDialogflowV2IntentMessageCarouselSelect(
     api.GoogleCloudDialogflowV2IntentMessageCarouselSelect o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelect++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelect < 3) {
-    checkUnnamed4939(o.items);
+    checkUnnamed5697(o.items);
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelect--;
 }
@@ -787,6 +962,28 @@ checkGoogleCloudDialogflowV2IntentMessageCarouselSelectItem(
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageCarouselSelectItem--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties = 0;
+buildGoogleCloudDialogflowV2IntentMessageColumnProperties() {
+  var o = new api.GoogleCloudDialogflowV2IntentMessageColumnProperties();
+  buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties < 3) {
+    o.header = "foo";
+    o.horizontalAlignment = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageColumnProperties(
+    api.GoogleCloudDialogflowV2IntentMessageColumnProperties o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties < 3) {
+    unittest.expect(o.header, unittest.equals('foo'));
+    unittest.expect(o.horizontalAlignment, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageColumnProperties--;
 }
 
 core.int buildCounterGoogleCloudDialogflowV2IntentMessageImage = 0;
@@ -833,7 +1030,7 @@ checkGoogleCloudDialogflowV2IntentMessageLinkOutSuggestion(
   buildCounterGoogleCloudDialogflowV2IntentMessageLinkOutSuggestion--;
 }
 
-buildUnnamed4940() {
+buildUnnamed5698() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2IntentMessageListSelectItem>();
   o.add(buildGoogleCloudDialogflowV2IntentMessageListSelectItem());
@@ -841,7 +1038,7 @@ buildUnnamed4940() {
   return o;
 }
 
-checkUnnamed4940(
+checkUnnamed5698(
     core.List<api.GoogleCloudDialogflowV2IntentMessageListSelectItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageListSelectItem(o[0]);
@@ -853,7 +1050,8 @@ buildGoogleCloudDialogflowV2IntentMessageListSelect() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageListSelect();
   buildCounterGoogleCloudDialogflowV2IntentMessageListSelect++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageListSelect < 3) {
-    o.items = buildUnnamed4940();
+    o.items = buildUnnamed5698();
+    o.subtitle = "foo";
     o.title = "foo";
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageListSelect--;
@@ -864,7 +1062,8 @@ checkGoogleCloudDialogflowV2IntentMessageListSelect(
     api.GoogleCloudDialogflowV2IntentMessageListSelect o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageListSelect++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageListSelect < 3) {
-    checkUnnamed4940(o.items);
+    checkUnnamed5698(o.items);
+    unittest.expect(o.subtitle, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageListSelect--;
@@ -896,14 +1095,90 @@ checkGoogleCloudDialogflowV2IntentMessageListSelectItem(
   buildCounterGoogleCloudDialogflowV2IntentMessageListSelectItem--;
 }
 
-buildUnnamed4941() {
+buildUnnamed5699() {
+  var o = new core.List<
+      api.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>();
+  o.add(
+      buildGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject());
+  o.add(
+      buildGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject());
+  return o;
+}
+
+checkUnnamed5699(
+    core.List<
+            api.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
+      o[0]);
+  checkGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
+      o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent = 0;
+buildGoogleCloudDialogflowV2IntentMessageMediaContent() {
+  var o = new api.GoogleCloudDialogflowV2IntentMessageMediaContent();
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent < 3) {
+    o.mediaObjects = buildUnnamed5699();
+    o.mediaType = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageMediaContent(
+    api.GoogleCloudDialogflowV2IntentMessageMediaContent o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent < 3) {
+    checkUnnamed5699(o.mediaObjects);
+    unittest.expect(o.mediaType, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContent--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject =
+    0;
+buildGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject() {
+  var o = new api
+      .GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject();
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject <
+      3) {
+    o.contentUrl = "foo";
+    o.description = "foo";
+    o.icon = buildGoogleCloudDialogflowV2IntentMessageImage();
+    o.largeImage = buildGoogleCloudDialogflowV2IntentMessageImage();
+    o.name = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
+    api.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject <
+      3) {
+    unittest.expect(o.contentUrl, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    checkGoogleCloudDialogflowV2IntentMessageImage(o.icon);
+    checkGoogleCloudDialogflowV2IntentMessageImage(o.largeImage);
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject--;
+}
+
+buildUnnamed5700() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4941(core.List<core.String> o) {
+checkUnnamed5700(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -914,7 +1189,7 @@ buildGoogleCloudDialogflowV2IntentMessageQuickReplies() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageQuickReplies();
   buildCounterGoogleCloudDialogflowV2IntentMessageQuickReplies++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageQuickReplies < 3) {
-    o.quickReplies = buildUnnamed4941();
+    o.quickReplies = buildUnnamed5700();
     o.title = "foo";
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageQuickReplies--;
@@ -925,20 +1200,20 @@ checkGoogleCloudDialogflowV2IntentMessageQuickReplies(
     api.GoogleCloudDialogflowV2IntentMessageQuickReplies o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageQuickReplies++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageQuickReplies < 3) {
-    checkUnnamed4941(o.quickReplies);
+    checkUnnamed5700(o.quickReplies);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageQuickReplies--;
 }
 
-buildUnnamed4942() {
+buildUnnamed5701() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4942(core.List<core.String> o) {
+checkUnnamed5701(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -950,7 +1225,7 @@ buildGoogleCloudDialogflowV2IntentMessageSelectItemInfo() {
   buildCounterGoogleCloudDialogflowV2IntentMessageSelectItemInfo++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageSelectItemInfo < 3) {
     o.key = "foo";
-    o.synonyms = buildUnnamed4942();
+    o.synonyms = buildUnnamed5701();
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageSelectItemInfo--;
   return o;
@@ -961,7 +1236,7 @@ checkGoogleCloudDialogflowV2IntentMessageSelectItemInfo(
   buildCounterGoogleCloudDialogflowV2IntentMessageSelectItemInfo++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageSelectItemInfo < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed4942(o.synonyms);
+    checkUnnamed5701(o.synonyms);
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageSelectItemInfo--;
 }
@@ -990,7 +1265,7 @@ checkGoogleCloudDialogflowV2IntentMessageSimpleResponse(
   buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponse--;
 }
 
-buildUnnamed4943() {
+buildUnnamed5702() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2IntentMessageSimpleResponse>();
   o.add(buildGoogleCloudDialogflowV2IntentMessageSimpleResponse());
@@ -998,7 +1273,7 @@ buildUnnamed4943() {
   return o;
 }
 
-checkUnnamed4943(
+checkUnnamed5702(
     core.List<api.GoogleCloudDialogflowV2IntentMessageSimpleResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageSimpleResponse(o[0]);
@@ -1010,7 +1285,7 @@ buildGoogleCloudDialogflowV2IntentMessageSimpleResponses() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageSimpleResponses();
   buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponses++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponses < 3) {
-    o.simpleResponses = buildUnnamed4943();
+    o.simpleResponses = buildUnnamed5702();
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponses--;
   return o;
@@ -1020,7 +1295,7 @@ checkGoogleCloudDialogflowV2IntentMessageSimpleResponses(
     api.GoogleCloudDialogflowV2IntentMessageSimpleResponses o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponses++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponses < 3) {
-    checkUnnamed4943(o.simpleResponses);
+    checkUnnamed5702(o.simpleResponses);
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageSimpleResponses--;
 }
@@ -1045,14 +1320,14 @@ checkGoogleCloudDialogflowV2IntentMessageSuggestion(
   buildCounterGoogleCloudDialogflowV2IntentMessageSuggestion--;
 }
 
-buildUnnamed4944() {
+buildUnnamed5703() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentMessageSuggestion>();
   o.add(buildGoogleCloudDialogflowV2IntentMessageSuggestion());
   o.add(buildGoogleCloudDialogflowV2IntentMessageSuggestion());
   return o;
 }
 
-checkUnnamed4944(
+checkUnnamed5703(
     core.List<api.GoogleCloudDialogflowV2IntentMessageSuggestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessageSuggestion(o[0]);
@@ -1064,7 +1339,7 @@ buildGoogleCloudDialogflowV2IntentMessageSuggestions() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageSuggestions();
   buildCounterGoogleCloudDialogflowV2IntentMessageSuggestions++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageSuggestions < 3) {
-    o.suggestions = buildUnnamed4944();
+    o.suggestions = buildUnnamed5703();
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageSuggestions--;
   return o;
@@ -1074,19 +1349,150 @@ checkGoogleCloudDialogflowV2IntentMessageSuggestions(
     api.GoogleCloudDialogflowV2IntentMessageSuggestions o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageSuggestions++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageSuggestions < 3) {
-    checkUnnamed4944(o.suggestions);
+    checkUnnamed5703(o.suggestions);
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageSuggestions--;
 }
 
-buildUnnamed4945() {
+buildUnnamed5704() {
+  var o =
+      new core.List<api.GoogleCloudDialogflowV2IntentMessageBasicCardButton>();
+  o.add(buildGoogleCloudDialogflowV2IntentMessageBasicCardButton());
+  o.add(buildGoogleCloudDialogflowV2IntentMessageBasicCardButton());
+  return o;
+}
+
+checkUnnamed5704(
+    core.List<api.GoogleCloudDialogflowV2IntentMessageBasicCardButton> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2IntentMessageBasicCardButton(o[0]);
+  checkGoogleCloudDialogflowV2IntentMessageBasicCardButton(o[1]);
+}
+
+buildUnnamed5705() {
+  var o =
+      new core.List<api.GoogleCloudDialogflowV2IntentMessageColumnProperties>();
+  o.add(buildGoogleCloudDialogflowV2IntentMessageColumnProperties());
+  o.add(buildGoogleCloudDialogflowV2IntentMessageColumnProperties());
+  return o;
+}
+
+checkUnnamed5705(
+    core.List<api.GoogleCloudDialogflowV2IntentMessageColumnProperties> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2IntentMessageColumnProperties(o[0]);
+  checkGoogleCloudDialogflowV2IntentMessageColumnProperties(o[1]);
+}
+
+buildUnnamed5706() {
+  var o = new core.List<api.GoogleCloudDialogflowV2IntentMessageTableCardRow>();
+  o.add(buildGoogleCloudDialogflowV2IntentMessageTableCardRow());
+  o.add(buildGoogleCloudDialogflowV2IntentMessageTableCardRow());
+  return o;
+}
+
+checkUnnamed5706(
+    core.List<api.GoogleCloudDialogflowV2IntentMessageTableCardRow> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2IntentMessageTableCardRow(o[0]);
+  checkGoogleCloudDialogflowV2IntentMessageTableCardRow(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2IntentMessageTableCard = 0;
+buildGoogleCloudDialogflowV2IntentMessageTableCard() {
+  var o = new api.GoogleCloudDialogflowV2IntentMessageTableCard();
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCard++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageTableCard < 3) {
+    o.buttons = buildUnnamed5704();
+    o.columnProperties = buildUnnamed5705();
+    o.image = buildGoogleCloudDialogflowV2IntentMessageImage();
+    o.rows = buildUnnamed5706();
+    o.subtitle = "foo";
+    o.title = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCard--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageTableCard(
+    api.GoogleCloudDialogflowV2IntentMessageTableCard o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCard++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageTableCard < 3) {
+    checkUnnamed5704(o.buttons);
+    checkUnnamed5705(o.columnProperties);
+    checkGoogleCloudDialogflowV2IntentMessageImage(o.image);
+    checkUnnamed5706(o.rows);
+    unittest.expect(o.subtitle, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCard--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell = 0;
+buildGoogleCloudDialogflowV2IntentMessageTableCardCell() {
+  var o = new api.GoogleCloudDialogflowV2IntentMessageTableCardCell();
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell < 3) {
+    o.text = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageTableCardCell(
+    api.GoogleCloudDialogflowV2IntentMessageTableCardCell o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell < 3) {
+    unittest.expect(o.text, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardCell--;
+}
+
+buildUnnamed5707() {
+  var o =
+      new core.List<api.GoogleCloudDialogflowV2IntentMessageTableCardCell>();
+  o.add(buildGoogleCloudDialogflowV2IntentMessageTableCardCell());
+  o.add(buildGoogleCloudDialogflowV2IntentMessageTableCardCell());
+  return o;
+}
+
+checkUnnamed5707(
+    core.List<api.GoogleCloudDialogflowV2IntentMessageTableCardCell> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2IntentMessageTableCardCell(o[0]);
+  checkGoogleCloudDialogflowV2IntentMessageTableCardCell(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow = 0;
+buildGoogleCloudDialogflowV2IntentMessageTableCardRow() {
+  var o = new api.GoogleCloudDialogflowV2IntentMessageTableCardRow();
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow < 3) {
+    o.cells = buildUnnamed5707();
+    o.dividerAfter = true;
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2IntentMessageTableCardRow(
+    api.GoogleCloudDialogflowV2IntentMessageTableCardRow o) {
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow++;
+  if (buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow < 3) {
+    checkUnnamed5707(o.cells);
+    unittest.expect(o.dividerAfter, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDialogflowV2IntentMessageTableCardRow--;
+}
+
+buildUnnamed5708() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4945(core.List<core.String> o) {
+checkUnnamed5708(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1097,7 +1503,7 @@ buildGoogleCloudDialogflowV2IntentMessageText() {
   var o = new api.GoogleCloudDialogflowV2IntentMessageText();
   buildCounterGoogleCloudDialogflowV2IntentMessageText++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageText < 3) {
-    o.text = buildUnnamed4945();
+    o.text = buildUnnamed5708();
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageText--;
   return o;
@@ -1107,19 +1513,19 @@ checkGoogleCloudDialogflowV2IntentMessageText(
     api.GoogleCloudDialogflowV2IntentMessageText o) {
   buildCounterGoogleCloudDialogflowV2IntentMessageText++;
   if (buildCounterGoogleCloudDialogflowV2IntentMessageText < 3) {
-    checkUnnamed4945(o.text);
+    checkUnnamed5708(o.text);
   }
   buildCounterGoogleCloudDialogflowV2IntentMessageText--;
 }
 
-buildUnnamed4946() {
+buildUnnamed5709() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4946(core.List<core.String> o) {
+checkUnnamed5709(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1136,7 +1542,7 @@ buildGoogleCloudDialogflowV2IntentParameter() {
     o.isList = true;
     o.mandatory = true;
     o.name = "foo";
-    o.prompts = buildUnnamed4946();
+    o.prompts = buildUnnamed5709();
     o.value = "foo";
   }
   buildCounterGoogleCloudDialogflowV2IntentParameter--;
@@ -1153,20 +1559,20 @@ checkGoogleCloudDialogflowV2IntentParameter(
     unittest.expect(o.isList, unittest.isTrue);
     unittest.expect(o.mandatory, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4946(o.prompts);
+    checkUnnamed5709(o.prompts);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2IntentParameter--;
 }
 
-buildUnnamed4947() {
+buildUnnamed5710() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentTrainingPhrasePart>();
   o.add(buildGoogleCloudDialogflowV2IntentTrainingPhrasePart());
   o.add(buildGoogleCloudDialogflowV2IntentTrainingPhrasePart());
   return o;
 }
 
-checkUnnamed4947(
+checkUnnamed5710(
     core.List<api.GoogleCloudDialogflowV2IntentTrainingPhrasePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentTrainingPhrasePart(o[0]);
@@ -1179,7 +1585,7 @@ buildGoogleCloudDialogflowV2IntentTrainingPhrase() {
   buildCounterGoogleCloudDialogflowV2IntentTrainingPhrase++;
   if (buildCounterGoogleCloudDialogflowV2IntentTrainingPhrase < 3) {
     o.name = "foo";
-    o.parts = buildUnnamed4947();
+    o.parts = buildUnnamed5710();
     o.timesAddedCount = 42;
     o.type = "foo";
   }
@@ -1192,7 +1598,7 @@ checkGoogleCloudDialogflowV2IntentTrainingPhrase(
   buildCounterGoogleCloudDialogflowV2IntentTrainingPhrase++;
   if (buildCounterGoogleCloudDialogflowV2IntentTrainingPhrase < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4947(o.parts);
+    checkUnnamed5710(o.parts);
     unittest.expect(o.timesAddedCount, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -1225,7 +1631,73 @@ checkGoogleCloudDialogflowV2IntentTrainingPhrasePart(
   buildCounterGoogleCloudDialogflowV2IntentTrainingPhrasePart--;
 }
 
-buildUnnamed4948() {
+core.int buildCounterGoogleCloudDialogflowV2Message = 0;
+buildGoogleCloudDialogflowV2Message() {
+  var o = new api.GoogleCloudDialogflowV2Message();
+  buildCounterGoogleCloudDialogflowV2Message++;
+  if (buildCounterGoogleCloudDialogflowV2Message < 3) {
+    o.content = "foo";
+    o.createTime = "foo";
+    o.languageCode = "foo";
+    o.messageAnnotation = buildGoogleCloudDialogflowV2MessageAnnotation();
+    o.name = "foo";
+    o.participant = "foo";
+    o.participantRole = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2Message--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2Message(api.GoogleCloudDialogflowV2Message o) {
+  buildCounterGoogleCloudDialogflowV2Message++;
+  if (buildCounterGoogleCloudDialogflowV2Message < 3) {
+    unittest.expect(o.content, unittest.equals('foo'));
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.languageCode, unittest.equals('foo'));
+    checkGoogleCloudDialogflowV2MessageAnnotation(o.messageAnnotation);
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.participant, unittest.equals('foo'));
+    unittest.expect(o.participantRole, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2Message--;
+}
+
+buildUnnamed5711() {
+  var o = new core.List<api.GoogleCloudDialogflowV2AnnotatedMessagePart>();
+  o.add(buildGoogleCloudDialogflowV2AnnotatedMessagePart());
+  o.add(buildGoogleCloudDialogflowV2AnnotatedMessagePart());
+  return o;
+}
+
+checkUnnamed5711(core.List<api.GoogleCloudDialogflowV2AnnotatedMessagePart> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2AnnotatedMessagePart(o[0]);
+  checkGoogleCloudDialogflowV2AnnotatedMessagePart(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2MessageAnnotation = 0;
+buildGoogleCloudDialogflowV2MessageAnnotation() {
+  var o = new api.GoogleCloudDialogflowV2MessageAnnotation();
+  buildCounterGoogleCloudDialogflowV2MessageAnnotation++;
+  if (buildCounterGoogleCloudDialogflowV2MessageAnnotation < 3) {
+    o.containEntities = true;
+    o.parts = buildUnnamed5711();
+  }
+  buildCounterGoogleCloudDialogflowV2MessageAnnotation--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2MessageAnnotation(
+    api.GoogleCloudDialogflowV2MessageAnnotation o) {
+  buildCounterGoogleCloudDialogflowV2MessageAnnotation++;
+  if (buildCounterGoogleCloudDialogflowV2MessageAnnotation < 3) {
+    unittest.expect(o.containEntities, unittest.isTrue);
+    checkUnnamed5711(o.parts);
+  }
+  buildCounterGoogleCloudDialogflowV2MessageAnnotation--;
+}
+
+buildUnnamed5712() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1240,18 +1712,18 @@ buildUnnamed4948() {
   return o;
 }
 
-checkUnnamed4948(core.Map<core.String, core.Object> o) {
+checkUnnamed5712(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map;
-  unittest.expect(casted7, unittest.hasLength(3));
-  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted7["bool"], unittest.equals(true));
-  unittest.expect(casted7["string"], unittest.equals('foo'));
-  var casted8 = (o["y"]) as core.Map;
+  var casted8 = (o["x"]) as core.Map;
   unittest.expect(casted8, unittest.hasLength(3));
   unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted8["bool"], unittest.equals(true));
   unittest.expect(casted8["string"], unittest.equals('foo'));
+  var casted9 = (o["y"]) as core.Map;
+  unittest.expect(casted9, unittest.hasLength(3));
+  unittest.expect(casted9["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted9["bool"], unittest.equals(true));
+  unittest.expect(casted9["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest = 0;
@@ -1259,7 +1731,7 @@ buildGoogleCloudDialogflowV2OriginalDetectIntentRequest() {
   var o = new api.GoogleCloudDialogflowV2OriginalDetectIntentRequest();
   buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest++;
   if (buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest < 3) {
-    o.payload = buildUnnamed4948();
+    o.payload = buildUnnamed5712();
     o.source = "foo";
     o.version = "foo";
   }
@@ -1271,14 +1743,14 @@ checkGoogleCloudDialogflowV2OriginalDetectIntentRequest(
     api.GoogleCloudDialogflowV2OriginalDetectIntentRequest o) {
   buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest++;
   if (buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest < 3) {
-    checkUnnamed4948(o.payload);
+    checkUnnamed5712(o.payload);
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2OriginalDetectIntentRequest--;
 }
 
-buildUnnamed4949() {
+buildUnnamed5713() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1293,47 +1765,47 @@ buildUnnamed4949() {
   return o;
 }
 
-checkUnnamed4949(core.Map<core.String, core.Object> o) {
+checkUnnamed5713(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted9 = (o["x"]) as core.Map;
-  unittest.expect(casted9, unittest.hasLength(3));
-  unittest.expect(casted9["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted9["bool"], unittest.equals(true));
-  unittest.expect(casted9["string"], unittest.equals('foo'));
-  var casted10 = (o["y"]) as core.Map;
+  var casted10 = (o["x"]) as core.Map;
   unittest.expect(casted10, unittest.hasLength(3));
   unittest.expect(casted10["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted10["bool"], unittest.equals(true));
   unittest.expect(casted10["string"], unittest.equals('foo'));
+  var casted11 = (o["y"]) as core.Map;
+  unittest.expect(casted11, unittest.hasLength(3));
+  unittest.expect(casted11["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted11["bool"], unittest.equals(true));
+  unittest.expect(casted11["string"], unittest.equals('foo'));
 }
 
-buildUnnamed4950() {
+buildUnnamed5714() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentMessage>();
   o.add(buildGoogleCloudDialogflowV2IntentMessage());
   o.add(buildGoogleCloudDialogflowV2IntentMessage());
   return o;
 }
 
-checkUnnamed4950(core.List<api.GoogleCloudDialogflowV2IntentMessage> o) {
+checkUnnamed5714(core.List<api.GoogleCloudDialogflowV2IntentMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessage(o[0]);
   checkGoogleCloudDialogflowV2IntentMessage(o[1]);
 }
 
-buildUnnamed4951() {
+buildUnnamed5715() {
   var o = new core.List<api.GoogleCloudDialogflowV2Context>();
   o.add(buildGoogleCloudDialogflowV2Context());
   o.add(buildGoogleCloudDialogflowV2Context());
   return o;
 }
 
-checkUnnamed4951(core.List<api.GoogleCloudDialogflowV2Context> o) {
+checkUnnamed5715(core.List<api.GoogleCloudDialogflowV2Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2Context(o[0]);
   checkGoogleCloudDialogflowV2Context(o[1]);
 }
 
-buildUnnamed4952() {
+buildUnnamed5716() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1348,21 +1820,21 @@ buildUnnamed4952() {
   return o;
 }
 
-checkUnnamed4952(core.Map<core.String, core.Object> o) {
+checkUnnamed5716(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted11 = (o["x"]) as core.Map;
-  unittest.expect(casted11, unittest.hasLength(3));
-  unittest.expect(casted11["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted11["bool"], unittest.equals(true));
-  unittest.expect(casted11["string"], unittest.equals('foo'));
-  var casted12 = (o["y"]) as core.Map;
+  var casted12 = (o["x"]) as core.Map;
   unittest.expect(casted12, unittest.hasLength(3));
   unittest.expect(casted12["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted12["bool"], unittest.equals(true));
   unittest.expect(casted12["string"], unittest.equals('foo'));
+  var casted13 = (o["y"]) as core.Map;
+  unittest.expect(casted13, unittest.hasLength(3));
+  unittest.expect(casted13["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted13["bool"], unittest.equals(true));
+  unittest.expect(casted13["string"], unittest.equals('foo'));
 }
 
-buildUnnamed4953() {
+buildUnnamed5717() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1377,18 +1849,18 @@ buildUnnamed4953() {
   return o;
 }
 
-checkUnnamed4953(core.Map<core.String, core.Object> o) {
+checkUnnamed5717(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted13 = (o["x"]) as core.Map;
-  unittest.expect(casted13, unittest.hasLength(3));
-  unittest.expect(casted13["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted13["bool"], unittest.equals(true));
-  unittest.expect(casted13["string"], unittest.equals('foo'));
-  var casted14 = (o["y"]) as core.Map;
+  var casted14 = (o["x"]) as core.Map;
   unittest.expect(casted14, unittest.hasLength(3));
   unittest.expect(casted14["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted14["bool"], unittest.equals(true));
   unittest.expect(casted14["string"], unittest.equals('foo'));
+  var casted15 = (o["y"]) as core.Map;
+  unittest.expect(casted15, unittest.hasLength(3));
+  unittest.expect(casted15["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted15["bool"], unittest.equals(true));
+  unittest.expect(casted15["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2QueryResult = 0;
@@ -1398,19 +1870,19 @@ buildGoogleCloudDialogflowV2QueryResult() {
   if (buildCounterGoogleCloudDialogflowV2QueryResult < 3) {
     o.action = "foo";
     o.allRequiredParamsPresent = true;
-    o.diagnosticInfo = buildUnnamed4949();
-    o.fulfillmentMessages = buildUnnamed4950();
+    o.diagnosticInfo = buildUnnamed5713();
+    o.fulfillmentMessages = buildUnnamed5714();
     o.fulfillmentText = "foo";
     o.intent = buildGoogleCloudDialogflowV2Intent();
     o.intentDetectionConfidence = 42.0;
     o.languageCode = "foo";
-    o.outputContexts = buildUnnamed4951();
-    o.parameters = buildUnnamed4952();
+    o.outputContexts = buildUnnamed5715();
+    o.parameters = buildUnnamed5716();
     o.queryText = "foo";
     o.sentimentAnalysisResult =
         buildGoogleCloudDialogflowV2SentimentAnalysisResult();
     o.speechRecognitionConfidence = 42.0;
-    o.webhookPayload = buildUnnamed4953();
+    o.webhookPayload = buildUnnamed5717();
     o.webhookSource = "foo";
   }
   buildCounterGoogleCloudDialogflowV2QueryResult--;
@@ -1423,19 +1895,19 @@ checkGoogleCloudDialogflowV2QueryResult(
   if (buildCounterGoogleCloudDialogflowV2QueryResult < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
     unittest.expect(o.allRequiredParamsPresent, unittest.isTrue);
-    checkUnnamed4949(o.diagnosticInfo);
-    checkUnnamed4950(o.fulfillmentMessages);
+    checkUnnamed5713(o.diagnosticInfo);
+    checkUnnamed5714(o.fulfillmentMessages);
     unittest.expect(o.fulfillmentText, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2Intent(o.intent);
     unittest.expect(o.intentDetectionConfidence, unittest.equals(42.0));
     unittest.expect(o.languageCode, unittest.equals('foo'));
-    checkUnnamed4951(o.outputContexts);
-    checkUnnamed4952(o.parameters);
+    checkUnnamed5715(o.outputContexts);
+    checkUnnamed5716(o.parameters);
     unittest.expect(o.queryText, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2SentimentAnalysisResult(
         o.sentimentAnalysisResult);
     unittest.expect(o.speechRecognitionConfidence, unittest.equals(42.0));
-    checkUnnamed4953(o.webhookPayload);
+    checkUnnamed5717(o.webhookPayload);
     unittest.expect(o.webhookSource, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2QueryResult--;
@@ -1482,6 +1954,43 @@ checkGoogleCloudDialogflowV2SentimentAnalysisResult(
   buildCounterGoogleCloudDialogflowV2SentimentAnalysisResult--;
 }
 
+buildUnnamed5718() {
+  var o = new core.List<api.GoogleCloudDialogflowV2EntityTypeEntity>();
+  o.add(buildGoogleCloudDialogflowV2EntityTypeEntity());
+  o.add(buildGoogleCloudDialogflowV2EntityTypeEntity());
+  return o;
+}
+
+checkUnnamed5718(core.List<api.GoogleCloudDialogflowV2EntityTypeEntity> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2EntityTypeEntity(o[0]);
+  checkGoogleCloudDialogflowV2EntityTypeEntity(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2SessionEntityType = 0;
+buildGoogleCloudDialogflowV2SessionEntityType() {
+  var o = new api.GoogleCloudDialogflowV2SessionEntityType();
+  buildCounterGoogleCloudDialogflowV2SessionEntityType++;
+  if (buildCounterGoogleCloudDialogflowV2SessionEntityType < 3) {
+    o.entities = buildUnnamed5718();
+    o.entityOverrideMode = "foo";
+    o.name = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2SessionEntityType--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2SessionEntityType(
+    api.GoogleCloudDialogflowV2SessionEntityType o) {
+  buildCounterGoogleCloudDialogflowV2SessionEntityType++;
+  if (buildCounterGoogleCloudDialogflowV2SessionEntityType < 3) {
+    checkUnnamed5718(o.entities);
+    unittest.expect(o.entityOverrideMode, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2SessionEntityType--;
+}
+
 core.int buildCounterGoogleCloudDialogflowV2WebhookRequest = 0;
 buildGoogleCloudDialogflowV2WebhookRequest() {
   var o = new api.GoogleCloudDialogflowV2WebhookRequest();
@@ -1510,33 +2019,33 @@ checkGoogleCloudDialogflowV2WebhookRequest(
   buildCounterGoogleCloudDialogflowV2WebhookRequest--;
 }
 
-buildUnnamed4954() {
+buildUnnamed5719() {
   var o = new core.List<api.GoogleCloudDialogflowV2IntentMessage>();
   o.add(buildGoogleCloudDialogflowV2IntentMessage());
   o.add(buildGoogleCloudDialogflowV2IntentMessage());
   return o;
 }
 
-checkUnnamed4954(core.List<api.GoogleCloudDialogflowV2IntentMessage> o) {
+checkUnnamed5719(core.List<api.GoogleCloudDialogflowV2IntentMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2IntentMessage(o[0]);
   checkGoogleCloudDialogflowV2IntentMessage(o[1]);
 }
 
-buildUnnamed4955() {
+buildUnnamed5720() {
   var o = new core.List<api.GoogleCloudDialogflowV2Context>();
   o.add(buildGoogleCloudDialogflowV2Context());
   o.add(buildGoogleCloudDialogflowV2Context());
   return o;
 }
 
-checkUnnamed4955(core.List<api.GoogleCloudDialogflowV2Context> o) {
+checkUnnamed5720(core.List<api.GoogleCloudDialogflowV2Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2Context(o[0]);
   checkGoogleCloudDialogflowV2Context(o[1]);
 }
 
-buildUnnamed4956() {
+buildUnnamed5721() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1551,18 +2060,31 @@ buildUnnamed4956() {
   return o;
 }
 
-checkUnnamed4956(core.Map<core.String, core.Object> o) {
+checkUnnamed5721(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted15 = (o["x"]) as core.Map;
-  unittest.expect(casted15, unittest.hasLength(3));
-  unittest.expect(casted15["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted15["bool"], unittest.equals(true));
-  unittest.expect(casted15["string"], unittest.equals('foo'));
-  var casted16 = (o["y"]) as core.Map;
+  var casted16 = (o["x"]) as core.Map;
   unittest.expect(casted16, unittest.hasLength(3));
   unittest.expect(casted16["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted16["bool"], unittest.equals(true));
   unittest.expect(casted16["string"], unittest.equals('foo'));
+  var casted17 = (o["y"]) as core.Map;
+  unittest.expect(casted17, unittest.hasLength(3));
+  unittest.expect(casted17["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted17["bool"], unittest.equals(true));
+  unittest.expect(casted17["string"], unittest.equals('foo'));
+}
+
+buildUnnamed5722() {
+  var o = new core.List<api.GoogleCloudDialogflowV2SessionEntityType>();
+  o.add(buildGoogleCloudDialogflowV2SessionEntityType());
+  o.add(buildGoogleCloudDialogflowV2SessionEntityType());
+  return o;
+}
+
+checkUnnamed5722(core.List<api.GoogleCloudDialogflowV2SessionEntityType> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2SessionEntityType(o[0]);
+  checkGoogleCloudDialogflowV2SessionEntityType(o[1]);
 }
 
 core.int buildCounterGoogleCloudDialogflowV2WebhookResponse = 0;
@@ -1571,10 +2093,11 @@ buildGoogleCloudDialogflowV2WebhookResponse() {
   buildCounterGoogleCloudDialogflowV2WebhookResponse++;
   if (buildCounterGoogleCloudDialogflowV2WebhookResponse < 3) {
     o.followupEventInput = buildGoogleCloudDialogflowV2EventInput();
-    o.fulfillmentMessages = buildUnnamed4954();
+    o.fulfillmentMessages = buildUnnamed5719();
     o.fulfillmentText = "foo";
-    o.outputContexts = buildUnnamed4955();
-    o.payload = buildUnnamed4956();
+    o.outputContexts = buildUnnamed5720();
+    o.payload = buildUnnamed5721();
+    o.sessionEntityTypes = buildUnnamed5722();
     o.source = "foo";
   }
   buildCounterGoogleCloudDialogflowV2WebhookResponse--;
@@ -1586,23 +2109,24 @@ checkGoogleCloudDialogflowV2WebhookResponse(
   buildCounterGoogleCloudDialogflowV2WebhookResponse++;
   if (buildCounterGoogleCloudDialogflowV2WebhookResponse < 3) {
     checkGoogleCloudDialogflowV2EventInput(o.followupEventInput);
-    checkUnnamed4954(o.fulfillmentMessages);
+    checkUnnamed5719(o.fulfillmentMessages);
     unittest.expect(o.fulfillmentText, unittest.equals('foo'));
-    checkUnnamed4955(o.outputContexts);
-    checkUnnamed4956(o.payload);
+    checkUnnamed5720(o.outputContexts);
+    checkUnnamed5721(o.payload);
+    checkUnnamed5722(o.sessionEntityTypes);
     unittest.expect(o.source, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2WebhookResponse--;
 }
 
-buildUnnamed4957() {
+buildUnnamed5723() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4957(core.List<core.String> o) {
+checkUnnamed5723(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1622,7 +2146,7 @@ buildGoogleCloudDialogflowV2beta1Agent() {
     o.enableLogging = true;
     o.matchMode = "foo";
     o.parent = "foo";
-    o.supportedLanguageCodes = buildUnnamed4957();
+    o.supportedLanguageCodes = buildUnnamed5723();
     o.tier = "foo";
     o.timeZone = "foo";
   }
@@ -1643,21 +2167,56 @@ checkGoogleCloudDialogflowV2beta1Agent(
     unittest.expect(o.enableLogging, unittest.isTrue);
     unittest.expect(o.matchMode, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
-    checkUnnamed4957(o.supportedLanguageCodes);
+    checkUnnamed5723(o.supportedLanguageCodes);
     unittest.expect(o.tier, unittest.equals('foo'));
     unittest.expect(o.timeZone, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1Agent--;
 }
 
-buildUnnamed4958() {
+core.int buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset =
+    0;
+buildGoogleCloudDialogflowV2beta1AnnotatedConversationDataset() {
+  var o = new api.GoogleCloudDialogflowV2beta1AnnotatedConversationDataset();
+  buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset++;
+  if (buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset <
+      3) {
+    o.completedExampleCount = "foo";
+    o.createTime = "foo";
+    o.description = "foo";
+    o.displayName = "foo";
+    o.exampleCount = "foo";
+    o.name = "foo";
+    o.questionTypeName = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1AnnotatedConversationDataset(
+    api.GoogleCloudDialogflowV2beta1AnnotatedConversationDataset o) {
+  buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset++;
+  if (buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset <
+      3) {
+    unittest.expect(o.completedExampleCount, unittest.equals('foo'));
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.exampleCount, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.questionTypeName, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1AnnotatedConversationDataset--;
+}
+
+buildUnnamed5724() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   return o;
 }
 
-checkUnnamed4958(
+checkUnnamed5724(
     core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityTypeEntity(o[0]);
@@ -1669,7 +2228,7 @@ buildGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest();
   buildCounterGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest < 3) {
-    o.entities = buildUnnamed4958();
+    o.entities = buildUnnamed5724();
     o.languageCode = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest--;
@@ -1680,20 +2239,20 @@ checkGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest(
     api.GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest < 3) {
-    checkUnnamed4958(o.entities);
+    checkUnnamed5724(o.entities);
     unittest.expect(o.languageCode, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest--;
 }
 
-buildUnnamed4959() {
+buildUnnamed5725() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4959(core.List<core.String> o) {
+checkUnnamed5725(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1704,7 +2263,7 @@ buildGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest();
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest < 3) {
-    o.entityValues = buildUnnamed4959();
+    o.entityValues = buildUnnamed5725();
     o.languageCode = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest--;
@@ -1715,20 +2274,20 @@ checkGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest(
     api.GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest < 3) {
-    checkUnnamed4959(o.entityValues);
+    checkUnnamed5725(o.entityValues);
     unittest.expect(o.languageCode, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest--;
 }
 
-buildUnnamed4960() {
+buildUnnamed5726() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4960(core.List<core.String> o) {
+checkUnnamed5726(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1741,7 +2300,7 @@ buildGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest() {
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest <
       3) {
-    o.entityTypeNames = buildUnnamed4960();
+    o.entityTypeNames = buildUnnamed5726();
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest--;
   return o;
@@ -1752,19 +2311,19 @@ checkGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest(
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest <
       3) {
-    checkUnnamed4960(o.entityTypeNames);
+    checkUnnamed5726(o.entityTypeNames);
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest--;
 }
 
-buildUnnamed4961() {
+buildUnnamed5727() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Intent>();
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   return o;
 }
 
-checkUnnamed4961(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
+checkUnnamed5727(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Intent(o[0]);
   checkGoogleCloudDialogflowV2beta1Intent(o[1]);
@@ -1775,7 +2334,7 @@ buildGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest();
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest < 3) {
-    o.intents = buildUnnamed4961();
+    o.intents = buildUnnamed5727();
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest--;
   return o;
@@ -1785,19 +2344,19 @@ checkGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest(
     api.GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest < 3) {
-    checkUnnamed4961(o.intents);
+    checkUnnamed5727(o.intents);
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest--;
 }
 
-buildUnnamed4962() {
+buildUnnamed5728() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   return o;
 }
 
-checkUnnamed4962(
+checkUnnamed5728(
     core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityTypeEntity(o[0]);
@@ -1809,7 +2368,7 @@ buildGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest();
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest < 3) {
-    o.entities = buildUnnamed4962();
+    o.entities = buildUnnamed5728();
     o.languageCode = "foo";
     o.updateMask = "foo";
   }
@@ -1821,7 +2380,7 @@ checkGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest(
     api.GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest < 3) {
-    checkUnnamed4962(o.entities);
+    checkUnnamed5728(o.entities);
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
@@ -1858,14 +2417,14 @@ checkGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest(
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest--;
 }
 
-buildUnnamed4963() {
+buildUnnamed5729() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityType>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityType());
   o.add(buildGoogleCloudDialogflowV2beta1EntityType());
   return o;
 }
 
-checkUnnamed4963(core.List<api.GoogleCloudDialogflowV2beta1EntityType> o) {
+checkUnnamed5729(core.List<api.GoogleCloudDialogflowV2beta1EntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityType(o[0]);
   checkGoogleCloudDialogflowV2beta1EntityType(o[1]);
@@ -1878,7 +2437,7 @@ buildGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse() {
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse <
       3) {
-    o.entityTypes = buildUnnamed4963();
+    o.entityTypes = buildUnnamed5729();
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse--;
   return o;
@@ -1889,7 +2448,7 @@ checkGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse(
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse <
       3) {
-    checkUnnamed4963(o.entityTypes);
+    checkUnnamed5729(o.entityTypes);
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse--;
 }
@@ -1922,14 +2481,14 @@ checkGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest(
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest--;
 }
 
-buildUnnamed4964() {
+buildUnnamed5730() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Intent>();
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   return o;
 }
 
-checkUnnamed4964(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
+checkUnnamed5730(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Intent(o[0]);
   checkGoogleCloudDialogflowV2beta1Intent(o[1]);
@@ -1940,7 +2499,7 @@ buildGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse();
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse < 3) {
-    o.intents = buildUnnamed4964();
+    o.intents = buildUnnamed5730();
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse--;
   return o;
@@ -1950,12 +2509,12 @@ checkGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse(
     api.GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse < 3) {
-    checkUnnamed4964(o.intents);
+    checkUnnamed5730(o.intents);
   }
   buildCounterGoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse--;
 }
 
-buildUnnamed4965() {
+buildUnnamed5731() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1970,18 +2529,18 @@ buildUnnamed4965() {
   return o;
 }
 
-checkUnnamed4965(core.Map<core.String, core.Object> o) {
+checkUnnamed5731(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted17 = (o["x"]) as core.Map;
-  unittest.expect(casted17, unittest.hasLength(3));
-  unittest.expect(casted17["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted17["bool"], unittest.equals(true));
-  unittest.expect(casted17["string"], unittest.equals('foo'));
-  var casted18 = (o["y"]) as core.Map;
+  var casted18 = (o["x"]) as core.Map;
   unittest.expect(casted18, unittest.hasLength(3));
   unittest.expect(casted18["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted18["bool"], unittest.equals(true));
   unittest.expect(casted18["string"], unittest.equals('foo'));
+  var casted19 = (o["y"]) as core.Map;
+  unittest.expect(casted19, unittest.hasLength(3));
+  unittest.expect(casted19["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted19["bool"], unittest.equals(true));
+  unittest.expect(casted19["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1Context = 0;
@@ -1991,7 +2550,7 @@ buildGoogleCloudDialogflowV2beta1Context() {
   if (buildCounterGoogleCloudDialogflowV2beta1Context < 3) {
     o.lifespanCount = 42;
     o.name = "foo";
-    o.parameters = buildUnnamed4965();
+    o.parameters = buildUnnamed5731();
   }
   buildCounterGoogleCloudDialogflowV2beta1Context--;
   return o;
@@ -2003,7 +2562,7 @@ checkGoogleCloudDialogflowV2beta1Context(
   if (buildCounterGoogleCloudDialogflowV2beta1Context < 3) {
     unittest.expect(o.lifespanCount, unittest.equals(42));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4965(o.parameters);
+    checkUnnamed5731(o.parameters);
   }
   buildCounterGoogleCloudDialogflowV2beta1Context--;
 }
@@ -2015,6 +2574,7 @@ buildGoogleCloudDialogflowV2beta1DetectIntentRequest() {
   if (buildCounterGoogleCloudDialogflowV2beta1DetectIntentRequest < 3) {
     o.inputAudio = "foo";
     o.outputAudioConfig = buildGoogleCloudDialogflowV2beta1OutputAudioConfig();
+    o.outputAudioConfigMask = "foo";
     o.queryInput = buildGoogleCloudDialogflowV2beta1QueryInput();
     o.queryParams = buildGoogleCloudDialogflowV2beta1QueryParameters();
   }
@@ -2028,20 +2588,21 @@ checkGoogleCloudDialogflowV2beta1DetectIntentRequest(
   if (buildCounterGoogleCloudDialogflowV2beta1DetectIntentRequest < 3) {
     unittest.expect(o.inputAudio, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1OutputAudioConfig(o.outputAudioConfig);
+    unittest.expect(o.outputAudioConfigMask, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1QueryInput(o.queryInput);
     checkGoogleCloudDialogflowV2beta1QueryParameters(o.queryParams);
   }
   buildCounterGoogleCloudDialogflowV2beta1DetectIntentRequest--;
 }
 
-buildUnnamed4966() {
+buildUnnamed5732() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1QueryResult>();
   o.add(buildGoogleCloudDialogflowV2beta1QueryResult());
   o.add(buildGoogleCloudDialogflowV2beta1QueryResult());
   return o;
 }
 
-checkUnnamed4966(core.List<api.GoogleCloudDialogflowV2beta1QueryResult> o) {
+checkUnnamed5732(core.List<api.GoogleCloudDialogflowV2beta1QueryResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1QueryResult(o[0]);
   checkGoogleCloudDialogflowV2beta1QueryResult(o[1]);
@@ -2052,7 +2613,7 @@ buildGoogleCloudDialogflowV2beta1DetectIntentResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1DetectIntentResponse();
   buildCounterGoogleCloudDialogflowV2beta1DetectIntentResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1DetectIntentResponse < 3) {
-    o.alternativeQueryResults = buildUnnamed4966();
+    o.alternativeQueryResults = buildUnnamed5732();
     o.outputAudio = "foo";
     o.outputAudioConfig = buildGoogleCloudDialogflowV2beta1OutputAudioConfig();
     o.queryResult = buildGoogleCloudDialogflowV2beta1QueryResult();
@@ -2067,7 +2628,7 @@ checkGoogleCloudDialogflowV2beta1DetectIntentResponse(
     api.GoogleCloudDialogflowV2beta1DetectIntentResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1DetectIntentResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1DetectIntentResponse < 3) {
-    checkUnnamed4966(o.alternativeQueryResults);
+    checkUnnamed5732(o.alternativeQueryResults);
     unittest.expect(o.outputAudio, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1OutputAudioConfig(o.outputAudioConfig);
     checkGoogleCloudDialogflowV2beta1QueryResult(o.queryResult);
@@ -2077,14 +2638,14 @@ checkGoogleCloudDialogflowV2beta1DetectIntentResponse(
   buildCounterGoogleCloudDialogflowV2beta1DetectIntentResponse--;
 }
 
-buildUnnamed4967() {
+buildUnnamed5733() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4967(core.List<core.String> o) {
+checkUnnamed5733(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2098,7 +2659,10 @@ buildGoogleCloudDialogflowV2beta1Document() {
     o.content = "foo";
     o.contentUri = "foo";
     o.displayName = "foo";
-    o.knowledgeTypes = buildUnnamed4967();
+    o.enableAutoReload = true;
+    o.knowledgeTypes = buildUnnamed5733();
+    o.latestReloadStatus =
+        buildGoogleCloudDialogflowV2beta1DocumentReloadStatus();
     o.mimeType = "foo";
     o.name = "foo";
     o.rawContent = "foo";
@@ -2114,7 +2678,9 @@ checkGoogleCloudDialogflowV2beta1Document(
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.contentUri, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed4967(o.knowledgeTypes);
+    unittest.expect(o.enableAutoReload, unittest.isTrue);
+    checkUnnamed5733(o.knowledgeTypes);
+    checkGoogleCloudDialogflowV2beta1DocumentReloadStatus(o.latestReloadStatus);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.rawContent, unittest.equals('foo'));
@@ -2122,14 +2688,36 @@ checkGoogleCloudDialogflowV2beta1Document(
   buildCounterGoogleCloudDialogflowV2beta1Document--;
 }
 
-buildUnnamed4968() {
+core.int buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus = 0;
+buildGoogleCloudDialogflowV2beta1DocumentReloadStatus() {
+  var o = new api.GoogleCloudDialogflowV2beta1DocumentReloadStatus();
+  buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus++;
+  if (buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus < 3) {
+    o.status = buildGoogleRpcStatus();
+    o.time = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1DocumentReloadStatus(
+    api.GoogleCloudDialogflowV2beta1DocumentReloadStatus o) {
+  buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus++;
+  if (buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus < 3) {
+    checkGoogleRpcStatus(o.status);
+    unittest.expect(o.time, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1DocumentReloadStatus--;
+}
+
+buildUnnamed5734() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   return o;
 }
 
-checkUnnamed4968(
+checkUnnamed5734(
     core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityTypeEntity(o[0]);
@@ -2143,7 +2731,8 @@ buildGoogleCloudDialogflowV2beta1EntityType() {
   if (buildCounterGoogleCloudDialogflowV2beta1EntityType < 3) {
     o.autoExpansionMode = "foo";
     o.displayName = "foo";
-    o.entities = buildUnnamed4968();
+    o.enableFuzzyExtraction = true;
+    o.entities = buildUnnamed5734();
     o.kind = "foo";
     o.name = "foo";
   }
@@ -2157,21 +2746,22 @@ checkGoogleCloudDialogflowV2beta1EntityType(
   if (buildCounterGoogleCloudDialogflowV2beta1EntityType < 3) {
     unittest.expect(o.autoExpansionMode, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed4968(o.entities);
+    unittest.expect(o.enableFuzzyExtraction, unittest.isTrue);
+    checkUnnamed5734(o.entities);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1EntityType--;
 }
 
-buildUnnamed4969() {
+buildUnnamed5735() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityType>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityType());
   o.add(buildGoogleCloudDialogflowV2beta1EntityType());
   return o;
 }
 
-checkUnnamed4969(core.List<api.GoogleCloudDialogflowV2beta1EntityType> o) {
+checkUnnamed5735(core.List<api.GoogleCloudDialogflowV2beta1EntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityType(o[0]);
   checkGoogleCloudDialogflowV2beta1EntityType(o[1]);
@@ -2182,7 +2772,7 @@ buildGoogleCloudDialogflowV2beta1EntityTypeBatch() {
   var o = new api.GoogleCloudDialogflowV2beta1EntityTypeBatch();
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeBatch++;
   if (buildCounterGoogleCloudDialogflowV2beta1EntityTypeBatch < 3) {
-    o.entityTypes = buildUnnamed4969();
+    o.entityTypes = buildUnnamed5735();
   }
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeBatch--;
   return o;
@@ -2192,19 +2782,19 @@ checkGoogleCloudDialogflowV2beta1EntityTypeBatch(
     api.GoogleCloudDialogflowV2beta1EntityTypeBatch o) {
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeBatch++;
   if (buildCounterGoogleCloudDialogflowV2beta1EntityTypeBatch < 3) {
-    checkUnnamed4969(o.entityTypes);
+    checkUnnamed5735(o.entityTypes);
   }
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeBatch--;
 }
 
-buildUnnamed4970() {
+buildUnnamed5736() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4970(core.List<core.String> o) {
+checkUnnamed5736(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2215,7 +2805,7 @@ buildGoogleCloudDialogflowV2beta1EntityTypeEntity() {
   var o = new api.GoogleCloudDialogflowV2beta1EntityTypeEntity();
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity++;
   if (buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity < 3) {
-    o.synonyms = buildUnnamed4970();
+    o.synonyms = buildUnnamed5736();
     o.value = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity--;
@@ -2226,13 +2816,41 @@ checkGoogleCloudDialogflowV2beta1EntityTypeEntity(
     api.GoogleCloudDialogflowV2beta1EntityTypeEntity o) {
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity++;
   if (buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity < 3) {
-    checkUnnamed4970(o.synonyms);
+    checkUnnamed5736(o.synonyms);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1EntityTypeEntity--;
 }
 
-buildUnnamed4971() {
+core.int buildCounterGoogleCloudDialogflowV2beta1Environment = 0;
+buildGoogleCloudDialogflowV2beta1Environment() {
+  var o = new api.GoogleCloudDialogflowV2beta1Environment();
+  buildCounterGoogleCloudDialogflowV2beta1Environment++;
+  if (buildCounterGoogleCloudDialogflowV2beta1Environment < 3) {
+    o.agentVersion = "foo";
+    o.description = "foo";
+    o.name = "foo";
+    o.state = "foo";
+    o.updateTime = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1Environment--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1Environment(
+    api.GoogleCloudDialogflowV2beta1Environment o) {
+  buildCounterGoogleCloudDialogflowV2beta1Environment++;
+  if (buildCounterGoogleCloudDialogflowV2beta1Environment < 3) {
+    unittest.expect(o.agentVersion, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.name, unittest.equals('foo'));
+    unittest.expect(o.state, unittest.equals('foo'));
+    unittest.expect(o.updateTime, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1Environment--;
+}
+
+buildUnnamed5737() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -2247,18 +2865,18 @@ buildUnnamed4971() {
   return o;
 }
 
-checkUnnamed4971(core.Map<core.String, core.Object> o) {
+checkUnnamed5737(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted19 = (o["x"]) as core.Map;
-  unittest.expect(casted19, unittest.hasLength(3));
-  unittest.expect(casted19["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted19["bool"], unittest.equals(true));
-  unittest.expect(casted19["string"], unittest.equals('foo'));
-  var casted20 = (o["y"]) as core.Map;
+  var casted20 = (o["x"]) as core.Map;
   unittest.expect(casted20, unittest.hasLength(3));
   unittest.expect(casted20["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted20["bool"], unittest.equals(true));
   unittest.expect(casted20["string"], unittest.equals('foo'));
+  var casted21 = (o["y"]) as core.Map;
+  unittest.expect(casted21, unittest.hasLength(3));
+  unittest.expect(casted21["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted21["bool"], unittest.equals(true));
+  unittest.expect(casted21["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1EventInput = 0;
@@ -2268,7 +2886,7 @@ buildGoogleCloudDialogflowV2beta1EventInput() {
   if (buildCounterGoogleCloudDialogflowV2beta1EventInput < 3) {
     o.languageCode = "foo";
     o.name = "foo";
-    o.parameters = buildUnnamed4971();
+    o.parameters = buildUnnamed5737();
   }
   buildCounterGoogleCloudDialogflowV2beta1EventInput--;
   return o;
@@ -2280,7 +2898,7 @@ checkGoogleCloudDialogflowV2beta1EventInput(
   if (buildCounterGoogleCloudDialogflowV2beta1EventInput < 3) {
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4971(o.parameters);
+    checkUnnamed5737(o.parameters);
   }
   buildCounterGoogleCloudDialogflowV2beta1EventInput--;
 }
@@ -2327,6 +2945,134 @@ checkGoogleCloudDialogflowV2beta1ExportAgentResponse(
   buildCounterGoogleCloudDialogflowV2beta1ExportAgentResponse--;
 }
 
+buildUnnamed5738() {
+  var o = new core.List<api.GoogleCloudDialogflowV2beta1FulfillmentFeature>();
+  o.add(buildGoogleCloudDialogflowV2beta1FulfillmentFeature());
+  o.add(buildGoogleCloudDialogflowV2beta1FulfillmentFeature());
+  return o;
+}
+
+checkUnnamed5738(
+    core.List<api.GoogleCloudDialogflowV2beta1FulfillmentFeature> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1FulfillmentFeature(o[0]);
+  checkGoogleCloudDialogflowV2beta1FulfillmentFeature(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1Fulfillment = 0;
+buildGoogleCloudDialogflowV2beta1Fulfillment() {
+  var o = new api.GoogleCloudDialogflowV2beta1Fulfillment();
+  buildCounterGoogleCloudDialogflowV2beta1Fulfillment++;
+  if (buildCounterGoogleCloudDialogflowV2beta1Fulfillment < 3) {
+    o.displayName = "foo";
+    o.enabled = true;
+    o.features = buildUnnamed5738();
+    o.genericWebService =
+        buildGoogleCloudDialogflowV2beta1FulfillmentGenericWebService();
+    o.name = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1Fulfillment--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1Fulfillment(
+    api.GoogleCloudDialogflowV2beta1Fulfillment o) {
+  buildCounterGoogleCloudDialogflowV2beta1Fulfillment++;
+  if (buildCounterGoogleCloudDialogflowV2beta1Fulfillment < 3) {
+    unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.enabled, unittest.isTrue);
+    checkUnnamed5738(o.features);
+    checkGoogleCloudDialogflowV2beta1FulfillmentGenericWebService(
+        o.genericWebService);
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1Fulfillment--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature = 0;
+buildGoogleCloudDialogflowV2beta1FulfillmentFeature() {
+  var o = new api.GoogleCloudDialogflowV2beta1FulfillmentFeature();
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature++;
+  if (buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature < 3) {
+    o.type = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1FulfillmentFeature(
+    api.GoogleCloudDialogflowV2beta1FulfillmentFeature o) {
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature++;
+  if (buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature < 3) {
+    unittest.expect(o.type, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentFeature--;
+}
+
+buildUnnamed5739() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed5739(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService =
+    0;
+buildGoogleCloudDialogflowV2beta1FulfillmentGenericWebService() {
+  var o = new api.GoogleCloudDialogflowV2beta1FulfillmentGenericWebService();
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService++;
+  if (buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService <
+      3) {
+    o.isCloudFunction = true;
+    o.password = "foo";
+    o.requestHeaders = buildUnnamed5739();
+    o.uri = "foo";
+    o.username = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1FulfillmentGenericWebService(
+    api.GoogleCloudDialogflowV2beta1FulfillmentGenericWebService o) {
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService++;
+  if (buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService <
+      3) {
+    unittest.expect(o.isCloudFunction, unittest.isTrue);
+    unittest.expect(o.password, unittest.equals('foo'));
+    checkUnnamed5739(o.requestHeaders);
+    unittest.expect(o.uri, unittest.equals('foo'));
+    unittest.expect(o.username, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1FulfillmentGenericWebService--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1GcsSource = 0;
+buildGoogleCloudDialogflowV2beta1GcsSource() {
+  var o = new api.GoogleCloudDialogflowV2beta1GcsSource();
+  buildCounterGoogleCloudDialogflowV2beta1GcsSource++;
+  if (buildCounterGoogleCloudDialogflowV2beta1GcsSource < 3) {
+    o.uri = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1GcsSource--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1GcsSource(
+    api.GoogleCloudDialogflowV2beta1GcsSource o) {
+  buildCounterGoogleCloudDialogflowV2beta1GcsSource++;
+  if (buildCounterGoogleCloudDialogflowV2beta1GcsSource < 3) {
+    unittest.expect(o.uri, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1GcsSource--;
+}
+
 core.int buildCounterGoogleCloudDialogflowV2beta1ImportAgentRequest = 0;
 buildGoogleCloudDialogflowV2beta1ImportAgentRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1ImportAgentRequest();
@@ -2349,17 +3095,30 @@ checkGoogleCloudDialogflowV2beta1ImportAgentRequest(
   buildCounterGoogleCloudDialogflowV2beta1ImportAgentRequest--;
 }
 
-buildUnnamed4972() {
+buildUnnamed5740() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4972(core.List<core.String> o) {
+checkUnnamed5740(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed5741() {
+  var o = new core.List<api.GoogleCloudDialogflowV2beta1SpeechContext>();
+  o.add(buildGoogleCloudDialogflowV2beta1SpeechContext());
+  o.add(buildGoogleCloudDialogflowV2beta1SpeechContext());
+  return o;
+}
+
+checkUnnamed5741(core.List<api.GoogleCloudDialogflowV2beta1SpeechContext> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1SpeechContext(o[0]);
+  checkGoogleCloudDialogflowV2beta1SpeechContext(o[1]);
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1InputAudioConfig = 0;
@@ -2372,9 +3131,10 @@ buildGoogleCloudDialogflowV2beta1InputAudioConfig() {
     o.languageCode = "foo";
     o.model = "foo";
     o.modelVariant = "foo";
-    o.phraseHints = buildUnnamed4972();
+    o.phraseHints = buildUnnamed5740();
     o.sampleRateHertz = 42;
     o.singleUtterance = true;
+    o.speechContexts = buildUnnamed5741();
   }
   buildCounterGoogleCloudDialogflowV2beta1InputAudioConfig--;
   return o;
@@ -2389,40 +3149,41 @@ checkGoogleCloudDialogflowV2beta1InputAudioConfig(
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.model, unittest.equals('foo'));
     unittest.expect(o.modelVariant, unittest.equals('foo'));
-    checkUnnamed4972(o.phraseHints);
+    checkUnnamed5740(o.phraseHints);
     unittest.expect(o.sampleRateHertz, unittest.equals(42));
     unittest.expect(o.singleUtterance, unittest.isTrue);
+    checkUnnamed5741(o.speechContexts);
   }
   buildCounterGoogleCloudDialogflowV2beta1InputAudioConfig--;
 }
 
-buildUnnamed4973() {
+buildUnnamed5742() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4973(core.List<core.String> o) {
+checkUnnamed5742(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4974() {
+buildUnnamed5743() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4974(core.List<core.String> o) {
+checkUnnamed5743(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4975() {
+buildUnnamed5744() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo());
@@ -2430,73 +3191,73 @@ buildUnnamed4975() {
   return o;
 }
 
-checkUnnamed4975(
+checkUnnamed5744(
     core.List<api.GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo(o[0]);
   checkGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo(o[1]);
 }
 
-buildUnnamed4976() {
+buildUnnamed5745() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4976(core.List<core.String> o) {
+checkUnnamed5745(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4977() {
+buildUnnamed5746() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1IntentMessage>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessage());
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessage());
   return o;
 }
 
-checkUnnamed4977(core.List<api.GoogleCloudDialogflowV2beta1IntentMessage> o) {
+checkUnnamed5746(core.List<api.GoogleCloudDialogflowV2beta1IntentMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessage(o[0]);
   checkGoogleCloudDialogflowV2beta1IntentMessage(o[1]);
 }
 
-buildUnnamed4978() {
+buildUnnamed5747() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Context>();
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   return o;
 }
 
-checkUnnamed4978(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
+checkUnnamed5747(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Context(o[0]);
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
 }
 
-buildUnnamed4979() {
+buildUnnamed5748() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1IntentParameter>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentParameter());
   o.add(buildGoogleCloudDialogflowV2beta1IntentParameter());
   return o;
 }
 
-checkUnnamed4979(core.List<api.GoogleCloudDialogflowV2beta1IntentParameter> o) {
+checkUnnamed5748(core.List<api.GoogleCloudDialogflowV2beta1IntentParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentParameter(o[0]);
   checkGoogleCloudDialogflowV2beta1IntentParameter(o[1]);
 }
 
-buildUnnamed4980() {
+buildUnnamed5749() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1IntentTrainingPhrase>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentTrainingPhrase());
   o.add(buildGoogleCloudDialogflowV2beta1IntentTrainingPhrase());
   return o;
 }
 
-checkUnnamed4980(
+checkUnnamed5749(
     core.List<api.GoogleCloudDialogflowV2beta1IntentTrainingPhrase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentTrainingPhrase(o[0]);
@@ -2509,24 +3270,24 @@ buildGoogleCloudDialogflowV2beta1Intent() {
   buildCounterGoogleCloudDialogflowV2beta1Intent++;
   if (buildCounterGoogleCloudDialogflowV2beta1Intent < 3) {
     o.action = "foo";
-    o.defaultResponsePlatforms = buildUnnamed4973();
+    o.defaultResponsePlatforms = buildUnnamed5742();
     o.displayName = "foo";
     o.endInteraction = true;
-    o.events = buildUnnamed4974();
-    o.followupIntentInfo = buildUnnamed4975();
-    o.inputContextNames = buildUnnamed4976();
+    o.events = buildUnnamed5743();
+    o.followupIntentInfo = buildUnnamed5744();
+    o.inputContextNames = buildUnnamed5745();
     o.isFallback = true;
-    o.messages = buildUnnamed4977();
+    o.messages = buildUnnamed5746();
     o.mlDisabled = true;
     o.mlEnabled = true;
     o.name = "foo";
-    o.outputContexts = buildUnnamed4978();
-    o.parameters = buildUnnamed4979();
+    o.outputContexts = buildUnnamed5747();
+    o.parameters = buildUnnamed5748();
     o.parentFollowupIntentName = "foo";
     o.priority = 42;
     o.resetContexts = true;
     o.rootFollowupIntentName = "foo";
-    o.trainingPhrases = buildUnnamed4980();
+    o.trainingPhrases = buildUnnamed5749();
     o.webhookState = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1Intent--;
@@ -2538,37 +3299,37 @@ checkGoogleCloudDialogflowV2beta1Intent(
   buildCounterGoogleCloudDialogflowV2beta1Intent++;
   if (buildCounterGoogleCloudDialogflowV2beta1Intent < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed4973(o.defaultResponsePlatforms);
+    checkUnnamed5742(o.defaultResponsePlatforms);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.endInteraction, unittest.isTrue);
-    checkUnnamed4974(o.events);
-    checkUnnamed4975(o.followupIntentInfo);
-    checkUnnamed4976(o.inputContextNames);
+    checkUnnamed5743(o.events);
+    checkUnnamed5744(o.followupIntentInfo);
+    checkUnnamed5745(o.inputContextNames);
     unittest.expect(o.isFallback, unittest.isTrue);
-    checkUnnamed4977(o.messages);
+    checkUnnamed5746(o.messages);
     unittest.expect(o.mlDisabled, unittest.isTrue);
     unittest.expect(o.mlEnabled, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4978(o.outputContexts);
-    checkUnnamed4979(o.parameters);
+    checkUnnamed5747(o.outputContexts);
+    checkUnnamed5748(o.parameters);
     unittest.expect(o.parentFollowupIntentName, unittest.equals('foo'));
     unittest.expect(o.priority, unittest.equals(42));
     unittest.expect(o.resetContexts, unittest.isTrue);
     unittest.expect(o.rootFollowupIntentName, unittest.equals('foo'));
-    checkUnnamed4980(o.trainingPhrases);
+    checkUnnamed5749(o.trainingPhrases);
     unittest.expect(o.webhookState, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1Intent--;
 }
 
-buildUnnamed4981() {
+buildUnnamed5750() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Intent>();
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   return o;
 }
 
-checkUnnamed4981(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
+checkUnnamed5750(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Intent(o[0]);
   checkGoogleCloudDialogflowV2beta1Intent(o[1]);
@@ -2579,7 +3340,7 @@ buildGoogleCloudDialogflowV2beta1IntentBatch() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentBatch();
   buildCounterGoogleCloudDialogflowV2beta1IntentBatch++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentBatch < 3) {
-    o.intents = buildUnnamed4981();
+    o.intents = buildUnnamed5750();
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentBatch--;
   return o;
@@ -2589,7 +3350,7 @@ checkGoogleCloudDialogflowV2beta1IntentBatch(
     api.GoogleCloudDialogflowV2beta1IntentBatch o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentBatch++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentBatch < 3) {
-    checkUnnamed4981(o.intents);
+    checkUnnamed5750(o.intents);
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentBatch--;
 }
@@ -2616,7 +3377,7 @@ checkGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo(
   buildCounterGoogleCloudDialogflowV2beta1IntentFollowupIntentInfo--;
 }
 
-buildUnnamed4982() {
+buildUnnamed5751() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -2631,18 +3392,18 @@ buildUnnamed4982() {
   return o;
 }
 
-checkUnnamed4982(core.Map<core.String, core.Object> o) {
+checkUnnamed5751(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted21 = (o["x"]) as core.Map;
-  unittest.expect(casted21, unittest.hasLength(3));
-  unittest.expect(casted21["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted21["bool"], unittest.equals(true));
-  unittest.expect(casted21["string"], unittest.equals('foo'));
-  var casted22 = (o["y"]) as core.Map;
+  var casted22 = (o["x"]) as core.Map;
   unittest.expect(casted22, unittest.hasLength(3));
   unittest.expect(casted22["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted22["bool"], unittest.equals(true));
   unittest.expect(casted22["string"], unittest.equals('foo'));
+  var casted23 = (o["y"]) as core.Map;
+  unittest.expect(casted23, unittest.hasLength(3));
+  unittest.expect(casted23["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted23["bool"], unittest.equals(true));
+  unittest.expect(casted23["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessage = 0;
@@ -2651,6 +3412,8 @@ buildGoogleCloudDialogflowV2beta1IntentMessage() {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessage++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessage < 3) {
     o.basicCard = buildGoogleCloudDialogflowV2beta1IntentMessageBasicCard();
+    o.browseCarouselCard =
+        buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard();
     o.card = buildGoogleCloudDialogflowV2beta1IntentMessageCard();
     o.carouselSelect =
         buildGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect();
@@ -2658,7 +3421,9 @@ buildGoogleCloudDialogflowV2beta1IntentMessage() {
     o.linkOutSuggestion =
         buildGoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion();
     o.listSelect = buildGoogleCloudDialogflowV2beta1IntentMessageListSelect();
-    o.payload = buildUnnamed4982();
+    o.mediaContent =
+        buildGoogleCloudDialogflowV2beta1IntentMessageMediaContent();
+    o.payload = buildUnnamed5751();
     o.platform = "foo";
     o.quickReplies =
         buildGoogleCloudDialogflowV2beta1IntentMessageQuickReplies();
@@ -2670,6 +3435,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessage() {
     o.simpleResponses =
         buildGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses();
     o.suggestions = buildGoogleCloudDialogflowV2beta1IntentMessageSuggestions();
+    o.tableCard = buildGoogleCloudDialogflowV2beta1IntentMessageTableCard();
     o.telephonyPlayAudio =
         buildGoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio();
     o.telephonySynthesizeSpeech =
@@ -2687,6 +3453,8 @@ checkGoogleCloudDialogflowV2beta1IntentMessage(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessage++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessage < 3) {
     checkGoogleCloudDialogflowV2beta1IntentMessageBasicCard(o.basicCard);
+    checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard(
+        o.browseCarouselCard);
     checkGoogleCloudDialogflowV2beta1IntentMessageCard(o.card);
     checkGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect(
         o.carouselSelect);
@@ -2694,7 +3462,8 @@ checkGoogleCloudDialogflowV2beta1IntentMessage(
     checkGoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion(
         o.linkOutSuggestion);
     checkGoogleCloudDialogflowV2beta1IntentMessageListSelect(o.listSelect);
-    checkUnnamed4982(o.payload);
+    checkGoogleCloudDialogflowV2beta1IntentMessageMediaContent(o.mediaContent);
+    checkUnnamed5751(o.payload);
     unittest.expect(o.platform, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1IntentMessageQuickReplies(o.quickReplies);
     checkGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard(
@@ -2705,6 +3474,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessage(
     checkGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses(
         o.simpleResponses);
     checkGoogleCloudDialogflowV2beta1IntentMessageSuggestions(o.suggestions);
+    checkGoogleCloudDialogflowV2beta1IntentMessageTableCard(o.tableCard);
     checkGoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio(
         o.telephonyPlayAudio);
     checkGoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech(
@@ -2716,7 +3486,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessage(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessage--;
 }
 
-buildUnnamed4983() {
+buildUnnamed5752() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageBasicCardButton());
@@ -2724,7 +3494,7 @@ buildUnnamed4983() {
   return o;
 }
 
-checkUnnamed4983(
+checkUnnamed5752(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageBasicCardButton(o[0]);
@@ -2736,7 +3506,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageBasicCard() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageBasicCard();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageBasicCard++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBasicCard < 3) {
-    o.buttons = buildUnnamed4983();
+    o.buttons = buildUnnamed5752();
     o.formattedText = "foo";
     o.image = buildGoogleCloudDialogflowV2beta1IntentMessageImage();
     o.subtitle = "foo";
@@ -2750,7 +3520,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageBasicCard(
     api.GoogleCloudDialogflowV2beta1IntentMessageBasicCard o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageBasicCard++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBasicCard < 3) {
-    checkUnnamed4983(o.buttons);
+    checkUnnamed5752(o.buttons);
     unittest.expect(o.formattedText, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1IntentMessageImage(o.image);
     unittest.expect(o.subtitle, unittest.equals('foo'));
@@ -2812,7 +3582,117 @@ checkGoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction--;
 }
 
-buildUnnamed4984() {
+buildUnnamed5753() {
+  var o = new core.List<
+      api.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>();
+  o.add(
+      buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem());
+  o.add(
+      buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem());
+  return o;
+}
+
+checkUnnamed5753(
+    core.List<
+            api.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+      o[0]);
+  checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+      o[1]);
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard = 0;
+buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard() {
+  var o = new api.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard <
+      3) {
+    o.imageDisplayOptions = "foo";
+    o.items = buildUnnamed5753();
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard(
+    api.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard <
+      3) {
+    unittest.expect(o.imageDisplayOptions, unittest.equals('foo'));
+    checkUnnamed5753(o.items);
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem =
+    0;
+buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem() {
+  var o = new api
+      .GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem <
+      3) {
+    o.description = "foo";
+    o.footer = "foo";
+    o.image = buildGoogleCloudDialogflowV2beta1IntentMessageImage();
+    o.openUriAction =
+        buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
+    o.title = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+    api.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+        o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem <
+      3) {
+    unittest.expect(o.description, unittest.equals('foo'));
+    unittest.expect(o.footer, unittest.equals('foo'));
+    checkGoogleCloudDialogflowV2beta1IntentMessageImage(o.image);
+    checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
+        o.openUriAction);
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction =
+    0;
+buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction() {
+  var o = new api
+      .GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction <
+      3) {
+    o.url = "foo";
+    o.urlTypeHint = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
+    api.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+        o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction <
+      3) {
+    unittest.expect(o.url, unittest.equals('foo'));
+    unittest.expect(o.urlTypeHint, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction--;
+}
+
+buildUnnamed5754() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2beta1IntentMessageCardButton>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageCardButton());
@@ -2820,7 +3700,7 @@ buildUnnamed4984() {
   return o;
 }
 
-checkUnnamed4984(
+checkUnnamed5754(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageCardButton> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageCardButton(o[0]);
@@ -2832,7 +3712,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageCard() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageCard();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCard++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageCard < 3) {
-    o.buttons = buildUnnamed4984();
+    o.buttons = buildUnnamed5754();
     o.imageUri = "foo";
     o.subtitle = "foo";
     o.title = "foo";
@@ -2845,7 +3725,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageCard(
     api.GoogleCloudDialogflowV2beta1IntentMessageCard o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCard++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageCard < 3) {
-    checkUnnamed4984(o.buttons);
+    checkUnnamed5754(o.buttons);
     unittest.expect(o.imageUri, unittest.equals('foo'));
     unittest.expect(o.subtitle, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -2875,7 +3755,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageCardButton(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCardButton--;
 }
 
-buildUnnamed4985() {
+buildUnnamed5755() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem());
@@ -2883,7 +3763,7 @@ buildUnnamed4985() {
   return o;
 }
 
-checkUnnamed4985(
+checkUnnamed5755(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -2897,7 +3777,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect < 3) {
-    o.items = buildUnnamed4985();
+    o.items = buildUnnamed5755();
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect--;
   return o;
@@ -2907,7 +3787,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect(
     api.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect < 3) {
-    checkUnnamed4985(o.items);
+    checkUnnamed5755(o.items);
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelect--;
 }
@@ -2939,6 +3819,31 @@ checkGoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem(
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties =
+    0;
+buildGoogleCloudDialogflowV2beta1IntentMessageColumnProperties() {
+  var o = new api.GoogleCloudDialogflowV2beta1IntentMessageColumnProperties();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties <
+      3) {
+    o.header = "foo";
+    o.horizontalAlignment = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageColumnProperties(
+    api.GoogleCloudDialogflowV2beta1IntentMessageColumnProperties o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties <
+      3) {
+    unittest.expect(o.header, unittest.equals('foo'));
+    unittest.expect(o.horizontalAlignment, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageColumnProperties--;
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessageImage = 0;
@@ -2988,7 +3893,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion--;
 }
 
-buildUnnamed4986() {
+buildUnnamed5756() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageListSelectItem());
@@ -2996,7 +3901,7 @@ buildUnnamed4986() {
   return o;
 }
 
-checkUnnamed4986(
+checkUnnamed5756(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageListSelectItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageListSelectItem(o[0]);
@@ -3008,7 +3913,8 @@ buildGoogleCloudDialogflowV2beta1IntentMessageListSelect() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageListSelect();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelect++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelect < 3) {
-    o.items = buildUnnamed4986();
+    o.items = buildUnnamed5756();
+    o.subtitle = "foo";
     o.title = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelect--;
@@ -3019,7 +3925,8 @@ checkGoogleCloudDialogflowV2beta1IntentMessageListSelect(
     api.GoogleCloudDialogflowV2beta1IntentMessageListSelect o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelect++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelect < 3) {
-    checkUnnamed4986(o.items);
+    checkUnnamed5756(o.items);
+    unittest.expect(o.subtitle, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelect--;
@@ -3052,14 +3959,91 @@ checkGoogleCloudDialogflowV2beta1IntentMessageListSelectItem(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageListSelectItem--;
 }
 
-buildUnnamed4987() {
+buildUnnamed5757() {
+  var o = new core.List<
+      api.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>();
+  o.add(
+      buildGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject());
+  o.add(
+      buildGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject());
+  return o;
+}
+
+checkUnnamed5757(
+    core.List<
+            api.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject(
+      o[0]);
+  checkGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject(
+      o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent = 0;
+buildGoogleCloudDialogflowV2beta1IntentMessageMediaContent() {
+  var o = new api.GoogleCloudDialogflowV2beta1IntentMessageMediaContent();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent < 3) {
+    o.mediaObjects = buildUnnamed5757();
+    o.mediaType = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageMediaContent(
+    api.GoogleCloudDialogflowV2beta1IntentMessageMediaContent o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent < 3) {
+    checkUnnamed5757(o.mediaObjects);
+    unittest.expect(o.mediaType, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContent--;
+}
+
+core.int
+    buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject =
+    0;
+buildGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject() {
+  var o = new api
+      .GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject <
+      3) {
+    o.contentUrl = "foo";
+    o.description = "foo";
+    o.icon = buildGoogleCloudDialogflowV2beta1IntentMessageImage();
+    o.largeImage = buildGoogleCloudDialogflowV2beta1IntentMessageImage();
+    o.name = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject(
+    api.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
+        o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject <
+      3) {
+    unittest.expect(o.contentUrl, unittest.equals('foo'));
+    unittest.expect(o.description, unittest.equals('foo'));
+    checkGoogleCloudDialogflowV2beta1IntentMessageImage(o.icon);
+    checkGoogleCloudDialogflowV2beta1IntentMessageImage(o.largeImage);
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject--;
+}
+
+buildUnnamed5758() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4987(core.List<core.String> o) {
+checkUnnamed5758(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3070,7 +4054,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageQuickReplies() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageQuickReplies();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageQuickReplies++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageQuickReplies < 3) {
-    o.quickReplies = buildUnnamed4987();
+    o.quickReplies = buildUnnamed5758();
     o.title = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageQuickReplies--;
@@ -3081,13 +4065,13 @@ checkGoogleCloudDialogflowV2beta1IntentMessageQuickReplies(
     api.GoogleCloudDialogflowV2beta1IntentMessageQuickReplies o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageQuickReplies++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageQuickReplies < 3) {
-    checkUnnamed4987(o.quickReplies);
+    checkUnnamed5758(o.quickReplies);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageQuickReplies--;
 }
 
-buildUnnamed4988() {
+buildUnnamed5759() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion());
@@ -3095,7 +4079,7 @@ buildUnnamed4988() {
   return o;
 }
 
-checkUnnamed4988(
+checkUnnamed5759(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion(o[0]);
@@ -3111,7 +4095,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageRbmCardContent() {
     o.description = "foo";
     o.media =
         buildGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia();
-    o.suggestions = buildUnnamed4988();
+    o.suggestions = buildUnnamed5759();
     o.title = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCardContent--;
@@ -3125,7 +4109,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageRbmCardContent(
     unittest.expect(o.description, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia(
         o.media);
-    checkUnnamed4988(o.suggestions);
+    checkUnnamed5759(o.suggestions);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCardContent--;
@@ -3160,7 +4144,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia--;
 }
 
-buildUnnamed4989() {
+buildUnnamed5760() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageRbmCardContent());
@@ -3168,7 +4152,7 @@ buildUnnamed4989() {
   return o;
 }
 
-checkUnnamed4989(
+checkUnnamed5760(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageRbmCardContent(o[0]);
@@ -3182,7 +4166,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard() {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard <
       3) {
-    o.cardContents = buildUnnamed4989();
+    o.cardContents = buildUnnamed5760();
     o.cardWidth = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard--;
@@ -3194,7 +4178,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard <
       3) {
-    checkUnnamed4989(o.cardContents);
+    checkUnnamed5760(o.cardContents);
     unittest.expect(o.cardWidth, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard--;
@@ -3387,7 +4371,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion--;
 }
 
-buildUnnamed4990() {
+buildUnnamed5761() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion());
@@ -3395,7 +4379,7 @@ buildUnnamed4990() {
   return o;
 }
 
-checkUnnamed4990(
+checkUnnamed5761(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion(o[0]);
@@ -3407,7 +4391,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageRbmText() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageRbmText();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmText++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmText < 3) {
-    o.rbmSuggestion = buildUnnamed4990();
+    o.rbmSuggestion = buildUnnamed5761();
     o.text = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmText--;
@@ -3418,20 +4402,20 @@ checkGoogleCloudDialogflowV2beta1IntentMessageRbmText(
     api.GoogleCloudDialogflowV2beta1IntentMessageRbmText o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmText++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmText < 3) {
-    checkUnnamed4990(o.rbmSuggestion);
+    checkUnnamed5761(o.rbmSuggestion);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageRbmText--;
 }
 
-buildUnnamed4991() {
+buildUnnamed5762() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4991(core.List<core.String> o) {
+checkUnnamed5762(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3444,7 +4428,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo() {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo < 3) {
     o.key = "foo";
-    o.synonyms = buildUnnamed4991();
+    o.synonyms = buildUnnamed5762();
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo--;
   return o;
@@ -3455,7 +4439,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed4991(o.synonyms);
+    checkUnnamed5762(o.synonyms);
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo--;
 }
@@ -3485,7 +4469,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageSimpleResponse(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponse--;
 }
 
-buildUnnamed4992() {
+buildUnnamed5763() {
   var o = new core
       .List<api.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageSimpleResponse());
@@ -3493,7 +4477,7 @@ buildUnnamed4992() {
   return o;
 }
 
-checkUnnamed4992(
+checkUnnamed5763(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageSimpleResponse(o[0]);
@@ -3507,7 +4491,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses() {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses <
       3) {
-    o.simpleResponses = buildUnnamed4992();
+    o.simpleResponses = buildUnnamed5763();
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses--;
   return o;
@@ -3518,7 +4502,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses <
       3) {
-    checkUnnamed4992(o.simpleResponses);
+    checkUnnamed5763(o.simpleResponses);
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSimpleResponses--;
 }
@@ -3543,7 +4527,7 @@ checkGoogleCloudDialogflowV2beta1IntentMessageSuggestion(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestion--;
 }
 
-buildUnnamed4993() {
+buildUnnamed5764() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2beta1IntentMessageSuggestion>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessageSuggestion());
@@ -3551,7 +4535,7 @@ buildUnnamed4993() {
   return o;
 }
 
-checkUnnamed4993(
+checkUnnamed5764(
     core.List<api.GoogleCloudDialogflowV2beta1IntentMessageSuggestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessageSuggestion(o[0]);
@@ -3563,7 +4547,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageSuggestions() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageSuggestions();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestions++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestions < 3) {
-    o.suggestions = buildUnnamed4993();
+    o.suggestions = buildUnnamed5764();
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestions--;
   return o;
@@ -3573,9 +4557,142 @@ checkGoogleCloudDialogflowV2beta1IntentMessageSuggestions(
     api.GoogleCloudDialogflowV2beta1IntentMessageSuggestions o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestions++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestions < 3) {
-    checkUnnamed4993(o.suggestions);
+    checkUnnamed5764(o.suggestions);
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageSuggestions--;
+}
+
+buildUnnamed5765() {
+  var o = new core
+      .List<api.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>();
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageBasicCardButton());
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageBasicCardButton());
+  return o;
+}
+
+checkUnnamed5765(
+    core.List<api.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1IntentMessageBasicCardButton(o[0]);
+  checkGoogleCloudDialogflowV2beta1IntentMessageBasicCardButton(o[1]);
+}
+
+buildUnnamed5766() {
+  var o = new core
+      .List<api.GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>();
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageColumnProperties());
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageColumnProperties());
+  return o;
+}
+
+checkUnnamed5766(
+    core.List<api.GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>
+        o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1IntentMessageColumnProperties(o[0]);
+  checkGoogleCloudDialogflowV2beta1IntentMessageColumnProperties(o[1]);
+}
+
+buildUnnamed5767() {
+  var o = new core
+      .List<api.GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>();
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageTableCardRow());
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageTableCardRow());
+  return o;
+}
+
+checkUnnamed5767(
+    core.List<api.GoogleCloudDialogflowV2beta1IntentMessageTableCardRow> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1IntentMessageTableCardRow(o[0]);
+  checkGoogleCloudDialogflowV2beta1IntentMessageTableCardRow(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard = 0;
+buildGoogleCloudDialogflowV2beta1IntentMessageTableCard() {
+  var o = new api.GoogleCloudDialogflowV2beta1IntentMessageTableCard();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard < 3) {
+    o.buttons = buildUnnamed5765();
+    o.columnProperties = buildUnnamed5766();
+    o.image = buildGoogleCloudDialogflowV2beta1IntentMessageImage();
+    o.rows = buildUnnamed5767();
+    o.subtitle = "foo";
+    o.title = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageTableCard(
+    api.GoogleCloudDialogflowV2beta1IntentMessageTableCard o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard < 3) {
+    checkUnnamed5765(o.buttons);
+    checkUnnamed5766(o.columnProperties);
+    checkGoogleCloudDialogflowV2beta1IntentMessageImage(o.image);
+    checkUnnamed5767(o.rows);
+    unittest.expect(o.subtitle, unittest.equals('foo'));
+    unittest.expect(o.title, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCard--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell = 0;
+buildGoogleCloudDialogflowV2beta1IntentMessageTableCardCell() {
+  var o = new api.GoogleCloudDialogflowV2beta1IntentMessageTableCardCell();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell < 3) {
+    o.text = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageTableCardCell(
+    api.GoogleCloudDialogflowV2beta1IntentMessageTableCardCell o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell < 3) {
+    unittest.expect(o.text, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardCell--;
+}
+
+buildUnnamed5768() {
+  var o = new core
+      .List<api.GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>();
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageTableCardCell());
+  o.add(buildGoogleCloudDialogflowV2beta1IntentMessageTableCardCell());
+  return o;
+}
+
+checkUnnamed5768(
+    core.List<api.GoogleCloudDialogflowV2beta1IntentMessageTableCardCell> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1IntentMessageTableCardCell(o[0]);
+  checkGoogleCloudDialogflowV2beta1IntentMessageTableCardCell(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow = 0;
+buildGoogleCloudDialogflowV2beta1IntentMessageTableCardRow() {
+  var o = new api.GoogleCloudDialogflowV2beta1IntentMessageTableCardRow();
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow < 3) {
+    o.cells = buildUnnamed5768();
+    o.dividerAfter = true;
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1IntentMessageTableCardRow(
+    api.GoogleCloudDialogflowV2beta1IntentMessageTableCardRow o) {
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow++;
+  if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow < 3) {
+    checkUnnamed5768(o.cells);
+    unittest.expect(o.dividerAfter, unittest.isTrue);
+  }
+  buildCounterGoogleCloudDialogflowV2beta1IntentMessageTableCardRow--;
 }
 
 core.int
@@ -3653,14 +4770,14 @@ checkGoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall(
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall--;
 }
 
-buildUnnamed4994() {
+buildUnnamed5769() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4994(core.List<core.String> o) {
+checkUnnamed5769(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3671,7 +4788,7 @@ buildGoogleCloudDialogflowV2beta1IntentMessageText() {
   var o = new api.GoogleCloudDialogflowV2beta1IntentMessageText();
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageText++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageText < 3) {
-    o.text = buildUnnamed4994();
+    o.text = buildUnnamed5769();
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageText--;
   return o;
@@ -3681,19 +4798,19 @@ checkGoogleCloudDialogflowV2beta1IntentMessageText(
     api.GoogleCloudDialogflowV2beta1IntentMessageText o) {
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageText++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentMessageText < 3) {
-    checkUnnamed4994(o.text);
+    checkUnnamed5769(o.text);
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentMessageText--;
 }
 
-buildUnnamed4995() {
+buildUnnamed5770() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4995(core.List<core.String> o) {
+checkUnnamed5770(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3710,7 +4827,7 @@ buildGoogleCloudDialogflowV2beta1IntentParameter() {
     o.isList = true;
     o.mandatory = true;
     o.name = "foo";
-    o.prompts = buildUnnamed4995();
+    o.prompts = buildUnnamed5770();
     o.value = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentParameter--;
@@ -3727,13 +4844,13 @@ checkGoogleCloudDialogflowV2beta1IntentParameter(
     unittest.expect(o.isList, unittest.isTrue);
     unittest.expect(o.mandatory, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4995(o.prompts);
+    checkUnnamed5770(o.prompts);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1IntentParameter--;
 }
 
-buildUnnamed4996() {
+buildUnnamed5771() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentTrainingPhrasePart());
@@ -3741,7 +4858,7 @@ buildUnnamed4996() {
   return o;
 }
 
-checkUnnamed4996(
+checkUnnamed5771(
     core.List<api.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentTrainingPhrasePart(o[0]);
@@ -3754,7 +4871,7 @@ buildGoogleCloudDialogflowV2beta1IntentTrainingPhrase() {
   buildCounterGoogleCloudDialogflowV2beta1IntentTrainingPhrase++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentTrainingPhrase < 3) {
     o.name = "foo";
-    o.parts = buildUnnamed4996();
+    o.parts = buildUnnamed5771();
     o.timesAddedCount = 42;
     o.type = "foo";
   }
@@ -3767,7 +4884,7 @@ checkGoogleCloudDialogflowV2beta1IntentTrainingPhrase(
   buildCounterGoogleCloudDialogflowV2beta1IntentTrainingPhrase++;
   if (buildCounterGoogleCloudDialogflowV2beta1IntentTrainingPhrase < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed4996(o.parts);
+    checkUnnamed5771(o.parts);
     unittest.expect(o.timesAddedCount, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -3800,7 +4917,7 @@ checkGoogleCloudDialogflowV2beta1IntentTrainingPhrasePart(
   buildCounterGoogleCloudDialogflowV2beta1IntentTrainingPhrasePart--;
 }
 
-buildUnnamed4997() {
+buildUnnamed5772() {
   var o =
       new core.List<api.GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>();
   o.add(buildGoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer());
@@ -3808,7 +4925,7 @@ buildUnnamed4997() {
   return o;
 }
 
-checkUnnamed4997(
+checkUnnamed5772(
     core.List<api.GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer(o[0]);
@@ -3820,7 +4937,7 @@ buildGoogleCloudDialogflowV2beta1KnowledgeAnswers() {
   var o = new api.GoogleCloudDialogflowV2beta1KnowledgeAnswers();
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeAnswers++;
   if (buildCounterGoogleCloudDialogflowV2beta1KnowledgeAnswers < 3) {
-    o.answers = buildUnnamed4997();
+    o.answers = buildUnnamed5772();
   }
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeAnswers--;
   return o;
@@ -3830,7 +4947,7 @@ checkGoogleCloudDialogflowV2beta1KnowledgeAnswers(
     api.GoogleCloudDialogflowV2beta1KnowledgeAnswers o) {
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeAnswers++;
   if (buildCounterGoogleCloudDialogflowV2beta1KnowledgeAnswers < 3) {
-    checkUnnamed4997(o.answers);
+    checkUnnamed5772(o.answers);
   }
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeAnswers--;
 }
@@ -3869,6 +4986,7 @@ buildGoogleCloudDialogflowV2beta1KnowledgeBase() {
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeBase++;
   if (buildCounterGoogleCloudDialogflowV2beta1KnowledgeBase < 3) {
     o.displayName = "foo";
+    o.languageCode = "foo";
     o.name = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeBase--;
@@ -3880,6 +4998,7 @@ checkGoogleCloudDialogflowV2beta1KnowledgeBase(
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeBase++;
   if (buildCounterGoogleCloudDialogflowV2beta1KnowledgeBase < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
+    unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeBase--;
@@ -3905,14 +5024,36 @@ checkGoogleCloudDialogflowV2beta1KnowledgeOperationMetadata(
   buildCounterGoogleCloudDialogflowV2beta1KnowledgeOperationMetadata--;
 }
 
-buildUnnamed4998() {
+core.int buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse = 0;
+buildGoogleCloudDialogflowV2beta1LabelConversationResponse() {
+  var o = new api.GoogleCloudDialogflowV2beta1LabelConversationResponse();
+  buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse++;
+  if (buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse < 3) {
+    o.annotatedConversationDataset =
+        buildGoogleCloudDialogflowV2beta1AnnotatedConversationDataset();
+  }
+  buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1LabelConversationResponse(
+    api.GoogleCloudDialogflowV2beta1LabelConversationResponse o) {
+  buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse++;
+  if (buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse < 3) {
+    checkGoogleCloudDialogflowV2beta1AnnotatedConversationDataset(
+        o.annotatedConversationDataset);
+  }
+  buildCounterGoogleCloudDialogflowV2beta1LabelConversationResponse--;
+}
+
+buildUnnamed5773() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Context>();
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   return o;
 }
 
-checkUnnamed4998(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
+checkUnnamed5773(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Context(o[0]);
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
@@ -3923,7 +5064,7 @@ buildGoogleCloudDialogflowV2beta1ListContextsResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1ListContextsResponse();
   buildCounterGoogleCloudDialogflowV2beta1ListContextsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListContextsResponse < 3) {
-    o.contexts = buildUnnamed4998();
+    o.contexts = buildUnnamed5773();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1ListContextsResponse--;
@@ -3934,20 +5075,20 @@ checkGoogleCloudDialogflowV2beta1ListContextsResponse(
     api.GoogleCloudDialogflowV2beta1ListContextsResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1ListContextsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListContextsResponse < 3) {
-    checkUnnamed4998(o.contexts);
+    checkUnnamed5773(o.contexts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1ListContextsResponse--;
 }
 
-buildUnnamed4999() {
+buildUnnamed5774() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Document>();
   o.add(buildGoogleCloudDialogflowV2beta1Document());
   o.add(buildGoogleCloudDialogflowV2beta1Document());
   return o;
 }
 
-checkUnnamed4999(core.List<api.GoogleCloudDialogflowV2beta1Document> o) {
+checkUnnamed5774(core.List<api.GoogleCloudDialogflowV2beta1Document> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Document(o[0]);
   checkGoogleCloudDialogflowV2beta1Document(o[1]);
@@ -3958,7 +5099,7 @@ buildGoogleCloudDialogflowV2beta1ListDocumentsResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1ListDocumentsResponse();
   buildCounterGoogleCloudDialogflowV2beta1ListDocumentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListDocumentsResponse < 3) {
-    o.documents = buildUnnamed4999();
+    o.documents = buildUnnamed5774();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1ListDocumentsResponse--;
@@ -3969,20 +5110,20 @@ checkGoogleCloudDialogflowV2beta1ListDocumentsResponse(
     api.GoogleCloudDialogflowV2beta1ListDocumentsResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1ListDocumentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListDocumentsResponse < 3) {
-    checkUnnamed4999(o.documents);
+    checkUnnamed5774(o.documents);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1ListDocumentsResponse--;
 }
 
-buildUnnamed5000() {
+buildUnnamed5775() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityType>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityType());
   o.add(buildGoogleCloudDialogflowV2beta1EntityType());
   return o;
 }
 
-checkUnnamed5000(core.List<api.GoogleCloudDialogflowV2beta1EntityType> o) {
+checkUnnamed5775(core.List<api.GoogleCloudDialogflowV2beta1EntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityType(o[0]);
   checkGoogleCloudDialogflowV2beta1EntityType(o[1]);
@@ -3993,7 +5134,7 @@ buildGoogleCloudDialogflowV2beta1ListEntityTypesResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1ListEntityTypesResponse();
   buildCounterGoogleCloudDialogflowV2beta1ListEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListEntityTypesResponse < 3) {
-    o.entityTypes = buildUnnamed5000();
+    o.entityTypes = buildUnnamed5775();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1ListEntityTypesResponse--;
@@ -4004,20 +5145,55 @@ checkGoogleCloudDialogflowV2beta1ListEntityTypesResponse(
     api.GoogleCloudDialogflowV2beta1ListEntityTypesResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1ListEntityTypesResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListEntityTypesResponse < 3) {
-    checkUnnamed5000(o.entityTypes);
+    checkUnnamed5775(o.entityTypes);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1ListEntityTypesResponse--;
 }
 
-buildUnnamed5001() {
+buildUnnamed5776() {
+  var o = new core.List<api.GoogleCloudDialogflowV2beta1Environment>();
+  o.add(buildGoogleCloudDialogflowV2beta1Environment());
+  o.add(buildGoogleCloudDialogflowV2beta1Environment());
+  return o;
+}
+
+checkUnnamed5776(core.List<api.GoogleCloudDialogflowV2beta1Environment> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1Environment(o[0]);
+  checkGoogleCloudDialogflowV2beta1Environment(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse = 0;
+buildGoogleCloudDialogflowV2beta1ListEnvironmentsResponse() {
+  var o = new api.GoogleCloudDialogflowV2beta1ListEnvironmentsResponse();
+  buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse++;
+  if (buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse < 3) {
+    o.environments = buildUnnamed5776();
+    o.nextPageToken = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1ListEnvironmentsResponse(
+    api.GoogleCloudDialogflowV2beta1ListEnvironmentsResponse o) {
+  buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse++;
+  if (buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse < 3) {
+    checkUnnamed5776(o.environments);
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1ListEnvironmentsResponse--;
+}
+
+buildUnnamed5777() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Intent>();
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   o.add(buildGoogleCloudDialogflowV2beta1Intent());
   return o;
 }
 
-checkUnnamed5001(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
+checkUnnamed5777(core.List<api.GoogleCloudDialogflowV2beta1Intent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Intent(o[0]);
   checkGoogleCloudDialogflowV2beta1Intent(o[1]);
@@ -4028,7 +5204,7 @@ buildGoogleCloudDialogflowV2beta1ListIntentsResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1ListIntentsResponse();
   buildCounterGoogleCloudDialogflowV2beta1ListIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListIntentsResponse < 3) {
-    o.intents = buildUnnamed5001();
+    o.intents = buildUnnamed5777();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1ListIntentsResponse--;
@@ -4039,20 +5215,20 @@ checkGoogleCloudDialogflowV2beta1ListIntentsResponse(
     api.GoogleCloudDialogflowV2beta1ListIntentsResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1ListIntentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListIntentsResponse < 3) {
-    checkUnnamed5001(o.intents);
+    checkUnnamed5777(o.intents);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1ListIntentsResponse--;
 }
 
-buildUnnamed5002() {
+buildUnnamed5778() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1KnowledgeBase>();
   o.add(buildGoogleCloudDialogflowV2beta1KnowledgeBase());
   o.add(buildGoogleCloudDialogflowV2beta1KnowledgeBase());
   return o;
 }
 
-checkUnnamed5002(core.List<api.GoogleCloudDialogflowV2beta1KnowledgeBase> o) {
+checkUnnamed5778(core.List<api.GoogleCloudDialogflowV2beta1KnowledgeBase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1KnowledgeBase(o[0]);
   checkGoogleCloudDialogflowV2beta1KnowledgeBase(o[1]);
@@ -4063,7 +5239,7 @@ buildGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse();
   buildCounterGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse < 3) {
-    o.knowledgeBases = buildUnnamed5002();
+    o.knowledgeBases = buildUnnamed5778();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse--;
@@ -4074,20 +5250,20 @@ checkGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse(
     api.GoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse < 3) {
-    checkUnnamed5002(o.knowledgeBases);
+    checkUnnamed5778(o.knowledgeBases);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse--;
 }
 
-buildUnnamed5003() {
+buildUnnamed5779() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1SessionEntityType>();
   o.add(buildGoogleCloudDialogflowV2beta1SessionEntityType());
   o.add(buildGoogleCloudDialogflowV2beta1SessionEntityType());
   return o;
 }
 
-checkUnnamed5003(
+checkUnnamed5779(
     core.List<api.GoogleCloudDialogflowV2beta1SessionEntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1SessionEntityType(o[0]);
@@ -4102,7 +5278,7 @@ buildGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse() {
   if (buildCounterGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse <
       3) {
     o.nextPageToken = "foo";
-    o.sessionEntityTypes = buildUnnamed5003();
+    o.sessionEntityTypes = buildUnnamed5779();
   }
   buildCounterGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse--;
   return o;
@@ -4114,12 +5290,12 @@ checkGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse(
   if (buildCounterGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse <
       3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed5003(o.sessionEntityTypes);
+    checkUnnamed5779(o.sessionEntityTypes);
   }
   buildCounterGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse--;
 }
 
-buildUnnamed5004() {
+buildUnnamed5780() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4134,18 +5310,18 @@ buildUnnamed5004() {
   return o;
 }
 
-checkUnnamed5004(core.Map<core.String, core.Object> o) {
+checkUnnamed5780(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted23 = (o["x"]) as core.Map;
-  unittest.expect(casted23, unittest.hasLength(3));
-  unittest.expect(casted23["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted23["bool"], unittest.equals(true));
-  unittest.expect(casted23["string"], unittest.equals('foo'));
-  var casted24 = (o["y"]) as core.Map;
+  var casted24 = (o["x"]) as core.Map;
   unittest.expect(casted24, unittest.hasLength(3));
   unittest.expect(casted24["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted24["bool"], unittest.equals(true));
   unittest.expect(casted24["string"], unittest.equals('foo'));
+  var casted25 = (o["y"]) as core.Map;
+  unittest.expect(casted25, unittest.hasLength(3));
+  unittest.expect(casted25["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted25["bool"], unittest.equals(true));
+  unittest.expect(casted25["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest =
@@ -4154,7 +5330,7 @@ buildGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest();
   buildCounterGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest < 3) {
-    o.payload = buildUnnamed5004();
+    o.payload = buildUnnamed5780();
     o.source = "foo";
     o.version = "foo";
   }
@@ -4166,7 +5342,7 @@ checkGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest(
     api.GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest < 3) {
-    checkUnnamed5004(o.payload);
+    checkUnnamed5780(o.payload);
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
   }
@@ -4223,33 +5399,33 @@ checkGoogleCloudDialogflowV2beta1QueryInput(
   buildCounterGoogleCloudDialogflowV2beta1QueryInput--;
 }
 
-buildUnnamed5005() {
+buildUnnamed5781() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Context>();
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   return o;
 }
 
-checkUnnamed5005(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
+checkUnnamed5781(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Context(o[0]);
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
 }
 
-buildUnnamed5006() {
+buildUnnamed5782() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5006(core.List<core.String> o) {
+checkUnnamed5782(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed5007() {
+buildUnnamed5783() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4264,32 +5440,58 @@ buildUnnamed5007() {
   return o;
 }
 
-checkUnnamed5007(core.Map<core.String, core.Object> o) {
+checkUnnamed5783(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted25 = (o["x"]) as core.Map;
-  unittest.expect(casted25, unittest.hasLength(3));
-  unittest.expect(casted25["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted25["bool"], unittest.equals(true));
-  unittest.expect(casted25["string"], unittest.equals('foo'));
-  var casted26 = (o["y"]) as core.Map;
+  var casted26 = (o["x"]) as core.Map;
   unittest.expect(casted26, unittest.hasLength(3));
   unittest.expect(casted26["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted26["bool"], unittest.equals(true));
   unittest.expect(casted26["string"], unittest.equals('foo'));
+  var casted27 = (o["y"]) as core.Map;
+  unittest.expect(casted27, unittest.hasLength(3));
+  unittest.expect(casted27["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted27["bool"], unittest.equals(true));
+  unittest.expect(casted27["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5008() {
+buildUnnamed5784() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1SessionEntityType>();
   o.add(buildGoogleCloudDialogflowV2beta1SessionEntityType());
   o.add(buildGoogleCloudDialogflowV2beta1SessionEntityType());
   return o;
 }
 
-checkUnnamed5008(
+checkUnnamed5784(
     core.List<api.GoogleCloudDialogflowV2beta1SessionEntityType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1SessionEntityType(o[0]);
   checkGoogleCloudDialogflowV2beta1SessionEntityType(o[1]);
+}
+
+buildUnnamed5785() {
+  var o = new core.List<api.GoogleCloudDialogflowV2beta1SubAgent>();
+  o.add(buildGoogleCloudDialogflowV2beta1SubAgent());
+  o.add(buildGoogleCloudDialogflowV2beta1SubAgent());
+  return o;
+}
+
+checkUnnamed5785(core.List<api.GoogleCloudDialogflowV2beta1SubAgent> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1SubAgent(o[0]);
+  checkGoogleCloudDialogflowV2beta1SubAgent(o[1]);
+}
+
+buildUnnamed5786() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed5786(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1QueryParameters = 0;
@@ -4297,15 +5499,17 @@ buildGoogleCloudDialogflowV2beta1QueryParameters() {
   var o = new api.GoogleCloudDialogflowV2beta1QueryParameters();
   buildCounterGoogleCloudDialogflowV2beta1QueryParameters++;
   if (buildCounterGoogleCloudDialogflowV2beta1QueryParameters < 3) {
-    o.contexts = buildUnnamed5005();
+    o.contexts = buildUnnamed5781();
     o.geoLocation = buildGoogleTypeLatLng();
-    o.knowledgeBaseNames = buildUnnamed5006();
-    o.payload = buildUnnamed5007();
+    o.knowledgeBaseNames = buildUnnamed5782();
+    o.payload = buildUnnamed5783();
     o.resetContexts = true;
     o.sentimentAnalysisRequestConfig =
         buildGoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig();
-    o.sessionEntityTypes = buildUnnamed5008();
+    o.sessionEntityTypes = buildUnnamed5784();
+    o.subAgents = buildUnnamed5785();
     o.timeZone = "foo";
+    o.webhookHeaders = buildUnnamed5786();
   }
   buildCounterGoogleCloudDialogflowV2beta1QueryParameters--;
   return o;
@@ -4315,20 +5519,22 @@ checkGoogleCloudDialogflowV2beta1QueryParameters(
     api.GoogleCloudDialogflowV2beta1QueryParameters o) {
   buildCounterGoogleCloudDialogflowV2beta1QueryParameters++;
   if (buildCounterGoogleCloudDialogflowV2beta1QueryParameters < 3) {
-    checkUnnamed5005(o.contexts);
+    checkUnnamed5781(o.contexts);
     checkGoogleTypeLatLng(o.geoLocation);
-    checkUnnamed5006(o.knowledgeBaseNames);
-    checkUnnamed5007(o.payload);
+    checkUnnamed5782(o.knowledgeBaseNames);
+    checkUnnamed5783(o.payload);
     unittest.expect(o.resetContexts, unittest.isTrue);
     checkGoogleCloudDialogflowV2beta1SentimentAnalysisRequestConfig(
         o.sentimentAnalysisRequestConfig);
-    checkUnnamed5008(o.sessionEntityTypes);
+    checkUnnamed5784(o.sessionEntityTypes);
+    checkUnnamed5785(o.subAgents);
     unittest.expect(o.timeZone, unittest.equals('foo'));
+    checkUnnamed5786(o.webhookHeaders);
   }
   buildCounterGoogleCloudDialogflowV2beta1QueryParameters--;
 }
 
-buildUnnamed5009() {
+buildUnnamed5787() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4343,47 +5549,47 @@ buildUnnamed5009() {
   return o;
 }
 
-checkUnnamed5009(core.Map<core.String, core.Object> o) {
+checkUnnamed5787(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted27 = (o["x"]) as core.Map;
-  unittest.expect(casted27, unittest.hasLength(3));
-  unittest.expect(casted27["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted27["bool"], unittest.equals(true));
-  unittest.expect(casted27["string"], unittest.equals('foo'));
-  var casted28 = (o["y"]) as core.Map;
+  var casted28 = (o["x"]) as core.Map;
   unittest.expect(casted28, unittest.hasLength(3));
   unittest.expect(casted28["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted28["bool"], unittest.equals(true));
   unittest.expect(casted28["string"], unittest.equals('foo'));
+  var casted29 = (o["y"]) as core.Map;
+  unittest.expect(casted29, unittest.hasLength(3));
+  unittest.expect(casted29["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted29["bool"], unittest.equals(true));
+  unittest.expect(casted29["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5010() {
+buildUnnamed5788() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1IntentMessage>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessage());
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessage());
   return o;
 }
 
-checkUnnamed5010(core.List<api.GoogleCloudDialogflowV2beta1IntentMessage> o) {
+checkUnnamed5788(core.List<api.GoogleCloudDialogflowV2beta1IntentMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessage(o[0]);
   checkGoogleCloudDialogflowV2beta1IntentMessage(o[1]);
 }
 
-buildUnnamed5011() {
+buildUnnamed5789() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Context>();
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   return o;
 }
 
-checkUnnamed5011(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
+checkUnnamed5789(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Context(o[0]);
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
 }
 
-buildUnnamed5012() {
+buildUnnamed5790() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4398,21 +5604,21 @@ buildUnnamed5012() {
   return o;
 }
 
-checkUnnamed5012(core.Map<core.String, core.Object> o) {
+checkUnnamed5790(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted29 = (o["x"]) as core.Map;
-  unittest.expect(casted29, unittest.hasLength(3));
-  unittest.expect(casted29["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted29["bool"], unittest.equals(true));
-  unittest.expect(casted29["string"], unittest.equals('foo'));
-  var casted30 = (o["y"]) as core.Map;
+  var casted30 = (o["x"]) as core.Map;
   unittest.expect(casted30, unittest.hasLength(3));
   unittest.expect(casted30["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted30["bool"], unittest.equals(true));
   unittest.expect(casted30["string"], unittest.equals('foo'));
+  var casted31 = (o["y"]) as core.Map;
+  unittest.expect(casted31, unittest.hasLength(3));
+  unittest.expect(casted31["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted31["bool"], unittest.equals(true));
+  unittest.expect(casted31["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5013() {
+buildUnnamed5791() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4427,18 +5633,18 @@ buildUnnamed5013() {
   return o;
 }
 
-checkUnnamed5013(core.Map<core.String, core.Object> o) {
+checkUnnamed5791(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted31 = (o["x"]) as core.Map;
-  unittest.expect(casted31, unittest.hasLength(3));
-  unittest.expect(casted31["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted31["bool"], unittest.equals(true));
-  unittest.expect(casted31["string"], unittest.equals('foo'));
-  var casted32 = (o["y"]) as core.Map;
+  var casted32 = (o["x"]) as core.Map;
   unittest.expect(casted32, unittest.hasLength(3));
   unittest.expect(casted32["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted32["bool"], unittest.equals(true));
   unittest.expect(casted32["string"], unittest.equals('foo'));
+  var casted33 = (o["y"]) as core.Map;
+  unittest.expect(casted33, unittest.hasLength(3));
+  unittest.expect(casted33["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted33["bool"], unittest.equals(true));
+  unittest.expect(casted33["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1QueryResult = 0;
@@ -4448,20 +5654,20 @@ buildGoogleCloudDialogflowV2beta1QueryResult() {
   if (buildCounterGoogleCloudDialogflowV2beta1QueryResult < 3) {
     o.action = "foo";
     o.allRequiredParamsPresent = true;
-    o.diagnosticInfo = buildUnnamed5009();
-    o.fulfillmentMessages = buildUnnamed5010();
+    o.diagnosticInfo = buildUnnamed5787();
+    o.fulfillmentMessages = buildUnnamed5788();
     o.fulfillmentText = "foo";
     o.intent = buildGoogleCloudDialogflowV2beta1Intent();
     o.intentDetectionConfidence = 42.0;
     o.knowledgeAnswers = buildGoogleCloudDialogflowV2beta1KnowledgeAnswers();
     o.languageCode = "foo";
-    o.outputContexts = buildUnnamed5011();
-    o.parameters = buildUnnamed5012();
+    o.outputContexts = buildUnnamed5789();
+    o.parameters = buildUnnamed5790();
     o.queryText = "foo";
     o.sentimentAnalysisResult =
         buildGoogleCloudDialogflowV2beta1SentimentAnalysisResult();
     o.speechRecognitionConfidence = 42.0;
-    o.webhookPayload = buildUnnamed5013();
+    o.webhookPayload = buildUnnamed5791();
     o.webhookSource = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1QueryResult--;
@@ -4474,20 +5680,20 @@ checkGoogleCloudDialogflowV2beta1QueryResult(
   if (buildCounterGoogleCloudDialogflowV2beta1QueryResult < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
     unittest.expect(o.allRequiredParamsPresent, unittest.isTrue);
-    checkUnnamed5009(o.diagnosticInfo);
-    checkUnnamed5010(o.fulfillmentMessages);
+    checkUnnamed5787(o.diagnosticInfo);
+    checkUnnamed5788(o.fulfillmentMessages);
     unittest.expect(o.fulfillmentText, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1Intent(o.intent);
     unittest.expect(o.intentDetectionConfidence, unittest.equals(42.0));
     checkGoogleCloudDialogflowV2beta1KnowledgeAnswers(o.knowledgeAnswers);
     unittest.expect(o.languageCode, unittest.equals('foo'));
-    checkUnnamed5011(o.outputContexts);
-    checkUnnamed5012(o.parameters);
+    checkUnnamed5789(o.outputContexts);
+    checkUnnamed5790(o.parameters);
     unittest.expect(o.queryText, unittest.equals('foo'));
     checkGoogleCloudDialogflowV2beta1SentimentAnalysisResult(
         o.sentimentAnalysisResult);
     unittest.expect(o.speechRecognitionConfidence, unittest.equals(42.0));
-    checkUnnamed5013(o.webhookPayload);
+    checkUnnamed5791(o.webhookPayload);
     unittest.expect(o.webhookSource, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1QueryResult--;
@@ -4497,7 +5703,9 @@ core.int buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest = 0;
 buildGoogleCloudDialogflowV2beta1ReloadDocumentRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1ReloadDocumentRequest();
   buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest++;
-  if (buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest < 3) {}
+  if (buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest < 3) {
+    o.gcsSource = buildGoogleCloudDialogflowV2beta1GcsSource();
+  }
   buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest--;
   return o;
 }
@@ -4505,7 +5713,9 @@ buildGoogleCloudDialogflowV2beta1ReloadDocumentRequest() {
 checkGoogleCloudDialogflowV2beta1ReloadDocumentRequest(
     api.GoogleCloudDialogflowV2beta1ReloadDocumentRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest++;
-  if (buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest < 3) {}
+  if (buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest < 3) {
+    checkGoogleCloudDialogflowV2beta1GcsSource(o.gcsSource);
+  }
   buildCounterGoogleCloudDialogflowV2beta1ReloadDocumentRequest--;
 }
 
@@ -4531,14 +5741,14 @@ checkGoogleCloudDialogflowV2beta1RestoreAgentRequest(
   buildCounterGoogleCloudDialogflowV2beta1RestoreAgentRequest--;
 }
 
-buildUnnamed5014() {
+buildUnnamed5792() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Agent>();
   o.add(buildGoogleCloudDialogflowV2beta1Agent());
   o.add(buildGoogleCloudDialogflowV2beta1Agent());
   return o;
 }
 
-checkUnnamed5014(core.List<api.GoogleCloudDialogflowV2beta1Agent> o) {
+checkUnnamed5792(core.List<api.GoogleCloudDialogflowV2beta1Agent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Agent(o[0]);
   checkGoogleCloudDialogflowV2beta1Agent(o[1]);
@@ -4549,7 +5759,7 @@ buildGoogleCloudDialogflowV2beta1SearchAgentsResponse() {
   var o = new api.GoogleCloudDialogflowV2beta1SearchAgentsResponse();
   buildCounterGoogleCloudDialogflowV2beta1SearchAgentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1SearchAgentsResponse < 3) {
-    o.agents = buildUnnamed5014();
+    o.agents = buildUnnamed5792();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1SearchAgentsResponse--;
@@ -4560,7 +5770,7 @@ checkGoogleCloudDialogflowV2beta1SearchAgentsResponse(
     api.GoogleCloudDialogflowV2beta1SearchAgentsResponse o) {
   buildCounterGoogleCloudDialogflowV2beta1SearchAgentsResponse++;
   if (buildCounterGoogleCloudDialogflowV2beta1SearchAgentsResponse < 3) {
-    checkUnnamed5014(o.agents);
+    checkUnnamed5792(o.agents);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1SearchAgentsResponse--;
@@ -4631,14 +5841,14 @@ checkGoogleCloudDialogflowV2beta1SentimentAnalysisResult(
   buildCounterGoogleCloudDialogflowV2beta1SentimentAnalysisResult--;
 }
 
-buildUnnamed5015() {
+buildUnnamed5793() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity>();
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   o.add(buildGoogleCloudDialogflowV2beta1EntityTypeEntity());
   return o;
 }
 
-checkUnnamed5015(
+checkUnnamed5793(
     core.List<api.GoogleCloudDialogflowV2beta1EntityTypeEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1EntityTypeEntity(o[0]);
@@ -4650,7 +5860,7 @@ buildGoogleCloudDialogflowV2beta1SessionEntityType() {
   var o = new api.GoogleCloudDialogflowV2beta1SessionEntityType();
   buildCounterGoogleCloudDialogflowV2beta1SessionEntityType++;
   if (buildCounterGoogleCloudDialogflowV2beta1SessionEntityType < 3) {
-    o.entities = buildUnnamed5015();
+    o.entities = buildUnnamed5793();
     o.entityOverrideMode = "foo";
     o.name = "foo";
   }
@@ -4662,21 +5872,78 @@ checkGoogleCloudDialogflowV2beta1SessionEntityType(
     api.GoogleCloudDialogflowV2beta1SessionEntityType o) {
   buildCounterGoogleCloudDialogflowV2beta1SessionEntityType++;
   if (buildCounterGoogleCloudDialogflowV2beta1SessionEntityType < 3) {
-    checkUnnamed5015(o.entities);
+    checkUnnamed5793(o.entities);
     unittest.expect(o.entityOverrideMode, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1SessionEntityType--;
 }
 
-buildUnnamed5016() {
+buildUnnamed5794() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5016(core.List<core.String> o) {
+checkUnnamed5794(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1SpeechContext = 0;
+buildGoogleCloudDialogflowV2beta1SpeechContext() {
+  var o = new api.GoogleCloudDialogflowV2beta1SpeechContext();
+  buildCounterGoogleCloudDialogflowV2beta1SpeechContext++;
+  if (buildCounterGoogleCloudDialogflowV2beta1SpeechContext < 3) {
+    o.boost = 42.0;
+    o.phrases = buildUnnamed5794();
+  }
+  buildCounterGoogleCloudDialogflowV2beta1SpeechContext--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1SpeechContext(
+    api.GoogleCloudDialogflowV2beta1SpeechContext o) {
+  buildCounterGoogleCloudDialogflowV2beta1SpeechContext++;
+  if (buildCounterGoogleCloudDialogflowV2beta1SpeechContext < 3) {
+    unittest.expect(o.boost, unittest.equals(42.0));
+    checkUnnamed5794(o.phrases);
+  }
+  buildCounterGoogleCloudDialogflowV2beta1SpeechContext--;
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1SubAgent = 0;
+buildGoogleCloudDialogflowV2beta1SubAgent() {
+  var o = new api.GoogleCloudDialogflowV2beta1SubAgent();
+  buildCounterGoogleCloudDialogflowV2beta1SubAgent++;
+  if (buildCounterGoogleCloudDialogflowV2beta1SubAgent < 3) {
+    o.environment = "foo";
+    o.project = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1SubAgent--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1SubAgent(
+    api.GoogleCloudDialogflowV2beta1SubAgent o) {
+  buildCounterGoogleCloudDialogflowV2beta1SubAgent++;
+  if (buildCounterGoogleCloudDialogflowV2beta1SubAgent < 3) {
+    unittest.expect(o.environment, unittest.equals('foo'));
+    unittest.expect(o.project, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1SubAgent--;
+}
+
+buildUnnamed5795() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed5795(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4687,7 +5954,7 @@ buildGoogleCloudDialogflowV2beta1SynthesizeSpeechConfig() {
   var o = new api.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig();
   buildCounterGoogleCloudDialogflowV2beta1SynthesizeSpeechConfig++;
   if (buildCounterGoogleCloudDialogflowV2beta1SynthesizeSpeechConfig < 3) {
-    o.effectsProfileId = buildUnnamed5016();
+    o.effectsProfileId = buildUnnamed5795();
     o.pitch = 42.0;
     o.speakingRate = 42.0;
     o.voice = buildGoogleCloudDialogflowV2beta1VoiceSelectionParams();
@@ -4701,7 +5968,7 @@ checkGoogleCloudDialogflowV2beta1SynthesizeSpeechConfig(
     api.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig o) {
   buildCounterGoogleCloudDialogflowV2beta1SynthesizeSpeechConfig++;
   if (buildCounterGoogleCloudDialogflowV2beta1SynthesizeSpeechConfig < 3) {
-    checkUnnamed5016(o.effectsProfileId);
+    checkUnnamed5795(o.effectsProfileId);
     unittest.expect(o.pitch, unittest.equals(42.0));
     unittest.expect(o.speakingRate, unittest.equals(42.0));
     checkGoogleCloudDialogflowV2beta1VoiceSelectionParams(o.voice);
@@ -4748,6 +6015,76 @@ checkGoogleCloudDialogflowV2beta1TrainAgentRequest(
   buildCounterGoogleCloudDialogflowV2beta1TrainAgentRequest--;
 }
 
+buildUnnamed5796() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed5796(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1ValidationError = 0;
+buildGoogleCloudDialogflowV2beta1ValidationError() {
+  var o = new api.GoogleCloudDialogflowV2beta1ValidationError();
+  buildCounterGoogleCloudDialogflowV2beta1ValidationError++;
+  if (buildCounterGoogleCloudDialogflowV2beta1ValidationError < 3) {
+    o.entries = buildUnnamed5796();
+    o.errorMessage = "foo";
+    o.severity = "foo";
+  }
+  buildCounterGoogleCloudDialogflowV2beta1ValidationError--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1ValidationError(
+    api.GoogleCloudDialogflowV2beta1ValidationError o) {
+  buildCounterGoogleCloudDialogflowV2beta1ValidationError++;
+  if (buildCounterGoogleCloudDialogflowV2beta1ValidationError < 3) {
+    checkUnnamed5796(o.entries);
+    unittest.expect(o.errorMessage, unittest.equals('foo'));
+    unittest.expect(o.severity, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudDialogflowV2beta1ValidationError--;
+}
+
+buildUnnamed5797() {
+  var o = new core.List<api.GoogleCloudDialogflowV2beta1ValidationError>();
+  o.add(buildGoogleCloudDialogflowV2beta1ValidationError());
+  o.add(buildGoogleCloudDialogflowV2beta1ValidationError());
+  return o;
+}
+
+checkUnnamed5797(core.List<api.GoogleCloudDialogflowV2beta1ValidationError> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1ValidationError(o[0]);
+  checkGoogleCloudDialogflowV2beta1ValidationError(o[1]);
+}
+
+core.int buildCounterGoogleCloudDialogflowV2beta1ValidationResult = 0;
+buildGoogleCloudDialogflowV2beta1ValidationResult() {
+  var o = new api.GoogleCloudDialogflowV2beta1ValidationResult();
+  buildCounterGoogleCloudDialogflowV2beta1ValidationResult++;
+  if (buildCounterGoogleCloudDialogflowV2beta1ValidationResult < 3) {
+    o.validationErrors = buildUnnamed5797();
+  }
+  buildCounterGoogleCloudDialogflowV2beta1ValidationResult--;
+  return o;
+}
+
+checkGoogleCloudDialogflowV2beta1ValidationResult(
+    api.GoogleCloudDialogflowV2beta1ValidationResult o) {
+  buildCounterGoogleCloudDialogflowV2beta1ValidationResult++;
+  if (buildCounterGoogleCloudDialogflowV2beta1ValidationResult < 3) {
+    checkUnnamed5797(o.validationErrors);
+  }
+  buildCounterGoogleCloudDialogflowV2beta1ValidationResult--;
+}
+
 core.int buildCounterGoogleCloudDialogflowV2beta1VoiceSelectionParams = 0;
 buildGoogleCloudDialogflowV2beta1VoiceSelectionParams() {
   var o = new api.GoogleCloudDialogflowV2beta1VoiceSelectionParams();
@@ -4770,14 +6107,14 @@ checkGoogleCloudDialogflowV2beta1VoiceSelectionParams(
   buildCounterGoogleCloudDialogflowV2beta1VoiceSelectionParams--;
 }
 
-buildUnnamed5017() {
+buildUnnamed5798() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1QueryResult>();
   o.add(buildGoogleCloudDialogflowV2beta1QueryResult());
   o.add(buildGoogleCloudDialogflowV2beta1QueryResult());
   return o;
 }
 
-checkUnnamed5017(core.List<api.GoogleCloudDialogflowV2beta1QueryResult> o) {
+checkUnnamed5798(core.List<api.GoogleCloudDialogflowV2beta1QueryResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1QueryResult(o[0]);
   checkGoogleCloudDialogflowV2beta1QueryResult(o[1]);
@@ -4788,7 +6125,7 @@ buildGoogleCloudDialogflowV2beta1WebhookRequest() {
   var o = new api.GoogleCloudDialogflowV2beta1WebhookRequest();
   buildCounterGoogleCloudDialogflowV2beta1WebhookRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1WebhookRequest < 3) {
-    o.alternativeQueryResults = buildUnnamed5017();
+    o.alternativeQueryResults = buildUnnamed5798();
     o.originalDetectIntentRequest =
         buildGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest();
     o.queryResult = buildGoogleCloudDialogflowV2beta1QueryResult();
@@ -4803,7 +6140,7 @@ checkGoogleCloudDialogflowV2beta1WebhookRequest(
     api.GoogleCloudDialogflowV2beta1WebhookRequest o) {
   buildCounterGoogleCloudDialogflowV2beta1WebhookRequest++;
   if (buildCounterGoogleCloudDialogflowV2beta1WebhookRequest < 3) {
-    checkUnnamed5017(o.alternativeQueryResults);
+    checkUnnamed5798(o.alternativeQueryResults);
     checkGoogleCloudDialogflowV2beta1OriginalDetectIntentRequest(
         o.originalDetectIntentRequest);
     checkGoogleCloudDialogflowV2beta1QueryResult(o.queryResult);
@@ -4813,33 +6150,33 @@ checkGoogleCloudDialogflowV2beta1WebhookRequest(
   buildCounterGoogleCloudDialogflowV2beta1WebhookRequest--;
 }
 
-buildUnnamed5018() {
+buildUnnamed5799() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1IntentMessage>();
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessage());
   o.add(buildGoogleCloudDialogflowV2beta1IntentMessage());
   return o;
 }
 
-checkUnnamed5018(core.List<api.GoogleCloudDialogflowV2beta1IntentMessage> o) {
+checkUnnamed5799(core.List<api.GoogleCloudDialogflowV2beta1IntentMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1IntentMessage(o[0]);
   checkGoogleCloudDialogflowV2beta1IntentMessage(o[1]);
 }
 
-buildUnnamed5019() {
+buildUnnamed5800() {
   var o = new core.List<api.GoogleCloudDialogflowV2beta1Context>();
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   o.add(buildGoogleCloudDialogflowV2beta1Context());
   return o;
 }
 
-checkUnnamed5019(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
+checkUnnamed5800(core.List<api.GoogleCloudDialogflowV2beta1Context> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudDialogflowV2beta1Context(o[0]);
   checkGoogleCloudDialogflowV2beta1Context(o[1]);
 }
 
-buildUnnamed5020() {
+buildUnnamed5801() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4854,18 +6191,32 @@ buildUnnamed5020() {
   return o;
 }
 
-checkUnnamed5020(core.Map<core.String, core.Object> o) {
+checkUnnamed5801(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted33 = (o["x"]) as core.Map;
-  unittest.expect(casted33, unittest.hasLength(3));
-  unittest.expect(casted33["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted33["bool"], unittest.equals(true));
-  unittest.expect(casted33["string"], unittest.equals('foo'));
-  var casted34 = (o["y"]) as core.Map;
+  var casted34 = (o["x"]) as core.Map;
   unittest.expect(casted34, unittest.hasLength(3));
   unittest.expect(casted34["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted34["bool"], unittest.equals(true));
   unittest.expect(casted34["string"], unittest.equals('foo'));
+  var casted35 = (o["y"]) as core.Map;
+  unittest.expect(casted35, unittest.hasLength(3));
+  unittest.expect(casted35["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted35["bool"], unittest.equals(true));
+  unittest.expect(casted35["string"], unittest.equals('foo'));
+}
+
+buildUnnamed5802() {
+  var o = new core.List<api.GoogleCloudDialogflowV2beta1SessionEntityType>();
+  o.add(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+  o.add(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+  return o;
+}
+
+checkUnnamed5802(
+    core.List<api.GoogleCloudDialogflowV2beta1SessionEntityType> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudDialogflowV2beta1SessionEntityType(o[0]);
+  checkGoogleCloudDialogflowV2beta1SessionEntityType(o[1]);
 }
 
 core.int buildCounterGoogleCloudDialogflowV2beta1WebhookResponse = 0;
@@ -4875,10 +6226,11 @@ buildGoogleCloudDialogflowV2beta1WebhookResponse() {
   if (buildCounterGoogleCloudDialogflowV2beta1WebhookResponse < 3) {
     o.endInteraction = true;
     o.followupEventInput = buildGoogleCloudDialogflowV2beta1EventInput();
-    o.fulfillmentMessages = buildUnnamed5018();
+    o.fulfillmentMessages = buildUnnamed5799();
     o.fulfillmentText = "foo";
-    o.outputContexts = buildUnnamed5019();
-    o.payload = buildUnnamed5020();
+    o.outputContexts = buildUnnamed5800();
+    o.payload = buildUnnamed5801();
+    o.sessionEntityTypes = buildUnnamed5802();
     o.source = "foo";
   }
   buildCounterGoogleCloudDialogflowV2beta1WebhookResponse--;
@@ -4891,16 +6243,52 @@ checkGoogleCloudDialogflowV2beta1WebhookResponse(
   if (buildCounterGoogleCloudDialogflowV2beta1WebhookResponse < 3) {
     unittest.expect(o.endInteraction, unittest.isTrue);
     checkGoogleCloudDialogflowV2beta1EventInput(o.followupEventInput);
-    checkUnnamed5018(o.fulfillmentMessages);
+    checkUnnamed5799(o.fulfillmentMessages);
     unittest.expect(o.fulfillmentText, unittest.equals('foo'));
-    checkUnnamed5019(o.outputContexts);
-    checkUnnamed5020(o.payload);
+    checkUnnamed5800(o.outputContexts);
+    checkUnnamed5801(o.payload);
+    checkUnnamed5802(o.sessionEntityTypes);
     unittest.expect(o.source, unittest.equals('foo'));
   }
   buildCounterGoogleCloudDialogflowV2beta1WebhookResponse--;
 }
 
-buildUnnamed5021() {
+buildUnnamed5803() {
+  var o = new core.List<api.GoogleLongrunningOperation>();
+  o.add(buildGoogleLongrunningOperation());
+  o.add(buildGoogleLongrunningOperation());
+  return o;
+}
+
+checkUnnamed5803(core.List<api.GoogleLongrunningOperation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleLongrunningOperation(o[0]);
+  checkGoogleLongrunningOperation(o[1]);
+}
+
+core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
+buildGoogleLongrunningListOperationsResponse() {
+  var o = new api.GoogleLongrunningListOperationsResponse();
+  buildCounterGoogleLongrunningListOperationsResponse++;
+  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
+    o.nextPageToken = "foo";
+    o.operations = buildUnnamed5803();
+  }
+  buildCounterGoogleLongrunningListOperationsResponse--;
+  return o;
+}
+
+checkGoogleLongrunningListOperationsResponse(
+    api.GoogleLongrunningListOperationsResponse o) {
+  buildCounterGoogleLongrunningListOperationsResponse++;
+  if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
+    unittest.expect(o.nextPageToken, unittest.equals('foo'));
+    checkUnnamed5803(o.operations);
+  }
+  buildCounterGoogleLongrunningListOperationsResponse--;
+}
+
+buildUnnamed5804() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4915,21 +6303,21 @@ buildUnnamed5021() {
   return o;
 }
 
-checkUnnamed5021(core.Map<core.String, core.Object> o) {
+checkUnnamed5804(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted35 = (o["x"]) as core.Map;
-  unittest.expect(casted35, unittest.hasLength(3));
-  unittest.expect(casted35["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted35["bool"], unittest.equals(true));
-  unittest.expect(casted35["string"], unittest.equals('foo'));
-  var casted36 = (o["y"]) as core.Map;
+  var casted36 = (o["x"]) as core.Map;
   unittest.expect(casted36, unittest.hasLength(3));
   unittest.expect(casted36["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted36["bool"], unittest.equals(true));
   unittest.expect(casted36["string"], unittest.equals('foo'));
+  var casted37 = (o["y"]) as core.Map;
+  unittest.expect(casted37, unittest.hasLength(3));
+  unittest.expect(casted37["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted37["bool"], unittest.equals(true));
+  unittest.expect(casted37["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5022() {
+buildUnnamed5805() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -4944,18 +6332,18 @@ buildUnnamed5022() {
   return o;
 }
 
-checkUnnamed5022(core.Map<core.String, core.Object> o) {
+checkUnnamed5805(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted37 = (o["x"]) as core.Map;
-  unittest.expect(casted37, unittest.hasLength(3));
-  unittest.expect(casted37["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted37["bool"], unittest.equals(true));
-  unittest.expect(casted37["string"], unittest.equals('foo'));
-  var casted38 = (o["y"]) as core.Map;
+  var casted38 = (o["x"]) as core.Map;
   unittest.expect(casted38, unittest.hasLength(3));
   unittest.expect(casted38["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted38["bool"], unittest.equals(true));
   unittest.expect(casted38["string"], unittest.equals('foo'));
+  var casted39 = (o["y"]) as core.Map;
+  unittest.expect(casted39, unittest.hasLength(3));
+  unittest.expect(casted39["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted39["bool"], unittest.equals(true));
+  unittest.expect(casted39["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -4965,9 +6353,9 @@ buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed5021();
+    o.metadata = buildUnnamed5804();
     o.name = "foo";
-    o.response = buildUnnamed5022();
+    o.response = buildUnnamed5805();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -4978,9 +6366,9 @@ checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkGoogleRpcStatus(o.error);
-    checkUnnamed5021(o.metadata);
+    checkUnnamed5804(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed5022(o.response);
+    checkUnnamed5805(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -5000,7 +6388,7 @@ checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-buildUnnamed5023() {
+buildUnnamed5806() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -5015,31 +6403,31 @@ buildUnnamed5023() {
   return o;
 }
 
-checkUnnamed5023(core.Map<core.String, core.Object> o) {
+checkUnnamed5806(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted39 = (o["x"]) as core.Map;
-  unittest.expect(casted39, unittest.hasLength(3));
-  unittest.expect(casted39["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted39["bool"], unittest.equals(true));
-  unittest.expect(casted39["string"], unittest.equals('foo'));
-  var casted40 = (o["y"]) as core.Map;
+  var casted40 = (o["x"]) as core.Map;
   unittest.expect(casted40, unittest.hasLength(3));
   unittest.expect(casted40["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted40["bool"], unittest.equals(true));
   unittest.expect(casted40["string"], unittest.equals('foo'));
+  var casted41 = (o["y"]) as core.Map;
+  unittest.expect(casted41, unittest.hasLength(3));
+  unittest.expect(casted41["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted41["bool"], unittest.equals(true));
+  unittest.expect(casted41["string"], unittest.equals('foo'));
 }
 
-buildUnnamed5024() {
+buildUnnamed5807() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed5023());
-  o.add(buildUnnamed5023());
+  o.add(buildUnnamed5806());
+  o.add(buildUnnamed5806());
   return o;
 }
 
-checkUnnamed5024(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed5807(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed5023(o[0]);
-  checkUnnamed5023(o[1]);
+  checkUnnamed5806(o[0]);
+  checkUnnamed5806(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -5048,7 +6436,7 @@ buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed5024();
+    o.details = buildUnnamed5807();
     o.message = "foo";
   }
   buildCounterGoogleRpcStatus--;
@@ -5059,7 +6447,7 @@ checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed5024(o.details);
+    checkUnnamed5807(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -5087,6 +6475,15 @@ checkGoogleTypeLatLng(api.GoogleTypeLatLng o) {
 }
 
 main() {
+  unittest.group("obj-schema-GoogleCloudDialogflowV2AnnotatedMessagePart", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2AnnotatedMessagePart();
+      var od = new api.GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2AnnotatedMessagePart(od);
+    });
+  });
+
   unittest.group(
       "obj-schema-GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse", () {
     unittest.test("to-json--from-json", () {
@@ -5114,6 +6511,15 @@ main() {
       var o = buildGoogleCloudDialogflowV2Context();
       var od = new api.GoogleCloudDialogflowV2Context.fromJson(o.toJson());
       checkGoogleCloudDialogflowV2Context(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2ConversationEvent", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2ConversationEvent();
+      var od =
+          new api.GoogleCloudDialogflowV2ConversationEvent.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2ConversationEvent(od);
     });
   });
 
@@ -5212,6 +6618,45 @@ main() {
     });
   });
 
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard();
+      var od = new api
+              .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCard(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
+      var od = new api
+              .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+          od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
+      var od = new api
+              .GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
+          od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageCard", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDialogflowV2IntentMessageCard();
@@ -5253,6 +6698,17 @@ main() {
     });
   });
 
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2IntentMessageColumnProperties", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2IntentMessageColumnProperties();
+      var od =
+          new api.GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageColumnProperties(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageImage", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDialogflowV2IntentMessageImage();
@@ -5291,6 +6747,31 @@ main() {
           new api.GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
               o.toJson());
       checkGoogleCloudDialogflowV2IntentMessageListSelectItem(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageMediaContent",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2IntentMessageMediaContent();
+      var od =
+          new api.GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageMediaContent(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject();
+      var od = new api
+              .GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
+          od);
     });
   });
 
@@ -5358,6 +6839,38 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageTableCard",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2IntentMessageTableCard();
+      var od = new api.GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageTableCard(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageTableCardCell",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2IntentMessageTableCardCell();
+      var od =
+          new api.GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageTableCardCell(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageTableCardRow",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2IntentMessageTableCardRow();
+      var od =
+          new api.GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2IntentMessageTableCardRow(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2IntentMessageText", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDialogflowV2IntentMessageText();
@@ -5392,6 +6905,23 @@ main() {
       var od = new api.GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
           o.toJson());
       checkGoogleCloudDialogflowV2IntentTrainingPhrasePart(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2Message", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2Message();
+      var od = new api.GoogleCloudDialogflowV2Message.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2Message(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2MessageAnnotation", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2MessageAnnotation();
+      var od =
+          new api.GoogleCloudDialogflowV2MessageAnnotation.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2MessageAnnotation(od);
     });
   });
 
@@ -5432,6 +6962,15 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GoogleCloudDialogflowV2SessionEntityType", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2SessionEntityType();
+      var od =
+          new api.GoogleCloudDialogflowV2SessionEntityType.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2SessionEntityType(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2WebhookRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDialogflowV2WebhookRequest();
@@ -5455,6 +6994,18 @@ main() {
       var o = buildGoogleCloudDialogflowV2beta1Agent();
       var od = new api.GoogleCloudDialogflowV2beta1Agent.fromJson(o.toJson());
       checkGoogleCloudDialogflowV2beta1Agent(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1AnnotatedConversationDataset",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1AnnotatedConversationDataset();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1AnnotatedConversationDataset.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1AnnotatedConversationDataset(od);
     });
   });
 
@@ -5598,6 +7149,17 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1DocumentReloadStatus",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1DocumentReloadStatus();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1DocumentReloadStatus.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2beta1DocumentReloadStatus(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2beta1EntityType", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudDialogflowV2beta1EntityType();
@@ -5622,6 +7184,15 @@ main() {
       var od = new api.GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(
           o.toJson());
       checkGoogleCloudDialogflowV2beta1EntityTypeEntity(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1Environment", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1Environment();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1Environment.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2beta1Environment(od);
     });
   });
 
@@ -5651,6 +7222,46 @@ main() {
       var od = new api.GoogleCloudDialogflowV2beta1ExportAgentResponse.fromJson(
           o.toJson());
       checkGoogleCloudDialogflowV2beta1ExportAgentResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1Fulfillment", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1Fulfillment();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1Fulfillment.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2beta1Fulfillment(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1FulfillmentFeature",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1FulfillmentFeature();
+      var od = new api.GoogleCloudDialogflowV2beta1FulfillmentFeature.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1FulfillmentFeature(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1FulfillmentGenericWebService",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1FulfillmentGenericWebService();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1FulfillmentGenericWebService.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1FulfillmentGenericWebService(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1GcsSource", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1GcsSource();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1GcsSource.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2beta1GcsSource(od);
     });
   });
 
@@ -5747,6 +7358,47 @@ main() {
     });
   });
 
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem(
+          od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction(
+          od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2beta1IntentMessageCard",
       () {
     unittest.test("to-json--from-json", () {
@@ -5792,6 +7444,18 @@ main() {
     });
   });
 
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageColumnProperties",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1IntentMessageColumnProperties();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageColumnProperties.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageColumnProperties(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2beta1IntentMessageImage",
       () {
     unittest.test("to-json--from-json", () {
@@ -5833,6 +7497,31 @@ main() {
               .GoogleCloudDialogflowV2beta1IntentMessageListSelectItem.fromJson(
           o.toJson());
       checkGoogleCloudDialogflowV2beta1IntentMessageListSelectItem(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageMediaContent", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1IntentMessageMediaContent();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageMediaContent.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageMediaContent(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o =
+          buildGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject(
+          od);
     });
   });
 
@@ -6041,6 +7730,39 @@ main() {
   });
 
   unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageTableCard", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1IntentMessageTableCard();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1IntentMessageTableCard.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageTableCard(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageTableCardCell", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1IntentMessageTableCardCell();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageTableCardCell(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageTableCardRow", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1IntentMessageTableCardRow();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1IntentMessageTableCardRow(od);
+    });
+  });
+
+  unittest.group(
       "obj-schema-GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio",
       () {
     unittest.test("to-json--from-json", () {
@@ -6161,6 +7883,17 @@ main() {
     });
   });
 
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1LabelConversationResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1LabelConversationResponse();
+      var od = new api
+              .GoogleCloudDialogflowV2beta1LabelConversationResponse.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1LabelConversationResponse(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2beta1ListContextsResponse",
       () {
     unittest.test("to-json--from-json", () {
@@ -6191,6 +7924,17 @@ main() {
           new api.GoogleCloudDialogflowV2beta1ListEntityTypesResponse.fromJson(
               o.toJson());
       checkGoogleCloudDialogflowV2beta1ListEntityTypesResponse(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GoogleCloudDialogflowV2beta1ListEnvironmentsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1ListEnvironmentsResponse();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1ListEnvironmentsResponse.fromJson(
+              o.toJson());
+      checkGoogleCloudDialogflowV2beta1ListEnvironmentsResponse(od);
     });
   });
 
@@ -6349,6 +8093,24 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1SpeechContext", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1SpeechContext();
+      var od = new api.GoogleCloudDialogflowV2beta1SpeechContext.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1SpeechContext(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1SubAgent", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1SubAgent();
+      var od =
+          new api.GoogleCloudDialogflowV2beta1SubAgent.fromJson(o.toJson());
+      checkGoogleCloudDialogflowV2beta1SubAgent(od);
+    });
+  });
+
   unittest.group(
       "obj-schema-GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig", () {
     unittest.test("to-json--from-json", () {
@@ -6379,6 +8141,24 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1ValidationError", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1ValidationError();
+      var od = new api.GoogleCloudDialogflowV2beta1ValidationError.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1ValidationError(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleCloudDialogflowV2beta1ValidationResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleCloudDialogflowV2beta1ValidationResult();
+      var od = new api.GoogleCloudDialogflowV2beta1ValidationResult.fromJson(
+          o.toJson());
+      checkGoogleCloudDialogflowV2beta1ValidationResult(od);
+    });
+  });
+
   unittest.group("obj-schema-GoogleCloudDialogflowV2beta1VoiceSelectionParams",
       () {
     unittest.test("to-json--from-json", () {
@@ -6405,6 +8185,15 @@ main() {
       var od = new api.GoogleCloudDialogflowV2beta1WebhookResponse.fromJson(
           o.toJson());
       checkGoogleCloudDialogflowV2beta1WebhookResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGoogleLongrunningListOperationsResponse();
+      var od =
+          new api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      checkGoogleLongrunningListOperationsResponse(od);
     });
   });
 
@@ -6441,66 +8230,6 @@ main() {
   });
 
   unittest.group("resource-ProjectsResourceApi", () {
-    unittest.test("method--agent", () {
-      var mock = new HttpServerMock();
-      api.ProjectsResourceApi res = new api.DialogflowApi(mock).projects;
-      var arg_request = buildGoogleCloudDialogflowV2beta1Agent();
-      var arg_parent = "foo";
-      var arg_updateMask = "foo";
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudDialogflowV2beta1Agent.fromJson(json);
-        checkGoogleCloudDialogflowV2beta1Agent(obj);
-
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8),
-            unittest.equals("v2beta1/"));
-        pathOffset += 8;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp =
-            convert.json.encode(buildGoogleCloudDialogflowV2beta1Agent());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .agent(arg_request, arg_parent,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDialogflowV2beta1Agent(response);
-      })));
-    });
-
     unittest.test("method--deleteAgent", () {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.DialogflowApi(mock).projects;
@@ -6603,13 +8332,73 @@ main() {
         checkGoogleCloudDialogflowV2beta1Agent(response);
       })));
     });
+
+    unittest.test("method--setAgent", () {
+      var mock = new HttpServerMock();
+      api.ProjectsResourceApi res = new api.DialogflowApi(mock).projects;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Agent();
+      var arg_parent = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Agent.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Agent(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Agent());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .setAgent(arg_request, arg_parent,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Agent(response);
+      })));
+    });
   });
 
   unittest.group("resource-ProjectsAgentResourceApi", () {
     unittest.test("method--export", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1;
+          new api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1ExportAgentRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -6664,10 +8453,120 @@ main() {
       })));
     });
 
+    unittest.test("method--getFulfillment", () {
+      var mock = new HttpServerMock();
+      api.ProjectsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.agent;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Fulfillment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .getFulfillment(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Fulfillment(response);
+      })));
+    });
+
+    unittest.test("method--getValidationResult", () {
+      var mock = new HttpServerMock();
+      api.ProjectsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.agent;
+      var arg_parent = "foo";
+      var arg_languageCode = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1ValidationResult());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .getValidationResult(arg_parent,
+              languageCode: arg_languageCode, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ValidationResult(response);
+      })));
+    });
+
     unittest.test("method--import", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1;
+          new api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1ImportAgentRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -6725,7 +8624,7 @@ main() {
     unittest.test("method--restore", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1;
+          new api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1RestoreAgentRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -6783,7 +8682,7 @@ main() {
     unittest.test("method--search", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1;
+          new api.DialogflowApi(mock).projects.agent;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -6845,7 +8744,7 @@ main() {
     unittest.test("method--train", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1;
+          new api.DialogflowApi(mock).projects.agent;
       var arg_request = buildGoogleCloudDialogflowV2beta1TrainAgentRequest();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -6899,13 +8798,75 @@ main() {
         checkGoogleLongrunningOperation(response);
       })));
     });
+
+    unittest.test("method--updateFulfillment", () {
+      var mock = new HttpServerMock();
+      api.ProjectsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.agent;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Fulfillment();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1Fulfillment.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Fulfillment(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Fulfillment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .updateFulfillment(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Fulfillment(response);
+      })));
+    });
   });
 
   unittest.group("resource-ProjectsAgentEntityTypesResourceApi", () {
     unittest.test("method--batchDelete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest();
       var arg_parent = "foo";
@@ -6964,7 +8925,7 @@ main() {
     unittest.test("method--batchUpdate", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest();
       var arg_parent = "foo";
@@ -7023,7 +8984,7 @@ main() {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
       var arg_parent = "foo";
       var arg_languageCode = "foo";
@@ -7084,7 +9045,7 @@ main() {
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -7136,7 +9097,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_name = "foo";
       var arg_languageCode = "foo";
       var arg_$fields = "foo";
@@ -7192,11 +9153,11 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_parent = "foo";
+      var arg_languageCode = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_languageCode = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7230,11 +9191,11 @@ main() {
           }
         }
         unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7246,9 +9207,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              languageCode: arg_languageCode,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              languageCode: arg_languageCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDialogflowV2beta1ListEntityTypesResponse(response);
@@ -7258,7 +9219,7 @@ main() {
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
       var arg_name = "foo";
       var arg_languageCode = "foo";
@@ -7326,7 +9287,7 @@ main() {
     unittest.test("method--batchCreate", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesEntitiesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes.entities;
+          new api.DialogflowApi(mock).projects.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest();
       var arg_parent = "foo";
@@ -7385,7 +9346,7 @@ main() {
     unittest.test("method--batchDelete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesEntitiesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes.entities;
+          new api.DialogflowApi(mock).projects.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest();
       var arg_parent = "foo";
@@ -7444,7 +9405,7 @@ main() {
     unittest.test("method--batchUpdate", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentEntityTypesEntitiesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.entityTypes.entities;
+          new api.DialogflowApi(mock).projects.agent.entityTypes.entities;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest();
       var arg_parent = "foo";
@@ -7501,6 +9462,70 @@ main() {
     });
   });
 
+  unittest.group("resource-ProjectsAgentEnvironmentsResourceApi", () {
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsAgentEnvironmentsResourceApi res =
+          new api.DialogflowApi(mock).projects.agent.environments;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(
+            buildGoogleCloudDialogflowV2beta1ListEnvironmentsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListEnvironmentsResponse(response);
+      })));
+    });
+  });
+
   unittest.group("resource-ProjectsAgentEnvironmentsUsersSessionsResourceApi",
       () {
     unittest.test("method--deleteContexts", () {
@@ -7508,7 +9533,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions;
@@ -7565,7 +9590,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions;
@@ -7632,7 +9657,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -7695,7 +9720,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -7753,7 +9778,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -7812,14 +9837,14 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
               .contexts;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -7852,10 +9877,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -7867,8 +9892,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDialogflowV2beta1ListContextsResponse(response);
@@ -7880,7 +9905,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -7951,7 +9976,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -8016,7 +10041,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -8074,7 +10099,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -8133,7 +10158,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -8202,7 +10227,7 @@ main() {
       api.ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi res =
           new api.DialogflowApi(mock)
               .projects
-              .agent_1
+              .agent
               .environments
               .users
               .sessions
@@ -8271,7 +10296,7 @@ main() {
     unittest.test("method--batchDelete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest();
       var arg_parent = "foo";
@@ -8330,7 +10355,7 @@ main() {
     unittest.test("method--batchUpdate", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest();
       var arg_parent = "foo";
@@ -8389,7 +10414,7 @@ main() {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
       var arg_parent = "foo";
       var arg_intentView = "foo";
@@ -8455,7 +10480,7 @@ main() {
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8507,7 +10532,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_name = "foo";
       var arg_intentView = "foo";
       var arg_languageCode = "foo";
@@ -8569,7 +10594,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -8639,12 +10664,12 @@ main() {
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentIntentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.intents;
+          new api.DialogflowApi(mock).projects.agent.intents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
       var arg_name = "foo";
+      var arg_intentView = "foo";
       var arg_languageCode = "foo";
       var arg_updateMask = "foo";
-      var arg_intentView = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudDialogflowV2beta1Intent.fromJson(json);
@@ -8681,11 +10706,11 @@ main() {
           }
         }
         unittest.expect(
+            queryMap["intentView"].first, unittest.equals(arg_intentView));
+        unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
         unittest.expect(
             queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-        unittest.expect(
-            queryMap["intentView"].first, unittest.equals(arg_intentView));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8697,9 +10722,9 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_name,
+              intentView: arg_intentView,
               languageCode: arg_languageCode,
               updateMask: arg_updateMask,
-              intentView: arg_intentView,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDialogflowV2beta1Intent(response);
@@ -8711,7 +10736,7 @@ main() {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_request = buildGoogleCloudDialogflowV2beta1KnowledgeBase();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -8769,7 +10794,7 @@ main() {
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_name = "foo";
       var arg_force = true;
       var arg_$fields = "foo";
@@ -8823,7 +10848,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8876,10 +10901,10 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -8912,10 +10937,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -8927,8 +10952,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleCloudDialogflowV2beta1ListKnowledgeBasesResponse(response);
@@ -8938,7 +10963,7 @@ main() {
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases;
       var arg_request = buildGoogleCloudDialogflowV2beta1KnowledgeBase();
       var arg_name = "foo";
       var arg_updateMask = "foo";
@@ -9003,7 +11028,7 @@ main() {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases.documents;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Document();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -9059,7 +11084,7 @@ main() {
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases.documents;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9111,7 +11136,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases.documents;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9164,7 +11189,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases.documents;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -9226,7 +11251,7 @@ main() {
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases.documents;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_request = buildGoogleCloudDialogflowV2beta1Document();
       var arg_name = "foo";
       var arg_updateMask = "foo";
@@ -9286,7 +11311,7 @@ main() {
     unittest.test("method--reload", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentKnowledgeBasesDocumentsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.knowledgeBases.documents;
+          new api.DialogflowApi(mock).projects.agent.knowledgeBases.documents;
       var arg_request =
           buildGoogleCloudDialogflowV2beta1ReloadDocumentRequest();
       var arg_name = "foo";
@@ -9347,7 +11372,7 @@ main() {
     unittest.test("method--deleteContexts", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions;
+          new api.DialogflowApi(mock).projects.agent.sessions;
       var arg_parent = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9399,7 +11424,7 @@ main() {
     unittest.test("method--detectIntent", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions;
+          new api.DialogflowApi(mock).projects.agent.sessions;
       var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
       var arg_session = "foo";
       var arg_$fields = "foo";
@@ -9460,7 +11485,7 @@ main() {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsContextsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.contexts;
+          new api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -9517,7 +11542,7 @@ main() {
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsContextsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.contexts;
+          new api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9569,7 +11594,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsContextsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.contexts;
+          new api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9622,7 +11647,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsContextsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.contexts;
+          new api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -9684,7 +11709,7 @@ main() {
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsContextsResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.contexts;
+          new api.DialogflowApi(mock).projects.agent.sessions.contexts;
       var arg_request = buildGoogleCloudDialogflowV2beta1Context();
       var arg_name = "foo";
       var arg_updateMask = "foo";
@@ -9747,7 +11772,7 @@ main() {
     unittest.test("method--create", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_parent = "foo";
       var arg_$fields = "foo";
@@ -9806,7 +11831,7 @@ main() {
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9858,7 +11883,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_name = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9911,7 +11936,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -9974,7 +11999,7 @@ main() {
     unittest.test("method--patch", () {
       var mock = new HttpServerMock();
       api.ProjectsAgentSessionsEntityTypesResourceApi res =
-          new api.DialogflowApi(mock).projects.agent_1.sessions.entityTypes;
+          new api.DialogflowApi(mock).projects.agent.sessions.entityTypes;
       var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
       var arg_name = "foo";
       var arg_updateMask = "foo";
@@ -10670,7 +12695,3391 @@ main() {
     });
   });
 
+  unittest.group("resource-ProjectsLocationsResourceApi", () {
+    unittest.test("method--deleteAgent", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations;
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .deleteAgent(arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--getAgent", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations;
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Agent());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .getAgent(arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Agent(response);
+      })));
+    });
+
+    unittest.test("method--setAgent", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Agent();
+      var arg_parent = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Agent.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Agent(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Agent());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .setAgent(arg_request, arg_parent,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Agent(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsAgentResourceApi", () {
+    unittest.test("method--export", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent;
+      var arg_request = buildGoogleCloudDialogflowV2beta1ExportAgentRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1ExportAgentRequest.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1ExportAgentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .export(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--fulfillment", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Fulfillment();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1Fulfillment.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Fulfillment(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Fulfillment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .fulfillment(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Fulfillment(response);
+      })));
+    });
+
+    unittest.test("method--getFulfillment", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Fulfillment());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .getFulfillment(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Fulfillment(response);
+      })));
+    });
+
+    unittest.test("method--import", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent;
+      var arg_request = buildGoogleCloudDialogflowV2beta1ImportAgentRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1ImportAgentRequest.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1ImportAgentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .import(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--restore", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent;
+      var arg_request = buildGoogleCloudDialogflowV2beta1RestoreAgentRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1RestoreAgentRequest.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1RestoreAgentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .restore(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--train", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent;
+      var arg_request = buildGoogleCloudDialogflowV2beta1TrainAgentRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1TrainAgentRequest.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1TrainAgentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .train(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsAgentEntityTypesResourceApi", () {
+    unittest.test("method--batchDelete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
+      var arg_parent = "foo";
+      var arg_languageCode = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1EntityType.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1EntityType(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1EntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent,
+              languageCode: arg_languageCode, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1EntityType(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_name = "foo";
+      var arg_languageCode = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1EntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, languageCode: arg_languageCode, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1EntityType(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_parent = "foo";
+      var arg_languageCode = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1ListEntityTypesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              languageCode: arg_languageCode,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListEntityTypesResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.entityTypes;
+      var arg_request = buildGoogleCloudDialogflowV2beta1EntityType();
+      var arg_name = "foo";
+      var arg_languageCode = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1EntityType.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1EntityType(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1EntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              languageCode: arg_languageCode,
+              updateMask: arg_updateMask,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1EntityType(response);
+      })));
+    });
+  });
+
+  unittest.group(
+      "resource-ProjectsLocationsAgentEntityTypesEntitiesResourceApi", () {
+    unittest.test("method--batchCreate", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesEntitiesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .entityTypes
+              .entities;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--batchDelete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesEntitiesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .entityTypes
+              .entities;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEntityTypesEntitiesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .entityTypes
+              .entities;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsAgentEnvironmentsResourceApi", () {
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.environments;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(
+            buildGoogleCloudDialogflowV2beta1ListEnvironmentsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListEnvironmentsResponse(response);
+      })));
+    });
+  });
+
+  unittest.group(
+      "resource-ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi",
+      () {
+    unittest.test("method--deleteContexts", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions;
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .deleteContexts(arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--detectIntent", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions;
+      var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
+      var arg_session = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1DetectIntentRequest.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1DetectIntentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1DetectIntentResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .detectIntent(arg_request, arg_session, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1DetectIntentResponse(response);
+      })));
+    });
+  });
+
+  unittest.group(
+      "resource-ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi",
+      () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .contexts;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Context();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Context.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Context(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Context());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Context(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .contexts;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .contexts;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Context());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Context(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .contexts;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1ListContextsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListContextsResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .contexts;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Context();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Context.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Context(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Context());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Context(response);
+      })));
+    });
+  });
+
+  unittest.group(
+      "resource-ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi",
+      () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .entityTypes;
+      var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .entityTypes;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .entityTypes;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .entityTypes;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(
+            buildGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse(
+            response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResourceApi
+          res = new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .environments
+              .users
+              .sessions
+              .entityTypes;
+      var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsAgentIntentsResourceApi", () {
+    unittest.test("method--batchDelete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--batchUpdate", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_request =
+          buildGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+                .GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest.fromJson(
+            json);
+        checkGoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
+      var arg_parent = "foo";
+      var arg_intentView = "foo";
+      var arg_languageCode = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Intent.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Intent(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["intentView"].first, unittest.equals(arg_intentView));
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Intent());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent,
+              intentView: arg_intentView,
+              languageCode: arg_languageCode,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Intent(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_name = "foo";
+      var arg_languageCode = "foo";
+      var arg_intentView = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(
+            queryMap["intentView"].first, unittest.equals(arg_intentView));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Intent());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name,
+              languageCode: arg_languageCode,
+              intentView: arg_intentView,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Intent(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_intentView = "foo";
+      var arg_languageCode = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["intentView"].first, unittest.equals(arg_intentView));
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1ListIntentsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              intentView: arg_intentView,
+              languageCode: arg_languageCode,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListIntentsResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentIntentsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.intents;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Intent();
+      var arg_name = "foo";
+      var arg_intentView = "foo";
+      var arg_languageCode = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Intent.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Intent(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["intentView"].first, unittest.equals(arg_intentView));
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Intent());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              intentView: arg_intentView,
+              languageCode: arg_languageCode,
+              updateMask: arg_updateMask,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Intent(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsAgentSessionsResourceApi", () {
+    unittest.test("method--deleteContexts", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.sessions;
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .deleteContexts(arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--detectIntent", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.agent.sessions;
+      var arg_request = buildGoogleCloudDialogflowV2beta1DetectIntentRequest();
+      var arg_session = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1DetectIntentRequest.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1DetectIntentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1DetectIntentResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .detectIntent(arg_request, arg_session, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1DetectIntentResponse(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsAgentSessionsContextsResourceApi",
+      () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .contexts;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Context();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Context.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Context(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Context());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Context(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .contexts;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .contexts;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Context());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Context(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .contexts;
+      var arg_parent = "foo";
+      var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1ListContextsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListContextsResponse(response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsContextsResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .contexts;
+      var arg_request = buildGoogleCloudDialogflowV2beta1Context();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudDialogflowV2beta1Context.fromJson(json);
+        checkGoogleCloudDialogflowV2beta1Context(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleCloudDialogflowV2beta1Context());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1Context(response);
+      })));
+    });
+  });
+
+  unittest.group(
+      "resource-ProjectsLocationsAgentSessionsEntityTypesResourceApi", () {
+    unittest.test("method--create", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .entityTypes;
+      var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
+      var arg_parent = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .create(arg_request, arg_parent, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(response);
+      })));
+    });
+
+    unittest.test("method--delete", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .entityTypes;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .entityTypes;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .entityTypes;
+      var arg_parent = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(
+            buildGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse(
+            response);
+      })));
+    });
+
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsAgentSessionsEntityTypesResourceApi res =
+          new api.DialogflowApi(mock)
+              .projects
+              .locations
+              .agent
+              .sessions
+              .entityTypes;
+      var arg_request = buildGoogleCloudDialogflowV2beta1SessionEntityType();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(
+                json);
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json
+            .encode(buildGoogleCloudDialogflowV2beta1SessionEntityType());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleCloudDialogflowV2beta1SessionEntityType(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-ProjectsLocationsOperationsResourceApi", () {
+    unittest.test("method--cancel", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsOperationsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.operations;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .cancel(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
+    unittest.test("method--get", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsOperationsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.operations;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsLocationsOperationsResourceApi res =
+          new api.DialogflowApi(mock).projects.locations.operations;
+      var arg_name = "foo";
+      var arg_filter = "foo";
+      var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleLongrunningListOperationsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_name,
+              filter: arg_filter,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningListOperationsResponse(response);
+      })));
+    });
+  });
+
   unittest.group("resource-ProjectsOperationsResourceApi", () {
+    unittest.test("method--cancel", () {
+      var mock = new HttpServerMock();
+      api.ProjectsOperationsResourceApi res =
+          new api.DialogflowApi(mock).projects.operations;
+      var arg_name = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.json.encode(buildGoogleProtobufEmpty());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .cancel(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleProtobufEmpty(response);
+      })));
+    });
+
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.ProjectsOperationsResourceApi res =
@@ -10720,6 +16129,71 @@ main() {
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleLongrunningOperation(response);
+      })));
+    });
+
+    unittest.test("method--list", () {
+      var mock = new HttpServerMock();
+      api.ProjectsOperationsResourceApi res =
+          new api.DialogflowApi(mock).projects.operations;
+      var arg_name = "foo";
+      var arg_pageSize = 42;
+      var arg_filter = "foo";
+      var arg_pageToken = "foo";
+      var arg_$fields = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v2beta1/"));
+        pathOffset += 8;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp =
+            convert.json.encode(buildGoogleLongrunningListOperationsResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .list(arg_name,
+              pageSize: arg_pageSize,
+              filter: arg_filter,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkGoogleLongrunningListOperationsResponse(response);
       })));
     });
   });

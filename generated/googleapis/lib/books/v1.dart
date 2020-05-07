@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.books.v1;
 
@@ -4438,6 +4438,55 @@ class BooksCloudloadingResource {
   }
 }
 
+class BooksSubscriptionReleaseInfo {
+  /// Amount in micros of the specified currency code.
+  core.String amountInMicros;
+
+  /// Currency code of the amount.
+  core.String currencyCode;
+
+  /// The release number of this issue/volume/book.
+  core.String releaseNumber;
+
+  /// The release date.
+  core.String releaseTimestampUs;
+
+  BooksSubscriptionReleaseInfo();
+
+  BooksSubscriptionReleaseInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("amountInMicros")) {
+      amountInMicros = _json["amountInMicros"];
+    }
+    if (_json.containsKey("currencyCode")) {
+      currencyCode = _json["currencyCode"];
+    }
+    if (_json.containsKey("releaseNumber")) {
+      releaseNumber = _json["releaseNumber"];
+    }
+    if (_json.containsKey("releaseTimestampUs")) {
+      releaseTimestampUs = _json["releaseTimestampUs"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (amountInMicros != null) {
+      _json["amountInMicros"] = amountInMicros;
+    }
+    if (currencyCode != null) {
+      _json["currencyCode"] = currencyCode;
+    }
+    if (releaseNumber != null) {
+      _json["releaseNumber"] = releaseNumber;
+    }
+    if (releaseTimestampUs != null) {
+      _json["releaseTimestampUs"] = releaseTimestampUs;
+    }
+    return _json;
+  }
+}
+
 class BooksVolumesRecommendedRateResponse {
   core.String consistencyToken;
 
@@ -6911,11 +6960,67 @@ class Review {
   }
 }
 
+class SeriesSeriesSeriesSubscriptionReleaseInfo {
+  /// Cancellation date of the series subscription (or when it ends).
+  core.String cancellationTimestampUs;
+
+  /// Release information for the last release.
+  BooksSubscriptionReleaseInfo currentReleaseInfo;
+
+  /// Release information for the next release.
+  BooksSubscriptionReleaseInfo nextReleaseInfo;
+
+  /// series subscription type.
+  core.String seriesSubscriptionType;
+
+  SeriesSeriesSeriesSubscriptionReleaseInfo();
+
+  SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("cancellationTimestampUs")) {
+      cancellationTimestampUs = _json["cancellationTimestampUs"];
+    }
+    if (_json.containsKey("currentReleaseInfo")) {
+      currentReleaseInfo = new BooksSubscriptionReleaseInfo.fromJson(
+          _json["currentReleaseInfo"]);
+    }
+    if (_json.containsKey("nextReleaseInfo")) {
+      nextReleaseInfo =
+          new BooksSubscriptionReleaseInfo.fromJson(_json["nextReleaseInfo"]);
+    }
+    if (_json.containsKey("seriesSubscriptionType")) {
+      seriesSubscriptionType = _json["seriesSubscriptionType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cancellationTimestampUs != null) {
+      _json["cancellationTimestampUs"] = cancellationTimestampUs;
+    }
+    if (currentReleaseInfo != null) {
+      _json["currentReleaseInfo"] = (currentReleaseInfo).toJson();
+    }
+    if (nextReleaseInfo != null) {
+      _json["nextReleaseInfo"] = (nextReleaseInfo).toJson();
+    }
+    if (seriesSubscriptionType != null) {
+      _json["seriesSubscriptionType"] = seriesSubscriptionType;
+    }
+    return _json;
+  }
+}
+
 class SeriesSeries {
   core.String bannerImageUrl;
+  core.bool eligibleForSubscription;
   core.String imageUrl;
+  core.bool isComplete;
+  core.String seriesFormatType;
   core.String seriesId;
+  SeriesSeriesSeriesSubscriptionReleaseInfo seriesSubscriptionReleaseInfo;
   core.String seriesType;
+  core.String subscriptionId;
   core.String title;
 
   SeriesSeries();
@@ -6924,14 +7029,31 @@ class SeriesSeries {
     if (_json.containsKey("bannerImageUrl")) {
       bannerImageUrl = _json["bannerImageUrl"];
     }
+    if (_json.containsKey("eligibleForSubscription")) {
+      eligibleForSubscription = _json["eligibleForSubscription"];
+    }
     if (_json.containsKey("imageUrl")) {
       imageUrl = _json["imageUrl"];
+    }
+    if (_json.containsKey("isComplete")) {
+      isComplete = _json["isComplete"];
+    }
+    if (_json.containsKey("seriesFormatType")) {
+      seriesFormatType = _json["seriesFormatType"];
     }
     if (_json.containsKey("seriesId")) {
       seriesId = _json["seriesId"];
     }
+    if (_json.containsKey("seriesSubscriptionReleaseInfo")) {
+      seriesSubscriptionReleaseInfo =
+          new SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(
+              _json["seriesSubscriptionReleaseInfo"]);
+    }
     if (_json.containsKey("seriesType")) {
       seriesType = _json["seriesType"];
+    }
+    if (_json.containsKey("subscriptionId")) {
+      subscriptionId = _json["subscriptionId"];
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
@@ -6944,14 +7066,30 @@ class SeriesSeries {
     if (bannerImageUrl != null) {
       _json["bannerImageUrl"] = bannerImageUrl;
     }
+    if (eligibleForSubscription != null) {
+      _json["eligibleForSubscription"] = eligibleForSubscription;
+    }
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
+    }
+    if (isComplete != null) {
+      _json["isComplete"] = isComplete;
+    }
+    if (seriesFormatType != null) {
+      _json["seriesFormatType"] = seriesFormatType;
     }
     if (seriesId != null) {
       _json["seriesId"] = seriesId;
     }
+    if (seriesSubscriptionReleaseInfo != null) {
+      _json["seriesSubscriptionReleaseInfo"] =
+          (seriesSubscriptionReleaseInfo).toJson();
+    }
     if (seriesType != null) {
       _json["seriesType"] = seriesType;
+    }
+    if (subscriptionId != null) {
+      _json["subscriptionId"] = subscriptionId;
     }
     if (title != null) {
       _json["title"] = title;

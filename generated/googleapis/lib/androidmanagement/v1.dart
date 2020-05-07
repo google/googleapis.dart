@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.androidmanagement.v1;
 
@@ -61,13 +61,13 @@ class EnterprisesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [enterpriseToken] - The enterprise token appended to the callback URL.
-  ///
   /// [signupUrlName] - The name of the SignupUrl used to sign up for the
   /// enterprise.
   ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
   /// the enterprise.
+  ///
+  /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -80,9 +80,9 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> create(Enterprise request,
-      {core.String enterpriseToken,
-      core.String signupUrlName,
+      {core.String signupUrlName,
       core.String projectId,
+      core.String enterpriseToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -94,14 +94,14 @@ class EnterprisesResourceApi {
     if (request != null) {
       _body = convert.json.encode((request).toJson());
     }
-    if (enterpriseToken != null) {
-      _queryParams["enterpriseToken"] = [enterpriseToken];
-    }
     if (signupUrlName != null) {
       _queryParams["signupUrlName"] = [signupUrlName];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (enterpriseToken != null) {
+      _queryParams["enterpriseToken"] = [enterpriseToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -297,6 +297,10 @@ class EnterprisesDevicesResourceApi {
   ///
   /// [wipeDataFlags] - Optional flags that control the device wiping behavior.
   ///
+  /// [wipeReasonMessage] - Optional. A short message displayed to the user
+  /// before wiping the work profile on personal devices. This has no effect on
+  /// company owned devices. The maximum message length is 200 characters.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -308,7 +312,9 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.List<core.String> wipeDataFlags, core.String $fields}) {
+      {core.List<core.String> wipeDataFlags,
+      core.String wipeReasonMessage,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -321,6 +327,9 @@ class EnterprisesDevicesResourceApi {
     }
     if (wipeDataFlags != null) {
       _queryParams["wipeDataFlags"] = wipeDataFlags;
+    }
+    if (wipeReasonMessage != null) {
+      _queryParams["wipeReasonMessage"] = [wipeReasonMessage];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -716,11 +725,11 @@ class EnterprisesDevicesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+/operations$".
   ///
+  /// [pageToken] - The standard list page token.
+  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
-  ///
-  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -733,9 +742,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -747,14 +756,14 @@ class EnterprisesDevicesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1415,15 +1424,15 @@ class SignupUrlsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [projectId] - The ID of the Google Cloud Platform project which will own
+  /// the enterprise.
+  ///
   /// [callbackUrl] - The callback URL that the admin will be redirected to
   /// after successfully creating an enterprise. Before redirecting there the
   /// system will add a query parameter to this URL named enterpriseToken which
   /// will contain an opaque token to be used for the create enterprise request.
   /// The URL will be parsed then reformatted in order to add the
   /// enterpriseToken parameter, so there may be some minor formatting changes.
-  ///
-  /// [projectId] - The ID of the Google Cloud Platform project which will own
-  /// the enterprise.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1436,7 +1445,7 @@ class SignupUrlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupUrl> create(
-      {core.String callbackUrl, core.String projectId, core.String $fields}) {
+      {core.String projectId, core.String callbackUrl, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1444,11 +1453,11 @@ class SignupUrlsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (callbackUrl != null) {
-      _queryParams["callbackUrl"] = [callbackUrl];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (callbackUrl != null) {
+      _queryParams["callbackUrl"] = [callbackUrl];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1463,6 +1472,42 @@ class SignupUrlsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new SignupUrl.fromJson(data));
+  }
+}
+
+/// Security policies set to the most secure values by default. To maintain the
+/// security posture of a device, we don't recommend overriding any of the
+/// default values.
+class AdvancedSecurityOverrides {
+  /// The policy for untrusted apps (apps from unknown sources) enforced on the
+  /// device. Replaces install_unknown_sources_allowed (deprecated).
+  /// Possible string values are:
+  /// - "UNTRUSTED_APPS_POLICY_UNSPECIFIED" : Unspecified. Defaults to
+  /// DISALLOW_INSTALL.
+  /// - "DISALLOW_INSTALL" : Default. Disallow untrusted app installs on entire
+  /// device.
+  /// - "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY" : For devices with work
+  /// profiles, allow untrusted app installs in the device's personal profile
+  /// only.
+  /// - "ALLOW_INSTALL_DEVICE_WIDE" : Allow untrusted app installs on entire
+  /// device.
+  core.String untrustedAppsPolicy;
+
+  AdvancedSecurityOverrides();
+
+  AdvancedSecurityOverrides.fromJson(core.Map _json) {
+    if (_json.containsKey("untrustedAppsPolicy")) {
+      untrustedAppsPolicy = _json["untrustedAppsPolicy"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (untrustedAppsPolicy != null) {
+      _json["untrustedAppsPolicy"] = untrustedAppsPolicy;
+    }
+    return _json;
   }
 }
 
@@ -1525,8 +1570,46 @@ class ApiLevelCondition {
   }
 }
 
+/// Id to name association of a app track.
+class AppTrackInfo {
+  /// The track name associated with the trackId, set in the Play Console. The
+  /// name is modifiable from Play Console.
+  core.String trackAlias;
+
+  /// The unmodifiable unique track identifier, taken from the releaseTrackId in
+  /// the URL of the Play Console page that displays the app’s track
+  /// information.
+  core.String trackId;
+
+  AppTrackInfo();
+
+  AppTrackInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("trackAlias")) {
+      trackAlias = _json["trackAlias"];
+    }
+    if (_json.containsKey("trackId")) {
+      trackId = _json["trackId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (trackAlias != null) {
+      _json["trackAlias"] = trackAlias;
+    }
+    if (trackId != null) {
+      _json["trackId"] = trackId;
+    }
+    return _json;
+  }
+}
+
 /// Information about an app.
 class Application {
+  /// Application tracks visible to the enterprise.
+  core.List<AppTrackInfo> appTracks;
+
   /// The set of managed properties available to be pre-configured for the app.
   core.List<ManagedProperty> managedProperties;
 
@@ -1543,6 +1626,11 @@ class Application {
   Application();
 
   Application.fromJson(core.Map _json) {
+    if (_json.containsKey("appTracks")) {
+      appTracks = (_json["appTracks"] as core.List)
+          .map<AppTrackInfo>((value) => new AppTrackInfo.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("managedProperties")) {
       managedProperties = (_json["managedProperties"] as core.List)
           .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
@@ -1565,6 +1653,9 @@ class Application {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (appTracks != null) {
+      _json["appTracks"] = appTracks.map((value) => (value).toJson()).toList();
+    }
     if (managedProperties != null) {
       _json["managedProperties"] =
           managedProperties.map((value) => (value).toJson()).toList();
@@ -1671,6 +1762,13 @@ class ApplicationPermission {
 
 /// Policy for an individual app.
 class ApplicationPolicy {
+  /// List of the app’s track IDs that a device belonging to the enterprise can
+  /// access. If the list contains multiple track IDs, devices receive the
+  /// latest version among all accessible tracks. If the list contains no track
+  /// IDs, devices only have access to the app’s production track. More details
+  /// about each track are available in AppTrackInfo.
+  core.List<core.String> accessibleTrackIds;
+
   /// The default policy for all permissions requested by the app. If specified,
   /// this overrides the policy-level default_permission_policy which applies to
   /// all apps. It does not override the permission_grants which applies to all
@@ -1704,9 +1802,17 @@ class ApplicationPolicy {
   /// - "REQUIRED_FOR_SETUP" : The app is automatically installed and can't be
   /// removed by the user and will prevent setup from completion until
   /// installation is complete.
+  /// - "KIOSK" : The app is automatically installed in kiosk mode: it's set as
+  /// the preferred home intent and whitelisted for lock task mode. Device setup
+  /// won't complete until the app is installed. After installation, users won't
+  /// be able to remove the app. You can only set this installType for one app
+  /// per policy. When this is present in the policy, status bar will be
+  /// automatically disabled.
   core.String installType;
 
-  /// Whether the app is allowed to lock itself in full-screen mode.
+  /// Whether the app is allowed to lock itself in full-screen mode. DEPRECATED.
+  /// Use InstallType KIOSK or kioskCustomLauncherEnabled to to configure a
+  /// dedicated device.
   core.bool lockTaskAllowed;
 
   /// Managed configuration applied to the app. The format for the configuration
@@ -1750,6 +1856,10 @@ class ApplicationPolicy {
   ApplicationPolicy();
 
   ApplicationPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("accessibleTrackIds")) {
+      accessibleTrackIds =
+          (_json["accessibleTrackIds"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("defaultPermissionPolicy")) {
       defaultPermissionPolicy = _json["defaultPermissionPolicy"];
     }
@@ -1790,6 +1900,9 @@ class ApplicationPolicy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accessibleTrackIds != null) {
+      _json["accessibleTrackIds"] = accessibleTrackIds;
+    }
     if (defaultPermissionPolicy != null) {
       _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
     }
@@ -1867,8 +1980,9 @@ class ApplicationReport {
 
   /// Application state.
   /// Possible string values are:
-  /// - "INSTALLED" : App is installed on the device
+  /// - "APPLICATION_STATE_UNSPECIFIED" : App state is unspecified
   /// - "REMOVED" : App was removed from the device
+  /// - "INSTALLED" : App is installed on the device
   core.String state;
 
   /// The app version code, which can be used to determine whether one version
@@ -2228,6 +2342,58 @@ class ComplianceRule {
   }
 }
 
+/// Represents a whole or partial calendar date, e.g. a birthday. The time of
+/// day and time zone are either specified elsewhere or are not significant. The
+/// date is relative to the Proleptic Gregorian Calendar. This can represent:
+/// A full date, with non-zero year, month and day values
+/// A month and day value, with a zero year, e.g. an anniversary
+/// A year on its own, with zero month and day values
+/// A year and month value, with a zero day, e.g. a credit card expiration
+/// dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
+class Date {
+  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+  /// if specifying a year by itself or a year and month where the day is not
+  /// significant.
+  core.int day;
+
+  /// Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+  /// month and day.
+  core.int month;
+
+  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without a
+  /// year.
+  core.int year;
+
+  Date();
+
+  Date.fromJson(core.Map _json) {
+    if (_json.containsKey("day")) {
+      day = _json["day"];
+    }
+    if (_json.containsKey("month")) {
+      month = _json["month"];
+    }
+    if (_json.containsKey("year")) {
+      year = _json["year"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (day != null) {
+      _json["day"] = day;
+    }
+    if (month != null) {
+      _json["month"] = month;
+    }
+    if (year != null) {
+      _json["year"] = year;
+    }
+    return _json;
+  }
+}
+
 /// A device owned by an enterprise. Unless otherwise noted, all fields are
 /// read-only and can't be modified by enterprises.devices.patch.
 class Device {
@@ -2348,6 +2514,9 @@ class Device {
   /// previously. The names are in chronological order.
   core.List<core.String> previousDeviceNames;
 
+  /// Device's security posture value that reflects how secure the device is.
+  SecurityPosture securityPosture;
+
   /// Detailed information about the device software. This information is only
   /// available if softwareInfoEnabled is true in the device's policy.
   SoftwareInfo softwareInfo;
@@ -2368,6 +2537,8 @@ class Device {
   core.String state;
 
   /// Map of selected system properties name and value related to the device.
+  /// This information is only available if systemPropertiesEnabled is true in
+  /// the device's policy.
   core.Map<core.String, core.String> systemProperties;
 
   /// The user who owns the device.
@@ -2474,6 +2645,9 @@ class Device {
       previousDeviceNames =
           (_json["previousDeviceNames"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("securityPosture")) {
+      securityPosture = new SecurityPosture.fromJson(_json["securityPosture"]);
+    }
     if (_json.containsKey("softwareInfo")) {
       softwareInfo = new SoftwareInfo.fromJson(_json["softwareInfo"]);
     }
@@ -2577,6 +2751,9 @@ class Device {
     }
     if (previousDeviceNames != null) {
       _json["previousDeviceNames"] = previousDeviceNames;
+    }
+    if (securityPosture != null) {
+      _json["securityPosture"] = (securityPosture).toJson();
     }
     if (softwareInfo != null) {
       _json["softwareInfo"] = (softwareInfo).toJson();
@@ -2941,7 +3118,7 @@ class Enterprise {
   /// notifications are enabled.
   core.String pubsubTopic;
 
-  /// Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.
+  /// Sign-in details of the enterprise.
   core.List<SigninDetail> signinDetails;
 
   /// Terms and conditions that must be accepted when provisioning a device for
@@ -3055,6 +3232,51 @@ class ExternalData {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/// A system freeze period. When a device’s clock is within the freeze period,
+/// all incoming system updates (including security patches) are blocked and
+/// won’t be installed. When a device is outside the freeze period, normal
+/// update behavior applies. Leap years are ignored in freeze period
+/// calculations, in particular: * If Feb. 29th is set as the start or end date
+/// of a freeze period, the freeze period will start or end on Feb. 28th
+/// instead. * When a device’s system clock reads Feb. 29th, it’s treated as
+/// Feb. 28th. * When calculating the number of days in a freeze period or the
+/// time between two freeze periods, Feb. 29th is ignored and not counted as a
+/// day.
+class FreezePeriod {
+  /// The end date (inclusive) of the freeze period. Must be no later than 90
+  /// days from the start date. If the end date is earlier than the start date,
+  /// the freeze period is considered wrapping year-end. Note: year must not be
+  /// set. For example, {"month": 1,"date": 30}.
+  Date endDate;
+
+  /// The start date (inclusive) of the freeze period. Note: year must not be
+  /// set. For example, {"month": 1,"date": 30}.
+  Date startDate;
+
+  FreezePeriod();
+
+  FreezePeriod.fromJson(core.Map _json) {
+    if (_json.containsKey("endDate")) {
+      endDate = new Date.fromJson(_json["endDate"]);
+    }
+    if (_json.containsKey("startDate")) {
+      startDate = new Date.fromJson(_json["startDate"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endDate != null) {
+      _json["endDate"] = (endDate).toJson();
+    }
+    if (startDate != null) {
+      _json["startDate"] = (startDate).toJson();
     }
     return _json;
   }
@@ -3401,6 +3623,112 @@ class KeyedAppState {
   }
 }
 
+/// Settings controlling the behavior of a device in kiosk mode. To enable kiosk
+/// mode, set kioskCustomLauncherEnabled to true or specify an app in the policy
+/// with installType KIOSK.
+class KioskCustomization {
+  /// Specifies whether the Settings app is allowed in kiosk mode.
+  /// Possible string values are:
+  /// - "DEVICE_SETTINGS_UNSPECIFIED" : Unspecified, defaults to
+  /// SETTINGS_ACCESS_ALLOWED.
+  /// - "SETTINGS_ACCESS_ALLOWED" : Access to the Settings app is allowed in
+  /// kiosk mode.
+  /// - "SETTINGS_ACCESS_BLOCKED" : Access to the Settings app is not allowed in
+  /// kiosk mode.
+  core.String deviceSettings;
+
+  /// Sets the behavior of a device in kiosk mode when a user presses and holds
+  /// (long-presses) the Power button.
+  /// Possible string values are:
+  /// - "POWER_BUTTON_ACTIONS_UNSPECIFIED" : Unspecified, defaults to
+  /// POWER_BUTTON_AVAILABLE.
+  /// - "POWER_BUTTON_AVAILABLE" : The power menu (e.g. Power off, Restart) is
+  /// shown when a user long-presses the Power button of a device in kiosk mode.
+  /// - "POWER_BUTTON_BLOCKED" : The power menu (e.g. Power off, Restart) is not
+  /// shown when a user long-presses the Power button of a device in kiosk mode.
+  /// Note: this may prevent users from turning off the device.
+  core.String powerButtonActions;
+
+  /// Specifies whether system info and notifications are disabled in kiosk
+  /// mode.
+  /// Possible string values are:
+  /// - "STATUS_BAR_UNSPECIFIED" : Unspecified, defaults to
+  /// INFO_AND_NOTIFICATIONS_DISABLED.
+  /// - "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED" : System info and notifications
+  /// are shown on the status bar in kiosk mode.Note: For this policy to take
+  /// effect, the device's home button must be enabled using
+  /// kioskCustomization.systemNavigation.
+  /// - "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED" : System info and notifications
+  /// are disabled in kiosk mode.
+  /// - "SYSTEM_INFO_ONLY" : Only system info is shown on the status bar.
+  core.String statusBar;
+
+  /// Specifies whether system error dialogs for crashed or unresponsive apps
+  /// are blocked in kiosk mode. When blocked, the system will force-stop the
+  /// app as if the user chooses the "close app" option on the UI.
+  /// Possible string values are:
+  /// - "SYSTEM_ERROR_WARNINGS_UNSPECIFIED" : Unspecified, defaults to
+  /// ERROR_AND_WARNINGS_MUTED.
+  /// - "ERROR_AND_WARNINGS_ENABLED" : All system error dialogs such as crash
+  /// and app not responding (ANR) are displayed.
+  /// - "ERROR_AND_WARNINGS_MUTED" : All system error dialogs, such as crash and
+  /// app not responding (ANR) are blocked. When blocked, the system force-stops
+  /// the app as if the user closes the app from the UI.
+  core.String systemErrorWarnings;
+
+  /// Specifies which navigation features are enabled (e.g. Home, Overview
+  /// buttons) in kiosk mode.
+  /// Possible string values are:
+  /// - "SYSTEM_NAVIGATION_UNSPECIFIED" : Unspecified, defaults to
+  /// NAVIGATION_DISABLED.
+  /// - "NAVIGATION_ENABLED" : Home and overview buttons are enabled.
+  /// - "NAVIGATION_DISABLED" : The home and Overview buttons are not
+  /// accessible.
+  /// - "HOME_BUTTON_ONLY" : Only the home button is enabled.
+  core.String systemNavigation;
+
+  KioskCustomization();
+
+  KioskCustomization.fromJson(core.Map _json) {
+    if (_json.containsKey("deviceSettings")) {
+      deviceSettings = _json["deviceSettings"];
+    }
+    if (_json.containsKey("powerButtonActions")) {
+      powerButtonActions = _json["powerButtonActions"];
+    }
+    if (_json.containsKey("statusBar")) {
+      statusBar = _json["statusBar"];
+    }
+    if (_json.containsKey("systemErrorWarnings")) {
+      systemErrorWarnings = _json["systemErrorWarnings"];
+    }
+    if (_json.containsKey("systemNavigation")) {
+      systemNavigation = _json["systemNavigation"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deviceSettings != null) {
+      _json["deviceSettings"] = deviceSettings;
+    }
+    if (powerButtonActions != null) {
+      _json["powerButtonActions"] = powerButtonActions;
+    }
+    if (statusBar != null) {
+      _json["statusBar"] = statusBar;
+    }
+    if (systemErrorWarnings != null) {
+      _json["systemErrorWarnings"] = systemErrorWarnings;
+    }
+    if (systemNavigation != null) {
+      _json["systemNavigation"] = systemNavigation;
+    }
+    return _json;
+  }
+}
+
 /// An action to launch an app.
 class LaunchAppAction {
   /// Package name of app to be launched
@@ -3634,6 +3962,7 @@ class ManagedProperty {
   /// - "HIDDEN" : A hidden restriction of string type (the default value can be
   /// used to pass along information that can't be modified, such as a version
   /// code).
+  /// - "BUNDLE" : A bundle of properties
   /// - "BUNDLE_ARRAY" : An array of property bundles.
   core.String type;
 
@@ -4223,9 +4552,10 @@ class PasswordRequirements {
   /// characters.
   /// - "ALPHANUMERIC" : The password must contain both numeric and alphabetic
   /// (or symbol) characters.
-  /// - "COMPLEX" : The password must contain at least a letter, a numerical
-  /// digit and a special symbol. Other password constraints, for example,
-  /// password_minimum_letters are enforced.
+  /// - "COMPLEX" : The password must meet the minimum requirements specified in
+  /// passwordMinimumLength, passwordMinimumLetters, passwordMinimumSymbols,
+  /// etc. For example, if passwordMinimumSymbols is 2, the password must
+  /// contain at least two symbols.
   core.String passwordQuality;
 
   /// The scope that the password requirement applies to.
@@ -4238,6 +4568,19 @@ class PasswordRequirements {
   /// - "SCOPE_PROFILE" : The password requirements are only applied to the work
   /// profile.
   core.String passwordScope;
+
+  /// The length of time after a device or work profile is unlocked using a
+  /// strong form of authentication (password, PIN, pattern) that it can be
+  /// unlocked using any other authentication method (e.g. fingerprint, trust
+  /// agents, face). After the specified time period elapses, only strong forms
+  /// of authentication can be used to unlock the device or work profile.
+  /// Possible string values are:
+  /// - "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED" : Unspecified. Defaults to
+  /// USE_DEFAULT_DEVICE_TIMEOUT.
+  /// - "USE_DEFAULT_DEVICE_TIMEOUT" : The timeout period is set to the device’s
+  /// default.
+  /// - "REQUIRE_EVERY_DAY" : The timeout period is set to 24 hours.
+  core.String requirePasswordUnlock;
 
   PasswordRequirements();
 
@@ -4277,6 +4620,9 @@ class PasswordRequirements {
     }
     if (_json.containsKey("passwordScope")) {
       passwordScope = _json["passwordScope"];
+    }
+    if (_json.containsKey("requirePasswordUnlock")) {
+      requirePasswordUnlock = _json["requirePasswordUnlock"];
     }
   }
 
@@ -4318,6 +4664,9 @@ class PasswordRequirements {
     }
     if (passwordScope != null) {
       _json["passwordScope"] = passwordScope;
+    }
+    if (requirePasswordUnlock != null) {
+      _json["requirePasswordUnlock"] = requirePasswordUnlock;
     }
     return _json;
   }
@@ -4364,7 +4713,8 @@ class PermissionGrant {
 }
 
 /// A default activity for handling intents that match a particular intent
-/// filter.
+/// filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use
+/// persistent preferred activities.
 class PersistentPreferredActivity {
   /// The intent actions to match in the filter. If any actions are included in
   /// the filter, then an intent's action must be one of those values for it to
@@ -4414,8 +4764,8 @@ class PersistentPreferredActivity {
   }
 }
 
-/// A policy resources represents a group settings that govern the behavior of a
-/// managed device and the apps installed on it.
+/// A policy resource represents a group of settings that govern the behavior of
+/// a managed device and the apps installed on it.
 class Policy {
   /// Account types that can't be managed by the user.
   core.List<core.String> accountTypesWithManagementDisabled;
@@ -4425,6 +4775,11 @@ class Policy {
 
   /// Whether adjusting the master volume is disabled.
   core.bool adjustVolumeDisabled;
+
+  /// Security policies set to the most secure values by default. To maintain
+  /// the security posture of a device, we don't recommend overriding any of the
+  /// default values.
+  AdvancedSecurityOverrides advancedSecurityOverrides;
 
   /// Configuration for an always-on VPN connection. Use with
   /// vpn_config_disabled to prevent modification of this setting.
@@ -4555,10 +4910,15 @@ class Policy {
 
   /// Whether the kiosk custom launcher is enabled. This replaces the home
   /// screen with a launcher that locks down the device to the apps installed
-  /// via the applications setting. The apps appear on a single page in
-  /// alphabetical order. It is recommended to also use status_bar_disabled to
-  /// block access to device settings.
+  /// via the applications setting. Apps appear on a single page in alphabetical
+  /// order. Use kioskCustomization to further configure the kiosk device
+  /// behavior.
   core.bool kioskCustomLauncherEnabled;
+
+  /// Settings controlling the behavior of a device in kiosk mode. To enable
+  /// kiosk mode, set kioskCustomLauncherEnabled to true or specify an app in
+  /// the policy with installType KIOSK.
+  KioskCustomization kioskCustomization;
 
   /// The degree of location detection enabled. The user may change the value
   /// unless the user is otherwise blocked from accessing device settings.
@@ -4626,12 +4986,21 @@ class Policy {
   /// the policy.
   core.List<PasswordRequirements> passwordPolicies;
 
-  /// Password requirements. DEPRECATED - Use password_policies
+  /// Password requirements. The field
+  /// password_requirements.require_password_unlock must not be set. DEPRECATED
+  /// - Use password_policies.
   PasswordRequirements passwordRequirements;
 
   /// Explicit permission or group grants or denials for all apps. These values
   /// override the default_permission_policy.
   core.List<PermissionGrant> permissionGrants;
+
+  /// Specifies permitted accessibility services. If the field is not set, any
+  /// accessibility service can be used. If the field is set, only the
+  /// accessibility services in this list and the system's built-in
+  /// accessibility service can be used. In particular, if the field is set to
+  /// empty, only the system's built-in accessibility servicess can be used.
+  PackageNameList permittedAccessibilityServices;
 
   /// If present, only the input methods provided by packages in this list are
   /// permitted. If this field is present, but the list is empty, then only
@@ -4690,7 +5059,8 @@ class Policy {
   core.bool shareLocationDisabled;
 
   /// A message displayed to the user in the settings screen wherever
-  /// functionality has been disabled by the admin.
+  /// functionality has been disabled by the admin. If the message is longer
+  /// than 200 characters it may be truncated.
   UserFacingMessage shortSupportMessage;
 
   /// Flag to skip hints on the first use. Enterprise admin can enable the
@@ -4703,7 +5073,8 @@ class Policy {
 
   /// Whether the status bar is disabled. This disables notifications, quick
   /// settings, and other screen overlays that allow escape from full-screen
-  /// mode.
+  /// mode. DEPRECATED. To disable the status bar on a kiosk device, use
+  /// InstallType KIOSK or kioskCustomLauncherEnabled.
   core.bool statusBarDisabled;
 
   /// Status reporting settings
@@ -4761,6 +5132,10 @@ class Policy {
     }
     if (_json.containsKey("adjustVolumeDisabled")) {
       adjustVolumeDisabled = _json["adjustVolumeDisabled"];
+    }
+    if (_json.containsKey("advancedSecurityOverrides")) {
+      advancedSecurityOverrides = new AdvancedSecurityOverrides.fromJson(
+          _json["advancedSecurityOverrides"]);
     }
     if (_json.containsKey("alwaysOnVpnPackage")) {
       alwaysOnVpnPackage =
@@ -4863,6 +5238,10 @@ class Policy {
     if (_json.containsKey("kioskCustomLauncherEnabled")) {
       kioskCustomLauncherEnabled = _json["kioskCustomLauncherEnabled"];
     }
+    if (_json.containsKey("kioskCustomization")) {
+      kioskCustomization =
+          new KioskCustomization.fromJson(_json["kioskCustomization"]);
+    }
     if (_json.containsKey("locationMode")) {
       locationMode = _json["locationMode"];
     }
@@ -4918,6 +5297,10 @@ class Policy {
       permissionGrants = (_json["permissionGrants"] as core.List)
           .map<PermissionGrant>((value) => new PermissionGrant.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("permittedAccessibilityServices")) {
+      permittedAccessibilityServices =
+          new PackageNameList.fromJson(_json["permittedAccessibilityServices"]);
     }
     if (_json.containsKey("permittedInputMethods")) {
       permittedInputMethods =
@@ -5035,6 +5418,9 @@ class Policy {
     if (adjustVolumeDisabled != null) {
       _json["adjustVolumeDisabled"] = adjustVolumeDisabled;
     }
+    if (advancedSecurityOverrides != null) {
+      _json["advancedSecurityOverrides"] = (advancedSecurityOverrides).toJson();
+    }
     if (alwaysOnVpnPackage != null) {
       _json["alwaysOnVpnPackage"] = (alwaysOnVpnPackage).toJson();
     }
@@ -5126,6 +5512,9 @@ class Policy {
     if (kioskCustomLauncherEnabled != null) {
       _json["kioskCustomLauncherEnabled"] = kioskCustomLauncherEnabled;
     }
+    if (kioskCustomization != null) {
+      _json["kioskCustomization"] = (kioskCustomization).toJson();
+    }
     if (locationMode != null) {
       _json["locationMode"] = locationMode;
     }
@@ -5175,6 +5564,10 @@ class Policy {
     if (permissionGrants != null) {
       _json["permissionGrants"] =
           permissionGrants.map((value) => (value).toJson()).toList();
+    }
+    if (permittedAccessibilityServices != null) {
+      _json["permittedAccessibilityServices"] =
+          (permittedAccessibilityServices).toJson();
     }
     if (permittedInputMethods != null) {
       _json["permittedInputMethods"] = (permittedInputMethods).toJson();
@@ -5318,6 +5711,49 @@ class PolicyEnforcementRule {
   }
 }
 
+/// Additional details regarding the security posture of the device.
+class PostureDetail {
+  /// Corresponding admin-facing advice to mitigate this security risk and
+  /// improve the security posture of the device.
+  core.List<UserFacingMessage> advice;
+
+  /// A specific security risk that negatively affects the security posture of
+  /// the device.
+  /// Possible string values are:
+  /// - "SECURITY_RISK_UNSPECIFIED" : Unspecified.
+  /// - "UNKNOWN_OS" : SafetyNet detects that the device is running an unknown
+  /// OS (basicIntegrity check succeeds but ctsProfileMatch fails).
+  /// - "COMPROMISED_OS" : SafetyNet detects that the device is running a
+  /// compromised OS (basicIntegrity check fails).
+  core.String securityRisk;
+
+  PostureDetail();
+
+  PostureDetail.fromJson(core.Map _json) {
+    if (_json.containsKey("advice")) {
+      advice = (_json["advice"] as core.List)
+          .map<UserFacingMessage>(
+              (value) => new UserFacingMessage.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("securityRisk")) {
+      securityRisk = _json["securityRisk"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (advice != null) {
+      _json["advice"] = advice.map((value) => (value).toJson()).toList();
+    }
+    if (securityRisk != null) {
+      _json["securityRisk"] = securityRisk;
+    }
+    return _json;
+  }
+}
+
 /// A power management event.
 class PowerManagementEvent {
   /// For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage.
@@ -5417,6 +5853,50 @@ class ProxyInfo {
     }
     if (port != null) {
       _json["port"] = port;
+    }
+    return _json;
+  }
+}
+
+/// The security posture of the device, as determined by the current device
+/// state and the policies applied.
+class SecurityPosture {
+  /// Device's security posture value.
+  /// Possible string values are:
+  /// - "POSTURE_UNSPECIFIED" : Unspecified. There is no posture detail for this
+  /// posture value.
+  /// - "SECURE" : This device is secure.
+  /// - "AT_RISK" : This device may be more vulnerable to malicious actors than
+  /// is recommended for use with corporate data.
+  /// - "POTENTIALLY_COMPROMISED" : This device may be compromised and corporate
+  /// data may be accessible to unauthorized actors.
+  core.String devicePosture;
+
+  /// Additional details regarding the security posture of the device.
+  core.List<PostureDetail> postureDetails;
+
+  SecurityPosture();
+
+  SecurityPosture.fromJson(core.Map _json) {
+    if (_json.containsKey("devicePosture")) {
+      devicePosture = _json["devicePosture"];
+    }
+    if (_json.containsKey("postureDetails")) {
+      postureDetails = (_json["postureDetails"] as core.List)
+          .map<PostureDetail>((value) => new PostureDetail.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (devicePosture != null) {
+      _json["devicePosture"] = devicePosture;
+    }
+    if (postureDetails != null) {
+      _json["postureDetails"] =
+          postureDetails.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5723,10 +6203,12 @@ class StatusReportingSettings {
   /// Whether device settings reporting is enabled.
   core.bool deviceSettingsEnabled;
 
-  /// Whether displays reporting is enabled.
+  /// Whether displays reporting is enabled. Report data is not available for
+  /// personally owned devices with work profiles.
   core.bool displayInfoEnabled;
 
-  /// Whether hardware status reporting is enabled.
+  /// Whether hardware status reporting is enabled. Report data is not available
+  /// for personally owned devices with work profiles.
   core.bool hardwareStatusEnabled;
 
   /// Whether memory reporting is enabled.
@@ -5735,11 +6217,15 @@ class StatusReportingSettings {
   /// Whether network info reporting is enabled.
   core.bool networkInfoEnabled;
 
-  /// Whether power management event reporting is enabled.
+  /// Whether power management event reporting is enabled. Report data is not
+  /// available for personally owned devices with work profiles.
   core.bool powerManagementEventsEnabled;
 
   /// Whether software info reporting is enabled.
   core.bool softwareInfoEnabled;
+
+  /// Whether system properties reporting is enabled.
+  core.bool systemPropertiesEnabled;
 
   StatusReportingSettings();
 
@@ -5771,6 +6257,9 @@ class StatusReportingSettings {
     }
     if (_json.containsKey("softwareInfoEnabled")) {
       softwareInfoEnabled = _json["softwareInfoEnabled"];
+    }
+    if (_json.containsKey("systemPropertiesEnabled")) {
+      systemPropertiesEnabled = _json["systemPropertiesEnabled"];
     }
   }
 
@@ -5805,6 +6294,9 @@ class StatusReportingSettings {
     if (softwareInfoEnabled != null) {
       _json["softwareInfoEnabled"] = softwareInfoEnabled;
     }
+    if (systemPropertiesEnabled != null) {
+      _json["systemPropertiesEnabled"] = systemPropertiesEnabled;
+    }
     return _json;
   }
 }
@@ -5818,6 +6310,12 @@ class SystemUpdate {
   /// maintenance window specified is smaller than 30 minutes, the actual window
   /// is extended to 30 minutes beyond the start time.
   core.int endMinutes;
+
+  /// An annually repeating time period in which over-the-air (OTA) system
+  /// updates are postponed to freeze the OS version running on a device. To
+  /// prevent freezing the device indefinitely, each freeze period must be
+  /// separated by at least 60 days.
+  core.List<FreezePeriod> freezePeriods;
 
   /// If the type is WINDOWED, the start of the maintenance window, measured as
   /// the number of minutes after midnight in the device's local time. This
@@ -5843,6 +6341,11 @@ class SystemUpdate {
     if (_json.containsKey("endMinutes")) {
       endMinutes = _json["endMinutes"];
     }
+    if (_json.containsKey("freezePeriods")) {
+      freezePeriods = (_json["freezePeriods"] as core.List)
+          .map<FreezePeriod>((value) => new FreezePeriod.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("startMinutes")) {
       startMinutes = _json["startMinutes"];
     }
@@ -5856,6 +6359,10 @@ class SystemUpdate {
         new core.Map<core.String, core.Object>();
     if (endMinutes != null) {
       _json["endMinutes"] = endMinutes;
+    }
+    if (freezePeriods != null) {
+      _json["freezePeriods"] =
+          freezePeriods.map((value) => (value).toJson()).toList();
     }
     if (startMinutes != null) {
       _json["startMinutes"] = startMinutes;
@@ -5996,7 +6503,7 @@ class WebApp {
   /// other applications, or as a label for an icon).
   core.String title;
 
-  /// The current version of the app.<p>Note that the version can automatically
+  /// The current version of the app.Note that the version can automatically
   /// increase during the lifetime of the web app, while Google does internal
   /// housekeeping to keep the web app up-to-date.
   core.String versionCode;
@@ -6079,6 +6586,15 @@ class WebAppIcon {
 
 /// A web token used to access the managed Google Play iframe.
 class WebToken {
+  /// The features to enable. Use this if you want to control exactly which
+  /// feature(s) will be activated; leave empty to allow all
+  /// features.Restrictions / things to note: <ul> <li> If no features are
+  /// listed here, all features are enabled — this is the  default behavior
+  /// where you give access to all features to your admins. <li> This must not
+  /// contain any FEATURE_UNSPECIFIED values. <li> Repeated values are ignored
+  /// </ul>
+  core.List<core.String> enabledFeatures;
+
   /// The name of the web token, which is generated by the server during
   /// creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}.
   core.String name;
@@ -6089,7 +6605,8 @@ class WebToken {
   core.String parentFrameUrl;
 
   /// Permissions available to an admin in the embedded UI. An admin must have
-  /// all of these permissions in order to view the UI.
+  /// all of these permissions in order to view the UI. This field is
+  /// deprecated.
   core.List<core.String> permissions;
 
   /// The token value which is used in the hosting page to generate the iframe
@@ -6099,6 +6616,10 @@ class WebToken {
   WebToken();
 
   WebToken.fromJson(core.Map _json) {
+    if (_json.containsKey("enabledFeatures")) {
+      enabledFeatures =
+          (_json["enabledFeatures"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -6116,6 +6637,9 @@ class WebToken {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (enabledFeatures != null) {
+      _json["enabledFeatures"] = enabledFeatures;
+    }
     if (name != null) {
       _json["name"] = name;
     }

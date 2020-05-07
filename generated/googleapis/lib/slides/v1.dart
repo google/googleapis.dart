@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.slides.v1;
 
@@ -303,7 +303,7 @@ class PresentationsPagesResourceApi {
   /// [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
   /// image.
   ///
-  /// If you don't specify the mime type, the default mime type will be PNG.
+  /// If you don't specify the mime type, the mime type defaults to PNG.
   /// Possible string values are:
   /// - "PNG" : A PNG.
   ///
@@ -3921,12 +3921,14 @@ class PageElementProperties {
 class PageProperties {
   /// The color scheme of the page. If unset, the color scheme is inherited from
   /// a parent page. If the page has no parent, the color scheme uses a default
-  /// Slides color scheme, matching the defaults in the Slides editor. Only the
-  /// concrete colors of the first 12 ThemeColorTypes are editable. To update
-  /// the field,
-  /// a color scheme containing mappings from all the first 12 ThemeColorTypes
-  /// to
-  /// their concrete colors must be provided.
+  /// Slides color scheme, matching the defaults in the Slides editor.
+  ///
+  /// Only the concrete colors of the first 12 ThemeColorTypes are editable. In
+  /// addition, only
+  /// the color scheme on `Master` pages can be updated. To update the field, a
+  /// color scheme containing mappings from all the first 12 ThemeColorTypes to
+  /// their concrete colors must be provided. Colors for the remaining
+  /// ThemeColorTypes will be ignored.
   ColorScheme colorScheme;
 
   /// The background fill of the page. If unset, the background fill is
@@ -4215,8 +4217,7 @@ class Presentation {
   /// - The master page properties define the common page properties inherited
   /// by
   ///   its layouts.
-  /// - Any other shapes on the master slide will appear on all slides using
-  /// that
+  /// - Any other shapes on the master slide appear on all slides using that
   ///   master, regardless of their layout.
   core.List<Page> masters;
 
@@ -4228,7 +4229,7 @@ class Presentation {
   ///   `BODY` placeholder shape contains the speaker notes.
   /// - The notes master page properties define the common page properties
   ///   inherited by all notes pages.
-  /// - Any other shapes on the notes master will appear on all notes pages.
+  /// - Any other shapes on the notes master appears on all notes pages.
   ///
   /// The notes master is read-only.
   Page notesMaster;
@@ -4856,7 +4857,7 @@ class ReplaceImageRequest {
   /// the image will be the same as that of the original shape.
   core.String imageReplaceMethod;
 
-  /// The URL of the new image.
+  /// The image URL.
   ///
   /// The image is fetched once at insertion time and a copy is stored for
   /// display inside the presentation. Images must be less than 50MB in size,

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.appsactivity.v1;
 
@@ -418,6 +418,7 @@ class Permission {
   /// ability to read, write, or comment on the file.
   /// Possible string values are:
   /// - "commenter"
+  /// - "fileOrganizer"
   /// - "owner"
   /// - "publishedReader"
   /// - "reader"

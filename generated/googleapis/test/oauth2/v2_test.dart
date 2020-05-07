@@ -50,79 +50,16 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-core.int buildCounterJwkKeys = 0;
-buildJwkKeys() {
-  var o = new api.JwkKeys();
-  buildCounterJwkKeys++;
-  if (buildCounterJwkKeys < 3) {
-    o.alg = "foo";
-    o.e = "foo";
-    o.kid = "foo";
-    o.kty = "foo";
-    o.n = "foo";
-    o.use = "foo";
-  }
-  buildCounterJwkKeys--;
-  return o;
-}
-
-checkJwkKeys(api.JwkKeys o) {
-  buildCounterJwkKeys++;
-  if (buildCounterJwkKeys < 3) {
-    unittest.expect(o.alg, unittest.equals('foo'));
-    unittest.expect(o.e, unittest.equals('foo'));
-    unittest.expect(o.kid, unittest.equals('foo'));
-    unittest.expect(o.kty, unittest.equals('foo'));
-    unittest.expect(o.n, unittest.equals('foo'));
-    unittest.expect(o.use, unittest.equals('foo'));
-  }
-  buildCounterJwkKeys--;
-}
-
-buildUnnamed4528() {
-  var o = new core.List<api.JwkKeys>();
-  o.add(buildJwkKeys());
-  o.add(buildJwkKeys());
-  return o;
-}
-
-checkUnnamed4528(core.List<api.JwkKeys> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkJwkKeys(o[0]);
-  checkJwkKeys(o[1]);
-}
-
-core.int buildCounterJwk = 0;
-buildJwk() {
-  var o = new api.Jwk();
-  buildCounterJwk++;
-  if (buildCounterJwk < 3) {
-    o.keys = buildUnnamed4528();
-  }
-  buildCounterJwk--;
-  return o;
-}
-
-checkJwk(api.Jwk o) {
-  buildCounterJwk++;
-  if (buildCounterJwk < 3) {
-    checkUnnamed4528(o.keys);
-  }
-  buildCounterJwk--;
-}
-
 core.int buildCounterTokeninfo = 0;
 buildTokeninfo() {
   var o = new api.Tokeninfo();
   buildCounterTokeninfo++;
   if (buildCounterTokeninfo < 3) {
-    o.accessType = "foo";
     o.audience = "foo";
     o.email = "foo";
     o.expiresIn = 42;
     o.issuedTo = "foo";
     o.scope = "foo";
-    o.tokenHandle = "foo";
     o.userId = "foo";
     o.verifiedEmail = true;
   }
@@ -133,24 +70,22 @@ buildTokeninfo() {
 checkTokeninfo(api.Tokeninfo o) {
   buildCounterTokeninfo++;
   if (buildCounterTokeninfo < 3) {
-    unittest.expect(o.accessType, unittest.equals('foo'));
     unittest.expect(o.audience, unittest.equals('foo'));
     unittest.expect(o.email, unittest.equals('foo'));
     unittest.expect(o.expiresIn, unittest.equals(42));
     unittest.expect(o.issuedTo, unittest.equals('foo'));
     unittest.expect(o.scope, unittest.equals('foo'));
-    unittest.expect(o.tokenHandle, unittest.equals('foo'));
     unittest.expect(o.userId, unittest.equals('foo'));
     unittest.expect(o.verifiedEmail, unittest.isTrue);
   }
   buildCounterTokeninfo--;
 }
 
-core.int buildCounterUserinfoplus = 0;
-buildUserinfoplus() {
-  var o = new api.Userinfoplus();
-  buildCounterUserinfoplus++;
-  if (buildCounterUserinfoplus < 3) {
+core.int buildCounterUserinfo = 0;
+buildUserinfo() {
+  var o = new api.Userinfo();
+  buildCounterUserinfo++;
+  if (buildCounterUserinfo < 3) {
     o.email = "foo";
     o.familyName = "foo";
     o.gender = "foo";
@@ -163,13 +98,13 @@ buildUserinfoplus() {
     o.picture = "foo";
     o.verifiedEmail = true;
   }
-  buildCounterUserinfoplus--;
+  buildCounterUserinfo--;
   return o;
 }
 
-checkUserinfoplus(api.Userinfoplus o) {
-  buildCounterUserinfoplus++;
-  if (buildCounterUserinfoplus < 3) {
+checkUserinfo(api.Userinfo o) {
+  buildCounterUserinfo++;
+  if (buildCounterUserinfo < 3) {
     unittest.expect(o.email, unittest.equals('foo'));
     unittest.expect(o.familyName, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
@@ -182,26 +117,10 @@ checkUserinfoplus(api.Userinfoplus o) {
     unittest.expect(o.picture, unittest.equals('foo'));
     unittest.expect(o.verifiedEmail, unittest.isTrue);
   }
-  buildCounterUserinfoplus--;
+  buildCounterUserinfo--;
 }
 
 main() {
-  unittest.group("obj-schema-JwkKeys", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildJwkKeys();
-      var od = new api.JwkKeys.fromJson(o.toJson());
-      checkJwkKeys(od);
-    });
-  });
-
-  unittest.group("obj-schema-Jwk", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildJwk();
-      var od = new api.Jwk.fromJson(o.toJson());
-      checkJwk(od);
-    });
-  });
-
   unittest.group("obj-schema-Tokeninfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildTokeninfo();
@@ -210,70 +129,20 @@ main() {
     });
   });
 
-  unittest.group("obj-schema-Userinfoplus", () {
+  unittest.group("obj-schema-Userinfo", () {
     unittest.test("to-json--from-json", () {
-      var o = buildUserinfoplus();
-      var od = new api.Userinfoplus.fromJson(o.toJson());
-      checkUserinfoplus(od);
+      var o = buildUserinfo();
+      var od = new api.Userinfo.fromJson(o.toJson());
+      checkUserinfo(od);
     });
   });
 
   unittest.group("resource-Oauth2Api", () {
-    unittest.test("method--getCertForOpenIdConnect", () {
-      var mock = new HttpServerMock();
-      api.Oauth2Api res = new api.Oauth2Api(mock);
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15),
-            unittest.equals("oauth2/v2/certs"));
-        pathOffset += 15;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = convert.json.encode(buildJwk());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .getCertForOpenIdConnect($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJwk(response);
-      })));
-    });
-
     unittest.test("method--tokeninfo", () {
       var mock = new HttpServerMock();
       api.Oauth2Api res = new api.Oauth2Api(mock);
       var arg_accessToken = "foo";
       var arg_idToken = "foo";
-      var arg_tokenHandle = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -309,8 +178,6 @@ main() {
             queryMap["access_token"].first, unittest.equals(arg_accessToken));
         unittest.expect(
             queryMap["id_token"].first, unittest.equals(arg_idToken));
-        unittest.expect(
-            queryMap["token_handle"].first, unittest.equals(arg_tokenHandle));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -323,7 +190,6 @@ main() {
           .tokeninfo(
               accessToken: arg_accessToken,
               idToken: arg_idToken,
-              tokenHandle: arg_tokenHandle,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkTokeninfo(response);
@@ -371,11 +237,11 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.json.encode(buildUserinfoplus());
+        var resp = convert.json.encode(buildUserinfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkUserinfoplus(response);
+        checkUserinfo(response);
       })));
     });
   });
@@ -420,11 +286,11 @@ main() {
         var h = {
           "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.json.encode(buildUserinfoplus());
+        var resp = convert.json.encode(buildUserinfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkUserinfoplus(response);
+        checkUserinfo(response);
       })));
     });
   });

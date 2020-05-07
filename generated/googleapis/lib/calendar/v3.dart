@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.calendar.v3;
 
@@ -1462,12 +1462,10 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
-  /// [alwaysIncludeEmail] - Whether to always include a value in the email
-  /// field for the organizer, creator and attendees, even if no real email is
-  /// available (i.e. a generated, non-working value will be provided). The use
-  /// of this option is discouraged and should only be used by clients which
-  /// cannot handle the absence of an email address value in the mentioned
-  /// places. Optional. The default is False.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
   ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
@@ -1714,12 +1712,10 @@ class EventsResourceApi {
   ///
   /// [eventId] - Recurring event identifier.
   ///
-  /// [alwaysIncludeEmail] - Whether to always include a value in the email
-  /// field for the organizer, creator and attendees, even if no real email is
-  /// available (i.e. a generated, non-working value will be provided). The use
-  /// of this option is discouraged and should only be used by clients which
-  /// cannot handle the absence of an email address value in the mentioned
-  /// places. Optional. The default is False.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
   ///
   /// [maxAttendees] - The maximum number of attendees to include in the
   /// response. If there are more than the specified number of attendees, only
@@ -1838,12 +1834,10 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [alwaysIncludeEmail] - Whether to always include a value in the email
-  /// field for the organizer, creator and attendees, even if no real email is
-  /// available (i.e. a generated, non-working value will be provided). The use
-  /// of this option is discouraged and should only be used by clients which
-  /// cannot handle the absence of an email address value in the mentioned
-  /// places. Optional. The default is False.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
   ///
   /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
   /// the response. Optional.
@@ -2144,12 +2138,10 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
-  /// [alwaysIncludeEmail] - Whether to always include a value in the email
-  /// field for the organizer, creator and attendees, even if no real email is
-  /// available (i.e. a generated, non-working value will be provided). The use
-  /// of this option is discouraged and should only be used by clients which
-  /// cannot handle the absence of an email address value in the mentioned
-  /// places. Optional. The default is False.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
   ///
   /// [conferenceDataVersion] - Version number of conference data supported by
   /// the API client. Version 0 assumes no conference data support and ignores
@@ -2341,12 +2333,10 @@ class EventsResourceApi {
   ///
   /// [eventId] - Event identifier.
   ///
-  /// [alwaysIncludeEmail] - Whether to always include a value in the email
-  /// field for the organizer, creator and attendees, even if no real email is
-  /// available (i.e. a generated, non-working value will be provided). The use
-  /// of this option is discouraged and should only be used by clients which
-  /// cannot handle the absence of an email address value in the mentioned
-  /// places. Optional. The default is False.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
   ///
   /// [conferenceDataVersion] - Version number of conference data supported by
   /// the API client. Version 0 assumes no conference data support and ignores
@@ -2459,12 +2449,10 @@ class EventsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
-  /// [alwaysIncludeEmail] - Whether to always include a value in the email
-  /// field for the organizer, creator and attendees, even if no real email is
-  /// available (i.e. a generated, non-working value will be provided). The use
-  /// of this option is discouraged and should only be used by clients which
-  /// cannot handle the absence of an email address value in the mentioned
-  /// places. Optional. The default is False.
+  /// [alwaysIncludeEmail] - Deprecated and ignored. A value will always be
+  /// returned in the email field for the organizer, creator and attendees, even
+  /// if no real email address is available (i.e. a generated, non-working value
+  /// will be provided).
   ///
   /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
   /// the response. Optional.
@@ -3305,8 +3293,9 @@ class CalendarListEntry {
   /// parameters of the insert, update and patch methods. Optional.
   core.String foregroundColor;
 
-  /// Whether the calendar has been hidden from the list. Optional. The default
-  /// is False.
+  /// Whether the calendar has been hidden from the list. Optional. The
+  /// attribute is only returned when the calendar is hidden, in which case the
+  /// value is true.
   core.bool hidden;
 
   /// Identifier of the calendar.
@@ -3473,15 +3462,8 @@ class CalendarListEntry {
 }
 
 class CalendarNotification {
-  /// The method used to deliver the notification. Possible values are:
+  /// The method used to deliver the notification. The possible value is:
   /// - "email" - Notifications are sent via email.
-  /// - "sms" - Deprecated. Once this feature is shutdown, the API will no
-  /// longer return notifications using this method. Any newly added SMS
-  /// notifications will be ignored. See  Google Calendar SMS notifications to
-  /// be removed for more information.
-  /// Notifications are sent via SMS. This value is read-only and is ignored on
-  /// inserts and updates. SMS notifications are only available for G Suite
-  /// customers.
   /// Required when adding a notification.
   core.String method;
 
@@ -3730,10 +3712,10 @@ class ConferenceData {
   /// - "eventHangout": unset.
   /// - "eventNamedHangout": the name of the Hangout.
   /// - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
-  /// Optional.
+  /// - "addOn": defined by 3P conference provider.  Optional.
   core.String conferenceId;
 
-  /// The conference solution, such as Hangouts or Hangouts Meet.
+  /// The conference solution, such as Hangouts or Google Meet.
   /// Unset for a conference with a failed create request.
   /// Either conferenceSolution and at least one entryPoint, or createRequest is
   /// required.
@@ -3980,6 +3962,7 @@ class ConferenceSolutionKey {
   /// - "eventNamedHangout" for classic Hangouts for G Suite users
   /// (http://hangouts.google.com)
   /// - "hangoutsMeet" for Hangouts Meet (http://meet.google.com)
+  /// - "addOn" for 3P conference providers
   core.String type;
 
   ConferenceSolutionKey();
@@ -4001,7 +3984,7 @@ class ConferenceSolutionKey {
 }
 
 class CreateConferenceRequest {
-  /// The conference solution, such as Hangouts or Hangouts Meet.
+  /// The conference solution, such as Hangouts or Google Meet.
   ConferenceSolutionKey conferenceSolutionKey;
 
   /// The client-generated unique ID for this request.
@@ -4573,7 +4556,7 @@ class Event {
   /// section of the colors definition (see the  colors endpoint). Optional.
   core.String colorId;
 
-  /// The conference-related information, such as details of a Hangouts Meet
+  /// The conference-related information, such as details of a Google Meet
   /// conference. To create new conference details use the createRequest field.
   /// To persist your changes, remember to set the conferenceDataVersion request
   /// parameter to 1 for all event modification requests.
@@ -4585,7 +4568,7 @@ class Event {
   /// The creator of the event. Read-only.
   EventCreator creator;
 
-  /// Description of the event. Optional.
+  /// Description of the event. Can contain HTML. Optional.
   core.String description;
 
   /// The (exclusive) end time of the event. For a recurring event, this is the
@@ -4676,9 +4659,9 @@ class Event {
   /// time. Immutable.
   EventDateTime originalStartTime;
 
-  /// Whether this is a private event copy where changes are not shared with
-  /// other copies on other calendars. Optional. Immutable. The default is
-  /// False.
+  /// If set to True, Event propagation is disabled. Note that it is not the
+  /// same thing as Private event properties. Optional. Immutable. The default
+  /// is False.
   core.bool privateCopy;
 
   /// List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
@@ -5235,13 +5218,6 @@ class EventDateTime {
 class EventReminder {
   /// The method used by this reminder. Possible values are:
   /// - "email" - Reminders are sent via email.
-  /// - "sms" - Deprecated. Once this feature is shutdown, the API will no
-  /// longer return reminders using this method. Any newly added SMS reminders
-  /// will be ignored. See  Google Calendar SMS notifications to be removed for
-  /// more information.
-  /// Reminders are sent via SMS. These are only available for G Suite
-  /// customers. Requests to set SMS reminders for other account types are
-  /// ignored.
   /// - "popup" - Reminders are sent via a UI popup.
   /// Required when adding a reminder.
   core.String method;

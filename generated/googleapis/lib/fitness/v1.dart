@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.fitness.v1;
 
@@ -19,75 +19,85 @@ const core.String USER_AGENT = 'dart-api-client fitness/v1';
 /// Stores and accesses user data in the fitness store from apps on any
 /// platform.
 class FitnessApi {
-  /// View your activity information in Google Fit
+  /// Use Google Fit to see and store your physical activity data
   static const FitnessActivityReadScope =
       "https://www.googleapis.com/auth/fitness.activity.read";
 
-  /// View and store your activity information in Google Fit
+  /// See and add to your Google Fit physical activity data
   static const FitnessActivityWriteScope =
       "https://www.googleapis.com/auth/fitness.activity.write";
 
-  /// View blood glucose data in Google Fit
+  /// See info about your blood glucose in Google Fit. I consent to Google
+  /// sharing my blood glucose information with this app.
   static const FitnessBloodGlucoseReadScope =
       "https://www.googleapis.com/auth/fitness.blood_glucose.read";
 
-  /// View and store blood glucose data in Google Fit
+  /// See and add info about your blood glucose to Google Fit. I consent to
+  /// Google sharing my blood glucose information with this app.
   static const FitnessBloodGlucoseWriteScope =
       "https://www.googleapis.com/auth/fitness.blood_glucose.write";
 
-  /// View blood pressure data in Google Fit
+  /// See info about your blood pressure in Google Fit. I consent to Google
+  /// sharing my blood pressure information with this app.
   static const FitnessBloodPressureReadScope =
       "https://www.googleapis.com/auth/fitness.blood_pressure.read";
 
-  /// View and store blood pressure data in Google Fit
+  /// See and add info about your blood pressure in Google Fit. I consent to
+  /// Google sharing my blood pressure information with this app.
   static const FitnessBloodPressureWriteScope =
       "https://www.googleapis.com/auth/fitness.blood_pressure.write";
 
-  /// View body sensor information in Google Fit
+  /// See info about your body measurements and heart rate in Google Fit
   static const FitnessBodyReadScope =
       "https://www.googleapis.com/auth/fitness.body.read";
 
-  /// View and store body sensor data in Google Fit
+  /// See and add info about your body measurements and heart rate to Google Fit
   static const FitnessBodyWriteScope =
       "https://www.googleapis.com/auth/fitness.body.write";
 
-  /// View body temperature data in Google Fit
+  /// See info about your body temperature in Google Fit. I consent to Google
+  /// sharing my body temperature information with this app.
   static const FitnessBodyTemperatureReadScope =
       "https://www.googleapis.com/auth/fitness.body_temperature.read";
 
-  /// View and store body temperature data in Google Fit
+  /// See and add to info about your body temperature in Google Fit. I consent
+  /// to Google sharing my body temperature information with this app.
   static const FitnessBodyTemperatureWriteScope =
       "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
-  /// View your stored location data in Google Fit
+  /// See your Google Fit speed and distance data
   static const FitnessLocationReadScope =
       "https://www.googleapis.com/auth/fitness.location.read";
 
-  /// View and store your location data in Google Fit
+  /// See and add to your Google Fit location data
   static const FitnessLocationWriteScope =
       "https://www.googleapis.com/auth/fitness.location.write";
 
-  /// View nutrition information in Google Fit
+  /// See info about your nutrition in Google Fit
   static const FitnessNutritionReadScope =
       "https://www.googleapis.com/auth/fitness.nutrition.read";
 
-  /// View and store nutrition information in Google Fit
+  /// See and add to info about your nutrition in Google Fit
   static const FitnessNutritionWriteScope =
       "https://www.googleapis.com/auth/fitness.nutrition.write";
 
-  /// View oxygen saturation data in Google Fit
+  /// See info about your oxygen saturation in Google Fit. I consent to Google
+  /// sharing my oxygen saturation information with this app.
   static const FitnessOxygenSaturationReadScope =
       "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
 
-  /// View and store oxygen saturation data in Google Fit
+  /// See and add info about your oxygen saturation in Google Fit. I consent to
+  /// Google sharing my oxygen saturation information with this app.
   static const FitnessOxygenSaturationWriteScope =
       "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
 
-  /// View reproductive health data in Google Fit
+  /// See info about your reproductive health in Google Fit. I consent to Google
+  /// sharing my reporductive health information with this app.
   static const FitnessReproductiveHealthReadScope =
       "https://www.googleapis.com/auth/fitness.reproductive_health.read";
 
-  /// View and store reproductive health data in Google Fit
+  /// See and add info about your reproductive health in Google Fit. I consent
+  /// to Google sharing my reporductive health information with this app.
   static const FitnessReproductiveHealthWriteScope =
       "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
@@ -127,13 +137,38 @@ class UsersDataSourcesResourceApi {
       : _requester = client;
 
   /// Creates a new data source that is unique across all data sources belonging
-  /// to this user. The data stream ID field can be omitted and will be
-  /// generated by the server with the correct format. The data stream ID is an
-  /// ordered combination of some fields from the data source. In addition to
-  /// the data source fields reflected into the data source ID, the developer
-  /// project number that is authenticated when creating the data source is
-  /// included. This developer project number is obfuscated when read by any
-  /// other developer reading public data types.
+  /// to this user.
+  ///
+  /// A data source is a unique source of sensor data. Data sources can expose
+  /// raw data coming from hardware sensors on local or companion devices. They
+  /// can also expose derived data, created by transforming or merging other
+  /// data sources. Multiple data sources can exist for the same data type.
+  /// Every data point in every dataset inserted into or read from the Fitness
+  /// API has an associated data source.
+  ///
+  /// Each data source produces a unique stream of dataset updates, with a
+  /// unique data source identifier. Not all changes to data source affect the
+  /// data stream ID, so that data collected by updated versions of the same
+  /// application/device can still be considered to belong to the same data
+  /// source.
+  ///
+  /// Data sources are identified using a string generated by the server, based
+  /// on the contents of the source being created. The dataStreamId field should
+  /// not be set when invoking this method. It will be automatically generated
+  /// by the server with the correct format. If a dataStreamId is set, it must
+  /// match the format that the server would generate. This format is a
+  /// combination of some fields from the data source, and has a specific order.
+  /// If it doesn't match, the request will fail with an error.
+  ///
+  /// Specifying a DataType which is not a known type (beginning with
+  /// "com.google.") will create a DataSource with a custom data type. Custom
+  /// data types are only readable by the application that created them. Custom
+  /// data types are deprecated; use standard data types instead.
+  ///
+  /// In addition to the data source fields included in the data source ID, the
+  /// developer project number that is authenticated when creating the data
+  /// source is included. This developer project number is obfuscated when read
+  /// by any other developer reading public data types.
   ///
   /// [request] - The metadata request object.
   ///
@@ -732,7 +767,7 @@ class UsersDatasetResourceApi {
 
   /// Aggregates data of a certain type or stream into buckets divided by a
   /// given type of boundary. Multiple data sets of multiple types and from
-  /// multiple sources can be aggreated into exactly one bucket type per
+  /// multiple sources can be aggregated into exactly one bucket type per
   /// request.
   ///
   /// [request] - The metadata request object.
@@ -853,6 +888,9 @@ class UsersSessionsResourceApi {
   /// [userId] - List sessions for the person identified. Use me to indicate the
   /// authenticated user. Only me is supported at this time.
   ///
+  /// [activityType] - If non-empty, only sessions with these activity types
+  /// should be returned.
+  ///
   /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response.
   ///
@@ -882,7 +920,8 @@ class UsersSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String userId,
-      {core.String endTime,
+      {core.List<core.int> activityType,
+      core.String endTime,
       core.bool includeDeleted,
       core.String pageToken,
       core.String startTime,
@@ -896,6 +935,10 @@ class UsersSessionsResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (activityType != null) {
+      _queryParams["activityType"] =
+          activityType.map((item) => "${item}").toList();
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
@@ -1068,16 +1111,20 @@ class AggregateBucket {
 
 /// The specification of which data to aggregate.
 class AggregateBy {
-  /// A data source ID to aggregate. Mutually exclusive of dataTypeName. Only
-  /// data from the specified data source ID will be included in the
-  /// aggregation. The dataset in the response will have the same data source
-  /// ID.
+  /// A data source ID to aggregate. Only data from the specified data source ID
+  /// will be included in the aggregation. If specified, this data source must
+  /// exist; the OAuth scopes in the supplied credentials must grant read access
+  /// to this data type. The dataset in the response will have the same data
+  /// source ID. Note: Data can be aggregated by either the dataTypeName or the
+  /// dataSourceId, not both.
   core.String dataSourceId;
 
   /// The data type to aggregate. All data sources providing this data type will
   /// contribute data to the aggregation. The response will contain a single
   /// dataset for this data type name. The dataset will have a data source ID of
-  /// derived:com.google.:com.google.android.gms:aggregated
+  /// derived::com.google.android.gms:aggregated. If the user has no data for
+  /// this data type, an empty data set will be returned. Note: Data can be
+  /// aggregated by either the dataTypeName or the dataSourceId, not both.
   core.String dataTypeName;
 
   AggregateBy();
@@ -1589,10 +1636,11 @@ class DataSource {
   /// absent, they will be omitted from the data stream ID. The minimum viable
   /// data stream ID would be: type:dataType.name:developer project number
   ///
-  /// Finally, the developer project number is obfuscated when read by any REST
-  /// or Android client that did not create the data source. Only the data
-  /// source creator will see the developer project number in clear and normal
-  /// form.
+  /// Finally, the developer project number and device UID are obfuscated when
+  /// read by any REST or Android client that did not create the data source.
+  /// Only the data source creator will see the developer project number in
+  /// clear and normal form. This means a client will see a different set of
+  /// data_stream_ids than another client with different credentials.
   core.String dataStreamId;
 
   /// The stream name uniquely identifies this particular data source among
@@ -1877,6 +1925,9 @@ class Device {
   /// obfuscated when read by any REST or Android client that did not create the
   /// data source. Only the data source creator will see the uid field in clear
   /// and normal form.
+  ///
+  /// The obfuscation preserves equality; that is, given two IDs, if id1 == id2,
+  /// obfuscated(id1) == obfuscated(id2).
   core.String uid;
 
   /// Version string for the device hardware/software.
@@ -2196,7 +2247,7 @@ class Session {
 /// Holder object for the value of a single field in a data point.
 ///
 /// A field value has a particular format and is only ever set to one of an
-/// integer or a floating point value. LINT.IfChange
+/// integer or a floating point value.
 class Value {
   /// Floating point value. When this is set, other values must not be set.
   core.double fpVal;

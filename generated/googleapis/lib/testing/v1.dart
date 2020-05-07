@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.testing.v1;
 
@@ -561,6 +561,9 @@ class AndroidInstrumentationTest {
   /// - "DO_NOT_USE_ORCHESTRATOR" : Run test without using orchestrator.
   core.String orchestratorOption;
 
+  /// The option to run tests in multiple shards in parallel.
+  ShardingOption shardingOption;
+
   /// Required. The APK containing the test code to be executed.
   FileReference testApk;
 
@@ -596,6 +599,9 @@ class AndroidInstrumentationTest {
     if (_json.containsKey("orchestratorOption")) {
       orchestratorOption = _json["orchestratorOption"];
     }
+    if (_json.containsKey("shardingOption")) {
+      shardingOption = new ShardingOption.fromJson(_json["shardingOption"]);
+    }
     if (_json.containsKey("testApk")) {
       testApk = new FileReference.fromJson(_json["testApk"]);
     }
@@ -624,6 +630,9 @@ class AndroidInstrumentationTest {
     }
     if (orchestratorOption != null) {
       _json["orchestratorOption"] = orchestratorOption;
+    }
+    if (shardingOption != null) {
+      _json["shardingOption"] = (shardingOption).toJson();
     }
     if (testApk != null) {
       _json["testApk"] = (testApk).toJson();
@@ -770,6 +779,9 @@ class AndroidModel {
   /// Examples: "default", "preview", "deprecated".
   core.List<core.String> tags;
 
+  /// URL of a thumbnail image of the device.
+  core.String thumbnailUrl;
+
   AndroidModel();
 
   AndroidModel.fromJson(core.Map _json) {
@@ -815,6 +827,9 @@ class AndroidModel {
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("thumbnailUrl")) {
+      thumbnailUrl = _json["thumbnailUrl"];
     }
   }
 
@@ -862,6 +877,9 @@ class AndroidModel {
     }
     if (tags != null) {
       _json["tags"] = tags;
+    }
+    if (thumbnailUrl != null) {
+      _json["thumbnailUrl"] = thumbnailUrl;
     }
     return _json;
   }
@@ -1967,6 +1985,7 @@ class IosDeviceList {
 }
 
 /// A description of an iOS device tests may be run on.
+/// Next tag: 12
 class IosModel {
   /// Device capabilities.
   /// Copied from
@@ -1989,6 +2008,15 @@ class IosModel {
   /// The human-readable name for this device model.
   /// Examples: "iPhone 4s", "iPad Mini 2".
   core.String name;
+
+  /// Screen density in DPI.
+  core.int screenDensity;
+
+  /// Screen size in the horizontal (X) dimension measured in pixels.
+  core.int screenX;
+
+  /// Screen size in the vertical (Y) dimension measured in pixels.
+  core.int screenY;
 
   /// The set of iOS major software versions this device supports.
   core.List<core.String> supportedVersionIds;
@@ -2013,6 +2041,15 @@ class IosModel {
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("screenDensity")) {
+      screenDensity = _json["screenDensity"];
+    }
+    if (_json.containsKey("screenX")) {
+      screenX = _json["screenX"];
+    }
+    if (_json.containsKey("screenY")) {
+      screenY = _json["screenY"];
+    }
     if (_json.containsKey("supportedVersionIds")) {
       supportedVersionIds =
           (_json["supportedVersionIds"] as core.List).cast<core.String>();
@@ -2036,6 +2073,15 @@ class IosModel {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    if (screenDensity != null) {
+      _json["screenDensity"] = screenDensity;
+    }
+    if (screenX != null) {
+      _json["screenX"] = screenX;
+    }
+    if (screenY != null) {
+      _json["screenY"] = screenY;
     }
     if (supportedVersionIds != null) {
       _json["supportedVersionIds"] = supportedVersionIds;
@@ -2079,6 +2125,51 @@ class IosRuntimeConfiguration {
     if (orientations != null) {
       _json["orientations"] =
           orientations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A test of an iOS application that implements one or more game loop
+/// scenarios.
+/// This test type accepts an archived application (.ipa file) and a list of
+/// integer scenarios that will be executed on the app sequentially.
+class IosTestLoop {
+  /// Output only. The bundle id for the application under test.
+  core.String appBundleId;
+
+  /// Required. The .ipa of the application to test.
+  FileReference appIpa;
+
+  /// The list of scenarios that should be run during the test. Defaults to the
+  /// single scenario 0 if unspecified.
+  core.List<core.int> scenarios;
+
+  IosTestLoop();
+
+  IosTestLoop.fromJson(core.Map _json) {
+    if (_json.containsKey("appBundleId")) {
+      appBundleId = _json["appBundleId"];
+    }
+    if (_json.containsKey("appIpa")) {
+      appIpa = new FileReference.fromJson(_json["appIpa"]);
+    }
+    if (_json.containsKey("scenarios")) {
+      scenarios = (_json["scenarios"] as core.List).cast<core.int>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appBundleId != null) {
+      _json["appBundleId"] = appBundleId;
+    }
+    if (appIpa != null) {
+      _json["appIpa"] = (appIpa).toJson();
+    }
+    if (scenarios != null) {
+      _json["scenarios"] = scenarios;
     }
     return _json;
   }
@@ -2184,6 +2275,12 @@ class IosXcTest {
   /// Output only. The bundle id for the application under test.
   core.String appBundleId;
 
+  /// The option to test special app entitlements. Setting this would re-sign
+  /// the
+  /// app having special entitlements with an explicit application-identifier.
+  /// Currently supports testing aps-environment entitlement.
+  core.bool testSpecialEntitlements;
+
   /// Required. The .zip containing the .xctestrun file and the contents of the
   /// DerivedData/Build/Products directory.
   /// The .xctestrun file in this zip is ignored if the xctestrun field is
@@ -2208,6 +2305,9 @@ class IosXcTest {
     if (_json.containsKey("appBundleId")) {
       appBundleId = _json["appBundleId"];
     }
+    if (_json.containsKey("testSpecialEntitlements")) {
+      testSpecialEntitlements = _json["testSpecialEntitlements"];
+    }
     if (_json.containsKey("testsZip")) {
       testsZip = new FileReference.fromJson(_json["testsZip"]);
     }
@@ -2224,6 +2324,9 @@ class IosXcTest {
         new core.Map<core.String, core.Object>();
     if (appBundleId != null) {
       _json["appBundleId"] = appBundleId;
+    }
+    if (testSpecialEntitlements != null) {
+      _json["testSpecialEntitlements"] = testSpecialEntitlements;
     }
     if (testsZip != null) {
       _json["testsZip"] = (testsZip).toJson();
@@ -2300,6 +2403,38 @@ class Locale {
     }
     if (tags != null) {
       _json["tags"] = tags;
+    }
+    return _json;
+  }
+}
+
+/// Shards test cases into the specified groups of packages, classes, and/or
+/// methods.
+///
+/// With manual sharding enabled, specifying test targets via
+/// environment_variables or in InstrumentationTest is invalid.
+class ManualSharding {
+  /// Required. Group of packages, classes, and/or test methods to be run for
+  /// each shard. The number of shard_test_targets must be >= 1 and <= 50.
+  core.List<TestTargetsForShard> testTargetsForShard;
+
+  ManualSharding();
+
+  ManualSharding.fromJson(core.Map _json) {
+    if (_json.containsKey("testTargetsForShard")) {
+      testTargetsForShard = (_json["testTargetsForShard"] as core.List)
+          .map<TestTargetsForShard>(
+              (value) => new TestTargetsForShard.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (testTargetsForShard != null) {
+      _json["testTargetsForShard"] =
+          testTargetsForShard.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2683,6 +2818,81 @@ class RoboStartingIntent {
   }
 }
 
+/// Output only. Details about the shard.
+class Shard {
+  /// Output only. The total number of shards.
+  core.int numShards;
+
+  /// Output only. The index of the shard among all the shards.
+  core.int shardIndex;
+
+  /// Output only. Test targets for each shard.
+  TestTargetsForShard testTargetsForShard;
+
+  Shard();
+
+  Shard.fromJson(core.Map _json) {
+    if (_json.containsKey("numShards")) {
+      numShards = _json["numShards"];
+    }
+    if (_json.containsKey("shardIndex")) {
+      shardIndex = _json["shardIndex"];
+    }
+    if (_json.containsKey("testTargetsForShard")) {
+      testTargetsForShard =
+          new TestTargetsForShard.fromJson(_json["testTargetsForShard"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (numShards != null) {
+      _json["numShards"] = numShards;
+    }
+    if (shardIndex != null) {
+      _json["shardIndex"] = shardIndex;
+    }
+    if (testTargetsForShard != null) {
+      _json["testTargetsForShard"] = (testTargetsForShard).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Options for enabling sharding.
+class ShardingOption {
+  /// Shards test cases into the specified groups of packages, classes, and/or
+  /// methods.
+  ManualSharding manualSharding;
+
+  /// Uniformly shards test cases given a total number of shards.
+  UniformSharding uniformSharding;
+
+  ShardingOption();
+
+  ShardingOption.fromJson(core.Map _json) {
+    if (_json.containsKey("manualSharding")) {
+      manualSharding = new ManualSharding.fromJson(_json["manualSharding"]);
+    }
+    if (_json.containsKey("uniformSharding")) {
+      uniformSharding = new UniformSharding.fromJson(_json["uniformSharding"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (manualSharding != null) {
+      _json["manualSharding"] = (manualSharding).toJson();
+    }
+    if (uniformSharding != null) {
+      _json["uniformSharding"] = (uniformSharding).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A starting intent specified by an action, uri, and categories.
 class StartActivityIntent {
   /// Action name.
@@ -2720,6 +2930,29 @@ class StartActivityIntent {
     }
     if (uri != null) {
       _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
+class SystraceSetup {
+  /// Systrace duration in seconds.
+  /// Should be between 1 and 30 seconds. 0 disables systrace.
+  core.int durationSeconds;
+
+  SystraceSetup();
+
+  SystraceSetup.fromJson(core.Map _json) {
+    if (_json.containsKey("durationSeconds")) {
+      durationSeconds = _json["durationSeconds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (durationSeconds != null) {
+      _json["durationSeconds"] = durationSeconds;
     }
     return _json;
   }
@@ -2832,6 +3065,9 @@ class TestExecution {
   /// Output only. The cloud project that owns the test execution.
   core.String projectId;
 
+  /// Output only. Details about the shard.
+  Shard shard;
+
   /// Output only. Indicates the current progress of the test execution
   /// (e.g., FINISHED).
   /// Possible string values are:
@@ -2907,6 +3143,9 @@ class TestExecution {
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
+    if (_json.containsKey("shard")) {
+      shard = new Shard.fromJson(_json["shard"]);
+    }
     if (_json.containsKey("state")) {
       state = _json["state"];
     }
@@ -2939,6 +3178,9 @@ class TestExecution {
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
+    }
+    if (shard != null) {
+      _json["shard"] = (shard).toJson();
     }
     if (state != null) {
       _json["state"] = state;
@@ -3051,7 +3293,10 @@ class TestMatrix {
   /// - "TEST_ONLY_APK" : The APK is marked as "testOnly".
   /// Deprecated and not currently used.
   /// - "MALFORMED_IPA" : The input IPA could not be parsed.
-  /// Deprecated and not currently used.
+  /// - "MISSING_URL_SCHEME" : The application doesn't register the game loop
+  /// URL scheme.
+  /// - "MALFORMED_APP_BUNDLE" : The iOS application bundle (.app) couldn't be
+  /// processed.
   /// - "NO_CODE_APK" : APK contains no code.
   /// See also
   /// https://developer.android.com/guide/topics/manifest/application-element.html#code
@@ -3268,6 +3513,13 @@ class TestSetup {
   /// TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   core.String networkProfile;
 
+  /// Systrace configuration for the run.
+  /// If set a systrace will be taken, starting on test start and lasting for
+  /// the
+  /// configured duration. The systrace file thus obtained is put in the results
+  /// bucket together with the other artifacts from the run.
+  SystraceSetup systrace;
+
   TestSetup();
 
   TestSetup.fromJson(core.Map _json) {
@@ -3297,6 +3549,9 @@ class TestSetup {
     if (_json.containsKey("networkProfile")) {
       networkProfile = _json["networkProfile"];
     }
+    if (_json.containsKey("systrace")) {
+      systrace = new SystraceSetup.fromJson(_json["systrace"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3323,6 +3578,9 @@ class TestSetup {
     if (networkProfile != null) {
       _json["networkProfile"] = networkProfile;
     }
+    if (systrace != null) {
+      _json["systrace"] = (systrace).toJson();
+    }
     return _json;
   }
 }
@@ -3343,6 +3601,9 @@ class TestSpecification {
 
   /// Disables video recording. May reduce test latency.
   core.bool disableVideoRecording;
+
+  /// An iOS application with a test loop.
+  IosTestLoop iosTestLoop;
 
   /// Test setup requirements for iOS.
   IosTestSetup iosTestSetup;
@@ -3378,6 +3639,9 @@ class TestSpecification {
     if (_json.containsKey("disableVideoRecording")) {
       disableVideoRecording = _json["disableVideoRecording"];
     }
+    if (_json.containsKey("iosTestLoop")) {
+      iosTestLoop = new IosTestLoop.fromJson(_json["iosTestLoop"]);
+    }
     if (_json.containsKey("iosTestSetup")) {
       iosTestSetup = new IosTestSetup.fromJson(_json["iosTestSetup"]);
     }
@@ -3411,6 +3675,9 @@ class TestSpecification {
     if (disableVideoRecording != null) {
       _json["disableVideoRecording"] = disableVideoRecording;
     }
+    if (iosTestLoop != null) {
+      _json["iosTestLoop"] = (iosTestLoop).toJson();
+    }
     if (iosTestSetup != null) {
       _json["iosTestSetup"] = (iosTestSetup).toJson();
     }
@@ -3422,6 +3689,34 @@ class TestSpecification {
     }
     if (testTimeout != null) {
       _json["testTimeout"] = testTimeout;
+    }
+    return _json;
+  }
+}
+
+/// Test targets for a shard.
+class TestTargetsForShard {
+  /// Group of packages, classes, and/or test methods to be run for each shard.
+  /// The targets need to be specified in AndroidJUnitRunner argument format.
+  /// For
+  /// example, “package com.my.packages” “class com.my.package.MyClass”.
+  ///
+  /// The number of shard_test_targets must be greater than 0.
+  core.List<core.String> testTargets;
+
+  TestTargetsForShard();
+
+  TestTargetsForShard.fromJson(core.Map _json) {
+    if (_json.containsKey("testTargets")) {
+      testTargets = (_json["testTargets"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (testTargets != null) {
+      _json["testTargets"] = testTargets;
     }
     return _json;
   }
@@ -3608,6 +3903,33 @@ class TrafficRule {
     }
     if (packetLossRatio != null) {
       _json["packetLossRatio"] = packetLossRatio;
+    }
+    return _json;
+  }
+}
+
+/// Uniformly shards test cases given a total number of shards.
+///
+/// For Instrumentation test, it will be translated to “-e numShard” “-e
+/// shardIndex” AndroidJUnitRunner arguments. With uniform sharding enabled,
+/// specifying these sharding arguments via environment_variables is invalid.
+class UniformSharding {
+  /// Required. Total number of shards. The number must be >= 1 and <= 50.
+  core.int numShards;
+
+  UniformSharding();
+
+  UniformSharding.fromJson(core.Map _json) {
+    if (_json.containsKey("numShards")) {
+      numShards = _json["numShards"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (numShards != null) {
+      _json["numShards"] = numShards;
     }
     return _json;
   }

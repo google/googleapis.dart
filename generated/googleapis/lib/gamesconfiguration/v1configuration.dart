@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.gamesConfiguration.v1configuration;
 
@@ -25,7 +25,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT =
     'dart-api-client gamesConfiguration/v1configuration';
 
-/// The Publishing API for Google Play Game Services.
+/// The Google Play Game Services Publishing API allows developers to configure
+/// their games in Game Services.
 class GamesConfigurationApi {
   /// View and manage your Google Play Developer account
   static const AndroidpublisherScope =
@@ -42,7 +43,7 @@ class GamesConfigurationApi {
 
   GamesConfigurationApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "games/v1configuration/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -84,7 +85,8 @@ class AchievementConfigurationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
+    _url = 'games/v1configuration/achievements/' +
+        commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -127,7 +129,8 @@ class AchievementConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
+    _url = 'games/v1configuration/achievements/' +
+        commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -178,7 +181,7 @@ class AchievementConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' +
+    _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
@@ -200,9 +203,9 @@ class AchievementConfigurationsResourceApi {
   /// console.
   ///
   /// [maxResults] - The maximum number of resource configurations to return in
-  /// the response, used for paging. For any response, the actual number of
-  /// resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "200".
+  /// the response,
+  /// used for paging. For any response, the actual number of resources returned
+  /// may be less than the specified `maxResults`.
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
@@ -241,7 +244,7 @@ class AchievementConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' +
+    _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
@@ -253,57 +256,6 @@ class AchievementConfigurationsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new AchievementConfigurationListResponse.fromJson(data));
-  }
-
-  /// Update the metadata of the achievement configuration with the given ID.
-  /// This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [achievementId] - The ID of the achievement used by this method.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [AchievementConfiguration].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<AchievementConfiguration> patch(
-      AchievementConfiguration request, core.String achievementId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (achievementId == null) {
-      throw new core.ArgumentError("Parameter achievementId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new AchievementConfiguration.fromJson(data));
   }
 
   /// Update the metadata of the achievement configuration with the given ID.
@@ -344,7 +296,8 @@ class AchievementConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
+    _url = 'games/v1configuration/achievements/' +
+        commons.Escaper.ecapeVariable('$achievementId');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -371,17 +324,14 @@ class ImageConfigurationsResourceApi {
   ///
   /// [imageType] - Selects which image in a resource for this method.
   /// Possible string values are:
-  /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
-  /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
+  /// - "IMAGE_TYPE_UNSPECIFIED" : A IMAGE_TYPE_UNSPECIFIED.
+  /// - "ACHIEVEMENT_ICON" : A ACHIEVEMENT_ICON.
+  /// - "LEADERBOARD_ICON" : A LEADERBOARD_ICON.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
   /// [uploadMedia] - The media to upload.
-  ///
-  /// [uploadOptions] - Options for the media upload. Streaming Media without
-  /// the length being known ahead of time is only supported via resumable
-  /// uploads.
   ///
   /// Completes with a [ImageConfiguration].
   ///
@@ -392,9 +342,7 @@ class ImageConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ImageConfiguration> upload(
       core.String resourceId, core.String imageType,
-      {core.String $fields,
-      commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
-      commons.Media uploadMedia}) {
+      {core.String $fields, commons.Media uploadMedia}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -413,15 +361,10 @@ class ImageConfigurationsResourceApi {
     }
 
     _uploadMedia = uploadMedia;
-    _uploadOptions = uploadOptions;
 
+    _uploadOptions = commons.UploadOptions.Default;
     if (_uploadMedia == null) {
-      _url = 'images/' +
-          commons.Escaper.ecapeVariable('$resourceId') +
-          '/imageType/' +
-          commons.Escaper.ecapeVariable('$imageType');
-    } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/games/v1configuration/images/' +
+      _url = 'games/v1configuration/images/' +
           commons.Escaper.ecapeVariable('$resourceId') +
           '/imageType/' +
           commons.Escaper.ecapeVariable('$imageType');
@@ -479,7 +422,8 @@ class LeaderboardConfigurationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'games/v1configuration/leaderboards/' +
+        commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -522,7 +466,8 @@ class LeaderboardConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'games/v1configuration/leaderboards/' +
+        commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -573,7 +518,7 @@ class LeaderboardConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' +
+    _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
@@ -594,12 +539,12 @@ class LeaderboardConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
-  /// [maxResults] - The maximum number of resource configurations to return in
-  /// the response, used for paging. For any response, the actual number of
-  /// resources returned may be less than the specified maxResults.
-  /// Value must be between "1" and "200".
-  ///
   /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [maxResults] - The maximum number of resource configurations to return in
+  /// the response,
+  /// used for paging. For any response, the actual number of resources returned
+  /// may be less than the specified `maxResults`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -613,8 +558,8 @@ class LeaderboardConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<LeaderboardConfigurationListResponse> list(
       core.String applicationId,
-      {core.int maxResults,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int maxResults,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -626,17 +571,17 @@ class LeaderboardConfigurationsResourceApi {
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'applications/' +
+    _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
@@ -648,57 +593,6 @@ class LeaderboardConfigurationsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then(
         (data) => new LeaderboardConfigurationListResponse.fromJson(data));
-  }
-
-  /// Update the metadata of the leaderboard configuration with the given ID.
-  /// This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [leaderboardId] - The ID of the leaderboard.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LeaderboardConfiguration].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LeaderboardConfiguration> patch(
-      LeaderboardConfiguration request, core.String leaderboardId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (leaderboardId == null) {
-      throw new core.ArgumentError("Parameter leaderboardId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LeaderboardConfiguration.fromJson(data));
   }
 
   /// Update the metadata of the leaderboard configuration with the given ID.
@@ -739,7 +633,8 @@ class LeaderboardConfigurationsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
+    _url = 'games/v1configuration/leaderboards/' +
+        commons.Escaper.ecapeVariable('$leaderboardId');
 
     var _response = _requester.request(_url, "PUT",
         body: _body,
@@ -752,12 +647,13 @@ class LeaderboardConfigurationsResourceApi {
   }
 }
 
-/// This is a JSON template for an achievement configuration resource.
+/// An achievement configuration resource.
 class AchievementConfiguration {
   /// The type of the achievement.
-  /// Possible values are:
-  /// - "STANDARD" - Achievement is either locked or unlocked.
-  /// - "INCREMENTAL" - Achievement is incremental.
+  /// Possible string values are:
+  /// - "ACHIEVEMENT_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "STANDARD" : Achievement is either locked or unlocked.
+  /// - "INCREMENTAL" : Achievement is incremental.
   core.String achievementType;
 
   /// The draft data of the achievement.
@@ -767,20 +663,20 @@ class AchievementConfiguration {
   core.String id;
 
   /// The initial state of the achievement.
-  /// Possible values are:
-  /// - "HIDDEN" - Achievement is hidden.
-  /// - "REVEALED" - Achievement is revealed.
-  /// - "UNLOCKED" - Achievement is unlocked.
+  /// Possible string values are:
+  /// - "INITIAL_STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "HIDDEN" : Achievement is hidden.
+  /// - "REVEALED" : Achievement is revealed.
   core.String initialState;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#achievementConfiguration.
+  /// string `gamesConfiguration#achievementConfiguration`.
   core.String kind;
 
   /// The read-only published data of the achievement.
   AchievementConfigurationDetail published;
 
-  /// Steps to unlock. Only applicable to incremental achievements.
+  /// Steps to unlock.  Only applicable to incremental achievements.
   core.int stepsToUnlock;
 
   /// The token for this resource.
@@ -847,7 +743,7 @@ class AchievementConfiguration {
   }
 }
 
-/// This is a JSON template for an achievement configuration detail.
+/// An achievement configuration detail.
 class AchievementConfigurationDetail {
   /// Localized strings for the achievement description.
   LocalizedStringBundle description;
@@ -856,7 +752,7 @@ class AchievementConfigurationDetail {
   core.String iconUrl;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#achievementConfigurationDetail.
+  /// string `gamesConfiguration#achievementConfigurationDetail`.
   core.String kind;
 
   /// Localized strings for the achievement name.
@@ -916,13 +812,13 @@ class AchievementConfigurationDetail {
   }
 }
 
-/// This is a JSON template for a ListConfigurations response.
+/// A ListConfigurations response.
 class AchievementConfigurationListResponse {
   /// The achievement configurations.
   core.List<AchievementConfiguration> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#achievementConfigurationListResponse.
+  /// string `gamesConfiguration#achievementConfigurationListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -961,11 +857,12 @@ class AchievementConfigurationListResponse {
   }
 }
 
-/// This is a JSON template for a number affix resource.
+/// A number affix resource.
 class GamesNumberAffixConfiguration {
   /// When the language requires special treatment of "small" numbers (as with
-  /// 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14
-  /// in Polish).
+  /// 2,
+  /// 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in
+  /// Polish).
   LocalizedStringBundle few;
 
   /// When the language requires special treatment of "large" numbers (as with
@@ -982,7 +879,8 @@ class GamesNumberAffixConfiguration {
   LocalizedStringBundle other;
 
   /// When the language requires special treatment of numbers like two (as with
-  /// 2 in Welsh, or 102 in Slovenian).
+  /// 2
+  /// in Welsh, or 102 in Slovenian).
   LocalizedStringBundle two;
 
   /// When the language requires special treatment of the number 0 (as in
@@ -1037,7 +935,7 @@ class GamesNumberAffixConfiguration {
   }
 }
 
-/// This is a JSON template for a number format resource.
+/// A number format resource.
 class GamesNumberFormatConfiguration {
   /// The curreny code string. Only used for CURRENCY format type.
   core.String currencyCode;
@@ -1047,16 +945,20 @@ class GamesNumberFormatConfiguration {
   core.int numDecimalPlaces;
 
   /// The formatting for the number.
-  /// Possible values are:
-  /// - "NUMERIC" - Numbers are formatted to have no digits or a fixed number of
-  /// digits after the decimal point according to locale. An optional custom
-  /// unit can be added.
-  /// - "TIME_DURATION" - Numbers are formatted to hours, minutes and seconds.
-  /// - "CURRENCY" - Numbers are formatted to currency according to locale.
+  /// Possible string values are:
+  /// - "NUMBER_FORMAT_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "NUMERIC" : Numbers are formatted to have no digits or fixed number of
+  /// digits after
+  /// the decimal point according to locale. An optional custom unit can be
+  /// added.
+  /// - "TIME_DURATION" : Numbers are formatted to hours, minutes and seconds.
+  /// - "CURRENCY" : Numbers are formatted to currency according to locale.
   core.String numberFormatType;
 
-  /// An optional suffix for the NUMERIC format type. These strings follow the
-  /// same  plural rules as all Android string resources.
+  /// An optional suffix for the NUMERIC format type.  These strings follow the
+  /// same <a
+  /// href="http://developer.android.com/guide/topics/resources/string-resource.html#Plurals">
+  /// plural rules</a> as all Android string resources.
   GamesNumberAffixConfiguration suffix;
 
   GamesNumberFormatConfiguration();
@@ -1095,13 +997,17 @@ class GamesNumberFormatConfiguration {
   }
 }
 
-/// This is a JSON template for an image configuration resource.
+/// An image configuration resource.
 class ImageConfiguration {
   /// The image type for the image.
+  /// Possible string values are:
+  /// - "IMAGE_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
+  /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
   core.String imageType;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#imageConfiguration.
+  /// string `gamesConfiguration#imageConfiguration`.
   core.String kind;
 
   /// The resource ID of resource which the image belongs to.
@@ -1146,7 +1052,7 @@ class ImageConfiguration {
   }
 }
 
-/// This is a JSON template for an leaderboard configuration resource.
+/// An leaderboard configuration resource.
 class LeaderboardConfiguration {
   /// The draft data of the leaderboard.
   LeaderboardConfigurationDetail draft;
@@ -1155,7 +1061,7 @@ class LeaderboardConfiguration {
   core.String id;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#leaderboardConfiguration.
+  /// string `gamesConfiguration#leaderboardConfiguration`.
   core.String kind;
 
   /// The read-only published data of the leaderboard.
@@ -1167,10 +1073,11 @@ class LeaderboardConfiguration {
   /// Minimum score that can be posted to this leaderboard.
   core.String scoreMin;
 
-  /// The type of the leaderboard.
-  /// Possible values are:
-  /// - "LARGER_IS_BETTER" - Larger scores posted are ranked higher.
-  /// - "SMALLER_IS_BETTER" - Smaller scores posted are ranked higher.
+  ///
+  /// Possible string values are:
+  /// - "SCORE_ORDER_UNSPECIFIED" : Default value. This value is unused.
+  /// - "LARGER_IS_BETTER" : Larger scores posted are ranked higher.
+  /// - "SMALLER_IS_BETTER" : Smaller scores posted are ranked higher.
   core.String scoreOrder;
 
   /// The token for this resource.
@@ -1237,13 +1144,13 @@ class LeaderboardConfiguration {
   }
 }
 
-/// This is a JSON template for a leaderboard configuration detail.
+/// A leaderboard configuration detail.
 class LeaderboardConfigurationDetail {
   /// The icon url of this leaderboard. Writes to this field are ignored.
   core.String iconUrl;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#leaderboardConfigurationDetail.
+  /// string `gamesConfiguration#leaderboardConfigurationDetail`.
   core.String kind;
 
   /// Localized strings for the leaderboard name.
@@ -1298,13 +1205,14 @@ class LeaderboardConfigurationDetail {
   }
 }
 
-/// This is a JSON template for a ListConfigurations response.
+/// A ListConfigurations response.
 class LeaderboardConfigurationListResponse {
   /// The leaderboard configurations.
   core.List<LeaderboardConfiguration> items;
 
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string games#leaderboardConfigurationListResponse.
+  /// string
+  /// `gamesConfiguration#leaderboardConfigurationListResponse`.
   core.String kind;
 
   /// The pagination token for the next page of results.
@@ -1343,10 +1251,10 @@ class LeaderboardConfigurationListResponse {
   }
 }
 
-/// This is a JSON template for a localized string resource.
+/// A localized string resource.
 class LocalizedString {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#localizedString.
+  /// string `gamesConfiguration#localizedString`.
   core.String kind;
 
   /// The locale string.
@@ -1385,10 +1293,10 @@ class LocalizedString {
   }
 }
 
-/// This is a JSON template for a localized string bundle resource.
+/// A localized string bundle resource.
 class LocalizedStringBundle {
   /// Uniquely identifies the type of this resource. Value is always the fixed
-  /// string gamesConfiguration#localizedStringBundle.
+  /// string `gamesConfiguration#localizedStringBundle`.
   core.String kind;
 
   /// The locale strings.

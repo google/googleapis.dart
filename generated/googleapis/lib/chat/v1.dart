@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.chat.v1;
 
@@ -426,9 +426,13 @@ class SpacesMessagesResourceApi {
   /// Example: spaces/AAAAMpdlehY/messages/UMxbHmzDlr4.UMxbHmzDlr4
   /// Value must have pattern "^spaces/[^/]+/messages/[^/]+$".
   ///
-  /// [updateMask] - Required. The field paths to be updated.
+  /// [updateMask] - Required. The field paths to be updated, comma separated if
+  /// there are
+  /// multiple.
   ///
-  /// Currently supported field paths: "text", "cards".
+  /// Currently supported field paths:
+  /// * text
+  /// * cards
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -941,8 +945,10 @@ class Empty {
 /// A form action describes the behavior when the form is submitted.
 /// For example, an Apps Script can be invoked to handle the form.
 class FormAction {
-  /// Apps Script function to invoke when the containing element is
-  /// clicked/activated.
+  /// The method name is used to identify which part of the form triggered the
+  /// form submission. This information is echoed back to the bot as part of
+  /// the card click event. The same method name can be used for several
+  /// elements that trigger a common behavior if desired.
   core.String actionMethodName;
 
   /// List of action parameters.
@@ -977,7 +983,10 @@ class FormAction {
 
 /// An image that is specified by a URL and can have an onclick action.
 class Image {
-  /// The aspect ratio of this image (width/height).
+  /// The aspect ratio of this image (width/height). This field allows clients
+  /// to reserve the right height for the image while waiting for it to load.
+  /// It's not meant to override the native aspect ratio of the image.
+  /// If unset, the server fills it by prefetching the image.
   core.double aspectRatio;
 
   /// The URL of the image.
@@ -1717,6 +1726,9 @@ class User {
   /// The user's display name.
   core.String displayName;
 
+  /// Obfuscated domain information.
+  core.String domainId;
+
   /// Resource name, in the format "users / * ".
   core.String name;
 
@@ -1733,6 +1745,9 @@ class User {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
     }
+    if (_json.containsKey("domainId")) {
+      domainId = _json["domainId"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -1746,6 +1761,9 @@ class User {
         new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    if (domainId != null) {
+      _json["domainId"] = domainId;
     }
     if (name != null) {
       _json["name"] = name;

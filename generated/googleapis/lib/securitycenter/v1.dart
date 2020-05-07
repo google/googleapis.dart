@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.securitycenter.v1;
 
@@ -16,8 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client securitycenter/v1';
 
-/// Cloud Security Command Center API provides access to temporal views of
-/// assets and findings within an organization.
+/// Security Command Center API provides access to temporal views of assets and
+/// findings within an organization.
 class SecuritycenterApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -40,6 +40,8 @@ class OrganizationsResourceApi {
 
   OrganizationsAssetsResourceApi get assets =>
       new OrganizationsAssetsResourceApi(_requester);
+  OrganizationsNotificationConfigsResourceApi get notificationConfigs =>
+      new OrganizationsNotificationConfigsResourceApi(_requester);
   OrganizationsOperationsResourceApi get operations =>
       new OrganizationsOperationsResourceApi(_requester);
   OrganizationsSourcesResourceApi get sources =>
@@ -51,8 +53,8 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Name of the organization to get organization settings for. Its
-  /// format is
+  /// [name] - Required. Name of the organization to get organization settings
+  /// for. Its format is
   /// "organizations/[organization_id]/organizationSettings".
   /// Value must have pattern "^organizations/[^/]+/organizationSettings$".
   ///
@@ -102,7 +104,7 @@ class OrganizationsResourceApi {
   /// [name] - The relative resource name of the settings. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/organizationSettings".
+  /// "organizations/{organization_id}/organizationSettings".
   /// Value must have pattern "^organizations/[^/]+/organizationSettings$".
   ///
   /// [updateMask] - The FieldMask to use when updating the settings resource.
@@ -167,7 +169,7 @@ class OrganizationsAssetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the organization to groupBy. Its format is
+  /// [parent] - Required. Name of the organization to groupBy. Its format is
   /// "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -218,15 +220,10 @@ class OrganizationsAssetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the organization assets should belong to. Its format is
+  /// [parent] - Required. Name of the organization assets should belong to. Its
+  /// format is
   /// "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
-  ///
-  /// [readTime] - Time used as a reference point when filtering assets. The
-  /// filter is limited
-  /// to assets existing at the supplied time and their values are those at that
-  /// specific time. Absence of this field will default to the API's version of
-  /// NOW.
   ///
   /// [orderBy] - Expression that defines what fields and order to use for
   /// sorting. The
@@ -242,11 +239,20 @@ class OrganizationsAssetsResourceApi {
   /// name
   /// update_time
   /// resource_properties
-  /// security_marks
+  /// security_marks.marks
   /// security_center_properties.resource_name
+  /// security_center_properties.resource_display_name
   /// security_center_properties.resource_parent
+  /// security_center_properties.resource_parent_display_name
   /// security_center_properties.resource_project
+  /// security_center_properties.resource_project_display_name
   /// security_center_properties.resource_type
+  ///
+  /// [readTime] - Time used as a reference point when filtering assets. The
+  /// filter is limited
+  /// to assets existing at the supplied time and their values are those at that
+  /// specific time. Absence of this field will default to the API's version of
+  /// NOW.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
   /// "state_change"
@@ -305,28 +311,49 @@ class OrganizationsAssetsResourceApi {
   /// The following are the allowed field and operator combinations:
   ///
   /// * name: `=`
-  /// * update_time: `>`, `<`, `>=`, `<=`
+  /// * update_time: `=`, `>`, `<`, `>=`, `<=`
+  ///
+  ///   Usage: This should be milliseconds since epoch or an RFC3339 string.
+  ///   Examples:
+  ///     "update_time = \"2019-06-10T16:07:18-07:00\""
+  ///     "update_time = 1560208038000"
+  ///
+  /// * create_time: `=`, `>`, `<`, `>=`, `<=`
+  ///
+  ///   Usage: This should be milliseconds since epoch or an RFC3339 string.
+  ///   Examples:
+  ///     "create_time = \"2019-06-10T16:07:18-07:00\""
+  ///     "create_time = 1560208038000"
+  ///
   /// * iam_policy.policy_blob: `=`, `:`
   /// * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
-  /// * security_marks: `=`, `:`
+  /// * security_marks.marks: `=`, `:`
   /// * security_center_properties.resource_name: `=`, `:`
+  /// * security_center_properties.resource_display_name: `=`, `:`
   /// * security_center_properties.resource_type: `=`, `:`
   /// * security_center_properties.resource_parent: `=`, `:`
+  /// * security_center_properties.resource_parent_display_name: `=`, `:`
   /// * security_center_properties.resource_project: `=`, `:`
+  /// * security_center_properties.resource_project_display_name: `=`, `:`
   /// * security_center_properties.resource_owners: `=`, `:`
   ///
   /// For example, `resource_properties.size = 100` is a valid filter string.
+  ///
+  /// Use a partial match on the empty string to filter based on a property
+  /// existing: "resource_properties.my_property : \"\""
+  ///
+  /// Use a negated partial match on the empty string to filter based on a
+  /// property not existing: "-resource_properties.my_property : \"\""
+  ///
+  /// [fieldMask] - Optional. A field mask to specify the ListAssetsResult
+  /// fields to be listed in the
+  /// response.
+  /// An empty field mask will list all fields.
   ///
   /// [pageToken] - The value returned by the last `ListAssetsResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListAssets` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [fieldMask] - Optional.
-  ///
-  /// A field mask to specify the ListAssetsResult fields to be listed in the
-  /// response.
-  /// An empty field mask will list all fields.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// Default is
@@ -343,12 +370,12 @@ class OrganizationsAssetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAssetsResponse> list(core.String parent,
-      {core.String readTime,
-      core.String orderBy,
+      {core.String orderBy,
+      core.String readTime,
       core.String compareDuration,
       core.String filter,
-      core.String pageToken,
       core.String fieldMask,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -361,11 +388,11 @@ class OrganizationsAssetsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (readTime != null) {
+      _queryParams["readTime"] = [readTime];
     }
     if (compareDuration != null) {
       _queryParams["compareDuration"] = [compareDuration];
@@ -373,11 +400,11 @@ class OrganizationsAssetsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (fieldMask != null) {
       _queryParams["fieldMask"] = [fieldMask];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -408,8 +435,8 @@ class OrganizationsAssetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the organization to run asset discovery for. Its format
-  /// is
+  /// [parent] - Required. Name of the organization to run asset discovery for.
+  /// Its format is
   /// "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -465,10 +492,14 @@ class OrganizationsAssetsResourceApi {
   /// [name] - The relative resource name of the SecurityMarks. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Examples:
-  /// "organizations/123/assets/456/securityMarks"
-  /// "organizations/123/sources/456/findings/789/securityMarks".
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   /// Value must have pattern
   /// "^organizations/[^/]+/assets/[^/]+/securityMarks$".
+  ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect.
+  /// If not set uses current server time.  Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
   ///
   /// [updateMask] - The FieldMask to use when updating the security marks
   /// resource.
@@ -476,10 +507,6 @@ class OrganizationsAssetsResourceApi {
   /// The field mask must not contain duplicate fields.
   /// If empty or set to "marks", all marks will be replaced.  Individual
   /// marks can be updated using "marks.<mark_key>".
-  ///
-  /// [startTime] - The time at which the updated SecurityMarks take effect.
-  /// If not set uses current server time.  Updates will be applied to the
-  /// SecurityMarks that are active immediately preceding this time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -493,7 +520,294 @@ class OrganizationsAssetsResourceApi {
   /// this method will complete with the same error.
   async.Future<SecurityMarks> updateSecurityMarks(
       SecurityMarks request, core.String name,
-      {core.String updateMask, core.String startTime, core.String $fields}) {
+      {core.String startTime, core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SecurityMarks.fromJson(data));
+  }
+}
+
+class OrganizationsNotificationConfigsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsNotificationConfigsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a notification config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the new notification config's
+  /// parent. Its format is
+  /// "organizations/[organization_id]".
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [configId] - Required.
+  /// Unique identifier provided by the client within the parent scope.
+  /// It must be between 1 and 128 characters, and contains alphanumeric
+  /// characters, underscores or hyphens only.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> create(
+      NotificationConfig request, core.String parent,
+      {core.String configId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (configId != null) {
+      _queryParams["configId"] = [configId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/notificationConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationConfig.fromJson(data));
+  }
+
+  /// Deletes a notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the notification config to delete. Its format
+  /// is
+  /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+  /// Value must have pattern "^organizations/[^/]+/notificationConfigs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a notification config.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the notification config to get. Its format is
+  /// "organizations/[organization_id]/notificationConfigs/[config_id]".
+  /// Value must have pattern "^organizations/[^/]+/notificationConfigs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new NotificationConfig.fromJson(data));
+  }
+
+  /// Lists notification configs.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization to list notification
+  /// configs.
+  /// Its format is "organizations/[organization_id]".
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListNotificationConfigsResponse`; indicates
+  /// that this is a continuation of a prior `ListNotificationConfigs` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is
+  /// 10, minimum is 1, maximum is 1000.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNotificationConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNotificationConfigsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/notificationConfigs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListNotificationConfigsResponse.fromJson(data));
+  }
+
+  ///
+  /// Updates a notification config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this notification config. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+  /// Value must have pattern "^organizations/[^/]+/notificationConfigs/[^/]+$".
+  ///
+  /// [updateMask] - The FieldMask to use when updating the notification config.
+  ///
+  /// If empty all mutable fields will be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [NotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<NotificationConfig> patch(
+      NotificationConfig request, core.String name,
+      {core.String updateMask, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -510,9 +824,6 @@ class OrganizationsAssetsResourceApi {
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -525,7 +836,7 @@ class OrganizationsAssetsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new SecurityMarks.fromJson(data));
+    return _response.then((data) => new NotificationConfig.fromJson(data));
   }
 }
 
@@ -766,7 +1077,8 @@ class OrganizationsSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Resource name of the new source's parent. Its format should be
+  /// [parent] - Required. Resource name of the new source's parent. Its format
+  /// should be
   /// "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -815,7 +1127,7 @@ class OrganizationsSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Relative resource name of the source. Its format is
+  /// [name] - Required. Relative resource name of the source. Its format is
   /// "organizations/[organization_id]/source/[source_id]".
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
   ///
@@ -913,8 +1225,8 @@ class OrganizationsSourcesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Resource name of the parent of sources to list. Its format
-  /// should be
+  /// [parent] - Required. Resource name of the parent of sources to list. Its
+  /// format should be
   /// "organizations/[organization_id]".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -980,7 +1292,7 @@ class OrganizationsSourcesResourceApi {
   /// [name] - The relative resource name of this source. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/sources/456"
+  /// "organizations/{organization_id}/sources/{source_id}"
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
   ///
   /// [updateMask] - The FieldMask to use when updating the source resource.
@@ -1154,12 +1466,13 @@ class OrganizationsSourcesFindingsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Resource name of the new finding's parent. Its format should be
+  /// [parent] - Required. Resource name of the new finding's parent. Its format
+  /// should be
   /// "organizations/[organization_id]/sources/[source_id]".
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
   ///
-  /// [findingId] - Unique identifier provided by the client within the parent
-  /// scope.
+  /// [findingId] - Required. Unique identifier provided by the client within
+  /// the parent scope.
   /// It must be alphanumeric and less than or equal to 32 characters and
   /// greater than 0 characters in length.
   ///
@@ -1211,16 +1524,16 @@ class OrganizationsSourcesFindingsResourceApi {
   /// specified properties.
   ///
   /// To group across all sources provide a `-` as the source id.
-  /// Example: /v1/organizations/123/sources/-/findings
+  /// Example: /v1/organizations/{organization_id}/sources/-/findings
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the source to groupBy. Its format is
+  /// [parent] - Required. Name of the source to groupBy. Its format is
   /// "organizations/[organization_id]/sources/[source_id]". To groupBy across
   /// all sources provide a source_id of `-`. For example:
-  /// organizations/123/sources/-
+  /// organizations/{organization_id}/sources/-
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1269,21 +1582,16 @@ class OrganizationsSourcesFindingsResourceApi {
   /// Lists an organization or source's findings.
   ///
   /// To list across all sources provide a `-` as the source id.
-  /// Example: /v1/organizations/123/sources/-/findings
+  /// Example: /v1/organizations/{organization_id}/sources/-/findings
   ///
   /// Request parameters:
   ///
-  /// [parent] - Name of the source the findings belong to. Its format is
+  /// [parent] - Required. Name of the source the findings belong to. Its format
+  /// is
   /// "organizations/[organization_id]/sources/[source_id]". To list across all
   /// sources provide a source_id of `-`. For example:
-  /// organizations/123/sources/-
+  /// organizations/{organization_id}/sources/-
   /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
-  ///
-  /// [readTime] - Time used as a reference point when filtering findings. The
-  /// filter is
-  /// limited to findings existing at the supplied time and their values are
-  /// those at that specific time. Absence of this field will default to the
-  /// API's version of NOW.
   ///
   /// [orderBy] - Expression that defines what fields and order to use for
   /// sorting. The
@@ -1303,7 +1611,13 @@ class OrganizationsSourcesFindingsResourceApi {
   /// resource_name
   /// event_time
   /// source_properties
-  /// security_marks
+  /// security_marks.marks
+  ///
+  /// [readTime] - Time used as a reference point when filtering findings. The
+  /// filter is
+  /// limited to findings existing at the supplied time and their values are
+  /// those at that specific time. Absence of this field will default to the
+  /// API's version of NOW.
   ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
   /// "state_change"
@@ -1322,12 +1636,21 @@ class OrganizationsSourcesFindingsResourceApi {
   ///
   /// Possible "state_change" values when compare_duration is specified:
   ///
-  /// * "CHANGED":   indicates that the finding was present at the start of
-  ///                  compare_duration, but changed its state at read_time.
-  /// * "UNCHANGED": indicates that the finding was present at the start of
-  ///                  compare_duration and did not change state at read_time.
-  /// * "ADDED":     indicates that the finding was not present at the start
-  ///                  of compare_duration, but was present at read_time.
+  /// * "CHANGED":   indicates that the finding was present and matched the
+  /// given
+  ///                  filter at the start of compare_duration, but changed its
+  ///                  state at read_time.
+  /// * "UNCHANGED": indicates that the finding was present and matched the
+  /// given
+  /// filter at the start of compare_duration and did not change
+  ///                  state at read_time.
+  /// * "ADDED":     indicates that the finding did not match the given filter
+  /// or
+  /// was not present at the start of compare_duration, but was
+  ///                  present at read_time.
+  /// * "REMOVED":   indicates that the finding was present and matched the
+  /// filter at the start of compare_duration, but did not match
+  ///                  the filter at read_time.
   ///
   /// If compare_duration is not specified, then the only possible state_change
   /// is "UNUSED", which will be the state_change set for all findings present
@@ -1366,21 +1689,32 @@ class OrganizationsSourcesFindingsResourceApi {
   /// state: `=`, `:`
   /// category: `=`, `:`
   /// external_uri: `=`, `:`
-  /// event_time: `>`, `<`, `>=`, `<=`
-  /// security_marks: `=`, `:`
+  /// event_time: `=`, `>`, `<`, `>=`, `<=`
+  ///
+  ///   Usage: This should be milliseconds since epoch or an RFC3339 string.
+  ///   Examples:
+  ///     "event_time = \"2019-06-10T16:07:18-07:00\""
+  ///     "event_time = 1560208038000"
+  ///
+  /// security_marks.marks: `=`, `:`
   /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
   ///
   /// For example, `source_properties.size = 100` is a valid filter string.
+  ///
+  /// Use a partial match on the empty string to filter based on a property
+  /// existing: "source_properties.my_property : \"\""
+  ///
+  /// Use a negated partial match on the empty string to filter based on a
+  /// property not existing: "-source_properties.my_property : \"\""
+  ///
+  /// [fieldMask] - Optional. A field mask to specify the Finding fields to be
+  /// listed in the response.
+  /// An empty field mask will list all fields.
   ///
   /// [pageToken] - The value returned by the last `ListFindingsResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListFindings` call, and
   /// that the system should return the next page of data.
-  ///
-  /// [fieldMask] - Optional.
-  ///
-  /// A field mask to specify the Finding fields to be listed in the response.
-  /// An empty field mask will list all fields.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// Default is
@@ -1397,12 +1731,12 @@ class OrganizationsSourcesFindingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFindingsResponse> list(core.String parent,
-      {core.String readTime,
-      core.String orderBy,
+      {core.String orderBy,
+      core.String readTime,
       core.String compareDuration,
       core.String filter,
-      core.String pageToken,
       core.String fieldMask,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url;
@@ -1415,11 +1749,11 @@ class OrganizationsSourcesFindingsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (readTime != null) {
+      _queryParams["readTime"] = [readTime];
     }
     if (compareDuration != null) {
       _queryParams["compareDuration"] = [compareDuration];
@@ -1427,11 +1761,11 @@ class OrganizationsSourcesFindingsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (fieldMask != null) {
       _queryParams["fieldMask"] = [fieldMask];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1462,7 +1796,7 @@ class OrganizationsSourcesFindingsResourceApi {
   /// [name] - The relative resource name of this finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/sources/456/findings/789"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
   /// Value must have pattern
   /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$".
   ///
@@ -1524,10 +1858,10 @@ class OrganizationsSourcesFindingsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The relative resource name of the finding. See:
+  /// [name] - Required. The relative resource name of the finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/sources/456/finding/789".
+  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
   /// Value must have pattern
   /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$".
   ///
@@ -1581,8 +1915,8 @@ class OrganizationsSourcesFindingsResourceApi {
   /// [name] - The relative resource name of the SecurityMarks. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Examples:
-  /// "organizations/123/assets/456/securityMarks"
-  /// "organizations/123/sources/456/findings/789/securityMarks".
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   /// Value must have pattern
   /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$".
   ///
@@ -1645,36 +1979,41 @@ class OrganizationsSourcesFindingsResourceApi {
   }
 }
 
-/// Cloud Security Command Center's (Cloud SCC) representation of a Google Cloud
-/// Platform (GCP) resource.
+/// Security Command Center representation of a Google Cloud
+/// resource.
 ///
-/// The Asset is a Cloud SCC resource that captures information about a single
-/// GCP resource. All modifications to an Asset are only within the context of
-/// Cloud SCC and don't affect the referenced GCP resource.
+/// The Asset is a Security Command Center resource that captures information
+/// about a single Google Cloud resource. All modifications to an Asset are only
+/// within the context of Security Command Center and don't affect the
+/// referenced
+/// Google Cloud resource.
 class Asset {
-  /// The time at which the asset was created in Cloud SCC.
+  /// The time at which the asset was created in Security Command Center.
   core.String createTime;
 
-  /// IAM Policy information associated with the GCP resource described by the
-  /// Cloud SCC asset. This information is managed and defined by the GCP
-  /// resource and cannot be modified by the user.
+  /// Cloud IAM Policy information associated with the Google Cloud resource
+  /// described by the Security Command Center asset. This information is
+  /// managed
+  /// and defined by the Google Cloud resource and cannot be modified by the
+  /// user.
   IamPolicy iamPolicy;
 
   /// The relative resource name of this asset. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/assets/456".
+  /// "organizations/{organization_id}/assets/{asset_id}".
   core.String name;
 
   /// Resource managed properties. These properties are managed and defined by
-  /// the GCP resource and cannot be modified by the user.
+  /// the Google Cloud resource and cannot be modified by the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> resourceProperties;
 
-  /// Cloud SCC managed properties. These properties are managed by
-  /// Cloud SCC and cannot be modified by the user.
+  /// Security Command Center managed properties. These properties are managed
+  /// by
+  /// Security Command Center and cannot be modified by the user.
   SecurityCenterProperties securityCenterProperties;
 
   /// User specified security marks. These marks are entirely managed by the
@@ -1682,8 +2021,9 @@ class Asset {
   /// and come from the SecurityMarks resource that belongs to the asset.
   SecurityMarks securityMarks;
 
-  /// The time at which the asset was last updated, added, or deleted in Cloud
-  /// SCC.
+  /// The time at which the asset was last updated, added, or deleted in
+  /// Security
+  /// Command Center.
   core.String updateTime;
 
   Asset();
@@ -1804,7 +2144,7 @@ class AssetDiscoveryConfig {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -1816,7 +2156,7 @@ class AssetDiscoveryConfig {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -1824,7 +2164,7 @@ class AssetDiscoveryConfig {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -1832,9 +2172,9 @@ class AssetDiscoveryConfig {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -1879,7 +2219,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -1889,7 +2229,7 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -1947,7 +2287,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1955,6 +2295,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -2016,28 +2377,52 @@ class Empty {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -2078,19 +2463,20 @@ class Expr {
   }
 }
 
-/// Cloud Security Command Center (Cloud SCC) finding.
+/// Security Command Center finding.
 ///
-/// A finding is a record of assessment data (security, risk, health or privacy)
-/// ingested into Cloud SCC for presentation, notification, analysis,
-/// policy testing, and enforcement. For example, an XSS vulnerability in an
-/// App Engine application is a finding.
+/// A finding is a record of assessment data like security, risk, health, or
+/// privacy, that is ingested into Security Command Center for presentation,
+/// notification, analysis, policy testing, and enforcement. For example, a
+/// cross-site scripting (XSS) vulnerability in an App Engine application is a
+/// finding.
 class Finding {
   /// The additional taxonomy group within findings from a given source.
   /// This field is immutable after creation time.
   /// Example: "XSS_FLASH_INJECTION"
   core.String category;
 
-  /// The time at which the finding was created in Cloud SCC.
+  /// The time at which the finding was created in Security Command Center.
   core.String createTime;
 
   /// The time at which the event took place. For example, if the finding
@@ -2099,28 +2485,31 @@ class Finding {
   /// the firewall became open. The accuracy is determined by the detector.
   core.String eventTime;
 
-  /// The URI that, if available, points to a web page outside of Cloud SCC
-  /// where additional information about the finding can be found. This field is
-  /// guaranteed to be either empty or a well formed URL.
+  /// The URI that, if available, points to a web page outside of Security
+  /// Command Center where additional information about the finding can be
+  /// found.
+  /// This field is guaranteed to be either empty or a well formed URL.
   core.String externalUri;
 
   /// The relative resource name of this finding. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/sources/456/findings/789"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
   core.String name;
 
   /// The relative resource name of the source the finding belongs to. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// This field is immutable after creation time.
   /// For example:
-  /// "organizations/123/sources/456"
+  /// "organizations/{organization_id}/sources/{source_id}"
   core.String parent;
 
-  /// The full resource name of the Google Cloud Platform (GCP) resource this
-  /// finding is for. See:
+  /// For findings on Google Cloud resources, the full resource
+  /// name of the Google Cloud resource this finding is for. See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
-  /// This field is immutable after creation time.
+  /// When the finding is for a non-Google Cloud resource, the resourceName can
+  /// be a customer or partner defined string. This field is immutable after
+  /// creation time.
   core.String resourceName;
 
   /// Output only. User specified security marks. These marks are entirely
@@ -2223,13 +2612,88 @@ class Finding {
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A `GetPolicyOptions` object for specifying options to
+  /// `GetIamPolicy`. This field is only used by Cloud IAM.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
+    return _json;
+  }
+}
+
+/// Cloud SCC's Notification
+class GoogleCloudSecuritycenterV1NotificationMessage {
+  /// If it's a Finding based notification config, this field will be
+  /// populated.
+  Finding finding;
+
+  /// Name of the notification config that generated current notification.
+  core.String notificationConfigName;
+
+  GoogleCloudSecuritycenterV1NotificationMessage();
+
+  GoogleCloudSecuritycenterV1NotificationMessage.fromJson(core.Map _json) {
+    if (_json.containsKey("finding")) {
+      finding = new Finding.fromJson(_json["finding"]);
+    }
+    if (_json.containsKey("notificationConfigName")) {
+      notificationConfigName = _json["notificationConfigName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (finding != null) {
+      _json["finding"] = (finding).toJson();
+    }
+    if (notificationConfigName != null) {
+      _json["notificationConfigName"] = notificationConfigName;
+    }
     return _json;
   }
 }
@@ -2314,6 +2778,557 @@ class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse {
   }
 }
 
+/// Security Command Center representation of a Google Cloud
+/// resource.
+///
+/// The Asset is a Security Command Center resource that captures information
+/// about a single Google Cloud resource. All modifications to an Asset are only
+/// within the context of Security Command Center and don't affect the
+/// referenced
+/// Google Cloud resource.
+class GoogleCloudSecuritycenterV1p1beta1Asset {
+  /// The time at which the asset was created in Security Command Center.
+  core.String createTime;
+
+  /// Cloud IAM Policy information associated with the Google Cloud resource
+  /// described by the Security Command Center asset. This information is
+  /// managed
+  /// and defined by the Google Cloud resource and cannot be modified by the
+  /// user.
+  GoogleCloudSecuritycenterV1p1beta1IamPolicy iamPolicy;
+
+  /// The relative resource name of this asset. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/assets/{asset_id}".
+  core.String name;
+
+  /// Resource managed properties. These properties are managed and defined by
+  /// the Google Cloud resource and cannot be modified by the user.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> resourceProperties;
+
+  /// Security Command Center managed properties. These properties are managed
+  /// by
+  /// Security Command Center and cannot be modified by the user.
+  GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties
+      securityCenterProperties;
+
+  /// User specified security marks. These marks are entirely managed by the
+  /// user
+  /// and come from the SecurityMarks resource that belongs to the asset.
+  GoogleCloudSecuritycenterV1p1beta1SecurityMarks securityMarks;
+
+  /// The time at which the asset was last updated, added, or deleted in Cloud
+  /// SCC.
+  core.String updateTime;
+
+  GoogleCloudSecuritycenterV1p1beta1Asset();
+
+  GoogleCloudSecuritycenterV1p1beta1Asset.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("iamPolicy")) {
+      iamPolicy = new GoogleCloudSecuritycenterV1p1beta1IamPolicy.fromJson(
+          _json["iamPolicy"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("resourceProperties")) {
+      resourceProperties = (_json["resourceProperties"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("securityCenterProperties")) {
+      securityCenterProperties =
+          new GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties
+              .fromJson(_json["securityCenterProperties"]);
+    }
+    if (_json.containsKey("securityMarks")) {
+      securityMarks =
+          new GoogleCloudSecuritycenterV1p1beta1SecurityMarks.fromJson(
+              _json["securityMarks"]);
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (iamPolicy != null) {
+      _json["iamPolicy"] = (iamPolicy).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (resourceProperties != null) {
+      _json["resourceProperties"] = resourceProperties;
+    }
+    if (securityCenterProperties != null) {
+      _json["securityCenterProperties"] = (securityCenterProperties).toJson();
+    }
+    if (securityMarks != null) {
+      _json["securityMarks"] = (securityMarks).toJson();
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Security Command Center finding.
+///
+/// A finding is a record of assessment data (security, risk, health or privacy)
+/// ingested into Security Command Center for presentation, notification,
+/// analysis, policy testing, and enforcement. For example, an XSS vulnerability
+/// in an App Engine application is a finding.
+class GoogleCloudSecuritycenterV1p1beta1Finding {
+  /// The additional taxonomy group within findings from a given source.
+  /// This field is immutable after creation time.
+  /// Example: "XSS_FLASH_INJECTION"
+  core.String category;
+
+  /// The time at which the finding was created in Security Command Center.
+  core.String createTime;
+
+  /// The time at which the event took place. For example, if the finding
+  /// represents an open firewall it would capture the time the detector
+  /// believes
+  /// the firewall became open. The accuracy is determined by the detector.
+  core.String eventTime;
+
+  /// The URI that, if available, points to a web page outside of Security
+  /// Command Center where additional information about the finding can be
+  /// found.
+  /// This field is guaranteed to be either empty or a well formed URL.
+  core.String externalUri;
+
+  /// The relative resource name of this finding. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  core.String name;
+
+  /// The relative resource name of the source the finding belongs to. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// This field is immutable after creation time.
+  /// For example:
+  /// "organizations/{organization_id}/sources/{source_id}"
+  core.String parent;
+
+  /// For findings on Google Cloud resources, the full resource
+  /// name of the Google Cloud resource this finding is for. See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  /// When the finding is for a non-Google Cloud resource, the resourceName can
+  /// be a customer or partner defined string. This field is immutable after
+  /// creation time.
+  core.String resourceName;
+
+  /// Output only. User specified security marks. These marks are entirely
+  /// managed by the user and come from the SecurityMarks resource that belongs
+  /// to the finding.
+  GoogleCloudSecuritycenterV1p1beta1SecurityMarks securityMarks;
+
+  /// Source specific properties. These properties are managed by the source
+  /// that writes the finding. The key names in the source_properties map must
+  /// be
+  /// between 1 and 255 characters, and must start with a letter and contain
+  /// alphanumeric characters or underscores only.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> sourceProperties;
+
+  /// The state of the finding.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "ACTIVE" : The finding requires attention and has not been addressed
+  /// yet.
+  /// - "INACTIVE" : The finding has been fixed, triaged as a non-issue or
+  /// otherwise addressed
+  /// and is no longer active.
+  core.String state;
+
+  GoogleCloudSecuritycenterV1p1beta1Finding();
+
+  GoogleCloudSecuritycenterV1p1beta1Finding.fromJson(core.Map _json) {
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("eventTime")) {
+      eventTime = _json["eventTime"];
+    }
+    if (_json.containsKey("externalUri")) {
+      externalUri = _json["externalUri"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parent")) {
+      parent = _json["parent"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+    if (_json.containsKey("securityMarks")) {
+      securityMarks =
+          new GoogleCloudSecuritycenterV1p1beta1SecurityMarks.fromJson(
+              _json["securityMarks"]);
+    }
+    if (_json.containsKey("sourceProperties")) {
+      sourceProperties = (_json["sourceProperties"] as core.Map)
+          .cast<core.String, core.Object>();
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (category != null) {
+      _json["category"] = category;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (eventTime != null) {
+      _json["eventTime"] = eventTime;
+    }
+    if (externalUri != null) {
+      _json["externalUri"] = externalUri;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parent != null) {
+      _json["parent"] = parent;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (securityMarks != null) {
+      _json["securityMarks"] = (securityMarks).toJson();
+    }
+    if (sourceProperties != null) {
+      _json["sourceProperties"] = sourceProperties;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Cloud IAM Policy information associated with the Google Cloud resource
+/// described by the Security Command Center asset. This information is managed
+/// and defined by the Google Cloud resource and cannot be modified by the
+/// user.
+class GoogleCloudSecuritycenterV1p1beta1IamPolicy {
+  /// The JSON representation of the Policy associated with the asset.
+  /// See https://cloud.google.com/iam/docs/reference/rest/v1/Policy for
+  /// format details.
+  core.String policyBlob;
+
+  GoogleCloudSecuritycenterV1p1beta1IamPolicy();
+
+  GoogleCloudSecuritycenterV1p1beta1IamPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("policyBlob")) {
+      policyBlob = _json["policyBlob"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (policyBlob != null) {
+      _json["policyBlob"] = policyBlob;
+    }
+    return _json;
+  }
+}
+
+/// Security Command Center's Notification
+class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
+  /// If it's a Finding based notification config, this field will be
+  /// populated.
+  GoogleCloudSecuritycenterV1p1beta1Finding finding;
+
+  /// Name of the notification config that generated current notification.
+  core.String notificationConfigName;
+
+  /// If it's an asset based notification config, this field will be
+  /// populated.
+  GoogleCloudSecuritycenterV1p1beta1TemporalAsset temporalAsset;
+
+  GoogleCloudSecuritycenterV1p1beta1NotificationMessage();
+
+  GoogleCloudSecuritycenterV1p1beta1NotificationMessage.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("finding")) {
+      finding = new GoogleCloudSecuritycenterV1p1beta1Finding.fromJson(
+          _json["finding"]);
+    }
+    if (_json.containsKey("notificationConfigName")) {
+      notificationConfigName = _json["notificationConfigName"];
+    }
+    if (_json.containsKey("temporalAsset")) {
+      temporalAsset =
+          new GoogleCloudSecuritycenterV1p1beta1TemporalAsset.fromJson(
+              _json["temporalAsset"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (finding != null) {
+      _json["finding"] = (finding).toJson();
+    }
+    if (notificationConfigName != null) {
+      _json["notificationConfigName"] = notificationConfigName;
+    }
+    if (temporalAsset != null) {
+      _json["temporalAsset"] = (temporalAsset).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Response of asset discovery run
+class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse {
+  /// The duration between asset discovery run start and end
+  core.String duration;
+
+  /// The state of an asset discovery run.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Asset discovery run state was unspecified.
+  /// - "COMPLETED" : Asset discovery run completed successfully.
+  /// - "SUPERSEDED" : Asset discovery run was cancelled with tasks still
+  /// pending, as another
+  /// run for the same organization was started with a higher priority.
+  /// - "TERMINATED" : Asset discovery run was killed and terminated.
+  core.String state;
+
+  GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse();
+
+  GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
+/// Security Command Center managed properties. These properties are managed by
+/// Security Command Center and cannot be modified by the user.
+class GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties {
+  /// The user defined display name for this resource.
+  core.String resourceDisplayName;
+
+  /// The full resource name of the Google Cloud resource this asset
+  /// represents. This field is immutable after create time. See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  core.String resourceName;
+
+  /// Owners of the Google Cloud resource.
+  core.List<core.String> resourceOwners;
+
+  /// The full resource name of the immediate parent of the resource. See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  core.String resourceParent;
+
+  /// The user defined display name for the parent of this resource.
+  core.String resourceParentDisplayName;
+
+  /// The full resource name of the project the resource belongs to. See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  core.String resourceProject;
+
+  /// The user defined display name for the project of this resource.
+  core.String resourceProjectDisplayName;
+
+  /// The type of the Google Cloud resource. Examples include: APPLICATION,
+  /// PROJECT, and ORGANIZATION. This is a case insensitive field defined by
+  /// Security Command Center and/or the producer of the resource and is
+  /// immutable after create time.
+  core.String resourceType;
+
+  GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties();
+
+  GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("resourceDisplayName")) {
+      resourceDisplayName = _json["resourceDisplayName"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+    if (_json.containsKey("resourceOwners")) {
+      resourceOwners =
+          (_json["resourceOwners"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("resourceParent")) {
+      resourceParent = _json["resourceParent"];
+    }
+    if (_json.containsKey("resourceParentDisplayName")) {
+      resourceParentDisplayName = _json["resourceParentDisplayName"];
+    }
+    if (_json.containsKey("resourceProject")) {
+      resourceProject = _json["resourceProject"];
+    }
+    if (_json.containsKey("resourceProjectDisplayName")) {
+      resourceProjectDisplayName = _json["resourceProjectDisplayName"];
+    }
+    if (_json.containsKey("resourceType")) {
+      resourceType = _json["resourceType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceDisplayName != null) {
+      _json["resourceDisplayName"] = resourceDisplayName;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (resourceOwners != null) {
+      _json["resourceOwners"] = resourceOwners;
+    }
+    if (resourceParent != null) {
+      _json["resourceParent"] = resourceParent;
+    }
+    if (resourceParentDisplayName != null) {
+      _json["resourceParentDisplayName"] = resourceParentDisplayName;
+    }
+    if (resourceProject != null) {
+      _json["resourceProject"] = resourceProject;
+    }
+    if (resourceProjectDisplayName != null) {
+      _json["resourceProjectDisplayName"] = resourceProjectDisplayName;
+    }
+    if (resourceType != null) {
+      _json["resourceType"] = resourceType;
+    }
+    return _json;
+  }
+}
+
+/// User specified security marks that are attached to the parent Security
+/// Command Center resource. Security marks are scoped within a Security Command
+/// Center organization -- they can be modified and viewed by all users who have
+/// proper permissions on the organization.
+class GoogleCloudSecuritycenterV1p1beta1SecurityMarks {
+  /// Mutable user specified security marks belonging to the parent resource.
+  /// Constraints are as follows:
+  ///
+  ///   * Keys and values are treated as case insensitive
+  ///   * Keys must be between 1 - 256 characters (inclusive)
+  ///   * Keys must be letters, numbers, underscores, or dashes
+  ///   * Values have leading and trailing whitespace trimmed, remaining
+  ///     characters must be between 1 - 4096 characters (inclusive)
+  core.Map<core.String, core.String> marks;
+
+  /// The relative resource name of the SecurityMarks. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  core.String name;
+
+  GoogleCloudSecuritycenterV1p1beta1SecurityMarks();
+
+  GoogleCloudSecuritycenterV1p1beta1SecurityMarks.fromJson(core.Map _json) {
+    if (_json.containsKey("marks")) {
+      marks = (_json["marks"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (marks != null) {
+      _json["marks"] = marks;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Wrapper over asset object that also captures the state change for the asset
+/// e.g. if it was a newly created asset vs updated or deleted asset.
+class GoogleCloudSecuritycenterV1p1beta1TemporalAsset {
+  /// Asset data that includes attributes, properties and marks about the asset.
+  GoogleCloudSecuritycenterV1p1beta1Asset asset;
+
+  /// Represents if the asset was created/updated/deleted.
+  /// Possible string values are:
+  /// - "CHANGE_TYPE_UNSPECIFIED" : Unspecified or default.
+  /// - "CREATED" : Newly created Asset
+  /// - "UPDATED" : Asset was updated.
+  /// - "DELETED" : Asset was deleted.
+  core.String changeType;
+
+  GoogleCloudSecuritycenterV1p1beta1TemporalAsset();
+
+  GoogleCloudSecuritycenterV1p1beta1TemporalAsset.fromJson(core.Map _json) {
+    if (_json.containsKey("asset")) {
+      asset =
+          new GoogleCloudSecuritycenterV1p1beta1Asset.fromJson(_json["asset"]);
+    }
+    if (_json.containsKey("changeType")) {
+      changeType = _json["changeType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (asset != null) {
+      _json["asset"] = (asset).toJson();
+    }
+    if (changeType != null) {
+      _json["changeType"] = changeType;
+    }
+    return _json;
+  }
+}
+
 /// Request message for grouping by assets.
 class GroupAssetsRequest {
   /// When compare_duration is set, the GroupResult's "state_change" property is
@@ -2376,21 +3391,43 @@ class GroupAssetsRequest {
   /// The following field and operator combinations are supported:
   ///
   /// * name: `=`
-  /// * update_time: `>`, `<`, `>=`, `<=`, `=`
-  /// * create_time: `>`, `<`, `>=`, `<=`, `=`
+  /// * update_time: `=`, `>`, `<`, `>=`, `<=`
+  ///
+  ///   Usage: This should be milliseconds since epoch or an RFC3339 string.
+  ///   Examples:
+  ///     "update_time = \"2019-06-10T16:07:18-07:00\""
+  ///     "update_time = 1560208038000"
+  ///
+  /// * create_time: `=`, `>`, `<`, `>=`, `<=`
+  ///
+  ///   Usage: This should be milliseconds since epoch or an RFC3339 string.
+  ///   Examples:
+  ///     "create_time = \"2019-06-10T16:07:18-07:00\""
+  ///     "create_time = 1560208038000"
+  ///
   /// * iam_policy.policy_blob: `=`, `:`
   /// * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
-  /// * security_marks: `=`, `:`
+  /// * security_marks.marks: `=`, `:`
   /// * security_center_properties.resource_name: `=`, `:`
+  /// * security_center_properties.resource_display_name: `=`, `:`
   /// * security_center_properties.resource_type: `=`, `:`
   /// * security_center_properties.resource_parent: `=`, `:`
+  /// * security_center_properties.resource_parent_display_name: `=`, `:`
   /// * security_center_properties.resource_project: `=`, `:`
+  /// * security_center_properties.resource_project_display_name: `=`, `:`
   /// * security_center_properties.resource_owners: `=`, `:`
   ///
   /// For example, `resource_properties.size = 100` is a valid filter string.
+  ///
+  /// Use a partial match on the empty string to filter based on a property
+  /// existing: "resource_properties.my_property : \"\""
+  ///
+  /// Use a negated partial match on the empty string to filter based on a
+  /// property not existing: "-resource_properties.my_property : \"\""
   core.String filter;
 
-  /// Expression that defines what assets fields to use for grouping. The string
+  /// Required. Expression that defines what assets fields to use for grouping.
+  /// The string
   /// value should follow SQL syntax: comma separated list of fields. For
   /// example:
   /// "security_center_properties.resource_project,security_center_properties.project".
@@ -2398,12 +3435,16 @@ class GroupAssetsRequest {
   /// The following fields are supported when compare_duration is not set:
   ///
   /// * security_center_properties.resource_project
+  /// * security_center_properties.resource_project_display_name
   /// * security_center_properties.resource_type
   /// * security_center_properties.resource_parent
+  /// * security_center_properties.resource_parent_display_name
   ///
   /// The following fields are supported when compare_duration is set:
   ///
   /// * security_center_properties.resource_type
+  /// * security_center_properties.resource_project_display_name
+  /// * security_center_properties.resource_parent_display_name
   core.String groupBy;
 
   /// The maximum number of results to return in a single response. Default is
@@ -2544,12 +3585,21 @@ class GroupFindingsRequest {
   ///
   /// Possible "state_change" values when compare_duration is specified:
   ///
-  /// * "CHANGED":   indicates that the finding was present at the start of
-  ///                  compare_duration, but changed its state at read_time.
-  /// * "UNCHANGED": indicates that the finding was present at the start of
-  ///                  compare_duration and did not change state at read_time.
-  /// * "ADDED":     indicates that the finding was not present at the start
-  ///                  of compare_duration, but was present at read_time.
+  /// * "CHANGED":   indicates that the finding was present and matched the
+  /// given
+  ///                  filter at the start of compare_duration, but changed its
+  ///                  state at read_time.
+  /// * "UNCHANGED": indicates that the finding was present and matched the
+  /// given
+  /// filter at the start of compare_duration and did not change
+  ///                  state at read_time.
+  /// * "ADDED":     indicates that the finding did not match the given filter
+  /// or
+  /// was not present at the start of compare_duration, but was
+  ///                  present at read_time.
+  /// * "REMOVED":   indicates that the finding was present and matched the
+  /// filter at the start of compare_duration, but did not match
+  ///                  the filter at read_time.
   ///
   /// If compare_duration is not specified, then the only possible state_change
   /// is "UNUSED",  which will be the state_change set for all findings present
@@ -2591,14 +3641,27 @@ class GroupFindingsRequest {
   /// * state: `=`, `:`
   /// * category: `=`, `:`
   /// * external_uri: `=`, `:`
-  /// * event_time: `>`, `<`, `>=`, `<=`
-  /// * security_marks: `=`, `:`
+  /// * event_time: `=`, `>`, `<`, `>=`, `<=`
+  ///
+  ///   Usage: This should be milliseconds since epoch or an RFC3339 string.
+  ///   Examples:
+  ///     "event_time = \"2019-06-10T16:07:18-07:00\""
+  ///     "event_time = 1560208038000"
+  ///
+  /// * security_marks.marks: `=`, `:`
   /// * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
   ///
   /// For example, `source_properties.size = 100` is a valid filter string.
+  ///
+  /// Use a partial match on the empty string to filter based on a property
+  /// existing: "source_properties.my_property : \"\""
+  ///
+  /// Use a negated partial match on the empty string to filter based on a
+  /// property not existing: "-source_properties.my_property : \"\""
   core.String filter;
 
-  /// Expression that defines what assets fields to use for grouping (including
+  /// Required. Expression that defines what assets fields to use for grouping
+  /// (including
   /// `state_change`). The string value should follow SQL syntax: comma
   /// separated
   /// list of fields. For example: "parent,resource_name".
@@ -2771,9 +3834,10 @@ class GroupResult {
   }
 }
 
-/// IAM Policy information associated with the GCP resource described by the
-/// Cloud SCC asset. This information is managed and defined by the GCP
-/// resource and cannot be modified by the user.
+/// Cloud IAM Policy information associated with the Google Cloud resource
+/// described by the Security Command Center asset. This information is managed
+/// and defined by the Google Cloud resource and cannot be modified by the
+/// user.
 class IamPolicy {
   /// The JSON representation of the Policy associated with the asset.
   /// See https://cloud.google.com/iam/reference/rest/v1/Policy for format
@@ -2951,6 +4015,9 @@ class ListFindingsResult {
   /// Finding matching the search request.
   Finding finding;
 
+  /// Output only. Resource that is associated with this finding.
+  Resource resource;
+
   /// State change of the finding between the points in time.
   /// Possible string values are:
   /// - "UNUSED" : State change is unused, this is the canonical default for
@@ -2973,6 +4040,9 @@ class ListFindingsResult {
     if (_json.containsKey("finding")) {
       finding = new Finding.fromJson(_json["finding"]);
     }
+    if (_json.containsKey("resource")) {
+      resource = new Resource.fromJson(_json["resource"]);
+    }
     if (_json.containsKey("stateChange")) {
       stateChange = _json["stateChange"];
     }
@@ -2984,8 +4054,48 @@ class ListFindingsResult {
     if (finding != null) {
       _json["finding"] = (finding).toJson();
     }
+    if (resource != null) {
+      _json["resource"] = (resource).toJson();
+    }
     if (stateChange != null) {
       _json["stateChange"] = stateChange;
+    }
+    return _json;
+  }
+}
+
+/// Response message for listing notification configs.
+class ListNotificationConfigsResponse {
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results.
+  core.String nextPageToken;
+
+  /// Notification configs belonging to the requested parent.
+  core.List<NotificationConfig> notificationConfigs;
+
+  ListNotificationConfigsResponse();
+
+  ListNotificationConfigsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("notificationConfigs")) {
+      notificationConfigs = (_json["notificationConfigs"] as core.List)
+          .map<NotificationConfig>(
+              (value) => new NotificationConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (notificationConfigs != null) {
+      _json["notificationConfigs"] =
+          notificationConfigs.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3056,6 +4166,74 @@ class ListSourcesResponse {
     }
     if (sources != null) {
       _json["sources"] = sources.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Cloud Security Command Center (Cloud SCC) notification configs.
+///
+/// A notification config is a Cloud SCC resource that contains the
+/// configuration
+/// to send notifications for create/update events of findings, assets and etc.
+class NotificationConfig {
+  /// The description of the notification config (max of 1024 characters).
+  core.String description;
+
+  /// The relative resource name of this notification config. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+  core.String name;
+
+  /// The PubSub topic to send notifications to. Its format is
+  /// "projects/[project_id]/topics/[topic]".
+  core.String pubsubTopic;
+
+  /// Output only. The service account that needs "pubsub.topics.publish"
+  /// permission to publish to the PubSub topic.
+  core.String serviceAccount;
+
+  /// The config for triggering streaming-based notifications.
+  StreamingConfig streamingConfig;
+
+  NotificationConfig();
+
+  NotificationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("pubsubTopic")) {
+      pubsubTopic = _json["pubsubTopic"];
+    }
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
+    }
+    if (_json.containsKey("streamingConfig")) {
+      streamingConfig = new StreamingConfig.fromJson(_json["streamingConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (pubsubTopic != null) {
+      _json["pubsubTopic"] = pubsubTopic;
+    }
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
+    }
+    if (streamingConfig != null) {
+      _json["streamingConfig"] = (streamingConfig).toJson();
     }
     return _json;
   }
@@ -3144,8 +4322,8 @@ class Operation {
   }
 }
 
-/// User specified settings that are attached to the Cloud Security Command
-/// Center (Cloud SCC) organization.
+/// User specified settings that are attached to the Security Command
+/// Center organization.
 class OrganizationSettings {
   /// The configuration used for Asset Discovery runs.
   AssetDiscoveryConfig assetDiscoveryConfig;
@@ -3160,7 +4338,7 @@ class OrganizationSettings {
   /// The relative resource name of the settings. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/organizationSettings".
+  /// "organizations/{organization_id}/organizationSettings".
   core.String name;
 
   OrganizationSettings();
@@ -3194,59 +4372,77 @@ class OrganizationSettings {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -3258,8 +4454,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -3270,7 +4470,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -3314,6 +4536,67 @@ class Policy {
   }
 }
 
+/// Information related to the Google Cloud resource that is
+/// associated with this finding.
+class Resource {
+  /// The full resource name of the resource. See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  core.String name;
+
+  /// The human readable name of resource's parent.
+  core.String parentDisplayName;
+
+  /// The full resource name of resource's parent.
+  core.String parentName;
+
+  /// The human readable name of project that the resource belongs to.
+  core.String projectDisplayName;
+
+  /// The full resource name of project that the resource belongs to.
+  core.String projectName;
+
+  Resource();
+
+  Resource.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("parentDisplayName")) {
+      parentDisplayName = _json["parentDisplayName"];
+    }
+    if (_json.containsKey("parentName")) {
+      parentName = _json["parentName"];
+    }
+    if (_json.containsKey("projectDisplayName")) {
+      projectDisplayName = _json["projectDisplayName"];
+    }
+    if (_json.containsKey("projectName")) {
+      projectName = _json["projectName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (parentDisplayName != null) {
+      _json["parentDisplayName"] = parentDisplayName;
+    }
+    if (parentName != null) {
+      _json["parentName"] = parentName;
+    }
+    if (projectDisplayName != null) {
+      _json["projectDisplayName"] = projectDisplayName;
+    }
+    if (projectName != null) {
+      _json["projectName"] = projectName;
+    }
+    return _json;
+  }
+}
+
 /// Request message for running asset discovery for an organization.
 class RunAssetDiscoveryRequest {
   RunAssetDiscoveryRequest();
@@ -3327,10 +4610,13 @@ class RunAssetDiscoveryRequest {
   }
 }
 
-/// Cloud SCC managed properties. These properties are managed by Cloud SCC and
-/// cannot be modified by the user.
+/// Security Command Center managed properties. These properties are managed by
+/// Security Command Center and cannot be modified by the user.
 class SecurityCenterProperties {
-  /// The full resource name of the GCP resource this asset
+  /// The user defined display name for this resource.
+  core.String resourceDisplayName;
+
+  /// The full resource name of the Google Cloud resource this asset
   /// represents. This field is immutable after create time. See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String resourceName;
@@ -3342,19 +4628,28 @@ class SecurityCenterProperties {
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String resourceParent;
 
+  /// The user defined display name for the parent of this resource.
+  core.String resourceParentDisplayName;
+
   /// The full resource name of the project the resource belongs to. See:
   /// https://cloud.google.com/apis/design/resource_names#full_resource_name
   core.String resourceProject;
 
-  /// The type of the GCP resource. Examples include: APPLICATION,
+  /// The user defined display name for the project of this resource.
+  core.String resourceProjectDisplayName;
+
+  /// The type of the Google Cloud resource. Examples include: APPLICATION,
   /// PROJECT, and ORGANIZATION. This is a case insensitive field defined by
-  /// Cloud SCC and/or the producer of the resource and is immutable
-  /// after create time.
+  /// Security Command Center and/or the producer of the resource and is
+  /// immutable after create time.
   core.String resourceType;
 
   SecurityCenterProperties();
 
   SecurityCenterProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceDisplayName")) {
+      resourceDisplayName = _json["resourceDisplayName"];
+    }
     if (_json.containsKey("resourceName")) {
       resourceName = _json["resourceName"];
     }
@@ -3365,8 +4660,14 @@ class SecurityCenterProperties {
     if (_json.containsKey("resourceParent")) {
       resourceParent = _json["resourceParent"];
     }
+    if (_json.containsKey("resourceParentDisplayName")) {
+      resourceParentDisplayName = _json["resourceParentDisplayName"];
+    }
     if (_json.containsKey("resourceProject")) {
       resourceProject = _json["resourceProject"];
+    }
+    if (_json.containsKey("resourceProjectDisplayName")) {
+      resourceProjectDisplayName = _json["resourceProjectDisplayName"];
     }
     if (_json.containsKey("resourceType")) {
       resourceType = _json["resourceType"];
@@ -3376,6 +4677,9 @@ class SecurityCenterProperties {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (resourceDisplayName != null) {
+      _json["resourceDisplayName"] = resourceDisplayName;
+    }
     if (resourceName != null) {
       _json["resourceName"] = resourceName;
     }
@@ -3385,8 +4689,14 @@ class SecurityCenterProperties {
     if (resourceParent != null) {
       _json["resourceParent"] = resourceParent;
     }
+    if (resourceParentDisplayName != null) {
+      _json["resourceParentDisplayName"] = resourceParentDisplayName;
+    }
     if (resourceProject != null) {
       _json["resourceProject"] = resourceProject;
+    }
+    if (resourceProjectDisplayName != null) {
+      _json["resourceProjectDisplayName"] = resourceProjectDisplayName;
     }
     if (resourceType != null) {
       _json["resourceType"] = resourceType;
@@ -3395,26 +4705,26 @@ class SecurityCenterProperties {
   }
 }
 
-/// User specified security marks that are attached to the parent Cloud Security
-/// Command Center (Cloud SCC) resource. Security marks are scoped within a
-/// Cloud
-/// SCC organization -- they can be modified and viewed by all users who have
+/// User specified security marks that are attached to the parent Security
+/// Command Center resource. Security marks are scoped within a Security Command
+/// Center organization -- they can be modified and viewed by all users who have
 /// proper permissions on the organization.
 class SecurityMarks {
   /// Mutable user specified security marks belonging to the parent resource.
   /// Constraints are as follows:
-  ///   - Keys and values are treated as case insensitive
-  ///   - Keys must be between 1 - 256 characters (inclusive)
-  ///   - Keys must be letters, numbers, underscores, or dashes
-  ///   - Values have leading and trailing whitespace trimmed, remaining
+  ///
+  ///   * Keys and values are treated as case insensitive
+  ///   * Keys must be between 1 - 256 characters (inclusive)
+  ///   * Keys must be letters, numbers, underscores, or dashes
+  ///   * Values have leading and trailing whitespace trimmed, remaining
   ///     characters must be between 1 - 4096 characters (inclusive)
   core.Map<core.String, core.String> marks;
 
   /// The relative resource name of the SecurityMarks. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Examples:
-  /// "organizations/123/assets/456/securityMarks"
-  /// "organizations/123/sources/456/findings/789/securityMarks".
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   core.String name;
 
   SecurityMarks();
@@ -3443,10 +4753,10 @@ class SecurityMarks {
 
 /// Request message for updating a finding's state.
 class SetFindingStateRequest {
-  /// The time at which the updated state takes effect.
+  /// Required. The time at which the updated state takes effect.
   core.String startTime;
 
-  /// The desired State of the finding.
+  /// Required. The desired State of the finding.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Unspecified state.
   /// - "ACTIVE" : The finding requires attention and has not been addressed
@@ -3520,18 +4830,19 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Cloud Security Command Center's (Cloud SCC) finding source. A finding source
+/// Security Command Center finding source. A finding source
 /// is an entity or a mechanism that can produce a finding. A source is like a
-/// container of findings that come from the same scanner, logger, monitor, etc.
+/// container of findings that come from the same scanner, logger, monitor, and
+/// other tools.
 class Source {
   /// The description of the source (max of 1024 characters).
   /// Example:
-  /// "Cloud Security Scanner is a web security scanner for common
+  /// "Web Security Scanner is a web security scanner for common
   /// vulnerabilities in App Engine applications. It can automatically
   /// scan and detect four common vulnerabilities, including
   /// cross-site-scripting
   /// (XSS), Flash injection, mixed content (HTTP in HTTPS), and
-  /// outdated/insecure libraries."
+  /// outdated or insecure libraries."
   core.String description;
 
   /// The source's display name.
@@ -3544,7 +4855,7 @@ class Source {
   /// The relative resource name of this source. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
-  /// "organizations/123/sources/456"
+  /// "organizations/{organization_id}/sources/{source_id}"
   core.String name;
 
   Source();
@@ -3628,6 +4939,50 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// The config for streaming-based notifications, which send each event as soon
+/// as it is detected.
+class StreamingConfig {
+  /// Expression that defines the filter to apply across create/update events
+  /// of assets or findings as specified by the event type. The expression is a
+  /// list of zero or more restrictions combined via logical operators `AND`
+  /// and `OR`. Parentheses are supported, and `OR` has higher precedence than
+  /// `AND`.
+  ///
+  /// Restrictions have the form `<field> <operator> <value>` and may have a
+  /// `-` character in front of them to indicate negation. The fields map to
+  /// those defined in the corresponding resource.
+  ///
+  /// The supported operators are:
+  ///
+  /// * `=` for all value types.
+  /// * `>`, `<`, `>=`, `<=` for integer values.
+  /// * `:`, meaning substring matching, for strings.
+  ///
+  /// The supported value types are:
+  ///
+  /// * string literals in quotes.
+  /// * integer literals without quotes.
+  /// * boolean literals `true` and `false` without quotes.
+  core.String filter;
+
+  StreamingConfig();
+
+  StreamingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("filter")) {
+      filter = _json["filter"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (filter != null) {
+      _json["filter"] = filter;
     }
     return _json;
   }

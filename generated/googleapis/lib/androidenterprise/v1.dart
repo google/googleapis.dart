@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.androidenterprise.v1;
 
@@ -301,79 +301,6 @@ class DevicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new DevicesListResponse.fromJson(data));
-  }
-
-  /// Updates the device policy. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [deviceId] - The ID of the device.
-  ///
-  /// [updateMask] - Mask that identifies which fields to update. If not set,
-  /// all modifiable fields will be modified.
-  ///
-  /// When set in a query parameter, this field should be specified as
-  /// updateMask=<field1>,<field2>,...
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Device].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Device> patch(Device request, core.String enterpriseId,
-      core.String userId, core.String deviceId,
-      {core.String updateMask, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (deviceId == null) {
-      throw new core.ArgumentError("Parameter deviceId is required.");
-    }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Device.fromJson(data));
   }
 
   /// Sets whether a device's access to Google services is enabled or disabled.
@@ -1432,80 +1359,6 @@ class EntitlementsResourceApi {
         .then((data) => new EntitlementsListResponse.fromJson(data));
   }
 
-  /// Adds or updates an entitlement to an app for a user. This method supports
-  /// patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [entitlementId] - The ID of the entitlement (a product ID), e.g.
-  /// "app:com.google.android.gm".
-  ///
-  /// [install] - Set to true to also install the product on all the user's
-  /// devices where possible. Failure to install on one or more devices will not
-  /// prevent this operation from returning successfully, as long as the
-  /// entitlement was successfully assigned to the user.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Entitlement].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Entitlement> patch(Entitlement request, core.String enterpriseId,
-      core.String userId, core.String entitlementId,
-      {core.bool install, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (entitlementId == null) {
-      throw new core.ArgumentError("Parameter entitlementId is required.");
-    }
-    if (install != null) {
-      _queryParams["install"] = ["${install}"];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/entitlements/' +
-        commons.Escaper.ecapeVariable('$entitlementId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Entitlement.fromJson(data));
-  }
-
   /// Adds or updates an entitlement to an app for a user.
   ///
   /// [request] - The metadata request object.
@@ -1951,80 +1804,6 @@ class InstallsResourceApi {
 
   /// Requests to install the latest version of an app to a device. If the app
   /// is already installed, then it is updated to the latest version if
-  /// necessary. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [deviceId] - The Android ID of the device.
-  ///
-  /// [installId] - The ID of the product represented by the install, e.g.
-  /// "app:com.google.android.gm".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Install].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Install> patch(Install request, core.String enterpriseId,
-      core.String userId, core.String deviceId, core.String installId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (deviceId == null) {
-      throw new core.ArgumentError("Parameter deviceId is required.");
-    }
-    if (installId == null) {
-      throw new core.ArgumentError("Parameter installId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
-        '/installs/' +
-        commons.Escaper.ecapeVariable('$installId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Install.fromJson(data));
-  }
-
-  /// Requests to install the latest version of an app to a device. If the app
-  /// is already installed, then it is updated to the latest version if
   /// necessary.
   ///
   /// [request] - The metadata request object.
@@ -2307,84 +2086,6 @@ class ManagedconfigurationsfordeviceResourceApi {
   }
 
   /// Adds or updates a per-device managed configuration for an app for the
-  /// specified device. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [deviceId] - The Android ID of the device.
-  ///
-  /// [managedConfigurationForDeviceId] - The ID of the managed configuration (a
-  /// product ID), e.g. "app:com.google.android.gm".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ManagedConfiguration].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ManagedConfiguration> patch(
-      ManagedConfiguration request,
-      core.String enterpriseId,
-      core.String userId,
-      core.String deviceId,
-      core.String managedConfigurationForDeviceId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (deviceId == null) {
-      throw new core.ArgumentError("Parameter deviceId is required.");
-    }
-    if (managedConfigurationForDeviceId == null) {
-      throw new core.ArgumentError(
-          "Parameter managedConfigurationForDeviceId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/devices/' +
-        commons.Escaper.ecapeVariable('$deviceId') +
-        '/managedConfigurationsForDevice/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForDeviceId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedConfiguration.fromJson(data));
-  }
-
-  /// Adds or updates a per-device managed configuration for an app for the
   /// specified device.
   ///
   /// [request] - The metadata request object.
@@ -2653,80 +2354,6 @@ class ManagedconfigurationsforuserResourceApi {
   /// apply managed configurations to a user by specifying an mcmId and its
   /// associated configuration variables (if any) in the request. Alternatively,
   /// all EMMs can apply managed configurations by passing a list of managed
-  /// properties. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [managedConfigurationForUserId] - The ID of the managed configuration (a
-  /// product ID), e.g. "app:com.google.android.gm".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ManagedConfiguration].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ManagedConfiguration> patch(
-      ManagedConfiguration request,
-      core.String enterpriseId,
-      core.String userId,
-      core.String managedConfigurationForUserId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if (managedConfigurationForUserId == null) {
-      throw new core.ArgumentError(
-          "Parameter managedConfigurationForUserId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId') +
-        '/managedConfigurationsForUser/' +
-        commons.Escaper.ecapeVariable('$managedConfigurationForUserId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedConfiguration.fromJson(data));
-  }
-
-  /// Adds or updates the managed configuration settings for an app for the
-  /// specified user. If you support the Managed configurations iframe, you can
-  /// apply managed configurations to a user by specifying an mcmId and its
-  /// associated configuration variables (if any) in the request. Alternatively,
-  /// all EMMs can apply managed configurations by passing a list of managed
   /// properties.
   ///
   /// [request] - The metadata request object.
@@ -2803,8 +2430,7 @@ class ManagedconfigurationssettingsResourceApi {
   ManagedconfigurationssettingsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists all the managed configurations settings for the specified app. Only
-  /// the ID and the name is set.
+  /// Lists all the managed configurations settings for the specified app.
   ///
   /// Request parameters:
   ///
@@ -3774,70 +3400,6 @@ class StorelayoutclustersResourceApi {
         .then((data) => new StoreLayoutClustersListResponse.fromJson(data));
   }
 
-  /// Updates a cluster. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [pageId] - The ID of the page.
-  ///
-  /// [clusterId] - The ID of the cluster.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [StoreCluster].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<StoreCluster> patch(StoreCluster request,
-      core.String enterpriseId, core.String pageId, core.String clusterId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
-    }
-    if (clusterId == null) {
-      throw new core.ArgumentError("Parameter clusterId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId') +
-        '/clusters/' +
-        commons.Escaper.ecapeVariable('$clusterId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new StoreCluster.fromJson(data));
-  }
-
   /// Updates a cluster.
   ///
   /// [request] - The metadata request object.
@@ -4105,63 +3667,6 @@ class StorelayoutpagesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new StoreLayoutPagesListResponse.fromJson(data));
-  }
-
-  /// Updates the content of a store page. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [pageId] - The ID of the page.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [StorePage].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<StorePage> patch(
-      StorePage request, core.String enterpriseId, core.String pageId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (pageId == null) {
-      throw new core.ArgumentError("Parameter pageId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/storeLayout/pages/' +
-        commons.Escaper.ecapeVariable('$pageId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new StorePage.fromJson(data));
   }
 
   /// Updates the content of a store page.
@@ -4608,68 +4113,6 @@ class UsersResourceApi {
     return _response.then((data) => new UsersListResponse.fromJson(data));
   }
 
-  /// Updates the details of an EMM-managed user.
-  ///
-  /// Can be used with EMM-managed users only (not Google managed users). Pass
-  /// the new details in the Users resource in the request body. Only the
-  /// displayName field can be changed. Other fields must either be unset or
-  /// have the currently active value. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [userId] - The ID of the user.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [User].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<User> patch(
-      User request, core.String enterpriseId, core.String userId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (userId == null) {
-      throw new core.ArgumentError("Parameter userId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/users/' +
-        commons.Escaper.ecapeVariable('$userId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new User.fromJson(data));
-  }
-
   /// Revokes access to all devices currently provisioned to the user. The user
   /// will no longer be able to use the managed Play store on any of their
   /// managed devices.
@@ -5104,63 +4547,6 @@ class WebappsResourceApi {
     return _response.then((data) => new WebAppsListResponse.fromJson(data));
   }
 
-  /// Updates an existing web app. This method supports patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [enterpriseId] - The ID of the enterprise.
-  ///
-  /// [webAppId] - The ID of the web app.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WebApp].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WebApp> patch(
-      WebApp request, core.String enterpriseId, core.String webAppId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (enterpriseId == null) {
-      throw new core.ArgumentError("Parameter enterpriseId is required.");
-    }
-    if (webAppId == null) {
-      throw new core.ArgumentError("Parameter webAppId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'enterprises/' +
-        commons.Escaper.ecapeVariable('$enterpriseId') +
-        '/webApps/' +
-        commons.Escaper.ecapeVariable('$webAppId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new WebApp.fromJson(data));
-  }
-
   /// Updates an existing web app.
   ///
   /// [request] - The metadata request object.
@@ -5245,8 +4631,6 @@ class Administrator {
 
 /// A token authorizing an admin to access an iframe.
 class AdministratorWebToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#administratorWebToken".
   core.String kind;
 
   /// An opaque token to be passed to the Play front-end to generate an iframe.
@@ -5280,15 +4664,14 @@ class AdministratorWebToken {
 /// data the admin is allowed to modify and the URI the iframe is allowed to
 /// communiate with.
 class AdministratorWebTokenSpec {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#administratorWebTokenSpec".
   core.String kind;
 
   /// Options for displaying the Managed Configuration page.
   AdministratorWebTokenSpecManagedConfigurations managedConfigurations;
 
   /// The URI of the parent frame hosting the iframe. To prevent XSS, the iframe
-  /// may not be hosted at other URIs. This URI must be https.
+  /// may not be hosted at other URIs. This URI must be https. Use whitespaces
+  /// to separate multiple parent URIs.
   core.String parent;
 
   /// Deprecated. Use PlaySearch.approveApps.
@@ -5493,8 +4876,7 @@ class AdministratorWebTokenSpecWebApps {
 /// Represents the list of app restrictions available to be pre-configured for
 /// the product.
 class AppRestrictionsSchema {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#appRestrictionsSchema".
+  /// Deprecated.
   core.String kind;
 
   /// The set of restrictions that make up this schema.
@@ -5848,9 +5230,6 @@ class ApprovalUrlInfo {
   /// A URL that displays a product's permissions and that can also be used to
   /// approve the product with the Products.approve call.
   core.String approvalUrl;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#approvalUrlInfo".
   core.String kind;
 
   ApprovalUrlInfo();
@@ -5880,8 +5259,6 @@ class ApprovalUrlInfo {
 /// An AuthenticationToken is used by the EMM's device policy client on a device
 /// to provision the given EMM-managed user on that device.
 class AuthenticationToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#authenticationToken".
   core.String kind;
 
   /// The authentication token to be passed to the device policy client on the
@@ -5969,7 +5346,8 @@ class AutoInstallPolicy {
 
   /// The minimum version of the app. If a lower version of the app is
   /// installed, then the app will be auto-updated according to the auto-install
-  /// constraints, instead of waiting for the regular auto-update.
+  /// constraints, instead of waiting for the regular auto-update. You can set a
+  /// minimum version code for at most 20 apps per device.
   core.int minimumVersionCode;
 
   AutoInstallPolicy();
@@ -6017,8 +5395,6 @@ class AutoInstallPolicy {
 /// is attributed to the user. The variable set will be used to replace
 /// placeholders in the managed configuration settings.
 class ConfigurationVariables {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#configurationVariables".
   core.String kind;
 
   /// The ID of the managed configurations settings.
@@ -6066,9 +5442,6 @@ class Device {
   /// The Google Play Services Android ID for the device encoded as a lowercase
   /// hex string. For example, "123456789abcdef0".
   core.String androidId;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#device".
   core.String kind;
 
   /// Identifies the extent to which the device is controlled by a managed
@@ -6221,9 +5594,6 @@ class DeviceState {
   /// (including Google Play), while "disabled" means that it cannot. A new
   /// device is initially in the "disabled" state.
   core.String accountState;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#deviceState".
   core.String kind;
 
   DeviceState();
@@ -6305,9 +5675,6 @@ class Enterprise {
 
   /// The unique ID for the enterprise.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#enterprise".
   core.String kind;
 
   /// The name of the enterprise, for example, "Example, Inc".
@@ -6366,9 +5733,6 @@ class Enterprise {
 class EnterpriseAccount {
   /// The email address of the service account.
   core.String accountEmail;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#enterpriseAccount".
   core.String kind;
 
   EnterpriseAccount();
@@ -6488,8 +5852,6 @@ class EnterprisesSendTestPushNotificationResponse {
 /// "userPurchase" as the entitlement reason. These entitlements cannot be
 /// removed via the API.
 class Entitlement {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#entitlement".
   core.String kind;
 
   /// The ID of the product that the entitlement is for. For example,
@@ -6598,9 +5960,6 @@ class GroupLicense {
   /// Google Play. Unapproved products will not be visible to end users in
   /// collections, and new entitlements to them should not normally be created.
   core.String approval;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#groupLicense".
   core.String kind;
 
   /// The total number of provisioned licenses for this product. Returned by
@@ -6785,9 +6144,6 @@ class Install {
   /// state "installed" means that the app has been installed. This field is
   /// read-only.
   core.String installState;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#install".
   core.String kind;
 
   /// The ID of the product that the install is for. For example,
@@ -7074,8 +6430,7 @@ class ManagedConfiguration {
   /// configuration variables (if any) defined for the user.
   ConfigurationVariables configurationVariables;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfiguration".
+  /// Deprecated.
   core.String kind;
 
   /// The set of managed properties for this configuration.
@@ -7207,16 +6562,11 @@ class ManagedConfigurationsForUserListResponse {
 /// set of users. The app's developer would have defined configurable properties
 /// in the managed configurations schema.
 class ManagedConfigurationsSettings {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#managedConfigurationsSettings".
   core.String kind;
 
   /// The last updated time of the managed configuration settings in
   /// milliseconds since 1970-01-01T00:00:00Z.
   core.String lastUpdatedTimestampMillis;
-
-  /// The set of managed properties for this configuration.
-  core.List<ManagedProperty> managedProperty;
 
   /// The ID of the managed configurations settings.
   core.String mcmId;
@@ -7232,11 +6582,6 @@ class ManagedConfigurationsSettings {
     }
     if (_json.containsKey("lastUpdatedTimestampMillis")) {
       lastUpdatedTimestampMillis = _json["lastUpdatedTimestampMillis"];
-    }
-    if (_json.containsKey("managedProperty")) {
-      managedProperty = (_json["managedProperty"] as core.List)
-          .map<ManagedProperty>((value) => new ManagedProperty.fromJson(value))
-          .toList();
     }
     if (_json.containsKey("mcmId")) {
       mcmId = _json["mcmId"];
@@ -7254,10 +6599,6 @@ class ManagedConfigurationsSettings {
     }
     if (lastUpdatedTimestampMillis != null) {
       _json["lastUpdatedTimestampMillis"] = lastUpdatedTimestampMillis;
-    }
-    if (managedProperty != null) {
-      _json["managedProperty"] =
-          managedProperty.map((value) => (value).toJson()).toList();
     }
     if (mcmId != null) {
       _json["mcmId"] = mcmId;
@@ -7658,8 +6999,6 @@ class Notification {
 /// collection of notifications for enterprises associated with the service
 /// account authenticated for the request.
 class NotificationSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#notificationSet".
   core.String kind;
 
   /// The notifications received, or empty if no notifications are present.
@@ -7750,9 +7089,6 @@ class Permission {
   /// A longer description of the Permissions resource, giving more details of
   /// what it affects.
   core.String description;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#permission".
   core.String kind;
 
   /// The name of the permission.
@@ -7823,7 +7159,8 @@ class Policy {
   /// level is applied by default.
   core.String productAvailabilityPolicy;
 
-  /// The list of product policies.
+  /// The list of product policies. The productAvailabilityPolicy needs to be
+  /// set to WHITELIST or ALL for the product policies to be applied.
   core.List<ProductPolicy> productPolicy;
 
   Policy();
@@ -7917,12 +7254,12 @@ class Product {
   /// privately hosted.
   core.String distributionChannel;
 
+  /// Noteworthy features (if any) of this product.
+  core.List<core.String> features;
+
   /// A link to an image that can be used as an icon for the product. This image
   /// is suitable for use at up to 512px x 512px.
   core.String iconUrl;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#product".
   core.String kind;
 
   /// The approximate time (within 7 days) the app was last published, expressed
@@ -8006,6 +7343,9 @@ class Product {
     if (_json.containsKey("distributionChannel")) {
       distributionChannel = _json["distributionChannel"];
     }
+    if (_json.containsKey("features")) {
+      features = (_json["features"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("iconUrl")) {
       iconUrl = _json["iconUrl"];
     }
@@ -8088,6 +7428,9 @@ class Product {
     }
     if (distributionChannel != null) {
       _json["distributionChannel"] = distributionChannel;
+    }
+    if (features != null) {
+      _json["features"] = features;
     }
     if (iconUrl != null) {
       _json["iconUrl"] = iconUrl;
@@ -8243,8 +7586,6 @@ class ProductPermission {
 /// Information about the permissions required by a specific app and whether
 /// they have been accepted by the enterprise.
 class ProductPermissions {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#productPermissions".
   core.String kind;
 
   /// The permissions required by the app.
@@ -8353,8 +7694,6 @@ class ProductPolicy {
 
 /// A set of products.
 class ProductSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#productSet".
   core.String kind;
 
   /// The list of product IDs making up the set of products.
@@ -8626,9 +7965,6 @@ class ProductsListResponse {
 class ServiceAccount {
   /// Credentials that can be used to authenticate as this ServiceAccount.
   ServiceAccountKey key;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#serviceAccount".
   core.String kind;
 
   /// The account name of the service account, in the form of an email address.
@@ -8675,9 +8011,6 @@ class ServiceAccountKey {
   /// An opaque, unique identifier for this ServiceAccountKey. Assigned by the
   /// server.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#serviceAccountKey".
   core.String kind;
 
   /// Public key data for the credentials file. This is an X.509 cert. If you
@@ -8764,8 +8097,7 @@ class SignupInfo {
   /// for obtaining the enterprise resource from CompleteSignup.
   core.String completionToken;
 
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#signupInfo".
+  /// Deprecated.
   core.String kind;
 
   /// A URL under which the Admin can sign up for an enterprise. The page
@@ -8808,9 +8140,6 @@ class StoreCluster {
   /// Unique ID of this cluster. Assigned by the server. Immutable once
   /// assigned.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storeCluster".
   core.String kind;
 
   /// Ordered list of localized strings giving the name of this page. The text
@@ -8884,9 +8213,6 @@ class StoreLayout {
   /// Not specifying a homepage is equivalent to setting the store layout type
   /// to "basic".
   core.String homepageId;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storeLayout".
   core.String kind;
 
   /// The store layout type. By default, this value is set to "basic" if the
@@ -9001,9 +8327,6 @@ class StoreLayoutPagesListResponse {
 class StorePage {
   /// Unique ID of this page. Assigned by the server. Immutable once assigned.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#storePage".
   core.String kind;
 
   /// Ordered list of pages a user should be able to reach from this page. The
@@ -9151,9 +8474,6 @@ class User {
 
   /// The unique ID for the user.
   core.String id;
-
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#user".
   core.String kind;
 
   /// The entity that manages the user. With googleManaged users, the source of
@@ -9224,8 +8544,6 @@ class User {
 /// their email address and token (activation code) the appropriate EMM app can
 /// be automatically downloaded.
 class UserToken {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#userToken".
   core.String kind;
 
   /// The token (activation code) to be entered by the user. This consists of a
@@ -9305,8 +8623,6 @@ class UsersListResponse {
 /// could be a placeholder, and its value could be Alice. Placeholders should
 /// start with a '$' sign and should be alphanumeric only.
 class VariableSet {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "androidenterprise#variableSet".
   core.String kind;
 
   /// The placeholder string; defined by EMM.

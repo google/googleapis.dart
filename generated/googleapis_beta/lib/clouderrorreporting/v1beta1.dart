@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.clouderrorreporting.v1beta1;
 
@@ -51,11 +51,12 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectName] - [Required] The resource name of the Google Cloud Platform
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written
-  /// as `projects/` plus the
+  /// as `projects/{projectID}`, where `{projectID}` is the
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840).
+  ///
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -108,18 +109,16 @@ class ProjectsEventsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectName] - [Required] The resource name of the Google Cloud Platform
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written
-  /// as `projects/` plus the
+  /// as `projects/{projectID}`, where `{projectID}` is the
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840).
+  ///
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [serviceFilter_version] - [Optional] The exact value to match against
-  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-  ///
-  /// [serviceFilter_resourceType] - [Optional] The exact value to match against
+  /// [serviceFilter_resourceType] - Optional. The exact value to match against
   /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
   /// [timeRange_period] - Restricts the query to the specified time range.
@@ -131,16 +130,19 @@ class ProjectsEventsResourceApi {
   /// - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
   /// - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
   ///
-  /// [groupId] - [Required] The group for which events shall be returned.
+  /// [groupId] - Required. The group for which events shall be returned.
   ///
-  /// [serviceFilter_service] - [Optional] The exact value to match against
+  /// [pageToken] - Optional. A `next_page_token` provided by a previous
+  /// response.
+  ///
+  /// [serviceFilter_service] - Optional. The exact value to match against
   /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
   ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// [pageSize] - Optional. The maximum number of results to return per
   /// response.
   ///
-  /// [pageSize] - [Optional] The maximum number of results to return per
-  /// response.
+  /// [serviceFilter_version] - Optional. The exact value to match against
+  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -153,13 +155,13 @@ class ProjectsEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEventsResponse> list(core.String projectName,
-      {core.String serviceFilter_version,
-      core.String serviceFilter_resourceType,
+      {core.String serviceFilter_resourceType,
       core.String timeRange_period,
       core.String groupId,
-      core.String serviceFilter_service,
       core.String pageToken,
+      core.String serviceFilter_service,
       core.int pageSize,
+      core.String serviceFilter_version,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -171,9 +173,6 @@ class ProjectsEventsResourceApi {
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
     }
-    if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
-    }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
@@ -183,14 +182,17 @@ class ProjectsEventsResourceApi {
     if (groupId != null) {
       _queryParams["groupId"] = [groupId];
     }
-    if (serviceFilter_service != null) {
-      _queryParams["serviceFilter.service"] = [serviceFilter_service];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (serviceFilter_service != null) {
+      _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (serviceFilter_version != null) {
+      _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -218,18 +220,19 @@ class ProjectsEventsResourceApi {
   /// a `key` parameter. For example:
   ///
   /// `POST
-  /// https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`
+  /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [projectName] - [Required] The resource name of the Google Cloud Platform
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written
-  /// as `projects/` plus the
+  /// as `projects/{projectId}`, where `{projectId}` is the
   /// [Google Cloud Platform project
-  /// ID](https://support.google.com/cloud/answer/6158840). Example:
-  /// `projects/my-project-123`.
+  /// ID](https://support.google.com/cloud/answer/6158840).
+  ///
+  /// Example: // `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -287,20 +290,16 @@ class ProjectsGroupStatsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectName] - [Required] The resource name of the Google Cloud Platform
+  /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written
-  /// as <code>projects/</code> plus the
-  /// <a href="https://support.google.com/cloud/answer/6158840">Google Cloud
-  /// Platform project ID</a>.
+  /// as `projects/{projectID}`, where `{projectID}` is the
+  /// [Google Cloud Platform project
+  /// ID](https://support.google.com/cloud/answer/6158840).
   ///
-  /// Example: <code>projects/my-project-123</code>.
+  /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [timedCountDuration] - [Optional] The preferred duration for a single
-  /// returned `TimedCount`.
-  /// If not set, no timed counts are returned.
-  ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// [pageToken] - Optional. A `next_page_token` provided by a previous
   /// response. To view
   /// additional results, pass this token along with the identical query
   /// parameters as the first request.
@@ -314,7 +313,7 @@ class ProjectsGroupStatsResourceApi {
   /// - "PERIOD_1_WEEK" : A PERIOD_1_WEEK.
   /// - "PERIOD_30_DAYS" : A PERIOD_30_DAYS.
   ///
-  /// [alignment] - [Optional] The alignment of the timed counts to be returned.
+  /// [alignment] - Optional. The alignment of the timed counts to be returned.
   /// Default is `ALIGNMENT_EQUAL_AT_END`.
   /// Possible string values are:
   /// - "ERROR_COUNT_ALIGNMENT_UNSPECIFIED" : A
@@ -322,20 +321,20 @@ class ProjectsGroupStatsResourceApi {
   /// - "ALIGNMENT_EQUAL_ROUNDED" : A ALIGNMENT_EQUAL_ROUNDED.
   /// - "ALIGNMENT_EQUAL_AT_END" : A ALIGNMENT_EQUAL_AT_END.
   ///
-  /// [groupId] - [Optional] List all <code>ErrorGroupStats</code> with these
+  /// [groupId] - Optional. List all <code>ErrorGroupStats</code> with these
   /// IDs.
   ///
-  /// [serviceFilter_service] - [Optional] The exact value to match against
+  /// [serviceFilter_service] - Optional. The exact value to match against
   /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
   ///
-  /// [pageSize] - [Optional] The maximum number of results to return per
+  /// [pageSize] - Optional. The maximum number of results to return per
   /// response.
   /// Default is 20.
   ///
-  /// [serviceFilter_version] - [Optional] The exact value to match against
+  /// [serviceFilter_version] - Optional. The exact value to match against
   /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
   ///
-  /// [order] - [Optional] The sort order in which the results are returned.
+  /// [order] - Optional. The sort order in which the results are returned.
   /// Default is `COUNT_DESC`.
   /// Possible string values are:
   /// - "GROUP_ORDER_UNSPECIFIED" : A GROUP_ORDER_UNSPECIFIED.
@@ -344,12 +343,16 @@ class ProjectsGroupStatsResourceApi {
   /// - "CREATED_DESC" : A CREATED_DESC.
   /// - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
   ///
-  /// [serviceFilter_resourceType] - [Optional] The exact value to match against
+  /// [serviceFilter_resourceType] - Optional. The exact value to match against
   /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
-  /// [alignmentTime] - [Optional] Time where the timed counts shall be aligned
+  /// [alignmentTime] - Optional. Time where the timed counts shall be aligned
   /// if rounded
   /// alignment is chosen. Default is 00:00 UTC.
+  ///
+  /// [timedCountDuration] - Optional. The preferred duration for a single
+  /// returned `TimedCount`.
+  /// If not set, no timed counts are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -362,8 +365,7 @@ class ProjectsGroupStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupStatsResponse> list(core.String projectName,
-      {core.String timedCountDuration,
-      core.String pageToken,
+      {core.String pageToken,
       core.String timeRange_period,
       core.String alignment,
       core.List<core.String> groupId,
@@ -373,6 +375,7 @@ class ProjectsGroupStatsResourceApi {
       core.String order,
       core.String serviceFilter_resourceType,
       core.String alignmentTime,
+      core.String timedCountDuration,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -383,9 +386,6 @@ class ProjectsGroupStatsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (timedCountDuration != null) {
-      _queryParams["timedCountDuration"] = [timedCountDuration];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -417,6 +417,9 @@ class ProjectsGroupStatsResourceApi {
     if (alignmentTime != null) {
       _queryParams["alignmentTime"] = [alignmentTime];
     }
+    if (timedCountDuration != null) {
+      _queryParams["timedCountDuration"] = [timedCountDuration];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -444,7 +447,7 @@ class ProjectsGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupName] - [Required] The group resource name. Written as
+  /// [groupName] - Required. The group resource name. Written as
   /// <code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.
   /// Call
   /// <a
@@ -499,7 +502,7 @@ class ProjectsGroupsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The group resource name.
-  /// Example: <code>projects/my-project-123/groups/my-groupid</code>
+  /// Example: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -684,7 +687,7 @@ class ErrorGroup {
   core.String groupId;
 
   /// The group resource name.
-  /// Example: <code>projects/my-project-123/groups/my-groupid</code>
+  /// Example: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>
   core.String name;
 
   /// Associated tracking issues.
@@ -1041,15 +1044,15 @@ class ReportErrorEventResponse {
 
 /// An error event which is reported to the Error Reporting system.
 class ReportedErrorEvent {
-  /// [Optional] A description of the context in which the error occurred.
+  /// Optional. A description of the context in which the error occurred.
   ErrorContext context;
 
-  /// [Optional] Time when the event occurred.
+  /// Optional. Time when the event occurred.
   /// If not provided, the time when the event was received by the
   /// Error Reporting system will be used.
   core.String eventTime;
 
-  /// [Required] The error message.
+  /// Required. The error message.
   /// If no `context.reportLocation` is provided, the message must contain a
   /// header (typically consisting of the exception type name and an error
   /// message) and an exception stack trace in one of the supported programming
@@ -1075,7 +1078,7 @@ class ReportedErrorEvent {
   /// [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).
   core.String message;
 
-  /// [Required] The service context in which this error has occurred.
+  /// Required. The service context in which this error has occurred.
   ServiceContext serviceContext;
 
   ReportedErrorEvent();

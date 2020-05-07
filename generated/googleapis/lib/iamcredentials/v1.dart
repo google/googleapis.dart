@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.iamcredentials.v1;
 
@@ -54,7 +54,7 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account for which the
+  /// [name] - Required. The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
@@ -111,7 +111,7 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account for which the
+  /// [name] - Required. The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
@@ -161,69 +161,13 @@ class ProjectsServiceAccountsResourceApi {
     return _response.then((data) => new GenerateIdTokenResponse.fromJson(data));
   }
 
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The resource name of the service account for which the
-  /// credentials
-  /// are requested, in the following format:
-  /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
-  /// character is required; replacing it with a project ID is invalid.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GenerateIdentityBindingAccessTokenResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GenerateIdentityBindingAccessTokenResponse>
-      generateIdentityBindingAccessToken(
-          GenerateIdentityBindingAccessTokenRequest request, core.String name,
-          {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (name == null) {
-      throw new core.ArgumentError("Parameter name is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'v1/' +
-        commons.Escaper.ecapeVariableReserved('$name') +
-        ':generateIdentityBindingAccessToken';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) =>
-        new GenerateIdentityBindingAccessTokenResponse.fromJson(data));
-  }
-
   /// Signs a blob using a service account's system-managed private key.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account for which the
+  /// [name] - Required. The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
@@ -277,7 +221,7 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the service account for which the
+  /// [name] - Required. The resource name of the service account for which the
   /// credentials
   /// are requested, in the following format:
   /// `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard
@@ -345,7 +289,8 @@ class GenerateAccessTokenRequest {
   /// hour.
   core.String lifetime;
 
-  /// Code to identify the scopes to be included in the OAuth 2.0 access token.
+  /// Required. Code to identify the scopes to be included in the OAuth 2.0
+  /// access token.
   /// See https://developers.google.com/identity/protocols/googlescopes for more
   /// information.
   /// At least one value required.
@@ -414,7 +359,8 @@ class GenerateAccessTokenResponse {
 }
 
 class GenerateIdTokenRequest {
-  /// The audience for the token, such as the API or account that this token
+  /// Required. The audience for the token, such as the API or account that this
+  /// token
   /// grants access to.
   core.String audience;
 
@@ -486,117 +432,6 @@ class GenerateIdTokenResponse {
   }
 }
 
-class GenerateIdentityBindingAccessTokenRequest {
-  /// Required. Input token.
-  /// Must be in JWT format according to
-  /// RFC7523 (https://tools.ietf.org/html/rfc7523)
-  /// and must have 'kid' field in the header.
-  /// Supported signing algorithms: RS256 (RS512, ES256, ES512 coming soon).
-  /// Mandatory payload fields (along the lines of RFC 7523, section 3):
-  /// - iss: issuer of the token. Must provide a discovery document at
-  ///        $iss/.well-known/openid-configuration . The document needs to be
-  ///        formatted according to section 4.2 of the OpenID Connect Discovery
-  ///        1.0 specification.
-  /// - iat: Issue time in seconds since epoch. Must be in the past.
-  /// - exp: Expiration time in seconds since epoch. Must be less than 48 hours
-  ///        after iat. We recommend to create tokens that last shorter than 6
-  ///        hours to improve security unless business reasons mandate longer
-  /// expiration times. Shorter token lifetimes are generally more secure
-  /// since tokens that have been exfiltrated by attackers can be used for
-  ///        a shorter time. you can configure the maximum lifetime of the
-  ///        incoming token in the configuration of the mapper.
-  ///        The resulting Google token will expire within an hour or at "exp",
-  ///        whichever is earlier.
-  /// - sub: JWT subject, identity asserted in the JWT.
-  /// - aud: Configured in the mapper policy. By default the service account
-  ///        email.
-  ///
-  /// Claims from the incoming token can be transferred into the output token
-  /// accoding to the mapper configuration. The outgoing claim size is limited.
-  /// Outgoing claims size must be less than 4kB serialized as JSON without
-  /// whitespace.
-  ///
-  /// Example header:
-  /// {
-  ///   "alg": "RS256",
-  ///   "kid": "92a4265e14ab04d4d228a48d10d4ca31610936f8"
-  /// }
-  /// Example payload:
-  /// {
-  ///   "iss": "https://accounts.google.com",
-  ///   "iat": 1517963104,
-  ///   "exp": 1517966704,
-  ///   "aud":
-  /// "https://iamcredentials.googleapis.com/google.iam.credentials.v1.CloudGaia",
-  ///   "sub": "113475438248934895348",
-  ///   "my_claims": {
-  ///     "additional_claim": "value"
-  ///   }
-  /// }
-  core.String jwt;
-
-  /// Code to identify the scopes to be included in the OAuth 2.0 access token.
-  /// See https://developers.google.com/identity/protocols/googlescopes for more
-  /// information.
-  /// At least one value required.
-  core.List<core.String> scope;
-
-  GenerateIdentityBindingAccessTokenRequest();
-
-  GenerateIdentityBindingAccessTokenRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("jwt")) {
-      jwt = _json["jwt"];
-    }
-    if (_json.containsKey("scope")) {
-      scope = (_json["scope"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (jwt != null) {
-      _json["jwt"] = jwt;
-    }
-    if (scope != null) {
-      _json["scope"] = scope;
-    }
-    return _json;
-  }
-}
-
-class GenerateIdentityBindingAccessTokenResponse {
-  /// The OAuth 2.0 access token.
-  core.String accessToken;
-
-  /// Token expiration time.
-  /// The expiration time is always set.
-  core.String expireTime;
-
-  GenerateIdentityBindingAccessTokenResponse();
-
-  GenerateIdentityBindingAccessTokenResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("accessToken")) {
-      accessToken = _json["accessToken"];
-    }
-    if (_json.containsKey("expireTime")) {
-      expireTime = _json["expireTime"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (accessToken != null) {
-      _json["accessToken"] = accessToken;
-    }
-    if (expireTime != null) {
-      _json["expireTime"] = expireTime;
-    }
-    return _json;
-  }
-}
-
 class SignBlobRequest {
   /// The sequence of service accounts in a delegation chain. Each service
   /// account must be granted the `roles/iam.serviceAccountTokenCreator` role
@@ -610,7 +445,7 @@ class SignBlobRequest {
   /// character is required; replacing it with a project ID is invalid.
   core.List<core.String> delegates;
 
-  /// The bytes to sign.
+  /// Required. The bytes to sign.
   core.String payload;
   core.List<core.int> get payloadAsBytes {
     return convert.base64.decode(payload);
@@ -649,7 +484,7 @@ class SignBlobResponse {
   /// The ID of the key used to sign the blob.
   core.String keyId;
 
-  /// The signed blob.
+  /// The signature for the blob. Does not include the original blob.
   core.String signedBlob;
   core.List<core.int> get signedBlobAsBytes {
     return convert.base64.decode(signedBlob);
@@ -697,7 +532,12 @@ class SignJwtRequest {
   /// character is required; replacing it with a project ID is invalid.
   core.List<core.String> delegates;
 
-  /// The JWT payload to sign: a JSON object that contains a JWT Claims Set.
+  /// Required. The JWT payload to sign. Must be a serialized JSON object that
+  /// contains a
+  /// JWT Claim Set. For example: `{"sub": "user@example.com", "iat": 313435}`
+  ///
+  /// If the claim set contains an `exp` claim, it must be an integer timestamp
+  /// that is not in the past and at most 12 hours in the future.
   core.String payload;
 
   SignJwtRequest();
@@ -728,7 +568,9 @@ class SignJwtResponse {
   /// The ID of the key used to sign the JWT.
   core.String keyId;
 
-  /// The signed JWT.
+  /// The signed JWT. Contains the automatically generated header; the
+  /// client-supplied payload; and the signature, which is generated using the
+  /// key referenced by the `kid` field in the header.
   core.String signedJwt;
 
   SignJwtResponse();

@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.alertcenter.v1beta1;
 
@@ -40,6 +40,96 @@ class AlertsResourceApi {
       new AlertsFeedbackResourceApi(_requester);
 
   AlertsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Performs batch delete operation on alerts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchDeleteAlertsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchDeleteAlertsResponse> batchDelete(
+      BatchDeleteAlertsRequest request,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/alerts:batchDelete';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchDeleteAlertsResponse.fromJson(data));
+  }
+
+  /// Performs batch undelete operation on alerts.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BatchUndeleteAlertsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUndeleteAlertsResponse> batchUndelete(
+      BatchUndeleteAlertsRequest request,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/alerts:batchUndelete';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchUndeleteAlertsResponse.fromJson(data));
+  }
 
   /// Marks the specified alert for deletion. An alert that has been marked for
   /// deletion is removed from Alert Center after 30 days.
@@ -148,15 +238,68 @@ class AlertsResourceApi {
     return _response.then((data) => new Alert.fromJson(data));
   }
 
+  /// Returns the metadata of an alert. Attempting to get metadata for
+  /// a non-existent alert returns `NOT_FOUND` error.
+  ///
+  /// Request parameters:
+  ///
+  /// [alertId] - Required. The identifier of the alert this metadata belongs
+  /// to.
+  ///
+  /// [customerId] - Optional. The unique identifier of the G Suite organization
+  /// account of the
+  /// customer the alert metadata is associated with.
+  /// Inferred from the caller identity if not provided.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AlertMetadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AlertMetadata> getMetadata(core.String alertId,
+      {core.String customerId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (alertId == null) {
+      throw new core.ArgumentError("Parameter alertId is required.");
+    }
+    if (customerId != null) {
+      _queryParams["customerId"] = [customerId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1beta1/alerts/' +
+        commons.Escaper.ecapeVariable('$alertId') +
+        '/metadata';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AlertMetadata.fromJson(data));
+  }
+
   /// Lists the alerts.
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
-  /// If empty, a new iteration is started. To continue an iteration, pass in
-  /// the value from the previous ListAlertsResponse's
-  /// next_page_token field.
+  /// [pageSize] - Optional. The requested page size. Server may return fewer
+  /// items than
+  /// requested. If unspecified, server picks an appropriate default.
   ///
   /// [orderBy] - Optional. The sort order of the list results.
   /// If not specified results may be returned in arbitrary order.
@@ -165,14 +308,16 @@ class AlertsResourceApi {
   /// Currently, supported sorting are `create_time asc`, `create_time desc`,
   /// `update_time desc`
   ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  /// If empty, a new iteration is started. To continue an iteration, pass in
+  /// the value from the previous ListAlertsResponse's
+  /// next_page_token field.
+  ///
   /// [customerId] - Optional. The unique identifier of the G Suite organization
   /// account of the
   /// customer the alerts are associated with.
   /// Inferred from the caller identity if not provided.
-  ///
-  /// [pageSize] - Optional. The requested page size. Server may return fewer
-  /// items than
-  /// requested. If unspecified, server picks an appropriate default.
   ///
   /// [filter] - Optional. A query string for filtering alert results.
   /// For more details, see [Query
@@ -191,10 +336,10 @@ class AlertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertsResponse> list(
-      {core.String pageToken,
+      {core.int pageSize,
       core.String orderBy,
+      core.String pageToken,
       core.String customerId,
-      core.int pageSize,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -204,17 +349,17 @@ class AlertsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -298,7 +443,9 @@ class AlertsFeedbackResourceApi {
   AlertsFeedbackResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Creates new feedback for an alert. Attempting to create a feedback for
-  /// a non-existent alert returns `NOT_FOUND` error.
+  /// a non-existent alert returns `NOT_FOUND` error. Attempting to create a
+  /// feedback for an alert that is marked for deletion returns
+  /// `FAILED_PRECONDITION' error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -365,16 +512,16 @@ class AlertsFeedbackResourceApi {
   /// [alertId] - Required. The alert identifier.
   /// The "-" wildcard could be used to represent all alerts.
   ///
+  /// [customerId] - Optional. The unique identifier of the G Suite organization
+  /// account of the
+  /// customer the alert feedback are associated with.
+  /// Inferred from the caller identity if not provided.
+  ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see [Query
   /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported
   /// query filter
   /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
-  ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the
-  /// customer the alert feedback are associated with.
-  /// Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -387,7 +534,7 @@ class AlertsFeedbackResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAlertFeedbackResponse> list(core.String alertId,
-      {core.String filter, core.String customerId, core.String $fields}) {
+      {core.String customerId, core.String filter, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -398,11 +545,11 @@ class AlertsFeedbackResourceApi {
     if (alertId == null) {
       throw new core.ArgumentError("Parameter alertId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (customerId != null) {
       _queryParams["customerId"] = [customerId];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -584,12 +731,12 @@ class ActivityRule {
   /// Query that is used to get the data from the associated source.
   core.String query;
 
-  /// List of alert ids superseded by this alert. It is used to indicate that
+  /// List of alert IDs superseded by this alert. It is used to indicate that
   /// this alert is essentially extension of superseded alerts and we found the
   /// relationship after creating these alerts.
   core.List<core.String> supersededAlerts;
 
-  /// Alert id superseding this alert. It is used to indicate that superseding
+  /// Alert ID superseding this alert. It is used to indicate that superseding
   /// alert is essentially extension of this alert and we found the relationship
   /// after creating both alerts.
   core.String supersedingAlert;
@@ -721,6 +868,23 @@ class Alert {
   /// If not provided, it indicates an ongoing alert.
   core.String endTime;
 
+  /// Optional. `etag` is used for optimistic concurrency control as a way to
+  /// help
+  /// prevent simultaneous updates of an alert from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform alert updates in order to avoid race
+  /// conditions: An `etag` is returned in the response which contains alerts,
+  /// and systems are expected to put that etag in the request to update alert
+  /// to
+  /// ensure that their change will be applied to the same version of the alert.
+  ///
+  /// If no `etag` is provided in the call to update alert, then the existing
+  /// alert is overwritten blindly.
+  core.String etag;
+
+  /// Output only. The metadata associated with this alert.
+  AlertMetadata metadata;
+
   /// Output only. An optional
   /// [Security Investigation Tool](https://support.google.com/a/answer/7575955)
   /// query for this alert.
@@ -735,7 +899,7 @@ class Alert {
   /// * Mobile device management
   /// * Gmail phishing
   /// * Domain wide takeout
-  /// * Government attack warning
+  /// * State sponsored attack
   /// * Google identity
   core.String source;
 
@@ -772,6 +936,12 @@ class Alert {
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = new AlertMetadata.fromJson(_json["metadata"]);
     }
     if (_json.containsKey("securityInvestigationToolLink")) {
       securityInvestigationToolLink = _json["securityInvestigationToolLink"];
@@ -810,6 +980,12 @@ class Alert {
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (metadata != null) {
+      _json["metadata"] = (metadata).toJson();
     }
     if (securityInvestigationToolLink != null) {
       _json["securityInvestigationToolLink"] = securityInvestigationToolLink;
@@ -903,6 +1079,133 @@ class AlertFeedback {
   }
 }
 
+/// An alert metadata.
+class AlertMetadata {
+  /// Output only. The alert identifier.
+  core.String alertId;
+
+  /// The email address of the user assigned to the alert.
+  core.String assignee;
+
+  /// Output only. The unique identifier of the Google account of the customer.
+  core.String customerId;
+
+  /// Optional. `etag` is used for optimistic concurrency control as a way to
+  /// help prevent simultaneous updates of an alert metadata from overwriting
+  /// each other. It is strongly suggested that systems make use of the `etag`
+  /// in
+  /// the read-modify-write cycle to perform metatdata updates in order to avoid
+  /// race conditions: An `etag` is returned in the response which contains
+  /// alert
+  /// metadata, and systems are expected to put that etag in the request to
+  /// update alert metadata to ensure that their change will be applied to the
+  /// same version of the alert metadata.
+  ///
+  /// If no `etag` is provided in the call to update alert metadata, then the
+  /// existing alert metadata is overwritten blindly.
+  core.String etag;
+
+  /// The severity value of the alert. Alert Center will set this field at alert
+  /// creation time, default's to an empty string when it could not be
+  /// determined.
+  /// The supported values for update actions on this field are the following:
+  ///
+  /// * HIGH
+  /// * MEDIUM
+  /// * LOW
+  core.String severity;
+
+  /// The current status of the alert.
+  /// The supported values are the following:
+  ///
+  /// * NOT_STARTED
+  /// * IN_PROGRESS
+  /// * CLOSED
+  core.String status;
+
+  /// Output only. The time this metadata was last updated.
+  core.String updateTime;
+
+  AlertMetadata();
+
+  AlertMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("alertId")) {
+      alertId = _json["alertId"];
+    }
+    if (_json.containsKey("assignee")) {
+      assignee = _json["assignee"];
+    }
+    if (_json.containsKey("customerId")) {
+      customerId = _json["customerId"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("severity")) {
+      severity = _json["severity"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alertId != null) {
+      _json["alertId"] = alertId;
+    }
+    if (assignee != null) {
+      _json["assignee"] = assignee;
+    }
+    if (customerId != null) {
+      _json["customerId"] = customerId;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (severity != null) {
+      _json["severity"] = severity;
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Alerts from App Maker to notify admins to set up default SQL instance.
+class AppMakerSqlSetupNotification {
+  /// List of applications with requests for default SQL set up.
+  core.List<RequestInfo> requestInfo;
+
+  AppMakerSqlSetupNotification();
+
+  AppMakerSqlSetupNotification.fromJson(core.Map _json) {
+    if (_json.containsKey("requestInfo")) {
+      requestInfo = (_json["requestInfo"] as core.List)
+          .map<RequestInfo>((value) => new RequestInfo.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestInfo != null) {
+      _json["requestInfo"] =
+          requestInfo.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Attachment with application-specific information about an alert.
 class Attachment {
   /// A CSV file attachment.
@@ -976,6 +1279,146 @@ class BadWhitelist {
     }
     if (sourceIp != null) {
       _json["sourceIp"] = sourceIp;
+    }
+    return _json;
+  }
+}
+
+/// A request to perform batch delete on alerts.
+class BatchDeleteAlertsRequest {
+  /// Required. list of alert IDs.
+  core.List<core.String> alertId;
+
+  /// Optional. The unique identifier of the G Suite organization account of the
+  /// customer the alerts are associated with.
+  core.String customerId;
+
+  BatchDeleteAlertsRequest();
+
+  BatchDeleteAlertsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("alertId")) {
+      alertId = (_json["alertId"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("customerId")) {
+      customerId = _json["customerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alertId != null) {
+      _json["alertId"] = alertId;
+    }
+    if (customerId != null) {
+      _json["customerId"] = customerId;
+    }
+    return _json;
+  }
+}
+
+/// Response to batch delete operation on alerts.
+class BatchDeleteAlertsResponse {
+  /// The status details for each failed alert_id.
+  core.Map<core.String, Status> failedAlertStatus;
+
+  /// The successful list of alert IDs.
+  core.List<core.String> successAlertIds;
+
+  BatchDeleteAlertsResponse();
+
+  BatchDeleteAlertsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("failedAlertStatus")) {
+      failedAlertStatus = commons.mapMap<core.Map, Status>(
+          _json["failedAlertStatus"].cast<core.String, core.Map>(),
+          (core.Map item) => new Status.fromJson(item));
+    }
+    if (_json.containsKey("successAlertIds")) {
+      successAlertIds =
+          (_json["successAlertIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (failedAlertStatus != null) {
+      _json["failedAlertStatus"] =
+          commons.mapMap<Status, core.Map<core.String, core.Object>>(
+              failedAlertStatus, (Status item) => (item).toJson());
+    }
+    if (successAlertIds != null) {
+      _json["successAlertIds"] = successAlertIds;
+    }
+    return _json;
+  }
+}
+
+/// A request to perform batch undelete on alerts.
+class BatchUndeleteAlertsRequest {
+  /// Required. list of alert IDs.
+  core.List<core.String> alertId;
+
+  /// Optional. The unique identifier of the G Suite organization account of the
+  /// customer the alerts are associated with.
+  core.String customerId;
+
+  BatchUndeleteAlertsRequest();
+
+  BatchUndeleteAlertsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("alertId")) {
+      alertId = (_json["alertId"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("customerId")) {
+      customerId = _json["customerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alertId != null) {
+      _json["alertId"] = alertId;
+    }
+    if (customerId != null) {
+      _json["customerId"] = customerId;
+    }
+    return _json;
+  }
+}
+
+/// Response to batch undelete operation on alerts.
+class BatchUndeleteAlertsResponse {
+  /// The status details for each failed alert_id.
+  core.Map<core.String, Status> failedAlertStatus;
+
+  /// The successful list of alert IDs.
+  core.List<core.String> successAlertIds;
+
+  BatchUndeleteAlertsResponse();
+
+  BatchUndeleteAlertsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("failedAlertStatus")) {
+      failedAlertStatus = commons.mapMap<core.Map, Status>(
+          _json["failedAlertStatus"].cast<core.String, core.Map>(),
+          (core.Map item) => new Status.fromJson(item));
+    }
+    if (_json.containsKey("successAlertIds")) {
+      successAlertIds =
+          (_json["successAlertIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (failedAlertStatus != null) {
+      _json["failedAlertStatus"] =
+          commons.mapMap<Status, core.Map<core.String, core.Object>>(
+              failedAlertStatus, (Status item) => (item).toJson());
+    }
+    if (successAlertIds != null) {
+      _json["successAlertIds"] = successAlertIds;
     }
     return _json;
   }
@@ -1191,6 +1634,36 @@ class DeviceCompromisedSecurityDetail {
     }
     if (serialNumber != null) {
       _json["serialNumber"] = serialNumber;
+    }
+    return _json;
+  }
+}
+
+/// Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.
+class DlpRuleViolation {
+  /// Details about the violated DLP rule.
+  ///
+  /// Admins can use the predefined detectors provided by Google Cloud DLP
+  /// https://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud
+  /// DLP
+  /// detectors in this violation if any will be captured in the
+  /// MatchInfo.predefined_detector.
+  RuleViolationInfo ruleViolationInfo;
+
+  DlpRuleViolation();
+
+  DlpRuleViolation.fromJson(core.Map _json) {
+    if (_json.containsKey("ruleViolationInfo")) {
+      ruleViolationInfo =
+          new RuleViolationInfo.fromJson(_json["ruleViolationInfo"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ruleViolationInfo != null) {
+      _json["ruleViolationInfo"] = (ruleViolationInfo).toJson();
     }
     return _json;
   }
@@ -1485,7 +1958,7 @@ class LoginDetails {
   core.String ipAddress;
 
   /// Optional. The successful login time that is associated with the warning
-  /// event. This will not be present for blocked login attempts.
+  /// event. This isn't present for blocked login attempts.
   core.String loginTime;
 
   LoginDetails();
@@ -1520,6 +1993,7 @@ class LoginDetails {
 /// * Suspicious message reported
 /// * Phishing reclassification
 /// * Malware reclassification
+/// * Gmail potential employee spoofing
 class MailPhishing {
   /// The domain ID.
   DomainId domainId;
@@ -1532,6 +2006,13 @@ class MailPhishing {
 
   /// The list of messages contained by this alert.
   core.List<GmailMessageInfo> messages;
+
+  /// System actions on the messages.
+  /// Possible string values are:
+  /// - "SYSTEM_ACTION_TYPE_UNSPECIFIED" : System action is unspecified.
+  /// - "NO_OPERATION" : No operation.
+  /// - "REMOVED_FROM_INBOX" : Messages were removed from the inbox.
+  core.String systemActionType;
 
   MailPhishing();
 
@@ -1551,6 +2032,9 @@ class MailPhishing {
               (value) => new GmailMessageInfo.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("systemActionType")) {
+      systemActionType = _json["systemActionType"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1568,6 +2052,9 @@ class MailPhishing {
     if (messages != null) {
       _json["messages"] = messages.map((value) => (value).toJson()).toList();
     }
+    if (systemActionType != null) {
+      _json["systemActionType"] = systemActionType;
+    }
     return _json;
   }
 }
@@ -1577,6 +2064,9 @@ class MaliciousEntity {
   /// The header from display name.
   core.String displayName;
 
+  /// The actor who triggered a gmail phishing alert.
+  User entity;
+
   /// The sender email address.
   core.String fromHeader;
 
@@ -1585,6 +2075,9 @@ class MaliciousEntity {
   MaliciousEntity.fromJson(core.Map _json) {
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
+    }
+    if (_json.containsKey("entity")) {
+      entity = new User.fromJson(_json["entity"]);
     }
     if (_json.containsKey("fromHeader")) {
       fromHeader = _json["fromHeader"];
@@ -1597,8 +2090,45 @@ class MaliciousEntity {
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
+    if (entity != null) {
+      _json["entity"] = (entity).toJson();
+    }
     if (fromHeader != null) {
       _json["fromHeader"] = fromHeader;
+    }
+    return _json;
+  }
+}
+
+/// Proto that contains match information from the condition part of the rule.
+class MatchInfo {
+  /// For matched detector predefined by Google.
+  PredefinedDetectorInfo predefinedDetector;
+
+  /// For matched detector defined by administrators.
+  UserDefinedDetectorInfo userDefinedDetector;
+
+  MatchInfo();
+
+  MatchInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("predefinedDetector")) {
+      predefinedDetector =
+          new PredefinedDetectorInfo.fromJson(_json["predefinedDetector"]);
+    }
+    if (_json.containsKey("userDefinedDetector")) {
+      userDefinedDetector =
+          new UserDefinedDetectorInfo.fromJson(_json["userDefinedDetector"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (predefinedDetector != null) {
+      _json["predefinedDetector"] = (predefinedDetector).toJson();
+    }
+    if (userDefinedDetector != null) {
+      _json["userDefinedDetector"] = (userDefinedDetector).toJson();
     }
     return _json;
   }
@@ -1686,6 +2216,252 @@ class PhishingSpike {
   }
 }
 
+/// Detector provided by Google.
+class PredefinedDetectorInfo {
+  /// Name that uniquely identifies the detector.
+  core.String detectorName;
+
+  PredefinedDetectorInfo();
+
+  PredefinedDetectorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("detectorName")) {
+      detectorName = _json["detectorName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (detectorName != null) {
+      _json["detectorName"] = detectorName;
+    }
+    return _json;
+  }
+}
+
+/// Requests for one application that needs default SQL setup.
+class RequestInfo {
+  /// List of app developers who triggered notifications for above
+  /// application.
+  core.List<core.String> appDeveloperEmail;
+
+  /// Required. The application that requires the SQL setup.
+  core.String appKey;
+
+  /// Required. Number of requests sent for this application to set up default
+  /// SQL instance.
+  core.String numberOfRequests;
+
+  RequestInfo();
+
+  RequestInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("appDeveloperEmail")) {
+      appDeveloperEmail =
+          (_json["appDeveloperEmail"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("appKey")) {
+      appKey = _json["appKey"];
+    }
+    if (_json.containsKey("numberOfRequests")) {
+      numberOfRequests = _json["numberOfRequests"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (appDeveloperEmail != null) {
+      _json["appDeveloperEmail"] = appDeveloperEmail;
+    }
+    if (appKey != null) {
+      _json["appKey"] = appKey;
+    }
+    if (numberOfRequests != null) {
+      _json["numberOfRequests"] = numberOfRequests;
+    }
+    return _json;
+  }
+}
+
+/// Proto that contains resource information.
+class ResourceInfo {
+  /// Drive file ID.
+  core.String documentId;
+
+  /// Title of the resource, for example email subject, or document title.
+  core.String resourceTitle;
+
+  ResourceInfo();
+
+  ResourceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("documentId")) {
+      documentId = _json["documentId"];
+    }
+    if (_json.containsKey("resourceTitle")) {
+      resourceTitle = _json["resourceTitle"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (documentId != null) {
+      _json["documentId"] = documentId;
+    }
+    if (resourceTitle != null) {
+      _json["resourceTitle"] = resourceTitle;
+    }
+    return _json;
+  }
+}
+
+/// Proto that contains rule information.
+class RuleInfo {
+  /// User provided name of the rule.
+  core.String displayName;
+
+  /// Resource name that uniquely identifies the rule.
+  core.String resourceName;
+
+  RuleInfo();
+
+  RuleInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
+/// Common alert information about violated rules that are configured by G Suite
+/// administrators.
+class RuleViolationInfo {
+  /// Source of the data.
+  /// Possible string values are:
+  /// - "DATA_SOURCE_UNSPECIFIED" : Data source is unspecified.
+  /// - "DRIVE" : Drive data source.
+  core.String dataSource;
+
+  /// List of matches that were found in the resource content.
+  core.List<MatchInfo> matchInfo;
+
+  /// Resource recipients.
+  ///
+  /// For Drive, they are grantees that the Drive file was shared with at the
+  /// time of rule triggering. Valid values include user emails, group emails,
+  /// domains, or 'anyone' if the file was publicly accessible. If the file was
+  /// private the recipients list will be empty.
+  ///
+  /// For Gmail, they are emails of the users or groups that the Gmail message
+  /// was sent to.
+  core.List<core.String> recipients;
+
+  /// Details of the resource which violated the rule.
+  ResourceInfo resourceInfo;
+
+  /// Details of the violated rule.
+  RuleInfo ruleInfo;
+
+  /// Actions suppressed due to other actions with higher priority.
+  core.List<core.String> suppressedActionTypes;
+
+  /// Trigger of the rule.
+  /// Possible string values are:
+  /// - "TRIGGER_UNSPECIFIED" : Trigger is unspecified.
+  /// - "DRIVE_SHARE" : A Drive file is shared.
+  core.String trigger;
+
+  /// Actions applied as a consequence of the rule being triggered.
+  core.List<core.String> triggeredActionTypes;
+
+  /// Email of the user who caused the violation. Value could be empty if not
+  /// applicable, for example, a violation found by drive continuous scan.
+  core.String triggeringUserEmail;
+
+  RuleViolationInfo();
+
+  RuleViolationInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("dataSource")) {
+      dataSource = _json["dataSource"];
+    }
+    if (_json.containsKey("matchInfo")) {
+      matchInfo = (_json["matchInfo"] as core.List)
+          .map<MatchInfo>((value) => new MatchInfo.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("recipients")) {
+      recipients = (_json["recipients"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("resourceInfo")) {
+      resourceInfo = new ResourceInfo.fromJson(_json["resourceInfo"]);
+    }
+    if (_json.containsKey("ruleInfo")) {
+      ruleInfo = new RuleInfo.fromJson(_json["ruleInfo"]);
+    }
+    if (_json.containsKey("suppressedActionTypes")) {
+      suppressedActionTypes =
+          (_json["suppressedActionTypes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("trigger")) {
+      trigger = _json["trigger"];
+    }
+    if (_json.containsKey("triggeredActionTypes")) {
+      triggeredActionTypes =
+          (_json["triggeredActionTypes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("triggeringUserEmail")) {
+      triggeringUserEmail = _json["triggeringUserEmail"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataSource != null) {
+      _json["dataSource"] = dataSource;
+    }
+    if (matchInfo != null) {
+      _json["matchInfo"] = matchInfo.map((value) => (value).toJson()).toList();
+    }
+    if (recipients != null) {
+      _json["recipients"] = recipients;
+    }
+    if (resourceInfo != null) {
+      _json["resourceInfo"] = (resourceInfo).toJson();
+    }
+    if (ruleInfo != null) {
+      _json["ruleInfo"] = (ruleInfo).toJson();
+    }
+    if (suppressedActionTypes != null) {
+      _json["suppressedActionTypes"] = suppressedActionTypes;
+    }
+    if (trigger != null) {
+      _json["trigger"] = trigger;
+    }
+    if (triggeredActionTypes != null) {
+      _json["triggeredActionTypes"] = triggeredActionTypes;
+    }
+    if (triggeringUserEmail != null) {
+      _json["triggeringUserEmail"] = triggeringUserEmail;
+    }
+    return _json;
+  }
+}
+
 /// Customer-level settings.
 class Settings {
   /// The list of notifications.
@@ -1730,6 +2506,62 @@ class StateSponsoredAttack {
         new core.Map<core.String, core.Object>();
     if (email != null) {
       _json["email"] = email;
+    }
+    return _json;
+  }
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs. It is
+/// used by [gRPC](https://github.com/grpc). Each `Status` message contains
+/// three pieces of data: error code, error message, and error details.
+///
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int code;
+
+  /// A list of messages that carry the error details.  There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = (_json["details"] as core.List)
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -1885,6 +2717,70 @@ class UndeleteAlertRequest {
         new core.Map<core.String, core.Object>();
     if (customerId != null) {
       _json["customerId"] = customerId;
+    }
+    return _json;
+  }
+}
+
+/// A user.
+class User {
+  /// Display name of the user.
+  core.String displayName;
+
+  /// Email address of the user.
+  core.String emailAddress;
+
+  User();
+
+  User.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("emailAddress")) {
+      emailAddress = _json["emailAddress"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (emailAddress != null) {
+      _json["emailAddress"] = emailAddress;
+    }
+    return _json;
+  }
+}
+
+/// Detector defined by administrators.
+class UserDefinedDetectorInfo {
+  /// Display name of the detector.
+  core.String displayName;
+
+  /// Resource name that uniquely identifies the detector.
+  core.String resourceName;
+
+  UserDefinedDetectorInfo();
+
+  UserDefinedDetectorInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
     }
     return _json;
   }

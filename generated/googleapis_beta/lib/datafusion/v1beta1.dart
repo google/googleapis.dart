@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.datafusion.v1beta1;
 
@@ -114,6 +114,10 @@ class ProjectsLocationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
+  /// [includeUnrevealedLocations] - If true, the returned list will include
+  /// locations which are not yet
+  /// revealed.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
@@ -130,6 +134,7 @@ class ProjectsLocationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
       {core.String filter,
+      core.bool includeUnrevealedLocations,
       core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
@@ -145,6 +150,11 @@ class ProjectsLocationsResourceApi {
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (includeUnrevealedLocations != null) {
+      _queryParams["includeUnrevealedLocations"] = [
+        "${includeUnrevealedLocations}"
+      ];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -335,6 +345,17 @@ class ProjectsLocationsInstancesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -346,7 +367,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource,
-      {core.String $fields}) {
+      {core.int options_requestedPolicyVersion, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -356,6 +377,11 @@ class ProjectsLocationsInstancesResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams["options.requestedPolicyVersion"] = [
+        "${options_requestedPolicyVersion}"
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -385,6 +411,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// are queried, and the results are aggregated.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - List filter.
+  ///
   /// [pageToken] - The next_page_token value to use if there are additional
   /// results to retrieve for this list request.
   ///
@@ -392,8 +420,6 @@ class ProjectsLocationsInstancesResourceApi {
   /// (unsorted).
   ///
   /// [pageSize] - The maximum number of items to return.
-  ///
-  /// [filter] - List filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -406,10 +432,10 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.String orderBy,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -421,6 +447,9 @@ class ProjectsLocationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -429,9 +458,6 @@ class ProjectsLocationsInstancesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -570,6 +596,9 @@ class ProjectsLocationsInstancesResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -979,6 +1008,35 @@ class ProjectsLocationsOperationsResourceApi {
   }
 }
 
+/// Identifies Data Fusion accelerators for an instance.
+class Accelerator {
+  /// The type of an accelator for a CDF instance.
+  /// Possible string values are:
+  /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Default value, if unspecified.
+  /// - "CDC" : Change Data Capture accelerator for CDF.
+  /// - "HEALTHCARE" : Cloud Healthcare accelerator for CDF. This accelerator is
+  /// to enable Cloud
+  /// Healthcare specific CDF plugins developed by Healthcare team.
+  core.String acceleratorType;
+
+  Accelerator();
+
+  Accelerator.fromJson(core.Map _json) {
+    if (_json.containsKey("acceleratorType")) {
+      acceleratorType = _json["acceleratorType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (acceleratorType != null) {
+      _json["acceleratorType"] = acceleratorType;
+    }
+    return _json;
+  }
+}
+
 /// Specifies the audit configuration for a service.
 /// The configuration determines which permission types are logged, and what
 /// identities, if any, are exempted from logging.
@@ -999,7 +1057,7 @@ class ProjectsLocationsOperationsResourceApi {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -1011,7 +1069,7 @@ class ProjectsLocationsOperationsResourceApi {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -1019,7 +1077,7 @@ class ProjectsLocationsOperationsResourceApi {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -1027,13 +1085,12 @@ class ProjectsLocationsOperationsResourceApi {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
-  core.List<core.String> exemptedMembers;
 
   /// Specifies a service that will be enabled for audit logging.
   /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
@@ -1048,10 +1105,6 @@ class AuditConfig {
           .map<AuditLogConfig>((value) => new AuditLogConfig.fromJson(value))
           .toList();
     }
-    if (_json.containsKey("exemptedMembers")) {
-      exemptedMembers =
-          (_json["exemptedMembers"] as core.List).cast<core.String>();
-    }
     if (_json.containsKey("service")) {
       service = _json["service"];
     }
@@ -1063,9 +1116,6 @@ class AuditConfig {
     if (auditLogConfigs != null) {
       _json["auditLogConfigs"] =
           auditLogConfigs.map((value) => (value).toJson()).toList();
-    }
-    if (exemptedMembers != null) {
-      _json["exemptedMembers"] = exemptedMembers;
     }
     if (service != null) {
       _json["service"] = service;
@@ -1082,7 +1132,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -1092,7 +1142,7 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -1132,35 +1182,6 @@ class AuditLogConfig {
   }
 }
 
-/// Authorization-related information used by Cloud Audit Logging.
-class AuthorizationLoggingOptions {
-  /// The type of the permission that was checked.
-  /// Possible string values are:
-  /// - "PERMISSION_TYPE_UNSPECIFIED" : Default. Should not be used.
-  /// - "ADMIN_READ" : A read of admin (meta) data.
-  /// - "ADMIN_WRITE" : A write of admin (meta) data.
-  /// - "DATA_READ" : A read of standard data.
-  /// - "DATA_WRITE" : A write of standard data.
-  core.String permissionType;
-
-  AuthorizationLoggingOptions();
-
-  AuthorizationLoggingOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("permissionType")) {
-      permissionType = _json["permissionType"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (permissionType != null) {
-      _json["permissionType"] = permissionType;
-    }
-    return _json;
-  }
-}
-
 /// Associates `members` with a `role`.
 class Binding {
   /// The condition that is associated with this binding.
@@ -1179,7 +1200,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -1187,6 +1208,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -1240,261 +1282,6 @@ class CancelOperationRequest {
   }
 }
 
-/// Write a Cloud Audit log
-class CloudAuditOptions {
-  /// Information used by the Cloud Audit Logging pipeline.
-  AuthorizationLoggingOptions authorizationLoggingOptions;
-
-  /// The log_name to populate in the Cloud Audit Record.
-  /// Possible string values are:
-  /// - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
-  /// - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
-  /// - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
-  core.String logName;
-
-  CloudAuditOptions();
-
-  CloudAuditOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("authorizationLoggingOptions")) {
-      authorizationLoggingOptions = new AuthorizationLoggingOptions.fromJson(
-          _json["authorizationLoggingOptions"]);
-    }
-    if (_json.containsKey("logName")) {
-      logName = _json["logName"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (authorizationLoggingOptions != null) {
-      _json["authorizationLoggingOptions"] =
-          (authorizationLoggingOptions).toJson();
-    }
-    if (logName != null) {
-      _json["logName"] = logName;
-    }
-    return _json;
-  }
-}
-
-/// A condition to be met.
-class Condition {
-  /// Trusted attributes supplied by the IAM system.
-  /// Possible string values are:
-  /// - "NO_ATTR" : Default non-attribute.
-  /// - "AUTHORITY" : Either principal or (if present) authority selector.
-  /// - "ATTRIBUTION" : The principal (even if an authority selector is
-  /// present), which
-  /// must only be used for attribution, not authorization.
-  /// - "SECURITY_REALM" : Any of the security realms in the IAMContext
-  /// (go/security-realms).
-  /// When used with IN, the condition indicates "any of the request's realms
-  /// match one of the given values; with NOT_IN, "none of the realms match
-  /// any of the given values". Note that a value can be:
-  ///  - 'self' (i.e., allow connections from clients that are in the same
-  ///  security realm)
-  ///  - a realm (e.g., 'campus-abc')
-  ///  - a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups)
-  /// A match is determined by a realm group
-  /// membership check performed by a RealmAclRep object (go/realm-acl-howto).
-  /// It is not permitted to grant access based on the *absence* of a realm, so
-  /// realm conditions can only be used in a "positive" context (e.g., ALLOW/IN
-  /// or DENY/NOT_IN).
-  /// - "APPROVER" : An approver (distinct from the requester) that has
-  /// authorized this
-  /// request.
-  /// When used with IN, the condition indicates that one of the approvers
-  /// associated with the request matches the specified principal, or is a
-  /// member of the specified group. Approvers can only grant additional
-  /// access, and are thus only used in a strictly positive context
-  /// (e.g. ALLOW/IN or DENY/NOT_IN).
-  /// - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
-  /// with this request.
-  /// String values should match enum names from tech.iam.JustificationType,
-  /// e.g. "MANUAL_STRING". It is not permitted to grant access based on
-  /// the *absence* of a justification, so justification conditions can only
-  /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
-  ///
-  /// Multiple justifications, e.g., a Buganizer ID and a manually-entered
-  /// reason, are normal and supported.
-  /// - "CREDENTIALS_TYPE" : What type of credentials have been supplied with
-  /// this request.
-  /// String values should match enum names from
-  /// security_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY
-  /// is supported.
-  /// It is not permitted to grant access based on the *absence* of a
-  /// credentials type, so the conditions can only be used in a "positive"
-  /// context (e.g., ALLOW/IN or DENY/NOT_IN).
-  core.String iam;
-
-  /// An operator to apply the subject with.
-  /// Possible string values are:
-  /// - "NO_OP" : Default no-op.
-  /// - "EQUALS" : DEPRECATED. Use IN instead.
-  /// - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-  /// - "IN" : The condition is true if the subject (or any element of it if it
-  /// is
-  /// a set) matches any of the supplied values.
-  /// - "NOT_IN" : The condition is true if the subject (or every element of it
-  /// if it is
-  /// a set) matches none of the supplied values.
-  /// - "DISCHARGED" : Subject is discharged
-  core.String op;
-
-  /// Trusted attributes discharged by the service.
-  core.String svc;
-
-  /// Trusted attributes supplied by any service that owns resources and uses
-  /// the IAM system for access control.
-  /// Possible string values are:
-  /// - "NO_ATTR" : Default non-attribute type
-  /// - "REGION" : Region of the resource
-  /// - "SERVICE" : Service name
-  /// - "NAME" : Resource name
-  /// - "IP" : IP address of the caller
-  core.String sys;
-
-  /// The objects of the condition.
-  core.List<core.String> values;
-
-  Condition();
-
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("iam")) {
-      iam = _json["iam"];
-    }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
-    }
-    if (_json.containsKey("svc")) {
-      svc = _json["svc"];
-    }
-    if (_json.containsKey("sys")) {
-      sys = _json["sys"];
-    }
-    if (_json.containsKey("values")) {
-      values = (_json["values"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (iam != null) {
-      _json["iam"] = iam;
-    }
-    if (op != null) {
-      _json["op"] = op;
-    }
-    if (svc != null) {
-      _json["svc"] = svc;
-    }
-    if (sys != null) {
-      _json["sys"] = sys;
-    }
-    if (values != null) {
-      _json["values"] = values;
-    }
-    return _json;
-  }
-}
-
-/// Increment a streamz counter with the specified metric and field names.
-///
-/// Metric names should start with a '/', generally be lowercase-only,
-/// and end in "_count". Field names should not contain an initial slash.
-/// The actual exported metric names will have "/iam/policy" prepended.
-///
-/// Field names correspond to IAM request parameters and field values are
-/// their respective values.
-///
-/// Supported field names:
-///    - "authority", which is "[token]" if IAMContext.token is present,
-///      otherwise the value of IAMContext.authority_selector if present, and
-///      otherwise a representation of IAMContext.principal; or
-///    - "iam_principal", a representation of IAMContext.principal even if a
-///      token or authority selector is present; or
-///    - "" (empty string), resulting in a counter with no fields.
-///
-/// Examples:
-///   counter { metric: "/debug_access_count"  field: "iam_principal" }
-///   ==> increment counter /iam/policy/backend_debug_access_count
-///                         {iam_principal=[value of IAMContext.principal]}
-///
-/// At this time we do not support multiple field names (though this may be
-/// supported in the future).
-class CounterOptions {
-  /// The field value to attribute.
-  core.String field;
-
-  /// The metric to update.
-  core.String metric;
-
-  CounterOptions();
-
-  CounterOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = _json["field"];
-    }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (field != null) {
-      _json["field"] = field;
-    }
-    if (metric != null) {
-      _json["metric"] = metric;
-    }
-    return _json;
-  }
-}
-
-/// Write a Data Access (Gin) log
-class DataAccessOptions {
-  /// Whether Gin logging should happen in a fail-closed manner at the caller.
-  /// This is relevant only in the LocalIAM implementation, for now.
-  /// Possible string values are:
-  /// - "LOG_MODE_UNSPECIFIED" : Client is not required to write a partial Gin
-  /// log immediately after
-  /// the authorization check. If client chooses to write one and it fails,
-  /// client may either fail open (allow the operation to continue) or
-  /// fail closed (handle as a DENY outcome).
-  /// - "LOG_FAIL_CLOSED" : The application's operation in the context of which
-  /// this authorization
-  /// check is being made may only be performed if it is successfully logged
-  /// to Gin. For instance, the authorization library may satisfy this
-  /// obligation by emitting a partial log entry at authorization check time
-  /// and only returning ALLOW to the application if it succeeds.
-  ///
-  /// If a matching Rule has this directive, but the client has not indicated
-  /// that it will honor such requirements, then the IAM check will result in
-  /// authorization failure by setting CheckPolicyResponse.success=false.
-  core.String logMode;
-
-  DataAccessOptions();
-
-  DataAccessOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("logMode")) {
-      logMode = _json["logMode"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (logMode != null) {
-      _json["logMode"] = logMode;
-    }
-    return _json;
-  }
-}
-
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -1516,28 +1303,52 @@ class Empty {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -1579,11 +1390,22 @@ class Expr {
 }
 
 /// Represents a Data Fusion instance.
+/// Next available ID: 23
 class Instance {
+  /// List of accelerators enabled for this CDF instance.
+  core.List<Accelerator> accelerators;
+
+  /// Output only. Endpoint on which the REST APIs is accessible.
+  core.String apiEndpoint;
+
+  /// Available versions that the instance can be upgraded to using
+  /// UpdateInstanceRequest.
+  core.List<Version> availableVersion;
+
   /// Output only. The time the instance was created.
   core.String createTime;
 
-  /// An optional description of this instance.
+  /// Optional. An optional description of this instance.
   core.String description;
 
   /// Display name for an instance.
@@ -1595,9 +1417,13 @@ class Instance {
   /// Option to enable Stackdriver Monitoring.
   core.bool enableStackdriverMonitoring;
 
+  /// Output only. Cloud Storage bucket generated by Data Fusion in the customer
+  /// project.
+  core.String gcsBucket;
+
   /// The resource labels for instance to use to annotate any related underlying
-  /// resources such as GCE VMs. The character '=' is not allowed to be used
-  /// within the labels.
+  /// resources such as Compute Engine VMs. The character '=' is not allowed to
+  /// be used within the labels.
   core.Map<core.String, core.String> labels;
 
   /// Output only. The name of this instance is in the form of
@@ -1621,8 +1447,7 @@ class Instance {
   /// the customer project."
   core.String serviceAccount;
 
-  /// Output only. Endpoint on which the Data Fusion UI and REST APIs are
-  /// accessible.
+  /// Output only. Endpoint on which the Data Fusion UI is accessible.
   core.String serviceEndpoint;
 
   /// Output only. The current state of this Data Fusion instance.
@@ -1634,7 +1459,9 @@ class Instance {
   /// - "DELETING" : Instance is being deleted
   /// - "UPGRADING" : Instance is being upgraded
   /// - "RESTARTING" : Instance is being restarted
-  /// - "UPDATING" : Instance is being updated
+  /// - "UPDATING" : Instance is being updated on customer request
+  /// - "AUTO_UPDATING" : Instance is being auto-updated
+  /// - "AUTO_UPGRADING" : Instance is being auto-upgraded
   core.String state;
 
   /// Output only. Additional information about the current state of this Data
@@ -1651,14 +1478,19 @@ class Instance {
   /// support for streaming pipelines, etc.
   /// - "ENTERPRISE" : Enterprise Data Fusion instance. In Enterprise type, the
   /// user will have
-  /// more features available, such as support for streaming pipelines, higher
+  /// all features available, such as support for streaming pipelines, higher
   /// number of concurrent pipelines, etc.
+  /// - "DEVELOPER" : Developer Data Fusion instance. In Developer type, the
+  /// user will have all
+  /// features available but with restrictive capabilities. This is to help
+  /// enterprises design and develop their data ingestion and integration
+  /// pipelines at low cost.
   core.String type;
 
   /// Output only. The time the instance was last updated.
   core.String updateTime;
 
-  /// Output only. Current version of the Data Fusion.
+  /// Current version of Data Fusion.
   core.String version;
 
   /// Name of the zone in which the Data Fusion instance will be created.
@@ -1667,6 +1499,19 @@ class Instance {
   Instance();
 
   Instance.fromJson(core.Map _json) {
+    if (_json.containsKey("accelerators")) {
+      accelerators = (_json["accelerators"] as core.List)
+          .map<Accelerator>((value) => new Accelerator.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("apiEndpoint")) {
+      apiEndpoint = _json["apiEndpoint"];
+    }
+    if (_json.containsKey("availableVersion")) {
+      availableVersion = (_json["availableVersion"] as core.List)
+          .map<Version>((value) => new Version.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -1681,6 +1526,9 @@ class Instance {
     }
     if (_json.containsKey("enableStackdriverMonitoring")) {
       enableStackdriverMonitoring = _json["enableStackdriverMonitoring"];
+    }
+    if (_json.containsKey("gcsBucket")) {
+      gcsBucket = _json["gcsBucket"];
     }
     if (_json.containsKey("labels")) {
       labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
@@ -1726,6 +1574,17 @@ class Instance {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accelerators != null) {
+      _json["accelerators"] =
+          accelerators.map((value) => (value).toJson()).toList();
+    }
+    if (apiEndpoint != null) {
+      _json["apiEndpoint"] = apiEndpoint;
+    }
+    if (availableVersion != null) {
+      _json["availableVersion"] =
+          availableVersion.map((value) => (value).toJson()).toList();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -1740,6 +1599,9 @@ class Instance {
     }
     if (enableStackdriverMonitoring != null) {
       _json["enableStackdriverMonitoring"] = enableStackdriverMonitoring;
+    }
+    if (gcsBucket != null) {
+      _json["gcsBucket"] = gcsBucket;
     }
     if (labels != null) {
       _json["labels"] = labels;
@@ -1965,47 +1827,6 @@ class Location {
   }
 }
 
-/// Specifies what kind of log the caller must write
-class LogConfig {
-  /// Cloud audit options.
-  CloudAuditOptions cloudAudit;
-
-  /// Counter options.
-  CounterOptions counter;
-
-  /// Data access options.
-  DataAccessOptions dataAccess;
-
-  LogConfig();
-
-  LogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudAudit")) {
-      cloudAudit = new CloudAuditOptions.fromJson(_json["cloudAudit"]);
-    }
-    if (_json.containsKey("counter")) {
-      counter = new CounterOptions.fromJson(_json["counter"]);
-    }
-    if (_json.containsKey("dataAccess")) {
-      dataAccess = new DataAccessOptions.fromJson(_json["dataAccess"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (cloudAudit != null) {
-      _json["cloudAudit"] = (cloudAudit).toJson();
-    }
-    if (counter != null) {
-      _json["counter"] = (counter).toJson();
-    }
-    if (dataAccess != null) {
-      _json["dataAccess"] = (dataAccess).toJson();
-    }
-    return _json;
-  }
-}
-
 /// Network configuration for a Data Fusion instance. These configurations
 /// are used for peering with the customer network. Configurations are optional
 /// when a public Data Fusion instance is to be created. However, providing
@@ -2020,7 +1841,9 @@ class NetworkConfig {
   core.String ipAllocation;
 
   /// Name of the network in the customer project with which the Tenant Project
-  /// will be peered for executing pipelines.
+  /// will be peered for executing pipelines. In case of shared VPC where the
+  /// network resides in another host project the network should specified in
+  /// the form of projects/{host-project-id}/global/networks/{network}
   core.String network;
 
   NetworkConfig();
@@ -2210,59 +2033,77 @@ class OperationMetadata {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -2274,8 +2115,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -2286,20 +2131,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  core.bool iamOwned;
-
-  /// If more than one rule is specified, the rules are applied in the following
-  /// manner:
-  /// - All matching LOG rules are always applied.
-  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-  ///   Logging will be applied if one or more matching rule requires logging.
-  /// - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-  ///   granted.
-  ///   Logging will be applied if one or more matching rule requires logging.
-  /// - Otherwise, if no rule applies, permission is denied.
-  core.List<Rule> rules;
-
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -2317,14 +2171,6 @@ class Policy {
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
-    }
-    if (_json.containsKey("iamOwned")) {
-      iamOwned = _json["iamOwned"];
-    }
-    if (_json.containsKey("rules")) {
-      rules = (_json["rules"] as core.List)
-          .map<Rule>((value) => new Rule.fromJson(value))
-          .toList();
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -2344,12 +2190,6 @@ class Policy {
     if (etag != null) {
       _json["etag"] = etag;
     }
-    if (iamOwned != null) {
-      _json["iamOwned"] = iamOwned;
-    }
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
-    }
     if (version != null) {
       _json["version"] = version;
     }
@@ -2366,107 +2206,6 @@ class RestartInstanceRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    return _json;
-  }
-}
-
-/// A rule to be applied in a Policy.
-class Rule {
-  /// Required
-  /// Possible string values are:
-  /// - "NO_ACTION" : Default no action.
-  /// - "ALLOW" : Matching 'Entries' grant access.
-  /// - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
-  /// promises to log
-  /// the request per the returned log_configs.
-  /// - "DENY" : Matching 'Entries' deny access.
-  /// - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
-  /// to log
-  /// the request per the returned log_configs.
-  /// - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
-  core.String action;
-
-  /// Additional restrictions that must be met. All conditions must pass for the
-  /// rule to match.
-  core.List<Condition> conditions;
-
-  /// Human-readable description of the rule.
-  core.String description;
-
-  /// If one or more 'in' clauses are specified, the rule matches if
-  /// the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-  core.List<core.String> in_;
-
-  /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-  /// that match the LOG action.
-  core.List<LogConfig> logConfig;
-
-  /// If one or more 'not_in' clauses are specified, the rule matches
-  /// if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-  /// The format for in and not_in entries can be found at in the Local IAM
-  /// documentation (see go/local-iam#features).
-  core.List<core.String> notIn;
-
-  /// A permission is a string of form '<service>.<resource type>.<verb>'
-  /// (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-  /// and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-  core.List<core.String> permissions;
-
-  Rule();
-
-  Rule.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
-    }
-    if (_json.containsKey("conditions")) {
-      conditions = (_json["conditions"] as core.List)
-          .map<Condition>((value) => new Condition.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("in")) {
-      in_ = (_json["in"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("logConfig")) {
-      logConfig = (_json["logConfig"] as core.List)
-          .map<LogConfig>((value) => new LogConfig.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("notIn")) {
-      notIn = (_json["notIn"] as core.List).cast<core.String>();
-    }
-    if (_json.containsKey("permissions")) {
-      permissions = (_json["permissions"] as core.List).cast<core.String>();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (action != null) {
-      _json["action"] = action;
-    }
-    if (conditions != null) {
-      _json["conditions"] =
-          conditions.map((value) => (value).toJson()).toList();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (in_ != null) {
-      _json["in"] = in_;
-    }
-    if (logConfig != null) {
-      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
-    }
-    if (notIn != null) {
-      _json["notIn"] = notIn;
-    }
-    if (permissions != null) {
-      _json["permissions"] = permissions;
-    }
     return _json;
   }
 }
@@ -2627,6 +2366,29 @@ class UpgradeInstanceRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// The Data Fusion version.
+class Version {
+  /// The version number of the Data Fusion instance, such as '6.0.1.0'.
+  core.String versionNumber;
+
+  Version();
+
+  Version.fromJson(core.Map _json) {
+    if (_json.containsKey("versionNumber")) {
+      versionNumber = _json["versionNumber"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (versionNumber != null) {
+      _json["versionNumber"] = versionNumber;
+    }
     return _json;
   }
 }

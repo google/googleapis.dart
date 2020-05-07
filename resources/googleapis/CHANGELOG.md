@@ -1,3 +1,33 @@
+## 0.55.0
+ * [api-new] accessapproval:v1
+ * [api-new] admob:v1
+ * [api-new] apigee:v1
+ * [api-new] bigqueryreservation:v1
+ * [api-new] binaryauthorization:v1
+ * [api-new] dfareporting:v3.4
+ * [api-new] displayvideo:v1
+ * [api-new] domainsrdap:v1
+ * [api-new] doubleclickbidmanager:v1.1
+ * [api-new] healthcare:v1
+ * [api-new] homegraph:v1
+ * [api-new] osconfig:v1
+ * [api-new] policytroubleshooter:v1
+ * [api-new] secretmanager:v1
+ * [api-new] managedidentities:v1
+ * [api-new] translate:v3
+ * [api-new] verifiedaccess:v1
+ * [api-removed] appstate:v1
+ * [api-removed] fusiontables:v1
+ * [api-removed] fusiontables:v2
+ * [api-removed] mirror:v1
+ * [api-removed] plusDomains:v1
+ * [api-removed] servicebroker:v1
+ * [api-removed] surveys:v2
+ * [api-removed] urlshortener:v1
+ * [api-removed] dfareporting:v3.3
+ * [api-removed] doubleclickbidmanager:v1
+ * [api-removed] translate:v2
+
 ## 0.54.0
 
  * [api-new] accesscontextmanager:v1
@@ -13,7 +43,7 @@
  * [api-new] securitycenter:v1
  * [api-new] servicenetworking:v1
  * [api-new] websecurityscanner:v1
- * [api-removed]dfareporting:v3.2
+ * [api-removed] dfareporting:v3.2
 
 ## 0.53.0
 

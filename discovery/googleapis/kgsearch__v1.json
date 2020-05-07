@@ -15,6 +15,32 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -41,6 +67,16 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -51,42 +87,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         }
@@ -101,6 +101,23 @@
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
                     "parameters": {
+                        "ids": {
+                            "description": "The list of entity id to be used for search instead of query string.\nTo specify multiple ids in the HTTP request, repeat the parameter in the\nURL as in ...?ids=A&ids=B",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
+                        },
+                        "limit": {
+                            "description": "Limits the number of entities to be returned.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "prefix": {
+                            "description": "Enables prefix match against names and aliases of entities",
+                            "location": "query",
+                            "type": "boolean"
+                        },
                         "query": {
                             "description": "The literal query string for search.",
                             "location": "query",
@@ -122,23 +139,6 @@
                             "location": "query",
                             "repeated": true,
                             "type": "string"
-                        },
-                        "ids": {
-                            "description": "The list of entity id to be used for search instead of query string.\nTo specify multiple ids in the HTTP request, repeat the parameter in the\nURL as in ...?ids=A&ids=B",
-                            "location": "query",
-                            "repeated": true,
-                            "type": "string"
-                        },
-                        "limit": {
-                            "description": "Limits the number of entities to be returned.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
-                        "prefix": {
-                            "description": "Enables prefix match against names and aliases of entities",
-                            "location": "query",
-                            "type": "boolean"
                         }
                     },
                     "path": "v1/entities:search",
@@ -149,7 +149,7 @@
             }
         }
     },
-    "revision": "20190106",
+    "revision": "20200405",
     "rootUrl": "https://kgsearch.googleapis.com/",
     "schemas": {
         "SearchResponse": {

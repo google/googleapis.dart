@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.vault.v1;
 
@@ -28,6 +28,7 @@ class VaultApi {
   final commons.ApiRequester _requester;
 
   MattersResourceApi get matters => new MattersResourceApi(_requester);
+  OperationsResourceApi get operations => new OperationsResourceApi(_requester);
 
   VaultApi(http.Client client,
       {core.String rootUrl = "https://vault.googleapis.com/",
@@ -291,15 +292,6 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [state] - If set, list only matters with that specific state. The default
-  /// is listing
-  /// matters of all states.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
-  /// - "OPEN" : A OPEN.
-  /// - "CLOSED" : A CLOSED.
-  /// - "DELETED" : A DELETED.
-  ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
   /// [pageSize] - The number of matters to return in the response.
@@ -310,6 +302,15 @@ class MattersResourceApi {
   /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [state] - If set, list only matters with that specific state. The default
+  /// is listing
+  /// matters of all states.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
+  /// - "OPEN" : A OPEN.
+  /// - "CLOSED" : A CLOSED.
+  /// - "DELETED" : A DELETED.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -322,10 +323,10 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
-      {core.String state,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String state,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -334,9 +335,6 @@ class MattersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (state != null) {
-      _queryParams["state"] = [state];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -345,6 +343,9 @@ class MattersResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (state != null) {
+      _queryParams["state"] = [state];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -515,7 +516,7 @@ class MattersResourceApi {
 
   /// Updates the specified matter.
   /// This updates only the name and description of the matter, identified by
-  /// matter id. Changes to any other fields are ignored.
+  /// matter ID. Changes to any other fields are ignored.
   /// Returns the default view of the matter.
   ///
   /// [request] - The metadata request object.
@@ -1394,7 +1395,7 @@ class MattersSavedQueriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter id of the parent matter for which the saved query
+  /// [matterId] - The matter ID of the parent matter for which the saved query
   /// is to be
   /// created.
   ///
@@ -1444,11 +1445,11 @@ class MattersSavedQueriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter id of the parent matter for which the saved query
+  /// [matterId] - The matter ID of the parent matter for which the saved query
   /// is to be
   /// deleted.
   ///
-  /// [savedQueryId] - Id of the saved query to be deleted.
+  /// [savedQueryId] - ID of the saved query to be deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1497,11 +1498,11 @@ class MattersSavedQueriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter id of the parent matter for which the saved query
+  /// [matterId] - The matter ID of the parent matter for which the saved query
   /// is to be
   /// retrieved.
   ///
-  /// [savedQueryId] - Id of the saved query to be retrieved.
+  /// [savedQueryId] - ID of the saved query to be retrieved.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1551,7 +1552,7 @@ class MattersSavedQueriesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [matterId] - The matter id of the parent matter for which the saved
+  /// [matterId] - The matter ID of the parent matter for which the saved
   /// queries are to be
   /// retrieved.
   ///
@@ -1604,6 +1605,58 @@ class MattersSavedQueriesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ListSavedQueriesResponse.fromJson(data));
+  }
+}
+
+class OperationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OperationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a long-running operation. This method indicates that the client is
+  /// no longer interested in the operation result. It does not cancel the
+  /// operation. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern "^operations/.*$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -1665,7 +1718,7 @@ class AddHeldAccountResult {
 
 /// Add a list of accounts to a hold.
 class AddHeldAccountsRequest {
-  /// Account ids to identify which accounts to add. Only account_ids or only
+  /// Account IDs to identify which accounts to add. Only account_ids or only
   /// emails should be specified, but not both.
   core.List<core.String> accountIds;
 
@@ -2968,7 +3021,7 @@ class Matter {
 /// When an account is purged, its corresponding MatterPermission resources
 /// cease to exist.
 class MatterPermission {
-  /// The account id, as provided by <a
+  /// The account ID, as provided by <a
   /// href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
   core.String accountId;
 
@@ -3252,7 +3305,7 @@ class Query {
 
 /// Remove a list of accounts from a hold.
 class RemoveHeldAccountsRequest {
-  /// Account ids to identify HeldAccounts to remove.
+  /// Account IDs to identify HeldAccounts to remove.
   core.List<core.String> accountIds;
 
   RemoveHeldAccountsRequest();
@@ -3367,7 +3420,7 @@ class SavedQuery {
   /// Name of the saved query.
   core.String displayName;
 
-  /// Output only. The matter id of the associated matter.
+  /// Output only. The matter ID of the associated matter.
   /// The server does not look at this field during create and always uses
   /// matter
   /// id in the URL.
@@ -3425,7 +3478,7 @@ class SavedQuery {
 
 /// Shared drives to search
 class SharedDriveInfo {
-  /// List of Shared drive ids, as provided by <a
+  /// List of Shared drive IDs, as provided by <a
   /// href="https://developers.google.com/drive">Drive API</a>.
   core.List<core.String> sharedDriveIds;
 
@@ -3506,7 +3559,7 @@ class Status {
 
 /// Team Drives to search
 class TeamDriveInfo {
-  /// List of Team Drive ids, as provided by <a
+  /// List of Team Drive IDs, as provided by <a
   /// href="https://developers.google.com/drive">Drive API</a>.
   core.List<core.String> teamDriveIds;
 

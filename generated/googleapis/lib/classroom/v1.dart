@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.classroom.v1;
 
@@ -961,6 +961,10 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned.
+  /// If this argument is left unspecified, the default value is `PUBLISHED`.
+  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with
   /// an optional sort direction keyword. Supported field is `updateTime`.
@@ -982,10 +986,6 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
-  /// [announcementStates] - Restriction on the `state` of announcements
-  /// returned.
-  /// If this argument is left unspecified, the default value is `PUBLISHED`.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -997,10 +997,10 @@ class CoursesAnnouncementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(core.String courseId,
-      {core.String orderBy,
+      {core.List<core.String> announcementStates,
+      core.String orderBy,
       core.String pageToken,
       core.int pageSize,
-      core.List<core.String> announcementStates,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1012,6 +1012,9 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
+    if (announcementStates != null) {
+      _queryParams["announcementStates"] = announcementStates;
+    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -1020,9 +1023,6 @@ class CoursesAnnouncementsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (announcementStates != null) {
-      _queryParams["announcementStates"] = announcementStates;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1142,8 +1142,7 @@ class CoursesAnnouncementsResourceApi {
   /// fields are specified. If a field supports empty values, it can be cleared
   /// by specifying it in the update mask and not in the Announcement object. If
   /// a field that does not support empty values is included in the update mask
-  /// and not set in the Announcement object, an `INVALID_ARGUMENT` error will
-  /// be
+  /// and not set in the Announcement object, an `INVALID_ARGUMENT` error is
   /// returned.
   ///
   /// The following fields may be specified by teachers:
@@ -1428,11 +1427,6 @@ class CoursesCourseWorkResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
-  /// [courseWorkStates] - Restriction on the work status to return. Only
-  /// courseWork that matches
-  /// is returned. If unspecified, items with a work status of `PUBLISHED`
-  /// is returned.
-  ///
   /// [orderBy] - Optional sort ordering for results. A comma-separated list of
   /// fields with
   /// an optional sort direction keyword. Supported fields are `updateTime`
@@ -1454,6 +1448,11 @@ class CoursesCourseWorkResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [courseWorkStates] - Restriction on the work status to return. Only
+  /// courseWork that matches
+  /// is returned. If unspecified, items with a work status of `PUBLISHED`
+  /// is returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1465,10 +1464,10 @@ class CoursesCourseWorkResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCourseWorkResponse> list(core.String courseId,
-      {core.List<core.String> courseWorkStates,
-      core.String orderBy,
+      {core.String orderBy,
       core.String pageToken,
       core.int pageSize,
+      core.List<core.String> courseWorkStates,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1480,9 +1479,6 @@ class CoursesCourseWorkResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (courseWorkStates != null) {
-      _queryParams["courseWorkStates"] = courseWorkStates;
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -1491,6 +1487,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseWorkStates != null) {
+      _queryParams["courseWorkStates"] = courseWorkStates;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1620,7 +1619,7 @@ class CoursesCourseWorkResourceApi {
   /// by specifying it in the update mask and not in the CourseWork object. If a
   /// field that does not support empty values is included in the update mask
   /// and
-  /// not set in the CourseWork object, an `INVALID_ARGUMENT` error will be
+  /// not set in the CourseWork object, an `INVALID_ARGUMENT` error is
   /// returned.
   ///
   /// The following fields may be specified by teachers:
@@ -1787,6 +1786,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the
+  /// student with the specified identifier. The identifier can be one of the
+  /// following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
+  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are
   /// restricted by the requested value.
@@ -1814,15 +1822,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// submissions
   /// match one of the specified submission states.
   ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the
-  /// student with the specified identifier. The identifier can be one of the
-  /// following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1835,11 +1834,11 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String late,
+      {core.String userId,
+      core.String late,
       core.String pageToken,
       core.int pageSize,
       core.List<core.String> states,
-      core.String userId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1854,6 +1853,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
+    }
     if (late != null) {
       _queryParams["late"] = [late];
     }
@@ -1865,9 +1867,6 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (states != null) {
       _queryParams["states"] = states;
-    }
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3182,7 +3181,7 @@ class CoursesTopicsResourceApi {
   /// by specifying it in the update mask and not in the Topic object. If a
   /// field that does not support empty values is included in the update mask
   /// and
-  /// not set in the Topic object, an `INVALID_ARGUMENT` error will be
+  /// not set in the Topic object, an `INVALID_ARGUMENT` error is
   /// returned.
   ///
   /// The following fields may be specified:
@@ -3462,10 +3461,6 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [courseId] - Restricts returned invitations to those for a course with the
-  /// specified
-  /// identifier.
-  ///
   /// [userId] - Restricts returned invitations to those for a specific user.
   /// The identifier
   /// can be one of the following:
@@ -3486,6 +3481,10 @@ class InvitationsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [courseId] - Restricts returned invitations to those for a course with the
+  /// specified
+  /// identifier.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3497,10 +3496,10 @@ class InvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInvitationsResponse> list(
-      {core.String courseId,
-      core.String userId,
+      {core.String userId,
       core.String pageToken,
       core.int pageSize,
+      core.String courseId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -3509,9 +3508,6 @@ class InvitationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (courseId != null) {
-      _queryParams["courseId"] = [courseId];
-    }
     if (userId != null) {
       _queryParams["userId"] = [userId];
     }
@@ -3520,6 +3516,9 @@ class InvitationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (courseId != null) {
+      _queryParams["courseId"] = [courseId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3914,19 +3913,20 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///
   /// [pageToken] - nextPageToken
   /// value returned from a previous
-  /// list call,
-  /// indicating that the subsequent page of results should be returned.
+  /// list
+  /// call, indicating that the subsequent page of results should be returned.
   ///
-  /// The list request
-  /// must be otherwise identical to the one that resulted in this token.
+  /// The list
+  /// request must be otherwise identical to the one that resulted in this
+  /// token.
   ///
   /// [invitedEmailAddress] - If specified, only results with the specified
   /// `invited_email_address`
-  /// will be returned.
+  /// are returned.
   ///
   /// [states] - If specified, only results with the specified `state` values
-  /// will be
-  /// returned. Otherwise, results with a `state` of `PENDING` will be returned.
+  /// are
+  /// returned. Otherwise, results with a `state` of `PENDING` are returned.
   ///
   /// [pageSize] - Maximum number of items to return. Zero or unspecified
   /// indicates that the
@@ -4022,7 +4022,7 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// modified.
   ///
   /// [updateMask] - Mask that identifies which fields on the course to update.
-  /// This field is required to do an update. The update will fail if invalid
+  /// This field is required to do an update. The update fails if invalid
   /// fields are specified. The following fields are valid:
   ///
   /// * `state`
@@ -4375,7 +4375,7 @@ class Announcement {
   /// Identifiers of students with access to the announcement.
   /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
   /// If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students
-  /// specified in this field will be able to see the announcement.
+  /// specified in this field can see the announcement.
   IndividualStudentsOptions individualStudentsOptions;
 
   /// Additional materials.
@@ -4533,7 +4533,7 @@ class AssignmentSubmission {
   ///
   /// Some attachment metadata is only populated if the requesting user has
   /// permission to access it. Identifier and alternate_link fields are always
-  /// available, but others (e.g. title) may not be.
+  /// available, but others (for example, title) may not be.
   core.List<Attachment> attachments;
 
   AssignmentSubmission();
@@ -5093,7 +5093,7 @@ class CourseWork {
   /// Whether this course work item is associated with the Developer Console
   /// project making the request.
   ///
-  /// See google.classroom.Work.CreateCourseWork for more
+  /// See CreateCourseWork for more
   /// details.
   ///
   /// Read-only.
@@ -5136,7 +5136,7 @@ class CourseWork {
   /// Identifiers of students with access to the coursework.
   /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
   /// If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students
-  /// specified in this field will be assigned the coursework.
+  /// specified in this field are assigned the coursework.
   IndividualStudentsOptions individualStudentsOptions;
 
   /// Additional materials.
@@ -6450,8 +6450,8 @@ class Material {
   /// Google Forms material.
   Form form;
 
-  /// Link material. On creation, will be upgraded to a more appropriate type
-  /// if possible, and this will be reflected in the response.
+  /// Link material. On creation, this is upgraded to a more appropriate type
+  /// if possible, and this is reflected in the response.
   Link link;
 
   /// YouTube video material.
@@ -6495,7 +6495,7 @@ class Material {
 
 /// Request to modify assignee mode and options of an announcement.
 class ModifyAnnouncementAssigneesRequest {
-  /// Mode of the announcement describing whether it will be accessible by all
+  /// Mode of the announcement describing whether it is accessible by all
   /// students or specified individual students.
   /// Possible string values are:
   /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
@@ -6609,11 +6609,11 @@ class ModifyCourseWorkAssigneesRequest {
 /// Contains fields to add or remove students from a course work or announcement
 /// where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`.
 class ModifyIndividualStudentsOptions {
-  /// Ids of students to be added as having access to this
+  /// IDs of students to be added as having access to this
   /// coursework/announcement.
   core.List<core.String> addStudentIds;
 
-  /// Ids of students to be removed from having access to this
+  /// IDs of students to be removed from having access to this
   /// coursework/announcement.
   core.List<core.String> removeStudentIds;
 
@@ -6882,7 +6882,7 @@ class ShortAnswerSubmission {
 
 /// The history of each state this submission has been in.
 class StateHistory {
-  /// The teacher or student who made the change
+  /// The teacher or student who made the change.
   core.String actorUserId;
 
   /// The workflow pipeline stage.
@@ -7013,8 +7013,8 @@ class StudentSubmission {
   core.String alternateLink;
 
   /// Optional grade. If unset, no grade was set.
-  /// This value must be non-negative. Decimal (i.e. non-integer) values are
-  /// allowed, but will be rounded to two decimal places.
+  /// This value must be non-negative. Decimal (that is, non-integer) values are
+  /// allowed, but are rounded to two decimal places.
   ///
   /// This may be modified only by course teachers.
   core.double assignedGrade;
@@ -7022,13 +7022,13 @@ class StudentSubmission {
   /// Submission content when course_work_type is ASSIGNMENT.
   ///
   /// Students can modify this content using
-  /// google.classroom.Work.ModifyAttachments.
+  /// ModifyAttachments.
   AssignmentSubmission assignmentSubmission;
 
   /// Whether this student submission is associated with the Developer Console
   /// project making the request.
   ///
-  /// See google.classroom.Work.CreateCourseWork for more
+  /// See CreateCourseWork for more
   /// details.
   ///
   /// Read-only.
@@ -7062,8 +7062,8 @@ class StudentSubmission {
   core.String creationTime;
 
   /// Optional pending grade. If unset, no grade was set.
-  /// This value must be non-negative. Decimal (i.e. non-integer) values are
-  /// allowed, but will be rounded to two decimal places.
+  /// This value must be non-negative. Decimal (that is, non-integer) values are
+  /// allowed, but are rounded to two decimal places.
   ///
   /// This is only visible to and modifiable by course teachers.
   core.double draftGrade;
@@ -7384,8 +7384,8 @@ class Topic {
   core.String courseId;
 
   /// The name of the topic, generated by the user.
-  /// Leading and trailing whitespaces, if any, will be trimmed. Also, multiple
-  /// consecutive whitespaces will be collapsed into one inside the name. The
+  /// Leading and trailing whitespaces, if any, are trimmed. Also, multiple
+  /// consecutive whitespaces are collapsed into one inside the name. The
   /// result must be a non-empty string. Topic names are case sensitive, and
   /// must
   /// be no longer than 100 characters.
@@ -7480,7 +7480,7 @@ class UserProfile {
   /// Represents whether a G Suite for Education user's domain administrator has
   /// explicitly verified them as being a teacher. If the user is not a member
   /// of
-  /// a G Suite for Education domain, than this field will always be false.
+  /// a G Suite for Education domain, than this field is always false.
   ///
   /// Read-only
   core.bool verifiedTeacher;

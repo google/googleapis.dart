@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudscheduler.v1;
 
@@ -170,9 +170,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The location name. For example:
+  /// [parent] - Required. The location name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -220,9 +218,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The job name. For example:
+  /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
   ///
@@ -266,9 +262,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The job name. For example:
+  /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
   ///
@@ -312,9 +306,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The location name. For example:
+  /// [parent] - Required. The location name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -468,9 +460,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The job name. For example:
+  /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
   ///
@@ -525,9 +515,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The job name. For example:
+  /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
   ///
@@ -580,9 +568,7 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The job name. For example:
+  /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
   ///
@@ -978,9 +964,7 @@ class HttpTarget {
   /// yourself.
   OidcToken oidcToken;
 
-  /// Required.
-  ///
-  /// The full URI path that the request will be sent to. This string
+  /// Required. The full URI path that the request will be sent to. This string
   /// must begin with either "http://" or "https://". Some examples of
   /// valid values for uri are:
   /// `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will
@@ -1502,7 +1486,8 @@ class PauseJobRequest {
 /// <a href="https://cloud.google.com/pubsub/quotas">Quotas and limits</a>
 /// for more information about message limits.
 class PubsubMessage {
-  /// Optional attributes for this message.
+  /// Attributes for this message. If this field is empty, the message must
+  /// contain non-empty data.
   core.Map<core.String, core.String> attributes;
 
   /// The message data field. If this field is empty, the message must contain
@@ -1588,9 +1573,7 @@ class PubsubTarget {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Required.
-  ///
-  /// The name of the Cloud Pub/Sub topic to which messages will
+  /// Required. The name of the Cloud Pub/Sub topic to which messages will
   /// be published when a job is delivered. The topic name must be in the
   /// same format as required by PubSub's
   /// [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest),
@@ -1660,7 +1643,7 @@ class RetryConfig {
   /// A job's retry interval starts at
   /// min_backoff_duration, then doubles
   /// `max_doublings` times, then increases linearly, and finally
-  /// retries retries at intervals of
+  /// retries at intervals of
   /// max_backoff_duration up to
   /// retry_count times.
   ///

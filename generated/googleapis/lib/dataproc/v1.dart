@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.dataproc.v1;
 
@@ -62,6 +62,167 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
   ProjectsLocationsAutoscalingPoliciesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates new autoscaling policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.create, the resource name  of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.autoscalingPolicies.create, the resource name  of
+  /// the location has the following format:
+  /// projects/{project_id}/locations/{location}
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoscalingPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoscalingPolicy> create(
+      AutoscalingPolicy request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/autoscalingPolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalingPolicy.fromJson(data));
+  }
+
+  /// Deletes an autoscaling policy. It is an error to delete an autoscaling
+  /// policy that is in use by one or more clusters.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the autoscaling policy, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.delete, the resource name  of the
+  /// policy has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies.delete, the resource name  of
+  /// the policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves autoscaling policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the autoscaling policy, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.get, the resource name  of the
+  /// policy has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies.get, the resource name  of the
+  /// policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoscalingPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoscalingPolicy> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalingPolicy.fromJson(data));
+  }
+
   /// Gets the access control policy for a resource. Returns an empty policy if
   /// the resource exists and does not have a policy set.
   ///
@@ -118,8 +279,74 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
+  /// Lists autoscaling policies in the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.list, the resource name  of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.autoscalingPolicies.list, the resource name  of the
+  /// location has the following format:
+  /// projects/{project_id}/locations/{location}
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in each
+  /// response. Must be less than or equal to 1000. Defaults to 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutoscalingPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutoscalingPoliciesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/autoscalingPolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListAutoscalingPoliciesResponse.fromJson(data));
+  }
+
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -233,6 +460,65 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
     return _response
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
+
+  /// Updates (replaces) autoscaling policy.Disabled check for update_mask,
+  /// because all updates will be full replacements.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The "resource name" of the autoscaling policy, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies, the resource name of the  policy
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies, the resource name of the
+  /// policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoscalingPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoscalingPolicy> update(
+      AutoscalingPolicy request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalingPolicy.fromJson(data));
+  }
 }
 
 class ProjectsLocationsWorkflowTemplatesResourceApi {
@@ -247,9 +533,13 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The "resource name" of the region, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
-  /// projects/{project_id}/regions/{region}
+  /// [parent] - Required. The resource name of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates,create, the resource name of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.workflowTemplates.create, the resource name of  the
+  /// location has the following format:
+  /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -299,10 +589,14 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The "resource name" of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names of the
-  /// form
+  /// [name] - Required. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates.delete, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates.instantiate, the resource name
+  /// of the template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
   ///
@@ -355,16 +649,20 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The "resource name" of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names of the
-  /// form
+  /// [name] - Required. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates.get, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates.get, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
   ///
   /// [version] - Optional. The version of workflow template to retrieve. Only
-  /// previously instatiated versions can be retrieved.If unspecified, retrieves
-  /// the current version.
+  /// previously instantiated versions can be retrieved.If unspecified,
+  /// retrieves the current version.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -467,17 +765,24 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
-  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
-  /// completion, Operation.response will be Empty.
+  /// deleted.The Operation.metadata will be WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+  /// Also see Using WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+  /// successful completion, Operation.response will be Empty.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The "resource name" of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names of the
-  /// form
+  /// [name] - Required. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates.instantiate, the resource name of
+  /// the template has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates.instantiate, the resource name
+  /// of the template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
   ///
@@ -530,16 +835,24 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   /// Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
-  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
-  /// completion, Operation.response will be Empty.
+  /// deleted.The Operation.metadata will be WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+  /// Also see Using WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+  /// successful completion, Operation.response will be Empty.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The "resource name" of the workflow template region,
-  /// as described in https://cloud.google.com/apis/design/resource_names of the
-  /// form projects/{project_id}/regions/{region}
+  /// [parent] - Required. The resource name of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates,instantiateinline, the resource
+  /// name of the region has the following format:
+  /// projects/{project_id}/regions/{region}
+  /// For projects.locations.workflowTemplates.instantiateinline, the  resource
+  /// name of the location has the following format:
+  /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [requestId] - Optional. A tag that prevents multiple concurrent workflow
@@ -600,9 +913,13 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The "resource name" of the region, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
-  /// projects/{project_id}/regions/{region}
+  /// [parent] - Required. The resource name of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates,list, the resource  name of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.workflowTemplates.list, the  resource name of the
+  /// location has the following format:
+  /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [pageToken] - Optional. The page token, returned by a previous call, to
@@ -658,7 +975,8 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -780,9 +1098,14 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The "resource name" of the template, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// [name] - Output only. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
   ///
@@ -851,6 +1174,167 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
   ProjectsRegionsAutoscalingPoliciesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates new autoscaling policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.create, the resource name  of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.autoscalingPolicies.create, the resource name  of
+  /// the location has the following format:
+  /// projects/{project_id}/locations/{location}
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoscalingPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoscalingPolicy> create(
+      AutoscalingPolicy request, core.String parent,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/autoscalingPolicies';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalingPolicy.fromJson(data));
+  }
+
+  /// Deletes an autoscaling policy. It is an error to delete an autoscaling
+  /// policy that is in use by one or more clusters.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the autoscaling policy, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.delete, the resource name  of the
+  /// policy has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies.delete, the resource name  of
+  /// the policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves autoscaling policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The "resource name" of the autoscaling policy, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.get, the resource name  of the
+  /// policy has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies.get, the resource name  of the
+  /// policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoscalingPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoscalingPolicy> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalingPolicy.fromJson(data));
+  }
+
   /// Gets the access control policy for a resource. Returns an empty policy if
   /// the resource exists and does not have a policy set.
   ///
@@ -907,8 +1391,74 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
+  /// Lists autoscaling policies in the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The "resource name" of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies.list, the resource name  of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.autoscalingPolicies.list, the resource name  of the
+  /// location has the following format:
+  /// projects/{project_id}/locations/{location}
+  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  ///
+  /// [pageToken] - Optional. The page token, returned by a previous call, to
+  /// request the next page of results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in each
+  /// response. Must be less than or equal to 1000. Defaults to 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutoscalingPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutoscalingPoliciesResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/autoscalingPolicies';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListAutoscalingPoliciesResponse.fromJson(data));
+  }
+
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -1022,6 +1572,65 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
     return _response
         .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
+
+  /// Updates (replaces) autoscaling policy.Disabled check for update_mask,
+  /// because all updates will be full replacements.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The "resource name" of the autoscaling policy, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies, the resource name of the  policy
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies, the resource name of the
+  /// policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  /// Value must have pattern
+  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutoscalingPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutoscalingPolicy> update(
+      AutoscalingPolicy request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AutoscalingPolicy.fromJson(data));
+  }
 }
 
 class ProjectsRegionsClustersResourceApi {
@@ -1030,7 +1639,9 @@ class ProjectsRegionsClustersResourceApi {
   ProjectsRegionsClustersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a cluster in a project.
+  /// Creates a cluster in a project. The returned Operation.metadata will be
+  /// ClusterOperationMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1039,8 +1650,7 @@ class ProjectsRegionsClustersResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two CreateClusterRequest requests with the same id, then
@@ -1102,15 +1712,16 @@ class ProjectsRegionsClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Deletes a cluster in a project.
+  /// Deletes a cluster in a project. The returned Operation.metadata will be
+  /// ClusterOperationMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   ///
   /// Request parameters:
   ///
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -1181,8 +1792,12 @@ class ProjectsRegionsClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Gets cluster diagnostic information. After the operation completes, the
-  /// Operation.response field contains DiagnoseClusterOutputLocation.
+  /// Gets cluster diagnostic information. The returned Operation.metadata will
+  /// be ClusterOperationMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+  /// After the operation completes, Operation.response contains
+  /// DiagnoseClusterResults
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1191,8 +1806,7 @@ class ProjectsRegionsClustersResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -1256,8 +1870,7 @@ class ProjectsRegionsClustersResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
   ///
@@ -1365,19 +1978,14 @@ class ProjectsRegionsClustersResourceApi {
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /// Lists all regions/{region}/clusters in a project.
+  /// Lists all regions/{region}/clusters in a project alphabetically.
   ///
   /// Request parameters:
   ///
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the cluster belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
-  ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
-  /// [pageSize] - Optional. The standard List page size.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
@@ -1391,6 +1999,10 @@ class ProjectsRegionsClustersResourceApi {
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
   ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
+  /// [pageSize] - Optional. The standard List page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1403,9 +2015,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1420,14 +2032,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1448,7 +2060,9 @@ class ProjectsRegionsClustersResourceApi {
     return _response.then((data) => new ListClustersResponse.fromJson(data));
   }
 
-  /// Updates a cluster in a project.
+  /// Updates a cluster in a project. The returned Operation.metadata will be
+  /// ClusterOperationMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1457,18 +2071,9 @@ class ProjectsRegionsClustersResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project the
   /// cluster belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [clusterName] - Required. The cluster name.
-  ///
-  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
-  /// decomissioning. Graceful decommissioning allows removing nodes from the
-  /// cluster without interrupting jobs in progress. Timeout specifies how long
-  /// to wait for jobs in progress to finish before forcefully removing nodes
-  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
-  /// decommission), and the maximum allowed timeout is 1 day.Only supported on
-  /// Dataproc image versions 1.2 and higher.
   ///
   /// [requestId] - Optional. A unique id used to identify the request. If the
   /// server receives two UpdateClusterRequest requests with the same id, then
@@ -1510,7 +2115,19 @@ class ProjectsRegionsClustersResourceApi {
   /// <td><strong><em>config.worker_config.num_instances</em></strong></td>
   /// <td>Resize primary worker group</td>  </tr>  <tr>
   /// <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>
-  /// <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
+  /// <td>Resize secondary worker group</td>  </tr>  <tr>
+  /// <td>config.autoscaling_config.policy_uri</td><td>Use, stop using, or
+  /// change autoscaling policies</td>  </tr>  </tbody>  </table>
+  ///
+  /// [gracefulDecommissionTimeout] - Optional. Timeout for graceful YARN
+  /// decomissioning. Graceful decommissioning allows removing nodes from the
+  /// cluster without interrupting jobs in progress. Timeout specifies how long
+  /// to wait for jobs in progress to finish before forcefully removing nodes
+  /// (and potentially interrupting jobs). Default timeout is 0 (for forceful
+  /// decommission), and the maximum allowed timeout is 1 day. (see JSON
+  /// representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only
+  /// supported on Dataproc image versions 1.2 and higher.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1524,9 +2141,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Cluster request, core.String projectId,
       core.String region, core.String clusterName,
-      {core.String gracefulDecommissionTimeout,
-      core.String requestId,
+      {core.String requestId,
       core.String updateMask,
+      core.String gracefulDecommissionTimeout,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1547,16 +2164,16 @@ class ProjectsRegionsClustersResourceApi {
     if (clusterName == null) {
       throw new core.ArgumentError("Parameter clusterName is required.");
     }
-    if (gracefulDecommissionTimeout != null) {
-      _queryParams["gracefulDecommissionTimeout"] = [
-        gracefulDecommissionTimeout
-      ];
-    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if (gracefulDecommissionTimeout != null) {
+      _queryParams["gracefulDecommissionTimeout"] = [
+        gracefulDecommissionTimeout
+      ];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1579,7 +2196,8 @@ class ProjectsRegionsClustersResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -1700,8 +2318,10 @@ class ProjectsRegionsJobsResourceApi {
       : _requester = client;
 
   /// Starts a job cancellation request. To access the job resource after
-  /// cancellation, call regions/{region}/jobs.list or
-  /// regions/{region}/jobs.get.
+  /// cancellation, call regions/{region}/jobs.list
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list)
+  /// or regions/{region}/jobs.get
+  /// (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1710,8 +2330,7 @@ class ProjectsRegionsJobsResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the job belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [jobId] - Required. The job ID.
   ///
@@ -1776,8 +2395,7 @@ class ProjectsRegionsJobsResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the job belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [jobId] - Required. The job ID.
   ///
@@ -1837,8 +2455,7 @@ class ProjectsRegionsJobsResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the job belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [jobId] - Required. The job ID.
   ///
@@ -1953,8 +2570,9 @@ class ProjectsRegionsJobsResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the job belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
+  ///
+  /// [pageSize] - Optional. The number of results to return in each response.
   ///
   /// [clusterName] - Optional. If set, the returned jobs list includes only
   /// jobs that were submitted to the named cluster.
@@ -1979,8 +2597,6 @@ class ProjectsRegionsJobsResourceApi {
   /// [pageToken] - Optional. The page token, returned by a previous call, to
   /// request the next page of results.
   ///
-  /// [pageSize] - Optional. The number of results to return in each response.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1992,11 +2608,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String clusterName,
+      {core.int pageSize,
+      core.String clusterName,
       core.String filter,
       core.String jobStateMatcher,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2011,6 +2627,9 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (clusterName != null) {
       _queryParams["clusterName"] = [clusterName];
     }
@@ -2022,9 +2641,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2054,8 +2670,7 @@ class ProjectsRegionsJobsResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the job belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [jobId] - Required. The job ID.
   ///
@@ -2122,7 +2737,8 @@ class ProjectsRegionsJobsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -2185,8 +2801,7 @@ class ProjectsRegionsJobsResourceApi {
   /// [projectId] - Required. The ID of the Google Cloud Platform project that
   /// the job belongs to.
   ///
-  /// [region] - Required. The Cloud Dataproc region in which to handle the
-  /// request.
+  /// [region] - Required. The Dataproc region in which to handle the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2234,6 +2849,65 @@ class ProjectsRegionsJobsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Job.fromJson(data));
+  }
+
+  /// Submits job to a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. The ID of the Google Cloud Platform project that
+  /// the job belongs to.
+  ///
+  /// [region] - Required. The Dataproc region in which to handle the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> submitAsOperation(
+      SubmitJobRequest request, core.String projectId, core.String region,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/jobs:submitAsOperation';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -2570,7 +3244,8 @@ class ProjectsRegionsOperationsResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -2696,9 +3371,13 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The "resource name" of the region, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
-  /// projects/{project_id}/regions/{region}
+  /// [parent] - Required. The resource name of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates,create, the resource name of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.workflowTemplates.create, the resource name of  the
+  /// location has the following format:
+  /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2748,10 +3427,14 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The "resource name" of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names of the
-  /// form
+  /// [name] - Required. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates.delete, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates.instantiate, the resource name
+  /// of the template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
   ///
@@ -2804,16 +3487,20 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The "resource name" of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names of the
-  /// form
+  /// [name] - Required. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates.get, the resource name of the
+  /// template has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates.get, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
   ///
   /// [version] - Optional. The version of workflow template to retrieve. Only
-  /// previously instatiated versions can be retrieved.If unspecified, retrieves
-  /// the current version.
+  /// previously instantiated versions can be retrieved.If unspecified,
+  /// retrieves the current version.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2916,17 +3603,24 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
-  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
-  /// completion, Operation.response will be Empty.
+  /// deleted.The Operation.metadata will be WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+  /// Also see Using WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+  /// successful completion, Operation.response will be Empty.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The "resource name" of the workflow template, as
-  /// described in https://cloud.google.com/apis/design/resource_names of the
-  /// form
+  /// [name] - Required. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates.instantiate, the resource name of
+  /// the template has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates.instantiate, the resource name
+  /// of the template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
   ///
@@ -2979,16 +3673,24 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   /// Operation will complete when entire workflow is finished.The running
   /// workflow can be aborted via operations.cancel. This will cause any
   /// inflight jobs to be cancelled and workflow-owned clusters to be
-  /// deleted.The Operation.metadata will be WorkflowMetadata.On successful
-  /// completion, Operation.response will be Empty.
+  /// deleted.The Operation.metadata will be WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata).
+  /// Also see Using WorkflowMetadata
+  /// (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+  /// successful completion, Operation.response will be Empty.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The "resource name" of the workflow template region,
-  /// as described in https://cloud.google.com/apis/design/resource_names of the
-  /// form projects/{project_id}/regions/{region}
+  /// [parent] - Required. The resource name of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates,instantiateinline, the resource
+  /// name of the region has the following format:
+  /// projects/{project_id}/regions/{region}
+  /// For projects.locations.workflowTemplates.instantiateinline, the  resource
+  /// name of the location has the following format:
+  /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
   ///
   /// [requestId] - Optional. A tag that prevents multiple concurrent workflow
@@ -3049,9 +3751,13 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The "resource name" of the region, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
-  /// projects/{project_id}/regions/{region}
+  /// [parent] - Required. The resource name of the region or location, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates,list, the resource  name of the
+  /// region has the following format:  projects/{project_id}/regions/{region}
+  /// For projects.locations.workflowTemplates.list, the  resource name of the
+  /// location has the following format:
+  /// projects/{project_id}/locations/{location}
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
   ///
   /// [pageToken] - Optional. The page token, returned by a previous call, to
@@ -3107,7 +3813,8 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
-  /// existing policy.
+  /// existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -3229,9 +3936,14 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The "resource name" of the template, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// [name] - Output only. The resource name of the workflow template, as
+  /// described in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
   /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
   ///
@@ -3278,18 +3990,22 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
 }
 
 /// Specifies the type and number of accelerator cards attached to the instances
-/// of an instance. See GPUs on Compute Engine.
+/// of an instance. See GPUs on Compute Engine
+/// (https://cloud.google.com/compute/docs/gpus/).
 class AcceleratorConfig {
   /// The number of the accelerator cards of this type exposed to this instance.
   core.int acceleratorCount;
 
   /// Full URL, partial URI, or short name of the accelerator type resource to
-  /// expose to this instance. See Compute Engine AcceleratorTypes.Examples:
+  /// expose to this instance. See Compute Engine AcceleratorTypes
+  /// (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
   /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
   /// projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-  /// nvidia-tesla-k80Auto Zone Exception: If you are using the Cloud Dataproc
-  /// Auto Zone Placement feature, you must use the short name of the
-  /// accelerator type resource, for example, nvidia-tesla-k80.
+  /// nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto
+  /// Zone Placement
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+  /// feature, you must use the short name of the accelerator type resource, for
+  /// example, nvidia-tesla-k80.
   core.String acceleratorTypeUri;
 
   AcceleratorConfig();
@@ -3316,6 +4032,218 @@ class AcceleratorConfig {
   }
 }
 
+/// Autoscaling Policy config associated with the cluster.
+class AutoscalingConfig {
+  /// Optional. The autoscaling policy used by the cluster.Only resource names
+  /// including projectid and location (region) are valid. Examples:
+  /// https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]
+  /// projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note
+  /// that the policy must be in the same project and Dataproc region.
+  core.String policyUri;
+
+  AutoscalingConfig();
+
+  AutoscalingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("policyUri")) {
+      policyUri = _json["policyUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (policyUri != null) {
+      _json["policyUri"] = policyUri;
+    }
+    return _json;
+  }
+}
+
+/// Describes an autoscaling policy for Dataproc cluster autoscaler.
+class AutoscalingPolicy {
+  BasicAutoscalingAlgorithm basicAlgorithm;
+
+  /// Required. The policy id.The id must contain only letters (a-z, A-Z),
+  /// numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with
+  /// underscore or hyphen. Must consist of between 3 and 50 characters.
+  core.String id;
+
+  /// Output only. The "resource name" of the autoscaling policy, as described
+  /// in https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.autoscalingPolicies, the resource name of the  policy
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id}
+  /// For projects.locations.autoscalingPolicies, the resource name of the
+  /// policy has the following format:
+  /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+  core.String name;
+
+  /// Optional. Describes how the autoscaler will operate for secondary workers.
+  InstanceGroupAutoscalingPolicyConfig secondaryWorkerConfig;
+
+  /// Required. Describes how the autoscaler will operate for primary workers.
+  InstanceGroupAutoscalingPolicyConfig workerConfig;
+
+  AutoscalingPolicy();
+
+  AutoscalingPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("basicAlgorithm")) {
+      basicAlgorithm =
+          new BasicAutoscalingAlgorithm.fromJson(_json["basicAlgorithm"]);
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("secondaryWorkerConfig")) {
+      secondaryWorkerConfig = new InstanceGroupAutoscalingPolicyConfig.fromJson(
+          _json["secondaryWorkerConfig"]);
+    }
+    if (_json.containsKey("workerConfig")) {
+      workerConfig = new InstanceGroupAutoscalingPolicyConfig.fromJson(
+          _json["workerConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (basicAlgorithm != null) {
+      _json["basicAlgorithm"] = (basicAlgorithm).toJson();
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (secondaryWorkerConfig != null) {
+      _json["secondaryWorkerConfig"] = (secondaryWorkerConfig).toJson();
+    }
+    if (workerConfig != null) {
+      _json["workerConfig"] = (workerConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Basic algorithm for autoscaling.
+class BasicAutoscalingAlgorithm {
+  /// Optional. Duration between scaling events. A scaling period starts after
+  /// the update operation from the previous event has completed.Bounds: 2m, 1d.
+  /// Default: 2m.
+  core.String cooldownPeriod;
+
+  /// Required. YARN autoscaling configuration.
+  BasicYarnAutoscalingConfig yarnConfig;
+
+  BasicAutoscalingAlgorithm();
+
+  BasicAutoscalingAlgorithm.fromJson(core.Map _json) {
+    if (_json.containsKey("cooldownPeriod")) {
+      cooldownPeriod = _json["cooldownPeriod"];
+    }
+    if (_json.containsKey("yarnConfig")) {
+      yarnConfig = new BasicYarnAutoscalingConfig.fromJson(_json["yarnConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cooldownPeriod != null) {
+      _json["cooldownPeriod"] = cooldownPeriod;
+    }
+    if (yarnConfig != null) {
+      _json["yarnConfig"] = (yarnConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Basic autoscaling configurations for YARN.
+class BasicYarnAutoscalingConfig {
+  /// Required. Timeout for YARN graceful decommissioning of Node Managers.
+  /// Specifies the duration to wait for jobs to complete before forcefully
+  /// removing workers (and potentially interrupting jobs). Only applicable to
+  /// downscaling operations.Bounds: 0s, 1d.
+  core.String gracefulDecommissionTimeout;
+
+  /// Required. Fraction of average pending memory in the last cooldown period
+  /// for which to remove workers. A scale-down factor of 1 will result in
+  /// scaling down so that there is no available memory remaining after the
+  /// update (more aggressive scaling). A scale-down factor of 0 disables
+  /// removing workers, which can be beneficial for autoscaling a single
+  /// job.Bounds: 0.0, 1.0.
+  core.double scaleDownFactor;
+
+  /// Optional. Minimum scale-down threshold as a fraction of total cluster size
+  /// before scaling occurs. For example, in a 20-worker cluster, a threshold of
+  /// 0.1 means the autoscaler must recommend at least a 2 worker scale-down for
+  /// the cluster to scale. A threshold of 0 means the autoscaler will scale
+  /// down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  core.double scaleDownMinWorkerFraction;
+
+  /// Required. Fraction of average pending memory in the last cooldown period
+  /// for which to add workers. A scale-up factor of 1.0 will result in scaling
+  /// up so that there is no pending memory remaining after the update (more
+  /// aggressive scaling). A scale-up factor closer to 0 will result in a
+  /// smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0,
+  /// 1.0.
+  core.double scaleUpFactor;
+
+  /// Optional. Minimum scale-up threshold as a fraction of total cluster size
+  /// before scaling occurs. For example, in a 20-worker cluster, a threshold of
+  /// 0.1 means the autoscaler must recommend at least a 2-worker scale-up for
+  /// the cluster to scale. A threshold of 0 means the autoscaler will scale up
+  /// on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
+  core.double scaleUpMinWorkerFraction;
+
+  BasicYarnAutoscalingConfig();
+
+  BasicYarnAutoscalingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("gracefulDecommissionTimeout")) {
+      gracefulDecommissionTimeout = _json["gracefulDecommissionTimeout"];
+    }
+    if (_json.containsKey("scaleDownFactor")) {
+      scaleDownFactor = _json["scaleDownFactor"].toDouble();
+    }
+    if (_json.containsKey("scaleDownMinWorkerFraction")) {
+      scaleDownMinWorkerFraction =
+          _json["scaleDownMinWorkerFraction"].toDouble();
+    }
+    if (_json.containsKey("scaleUpFactor")) {
+      scaleUpFactor = _json["scaleUpFactor"].toDouble();
+    }
+    if (_json.containsKey("scaleUpMinWorkerFraction")) {
+      scaleUpMinWorkerFraction = _json["scaleUpMinWorkerFraction"].toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (gracefulDecommissionTimeout != null) {
+      _json["gracefulDecommissionTimeout"] = gracefulDecommissionTimeout;
+    }
+    if (scaleDownFactor != null) {
+      _json["scaleDownFactor"] = scaleDownFactor;
+    }
+    if (scaleDownMinWorkerFraction != null) {
+      _json["scaleDownMinWorkerFraction"] = scaleDownMinWorkerFraction;
+    }
+    if (scaleUpFactor != null) {
+      _json["scaleUpFactor"] = scaleUpFactor;
+    }
+    if (scaleUpMinWorkerFraction != null) {
+      _json["scaleUpMinWorkerFraction"] = scaleUpMinWorkerFraction;
+    }
+    return _json;
+  }
+}
+
 /// Associates members with a role.
 class Binding {
   /// The condition that is associated with this binding. NOTE: An unsatisfied
@@ -3330,11 +4258,28 @@ class Binding {
   /// allAuthenticatedUsers: A special identifier that represents anyone  who is
   /// authenticated with a Google account or a service account.
   /// user:{emailid}: An email address that represents a specific Google
-  /// account. For example, alice@gmail.com .
+  /// account. For example, alice@example.com .
   /// serviceAccount:{emailid}: An email address that represents a service
   /// account. For example, my-other-app@appspot.gserviceaccount.com.
   /// group:{emailid}: An email address that represents a Google group.  For
   /// example, admins@example.com.
+  /// deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, alice@example.com?uid=123456789012345678901. If the user is
+  /// recovered, this value reverts to user:{emailid} and the recovered user
+  /// retains the role in the binding.
+  /// deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
+  /// my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901.  If
+  /// the service account is undeleted, this value reverts to
+  /// serviceAccount:{emailid} and the undeleted service account retains the
+  /// role in the binding.
+  /// deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique
+  /// identifier) representing a Google group that has been recently  deleted.
+  /// For example, admins@example.com?uid=123456789012345678901. If  the group
+  /// is recovered, this value reverts to group:{emailid} and the  recovered
+  /// group retains the role in the binding.
   /// domain:{domain}: The G Suite domain (primary) that represents all the
   /// users of that domain. For example, google.com or example.com.
   core.List<core.String> members;
@@ -3393,12 +4338,12 @@ class Cluster {
   /// Names of deleted clusters can be reused.
   core.String clusterName;
 
-  /// Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc
+  /// Output only. A cluster UUID (Unique Universal Identifier). Dataproc
   /// generates this value when it creates the cluster.
   core.String clusterUuid;
 
-  /// Required. The cluster config. Note that Cloud Dataproc may set default
-  /// values, and values may change when clusters are updated.
+  /// Required. The cluster config. Note that Dataproc may set default values,
+  /// and values may change when clusters are updated.
   ClusterConfig config;
 
   /// Optional. The labels to associate with this cluster. Label keys must
@@ -3409,9 +4354,9 @@ class Cluster {
   /// associated with a cluster.
   core.Map<core.String, core.String> labels;
 
-  /// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature:
-  /// This report is available for testing purposes only. It may be changed
-  /// before final release.
+  /// Output only. Contains cluster daemon metrics such as HDFS and YARN
+  /// stats.Beta Feature: This report is available for testing purposes only. It
+  /// may be changed before final release.
   ClusterMetrics metrics;
 
   /// Required. The Google Cloud Platform project ID that the cluster belongs
@@ -3489,13 +4434,17 @@ class Cluster {
 
 /// The cluster config.
 class ClusterConfig {
-  /// Optional. A Google Cloud Storage bucket used to stage job dependencies,
-  /// config files, and job driver console output. If you do not specify a
-  /// staging bucket, Cloud Dataproc will determine a Cloud Storage location
-  /// (US, ASIA, or EU) for your cluster's staging bucket according to the
-  /// Google Compute Engine zone where your cluster is deployed, and then create
-  /// and manage this project-level, per-location bucket (see Cloud Dataproc
-  /// staging bucket).
+  /// Optional. Autoscaling config for the policy associated with the cluster.
+  /// Cluster does not autoscale if this field is unset.
+  AutoscalingConfig autoscalingConfig;
+
+  /// Optional. A Cloud Storage bucket used to stage job dependencies, config
+  /// files, and job driver console output. If you do not specify a staging
+  /// bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA,
+  /// or EU) for your cluster's staging bucket according to the Compute Engine
+  /// zone where your cluster is deployed, and then create and manage this
+  /// project-level, per-location bucket (see Dataproc staging bucket
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
   core.String configBucket;
 
   /// Optional. Encryption settings for the cluster.
@@ -3518,6 +4467,9 @@ class ClusterConfig {
   /// fi
   core.List<NodeInitializationAction> initializationActions;
 
+  /// Optional. Lifecycle setting for the cluster.
+  LifecycleConfig lifecycleConfig;
+
   /// Optional. The Compute Engine config settings for the master instance in a
   /// cluster.
   InstanceGroupConfig masterConfig;
@@ -3539,6 +4491,10 @@ class ClusterConfig {
   ClusterConfig();
 
   ClusterConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("autoscalingConfig")) {
+      autoscalingConfig =
+          new AutoscalingConfig.fromJson(_json["autoscalingConfig"]);
+    }
     if (_json.containsKey("configBucket")) {
       configBucket = _json["configBucket"];
     }
@@ -3555,6 +4511,9 @@ class ClusterConfig {
           .map<NodeInitializationAction>(
               (value) => new NodeInitializationAction.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("lifecycleConfig")) {
+      lifecycleConfig = new LifecycleConfig.fromJson(_json["lifecycleConfig"]);
     }
     if (_json.containsKey("masterConfig")) {
       masterConfig = new InstanceGroupConfig.fromJson(_json["masterConfig"]);
@@ -3577,6 +4536,9 @@ class ClusterConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoscalingConfig != null) {
+      _json["autoscalingConfig"] = (autoscalingConfig).toJson();
+    }
     if (configBucket != null) {
       _json["configBucket"] = configBucket;
     }
@@ -3589,6 +4551,9 @@ class ClusterConfig {
     if (initializationActions != null) {
       _json["initializationActions"] =
           initializationActions.map((value) => (value).toJson()).toList();
+    }
+    if (lifecycleConfig != null) {
+      _json["lifecycleConfig"] = (lifecycleConfig).toJson();
     }
     if (masterConfig != null) {
       _json["masterConfig"] = (masterConfig).toJson();
@@ -3868,7 +4833,7 @@ class ClusterSelector {
 
 /// The status of a cluster and its instances.
 class ClusterStatus {
-  /// Output only. Optional details of cluster's state.
+  /// Optional. Output only. Details of cluster's state.
   core.String detail;
 
   /// Output only. The cluster's state.
@@ -3884,7 +4849,9 @@ class ClusterStatus {
   /// process jobs.
   core.String state;
 
-  /// Output only. Time when this state was entered.
+  /// Output only. Time when this state was entered (see JSON representation of
+  /// Timestamp
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   core.String stateStartTime;
 
   /// Output only. Additional state information that includes status reported by
@@ -3895,7 +4862,7 @@ class ClusterStatus {
   /// example, critical daemons are not running or HDFS capacity is
   /// exhausted).Applies to RUNNING state.
   /// - "STALE_STATUS" : The agent-reported status is out of date (may occur if
-  /// Cloud Dataproc loses communication with Agent).Applies to RUNNING state.
+  /// Dataproc loses communication with Agent).Applies to RUNNING state.
   core.String substate;
 
   ClusterStatus();
@@ -4061,25 +5028,41 @@ class EncryptionConfig {
   }
 }
 
-/// Represents an expression text. Example:
-/// title: "User account presence"
-/// description: "Determines whether the request has a user account"
-/// expression: "size(request.user) > 0"
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.Example (Comparison):
+/// title: "Summary size limit"
+/// description: "Determines if a summary is less than 100 chars"
+/// expression: "document.summary.size() < 100"
+/// Example (Equality):
+/// title: "Requestor is owner"
+/// description: "Determines if requestor is the document owner"
+/// expression: "document.owner == request.auth.claims.email"
+/// Example (Logic):
+/// title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation):
+/// title: "Notification string"
+/// description: "Create a notification string with a timestamp."
+/// expression: "'New message received at ' + string(document.create_time)"
+/// The exact variables and functions that may be referenced within an
+/// expression are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
   /// Textual representation of an expression in Common Expression Language
-  /// syntax.The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing its
+  /// Optional. Title for the expression, i.e. a short string describing its
   /// purpose. This can be used e.g. in UIs which allow to enter the expression.
   core.String title;
 
@@ -4139,21 +5122,25 @@ class GceClusterConfig {
   /// communications. Cannot be specified with subnetwork_uri. If neither
   /// network_uri nor subnetwork_uri is specified, the "default" network of the
   /// project is used, if it exists. Cannot be a "Custom Subnet Network" (see
-  /// Using Subnetworks for more information).A full URL, partial URI, or short
-  /// name are valid. Examples:
+  /// Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for
+  /// more information).A full URL, partial URI, or short name are valid.
+  /// Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
   /// projects/[project_id]/regions/global/default
   /// default
   core.String networkUri;
 
-  /// Optional. The service account of the instances. Defaults to the default
-  /// Compute Engine service account. Custom service accounts need permissions
-  /// equivalent to the following IAM roles:
-  /// roles/logging.logWriter
-  /// roles/storage.objectAdmin(see
-  /// https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts
-  /// for more information). Example:
-  /// [account_id]@[project_id].iam.gserviceaccount.com
+  /// Optional. Reservation Affinity for consuming Zonal reservation.
+  ReservationAffinity reservationAffinity;
+
+  /// Optional. The Dataproc service account
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc)
+  /// (also see VM Data Plane identity
+  /// (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity))
+  /// used by Dataproc cluster VM instances to access Google Cloud Platform
+  /// services.If not specified, the Compute Engine default service account
+  /// (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account)
+  /// is used.
   core.String serviceAccount;
 
   /// Optional. The URIs of service account scopes to be included in Compute
@@ -4176,12 +5163,13 @@ class GceClusterConfig {
   /// sub0
   core.String subnetworkUri;
 
-  /// The Compute Engine tags to add to all instances (see Tagging instances).
+  /// The Compute Engine tags to add to all instances (see Tagging instances
+  /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   core.List<core.String> tags;
 
   /// Optional. The zone where the Compute Engine cluster will be located. On a
   /// create request, it is required in the "global" region. If omitted in a
-  /// non-global Cloud Dataproc region, the service will pick a zone in the
+  /// non-global Dataproc region, the service will pick a zone in the
   /// corresponding Compute Engine region. On a get request, zone will always be
   /// present.A full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
@@ -4201,6 +5189,10 @@ class GceClusterConfig {
     }
     if (_json.containsKey("networkUri")) {
       networkUri = _json["networkUri"];
+    }
+    if (_json.containsKey("reservationAffinity")) {
+      reservationAffinity =
+          new ReservationAffinity.fromJson(_json["reservationAffinity"]);
     }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
@@ -4232,6 +5224,9 @@ class GceClusterConfig {
     if (networkUri != null) {
       _json["networkUri"] = networkUri;
     }
+    if (reservationAffinity != null) {
+      _json["reservationAffinity"] = (reservationAffinity).toJson();
+    }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
     }
@@ -4253,18 +5248,56 @@ class GceClusterConfig {
 
 /// Request message for GetIamPolicy method.
 class GetIamPolicyRequest {
+  /// OPTIONAL: A GetPolicyOptions object for specifying options to
+  /// GetIamPolicy. This field is only used by Cloud IAM.
+  GetPolicyOptions options;
+
   GetIamPolicyRequest();
 
-  GetIamPolicyRequest.fromJson(core.Map _json) {}
+  GetIamPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("options")) {
+      options = new GetPolicyOptions.fromJson(_json["options"]);
+    }
+  }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (options != null) {
+      _json["options"] = (options).toJson();
+    }
     return _json;
   }
 }
 
-/// A Cloud Dataproc job for running Apache Hadoop MapReduce
+/// Encapsulates settings provided to GetIamPolicy.
+class GetPolicyOptions {
+  /// Optional. The policy format version to be returned.Valid values are 0, 1,
+  /// and 3. Requests specifying an invalid value will be rejected.Requests for
+  /// policies with any conditional bindings must specify version 3. Policies
+  /// without any conditional bindings may specify any valid value or leave the
+  /// field unset.
+  core.int requestedPolicyVersion;
+
+  GetPolicyOptions();
+
+  GetPolicyOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("requestedPolicyVersion")) {
+      requestedPolicyVersion = _json["requestedPolicyVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (requestedPolicyVersion != null) {
+      _json["requestedPolicyVersion"] = requestedPolicyVersion;
+    }
+    return _json;
+  }
+}
+
+/// A Dataproc job for running Apache Hadoop MapReduce
 /// (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
 /// jobs on Apache Hadoop YARN
 /// (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
@@ -4302,7 +5335,7 @@ class HadoopJob {
   core.String mainJarFileUri;
 
   /// Optional. A mapping of property names to values, used to configure Hadoop.
-  /// Properties that conflict with values set by the Cloud Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site and
   /// classes in user code.
   core.Map<core.String, core.String> properties;
@@ -4368,8 +5401,8 @@ class HadoopJob {
   }
 }
 
-/// A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
-/// queries on YARN.
+/// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on
+/// YARN.
 class HiveJob {
   /// Optional. Whether to continue executing queries if a query fails. The
   /// default value is false. Setting to true can be useful when executing
@@ -4381,7 +5414,7 @@ class HiveJob {
   core.List<core.String> jarFileUris;
 
   /// Optional. A mapping of property names and values, used to configure Hive.
-  /// Properties that conflict with values set by the Cloud Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
   /// /etc/hive/conf/hive-site.xml, and classes in user code.
   core.Map<core.String, core.String> properties;
@@ -4446,26 +5479,95 @@ class HiveJob {
   }
 }
 
-/// Optional. The config settings for Compute Engine resources in an instance
-/// group, such as a master or worker group.
+/// Configuration for the size bounds of an instance group, including its
+/// proportional size to other groups.
+class InstanceGroupAutoscalingPolicyConfig {
+  /// Required. Maximum number of instances for this group. Required for primary
+  /// workers. Note that by default, clusters will not use secondary workers.
+  /// Required for secondary workers if the minimum secondary instances is
+  /// set.Primary workers - Bounds: [min_instances, ). Secondary workers -
+  /// Bounds: [min_instances, ). Default: 0.
+  core.int maxInstances;
+
+  /// Optional. Minimum number of instances for this group.Primary workers -
+  /// Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0,
+  /// max_instances. Default: 0.
+  core.int minInstances;
+
+  /// Optional. Weight for the instance group, which is used to determine the
+  /// fraction of total workers in the cluster from this instance group. For
+  /// example, if primary workers have weight 2, and secondary workers have
+  /// weight 1, the cluster will have approximately 2 primary workers for each
+  /// secondary worker.The cluster may not reach the specified balance if
+  /// constrained by min/max bounds or other autoscaling settings. For example,
+  /// if max_instances for secondary workers is 0, then only primary workers
+  /// will be added. The cluster can also be out of balance when created.If
+  /// weight is not set on any instance group, the cluster will default to equal
+  /// weight for all groups: the cluster will attempt to maintain an equal
+  /// number of workers in each group within the configured size bounds for each
+  /// group. If weight is set for one group only, the cluster will default to
+  /// zero weight on the unset group. For example if weight is set only on
+  /// primary workers, the cluster will use primary workers only and no
+  /// secondary workers.
+  core.int weight;
+
+  InstanceGroupAutoscalingPolicyConfig();
+
+  InstanceGroupAutoscalingPolicyConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("maxInstances")) {
+      maxInstances = _json["maxInstances"];
+    }
+    if (_json.containsKey("minInstances")) {
+      minInstances = _json["minInstances"];
+    }
+    if (_json.containsKey("weight")) {
+      weight = _json["weight"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxInstances != null) {
+      _json["maxInstances"] = maxInstances;
+    }
+    if (minInstances != null) {
+      _json["minInstances"] = minInstances;
+    }
+    if (weight != null) {
+      _json["weight"] = weight;
+    }
+    return _json;
+  }
+}
+
+/// The config settings for Compute Engine resources in an instance group, such
+/// as a master or worker group.
 class InstanceGroupConfig {
   /// Optional. The Compute Engine accelerator configuration for these
-  /// instances.Beta Feature: This feature is still under development. It may be
-  /// changed before final release.
+  /// instances.
   core.List<AcceleratorConfig> accelerators;
 
   /// Optional. Disk option config settings.
   DiskConfig diskConfig;
 
-  /// Optional. The Compute Engine image resource used for cluster instances. It
-  /// can be specified or may be inferred from SoftwareConfig.image_version.
+  /// Optional. The Compute Engine image resource used for cluster instances.The
+  /// URI can represent an image or image family.Image examples:
+  /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
+  /// projects/[project_id]/global/images/[image-id]
+  /// image-idImage family examples. Dataproc will use the most recent image
+  /// from the family:
+  /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]
+  /// projects/[project_id]/global/images/family/[custom-image-family-name]If
+  /// the URI is unspecified, it will be inferred from
+  /// SoftwareConfig.image_version or the system default.
   core.String imageUri;
 
-  /// Output only. The list of instance names. Cloud Dataproc derives the names
-  /// from cluster_name, num_instances, and the instance group.
+  /// Output only. The list of instance names. Dataproc derives the names from
+  /// cluster_name, num_instances, and the instance group.
   core.List<core.String> instanceNames;
 
-  /// Optional. Specifies that this instance group contains preemptible
+  /// Output only. Specifies that this instance group contains preemptible
   /// instances.
   core.bool isPreemptible;
 
@@ -4473,18 +5575,38 @@ class InstanceGroupConfig {
   /// full URL, partial URI, or short name are valid. Examples:
   /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
   /// projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
-  /// n1-standard-2Auto Zone Exception: If you are using the Cloud Dataproc Auto
-  /// Zone Placement feature, you must use the short name of the machine type
-  /// resource, for example, n1-standard-2.
+  /// n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
+  /// Placement
+  /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
+  /// feature, you must use the short name of the machine type resource, for
+  /// example, n1-standard-2.
   core.String machineTypeUri;
 
   /// Output only. The config for Compute Engine Instance Group Manager that
   /// manages this group. This is only used for preemptible instance groups.
   ManagedGroupConfig managedGroupConfig;
 
+  /// Optional. Specifies the minimum cpu platform for the Instance Group. See
+  /// Dataproc -&gt; Minimum CPU Platform
+  /// (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+  core.String minCpuPlatform;
+
   /// Optional. The number of VM instances in the instance group. For master
   /// instance groups, must be set to 1.
   core.int numInstances;
+
+  /// Optional. Specifies the preemptibility of the instance group.The default
+  /// value for master and worker groups is NON_PREEMPTIBLE. This default cannot
+  /// be changed.The default value for secondary instances is PREEMPTIBLE.
+  /// Possible string values are:
+  /// - "PREEMPTIBILITY_UNSPECIFIED" : Preemptibility is unspecified, the system
+  /// will choose the appropriate setting for each instance group.
+  /// - "NON_PREEMPTIBLE" : Instances are non-preemptible.This option is allowed
+  /// for all instance groups and is the only valid value for Master and Worker
+  /// instance groups.
+  /// - "PREEMPTIBLE" : Instances are preemptible.This option is allowed only
+  /// for secondary worker groups.
+  core.String preemptibility;
 
   InstanceGroupConfig();
 
@@ -4514,8 +5636,14 @@ class InstanceGroupConfig {
       managedGroupConfig =
           new ManagedGroupConfig.fromJson(_json["managedGroupConfig"]);
     }
+    if (_json.containsKey("minCpuPlatform")) {
+      minCpuPlatform = _json["minCpuPlatform"];
+    }
     if (_json.containsKey("numInstances")) {
       numInstances = _json["numInstances"];
+    }
+    if (_json.containsKey("preemptibility")) {
+      preemptibility = _json["preemptibility"];
     }
   }
 
@@ -4544,8 +5672,14 @@ class InstanceGroupConfig {
     if (managedGroupConfig != null) {
       _json["managedGroupConfig"] = (managedGroupConfig).toJson();
     }
+    if (minCpuPlatform != null) {
+      _json["minCpuPlatform"] = minCpuPlatform;
+    }
     if (numInstances != null) {
       _json["numInstances"] = numInstances;
+    }
+    if (preemptibility != null) {
+      _json["preemptibility"] = preemptibility;
     }
     return _json;
   }
@@ -4602,8 +5736,14 @@ class InstantiateWorkflowTemplateRequest {
   }
 }
 
-/// A Cloud Dataproc job resource.
+/// A Dataproc job resource.
 class Job {
+  /// Output only. Indicates whether the job is completed. If the value is
+  /// false, the job is still in progress. If true, the job is completed, and
+  /// status.state field will indicate if it was successful, failed, or
+  /// cancelled.
+  core.bool done;
+
   /// Output only. If present, the location of miscellaneous control files which
   /// may be used as part of job setup and handling. If not present, control
   /// files may be placed in the same location as driver_output_uri.
@@ -4613,10 +5753,10 @@ class Job {
   /// driver program.
   core.String driverOutputResourceUri;
 
-  /// Job is a Hadoop job.
+  /// Optional. Job is a Hadoop job.
   HadoopJob hadoopJob;
 
-  /// Job is a Hive job.
+  /// Optional. Job is a Hive job.
   HiveJob hiveJob;
 
   /// Output only. A UUID that uniquely identifies a job within the project over
@@ -4632,13 +5772,16 @@ class Job {
   /// associated with a job.
   core.Map<core.String, core.String> labels;
 
-  /// Job is a Pig job.
+  /// Optional. Job is a Pig job.
   PigJob pigJob;
 
   /// Required. Job information, including how, when, and where to run the job.
   JobPlacement placement;
 
-  /// Job is a Pyspark job.
+  /// Optional. Job is a Presto job.
+  PrestoJob prestoJob;
+
+  /// Optional. Job is a PySpark job.
   PySparkJob pysparkJob;
 
   /// Optional. The fully qualified reference to the job, which can be used to
@@ -4650,10 +5793,13 @@ class Job {
   /// Optional. Job scheduling configuration.
   JobScheduling scheduling;
 
-  /// Job is a Spark job.
+  /// Optional. Job is a Spark job.
   SparkJob sparkJob;
 
-  /// Job is a SparkSql job.
+  /// Optional. Job is a SparkR job.
+  SparkRJob sparkRJob;
+
+  /// Optional. Job is a SparkSql job.
   SparkSqlJob sparkSqlJob;
 
   /// Output only. The job status. Additional application-specific status
@@ -4672,6 +5818,9 @@ class Job {
   Job();
 
   Job.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
     if (_json.containsKey("driverControlFilesUri")) {
       driverControlFilesUri = _json["driverControlFilesUri"];
     }
@@ -4696,6 +5845,9 @@ class Job {
     if (_json.containsKey("placement")) {
       placement = new JobPlacement.fromJson(_json["placement"]);
     }
+    if (_json.containsKey("prestoJob")) {
+      prestoJob = new PrestoJob.fromJson(_json["prestoJob"]);
+    }
     if (_json.containsKey("pysparkJob")) {
       pysparkJob = new PySparkJob.fromJson(_json["pysparkJob"]);
     }
@@ -4707,6 +5859,9 @@ class Job {
     }
     if (_json.containsKey("sparkJob")) {
       sparkJob = new SparkJob.fromJson(_json["sparkJob"]);
+    }
+    if (_json.containsKey("sparkRJob")) {
+      sparkRJob = new SparkRJob.fromJson(_json["sparkRJob"]);
     }
     if (_json.containsKey("sparkSqlJob")) {
       sparkSqlJob = new SparkSqlJob.fromJson(_json["sparkSqlJob"]);
@@ -4729,6 +5884,9 @@ class Job {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
     if (driverControlFilesUri != null) {
       _json["driverControlFilesUri"] = driverControlFilesUri;
     }
@@ -4753,6 +5911,9 @@ class Job {
     if (placement != null) {
       _json["placement"] = (placement).toJson();
     }
+    if (prestoJob != null) {
+      _json["prestoJob"] = (prestoJob).toJson();
+    }
     if (pysparkJob != null) {
       _json["pysparkJob"] = (pysparkJob).toJson();
     }
@@ -4764,6 +5925,9 @@ class Job {
     }
     if (sparkJob != null) {
       _json["sparkJob"] = (sparkJob).toJson();
+    }
+    if (sparkRJob != null) {
+      _json["sparkRJob"] = (sparkRJob).toJson();
     }
     if (sparkSqlJob != null) {
       _json["sparkSqlJob"] = (sparkSqlJob).toJson();
@@ -4783,13 +5947,63 @@ class Job {
   }
 }
 
-/// Cloud Dataproc job config.
+/// Job Operation metadata.
+class JobMetadata {
+  /// Output only. The job id.
+  core.String jobId;
+
+  /// Output only. Operation type.
+  core.String operationType;
+
+  /// Output only. Job submission time.
+  core.String startTime;
+
+  /// Output only. Most recent job status.
+  JobStatus status;
+
+  JobMetadata();
+
+  JobMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("jobId")) {
+      jobId = _json["jobId"];
+    }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("status")) {
+      status = new JobStatus.fromJson(_json["status"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (jobId != null) {
+      _json["jobId"] = jobId;
+    }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (status != null) {
+      _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Dataproc job config.
 class JobPlacement {
   /// Required. The name of the cluster where the job will be submitted.
   core.String clusterName;
 
-  /// Output only. A cluster UUID generated by the Cloud Dataproc service when
-  /// the job is submitted.
+  /// Output only. A cluster UUID generated by the Dataproc service when the job
+  /// is submitted.
   core.String clusterUuid;
 
   JobPlacement();
@@ -4878,9 +6092,9 @@ class JobScheduling {
   }
 }
 
-/// Cloud Dataproc job status.
+/// Dataproc job status.
 class JobStatus {
-  /// Output only. Optional job state details, such as an error description if
+  /// Optional. Output only. Job state details, such as an error description if
   /// the state is <code>ERROR</code>.
   core.String details;
 
@@ -4916,9 +6130,9 @@ class JobStatus {
   /// be waiting for a condition to be met). See the "details" field for the
   /// reason for the delay.Applies to RUNNING state.
   /// - "STALE_STATUS" : The agent-reported status is out of date, which may be
-  /// caused by a loss of communication between the agent and Cloud Dataproc. If
-  /// the agent does not send a timely update, the job will fail.Applies to
-  /// RUNNING state.
+  /// caused by a loss of communication between the agent and Dataproc. If the
+  /// agent does not send a timely update, the job will fail.Applies to RUNNING
+  /// state.
   core.String substate;
 
   JobStatus();
@@ -4976,7 +6190,8 @@ class KerberosConfig {
   /// trusted realm, in a cross realm trust relationship.
   core.String crossRealmTrustSharedPasswordUri;
 
-  /// Optional. Flag to indicate whether to Kerberize the cluster.
+  /// Optional. Flag to indicate whether to Kerberize the cluster (default:
+  /// false). Set this field to true to enable Kerberos on a cluster.
   core.bool enableKerberos;
 
   /// Optional. The Cloud Storage URI of a KMS encrypted file containing the
@@ -5000,6 +6215,10 @@ class KerberosConfig {
 
   /// Required. The uri of the KMS key used to encrypt various sensitive files.
   core.String kmsKeyUri;
+
+  /// Optional. The name of the on-cluster Kerberos realm. If not specified, the
+  /// uppercased domain of hostnames will be the realm.
+  core.String realm;
 
   /// Required. The Cloud Storage URI of a KMS encrypted file containing the
   /// root principal password.
@@ -5053,6 +6272,9 @@ class KerberosConfig {
     if (_json.containsKey("kmsKeyUri")) {
       kmsKeyUri = _json["kmsKeyUri"];
     }
+    if (_json.containsKey("realm")) {
+      realm = _json["realm"];
+    }
     if (_json.containsKey("rootPrincipalPasswordUri")) {
       rootPrincipalPasswordUri = _json["rootPrincipalPasswordUri"];
     }
@@ -5101,6 +6323,9 @@ class KerberosConfig {
     if (kmsKeyUri != null) {
       _json["kmsKeyUri"] = kmsKeyUri;
     }
+    if (realm != null) {
+      _json["realm"] = realm;
+    }
     if (rootPrincipalPasswordUri != null) {
       _json["rootPrincipalPasswordUri"] = rootPrincipalPasswordUri;
     }
@@ -5112,6 +6337,104 @@ class KerberosConfig {
     }
     if (truststoreUri != null) {
       _json["truststoreUri"] = truststoreUri;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the cluster auto-delete schedule configuration.
+class LifecycleConfig {
+  /// Optional. The time when cluster will be auto-deleted (see JSON
+  /// representation of Timestamp
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  core.String autoDeleteTime;
+
+  /// Optional. The lifetime duration of cluster. The cluster will be
+  /// auto-deleted at the end of this period. Minimum value is 10 minutes;
+  /// maximum value is 14 days (see JSON representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  core.String autoDeleteTtl;
+
+  /// Optional. The duration to keep the cluster alive while idling (when no
+  /// jobs are running). Passing this threshold will cause the cluster to be
+  /// deleted. Minimum value is 10 minutes; maximum value is 14 days (see JSON
+  /// representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json).
+  core.String idleDeleteTtl;
+
+  /// Output only. The time when cluster became idle (most recent job finished)
+  /// and became eligible for deletion due to idleness (see JSON representation
+  /// of Timestamp
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  core.String idleStartTime;
+
+  LifecycleConfig();
+
+  LifecycleConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("autoDeleteTime")) {
+      autoDeleteTime = _json["autoDeleteTime"];
+    }
+    if (_json.containsKey("autoDeleteTtl")) {
+      autoDeleteTtl = _json["autoDeleteTtl"];
+    }
+    if (_json.containsKey("idleDeleteTtl")) {
+      idleDeleteTtl = _json["idleDeleteTtl"];
+    }
+    if (_json.containsKey("idleStartTime")) {
+      idleStartTime = _json["idleStartTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoDeleteTime != null) {
+      _json["autoDeleteTime"] = autoDeleteTime;
+    }
+    if (autoDeleteTtl != null) {
+      _json["autoDeleteTtl"] = autoDeleteTtl;
+    }
+    if (idleDeleteTtl != null) {
+      _json["idleDeleteTtl"] = idleDeleteTtl;
+    }
+    if (idleStartTime != null) {
+      _json["idleStartTime"] = idleStartTime;
+    }
+    return _json;
+  }
+}
+
+/// A response to a request to list autoscaling policies in a project.
+class ListAutoscalingPoliciesResponse {
+  /// Output only. This token is included in the response if there are more
+  /// results to fetch.
+  core.String nextPageToken;
+
+  /// Output only. Autoscaling policies list.
+  core.List<AutoscalingPolicy> policies;
+
+  ListAutoscalingPoliciesResponse();
+
+  ListAutoscalingPoliciesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("policies")) {
+      policies = (_json["policies"] as core.List)
+          .map<AutoscalingPolicy>(
+              (value) => new AutoscalingPolicy.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (policies != null) {
+      _json["policies"] = policies.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5375,10 +6698,12 @@ class NodeInitializationAction {
   /// Required. Cloud Storage URI of executable file.
   core.String executableFile;
 
-  /// Optional. Amount of time executable has to complete. Default is 10
-  /// minutes. Cluster creation fails with an explanatory error message (the
-  /// name of the executable that caused the error and the exceeded timeout
-  /// period) if the executable is not completed at end of the timeout period.
+  /// Optional. Amount of time executable has to complete. Default is 10 minutes
+  /// (see JSON representation of Duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster
+  /// creation fails with an explanatory error message (the name of the
+  /// executable that caused the error and the exceeded timeout period) if the
+  /// executable is not completed at end of the timeout period.
   core.String executionTimeout;
 
   NodeInitializationAction();
@@ -5488,10 +6813,10 @@ class Operation {
 
 /// A job executed by the workflow.
 class OrderedJob {
-  /// Job is a Hadoop job.
+  /// Optional. Job is a Hadoop job.
   HadoopJob hadoopJob;
 
-  /// Job is a Hive job.
+  /// Optional. Job is a Hive job.
   HiveJob hiveJob;
 
   /// Optional. The labels to associate with this job.Label keys must be between
@@ -5502,23 +6827,29 @@ class OrderedJob {
   /// given job.
   core.Map<core.String, core.String> labels;
 
-  /// Job is a Pig job.
+  /// Optional. Job is a Pig job.
   PigJob pigJob;
 
   /// Optional. The optional list of prerequisite job step_ids. If not
   /// specified, the job will start at the beginning of workflow.
   core.List<core.String> prerequisiteStepIds;
 
-  /// Job is a Pyspark job.
+  /// Optional. Job is a Presto job.
+  PrestoJob prestoJob;
+
+  /// Optional. Job is a PySpark job.
   PySparkJob pysparkJob;
 
   /// Optional. Job scheduling configuration.
   JobScheduling scheduling;
 
-  /// Job is a Spark job.
+  /// Optional. Job is a Spark job.
   SparkJob sparkJob;
 
-  /// Job is a SparkSql job.
+  /// Optional. Job is a SparkR job.
+  SparkRJob sparkRJob;
+
+  /// Optional. Job is a SparkSql job.
   SparkSqlJob sparkSqlJob;
 
   /// Required. The step id. The id must be unique among all jobs within the
@@ -5548,6 +6879,9 @@ class OrderedJob {
       prerequisiteStepIds =
           (_json["prerequisiteStepIds"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("prestoJob")) {
+      prestoJob = new PrestoJob.fromJson(_json["prestoJob"]);
+    }
     if (_json.containsKey("pysparkJob")) {
       pysparkJob = new PySparkJob.fromJson(_json["pysparkJob"]);
     }
@@ -5556,6 +6890,9 @@ class OrderedJob {
     }
     if (_json.containsKey("sparkJob")) {
       sparkJob = new SparkJob.fromJson(_json["sparkJob"]);
+    }
+    if (_json.containsKey("sparkRJob")) {
+      sparkRJob = new SparkRJob.fromJson(_json["sparkRJob"]);
     }
     if (_json.containsKey("sparkSqlJob")) {
       sparkSqlJob = new SparkSqlJob.fromJson(_json["sparkSqlJob"]);
@@ -5583,6 +6920,9 @@ class OrderedJob {
     if (prerequisiteStepIds != null) {
       _json["prerequisiteStepIds"] = prerequisiteStepIds;
     }
+    if (prestoJob != null) {
+      _json["prestoJob"] = (prestoJob).toJson();
+    }
     if (pysparkJob != null) {
       _json["pysparkJob"] = (pysparkJob).toJson();
     }
@@ -5591,6 +6931,9 @@ class OrderedJob {
     }
     if (sparkJob != null) {
       _json["sparkJob"] = (sparkJob).toJson();
+    }
+    if (sparkRJob != null) {
+      _json["sparkRJob"] = (sparkRJob).toJson();
     }
     if (sparkSqlJob != null) {
       _json["sparkSqlJob"] = (sparkSqlJob).toJson();
@@ -5634,8 +6977,8 @@ class ParameterValidation {
   }
 }
 
-/// A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/)
-/// queries on YARN.
+/// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
+/// YARN.
 class PigJob {
   /// Optional. Whether to continue executing queries if a query fails. The
   /// default value is false. Setting to true can be useful when executing
@@ -5650,7 +6993,7 @@ class PigJob {
   LoggingConfig loggingConfig;
 
   /// Optional. A mapping of property names to values, used to configure Pig.
-  /// Properties that conflict with values set by the Cloud Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in /etc/hadoop/conf / * -site.xml,
   /// /etc/pig/conf/pig.properties, and classes in user code.
   core.Map<core.String, core.String> properties;
@@ -5721,45 +7064,62 @@ class PigJob {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.A Policy
-/// consists of a list of bindings. A binding binds a list of members to a role,
-/// where the members can be user accounts, Google groups, Google domains, and
-/// service accounts. A role is a named list of permissions defined by IAM.JSON
-/// Example
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.A Policy is a collection of bindings. A
+/// binding binds one or more members to a single role. Members can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// role is a named list of permissions; each role can be an IAM predefined role
+/// or a user-created custom role.Optionally, a binding can specify a condition,
+/// which is a logical expression that allows access to a resource only if the
+/// expression evaluates to true. A condition can add constraints based on
+/// attributes of the request, the resource, or both.JSON example:
 /// {
 ///   "bindings": [
 ///     {
-///       "role": "roles/owner",
+///       "role": "roles/resourcemanager.organizationAdmin",
 ///       "members": [
 ///         "user:mike@example.com",
 ///         "group:admins@example.com",
 ///         "domain:google.com",
-///         "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///         "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///       ]
 ///     },
 ///     {
-///       "role": "roles/viewer",
-///       "members": ["user:sean@example.com"]
+///       "role": "roles/resourcemanager.organizationViewer",
+///       "members": ["user:eve@example.com"],
+///       "condition": {
+///         "title": "expirable access",
+///         "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///       }
 ///     }
-///   ]
+///   ],
+///   "etag": "BwWWja0YfJA=",
+///   "version": 3
 /// }
-/// YAML Example
+/// YAML example:
 /// bindings:
 /// - members:
 ///   - user:mike@example.com
 ///   - group:admins@example.com
 ///   - domain:google.com
-///   - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///   role: roles/owner
+///   - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///   role: roles/resourcemanager.organizationAdmin
 /// - members:
-///   - user:sean@example.com
-///   role: roles/viewer
-/// For a description of IAM and its features, see the IAM developer's guide
-/// (https://cloud.google.com/iam/docs).
+///   - user:eve@example.com
+///   role: roles/resourcemanager.organizationViewer
+///   condition:
+///     title: expirable access
+///     description: Does not grant access after Sep 2020
+///     expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// - etag: BwWWja0YfJA=
+/// - version: 3
+/// For a description of IAM and its features, see the IAM documentation
+/// (https://cloud.google.com/iam/docs/).
 class Policy {
-  /// Associates a list of members to a role. bindings with no members will
-  /// result in an error.
+  /// Associates a list of members to a role. Optionally, may specify a
+  /// condition that determines how and when the bindings are applied. Each of
+  /// the bindings must contain at least one member.
   core.List<Binding> bindings;
 
   /// etag is used for optimistic concurrency control as a way to help prevent
@@ -5769,8 +7129,10 @@ class Policy {
   /// conditions: An etag is returned in the response to getIamPolicy, and
   /// systems are expected to put that etag in the request to setIamPolicy to
   /// ensure that their change will be applied to the same version of the
-  /// policy.If no etag is provided in the call to setIamPolicy, then the
-  /// existing policy is overwritten blindly.
+  /// policy.Important: If you use IAM Conditions, you must include the etag
+  /// field whenever you call setIamPolicy. If you omit this field, then IAM
+  /// allows you to overwrite a version 3 policy with a version 1 policy, and
+  /// all of the conditions in the version 3 policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -5781,7 +7143,20 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.Valid values are 0, 1, and 3. Requests
+  /// that specify an invalid value are rejected.Any operation that affects
+  /// conditional role bindings must specify version 3. This requirement applies
+  /// to the following operations:
+  /// Getting a policy that includes a conditional role binding
+  /// Adding a conditional role binding to a policy
+  /// Changing a conditional role binding in a policy
+  /// Removing any role binding, with or without a condition, from a policy
+  /// that includes conditionsImportant: If you use IAM Conditions, you must
+  /// include the etag field whenever you call setIamPolicy. If you omit this
+  /// field, then IAM allows you to overwrite a version 3 policy with a version
+  /// 1 policy, and all of the conditions in the version 3 policy are lost.If a
+  /// policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -5816,7 +7191,93 @@ class Policy {
   }
 }
 
-/// A Cloud Dataproc job for running Apache PySpark
+/// A Dataproc job for running Presto (https://prestosql.io/) queries.
+/// IMPORTANT: The Dataproc Presto Optional Component
+/// (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be
+/// enabled when the cluster is created to submit a Presto job to the cluster.
+class PrestoJob {
+  /// Optional. Presto client tags to attach to this query
+  core.List<core.String> clientTags;
+
+  /// Optional. Whether to continue executing queries if a query fails. The
+  /// default value is false. Setting to true can be useful when executing
+  /// independent parallel queries.
+  core.bool continueOnFailure;
+
+  /// Optional. The runtime log config for job execution.
+  LoggingConfig loggingConfig;
+
+  /// Optional. The format in which query output will be displayed. See the
+  /// Presto documentation for supported output formats
+  core.String outputFormat;
+
+  /// Optional. A mapping of property names to values. Used to set Presto
+  /// session properties (https://prestodb.io/docs/current/sql/set-session.html)
+  /// Equivalent to using the --session flag in the Presto CLI
+  core.Map<core.String, core.String> properties;
+
+  /// The HCFS URI of the script that contains SQL queries.
+  core.String queryFileUri;
+
+  /// A list of queries.
+  QueryList queryList;
+
+  PrestoJob();
+
+  PrestoJob.fromJson(core.Map _json) {
+    if (_json.containsKey("clientTags")) {
+      clientTags = (_json["clientTags"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("continueOnFailure")) {
+      continueOnFailure = _json["continueOnFailure"];
+    }
+    if (_json.containsKey("loggingConfig")) {
+      loggingConfig = new LoggingConfig.fromJson(_json["loggingConfig"]);
+    }
+    if (_json.containsKey("outputFormat")) {
+      outputFormat = _json["outputFormat"];
+    }
+    if (_json.containsKey("properties")) {
+      properties =
+          (_json["properties"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("queryFileUri")) {
+      queryFileUri = _json["queryFileUri"];
+    }
+    if (_json.containsKey("queryList")) {
+      queryList = new QueryList.fromJson(_json["queryList"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clientTags != null) {
+      _json["clientTags"] = clientTags;
+    }
+    if (continueOnFailure != null) {
+      _json["continueOnFailure"] = continueOnFailure;
+    }
+    if (loggingConfig != null) {
+      _json["loggingConfig"] = (loggingConfig).toJson();
+    }
+    if (outputFormat != null) {
+      _json["outputFormat"] = outputFormat;
+    }
+    if (properties != null) {
+      _json["properties"] = properties;
+    }
+    if (queryFileUri != null) {
+      _json["queryFileUri"] = queryFileUri;
+    }
+    if (queryList != null) {
+      _json["queryList"] = (queryList).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A Dataproc job for running Apache PySpark
 /// (https://spark.apache.org/docs/0.9.0/python-programming-guide.html)
 /// applications on YARN.
 class PySparkJob {
@@ -5845,8 +7306,8 @@ class PySparkJob {
   core.String mainPythonFileUri;
 
   /// Optional. A mapping of property names to values, used to configure
-  /// PySpark. Properties that conflict with values set by the Cloud Dataproc
-  /// API may be overwritten. Can include properties set in
+  /// PySpark. Properties that conflict with values set by the Dataproc API may
+  /// be overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   core.Map<core.String, core.String> properties;
 
@@ -5976,6 +7437,53 @@ class RegexValidation {
   }
 }
 
+/// Reservation Affinity for consuming Zonal reservation.
+class ReservationAffinity {
+  /// Optional. Type of reservation to consume
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED"
+  /// - "NO_RESERVATION" : Do not consume from any allocated capacity.
+  /// - "ANY_RESERVATION" : Consume any reservation available.
+  /// - "SPECIFIC_RESERVATION" : Must consume from a specific reservation. Must
+  /// specify key value fields for specifying the reservations.
+  core.String consumeReservationType;
+
+  /// Optional. Corresponds to the label key of reservation resource.
+  core.String key;
+
+  /// Optional. Corresponds to the label values of reservation resource.
+  core.List<core.String> values;
+
+  ReservationAffinity();
+
+  ReservationAffinity.fromJson(core.Map _json) {
+    if (_json.containsKey("consumeReservationType")) {
+      consumeReservationType = _json["consumeReservationType"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumeReservationType != null) {
+      _json["consumeReservationType"] = consumeReservationType;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
 /// Security related configuration, including Kerberos.
 class SecurityConfig {
   /// Kerberos related configuration.
@@ -6028,12 +7536,15 @@ class SetIamPolicyRequest {
 /// Specifies the selection and config of software inside the cluster.
 class SoftwareConfig {
   /// Optional. The version of software inside the cluster. It must be one of
-  /// the supported Cloud Dataproc Versions, such as "1.2" (including a subminor
-  /// version, such as "1.2.29"), or the "preview" version. If unspecified, it
-  /// defaults to the latest Debian version.
+  /// the supported Dataproc Versions
+  /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions),
+  /// such as "1.2" (including a subminor version, such as "1.2.29"), or the
+  /// "preview" version
+  /// (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
+  /// If unspecified, it defaults to the latest Debian version.
   core.String imageVersion;
 
-  /// The set of optional components to activate on the cluster.
+  /// Optional. The set of components to activate on the cluster.
   core.List<core.String> optionalComponents;
 
   /// Optional. The properties to set on daemon config files.Property keys are
@@ -6047,7 +7558,8 @@ class SoftwareConfig {
   /// mapred: mapred-site.xml
   /// pig: pig.properties
   /// spark: spark-defaults.conf
-  /// yarn: yarn-site.xmlFor more information, see Cluster properties.
+  /// yarn: yarn-site.xmlFor more information, see Cluster properties
+  /// (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
   core.Map<core.String, core.String> properties;
 
   SoftwareConfig();
@@ -6082,7 +7594,7 @@ class SoftwareConfig {
   }
 }
 
-/// A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
+/// A Dataproc job for running Apache Spark (http://spark.apache.org/)
 /// applications on YARN.
 class SparkJob {
   /// Optional. HCFS URIs of archives to be extracted in the working directory
@@ -6114,7 +7626,7 @@ class SparkJob {
   core.String mainJarFileUri;
 
   /// Optional. A mapping of property names to values, used to configure Spark.
-  /// Properties that conflict with values set by the Cloud Dataproc API may be
+  /// Properties that conflict with values set by the Dataproc API may be
   /// overwritten. Can include properties set in
   /// /etc/spark/conf/spark-defaults.conf and classes in user code.
   core.Map<core.String, core.String> properties;
@@ -6180,8 +7692,87 @@ class SparkJob {
   }
 }
 
-/// A Cloud Dataproc job for running Apache Spark SQL
-/// (http://spark.apache.org/sql/) queries.
+/// A Dataproc job for running Apache SparkR
+/// (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
+class SparkRJob {
+  /// Optional. HCFS URIs of archives to be extracted in the working directory
+  /// of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz,
+  /// .tgz, and .zip.
+  core.List<core.String> archiveUris;
+
+  /// Optional. The arguments to pass to the driver. Do not include arguments,
+  /// such as --conf, that can be set as job properties, since a collision may
+  /// occur that causes an incorrect job submission.
+  core.List<core.String> args;
+
+  /// Optional. HCFS URIs of files to be copied to the working directory of R
+  /// drivers and distributed tasks. Useful for naively parallel tasks.
+  core.List<core.String> fileUris;
+
+  /// Optional. The runtime log config for job execution.
+  LoggingConfig loggingConfig;
+
+  /// Required. The HCFS URI of the main R file to use as the driver. Must be a
+  /// .R file.
+  core.String mainRFileUri;
+
+  /// Optional. A mapping of property names to values, used to configure SparkR.
+  /// Properties that conflict with values set by the Dataproc API may be
+  /// overwritten. Can include properties set in
+  /// /etc/spark/conf/spark-defaults.conf and classes in user code.
+  core.Map<core.String, core.String> properties;
+
+  SparkRJob();
+
+  SparkRJob.fromJson(core.Map _json) {
+    if (_json.containsKey("archiveUris")) {
+      archiveUris = (_json["archiveUris"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("args")) {
+      args = (_json["args"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("fileUris")) {
+      fileUris = (_json["fileUris"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("loggingConfig")) {
+      loggingConfig = new LoggingConfig.fromJson(_json["loggingConfig"]);
+    }
+    if (_json.containsKey("mainRFileUri")) {
+      mainRFileUri = _json["mainRFileUri"];
+    }
+    if (_json.containsKey("properties")) {
+      properties =
+          (_json["properties"] as core.Map).cast<core.String, core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (archiveUris != null) {
+      _json["archiveUris"] = archiveUris;
+    }
+    if (args != null) {
+      _json["args"] = args;
+    }
+    if (fileUris != null) {
+      _json["fileUris"] = fileUris;
+    }
+    if (loggingConfig != null) {
+      _json["loggingConfig"] = (loggingConfig).toJson();
+    }
+    if (mainRFileUri != null) {
+      _json["mainRFileUri"] = mainRFileUri;
+    }
+    if (properties != null) {
+      _json["properties"] = properties;
+    }
+    return _json;
+  }
+}
+
+/// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+/// queries.
 class SparkSqlJob {
   /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
   core.List<core.String> jarFileUris;
@@ -6190,8 +7781,8 @@ class SparkSqlJob {
   LoggingConfig loggingConfig;
 
   /// Optional. A mapping of property names to values, used to configure Spark
-  /// SQL's SparkConf. Properties that conflict with values set by the Cloud
-  /// Dataproc API may be overwritten.
+  /// SQL's SparkConf. Properties that conflict with values set by the Dataproc
+  /// API may be overwritten.
   core.Map<core.String, core.String> properties;
 
   /// The HCFS URI of the script that contains SQL queries.
@@ -6534,7 +8125,7 @@ class WorkflowGraph {
   }
 }
 
-/// A Cloud Dataproc workflow template resource.
+/// A Dataproc workflow template resource.
 class WorkflowMetadata {
   /// Output only. The name of the target cluster.
   core.String clusterName;
@@ -6568,7 +8159,14 @@ class WorkflowMetadata {
   /// - "DONE" : The operation is done; either cancelled or completed.
   core.String state;
 
-  /// Output only. The "resource name" of the template.
+  /// Output only. The resource name of the workflow template as described in
+  /// https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// has the following format:
+  /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   core.String template;
 
   /// Output only. The version of template at the time of workflow
@@ -6722,14 +8320,10 @@ class WorkflowNode {
   }
 }
 
-/// A Cloud Dataproc workflow template resource.
+/// A Dataproc workflow template resource.
 class WorkflowTemplate {
   /// Output only. The time template was created.
   core.String createTime;
-
-  /// Required. The template id.The id must contain only letters (a-z, A-Z),
-  /// numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with
-  /// underscore or hyphen. Must consist of between 3 and 50 characters.
   core.String id;
 
   /// Required. The Directed Acyclic Graph of Jobs to submit.
@@ -6744,12 +8338,17 @@ class WorkflowTemplate {
   /// associated with a template.
   core.Map<core.String, core.String> labels;
 
-  /// Output only. The "resource name" of the template, as described in
-  /// https://cloud.google.com/apis/design/resource_names of the form
+  /// Output only. The resource name of the workflow template, as described in
+  /// https://cloud.google.com/apis/design/resource_names.
+  /// For projects.regions.workflowTemplates, the resource name of the  template
+  /// has the following format:
   /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}
+  /// For projects.locations.workflowTemplates, the resource name of the
+  /// template has the following format:
+  /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   core.String name;
 
-  /// Optional. Template parameters whose values are substituted into the
+  /// Optional. emplate parameters whose values are substituted into the
   /// template. Values for parameters must be provided when the template is
   /// instantiated.
   core.List<TemplateParameter> parameters;
@@ -6849,7 +8448,7 @@ class WorkflowTemplatePlacement {
   /// metadata.The selector is evaluated at the time each job is submitted.
   ClusterSelector clusterSelector;
 
-  /// Optional. A cluster that is managed by the workflow.
+  /// A cluster that is managed by the workflow.
   ManagedCluster managedCluster;
 
   WorkflowTemplatePlacement();

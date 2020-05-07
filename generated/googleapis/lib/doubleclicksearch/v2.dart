@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.doubleclicksearch.v2;
 
@@ -206,106 +206,6 @@ class ConversionResourceApi {
     _url = 'conversion';
 
     var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ConversionList.fromJson(data));
-  }
-
-  /// Updates a batch of conversions in DoubleClick Search. This method supports
-  /// patch semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [advertiserId] - Numeric ID of the advertiser.
-  ///
-  /// [agencyId] - Numeric ID of the agency.
-  ///
-  /// [endDate] - Last date (inclusive) on which to retrieve conversions. Format
-  /// is yyyymmdd.
-  /// Value must be between "20091101" and "99991231".
-  ///
-  /// [engineAccountId] - Numeric ID of the engine account.
-  ///
-  /// [rowCount] - The number of conversions to return per call.
-  /// Value must be between "1" and "1000".
-  ///
-  /// [startDate] - First date (inclusive) on which to retrieve conversions.
-  /// Format is yyyymmdd.
-  /// Value must be between "20091101" and "99991231".
-  ///
-  /// [startRow] - The 0-based starting index for retrieving conversions
-  /// results.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ConversionList].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ConversionList> patch(
-      ConversionList request,
-      core.String advertiserId,
-      core.String agencyId,
-      core.int endDate,
-      core.String engineAccountId,
-      core.int rowCount,
-      core.int startDate,
-      core.int startRow,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (advertiserId == null) {
-      throw new core.ArgumentError("Parameter advertiserId is required.");
-    }
-    _queryParams["advertiserId"] = [advertiserId];
-    if (agencyId == null) {
-      throw new core.ArgumentError("Parameter agencyId is required.");
-    }
-    _queryParams["agencyId"] = [agencyId];
-    if (endDate == null) {
-      throw new core.ArgumentError("Parameter endDate is required.");
-    }
-    _queryParams["endDate"] = ["${endDate}"];
-    if (engineAccountId == null) {
-      throw new core.ArgumentError("Parameter engineAccountId is required.");
-    }
-    _queryParams["engineAccountId"] = [engineAccountId];
-    if (rowCount == null) {
-      throw new core.ArgumentError("Parameter rowCount is required.");
-    }
-    _queryParams["rowCount"] = ["${rowCount}"];
-    if (startDate == null) {
-      throw new core.ArgumentError("Parameter startDate is required.");
-    }
-    _queryParams["startDate"] = ["${startDate}"];
-    if (startRow == null) {
-      throw new core.ArgumentError("Parameter startRow is required.");
-    }
-    _queryParams["startRow"] = ["${startRow}"];
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'conversion';
-
-    var _response = _requester.request(_url, "PATCH",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -1206,7 +1106,7 @@ class ReportFiles {
 /// report files.
 class Report {
   /// Asynchronous report only. Contains a list of generated report files once
-  /// the report has succesfully completed.
+  /// the report has successfully completed.
   core.List<ReportFiles> files;
 
   /// Asynchronous report only. Id of the report.

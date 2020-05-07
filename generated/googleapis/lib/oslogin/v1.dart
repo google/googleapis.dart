@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.oslogin.v1;
 
@@ -17,7 +17,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client oslogin/v1';
 
 /// You can use OS Login to manage access to your VM instances using IAM roles.
-/// For more information, read [OS Login](/compute/docs/oslogin/).
 class OsloginApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -52,7 +51,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique ID for the user in format `users/{user}`.
+  /// [name] - Required. The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
   /// [projectId] - The project ID of the Google Cloud Platform project.
@@ -112,7 +111,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The unique ID for the user in format `users/{user}`.
+  /// [parent] - Required. The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
   /// [projectId] - The project ID of the Google Cloud Platform project.
@@ -174,8 +173,8 @@ class UsersProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - A reference to the POSIX account to update. POSIX accounts are
-  /// identified
+  /// [name] - Required. A reference to the POSIX account to update. POSIX
+  /// accounts are identified
   /// by the project ID they are associated with. A reference to the POSIX
   /// account is in format `users/{user}/projects/{project}`.
   /// Value must have pattern "^users/[^/]+/projects/[^/]+$".
@@ -227,8 +226,8 @@ class UsersSshPublicKeysResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fingerprint of the public key to update. Public keys are
-  /// identified by
+  /// [name] - Required. The fingerprint of the public key to update. Public
+  /// keys are identified by
   /// their SHA-256 fingerprint. The fingerprint of the public key is in format
   /// `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
@@ -273,8 +272,8 @@ class UsersSshPublicKeysResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fingerprint of the public key to retrieve. Public keys are
-  /// identified
+  /// [name] - Required. The fingerprint of the public key to retrieve. Public
+  /// keys are identified
   /// by their SHA-256 fingerprint. The fingerprint of the public key is in
   /// format `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
@@ -322,8 +321,8 @@ class UsersSshPublicKeysResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The fingerprint of the public key to update. Public keys are
-  /// identified by
+  /// [name] - Required. The fingerprint of the public key to update. Public
+  /// keys are identified by
   /// their SHA-256 fingerprint. The fingerprint of the public key is in format
   /// `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
@@ -422,7 +421,7 @@ class ImportSshPublicKeyResponse {
 /// The user profile information used for logging in to a virtual machine on
 /// Google Compute Engine.
 class LoginProfile {
-  /// A unique user ID.
+  /// Required. A unique user ID.
   core.String name;
 
   /// The list of POSIX accounts associated with the user.
@@ -482,6 +481,9 @@ class PosixAccount {
   /// The path to the home directory for this account.
   core.String homeDirectory;
 
+  /// Output only. The canonical resource name.
+  core.String name;
+
   /// The operating system type where this account applies.
   /// Possible string values are:
   /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : The operating system type
@@ -522,6 +524,9 @@ class PosixAccount {
     if (_json.containsKey("homeDirectory")) {
       homeDirectory = _json["homeDirectory"];
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("operatingSystemType")) {
       operatingSystemType = _json["operatingSystemType"];
     }
@@ -556,6 +561,9 @@ class PosixAccount {
     }
     if (homeDirectory != null) {
       _json["homeDirectory"] = homeDirectory;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (operatingSystemType != null) {
       _json["operatingSystemType"] = operatingSystemType;
@@ -592,6 +600,9 @@ class SshPublicKey {
   /// section 6.6.
   core.String key;
 
+  /// Output only. The canonical resource name.
+  core.String name;
+
   SshPublicKey();
 
   SshPublicKey.fromJson(core.Map _json) {
@@ -603,6 +614,9 @@ class SshPublicKey {
     }
     if (_json.containsKey("key")) {
       key = _json["key"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
     }
   }
 
@@ -617,6 +631,9 @@ class SshPublicKey {
     }
     if (key != null) {
       _json["key"] = key;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }

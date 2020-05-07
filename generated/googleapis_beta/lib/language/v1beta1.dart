@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.language.v1beta1;
 
@@ -768,11 +768,11 @@ class Document {
   /// The language of the document (if not specified, the language is
   /// automatically detected). Both ISO and BCP-47 language codes are
   /// accepted.<br>
-  /// [Language Support](/natural-language/docs/languages)
-  /// lists currently supported languages for each API method.
-  /// If the language (either specified by the caller or automatically detected)
-  /// is not supported by the called API method, an `INVALID_ARGUMENT` error
-  /// is returned.
+  /// [Language
+  /// Support](https://cloud.google.com/natural-language/docs/languages) lists
+  /// currently supported languages for each API method. If the language (either
+  /// specified by the caller or automatically detected) is not supported by the
+  /// called API method, an `INVALID_ARGUMENT` error is returned.
   core.String language;
 
   /// Required. If the type is not set or is `TYPE_UNSPECIFIED`,

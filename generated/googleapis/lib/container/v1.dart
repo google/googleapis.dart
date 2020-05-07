@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.container.v1;
 
@@ -68,7 +68,7 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
   /// Request parameters:
   ///
   /// [parent] - The parent project where subnetworks are usable.
-  /// Specified in the format 'projects / * '.
+  /// Specified in the format `projects / * `.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [pageToken] - Specifies a page token to use. Set this to the nextPageToken
@@ -156,7 +156,7 @@ class ProjectsLocationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name (project and location) of the server config to get,
-  /// specified in the format 'projects / * /locations / * '.
+  /// specified in the format `projects / * /locations / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
@@ -165,8 +165,9 @@ class ProjectsLocationsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+  /// operations for. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -233,8 +234,8 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster id) of the cluster to
   /// complete IP
-  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
-  /// * '.
+  /// rotation. Specified in the format `projects / * /locations / * /clusters /
+  /// * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -284,7 +285,8 @@ class ProjectsLocationsClustersResourceApi {
   /// Compute Engine instances.
   ///
   /// By default, the cluster is created in the project's
-  /// [default network](/compute/docs/networks-and-firewalls#networks).
+  /// [default
+  /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
   ///
   /// One firewall is added for the cluster. After cluster creation,
   /// the Kubelet creates routes for each node to allow the containers
@@ -300,7 +302,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [parent] - The parent (project and location) where the cluster will be
   /// created.
-  /// Specified in the format 'projects / * /locations / * '.
+  /// Specified in the format `projects / * /locations / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -358,8 +360,13 @@ class ProjectsLocationsClustersResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster) of the cluster to delete.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  ///
+  /// [zone] - Deprecated. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to delete.
   /// This field has been deprecated and replaced by the name field.
@@ -367,11 +374,6 @@ class ProjectsLocationsClustersResourceApi {
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
   /// number](https://support.google.com/cloud/answer/6158840).
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -385,9 +387,9 @@ class ProjectsLocationsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
-      {core.String clusterId,
+      {core.String zone,
+      core.String clusterId,
       core.String projectId,
-      core.String zone,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -399,14 +401,14 @@ class ProjectsLocationsClustersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (zone != null) {
+      _queryParams["zone"] = [zone];
+    }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (zone != null) {
-      _queryParams["zone"] = [zone];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -428,7 +430,7 @@ class ProjectsLocationsClustersResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster) of the cluster to retrieve.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
@@ -437,9 +439,9 @@ class ProjectsLocationsClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to retrieve.
   /// This field has been deprecated and replaced by the name field.
@@ -502,7 +504,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [parent] - The cluster (project, location, cluster id) to get keys for.
   /// Specified in
-  /// the format 'projects / * /locations / * /clusters / * '.
+  /// the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -549,7 +551,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [parent] - The parent (project and location) where the clusters will be
   /// listed.
-  /// Specified in the format 'projects / * /locations / * '.
+  /// Specified in the format `projects / * /locations / * `.
   /// Location "-" matches all zones and all regions.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -559,9 +561,9 @@ class ProjectsLocationsClustersResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides, or "-" for all zones.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides, or "-" for all zones. This field has been deprecated and
+  /// replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -615,7 +617,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// addons.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -668,7 +670,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// legacy abac.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -715,6 +717,9 @@ class ProjectsLocationsClustersResourceApi {
   }
 
   /// Sets the locations for a specific cluster.
+  /// Deprecated. Use
+  /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+  /// instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -722,7 +727,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// locations.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -776,7 +781,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// logging.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -830,7 +835,7 @@ class ProjectsLocationsClustersResourceApi {
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// maintenance
   /// policy.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -886,7 +891,7 @@ class ProjectsLocationsClustersResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster) of the cluster to set auth.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -940,7 +945,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// monitoring.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -994,8 +999,8 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// networking
-  /// policy. Specified in the format 'projects / * /locations / * /clusters / *
-  /// '.
+  /// policy. Specified in the format `projects / * /locations / * /clusters / *
+  /// `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1049,7 +1054,7 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// labels.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1103,8 +1108,8 @@ class ProjectsLocationsClustersResourceApi {
   ///
   /// [name] - The name (project, location, cluster id) of the cluster to start
   /// IP
-  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
-  /// * '.
+  /// rotation. Specified in the format `projects / * /locations / * /clusters /
+  /// * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1157,7 +1162,7 @@ class ProjectsLocationsClustersResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster) of the cluster to update.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1207,7 +1212,7 @@ class ProjectsLocationsClustersResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name (project, location, cluster) of the cluster to update.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1269,7 +1274,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [parent] - The parent (project, location, cluster id) where the node pool
   /// will be
   /// created. Specified in the format
-  /// 'projects / * /locations / * /clusters / * '.
+  /// `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1321,9 +1326,12 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// pool to
   /// delete. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  ///
+  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project
@@ -1331,14 +1339,11 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// [nodePoolId] - Deprecated. The name of the node pool to delete.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1352,10 +1357,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String name,
-      {core.String projectId,
+      {core.String nodePoolId,
+      core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1367,6 +1372,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (nodePoolId != null) {
+      _queryParams["nodePoolId"] = [nodePoolId];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
@@ -1375,9 +1383,6 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
     }
     if (clusterId != null) {
       _queryParams["clusterId"] = [clusterId];
-    }
-    if (nodePoolId != null) {
-      _queryParams["nodePoolId"] = [nodePoolId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1401,7 +1406,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// pool to
   /// get. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
@@ -1411,9 +1416,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -1480,8 +1485,8 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   ///
   /// [parent] - The parent (project, location, cluster id) where the node pools
   /// will be
-  /// listed. Specified in the format 'projects / * /locations / * /clusters / *
-  /// '.
+  /// listed. Specified in the format `projects / * /locations / * /clusters / *
+  /// `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
@@ -1490,9 +1495,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the parent field.
@@ -1557,8 +1562,8 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// poll to
   /// rollback upgrade.
-  /// Specified in the format 'projects / * /locations / * /clusters / *
-  /// /nodePools / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / *
+  /// /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
@@ -1612,7 +1617,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool) of the node pool
   /// to set
   /// autoscaler settings. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
@@ -1668,7 +1673,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// pool to set
   /// management properties. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
@@ -1724,8 +1729,8 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// pool to set
   /// size.
-  /// Specified in the format 'projects / * /locations / * /clusters / *
-  /// /nodePools / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / *
+  /// /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
@@ -1779,7 +1784,7 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool) of the node pool
   /// to
   /// update. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
   ///
@@ -1843,7 +1848,7 @@ class ProjectsLocationsClustersWell_knownResourceApi {
   ///
   /// [parent] - The cluster (project, location, cluster id) to get the
   /// discovery document
-  /// for. Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// for. Specified in the format `projects / * /locations / * /clusters / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1901,7 +1906,7 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [name] - The name (project, location, operation id) of the operation to
   /// cancel.
-  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  /// Specified in the format `projects / * /locations / * /operations / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
   ///
@@ -1951,7 +1956,7 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [name] - The name (project, location, operation id) of the operation to
   /// get.
-  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  /// Specified in the format `projects / * /locations / * /operations / * `.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
   ///
@@ -1964,9 +1969,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2023,7 +2028,7 @@ class ProjectsLocationsOperationsResourceApi {
   ///
   /// [parent] - The parent (project and location) where the operations will be
   /// listed.
-  /// Specified in the format 'projects / * /locations / * '.
+  /// Specified in the format `projects / * /locations / * `.
   /// Location "-" matches all zones and all regions.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
@@ -2033,9 +2038,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
-  /// all zones. This field has been deprecated and replaced by the parent
-  /// field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+  /// operations for, or `-` for all zones. This field has been deprecated and
+  /// replaced by the parent field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2103,11 +2108,12 @@ class ProjectsZonesResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+  /// operations for. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [name] - The name (project and location) of the server config to get,
-  /// specified in the format 'projects / * /locations / * '.
+  /// specified in the format `projects / * /locations / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2179,9 +2185,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -2251,9 +2257,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -2315,7 +2321,8 @@ class ProjectsZonesClustersResourceApi {
   /// Compute Engine instances.
   ///
   /// By default, the cluster is created in the project's
-  /// [default network](/compute/docs/networks-and-firewalls#networks).
+  /// [default
+  /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
   ///
   /// One firewall is added for the cluster. After cluster creation,
   /// the Kubelet creates routes for each node to allow the containers
@@ -2335,9 +2342,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2405,15 +2412,15 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to delete.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [name] - The name (project, location, cluster) of the cluster to delete.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2477,15 +2484,15 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to retrieve.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [name] - The name (project, location, cluster) of the cluster to retrieve.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2551,9 +2558,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to update.
   /// This field has been deprecated and replaced by the name field.
@@ -2622,13 +2629,13 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides, or "-" for all zones.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides, or "-" for all zones. This field has been deprecated and
+  /// replaced by the parent field.
   ///
   /// [parent] - The parent (project and location) where the clusters will be
   /// listed.
-  /// Specified in the format 'projects / * /locations / * '.
+  /// Specified in the format `projects / * /locations / * `.
   /// Location "-" matches all zones and all regions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2680,6 +2687,9 @@ class ProjectsZonesClustersResourceApi {
   }
 
   /// Sets the locations for a specific cluster.
+  /// Deprecated. Use
+  /// [projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)
+  /// instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2691,9 +2701,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -2763,9 +2773,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -2835,9 +2845,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -2907,9 +2917,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -2979,9 +2989,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -3045,14 +3055,15 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - The Google Developers Console [project ID or project
+  /// [projectId] - Required. The Google Developers Console [project ID or
+  /// project
   /// number](https://support.google.com/cloud/answer/6158840).
   ///
-  /// [zone] - The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
+  /// [zone] - Required. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides.
   ///
-  /// [clusterId] - The name of the cluster to update.
+  /// [clusterId] - Required. The name of the cluster to update.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3125,9 +3136,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -3197,9 +3208,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -3269,9 +3280,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -3341,9 +3352,9 @@ class ProjectsZonesClustersResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -3419,9 +3430,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -3503,9 +3514,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the parent field.
@@ -3573,9 +3584,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -3586,7 +3597,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// pool to
   /// delete. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3655,9 +3666,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the name field.
@@ -3668,7 +3679,7 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// [name] - The name (project, location, cluster, node pool id) of the node
   /// pool to
   /// get. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3737,17 +3748,17 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster.
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [parent] - The parent (project, location, cluster id) where the node pools
   /// will be
-  /// listed. Specified in the format 'projects / * /locations / * /clusters / *
-  /// '.
+  /// listed. Specified in the format `projects / * /locations / * /clusters / *
+  /// `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3815,9 +3826,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to rollback.
   /// This field has been deprecated and replaced by the name field.
@@ -3899,9 +3910,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to update.
   /// This field has been deprecated and replaced by the name field.
@@ -3983,9 +3994,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to update.
   /// This field has been deprecated and replaced by the name field.
@@ -4067,9 +4078,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to upgrade.
   /// This field has been deprecated and replaced by the name field.
@@ -4158,8 +4169,9 @@ class ProjectsZonesOperationsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the operation resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// operation resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [operationId] - Deprecated. The server-assigned `name` of the operation.
   /// This field has been deprecated and replaced by the name field.
@@ -4227,16 +4239,16 @@ class ProjectsZonesOperationsResourceApi {
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   ///
   /// [operationId] - Deprecated. The server-assigned `name` of the operation.
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [name] - The name (project, location, operation id) of the operation to
   /// get.
-  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  /// Specified in the format `projects / * /locations / * /operations / * `.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4300,13 +4312,13 @@ class ProjectsZonesOperationsResourceApi {
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) to return operations for, or `-` for
-  /// all zones. This field has been deprecated and replaced by the parent
-  /// field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
+  /// operations for, or `-` for all zones. This field has been deprecated and
+  /// replaced by the parent field.
   ///
   /// [parent] - The parent (project and location) where the operations will be
   /// listed.
-  /// Specified in the format 'projects / * /locations / * '.
+  /// Specified in the format `projects / * /locations / * `.
   /// Location "-" matches all zones and all regions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4364,7 +4376,7 @@ class AcceleratorConfig {
   core.String acceleratorCount;
 
   /// The accelerator type resource name. List of supported accelerators
-  /// [here](/compute/docs/gpus/#Introduction)
+  /// [here](https://cloud.google.com/compute/docs/gpus)
   core.String acceleratorType;
 
   AcceleratorConfig();
@@ -4394,6 +4406,10 @@ class AcceleratorConfig {
 /// Configuration for the addons that can be automatically spun up in the
 /// cluster, enabling additional functionality.
 class AddonsConfig {
+  /// Configuration for the Cloud Run addon, which allows the user to use a
+  /// managed Knative service.
+  CloudRunConfig cloudRunConfig;
+
   /// Configuration for the horizontal pod autoscaling feature, which
   /// increases or decreases the number of replica pods a replication controller
   /// has based on the resource usage of the existing pods.
@@ -4418,6 +4434,9 @@ class AddonsConfig {
   AddonsConfig();
 
   AddonsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudRunConfig")) {
+      cloudRunConfig = new CloudRunConfig.fromJson(_json["cloudRunConfig"]);
+    }
     if (_json.containsKey("horizontalPodAutoscaling")) {
       horizontalPodAutoscaling = new HorizontalPodAutoscaling.fromJson(
           _json["horizontalPodAutoscaling"]);
@@ -4439,6 +4458,9 @@ class AddonsConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cloudRunConfig != null) {
+      _json["cloudRunConfig"] = (cloudRunConfig).toJson();
+    }
     if (horizontalPodAutoscaling != null) {
       _json["horizontalPodAutoscaling"] = (horizontalPodAutoscaling).toJson();
     }
@@ -4450,6 +4472,40 @@ class AddonsConfig {
     }
     if (networkPolicyConfig != null) {
       _json["networkPolicyConfig"] = (networkPolicyConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration for returning group information from authenticators.
+class AuthenticatorGroupsConfig {
+  /// Whether this cluster should return group membership lookups
+  /// during authentication using a group of security groups.
+  core.bool enabled;
+
+  /// The name of the security group-of-groups to be used. Only relevant
+  /// if enabled = true.
+  core.String securityGroup;
+
+  AuthenticatorGroupsConfig();
+
+  AuthenticatorGroupsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+    if (_json.containsKey("securityGroup")) {
+      securityGroup = _json["securityGroup"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    if (securityGroup != null) {
+      _json["securityGroup"] = securityGroup;
     }
     return _json;
   }
@@ -4491,6 +4547,59 @@ class AutoUpgradeOptions {
   }
 }
 
+/// AutoprovisioningNodePoolDefaults contains defaults for a node pool created
+/// by NAP.
+class AutoprovisioningNodePoolDefaults {
+  /// Specifies the node management options for NAP created node-pools.
+  NodeManagement management;
+
+  /// Scopes that are used by NAP when creating node pools. If oauth_scopes are
+  /// specified, service_account should be empty.
+  core.List<core.String> oauthScopes;
+
+  /// The Google Cloud Platform Service Account to be used by the node VMs. If
+  /// service_account is specified, scopes should be empty.
+  core.String serviceAccount;
+
+  /// Specifies the upgrade settings for NAP created node pools
+  UpgradeSettings upgradeSettings;
+
+  AutoprovisioningNodePoolDefaults();
+
+  AutoprovisioningNodePoolDefaults.fromJson(core.Map _json) {
+    if (_json.containsKey("management")) {
+      management = new NodeManagement.fromJson(_json["management"]);
+    }
+    if (_json.containsKey("oauthScopes")) {
+      oauthScopes = (_json["oauthScopes"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("serviceAccount")) {
+      serviceAccount = _json["serviceAccount"];
+    }
+    if (_json.containsKey("upgradeSettings")) {
+      upgradeSettings = new UpgradeSettings.fromJson(_json["upgradeSettings"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (management != null) {
+      _json["management"] = (management).toJson();
+    }
+    if (oauthScopes != null) {
+      _json["oauthScopes"] = oauthScopes;
+    }
+    if (serviceAccount != null) {
+      _json["serviceAccount"] = serviceAccount;
+    }
+    if (upgradeSettings != null) {
+      _json["upgradeSettings"] = (upgradeSettings).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Parameters for using BigQuery as the destination of resource usage export.
 class BigQueryDestination {
   /// The ID of a BigQuery Dataset.
@@ -4514,10 +4623,34 @@ class BigQueryDestination {
   }
 }
 
+/// Configuration for Binary Authorization.
+class BinaryAuthorization {
+  /// Enable Binary Authorization for this cluster. If enabled, all container
+  /// images will be validated by Binary Authorization.
+  core.bool enabled;
+
+  BinaryAuthorization();
+
+  BinaryAuthorization.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
 /// CancelOperationRequest cancels a single operation.
 class CancelOperationRequest {
   /// The name (project, location, operation id) of the operation to cancel.
-  /// Specified in the format 'projects / * /locations / * /operations / * '.
+  /// Specified in the format `projects / * /locations / * /operations / * `.
   core.String name;
 
   /// Deprecated. The server-assigned `name` of the operation.
@@ -4530,8 +4663,9 @@ class CancelOperationRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the operation resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// operation resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   CancelOperationRequest();
@@ -4625,10 +4759,42 @@ class ClientCertificateConfig {
   }
 }
 
+/// Configuration options for the Cloud Run feature.
+class CloudRunConfig {
+  /// Whether Cloud Run addon is enabled for this cluster.
+  core.bool disabled;
+
+  CloudRunConfig();
+
+  CloudRunConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
+    return _json;
+  }
+}
+
 /// A Google Kubernetes Engine cluster.
 class Cluster {
   /// Configurations for the various addons available to run in the cluster.
   AddonsConfig addonsConfig;
+
+  /// Configuration controlling RBAC group membership information.
+  AuthenticatorGroupsConfig authenticatorGroupsConfig;
+
+  /// Cluster-level autoscaling configuration.
+  ClusterAutoscaling autoscaling;
+
+  /// Configuration for Binary Authorization.
+  BinaryAuthorization binaryAuthorization;
 
   /// The IP address range of the container pods in this cluster, in
   /// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -4651,11 +4817,14 @@ class Cluster {
   core.int currentNodeCount;
 
   /// [Output only] Deprecated, use
-  /// [NodePools.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)
+  /// [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)
   /// instead. The current version of the node software components. If they are
   /// currently at multiple versions because they're in the process of being
   /// upgraded, this reflects the minimum version of all nodes.
   core.String currentNodeVersion;
+
+  /// Configuration of etcd encryption.
+  DatabaseEncryption databaseEncryption;
 
   /// The default constraint on the maximum number of pods that can be run
   /// simultaneously on a node in the node pool of this cluster. Only honored
@@ -4729,24 +4898,29 @@ class Cluster {
   LegacyAbac legacyAbac;
 
   /// [Output only] The name of the Google Compute Engine
-  /// [zone](/compute/docs/regions-zones/regions-zones#available) or
-  /// [region](/compute/docs/regions-zones/regions-zones#available) in which
-  /// the cluster resides.
+  /// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
+  /// or
+  /// [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
+  /// in which the cluster resides.
   core.String location;
 
   /// The list of Google Compute Engine
-  /// [zones](/compute/docs/zones#available) in which the cluster's nodes
-  /// should be located.
+  /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
+  /// the
+  /// cluster's nodes should be located.
   core.List<core.String> locations;
 
   /// The logging service the cluster should use to write logs.
   /// Currently available options:
   ///
-  /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
-  /// service with Kubernetes-native resource model in Stackdriver
-  /// * `logging.googleapis.com` - the Google Cloud Logging service.
+  /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+  /// service with a Kubernetes-native resource model
+  /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+  ///   available as of GKE 1.15).
   /// * `none` - no logs will be exported from the cluster.
-  /// * if left as an empty string,`logging.googleapis.com` will be used.
+  ///
+  /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+  /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
   core.String loggingService;
 
   /// Configure the maintenance policy for this cluster.
@@ -4765,13 +4939,19 @@ class Cluster {
   /// The monitoring service the cluster should use to write metrics.
   /// Currently available options:
   ///
-  /// * `monitoring.googleapis.com` - the Google Cloud Monitoring service.
-  /// * `none` - no metrics will be exported from the cluster.
-  /// * if left as an empty string, `monitoring.googleapis.com` will be used.
+  /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+  /// service with a Kubernetes-native resource model
+  /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+  ///   longer available as of GKE 1.15).
+  /// * `none` - No metrics will be exported from the cluster.
+  ///
+  /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+  /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
   core.String monitoringService;
 
   /// The name of this cluster. The name must be unique within this project
-  /// and zone, and can be up to 40 characters with the following restrictions:
+  /// and location (e.g. zone or region), and can be up to 40 characters with
+  /// the following restrictions:
   ///
   /// * Lowercase letters, numbers, and hyphens only.
   /// * Must start with a letter.
@@ -4779,9 +4959,9 @@ class Cluster {
   core.String name;
 
   /// The name of the Google Compute Engine
-  /// [network](/compute/docs/networks-and-firewalls#networks) to which the
-  /// cluster is connected. If left unspecified, the `default` network
-  /// will be used.
+  /// [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
+  /// to which the cluster is connected. If left unspecified, the `default`
+  /// network will be used.
   core.String network;
 
   /// Configuration for cluster networking.
@@ -4835,6 +5015,9 @@ class Cluster {
   /// typically put in the last `/16` from the container CIDR.
   core.String servicesIpv4Cidr;
 
+  /// Shielded Nodes configuration.
+  ShieldedNodes shieldedNodes;
+
   /// [Output only] The current status of this cluster.
   /// Possible string values are:
   /// - "STATUS_UNSPECIFIED" : Not set.
@@ -4860,8 +5043,8 @@ class Cluster {
   core.String statusMessage;
 
   /// The name of the Google Compute Engine
-  /// [subnetwork](/compute/docs/subnetworks) to which the
-  /// cluster is connected.
+  /// [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which
+  /// the cluster is connected.
   core.String subnetwork;
 
   /// [Output only] The IP address range of the Cloud TPUs in this cluster, in
@@ -4869,10 +5052,16 @@ class Cluster {
   /// notation (e.g. `1.2.3.4/29`).
   core.String tpuIpv4CidrBlock;
 
+  /// Cluster-level Vertical Pod Autoscaling configuration.
+  VerticalPodAutoscaling verticalPodAutoscaling;
+
+  /// Configuration for the use of Kubernetes Service Accounts in GCP IAM
+  /// policies.
+  WorkloadIdentityConfig workloadIdentityConfig;
+
   /// [Output only] The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field is deprecated, use location instead.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field is deprecated, use location instead.
   core.String zone;
 
   Cluster();
@@ -4880,6 +5069,17 @@ class Cluster {
   Cluster.fromJson(core.Map _json) {
     if (_json.containsKey("addonsConfig")) {
       addonsConfig = new AddonsConfig.fromJson(_json["addonsConfig"]);
+    }
+    if (_json.containsKey("authenticatorGroupsConfig")) {
+      authenticatorGroupsConfig = new AuthenticatorGroupsConfig.fromJson(
+          _json["authenticatorGroupsConfig"]);
+    }
+    if (_json.containsKey("autoscaling")) {
+      autoscaling = new ClusterAutoscaling.fromJson(_json["autoscaling"]);
+    }
+    if (_json.containsKey("binaryAuthorization")) {
+      binaryAuthorization =
+          new BinaryAuthorization.fromJson(_json["binaryAuthorization"]);
     }
     if (_json.containsKey("clusterIpv4Cidr")) {
       clusterIpv4Cidr = _json["clusterIpv4Cidr"];
@@ -4900,6 +5100,10 @@ class Cluster {
     }
     if (_json.containsKey("currentNodeVersion")) {
       currentNodeVersion = _json["currentNodeVersion"];
+    }
+    if (_json.containsKey("databaseEncryption")) {
+      databaseEncryption =
+          new DatabaseEncryption.fromJson(_json["databaseEncryption"]);
     }
     if (_json.containsKey("defaultMaxPodsConstraint")) {
       defaultMaxPodsConstraint =
@@ -5005,6 +5209,9 @@ class Cluster {
     if (_json.containsKey("servicesIpv4Cidr")) {
       servicesIpv4Cidr = _json["servicesIpv4Cidr"];
     }
+    if (_json.containsKey("shieldedNodes")) {
+      shieldedNodes = new ShieldedNodes.fromJson(_json["shieldedNodes"]);
+    }
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
@@ -5017,6 +5224,14 @@ class Cluster {
     if (_json.containsKey("tpuIpv4CidrBlock")) {
       tpuIpv4CidrBlock = _json["tpuIpv4CidrBlock"];
     }
+    if (_json.containsKey("verticalPodAutoscaling")) {
+      verticalPodAutoscaling =
+          new VerticalPodAutoscaling.fromJson(_json["verticalPodAutoscaling"]);
+    }
+    if (_json.containsKey("workloadIdentityConfig")) {
+      workloadIdentityConfig =
+          new WorkloadIdentityConfig.fromJson(_json["workloadIdentityConfig"]);
+    }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
     }
@@ -5027,6 +5242,15 @@ class Cluster {
         new core.Map<core.String, core.Object>();
     if (addonsConfig != null) {
       _json["addonsConfig"] = (addonsConfig).toJson();
+    }
+    if (authenticatorGroupsConfig != null) {
+      _json["authenticatorGroupsConfig"] = (authenticatorGroupsConfig).toJson();
+    }
+    if (autoscaling != null) {
+      _json["autoscaling"] = (autoscaling).toJson();
+    }
+    if (binaryAuthorization != null) {
+      _json["binaryAuthorization"] = (binaryAuthorization).toJson();
     }
     if (clusterIpv4Cidr != null) {
       _json["clusterIpv4Cidr"] = clusterIpv4Cidr;
@@ -5046,6 +5270,9 @@ class Cluster {
     }
     if (currentNodeVersion != null) {
       _json["currentNodeVersion"] = currentNodeVersion;
+    }
+    if (databaseEncryption != null) {
+      _json["databaseEncryption"] = (databaseEncryption).toJson();
     }
     if (defaultMaxPodsConstraint != null) {
       _json["defaultMaxPodsConstraint"] = (defaultMaxPodsConstraint).toJson();
@@ -5141,6 +5368,9 @@ class Cluster {
     if (servicesIpv4Cidr != null) {
       _json["servicesIpv4Cidr"] = servicesIpv4Cidr;
     }
+    if (shieldedNodes != null) {
+      _json["shieldedNodes"] = (shieldedNodes).toJson();
+    }
     if (status != null) {
       _json["status"] = status;
     }
@@ -5153,8 +5383,79 @@ class Cluster {
     if (tpuIpv4CidrBlock != null) {
       _json["tpuIpv4CidrBlock"] = tpuIpv4CidrBlock;
     }
+    if (verticalPodAutoscaling != null) {
+      _json["verticalPodAutoscaling"] = (verticalPodAutoscaling).toJson();
+    }
+    if (workloadIdentityConfig != null) {
+      _json["workloadIdentityConfig"] = (workloadIdentityConfig).toJson();
+    }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// ClusterAutoscaling contains global, per-cluster information
+/// required by Cluster Autoscaler to automatically adjust
+/// the size of the cluster and create/delete
+/// node pools based on the current needs.
+class ClusterAutoscaling {
+  /// The list of Google Compute Engine
+  /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
+  /// the
+  /// NodePool's nodes can be created by NAP.
+  core.List<core.String> autoprovisioningLocations;
+
+  /// AutoprovisioningNodePoolDefaults contains defaults for a node pool
+  /// created by NAP.
+  AutoprovisioningNodePoolDefaults autoprovisioningNodePoolDefaults;
+
+  /// Enables automatic node pool creation and deletion.
+  core.bool enableNodeAutoprovisioning;
+
+  /// Contains global constraints regarding minimum and maximum
+  /// amount of resources in the cluster.
+  core.List<ResourceLimit> resourceLimits;
+
+  ClusterAutoscaling();
+
+  ClusterAutoscaling.fromJson(core.Map _json) {
+    if (_json.containsKey("autoprovisioningLocations")) {
+      autoprovisioningLocations =
+          (_json["autoprovisioningLocations"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("autoprovisioningNodePoolDefaults")) {
+      autoprovisioningNodePoolDefaults =
+          new AutoprovisioningNodePoolDefaults.fromJson(
+              _json["autoprovisioningNodePoolDefaults"]);
+    }
+    if (_json.containsKey("enableNodeAutoprovisioning")) {
+      enableNodeAutoprovisioning = _json["enableNodeAutoprovisioning"];
+    }
+    if (_json.containsKey("resourceLimits")) {
+      resourceLimits = (_json["resourceLimits"] as core.List)
+          .map<ResourceLimit>((value) => new ResourceLimit.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (autoprovisioningLocations != null) {
+      _json["autoprovisioningLocations"] = autoprovisioningLocations;
+    }
+    if (autoprovisioningNodePoolDefaults != null) {
+      _json["autoprovisioningNodePoolDefaults"] =
+          (autoprovisioningNodePoolDefaults).toJson();
+    }
+    if (enableNodeAutoprovisioning != null) {
+      _json["enableNodeAutoprovisioning"] = enableNodeAutoprovisioning;
+    }
+    if (resourceLimits != null) {
+      _json["resourceLimits"] =
+          resourceLimits.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5167,15 +5468,28 @@ class ClusterUpdate {
   /// Configurations for the various addons available to run in the cluster.
   AddonsConfig desiredAddonsConfig;
 
+  /// The desired configuration options for the Binary Authorization feature.
+  BinaryAuthorization desiredBinaryAuthorization;
+
+  /// Cluster-level autoscaling configuration.
+  ClusterAutoscaling desiredClusterAutoscaling;
+
+  /// Configuration of etcd encryption.
+  DatabaseEncryption desiredDatabaseEncryption;
+
   /// The desired image type for the node pool.
   /// NOTE: Set the "desired_node_pool" field as well.
   core.String desiredImageType;
 
+  /// The desired config of Intra-node visibility.
+  IntraNodeVisibilityConfig desiredIntraNodeVisibilityConfig;
+
   /// The desired list of Google Compute Engine
-  /// [zones](/compute/docs/zones#available) in which the cluster's nodes
-  /// should be located. Changing the locations a cluster is in will result
-  /// in nodes being either created or removed from the cluster, depending on
-  /// whether locations are being added or removed.
+  /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
+  /// the
+  /// cluster's nodes should be located. Changing the locations a cluster is in
+  /// will result in nodes being either created or removed from the cluster,
+  /// depending on whether locations are being added or removed.
   ///
   /// This list must always include the cluster's primary zone.
   core.List<core.String> desiredLocations;
@@ -5183,10 +5497,14 @@ class ClusterUpdate {
   /// The logging service the cluster should use to write logs.
   /// Currently available options:
   ///
-  /// * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
-  /// service with Kubernetes-native resource model in Stackdriver
-  /// * "logging.googleapis.com" - the Google Cloud Logging service
-  /// * "none" - no logs will be exported from the cluster
+  /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+  /// service with a Kubernetes-native resource model
+  /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+  ///   available as of GKE 1.15).
+  /// * `none` - no logs will be exported from the cluster.
+  ///
+  /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+  /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
   core.String desiredLoggingService;
 
   /// The desired configuration options for master authorized networks feature.
@@ -5207,10 +5525,14 @@ class ClusterUpdate {
   /// The monitoring service the cluster should use to write metrics.
   /// Currently available options:
   ///
-  /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-  /// service with Kubernetes-native resource model in Stackdriver
-  /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-  /// * "none" - no metrics will be exported from the cluster
+  /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+  /// service with a Kubernetes-native resource model
+  /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+  ///   longer available as of GKE 1.15).
+  /// * `none` - No metrics will be exported from the cluster.
+  ///
+  /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+  /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
   core.String desiredMonitoringService;
 
   /// Autoscaler configuration for the node pool specified in
@@ -5241,6 +5563,15 @@ class ClusterUpdate {
   /// The desired configuration for exporting resource usage.
   ResourceUsageExportConfig desiredResourceUsageExportConfig;
 
+  /// Configuration for Shielded Nodes.
+  ShieldedNodes desiredShieldedNodes;
+
+  /// Cluster-level Vertical Pod Autoscaling configuration.
+  VerticalPodAutoscaling desiredVerticalPodAutoscaling;
+
+  /// Configuration for Workload Identity.
+  WorkloadIdentityConfig desiredWorkloadIdentityConfig;
+
   ClusterUpdate();
 
   ClusterUpdate.fromJson(core.Map _json) {
@@ -5248,8 +5579,24 @@ class ClusterUpdate {
       desiredAddonsConfig =
           new AddonsConfig.fromJson(_json["desiredAddonsConfig"]);
     }
+    if (_json.containsKey("desiredBinaryAuthorization")) {
+      desiredBinaryAuthorization =
+          new BinaryAuthorization.fromJson(_json["desiredBinaryAuthorization"]);
+    }
+    if (_json.containsKey("desiredClusterAutoscaling")) {
+      desiredClusterAutoscaling =
+          new ClusterAutoscaling.fromJson(_json["desiredClusterAutoscaling"]);
+    }
+    if (_json.containsKey("desiredDatabaseEncryption")) {
+      desiredDatabaseEncryption =
+          new DatabaseEncryption.fromJson(_json["desiredDatabaseEncryption"]);
+    }
     if (_json.containsKey("desiredImageType")) {
       desiredImageType = _json["desiredImageType"];
+    }
+    if (_json.containsKey("desiredIntraNodeVisibilityConfig")) {
+      desiredIntraNodeVisibilityConfig = new IntraNodeVisibilityConfig.fromJson(
+          _json["desiredIntraNodeVisibilityConfig"]);
     }
     if (_json.containsKey("desiredLocations")) {
       desiredLocations =
@@ -5283,6 +5630,18 @@ class ClusterUpdate {
       desiredResourceUsageExportConfig = new ResourceUsageExportConfig.fromJson(
           _json["desiredResourceUsageExportConfig"]);
     }
+    if (_json.containsKey("desiredShieldedNodes")) {
+      desiredShieldedNodes =
+          new ShieldedNodes.fromJson(_json["desiredShieldedNodes"]);
+    }
+    if (_json.containsKey("desiredVerticalPodAutoscaling")) {
+      desiredVerticalPodAutoscaling = new VerticalPodAutoscaling.fromJson(
+          _json["desiredVerticalPodAutoscaling"]);
+    }
+    if (_json.containsKey("desiredWorkloadIdentityConfig")) {
+      desiredWorkloadIdentityConfig = new WorkloadIdentityConfig.fromJson(
+          _json["desiredWorkloadIdentityConfig"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5291,8 +5650,22 @@ class ClusterUpdate {
     if (desiredAddonsConfig != null) {
       _json["desiredAddonsConfig"] = (desiredAddonsConfig).toJson();
     }
+    if (desiredBinaryAuthorization != null) {
+      _json["desiredBinaryAuthorization"] =
+          (desiredBinaryAuthorization).toJson();
+    }
+    if (desiredClusterAutoscaling != null) {
+      _json["desiredClusterAutoscaling"] = (desiredClusterAutoscaling).toJson();
+    }
+    if (desiredDatabaseEncryption != null) {
+      _json["desiredDatabaseEncryption"] = (desiredDatabaseEncryption).toJson();
+    }
     if (desiredImageType != null) {
       _json["desiredImageType"] = desiredImageType;
+    }
+    if (desiredIntraNodeVisibilityConfig != null) {
+      _json["desiredIntraNodeVisibilityConfig"] =
+          (desiredIntraNodeVisibilityConfig).toJson();
     }
     if (desiredLocations != null) {
       _json["desiredLocations"] = desiredLocations;
@@ -5324,6 +5697,17 @@ class ClusterUpdate {
       _json["desiredResourceUsageExportConfig"] =
           (desiredResourceUsageExportConfig).toJson();
     }
+    if (desiredShieldedNodes != null) {
+      _json["desiredShieldedNodes"] = (desiredShieldedNodes).toJson();
+    }
+    if (desiredVerticalPodAutoscaling != null) {
+      _json["desiredVerticalPodAutoscaling"] =
+          (desiredVerticalPodAutoscaling).toJson();
+    }
+    if (desiredWorkloadIdentityConfig != null) {
+      _json["desiredWorkloadIdentityConfig"] =
+          (desiredWorkloadIdentityConfig).toJson();
+    }
     return _json;
   }
 }
@@ -5335,8 +5719,8 @@ class CompleteIPRotationRequest {
   core.String clusterId;
 
   /// The name (project, location, cluster id) of the cluster to complete IP
-  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
-  /// * '.
+  /// rotation. Specified in the format `projects / * /locations / * /clusters /
+  /// * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -5345,9 +5729,9 @@ class CompleteIPRotationRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   CompleteIPRotationRequest();
@@ -5413,12 +5797,12 @@ class ConsumptionMeteringConfig {
 
 /// CreateClusterRequest creates a cluster.
 class CreateClusterRequest {
-  /// A [cluster
-  /// resource](/container-engine/reference/rest/v1/projects.zones.clusters)
+  /// Required. A [cluster
+  /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)
   Cluster cluster;
 
   /// The parent (project and location) where the cluster will be created.
-  /// Specified in the format 'projects / * /locations / * '.
+  /// Specified in the format `projects / * /locations / * `.
   core.String parent;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -5427,9 +5811,9 @@ class CreateClusterRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   core.String zone;
 
   CreateClusterRequest();
@@ -5474,12 +5858,12 @@ class CreateNodePoolRequest {
   /// This field has been deprecated and replaced by the parent field.
   core.String clusterId;
 
-  /// The node pool to create.
+  /// Required. The node pool to create.
   NodePool nodePool;
 
   /// The parent (project, location, cluster id) where the node pool will be
   /// created. Specified in the format
-  /// 'projects / * /locations / * /clusters / * '.
+  /// `projects / * /locations / * /clusters / * `.
   core.String parent;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -5488,9 +5872,9 @@ class CreateNodePoolRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the parent field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the parent
+  /// field.
   core.String zone;
 
   CreateNodePoolRequest();
@@ -5572,6 +5956,46 @@ class DailyMaintenanceWindow {
   }
 }
 
+/// Configuration of etcd encryption.
+class DatabaseEncryption {
+  /// Name of CloudKMS key to use for the encryption of secrets in etcd.
+  /// Ex.
+  /// projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
+  core.String keyName;
+
+  /// Denotes the state of etcd encryption.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Should never be set
+  /// - "ENCRYPTED" : Secrets in etcd are encrypted.
+  /// - "DECRYPTED" : Secrets in etcd are stored in plain text (at etcd level) -
+  /// this is
+  /// unrelated to Compute Engine level full disk encryption.
+  core.String state;
+
+  DatabaseEncryption();
+
+  DatabaseEncryption.fromJson(core.Map _json) {
+    if (_json.containsKey("keyName")) {
+      keyName = _json["keyName"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (keyName != null) {
+      _json["keyName"] = keyName;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -5595,6 +6019,10 @@ class Empty {
 
 /// GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
 class GetJSONWebKeysResponse {
+  /// OnePlatform automatically extracts this field and uses it to set the HTTP
+  /// Cache-Control header.
+  HttpCacheControlResponseHeader cacheHeader;
+
   /// The public component of the keys used by the cluster to sign token
   /// requests.
   core.List<Jwk> keys;
@@ -5602,6 +6030,10 @@ class GetJSONWebKeysResponse {
   GetJSONWebKeysResponse();
 
   GetJSONWebKeysResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("cacheHeader")) {
+      cacheHeader =
+          new HttpCacheControlResponseHeader.fromJson(_json["cacheHeader"]);
+    }
     if (_json.containsKey("keys")) {
       keys = (_json["keys"] as core.List)
           .map<Jwk>((value) => new Jwk.fromJson(value))
@@ -5612,6 +6044,9 @@ class GetJSONWebKeysResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cacheHeader != null) {
+      _json["cacheHeader"] = (cacheHeader).toJson();
+    }
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -5622,6 +6057,10 @@ class GetJSONWebKeysResponse {
 /// GetOpenIDConfigResponse is an OIDC discovery document for the cluster.
 /// See the OpenID Connect Discovery 1.0 specification for details.
 class GetOpenIDConfigResponse {
+  /// OnePlatform automatically extracts this field and uses it to set the HTTP
+  /// Cache-Control header.
+  HttpCacheControlResponseHeader cacheHeader;
+
   /// Supported claims.
   core.List<core.String> claimsSupported;
 
@@ -5646,6 +6085,10 @@ class GetOpenIDConfigResponse {
   GetOpenIDConfigResponse();
 
   GetOpenIDConfigResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("cacheHeader")) {
+      cacheHeader =
+          new HttpCacheControlResponseHeader.fromJson(_json["cacheHeader"]);
+    }
     if (_json.containsKey("claims_supported")) {
       claimsSupported =
           (_json["claims_supported"] as core.List).cast<core.String>();
@@ -5677,6 +6120,9 @@ class GetOpenIDConfigResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (cacheHeader != null) {
+      _json["cacheHeader"] = (cacheHeader).toJson();
+    }
     if (claimsSupported != null) {
       _json["claims_supported"] = claimsSupported;
     }
@@ -5708,8 +6154,8 @@ class GetOpenIDConfigResponse {
 /// has based on the resource usage of the existing pods.
 class HorizontalPodAutoscaling {
   /// Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.
-  /// When enabled, it ensures that a Heapster pod is running in the cluster,
-  /// which is also used by the Cloud Monitoring service.
+  /// When enabled, it ensures that metrics are collected into Stackdriver
+  /// Monitoring.
   core.bool disabled;
 
   HorizontalPodAutoscaling();
@@ -5725,6 +6171,47 @@ class HorizontalPodAutoscaling {
         new core.Map<core.String, core.Object>();
     if (disabled != null) {
       _json["disabled"] = disabled;
+    }
+    return _json;
+  }
+}
+
+/// RFC-2616: cache control support
+class HttpCacheControlResponseHeader {
+  /// 14.6 response cache age, in seconds since the response is generated
+  core.String age;
+
+  /// 14.9 request and response directives
+  core.String directive;
+
+  /// 14.21 response cache expires, in RFC 1123 date format
+  core.String expires;
+
+  HttpCacheControlResponseHeader();
+
+  HttpCacheControlResponseHeader.fromJson(core.Map _json) {
+    if (_json.containsKey("age")) {
+      age = _json["age"];
+    }
+    if (_json.containsKey("directive")) {
+      directive = _json["directive"];
+    }
+    if (_json.containsKey("expires")) {
+      expires = _json["expires"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (age != null) {
+      _json["age"] = age;
+    }
+    if (directive != null) {
+      _json["directive"] = directive;
+    }
+    if (expires != null) {
+      _json["expires"] = expires;
     }
     return _json;
   }
@@ -5945,6 +6432,30 @@ class IPAllocationPolicy {
     }
     if (useIpAliases != null) {
       _json["useIpAliases"] = useIpAliases;
+    }
+    return _json;
+  }
+}
+
+/// IntraNodeVisibilityConfig contains the desired config of the intra-node
+/// visibility on this cluster.
+class IntraNodeVisibilityConfig {
+  /// Enables intra node visibility for this cluster.
+  core.bool enabled;
+
+  IntraNodeVisibilityConfig();
+
+  IntraNodeVisibilityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
     }
     return _json;
   }
@@ -6234,12 +6745,23 @@ class ListUsableSubnetworksResponse {
 
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicy {
+  /// A hash identifying the version of this policy, so that updates to fields
+  /// of
+  /// the policy won't accidentally undo intermediate changes (and so that users
+  /// of the API unaware of some fields won't accidentally remove other fields).
+  /// Make a <code>get()</code> request to the cluster to get the current
+  /// resource version and include it with requests to set the policy.
+  core.String resourceVersion;
+
   /// Specifies the maintenance window in which maintenance may be performed.
   MaintenanceWindow window;
 
   MaintenancePolicy();
 
   MaintenancePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceVersion")) {
+      resourceVersion = _json["resourceVersion"];
+    }
     if (_json.containsKey("window")) {
       window = new MaintenanceWindow.fromJson(_json["window"]);
     }
@@ -6248,6 +6770,9 @@ class MaintenancePolicy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (resourceVersion != null) {
+      _json["resourceVersion"] = resourceVersion;
+    }
     if (window != null) {
       _json["window"] = (window).toJson();
     }
@@ -6260,12 +6785,30 @@ class MaintenanceWindow {
   /// DailyMaintenanceWindow specifies a daily maintenance operation window.
   DailyMaintenanceWindow dailyMaintenanceWindow;
 
+  /// Exceptions to maintenance window. Non-emergency maintenance should not
+  /// occur in these windows.
+  core.Map<core.String, TimeWindow> maintenanceExclusions;
+
+  /// RecurringWindow specifies some number of recurring time periods for
+  /// maintenance to occur. The time windows may be overlapping. If no
+  /// maintenance windows are set, maintenance can occur at any time.
+  RecurringTimeWindow recurringWindow;
+
   MaintenanceWindow();
 
   MaintenanceWindow.fromJson(core.Map _json) {
     if (_json.containsKey("dailyMaintenanceWindow")) {
       dailyMaintenanceWindow =
           new DailyMaintenanceWindow.fromJson(_json["dailyMaintenanceWindow"]);
+    }
+    if (_json.containsKey("maintenanceExclusions")) {
+      maintenanceExclusions = commons.mapMap<core.Map, TimeWindow>(
+          _json["maintenanceExclusions"].cast<core.String, core.Map>(),
+          (core.Map item) => new TimeWindow.fromJson(item));
+    }
+    if (_json.containsKey("recurringWindow")) {
+      recurringWindow =
+          new RecurringTimeWindow.fromJson(_json["recurringWindow"]);
     }
   }
 
@@ -6274,6 +6817,14 @@ class MaintenanceWindow {
         new core.Map<core.String, core.Object>();
     if (dailyMaintenanceWindow != null) {
       _json["dailyMaintenanceWindow"] = (dailyMaintenanceWindow).toJson();
+    }
+    if (maintenanceExclusions != null) {
+      _json["maintenanceExclusions"] =
+          commons.mapMap<TimeWindow, core.Map<core.String, core.Object>>(
+              maintenanceExclusions, (TimeWindow item) => (item).toJson());
+    }
+    if (recurringWindow != null) {
+      _json["recurringWindow"] = (recurringWindow).toJson();
     }
     return _json;
   }
@@ -6422,22 +6973,80 @@ class MaxPodsConstraint {
   }
 }
 
+/// Progress metric is (string, int|float|string) pair.
+class Metric {
+  /// For metrics with floating point value.
+  core.double doubleValue;
+
+  /// For metrics with integer value.
+  core.String intValue;
+
+  /// Required. Metric name, e.g., "nodes total", "percent done".
+  core.String name;
+
+  /// For metrics with custom values (ratios, visual progress, etc.).
+  core.String stringValue;
+
+  Metric();
+
+  Metric.fromJson(core.Map _json) {
+    if (_json.containsKey("doubleValue")) {
+      doubleValue = _json["doubleValue"].toDouble();
+    }
+    if (_json.containsKey("intValue")) {
+      intValue = _json["intValue"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("stringValue")) {
+      stringValue = _json["stringValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (doubleValue != null) {
+      _json["doubleValue"] = doubleValue;
+    }
+    if (intValue != null) {
+      _json["intValue"] = intValue;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (stringValue != null) {
+      _json["stringValue"] = stringValue;
+    }
+    return _json;
+  }
+}
+
 /// NetworkConfig reports the relative names of network & subnetwork.
 class NetworkConfig {
+  /// Whether Intra-node visibility is enabled for this cluster.
+  /// This makes same node pod to pod traffic visible for VPC network.
+  core.bool enableIntraNodeVisibility;
+
   /// Output only. The relative name of the Google Compute Engine
-  /// network(/compute/docs/networks-and-firewalls#networks) to which
-  /// the cluster is connected.
-  /// Example: projects/my-project/global/networks/my-network
+  /// network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
+  /// to which the cluster is connected. Example:
+  /// projects/my-project/global/networks/my-network
   core.String network;
 
   /// Output only. The relative name of the Google Compute Engine
-  /// [subnetwork](/compute/docs/vpc) to which the cluster is connected.
-  /// Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+  /// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the
+  /// cluster is connected. Example:
+  /// projects/my-project/regions/us-central1/subnetworks/my-subnet
   core.String subnetwork;
 
   NetworkConfig();
 
   NetworkConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableIntraNodeVisibility")) {
+      enableIntraNodeVisibility = _json["enableIntraNodeVisibility"];
+    }
     if (_json.containsKey("network")) {
       network = _json["network"];
     }
@@ -6449,6 +7058,9 @@ class NetworkConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (enableIntraNodeVisibility != null) {
+      _json["enableIntraNodeVisibility"] = enableIntraNodeVisibility;
+    }
     if (network != null) {
       _json["network"] = network;
     }
@@ -6554,14 +7166,14 @@ class NodeConfig {
 
   /// The number of local SSD disks to be attached to the node.
   ///
-  /// The limit for this value is dependant upon the maximum number of
+  /// The limit for this value is dependent upon the maximum number of
   /// disks available on a machine per zone. See:
-  /// https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits
+  /// https://cloud.google.com/compute/docs/disks/local-ssd
   /// for more information.
   core.int localSsdCount;
 
   /// The name of a Google Compute Engine [machine
-  /// type](/compute/docs/machine-types) (e.g.
+  /// type](https://cloud.google.com/compute/docs/machine-types) (e.g.
   /// `n1-standard-1`).
   ///
   /// If unspecified, the default machine type is
@@ -6580,8 +7192,9 @@ class NodeConfig {
   ///  "configure-sh"
   ///  "containerd-configure-sh"
   ///  "enable-os-login"
-  ///  "gci-update-strategy"
   ///  "gci-ensure-gke-docker"
+  ///  "gci-metrics-enabled"
+  ///  "gci-update-strategy"
   ///  "instance-template"
   ///  "kube-env"
   ///  "startup-script"
@@ -6621,7 +7234,8 @@ class NodeConfig {
   /// persistent storage on your nodes.
   /// * `https://www.googleapis.com/auth/devstorage.read_only` is required for
   /// communicating with **gcr.io**
-  /// (the [Google Container Registry](/container-registry/)).
+  /// (the [Google Container
+  /// Registry](https://cloud.google.com/container-registry/)).
   ///
   /// If unspecified, no scopes are added, unless Cloud Logging or Cloud
   /// Monitoring are enabled, in which case their required scopes will be added.
@@ -6632,9 +7246,22 @@ class NodeConfig {
   /// information about preemptible VM instances.
   core.bool preemptible;
 
-  /// The Google Cloud Platform Service Account to be used by the node VMs. If
-  /// no Service Account is specified, the "default" service account is used.
+  /// The optional reservation affinity. Setting this field will apply
+  /// the specified [Zonal Compute
+  /// Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+  /// to this node pool.
+  ReservationAffinity reservationAffinity;
+
+  /// Sandbox configuration for this node.
+  SandboxConfig sandboxConfig;
+
+  /// The Google Cloud Platform Service Account to be used by the node VMs.
+  /// Specify the email address of the Service Account; otherwise, if no Service
+  /// Account is specified, the "default" service account is used.
   core.String serviceAccount;
+
+  /// Shielded Instance options.
+  ShieldedInstanceConfig shieldedInstanceConfig;
 
   /// The list of instance tags applied to all nodes. Tags are used to identify
   /// valid sources or targets for network firewalls and are specified by
@@ -6647,6 +7274,9 @@ class NodeConfig {
   /// For more information, including usage and the valid values, see:
   /// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   core.List<NodeTaint> taints;
+
+  /// The workload metadata configuration for this node.
+  WorkloadMetadataConfig workloadMetadataConfig;
 
   NodeConfig();
 
@@ -6688,8 +7318,19 @@ class NodeConfig {
     if (_json.containsKey("preemptible")) {
       preemptible = _json["preemptible"];
     }
+    if (_json.containsKey("reservationAffinity")) {
+      reservationAffinity =
+          new ReservationAffinity.fromJson(_json["reservationAffinity"]);
+    }
+    if (_json.containsKey("sandboxConfig")) {
+      sandboxConfig = new SandboxConfig.fromJson(_json["sandboxConfig"]);
+    }
     if (_json.containsKey("serviceAccount")) {
       serviceAccount = _json["serviceAccount"];
+    }
+    if (_json.containsKey("shieldedInstanceConfig")) {
+      shieldedInstanceConfig =
+          new ShieldedInstanceConfig.fromJson(_json["shieldedInstanceConfig"]);
     }
     if (_json.containsKey("tags")) {
       tags = (_json["tags"] as core.List).cast<core.String>();
@@ -6698,6 +7339,10 @@ class NodeConfig {
       taints = (_json["taints"] as core.List)
           .map<NodeTaint>((value) => new NodeTaint.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("workloadMetadataConfig")) {
+      workloadMetadataConfig =
+          new WorkloadMetadataConfig.fromJson(_json["workloadMetadataConfig"]);
     }
   }
 
@@ -6738,14 +7383,26 @@ class NodeConfig {
     if (preemptible != null) {
       _json["preemptible"] = preemptible;
     }
+    if (reservationAffinity != null) {
+      _json["reservationAffinity"] = (reservationAffinity).toJson();
+    }
+    if (sandboxConfig != null) {
+      _json["sandboxConfig"] = (sandboxConfig).toJson();
+    }
     if (serviceAccount != null) {
       _json["serviceAccount"] = serviceAccount;
+    }
+    if (shieldedInstanceConfig != null) {
+      _json["shieldedInstanceConfig"] = (shieldedInstanceConfig).toJson();
     }
     if (tags != null) {
       _json["tags"] = tags;
     }
     if (taints != null) {
       _json["taints"] = taints.map((value) => (value).toJson()).toList();
+    }
+    if (workloadMetadataConfig != null) {
+      _json["workloadMetadataConfig"] = (workloadMetadataConfig).toJson();
     }
     return _json;
   }
@@ -6822,9 +7479,15 @@ class NodePool {
   core.int initialNodeCount;
 
   /// [Output only] The resource URLs of the [managed instance
-  /// groups](/compute/docs/instance-groups/creating-groups-of-managed-instances)
+  /// groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
   /// associated with this node pool.
   core.List<core.String> instanceGroupUrls;
+
+  /// The list of Google Compute Engine
+  /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
+  /// the
+  /// NodePool's nodes should be located.
+  core.List<core.String> locations;
 
   /// NodeManagement configuration for this NodePool.
   NodeManagement management;
@@ -6869,6 +7532,9 @@ class NodePool {
   /// node pool instance, if available.
   core.String statusMessage;
 
+  /// Upgrade settings control disruption and speed of the upgrade.
+  UpgradeSettings upgradeSettings;
+
   /// The version of the Kubernetes of this node.
   core.String version;
 
@@ -6893,6 +7559,9 @@ class NodePool {
       instanceGroupUrls =
           (_json["instanceGroupUrls"] as core.List).cast<core.String>();
     }
+    if (_json.containsKey("locations")) {
+      locations = (_json["locations"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("management")) {
       management = new NodeManagement.fromJson(_json["management"]);
     }
@@ -6914,6 +7583,9 @@ class NodePool {
     }
     if (_json.containsKey("statusMessage")) {
       statusMessage = _json["statusMessage"];
+    }
+    if (_json.containsKey("upgradeSettings")) {
+      upgradeSettings = new UpgradeSettings.fromJson(_json["upgradeSettings"]);
     }
     if (_json.containsKey("version")) {
       version = _json["version"];
@@ -6939,6 +7611,9 @@ class NodePool {
     if (instanceGroupUrls != null) {
       _json["instanceGroupUrls"] = instanceGroupUrls;
     }
+    if (locations != null) {
+      _json["locations"] = locations;
+    }
     if (management != null) {
       _json["management"] = (management).toJson();
     }
@@ -6960,6 +7635,9 @@ class NodePool {
     if (statusMessage != null) {
       _json["statusMessage"] = statusMessage;
     }
+    if (upgradeSettings != null) {
+      _json["upgradeSettings"] = (upgradeSettings).toJson();
+    }
     if (version != null) {
       _json["version"] = version;
     }
@@ -6970,6 +7648,9 @@ class NodePool {
 /// NodePoolAutoscaling contains information required by cluster autoscaler to
 /// adjust the size of the node pool to the current cluster usage.
 class NodePoolAutoscaling {
+  /// Can this node pool be deleted automatically.
+  core.bool autoprovisioned;
+
   /// Is autoscaling enabled for this node pool.
   core.bool enabled;
 
@@ -6984,6 +7665,9 @@ class NodePoolAutoscaling {
   NodePoolAutoscaling();
 
   NodePoolAutoscaling.fromJson(core.Map _json) {
+    if (_json.containsKey("autoprovisioned")) {
+      autoprovisioned = _json["autoprovisioned"];
+    }
     if (_json.containsKey("enabled")) {
       enabled = _json["enabled"];
     }
@@ -6998,6 +7682,9 @@ class NodePoolAutoscaling {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (autoprovisioned != null) {
+      _json["autoprovisioned"] = autoprovisioned;
+    }
     if (enabled != null) {
       _json["enabled"] = enabled;
     }
@@ -7076,9 +7763,10 @@ class Operation {
   core.String endTime;
 
   /// [Output only] The name of the Google Compute Engine
-  /// [zone](/compute/docs/regions-zones/regions-zones#available) or
-  /// [region](/compute/docs/regions-zones/regions-zones#available) in which
-  /// the cluster resides.
+  /// [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
+  /// or
+  /// [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)
+  /// in which the cluster resides.
   core.String location;
 
   /// The server-assigned ID for the operation.
@@ -7108,6 +7796,9 @@ class Operation {
   /// - "SET_MAINTENANCE_POLICY" : Set the maintenance policy.
   core.String operationType;
 
+  /// Output only. [Output only] Progress information for an operation.
+  OperationProgress progress;
+
   /// Server-defined URL for the resource.
   core.String selfLink;
 
@@ -7124,16 +7815,15 @@ class Operation {
   /// - "ABORTING" : The operation is aborting.
   core.String status;
 
-  /// If an error has occurred, a textual description of the error.
+  /// Output only. If an error has occurred, a textual description of the error.
   core.String statusMessage;
 
   /// Server-defined URL for the target of the operation.
   core.String targetLink;
 
   /// The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the operation
-  /// is taking place.
-  /// This field is deprecated, use location instead.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// operation is taking place. This field is deprecated, use location instead.
   core.String zone;
 
   Operation();
@@ -7163,6 +7853,9 @@ class Operation {
     }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
+    }
+    if (_json.containsKey("progress")) {
+      progress = new OperationProgress.fromJson(_json["progress"]);
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -7210,6 +7903,9 @@ class Operation {
     if (operationType != null) {
       _json["operationType"] = operationType;
     }
+    if (progress != null) {
+      _json["progress"] = (progress).toJson();
+    }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -7232,6 +7928,74 @@ class Operation {
   }
 }
 
+/// Information about operation (or operation stage) progress.
+class OperationProgress {
+  /// Progress metric bundle, for example:
+  ///   metrics: [{name: "nodes done",     int_value: 15},
+  ///             {name: "nodes total",    int_value: 32}]
+  /// or
+  ///   metrics: [{name: "progress",       double_value: 0.56},
+  ///             {name: "progress scale", double_value: 1.0}]
+  core.List<Metric> metrics;
+
+  /// A non-parameterized string describing an operation stage.
+  /// Unset for single-stage operations.
+  core.String name;
+
+  /// Substages of an operation or a stage.
+  core.List<OperationProgress> stages;
+
+  /// Status of an operation stage.
+  /// Unset for single-stage operations.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Not set.
+  /// - "PENDING" : The operation has been created.
+  /// - "RUNNING" : The operation is currently running.
+  /// - "DONE" : The operation is done, either cancelled or completed.
+  /// - "ABORTING" : The operation is aborting.
+  core.String status;
+
+  OperationProgress();
+
+  OperationProgress.fromJson(core.Map _json) {
+    if (_json.containsKey("metrics")) {
+      metrics = (_json["metrics"] as core.List)
+          .map<Metric>((value) => new Metric.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("stages")) {
+      stages = (_json["stages"] as core.List)
+          .map<OperationProgress>(
+              (value) => new OperationProgress.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (metrics != null) {
+      _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (stages != null) {
+      _json["stages"] = stages.map((value) => (value).toJson()).toList();
+    }
+    if (status != null) {
+      _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
   /// Whether the master's internal IP address is used as the cluster endpoint.
@@ -7247,6 +8011,9 @@ class PrivateClusterConfig {
   /// set of masters, as well as the ILB VIP. This range must not overlap with
   /// any other ranges in use within the cluster's network.
   core.String masterIpv4CidrBlock;
+
+  /// Output only. The peering name in the customer VPC used by this cluster.
+  core.String peeringName;
 
   /// Output only. The internal IP address of this cluster's master endpoint.
   core.String privateEndpoint;
@@ -7265,6 +8032,9 @@ class PrivateClusterConfig {
     }
     if (_json.containsKey("masterIpv4CidrBlock")) {
       masterIpv4CidrBlock = _json["masterIpv4CidrBlock"];
+    }
+    if (_json.containsKey("peeringName")) {
+      peeringName = _json["peeringName"];
     }
     if (_json.containsKey("privateEndpoint")) {
       privateEndpoint = _json["privateEndpoint"];
@@ -7286,11 +8056,166 @@ class PrivateClusterConfig {
     if (masterIpv4CidrBlock != null) {
       _json["masterIpv4CidrBlock"] = masterIpv4CidrBlock;
     }
+    if (peeringName != null) {
+      _json["peeringName"] = peeringName;
+    }
     if (privateEndpoint != null) {
       _json["privateEndpoint"] = privateEndpoint;
     }
     if (publicEndpoint != null) {
       _json["publicEndpoint"] = publicEndpoint;
+    }
+    return _json;
+  }
+}
+
+/// Represents an arbitrary window of time that recurs.
+class RecurringTimeWindow {
+  /// An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+  /// this window reccurs. They go on for the span of time between the start and
+  /// end time.
+  ///
+  /// For example, to have something repeat every weekday, you'd use:
+  ///   <code>FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR</code>
+  /// To repeat some window daily (equivalent to the DailyMaintenanceWindow):
+  ///   <code>FREQ=DAILY</code>
+  /// For the first weekend of every month:
+  ///   <code>FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU</code>
+  /// This specifies how frequently the window starts. Eg, if you wanted to have
+  /// a 9-5 UTC-4 window every weekday, you'd use something like:
+  /// <code>
+  ///   start time = 2019-01-01T09:00:00-0400
+  ///   end time = 2019-01-01T17:00:00-0400
+  ///   recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+  /// </code>
+  /// Windows can span multiple days. Eg, to make the window encompass every
+  /// weekend from midnight Saturday till the last minute of Sunday UTC:
+  /// <code>
+  ///   start time = 2019-01-05T00:00:00Z
+  ///   end time = 2019-01-07T23:59:00Z
+  ///   recurrence = FREQ=WEEKLY;BYDAY=SA
+  /// </code>
+  /// Note the start and end time's specific dates are largely arbitrary except
+  /// to specify duration of the window and when it first starts.
+  /// The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.
+  core.String recurrence;
+
+  /// The window of the first recurrence.
+  TimeWindow window;
+
+  RecurringTimeWindow();
+
+  RecurringTimeWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("recurrence")) {
+      recurrence = _json["recurrence"];
+    }
+    if (_json.containsKey("window")) {
+      window = new TimeWindow.fromJson(_json["window"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (recurrence != null) {
+      _json["recurrence"] = recurrence;
+    }
+    if (window != null) {
+      _json["window"] = (window).toJson();
+    }
+    return _json;
+  }
+}
+
+/// [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+/// is the configuration of desired reservation which instances could take
+/// capacity from.
+class ReservationAffinity {
+  /// Corresponds to the type of reservation consumption.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Default value. This should not be used.
+  /// - "NO_RESERVATION" : Do not consume from any reserved capacity.
+  /// - "ANY_RESERVATION" : Consume any reservation available.
+  /// - "SPECIFIC_RESERVATION" : Must consume from a specific reservation. Must
+  /// specify key value fields
+  /// for specifying the reservations.
+  core.String consumeReservationType;
+
+  /// Corresponds to the label key of a reservation resource. To target a
+  /// SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as
+  /// the key and specify the name of your reservation as its value.
+  core.String key;
+
+  /// Corresponds to the label value(s) of reservation resource(s).
+  core.List<core.String> values;
+
+  ReservationAffinity();
+
+  ReservationAffinity.fromJson(core.Map _json) {
+    if (_json.containsKey("consumeReservationType")) {
+      consumeReservationType = _json["consumeReservationType"];
+    }
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("values")) {
+      values = (_json["values"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumeReservationType != null) {
+      _json["consumeReservationType"] = consumeReservationType;
+    }
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (values != null) {
+      _json["values"] = values;
+    }
+    return _json;
+  }
+}
+
+/// Contains information about amount of some resource in the cluster.
+/// For memory, value should be in GB.
+class ResourceLimit {
+  /// Maximum amount of the resource in the cluster.
+  core.String maximum;
+
+  /// Minimum amount of the resource in the cluster.
+  core.String minimum;
+
+  /// Resource name "cpu", "memory" or gpu-specific string.
+  core.String resourceType;
+
+  ResourceLimit();
+
+  ResourceLimit.fromJson(core.Map _json) {
+    if (_json.containsKey("maximum")) {
+      maximum = _json["maximum"];
+    }
+    if (_json.containsKey("minimum")) {
+      minimum = _json["minimum"];
+    }
+    if (_json.containsKey("resourceType")) {
+      resourceType = _json["resourceType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maximum != null) {
+      _json["maximum"] = maximum;
+    }
+    if (minimum != null) {
+      _json["minimum"] = minimum;
+    }
+    if (resourceType != null) {
+      _json["resourceType"] = resourceType;
     }
     return _json;
   }
@@ -7350,8 +8275,8 @@ class RollbackNodePoolUpgradeRequest {
 
   /// The name (project, location, cluster, node pool id) of the node poll to
   /// rollback upgrade.
-  /// Specified in the format 'projects / * /locations / * /clusters / *
-  /// /nodePools / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / *
+  /// /nodePools / * `.
   core.String name;
 
   /// Deprecated. The name of the node pool to rollback.
@@ -7364,9 +8289,9 @@ class RollbackNodePoolUpgradeRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   RollbackNodePoolUpgradeRequest();
@@ -7406,6 +8331,32 @@ class RollbackNodePoolUpgradeRequest {
     }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// SandboxConfig contains configurations of the sandbox to use for the node.
+class SandboxConfig {
+  /// Type of the sandbox to use for the node.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Default value. This should not be used.
+  /// - "GVISOR" : Run sandbox using gvisor.
+  core.String type;
+
+  SandboxConfig();
+
+  SandboxConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -7475,7 +8426,8 @@ class ServerConfig {
 
 /// SetAddonsConfigRequest sets the addons associated with the cluster.
 class SetAddonsConfigRequest {
-  /// The desired configurations for the various addons available to run in the
+  /// Required. The desired configurations for the various addons available to
+  /// run in the
   /// cluster.
   AddonsConfig addonsConfig;
 
@@ -7484,7 +8436,7 @@ class SetAddonsConfigRequest {
   core.String clusterId;
 
   /// The name (project, location, cluster) of the cluster to set addons.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -7493,9 +8445,9 @@ class SetAddonsConfigRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetAddonsConfigRequest();
@@ -7548,7 +8500,7 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// The fingerprint of the previous set of labels for this resource,
+  /// Required. The fingerprint of the previous set of labels for this resource,
   /// used to detect conflicts. The fingerprint is initially generated by
   /// Kubernetes Engine and changes after every request to modify or update
   /// labels. You must always provide an up-to-date fingerprint hash when
@@ -7557,7 +8509,7 @@ class SetLabelsRequest {
   core.String labelFingerprint;
 
   /// The name (project, location, cluster id) of the cluster to set labels.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -7565,13 +8517,13 @@ class SetLabelsRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String projectId;
 
-  /// The labels to set for that cluster.
+  /// Required. The labels to set for that cluster.
   core.Map<core.String, core.String> resourceLabels;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetLabelsRequest();
@@ -7631,12 +8583,12 @@ class SetLegacyAbacRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// Whether ABAC authorization will be enabled in the cluster.
+  /// Required. Whether ABAC authorization will be enabled in the cluster.
   core.bool enabled;
 
   /// The name (project, location, cluster id) of the cluster to set legacy
   /// abac.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -7645,9 +8597,9 @@ class SetLegacyAbacRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetLegacyAbacRequest();
@@ -7698,17 +8650,18 @@ class SetLocationsRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// The desired list of Google Compute Engine
-  /// [zones](/compute/docs/zones#available) in which the cluster's nodes
-  /// should be located. Changing the locations a cluster is in will result
-  /// in nodes being either created or removed from the cluster, depending on
-  /// whether locations are being added or removed.
+  /// Required. The desired list of Google Compute Engine
+  /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
+  /// the
+  /// cluster's nodes should be located. Changing the locations a cluster is in
+  /// will result in nodes being either created or removed from the cluster,
+  /// depending on whether locations are being added or removed.
   ///
   /// This list must always include the cluster's primary zone.
   core.List<core.String> locations;
 
   /// The name (project, location, cluster) of the cluster to set locations.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -7717,9 +8670,9 @@ class SetLocationsRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetLocationsRequest();
@@ -7770,15 +8723,21 @@ class SetLoggingServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// The logging service the cluster should use to write metrics.
+  /// Required. The logging service the cluster should use to write logs.
   /// Currently available options:
   ///
-  /// * "logging.googleapis.com" - the Google Cloud Logging service
-  /// * "none" - no metrics will be exported from the cluster
+  /// * `logging.googleapis.com/kubernetes` - The Cloud Logging
+  /// service with a Kubernetes-native resource model
+  /// * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+  ///   available as of GKE 1.15).
+  /// * `none` - no logs will be exported from the cluster.
+  ///
+  /// If left as an empty string,`logging.googleapis.com/kubernetes` will be
+  /// used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
   core.String loggingService;
 
   /// The name (project, location, cluster) of the cluster to set logging.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -7787,9 +8746,9 @@ class SetLoggingServiceRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetLoggingServiceRequest();
@@ -7836,25 +8795,25 @@ class SetLoggingServiceRequest {
 
 /// SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
 class SetMaintenancePolicyRequest {
-  /// The name of the cluster to update.
+  /// Required. The name of the cluster to update.
   core.String clusterId;
 
-  /// The maintenance policy to be set for the cluster. An empty field
+  /// Required. The maintenance policy to be set for the cluster. An empty field
   /// clears the existing maintenance policy.
   MaintenancePolicy maintenancePolicy;
 
   /// The name (project, location, cluster id) of the cluster to set maintenance
   /// policy.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
+  /// Required. The Google Developers Console [project ID or project
   /// number](https://support.google.com/cloud/answer/6158840).
   core.String projectId;
 
-  /// The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
+  /// Required. The name of the Google Compute Engine
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides.
   core.String zone;
 
   SetMaintenancePolicyRequest();
@@ -7902,7 +8861,7 @@ class SetMaintenancePolicyRequest {
 
 /// SetMasterAuthRequest updates the admin password of a cluster.
 class SetMasterAuthRequest {
-  /// The exact form of action to be taken on the master auth.
+  /// Required. The exact form of action to be taken on the master auth.
   /// Possible string values are:
   /// - "UNKNOWN" : Operation is unknown and will error out.
   /// - "SET_PASSWORD" : Set the password to a user generated value.
@@ -7919,7 +8878,7 @@ class SetMasterAuthRequest {
   core.String clusterId;
 
   /// The name (project, location, cluster) of the cluster to set auth.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -7927,13 +8886,13 @@ class SetMasterAuthRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String projectId;
 
-  /// A description of the update.
+  /// Required. A description of the update.
   MasterAuth update;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetMasterAuthRequest();
@@ -7990,17 +8949,21 @@ class SetMonitoringServiceRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// The monitoring service the cluster should use to write metrics.
+  /// Required. The monitoring service the cluster should use to write metrics.
   /// Currently available options:
   ///
-  /// * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-  /// service with Kubernetes-native resource model in Stackdriver
-  /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-  /// * "none" - no metrics will be exported from the cluster
+  /// * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+  /// service with a Kubernetes-native resource model
+  /// * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+  ///   longer available as of GKE 1.15).
+  /// * `none` - No metrics will be exported from the cluster.
+  ///
+  /// If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+  /// used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
   core.String monitoringService;
 
   /// The name (project, location, cluster) of the cluster to set monitoring.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -8009,9 +8972,9 @@ class SetMonitoringServiceRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetMonitoringServiceRequest();
@@ -8063,11 +9026,11 @@ class SetNetworkPolicyRequest {
   core.String clusterId;
 
   /// The name (project, location, cluster id) of the cluster to set networking
-  /// policy. Specified in the format 'projects / * /locations / * /clusters / *
-  /// '.
+  /// policy. Specified in the format `projects / * /locations / * /clusters / *
+  /// `.
   core.String name;
 
-  /// Configuration options for the NetworkPolicy feature.
+  /// Required. Configuration options for the NetworkPolicy feature.
   NetworkPolicy networkPolicy;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -8076,9 +9039,9 @@ class SetNetworkPolicyRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetNetworkPolicyRequest();
@@ -8125,7 +9088,7 @@ class SetNetworkPolicyRequest {
 
 /// SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool.
 class SetNodePoolAutoscalingRequest {
-  /// Autoscaling configuration for the node pool.
+  /// Required. Autoscaling configuration for the node pool.
   NodePoolAutoscaling autoscaling;
 
   /// Deprecated. The name of the cluster to upgrade.
@@ -8134,7 +9097,7 @@ class SetNodePoolAutoscalingRequest {
 
   /// The name (project, location, cluster, node pool) of the node pool to set
   /// autoscaler settings. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   core.String name;
 
   /// Deprecated. The name of the node pool to upgrade.
@@ -8147,9 +9110,9 @@ class SetNodePoolAutoscalingRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetNodePoolAutoscalingRequest();
@@ -8207,13 +9170,13 @@ class SetNodePoolManagementRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// NodeManagement configuration for the node pool.
+  /// Required. NodeManagement configuration for the node pool.
   NodeManagement management;
 
   /// The name (project, location, cluster, node pool id) of the node pool to
   /// set
   /// management properties. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   core.String name;
 
   /// Deprecated. The name of the node pool to update.
@@ -8226,9 +9189,9 @@ class SetNodePoolManagementRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetNodePoolManagementRequest();
@@ -8289,11 +9252,11 @@ class SetNodePoolSizeRequest {
   /// The name (project, location, cluster, node pool id) of the node pool to
   /// set
   /// size.
-  /// Specified in the format 'projects / * /locations / * /clusters / *
-  /// /nodePools / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / *
+  /// /nodePools / * `.
   core.String name;
 
-  /// The desired node count for the pool.
+  /// Required. The desired node count for the pool.
   core.int nodeCount;
 
   /// Deprecated. The name of the node pool to update.
@@ -8306,9 +9269,9 @@ class SetNodePoolSizeRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   SetNodePoolSizeRequest();
@@ -8359,6 +9322,70 @@ class SetNodePoolSizeRequest {
   }
 }
 
+/// A set of Shielded Instance options.
+class ShieldedInstanceConfig {
+  /// Defines whether the instance has integrity monitoring enabled.
+  ///
+  /// Enables monitoring and attestation of the boot integrity of the instance.
+  /// The attestation is performed against the integrity policy baseline. This
+  /// baseline is initially derived from the implicitly trusted boot image when
+  /// the instance is created.
+  core.bool enableIntegrityMonitoring;
+
+  /// Defines whether the instance has Secure Boot enabled.
+  ///
+  /// Secure Boot helps ensure that the system only runs authentic software by
+  /// verifying the digital signature of all boot components, and halting the
+  /// boot process if signature verification fails.
+  core.bool enableSecureBoot;
+
+  ShieldedInstanceConfig();
+
+  ShieldedInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("enableIntegrityMonitoring")) {
+      enableIntegrityMonitoring = _json["enableIntegrityMonitoring"];
+    }
+    if (_json.containsKey("enableSecureBoot")) {
+      enableSecureBoot = _json["enableSecureBoot"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enableIntegrityMonitoring != null) {
+      _json["enableIntegrityMonitoring"] = enableIntegrityMonitoring;
+    }
+    if (enableSecureBoot != null) {
+      _json["enableSecureBoot"] = enableSecureBoot;
+    }
+    return _json;
+  }
+}
+
+/// Configuration of Shielded Nodes feature.
+class ShieldedNodes {
+  /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
+  core.bool enabled;
+
+  ShieldedNodes();
+
+  ShieldedNodes.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
 /// StartIPRotationRequest creates a new IP for the cluster and then performs
 /// a node upgrade on each node pool to point to the new IP.
 class StartIPRotationRequest {
@@ -8367,8 +9394,8 @@ class StartIPRotationRequest {
   core.String clusterId;
 
   /// The name (project, location, cluster id) of the cluster to start IP
-  /// rotation. Specified in the format 'projects / * /locations / * /clusters /
-  /// * '.
+  /// rotation. Specified in the format `projects / * /locations / * /clusters /
+  /// * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -8380,9 +9407,9 @@ class StartIPRotationRequest {
   core.bool rotateCredentials;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   StartIPRotationRequest();
@@ -8433,14 +9460,18 @@ class StatusCondition {
   /// Machine-friendly representation of the condition
   /// Possible string values are:
   /// - "UNKNOWN" : UNKNOWN indicates a generic condition.
-  /// - "GCE_STOCKOUT" : GCE_STOCKOUT indicates a Google Compute Engine
-  /// stockout.
+  /// - "GCE_STOCKOUT" : GCE_STOCKOUT indicates that Google Compute Engine
+  /// resources are
+  /// temporarily unavailable.
   /// - "GKE_SERVICE_ACCOUNT_DELETED" : GKE_SERVICE_ACCOUNT_DELETED indicates
   /// that the user deleted their robot
   /// service account.
   /// - "GCE_QUOTA_EXCEEDED" : Google Compute Engine quota was exceeded.
   /// - "SET_BY_OPERATOR" : Cluster state was manually changed by an SRE due to
   /// a system logic error.
+  /// - "CLOUD_KMS_KEY_ERROR" : Unable to perform an encrypt operation against
+  /// the CloudKMS key used for
+  /// etcd level encryption.
   /// More codes TBA
   core.String code;
 
@@ -8471,6 +9502,39 @@ class StatusCondition {
   }
 }
 
+/// Represents an arbitrary window of time.
+class TimeWindow {
+  /// The time that the window ends. The end time should take place after the
+  /// start time.
+  core.String endTime;
+
+  /// The time that the window first starts.
+  core.String startTime;
+
+  TimeWindow();
+
+  TimeWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    return _json;
+  }
+}
+
 /// UpdateClusterRequest updates the settings of a cluster.
 class UpdateClusterRequest {
   /// Deprecated. The name of the cluster to upgrade.
@@ -8478,7 +9542,7 @@ class UpdateClusterRequest {
   core.String clusterId;
 
   /// The name (project, location, cluster) of the cluster to update.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -8486,13 +9550,13 @@ class UpdateClusterRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String projectId;
 
-  /// A description of the update.
+  /// Required. A description of the update.
   ClusterUpdate update;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   UpdateClusterRequest();
@@ -8543,7 +9607,7 @@ class UpdateMasterRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// The Kubernetes version to change the master to.
+  /// Required. The Kubernetes version to change the master to.
   ///
   /// Users may specify either explicit versions offered by Kubernetes Engine or
   /// version aliases, which have the following behavior:
@@ -8556,7 +9620,7 @@ class UpdateMasterRequest {
   core.String masterVersion;
 
   /// The name (project, location, cluster) of the cluster to update.
-  /// Specified in the format 'projects / * /locations / * /clusters / * '.
+  /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
   /// Deprecated. The Google Developers Console [project ID or project
@@ -8565,9 +9629,9 @@ class UpdateMasterRequest {
   core.String projectId;
 
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   UpdateMasterRequest();
@@ -8618,19 +9682,28 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String clusterId;
 
-  /// The desired image type for the node pool.
+  /// Required. The desired image type for the node pool.
   core.String imageType;
+
+  /// The desired list of Google Compute Engine
+  /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
+  /// the
+  /// node pool's nodes should be located. Changing the locations for a node
+  /// pool
+  /// will result in nodes being either created or removed from the node pool,
+  /// depending on whether locations are being added or removed.
+  core.List<core.String> locations;
 
   /// The name (project, location, cluster, node pool) of the node pool to
   /// update. Specified in the format
-  /// 'projects / * /locations / * /clusters / * /nodePools / * '.
+  /// `projects / * /locations / * /clusters / * /nodePools / * `.
   core.String name;
 
   /// Deprecated. The name of the node pool to upgrade.
   /// This field has been deprecated and replaced by the name field.
   core.String nodePoolId;
 
-  /// The Kubernetes version to change the nodes to (typically an
+  /// Required. The Kubernetes version to change the nodes to (typically an
   /// upgrade).
   ///
   /// Users may specify either explicit versions offered by Kubernetes Engine or
@@ -8648,10 +9721,16 @@ class UpdateNodePoolRequest {
   /// This field has been deprecated and replaced by the name field.
   core.String projectId;
 
+  /// Upgrade settings control disruption and speed of the upgrade.
+  UpgradeSettings upgradeSettings;
+
+  /// The desired workload metadata config for the node pool.
+  WorkloadMetadataConfig workloadMetadataConfig;
+
   /// Deprecated. The name of the Google Compute Engine
-  /// [zone](/compute/docs/zones#available) in which the cluster
-  /// resides.
-  /// This field has been deprecated and replaced by the name field.
+  /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+  /// cluster resides. This field has been deprecated and replaced by the name
+  /// field.
   core.String zone;
 
   UpdateNodePoolRequest();
@@ -8662,6 +9741,9 @@ class UpdateNodePoolRequest {
     }
     if (_json.containsKey("imageType")) {
       imageType = _json["imageType"];
+    }
+    if (_json.containsKey("locations")) {
+      locations = (_json["locations"] as core.List).cast<core.String>();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -8674,6 +9756,13 @@ class UpdateNodePoolRequest {
     }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
+    }
+    if (_json.containsKey("upgradeSettings")) {
+      upgradeSettings = new UpgradeSettings.fromJson(_json["upgradeSettings"]);
+    }
+    if (_json.containsKey("workloadMetadataConfig")) {
+      workloadMetadataConfig =
+          new WorkloadMetadataConfig.fromJson(_json["workloadMetadataConfig"]);
     }
     if (_json.containsKey("zone")) {
       zone = _json["zone"];
@@ -8689,6 +9778,9 @@ class UpdateNodePoolRequest {
     if (imageType != null) {
       _json["imageType"] = imageType;
     }
+    if (locations != null) {
+      _json["locations"] = locations;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -8701,8 +9793,71 @@ class UpdateNodePoolRequest {
     if (projectId != null) {
       _json["projectId"] = projectId;
     }
+    if (upgradeSettings != null) {
+      _json["upgradeSettings"] = (upgradeSettings).toJson();
+    }
+    if (workloadMetadataConfig != null) {
+      _json["workloadMetadataConfig"] = (workloadMetadataConfig).toJson();
+    }
     if (zone != null) {
       _json["zone"] = zone;
+    }
+    return _json;
+  }
+}
+
+/// These upgrade settings control the level of parallelism and the level of
+/// disruption caused by an upgrade.
+///
+/// maxUnavailable controls the number of nodes that can be simultaneously
+/// unavailable.
+///
+/// maxSurge controls the number of additional nodes that can be added to the
+/// node pool temporarily for the time of the upgrade to increase the number of
+/// available nodes.
+///
+/// (maxUnavailable + maxSurge) determines the level of parallelism (how many
+/// nodes are being upgraded at the same time).
+///
+/// Note: upgrades inevitably introduce some disruption since workloads need to
+/// be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+/// this holds true. (Disruption stays within the limits of
+/// PodDisruptionBudget, if it is configured.)
+///
+/// Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+/// maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+/// simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+/// down 3 old (not yet upgraded) nodes at the same time. This ensures that
+/// there are always at least 4 nodes available.
+class UpgradeSettings {
+  /// The maximum number of nodes that can be created beyond the current size
+  /// of the node pool during the upgrade process.
+  core.int maxSurge;
+
+  /// The maximum number of nodes that can be simultaneously unavailable during
+  /// the upgrade process. A node is considered available if its status is
+  /// Ready.
+  core.int maxUnavailable;
+
+  UpgradeSettings();
+
+  UpgradeSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("maxSurge")) {
+      maxSurge = _json["maxSurge"];
+    }
+    if (_json.containsKey("maxUnavailable")) {
+      maxUnavailable = _json["maxUnavailable"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxSurge != null) {
+      _json["maxSurge"] = maxSurge;
+    }
+    if (maxUnavailable != null) {
+      _json["maxUnavailable"] = maxUnavailable;
     }
     return _json;
   }
@@ -8831,6 +9986,89 @@ class UsableSubnetworkSecondaryRange {
     }
     if (status != null) {
       _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+/// VerticalPodAutoscaling contains global, per-cluster information
+/// required by Vertical Pod Autoscaler to automatically adjust
+/// the resources of pods controlled by it.
+class VerticalPodAutoscaling {
+  /// Enables vertical pod autoscaling.
+  core.bool enabled;
+
+  VerticalPodAutoscaling();
+
+  VerticalPodAutoscaling.fromJson(core.Map _json) {
+    if (_json.containsKey("enabled")) {
+      enabled = _json["enabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enabled != null) {
+      _json["enabled"] = enabled;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for the use of Kubernetes Service Accounts in GCP IAM
+/// policies.
+class WorkloadIdentityConfig {
+  /// The workload pool to attach all Kubernetes service accounts to.
+  core.String workloadPool;
+
+  WorkloadIdentityConfig();
+
+  WorkloadIdentityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("workloadPool")) {
+      workloadPool = _json["workloadPool"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (workloadPool != null) {
+      _json["workloadPool"] = workloadPool;
+    }
+    return _json;
+  }
+}
+
+/// WorkloadMetadataConfig defines the metadata configuration to expose to
+/// workloads on the node pool.
+class WorkloadMetadataConfig {
+  /// Mode is the configuration for how to expose metadata to workloads running
+  /// on the node pool.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Not set.
+  /// - "GCE_METADATA" : Expose all Compute Engine metadata to pods.
+  /// - "GKE_METADATA" : Run the GKE Metadata Server on this node. The GKE
+  /// Metadata Server exposes
+  /// a metadata API to workloads that is compatible with the V1 Compute
+  /// Metadata APIs exposed by the Compute Engine and App Engine Metadata
+  /// Servers. This feature can only be enabled if Workload Identity is enabled
+  /// at the cluster level.
+  core.String mode;
+
+  WorkloadMetadataConfig();
+
+  WorkloadMetadataConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("mode")) {
+      mode = _json["mode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (mode != null) {
+      _json["mode"] = mode;
     }
     return _json;
   }

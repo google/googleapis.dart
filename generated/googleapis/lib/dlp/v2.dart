@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.dlp.v2;
 
@@ -27,6 +27,7 @@ class DlpApi {
   final commons.ApiRequester _requester;
 
   InfoTypesResourceApi get infoTypes => new InfoTypesResourceApi(_requester);
+  LocationsResourceApi get locations => new LocationsResourceApi(_requester);
   OrganizationsResourceApi get organizations =>
       new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
@@ -49,14 +50,17 @@ class InfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [languageCode] - Optional BCP-47 language code for localized infoType
-  /// friendly
+  /// [languageCode] - BCP-47 language code for localized infoType friendly
   /// names. If omitted, or if localized strings are not available,
   /// en-US strings will be returned.
   ///
-  /// [filter] - Optional filter to only return infoTypes supported by certain
-  /// parts of the
+  /// [filter] - filter to only return infoTypes supported by certain parts of
+  /// the
   /// API. Defaults to supported_by=INSPECT.
+  ///
+  /// [locationId] - The geographic location to list info types. Reserved for
+  /// future
+  /// extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -69,7 +73,10 @@ class InfoTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
-      {core.String languageCode, core.String filter, core.String $fields}) {
+      {core.String languageCode,
+      core.String filter,
+      core.String locationId,
+      core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -83,11 +90,97 @@ class InfoTypesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/infoTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
+  }
+}
+
+class LocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  LocationsInfoTypesResourceApi get infoTypes =>
+      new LocationsInfoTypesResourceApi(_requester);
+
+  LocationsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class LocationsInfoTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  LocationsInfoTypesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns a list of the sensitive information types that the DLP API
+  /// supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [locationId] - The geographic location to list info types. Reserved for
+  /// future
+  /// extensions.
+  ///
+  /// [languageCode] - BCP-47 language code for localized infoType friendly
+  /// names. If omitted, or if localized strings are not available,
+  /// en-US strings will be returned.
+  ///
+  /// [filter] - filter to only return infoTypes supported by certain parts of
+  /// the
+  /// API. Defaults to supported_by=INSPECT.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListInfoTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListInfoTypesResponse> list(
+      core.String locationId,
+      {core.String languageCode,
+      core.String filter,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (languageCode != null) {
+      _queryParams["languageCode"] = [languageCode];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/infoTypes';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -107,6 +200,8 @@ class OrganizationsResourceApi {
       new OrganizationsDeidentifyTemplatesResourceApi(_requester);
   OrganizationsInspectTemplatesResourceApi get inspectTemplates =>
       new OrganizationsInspectTemplatesResourceApi(_requester);
+  OrganizationsLocationsResourceApi get locations =>
+      new OrganizationsLocationsResourceApi(_requester);
   OrganizationsStoredInfoTypesResourceApi get storedInfoTypes =>
       new OrganizationsStoredInfoTypesResourceApi(_requester);
 
@@ -128,7 +223,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -183,8 +279,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and deidentify template to be
-  /// deleted,
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be deleted,
   /// for example `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
@@ -232,8 +328,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and deidentify template to be
-  /// read, for
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be read, for
   /// example `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
@@ -282,15 +378,15 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
   ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -304,9 +400,13 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   /// - `name`: corresponds to template's name.
   /// - `display_name`: corresponds to template's display name.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
   /// a page of max size 100.
+  ///
+  /// [locationId] - The geographic location where deidentifications templates
+  /// will be retrieved
+  /// from. Use `-` for all locations. Reserved for future extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -323,6 +423,7 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -342,6 +443,9 @@ class OrganizationsDeidentifyTemplatesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -369,8 +473,8 @@ class OrganizationsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of organization and deidentify template to be
-  /// updated, for
+  /// [name] - Required. Resource name of organization and deidentify template
+  /// to be updated, for
   /// example `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/deidentifyTemplates/[^/]+$".
@@ -433,7 +537,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -487,8 +592,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and inspectTemplate to be
-  /// deleted, for
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be deleted, for
   /// example `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
@@ -535,8 +640,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and inspectTemplate to be read,
-  /// for
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be read, for
   /// example `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
@@ -584,15 +689,15 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
   ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -606,9 +711,13 @@ class OrganizationsInspectTemplatesResourceApi {
   /// - `name`: corresponds to template's name.
   /// - `display_name`: corresponds to template's display name.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
   /// a page of max size 100.
+  ///
+  /// [locationId] - The geographic location where inspection templates will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -625,6 +734,7 @@ class OrganizationsInspectTemplatesResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -644,6 +754,9 @@ class OrganizationsInspectTemplatesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -670,8 +783,8 @@ class OrganizationsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of organization and inspectTemplate to be updated,
-  /// for
+  /// [name] - Required. Resource name of organization and inspectTemplate to be
+  /// updated, for
   /// example `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^organizations/[^/]+/inspectTemplates/[^/]+$".
@@ -719,6 +832,1004 @@ class OrganizationsInspectTemplatesResourceApi {
   }
 }
 
+class OrganizationsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDeidentifyTemplatesResourceApi
+      get deidentifyTemplates =>
+          new OrganizationsLocationsDeidentifyTemplatesResourceApi(_requester);
+  OrganizationsLocationsInspectTemplatesResourceApi get inspectTemplates =>
+      new OrganizationsLocationsInspectTemplatesResourceApi(_requester);
+  OrganizationsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
+      new OrganizationsLocationsStoredInfoTypesResourceApi(_requester);
+
+  OrganizationsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsDeidentifyTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDeidentifyTemplatesResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a DeidentifyTemplate for re-using frequently used configuration
+  /// for de-identifying content, images, and storage.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the deidentification
+  /// template. Reserved
+  /// for future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DeidentifyTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> create(
+      GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/deidentifyTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+
+  /// Deletes a DeidentifyTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be deleted,
+  /// for example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a DeidentifyTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be read, for
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DeidentifyTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+
+  /// Lists DeidentifyTemplates.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where deidentifications templates
+  /// will be retrieved
+  /// from. Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListDeidentifyTemplates`.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
+  /// a page of max size 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDeidentifyTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
+      core.String parent, core.String locationId,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/deidentifyTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+  }
+
+  /// Updates the DeidentifyTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of organization and deidentify template
+  /// to be updated, for
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DeidentifyTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> patch(
+      GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
+      core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+}
+
+class OrganizationsLocationsInspectTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsInspectTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an InspectTemplate for re-using frequently used configuration
+  /// for inspecting content, images, and storage.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the inspection template.
+  /// Reserved for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectTemplate> create(
+      GooglePrivacyDlpV2CreateInspectTemplateRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/inspectTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+
+  /// Deletes an InspectTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be deleted, for
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets an InspectTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be read, for
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectTemplate> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+
+  /// Lists InspectTemplates.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where inspection templates will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListInspectTemplates`.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
+  /// a page of max size 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListInspectTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
+      core.String parent, core.String locationId,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/inspectTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+  }
+
+  /// Updates the InspectTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of organization and inspectTemplate to be
+  /// updated, for
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectTemplate> patch(
+      GooglePrivacyDlpV2UpdateInspectTemplateRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+}
+
+class OrganizationsLocationsStoredInfoTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsStoredInfoTypesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a pre-built stored infoType to be used for inspection.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the stored infoType.
+  /// Reserved for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2StoredInfoType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2StoredInfoType> create(
+      GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/storedInfoTypes';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+  }
+
+  /// Deletes a stored infoType.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be deleted, for
+  /// example `organizations/433245324/storedInfoTypes/432452342` or
+  /// projects/project-id/storedInfoTypes/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a stored infoType.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be read, for
+  /// example `organizations/433245324/storedInfoTypes/432452342` or
+  /// projects/project-id/storedInfoTypes/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2StoredInfoType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2StoredInfoType> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+  }
+
+  /// Lists stored infoTypes.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where stored infoTypes will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListStoredInfoTypes`.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc, display_name, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the most recent version of the
+  /// resource was created.
+  /// - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name.
+  /// - `display_name`: corresponds to info type's display name.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
+  /// a page of max size 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListStoredInfoTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
+      core.String parent, core.String locationId,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/storedInfoTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+  }
+
+  /// Updates the stored infoType by creating a new version. The existing
+  /// version
+  /// will continue to be used until the new version is ready.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of organization and storedInfoType to be
+  /// updated, for
+  /// example `organizations/433245324/storedInfoTypes/432452342` or
+  /// projects/project-id/storedInfoTypes/432452342.
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2StoredInfoType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2StoredInfoType> patch(
+      GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+  }
+}
+
 class OrganizationsStoredInfoTypesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -733,7 +1844,8 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
@@ -787,8 +1899,8 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and storedInfoType to be
-  /// deleted, for
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be deleted, for
   /// example `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern "^organizations/[^/]+/storedInfoTypes/[^/]+$".
@@ -836,8 +1948,8 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and storedInfoType to be read,
-  /// for
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be read, for
   /// example `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern "^organizations/[^/]+/storedInfoTypes/[^/]+$".
@@ -886,15 +1998,15 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListStoredInfoTypes`.
   ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -909,9 +2021,13 @@ class OrganizationsStoredInfoTypesResourceApi {
   /// - `name`: corresponds to resource name.
   /// - `display_name`: corresponds to info type's display name.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
   /// a page of max size 100.
+  ///
+  /// [locationId] - The geographic location where stored infoTypes will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -928,6 +2044,7 @@ class OrganizationsStoredInfoTypesResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -947,6 +2064,9 @@ class OrganizationsStoredInfoTypesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -976,8 +2096,8 @@ class OrganizationsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of organization and storedInfoType to be updated,
-  /// for
+  /// [name] - Required. Resource name of organization and storedInfoType to be
+  /// updated, for
   /// example `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern "^organizations/[^/]+/storedInfoTypes/[^/]+$".
@@ -1185,7 +2305,7 @@ class ProjectsContentResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1248,7 +2368,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -1303,8 +2424,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and deidentify template to be
-  /// deleted,
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be deleted,
   /// for example `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
@@ -1352,8 +2473,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and deidentify template to be
-  /// read, for
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be read, for
   /// example `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
@@ -1402,15 +2523,15 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListDeidentifyTemplates`.
   ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -1424,9 +2545,13 @@ class ProjectsDeidentifyTemplatesResourceApi {
   /// - `name`: corresponds to template's name.
   /// - `display_name`: corresponds to template's display name.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
   /// a page of max size 100.
+  ///
+  /// [locationId] - The geographic location where deidentifications templates
+  /// will be retrieved
+  /// from. Use `-` for all locations. Reserved for future extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1443,6 +2568,7 @@ class ProjectsDeidentifyTemplatesResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1462,6 +2588,9 @@ class ProjectsDeidentifyTemplatesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1489,8 +2618,8 @@ class ProjectsDeidentifyTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of organization and deidentify template to be
-  /// updated, for
+  /// [name] - Required. Resource name of organization and deidentify template
+  /// to be updated, for
   /// example `organizations/433245324/deidentifyTemplates/432452342` or
   /// projects/project-id/deidentifyTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/deidentifyTemplates/[^/]+$".
@@ -1554,7 +2683,7 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the DlpJob resource to be cancelled.
+  /// [name] - Required. The name of the DlpJob resource to be cancelled.
   /// Value must have pattern "^projects/[^/]+/dlpJobs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1611,7 +2740,8 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1665,7 +2795,7 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the DlpJob resource to be deleted.
+  /// [name] - Required. The name of the DlpJob resource to be deleted.
   /// Value must have pattern "^projects/[^/]+/dlpJobs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1711,7 +2841,7 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the DlpJob resource.
+  /// [name] - Required. The name of the DlpJob resource.
   /// Value must have pattern "^projects/[^/]+/dlpJobs/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1758,14 +2888,11 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
-  ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -1785,14 +2912,14 @@ class ProjectsDlpJobsResourceApi {
   /// - "INSPECT_JOB" : A INSPECT_JOB.
   /// - "RISK_ANALYSIS_JOB" : A RISK_ANALYSIS_JOB.
   ///
-  /// [filter] - Optional. Allows filtering.
+  /// [filter] - Allows filtering.
   ///
   /// Supported syntax:
   ///
   /// * Filter expressions are made up of one or more restrictions.
   /// * Restrictions can be combined by `AND` or `OR` logical operators. A
   /// sequence of restrictions implicitly uses `AND`.
-  /// * A restriction has the form of `<field> <operator> <value>`.
+  /// * A restriction has the form of `{field} {operator} {value}`.
   /// * Supported fields/values for inspect jobs:
   ///     - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
   ///     - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
@@ -1814,6 +2941,13 @@ class ProjectsDlpJobsResourceApi {
   ///
   /// The length of this field should be no more than 500 characters.
   ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [locationId] - The geographic location where jobs will be retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1825,11 +2959,12 @@ class ProjectsDlpJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String orderBy,
+      {core.String orderBy,
       core.String type,
       core.String filter,
+      core.String pageToken,
+      core.String locationId,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1841,12 +2976,6 @@ class ProjectsDlpJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
@@ -1855,6 +2984,15 @@ class ProjectsDlpJobsResourceApi {
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1955,7 +3093,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -2009,8 +3148,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and inspectTemplate to be
-  /// deleted, for
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be deleted, for
   /// example `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
@@ -2057,8 +3196,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and inspectTemplate to be read,
-  /// for
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be read, for
   /// example `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
@@ -2106,15 +3245,15 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListInspectTemplates`.
   ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -2128,9 +3267,13 @@ class ProjectsInspectTemplatesResourceApi {
   /// - `name`: corresponds to template's name.
   /// - `display_name`: corresponds to template's display name.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
   /// a page of max size 100.
+  ///
+  /// [locationId] - The geographic location where inspection templates will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2147,6 +3290,7 @@ class ProjectsInspectTemplatesResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2166,6 +3310,9 @@ class ProjectsInspectTemplatesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2192,8 +3339,8 @@ class ProjectsInspectTemplatesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of organization and inspectTemplate to be updated,
-  /// for
+  /// [name] - Required. Resource name of organization and inspectTemplate to be
+  /// updated, for
   /// example `organizations/433245324/inspectTemplates/432452342` or
   /// projects/project-id/inspectTemplates/432452342.
   /// Value must have pattern "^projects/[^/]+/inspectTemplates/[^/]+$".
@@ -2254,7 +3401,7 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the trigger to activate, for example
+  /// [name] - Required. Resource name of the trigger to activate, for example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
   ///
@@ -2308,7 +3455,8 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2360,7 +3508,8 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the project and the triggeredJob, for example
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
   ///
@@ -2406,7 +3555,8 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the project and the triggeredJob, for example
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
   ///
@@ -2453,16 +3603,21 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example `projects/my-project-id`.
+  /// [parent] - Required. The parent resource name, for example
+  /// `projects/my-project-id`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to ListJobTriggers. `order_by` field must not
   /// change for subsequent calls.
   ///
-  /// [orderBy] - Optional comma separated list of triggeredJob fields to order
-  /// by,
+  /// [locationId] - The geographic location where job triggers will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageSize] - Size of the page, can be limited by a server.
+  ///
+  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -2478,16 +3633,14 @@ class ProjectsJobTriggersResourceApi {
   /// - `display_name`: corresponds to JobTrigger's display name.
   /// - `status`: corresponds to JobTrigger's status.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by a server.
-  ///
-  /// [filter] - Optional. Allows filtering.
+  /// [filter] - Allows filtering.
   ///
   /// Supported syntax:
   ///
   /// * Filter expressions are made up of one or more restrictions.
   /// * Restrictions can be combined by `AND` or `OR` logical operators. A
   /// sequence of restrictions implicitly uses `AND`.
-  /// * A restriction has the form of `<field> <operator> <value>`.
+  /// * A restriction has the form of `{field} {operator} {value}`.
   /// * Supported fields/values for inspect jobs:
   ///     - `status` - HEALTHY|PAUSED|CANCELLED
   ///     - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
@@ -2519,8 +3672,9 @@ class ProjectsJobTriggersResourceApi {
   async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
       core.String parent,
       {core.String pageToken,
-      core.String orderBy,
+      core.String locationId,
       core.int pageSize,
+      core.String orderBy,
       core.String filter,
       core.String $fields}) {
     var _url;
@@ -2536,11 +3690,14 @@ class ProjectsJobTriggersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -2570,7 +3727,8 @@ class ProjectsJobTriggersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the project and the triggeredJob, for example
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example
   /// `projects/dlp-test-project/jobTriggers/53234423`.
   /// Value must have pattern "^projects/[^/]+/jobTriggers/[^/]+$".
   ///
@@ -2622,6 +3780,18 @@ class ProjectsLocationsResourceApi {
 
   ProjectsLocationsContentResourceApi get content =>
       new ProjectsLocationsContentResourceApi(_requester);
+  ProjectsLocationsDeidentifyTemplatesResourceApi get deidentifyTemplates =>
+      new ProjectsLocationsDeidentifyTemplatesResourceApi(_requester);
+  ProjectsLocationsDlpJobsResourceApi get dlpJobs =>
+      new ProjectsLocationsDlpJobsResourceApi(_requester);
+  ProjectsLocationsImageResourceApi get image =>
+      new ProjectsLocationsImageResourceApi(_requester);
+  ProjectsLocationsInspectTemplatesResourceApi get inspectTemplates =>
+      new ProjectsLocationsInspectTemplatesResourceApi(_requester);
+  ProjectsLocationsJobTriggersResourceApi get jobTriggers =>
+      new ProjectsLocationsJobTriggersResourceApi(_requester);
+  ProjectsLocationsStoredInfoTypesResourceApi get storedInfoTypes =>
+      new ProjectsLocationsStoredInfoTypesResourceApi(_requester);
 
   ProjectsLocationsResourceApi(commons.ApiRequester client)
       : _requester = client;
@@ -2650,7 +3820,7 @@ class ProjectsLocationsContentResourceApi {
   /// [parent] - The parent resource name, for example projects/my-project-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [location] - The geographic location to process de-identification.
+  /// [locationId] - The geographic location to process de-identification.
   /// Reserved for future
   /// extensions.
   ///
@@ -2667,7 +3837,7 @@ class ProjectsLocationsContentResourceApi {
   async.Future<GooglePrivacyDlpV2DeidentifyContentResponse> deidentify(
       GooglePrivacyDlpV2DeidentifyContentRequest request,
       core.String parent,
-      core.String location,
+      core.String locationId,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2682,8 +3852,8 @@ class ProjectsLocationsContentResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (location == null) {
-      throw new core.ArgumentError("Parameter location is required.");
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2692,7 +3862,7 @@ class ProjectsLocationsContentResourceApi {
     _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/locations/' +
-        commons.Escaper.ecapeVariable('$location') +
+        commons.Escaper.ecapeVariable('$locationId') +
         '/content:deidentify';
 
     var _response = _requester.request(_url, "POST",
@@ -2703,6 +3873,2150 @@ class ProjectsLocationsContentResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) =>
         new GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
+  }
+
+  /// Finds potentially sensitive info in content.
+  /// This method has limits on input size, processing time, and output size.
+  ///
+  /// When no InfoTypes or CustomInfoTypes are specified in this request, the
+  /// system will automatically choose what detectors to run. By default this
+  /// may
+  /// be all types, but may change over time as detectors are updated.
+  ///
+  /// For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
+  /// and https://cloud.google.com/dlp/docs/inspecting-text,
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to process content inspection.
+  /// Reserved for future
+  /// extensions.
+  /// When inspecting images location is restricted to 'global', 'us', 'asia',
+  /// and 'europe'.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectContentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectContentResponse> inspect(
+      GooglePrivacyDlpV2InspectContentRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/content:inspect';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
+  }
+
+  /// Re-identifies content that has been de-identified.
+  /// See
+  /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example
+  /// to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to process content
+  /// reidentification.  Reserved for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ReidentifyContentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ReidentifyContentResponse> reidentify(
+      GooglePrivacyDlpV2ReidentifyContentRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/content:reidentify';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsDeidentifyTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDeidentifyTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a DeidentifyTemplate for re-using frequently used configuration
+  /// for de-identifying content, images, and storage.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the deidentification
+  /// template. Reserved
+  /// for future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DeidentifyTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> create(
+      GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/deidentifyTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+
+  /// Deletes a DeidentifyTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be deleted,
+  /// for example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a DeidentifyTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and deidentify
+  /// template to be read, for
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DeidentifyTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+
+  /// Lists DeidentifyTemplates.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where deidentifications templates
+  /// will be retrieved
+  /// from. Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListDeidentifyTemplates`.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
+  /// a page of max size 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDeidentifyTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> list(
+      core.String parent, core.String locationId,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/deidentifyTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+  }
+
+  /// Updates the DeidentifyTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
+  /// more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of organization and deidentify template
+  /// to be updated, for
+  /// example `organizations/433245324/deidentifyTemplates/432452342` or
+  /// projects/project-id/deidentifyTemplates/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/deidentifyTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DeidentifyTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DeidentifyTemplate> patch(
+      GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
+      core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+  }
+}
+
+class ProjectsLocationsDlpJobsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDlpJobsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running DlpJob. The server
+  /// makes a best effort to cancel the DlpJob, but success is not
+  /// guaranteed.
+  /// See https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DlpJob resource to be cancelled.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> cancel(
+      GooglePrivacyDlpV2CancelDlpJobRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Creates a new job to inspect storage or calculate risk metrics.
+  /// See https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the
+  /// system will automatically choose what detectors to run. By default this
+  /// may
+  /// be all types, but may change over time as detectors are updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store and process the job.
+  /// Reserved for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DlpJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DlpJob> create(
+      GooglePrivacyDlpV2CreateDlpJobRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/dlpJobs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+  }
+
+  /// Deletes a long-running DlpJob. This method indicates that the client is
+  /// no longer interested in the DlpJob result. The job will be cancelled if
+  /// possible.
+  /// See https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DlpJob resource to be deleted.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Finish a running hybrid DlpJob. Triggers the finalization steps and
+  /// running
+  /// of any enabled actions that have not yet run.
+  /// Early access feature is in a pre-release state and might change or have
+  /// limited support. For more information, see
+  /// https://cloud.google.com/products#product-launch-stages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DlpJob resource to be cancelled.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> finish(
+      GooglePrivacyDlpV2FinishDlpJobRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':finish';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets the latest state of a long-running DlpJob.
+  /// See https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DlpJob resource.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DlpJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DlpJob> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+  }
+
+  /// Inspect hybrid content and store findings to a job.
+  /// To review the findings inspect the job. Inspection will occur
+  /// asynchronously.
+  /// Early access feature is in a pre-release state and might change or have
+  /// limited support. For more information, see
+  /// https://cloud.google.com/products#product-launch-stages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the job to execute a hybrid inspect
+  /// on, for example
+  /// `projects/dlp-test-project/dlpJob/53234423`.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/dlpJobs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2HybridInspectResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2HybridInspectResponse> hybridInspect(
+      GooglePrivacyDlpV2HybridInspectDlpJobRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':hybridInspect';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
+  }
+
+  /// Lists DlpJobs that match the specified filter in the request.
+  /// See https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where jobs will be retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : A DLP_JOB_TYPE_UNSPECIFIED.
+  /// - "INSPECT_JOB" : A INSPECT_JOB.
+  /// - "RISK_ANALYSIS_JOB" : A RISK_ANALYSIS_JOB.
+  ///
+  /// [filter] - Allows filtering.
+  ///
+  /// Supported syntax:
+  ///
+  /// * Filter expressions are made up of one or more restrictions.
+  /// * Restrictions can be combined by `AND` or `OR` logical operators. A
+  /// sequence of restrictions implicitly uses `AND`.
+  /// * A restriction has the form of `{field} {operator} {value}`.
+  /// * Supported fields/values for inspect jobs:
+  ///     - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
+  ///     - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
+  ///     - `trigger_name` - The resource name of the trigger that created job.
+  ///     - 'end_time` - Corresponds to time the job finished.
+  ///     - 'start_time` - Corresponds to time the job finished.
+  /// * Supported fields for risk analysis jobs:
+  ///     - `state` - RUNNING|CANCELED|FINISHED|FAILED
+  ///     - 'end_time` - Corresponds to time the job finished.
+  ///     - 'start_time` - Corresponds to time the job finished.
+  /// * The operator must be `=` or `!=`.
+  ///
+  /// Examples:
+  ///
+  /// * inspected_storage = cloud_storage AND state = done
+  /// * inspected_storage = cloud_storage OR inspected_storage = bigquery
+  /// * inspected_storage = cloud_storage AND (state = done OR state = canceled)
+  /// * end_time > \"2017-12-12T00:00:00+00:00\"
+  ///
+  /// The length of this field should be no more than 500 characters.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc, end_time asc, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the job was created.
+  /// - `end_time`: corresponds to time the job ended.
+  /// - `name`: corresponds to job's name.
+  /// - `state`: corresponds to `state`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDlpJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(
+      core.String parent, core.String locationId,
+      {core.String type,
+      core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String orderBy,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (type != null) {
+      _queryParams["type"] = [type];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/dlpJobs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsImageResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsImageResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Redacts potentially sensitive info from an image.
+  /// This method has limits on input size, processing time, and output size.
+  /// See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
+  /// learn more.
+  ///
+  /// When no InfoTypes or CustomInfoTypes are specified in this request, the
+  /// system will automatically choose what detectors to run. By default this
+  /// may
+  /// be all types, but may change over time as detectors are updated.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent resource name, for example projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to process the request. Reserved
+  /// for future
+  /// extensions.
+  /// Location is restricted to 'global', 'us', 'asia', and 'europe'.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2RedactImageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2RedactImageResponse> redact(
+      GooglePrivacyDlpV2RedactImageRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/image:redact';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
+  }
+}
+
+class ProjectsLocationsInspectTemplatesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInspectTemplatesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an InspectTemplate for re-using frequently used configuration
+  /// for inspecting content, images, and storage.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the inspection template.
+  /// Reserved for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectTemplate> create(
+      GooglePrivacyDlpV2CreateInspectTemplateRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/inspectTemplates';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+
+  /// Deletes an InspectTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be deleted, for
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets an InspectTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and inspectTemplate
+  /// to be read, for
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectTemplate> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+
+  /// Lists InspectTemplates.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where inspection templates will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListInspectTemplates`.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the template was created.
+  /// - `update_time`: corresponds to time the template was last updated.
+  /// - `name`: corresponds to template's name.
+  /// - `display_name`: corresponds to template's display name.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
+  /// a page of max size 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListInspectTemplatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListInspectTemplatesResponse> list(
+      core.String parent, core.String locationId,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/inspectTemplates';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+  }
+
+  /// Updates the InspectTemplate.
+  /// See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of organization and inspectTemplate to be
+  /// updated, for
+  /// example `organizations/433245324/inspectTemplates/432452342` or
+  /// projects/project-id/inspectTemplates/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/inspectTemplates/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2InspectTemplate].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2InspectTemplate> patch(
+      GooglePrivacyDlpV2UpdateInspectTemplateRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+  }
+}
+
+class ProjectsLocationsJobTriggersResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobTriggersResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Activate a job trigger. Causes the immediate execute of a trigger
+  /// instead of waiting on the trigger event to occur.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the trigger to activate, for example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2DlpJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2DlpJob> activate(
+      GooglePrivacyDlpV2ActivateJobTriggerRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2DlpJob.fromJson(data));
+  }
+
+  /// Creates a job trigger to run DLP actions such as scanning storage for
+  /// sensitive information on a set schedule.
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the job trigger. Reserved
+  /// for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> create(
+      GooglePrivacyDlpV2CreateJobTriggerRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/jobTriggers';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+  }
+
+  /// Deletes a job trigger.
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a job trigger.
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+  }
+
+  /// Inspect hybrid content and store findings to a trigger. The inspection
+  /// will be processed asynchronously. To review the findings monitor the
+  /// jobs within the trigger.
+  /// Early access feature is in a pre-release state and might change or have
+  /// limited support. For more information, see
+  /// https://cloud.google.com/products#product-launch-stages.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the trigger to execute a hybrid
+  /// inspect on, for example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2HybridInspectResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2HybridInspectResponse> hybridInspect(
+      GooglePrivacyDlpV2HybridInspectJobTriggerRequest request,
+      core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':hybridInspect';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
+  }
+
+  /// Lists job triggers.
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// `projects/my-project-id`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where job triggers will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc,update_time, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the JobTrigger was created.
+  /// - `update_time`: corresponds to time the JobTrigger was last updated.
+  /// - `last_run_time`: corresponds to the last time the JobTrigger ran.
+  /// - `name`: corresponds to JobTrigger's name.
+  /// - `display_name`: corresponds to JobTrigger's display name.
+  /// - `status`: corresponds to JobTrigger's status.
+  ///
+  /// [filter] - Allows filtering.
+  ///
+  /// Supported syntax:
+  ///
+  /// * Filter expressions are made up of one or more restrictions.
+  /// * Restrictions can be combined by `AND` or `OR` logical operators. A
+  /// sequence of restrictions implicitly uses `AND`.
+  /// * A restriction has the form of `{field} {operator} {value}`.
+  /// * Supported fields/values for inspect jobs:
+  ///     - `status` - HEALTHY|PAUSED|CANCELLED
+  ///     - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
+  ///     - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by
+  ///     quotation marks. Nanoseconds are ignored.
+  ///     - 'error_count' - Number of errors that have occurred while running.
+  /// * The operator must be `=` or `!=` for status and inspected_storage.
+  ///
+  /// Examples:
+  ///
+  /// * inspected_storage = cloud_storage AND status = HEALTHY
+  /// * inspected_storage = cloud_storage OR inspected_storage = bigquery
+  /// * inspected_storage = cloud_storage AND (state = PAUSED OR state =
+  /// HEALTHY)
+  /// * last_run_time > \"2017-12-12T00:00:00+00:00\"
+  ///
+  /// The length of this field should be no more than 500 characters.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to ListJobTriggers. `order_by` field must not
+  /// change for subsequent calls.
+  ///
+  /// [pageSize] - Size of the page, can be limited by a server.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListJobTriggersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
+      core.String parent, core.String locationId,
+      {core.String orderBy,
+      core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/jobTriggers';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
+  }
+
+  /// Updates a job trigger.
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/jobTriggers/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> patch(
+      GooglePrivacyDlpV2UpdateJobTriggerRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2JobTrigger.fromJson(data));
+  }
+}
+
+class ProjectsLocationsStoredInfoTypesResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsStoredInfoTypesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a pre-built stored infoType to be used for inspection.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location to store the stored infoType.
+  /// Reserved for
+  /// future extensions.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2StoredInfoType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2StoredInfoType> create(
+      GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
+      core.String parent,
+      core.String locationId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/storedInfoTypes';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+  }
+
+  /// Deletes a stored infoType.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be deleted, for
+  /// example `organizations/433245324/storedInfoTypes/432452342` or
+  /// projects/project-id/storedInfoTypes/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleProtobufEmpty.fromJson(data));
+  }
+
+  /// Gets a stored infoType.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be read, for
+  /// example `organizations/433245324/storedInfoTypes/432452342` or
+  /// projects/project-id/storedInfoTypes/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2StoredInfoType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2StoredInfoType> get(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+  }
+
+  /// Lists stored infoTypes.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
+  /// organizations/my-org-id.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [locationId] - The geographic location where stored infoTypes will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to `ListStoredInfoTypes`.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant.
+  ///
+  /// Example: `name asc, display_name, create_time desc`
+  ///
+  /// Supported fields are:
+  ///
+  /// - `create_time`: corresponds to time the most recent version of the
+  /// resource was created.
+  /// - `state`: corresponds to the state of the resource.
+  /// - `name`: corresponds to resource name.
+  /// - `display_name`: corresponds to info type's display name.
+  ///
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
+  /// a page of max size 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListStoredInfoTypesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListStoredInfoTypesResponse> list(
+      core.String parent, core.String locationId,
+      {core.String pageToken,
+      core.String orderBy,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (locationId == null) {
+      throw new core.ArgumentError("Parameter locationId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/locations/' +
+        commons.Escaper.ecapeVariable('$locationId') +
+        '/storedInfoTypes';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+  }
+
+  /// Updates the stored infoType by creating a new version. The existing
+  /// version
+  /// will continue to be used until the new version is ready.
+  /// See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
+  /// learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of organization and storedInfoType to be
+  /// updated, for
+  /// example `organizations/433245324/storedInfoTypes/432452342` or
+  /// projects/project-id/storedInfoTypes/432452342.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/storedInfoTypes/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2StoredInfoType].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2StoredInfoType> patch(
+      GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GooglePrivacyDlpV2StoredInfoType.fromJson(data));
   }
 }
 
@@ -2720,7 +6034,8 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
@@ -2774,8 +6089,8 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and storedInfoType to be
-  /// deleted, for
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be deleted, for
   /// example `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern "^projects/[^/]+/storedInfoTypes/[^/]+$".
@@ -2823,8 +6138,8 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of the organization and storedInfoType to be read,
-  /// for
+  /// [name] - Required. Resource name of the organization and storedInfoType to
+  /// be read, for
   /// example `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern "^projects/[^/]+/storedInfoTypes/[^/]+$".
@@ -2873,15 +6188,15 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name, for example projects/my-project-id or
+  /// [parent] - Required. The parent resource name, for example
+  /// projects/my-project-id or
   /// organizations/my-org-id.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional page token to continue retrieval. Comes from
-  /// previous call
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
   /// to `ListStoredInfoTypes`.
   ///
-  /// [orderBy] - Optional comma separated list of fields to order by,
+  /// [orderBy] - Comma separated list of fields to order by,
   /// followed by `asc` or `desc` postfix. This list is case-insensitive,
   /// default sorting order is ascending, redundant space characters are
   /// insignificant.
@@ -2896,9 +6211,13 @@ class ProjectsStoredInfoTypesResourceApi {
   /// - `name`: corresponds to resource name.
   /// - `display_name`: corresponds to info type's display name.
   ///
-  /// [pageSize] - Optional size of the page, can be limited by server. If zero
-  /// server returns
+  /// [pageSize] - Size of the page, can be limited by server. If zero server
+  /// returns
   /// a page of max size 100.
+  ///
+  /// [locationId] - The geographic location where stored infoTypes will be
+  /// retrieved from.
+  /// Use `-` for all locations. Reserved for future extensions.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2915,6 +6234,7 @@ class ProjectsStoredInfoTypesResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String locationId,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2934,6 +6254,9 @@ class ProjectsStoredInfoTypesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (locationId != null) {
+      _queryParams["locationId"] = [locationId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2963,8 +6286,8 @@ class ProjectsStoredInfoTypesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Resource name of organization and storedInfoType to be updated,
-  /// for
+  /// [name] - Required. Resource name of organization and storedInfoType to be
+  /// updated, for
   /// example `organizations/433245324/storedInfoTypes/432452342` or
   /// projects/project-id/storedInfoTypes/432452342.
   /// Value must have pattern "^projects/[^/]+/storedInfoTypes/[^/]+$".
@@ -3015,7 +6338,7 @@ class ProjectsStoredInfoTypesResourceApi {
 /// A task to execute on the completion of a job.
 /// See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 class GooglePrivacyDlpV2Action {
-  /// Enable email notification to project owners and editors on job's
+  /// Enable email notification for project owners and editors on job's
   /// completion/failure.
   GooglePrivacyDlpV2JobNotificationEmails jobNotificationEmails;
 
@@ -3028,6 +6351,9 @@ class GooglePrivacyDlpV2Action {
 
   /// Publish summary to Cloud Security Command Center (Alpha).
   GooglePrivacyDlpV2PublishSummaryToCscc publishSummaryToCscc;
+
+  /// Enable Stackdriver metric dlp.googleapis.com/finding_count.
+  GooglePrivacyDlpV2PublishToStackdriver publishToStackdriver;
 
   /// Save resulting findings in a provided location.
   GooglePrivacyDlpV2SaveFindings saveFindings;
@@ -3053,6 +6379,11 @@ class GooglePrivacyDlpV2Action {
           new GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
               _json["publishSummaryToCscc"]);
     }
+    if (_json.containsKey("publishToStackdriver")) {
+      publishToStackdriver =
+          new GooglePrivacyDlpV2PublishToStackdriver.fromJson(
+              _json["publishToStackdriver"]);
+    }
     if (_json.containsKey("saveFindings")) {
       saveFindings =
           new GooglePrivacyDlpV2SaveFindings.fromJson(_json["saveFindings"]);
@@ -3074,6 +6405,9 @@ class GooglePrivacyDlpV2Action {
     }
     if (publishSummaryToCscc != null) {
       _json["publishSummaryToCscc"] = (publishSummaryToCscc).toJson();
+    }
+    if (publishToStackdriver != null) {
+      _json["publishToStackdriver"] = (publishToStackdriver).toJson();
     }
     if (saveFindings != null) {
       _json["saveFindings"] = (saveFindings).toJson();
@@ -3097,11 +6431,22 @@ class GooglePrivacyDlpV2ActivateJobTriggerRequest {
 
 /// Result of a risk analysis operation request.
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
+  /// Categorical stats result
   GooglePrivacyDlpV2CategoricalStatsResult categoricalStatsResult;
+
+  /// Delta-presence result
   GooglePrivacyDlpV2DeltaPresenceEstimationResult deltaPresenceEstimationResult;
+
+  /// K-anonymity result
   GooglePrivacyDlpV2KAnonymityResult kAnonymityResult;
+
+  /// K-map result
   GooglePrivacyDlpV2KMapEstimationResult kMapEstimationResult;
+
+  /// L-divesity result
   GooglePrivacyDlpV2LDiversityResult lDiversityResult;
+
+  /// Numerical stats result
   GooglePrivacyDlpV2NumericalStatsResult numericalStatsResult;
 
   /// Privacy metric to compute.
@@ -3191,15 +6536,15 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
 /// corresponding relative frequency is assumed to be zero (and thus, the
 /// tuple is highly reidentifiable).
 class GooglePrivacyDlpV2AuxiliaryTable {
-  /// Quasi-identifier columns. [required]
+  /// Required. Quasi-identifier columns.
   core.List<GooglePrivacyDlpV2QuasiIdField> quasiIds;
 
-  /// The relative frequency column must contain a floating-point number
+  /// Required. The relative frequency column must contain a floating-point
+  /// number
   /// between 0 and 1 (inclusive). Null values are assumed to be zero.
-  /// [required]
   GooglePrivacyDlpV2FieldId relativeFrequency;
 
-  /// Auxiliary table location. [required]
+  /// Required. Auxiliary table location.
   GooglePrivacyDlpV2BigQueryTable table;
 
   GooglePrivacyDlpV2AuxiliaryTable();
@@ -3270,8 +6615,11 @@ class GooglePrivacyDlpV2BigQueryField {
 
 /// Row key for identifying a record in BigQuery table.
 class GooglePrivacyDlpV2BigQueryKey {
-  /// Absolute number of the row from the beginning of the table at the time
-  /// of scanning.
+  /// Row number inferred at the time the table was scanned. This value is
+  /// nondeterministic, cannot be queried, and may be null for inspection
+  /// jobs. To locate findings within a table, specify
+  /// `inspect_job.storage_config.big_query_options.identifying_fields` in
+  /// `CreateDlpJobRequest`.
   core.String rowNumber;
 
   /// Complete BigQuery table reference.
@@ -3308,8 +6656,11 @@ class GooglePrivacyDlpV2BigQueryOptions {
   /// inspection of entire columns which you know have no findings.
   core.List<GooglePrivacyDlpV2FieldId> excludedFields;
 
-  /// References to fields uniquely identifying rows within the table.
-  /// Nested fields in the format, like `person.birthdate.year`, are allowed.
+  /// Table fields that may uniquely identify a row within the table. When
+  /// `actions.saveFindings.outputConfig.table` is specified, the values of
+  /// columns specified here are available in the output table under
+  /// `location.content_locations.record_location.record_key.id_values`. Nested
+  /// fields such as `person.birthdate.year` are allowed.
   core.List<GooglePrivacyDlpV2FieldId> identifyingFields;
 
   /// Max number of rows to scan. If the table has more rows than this value,
@@ -3586,14 +6937,16 @@ class GooglePrivacyDlpV2ByteContentItem {
 
   /// The type of data stored in the bytes string. Default will be TEXT_UTF8.
   /// Possible string values are:
-  /// - "BYTES_TYPE_UNSPECIFIED"
-  /// - "IMAGE"
-  /// - "IMAGE_JPEG"
-  /// - "IMAGE_BMP"
-  /// - "IMAGE_PNG"
-  /// - "IMAGE_SVG"
-  /// - "TEXT_UTF8"
-  /// - "AVRO"
+  /// - "BYTES_TYPE_UNSPECIFIED" : Unused
+  /// - "IMAGE" : Any image type.
+  /// - "IMAGE_JPEG" : jpeg
+  /// - "IMAGE_BMP" : bmp
+  /// - "IMAGE_PNG" : png
+  /// - "IMAGE_SVG" : svg
+  /// - "TEXT_UTF8" : plain text
+  /// - "WORD_DOCUMENT" : docx, docm, dotx, dotm
+  /// - "PDF" : pdf
+  /// - "AVRO" : avro
   core.String type;
 
   GooglePrivacyDlpV2ByteContentItem();
@@ -3660,6 +7013,7 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
   }
 }
 
+/// Histogram of value frequencies in the column.
 class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
   /// Total number of values in this bucket.
   core.String bucketSize;
@@ -3762,15 +7116,17 @@ class GooglePrivacyDlpV2CategoricalStatsResult {
 /// like
 /// **3.
 class GooglePrivacyDlpV2CharacterMaskConfig {
-  /// When masking a string, items in this list will be skipped when replacing.
-  /// For example, if your string is 555-555-5555 and you ask us to skip `-` and
-  /// mask 5 chars with * we would produce ***-*55-5555.
+  /// When masking a string, items in this list will be skipped when replacing
+  /// characters. For example, if the input string is `555-555-5555` and you
+  /// instruct Cloud DLP to skip `-` and mask 5 characters with `*`, Cloud DLP
+  /// returns `***-**5-5555`.
   core.List<GooglePrivacyDlpV2CharsToIgnore> charactersToIgnore;
 
-  /// Character to mask the sensitive values&mdash;for example, "*" for an
-  /// alphabetic string such as name, or "0" for a numeric string such as ZIP
-  /// code or credit card number. String must have length 1. If not supplied, we
-  /// will default to "*" for strings, 0 for digits.
+  /// Character to use to mask the sensitive values&mdash;for example, `*` for
+  /// an
+  /// alphabetic string such as a name, or `0` for a numeric string such as ZIP
+  /// code or credit card number. This string must have a length of 1. If not
+  /// supplied, this value defaults to `*` for strings, and `0` for digits.
   core.String maskingCharacter;
 
   /// Number of characters to mask. If not set, all matching chars will be
@@ -3778,10 +7134,11 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
   core.int numberToMask;
 
   /// Mask characters in reverse order. For example, if `masking_character` is
-  /// '0', number_to_mask is 14, and `reverse_order` is false, then
-  /// 1234-5678-9012-3456 -> 00000000000000-3456
-  /// If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`
-  /// is true, then 12345 -> 12***
+  /// `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the
+  /// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+  /// If `masking_character` is `*`, `number_to_mask` is `3`, and
+  /// `reverse_order`
+  /// is `true`, then the string `12345` is masked as `12***`.
   core.bool reverseOrder;
 
   GooglePrivacyDlpV2CharacterMaskConfig();
@@ -3828,11 +7185,13 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
 /// left
 /// alone and skipped.
 class GooglePrivacyDlpV2CharsToIgnore {
+  /// Characters to not transform when masking.
   core.String charactersToSkip;
 
-  ///
+  /// Common characters to not transform when masking. Useful to avoid removing
+  /// punctuation.
   /// Possible string values are:
-  /// - "COMMON_CHARS_TO_IGNORE_UNSPECIFIED"
+  /// - "COMMON_CHARS_TO_IGNORE_UNSPECIFIED" : Unused.
   /// - "NUMERIC" : 0-9
   /// - "ALPHA_UPPER_CASE" : A-Z
   /// - "ALPHA_LOWER_CASE" : a-z
@@ -3910,6 +7269,9 @@ class GooglePrivacyDlpV2CloudStorageOptions {
   /// If empty, all files are scanned and available data format processors
   /// are applied. In addition, the binary content of the selected files
   /// is always scanned as well.
+  /// Images are scanned only as binary if the specified region
+  /// does not support image inspection and no file_types were specified.
+  /// Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
   core.List<core.String> fileTypes;
 
   /// Limits the number of files to scan to this percentage of the input
@@ -4148,12 +7510,12 @@ class GooglePrivacyDlpV2Color {
 /// If we fail to compare do to type mismatch, a warning will be given and
 /// the condition will evaluate to false.
 class GooglePrivacyDlpV2Condition {
-  /// Field within the record this condition is evaluated against. [required]
+  /// Required. Field within the record this condition is evaluated against.
   GooglePrivacyDlpV2FieldId field;
 
-  /// Operator used to compare the field or infoType to the value. [required]
+  /// Required. Operator used to compare the field or infoType to the value.
   /// Possible string values are:
-  /// - "RELATIONAL_OPERATOR_UNSPECIFIED"
+  /// - "RELATIONAL_OPERATOR_UNSPECIFIED" : Unused
   /// - "EQUAL_TO" : Equal. Attempts to match even with incompatible types.
   /// - "NOT_EQUAL_TO" : Not equal to. Attempts to match even with incompatible
   /// types.
@@ -4164,7 +7526,7 @@ class GooglePrivacyDlpV2Condition {
   /// - "EXISTS" : Exists
   core.String operator;
 
-  /// Value to compare against. [Required, except for `EXISTS` tests.]
+  /// Value to compare against. [Mandatory, except for `EXISTS` tests.]
   GooglePrivacyDlpV2Value value;
 
   GooglePrivacyDlpV2Condition();
@@ -4199,6 +7561,7 @@ class GooglePrivacyDlpV2Condition {
 
 /// A collection of conditions.
 class GooglePrivacyDlpV2Conditions {
+  /// A collection of conditions.
   core.List<GooglePrivacyDlpV2Condition> conditions;
 
   GooglePrivacyDlpV2Conditions();
@@ -4218,6 +7581,105 @@ class GooglePrivacyDlpV2Conditions {
     if (conditions != null) {
       _json["conditions"] =
           conditions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Represents a container that may contain DLP findings.
+/// Examples of a container include a file, table, or database record.
+class GooglePrivacyDlpV2Container {
+  /// A string representation of the full container name.
+  /// Examples:
+  /// - BigQuery: 'Project:DataSetId.TableId'
+  /// - Google Cloud Storage: 'gs://Bucket/folders/filename.txt'
+  core.String fullPath;
+
+  /// Project where the finding was found.
+  /// Can be different from the project that owns the finding.
+  core.String projectId;
+
+  /// The rest of the path after the root.
+  /// Examples:
+  /// - For BigQuery table `project_id:dataset_id.table_id`, the relative path
+  /// is
+  ///  `table_id`
+  /// - Google Cloud Storage file `gs://bucket/folder/filename.txt`, the
+  /// relative
+  ///  path is `folder/filename.txt`
+  core.String relativePath;
+
+  /// The root of the container.
+  /// Examples:
+  /// - For BigQuery table `project_id:dataset_id.table_id`, the root is
+  ///  `dataset_id`
+  /// - For Google Cloud Storage file `gs://bucket/folder/filename.txt`, the
+  /// root
+  ///  is `gs://bucket`
+  core.String rootPath;
+
+  /// Container type, for example BigQuery or Google Cloud Storage.
+  core.String type;
+
+  /// Findings container modification timestamp, if applicable.
+  /// For Google Cloud Storage contains last file modification timestamp.
+  /// For BigQuery table contains last_modified_time property.
+  /// For Datastore - not populated.
+  core.String updateTime;
+
+  /// Findings container version, if available
+  /// ("generation" for Google Cloud Storage).
+  core.String version;
+
+  GooglePrivacyDlpV2Container();
+
+  GooglePrivacyDlpV2Container.fromJson(core.Map _json) {
+    if (_json.containsKey("fullPath")) {
+      fullPath = _json["fullPath"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("relativePath")) {
+      relativePath = _json["relativePath"];
+    }
+    if (_json.containsKey("rootPath")) {
+      rootPath = _json["rootPath"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+    if (_json.containsKey("version")) {
+      version = _json["version"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fullPath != null) {
+      _json["fullPath"] = fullPath;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (relativePath != null) {
+      _json["relativePath"] = relativePath;
+    }
+    if (rootPath != null) {
+      _json["rootPath"] = rootPath;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    if (version != null) {
+      _json["version"] = version;
     }
     return _json;
   }
@@ -4267,15 +7729,17 @@ class GooglePrivacyDlpV2ContentItem {
   }
 }
 
-/// Findings container location data.
+/// Precise location of the finding within a document, record, image, or
+/// metadata
+/// container.
 class GooglePrivacyDlpV2ContentLocation {
   /// Name of the container where the finding is located.
   /// The top level name is the source file name or table name. Names of some
   /// common storage containers are formatted as follows:
   ///
-  /// * BigQuery tables:  `<project_id>:<dataset_id>.<table_id>`
-  /// * Cloud Storage files: `gs://<bucket>/<path>`
-  /// * Datastore namespace: <namespace>
+  /// * BigQuery tables:  `{project_id}:{dataset_id}.{table_id}`
+  /// * Cloud Storage files: `gs://{bucket}/{path}`
+  /// * Datastore namespace: {namespace}
   ///
   /// Nested names could be absent if the embedded object has no string
   /// identifier (for an example an image contained within a document).
@@ -4296,6 +7760,9 @@ class GooglePrivacyDlpV2ContentLocation {
 
   /// Location within an image's pixels.
   GooglePrivacyDlpV2ImageLocation imageLocation;
+
+  /// Location within the metadata for inspected content.
+  GooglePrivacyDlpV2MetadataLocation metadataLocation;
 
   /// Location within a row or record of a database table.
   GooglePrivacyDlpV2RecordLocation recordLocation;
@@ -4319,6 +7786,10 @@ class GooglePrivacyDlpV2ContentLocation {
     if (_json.containsKey("imageLocation")) {
       imageLocation =
           new GooglePrivacyDlpV2ImageLocation.fromJson(_json["imageLocation"]);
+    }
+    if (_json.containsKey("metadataLocation")) {
+      metadataLocation = new GooglePrivacyDlpV2MetadataLocation.fromJson(
+          _json["metadataLocation"]);
     }
     if (_json.containsKey("recordLocation")) {
       recordLocation = new GooglePrivacyDlpV2RecordLocation.fromJson(
@@ -4344,6 +7815,9 @@ class GooglePrivacyDlpV2ContentLocation {
     if (imageLocation != null) {
       _json["imageLocation"] = (imageLocation).toJson();
     }
+    if (metadataLocation != null) {
+      _json["metadataLocation"] = (metadataLocation).toJson();
+    }
     if (recordLocation != null) {
       _json["recordLocation"] = (recordLocation).toJson();
     }
@@ -4353,8 +7827,12 @@ class GooglePrivacyDlpV2ContentLocation {
 
 /// Request message for CreateDeidentifyTemplate.
 class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
-  /// The DeidentifyTemplate to create.
+  /// Required. The DeidentifyTemplate to create.
   GooglePrivacyDlpV2DeidentifyTemplate deidentifyTemplate;
+
+  /// The geographic location to store the deidentification template. Reserved
+  /// for future extensions.
+  core.String locationId;
 
   /// The template id can contain uppercase and lowercase letters,
   /// numbers, and hyphens; that is, it must match the regular
@@ -4369,6 +7847,9 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
       deidentifyTemplate = new GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
           _json["deidentifyTemplate"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
     if (_json.containsKey("templateId")) {
       templateId = _json["templateId"];
     }
@@ -4379,6 +7860,9 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
         new core.Map<core.String, core.Object>();
     if (deidentifyTemplate != null) {
       _json["deidentifyTemplate"] = (deidentifyTemplate).toJson();
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     if (templateId != null) {
       _json["templateId"] = templateId;
@@ -4391,6 +7875,7 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
 /// jobs such as calculating risk metrics or inspecting Google Cloud
 /// Storage.
 class GooglePrivacyDlpV2CreateDlpJobRequest {
+  /// Set to control what and how to inspect.
   GooglePrivacyDlpV2InspectJobConfig inspectJob;
 
   /// The job id can contain uppercase and lowercase letters,
@@ -4398,6 +7883,12 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
   /// expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
   /// characters. Can be empty to allow the system to generate one.
   core.String jobId;
+
+  /// The geographic location to store and process the job. Reserved for
+  /// future extensions.
+  core.String locationId;
+
+  /// Set to choose what metric to calculate.
   GooglePrivacyDlpV2RiskAnalysisJobConfig riskJob;
 
   GooglePrivacyDlpV2CreateDlpJobRequest();
@@ -4409,6 +7900,9 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
     }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
+    }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
     }
     if (_json.containsKey("riskJob")) {
       riskJob = new GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
@@ -4425,6 +7919,9 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
     if (jobId != null) {
       _json["jobId"] = jobId;
     }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
     if (riskJob != null) {
       _json["riskJob"] = (riskJob).toJson();
     }
@@ -4434,8 +7931,12 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
 
 /// Request message for CreateInspectTemplate.
 class GooglePrivacyDlpV2CreateInspectTemplateRequest {
-  /// The InspectTemplate to create.
+  /// Required. The InspectTemplate to create.
   GooglePrivacyDlpV2InspectTemplate inspectTemplate;
+
+  /// The geographic location to store the inspection template. Reserved for
+  /// future extensions.
+  core.String locationId;
 
   /// The template id can contain uppercase and lowercase letters,
   /// numbers, and hyphens; that is, it must match the regular
@@ -4450,6 +7951,9 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
       inspectTemplate = new GooglePrivacyDlpV2InspectTemplate.fromJson(
           _json["inspectTemplate"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
     if (_json.containsKey("templateId")) {
       templateId = _json["templateId"];
     }
@@ -4461,6 +7965,9 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
     if (inspectTemplate != null) {
       _json["inspectTemplate"] = (inspectTemplate).toJson();
     }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
     if (templateId != null) {
       _json["templateId"] = templateId;
     }
@@ -4470,8 +7977,12 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
 
 /// Request message for CreateJobTrigger.
 class GooglePrivacyDlpV2CreateJobTriggerRequest {
-  /// The JobTrigger to create.
+  /// Required. The JobTrigger to create.
   GooglePrivacyDlpV2JobTrigger jobTrigger;
+
+  /// The geographic location to store the job trigger. Reserved for
+  /// future extensions.
+  core.String locationId;
 
   /// The trigger id can contain uppercase and lowercase letters,
   /// numbers, and hyphens; that is, it must match the regular
@@ -4486,6 +7997,9 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
       jobTrigger =
           new GooglePrivacyDlpV2JobTrigger.fromJson(_json["jobTrigger"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
     if (_json.containsKey("triggerId")) {
       triggerId = _json["triggerId"];
     }
@@ -4497,6 +8011,9 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
     if (jobTrigger != null) {
       _json["jobTrigger"] = (jobTrigger).toJson();
     }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
+    }
     if (triggerId != null) {
       _json["triggerId"] = triggerId;
     }
@@ -4506,8 +8023,12 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
 
 /// Request message for CreateStoredInfoType.
 class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
-  /// Configuration of the storedInfoType to create.
+  /// Required. Configuration of the storedInfoType to create.
   GooglePrivacyDlpV2StoredInfoTypeConfig config;
+
+  /// The geographic location to store the stored infoType. Reserved for
+  /// future extensions.
+  core.String locationId;
 
   /// The storedInfoType ID can contain uppercase and lowercase letters,
   /// numbers, and hyphens; that is, it must match the regular
@@ -4522,6 +8043,9 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
       config =
           new GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json["config"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
     if (_json.containsKey("storedInfoTypeId")) {
       storedInfoTypeId = _json["storedInfoTypeId"];
     }
@@ -4532,6 +8056,9 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
         new core.Map<core.String, core.Object>();
     if (config != null) {
       _json["config"] = (config).toJson();
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     if (storedInfoTypeId != null) {
       _json["storedInfoTypeId"] = storedInfoTypeId;
@@ -4545,7 +8072,7 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
 /// input. Outputs a base64 encoded representation of the encrypted output.
 /// Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
 class GooglePrivacyDlpV2CryptoDeterministicConfig {
-  /// Optional. A context may be used for higher security and maintaining
+  /// A context may be used for higher security and maintaining
   /// referential integrity such that the same identifier in two different
   /// contexts will be given a distinct surrogate. The context is appended to
   /// plaintext value being encrypted. On decryption the provided context is
@@ -4573,7 +8100,7 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
   /// This annotation will be applied to the surrogate by prefixing it with
   /// the name of the custom info type followed by the number of
   /// characters comprising the surrogate. The following scheme defines the
-  /// format: <info type name>(<surrogate character count>):<surrogate>
+  /// format: {info type name}({surrogate character count}):{surrogate}
   ///
   /// For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and
   /// the surrogate is 'abc', the full replacement value
@@ -4582,6 +8109,11 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
   /// This annotation identifies the surrogate when inspecting content using the
   /// custom info type 'Surrogate'. This facilitates reversal of the
   /// surrogate when it occurs in free text.
+  ///
+  /// Note: For record transformations where the entire cell in a table is being
+  /// transformed, surrogates are not mandatory. Surrogates are used to denote
+  /// the location of the token and are necessary for re-identification in free
+  /// form text.
   ///
   /// In order for inspection to work properly, the name of this info type must
   /// not occur naturally anywhere in your data; otherwise, inspection may
@@ -4597,7 +8129,7 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
   /// that are highly improbable to exist in your data.
   /// For example, assuming your data is entered from a regular ASCII keyboard,
   /// the symbol with the hex code point 29DD might be used like so:
-  /// ⧝MY_TOKEN_TYPE
+  /// ⧝MY_TOKEN_TYPE.
   GooglePrivacyDlpV2InfoType surrogateInfoType;
 
   GooglePrivacyDlpV2CryptoDeterministicConfig();
@@ -4666,8 +8198,13 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 /// IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
 /// unwrap the data crypto key.
 class GooglePrivacyDlpV2CryptoKey {
+  /// Kms wrapped key
   GooglePrivacyDlpV2KmsWrappedCryptoKey kmsWrapped;
+
+  /// Transient crypto key
   GooglePrivacyDlpV2TransientCryptoKey transient;
+
+  /// Unwrapped crypto key
   GooglePrivacyDlpV2UnwrappedCryptoKey unwrapped;
 
   GooglePrivacyDlpV2CryptoKey();
@@ -4718,9 +8255,9 @@ class GooglePrivacyDlpV2CryptoKey {
 /// do not require preserving the input alphabet space and size, plus warrant
 /// referential integrity.
 class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
-  ///
+  /// Common alphabets.
   /// Possible string values are:
-  /// - "FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED"
+  /// - "FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED" : Unused.
   /// - "NUMERIC" : [0-9] (radix of 10)
   /// - "HEXADECIMAL" : [0-9A-F] (radix of 16)
   /// - "UPPER_CASE_ALPHA_NUMERIC" : [0-9A-Z] (radix of 36)
@@ -4749,19 +8286,19 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /// - a string is encoded in UTF-8 format followed by a single byte of value 2
   GooglePrivacyDlpV2FieldId context;
 
-  /// The key used by the encryption algorithm. [required]
+  /// Required. The key used by the encryption algorithm.
   GooglePrivacyDlpV2CryptoKey cryptoKey;
 
   /// This is supported by mapping these to the alphanumeric characters
   /// that the FFX mode natively supports. This happens before/after
   /// encryption/decryption.
   /// Each character listed must appear only once.
-  /// Number of characters must be in the range [2, 62].
+  /// Number of characters must be in the range [2, 95].
   /// This must be encoded as ASCII.
   /// The order of characters does not matter.
   core.String customAlphabet;
 
-  /// The native way to select the alphabet. Must be in the range [2, 62].
+  /// The native way to select the alphabet. Must be in the range [2, 95].
   core.int radix;
 
   /// The custom infoType to annotate the surrogate with.
@@ -5023,25 +8560,25 @@ class GooglePrivacyDlpV2DatastoreOptions {
 /// to learn more.
 class GooglePrivacyDlpV2DateShiftConfig {
   /// Points to the field that contains the context, for example, an entity id.
-  /// If set, must also set method. If set, shift will be consistent for the
+  /// If set, must also set cryptoKey. If set, shift will be consistent for the
   /// given context.
   GooglePrivacyDlpV2FieldId context;
 
   /// Causes the shift to be computed based on this key and the context. This
-  /// results in the same shift for the same context and crypto_key.
+  /// results in the same shift for the same context and crypto_key. If
+  /// set, must also set context. Can only be applied to table items.
   GooglePrivacyDlpV2CryptoKey cryptoKey;
 
-  /// For example, -5 means shift date to at most 5 days back in the past.
-  /// [Required]
+  /// Required. For example, -5 means shift date to at most 5 days back in the
+  /// past.
   core.int lowerBoundDays;
 
-  /// Range of shift in days. Actual shift will be selected at random within
-  /// this
+  /// Required. Range of shift in days. Actual shift will be selected at random
+  /// within this
   /// range (inclusive ends). Negative means shift to earlier in time. Must not
   /// be more than 365250 days (1000 years) each direction.
   ///
   /// For example, 3 means shift date to at most 3 days into the future.
-  /// [Required]
   core.int upperBoundDays;
 
   GooglePrivacyDlpV2DateShiftConfig();
@@ -5083,22 +8620,26 @@ class GooglePrivacyDlpV2DateShiftConfig {
 /// Message for a date time object.
 /// e.g. 2018-01-01, 5th August.
 class GooglePrivacyDlpV2DateTime {
-  /// One or more of the following must be set. All fields are optional, but
-  /// when set must be valid date or time values.
+  /// One or more of the following must be set.
+  /// Must be a valid date or time value.
   GoogleTypeDate date;
 
-  ///
+  /// Day of week
   /// Possible string values are:
-  /// - "DAY_OF_WEEK_UNSPECIFIED" : The unspecified day-of-week.
-  /// - "MONDAY" : The day-of-week of Monday.
-  /// - "TUESDAY" : The day-of-week of Tuesday.
-  /// - "WEDNESDAY" : The day-of-week of Wednesday.
-  /// - "THURSDAY" : The day-of-week of Thursday.
-  /// - "FRIDAY" : The day-of-week of Friday.
-  /// - "SATURDAY" : The day-of-week of Saturday.
-  /// - "SUNDAY" : The day-of-week of Sunday.
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
   core.String dayOfWeek;
+
+  /// Time of day
   GoogleTypeTimeOfDay time;
+
+  /// Time zone
   GooglePrivacyDlpV2TimeZone timeZone;
 
   GooglePrivacyDlpV2DateTime();
@@ -5148,6 +8689,10 @@ class GooglePrivacyDlpV2DeidentifyConfig {
   /// a column within a table.
   GooglePrivacyDlpV2RecordTransformations recordTransformations;
 
+  /// Mode for handling transformation errors. If left unspecified, the default
+  /// mode is `TransformationErrorHandling.ThrowError`.
+  GooglePrivacyDlpV2TransformationErrorHandling transformationErrorHandling;
+
   GooglePrivacyDlpV2DeidentifyConfig();
 
   GooglePrivacyDlpV2DeidentifyConfig.fromJson(core.Map _json) {
@@ -5161,6 +8706,11 @@ class GooglePrivacyDlpV2DeidentifyConfig {
           new GooglePrivacyDlpV2RecordTransformations.fromJson(
               _json["recordTransformations"]);
     }
+    if (_json.containsKey("transformationErrorHandling")) {
+      transformationErrorHandling =
+          new GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
+              _json["transformationErrorHandling"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5171,6 +8721,10 @@ class GooglePrivacyDlpV2DeidentifyConfig {
     }
     if (recordTransformations != null) {
       _json["recordTransformations"] = (recordTransformations).toJson();
+    }
+    if (transformationErrorHandling != null) {
+      _json["transformationErrorHandling"] =
+          (transformationErrorHandling).toJson();
     }
     return _json;
   }
@@ -5183,7 +8737,7 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
   /// deidentify_template_name argument.
   GooglePrivacyDlpV2DeidentifyConfig deidentifyConfig;
 
-  /// Optional template to use. Any configuration directly specified in
+  /// Template to use. Any configuration directly specified in
   /// deidentify_config will override those set in the template. Singular fields
   /// that are set in this request will replace their corresponding fields in
   /// the
@@ -5196,7 +8750,7 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
   /// inspect_template_name argument.
   GooglePrivacyDlpV2InspectConfig inspectConfig;
 
-  /// Optional template to use. Any configuration directly specified in
+  /// Template to use. Any configuration directly specified in
   /// inspect_config will override those set in the template. Singular fields
   /// that are set in this request will replace their corresponding fields in
   /// the
@@ -5209,7 +8763,7 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
 
   /// The geographic location to process de-identification. Reserved for future
   /// extensions.
-  core.String location;
+  core.String locationId;
 
   GooglePrivacyDlpV2DeidentifyContentRequest();
 
@@ -5231,8 +8785,8 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
     if (_json.containsKey("item")) {
       item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
-    if (_json.containsKey("location")) {
-      location = _json["location"];
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
     }
   }
 
@@ -5254,8 +8808,8 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
     if (item != null) {
       _json["item"] = (item).toJson();
     }
-    if (location != null) {
-      _json["location"] = location;
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     return _json;
   }
@@ -5294,10 +8848,10 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
   }
 }
 
-/// The DeidentifyTemplates contains instructions on how to deidentify content.
+/// DeidentifyTemplates contains instructions on how to de-identify content.
 /// See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
 class GooglePrivacyDlpV2DeidentifyTemplate {
-  /// The creation timestamp of a inspectTemplate, output only field.
+  /// Output only. The creation timestamp of an inspectTemplate.
   core.String createTime;
 
   /// ///////////// // The core content of the template  // ///////////////
@@ -5309,14 +8863,14 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
   /// Display name (max 256 chars).
   core.String displayName;
 
-  /// The template name. Output only.
+  /// Output only. The template name.
   ///
   /// The template will have one of the following formats:
   /// `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
   /// `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
   core.String name;
 
-  /// The last update timestamp of a inspectTemplate, output only field.
+  /// Output only. The last update timestamp of an inspectTemplate.
   core.String updateTime;
 
   GooglePrivacyDlpV2DeidentifyTemplate();
@@ -5378,12 +8932,13 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   /// field of one auxiliary table.
   core.List<GooglePrivacyDlpV2StatisticalTable> auxiliaryTables;
 
-  /// Fields considered to be quasi-identifiers. No two fields can have the
-  /// same tag. [required]
+  /// Required. Fields considered to be quasi-identifiers. No two fields can
+  /// have the
+  /// same tag.
   core.List<GooglePrivacyDlpV2QuasiId> quasiIds;
 
   /// ISO 3166-1 alpha-2 region code to use in the statistical modeling.
-  /// Required if no column is tagged with a region-specific InfoType (like
+  /// Set if no column is tagged with a region-specific InfoType (like
   /// US_ZIP_5) or a region code.
   core.String regionCode;
 
@@ -5697,17 +9252,23 @@ class GooglePrivacyDlpV2DlpJob {
 
   /// State of a job.
   /// Possible string values are:
-  /// - "JOB_STATE_UNSPECIFIED"
+  /// - "JOB_STATE_UNSPECIFIED" : Unused.
   /// - "PENDING" : The job has not yet started.
-  /// - "RUNNING" : The job is currently running.
+  /// - "RUNNING" : The job is currently running. Once a job has finished it
+  /// will transition
+  /// to FAILED or DONE.
   /// - "DONE" : The job is no longer running.
   /// - "CANCELED" : The job was canceled before it could complete.
   /// - "FAILED" : The job had an error and did not complete.
+  /// - "ACTIVE" : The job is currently accepting findings via hybridInspect.
+  /// A hybrid job in ACTIVE state may continue to have findings added to it
+  /// through calling of hybridInspect. After the job has finished no more
+  /// calls to hybridInspect may be made. ACTIVE jobs can transition to DONE.
   core.String state;
 
   /// The type of job.
   /// Possible string values are:
-  /// - "DLP_JOB_TYPE_UNSPECIFIED"
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
   /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
   /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
   core.String type;
@@ -5842,8 +9403,8 @@ class GooglePrivacyDlpV2EntityId {
 
 /// Details information about an error encountered during job execution or
 /// the results of an unsuccessful activation of the JobTrigger.
-/// Output only field.
 class GooglePrivacyDlpV2Error {
+  /// Detailed error codes and messages.
   GoogleRpcStatus details;
 
   /// The times the error occurred.
@@ -5978,13 +9539,14 @@ class GooglePrivacyDlpV2ExclusionRule {
 
 /// An expression, consisting or an operator and conditions.
 class GooglePrivacyDlpV2Expressions {
+  /// Conditions to apply to the expression.
   GooglePrivacyDlpV2Conditions conditions;
 
   /// The operator to apply to the result of conditions. Default and currently
   /// only supported value is `AND`.
   /// Possible string values are:
-  /// - "LOGICAL_OPERATOR_UNSPECIFIED"
-  /// - "AND"
+  /// - "LOGICAL_OPERATOR_UNSPECIFIED" : Unused
+  /// - "AND" : Conditional AND
   core.String logicalOperator;
 
   GooglePrivacyDlpV2Expressions();
@@ -6039,7 +9601,7 @@ class GooglePrivacyDlpV2FieldId {
 class GooglePrivacyDlpV2FieldTransformation {
   /// Only apply the transformation if the condition evaluates to true for the
   /// given `RecordCondition`. The conditions are allowed to reference fields
-  /// that are not used in the actual transformation. [optional]
+  /// that are not used in the actual transformation.
   ///
   /// Example Use Cases:
   ///
@@ -6048,7 +9610,7 @@ class GooglePrivacyDlpV2FieldTransformation {
   /// - Redact a field if the date of birth field is greater than 85.
   GooglePrivacyDlpV2RecordCondition condition;
 
-  /// Input field(s) to apply the transformation to. [required]
+  /// Required. Input field(s) to apply the transformation to.
   core.List<GooglePrivacyDlpV2FieldId> fields;
 
   /// Treat the contents of the field as free text, and selectively
@@ -6154,6 +9716,27 @@ class GooglePrivacyDlpV2Finding {
   /// Provided if `excluded_types` is false.
   GooglePrivacyDlpV2InfoType infoType;
 
+  /// Time the job started that produced this finding.
+  core.String jobCreateTime;
+
+  /// The job that stored the finding.
+  core.String jobName;
+
+  /// The labels associated with this `Finding`.
+  ///
+  /// Label keys must be between 1 and 63 characters long and must conform
+  /// to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+  ///
+  /// Label values must be between 0 and 63 characters long and must conform
+  /// to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  ///
+  /// No more than 10 labels can be associated with a given finding.
+  ///
+  /// Examples:
+  /// * `"environment" : "production"`
+  /// * `"pipeline" : "etl"`
+  core.Map<core.String, core.String> labels;
+
   /// Confidence of how likely it is that the `info_type` is correct.
   /// Possible string values are:
   /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
@@ -6167,6 +9750,11 @@ class GooglePrivacyDlpV2Finding {
   /// Where the content was found.
   GooglePrivacyDlpV2Location location;
 
+  /// Resource name in format
+  /// projects/{project}/locations/{location}/findings/{finding} Populated only
+  /// when viewing persisted findings.
+  core.String name;
+
   /// The content that was found. Even if the content is not textual, it
   /// may be converted to a textual representation here.
   /// Provided if `include_quote` is true and the finding is
@@ -6179,6 +9767,12 @@ class GooglePrivacyDlpV2Finding {
   /// infoTypes: DATE, DATE_OF_BIRTH and TIME.
   GooglePrivacyDlpV2QuoteInfo quoteInfo;
 
+  /// The job that stored the finding.
+  core.String resourceName;
+
+  /// Job trigger name, if applicable, for this finding.
+  core.String triggerName;
+
   GooglePrivacyDlpV2Finding();
 
   GooglePrivacyDlpV2Finding.fromJson(core.Map _json) {
@@ -6188,17 +9782,35 @@ class GooglePrivacyDlpV2Finding {
     if (_json.containsKey("infoType")) {
       infoType = new GooglePrivacyDlpV2InfoType.fromJson(_json["infoType"]);
     }
+    if (_json.containsKey("jobCreateTime")) {
+      jobCreateTime = _json["jobCreateTime"];
+    }
+    if (_json.containsKey("jobName")) {
+      jobName = _json["jobName"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
     if (_json.containsKey("likelihood")) {
       likelihood = _json["likelihood"];
     }
     if (_json.containsKey("location")) {
       location = new GooglePrivacyDlpV2Location.fromJson(_json["location"]);
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("quote")) {
       quote = _json["quote"];
     }
     if (_json.containsKey("quoteInfo")) {
       quoteInfo = new GooglePrivacyDlpV2QuoteInfo.fromJson(_json["quoteInfo"]);
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+    if (_json.containsKey("triggerName")) {
+      triggerName = _json["triggerName"];
     }
   }
 
@@ -6211,11 +9823,23 @@ class GooglePrivacyDlpV2Finding {
     if (infoType != null) {
       _json["infoType"] = (infoType).toJson();
     }
+    if (jobCreateTime != null) {
+      _json["jobCreateTime"] = jobCreateTime;
+    }
+    if (jobName != null) {
+      _json["jobName"] = jobName;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (likelihood != null) {
       _json["likelihood"] = likelihood;
     }
     if (location != null) {
       _json["location"] = (location).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (quote != null) {
       _json["quote"] = quote;
@@ -6223,16 +9847,23 @@ class GooglePrivacyDlpV2Finding {
     if (quoteInfo != null) {
       _json["quoteInfo"] = (quoteInfo).toJson();
     }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (triggerName != null) {
+      _json["triggerName"] = triggerName;
+    }
     return _json;
   }
 }
 
+/// Configuration to control the number of findings returned.
 class GooglePrivacyDlpV2FindingLimits {
   /// Configuration of findings limit given for specified infoTypes.
   core.List<GooglePrivacyDlpV2InfoTypeLimit> maxFindingsPerInfoType;
 
   /// Max number of findings that will be returned for each item scanned.
-  /// When set within `InspectDataSourceRequest`,
+  /// When set within `InspectJobConfig`,
   /// the maximum returned is 2000 regardless if this is set higher.
   /// When set within `InspectContentRequest`, this field is ignored.
   core.int maxFindingsPerItem;
@@ -6276,6 +9907,19 @@ class GooglePrivacyDlpV2FindingLimits {
   }
 }
 
+/// The request message for finishing a DLP hybrid job.
+class GooglePrivacyDlpV2FinishDlpJobRequest {
+  GooglePrivacyDlpV2FinishDlpJobRequest();
+
+  GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Buckets values based on fixed size ranges. The
 /// Bucketing transformation can provide all of this functionality,
 /// but requires more configuration. This message is provided as a convenience
@@ -6283,7 +9927,7 @@ class GooglePrivacyDlpV2FindingLimits {
 /// the user for simple bucketing strategies.
 ///
 /// The transformed value will be a hyphenated string of
-/// <lower_bound>-<upper_bound>, i.e if lower_bound = 10 and upper_bound = 20
+/// {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20
 /// all values that are within this bucket will be replaced with "10-20".
 ///
 /// This can be used on data of type: double, long.
@@ -6294,22 +9938,23 @@ class GooglePrivacyDlpV2FindingLimits {
 ///
 /// See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 class GooglePrivacyDlpV2FixedSizeBucketingConfig {
-  /// Size of each bucket (except for minimum and maximum buckets). So if
+  /// Required. Size of each bucket (except for minimum and maximum buckets). So
+  /// if
   /// `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
   /// following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
-  /// 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].
+  /// 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
   core.double bucketSize;
 
-  /// Lower bound value of buckets. All values less than `lower_bound` are
+  /// Required. Lower bound value of buckets. All values less than `lower_bound`
+  /// are
   /// grouped together into a single bucket; for example if `lower_bound` = 10,
   /// then all values less than 10 are replaced with the value “-10”.
-  /// [Required].
   GooglePrivacyDlpV2Value lowerBound;
 
-  /// Upper bound value of buckets. All values greater than upper_bound are
+  /// Required. Upper bound value of buckets. All values greater than
+  /// upper_bound are
   /// grouped together into a single bucket; for example if `upper_bound` = 89,
   /// then all values greater than 89 are replaced with the value “89+”.
-  /// [Required].
   GooglePrivacyDlpV2Value upperBound;
 
   GooglePrivacyDlpV2FixedSizeBucketingConfig();
@@ -6389,6 +10034,307 @@ class GooglePrivacyDlpV2HotwordRule {
     }
     if (proximity != null) {
       _json["proximity"] = (proximity).toJson();
+    }
+    return _json;
+  }
+}
+
+/// An individual hybrid item to inspect. Will be stored temporarily during
+/// processing.
+class GooglePrivacyDlpV2HybridContentItem {
+  /// Supplementary information that will be added to each finding.
+  GooglePrivacyDlpV2HybridFindingDetails findingDetails;
+
+  /// The item to inspect.
+  GooglePrivacyDlpV2ContentItem item;
+
+  GooglePrivacyDlpV2HybridContentItem();
+
+  GooglePrivacyDlpV2HybridContentItem.fromJson(core.Map _json) {
+    if (_json.containsKey("findingDetails")) {
+      findingDetails = new GooglePrivacyDlpV2HybridFindingDetails.fromJson(
+          _json["findingDetails"]);
+    }
+    if (_json.containsKey("item")) {
+      item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (findingDetails != null) {
+      _json["findingDetails"] = (findingDetails).toJson();
+    }
+    if (item != null) {
+      _json["item"] = (item).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Populate to associate additional data with each finding.
+class GooglePrivacyDlpV2HybridFindingDetails {
+  /// Details about the container where the content being inspected is from.
+  GooglePrivacyDlpV2Container containerDetails;
+
+  /// Offset in bytes of the line, from the beginning of the file, where the
+  /// finding  is located. Populate if the item being scanned is only part of a
+  /// bigger item, such as a shard of a file and you want to track the absolute
+  /// position of the finding.
+  core.String fileOffset;
+
+  /// Labels to represent user provided metadata about the data being inspected.
+  /// If configured by the job, some key values may be required.
+  /// The labels associated with `Finding`'s produced by hybrid
+  /// inspection.
+  ///
+  /// Label keys must be between 1 and 63 characters long and must conform
+  /// to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+  ///
+  /// Label values must be between 0 and 63 characters long and must conform
+  /// to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  ///
+  /// No more than 10 labels can be associated with a given finding.
+  ///
+  /// Examples:
+  /// * `"environment" : "production"`
+  /// * `"pipeline" : "etl"`
+  core.Map<core.String, core.String> labels;
+
+  /// Offset of the row for tables. Populate if the row(s) being scanned are
+  /// part of a bigger dataset and you want to keep track of their absolute
+  /// position.
+  core.String rowOffset;
+
+  /// If the container is a table, additional information to make findings
+  /// meaningful such as the columns that are primary keys. If not known ahead
+  /// of time, can also be set within each inspect hybrid call and the two
+  /// will be merged. Note that identifying_fields will only be stored to
+  /// BigQuery, and only if the BigQuery action has been included.
+  GooglePrivacyDlpV2TableOptions tableOptions;
+
+  GooglePrivacyDlpV2HybridFindingDetails();
+
+  GooglePrivacyDlpV2HybridFindingDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("containerDetails")) {
+      containerDetails =
+          new GooglePrivacyDlpV2Container.fromJson(_json["containerDetails"]);
+    }
+    if (_json.containsKey("fileOffset")) {
+      fileOffset = _json["fileOffset"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("rowOffset")) {
+      rowOffset = _json["rowOffset"];
+    }
+    if (_json.containsKey("tableOptions")) {
+      tableOptions =
+          new GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (containerDetails != null) {
+      _json["containerDetails"] = (containerDetails).toJson();
+    }
+    if (fileOffset != null) {
+      _json["fileOffset"] = fileOffset;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (rowOffset != null) {
+      _json["rowOffset"] = rowOffset;
+    }
+    if (tableOptions != null) {
+      _json["tableOptions"] = (tableOptions).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request to search for potentially sensitive info in a custom location.
+class GooglePrivacyDlpV2HybridInspectDlpJobRequest {
+  /// The item to inspect.
+  GooglePrivacyDlpV2HybridContentItem hybridItem;
+
+  GooglePrivacyDlpV2HybridInspectDlpJobRequest();
+
+  GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("hybridItem")) {
+      hybridItem =
+          new GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hybridItem != null) {
+      _json["hybridItem"] = (hybridItem).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request to search for potentially sensitive info in a custom location.
+class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
+  /// The item to inspect.
+  GooglePrivacyDlpV2HybridContentItem hybridItem;
+
+  GooglePrivacyDlpV2HybridInspectJobTriggerRequest();
+
+  GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("hybridItem")) {
+      hybridItem =
+          new GooglePrivacyDlpV2HybridContentItem.fromJson(_json["hybridItem"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (hybridItem != null) {
+      _json["hybridItem"] = (hybridItem).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Quota exceeded errors will be thrown once quota has been met.
+class GooglePrivacyDlpV2HybridInspectResponse {
+  GooglePrivacyDlpV2HybridInspectResponse();
+
+  GooglePrivacyDlpV2HybridInspectResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Statistics related to processing hybrid inspect requests.
+class GooglePrivacyDlpV2HybridInspectStatistics {
+  /// The number of hybrid inspection requests aborted because the job ran
+  /// out of quota or was ended before they could be processed.
+  core.String abortedCount;
+
+  /// The number of hybrid requests currently being processed. Only populated
+  /// when called via method `getDlpJob`.
+  /// A burst of traffic may cause hybrid inspect requests to be enqueued.
+  /// Processing will take place as quickly as possible, but resource
+  /// limitations
+  /// may impact how long a request is enqueued for.
+  core.String pendingCount;
+
+  /// The number of hybrid inspection requests processed within this job.
+  core.String processedCount;
+
+  GooglePrivacyDlpV2HybridInspectStatistics();
+
+  GooglePrivacyDlpV2HybridInspectStatistics.fromJson(core.Map _json) {
+    if (_json.containsKey("abortedCount")) {
+      abortedCount = _json["abortedCount"];
+    }
+    if (_json.containsKey("pendingCount")) {
+      pendingCount = _json["pendingCount"];
+    }
+    if (_json.containsKey("processedCount")) {
+      processedCount = _json["processedCount"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (abortedCount != null) {
+      _json["abortedCount"] = abortedCount;
+    }
+    if (pendingCount != null) {
+      _json["pendingCount"] = pendingCount;
+    }
+    if (processedCount != null) {
+      _json["processedCount"] = processedCount;
+    }
+    return _json;
+  }
+}
+
+/// Configuration to control jobs where the content being inspected is outside
+/// of Google Cloud Platform.
+class GooglePrivacyDlpV2HybridOptions {
+  /// A short description of where the data is coming from. Will be stored once
+  /// in the job. 256 max length.
+  core.String description;
+
+  /// To organize findings, these labels will be added to each finding.
+  ///
+  /// Label keys must be between 1 and 63 characters long and must conform
+  /// to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+  ///
+  /// Label values must be between 0 and 63 characters long and must conform
+  /// to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  ///
+  /// No more than 10 labels can be associated with a given finding.
+  ///
+  /// Examples:
+  /// * `"environment" : "production"`
+  /// * `"pipeline" : "etl"`
+  core.Map<core.String, core.String> labels;
+
+  /// These are labels that each inspection request must include within their
+  /// 'finding_labels' map. Request may contain others, but any missing one of
+  /// these will be rejected.
+  ///
+  /// Label keys must be between 1 and 63 characters long and must conform
+  /// to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+  ///
+  /// No more than 10 keys can be required.
+  core.List<core.String> requiredFindingLabelKeys;
+
+  /// If the container is a table, additional information to make findings
+  /// meaningful such as the columns that are primary keys.
+  GooglePrivacyDlpV2TableOptions tableOptions;
+
+  GooglePrivacyDlpV2HybridOptions();
+
+  GooglePrivacyDlpV2HybridOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = (_json["labels"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("requiredFindingLabelKeys")) {
+      requiredFindingLabelKeys =
+          (_json["requiredFindingLabelKeys"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("tableOptions")) {
+      tableOptions =
+          new GooglePrivacyDlpV2TableOptions.fromJson(_json["tableOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
+    if (requiredFindingLabelKeys != null) {
+      _json["requiredFindingLabelKeys"] = requiredFindingLabelKeys;
+    }
+    if (tableOptions != null) {
+      _json["tableOptions"] = (tableOptions).toJson();
     }
     return _json;
   }
@@ -6475,7 +10421,7 @@ class GooglePrivacyDlpV2InfoType {
   /// creating a CustomInfoType, or one of the names listed
   /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
   /// a built-in type. InfoType names should conform to the pattern
-  /// [a-zA-Z0-9_]{1,64}.
+  /// `[a-zA-Z0-9_]{1,64}`.
   core.String name;
 
   GooglePrivacyDlpV2InfoType();
@@ -6623,7 +10569,7 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
   /// infoTypes that were requested in `InspectConfig`.
   core.List<GooglePrivacyDlpV2InfoType> infoTypes;
 
-  /// Primitive transformation to apply to the infoType. [required]
+  /// Required. Primitive transformation to apply to the infoType.
   GooglePrivacyDlpV2PrimitiveTransformation primitiveTransformation;
 
   GooglePrivacyDlpV2InfoTypeTransformation();
@@ -6660,8 +10606,8 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
 /// transformation is applied to only values that were identified as a specific
 /// info_type.
 class GooglePrivacyDlpV2InfoTypeTransformations {
-  /// Transformation for each infoType. Cannot specify more than one
-  /// for a given infoType. [required]
+  /// Required. Transformation for each infoType. Cannot specify more than one
+  /// for a given infoType.
   core.List<GooglePrivacyDlpV2InfoTypeTransformation> transformations;
 
   GooglePrivacyDlpV2InfoTypeTransformations();
@@ -6714,12 +10660,12 @@ class GooglePrivacyDlpV2InspectConfig {
   /// system may automatically choose what detectors to run. By default this may
   /// be all types, but may change over time as detectors are updated.
   ///
-  /// The special InfoType name "ALL_BASIC" can be used to trigger all
-  /// detectors,
-  /// but may change over time as new InfoTypes are added. If you need precise
-  /// control and predictability as to what detectors are run you should specify
-  /// specific InfoTypes listed in the reference.
+  /// If you need precise control and predictability as to what detectors are
+  /// run you should specify specific InfoTypes listed in the reference,
+  /// otherwise a default list will be used, which may change over time.
   core.List<GooglePrivacyDlpV2InfoType> infoTypes;
+
+  /// Configuration to control the number of findings returned.
   GooglePrivacyDlpV2FindingLimits limits;
 
   /// Only returns findings equal or above this threshold. The default is
@@ -6816,7 +10762,7 @@ class GooglePrivacyDlpV2InspectContentRequest {
   /// the template referenced by the inspect_template_name argument.
   GooglePrivacyDlpV2InspectConfig inspectConfig;
 
-  /// Optional template to use. Any configuration directly specified in
+  /// Template to use. Any configuration directly specified in
   /// inspect_config will override those set in the template. Singular fields
   /// that are set in this request will replace their corresponding fields in
   /// the
@@ -6826,6 +10772,12 @@ class GooglePrivacyDlpV2InspectContentRequest {
 
   /// The item to inspect.
   GooglePrivacyDlpV2ContentItem item;
+
+  /// The geographic location to process content inspection. Reserved for future
+  /// extensions.
+  /// When inspecting images location is restricted to 'global', 'us', 'asia',
+  /// and 'europe'.
+  core.String locationId;
 
   GooglePrivacyDlpV2InspectContentRequest();
 
@@ -6840,6 +10792,9 @@ class GooglePrivacyDlpV2InspectContentRequest {
     if (_json.containsKey("item")) {
       item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6853,6 +10808,9 @@ class GooglePrivacyDlpV2InspectContentRequest {
     }
     if (item != null) {
       _json["item"] = (item).toJson();
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     return _json;
   }
@@ -6914,6 +10872,7 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
   }
 }
 
+/// Controls what and how to inspect for findings.
 class GooglePrivacyDlpV2InspectJobConfig {
   /// Actions to execute at the completion of the job.
   core.List<GooglePrivacyDlpV2Action> actions;
@@ -7015,7 +10974,7 @@ class GooglePrivacyDlpV2InspectResult {
 /// InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates
 /// to learn more.
 class GooglePrivacyDlpV2InspectTemplate {
-  /// The creation timestamp of a inspectTemplate, output only field.
+  /// Output only. The creation timestamp of an inspectTemplate.
   core.String createTime;
 
   /// Short description (max 256 chars).
@@ -7027,14 +10986,14 @@ class GooglePrivacyDlpV2InspectTemplate {
   /// The core content of the template. Configuration of the scanning process.
   GooglePrivacyDlpV2InspectConfig inspectConfig;
 
-  /// The template name. Output only.
+  /// Output only. The template name.
   ///
   /// The template will have one of the following formats:
   /// `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
-  /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+  /// `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   core.String name;
 
-  /// The last update timestamp of a inspectTemplate, output only field.
+  /// Output only. The last update timestamp of an inspectTemplate.
   core.String updateTime;
 
   GooglePrivacyDlpV2InspectTemplate();
@@ -7178,7 +11137,7 @@ class GooglePrivacyDlpV2JobNotificationEmails {
 /// Contains a configuration to make dlp api calls on a repeating basis.
 /// See https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
 class GooglePrivacyDlpV2JobTrigger {
-  /// The creation timestamp of a triggeredJob, output only field.
+  /// Output only. The creation timestamp of a triggeredJob.
   core.String createTime;
 
   /// User provided description (max 256 chars)
@@ -7187,25 +11146,28 @@ class GooglePrivacyDlpV2JobTrigger {
   /// Display name (max 100 chars)
   core.String displayName;
 
-  /// A stream of errors encountered when the trigger was activated. Repeated
+  /// Output only. A stream of errors encountered when the trigger was
+  /// activated. Repeated
   /// errors may result in the JobTrigger automatically being paused.
   /// Will return the last 100 errors. Whenever the JobTrigger is modified
-  /// this list will be cleared. Output only field.
+  /// this list will be cleared.
   core.List<GooglePrivacyDlpV2Error> errors;
+
+  /// For inspect jobs, a snapshot of the configuration.
   GooglePrivacyDlpV2InspectJobConfig inspectJob;
 
-  /// The timestamp of the last time this trigger executed, output only field.
+  /// Output only. The timestamp of the last time this trigger executed.
   core.String lastRunTime;
 
   /// Unique resource name for the triggeredJob, assigned by the service when
   /// the
   /// triggeredJob is created, for example
-  /// `projects/dlp-test-project/triggeredJobs/53234423`.
+  /// `projects/dlp-test-project/jobTriggers/53234423`.
   core.String name;
 
-  /// A status for this trigger. [required]
+  /// Required. A status for this trigger.
   /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED"
+  /// - "STATUS_UNSPECIFIED" : Unused.
   /// - "HEALTHY" : Trigger is healthy.
   /// - "PAUSED" : Trigger is temporarily paused.
   /// - "CANCELLED" : Trigger is cancelled and can not be resumed.
@@ -7216,7 +11178,7 @@ class GooglePrivacyDlpV2JobTrigger {
   /// a single Schedule trigger and must have at least one object.
   core.List<GooglePrivacyDlpV2Trigger> triggers;
 
-  /// The last update timestamp of a triggeredJob, output only field.
+  /// Output only. The last update timestamp of a triggeredJob.
   core.String updateTime;
 
   GooglePrivacyDlpV2JobTrigger();
@@ -7300,7 +11262,7 @@ class GooglePrivacyDlpV2JobTrigger {
 
 /// k-anonymity metric, used for analysis of reidentification risk.
 class GooglePrivacyDlpV2KAnonymityConfig {
-  /// Optional message indicating that multiple rows might be associated to a
+  /// Message indicating that multiple rows might be associated to a
   /// single individual. If the same entity_id is associated to multiple
   /// quasi-identifier tuples over distinct rows, we consider the entire
   /// collection of tuples as the composite quasi-identifier. This collection
@@ -7385,6 +11347,7 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
   }
 }
 
+/// Histogram of k-anonymity equivalence classes.
 class GooglePrivacyDlpV2KAnonymityHistogramBucket {
   /// Total number of equivalence classes in this bucket.
   core.String bucketSize;
@@ -7485,19 +11448,19 @@ class GooglePrivacyDlpV2KAnonymityResult {
 /// using publicly available data (like the US Census), or using a custom
 /// statistical model (indicated as one or several BigQuery tables), or by
 /// extrapolating from the distribution of values in the input dataset.
-/// A column with a semantic tag attached.
 class GooglePrivacyDlpV2KMapEstimationConfig {
   /// Several auxiliary tables can be used in the analysis. Each custom_tag
   /// used to tag a quasi-identifiers column must appear in exactly one column
   /// of one auxiliary table.
   core.List<GooglePrivacyDlpV2AuxiliaryTable> auxiliaryTables;
 
-  /// Fields considered to be quasi-identifiers. No two columns can have the
-  /// same tag. [required]
+  /// Required. Fields considered to be quasi-identifiers. No two columns can
+  /// have the
+  /// same tag.
   core.List<GooglePrivacyDlpV2TaggedField> quasiIds;
 
   /// ISO 3166-1 alpha-2 region code to use in the statistical modeling.
-  /// Required if no column is tagged with a region-specific InfoType (like
+  /// Set if no column is tagged with a region-specific InfoType (like
   /// US_ZIP_5) or a region code.
   core.String regionCode;
 
@@ -7760,10 +11723,10 @@ class GooglePrivacyDlpV2KindExpression {
 /// to perform a crypto transformation using a kms-wrapped crypto key:
 /// dlp.kms.encrypt
 class GooglePrivacyDlpV2KmsWrappedCryptoKey {
-  /// The resource name of the KMS CryptoKey to use for unwrapping. [required]
+  /// Required. The resource name of the KMS CryptoKey to use for unwrapping.
   core.String cryptoKeyName;
 
-  /// The wrapped data crypto key. [required]
+  /// Required. The wrapped data crypto key.
   core.String wrappedKey;
   core.List<core.int> get wrappedKeyAsBytes {
     return convert.base64.decode(wrappedKey);
@@ -7895,6 +11858,7 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
   }
 }
 
+/// Histogram of l-diversity equivalence class sensitive value frequencies.
 class GooglePrivacyDlpV2LDiversityHistogramBucket {
   /// Total number of equivalence classes in this bucket.
   core.String bucketSize;
@@ -8068,6 +12032,22 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
     if (approxNumPhrases != null) {
       _json["approxNumPhrases"] = approxNumPhrases;
     }
+    return _json;
+  }
+}
+
+/// Skips the data without modifying it if the requested transformation would
+/// cause an error. For example, if a `DateShift` transformation were applied
+/// an an IP address, this mode would leave the IP address unchanged in the
+/// response.
+class GooglePrivacyDlpV2LeaveUntransformed {
+  GooglePrivacyDlpV2LeaveUntransformed();
+
+  GooglePrivacyDlpV2LeaveUntransformed.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -8343,6 +12323,9 @@ class GooglePrivacyDlpV2Location {
   /// Provided when the content is text.
   GooglePrivacyDlpV2Range codepointRange;
 
+  /// Information about the container where this finding occurred, if available.
+  GooglePrivacyDlpV2Container container;
+
   /// List of nested objects pointing to the precise location of the finding
   /// within the file or record.
   core.List<GooglePrivacyDlpV2ContentLocation> contentLocations;
@@ -8356,6 +12339,9 @@ class GooglePrivacyDlpV2Location {
     if (_json.containsKey("codepointRange")) {
       codepointRange =
           new GooglePrivacyDlpV2Range.fromJson(_json["codepointRange"]);
+    }
+    if (_json.containsKey("container")) {
+      container = new GooglePrivacyDlpV2Container.fromJson(_json["container"]);
     }
     if (_json.containsKey("contentLocations")) {
       contentLocations = (_json["contentLocations"] as core.List)
@@ -8374,9 +12360,62 @@ class GooglePrivacyDlpV2Location {
     if (codepointRange != null) {
       _json["codepointRange"] = (codepointRange).toJson();
     }
+    if (container != null) {
+      _json["container"] = (container).toJson();
+    }
     if (contentLocations != null) {
       _json["contentLocations"] =
           contentLocations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Job trigger option for hybrid jobs. Jobs must be manually created
+/// and finished.
+class GooglePrivacyDlpV2Manual {
+  GooglePrivacyDlpV2Manual();
+
+  GooglePrivacyDlpV2Manual.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Metadata Location
+class GooglePrivacyDlpV2MetadataLocation {
+  /// Storage metadata.
+  GooglePrivacyDlpV2StorageMetadataLabel storageLabel;
+
+  /// Type of metadata containing the finding.
+  /// Possible string values are:
+  /// - "METADATATYPE_UNSPECIFIED" : Unused
+  /// - "STORAGE_METADATA" : General file metadata provided by GCS.
+  core.String type;
+
+  GooglePrivacyDlpV2MetadataLocation();
+
+  GooglePrivacyDlpV2MetadataLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("storageLabel")) {
+      storageLabel = new GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
+          _json["storageLabel"]);
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (storageLabel != null) {
+      _json["storageLabel"] = (storageLabel).toJson();
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -8465,8 +12504,9 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// If unspecified, then all available columns will be used for a new table or
   /// an (existing) table with no schema, and no changes will be made to an
   /// existing table that has a schema.
+  /// Only for use with external storage.
   /// Possible string values are:
-  /// - "OUTPUT_SCHEMA_UNSPECIFIED"
+  /// - "OUTPUT_SCHEMA_UNSPECIFIED" : Unused.
   /// - "BASIC_COLUMNS" : Basic schema including only `info_type`, `quote`,
   /// `certainty`, and
   /// `timestamp`.
@@ -8610,16 +12650,37 @@ class GooglePrivacyDlpV2PathElement {
 
 /// A rule for transforming a value.
 class GooglePrivacyDlpV2PrimitiveTransformation {
+  /// Bucketing
   GooglePrivacyDlpV2BucketingConfig bucketingConfig;
+
+  /// Mask
   GooglePrivacyDlpV2CharacterMaskConfig characterMaskConfig;
+
+  /// Deterministic Crypto
   GooglePrivacyDlpV2CryptoDeterministicConfig cryptoDeterministicConfig;
+
+  /// Crypto
   GooglePrivacyDlpV2CryptoHashConfig cryptoHashConfig;
+
+  /// Ffx-Fpe
   GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig;
+
+  /// Date Shift
   GooglePrivacyDlpV2DateShiftConfig dateShiftConfig;
+
+  /// Fixed size bucketing
   GooglePrivacyDlpV2FixedSizeBucketingConfig fixedSizeBucketingConfig;
+
+  /// Redact
   GooglePrivacyDlpV2RedactConfig redactConfig;
+
+  /// Replace
   GooglePrivacyDlpV2ReplaceValueConfig replaceConfig;
+
+  /// Replace with infotype
   GooglePrivacyDlpV2ReplaceWithInfoTypeConfig replaceWithInfoTypeConfig;
+
+  /// Time extraction
   GooglePrivacyDlpV2TimePartConfig timePartConfig;
 
   GooglePrivacyDlpV2PrimitiveTransformation();
@@ -8717,11 +12778,22 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
 
 /// Privacy metric to compute for reidentification risk analysis.
 class GooglePrivacyDlpV2PrivacyMetric {
+  /// Categorical stats
   GooglePrivacyDlpV2CategoricalStatsConfig categoricalStatsConfig;
+
+  /// delta-presence
   GooglePrivacyDlpV2DeltaPresenceEstimationConfig deltaPresenceEstimationConfig;
+
+  /// K-anonymity
   GooglePrivacyDlpV2KAnonymityConfig kAnonymityConfig;
+
+  /// k-map
   GooglePrivacyDlpV2KMapEstimationConfig kMapEstimationConfig;
+
+  /// l-diversity
   GooglePrivacyDlpV2LDiversityConfig lDiversityConfig;
+
+  /// Numerical stats
   GooglePrivacyDlpV2NumericalStatsConfig numericalStatsConfig;
 
   GooglePrivacyDlpV2PrivacyMetric();
@@ -8891,6 +12963,22 @@ class GooglePrivacyDlpV2PublishToPubSub {
   }
 }
 
+/// Enable Stackdriver metric dlp.googleapis.com/finding_count. This
+/// will publish a metric to stack driver on each infotype requested and
+/// how many findings were found for it. CustomDetectors will be bucketed
+/// as 'Custom' under the Stackdriver label 'info_type'.
+class GooglePrivacyDlpV2PublishToStackdriver {
+  GooglePrivacyDlpV2PublishToStackdriver();
+
+  GooglePrivacyDlpV2PublishToStackdriver.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// A column with a semantic tag attached.
 class GooglePrivacyDlpV2QuasiId {
   /// A column can be tagged with a custom tag. In this case, the user must
@@ -8898,7 +12986,7 @@ class GooglePrivacyDlpV2QuasiId {
   /// the possible values of this column (below).
   core.String customTag;
 
-  /// Identifies the column. [required]
+  /// Required. Identifies the column.
   GooglePrivacyDlpV2FieldId field;
 
   /// If no semantic tag is indicated, we infer the statistical model from
@@ -8951,7 +13039,10 @@ class GooglePrivacyDlpV2QuasiId {
 /// A quasi-identifier column has a custom_tag, used to know which column
 /// in the data corresponds to which column in the statistical model.
 class GooglePrivacyDlpV2QuasiIdField {
+  /// A auxiliary field.
   core.String customTag;
+
+  /// Identifies the column.
   GooglePrivacyDlpV2FieldId field;
 
   GooglePrivacyDlpV2QuasiIdField();
@@ -8981,7 +13072,12 @@ class GooglePrivacyDlpV2QuasiIdField {
 /// A quasi-identifier column has a custom_tag, used to know which column
 /// in the data corresponds to which column in the statistical model.
 class GooglePrivacyDlpV2QuasiIdentifierField {
+  /// A column can be tagged with a custom tag. In this case, the user must
+  /// indicate an auxiliary table that contains statistical information on
+  /// the possible values of this column (below).
   core.String customTag;
+
+  /// Identifies the column.
   GooglePrivacyDlpV2FieldId field;
 
   GooglePrivacyDlpV2QuasiIdentifierField();
@@ -9094,7 +13190,7 @@ class GooglePrivacyDlpV2RecordKey {
   GooglePrivacyDlpV2DatastoreKey datastoreKey;
 
   /// Values of identifying columns in the given row. Order of values matches
-  /// the order of field identifiers specified in the scanning request.
+  /// the order of `identifying_fields` specified in the scanning request.
   core.List<core.String> idValues;
 
   GooglePrivacyDlpV2RecordKey();
@@ -9204,7 +13300,7 @@ class GooglePrivacyDlpV2RecordTransformations {
   core.List<GooglePrivacyDlpV2FieldTransformation> fieldTransformations;
 
   /// Configuration defining which records get suppressed entirely. Records that
-  /// match any suppression rule are omitted from the output [optional].
+  /// match any suppression rule are omitted from the output.
   core.List<GooglePrivacyDlpV2RecordSuppression> recordSuppressions;
 
   GooglePrivacyDlpV2RecordTransformations();
@@ -9270,6 +13366,11 @@ class GooglePrivacyDlpV2RedactImageRequest {
   /// Configuration for the inspector.
   GooglePrivacyDlpV2InspectConfig inspectConfig;
 
+  /// The geographic location to process the request. Reserved for future
+  /// extensions.
+  /// Location is restricted to 'global', 'us', 'asia', and 'europe'.
+  core.String locationId;
+
   GooglePrivacyDlpV2RedactImageRequest();
 
   GooglePrivacyDlpV2RedactImageRequest.fromJson(core.Map _json) {
@@ -9290,6 +13391,9 @@ class GooglePrivacyDlpV2RedactImageRequest {
       inspectConfig =
           new GooglePrivacyDlpV2InspectConfig.fromJson(_json["inspectConfig"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -9307,6 +13411,9 @@ class GooglePrivacyDlpV2RedactImageRequest {
     }
     if (inspectConfig != null) {
       _json["inspectConfig"] = (inspectConfig).toJson();
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     return _json;
   }
@@ -9404,7 +13511,7 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
   /// Configuration for the inspector.
   GooglePrivacyDlpV2InspectConfig inspectConfig;
 
-  /// Optional template to use. Any configuration directly specified in
+  /// Template to use. Any configuration directly specified in
   /// `inspect_config` will override those set in the template. Singular fields
   /// that are set in this request will replace their corresponding fields in
   /// the
@@ -9415,6 +13522,10 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
   /// The item to re-identify. Will be treated as text.
   GooglePrivacyDlpV2ContentItem item;
 
+  /// The geographic location to process content reidentification.  Reserved for
+  /// future extensions.
+  core.String locationId;
+
   /// Configuration for the re-identification of the content item.
   /// This field shares the same proto message type that is used for
   /// de-identification, however its usage here is for the reversal of the
@@ -9423,10 +13534,11 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
   /// reverse. This requires that only reversible transformations
   /// be provided here. The reversible transformations are:
   ///
+  ///  - `CryptoDeterministicConfig`
   ///  - `CryptoReplaceFfxFpeConfig`
   GooglePrivacyDlpV2DeidentifyConfig reidentifyConfig;
 
-  /// Optional template to use. References an instance of `DeidentifyTemplate`.
+  /// Template to use. References an instance of `DeidentifyTemplate`.
   /// Any configuration directly specified in `reidentify_config` or
   /// `inspect_config` will override those set in the template. Singular fields
   /// that are set in this request will replace their corresponding fields in
@@ -9448,6 +13560,9 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
     if (_json.containsKey("item")) {
       item = new GooglePrivacyDlpV2ContentItem.fromJson(_json["item"]);
     }
+    if (_json.containsKey("locationId")) {
+      locationId = _json["locationId"];
+    }
     if (_json.containsKey("reidentifyConfig")) {
       reidentifyConfig = new GooglePrivacyDlpV2DeidentifyConfig.fromJson(
           _json["reidentifyConfig"]);
@@ -9468,6 +13583,9 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
     }
     if (item != null) {
       _json["item"] = (item).toJson();
+    }
+    if (locationId != null) {
+      _json["locationId"] = locationId;
     }
     if (reidentifyConfig != null) {
       _json["reidentifyConfig"] = (reidentifyConfig).toJson();
@@ -9548,7 +13666,9 @@ class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
   }
 }
 
+/// Snapshot of the inspection configuration.
 class GooglePrivacyDlpV2RequestedOptions {
+  /// Inspect config.
   GooglePrivacyDlpV2InspectJobConfig jobConfig;
 
   /// If run with an InspectTemplate, a snapshot of its state at the time of
@@ -9583,6 +13703,12 @@ class GooglePrivacyDlpV2RequestedOptions {
 
 /// All result fields mentioned below are updated while the job is processing.
 class GooglePrivacyDlpV2Result {
+  /// Statistics related to the processing of hybrid inspect.
+  /// Early access feature is in a pre-release state and might change or have
+  /// limited support. For more information, see
+  /// https://cloud.google.com/products#product-launch-stages.
+  GooglePrivacyDlpV2HybridInspectStatistics hybridStats;
+
   /// Statistics of how many instances of each info type were found during
   /// inspect job.
   core.List<GooglePrivacyDlpV2InfoTypeStats> infoTypeStats;
@@ -9596,6 +13722,10 @@ class GooglePrivacyDlpV2Result {
   GooglePrivacyDlpV2Result();
 
   GooglePrivacyDlpV2Result.fromJson(core.Map _json) {
+    if (_json.containsKey("hybridStats")) {
+      hybridStats = new GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
+          _json["hybridStats"]);
+    }
     if (_json.containsKey("infoTypeStats")) {
       infoTypeStats = (_json["infoTypeStats"] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeStats>(
@@ -9613,6 +13743,9 @@ class GooglePrivacyDlpV2Result {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (hybridStats != null) {
+      _json["hybridStats"] = (hybridStats).toJson();
+    }
     if (infoTypeStats != null) {
       _json["infoTypeStats"] =
           infoTypeStats.map((value) => (value).toJson()).toList();
@@ -9675,7 +13808,9 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   }
 }
 
+/// Values of the row.
 class GooglePrivacyDlpV2Row {
+  /// Individual cells.
   core.List<GooglePrivacyDlpV2Value> values;
 
   GooglePrivacyDlpV2Row();
@@ -9704,6 +13839,7 @@ class GooglePrivacyDlpV2Row {
 /// specified.
 /// Compatible with: Inspect, Risk
 class GooglePrivacyDlpV2SaveFindings {
+  /// Location to store findings outside of DLP.
   GooglePrivacyDlpV2OutputStorageConfig outputConfig;
 
   GooglePrivacyDlpV2SaveFindings();
@@ -9763,15 +13899,15 @@ class GooglePrivacyDlpV2Schedule {
 /// corresponding relative frequency is assumed to be zero (and thus, the
 /// tuple is highly reidentifiable).
 class GooglePrivacyDlpV2StatisticalTable {
-  /// Quasi-identifier columns. [required]
+  /// Required. Quasi-identifier columns.
   core.List<GooglePrivacyDlpV2QuasiIdentifierField> quasiIds;
 
-  /// The relative frequency column must contain a floating-point number
+  /// Required. The relative frequency column must contain a floating-point
+  /// number
   /// between 0 and 1 (inclusive). Null values are assumed to be zero.
-  /// [required]
   GooglePrivacyDlpV2FieldId relativeFrequency;
 
-  /// Auxiliary table location. [required]
+  /// Required. Auxiliary table location.
   GooglePrivacyDlpV2BigQueryTable table;
 
   GooglePrivacyDlpV2StatisticalTable();
@@ -9810,14 +13946,20 @@ class GooglePrivacyDlpV2StatisticalTable {
 
 /// Shared message indicating Cloud storage type.
 class GooglePrivacyDlpV2StorageConfig {
-  /// BigQuery options specification.
+  /// BigQuery options.
   GooglePrivacyDlpV2BigQueryOptions bigQueryOptions;
 
-  /// Google Cloud Storage options specification.
+  /// Google Cloud Storage options.
   GooglePrivacyDlpV2CloudStorageOptions cloudStorageOptions;
 
-  /// Google Cloud Datastore options specification.
+  /// Google Cloud Datastore options.
   GooglePrivacyDlpV2DatastoreOptions datastoreOptions;
+
+  /// Hybrid inspection options.
+  /// Early access feature is in a pre-release state and might change or have
+  /// limited support. For more information, see
+  /// https://cloud.google.com/products#product-launch-stages.
+  GooglePrivacyDlpV2HybridOptions hybridOptions;
   GooglePrivacyDlpV2TimespanConfig timespanConfig;
 
   GooglePrivacyDlpV2StorageConfig();
@@ -9834,6 +13976,10 @@ class GooglePrivacyDlpV2StorageConfig {
     if (_json.containsKey("datastoreOptions")) {
       datastoreOptions = new GooglePrivacyDlpV2DatastoreOptions.fromJson(
           _json["datastoreOptions"]);
+    }
+    if (_json.containsKey("hybridOptions")) {
+      hybridOptions =
+          new GooglePrivacyDlpV2HybridOptions.fromJson(_json["hybridOptions"]);
     }
     if (_json.containsKey("timespanConfig")) {
       timespanConfig = new GooglePrivacyDlpV2TimespanConfig.fromJson(
@@ -9853,8 +13999,33 @@ class GooglePrivacyDlpV2StorageConfig {
     if (datastoreOptions != null) {
       _json["datastoreOptions"] = (datastoreOptions).toJson();
     }
+    if (hybridOptions != null) {
+      _json["hybridOptions"] = (hybridOptions).toJson();
+    }
     if (timespanConfig != null) {
       _json["timespanConfig"] = (timespanConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Storage metadata label to indicate which metadata entry contains findings.
+class GooglePrivacyDlpV2StorageMetadataLabel {
+  core.String key;
+
+  GooglePrivacyDlpV2StorageMetadataLabel();
+
+  GooglePrivacyDlpV2StorageMetadataLabel.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
     }
     return _json;
   }
@@ -9908,10 +14079,15 @@ class GooglePrivacyDlpV2StoredInfoType {
   }
 }
 
-/// Configuration for a StoredInfoType.
+/// Configuration for stored infoTypes. All fields and subfield are provided
+/// by the user. For more information, see
+/// https://cloud.google.com/dlp/docs/creating-custom-infotypes.
 class GooglePrivacyDlpV2StoredInfoTypeConfig {
   /// Description of the StoredInfoType (max 256 characters).
   core.String description;
+
+  /// Store dictionary-based CustomInfoType.
+  GooglePrivacyDlpV2Dictionary dictionary;
 
   /// Display name of the StoredInfoType (max 256 characters).
   core.String displayName;
@@ -9919,11 +14095,18 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
   /// StoredInfoType where findings are defined by a dictionary of phrases.
   GooglePrivacyDlpV2LargeCustomDictionaryConfig largeCustomDictionary;
 
+  /// Store regular expression-based StoredInfoType.
+  GooglePrivacyDlpV2Regex regex;
+
   GooglePrivacyDlpV2StoredInfoTypeConfig();
 
   GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(core.Map _json) {
     if (_json.containsKey("description")) {
       description = _json["description"];
+    }
+    if (_json.containsKey("dictionary")) {
+      dictionary =
+          new GooglePrivacyDlpV2Dictionary.fromJson(_json["dictionary"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -9933,6 +14116,9 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
           new GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
               _json["largeCustomDictionary"]);
     }
+    if (_json.containsKey("regex")) {
+      regex = new GooglePrivacyDlpV2Regex.fromJson(_json["regex"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -9941,11 +14127,17 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
     if (description != null) {
       _json["description"] = description;
     }
+    if (dictionary != null) {
+      _json["dictionary"] = (dictionary).toJson();
+    }
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
     if (largeCustomDictionary != null) {
       _json["largeCustomDictionary"] = (largeCustomDictionary).toJson();
+    }
+    if (regex != null) {
+      _json["regex"] = (regex).toJson();
     }
     return _json;
   }
@@ -9991,10 +14183,12 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   /// Only
   /// the five most recent errors will be displayed, with the most recent error
   /// appearing first.
-  /// <p>For example, some of the data for stored custom dictionaries is put in
+  ///
+  /// For example, some of the data for stored custom dictionaries is put in
   /// the user's Google Cloud Storage bucket, and if this data is modified or
   /// deleted by the user or another system, the dictionary becomes invalid.
-  /// <p>If any errors occur, fix the problem indicated by the error message and
+  ///
+  /// If any errors occur, fix the problem indicated by the error message and
   /// use the UpdateStoredInfoType API method to create another version of the
   /// storedInfoType to continue using it, reusing the same `config` if it was
   /// not the source of the error.
@@ -10003,7 +14197,7 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
   /// Stored info type version state. Read-only, updated by the system
   /// during dictionary creation.
   /// Possible string values are:
-  /// - "STORED_INFO_TYPE_STATE_UNSPECIFIED"
+  /// - "STORED_INFO_TYPE_STATE_UNSPECIFIED" : Unused
   /// - "PENDING" : StoredInfoType version is being created.
   /// - "READY" : StoredInfoType version is ready for use.
   /// - "FAILED" : StoredInfoType creation failed. All relevant error messages
@@ -10103,12 +14297,14 @@ class GooglePrivacyDlpV2StoredType {
 /// A collection that informs the user the number of times a particular
 /// `TransformationResultCode` and error details occurred.
 class GooglePrivacyDlpV2SummaryResult {
-  ///
+  /// Outcome of the transformation.
   /// Possible string values are:
-  /// - "TRANSFORMATION_RESULT_CODE_UNSPECIFIED"
-  /// - "SUCCESS"
-  /// - "ERROR"
+  /// - "TRANSFORMATION_RESULT_CODE_UNSPECIFIED" : Unused
+  /// - "SUCCESS" : Transformation completed without an error.
+  /// - "ERROR" : Transformation had an error.
   core.String code;
+
+  /// Number of transformations counted by this result.
   core.String count;
 
   /// A place for warnings or errors to show up if a transformation didn't
@@ -10169,7 +14365,10 @@ class GooglePrivacyDlpV2SurrogateType {
 /// See https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table to
 /// learn more.
 class GooglePrivacyDlpV2Table {
+  /// Headers of the table.
   core.List<GooglePrivacyDlpV2FieldId> headers;
+
+  /// Rows of the table.
   core.List<GooglePrivacyDlpV2Row> rows;
 
   GooglePrivacyDlpV2Table();
@@ -10204,7 +14403,12 @@ class GooglePrivacyDlpV2Table {
 
 /// Location of a finding within a table.
 class GooglePrivacyDlpV2TableLocation {
-  /// The zero-based index of the row where the finding is located.
+  /// The zero-based index of the row where the finding is located. Only
+  /// populated for resources that have a natural ordering, not BigQuery. In
+  /// BigQuery, to identify the row a finding came from, populate
+  /// BigQueryOptions.identifying_fields with your primary key column names and
+  /// when you store the findings the value of those columns will be stored
+  /// inside of Finding.
   core.String rowIndex;
 
   GooglePrivacyDlpV2TableLocation();
@@ -10225,13 +14429,44 @@ class GooglePrivacyDlpV2TableLocation {
   }
 }
 
+/// Instructions regarding the table content being inspected.
+class GooglePrivacyDlpV2TableOptions {
+  /// The columns that are the primary keys for table objects included in
+  /// ContentItem. A copy of this cell's value will stored alongside alongside
+  /// each finding so that the finding can be traced to the specific row it came
+  /// from. No more than 3 may be provided.
+  core.List<GooglePrivacyDlpV2FieldId> identifyingFields;
+
+  GooglePrivacyDlpV2TableOptions();
+
+  GooglePrivacyDlpV2TableOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("identifyingFields")) {
+      identifyingFields = (_json["identifyingFields"] as core.List)
+          .map<GooglePrivacyDlpV2FieldId>(
+              (value) => new GooglePrivacyDlpV2FieldId.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (identifyingFields != null) {
+      _json["identifyingFields"] =
+          identifyingFields.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A column with a semantic tag attached.
 class GooglePrivacyDlpV2TaggedField {
   /// A column can be tagged with a custom tag. In this case, the user must
   /// indicate an auxiliary table that contains statistical information on
   /// the possible values of this column (below).
   core.String customTag;
 
-  /// Identifies the column. [required]
+  /// Required. Identifies the column.
   GooglePrivacyDlpV2FieldId field;
 
   /// If no semantic tag is indicated, we infer the statistical model from
@@ -10281,17 +14516,30 @@ class GooglePrivacyDlpV2TaggedField {
   }
 }
 
+/// Throw an error and fail the request when a transformation error occurs.
+class GooglePrivacyDlpV2ThrowError {
+  GooglePrivacyDlpV2ThrowError();
+
+  GooglePrivacyDlpV2ThrowError.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
 /// portion of the value.
 class GooglePrivacyDlpV2TimePartConfig {
-  ///
+  /// The part of the time to keep.
   /// Possible string values are:
-  /// - "TIME_PART_UNSPECIFIED"
+  /// - "TIME_PART_UNSPECIFIED" : Unused
   /// - "YEAR" : [0-9999]
   /// - "MONTH" : [1-12]
   /// - "DAY_OF_MONTH" : [1-31]
   /// - "DAY_OF_WEEK" : [1-7]
-  /// - "WEEK_OF_YEAR" : [1-52]
+  /// - "WEEK_OF_YEAR" : [1-53]
   /// - "HOUR_OF_DAY" : [0-23]
   core.String partToExtract;
 
@@ -10313,6 +14561,7 @@ class GooglePrivacyDlpV2TimePartConfig {
   }
 }
 
+/// Time zone of the date time object.
 class GooglePrivacyDlpV2TimeZone {
   /// Set only if the offset can be determined. Positive for time ahead of UTC.
   /// E.g. For "UTC-9", this value is -540.
@@ -10353,14 +14602,19 @@ class GooglePrivacyDlpV2TimespanConfig {
   core.String startTime;
 
   /// Specification of the field containing the timestamp of scanned items.
-  /// Used for data sources like Datastore or BigQuery.
-  /// If not specified for BigQuery, table last modification timestamp
-  /// is checked against given time span.
-  /// The valid data types of the timestamp field are:
-  /// for BigQuery - timestamp, date, datetime;
-  /// for Datastore - timestamp.
-  /// Datastore entity will be scanned if the timestamp property does not exist
-  /// or its value is empty or invalid.
+  /// Used for data sources like Datastore and BigQuery.
+  ///
+  /// For BigQuery:
+  /// Required to filter out rows based on the given start and
+  /// end times. If not specified and the table was modified between the given
+  /// start and end times, the entire table will be scanned.
+  /// The valid data types of the timestamp field are: `INTEGER`, `DATE`,
+  /// `TIMESTAMP`, or `DATETIME` BigQuery column.
+  ///
+  /// For Datastore.
+  /// Valid data types of the timestamp field are: `TIMESTAMP`.
+  /// Datastore entity will be scanned if the timestamp property does not
+  /// exist or its value is empty or invalid.
   GooglePrivacyDlpV2FieldId timestampField;
 
   GooglePrivacyDlpV2TimespanConfig();
@@ -10397,6 +14651,49 @@ class GooglePrivacyDlpV2TimespanConfig {
     }
     if (timestampField != null) {
       _json["timestampField"] = (timestampField).toJson();
+    }
+    return _json;
+  }
+}
+
+/// How to handle transformation errors during de-identification. A
+/// transformation error occurs when the requested transformation is
+/// incompatible
+/// with the data. For example, trying to de-identify an IP address using a
+/// `DateShift` transformation would result in a transformation error, since
+/// date
+/// info cannot be extracted from an IP address.
+/// Information about any incompatible transformations, and how they were
+/// handled, is returned in the response as part of the
+/// `TransformationOverviews`.
+class GooglePrivacyDlpV2TransformationErrorHandling {
+  /// Ignore errors
+  GooglePrivacyDlpV2LeaveUntransformed leaveUntransformed;
+
+  /// Throw an error
+  GooglePrivacyDlpV2ThrowError throwError;
+
+  GooglePrivacyDlpV2TransformationErrorHandling();
+
+  GooglePrivacyDlpV2TransformationErrorHandling.fromJson(core.Map _json) {
+    if (_json.containsKey("leaveUntransformed")) {
+      leaveUntransformed = new GooglePrivacyDlpV2LeaveUntransformed.fromJson(
+          _json["leaveUntransformed"]);
+    }
+    if (_json.containsKey("throwError")) {
+      throwError =
+          new GooglePrivacyDlpV2ThrowError.fromJson(_json["throwError"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (leaveUntransformed != null) {
+      _json["leaveUntransformed"] = (leaveUntransformed).toJson();
+    }
+    if (throwError != null) {
+      _json["throwError"] = (throwError).toJson();
     }
     return _json;
   }
@@ -10455,6 +14752,8 @@ class GooglePrivacyDlpV2TransformationSummary {
 
   /// The specific suppression option these stats apply to.
   GooglePrivacyDlpV2RecordSuppression recordSuppress;
+
+  /// Collection of all transformations that took place or had an error.
   core.List<GooglePrivacyDlpV2SummaryResult> results;
 
   /// The specific transformation these stats apply to.
@@ -10529,7 +14828,7 @@ class GooglePrivacyDlpV2TransformationSummary {
 /// Use this to have a random data crypto key generated.
 /// It will be discarded after the request finishes.
 class GooglePrivacyDlpV2TransientCryptoKey {
-  /// Name of the key. [required]
+  /// Required. Name of the key.
   /// This is an arbitrary string used to differentiate different keys.
   /// A unique key is generated per name: two separate `TransientCryptoKey`
   /// protos share the same generated key if their names are the same.
@@ -10557,12 +14856,21 @@ class GooglePrivacyDlpV2TransientCryptoKey {
 
 /// What event needs to occur for a new job to be started.
 class GooglePrivacyDlpV2Trigger {
+  /// For use with hybrid jobs. Jobs must be manually created and finished.
+  /// Early access feature is in a pre-release state and might change or have
+  /// limited support. For more information, see
+  /// https://cloud.google.com/products#product-launch-stages.
+  GooglePrivacyDlpV2Manual manual;
+
   /// Create a job on a repeating basis based on the elapse of time.
   GooglePrivacyDlpV2Schedule schedule;
 
   GooglePrivacyDlpV2Trigger();
 
   GooglePrivacyDlpV2Trigger.fromJson(core.Map _json) {
+    if (_json.containsKey("manual")) {
+      manual = new GooglePrivacyDlpV2Manual.fromJson(_json["manual"]);
+    }
     if (_json.containsKey("schedule")) {
       schedule = new GooglePrivacyDlpV2Schedule.fromJson(_json["schedule"]);
     }
@@ -10571,6 +14879,9 @@ class GooglePrivacyDlpV2Trigger {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (manual != null) {
+      _json["manual"] = (manual).toJson();
+    }
     if (schedule != null) {
       _json["schedule"] = (schedule).toJson();
     }
@@ -10581,7 +14892,7 @@ class GooglePrivacyDlpV2Trigger {
 /// Using raw keys is prone to security risks due to accidentally
 /// leaking the key. Choose another type of key if possible.
 class GooglePrivacyDlpV2UnwrappedCryptoKey {
-  /// A 128/192/256 bit key. [required]
+  /// Required. A 128/192/256 bit key.
   core.String key;
   core.List<core.int> get keyAsBytes {
     return convert.base64.decode(key);
@@ -10751,24 +15062,37 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
 /// 123456789, the number of bytes would be counted as 9, even though an
 /// int64 only holds up to 8 bytes of data.
 class GooglePrivacyDlpV2Value {
+  /// boolean
   core.bool booleanValue;
+
+  /// date
   GoogleTypeDate dateValue;
 
-  ///
+  /// day of week
   /// Possible string values are:
-  /// - "DAY_OF_WEEK_UNSPECIFIED" : The unspecified day-of-week.
-  /// - "MONDAY" : The day-of-week of Monday.
-  /// - "TUESDAY" : The day-of-week of Tuesday.
-  /// - "WEDNESDAY" : The day-of-week of Wednesday.
-  /// - "THURSDAY" : The day-of-week of Thursday.
-  /// - "FRIDAY" : The day-of-week of Friday.
-  /// - "SATURDAY" : The day-of-week of Saturday.
-  /// - "SUNDAY" : The day-of-week of Sunday.
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
   core.String dayOfWeekValue;
+
+  /// float
   core.double floatValue;
+
+  /// integer
   core.String integerValue;
+
+  /// string
   core.String stringValue;
+
+  /// time of day
   GoogleTypeTimeOfDay timeValue;
+
+  /// timestamp
   core.String timestampValue;
 
   GooglePrivacyDlpV2Value();

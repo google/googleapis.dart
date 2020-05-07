@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.redis.v1;
 
@@ -103,11 +103,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -120,9 +120,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -134,14 +134,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -513,6 +513,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// location (region) or all locations.
   ///
   /// The location should have the following format:
+  ///
   /// * `projects/{project_id}/locations/{location_id}`
   ///
   /// If `location_id` is specified as `-` (wildcard), then all regions
@@ -526,17 +527,16 @@ class ProjectsLocationsInstancesResourceApi {
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [pageToken] - The next_page_token value returned from a previous List
-  /// request,
-  /// if any.
-  ///
   /// [pageSize] - The maximum number of items to return.
   ///
   /// If not specified, a default value of 1000 will be used by the service.
   /// Regardless of the page_size value, the response may include a partial list
   /// and a caller should only rely on response's
-  /// next_page_token
+  /// `next_page_token`
   /// to determine if there are more instances left to be queried.
+  ///
+  /// [pageToken] - The `next_page_token` value returned from a previous
+  /// ListInstances request, if any.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -549,7 +549,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -560,11 +560,11 @@ class ProjectsLocationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -601,8 +601,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// location_id here refers to a GCP region; however, users may choose which
   /// specific zone (or collection of zones for cross-zone instances) an
   /// instance
-  /// should be provisioned in. Refer to [location_id] and
-  /// [alternative_location_id] fields for more details.
+  /// should be provisioned in. Refer to location_id and
+  /// alternative_location_id fields for more details.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
@@ -652,6 +652,60 @@ class ProjectsLocationsInstancesResourceApi {
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Upgrades Redis instance to the newer Redis version specified in the
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> upgrade(
+      UpgradeInstanceRequest request, core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':upgrade';
+
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -830,11 +884,11 @@ class ProjectsLocationsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -847,9 +901,9 @@ class ProjectsLocationsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -861,14 +915,14 @@ class ProjectsLocationsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1189,7 +1243,7 @@ class Instance {
   /// Optional. Only applicable to STANDARD_HA tier which protects the instance
   /// against zonal failures by provisioning it across two zones. If provided,
   /// it
-  /// must be a different zone from the one provided in [location_id].
+  /// must be a different zone from the one provided in location_id.
   core.String alternativeLocationId;
 
   /// Optional. The full name of the Google Compute Engine
@@ -1198,14 +1252,26 @@ class Instance {
   /// will be used.
   core.String authorizedNetwork;
 
+  /// Optional. The network connect mode of the Redis instance.
+  /// If not provided, the connect mode defaults to DIRECT_PEERING.
+  /// Possible string values are:
+  /// - "CONNECT_MODE_UNSPECIFIED" : Not set.
+  /// - "DIRECT_PEERING" : Connect via direct peering to the Memorystore for
+  /// Redis hosted service.
+  /// - "PRIVATE_SERVICE_ACCESS" : Connect your Memorystore for Redis instance
+  /// using Private Service
+  /// Access. Private services access provides an IP address range for multiple
+  /// Google Cloud services, including Memorystore.
+  core.String connectMode;
+
   /// Output only. The time the instance was created.
   core.String createTime;
 
   /// Output only. The current zone where the Redis endpoint is placed. For
   /// Basic
-  /// Tier instances, this will always be the same as the [location_id]
+  /// Tier instances, this will always be the same as the location_id
   /// provided by the user at creation time. For Standard Tier instances,
-  /// this can be either [location_id] or [alternative_location_id] and can
+  /// this can be either location_id or alternative_location_id and can
   /// change after a failover event.
   core.String currentLocationId;
 
@@ -1223,8 +1289,8 @@ class Instance {
   /// provided,
   /// the service will choose a zone for the instance. For STANDARD_HA tier,
   /// instances will be created across two zones for protection against zonal
-  /// failures. If [alternative_location_id] is also provided, it must be
-  /// different from [location_id].
+  /// failures. If alternative_location_id is also provided, it must be
+  /// different from location_id.
   core.String locationId;
 
   /// Required. Redis memory size in GiB.
@@ -1238,8 +1304,8 @@ class Instance {
   /// location_id here refers to a GCP region; however, users may choose which
   /// specific zone (or collection of zones for cross-zone instances) an
   /// instance
-  /// should be provisioned in. Refer to [location_id] and
-  /// [alternative_location_id] fields for more details.
+  /// should be provisioned in. Refer to location_id and
+  /// alternative_location_id fields for more details.
   core.String name;
 
   /// Output only. Cloud IAM identity used by import / export operations to
@@ -1256,25 +1322,31 @@ class Instance {
   /// http://redis.io/topics/config. Currently, the only supported parameters
   /// are:
   ///
-  ///  Redis 3.2 and above:
+  ///  Redis version 3.2 and newer:
   ///
   ///  *   maxmemory-policy
   ///  *   notify-keyspace-events
   ///
-  ///  Redis 4.0 and above:
+  ///  Redis version 4.0 and newer:
   ///
   ///  *   activedefrag
-  ///  *   lfu-log-factor
   ///  *   lfu-decay-time
+  ///  *   lfu-log-factor
+  ///  *   maxmemory-gb
+  ///
+  ///  Redis version 5.0 and newer:
+  ///
+  ///  *   stream-node-max-bytes
+  ///  *   stream-node-max-entries
   core.Map<core.String, core.String> redisConfigs;
 
   /// Optional. The version of Redis software.
-  /// If not provided, latest supported version will be used. Updating the
-  /// version will perform an upgrade/downgrade to the new version. Currently,
-  /// the supported values are:
+  /// If not provided, latest supported version will be used. Currently, the
+  /// supported values are:
   ///
-  ///  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
   ///  *   `REDIS_3_2` for Redis 3.2 compatibility
+  ///  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+  ///  *   `REDIS_5_0` for Redis 5.0 compatibility
   core.String redisVersion;
 
   /// Optional. The CIDR range of internal addresses that are reserved for this
@@ -1321,6 +1393,9 @@ class Instance {
     }
     if (_json.containsKey("authorizedNetwork")) {
       authorizedNetwork = _json["authorizedNetwork"];
+    }
+    if (_json.containsKey("connectMode")) {
+      connectMode = _json["connectMode"];
     }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
@@ -1381,6 +1456,9 @@ class Instance {
     }
     if (authorizedNetwork != null) {
       _json["authorizedNetwork"] = authorizedNetwork;
+    }
+    if (connectMode != null) {
+      _json["connectMode"] = connectMode;
     }
     if (createTime != null) {
       _json["createTime"] = createTime;
@@ -1443,11 +1521,11 @@ class ListInstancesResponse {
   /// regions
   /// available to the project are queried, and the results aggregated.
   /// If in such an aggregated query a location is unavailable, a dummy Redis
-  /// entry is included in the response with the "name" field set to a value of
-  /// the form projects/{project_id}/locations/{location_id}/instances/- and the
-  /// "status" field set to ERROR and "status_message" field set to "location
-  /// not
-  /// available for ListInstances".
+  /// entry is included in the response with the `name` field set to a value of
+  /// the form `projects/{project_id}/locations/{location_id}/instances/`- and
+  /// the `status` field set to ERROR and `status_message` field set to
+  /// "location
+  /// not available for ListInstances".
   core.List<Instance> instances;
 
   /// Token to retrieve the next page of results, or empty if there are no more
@@ -1801,6 +1879,29 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Request for UpgradeInstance.
+class UpgradeInstanceRequest {
+  /// Required. Specifies the target version of Redis software to upgrade to.
+  core.String redisVersion;
+
+  UpgradeInstanceRequest();
+
+  UpgradeInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("redisVersion")) {
+      redisVersion = _json["redisVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (redisVersion != null) {
+      _json["redisVersion"] = redisVersion;
     }
     return _json;
   }

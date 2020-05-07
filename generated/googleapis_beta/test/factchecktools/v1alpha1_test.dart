@@ -50,7 +50,7 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed5069() {
+buildUnnamed5833() {
   var o =
       new core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>();
   o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview());
@@ -58,7 +58,7 @@ buildUnnamed5069() {
   return o;
 }
 
-checkUnnamed5069(
+checkUnnamed5833(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(o[0]);
@@ -71,7 +71,7 @@ buildGoogleFactcheckingFactchecktoolsV1alpha1Claim() {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim < 3) {
     o.claimDate = "foo";
-    o.claimReview = buildUnnamed5069();
+    o.claimReview = buildUnnamed5833();
     o.claimant = "foo";
     o.text = "foo";
   }
@@ -84,7 +84,7 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1Claim < 3) {
     unittest.expect(o.claimDate, unittest.equals('foo'));
-    checkUnnamed5069(o.claimReview);
+    checkUnnamed5833(o.claimReview);
     unittest.expect(o.claimant, unittest.equals('foo'));
     unittest.expect(o.text, unittest.equals('foo'));
   }
@@ -124,6 +124,7 @@ buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating() {
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating < 3) {
     o.bestRating = 42;
     o.imageUrl = "foo";
+    o.ratingExplanation = "foo";
     o.ratingValue = 42;
     o.textualRating = "foo";
     o.worstRating = 42;
@@ -138,6 +139,7 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating(
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating < 3) {
     unittest.expect(o.bestRating, unittest.equals(42));
     unittest.expect(o.imageUrl, unittest.equals('foo'));
+    unittest.expect(o.ratingExplanation, unittest.equals('foo'));
     unittest.expect(o.ratingValue, unittest.equals(42));
     unittest.expect(o.textualRating, unittest.equals('foo'));
     unittest.expect(o.worstRating, unittest.equals(42));
@@ -200,14 +202,14 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor--;
 }
 
-buildUnnamed5070() {
+buildUnnamed5834() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed5070(core.List<core.String> o) {
+checkUnnamed5834(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -220,7 +222,7 @@ buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup() {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup <
       3) {
-    o.claimAppearances = buildUnnamed5070();
+    o.claimAppearances = buildUnnamed5834();
     o.claimAuthor = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
     o.claimDate = "foo";
     o.claimFirstAppearance = "foo";
@@ -238,7 +240,7 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup <
       3) {
-    checkUnnamed5070(o.claimAppearances);
+    checkUnnamed5834(o.claimAppearances);
     checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(o.claimAuthor);
     unittest.expect(o.claimDate, unittest.equals('foo'));
     unittest.expect(o.claimFirstAppearance, unittest.equals('foo'));
@@ -250,7 +252,7 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup--;
 }
 
-buildUnnamed5071() {
+buildUnnamed5835() {
   var o = new core
       .List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>();
   o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup());
@@ -258,7 +260,7 @@ buildUnnamed5071() {
   return o;
 }
 
-checkUnnamed5071(
+checkUnnamed5835(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -277,7 +279,7 @@ buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage() {
       3) {
     o.claimReviewAuthor =
         buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
-    o.claimReviewMarkups = buildUnnamed5071();
+    o.claimReviewMarkups = buildUnnamed5835();
     o.name = "foo";
     o.pageUrl = "foo";
     o.publishDate = "foo";
@@ -294,7 +296,7 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
       3) {
     checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
         o.claimReviewAuthor);
-    checkUnnamed5071(o.claimReviewMarkups);
+    checkUnnamed5835(o.claimReviewMarkups);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.pageUrl, unittest.equals('foo'));
     unittest.expect(o.publishDate, unittest.equals('foo'));
@@ -303,14 +305,14 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage--;
 }
 
-buildUnnamed5072() {
+buildUnnamed5836() {
   var o = new core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim>();
   o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1Claim());
   o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1Claim());
   return o;
 }
 
-checkUnnamed5072(
+checkUnnamed5836(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1Claim> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(o[0]);
@@ -326,7 +328,7 @@ buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse() {
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    o.claims = buildUnnamed5072();
+    o.claims = buildUnnamed5836();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse--;
@@ -339,13 +341,13 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse <
       3) {
-    checkUnnamed5072(o.claims);
+    checkUnnamed5836(o.claims);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse--;
 }
 
-buildUnnamed5073() {
+buildUnnamed5837() {
   var o = new core.List<
       api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>();
   o.add(buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
@@ -353,7 +355,7 @@ buildUnnamed5073() {
   return o;
 }
 
-checkUnnamed5073(
+checkUnnamed5837(
     core.List<api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>
         o) {
   unittest.expect(o, unittest.hasLength(2));
@@ -370,7 +372,7 @@ buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    o.claimReviewMarkupPages = buildUnnamed5073();
+    o.claimReviewMarkupPages = buildUnnamed5837();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse--;
@@ -383,7 +385,7 @@ checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse++;
   if (buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse <
       3) {
-    checkUnnamed5073(o.claimReviewMarkupPages);
+    checkUnnamed5837(o.claimReviewMarkupPages);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse--;
@@ -558,13 +560,13 @@ main() {
     unittest.test("method--search", () {
       var mock = new HttpServerMock();
       api.ClaimsResourceApi res = new api.FactchecktoolsApi(mock).claims;
-      var arg_maxAgeDays = 42;
-      var arg_offset = 42;
-      var arg_pageToken = "foo";
-      var arg_reviewPublisherSiteFilter = "foo";
-      var arg_pageSize = 42;
       var arg_query = "foo";
+      var arg_pageSize = 42;
+      var arg_maxAgeDays = 42;
       var arg_languageCode = "foo";
+      var arg_reviewPublisherSiteFilter = "foo";
+      var arg_pageToken = "foo";
+      var arg_offset = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -596,19 +598,19 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxAgeDays"].first),
-            unittest.equals(arg_maxAgeDays));
-        unittest.expect(core.int.parse(queryMap["offset"].first),
-            unittest.equals(arg_offset));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["reviewPublisherSiteFilter"].first,
-            unittest.equals(arg_reviewPublisherSiteFilter));
+        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
+        unittest.expect(core.int.parse(queryMap["maxAgeDays"].first),
+            unittest.equals(arg_maxAgeDays));
         unittest.expect(
             queryMap["languageCode"].first, unittest.equals(arg_languageCode));
+        unittest.expect(queryMap["reviewPublisherSiteFilter"].first,
+            unittest.equals(arg_reviewPublisherSiteFilter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["offset"].first),
+            unittest.equals(arg_offset));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -620,13 +622,13 @@ main() {
       }), true);
       res
           .search(
-              maxAgeDays: arg_maxAgeDays,
-              offset: arg_offset,
-              pageToken: arg_pageToken,
-              reviewPublisherSiteFilter: arg_reviewPublisherSiteFilter,
-              pageSize: arg_pageSize,
               query: arg_query,
+              pageSize: arg_pageSize,
+              maxAgeDays: arg_maxAgeDays,
               languageCode: arg_languageCode,
+              reviewPublisherSiteFilter: arg_reviewPublisherSiteFilter,
+              pageToken: arg_pageToken,
+              offset: arg_offset,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse(
@@ -801,8 +803,8 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.PagesResourceApi res = new api.FactchecktoolsApi(mock).pages;
-      var arg_offset = 42;
       var arg_pageToken = "foo";
+      var arg_offset = 42;
       var arg_organization = "foo";
       var arg_pageSize = 42;
       var arg_url = "foo";
@@ -837,10 +839,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["offset"].first),
-            unittest.equals(arg_offset));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["offset"].first),
+            unittest.equals(arg_offset));
         unittest.expect(
             queryMap["organization"].first, unittest.equals(arg_organization));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
@@ -857,8 +859,8 @@ main() {
       }), true);
       res
           .list(
-              offset: arg_offset,
               pageToken: arg_pageToken,
+              offset: arg_offset,
               organization: arg_organization,
               pageSize: arg_pageSize,
               url: arg_url,

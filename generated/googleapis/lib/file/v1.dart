@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.file.v1;
 
@@ -104,11 +104,15 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [includeUnrevealedLocations] - If true, the returned list will include
+  /// locations which are not yet
+  /// revealed.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -121,9 +125,10 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
+      core.bool includeUnrevealedLocations,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -135,14 +140,19 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
+    if (includeUnrevealedLocations != null) {
+      _queryParams["includeUnrevealedLocations"] = [
+        "${includeUnrevealedLocations}"
+      ];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -173,12 +183,12 @@ class ProjectsLocationsInstancesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The instance's project and location, in the format
+  /// [parent] - Required. The instance's project and location, in the format
   /// projects/{project_id}/locations/{location}. In Cloud Filestore,
   /// locations map to GCP zones, for example **us-west1-b**.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [instanceId] - The name of the instance to create.
+  /// [instanceId] - Required. The name of the instance to create.
   /// The name must be unique for the specified project and location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -229,7 +239,7 @@ class ProjectsLocationsInstancesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The instance resource name, in the format
+  /// [name] - Required. The instance resource name, in the format
   /// projects/{project_id}/locations/{location}/instances/{instance_id}
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
@@ -274,7 +284,7 @@ class ProjectsLocationsInstancesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The instance resource name, in the format
+  /// [name] - Required. The instance resource name, in the format
   /// projects/{project_id}/locations/{location}/instances/{instance_id}.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
@@ -320,16 +330,14 @@ class ProjectsLocationsInstancesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project and location for which to retrieve instance
-  /// information,
+  /// [parent] - Required. The project and location for which to retrieve
+  /// instance information,
   /// in the format projects/{project_id}/locations/{location}. In Cloud
   /// Filestore, locations map to GCP zones, for example **us-west1-b**. To
   /// retrieve instance information for all locations, use "-" for the
   /// {location}
   /// value.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
-  ///
-  /// [filter] - List filter.
   ///
   /// [pageToken] - The next_page_token value to use if there are additional
   /// results to retrieve for this list request.
@@ -338,6 +346,8 @@ class ProjectsLocationsInstancesResourceApi {
   /// (unsorted).
   ///
   /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [filter] - List filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -350,10 +360,10 @@ class ProjectsLocationsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -365,9 +375,6 @@ class ProjectsLocationsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -376,6 +383,9 @@ class ProjectsLocationsInstancesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -400,7 +410,7 @@ class ProjectsLocationsInstancesResourceApi {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource name of the instance, in the format
-  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+  /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
   ///
@@ -408,7 +418,10 @@ class ProjectsLocationsInstancesResourceApi {
   /// supplied in this
   /// field.  The elements of the repeated paths field may only include these
   /// fields:
-  /// "description"
+  ///
+  /// * "description"
+  /// * "file_shares"
+  /// * "labels"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -753,80 +766,15 @@ class FileShareConfig {
   }
 }
 
-/// Instance represents the interface for SLM services to actuate the state
-/// of control plane resources.
-///
-/// Example Instance in JSON, where
-///   consumer-project=snapchat,
-///   producer-project=cloud-sql:
-///
-/// ```json
-/// Instance:
-/// {
-///   "name":
-///   "projects/snapchat/locations/us-east1/instances/prod-instance",
-///   "create_time": {
-///     "seconds": 1526406431,
-///   },
-///   "labels": {
-///     "env": "prod",
-///     "foo": "bar"
-///   },
-///   "state": READY,
-///   "software_versions": {
-///     "software_update": "cloud-sql-09-28-2018",
-///   },
-///   "maintenance_policy_names": {
-///     "UpdatePolicy":
-/// "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-policy",
-///   }
-///   "rollout_metadata": {
-///     "projects/cloud-sql/locations/global/rolloutTypes/software_update": {
-///       "release":
-///       "projects/cloud-sql/locations/global/releases/cloud-sql-09-28-2018",
-///       "rollout":
-/// "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-canary",
-///     },
-///     "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": {
-///       "release":
-/// "projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair",
-///       "rollout":
-/// "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-20-repair-100-percent",
-///     }
-///   }
-///   "tenant_project_id": "cloud-sql-test-tenant",
-///   "producer_metadata": {
-///     "cloud-sql-tier": "basic",
-///     "cloud-sql-instance-size": "1G",
-///   },
-///   "provisioned_resources": [
-///     {
-///       "resource-type": "compute-instance",
-///       "resource-url":
-/// "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1",
-///     }
-///   ],
-///   "maintenance_schedules": {
-///     "csa_rollout": {
-///        "start_time": {
-///           "seconds": 1526406431,
-///        },
-///        "end_time": {
-///           "seconds": 1535406431,
-///        },
-///     },
-///     "ncsa_rollout": {
-///        "start_time": {
-///           "seconds": 1526406431,
-///        },
-///        "end_time": {
-///           "seconds": 1535406431,
-///        },
-///     }
-///   }
-/// }
-/// ```
 class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
+  /// consumer_defined_name is the name that is set by the consumer. On the
+  /// other
+  /// hand Name field represents system-assigned id of an instance so consumers
+  /// are not necessarily aware of it.
+  /// consumer_defined_name is used for notification/UI purposes for consumer to
+  /// recognize their instances.
+  core.String consumerDefinedName;
+
   /// Output only. Timestamp when the resource was created.
   core.String createTime;
 
@@ -863,15 +811,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>
       provisionedResources;
 
-  /// The map between RolloutType and the corresponding RolloutMetadata.
-  /// This is only mutated by rollout service. For actuation implementation,
-  /// this information is pass-through for Rollout management. Producer shall
-  /// not modify by itself.
-  /// For update of a single entry in this map, the update field mask shall
-  /// follow this sementics: go/advanced-field-masks
-  core.Map<core.String,
-          GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata>
-      rolloutMetadata;
+  /// Link to the SLM instance template. Only populated when updating SLM
+  /// instances via SSA's Actuation service adaptor.
+  /// Service producers with custom control plane (e.g. Cloud SQL) doesn't
+  /// need to populate this field. Instead they should use software_versions.
+  core.String slmInstanceTemplate;
 
   /// Output only. SLO metadata for instance classification in the
   /// Standardized dataplane SLO platform.
@@ -891,6 +835,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// - "UPDATING" : Instance is being updated.
   /// - "REPAIRING" : Instance is unheathy and under repair.
   /// - "DELETING" : Instance is being deleted.
+  /// - "ERROR" : Instance encountered an error and is in indeterministic state.
   core.String state;
 
   /// Output only. ID of the associated GCP tenant project.
@@ -904,6 +849,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
 
   GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
       core.Map _json) {
+    if (_json.containsKey("consumerDefinedName")) {
+      consumerDefinedName = _json["consumerDefinedName"];
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
@@ -937,13 +885,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
                       .fromJson(value))
           .toList();
     }
-    if (_json.containsKey("rolloutMetadata")) {
-      rolloutMetadata = commons.mapMap<core.Map,
-              GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata>(
-          _json["rolloutMetadata"].cast<core.String, core.Map>(),
-          (core.Map item) =>
-              new GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
-                  .fromJson(item));
+    if (_json.containsKey("slmInstanceTemplate")) {
+      slmInstanceTemplate = _json["slmInstanceTemplate"];
     }
     if (_json.containsKey("sloMetadata")) {
       sloMetadata =
@@ -968,6 +911,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (consumerDefinedName != null) {
+      _json["consumerDefinedName"] = consumerDefinedName;
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
@@ -996,14 +942,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       _json["provisionedResources"] =
           provisionedResources.map((value) => (value).toJson()).toList();
     }
-    if (rolloutMetadata != null) {
-      _json["rolloutMetadata"] = commons.mapMap<
-              GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata,
-              core.Map<core.String, core.Object>>(
-          rolloutMetadata,
-          (GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
-                  item) =>
-              (item).toJson());
+    if (slmInstanceTemplate != null) {
+      _json["slmInstanceTemplate"] = slmInstanceTemplate;
     }
     if (sloMetadata != null) {
       _json["sloMetadata"] = (sloMetadata).toJson();
@@ -1035,6 +975,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// The scheduled end time for the maintenance.
   core.String endTime;
 
+  /// The rollout management policy this maintenance schedule is associated
+  /// with. When doing reschedule update request, the reschedule should be
+  /// against this given policy.
+  core.String rolloutManagementPolicy;
+
   /// The scheduled start time for the maintenance.
   core.String startTime;
 
@@ -1047,6 +992,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("rolloutManagementPolicy")) {
+      rolloutManagementPolicy = _json["rolloutManagementPolicy"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1061,6 +1009,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (rolloutManagementPolicy != null) {
+      _json["rolloutManagementPolicy"] = rolloutManagementPolicy;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -1127,59 +1078,6 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
   }
 }
 
-/// NotificationMetadata is the notification state for an instance.
-class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata {
-  /// Whether the instance update has been rescheduled.
-  core.bool rescheduled;
-
-  /// The scheduled end time for the maintenance window during which update
-  /// can be performed on the instance.
-  core.String scheduledEndTime;
-
-  /// The scheduled start time for the maintenance window during which
-  /// update can be performed on the instance.
-  core.String scheduledStartTime;
-
-  /// The target release to be applied to the instance.
-  core.String targetRelease;
-
-  GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata();
-
-  GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata.fromJson(
-      core.Map _json) {
-    if (_json.containsKey("rescheduled")) {
-      rescheduled = _json["rescheduled"];
-    }
-    if (_json.containsKey("scheduledEndTime")) {
-      scheduledEndTime = _json["scheduledEndTime"];
-    }
-    if (_json.containsKey("scheduledStartTime")) {
-      scheduledStartTime = _json["scheduledStartTime"];
-    }
-    if (_json.containsKey("targetRelease")) {
-      targetRelease = _json["targetRelease"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (rescheduled != null) {
-      _json["rescheduled"] = rescheduled;
-    }
-    if (scheduledEndTime != null) {
-      _json["scheduledEndTime"] = scheduledEndTime;
-    }
-    if (scheduledStartTime != null) {
-      _json["scheduledStartTime"] = scheduledStartTime;
-    }
-    if (targetRelease != null) {
-      _json["targetRelease"] = targetRelease;
-    }
-    return _json;
-  }
-}
-
 /// Describes provisioned dataplane resources.
 class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   /// Type of the resource. This can be either a GCP resource or a custom one
@@ -1219,52 +1117,45 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
   }
 }
 
-/// RolloutMetadata for an actuation instance. It maps to a single RolloutType.
-class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata {
-  /// Instance level notification metadata.
-  GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-      notification;
+/// SloEligibility is a tuple containing eligibility value: true if an instance
+/// is eligible for SLO calculation or false if it should be excluded from all
+/// SLO-related calculations along with a user-defined reason.
+class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
+  /// Whether an instance is eligible or ineligible.
+  core.bool eligible;
 
-  /// The last Release that has been applied to the instance.
-  core.String releaseName;
+  /// User-defined reason for the current value of instance eligibility.
+  /// Usually,
+  /// this can be directly mapped to the internal state. An empty reason is
+  /// allowed.
+  core.String reason;
 
-  /// The last rollout that has been applied to the instance.
-  core.String rolloutName;
+  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
 
-  GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata();
-
-  GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata.fromJson(
+  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility.fromJson(
       core.Map _json) {
-    if (_json.containsKey("notification")) {
-      notification =
-          new GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-              .fromJson(_json["notification"]);
+    if (_json.containsKey("eligible")) {
+      eligible = _json["eligible"];
     }
-    if (_json.containsKey("releaseName")) {
-      releaseName = _json["releaseName"];
-    }
-    if (_json.containsKey("rolloutName")) {
-      rolloutName = _json["rolloutName"];
+    if (_json.containsKey("reason")) {
+      reason = _json["reason"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (notification != null) {
-      _json["notification"] = (notification).toJson();
+    if (eligible != null) {
+      _json["eligible"] = eligible;
     }
-    if (releaseName != null) {
-      _json["releaseName"] = releaseName;
-    }
-    if (rolloutName != null) {
-      _json["rolloutName"] = rolloutName;
+    if (reason != null) {
+      _json["reason"] = reason;
     }
     return _json;
   }
 }
 
-/// SloExclusion represents an excusion in SLI calculation applies to all SLOs.
+/// SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   /// Exclusion duration. No restrictions on the possible values.
   ///
@@ -1274,10 +1165,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   /// as long as such extension is committed at least 10 minutes before the
   /// original exclusion expiration - otherwise it is possible that there will
   /// be "gaps" in the exclusion application in the exported timeseries.
-  core.String exclusionDuration;
-
-  /// Start time of the exclusion. No alignment (e.g. to a full minute) needed.
-  core.String exclusionStartTime;
+  core.String duration;
 
   /// Human-readable reason for the exclusion.
   /// This should be a static string (e.g. "Disruptive update in progress")
@@ -1290,15 +1178,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
   /// in the service SLO configuration.
   core.String sliName;
 
+  /// Start time of the exclusion. No alignment (e.g. to a full minute) needed.
+  core.String startTime;
+
   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion.fromJson(
       core.Map _json) {
-    if (_json.containsKey("exclusionDuration")) {
-      exclusionDuration = _json["exclusionDuration"];
-    }
-    if (_json.containsKey("exclusionStartTime")) {
-      exclusionStartTime = _json["exclusionStartTime"];
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
     }
     if (_json.containsKey("reason")) {
       reason = _json["reason"];
@@ -1306,22 +1194,25 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
     if (_json.containsKey("sliName")) {
       sliName = _json["sliName"];
     }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (exclusionDuration != null) {
-      _json["exclusionDuration"] = exclusionDuration;
-    }
-    if (exclusionStartTime != null) {
-      _json["exclusionStartTime"] = exclusionStartTime;
+    if (duration != null) {
+      _json["duration"] = duration;
     }
     if (reason != null) {
       _json["reason"] = reason;
     }
     if (sliName != null) {
       _json["sliName"] = sliName;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }
@@ -1330,6 +1221,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
 /// SloMetadata contains resources required for proper SLO classification of the
 /// instance.
 class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
+  /// Optional. User-defined instance eligibility.
+  GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility eligibility;
+
   /// List of SLO exclusion windows. When multiple entries in the list match
   /// (matching the exclusion time-window against current time point)
   /// the exclusion reason used in the first matching entry will be published.
@@ -1341,12 +1235,12 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   ///
   /// This field can be used to mark the instance as temporary ineligible
   /// for the purpose of SLO calculation. For permanent instance SLO exclusion,
-  /// a dedicated tier name can be used that does not have targets specified
-  /// in the service SLO configuration.
+  /// use of custom instance eligibility is recommended. See 'eligibility' field
+  /// below.
   core.List<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
       exclusions;
 
-  /// Optional: list of nodes.
+  /// Optional. List of nodes.
   /// Some producers need to use per-node metadata to calculate SLO.
   /// This field allows such producers to publish per-node SLO meta data,
   /// which will be consumed by SSA Eligibility Exporter and published in the
@@ -1365,6 +1259,11 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
 
   GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata.fromJson(
       core.Map _json) {
+    if (_json.containsKey("eligibility")) {
+      eligibility =
+          new GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+              .fromJson(_json["eligibility"]);
+    }
     if (_json.containsKey("exclusions")) {
       exclusions = (_json["exclusions"] as core.List)
           .map<GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>(
@@ -1389,6 +1288,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (eligibility != null) {
+      _json["eligibility"] = (eligibility).toJson();
+    }
     if (exclusions != null) {
       _json["exclusions"] =
           exclusions.map((value) => (value).toJson()).toList();
@@ -1408,7 +1310,7 @@ class Instance {
   /// Output only. The time when the instance was created.
   core.String createTime;
 
-  /// Optional. A description of the instance (2048 characters or less).
+  /// The description of the instance (2048 characters or less).
   core.String description;
 
   /// Server-specified ETag for the instance resource to prevent simultaneous
@@ -1423,7 +1325,7 @@ class Instance {
   core.Map<core.String, core.String> labels;
 
   /// Output only. The resource name of the instance, in the format
-  /// projects/{project_id}/locations/{location_id}/instances/{instance_id}.
+  /// projects/{project}/locations/{location}/instances/{instance}.
   core.String name;
 
   /// VPC networks to which the instance is connected.
@@ -1452,8 +1354,18 @@ class Instance {
   /// The service tier of the instance.
   /// Possible string values are:
   /// - "TIER_UNSPECIFIED" : Not set.
-  /// - "STANDARD" : STANDARD tier.
-  /// - "PREMIUM" : PREMIUM tier.
+  /// - "STANDARD" : STANDARD tier. BASIC_HDD is the preferred term for this
+  /// tier.
+  /// - "PREMIUM" : PREMIUM tier. BASIC_SSD is the preferred term for this tier.
+  /// - "BASIC_HDD" : BASIC instances offer a maximum capacity of 63.9 TB.
+  /// BASIC_HDD is an alias for STANDARD Tier, offering economical
+  /// performance backed by HDD.
+  /// - "BASIC_SSD" : BASIC instances offer a maximum capacity of 63.9 TB.
+  /// BASIC_SSD is an alias for PREMIUM Tier, and offers improved
+  /// performance backed by SSD.
+  /// - "HIGH_SCALE_SSD" : HIGH_SCALE instances offer expanded capacity and
+  /// performance scaling
+  /// capabilities.
   core.String tier;
 
   Instance();

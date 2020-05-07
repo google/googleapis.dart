@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.toolresults.v1beta3;
 
@@ -16,7 +16,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client toolresults/v1beta3';
 
-/// Reads and publishes results from Firebase Test Lab.
+/// API to publish and access results from developer tools.
 class ToolresultsApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -24,687 +24,32 @@ class ToolresultsApi {
 
   final commons.ApiRequester _requester;
 
+  ClustersResourceApi get clusters => new ClustersResourceApi(_requester);
+  EnvironmentsResourceApi get environments =>
+      new EnvironmentsResourceApi(_requester);
+  ExecutionsResourceApi get executions => new ExecutionsResourceApi(_requester);
+  HistoriesResourceApi get histories => new HistoriesResourceApi(_requester);
+  PerfMetricsSummaryResourceApi get perfMetricsSummary =>
+      new PerfMetricsSummaryResourceApi(_requester);
+  PerfSampleSeriesResourceApi get perfSampleSeries =>
+      new PerfSampleSeriesResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  SamplesResourceApi get samples => new SamplesResourceApi(_requester);
+  StepsResourceApi get steps => new StepsResourceApi(_requester);
+  TestCasesResourceApi get testCases => new TestCasesResourceApi(_requester);
+  ThumbnailsResourceApi get thumbnails => new ThumbnailsResourceApi(_requester);
 
   ToolresultsApi(http.Client client,
       {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "toolresults/v1beta3/projects/"})
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
 
-class ProjectsResourceApi {
+class ClustersResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesResourceApi get histories =>
-      new ProjectsHistoriesResourceApi(_requester);
-
-  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Gets the Tool Results settings for a project.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read from project
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ProjectSettings].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ProjectSettings> getSettings(core.String projectId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') + '/settings';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProjectSettings.fromJson(data));
-  }
-
-  /// Creates resources for settings which have not yet been set.
-  ///
-  /// Currently, this creates a single resource: a Google Cloud Storage bucket,
-  /// to be used as the default bucket for this project. The bucket is created
-  /// in an FTL-own storage project. Except for in rare cases, calling this
-  /// method in parallel from multiple clients will only create a single bucket.
-  /// In order to avoid unnecessary storage charges, the bucket is configured to
-  /// automatically delete objects older than 90 days.
-  ///
-  /// The bucket is created with the following permissions: - Owner access for
-  /// owners of central storage project (FTL-owned) - Writer access for
-  /// owners/editors of customer project - Reader access for viewers of customer
-  /// project The default ACL on objects created in the bucket is: - Owner
-  /// access for owners of central storage project - Reader access for
-  /// owners/editors/viewers of customer project See Google Cloud Storage
-  /// documentation for more details.
-  ///
-  /// If there is already a default bucket set and the project can access the
-  /// bucket, this call does nothing. However, if the project doesn't have the
-  /// permission to access the bucket or the bucket is deleted, a new bucket
-  /// will be created.
-  ///
-  /// May return any canonical error codes, including the following:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// Any error code raised by Google Cloud Storage
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ProjectSettings].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ProjectSettings> initializeSettings(core.String projectId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') + ':initializeSettings';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ProjectSettings.fromJson(data));
-  }
-}
-
-class ProjectsHistoriesResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsHistoriesExecutionsResourceApi get executions =>
-      new ProjectsHistoriesExecutionsResourceApi(_requester);
-
-  ProjectsHistoriesResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a History.
-  ///
-  /// The returned History will have the id set.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing project does not exist
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [requestId] - A unique request ID for server to detect duplicated
-  /// requests. For example, a UUID.
-  ///
-  /// Optional, but strongly recommended.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [History].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<History> create(History request, core.String projectId,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new History.fromJson(data));
-  }
-
-  /// Gets a History.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// History does not exist
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [historyId] - A History id.
-  ///
-  /// Required.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [History].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<History> get(core.String projectId, core.String historyId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new History.fromJson(data));
-  }
-
-  /// Lists Histories for a given Project.
-  ///
-  /// The histories are sorted by modification time in descending order. The
-  /// history_id key will be used to order the history with the same
-  /// modification time.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// History does not exist
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [filterByName] - If set, only return histories with the given name.
-  ///
-  /// Optional.
-  ///
-  /// [pageSize] - The maximum number of Histories to fetch.
-  ///
-  /// Default value: 20. The server will use this default if the field is not
-  /// set or has a value of 0. Any value greater than 100 will be treated as
-  /// 100.
-  ///
-  /// Optional.
-  ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  ///
-  /// Optional.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListHistoriesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListHistoriesResponse> list(core.String projectId,
-      {core.String filterByName,
-      core.int pageSize,
-      core.String pageToken,
-      core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (filterByName != null) {
-      _queryParams["filterByName"] = [filterByName];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') + '/histories';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListHistoriesResponse.fromJson(data));
-  }
-}
-
-class ProjectsHistoriesExecutionsResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsHistoriesExecutionsClustersResourceApi get clusters =>
-      new ProjectsHistoriesExecutionsClustersResourceApi(_requester);
-  ProjectsHistoriesExecutionsStepsResourceApi get steps =>
-      new ProjectsHistoriesExecutionsStepsResourceApi(_requester);
-
-  ProjectsHistoriesExecutionsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates an Execution.
-  ///
-  /// The returned Execution will have the id set.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing History does not exist
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [historyId] - A History id.
-  ///
-  /// Required.
-  ///
-  /// [requestId] - A unique request ID for server to detect duplicated
-  /// requests. For example, a UUID.
-  ///
-  /// Optional, but strongly recommended.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Execution].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Execution> create(
-      Execution request, core.String projectId, core.String historyId,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Execution.fromJson(data));
-  }
-
-  /// Gets an Execution.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// Execution does not exist
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [historyId] - A History id.
-  ///
-  /// Required.
-  ///
-  /// [executionId] - An Execution id.
-  ///
-  /// Required.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Execution].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Execution> get(
-      core.String projectId, core.String historyId, core.String executionId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (executionId == null) {
-      throw new core.ArgumentError("Parameter executionId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Execution.fromJson(data));
-  }
-
-  /// Lists Executions for a given History.
-  ///
-  /// The executions are sorted by creation_time in descending order. The
-  /// execution_id key will be used to order the executions with the same
-  /// creation_time.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing History does not exist
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [historyId] - A History id.
-  ///
-  /// Required.
-  ///
-  /// [pageSize] - The maximum number of Executions to fetch.
-  ///
-  /// Default value: 25. The server will use this default if the field is not
-  /// set or has a value of 0.
-  ///
-  /// Optional.
-  ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
-  ///
-  /// Optional.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListExecutionsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListExecutionsResponse> list(
-      core.String projectId, core.String historyId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListExecutionsResponse.fromJson(data));
-  }
-
-  /// Updates an existing Execution with the supplied partial entity.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if
-  /// the requested state transition is illegal - NOT_FOUND - if the containing
-  /// History does not exist
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id. Required.
-  ///
-  /// [historyId] - Required.
-  ///
-  /// [executionId] - Required.
-  ///
-  /// [requestId] - A unique request ID for server to detect duplicated
-  /// requests. For example, a UUID.
-  ///
-  /// Optional, but strongly recommended.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Execution].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Execution> patch(Execution request, core.String projectId,
-      core.String historyId, core.String executionId,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (executionId == null) {
-      throw new core.ArgumentError("Parameter executionId is required.");
-    }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId');
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Execution.fromJson(data));
-  }
-}
-
-class ProjectsHistoriesExecutionsClustersResourceApi {
-  final commons.ApiRequester _requester;
-
-  ProjectsHistoriesExecutionsClustersResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  ClustersResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves a single screenshot cluster by its ID
   ///
@@ -762,7 +107,8 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -782,11 +128,12 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   /// Lists Screenshot Clusters
   ///
   /// Returns the list of screenshot clusters corresponding to an execution.
-  /// Screenshot clusters are created after the execution is finished. Clusters
-  /// are created from a set of screenshots. Between any two screenshots, a
-  /// matching score is calculated based off their metadata that determines how
-  /// similar they are. Screenshots are placed in the cluster that has screens
-  /// which have the highest matching scores.
+  /// Screenshot clusters are created after the execution is finished.
+  /// Clusters are created from a set of screenshots. Between any two
+  /// screenshots, a matching score is calculated based off their metadata
+  /// that determines how similar they are. Screenshots are placed
+  /// in the cluster that has screens which have the highest matching
+  /// scores.
   ///
   /// Request parameters:
   ///
@@ -835,7 +182,8 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -853,150 +201,41 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsResourceApi {
+class EnvironmentsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi
-      get perfMetricsSummary =>
-          new ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi(
-              _requester);
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi
-      get perfSampleSeries =>
-          new ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(
-              _requester);
-  ProjectsHistoriesExecutionsStepsTestCasesResourceApi get testCases =>
-      new ProjectsHistoriesExecutionsStepsTestCasesResourceApi(_requester);
-  ProjectsHistoriesExecutionsStepsThumbnailsResourceApi get thumbnails =>
-      new ProjectsHistoriesExecutionsStepsThumbnailsResourceApi(_requester);
+  EnvironmentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  ProjectsHistoriesExecutionsStepsResourceApi(commons.ApiRequester client)
-      : _requester = client;
-
-  /// Creates a Step.
-  ///
-  /// The returned Step will have the id set.
+  /// Gets an Environment.
   ///
   /// May return any of the following canonical error codes:
   ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if
-  /// the step is too large (more than 10Mib) - NOT_FOUND - if the containing
-  /// Execution does not exist
-  ///
-  /// [request] - The metadata request object.
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the Environment does not exist
   ///
   /// Request parameters:
   ///
-  /// [projectId] - A Project id.
+  /// [projectId] - Required. A Project id.
   ///
-  /// Required.
+  /// [historyId] - Required. A History id.
   ///
-  /// [historyId] - A History id.
+  /// [executionId] - Required. An Execution id.
   ///
-  /// Required.
-  ///
-  /// [executionId] - A Execution id.
-  ///
-  /// Required.
-  ///
-  /// [requestId] - A unique request ID for server to detect duplicated
-  /// requests. For example, a UUID.
-  ///
-  /// Optional, but strongly recommended.
+  /// [environmentId] - Required. An Environment id.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Step].
+  /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Step> create(Step request, core.String projectId,
-      core.String historyId, core.String executionId,
-      {core.String requestId, core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (request != null) {
-      _body = convert.json.encode((request).toJson());
-    }
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (executionId == null) {
-      throw new core.ArgumentError("Parameter executionId is required.");
-    }
-    if (requestId != null) {
-      _queryParams["requestId"] = [requestId];
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
-        '/steps';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new Step.fromJson(data));
-  }
-
-  /// Gets a Step.
-  ///
-  /// May return any of the following canonical error codes:
-  ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step
-  /// does not exist
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - A Project id.
-  ///
-  /// Required.
-  ///
-  /// [historyId] - A History id.
-  ///
-  /// Required.
-  ///
-  /// [executionId] - A Execution id.
-  ///
-  /// Required.
-  ///
-  /// [stepId] - A Step id.
-  ///
-  /// Required.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Step].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Step> get(core.String projectId, core.String historyId,
-      core.String executionId, core.String stepId,
+  async.Future<Environment> get(core.String projectId, core.String historyId,
+      core.String executionId, core.String environmentId,
       {core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1014,20 +253,21 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     if (executionId == null) {
       throw new core.ArgumentError("Parameter executionId is required.");
     }
-    if (stepId == null) {
-      throw new core.ArgumentError("Parameter stepId is required.");
+    if (environmentId == null) {
+      throw new core.ArgumentError("Parameter environmentId is required.");
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
         commons.Escaper.ecapeVariable('$executionId') +
-        '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId');
+        '/environments/' +
+        commons.Escaper.ecapeVariable('$environmentId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1035,127 +275,46 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Step.fromJson(data));
+    return _response.then((data) => new Environment.fromJson(data));
   }
 
-  /// Retrieves a PerfMetricsSummary.
+  /// Lists Environments for a given Execution.
   ///
-  /// May return any of the following error code(s): - NOT_FOUND - The specified
-  /// PerfMetricsSummary does not exist
-  ///
-  /// Request parameters:
-  ///
-  /// [projectId] - The cloud project
-  ///
-  /// [historyId] - A tool results history ID.
-  ///
-  /// [executionId] - A tool results execution ID.
-  ///
-  /// [stepId] - A tool results step ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [PerfMetricsSummary].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<PerfMetricsSummary> getPerfMetricsSummary(core.String projectId,
-      core.String historyId, core.String executionId, core.String stepId,
-      {core.String $fields}) {
-    var _url;
-    var _queryParams = new core.Map<core.String, core.List<core.String>>();
-    var _uploadMedia;
-    var _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body;
-
-    if (projectId == null) {
-      throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (executionId == null) {
-      throw new core.ArgumentError("Parameter executionId is required.");
-    }
-    if (stepId == null) {
-      throw new core.ArgumentError("Parameter stepId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
-        '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
-        '/perfMetricsSummary';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new PerfMetricsSummary.fromJson(data));
-  }
-
-  /// Lists Steps for a given Execution.
-  ///
-  /// The steps are sorted by creation_time in descending order. The step_id key
-  /// will be used to order the steps with the same creation_time.
+  /// The Environments are sorted by display name.
   ///
   /// May return any of the following canonical error codes:
   ///
-  /// - PERMISSION_DENIED - if the user is not authorized to read project -
-  /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if
-  /// an argument in the request happens to be invalid; e.g. if an attempt is
-  /// made to list the children of a nonexistent Step - NOT_FOUND - if the
-  /// containing Execution does not exist
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the containing Execution does not exist
   ///
   /// Request parameters:
   ///
-  /// [projectId] - A Project id.
+  /// [projectId] - Required. A Project id.
   ///
-  /// Required.
+  /// [historyId] - Required. A History id.
   ///
-  /// [historyId] - A History id.
+  /// [executionId] - Required. An Execution id.
   ///
-  /// Required.
-  ///
-  /// [executionId] - A Execution id.
-  ///
-  /// Required.
-  ///
-  /// [pageSize] - The maximum number of Steps to fetch.
+  /// [pageSize] - The maximum number of Environments to fetch.
   ///
   /// Default value: 25. The server will use this default if the field is not
-  /// set or has a value of 0.
-  ///
-  /// Optional.
+  /// set
+  /// or has a value of 0.
   ///
   /// [pageToken] - A continuation token to resume the query at the next item.
   ///
-  /// Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [ListStepsResponse].
+  /// Completes with a [ListEnvironmentsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListStepsResponse> list(
+  async.Future<ListEnvironmentsResponse> list(
       core.String projectId, core.String historyId, core.String executionId,
       {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
@@ -1184,12 +343,13 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
         commons.Escaper.ecapeVariable('$executionId') +
-        '/steps';
+        '/environments';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1197,18 +357,25 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListStepsResponse.fromJson(data));
+    return _response
+        .then((data) => new ListEnvironmentsResponse.fromJson(data));
   }
+}
 
-  /// Updates an existing Step with the supplied partial entity.
+class ExecutionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ExecutionsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates an Execution.
+  ///
+  /// The returned Execution will have the id set.
   ///
   /// May return any of the following canonical error codes:
   ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write project -
-  /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if
-  /// the requested state transition is illegal (e.g try to upload a duplicate
-  /// xml file), if the updated step is too large (more than 10Mib) - NOT_FOUND
-  /// - if the containing Execution does not exist
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the containing History does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1222,31 +389,257 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Required.
   ///
-  /// [executionId] - A Execution id.
-  ///
-  /// Required.
-  ///
-  /// [stepId] - A Step id.
-  ///
-  /// Required.
-  ///
   /// [requestId] - A unique request ID for server to detect duplicated
-  /// requests. For example, a UUID.
+  /// requests.
+  /// For example, a UUID.
   ///
   /// Optional, but strongly recommended.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Step].
+  /// Completes with a [Execution].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Step> patch(Step request, core.String projectId,
-      core.String historyId, core.String executionId, core.String stepId,
+  async.Future<Execution> create(
+      Execution request, core.String projectId, core.String historyId,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Execution.fromJson(data));
+  }
+
+  /// Gets an Execution.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the Execution does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - An Execution id.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> get(
+      core.String projectId, core.String historyId, core.String executionId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Execution.fromJson(data));
+  }
+
+  /// Lists Executions for a given History.
+  ///
+  /// The executions are sorted by creation_time in descending order. The
+  /// execution_id key will be used to order the executions with the same
+  /// creation_time.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the containing History does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of Executions to fetch.
+  ///
+  /// Default value: 25. The server will use this default if the field is not
+  /// set
+  /// or has a value of 0.
+  ///
+  /// Optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExecutionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExecutionsResponse> list(
+      core.String projectId, core.String historyId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListExecutionsResponse.fromJson(data));
+  }
+
+  /// Updates an existing Execution with the supplied partial entity.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - FAILED_PRECONDITION - if the requested state transition is illegal
+  /// - NOT_FOUND - if the containing History does not exist
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  /// Required.
+  ///
+  /// [historyId] - Required.
+  ///
+  /// [executionId] - Required.
+  ///
+  /// [requestId] - A unique request ID for server to detect duplicated
+  /// requests.
+  /// For example, a UUID.
+  ///
+  /// Optional, but strongly recommended.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Execution].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Execution> patch(Execution request, core.String projectId,
+      core.String historyId, core.String executionId,
       {core.String requestId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1267,9 +660,6 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     if (executionId == null) {
       throw new core.ArgumentError("Parameter executionId is required.");
     }
-    if (stepId == null) {
-      throw new core.ArgumentError("Parameter stepId is required.");
-    }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
@@ -1277,13 +667,12 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
-        '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId');
+        commons.Escaper.ecapeVariable('$executionId');
 
     var _response = _requester.request(_url, "PATCH",
         body: _body,
@@ -1291,18 +680,24 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Step.fromJson(data));
+    return _response.then((data) => new Execution.fromJson(data));
   }
+}
 
-  /// Publish xml files to an existing Step.
+class HistoriesResourceApi {
+  final commons.ApiRequester _requester;
+
+  HistoriesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a History.
+  ///
+  /// The returned History will have the id set.
   ///
   /// May return any of the following canonical error codes:
   ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write project -
-  /// INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if
-  /// the requested state transition is illegal, e.g try to upload a duplicate
-  /// xml file or a file too large. - NOT_FOUND - if the containing Execution
-  /// does not exist
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the containing project does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1312,35 +707,24 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Required.
   ///
-  /// [historyId] - A History id.
+  /// [requestId] - A unique request ID for server to detect duplicated
+  /// requests.
+  /// For example, a UUID.
   ///
-  /// Required.
-  ///
-  /// [executionId] - A Execution id.
-  ///
-  /// Required.
-  ///
-  /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
-  ///
-  /// Required.
+  /// Optional, but strongly recommended.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [Step].
+  /// Completes with a [History].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Step> publishXunitXmlFiles(
-      PublishXunitXmlFilesRequest request,
-      core.String projectId,
-      core.String historyId,
-      core.String executionId,
-      core.String stepId,
-      {core.String $fields}) {
+  async.Future<History> create(History request, core.String projectId,
+      {core.String requestId, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1354,27 +738,16 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (historyId == null) {
-      throw new core.ArgumentError("Parameter historyId is required.");
-    }
-    if (executionId == null) {
-      throw new core.ArgumentError("Parameter executionId is required.");
-    }
-    if (stepId == null) {
-      throw new core.ArgumentError("Parameter stepId is required.");
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
-        '/histories/' +
-        commons.Escaper.ecapeVariable('$historyId') +
-        '/executions/' +
-        commons.Escaper.ecapeVariable('$executionId') +
-        '/steps/' +
-        commons.Escaper.ecapeVariable('$stepId') +
-        ':publishXunitXmlFiles';
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1382,22 +755,167 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    return _response.then((data) => new Step.fromJson(data));
+    return _response.then((data) => new History.fromJson(data));
+  }
+
+  /// Gets a History.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the History does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [History].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<History> get(core.String projectId, core.String historyId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new History.fromJson(data));
+  }
+
+  /// Lists Histories for a given Project.
+  ///
+  /// The histories are sorted by modification time in descending order. The
+  /// history_id key will be used to order the history with the same
+  /// modification time.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the History does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of Histories to fetch.
+  ///
+  /// Default value: 20. The server will use this default if the field is not
+  /// set
+  /// or has a value of 0. Any value greater than 100 will be treated as 100.
+  ///
+  /// Optional.
+  ///
+  /// [filterByName] - If set, only return histories with the given name.
+  ///
+  /// Optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListHistoriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListHistoriesResponse> list(core.String projectId,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filterByName,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filterByName != null) {
+      _queryParams["filterByName"] = [filterByName];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListHistoriesResponse.fromJson(data));
   }
 }
 
-class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
+class PerfMetricsSummaryResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi(
-      commons.ApiRequester client)
+  PerfMetricsSummaryResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a PerfMetricsSummary resource. Returns the existing one if it has
   /// already been created.
   ///
-  /// May return any of the following error code(s): - NOT_FOUND - The
-  /// containing Step does not exist
+  /// May return any of the following error code(s):
+  /// - NOT_FOUND - The containing Step does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1454,7 +972,8 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -1473,23 +992,17 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
+class PerfSampleSeriesResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi
-      get samples =>
-          new ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi(
-              _requester);
-
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi(
-      commons.ApiRequester client)
+  PerfSampleSeriesResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates a PerfSampleSeries.
   ///
-  /// May return any of the following error code(s): - ALREADY_EXISTS -
-  /// PerfMetricSummary already exists for the given Step - NOT_FOUND - The
-  /// containing Step does not exist
+  /// May return any of the following error code(s):
+  /// - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step
+  /// - NOT_FOUND - The containing Step does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1546,7 +1059,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -1566,8 +1080,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
 
   /// Gets a PerfSampleSeries.
   ///
-  /// May return any of the following error code(s): - NOT_FOUND - The specified
-  /// PerfSampleSeries does not exist
+  /// May return any of the following error code(s):
+  /// - NOT_FOUND - The specified PerfSampleSeries does not exist
   ///
   /// Request parameters:
   ///
@@ -1624,7 +1138,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -1646,11 +1161,11 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   /// Lists PerfSampleSeries for a given Step.
   ///
   /// The request provides an optional filter which specifies one or more
-  /// PerfMetricsType to include in the result; if none returns all. The
-  /// resulting PerfSampleSeries are sorted by ids.
+  /// PerfMetricsType to include in the result; if none returns all.
+  /// The resulting PerfSampleSeries are sorted by ids.
   ///
-  /// May return any of the following canonical error codes: - NOT_FOUND - The
-  /// containing Step does not exist
+  /// May return any of the following canonical error codes:
+  /// - NOT_FOUND - The containing Step does not exist
   ///
   /// Request parameters:
   ///
@@ -1704,7 +1219,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -1724,22 +1240,151 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
+class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi(
-      commons.ApiRequester client)
-      : _requester = client;
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a batch of PerfSamples - a client can submit multiple batches of
-  /// Perf Samples through repeated calls to this method in order to split up a
-  /// large request payload - duplicates and existing timestamp entries will be
-  /// ignored. - the batch operation may partially succeed - the set of elements
-  /// successfully inserted is returned in the response (omits items which
-  /// already existed in the database).
+  /// Gets the Tool Results settings for a project.
   ///
-  /// May return any of the following canonical error codes: - NOT_FOUND - The
-  /// containing PerfSampleSeries does not exist
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read from project
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectSettings> getSettings(core.String projectId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/settings';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProjectSettings.fromJson(data));
+  }
+
+  /// Creates resources for settings which have not yet been set.
+  ///
+  /// Currently, this creates a single resource: a Google Cloud Storage bucket,
+  /// to be used as the default bucket for this project. The bucket is created
+  /// in an FTL-own storage project. Except for in rare cases, calling this
+  /// method in parallel from multiple clients will only create a single bucket.
+  /// In order to avoid unnecessary storage charges, the bucket is configured to
+  /// automatically delete objects older than 90 days.
+  ///
+  /// The bucket is created with the following permissions:
+  /// - Owner access for owners of central storage project (FTL-owned)
+  /// - Writer access for owners/editors of customer project
+  /// - Reader access for viewers of customer project
+  /// The default ACL on objects created in the bucket is:
+  /// - Owner access for owners of central storage project
+  /// - Reader access for owners/editors/viewers of customer project
+  /// See Google Cloud Storage documentation for more details.
+  ///
+  /// If there is already a default bucket set and the project can access the
+  /// bucket, this call does nothing. However, if the project doesn't have the
+  /// permission to access the bucket or the bucket is deleted, a new bucket
+  /// will be created.
+  ///
+  /// May return any canonical error codes, including the following:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - Any error code raised by Google Cloud Storage
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ProjectSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProjectSettings> initializeSettings(core.String projectId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':initializeSettings';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ProjectSettings.fromJson(data));
+  }
+}
+
+class SamplesResourceApi {
+  final commons.ApiRequester _requester;
+
+  SamplesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a batch of PerfSamples
+  /// - a client can submit multiple batches of Perf Samples through repeated
+  /// calls to this method in order to split up a large request payload
+  /// - duplicates and existing timestamp entries will be ignored.
+  /// - the batch operation may partially succeed
+  /// - the set of elements successfully inserted is returned in the response
+  /// (omits items which already existed in the database).
+  ///
+  /// May return any of the following canonical error codes:
+  /// - NOT_FOUND - The containing PerfSampleSeries does not exist
   ///
   /// [request] - The metadata request object.
   ///
@@ -1802,7 +1447,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -1823,16 +1469,17 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
         .then((data) => new BatchCreatePerfSamplesResponse.fromJson(data));
   }
 
-  /// Lists the Performance Samples of a given Sample Series - The list results
-  /// are sorted by timestamps ascending - The default page size is 500 samples;
-  /// and maximum size allowed 5000 - The response token indicates the last
-  /// returned PerfSample timestamp - When the results size exceeds the page
-  /// size, submit a subsequent request including the page token to return the
-  /// rest of the samples up to the page limit
+  /// Lists the Performance Samples of a given Sample Series
+  /// - The list results are sorted by timestamps ascending
+  /// - The default page size is 500 samples; and maximum size allowed 5000
+  /// - The response token indicates the last returned PerfSample timestamp
+  /// - When the results size exceeds the page size, submit a subsequent request
+  /// including the page token to return the rest of the samples up to the
+  /// page limit
   ///
-  /// May return any of the following canonical error codes: - OUT_OF_RANGE -
-  /// The specified request page_token is out of valid range - NOT_FOUND - The
-  /// containing PerfSampleSeries does not exist
+  /// May return any of the following canonical error codes:
+  /// - OUT_OF_RANGE - The specified request page_token is out of valid range
+  /// - NOT_FOUND - The containing PerfSampleSeries does not exist
   ///
   /// Request parameters:
   ///
@@ -1846,12 +1493,12 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   ///
   /// [sampleSeriesId] - A sample series id
   ///
-  /// [pageSize] - The default page size is 500 samples, and the maximum size is
-  /// 5000. If the page_size is greater than 5000, the effective page size will
-  /// be 5000
-  ///
   /// [pageToken] - Optional, the next_page_token returned in the previous
   /// response
+  ///
+  /// [pageSize] - The default page size is 500 samples, and the maximum size is
+  /// 5000. If
+  /// the page_size is greater than 5000, the effective page size will be 5000
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1869,8 +1516,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       core.String executionId,
       core.String stepId,
       core.String sampleSeriesId,
-      {core.int pageSize,
-      core.String pageToken,
+      {core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1894,17 +1541,18 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     if (sampleSeriesId == null) {
       throw new core.ArgumentError("Parameter sampleSeriesId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -1925,21 +1573,619 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
+class StepsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsTestCasesResourceApi(
-      commons.ApiRequester client)
-      : _requester = client;
+  StepsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets details of a Test Case for a Step. Experimental test cases API. Still
-  /// in active development.
+  /// Lists accessibility clusters for a given Step
   ///
   /// May return any of the following canonical error codes:
   ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing Test Case does not exist
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - FAILED_PRECONDITION - if an argument in the request happens to be
+  ///                         invalid; e.g. if the locale format is incorrect
+  /// - NOT_FOUND - if the containing Step does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A full resource name of the step.
+  /// For example, projects/my-project/histories/bh.1234567890abcdef/executions/
+  /// 1234567890123456789/steps/bs.1234567890abcdef
+  ///
+  /// Required.
+  /// Value must have pattern
+  /// "^projects/[^/]+/histories/[^/]+/executions/[^/]+/steps/[^/]+$".
+  ///
+  /// [locale] - The accepted format is the canonical Unicode format with hyphen
+  /// as a
+  /// delimiter. Language must be lowercase, Language Script - Capitalized,
+  /// Region - UPPERCASE.
+  /// See http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for
+  /// details.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListStepAccessibilityClustersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListStepAccessibilityClustersResponse> accessibilityClusters(
+      core.String name,
+      {core.String locale,
+      core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (locale != null) {
+      _queryParams["locale"] = [locale];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':accessibilityClusters';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new ListStepAccessibilityClustersResponse.fromJson(data));
+  }
+
+  /// Creates a Step.
+  ///
+  /// The returned Step will have the id set.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - FAILED_PRECONDITION - if the step is too large (more than 10Mib)
+  /// - NOT_FOUND - if the containing Execution does not exist
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. A Project id.
+  ///
+  /// [historyId] - Required. A History id.
+  ///
+  /// [executionId] - Required. An Execution id.
+  ///
+  /// [requestId] - A unique request ID for server to detect duplicated
+  /// requests.
+  /// For example, a UUID.
+  ///
+  /// Optional, but strongly recommended.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Step].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Step> create(Step request, core.String projectId,
+      core.String historyId, core.String executionId,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Step.fromJson(data));
+  }
+
+  /// Gets a Step.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the Step does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - A Execution id.
+  ///
+  /// Required.
+  ///
+  /// [stepId] - A Step id.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Step].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Step> get(core.String projectId, core.String historyId,
+      core.String executionId, core.String stepId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps/' +
+        commons.Escaper.ecapeVariable('$stepId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Step.fromJson(data));
+  }
+
+  /// Retrieves a PerfMetricsSummary.
+  ///
+  /// May return any of the following error code(s):
+  /// - NOT_FOUND - The specified PerfMetricsSummary does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The cloud project
+  ///
+  /// [historyId] - A tool results history ID.
+  ///
+  /// [executionId] - A tool results execution ID.
+  ///
+  /// [stepId] - A tool results step ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PerfMetricsSummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PerfMetricsSummary> getPerfMetricsSummary(core.String projectId,
+      core.String historyId, core.String executionId, core.String stepId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps/' +
+        commons.Escaper.ecapeVariable('$stepId') +
+        '/perfMetricsSummary';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new PerfMetricsSummary.fromJson(data));
+  }
+
+  /// Lists Steps for a given Execution.
+  ///
+  /// The steps are sorted by creation_time in descending order. The
+  /// step_id key will be used to order the steps with the same
+  /// creation_time.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to read project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - FAILED_PRECONDITION - if an argument in the request happens to be
+  ///                         invalid; e.g. if an attempt is made to list the
+  ///                         children of a nonexistent Step
+  /// - NOT_FOUND - if the containing Execution does not exist
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - A Execution id.
+  ///
+  /// Required.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  ///
+  /// Optional.
+  ///
+  /// [pageSize] - The maximum number of Steps to fetch.
+  ///
+  /// Default value: 25. The server will use this default if the field is not
+  /// set
+  /// or has a value of 0.
+  ///
+  /// Optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListStepsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListStepsResponse> list(
+      core.String projectId, core.String historyId, core.String executionId,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListStepsResponse.fromJson(data));
+  }
+
+  /// Updates an existing Step with the supplied partial entity.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - FAILED_PRECONDITION - if the requested state transition is illegal
+  ///                         (e.g try to upload a duplicate xml file), if the
+  ///                         updated step is too large (more than 10Mib)
+  /// - NOT_FOUND - if the containing Execution does not exist
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - A Execution id.
+  ///
+  /// Required.
+  ///
+  /// [stepId] - A Step id.
+  ///
+  /// Required.
+  ///
+  /// [requestId] - A unique request ID for server to detect duplicated
+  /// requests.
+  /// For example, a UUID.
+  ///
+  /// Optional, but strongly recommended.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Step].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Step> patch(Step request, core.String projectId,
+      core.String historyId, core.String executionId, core.String stepId,
+      {core.String requestId, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps/' +
+        commons.Escaper.ecapeVariable('$stepId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Step.fromJson(data));
+  }
+
+  /// Publish xml files to an existing Step.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - FAILED_PRECONDITION - if the requested state transition is illegal,
+  /// e.g try to upload a duplicate xml file or a file too large.
+  /// - NOT_FOUND - if the containing Execution does not exist
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - A Project id.
+  ///
+  /// Required.
+  ///
+  /// [historyId] - A History id.
+  ///
+  /// Required.
+  ///
+  /// [executionId] - A Execution id.
+  ///
+  /// Required.
+  ///
+  /// [stepId] - A Step id.
+  /// Note: This step must include a TestExecutionStep.
+  ///
+  /// Required.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Step].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Step> publishXunitXmlFiles(
+      PublishXunitXmlFilesRequest request,
+      core.String projectId,
+      core.String historyId,
+      core.String executionId,
+      core.String stepId,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (historyId == null) {
+      throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if (executionId == null) {
+      throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if (stepId == null) {
+      throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/histories/' +
+        commons.Escaper.ecapeVariable('$historyId') +
+        '/executions/' +
+        commons.Escaper.ecapeVariable('$executionId') +
+        '/steps/' +
+        commons.Escaper.ecapeVariable('$stepId') +
+        ':publishXunitXmlFiles';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Step.fromJson(data));
+  }
+}
+
+class TestCasesResourceApi {
+  final commons.ApiRequester _requester;
+
+  TestCasesResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets details of a Test Case for a Step.
+  /// Experimental test cases API. Still in active development.
+  ///
+  /// May return any of the following canonical error codes:
+  ///
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the containing Test Case does not exist
   ///
   /// Request parameters:
   ///
@@ -1955,7 +2201,8 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   ///
   /// Required.
   ///
-  /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
+  /// [stepId] - A Step id.
+  /// Note: This step must include a TestExecutionStep.
   ///
   /// Required.
   ///
@@ -2002,7 +2249,8 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -2021,14 +2269,14 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
     return _response.then((data) => new TestCase.fromJson(data));
   }
 
-  /// Lists Test Cases attached to a Step. Experimental test cases API. Still in
-  /// active development.
+  /// Lists Test Cases attached to a Step.
+  /// Experimental test cases API. Still in active development.
   ///
   /// May return any of the following canonical error codes:
   ///
-  /// - PERMISSION_DENIED - if the user is not authorized to write to project -
-  /// INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the
-  /// containing Step does not exist
+  /// - PERMISSION_DENIED - if the user is not authorized to write to project
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the containing Step does not exist
   ///
   /// Request parameters:
   ///
@@ -2044,18 +2292,19 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   ///
   /// Required.
   ///
-  /// [stepId] - A Step id. Note: This step must include a TestExecutionStep.
+  /// [stepId] - A Step id.
+  /// Note: This step must include a TestExecutionStep.
   ///
   /// Required.
+  ///
+  /// [pageToken] - A continuation token to resume the query at the next item.
+  ///
+  /// Optional.
   ///
   /// [pageSize] - The maximum number of TestCases to fetch.
   ///
   /// Default value: 100. The server will use this default if the field is not
   /// set or has a value of 0.
-  ///
-  /// Optional.
-  ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
   ///
   /// Optional.
   ///
@@ -2071,7 +2320,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListTestCasesResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2091,17 +2340,18 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -2120,19 +2370,19 @@ class ProjectsHistoriesExecutionsStepsTestCasesResourceApi {
   }
 }
 
-class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
+class ThumbnailsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsHistoriesExecutionsStepsThumbnailsResourceApi(
-      commons.ApiRequester client)
-      : _requester = client;
+  ThumbnailsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Lists thumbnails of images attached to a step.
   ///
-  /// May return any of the following canonical error codes: - PERMISSION_DENIED
-  /// - if the user is not authorized to read from the project, or from any of
-  /// the images - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND -
-  /// if the step does not exist, or if any of the images do not exist
+  /// May return any of the following canonical error codes:
+  /// - PERMISSION_DENIED - if the user is not authorized to read from the
+  ///                       project, or from any of the images
+  /// - INVALID_ARGUMENT - if the request is malformed
+  /// - NOT_FOUND - if the step does not exist, or if any of the images
+  ///               do not exist
   ///
   /// Request parameters:
   ///
@@ -2152,14 +2402,15 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   ///
   /// Required.
   ///
-  /// [pageSize] - The maximum number of thumbnails to fetch.
-  ///
-  /// Default value: 50. The server will use this default if the field is not
-  /// set or has a value of 0.
+  /// [pageToken] - A continuation token to resume the query at the next item.
   ///
   /// Optional.
   ///
-  /// [pageToken] - A continuation token to resume the query at the next item.
+  /// [pageSize] - The maximum number of thumbnails to fetch.
+  ///
+  /// Default value: 50. The server will use this default if the field is not
+  /// set
+  /// or has a value of 0.
   ///
   /// Optional.
   ///
@@ -2175,7 +2426,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStepThumbnailsResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2195,17 +2446,18 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$projectId') +
+    _url = 'toolresults/v1beta3/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions/' +
@@ -2225,18 +2477,46 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   }
 }
 
+/// Additional details for an ANR crash.
+class ANR {
+  /// The stack trace of the ANR crash.
+  /// Optional.
+  StackTrace stackTrace;
+
+  ANR();
+
+  ANR.fromJson(core.Map _json) {
+    if (_json.containsKey("stackTrace")) {
+      stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stackTrace != null) {
+      _json["stackTrace"] = (stackTrace).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Android app information.
 class AndroidAppInfo {
-  /// The name of the app. Optional
+  /// The name of the app.
+  /// Optional
   core.String name;
 
-  /// The package name of the app. Required.
+  /// The package name of the app.
+  /// Required.
   core.String packageName;
 
-  /// The internal version code of the app. Optional.
+  /// The internal version code of the app.
+  /// Optional.
   core.String versionCode;
 
-  /// The version name of the app. Optional.
+  /// The version name of the app.
+  /// Optional.
   core.String versionName;
 
   AndroidAppInfo();
@@ -2278,17 +2558,22 @@ class AndroidAppInfo {
 /// A test of an Android application that can control an Android component
 /// independently of its normal lifecycle.
 ///
-/// See  for more information on types of Android tests.
+/// See <http://developer.android.com/tools/testing/testing_android.html> for
+/// more information on types of Android tests.
 class AndroidInstrumentationTest {
-  /// The java package for the test to be executed. Required
+  /// The java package for the test to be executed.
+  /// Required
   core.String testPackageId;
 
-  /// The InstrumentationTestRunner class. Required
+  /// The InstrumentationTestRunner class.
+  /// Required
   core.String testRunnerClass;
 
   /// Each target must be fully qualified with the package name or class name,
-  /// in one of these formats: - "package package_name" - "class
-  /// package_name.class_name" - "class package_name.class_name#method_name"
+  /// in one of these formats:
+  ///  - "package package_name"
+  ///  - "class package_name.class_name"
+  ///  - "class package_name.class_name#method_name"
   ///
   /// If empty, all targets in the module will be run.
   core.List<core.String> testTargets;
@@ -2336,19 +2621,24 @@ class AndroidInstrumentationTest {
 /// A test of an android application that explores the application on a virtual
 /// or physical Android device, finding culprits and crashes as it goes.
 class AndroidRoboTest {
-  /// The initial activity that should be used to start the app. Optional
+  /// The initial activity that should be used to start the app.
+  /// Optional
   core.String appInitialActivity;
 
-  /// The java package for the bootstrap. Optional
+  /// The java package for the bootstrap.
+  /// Optional
   core.String bootstrapPackageId;
 
-  /// The runner class for the bootstrap. Optional
+  /// The runner class for the bootstrap.
+  /// Optional
   core.String bootstrapRunnerClass;
 
-  /// The max depth of the traversal stack Robo can explore. Optional
+  /// The max depth of the traversal stack Robo can explore.
+  /// Optional
   core.int maxDepth;
 
-  /// The max number of steps/actions Robo can execute. Default is no limit (0).
+  /// The max number of steps/actions Robo can execute.
+  /// Default is no limit (0).
   /// Optional
   core.int maxSteps;
 
@@ -2405,7 +2695,11 @@ class AndroidTest {
   /// An Android robo test.
   AndroidRoboTest androidRoboTest;
 
-  /// Max time a test is allowed to run before it is automatically cancelled.
+  /// An Android test loop.
+  AndroidTestLoop androidTestLoop;
+
+  /// Max time a test is allowed to run before it is
+  /// automatically cancelled.
   Duration testTimeout;
 
   AndroidTest();
@@ -2420,6 +2714,9 @@ class AndroidTest {
     }
     if (_json.containsKey("androidRoboTest")) {
       androidRoboTest = new AndroidRoboTest.fromJson(_json["androidRoboTest"]);
+    }
+    if (_json.containsKey("androidTestLoop")) {
+      androidTestLoop = new AndroidTestLoop.fromJson(_json["androidTestLoop"]);
     }
     if (_json.containsKey("testTimeout")) {
       testTimeout = new Duration.fromJson(_json["testTimeout"]);
@@ -2439,6 +2736,9 @@ class AndroidTest {
     if (androidRoboTest != null) {
       _json["androidRoboTest"] = (androidRoboTest).toJson();
     }
+    if (androidTestLoop != null) {
+      _json["androidTestLoop"] = (androidTestLoop).toJson();
+    }
     if (testTimeout != null) {
       _json["testTimeout"] = (testTimeout).toJson();
     }
@@ -2446,81 +2746,128 @@ class AndroidTest {
   }
 }
 
+/// Test Loops are tests that can be launched by the app itself, determining
+/// when to run by listening for an intent. go/ftl-games-dd
+class AndroidTestLoop {
+  AndroidTestLoop();
+
+  AndroidTestLoop.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+///
 /// `Any` contains an arbitrary serialized protocol buffer message along with a
 /// URL that describes the type of the serialized message.
 ///
-/// Protobuf library provides support to pack/unpack Any values in the form of
-/// utility functions or additional generated methods of the Any type.
+/// Protobuf library provides support to pack/unpack Any values in the form
+/// of utility functions or additional generated methods of the Any type.
 ///
 /// Example 1: Pack and unpack a message in C++.
 ///
-/// Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ...
-/// }
+///     Foo foo = ...;
+///     Any any;
+///     any.PackFrom(foo);
+///     ...
+///     if (any.UnpackTo(&foo)) {
+///       ...
+///     }
 ///
 /// Example 2: Pack and unpack a message in Java.
 ///
-/// Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo =
-/// any.unpack(Foo.class); }
+///     Foo foo = ...;
+///     Any any = Any.pack(foo);
+///     ...
+///     if (any.is(Foo.class)) {
+///       foo = any.unpack(Foo.class);
+///     }
 ///
-/// Example 3: Pack and unpack a message in Python.
+///  Example 3: Pack and unpack a message in Python.
 ///
-/// foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR):
-/// any.Unpack(foo) ...
+///     foo = Foo(...)
+///     any = Any()
+///     any.Pack(foo)
+///     ...
+///     if any.Is(Foo.DESCRIPTOR):
+///       any.Unpack(foo)
+///       ...
 ///
-/// Example 4: Pack and unpack a message in Go
+///  Example 4: Pack and unpack a message in Go
 ///
-/// foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{}
-/// if err := ptypes.UnmarshalAny(any, foo); err != nil { ... }
+///      foo := &pb.Foo{...}
+///      any, err := ptypes.MarshalAny(foo)
+///      ...
+///      foo := &pb.Foo{}
+///      if err := ptypes.UnmarshalAny(any, foo); err != nil {
+///        ...
+///      }
 ///
 /// The pack methods provided by protobuf library will by default use
-/// 'type.googleapis.com/full.type.name' as the type URL and the unpack methods
-/// only use the fully qualified type name after the last '/' in the type URL,
-/// for example "foo.bar.com/x/y.z" will yield type name "y.z".
+/// 'type.googleapis.com/full.type.name' as the type URL and the unpack
+/// methods only use the fully qualified type name after the last '/'
+/// in the type URL, for example "foo.bar.com/x/y.z" will yield type
+/// name "y.z".
 ///
 ///
+/// # JSON
 ///
-/// JSON ==== The JSON representation of an `Any` value uses the regular
-/// representation of the deserialized, embedded message, with an additional
-/// field `@type` which contains the type URL. Example:
+/// The JSON representation of an `Any` value uses the regular
+/// representation of the deserialized, embedded message, with an
+/// additional field `@type` which contains the type URL. Example:
 ///
-/// package google.profile; message Person { string first_name = 1; string
-/// last_name = 2; }
+///     package google.profile;
+///     message Person {
+///       string first_name = 1;
+///       string last_name = 2;
+///     }
 ///
-/// { "@type": "type.googleapis.com/google.profile.Person", "firstName": ,
-/// "lastName":  }
+///     {
+///       "@type": "type.googleapis.com/google.profile.Person",
+///       "firstName": <string>,
+///       "lastName": <string>
+///     }
 ///
 /// If the embedded message type is well-known and has a custom JSON
-/// representation, that representation will be embedded adding a field `value`
-/// which holds the custom JSON in addition to the `@type` field. Example (for
-/// message [google.protobuf.Duration][]):
+/// representation, that representation will be embedded adding a field
+/// `value` which holds the custom JSON in addition to the `@type`
+/// field. Example (for message google.protobuf.Duration):
 ///
-/// { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s"
-/// }
+///     {
+///       "@type": "type.googleapis.com/google.protobuf.Duration",
+///       "value": "1.212s"
+///     }
 class Any {
   /// A URL/resource name that uniquely identifies the type of the serialized
-  /// protocol buffer message. This string must contain at least one "/"
-  /// character. The last segment of the URL's path must represent the fully
-  /// qualified name of the type (as in `path/google.protobuf.Duration`). The
-  /// name should be in a canonical form (e.g., leading "." is not accepted).
+  /// protocol buffer message. This string must contain at least
+  /// one "/" character. The last segment of the URL's path must represent
+  /// the fully qualified name of the type (as in
+  /// `path/google.protobuf.Duration`). The name should be in a canonical form
+  /// (e.g., leading "." is not accepted).
   ///
   /// In practice, teams usually precompile into the binary all types that they
   /// expect it to use in the context of Any. However, for URLs which use the
   /// scheme `http`, `https`, or no scheme, one can optionally set up a type
   /// server that maps type URLs to message definitions as follows:
   ///
-  /// * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL
-  /// must yield a [google.protobuf.Type][] value in binary format, or produce
-  /// an error. * Applications are allowed to cache lookup results based on the
-  /// URL, or have them precompiled into a binary to avoid any lookup.
-  /// Therefore, binary compatibility needs to be preserved on changes to types.
-  /// (Use versioned type names to manage breaking changes.)
+  /// * If no scheme is provided, `https` is assumed.
+  /// * An HTTP GET on the URL must yield a google.protobuf.Type
+  ///   value in binary format, or produce an error.
+  /// * Applications are allowed to cache lookup results based on the
+  ///   URL, or have them precompiled into a binary to avoid any
+  ///   lookup. Therefore, binary compatibility needs to be preserved
+  ///   on changes to types. (Use versioned type names to manage
+  ///   breaking changes.)
   ///
   /// Note: this functionality is not currently available in the official
   /// protobuf release, and it is not used for type URLs beginning with
   /// type.googleapis.com.
   ///
-  /// Schemes other than `http`, `https` (or the empty scheme) might be used
-  /// with implementation specific semantics.
+  /// Schemes other than `http`, `https` (or the empty scheme) might be
+  /// used with implementation specific semantics.
   core.String typeUrl;
 
   /// Must be a valid serialized protocol buffer of the above specified type.
@@ -2565,8 +2912,8 @@ class AppStartTime {
   /// https://developer.android.com/topic/performance/launch-time.html#time-full
   Duration fullyDrawnTime;
 
-  /// The time from app start to the first displayed activity being drawn, as
-  /// reported in Logcat. See
+  /// The time from app start to the first displayed activity being drawn,
+  /// as reported in Logcat. See
   /// https://developer.android.com/topic/performance/launch-time.html#time-initial
   Duration initialDisplayTime;
 
@@ -2594,43 +2941,56 @@ class AppStartTime {
   }
 }
 
+/// A suggestion to use deep links for a Robo run.
+class AvailableDeepLinks {
+  AvailableDeepLinks();
+
+  AvailableDeepLinks.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Encapsulates the metadata for basic sample series represented by a line
 /// chart
 class BasicPerfSampleSeries {
   ///
   /// Possible string values are:
-  /// - "cpu"
-  /// - "graphics"
-  /// - "memory"
-  /// - "network"
-  /// - "perfMetricTypeUnspecified"
+  /// - "PERF_METRIC_TYPE_UNSPECIFIED"
+  /// - "MEMORY"
+  /// - "CPU"
+  /// - "NETWORK"
+  /// - "GRAPHICS"
   core.String perfMetricType;
 
   ///
   /// Possible string values are:
-  /// - "byte"
-  /// - "bytesPerSecond"
-  /// - "framesPerSecond"
-  /// - "kibibyte"
-  /// - "percent"
-  /// - "perfUnitUnspecified"
+  /// - "PERF_UNIT_UNSPECIFIED"
+  /// - "KIBIBYTE"
+  /// - "PERCENT"
+  /// - "BYTES_PER_SECOND"
+  /// - "FRAMES_PER_SECOND"
+  /// - "BYTE"
   core.String perfUnit;
 
   ///
   /// Possible string values are:
-  /// - "cpuKernel"
-  /// - "cpuTotal"
-  /// - "cpuUser"
-  /// - "graphicsFrameRate"
-  /// - "memoryRssPrivate"
-  /// - "memoryRssShared"
-  /// - "memoryRssTotal"
-  /// - "memoryTotal"
-  /// - "networkReceived"
-  /// - "networkSent"
-  /// - "ntBytesReceived"
-  /// - "ntBytesTransferred"
-  /// - "sampleSeriesTypeUnspecified"
+  /// - "SAMPLE_SERIES_TYPE_UNSPECIFIED"
+  /// - "MEMORY_RSS_PRIVATE" : Memory sample series
+  /// - "MEMORY_RSS_SHARED"
+  /// - "MEMORY_RSS_TOTAL"
+  /// - "MEMORY_TOTAL"
+  /// - "CPU_USER" : CPU sample series
+  /// - "CPU_KERNEL"
+  /// - "CPU_TOTAL"
+  /// - "NT_BYTES_TRANSFERRED" : Network sample series
+  /// - "NT_BYTES_RECEIVED"
+  /// - "NETWORK_SENT"
+  /// - "NETWORK_RECEIVED"
+  /// - "GRAPHICS_FRAME_RATE" : Graphics sample series
   core.String sampleSeriesLabel;
 
   BasicPerfSampleSeries();
@@ -2663,8 +3023,8 @@ class BasicPerfSampleSeries {
   }
 }
 
-/// The request must provide up to a maximum of 5000 samples to be created; a
-/// larger sample size will cause an INVALID_ARGUMENT error
+/// The request must provide up to a maximum of 5000 samples to be
+/// created; a larger sample size will cause an INVALID_ARGUMENT error
 class BatchCreatePerfSamplesRequest {
   /// The set of PerfSamples to create should not include existing timestamps
   core.List<PerfSample> perfSamples;
@@ -2714,6 +3074,30 @@ class BatchCreatePerfSamplesResponse {
   }
 }
 
+/// A warning that Robo encountered a screen that was mostly blank; this may
+/// indicate a problem with the app.
+class BlankScreen {
+  /// The screen id of the element
+  core.String screenId;
+
+  BlankScreen();
+
+  BlankScreen.fromJson(core.Map _json) {
+    if (_json.containsKey("screenId")) {
+      screenId = _json["screenId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (screenId != null) {
+      _json["screenId"] = screenId;
+    }
+    return _json;
+  }
+}
+
 class CPUInfo {
   /// description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
   core.String cpuProcessor;
@@ -2754,60 +3138,48 @@ class CPUInfo {
   }
 }
 
-/// A Duration represents a signed, fixed-length span of time represented as a
-/// count of seconds and fractions of seconds at nanosecond resolution. It is
-/// independent of any calendar and concepts like "day" or "month". It is
-/// related to Timestamp in that the difference between two Timestamp values is
-/// a Duration and it can be added or subtracted from a Timestamp. Range is
-/// approximately +-10,000 years.
+/// Crash dialog was detected during the test execution
+class CrashDialogError {
+  /// The name of the package that caused the dialog.
+  core.String crashPackage;
+
+  CrashDialogError();
+
+  CrashDialogError.fromJson(core.Map _json) {
+    if (_json.containsKey("crashPackage")) {
+      crashPackage = _json["crashPackage"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (crashPackage != null) {
+      _json["crashPackage"] = crashPackage;
+    }
+    return _json;
+  }
+}
+
 ///
-/// # Examples
-///
-/// Example 1: Compute Duration from two Timestamps in pseudo code.
-///
-/// Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-///
-/// duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-/// start.nanos;
-///
-/// if (duration.seconds  0) { duration.seconds += 1; duration.nanos -=
-/// 1000000000; } else if (durations.seconds > 0 && duration.nanos < 0) {
-/// duration.seconds -= 1; duration.nanos += 1000000000; }
-///
-/// Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-///
-/// Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-///
-/// end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-/// duration.nanos;
-///
-/// if (end.nanos = 1000000000) { end.seconds += 1; end.nanos -= 1000000000; }
-///
-/// Example 3: Compute Duration from datetime.timedelta in Python.
-///
-/// td = datetime.timedelta(days=3, minutes=10) duration = Duration()
-/// duration.FromTimedelta(td)
-///
-/// # JSON Mapping
-///
-/// In JSON format, the Duration type is encoded as a string rather than an
-/// object, where the string ends in the suffix "s" (indicating seconds) and is
-/// preceded by the number of seconds, with nanoseconds expressed as fractional
-/// seconds. For example, 3 seconds with 0 nanoseconds should be encoded in JSON
-/// format as "3s", while 3 seconds and 1 nanosecond should be expressed in JSON
-/// format as "3.000000001s", and 3 seconds and 1 microsecond should be
-/// expressed in JSON format as "3.000001s".
+/// A Duration represents a signed, fixed-length span of time represented
+/// as a count of seconds and fractions of seconds at nanosecond
+/// resolution. It is independent of any calendar and concepts like "day"
+/// or "month". It is related to Timestamp in that the difference between
+/// two Timestamp values is a Duration and it can be added or subtracted
+/// from a Timestamp. Range is approximately +-10,000 years.
 class Duration {
-  /// Signed fractions of a second at nanosecond resolution of the span of time.
-  /// Durations less than one second are represented with a 0 `seconds` field
-  /// and a positive or negative `nanos` field. For durations of one second or
-  /// more, a non-zero value for the `nanos` field must be of the same sign as
-  /// the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
+  /// Signed fractions of a second at nanosecond resolution of the span
+  /// of time. Durations less than one second are represented with a 0
+  /// `seconds` field and a positive or negative `nanos` field. For durations
+  /// of one second or more, a non-zero value for the `nanos` field must be
+  /// of the same sign as the `seconds` field. Must be from -999,999,999
+  /// to +999,999,999 inclusive.
   core.int nanos;
 
-  /// Signed seconds of the span of time. Must be from -315,576,000,000 to
-  /// +315,576,000,000 inclusive. Note: these bounds are computed from: 60
-  /// sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+  /// Signed seconds of the span of time. Must be from -315,576,000,000
+  /// to +315,576,000,000 inclusive. Note: these bounds are computed from:
+  /// 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
   core.String seconds;
 
   Duration();
@@ -2834,9 +3206,241 @@ class Duration {
   }
 }
 
+/// Additional details about encountered login screens.
+class EncounteredLoginScreen {
+  /// Number of encountered distinct login screens.
+  core.int distinctScreens;
+
+  /// Subset of login screens.
+  core.List<core.String> screenIds;
+
+  EncounteredLoginScreen();
+
+  EncounteredLoginScreen.fromJson(core.Map _json) {
+    if (_json.containsKey("distinctScreens")) {
+      distinctScreens = _json["distinctScreens"];
+    }
+    if (_json.containsKey("screenIds")) {
+      screenIds = (_json["screenIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (distinctScreens != null) {
+      _json["distinctScreens"] = distinctScreens;
+    }
+    if (screenIds != null) {
+      _json["screenIds"] = screenIds;
+    }
+    return _json;
+  }
+}
+
+/// Additional details about encountered screens with elements that are not
+/// Android UI widgets.
+class EncounteredNonAndroidUiWidgetScreen {
+  /// Number of encountered distinct screens with non Android UI widgets.
+  core.int distinctScreens;
+
+  /// Subset of screens which contain non Android UI widgets.
+  core.List<core.String> screenIds;
+
+  EncounteredNonAndroidUiWidgetScreen();
+
+  EncounteredNonAndroidUiWidgetScreen.fromJson(core.Map _json) {
+    if (_json.containsKey("distinctScreens")) {
+      distinctScreens = _json["distinctScreens"];
+    }
+    if (_json.containsKey("screenIds")) {
+      screenIds = (_json["screenIds"] as core.List).cast<core.String>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (distinctScreens != null) {
+      _json["distinctScreens"] = distinctScreens;
+    }
+    if (screenIds != null) {
+      _json["screenIds"] = screenIds;
+    }
+    return _json;
+  }
+}
+
+/// An Environment represents the set of test runs (Steps) from the parent
+/// Execution that are configured with the same set of dimensions (Model,
+/// Version, Locale, and Orientation). Multiple such runs occur particularly
+/// because of features like sharding (splitting up a test suite to run in
+/// parallel across devices) and reruns (running a test multiple times to check
+/// for different outcomes).
+class Environment {
+  /// Output only. The time when the Environment status was set to complete.
+  ///
+  /// This value will be set automatically when state transitions to
+  /// COMPLETE.
+  Timestamp completionTime;
+
+  /// Output only. The time when the Environment was created.
+  Timestamp creationTime;
+
+  /// Dimension values describing the environment. Dimension values always
+  /// consist of "Model", "Version", "Locale", and "Orientation".
+  ///
+  /// - In response: always set
+  /// - In create request: always set
+  /// - In update request: never set
+  core.List<EnvironmentDimensionValueEntry> dimensionValue;
+
+  /// A short human-readable name to display in the UI.
+  /// Maximum of 100 characters.
+  /// For example: Nexus 5, API 27.
+  core.String displayName;
+
+  /// Output only. An Environment id.
+  core.String environmentId;
+
+  /// Merged result of the environment.
+  MergedResult environmentResult;
+
+  /// Output only. An Execution id.
+  core.String executionId;
+
+  /// Output only. A History id.
+  core.String historyId;
+
+  /// Output only. A Project id.
+  core.String projectId;
+
+  /// The location where output files are stored in the user bucket.
+  ResultsStorage resultsStorage;
+
+  /// Output only. Summaries of shards.
+  ///
+  /// Only one shard will present unless sharding feature is enabled in
+  /// TestExecutionService.
+  core.List<ShardSummary> shardSummaries;
+
+  Environment();
+
+  Environment.fromJson(core.Map _json) {
+    if (_json.containsKey("completionTime")) {
+      completionTime = new Timestamp.fromJson(_json["completionTime"]);
+    }
+    if (_json.containsKey("creationTime")) {
+      creationTime = new Timestamp.fromJson(_json["creationTime"]);
+    }
+    if (_json.containsKey("dimensionValue")) {
+      dimensionValue = (_json["dimensionValue"] as core.List)
+          .map<EnvironmentDimensionValueEntry>(
+              (value) => new EnvironmentDimensionValueEntry.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("environmentId")) {
+      environmentId = _json["environmentId"];
+    }
+    if (_json.containsKey("environmentResult")) {
+      environmentResult = new MergedResult.fromJson(_json["environmentResult"]);
+    }
+    if (_json.containsKey("executionId")) {
+      executionId = _json["executionId"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+    if (_json.containsKey("resultsStorage")) {
+      resultsStorage = new ResultsStorage.fromJson(_json["resultsStorage"]);
+    }
+    if (_json.containsKey("shardSummaries")) {
+      shardSummaries = (_json["shardSummaries"] as core.List)
+          .map<ShardSummary>((value) => new ShardSummary.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (completionTime != null) {
+      _json["completionTime"] = (completionTime).toJson();
+    }
+    if (creationTime != null) {
+      _json["creationTime"] = (creationTime).toJson();
+    }
+    if (dimensionValue != null) {
+      _json["dimensionValue"] =
+          dimensionValue.map((value) => (value).toJson()).toList();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (environmentId != null) {
+      _json["environmentId"] = environmentId;
+    }
+    if (environmentResult != null) {
+      _json["environmentResult"] = (environmentResult).toJson();
+    }
+    if (executionId != null) {
+      _json["executionId"] = executionId;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    if (resultsStorage != null) {
+      _json["resultsStorage"] = (resultsStorage).toJson();
+    }
+    if (shardSummaries != null) {
+      _json["shardSummaries"] =
+          shardSummaries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class EnvironmentDimensionValueEntry {
+  core.String key;
+  core.String value;
+
+  EnvironmentDimensionValueEntry();
+
+  EnvironmentDimensionValueEntry.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
 /// An Execution represents a collection of Steps. For instance, it could
-/// represent: - a mobile test executed across a range of device configurations
-/// - a jenkins job with a build step followed by a test step
+/// represent:
+///    - a mobile test executed across a range of device configurations
+///    - a jenkins job with a build step followed by a test step
 ///
 /// The maximum size of an execution message is 1 MiB.
 ///
@@ -2845,37 +3449,56 @@ class Duration {
 class Execution {
   /// The time when the Execution status transitioned to COMPLETE.
   ///
-  /// This value will be set automatically when state transitions to COMPLETE.
+  /// This value will be set automatically when state transitions to
+  /// COMPLETE.
   ///
-  /// - In response: set if the execution state is COMPLETE. - In create/update
-  /// request: never set
+  /// - In response: set if the execution state is COMPLETE.
+  /// - In create/update request: never set
   Timestamp completionTime;
 
   /// The time when the Execution was created.
   ///
   /// This value will be set automatically when CreateExecution is called.
   ///
-  /// - In response: always set - In create/update request: never set
+  /// - In response: always set
+  /// - In create/update request: never set
   Timestamp creationTime;
+
+  /// The dimensions along which different steps in this execution may vary.
+  /// This must remain fixed over the life of the execution.
+  ///
+  /// Returns INVALID_ARGUMENT if this field is set in an update request.
+  ///
+  /// Returns INVALID_ARGUMENT if the same name occurs in more than one
+  /// dimension_definition.
+  ///
+  /// Returns INVALID_ARGUMENT if the size of the list is over 100.
+  ///
+  /// - In response: present if set by create
+  /// - In create request: optional
+  /// - In update request: never set
+  core.List<MatrixDimensionDefinition> dimensionDefinitions;
 
   /// A unique identifier within a History for this Execution.
   ///
   /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
   /// caller.
   ///
-  /// - In response always set - In create/update request: never set
+  /// - In response always set
+  /// - In create/update request: never set
   core.String executionId;
 
   /// Classify the result, for example into SUCCESS or FAILURE
   ///
-  /// - In response: present if set by create/update request - In create/update
-  /// request: optional
+  /// - In response: present if set by create/update request
+  /// - In create/update request: optional
   Outcome outcome;
 
   /// Lightweight information about execution request.
   ///
-  /// - In response: present if set by create - In create: optional - In update:
-  /// optional
+  /// - In response: present if set by create
+  /// - In create: optional
+  /// - In update: optional
   Specification specification;
 
   /// The initial state is IN_PROGRESS.
@@ -2892,18 +3515,27 @@ class Execution {
   /// execution will be set as COMPLETE. If the outcome of the step is not set,
   /// the outcome will be set to INCONCLUSIVE.
   ///
-  /// - In response always set - In create/update request: optional
+  /// - In response always set
+  /// - In create/update request: optional
   /// Possible string values are:
-  /// - "complete"
-  /// - "inProgress"
-  /// - "pending"
-  /// - "unknownState"
+  /// - "UNKNOWN_STATE" : Should never be in this state. Exists for proto
+  /// deserialization backward
+  /// compatibility.
+  /// - "PENDING" : The Execution/Step is created, ready to run, but not running
+  /// yet.
+  /// If an Execution/Step is created without initial state, it is assumed
+  /// that the Execution/Step is in PENDING state.
+  /// - "IN_PROGRESS" : The Execution/Step is in progress.
+  /// - "COMPLETE" : The finalized, immutable state. Steps/Executions in this
+  /// state cannot be
+  /// modified.
   core.String state;
 
   /// TestExecution Matrix ID that the TestExecutionService uses.
   ///
-  /// - In response: present if set by create - In create: optional - In update:
-  /// never set
+  /// - In response: present if set by create
+  /// - In create: optional
+  /// - In update: never set
   core.String testExecutionMatrixId;
 
   Execution();
@@ -2914,6 +3546,12 @@ class Execution {
     }
     if (_json.containsKey("creationTime")) {
       creationTime = new Timestamp.fromJson(_json["creationTime"]);
+    }
+    if (_json.containsKey("dimensionDefinitions")) {
+      dimensionDefinitions = (_json["dimensionDefinitions"] as core.List)
+          .map<MatrixDimensionDefinition>(
+              (value) => new MatrixDimensionDefinition.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("executionId")) {
       executionId = _json["executionId"];
@@ -2941,6 +3579,10 @@ class Execution {
     if (creationTime != null) {
       _json["creationTime"] = (creationTime).toJson();
     }
+    if (dimensionDefinitions != null) {
+      _json["dimensionDefinitions"] =
+          dimensionDefinitions.map((value) => (value).toJson()).toList();
+    }
     if (executionId != null) {
       _json["executionId"] = executionId;
     }
@@ -2960,13 +3602,26 @@ class Execution {
   }
 }
 
+/// Failed to install the APK.
+class FailedToInstall {
+  FailedToInstall();
+
+  FailedToInstall.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Details for an outcome with a FAILURE outcome summary.
 class FailureDetail {
   /// If the failure was severe because the system (app) under test crashed.
   core.bool crashed;
 
-  /// If an app is not installed and thus no test can be run with the app. This
-  /// might be caused by trying to run a test on an unsupported platform.
+  /// If an app is not installed and thus no test can be run with the app.
+  /// This might be caused by trying to run a test on an unsupported platform.
   core.bool notInstalled;
 
   /// If a native process (including any other than the app) crashed.
@@ -3021,18 +3676,44 @@ class FailureDetail {
   }
 }
 
+/// Additional details for a fatal exception.
+class FatalException {
+  /// The stack trace of the fatal exception.
+  /// Optional.
+  StackTrace stackTrace;
+
+  FatalException();
+
+  FatalException.fromJson(core.Map _json) {
+    if (_json.containsKey("stackTrace")) {
+      stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stackTrace != null) {
+      _json["stackTrace"] = (stackTrace).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A reference to a file.
 class FileReference {
   /// The URI of a file stored in Google Cloud Storage.
   ///
-  /// For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in
-  /// gsutil format: gs://mybucket/path/to/test.xml with version-specific info,
+  /// For example: http://storage.googleapis.com/mybucket/path/to/test.xml
+  /// or in gsutil format: gs://mybucket/path/to/test.xml
+  /// with version-specific info,
   /// gs://mybucket/path/to/test.xml#1360383693690000
   ///
   /// An INVALID_ARGUMENT error will be returned if the URI format is not
   /// supported.
   ///
-  /// - In response: always set - In create/update request: always set
+  /// - In response: always set
+  /// - In create/update request: always set
   core.String fileUri;
 
   FileReference();
@@ -3053,10 +3734,11 @@ class FileReference {
   }
 }
 
-/// Graphics statistics for the App. The information is collected from 'adb
-/// shell dumpsys graphicsstats'. For more info see:
-/// https://developer.android.com/training/testing/performance.html Statistics
-/// will only be present for API 23+.
+/// Graphics statistics for the App.
+/// The information is collected from 'adb shell dumpsys graphicsstats'.
+/// For more info see:
+/// https://developer.android.com/training/testing/performance.html
+/// Statistics will only be present for API 23+.
 class GraphicsStats {
   /// Histogram of frame render times. There should be 154 buckets ranging from
   /// [5ms, 6ms) to [4950ms, infinity)
@@ -3218,13 +3900,14 @@ class GraphicsStatsBucket {
 /// Executions of a continuous build.
 ///
 /// Note that the ordering only operates on one-dimension. If a repository has
-/// multiple branches, it means that multiple histories will need to be used in
-/// order to order Executions per branch.
+/// multiple branches, it means that multiple histories will need to be
+/// used in order to order Executions per branch.
 class History {
-  /// A short human-readable (plain text) name to display in the UI. Maximum of
-  /// 100 characters.
+  /// A short human-readable (plain text) name to display in the UI.
+  /// Maximum of 100 characters.
   ///
-  /// - In response: present if set during create. - In create request: optional
+  /// - In response: present if set during create.
+  /// - In create request: optional
   core.String displayName;
 
   /// A unique identifier within a project for this History.
@@ -3232,13 +3915,15 @@ class History {
   /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
   /// caller.
   ///
-  /// - In response always set - In create request: never set
+  /// - In response always set
+  /// - In create request: never set
   core.String historyId;
 
-  /// A name to uniquely identify a history within a project. Maximum of 200
-  /// characters.
+  /// A name to uniquely identify a history within a project.
+  /// Maximum of 200 characters.
   ///
-  /// - In response always set - In create request: always set
+  /// - In response always set
+  /// - In create request: always set
   core.String name;
 
   History();
@@ -3327,11 +4012,45 @@ class Image {
   }
 }
 
+/// Additional details of in-app purchases encountered during the crawl.
+class InAppPurchasesFound {
+  /// The total number of in-app purchases flows explored: how many times the
+  /// robo tries to buy a SKU.
+  core.int inAppPurchasesFlowsExplored;
+
+  /// The total number of in-app purchases flows started.
+  core.int inAppPurchasesFlowsStarted;
+
+  InAppPurchasesFound();
+
+  InAppPurchasesFound.fromJson(core.Map _json) {
+    if (_json.containsKey("inAppPurchasesFlowsExplored")) {
+      inAppPurchasesFlowsExplored = _json["inAppPurchasesFlowsExplored"];
+    }
+    if (_json.containsKey("inAppPurchasesFlowsStarted")) {
+      inAppPurchasesFlowsStarted = _json["inAppPurchasesFlowsStarted"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (inAppPurchasesFlowsExplored != null) {
+      _json["inAppPurchasesFlowsExplored"] = inAppPurchasesFlowsExplored;
+    }
+    if (inAppPurchasesFlowsStarted != null) {
+      _json["inAppPurchasesFlowsStarted"] = inAppPurchasesFlowsStarted;
+    }
+    return _json;
+  }
+}
+
 /// Details for an outcome with an INCONCLUSIVE outcome summary.
 class InconclusiveDetail {
   /// If the end user aborted the test execution before a pass or fail could be
-  /// determined. For example, the user pressed ctrl-c which sent a kill signal
-  /// to the test runner while the test was running.
+  /// determined.
+  /// For example, the user pressed ctrl-c which sent a kill signal to the test
+  /// runner while the test was running.
   core.bool abortedByUser;
 
   /// If results are being provided to the user in certain cases of
@@ -3378,18 +4097,30 @@ class InconclusiveDetail {
 /// Step Id and outcome of each individual step that was run as a group with
 /// other steps with the same configuration.
 class IndividualOutcome {
-  /// Unique int given to each step. Ranges from 0(inclusive) to total number of
-  /// steps(exclusive). The primary step is 0.
+  /// Unique int given to each step.
+  /// Ranges from 0(inclusive) to total number of steps(exclusive).
+  /// The primary step is 0.
   core.int multistepNumber;
 
   ///
   /// Possible string values are:
-  /// - "failure"
-  /// - "flaky"
-  /// - "inconclusive"
-  /// - "skipped"
-  /// - "success"
-  /// - "unset"
+  /// - "UNSET" : Do not use. For proto versioning only.
+  /// - "SUCCESS" : The test matrix run was successful, for instance:
+  /// - All the test cases passed.
+  /// - Robo did not detect a crash of the application under test.
+  /// - "FAILURE" : A run failed, for instance:
+  /// - One or more test case failed.
+  /// - A test timed out.
+  /// - The application under test crashed.
+  /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
+  /// considered
+  /// unsuccessful but this is likely a transient problem and re-running the
+  /// test might be successful.
+  /// - "SKIPPED" : All tests were skipped, for instance:
+  /// - All device configurations were incompatible.
+  /// - "FLAKY" : A group of steps that were run with the same configuration had
+  /// both
+  /// failure and success outcomes.
   core.String outcomeSummary;
 
   /// How long it took for this step to run.
@@ -3427,6 +4158,128 @@ class IndividualOutcome {
     }
     if (stepId != null) {
       _json["stepId"] = stepId;
+    }
+    return _json;
+  }
+}
+
+/// A warning that Robo did not crawl potentially important parts of the app.
+class InsufficientCoverage {
+  InsufficientCoverage();
+
+  InsufficientCoverage.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Additional details for an iOS app crash.
+class IosAppCrashed {
+  /// The stack trace, if one is available.
+  /// Optional.
+  StackTrace stackTrace;
+
+  IosAppCrashed();
+
+  IosAppCrashed.fromJson(core.Map _json) {
+    if (_json.containsKey("stackTrace")) {
+      stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stackTrace != null) {
+      _json["stackTrace"] = (stackTrace).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Failed to find the launcher activity of an app.
+class LauncherActivityNotFound {
+  LauncherActivityNotFound();
+
+  LauncherActivityNotFound.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response message for EnvironmentService.ListEnvironments.
+class ListEnvironmentsResponse {
+  /// Environments.
+  ///
+  /// Always set.
+  core.List<Environment> environments;
+
+  /// A Execution id
+  ///
+  /// Always set.
+  core.String executionId;
+
+  /// A History id.
+  ///
+  /// Always set.
+  core.String historyId;
+
+  /// A continuation token to resume the query at the next item.
+  ///
+  /// Will only be set if there are more Environments to fetch.
+  core.String nextPageToken;
+
+  /// A Project id.
+  ///
+  /// Always set.
+  core.String projectId;
+
+  ListEnvironmentsResponse();
+
+  ListEnvironmentsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("environments")) {
+      environments = (_json["environments"] as core.List)
+          .map<Environment>((value) => new Environment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("executionId")) {
+      executionId = _json["executionId"];
+    }
+    if (_json.containsKey("historyId")) {
+      historyId = _json["historyId"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (environments != null) {
+      _json["environments"] =
+          environments.map((value) => (value).toJson()).toList();
+    }
+    if (executionId != null) {
+      _json["executionId"] = executionId;
+    }
+    if (historyId != null) {
+      _json["historyId"] = historyId;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
     }
     return _json;
   }
@@ -3572,7 +4425,8 @@ class ListPerfSamplesResponse {
 }
 
 class ListScreenshotClustersResponse {
-  /// The set of clusters associated with an execution Always set
+  /// The set of clusters associated with an execution
+  /// Always set
   core.List<ScreenshotCluster> clusters;
 
   ListScreenshotClustersResponse();
@@ -3596,6 +4450,50 @@ class ListScreenshotClustersResponse {
   }
 }
 
+/// Response message for AccessibilityService.ListStepAccessibilityClusters.
+class ListStepAccessibilityClustersResponse {
+  /// A sequence of accessibility suggestions, grouped into clusters.
+  /// Within the sequence, clusters that belong to the same SuggestionCategory
+  /// should be adjacent.
+  /// Within each category, clusters should be ordered by their
+  /// SuggestionPriority (ERRORs first).
+  /// The categories should be ordered by their highest priority cluster.
+  core.List<SuggestionClusterProto> clusters;
+
+  /// A full resource name of the step.
+  /// For example, projects/my-project/histories/bh.1234567890abcdef/executions/
+  /// 1234567890123456789/steps/bs.1234567890abcdef
+  ///
+  /// Always presents.
+  core.String name;
+
+  ListStepAccessibilityClustersResponse();
+
+  ListStepAccessibilityClustersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("clusters")) {
+      clusters = (_json["clusters"] as core.List)
+          .map<SuggestionClusterProto>(
+              (value) => new SuggestionClusterProto.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clusters != null) {
+      _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
 /// A response containing the thumbnails in a step.
 class ListStepThumbnailsResponse {
   /// A continuation token to resume the query at the next item.
@@ -3607,11 +4505,14 @@ class ListStepThumbnailsResponse {
   /// A list of image data.
   ///
   /// Images are returned in a deterministic order; they are ordered by these
-  /// factors, in order of importance: * First, by their associated test case.
-  /// Images without a test case are considered greater than images with one. *
-  /// Second, by their creation time. Images without a creation time are greater
-  /// than images with one. * Third, by the order in which they were added to
-  /// the step (by calls to CreateStep or UpdateStep).
+  /// factors, in order of
+  /// importance:
+  /// * First, by their associated test case. Images without a test case are
+  ///   considered greater than images with one.
+  /// * Second, by their creation time. Images without a creation time are
+  ///   greater than images with one.
+  /// * Third, by the order in which they were added to the step (by calls to
+  ///   CreateStep or UpdateStep).
   core.List<Image> thumbnails;
 
   ListStepThumbnailsResponse();
@@ -3711,6 +4612,19 @@ class ListTestCasesResponse {
   }
 }
 
+/// One dimension of the matrix of different runs of a step.
+class MatrixDimensionDefinition {
+  MatrixDimensionDefinition();
+
+  MatrixDimensionDefinition.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 class MemoryInfo {
   /// Maximum memory that can be allocated to the process in KiB
   core.String memoryCapInKibibyte;
@@ -3742,10 +4656,86 @@ class MemoryInfo {
   }
 }
 
+/// Merged test result for environment.
+///
+/// If the environment has only one step (no reruns or shards), then the merged
+/// result is the same as the step result. If the environment has multiple
+/// shards
+/// and/or reruns, then the results of shards and reruns that belong to the same
+/// environment are merged into one environment result.
+class MergedResult {
+  /// Outcome of the resource
+  Outcome outcome;
+
+  /// State of the resource
+  /// Possible string values are:
+  /// - "UNKNOWN_STATE" : Should never be in this state. Exists for proto
+  /// deserialization backward
+  /// compatibility.
+  /// - "PENDING" : The Execution/Step is created, ready to run, but not running
+  /// yet.
+  /// If an Execution/Step is created without initial state, it is assumed
+  /// that the Execution/Step is in PENDING state.
+  /// - "IN_PROGRESS" : The Execution/Step is in progress.
+  /// - "COMPLETE" : The finalized, immutable state. Steps/Executions in this
+  /// state cannot be
+  /// modified.
+  core.String state;
+
+  /// The combined and rolled-up result of each test suite that was run as part
+  ///  of this environment.
+  ///
+  ///  Combining:
+  ///  When the test cases from a suite are run in different steps (sharding),
+  /// the results are added back together in one overview. (e.g., if shard1 has
+  /// 2 failures and shard2 has 1 failure than the overview failure_count = 3).
+  ///
+  ///  Rollup:
+  ///  When test cases from the same suite are run multiple times (flaky), the
+  ///  results are combined (e.g., if testcase1.run1 fails, testcase1.run2
+  /// passes, and both testcase2.run1 and testcase2.run2 fail then the overview
+  ///  flaky_count = 1 and failure_count = 1).
+  core.List<TestSuiteOverview> testSuiteOverviews;
+
+  MergedResult();
+
+  MergedResult.fromJson(core.Map _json) {
+    if (_json.containsKey("outcome")) {
+      outcome = new Outcome.fromJson(_json["outcome"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("testSuiteOverviews")) {
+      testSuiteOverviews = (_json["testSuiteOverviews"] as core.List)
+          .map<TestSuiteOverview>(
+              (value) => new TestSuiteOverview.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (outcome != null) {
+      _json["outcome"] = (outcome).toJson();
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (testSuiteOverviews != null) {
+      _json["testSuiteOverviews"] =
+          testSuiteOverviews.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Details when multiple steps are run with the same configuration as a group.
 class MultiStep {
-  /// Unique int given to each step. Ranges from 0(inclusive) to total number of
-  /// steps(exclusive). The primary step is 0.
+  /// Unique int given to each step.
+  /// Ranges from 0(inclusive) to total number of steps(exclusive).
+  /// The primary step is 0.
   core.int multistepNumber;
 
   /// Present if it is a primary (original) step.
@@ -3784,36 +4774,275 @@ class MultiStep {
   }
 }
 
+/// Additional details for a native crash.
+class NativeCrash {
+  /// The stack trace of the native crash.
+  /// Optional.
+  StackTrace stackTrace;
+
+  NativeCrash();
+
+  NativeCrash.fromJson(core.Map _json) {
+    if (_json.containsKey("stackTrace")) {
+      stackTrace = new StackTrace.fromJson(_json["stackTrace"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (stackTrace != null) {
+      _json["stackTrace"] = (stackTrace).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A non-sdk API and examples of it being called along with other metadata
+/// See
+/// https://developer.android.com/distribute/best-practices/develop/restrictions-non-sdk-interfaces
+class NonSdkApi {
+  /// The signature of the Non-SDK API
+  core.String apiSignature;
+
+  /// Example stack traces of this API being called.
+  core.List<core.String> exampleStackTraces;
+
+  /// Optional debugging insights for non-SDK API violations.
+  core.List<NonSdkApiInsight> insights;
+
+  /// The total number of times this API was observed to have been called.
+  core.int invocationCount;
+
+  /// Which list this API appears on
+  /// Possible string values are:
+  /// - "NONE"
+  /// - "WHITE"
+  /// - "BLACK"
+  /// - "GREY"
+  /// - "GREY_MAX_O"
+  /// - "GREY_MAX_P"
+  /// - "GREY_MAX_Q"
+  core.String list;
+
+  NonSdkApi();
+
+  NonSdkApi.fromJson(core.Map _json) {
+    if (_json.containsKey("apiSignature")) {
+      apiSignature = _json["apiSignature"];
+    }
+    if (_json.containsKey("exampleStackTraces")) {
+      exampleStackTraces =
+          (_json["exampleStackTraces"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("insights")) {
+      insights = (_json["insights"] as core.List)
+          .map<NonSdkApiInsight>(
+              (value) => new NonSdkApiInsight.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("invocationCount")) {
+      invocationCount = _json["invocationCount"];
+    }
+    if (_json.containsKey("list")) {
+      list = _json["list"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (apiSignature != null) {
+      _json["apiSignature"] = apiSignature;
+    }
+    if (exampleStackTraces != null) {
+      _json["exampleStackTraces"] = exampleStackTraces;
+    }
+    if (insights != null) {
+      _json["insights"] = insights.map((value) => (value).toJson()).toList();
+    }
+    if (invocationCount != null) {
+      _json["invocationCount"] = invocationCount;
+    }
+    if (list != null) {
+      _json["list"] = list;
+    }
+    return _json;
+  }
+}
+
+/// Non-SDK API insights (to address debugging solutions).
+class NonSdkApiInsight {
+  /// Optional sample stack traces, for which this insight applies (there
+  /// should be at least one).
+  core.List<core.String> exampleTraceMessages;
+
+  /// A unique ID, to be used for determining the effectiveness of this
+  /// particular insight in the context of a matcher. (required)
+  core.String matcherId;
+
+  /// An insight indicating that the hidden API usage originates from a
+  /// Google-provided library.
+  PendingGoogleUpdateInsight pendingGoogleUpdateInsight;
+
+  /// An insight indicating that the hidden API usage originates from the
+  /// use of a library that needs to be upgraded.
+  UpgradeInsight upgradeInsight;
+
+  NonSdkApiInsight();
+
+  NonSdkApiInsight.fromJson(core.Map _json) {
+    if (_json.containsKey("exampleTraceMessages")) {
+      exampleTraceMessages =
+          (_json["exampleTraceMessages"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("matcherId")) {
+      matcherId = _json["matcherId"];
+    }
+    if (_json.containsKey("pendingGoogleUpdateInsight")) {
+      pendingGoogleUpdateInsight = new PendingGoogleUpdateInsight.fromJson(
+          _json["pendingGoogleUpdateInsight"]);
+    }
+    if (_json.containsKey("upgradeInsight")) {
+      upgradeInsight = new UpgradeInsight.fromJson(_json["upgradeInsight"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exampleTraceMessages != null) {
+      _json["exampleTraceMessages"] = exampleTraceMessages;
+    }
+    if (matcherId != null) {
+      _json["matcherId"] = matcherId;
+    }
+    if (pendingGoogleUpdateInsight != null) {
+      _json["pendingGoogleUpdateInsight"] =
+          (pendingGoogleUpdateInsight).toJson();
+    }
+    if (upgradeInsight != null) {
+      _json["upgradeInsight"] = (upgradeInsight).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Additional details for a non-sdk API usage violation.
+class NonSdkApiUsageViolation {
+  /// Signatures of a subset of those hidden API's.
+  core.List<core.String> apiSignatures;
+
+  /// Total number of unique hidden API's accessed.
+  core.int uniqueApis;
+
+  NonSdkApiUsageViolation();
+
+  NonSdkApiUsageViolation.fromJson(core.Map _json) {
+    if (_json.containsKey("apiSignatures")) {
+      apiSignatures = (_json["apiSignatures"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("uniqueApis")) {
+      uniqueApis = _json["uniqueApis"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (apiSignatures != null) {
+      _json["apiSignatures"] = apiSignatures;
+    }
+    if (uniqueApis != null) {
+      _json["uniqueApis"] = uniqueApis;
+    }
+    return _json;
+  }
+}
+
+/// Contains a summary and examples of non-sdk API usage violations.
+class NonSdkApiUsageViolationReport {
+  /// Examples of the detected API usages.
+  core.List<NonSdkApi> exampleApis;
+
+  /// Minimum API level required for the application to run.
+  core.int minSdkVersion;
+
+  /// Specifies the API Level on which the application is designed to run.
+  core.int targetSdkVersion;
+
+  /// Total number of unique Non-SDK API's accessed.
+  core.int uniqueApis;
+
+  NonSdkApiUsageViolationReport();
+
+  NonSdkApiUsageViolationReport.fromJson(core.Map _json) {
+    if (_json.containsKey("exampleApis")) {
+      exampleApis = (_json["exampleApis"] as core.List)
+          .map<NonSdkApi>((value) => new NonSdkApi.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("minSdkVersion")) {
+      minSdkVersion = _json["minSdkVersion"];
+    }
+    if (_json.containsKey("targetSdkVersion")) {
+      targetSdkVersion = _json["targetSdkVersion"];
+    }
+    if (_json.containsKey("uniqueApis")) {
+      uniqueApis = _json["uniqueApis"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (exampleApis != null) {
+      _json["exampleApis"] =
+          exampleApis.map((value) => (value).toJson()).toList();
+    }
+    if (minSdkVersion != null) {
+      _json["minSdkVersion"] = minSdkVersion;
+    }
+    if (targetSdkVersion != null) {
+      _json["targetSdkVersion"] = targetSdkVersion;
+    }
+    if (uniqueApis != null) {
+      _json["uniqueApis"] = uniqueApis;
+    }
+    return _json;
+  }
+}
+
 /// Interprets a result so that humans and machines can act on it.
 class Outcome {
   /// More information about a FAILURE outcome.
   ///
-  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
-  /// FAILURE.
+  /// Returns INVALID_ARGUMENT if this field is set
+  /// but the summary is not FAILURE.
   ///
   /// Optional
   FailureDetail failureDetail;
 
   /// More information about an INCONCLUSIVE outcome.
   ///
-  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
-  /// INCONCLUSIVE.
+  /// Returns INVALID_ARGUMENT if this field is set
+  /// but the summary is not INCONCLUSIVE.
   ///
   /// Optional
   InconclusiveDetail inconclusiveDetail;
 
   /// More information about a SKIPPED outcome.
   ///
-  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
-  /// SKIPPED.
+  /// Returns INVALID_ARGUMENT if this field is set
+  /// but the summary is not SKIPPED.
   ///
   /// Optional
   SkippedDetail skippedDetail;
 
   /// More information about a SUCCESS outcome.
   ///
-  /// Returns INVALID_ARGUMENT if this field is set but the summary is not
-  /// SUCCESS.
+  /// Returns INVALID_ARGUMENT if this field is set
+  /// but the summary is not SUCCESS.
   ///
   /// Optional
   SuccessDetail successDetail;
@@ -3822,12 +5051,23 @@ class Outcome {
   ///
   /// Required
   /// Possible string values are:
-  /// - "failure"
-  /// - "flaky"
-  /// - "inconclusive"
-  /// - "skipped"
-  /// - "success"
-  /// - "unset"
+  /// - "UNSET" : Do not use. For proto versioning only.
+  /// - "SUCCESS" : The test matrix run was successful, for instance:
+  /// - All the test cases passed.
+  /// - Robo did not detect a crash of the application under test.
+  /// - "FAILURE" : A run failed, for instance:
+  /// - One or more test case failed.
+  /// - A test timed out.
+  /// - The application under test crashed.
+  /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
+  /// considered
+  /// unsuccessful but this is likely a transient problem and re-running the
+  /// test might be successful.
+  /// - "SKIPPED" : All tests were skipped, for instance:
+  /// - All device configurations were incompatible.
+  /// - "FLAKY" : A group of steps that were run with the same configuration had
+  /// both
+  /// failure and success outcomes.
   core.String summary;
 
   Outcome();
@@ -3873,6 +5113,63 @@ class Outcome {
   }
 }
 
+/// A warning that Robo encountered a screen that has overlapping clickable
+/// elements; this may indicate a potential UI issue.
+class OverlappingUIElements {
+  /// Resource names of the overlapping screen elements
+  core.List<core.String> resourceName;
+
+  /// The screen id of the elements
+  core.String screenId;
+
+  OverlappingUIElements();
+
+  OverlappingUIElements.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = (_json["resourceName"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("screenId")) {
+      screenId = _json["screenId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (screenId != null) {
+      _json["screenId"] = screenId;
+    }
+    return _json;
+  }
+}
+
+/// This insight indicates that the hidden API usage originates from a
+/// Google-provided library. Users need not take any action.
+class PendingGoogleUpdateInsight {
+  /// The name of the Google-provided library with the non-SDK API dependency.
+  core.String nameOfGoogleLibrary;
+
+  PendingGoogleUpdateInsight();
+
+  PendingGoogleUpdateInsight.fromJson(core.Map _json) {
+    if (_json.containsKey("nameOfGoogleLibrary")) {
+      nameOfGoogleLibrary = _json["nameOfGoogleLibrary"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nameOfGoogleLibrary != null) {
+      _json["nameOfGoogleLibrary"] = nameOfGoogleLibrary;
+    }
+    return _json;
+  }
+}
+
 /// Encapsulates performance environment info
 class PerfEnvironment {
   /// CPU related environment info
@@ -3910,6 +5207,7 @@ class PerfMetricsSummary {
   AppStartTime appStartTime;
 
   /// A tool results execution ID.
+  /// @OutputOnly
   core.String executionId;
 
   /// Graphics statistics for the entire run. Statistics are reset at the
@@ -3917,6 +5215,7 @@ class PerfMetricsSummary {
   GraphicsStats graphicsStats;
 
   /// A tool results history ID.
+  /// @OutputOnly
   core.String historyId;
 
   /// Describes the environment in which the performance metrics were collected
@@ -3926,9 +5225,11 @@ class PerfMetricsSummary {
   core.List<core.String> perfMetrics;
 
   /// The cloud project
+  /// @OutputOnly
   core.String projectId;
 
   /// A tool results step ID.
+  /// @OutputOnly
   core.String stepId;
 
   PerfMetricsSummary();
@@ -3993,7 +5294,7 @@ class PerfMetricsSummary {
 
 /// Resource representing a single performance measure or data point
 class PerfSample {
-  /// Timestamp of collection
+  /// Timestamp of collection.
   Timestamp sampleTime;
 
   /// Value observed
@@ -4029,18 +5330,23 @@ class PerfSampleSeries {
   BasicPerfSampleSeries basicPerfSampleSeries;
 
   /// A tool results execution ID.
+  /// @OutputOnly
   core.String executionId;
 
   /// A tool results history ID.
+  /// @OutputOnly
   core.String historyId;
 
   /// The cloud project
+  /// @OutputOnly
   core.String projectId;
 
   /// A sample series id
+  /// @OutputOnly
   core.String sampleSeriesId;
 
   /// A tool results step ID.
+  /// @OutputOnly
   core.String stepId;
 
   PerfSampleSeries();
@@ -4092,6 +5398,42 @@ class PerfSampleSeries {
   }
 }
 
+/// A notification that Robo signed in with Google.
+class PerformedGoogleLogin {
+  PerformedGoogleLogin();
+
+  PerformedGoogleLogin.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A notification that Robo performed some monkey actions.
+class PerformedMonkeyActions {
+  /// The total number of monkey actions performed during the crawl.
+  core.int totalActions;
+
+  PerformedMonkeyActions();
+
+  PerformedMonkeyActions.fromJson(core.Map _json) {
+    if (_json.containsKey("totalActions")) {
+      totalActions = _json["totalActions"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (totalActions != null) {
+      _json["totalActions"] = totalActions;
+    }
+    return _json;
+  }
+}
+
 /// Stores rollup test status of multiple steps that were run as a group and
 /// outcome of each individual step.
 class PrimaryStep {
@@ -4101,12 +5443,23 @@ class PrimaryStep {
   /// Rollup test status of multiple steps that were run with the same
   /// configuration as a group.
   /// Possible string values are:
-  /// - "failure"
-  /// - "flaky"
-  /// - "inconclusive"
-  /// - "skipped"
-  /// - "success"
-  /// - "unset"
+  /// - "UNSET" : Do not use. For proto versioning only.
+  /// - "SUCCESS" : The test matrix run was successful, for instance:
+  /// - All the test cases passed.
+  /// - Robo did not detect a crash of the application under test.
+  /// - "FAILURE" : A run failed, for instance:
+  /// - One or more test case failed.
+  /// - A test timed out.
+  /// - The application under test crashed.
+  /// - "INCONCLUSIVE" : Something unexpected happened. The run should still be
+  /// considered
+  /// unsuccessful but this is likely a transient problem and re-running the
+  /// test might be successful.
+  /// - "SKIPPED" : All tests were skipped, for instance:
+  /// - All device configurations were incompatible.
+  /// - "FLAKY" : A group of steps that were run with the same configuration had
+  /// both
+  /// failure and success outcomes.
   core.String rollUp;
 
   PrimaryStep();
@@ -4143,14 +5496,17 @@ class ProjectSettings {
   ///
   /// By default, this is unset.
   ///
-  /// In update request: optional In response: optional
+  /// In update request: optional
+  /// In response: optional
   core.String defaultBucket;
 
   /// The name of the project's settings.
   ///
-  /// Always of the form: projects/{project-id}/settings
+  /// Always of the form:
+  /// projects/{project-id}/settings
   ///
-  /// In update request: never set In response: always set
+  /// In update request: never set
+  /// In response: always set
   core.String name;
 
   ProjectSettings();
@@ -4207,17 +5563,173 @@ class PublishXunitXmlFilesRequest {
   }
 }
 
+/// A rectangular region.
+class RegionProto {
+  /// The height, in pixels.
+  /// Always set.
+  core.int heightPx;
+
+  /// The left side of the rectangle, in pixels.
+  /// Always set.
+  core.int leftPx;
+
+  /// The top of the rectangle, in pixels.
+  /// Always set.
+  core.int topPx;
+
+  /// The width, in pixels.
+  /// Always set.
+  core.int widthPx;
+
+  RegionProto();
+
+  RegionProto.fromJson(core.Map _json) {
+    if (_json.containsKey("heightPx")) {
+      heightPx = _json["heightPx"];
+    }
+    if (_json.containsKey("leftPx")) {
+      leftPx = _json["leftPx"];
+    }
+    if (_json.containsKey("topPx")) {
+      topPx = _json["topPx"];
+    }
+    if (_json.containsKey("widthPx")) {
+      widthPx = _json["widthPx"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (heightPx != null) {
+      _json["heightPx"] = heightPx;
+    }
+    if (leftPx != null) {
+      _json["leftPx"] = leftPx;
+    }
+    if (topPx != null) {
+      _json["topPx"] = topPx;
+    }
+    if (widthPx != null) {
+      _json["widthPx"] = widthPx;
+    }
+    return _json;
+  }
+}
+
+/// The storage for test results.
+class ResultsStorage {
+  /// The root directory for test results.
+  FileReference resultsStoragePath;
+
+  /// The path to the Xunit XML file.
+  FileReference xunitXmlFile;
+
+  ResultsStorage();
+
+  ResultsStorage.fromJson(core.Map _json) {
+    if (_json.containsKey("resultsStoragePath")) {
+      resultsStoragePath =
+          new FileReference.fromJson(_json["resultsStoragePath"]);
+    }
+    if (_json.containsKey("xunitXmlFile")) {
+      xunitXmlFile = new FileReference.fromJson(_json["xunitXmlFile"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resultsStoragePath != null) {
+      _json["resultsStoragePath"] = (resultsStoragePath).toJson();
+    }
+    if (xunitXmlFile != null) {
+      _json["xunitXmlFile"] = (xunitXmlFile).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Execution stats for a user-provided Robo script.
+class RoboScriptExecution {
+  /// The number of Robo script actions executed successfully.
+  core.int successfulActions;
+
+  /// The total number of actions in the Robo script.
+  core.int totalActions;
+
+  RoboScriptExecution();
+
+  RoboScriptExecution.fromJson(core.Map _json) {
+    if (_json.containsKey("successfulActions")) {
+      successfulActions = _json["successfulActions"];
+    }
+    if (_json.containsKey("totalActions")) {
+      totalActions = _json["totalActions"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (successfulActions != null) {
+      _json["successfulActions"] = successfulActions;
+    }
+    if (totalActions != null) {
+      _json["totalActions"] = totalActions;
+    }
+    return _json;
+  }
+}
+
+/// IMPORTANT: It is unsafe to accept this message from an untrusted source,
+/// since it's trivial for an attacker to forge serialized messages that
+/// don't fulfill the type's safety contract -- for example, it could contain
+/// attacker controlled script. A system which receives a SafeHtmlProto
+/// implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe
+/// to return this message in RPC responses, but generally unsafe to accept it
+/// in RPC requests.
+class SafeHtmlProto {
+  /// IMPORTANT: Never set or read this field, even from tests, it is private.
+  /// See documentation at the top of .proto file for programming language
+  /// packages with which to create or read this message.
+  core.String privateDoNotAccessOrElseSafeHtmlWrappedValue;
+
+  SafeHtmlProto();
+
+  SafeHtmlProto.fromJson(core.Map _json) {
+    if (_json.containsKey("privateDoNotAccessOrElseSafeHtmlWrappedValue")) {
+      privateDoNotAccessOrElseSafeHtmlWrappedValue =
+          _json["privateDoNotAccessOrElseSafeHtmlWrappedValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null) {
+      _json["privateDoNotAccessOrElseSafeHtmlWrappedValue"] =
+          privateDoNotAccessOrElseSafeHtmlWrappedValue;
+    }
+    return _json;
+  }
+}
+
 class Screen {
-  /// File reference of the png file. Required.
+  /// File reference of the png file.
+  /// Required.
   core.String fileReference;
 
-  /// Locale of the device that the screenshot was taken on. Required.
+  /// Locale of the device that the screenshot was taken on.
+  /// Required.
   core.String locale;
 
-  /// Model of the device that the screenshot was taken on. Required.
+  /// Model of the device that the screenshot was taken on.
+  /// Required.
   core.String model;
 
-  /// OS version of the device that the screenshot was taken on. Required.
+  /// OS version of the device that the screenshot was taken on.
+  /// Required.
   core.String version;
 
   Screen();
@@ -4261,6 +5773,7 @@ class ScreenshotCluster {
   core.String activity;
 
   /// A unique identifier for the cluster.
+  /// @OutputOnly
   core.String clusterId;
 
   /// A singular screen that represents the cluster as a whole. This screen will
@@ -4305,6 +5818,43 @@ class ScreenshotCluster {
     }
     if (screens != null) {
       _json["screens"] = screens.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Result summary for a shard in an environment.
+class ShardSummary {
+  /// Summaries of the steps belonging to the shard.
+  ///
+  /// With flaky_test_attempts enabled from TestExecutionService, more than one
+  /// run (Step) can present. And the runs will be sorted by multistep_number.
+  core.List<StepSummary> runs;
+
+  /// Merged result of the shard.
+  MergedResult shardResult;
+
+  ShardSummary();
+
+  ShardSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("runs")) {
+      runs = (_json["runs"] as core.List)
+          .map<StepSummary>((value) => new StepSummary.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("shardResult")) {
+      shardResult = new MergedResult.fromJson(_json["shardResult"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (runs != null) {
+      _json["runs"] = runs.map((value) => (value).toJson()).toList();
+    }
+    if (shardResult != null) {
+      _json["shardResult"] = (shardResult).toJson();
     }
     return _json;
   }
@@ -4399,6 +5949,35 @@ class StackTrace {
   }
 }
 
+/// User provided intent failed to resolve to an activity.
+class StartActivityNotFound {
+  core.String action;
+  core.String uri;
+
+  StartActivityNotFound();
+
+  StartActivityNotFound.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("uri")) {
+      uri = _json["uri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (uri != null) {
+      _json["uri"] = uri;
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs. It is
 /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4407,16 +5986,19 @@ class StackTrace {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 class Status {
-  /// The status code, which should be an enum value of [google.rpc.Code][].
+  /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
 
-  /// A list of messages that carry the error details. There is a common set of
+  /// A list of messages that carry the error details.  There is a common set of
   /// message types for APIs to use.
-  core.List<Any> details;
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
 
   /// A developer-facing error message, which should be in English. Any
   /// user-facing error message should be localized and sent in the
-  /// [google.rpc.Status.details][] field, or localized by the client.
+  /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
   Status();
@@ -4427,7 +6009,8 @@ class Status {
     }
     if (_json.containsKey("details")) {
       details = (_json["details"] as core.List)
-          .map<Any>((value) => new Any.fromJson(value))
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map).cast<core.String, core.Object>())
           .toList();
     }
     if (_json.containsKey("message")) {
@@ -4442,7 +6025,7 @@ class Status {
       _json["code"] = code;
     }
     if (details != null) {
-      _json["details"] = details.map((value) => (value).toJson()).toList();
+      _json["details"] = details;
     }
     if (message != null) {
       _json["message"] = message;
@@ -4451,42 +6034,47 @@ class Status {
   }
 }
 
-/// A Step represents a single operation performed as part of Execution. A step
-/// can be used to represent the execution of a tool ( for example a test runner
-/// execution or an execution of a compiler).
+/// A Step represents a single operation performed as part of
+/// Execution. A step can be used to represent the execution of a tool (
+/// for example a test runner execution or an execution of a compiler).
 ///
-/// Steps can overlap (for instance two steps might have the same start time if
-/// some operations are done in parallel).
+/// Steps can overlap (for instance two steps might have the same
+/// start time if some operations are done in parallel).
 ///
 /// Here is an example, let's consider that we have a continuous build is
-/// executing a test runner for each iteration. The workflow would look like: -
-/// user creates a Execution with id 1 - user creates an TestExecutionStep with
-/// id 100 for Execution 1 - user update TestExecutionStep with id 100 to add a
-/// raw xml log + the service parses the xml logs and returns a
-/// TestExecutionStep with updated TestResult(s). - user update the status of
-/// TestExecutionStep with id 100 to COMPLETE
+/// executing a test runner for each iteration. The workflow would look like:
+/// - user creates a Execution with id 1
+/// - user creates an TestExecutionStep with id 100 for Execution 1
+/// - user update TestExecutionStep with id 100 to add a raw xml log
+///     + the service parses the xml logs and returns a TestExecutionStep with
+///      updated TestResult(s).
+/// - user update the status of TestExecutionStep with id 100 to COMPLETE
 ///
-/// A Step can be updated until its state is set to COMPLETE at which points it
-/// becomes immutable.
+/// A Step can be updated until its state is set to COMPLETE at which
+/// points it becomes immutable.
+///
+/// Next tag: 27
 class Step {
   /// The time when the step status was set to complete.
   ///
-  /// This value will be set automatically when state transitions to COMPLETE.
+  /// This value will be set automatically when state transitions to
+  /// COMPLETE.
   ///
-  /// - In response: set if the execution state is COMPLETE. - In create/update
-  /// request: never set
+  /// - In response: set if the execution state is COMPLETE.
+  /// - In create/update request: never set
   Timestamp completionTime;
 
   /// The time when the step was created.
   ///
-  /// - In response: always set - In create/update request: never set
+  /// - In response: always set
+  /// - In create/update request: never set
   Timestamp creationTime;
 
-  /// A description of this tool For example: mvn clean package -D
-  /// skipTests=true
+  /// A description of this tool
+  /// For example: mvn clean package -D skipTests=true
   ///
-  /// - In response: present if set by create/update request - In create/update
-  /// request: optional
+  /// - In response: present if set by create/update request
+  /// - In create/update request: optional
   core.String description;
 
   /// How much the device resource is used to perform the test.
@@ -4495,11 +6083,12 @@ class Step {
   /// the run_duration, for example, infrastructure failure won't be charged for
   /// device usage.
   ///
-  /// PRECONDITION_FAILED will be returned if one attempts to set a device_usage
-  /// on a step which already has this field set.
+  /// PRECONDITION_FAILED will be returned if one attempts to set a
+  /// device_usage on a step which already has this field set.
   ///
-  /// - In response: present if previously set. - In create request: optional -
-  /// In update request: optional
+  /// - In response: present if previously set.
+  /// - In create request: optional
+  /// - In update request: optional
   Duration deviceUsageDuration;
 
   /// If the execution containing this step has any dimension_definition set,
@@ -4507,79 +6096,90 @@ class Step {
   ///
   /// The keys must exactly match the dimension_definition of the execution.
   ///
-  /// For example, if the execution has `dimension_definition = ['attempt',
-  /// 'device']` then a step must define values for those dimensions, eg.
+  /// For example, if the execution has
+  /// `dimension_definition = ['attempt', 'device']`
+  /// then a step must define values for those dimensions, eg.
   /// `dimension_value = ['attempt': '1', 'device': 'Nexus 6']`
   ///
-  /// If a step does not participate in one dimension of the matrix, the value
-  /// for that dimension should be empty string. For example, if one of the
-  /// tests is executed by a runner which does not support retries, the step
-  /// could have `dimension_value = ['attempt': '', 'device': 'Nexus 6']`
+  /// If a step does not participate in one dimension of the matrix,
+  /// the value for that dimension should be empty string.
+  /// For example, if one of the tests is executed by a runner which
+  /// does not support retries, the step could have
+  /// `dimension_value = ['attempt': '', 'device': 'Nexus 6']`
   ///
-  /// If the step does not participate in any dimensions of the matrix, it may
-  /// leave dimension_value unset.
+  /// If the step does not participate in any dimensions of the matrix,
+  /// it may leave dimension_value unset.
   ///
-  /// A PRECONDITION_FAILED will be returned if any of the keys do not exist in
-  /// the dimension_definition of the execution.
+  /// A PRECONDITION_FAILED will be returned if any of the keys do not exist
+  /// in the dimension_definition of the execution.
   ///
   /// A PRECONDITION_FAILED will be returned if another step in this execution
   /// already has the same name and dimension_value, but differs on other data
   /// fields, for example, step field is different.
   ///
   /// A PRECONDITION_FAILED will be returned if dimension_value is set, and
-  /// there is a dimension_definition in the execution which is not specified as
-  /// one of the keys.
+  /// there is a dimension_definition in the execution which is not specified
+  /// as one of the keys.
   ///
-  /// - In response: present if set by create - In create request: optional - In
-  /// update request: never set
+  /// - In response: present if set by create
+  /// - In create request: optional
+  /// - In update request: never set
   core.List<StepDimensionValueEntry> dimensionValue;
 
-  /// Whether any of the outputs of this step are images whose thumbnails can be
-  /// fetched with ListThumbnails.
+  /// Whether any of the outputs of this step are images whose
+  /// thumbnails can be fetched with ListThumbnails.
   ///
-  /// - In response: always set - In create/update request: never set
+  /// - In response: always set
+  /// - In create/update request: never set
   core.bool hasImages;
 
-  /// Arbitrary user-supplied key/value pairs that are associated with the step.
+  /// Arbitrary user-supplied key/value pairs that are associated with the
+  /// step.
   ///
-  /// Users are responsible for managing the key namespace such that keys don't
-  /// accidentally collide.
+  /// Users are responsible for managing the key namespace such that keys
+  /// don't accidentally collide.
   ///
   /// An INVALID_ARGUMENT will be returned if the number of labels exceeds 100
-  /// or if the length of any of the keys or values exceeds 100 characters.
+  /// or
+  /// if the length of any of the keys or values exceeds 100 characters.
   ///
-  /// - In response: always set - In create request: optional - In update
-  /// request: optional; any new key/value pair will be added to the map, and
-  /// any new value for an existing key will update that key's value
+  /// - In response: always set
+  /// - In create request: optional
+  /// - In update request: optional; any new key/value pair will be added to the
+  ///   map, and any new value for an existing key will update that key's value
   core.List<StepLabelsEntry> labels;
 
   /// Details when multiple steps are run with the same configuration as a
-  /// group. These details can be used identify which group this step is part
-  /// of. It also identifies the groups 'primary step' which indexes all the
-  /// group members.
+  /// group.
+  /// These details can be used identify which group this step is part of.
+  /// It also identifies the groups 'primary step' which indexes all the group
+  /// members.
   ///
-  /// - In response: present if previously set. - In create request: optional,
-  /// set iff this step was performed more than once. - In update request:
-  /// optional
+  /// - In response: present if previously set.
+  /// - In create request: optional, set iff this step was performed more than
+  /// once.
+  /// - In update request: optional
   MultiStep multiStep;
 
-  /// A short human-readable name to display in the UI. Maximum of 100
-  /// characters. For example: Clean build
+  /// A short human-readable name to display in the UI.
+  /// Maximum of 100 characters.
+  /// For example: Clean build
   ///
   /// A PRECONDITION_FAILED will be returned upon creating a new step if it
   /// shares its name and dimension_value with an existing step. If two steps
   /// represent a similar action, but have different dimension values, they
-  /// should share the same name. For instance, if the same set of tests is run
-  /// on two different platforms, the two steps should have the same name.
+  /// should share the same name. For instance, if the same set of tests is
+  /// run on two different platforms, the two steps should have the same name.
   ///
-  /// - In response: always set - In create request: always set - In update
-  /// request: never set
+  /// - In response: always set
+  /// - In create request: always set
+  /// - In update request: never set
   core.String name;
 
   /// Classification of the result, for example into SUCCESS or FAILURE
   ///
-  /// - In response: present if set by create/update request - In create/update
-  /// request: optional
+  /// - In response: present if set by create/update request
+  /// - In create/update request: optional
   Outcome outcome;
 
   /// How long it took for this step to run.
@@ -4588,32 +6188,43 @@ class Step {
   /// completion_time when the step is set to the COMPLETE state. In some cases,
   /// it is appropriate to set this value separately: For instance, if a step is
   /// created, but the operation it represents is queued for a few minutes
-  /// before it executes, it would be appropriate not to include the time spent
-  /// queued in its run_duration.
+  /// before
+  /// it executes, it would be appropriate not to include the time spent queued
+  /// in its run_duration.
   ///
-  /// PRECONDITION_FAILED will be returned if one attempts to set a run_duration
-  /// on a step which already has this field set.
+  /// PRECONDITION_FAILED will be returned if one attempts to set a
+  /// run_duration on a step which already has this field set.
   ///
   /// - In response: present if previously set; always present on COMPLETE step
-  /// - In create request: optional - In update request: optional
+  /// - In create request: optional
+  /// - In update request: optional
   Duration runDuration;
 
-  /// The initial state is IN_PROGRESS. The only legal state transitions are *
-  /// IN_PROGRESS -> COMPLETE
+  /// The initial state is IN_PROGRESS.
+  /// The only legal state transitions are
+  /// * IN_PROGRESS -> COMPLETE
   ///
   /// A PRECONDITION_FAILED will be returned if an invalid transition is
   /// requested.
   ///
-  /// It is valid to create Step with a state set to COMPLETE. The state can
-  /// only be set to COMPLETE once. A PRECONDITION_FAILED will be returned if
-  /// the state is set to COMPLETE multiple times.
+  /// It is valid to create Step with a state set to COMPLETE.
+  /// The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be
+  /// returned if the state is set to COMPLETE multiple times.
   ///
-  /// - In response: always set - In create/update request: optional
+  /// - In response: always set
+  /// - In create/update request: optional
   /// Possible string values are:
-  /// - "complete"
-  /// - "inProgress"
-  /// - "pending"
-  /// - "unknownState"
+  /// - "UNKNOWN_STATE" : Should never be in this state. Exists for proto
+  /// deserialization backward
+  /// compatibility.
+  /// - "PENDING" : The Execution/Step is created, ready to run, but not running
+  /// yet.
+  /// If an Execution/Step is created without initial state, it is assumed
+  /// that the Execution/Step is in PENDING state.
+  /// - "IN_PROGRESS" : The Execution/Step is in progress.
+  /// - "COMPLETE" : The finalized, immutable state. Steps/Executions in this
+  /// state cannot be
+  /// modified.
   core.String state;
 
   /// A unique identifier within a Execution for this Step.
@@ -4621,7 +6232,8 @@ class Step {
   /// Returns INVALID_ARGUMENT if this field is set or overwritten by the
   /// caller.
   ///
-  /// - In response: always set - In create/update request: never set
+  /// - In response: always set
+  /// - In create/update request: never set
   core.String stepId;
 
   /// An execution of a test runner.
@@ -4796,7 +6408,21 @@ class StepLabelsEntry {
   }
 }
 
+/// Lightweight summary of a step within this execution.
+class StepSummary {
+  StepSummary();
+
+  StepSummary.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Details for an outcome with a SUCCESS outcome summary.
+/// LINT.IfChange
 class SuccessDetail {
   /// If a native process other than the app crashed.
   core.bool otherNativeCrash;
@@ -4819,10 +6445,189 @@ class SuccessDetail {
   }
 }
 
-class TestCase {
-  /// The end time of the test case.
-  ///
+/// A set of similar suggestions that we suspect are closely related.
+///
+/// This proto and most of the nested protos are branched from
+/// foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's
+/// dependencies with FTL's.
+class SuggestionClusterProto {
+  /// Category in which these types of suggestions should appear.
+  /// Always set.
+  /// Possible string values are:
+  /// - "UNKNOWN_CATEGORY"
+  /// - "CONTENT_LABELING"
+  /// - "TOUCH_TARGET_SIZE"
+  /// - "LOW_CONTRAST"
+  /// - "IMPLEMENTATION"
+  core.String category;
+
+  /// A sequence of suggestions. All of the suggestions within a cluster must
+  /// have the same SuggestionPriority and belong to the same
+  /// SuggestionCategory.
+  /// Suggestions with the same screenshot URL should be adjacent.
+  core.List<SuggestionProto> suggestions;
+
+  SuggestionClusterProto();
+
+  SuggestionClusterProto.fromJson(core.Map _json) {
+    if (_json.containsKey("category")) {
+      category = _json["category"];
+    }
+    if (_json.containsKey("suggestions")) {
+      suggestions = (_json["suggestions"] as core.List)
+          .map<SuggestionProto>((value) => new SuggestionProto.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (category != null) {
+      _json["category"] = category;
+    }
+    if (suggestions != null) {
+      _json["suggestions"] =
+          suggestions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class SuggestionProto {
+  /// Reference to a help center article concerning this type of suggestion.
+  /// Always set.
+  core.String helpUrl;
+
+  /// Message, in the user's language, explaining the suggestion, which may
+  /// contain markup.
+  /// Always set.
+  SafeHtmlProto longMessage;
+
+  /// Relative importance of a suggestion.
+  /// Always set.
+  /// Possible string values are:
+  /// - "UNKNOWN_PRIORITY"
+  /// - "ERROR"
+  /// - "WARNING"
+  /// - "INFO"
+  core.String priority;
+
+  /// A somewhat human readable identifier of the source view, if it does not
+  /// have a resource_name. This is a path within the accessibility hierarchy,
+  /// an element with resource name; similar to an XPath.
+  core.String pseudoResourceId;
+
+  /// Region within the screenshot that is relevant to this suggestion.
   /// Optional.
+  RegionProto region;
+
+  /// Reference to a view element, identified by its resource name, if it has
+  /// one.
+  core.String resourceName;
+
+  /// ID of the screen for the suggestion.
+  /// It is used for getting the corresponding screenshot path. For example,
+  /// screen_id "1" corresponds to "1.png" file in GCS.
+  /// Always set.
+  core.String screenId;
+
+  /// Relative importance of a suggestion as compared with other suggestions
+  /// that have the same priority and category.
+  /// This is a meaningless value that can be used to order suggestions that are
+  /// in the same category and have the same priority.
+  /// The larger values have higher priority (i.e., are more important).
+  /// Optional.
+  core.double secondaryPriority;
+
+  /// Concise message, in the user's language, representing the suggestion,
+  /// which may contain markup.
+  /// Always set.
+  SafeHtmlProto shortMessage;
+
+  /// General title for the suggestion, in the user's language, without markup.
+  /// Always set.
+  core.String title;
+
+  SuggestionProto();
+
+  SuggestionProto.fromJson(core.Map _json) {
+    if (_json.containsKey("helpUrl")) {
+      helpUrl = _json["helpUrl"];
+    }
+    if (_json.containsKey("longMessage")) {
+      longMessage = new SafeHtmlProto.fromJson(_json["longMessage"]);
+    }
+    if (_json.containsKey("priority")) {
+      priority = _json["priority"];
+    }
+    if (_json.containsKey("pseudoResourceId")) {
+      pseudoResourceId = _json["pseudoResourceId"];
+    }
+    if (_json.containsKey("region")) {
+      region = new RegionProto.fromJson(_json["region"]);
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+    if (_json.containsKey("screenId")) {
+      screenId = _json["screenId"];
+    }
+    if (_json.containsKey("secondaryPriority")) {
+      secondaryPriority = _json["secondaryPriority"].toDouble();
+    }
+    if (_json.containsKey("shortMessage")) {
+      shortMessage = new SafeHtmlProto.fromJson(_json["shortMessage"]);
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (helpUrl != null) {
+      _json["helpUrl"] = helpUrl;
+    }
+    if (longMessage != null) {
+      _json["longMessage"] = (longMessage).toJson();
+    }
+    if (priority != null) {
+      _json["priority"] = priority;
+    }
+    if (pseudoResourceId != null) {
+      _json["pseudoResourceId"] = pseudoResourceId;
+    }
+    if (region != null) {
+      _json["region"] = (region).toJson();
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (screenId != null) {
+      _json["screenId"] = screenId;
+    }
+    if (secondaryPriority != null) {
+      _json["secondaryPriority"] = secondaryPriority;
+    }
+    if (shortMessage != null) {
+      _json["shortMessage"] = (shortMessage).toJson();
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+class TestCase {
+  /// The elapsed run time of the test case.
+  ///
+  /// Required.
+  Duration elapsedTime;
+
+  /// The end time of the test case.
   Timestamp endTime;
 
   /// Why the test case was skipped.
@@ -4839,19 +6644,20 @@ class TestCase {
   core.List<StackTrace> stackTraces;
 
   /// The start time of the test case.
-  ///
-  /// Optional.
   Timestamp startTime;
 
   /// The status of the test case.
   ///
   /// Required.
   /// Possible string values are:
-  /// - "error"
-  /// - "failed"
-  /// - "flaky"
-  /// - "passed"
-  /// - "skipped"
+  /// - "PASSED" : Test passed.
+  /// - "FAILED" : Test failed.
+  /// - "ERROR" : Test encountered an error
+  /// - "SKIPPED" : Test skipped
+  /// - "FLAKY" : Test flaked.
+  ///
+  /// Present only for rollup test cases; test cases from steps that were run
+  /// with the same configuration had both failure and success outcomes.
   core.String status;
 
   /// A unique identifier within a Step for this Test Case.
@@ -4863,11 +6669,16 @@ class TestCase {
   TestCaseReference testCaseReference;
 
   /// References to opaque files of any format output by the tool execution.
+  ///
+  /// @OutputOnly
   core.List<ToolOutputReference> toolOutputs;
 
   TestCase();
 
   TestCase.fromJson(core.Map _json) {
+    if (_json.containsKey("elapsedTime")) {
+      elapsedTime = new Duration.fromJson(_json["elapsedTime"]);
+    }
     if (_json.containsKey("endTime")) {
       endTime = new Timestamp.fromJson(_json["endTime"]);
     }
@@ -4903,6 +6714,9 @@ class TestCase {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (elapsedTime != null) {
+      _json["elapsedTime"] = (elapsedTime).toJson();
+    }
     if (endTime != null) {
       _json["endTime"] = (endTime).toJson();
     }
@@ -4936,8 +6750,11 @@ class TestCase {
 /// A reference to a test case.
 ///
 /// Test case references are canonically ordered lexicographically by these
-/// three factors: * First, by test_suite_name. * Second, by class_name. *
-/// Third, by name.
+/// three
+/// factors:
+/// * First, by test_suite_name.
+/// * Second, by class_name.
+/// * Third, by name.
 class TestCaseReference {
   /// The name of the class.
   core.String className;
@@ -4990,35 +6807,39 @@ class TestCaseReference {
 class TestExecutionStep {
   /// Issues observed during the test execution.
   ///
-  /// For example, if the mobile app under test crashed during the test, the
-  /// error message and the stack trace content can be recorded here to assist
-  /// debugging.
+  /// For example, if the mobile app under test crashed during the test,
+  /// the error message and the stack trace content can be recorded here
+  /// to assist debugging.
   ///
-  /// - In response: present if set by create or update - In create/update
-  /// request: optional
+  /// - In response: present if set by create or update
+  /// - In create/update request: optional
   core.List<TestIssue> testIssues;
 
   /// List of test suite overview contents. This could be parsed from xUnit XML
   /// log by server, or uploaded directly by user. This references should only
-  /// be called when test suites are fully parsed or uploaded.
+  /// be
+  /// called when test suites are fully parsed or uploaded.
   ///
   /// The maximum allowed number of test suite overviews per step is 1000.
   ///
-  /// - In response: always set - In create request: optional - In update
-  /// request: never (use publishXunitXmlFiles custom method instead)
+  /// - In response: always set
+  /// - In create request: optional
+  /// - In update request: never (use publishXunitXmlFiles custom method
+  /// instead)
   core.List<TestSuiteOverview> testSuiteOverviews;
 
   /// The timing break down of the test execution.
   ///
-  /// - In response: present if set by create or update - In create/update
-  /// request: optional
+  /// - In response: present if set by create or update
+  /// - In create/update request: optional
   TestTiming testTiming;
 
   /// Represents the execution of the test runner.
   ///
   /// The exit code of this tool will be used to determine if the test passed.
   ///
-  /// - In response: always set - In create/update request: optional
+  /// - In response: always set
+  /// - In create/update request: optional
   ToolExecution toolExecution;
 
   TestExecutionStep();
@@ -5066,59 +6887,88 @@ class TestExecutionStep {
 
 /// An issue detected occurring during a test execution.
 class TestIssue {
-  /// Category of issue. Required.
+  /// Category of issue.
+  /// Required.
   /// Possible string values are:
-  /// - "common"
-  /// - "robo"
-  /// - "unspecifiedCategory"
+  /// - "UNSPECIFIED_CATEGORY" : Default unspecified category.
+  /// Do not use. For versioning only.
+  /// - "COMMON" : Issue is not specific to a particular test kind (e.g., a
+  /// native crash).
+  /// - "ROBO" : Issue is specific to Robo run.
   core.String category;
 
-  /// A brief human-readable message describing the issue. Required.
+  /// A brief human-readable message describing the issue.
+  /// Required.
   core.String errorMessage;
 
-  /// Severity of issue. Required.
+  /// Severity of issue.
+  /// Required.
   /// Possible string values are:
-  /// - "info"
-  /// - "severe"
-  /// - "suggestion"
-  /// - "unspecifiedSeverity"
-  /// - "warning"
+  /// - "UNSPECIFIED_SEVERITY" : Default unspecified severity.
+  /// Do not use. For versioning only.
+  /// - "INFO" : Non critical issue, providing users with some info about the
+  /// test run.
+  /// - "SUGGESTION" : Non critical issue, providing users with some hints on
+  /// improving their
+  /// testing experience, e.g., suggesting to use Game Loops.
+  /// - "WARNING" : Potentially critical issue.
+  /// - "SEVERE" : Critical issue.
   core.String severity;
 
   /// Deprecated in favor of stack trace fields inside specific warnings.
   StackTrace stackTrace;
 
-  /// Type of issue. Required.
+  /// Type of issue.
+  /// Required.
   /// Possible string values are:
-  /// - "anr"
-  /// - "availableDeepLinks"
-  /// - "compatibleWithOrchestrator"
-  /// - "completeRoboScriptExecution"
-  /// - "crashDialogError"
-  /// - "encounteredLoginScreen"
-  /// - "encounteredNonAndroidUiWidgetScreen"
-  /// - "failedToInstall"
-  /// - "fatalException"
-  /// - "inAppPurchases"
-  /// - "incompleteRoboScriptExecution"
-  /// - "insufficientCoverage"
-  /// - "iosCrash"
-  /// - "iosException"
-  /// - "launcherActivityNotFound"
-  /// - "nativeCrash"
-  /// - "nonSdkApiUsageReport"
-  /// - "nonSdkApiUsageViolation"
-  /// - "performedGoogleLogin"
-  /// - "performedMonkeyActions"
-  /// - "startActivityNotFound"
-  /// - "unspecifiedType"
-  /// - "unusedRoboDirective"
-  /// - "usedRoboDirective"
-  /// - "usedRoboIgnoreDirective"
+  /// - "UNSPECIFIED_TYPE" : Default unspecified type.
+  /// Do not use. For versioning only.
+  /// - "FATAL_EXCEPTION" : Issue is a fatal exception.
+  /// - "NATIVE_CRASH" : Issue is a native crash.
+  /// - "ANR" : Issue is an ANR crash.
+  /// - "UNUSED_ROBO_DIRECTIVE" : Issue is an unused robo directive.
+  /// - "COMPATIBLE_WITH_ORCHESTRATOR" : Issue is a suggestion to use
+  /// orchestrator.
+  /// - "LAUNCHER_ACTIVITY_NOT_FOUND" : Issue with finding a launcher activity
+  /// - "START_ACTIVITY_NOT_FOUND" : Issue with resolving a user-provided intent
+  /// to start an activity
+  /// - "INCOMPLETE_ROBO_SCRIPT_EXECUTION" : A Robo script was not fully
+  /// executed.
+  /// - "COMPLETE_ROBO_SCRIPT_EXECUTION" : A Robo script was fully and
+  /// successfully executed.
+  /// - "FAILED_TO_INSTALL" : The APK failed to install.
+  /// - "AVAILABLE_DEEP_LINKS" : The app-under-test has deep links, but none
+  /// were provided to Robo.
+  /// - "NON_SDK_API_USAGE_VIOLATION" : App accessed a non-sdk Api.
+  /// - "NON_SDK_API_USAGE_REPORT" : App accessed a non-sdk Api (new detailed
+  /// report)
+  /// - "ENCOUNTERED_NON_ANDROID_UI_WIDGET_SCREEN" : Robo crawl encountered at
+  /// least one screen with elements that are not
+  /// Android UI widgets.
+  /// - "ENCOUNTERED_LOGIN_SCREEN" : Robo crawl encountered at least one
+  /// probable login screen.
+  /// - "PERFORMED_GOOGLE_LOGIN" : Robo signed in with Google.
+  /// - "IOS_EXCEPTION" : iOS App crashed with an exception.
+  /// - "IOS_CRASH" : iOS App crashed without an exception (e.g. killed).
+  /// - "PERFORMED_MONKEY_ACTIONS" : Robo crawl involved performing some monkey
+  /// actions.
+  /// - "USED_ROBO_DIRECTIVE" : Robo crawl used a Robo directive.
+  /// - "USED_ROBO_IGNORE_DIRECTIVE" : Robo crawl used a Robo directive to
+  /// ignore an UI element.
+  /// - "INSUFFICIENT_COVERAGE" : Robo did not crawl some potentially important
+  /// parts of the app.
+  /// - "IN_APP_PURCHASES" : Robo crawl involved some in-app purchases.
+  /// - "CRASH_DIALOG_ERROR" : Crash dialog was detected during the test
+  /// execution
+  /// - "UI_ELEMENTS_TOO_DEEP" : UI element depth is greater than the threshold
+  /// - "BLANK_SCREEN" : Blank screen is found in the Robo crawl
+  /// - "OVERLAPPING_UI_ELEMENTS" : Overlapping UI elements are found in the
+  /// Robo crawl
   core.String type;
 
-  /// Warning message with additional details of the issue. Should always be a
-  /// message from com.google.devtools.toolresults.v1.warnings
+  /// Warning message with additional details of the issue.
+  /// Should always be a message from
+  /// com.google.devtools.toolresults.v1.warnings
   Any warning;
 
   TestIssue();
@@ -5169,12 +7019,13 @@ class TestIssue {
   }
 }
 
-/// A summary of a test suite result either parsed from XML or uploaded directly
-/// by a user.
+/// A summary of a test suite result either parsed from XML or uploaded
+/// directly by a user.
 ///
 /// Note: the API related comments are for StepService only. This message is
 /// also being used in ExecutionService in a read only mode for the
-/// corresponding step.
+/// corresponding
+/// step.
 class TestSuiteOverview {
   /// Elapsed time of test suite.
   Duration elapsedTime;
@@ -5182,30 +7033,42 @@ class TestSuiteOverview {
   /// Number of test cases in error, typically set by the service by parsing the
   /// xml_source.
   ///
-  /// - In create/response: always set - In update request: never
+  /// - In create/response: always set
+  /// - In update request: never
   core.int errorCount;
 
   /// Number of failed test cases, typically set by the service by parsing the
   /// xml_source. May also be set by the user.
   ///
-  /// - In create/response: always set - In update request: never
+  /// - In create/response: always set
+  /// - In update request: never
   core.int failureCount;
+
+  /// Number of flaky test cases, set by the service by rolling up flaky test
+  /// attempts.
+  ///
+  /// Present only for rollup test suite overview at environment level. A step
+  /// cannot have flaky test cases.
+  core.int flakyCount;
 
   /// The name of the test suite.
   ///
-  /// - In create/response: always set - In update request: never
+  /// - In create/response: always set
+  /// - In update request: never
   core.String name;
 
   /// Number of test cases not run, typically set by the service by parsing the
   /// xml_source.
   ///
-  /// - In create/response: always set - In update request: never
+  /// - In create/response: always set
+  /// - In update request: never
   core.int skippedCount;
 
   /// Number of test cases, typically set by the service by parsing the
   /// xml_source.
   ///
-  /// - In create/response: always set - In update request: never
+  /// - In create/response: always set
+  /// - In update request: never
   core.int totalCount;
 
   /// If this test suite was parsed from XML, this is the URI where the original
@@ -5215,7 +7078,8 @@ class TestSuiteOverview {
   ///
   /// Returns INVALID_ARGUMENT if the uri format is not supported.
   ///
-  /// - In create/response: optional - In update request: never
+  /// - In create/response: optional
+  /// - In update request: never
   FileReference xmlSource;
 
   TestSuiteOverview();
@@ -5229,6 +7093,9 @@ class TestSuiteOverview {
     }
     if (_json.containsKey("failureCount")) {
       failureCount = _json["failureCount"];
+    }
+    if (_json.containsKey("flakyCount")) {
+      flakyCount = _json["flakyCount"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -5256,6 +7123,9 @@ class TestSuiteOverview {
     if (failureCount != null) {
       _json["failureCount"] = failureCount;
     }
+    if (flakyCount != null) {
+      _json["flakyCount"] = flakyCount;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -5276,8 +7146,8 @@ class TestSuiteOverview {
 class TestTiming {
   /// How long it took to run the test process.
   ///
-  /// - In response: present if previously set. - In create/update request:
-  /// optional
+  /// - In response: present if previously set.
+  /// - In create/update request: optional
   Duration testProcessDuration;
 
   TestTiming();
@@ -5381,78 +7251,16 @@ class Thumbnail {
 /// The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
 /// restricting to that range, we ensure that we can convert to and from [RFC
 /// 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
-///
-/// # Examples
-///
-/// Example 1: Compute Timestamp from POSIX `time()`.
-///
-/// Timestamp timestamp; timestamp.set_seconds(time(NULL));
-/// timestamp.set_nanos(0);
-///
-/// Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-///
-/// struct timeval tv; gettimeofday(&tv, NULL);
-///
-/// Timestamp timestamp; timestamp.set_seconds(tv.tv_sec);
-/// timestamp.set_nanos(tv.tv_usec * 1000);
-///
-/// Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-///
-/// FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks =
-/// (((UINT64)ft.dwHighDateTime) << 32) | ft.dwLowDateTime;
-///
-/// // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z //
-/// is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-/// timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) -
-/// 11644473600LL)); timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-///
-/// Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-///
-/// long millis = System.currentTimeMillis();
-///
-/// Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000)
-/// .setNanos((int) ((millis % 1000) * 1000000)).build();
-///
-///
-///
-/// Example 5: Compute Timestamp from current time in Python.
-///
-/// timestamp = Timestamp() timestamp.GetCurrentTime()
-///
-/// # JSON Mapping
-///
-/// In JSON format, the Timestamp type is encoded as a string in the [RFC
-/// 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is
-/// "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is
-/// always expressed using four digits while {month}, {day}, {hour}, {min}, and
-/// {sec} are zero-padded to two digits each. The fractional seconds, which can
-/// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The
-/// "Z" suffix indicates the timezone ("UTC"); the timezone is required. A
-/// proto3 JSON serializer should always use UTC (as indicated by "Z") when
-/// printing the Timestamp type and a proto3 JSON parser should be able to
-/// accept both UTC and other timezones (as indicated by an offset).
-///
-/// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC
-/// on January 15, 2017.
-///
-/// In JavaScript, one can convert a Date object to this format using the
-/// standard
-/// [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
-/// method. In Python, a standard `datetime.datetime` object can be converted to
-/// this format using
-/// [`strftime`](https://docs.python.org/2/library/time.html#time.strftime) with
-/// the time format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use
-/// the Joda Time's [`ISODateTimeFormat.dateTime()`](
-/// http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D
-/// ) to obtain a formatter capable of generating timestamps in this format.
 class Timestamp {
   /// Non-negative fractions of a second at nanosecond resolution. Negative
   /// second values with fractions must still have non-negative nanos values
-  /// that count forward in time. Must be from 0 to 999,999,999 inclusive.
+  /// that count forward in time. Must be from 0 to 999,999,999
+  /// inclusive.
   core.int nanos;
 
-  /// Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must
-  /// be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+  /// Represents seconds of UTC time since Unix epoch
+  /// 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+  /// 9999-12-31T23:59:59Z inclusive.
   core.String seconds;
 
   Timestamp();
@@ -5485,15 +7293,18 @@ class ToolExecution {
   /// The full tokenized command line including the program name (equivalent to
   /// argv in a C program).
   ///
-  /// - In response: present if set by create request - In create request:
-  /// optional - In update request: never set
+  /// - In response: present if set by create request
+  /// - In create request: optional
+  /// - In update request: never set
   core.List<core.String> commandLineArguments;
 
-  /// Tool execution exit code. This field will be set once the tool has exited.
+  /// Tool execution exit code. This field will be set once the tool has
+  /// exited.
   ///
-  /// - In response: present if set by create/update request - In create
-  /// request: optional - In update request: optional, a FAILED_PRECONDITION
-  /// error will be returned if an exit_code is already set.
+  /// - In response: present if set by create/update request
+  /// - In create request: optional
+  /// - In update request: optional, a FAILED_PRECONDITION error will be
+  ///   returned if an exit_code is already set.
   ToolExitCode exitCode;
 
   /// References to any plain text logs output the tool execution.
@@ -5503,18 +7314,20 @@ class ToolExecution {
   ///
   /// The maximum allowed number of tool logs per step is 1000.
   ///
-  /// - In response: present if set by create/update request - In create
-  /// request: optional - In update request: optional, any value provided will
-  /// be appended to the existing list
+  /// - In response: present if set by create/update request
+  /// - In create request: optional
+  /// - In update request: optional, any value provided will be appended to the
+  ///   existing list
   core.List<FileReference> toolLogs;
 
   /// References to opaque files of any format output by the tool execution.
   ///
   /// The maximum allowed number of tool outputs per step is 1000.
   ///
-  /// - In response: present if set by create/update request - In create
-  /// request: optional - In update request: optional, any value provided will
-  /// be appended to the existing list
+  /// - In response: present if set by create/update request
+  /// - In create request: optional
+  /// - In update request: optional, any value provided will be appended to the
+  ///   existing list
   core.List<ToolOutputReference> toolOutputs;
 
   ToolExecution();
@@ -5560,13 +7373,13 @@ class ToolExecution {
   }
 }
 
-/// Generic tool step to be used for binaries we do not explicitly support. For
-/// example: running cp to copy artifacts from one location to another.
+/// Generic tool step to be used for binaries we do not explicitly support.
+/// For example: running cp to copy artifacts from one location to another.
 class ToolExecutionStep {
   /// A Tool execution.
   ///
-  /// - In response: present if set by create/update request - In create/update
-  /// request: optional
+  /// - In response: present if set by create/update request
+  /// - In create/update request: optional
   ToolExecution toolExecution;
 
   ToolExecutionStep();
@@ -5592,7 +7405,8 @@ class ToolExitCode {
   /// Tool execution exit code. A value of 0 means that the execution was
   /// successful.
   ///
-  /// - In response: always set - In create/update request: always set
+  /// - In response: always set
+  /// - In create/update request: always set
   core.int number;
 
   ToolExitCode();
@@ -5617,19 +7431,20 @@ class ToolExitCode {
 class ToolOutputReference {
   /// The creation time of the file.
   ///
-  /// - In response: present if set by create/update request - In create/update
-  /// request: optional
+  /// - In response: present if set by create/update request
+  /// - In create/update request: optional
   Timestamp creationTime;
 
   /// A FileReference to an output file.
   ///
-  /// - In response: always set - In create/update request: always set
+  /// - In response: always set
+  /// - In create/update request: always set
   FileReference output;
 
   /// The test case to which this output file belongs.
   ///
-  /// - In response: present if set by create/update request - In create/update
-  /// request: optional
+  /// - In response: present if set by create/update request
+  /// - In create/update request: optional
   TestCaseReference testCase;
 
   ToolOutputReference();
@@ -5657,6 +7472,165 @@ class ToolOutputReference {
     }
     if (testCase != null) {
       _json["testCase"] = (testCase).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A warning that the screen hierarchy is deeper than the recommended
+/// threshold.
+class UIElementTooDeep {
+  /// The depth of the screen element
+  core.int depth;
+
+  /// The screen id of the element
+  core.String screenId;
+
+  /// The screen state id of the element
+  core.String screenStateId;
+
+  UIElementTooDeep();
+
+  UIElementTooDeep.fromJson(core.Map _json) {
+    if (_json.containsKey("depth")) {
+      depth = _json["depth"];
+    }
+    if (_json.containsKey("screenId")) {
+      screenId = _json["screenId"];
+    }
+    if (_json.containsKey("screenStateId")) {
+      screenStateId = _json["screenStateId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (depth != null) {
+      _json["depth"] = depth;
+    }
+    if (screenId != null) {
+      _json["screenId"] = screenId;
+    }
+    if (screenStateId != null) {
+      _json["screenStateId"] = screenStateId;
+    }
+    return _json;
+  }
+}
+
+/// Default unspecified warning.
+class UnspecifiedWarning {
+  UnspecifiedWarning();
+
+  UnspecifiedWarning.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Additional details of an unused robodirective.
+class UnusedRoboDirective {
+  /// The name of the resource that was unused.
+  core.String resourceName;
+
+  UnusedRoboDirective();
+
+  UnusedRoboDirective.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
+/// This insight is a recommendation to upgrade a given library to the specified
+/// version, in order to avoid dependencies on non-SDK APIs.
+class UpgradeInsight {
+  /// The name of the package to be upgraded.
+  core.String packageName;
+
+  /// The suggested version to upgrade to.
+  /// Optional: In case we are not sure which version solves this problem
+  core.String upgradeToVersion;
+
+  UpgradeInsight();
+
+  UpgradeInsight.fromJson(core.Map _json) {
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+    if (_json.containsKey("upgradeToVersion")) {
+      upgradeToVersion = _json["upgradeToVersion"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    if (upgradeToVersion != null) {
+      _json["upgradeToVersion"] = upgradeToVersion;
+    }
+    return _json;
+  }
+}
+
+/// Additional details of a used Robo directive.
+class UsedRoboDirective {
+  /// The name of the resource that was used.
+  core.String resourceName;
+
+  UsedRoboDirective();
+
+  UsedRoboDirective.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
+/// Additional details of a used Robo directive with an ignore action.
+/// Note: This is a different scenario than unused directive.
+class UsedRoboIgnoreDirective {
+  /// The name of the resource that was ignored.
+  core.String resourceName;
+
+  UsedRoboIgnoreDirective();
+
+  UsedRoboIgnoreDirective.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
     }
     return _json;
   }

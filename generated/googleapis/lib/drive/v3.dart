@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.drive.v3;
 
@@ -133,7 +133,7 @@ class ChangesResourceApi {
   /// Request parameters:
   ///
   /// [driveId] - The ID of the shared drive for which the starting pageToken
-  /// for listing future changes from that shared drive will be returned.
+  /// for listing future changes from that shared drive is returned.
   ///
   /// [supportsAllDrives] - Deprecated - Whether the requesting application
   /// supports both My Drives and shared drives. This parameter will only be
@@ -202,9 +202,9 @@ class ChangesResourceApi {
   /// page. This should be set to the value of 'nextPageToken' from the previous
   /// response or to the response from the getStartPageToken method.
   ///
-  /// [driveId] - The shared drive from which changes will be returned. If
-  /// specified the change IDs will be reflective of the shared drive; use the
-  /// combined drive ID and change ID as an identifier.
+  /// [driveId] - The shared drive from which changes are returned. If specified
+  /// the change IDs will be reflective of the shared drive; use the combined
+  /// drive ID and change ID as an identifier.
   ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
@@ -213,7 +213,7 @@ class ChangesResourceApi {
   ///
   /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
   /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// be effective until June 1, 2020. Afterwards shared drive items are
   /// included in the results.
   ///
   /// [includeRemoved] - Whether to include changes indicating that items have
@@ -337,9 +337,9 @@ class ChangesResourceApi {
   /// page. This should be set to the value of 'nextPageToken' from the previous
   /// response or to the response from the getStartPageToken method.
   ///
-  /// [driveId] - The shared drive from which changes will be returned. If
-  /// specified the change IDs will be reflective of the shared drive; use the
-  /// combined drive ID and change ID as an identifier.
+  /// [driveId] - The shared drive from which changes are returned. If specified
+  /// the change IDs will be reflective of the shared drive; use the combined
+  /// drive ID and change ID as an identifier.
   ///
   /// [includeCorpusRemovals] - Whether changes should include the file resource
   /// if the file is still accessible by the user at the time of the request,
@@ -348,7 +348,7 @@ class ChangesResourceApi {
   ///
   /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
   /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// be effective until June 1, 2020. Afterwards shared drive items are
   /// included in the results.
   ///
   /// [includeRemoved] - Whether to include changes indicating that items have
@@ -1175,6 +1175,11 @@ class FilesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. Requests that specify more than one
+  /// parent fail.
+  ///
   /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
   /// visibility settings for the created file. Domain administrators can choose
   /// to make all uploaded files visible to the domain by default; this
@@ -1183,7 +1188,8 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Google Drive.
+  /// Google Drive. Only 200 revisions for the file can be kept forever. If the
+  /// limit is reached, try deleting pinned revisions.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
@@ -1206,7 +1212,8 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<File> copy(File request, core.String fileId,
-      {core.bool ignoreDefaultVisibility,
+      {core.bool enforceSingleParent,
+      core.bool ignoreDefaultVisibility,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.bool supportsAllDrives,
@@ -1224,6 +1231,9 @@ class FilesResourceApi {
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (ignoreDefaultVisibility != null) {
       _queryParams["ignoreDefaultVisibility"] = ["${ignoreDefaultVisibility}"];
@@ -1261,6 +1271,11 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. Requests that specify more than one
+  /// parent fail.
+  ///
   /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
   /// visibility settings for the created file. Domain administrators can choose
   /// to make all uploaded files visible to the domain by default; this
@@ -1269,7 +1284,8 @@ class FilesResourceApi {
   ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Google Drive.
+  /// Google Drive. Only 200 revisions for the file can be kept forever. If the
+  /// limit is reached, try deleting pinned revisions.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
@@ -1301,7 +1317,8 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<File> create(File request,
-      {core.bool ignoreDefaultVisibility,
+      {core.bool enforceSingleParent,
+      core.bool ignoreDefaultVisibility,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.bool supportsAllDrives,
@@ -1319,6 +1336,9 @@ class FilesResourceApi {
 
     if (request != null) {
       _body = convert.json.encode((request).toJson());
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (ignoreDefaultVisibility != null) {
       _queryParams["ignoreDefaultVisibility"] = ["${ignoreDefaultVisibility}"];
@@ -1674,7 +1694,7 @@ class FilesResourceApi {
   ///
   /// [includeItemsFromAllDrives] - Deprecated - Whether both My Drive and
   /// shared drive items should be included in results. This parameter will only
-  /// be effective until June 1, 2020. Afterwards shared drive items will be
+  /// be effective until June 1, 2020. Afterwards shared drive items are
   /// included in the results.
   ///
   /// [includeTeamDriveItems] - Deprecated use includeItemsFromAllDrives
@@ -1811,9 +1831,18 @@ class FilesResourceApi {
   ///
   /// [addParents] - A comma-separated list of parent IDs to add.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. If the item's owner makes a request
+  /// to add a single parent, the item is removed from all current folders and
+  /// placed in the requested folder. Other requests that increase the number of
+  /// parents fail, except when the canAddMyDriveParent file capability is true
+  /// and a single parent is being added.
+  ///
   /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
   /// head revision. This is only applicable to files with binary content in
-  /// Google Drive.
+  /// Google Drive. Only 200 revisions for the file can be kept forever. If the
+  /// limit is reached, try deleting pinned revisions.
   ///
   /// [ocrLanguage] - A language hint for OCR processing during image import
   /// (ISO 639-1 code).
@@ -1848,6 +1877,7 @@ class FilesResourceApi {
   /// this method will complete with the same error.
   async.Future<File> update(File request, core.String fileId,
       {core.String addParents,
+      core.bool enforceSingleParent,
       core.bool keepRevisionForever,
       core.String ocrLanguage,
       core.String removeParents,
@@ -1872,6 +1902,9 @@ class FilesResourceApi {
     }
     if (addParents != null) {
       _queryParams["addParents"] = [addParents];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
     }
     if (keepRevisionForever != null) {
       _queryParams["keepRevisionForever"] = ["${keepRevisionForever}"];
@@ -2024,6 +2057,19 @@ class PermissionsResourceApi {
   /// [emailMessage] - A plain text custom message to include in the
   /// notification email.
   ///
+  /// [enforceSingleParent] - Set to true to opt in to API behavior that aims
+  /// for all items to have exactly one parent. This parameter only takes effect
+  /// if the item is not in a shared drive. See moveToNewOwnersRoot for details.
+  ///
+  /// [moveToNewOwnersRoot] - This parameter only takes effect if the item is
+  /// not in a shared drive and the request is attempting to transfer the
+  /// ownership of the item. When set to true, the item is moved to the new
+  /// owner's My Drive root folder and all prior parents removed. If set to
+  /// false, when enforceSingleParent=true, parents are not changed. If set to
+  /// false, when enforceSingleParent=false, existing parents are not changed;
+  /// however, the file will be added to the new owner's My Drive root folder,
+  /// unless it is already in the new owner's My Drive.
+  ///
   /// [sendNotificationEmail] - Whether to send a notification email when
   /// sharing to users or groups. This defaults to true for users and groups,
   /// and is not allowed for other requests. It must not be disabled for
@@ -2057,6 +2103,8 @@ class PermissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Permission> create(Permission request, core.String fileId,
       {core.String emailMessage,
+      core.bool enforceSingleParent,
+      core.bool moveToNewOwnersRoot,
       core.bool sendNotificationEmail,
       core.bool supportsAllDrives,
       core.bool supportsTeamDrives,
@@ -2078,6 +2126,12 @@ class PermissionsResourceApi {
     }
     if (emailMessage != null) {
       _queryParams["emailMessage"] = [emailMessage];
+    }
+    if (enforceSingleParent != null) {
+      _queryParams["enforceSingleParent"] = ["${enforceSingleParent}"];
+    }
+    if (moveToNewOwnersRoot != null) {
+      _queryParams["moveToNewOwnersRoot"] = ["${moveToNewOwnersRoot}"];
     }
     if (sendNotificationEmail != null) {
       _queryParams["sendNotificationEmail"] = ["${sendNotificationEmail}"];
@@ -3890,7 +3944,8 @@ class Comment {
   /// properties.
   core.String anchor;
 
-  /// The user who created the comment.
+  /// The author of the comment. The author's email address and permission ID
+  /// will not be populated.
   User author;
 
   /// The plain text content of the comment. This field is used for setting the
@@ -4560,6 +4615,10 @@ class FileCapabilities {
   /// false when the item is not a folder.
   core.bool canAddChildren;
 
+  /// Whether the current user can add a parent for the item without removing an
+  /// existing parent in the same request. Not populated for shared drive files.
+  core.bool canAddMyDriveParent;
+
   /// Whether the current user can change the copyRequiresWriterPermission
   /// restriction of this file.
   core.bool canChangeCopyRequiresWriterPermission;
@@ -4585,12 +4644,17 @@ class FileCapabilities {
   /// Whether the current user can download this file.
   core.bool canDownload;
 
-  /// Whether the current user can edit this file.
+  /// Whether the current user can edit this file. Other factors may limit the
+  /// type of changes a user can make to a file. For example, see
+  /// canChangeCopyRequiresWriterPermission or canModifyContent.
   core.bool canEdit;
 
   /// Whether the current user can list the children of this folder. This is
   /// always false when the item is not a folder.
   core.bool canListChildren;
+
+  /// Whether the current user can modify the content of this file.
+  core.bool canModifyContent;
 
   /// Whether the current user can move children of this folder outside of the
   /// shared drive. This is false when the item is not a folder. Only populated
@@ -4648,6 +4712,10 @@ class FileCapabilities {
   /// drive, use canDeleteChildren or canTrashChildren instead.
   core.bool canRemoveChildren;
 
+  /// Whether the current user can remove a parent from the item without adding
+  /// another parent in the same request. Not populated for shared drive files.
+  core.bool canRemoveMyDriveParent;
+
   /// Whether the current user can rename this file.
   core.bool canRename;
 
@@ -4669,6 +4737,9 @@ class FileCapabilities {
   FileCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey("canAddChildren")) {
       canAddChildren = _json["canAddChildren"];
+    }
+    if (_json.containsKey("canAddMyDriveParent")) {
+      canAddMyDriveParent = _json["canAddMyDriveParent"];
     }
     if (_json.containsKey("canChangeCopyRequiresWriterPermission")) {
       canChangeCopyRequiresWriterPermission =
@@ -4697,6 +4768,9 @@ class FileCapabilities {
     }
     if (_json.containsKey("canListChildren")) {
       canListChildren = _json["canListChildren"];
+    }
+    if (_json.containsKey("canModifyContent")) {
+      canModifyContent = _json["canModifyContent"];
     }
     if (_json.containsKey("canMoveChildrenOutOfDrive")) {
       canMoveChildrenOutOfDrive = _json["canMoveChildrenOutOfDrive"];
@@ -4740,6 +4814,9 @@ class FileCapabilities {
     if (_json.containsKey("canRemoveChildren")) {
       canRemoveChildren = _json["canRemoveChildren"];
     }
+    if (_json.containsKey("canRemoveMyDriveParent")) {
+      canRemoveMyDriveParent = _json["canRemoveMyDriveParent"];
+    }
     if (_json.containsKey("canRename")) {
       canRename = _json["canRename"];
     }
@@ -4762,6 +4839,9 @@ class FileCapabilities {
         new core.Map<core.String, core.Object>();
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
+    }
+    if (canAddMyDriveParent != null) {
+      _json["canAddMyDriveParent"] = canAddMyDriveParent;
     }
     if (canChangeCopyRequiresWriterPermission != null) {
       _json["canChangeCopyRequiresWriterPermission"] =
@@ -4790,6 +4870,9 @@ class FileCapabilities {
     }
     if (canListChildren != null) {
       _json["canListChildren"] = canListChildren;
+    }
+    if (canModifyContent != null) {
+      _json["canModifyContent"] = canModifyContent;
     }
     if (canMoveChildrenOutOfDrive != null) {
       _json["canMoveChildrenOutOfDrive"] = canMoveChildrenOutOfDrive;
@@ -4832,6 +4915,9 @@ class FileCapabilities {
     }
     if (canRemoveChildren != null) {
       _json["canRemoveChildren"] = canRemoveChildren;
+    }
+    if (canRemoveMyDriveParent != null) {
+      _json["canRemoveMyDriveParent"] = canRemoveMyDriveParent;
     }
     if (canRename != null) {
       _json["canRename"] = canRename;
@@ -5017,7 +5103,8 @@ class FileImageMediaMetadata {
   /// The metering mode used to create the photo.
   core.String meteringMode;
 
-  /// The rotation in clockwise degrees from the image's original orientation.
+  /// The number of clockwise 90 degree rotations applied from the image's
+  /// original orientation.
   core.int rotation;
 
   /// The type of sensor used to create the photo.
@@ -5173,6 +5260,41 @@ class FileImageMediaMetadata {
   }
 }
 
+/// Shortcut file details. Only populated for shortcut files, which have the
+/// mimeType field set to application/vnd.google-apps.shortcut.
+class FileShortcutDetails {
+  /// The ID of the file that this shortcut points to.
+  core.String targetId;
+
+  /// The MIME type of the file that this shortcut points to. The value of this
+  /// field is a snapshot of the target's MIME type, captured when the shortcut
+  /// is created.
+  core.String targetMimeType;
+
+  FileShortcutDetails();
+
+  FileShortcutDetails.fromJson(core.Map _json) {
+    if (_json.containsKey("targetId")) {
+      targetId = _json["targetId"];
+    }
+    if (_json.containsKey("targetMimeType")) {
+      targetMimeType = _json["targetMimeType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (targetId != null) {
+      _json["targetId"] = targetId;
+    }
+    if (targetMimeType != null) {
+      _json["targetMimeType"] = targetMimeType;
+    }
+    return _json;
+  }
+}
+
 /// Additional metadata about video media. This may not be available immediately
 /// upon upload.
 class FileVideoMediaMetadata {
@@ -5268,8 +5390,8 @@ class File {
   /// not cleared if the new name does not contain a valid extension.
   core.String fullFileExtension;
 
-  /// Whether any users are granted file access directly on this file. This
-  /// field is only populated for shared drive files.
+  /// Whether there are permissions directly on this file. This field is only
+  /// populated for items in shared drives.
   core.bool hasAugmentedPermissions;
 
   /// Whether this file has a thumbnail. This does not indicate whether the
@@ -5375,6 +5497,10 @@ class File {
 
   /// The user who shared the file with the requesting user, if applicable.
   User sharingUser;
+
+  /// Shortcut file details. Only populated for shortcut files, which have the
+  /// mimeType field set to application/vnd.google-apps.shortcut.
+  FileShortcutDetails shortcutDetails;
 
   /// The size of the file's content in bytes. This is only applicable to files
   /// with binary content in Google Drive.
@@ -5566,6 +5692,10 @@ class File {
     if (_json.containsKey("sharingUser")) {
       sharingUser = new User.fromJson(_json["sharingUser"]);
     }
+    if (_json.containsKey("shortcutDetails")) {
+      shortcutDetails =
+          new FileShortcutDetails.fromJson(_json["shortcutDetails"]);
+    }
     if (_json.containsKey("size")) {
       size = _json["size"];
     }
@@ -5738,6 +5868,9 @@ class File {
     if (sharingUser != null) {
       _json["sharingUser"] = (sharingUser).toJson();
     }
+    if (shortcutDetails != null) {
+      _json["shortcutDetails"] = (shortcutDetails).toJson();
+    }
     if (size != null) {
       _json["size"] = size;
     }
@@ -5903,7 +6036,7 @@ class PermissionPermissionDetails {
   core.bool inherited;
 
   /// The ID of the item from which this permission is inherited. This is an
-  /// output-only field and is only populated for members of the shared drive.
+  /// output-only field.
   core.String inheritedFrom;
 
   /// The permission type for this user. While new values may be added in
@@ -6017,7 +6150,13 @@ class Permission {
   /// field only pertains to user and group permissions.
   core.bool deleted;
 
-  /// A displayable name for users, groups or domains.
+  /// The "pretty" name of the value of the permission. The following is a list
+  /// of examples for each type of permission:
+  /// - user - User's full name, as defined for their Google account, such as
+  /// "Joe Smith."
+  /// - group - Name of the Google Group, such as "The Company Administrators."
+  /// - domain - String domain name, such as "thecompany.com."
+  /// - anyone - No displayName is present.
   core.String displayName;
 
   /// The domain to which this permission refers.
@@ -6034,7 +6173,8 @@ class Permission {
   core.DateTime expirationTime;
 
   /// The ID of this permission. This is a unique identifier for the grantee,
-  /// and is published in User resources as permissionId.
+  /// and is published in User resources as permissionId. IDs should be treated
+  /// as opaque values.
   core.String id;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -6066,7 +6206,10 @@ class Permission {
   /// - user
   /// - group
   /// - domain
-  /// - anyone
+  /// - anyone  When creating a permission, if type is user or group, you must
+  /// provide an emailAddress for the user or group. When type is domain, you
+  /// must provide a domain. There isn't extra information required for a anyone
+  /// type.
   core.String type;
 
   Permission();
@@ -6224,7 +6367,8 @@ class Reply {
   /// - reopen
   core.String action;
 
-  /// The user who created the reply.
+  /// The author of the reply. The author's email address and permission ID will
+  /// not be populated.
   User author;
 
   /// The plain text content of the reply. This field is used for setting the

@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed4644() {
+buildUnnamed5038() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4644(core.List<core.String> o) {
+checkUnnamed5038(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed4645() {
+buildUnnamed5039() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4645(core.List<core.String> o) {
+checkUnnamed5039(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -81,9 +81,9 @@ buildGenerateAccessTokenRequest() {
   var o = new api.GenerateAccessTokenRequest();
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
-    o.delegates = buildUnnamed4644();
+    o.delegates = buildUnnamed5038();
     o.lifetime = "foo";
-    o.scope = buildUnnamed4645();
+    o.scope = buildUnnamed5039();
   }
   buildCounterGenerateAccessTokenRequest--;
   return o;
@@ -92,9 +92,9 @@ buildGenerateAccessTokenRequest() {
 checkGenerateAccessTokenRequest(api.GenerateAccessTokenRequest o) {
   buildCounterGenerateAccessTokenRequest++;
   if (buildCounterGenerateAccessTokenRequest < 3) {
-    checkUnnamed4644(o.delegates);
+    checkUnnamed5038(o.delegates);
     unittest.expect(o.lifetime, unittest.equals('foo'));
-    checkUnnamed4645(o.scope);
+    checkUnnamed5039(o.scope);
   }
   buildCounterGenerateAccessTokenRequest--;
 }
@@ -120,14 +120,14 @@ checkGenerateAccessTokenResponse(api.GenerateAccessTokenResponse o) {
   buildCounterGenerateAccessTokenResponse--;
 }
 
-buildUnnamed4646() {
+buildUnnamed5040() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4646(core.List<core.String> o) {
+checkUnnamed5040(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -139,7 +139,7 @@ buildGenerateIdTokenRequest() {
   buildCounterGenerateIdTokenRequest++;
   if (buildCounterGenerateIdTokenRequest < 3) {
     o.audience = "foo";
-    o.delegates = buildUnnamed4646();
+    o.delegates = buildUnnamed5040();
     o.includeEmail = true;
   }
   buildCounterGenerateIdTokenRequest--;
@@ -150,7 +150,7 @@ checkGenerateIdTokenRequest(api.GenerateIdTokenRequest o) {
   buildCounterGenerateIdTokenRequest++;
   if (buildCounterGenerateIdTokenRequest < 3) {
     unittest.expect(o.audience, unittest.equals('foo'));
-    checkUnnamed4646(o.delegates);
+    checkUnnamed5040(o.delegates);
     unittest.expect(o.includeEmail, unittest.isTrue);
   }
   buildCounterGenerateIdTokenRequest--;
@@ -175,71 +175,14 @@ checkGenerateIdTokenResponse(api.GenerateIdTokenResponse o) {
   buildCounterGenerateIdTokenResponse--;
 }
 
-buildUnnamed4647() {
+buildUnnamed5041() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4647(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterGenerateIdentityBindingAccessTokenRequest = 0;
-buildGenerateIdentityBindingAccessTokenRequest() {
-  var o = new api.GenerateIdentityBindingAccessTokenRequest();
-  buildCounterGenerateIdentityBindingAccessTokenRequest++;
-  if (buildCounterGenerateIdentityBindingAccessTokenRequest < 3) {
-    o.jwt = "foo";
-    o.scope = buildUnnamed4647();
-  }
-  buildCounterGenerateIdentityBindingAccessTokenRequest--;
-  return o;
-}
-
-checkGenerateIdentityBindingAccessTokenRequest(
-    api.GenerateIdentityBindingAccessTokenRequest o) {
-  buildCounterGenerateIdentityBindingAccessTokenRequest++;
-  if (buildCounterGenerateIdentityBindingAccessTokenRequest < 3) {
-    unittest.expect(o.jwt, unittest.equals('foo'));
-    checkUnnamed4647(o.scope);
-  }
-  buildCounterGenerateIdentityBindingAccessTokenRequest--;
-}
-
-core.int buildCounterGenerateIdentityBindingAccessTokenResponse = 0;
-buildGenerateIdentityBindingAccessTokenResponse() {
-  var o = new api.GenerateIdentityBindingAccessTokenResponse();
-  buildCounterGenerateIdentityBindingAccessTokenResponse++;
-  if (buildCounterGenerateIdentityBindingAccessTokenResponse < 3) {
-    o.accessToken = "foo";
-    o.expireTime = "foo";
-  }
-  buildCounterGenerateIdentityBindingAccessTokenResponse--;
-  return o;
-}
-
-checkGenerateIdentityBindingAccessTokenResponse(
-    api.GenerateIdentityBindingAccessTokenResponse o) {
-  buildCounterGenerateIdentityBindingAccessTokenResponse++;
-  if (buildCounterGenerateIdentityBindingAccessTokenResponse < 3) {
-    unittest.expect(o.accessToken, unittest.equals('foo'));
-    unittest.expect(o.expireTime, unittest.equals('foo'));
-  }
-  buildCounterGenerateIdentityBindingAccessTokenResponse--;
-}
-
-buildUnnamed4648() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed4648(core.List<core.String> o) {
+checkUnnamed5041(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -250,7 +193,7 @@ buildSignBlobRequest() {
   var o = new api.SignBlobRequest();
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    o.delegates = buildUnnamed4648();
+    o.delegates = buildUnnamed5041();
     o.payload = "foo";
   }
   buildCounterSignBlobRequest--;
@@ -260,7 +203,7 @@ buildSignBlobRequest() {
 checkSignBlobRequest(api.SignBlobRequest o) {
   buildCounterSignBlobRequest++;
   if (buildCounterSignBlobRequest < 3) {
-    checkUnnamed4648(o.delegates);
+    checkUnnamed5041(o.delegates);
     unittest.expect(o.payload, unittest.equals('foo'));
   }
   buildCounterSignBlobRequest--;
@@ -287,14 +230,14 @@ checkSignBlobResponse(api.SignBlobResponse o) {
   buildCounterSignBlobResponse--;
 }
 
-buildUnnamed4649() {
+buildUnnamed5042() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed4649(core.List<core.String> o) {
+checkUnnamed5042(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -305,7 +248,7 @@ buildSignJwtRequest() {
   var o = new api.SignJwtRequest();
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    o.delegates = buildUnnamed4649();
+    o.delegates = buildUnnamed5042();
     o.payload = "foo";
   }
   buildCounterSignJwtRequest--;
@@ -315,7 +258,7 @@ buildSignJwtRequest() {
 checkSignJwtRequest(api.SignJwtRequest o) {
   buildCounterSignJwtRequest++;
   if (buildCounterSignJwtRequest < 3) {
-    checkUnnamed4649(o.delegates);
+    checkUnnamed5042(o.delegates);
     unittest.expect(o.payload, unittest.equals('foo'));
   }
   buildCounterSignJwtRequest--;
@@ -372,24 +315,6 @@ main() {
       var o = buildGenerateIdTokenResponse();
       var od = new api.GenerateIdTokenResponse.fromJson(o.toJson());
       checkGenerateIdTokenResponse(od);
-    });
-  });
-
-  unittest.group("obj-schema-GenerateIdentityBindingAccessTokenRequest", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGenerateIdentityBindingAccessTokenRequest();
-      var od = new api.GenerateIdentityBindingAccessTokenRequest.fromJson(
-          o.toJson());
-      checkGenerateIdentityBindingAccessTokenRequest(od);
-    });
-  });
-
-  unittest.group("obj-schema-GenerateIdentityBindingAccessTokenResponse", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGenerateIdentityBindingAccessTokenResponse();
-      var od = new api.GenerateIdentityBindingAccessTokenResponse.fromJson(
-          o.toJson());
-      checkGenerateIdentityBindingAccessTokenResponse(od);
     });
   });
 
@@ -535,65 +460,6 @@ main() {
           .generateIdToken(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGenerateIdTokenResponse(response);
-      })));
-    });
-
-    unittest.test("method--generateIdentityBindingAccessToken", () {
-      var mock = new HttpServerMock();
-      api.ProjectsServiceAccountsResourceApi res =
-          new api.IamcredentialsApi(mock).projects.serviceAccounts;
-      var arg_request = buildGenerateIdentityBindingAccessTokenRequest();
-      var arg_name = "foo";
-      var arg_$fields = "foo";
-      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            new api.GenerateIdentityBindingAccessTokenRequest.fromJson(json);
-        checkGenerateIdentityBindingAccessTokenRequest(obj);
-
-        var path = (req.url).path;
-        var pathOffset = 0;
-        var index;
-        var subPart;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
-        pathOffset += 1;
-        unittest.expect(
-            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
-        pathOffset += 3;
-        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
-
-        var query = (req.url).query;
-        var queryOffset = 0;
-        var queryMap = <core.String, core.List<core.String>>{};
-        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
-        parseBool(n) {
-          if (n == "true") return true;
-          if (n == "false") return false;
-          if (n == null) return null;
-          throw new core.ArgumentError("Invalid boolean: $n");
-        }
-
-        if (query.length > 0) {
-          for (var part in query.split("&")) {
-            var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
-                core.Uri.decodeQueryComponent(keyvalue[1]));
-          }
-        }
-        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
-
-        var h = {
-          "content-type": "application/json; charset=utf-8",
-        };
-        var resp = convert.json
-            .encode(buildGenerateIdentityBindingAccessTokenResponse());
-        return new async.Future.value(stringResponse(200, h, resp));
-      }), true);
-      res
-          .generateIdentityBindingAccessToken(arg_request, arg_name,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGenerateIdentityBindingAccessTokenResponse(response);
       })));
     });
 

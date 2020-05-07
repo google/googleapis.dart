@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.oslogin.v1alpha;
 
@@ -17,7 +17,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 const core.String USER_AGENT = 'dart-api-client oslogin/v1alpha';
 
 /// You can use OS Login to manage access to your VM instances using IAM roles.
-/// For more information, read [OS Login](/compute/docs/oslogin/).
 class OsloginApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -63,10 +62,6 @@ class UsersResourceApi {
   /// [name] - The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
-  /// [projectId] - The project ID of the Google Cloud Platform project.
-  ///
-  /// [systemId] - A system ID for filtering the results of the request.
-  ///
   /// [operatingSystemType] - The type of operating system associated with the
   /// account.
   /// Possible string values are:
@@ -74,6 +69,10 @@ class UsersResourceApi {
   /// OPERATING_SYSTEM_TYPE_UNSPECIFIED.
   /// - "LINUX" : A LINUX.
   /// - "WINDOWS" : A WINDOWS.
+  ///
+  /// [projectId] - The project ID of the Google Cloud Platform project.
+  ///
+  /// [systemId] - A system ID for filtering the results of the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,9 +85,9 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LoginProfile> getLoginProfile(core.String name,
-      {core.String projectId,
+      {core.String operatingSystemType,
+      core.String projectId,
       core.String systemId,
-      core.String operatingSystemType,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -100,14 +99,14 @@ class UsersResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (operatingSystemType != null) {
+      _queryParams["operatingSystemType"] = [operatingSystemType];
+    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
     if (systemId != null) {
       _queryParams["systemId"] = [systemId];
-    }
-    if (operatingSystemType != null) {
-      _queryParams["operatingSystemType"] = [operatingSystemType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -516,6 +515,9 @@ class PosixAccount {
   /// The path to the home directory for this account.
   core.String homeDirectory;
 
+  /// Output only. The canonical resource name.
+  core.String name;
+
   /// The operating system type where this account applies.
   /// Possible string values are:
   /// - "OPERATING_SYSTEM_TYPE_UNSPECIFIED" : The operating system type
@@ -556,6 +558,9 @@ class PosixAccount {
     if (_json.containsKey("homeDirectory")) {
       homeDirectory = _json["homeDirectory"];
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("operatingSystemType")) {
       operatingSystemType = _json["operatingSystemType"];
     }
@@ -590,6 +595,9 @@ class PosixAccount {
     }
     if (homeDirectory != null) {
       _json["homeDirectory"] = homeDirectory;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (operatingSystemType != null) {
       _json["operatingSystemType"] = operatingSystemType;
@@ -626,6 +634,9 @@ class SshPublicKey {
   /// section 6.6.
   core.String key;
 
+  /// Output only. The canonical resource name.
+  core.String name;
+
   SshPublicKey();
 
   SshPublicKey.fromJson(core.Map _json) {
@@ -637,6 +648,9 @@ class SshPublicKey {
     }
     if (_json.containsKey("key")) {
       key = _json["key"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
     }
   }
 
@@ -651,6 +665,9 @@ class SshPublicKey {
     }
     if (key != null) {
       _json["key"] = key;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }

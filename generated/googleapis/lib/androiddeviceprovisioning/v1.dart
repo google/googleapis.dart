@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.androiddeviceprovisioning.v1;
 
@@ -702,7 +702,7 @@ class OperationsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.+$".
+  /// Value must have pattern "^operations/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1386,10 +1386,10 @@ class PartnersVendorsResourceApi {
   /// `partners/[PARTNER_ID]`.
   /// Value must have pattern "^partners/[^/]+$".
   ///
+  /// [pageSize] - The maximum number of results to be returned.
+  ///
   /// [pageToken] - A token identifying a page of results returned by the
   /// server.
-  ///
-  /// [pageSize] - The maximum number of results to be returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1402,7 +1402,7 @@ class PartnersVendorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVendorsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1413,11 +1413,11 @@ class PartnersVendorsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1619,7 +1619,7 @@ class ClaimDevicesRequest {
 /// A reseller, vendor, or customer in the zero-touch reseller and customer
 /// APIs.
 class Company {
-  /// Input only. Optional. Email address of customer's users in the admin role.
+  /// Optional. Input only. Email address of customer's users in the admin role.
   /// Each email address must be associated with a Google Account.
   core.List<core.String> adminEmails;
 
@@ -3335,7 +3335,7 @@ class UpdateDeviceMetadataInBatchRequest {
 
 /// Request to set metadata for a device.
 class UpdateDeviceMetadataRequest {
-  /// Required. The metdata to attach to the device.
+  /// Required. The metadata to attach to the device.
   DeviceMetadata deviceMetadata;
 
   UpdateDeviceMetadataRequest();
@@ -3356,7 +3356,7 @@ class UpdateDeviceMetadataRequest {
   }
 }
 
-/// Identifies metdata updates to one device.
+/// Identifies metadata updates to one device.
 class UpdateMetadataArguments {
   /// Device ID of the device.
   core.String deviceId;

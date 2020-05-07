@@ -68,12 +68,6 @@ void main() {
 The following is a list of APIs that are currently available inside this
 package.
 
-#### Access Approval API - accessapproval v1beta1
-
-An API for controlling access to data by Google personnel.
-
-Official API documentation: https://cloud.google.com/access-approval/docs
-
 #### Ad Exchange Buyer API II - adexchangebuyer2 v2beta1
 
 Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.
@@ -92,31 +86,24 @@ Provisions and manages developers' App Engine applications.
 
 Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
 
-#### Binary Authorization API - binaryauthorization v1beta1
+#### BigQuery Connection API - bigqueryconnection v1beta1
 
-The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.
+Allows users to manage BigQuery connections to external data sources.
 
+Official API documentation: https://cloud.google.com/bigquery/
 
-Official API documentation: https://cloud.google.com/binary-authorization/
+#### Cloud Billing Budget API - billingbudgets v1beta1
 
-#### Stackdriver Error Reporting API - clouderrorreporting v1beta1
+The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.
+
+Official API documentation: https://cloud.google.com/billing/docs/how-to/budget-api-overview
+
+#### Error Reporting API - clouderrorreporting v1beta1
 
 Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.
 
 
 Official API documentation: https://cloud.google.com/error-reporting/
-
-#### Cloud Private Catalog API - cloudprivatecatalog v1beta1
-
-Enable cloud users to discover enterprise catalogs and products in their organizations.
-
-Official API documentation: https://cloud.google.com/private-catalog/
-
-#### Cloud Private Catalog Producer API - cloudprivatecatalogproducer v1beta1
-
-Enables cloud users to manage and share enterprise catalogs intheir organizations.
-
-Official API documentation: https://cloud.google.com/private-catalog/
 
 #### Cloud Resource Manager API - cloudresourcemanager v1beta1
 
@@ -135,6 +122,13 @@ Official API documentation: https://github.com/conversationai/perspectiveapi/blo
 An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.
 
 Official API documentation: https://cloud.google.com/container-analysis/api/reference/rest/
+
+#### Google Cloud Data Catalog API - datacatalog v1beta1
+
+A fully managed and highly scalable data discovery and metadata management service.
+
+
+Official API documentation: https://cloud.google.com/data-catalog/docs/
 
 #### Dataflow API - dataflow v1b3
 
@@ -182,11 +176,17 @@ The Firebase Hosting REST API enables programmatic and customizable deployments 
 
 Official API documentation: https://firebase.google.com/docs/hosting/
 
-#### Cloud Healthcare API - healthcare v1beta1
+#### Firebase ML API - firebaseml v1beta2
 
-Manage, store, and access healthcare data in Google Cloud Platform.
+Access custom machine learning models hosted via Firebase ML.
 
-Official API documentation: https://cloud.google.com/healthcare
+Official API documentation: https://firebase.google.com
+
+#### Game Services API - gameservices v1beta
+
+Deploy and manage infrastructure for global multiplayer gaming experiences.
+
+Official API documentation: https://cloud.google.com/solutions/gaming/
 
 #### Cloud Natural Language API - language v1beta1
 
@@ -200,23 +200,41 @@ Provides natural language understanding technologies, such as sentiment analysis
 
 Official API documentation: https://cloud.google.com/natural-language/
 
+#### Cloud Life Sciences API - lifesciences v2beta
+
+Cloud Life Sciences is a suite of services and tools for managing, processing, and transforming life sciences data.
+
+Official API documentation: https://cloud.google.com/life-sciences
+
+#### Cloud Memorystore for Memcached API - memcache v1beta2
+
+Google Cloud Memorystore for Memcached API is used for creating and managing Memcached instances in GCP.
+
+Official API documentation: https://cloud.google.com/memorystore/
+
+#### Network Management API - networkmanagement v1beta1
+
+The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.
+
+Official API documentation: https://cloud.google.com/
+
 #### Cloud OS Login API - oslogin v1alpha
 
-You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).
+You can use OS Login to manage access to your VM instances using IAM roles.
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
 #### Cloud OS Login API - oslogin v1beta
 
-You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).
+You can use OS Login to manage access to your VM instances using IAM roles.
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
-#### Proximity Beacon API - proximitybeacon v1beta1
+#### SAS Portal API (Testing) - prod_tt_sasportal v1alpha1
 
-Registers, manages, indexes, and searches beacons.
 
-Official API documentation: https://developers.google.com/beacons/proximity/
+
+Official API documentation: https://developers.google.com/spectrum-access-system/
 
 #### Cloud Pub/Sub API - pubsub v1beta2
 
@@ -225,11 +243,11 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Replica Pool API - replicapool v1beta1
+#### Recommender API - recommender v1beta1
 
-The Replica Pool API allows users to declaratively provision and manage groups of Google Compute Engine instances based on a common template.
 
-Official API documentation: https://developers.google.com/compute/docs/replica-pool/
+
+Official API documentation: https://cloud.google.com/recommender/docs/
 
 #### Cloud Runtime Configuration API - runtimeconfig v1beta1
 
@@ -237,15 +255,34 @@ The Runtime Configurator allows you to dynamically configure and expose variable
 
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud SQL Admin API - sqladmin v1beta4
+#### SAS Portal API - sasportal v1alpha1
 
-Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.
 
-Official API documentation: https://cloud.google.com/sql/docs/reference/latest
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results API - toolresults v1beta3
+Official API documentation: https://developers.google.com/spectrum-access-system/
 
-Reads and publishes results from Firebase Test Lab.
+#### Service Directory API - servicedirectory v1beta1
+
+Service Directory is a platform for discovering, publishing, and connecting services.
+
+
+Official API documentation: https://cloud.google.com/service-directory
+
+#### Cloud Speech-to-Text API - speech v2beta1
+
+Converts audio to text by applying powerful neural network models.
+
+Official API documentation: https://cloud.google.com/speech-to-text/docs/quickstart-protocol
+
+#### Cloud SQL Admin API - sql v1beta4
+
+API for Cloud SQL database instance management
+
+Official API documentation: https://developers.google.com/cloud-sql/
+
+#### Cloud Tool Results API - toolresults v1beta3
+
+API to publish and access results from developer tools.
 
 Official API documentation: https://firebase.google.com/docs/test-lab/
 

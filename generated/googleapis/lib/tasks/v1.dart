@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.tasks.v1;
 
@@ -127,7 +127,8 @@ class TasklistsResourceApi {
   }
 
   /// Creates a new task list and adds it to the authenticated user's task
-  /// lists.
+  /// lists. Fails with HTTP code 403 or 429 after reaching the storage limit of
+  /// 2,000 lists.
   ///
   /// [request] - The metadata request object.
   ///
@@ -467,7 +468,8 @@ class TasksResourceApi {
     return _response.then((data) => new Task.fromJson(data));
   }
 
-  /// Creates a new task on the specified task list.
+  /// Creates a new task on the specified task list. Fails with HTTP code 403 or
+  /// 429 after reaching the storage limit of 100,000 tasks per account.
   ///
   /// [request] - The metadata request object.
   ///

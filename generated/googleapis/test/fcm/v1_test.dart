@@ -70,6 +70,7 @@ buildAndroidConfig() {
   if (buildCounterAndroidConfig < 3) {
     o.collapseKey = "foo";
     o.data = buildUnnamed40();
+    o.directBootOk = true;
     o.fcmOptions = buildAndroidFcmOptions();
     o.notification = buildAndroidNotification();
     o.priority = "foo";
@@ -85,6 +86,7 @@ checkAndroidConfig(api.AndroidConfig o) {
   if (buildCounterAndroidConfig < 3) {
     unittest.expect(o.collapseKey, unittest.equals('foo'));
     checkUnnamed40(o.data);
+    unittest.expect(o.directBootOk, unittest.isTrue);
     checkAndroidFcmOptions(o.fcmOptions);
     checkAndroidNotification(o.notification);
     unittest.expect(o.priority, unittest.equals('foo'));
@@ -139,6 +141,19 @@ checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+buildUnnamed43() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed43(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterAndroidNotification = 0;
 buildAndroidNotification() {
   var o = new api.AndroidNotification();
@@ -150,12 +165,25 @@ buildAndroidNotification() {
     o.channelId = "foo";
     o.clickAction = "foo";
     o.color = "foo";
+    o.defaultLightSettings = true;
+    o.defaultSound = true;
+    o.defaultVibrateTimings = true;
+    o.eventTime = "foo";
     o.icon = "foo";
+    o.image = "foo";
+    o.lightSettings = buildLightSettings();
+    o.localOnly = true;
+    o.notificationCount = 42;
+    o.notificationPriority = "foo";
     o.sound = "foo";
+    o.sticky = true;
     o.tag = "foo";
+    o.ticker = "foo";
     o.title = "foo";
     o.titleLocArgs = buildUnnamed42();
     o.titleLocKey = "foo";
+    o.vibrateTimings = buildUnnamed43();
+    o.visibility = "foo";
   }
   buildCounterAndroidNotification--;
   return o;
@@ -170,30 +198,43 @@ checkAndroidNotification(api.AndroidNotification o) {
     unittest.expect(o.channelId, unittest.equals('foo'));
     unittest.expect(o.clickAction, unittest.equals('foo'));
     unittest.expect(o.color, unittest.equals('foo'));
+    unittest.expect(o.defaultLightSettings, unittest.isTrue);
+    unittest.expect(o.defaultSound, unittest.isTrue);
+    unittest.expect(o.defaultVibrateTimings, unittest.isTrue);
+    unittest.expect(o.eventTime, unittest.equals('foo'));
     unittest.expect(o.icon, unittest.equals('foo'));
+    unittest.expect(o.image, unittest.equals('foo'));
+    checkLightSettings(o.lightSettings);
+    unittest.expect(o.localOnly, unittest.isTrue);
+    unittest.expect(o.notificationCount, unittest.equals(42));
+    unittest.expect(o.notificationPriority, unittest.equals('foo'));
     unittest.expect(o.sound, unittest.equals('foo'));
+    unittest.expect(o.sticky, unittest.isTrue);
     unittest.expect(o.tag, unittest.equals('foo'));
+    unittest.expect(o.ticker, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     checkUnnamed42(o.titleLocArgs);
     unittest.expect(o.titleLocKey, unittest.equals('foo'));
+    checkUnnamed43(o.vibrateTimings);
+    unittest.expect(o.visibility, unittest.equals('foo'));
   }
   buildCounterAndroidNotification--;
 }
 
-buildUnnamed43() {
+buildUnnamed44() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed43(core.Map<core.String, core.String> o) {
+checkUnnamed44(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed44() {
+buildUnnamed45() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -208,7 +249,7 @@ buildUnnamed44() {
   return o;
 }
 
-checkUnnamed44(core.Map<core.String, core.Object> o) {
+checkUnnamed45(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -228,8 +269,8 @@ buildApnsConfig() {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
     o.fcmOptions = buildApnsFcmOptions();
-    o.headers = buildUnnamed43();
-    o.payload = buildUnnamed44();
+    o.headers = buildUnnamed44();
+    o.payload = buildUnnamed45();
   }
   buildCounterApnsConfig--;
   return o;
@@ -239,8 +280,8 @@ checkApnsConfig(api.ApnsConfig o) {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
     checkApnsFcmOptions(o.fcmOptions);
-    checkUnnamed43(o.headers);
-    checkUnnamed44(o.payload);
+    checkUnnamed44(o.headers);
+    checkUnnamed45(o.payload);
   }
   buildCounterApnsConfig--;
 }
@@ -251,6 +292,7 @@ buildApnsFcmOptions() {
   buildCounterApnsFcmOptions++;
   if (buildCounterApnsFcmOptions < 3) {
     o.analyticsLabel = "foo";
+    o.image = "foo";
   }
   buildCounterApnsFcmOptions--;
   return o;
@@ -260,8 +302,34 @@ checkApnsFcmOptions(api.ApnsFcmOptions o) {
   buildCounterApnsFcmOptions++;
   if (buildCounterApnsFcmOptions < 3) {
     unittest.expect(o.analyticsLabel, unittest.equals('foo'));
+    unittest.expect(o.image, unittest.equals('foo'));
   }
   buildCounterApnsFcmOptions--;
+}
+
+core.int buildCounterColor = 0;
+buildColor() {
+  var o = new api.Color();
+  buildCounterColor++;
+  if (buildCounterColor < 3) {
+    o.alpha = 42.0;
+    o.blue = 42.0;
+    o.green = 42.0;
+    o.red = 42.0;
+  }
+  buildCounterColor--;
+  return o;
+}
+
+checkColor(api.Color o) {
+  buildCounterColor++;
+  if (buildCounterColor < 3) {
+    unittest.expect(o.alpha, unittest.equals(42.0));
+    unittest.expect(o.blue, unittest.equals(42.0));
+    unittest.expect(o.green, unittest.equals(42.0));
+    unittest.expect(o.red, unittest.equals(42.0));
+  }
+  buildCounterColor--;
 }
 
 core.int buildCounterFcmOptions = 0;
@@ -283,14 +351,37 @@ checkFcmOptions(api.FcmOptions o) {
   buildCounterFcmOptions--;
 }
 
-buildUnnamed45() {
+core.int buildCounterLightSettings = 0;
+buildLightSettings() {
+  var o = new api.LightSettings();
+  buildCounterLightSettings++;
+  if (buildCounterLightSettings < 3) {
+    o.color = buildColor();
+    o.lightOffDuration = "foo";
+    o.lightOnDuration = "foo";
+  }
+  buildCounterLightSettings--;
+  return o;
+}
+
+checkLightSettings(api.LightSettings o) {
+  buildCounterLightSettings++;
+  if (buildCounterLightSettings < 3) {
+    checkColor(o.color);
+    unittest.expect(o.lightOffDuration, unittest.equals('foo'));
+    unittest.expect(o.lightOnDuration, unittest.equals('foo'));
+  }
+  buildCounterLightSettings--;
+}
+
+buildUnnamed46() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed45(core.Map<core.String, core.String> o) {
+checkUnnamed46(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -304,7 +395,7 @@ buildMessage() {
     o.android = buildAndroidConfig();
     o.apns = buildApnsConfig();
     o.condition = "foo";
-    o.data = buildUnnamed45();
+    o.data = buildUnnamed46();
     o.fcmOptions = buildFcmOptions();
     o.name = "foo";
     o.notification = buildNotification();
@@ -322,7 +413,7 @@ checkMessage(api.Message o) {
     checkAndroidConfig(o.android);
     checkApnsConfig(o.apns);
     unittest.expect(o.condition, unittest.equals('foo'));
-    checkUnnamed45(o.data);
+    checkUnnamed46(o.data);
     checkFcmOptions(o.fcmOptions);
     unittest.expect(o.name, unittest.equals('foo'));
     checkNotification(o.notification);
@@ -339,6 +430,7 @@ buildNotification() {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
     o.body = "foo";
+    o.image = "foo";
     o.title = "foo";
   }
   buildCounterNotification--;
@@ -349,6 +441,7 @@ checkNotification(api.Notification o) {
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
     unittest.expect(o.body, unittest.equals('foo'));
+    unittest.expect(o.image, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterNotification--;
@@ -375,19 +468,6 @@ checkSendMessageRequest(api.SendMessageRequest o) {
   buildCounterSendMessageRequest--;
 }
 
-buildUnnamed46() {
-  var o = new core.Map<core.String, core.String>();
-  o["x"] = "foo";
-  o["y"] = "foo";
-  return o;
-}
-
-checkUnnamed46(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
-}
-
 buildUnnamed47() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
@@ -402,6 +482,19 @@ checkUnnamed47(core.Map<core.String, core.String> o) {
 }
 
 buildUnnamed48() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed48(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed49() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -416,7 +509,7 @@ buildUnnamed48() {
   return o;
 }
 
-checkUnnamed48(core.Map<core.String, core.Object> o) {
+checkUnnamed49(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -435,10 +528,10 @@ buildWebpushConfig() {
   var o = new api.WebpushConfig();
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    o.data = buildUnnamed46();
+    o.data = buildUnnamed47();
     o.fcmOptions = buildWebpushFcmOptions();
-    o.headers = buildUnnamed47();
-    o.notification = buildUnnamed48();
+    o.headers = buildUnnamed48();
+    o.notification = buildUnnamed49();
   }
   buildCounterWebpushConfig--;
   return o;
@@ -447,10 +540,10 @@ buildWebpushConfig() {
 checkWebpushConfig(api.WebpushConfig o) {
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
-    checkUnnamed46(o.data);
+    checkUnnamed47(o.data);
     checkWebpushFcmOptions(o.fcmOptions);
-    checkUnnamed47(o.headers);
-    checkUnnamed48(o.notification);
+    checkUnnamed48(o.headers);
+    checkUnnamed49(o.notification);
   }
   buildCounterWebpushConfig--;
 }
@@ -460,6 +553,7 @@ buildWebpushFcmOptions() {
   var o = new api.WebpushFcmOptions();
   buildCounterWebpushFcmOptions++;
   if (buildCounterWebpushFcmOptions < 3) {
+    o.analyticsLabel = "foo";
     o.link = "foo";
   }
   buildCounterWebpushFcmOptions--;
@@ -469,6 +563,7 @@ buildWebpushFcmOptions() {
 checkWebpushFcmOptions(api.WebpushFcmOptions o) {
   buildCounterWebpushFcmOptions++;
   if (buildCounterWebpushFcmOptions < 3) {
+    unittest.expect(o.analyticsLabel, unittest.equals('foo'));
     unittest.expect(o.link, unittest.equals('foo'));
   }
   buildCounterWebpushFcmOptions--;
@@ -515,11 +610,27 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-Color", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildColor();
+      var od = new api.Color.fromJson(o.toJson());
+      checkColor(od);
+    });
+  });
+
   unittest.group("obj-schema-FcmOptions", () {
     unittest.test("to-json--from-json", () {
       var o = buildFcmOptions();
       var od = new api.FcmOptions.fromJson(o.toJson());
       checkFcmOptions(od);
+    });
+  });
+
+  unittest.group("obj-schema-LightSettings", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildLightSettings();
+      var od = new api.LightSettings.fromJson(o.toJson());
+      checkLightSettings(od);
     });
   });
 

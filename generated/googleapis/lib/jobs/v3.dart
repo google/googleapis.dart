@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.jobs.v3;
 
@@ -53,17 +53,14 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// Resource name of project the completion is performed within.
+  /// [name] - Required. Resource name of project the completion is performed
+  /// within.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [languageCodes] - Optional.
-  ///
-  /// The list of languages of the query. This is
+  /// [languageCodes] - Optional. The list of languages of the query. This is
   /// the BCP-47 language code, such as "en-US" or "sr-Latn".
   /// For more information, see
   /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
@@ -81,30 +78,24 @@ class ProjectsResourceApi {
   ///
   /// The maximum number of allowed characters is 255.
   ///
-  /// [companyName] - Optional.
-  ///
-  /// If provided, restricts completion to specified company.
-  ///
-  /// The format is "projects/{project_id}/companies/{company_id}", for example,
-  /// "projects/api-test-project/companies/foo".
-  ///
-  /// [scope] - Optional.
-  ///
-  /// The scope of the completion. The defaults is CompletionScope.PUBLIC.
+  /// [scope] - Optional. The scope of the completion. The defaults is
+  /// CompletionScope.PUBLIC.
   /// Possible string values are:
   /// - "COMPLETION_SCOPE_UNSPECIFIED" : A COMPLETION_SCOPE_UNSPECIFIED.
   /// - "TENANT" : A TENANT.
   /// - "PUBLIC" : A PUBLIC.
   ///
-  /// [pageSize] - Required.
+  /// [companyName] - Optional. If provided, restricts completion to specified
+  /// company.
   ///
-  /// Completion result count.
+  /// The format is "projects/{project_id}/companies/{company_id}", for example,
+  /// "projects/api-test-project/companies/foo".
+  ///
+  /// [pageSize] - Required. Completion result count.
   ///
   /// The maximum allowed page size is 10.
   ///
-  /// [query] - Required.
-  ///
-  /// The query used to generate suggestions.
+  /// [query] - Required. The query used to generate suggestions.
   ///
   /// The maximum number of allowed characters is 255.
   ///
@@ -130,9 +121,8 @@ class ProjectsResourceApi {
   ///
   /// The maximum number of allowed characters is 255.
   ///
-  /// [type] - Optional.
-  ///
-  /// The completion topic. The default is CompletionType.COMBINED.
+  /// [type] - Optional. The completion topic. The default is
+  /// CompletionType.COMBINED.
   /// Possible string values are:
   /// - "COMPLETION_TYPE_UNSPECIFIED" : A COMPLETION_TYPE_UNSPECIFIED.
   /// - "JOB_TITLE" : A JOB_TITLE.
@@ -151,8 +141,8 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<CompleteQueryResponse> complete(core.String name,
       {core.List<core.String> languageCodes,
-      core.String companyName,
       core.String scope,
+      core.String companyName,
       core.int pageSize,
       core.String query,
       core.String languageCode,
@@ -171,11 +161,11 @@ class ProjectsResourceApi {
     if (languageCodes != null) {
       _queryParams["languageCodes"] = languageCodes;
     }
-    if (companyName != null) {
-      _queryParams["companyName"] = [companyName];
-    }
     if (scope != null) {
       _queryParams["scope"] = [scope];
+    }
+    if (companyName != null) {
+      _queryParams["companyName"] = [companyName];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -282,9 +272,8 @@ class ProjectsCompaniesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// Resource name of the project under which the company is created.
+  /// [parent] - Required. Resource name of the project under which the company
+  /// is created.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
@@ -336,9 +325,7 @@ class ProjectsCompaniesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The resource name of the company to be deleted.
+  /// [name] - Required. The resource name of the company to be deleted.
   ///
   /// The format is "projects/{project_id}/companies/{company_id}", for example,
   /// "projects/api-test-project/companies/foo".
@@ -384,9 +371,7 @@ class ProjectsCompaniesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The resource name of the company to be retrieved.
+  /// [name] - Required. The resource name of the company to be retrieved.
   ///
   /// The format is "projects/{project_id}/companies/{company_id}", for example,
   /// "projects/api-test-project/companies/foo".
@@ -432,26 +417,22 @@ class ProjectsCompaniesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// Resource name of the project under which the company is created.
+  /// [parent] - Required. Resource name of the project under which the company
+  /// is created.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional.
+  /// [pageToken] - Optional. The starting indicator from which to return
+  /// results.
   ///
-  /// The starting indicator from which to return results.
-  ///
-  /// [pageSize] - Optional.
-  ///
-  /// The maximum number of companies to be returned, at most 100.
+  /// [pageSize] - Optional. The maximum number of companies to be returned, at
+  /// most 100.
   /// Default is 100 if a non-positive number is provided.
   ///
-  /// [requireOpenJobs] - Optional.
-  ///
-  /// Set to true if the companies requested must have open jobs.
+  /// [requireOpenJobs] - Optional. Set to true if the companies requested must
+  /// have open jobs.
   ///
   /// Defaults to false.
   ///
@@ -577,9 +558,8 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The resource name of the project under which the job is created.
+  /// [parent] - Required. The resource name of the project under which the job
+  /// is created.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
@@ -637,9 +617,8 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The resource name of the project under which the job is created.
+  /// [parent] - Required. The resource name of the project under which the job
+  /// is created.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
@@ -692,9 +671,7 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The resource name of the job to be deleted.
+  /// [name] - Required. The resource name of the job to be deleted.
   ///
   /// The format is "projects/{project_id}/jobs/{job_id}",
   /// for example, "projects/api-test-project/jobs/1234".
@@ -741,9 +718,7 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  ///
-  /// The resource name of the job to retrieve.
+  /// [name] - Required. The resource name of the job to retrieve.
   ///
   /// The format is "projects/{project_id}/jobs/{job_id}",
   /// for example, "projects/api-test-project/jobs/1234".
@@ -789,42 +764,15 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The resource name of the project under which the job is created.
+  /// [parent] - Required. The resource name of the project under which the job
+  /// is created.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [jobView] - Optional.
-  ///
-  /// The desired job attributes returned for jobs in the
-  /// search response. Defaults to JobView.JOB_VIEW_FULL if no value is
-  /// specified.
-  /// Possible string values are:
-  /// - "JOB_VIEW_UNSPECIFIED" : A JOB_VIEW_UNSPECIFIED.
-  /// - "JOB_VIEW_ID_ONLY" : A JOB_VIEW_ID_ONLY.
-  /// - "JOB_VIEW_MINIMAL" : A JOB_VIEW_MINIMAL.
-  /// - "JOB_VIEW_SMALL" : A JOB_VIEW_SMALL.
-  /// - "JOB_VIEW_FULL" : A JOB_VIEW_FULL.
-  ///
-  /// [pageToken] - Optional.
-  ///
-  /// The starting point of a query result.
-  ///
-  /// [pageSize] - Optional.
-  ///
-  /// The maximum number of jobs to be returned per page of results.
-  ///
-  /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed
-  /// page size is 1000. Otherwise, the maximum allowed page size is 100.
-  ///
-  /// Default is 100 if empty or a number < 1 is specified.
-  ///
-  /// [filter] - Required.
-  ///
-  /// The filter string specifies the jobs to be enumerated.
+  /// [filter] - Required. The filter string specifies the jobs to be
+  /// enumerated.
   ///
   /// Supported operator: =, AND
   ///
@@ -840,6 +788,26 @@ class ProjectsJobsResourceApi {
   /// requisitionId
   /// = "req-1"
   ///
+  /// [jobView] - Optional. The desired job attributes returned for jobs in the
+  /// search response. Defaults to JobView.JOB_VIEW_FULL if no value is
+  /// specified.
+  /// Possible string values are:
+  /// - "JOB_VIEW_UNSPECIFIED" : A JOB_VIEW_UNSPECIFIED.
+  /// - "JOB_VIEW_ID_ONLY" : A JOB_VIEW_ID_ONLY.
+  /// - "JOB_VIEW_MINIMAL" : A JOB_VIEW_MINIMAL.
+  /// - "JOB_VIEW_SMALL" : A JOB_VIEW_SMALL.
+  /// - "JOB_VIEW_FULL" : A JOB_VIEW_FULL.
+  ///
+  /// [pageToken] - Optional. The starting point of a query result.
+  ///
+  /// [pageSize] - Optional. The maximum number of jobs to be returned per page
+  /// of results.
+  ///
+  /// If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed
+  /// page size is 1000. Otherwise, the maximum allowed page size is 100.
+  ///
+  /// Default is 100 if empty or a number < 1 is specified.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -851,10 +819,10 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String parent,
-      {core.String jobView,
+      {core.String filter,
+      core.String jobView,
       core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -866,6 +834,9 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (jobView != null) {
       _queryParams["jobView"] = [jobView];
     }
@@ -874,9 +845,6 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -965,9 +933,7 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The resource name of the project to search within.
+  /// [parent] - Required. The resource name of the project to search within.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
@@ -1031,9 +997,7 @@ class ProjectsJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  ///
-  /// The resource name of the project to search within.
+  /// [parent] - Required. The resource name of the project to search within.
   ///
   /// The format is "projects/{project_id}", for example,
   /// "projects/api-test-project".
@@ -1152,9 +1116,7 @@ class ApplicationInfo {
 ///
 /// Batch delete jobs request.
 class BatchDeleteJobsRequest {
-  /// Required.
-  ///
-  /// The filter string specifies the jobs to be deleted.
+  /// Required. The filter string specifies the jobs to be deleted.
   ///
   /// Supported operator: =, AND
   ///
@@ -1256,21 +1218,17 @@ class BucketizedCount {
 /// service to perform optimally. The number of events sent must be consistent
 /// with other calls, such as job searches, issued to the service by the client.
 class ClientEvent {
-  /// Required.
-  ///
-  /// The timestamp of the event.
+  /// Required. The timestamp of the event.
   core.String createTime;
 
-  /// Required.
-  ///
-  /// A unique identifier, generated by the client application. This `event_id`
+  /// Required. A unique identifier, generated by the client application. This
+  /// `event_id`
   /// is used to establish the relationship between different events
   /// (see parent_event_id).
   core.String eventId;
 
-  /// Optional.
-  ///
-  /// Extra information about this event. Used for storing information with no
+  /// Optional. Extra information about this event. Used for storing information
+  /// with no
   /// matching field in event payload, for example, user application specific
   /// context or details.
   ///
@@ -1282,10 +1240,8 @@ class ClientEvent {
   /// implements Cloud Talent Solution.
   JobEvent jobEvent;
 
-  /// Optional.
-  ///
-  /// The event_id of an event that resulted in the current event. For example,
-  /// a
+  /// Optional. The event_id of an event that resulted in the current event. For
+  /// example, a
   /// Job view event usually follows a parent
   /// impression event: A job seeker first does a
   /// search where a list of jobs appears
@@ -1294,9 +1250,7 @@ class ClientEvent {
   /// view).
   core.String parentEventId;
 
-  /// Required.
-  ///
-  /// A unique ID generated in the API responses. It can be found in
+  /// Required. A unique ID generated in the API responses. It can be found in
   /// ResponseMetadata.request_id.
   core.String requestId;
 
@@ -1353,8 +1307,8 @@ class ClientEvent {
 ///
 /// Parameters needed for commute search.
 class CommuteFilter {
-  /// Optional.
-  /// If true, jobs without "precise" addresses (street level addresses or GPS
+  /// Optional. If true, jobs without "precise" addresses (street level
+  /// addresses or GPS
   /// coordinates) might also be returned. For city and coarser level addresses,
   /// text matching is used. If this field is set to false or is not specified,
   /// only jobs that include precise addresses are returned by Commute
@@ -1366,9 +1320,8 @@ class CommuteFilter {
   /// `travel_duration` time of 0 regardless of distance from the job seeker.
   core.bool allowImpreciseAddresses;
 
-  /// Required.
-  ///
-  /// The method of transportation for which to calculate the commute time.
+  /// Required. The method of transportation for which to calculate the commute
+  /// time.
   /// Possible string values are:
   /// - "COMMUTE_METHOD_UNSPECIFIED" : Commute method is not specified.
   /// - "DRIVING" : Commute time is calculated based on driving time.
@@ -1377,17 +1330,15 @@ class CommuteFilter {
   /// subway, etc.
   core.String commuteMethod;
 
-  /// Optional.
-  ///
-  /// The departure time used to calculate traffic impact, represented as
+  /// Optional. The departure time used to calculate traffic impact, represented
+  /// as
   /// google.type.TimeOfDay in local time zone.
   ///
   /// Currently traffic model is restricted to hour level resolution.
   TimeOfDay departureTime;
 
-  /// Optional.
-  ///
-  /// Specifies the traffic density to use when calculating commute time.
+  /// Optional. Specifies the traffic density to use when calculating commute
+  /// time.
   /// Possible string values are:
   /// - "ROAD_TRAFFIC_UNSPECIFIED" : Road traffic situation is not specified.
   /// - "TRAFFIC_FREE" : Optimal commute time without considering any traffic
@@ -1396,15 +1347,13 @@ class CommuteFilter {
   /// impact.
   core.String roadTraffic;
 
-  /// Required.
-  ///
-  /// The latitude and longitude of the location from which to calculate the
+  /// Required. The latitude and longitude of the location from which to
+  /// calculate the
   /// commute time.
   LatLng startCoordinates;
 
-  /// Required.
-  ///
-  /// The maximum travel time in seconds. The maximum allowed value is `3600s`
+  /// Required. The maximum travel time in seconds. The maximum allowed value is
+  /// `3600s`
   /// (one hour). Format is `123s`.
   core.String travelDuration;
 
@@ -1497,61 +1446,47 @@ class CommuteInfo {
 /// entity that owns job postings, that is, the hiring entity responsible for
 /// employing applicants for the job position.
 class Company {
-  /// Optional.
-  ///
-  /// The URI to employer's career site or careers page on the employer's web
+  /// Optional. The URI to employer's career site or careers page on the
+  /// employer's web
   /// site, for example, "https://careers.google.com".
   core.String careerSiteUri;
 
   /// Output only. Derived details about the company.
   CompanyDerivedInfo derivedInfo;
 
-  /// Required.
-  ///
-  /// The display name of the company, for example, "Google, LLC".
+  /// Required. The display name of the company, for example, "Google LLC".
   core.String displayName;
 
-  /// Optional.
-  ///
-  /// Equal Employment Opportunity legal disclaimer text to be
+  /// Optional. Equal Employment Opportunity legal disclaimer text to be
   /// associated with all jobs, and typically to be displayed in all
   /// roles.
   ///
   /// The maximum number of allowed characters is 500.
   core.String eeoText;
 
-  /// Required.
-  ///
-  /// Client side company identifier, used to uniquely identify the
+  /// Required. Client side company identifier, used to uniquely identify the
   /// company.
   ///
   /// The maximum number of allowed characters is 255.
   core.String externalId;
 
-  /// Optional.
-  ///
-  /// The street address of the company's main headquarters, which may be
+  /// Optional. The street address of the company's main headquarters, which may
+  /// be
   /// different from the job location. The service attempts
   /// to geolocate the provided address, and populates a more specific
   /// location wherever possible in DerivedInfo.headquarters_location.
   core.String headquartersAddress;
 
-  /// Optional.
-  ///
-  /// Set to true if it is the hiring agency that post jobs for other
+  /// Optional. Set to true if it is the hiring agency that post jobs for other
   /// employers.
   ///
   /// Defaults to false if not provided.
   core.bool hiringAgency;
 
-  /// Optional.
-  ///
-  /// A URI that hosts the employer's company logo.
+  /// Optional. A URI that hosts the employer's company logo.
   core.String imageUri;
 
-  /// Optional.
-  ///
-  /// A list of keys of filterable Job.custom_attributes, whose
+  /// Optional. A list of keys of filterable Job.custom_attributes, whose
   /// corresponding `string_values` are used in keyword search. Jobs with
   /// `string_values` under these specified field keys are returned if any
   /// of the values matches the search keyword. Custom field values with
@@ -1568,9 +1503,7 @@ class Company {
   /// "projects/api-test-project/companies/foo".
   core.String name;
 
-  /// Optional.
-  ///
-  /// The employer's company size.
+  /// Optional. The employer's company size.
   /// Possible string values are:
   /// - "COMPANY_SIZE_UNSPECIFIED" : Default value if the size is not specified.
   /// - "MINI" : The company has less than 50 employees.
@@ -1587,9 +1520,8 @@ class Company {
   /// abusive, or spammy.
   core.bool suspended;
 
-  /// Optional.
-  ///
-  /// The URI representing the company's primary web site or home page,
+  /// Optional. The URI representing the company's primary web site or home
+  /// page,
   /// for example, "https://www.google.com".
   ///
   /// The maximum number of allowed characters is 255.
@@ -1722,21 +1654,15 @@ class CompanyDerivedInfo {
 /// Its annualized range is determined as (amount or range) times
 /// expected_units_per_year.
 class CompensationEntry {
-  /// Optional.
-  ///
-  /// Compensation amount.
+  /// Optional. Compensation amount.
   Money amount;
 
-  /// Optional.
-  ///
-  /// Compensation description.  For example, could
+  /// Optional. Compensation description.  For example, could
   /// indicate equity terms or provide additional context to an estimated
   /// bonus.
   core.String description;
 
-  /// Optional.
-  ///
-  /// Expected number of units paid each year. If not specified, when
+  /// Optional. Expected number of units paid each year. If not specified, when
   /// Job.employment_types is FULLTIME, a default value is inferred
   /// based on unit. Default values:
   /// - HOURLY: 2080
@@ -1746,14 +1672,10 @@ class CompensationEntry {
   /// - ANNUAL: 1
   core.double expectedUnitsPerYear;
 
-  /// Optional.
-  ///
-  /// Compensation range.
+  /// Optional. Compensation range.
   CompensationRange range;
 
-  /// Optional.
-  ///
-  /// Compensation type.
+  /// Optional. Compensation type.
   ///
   /// Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
   /// Possible string values are:
@@ -1772,9 +1694,7 @@ class CompensationEntry {
   /// - "OTHER_COMPENSATION_TYPE" : Other compensation type.
   core.String type;
 
-  /// Optional.
-  ///
-  /// Frequency of the specified amount.
+  /// Optional. Frequency of the specified amount.
   ///
   /// Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   /// Possible string values are:
@@ -1840,20 +1760,15 @@ class CompensationEntry {
 ///
 /// Filter on job compensation type and amount.
 class CompensationFilter {
-  /// Optional.
-  ///
-  /// If set to true, jobs with unspecified compensation range fields are
+  /// Optional. If set to true, jobs with unspecified compensation range fields
+  /// are
   /// included.
   core.bool includeJobsWithUnspecifiedCompensationRange;
 
-  /// Optional.
-  ///
-  /// Compensation range.
+  /// Optional. Compensation range.
   CompensationRange range;
 
-  /// Required.
-  ///
-  /// Type of filter.
+  /// Required. Type of filter.
   /// Possible string values are:
   /// - "FILTER_TYPE_UNSPECIFIED" : Filter type unspecified. Position holder,
   /// INVALID, should never be used.
@@ -1883,9 +1798,7 @@ class CompensationFilter {
   /// entry's` unit . Populate range and zero or more units.
   core.String type;
 
-  /// Required.
-  ///
-  /// Specify desired `base compensation entry's`
+  /// Required. Specify desired `base compensation entry's`
   /// CompensationInfo.CompensationUnit.
   core.List<core.String> units;
 
@@ -1931,14 +1844,12 @@ class CompensationFilter {
 ///
 /// Compensation based histogram request.
 class CompensationHistogramRequest {
-  /// Required.
-  ///
-  /// Numeric histogram options, like buckets, whether include min or max value.
+  /// Required. Numeric histogram options, like buckets, whether include min or
+  /// max value.
   NumericBucketingOption bucketingOption;
 
-  /// Required.
-  ///
-  /// Type of the request, representing which field the histogramming should be
+  /// Required. Type of the request, representing which field the histogramming
+  /// should be
   /// performed over. A single request can only specify one histogram of each
   /// `CompensationHistogramRequestType`.
   /// Possible string values are:
@@ -2041,9 +1952,7 @@ class CompensationInfo {
   /// See CompensationEntry for explanation on compensation annualization.
   CompensationRange annualizedTotalCompensationRange;
 
-  /// Optional.
-  ///
-  /// Job compensation information.
+  /// Optional. Job compensation information.
   ///
   /// At most one entry can be of type
   /// CompensationInfo.CompensationType.BASE, which is
@@ -2089,17 +1998,15 @@ class CompensationInfo {
 
 /// Compensation range.
 class CompensationRange {
-  /// Optional.
-  ///
-  /// The maximum amount of compensation. If left empty, the value is set
+  /// Optional. The maximum amount of compensation. If left empty, the value is
+  /// set
   /// to a maximal compensation value and the currency code is set to
   /// match the currency code of
   /// min_compensation.
   Money maxCompensation;
 
-  /// Optional.
-  ///
-  /// The minimum amount of compensation. If left empty, the value is set
+  /// Optional. The minimum amount of compensation. If left empty, the value is
+  /// set
   /// to zero and the currency code is set to match the
   /// currency code of max_compensation.
   Money minCompensation;
@@ -2217,9 +2124,8 @@ class CompletionResult {
 
 /// The report event request.
 class CreateClientEventRequest {
-  /// Required.
-  ///
-  /// Events issued when end user interacts with customer's application that
+  /// Required. Events issued when end user interacts with customer's
+  /// application that
   /// uses Cloud Talent Solution.
   ClientEvent clientEvent;
 
@@ -2245,9 +2151,7 @@ class CreateClientEventRequest {
 ///
 /// The Request of the CreateCompany method.
 class CreateCompanyRequest {
-  /// Required.
-  ///
-  /// The company to be created.
+  /// Required. The company to be created.
   Company company;
 
   CreateCompanyRequest();
@@ -2272,9 +2176,7 @@ class CreateCompanyRequest {
 ///
 /// Create job request.
 class CreateJobRequest {
-  /// Required.
-  ///
-  /// The Job to be created.
+  /// Required. The Job to be created.
   Job job;
 
   CreateJobRequest();
@@ -2297,9 +2199,8 @@ class CreateJobRequest {
 
 /// Custom attribute values that are either filterable or non-filterable.
 class CustomAttribute {
-  /// Optional.
-  ///
-  /// If the `filterable` flag is true, custom field values are searchable.
+  /// Optional. If the `filterable` flag is true, custom field values are
+  /// searchable.
   /// If false, values are not searchable.
   ///
   /// Default is false.
@@ -2321,7 +2222,7 @@ class CustomAttribute {
   /// `CASE_INSENSITIVE_MATCH`) search.
   /// For filterable `string_value`s, a maximum total number of 200 values
   /// is allowed, with each `string_value` has a byte size of no more than
-  /// 255B. For unfilterable `string_values`, the maximum total byte size of
+  /// 500B. For unfilterable `string_values`, the maximum total byte size of
   /// unfilterable `string_values` is 50KB.
   ///
   /// Empty string is not allowed.
@@ -2361,18 +2262,15 @@ class CustomAttribute {
 /// string_value_histogram or long_value_histogram_bucketing_option has
 /// been defined.
 class CustomAttributeHistogramRequest {
-  /// Required.
-  ///
-  /// Specifies the custom field key to perform a histogram on. If specified
+  /// Required. Specifies the custom field key to perform a histogram on. If
+  /// specified
   /// without `long_value_histogram_bucketing_option`, histogram on string
   /// values
   /// of the given `key` is triggered, otherwise histogram is performed on long
   /// values.
   core.String key;
 
-  /// Optional.
-  ///
-  /// Specifies buckets used to perform a range histogram on Job's
+  /// Optional. Specifies buckets used to perform a range histogram on Job's
   /// filterable long custom field values, or min/max value requirements.
   NumericBucketingOption longValueHistogramBucketingOption;
 
@@ -2464,9 +2362,7 @@ class CustomAttributeHistogramResult {
 /// other entity conducting the job search. Providing this information improves
 /// the quality of the search results across devices.
 class DeviceInfo {
-  /// Optional.
-  ///
-  /// Type of the device.
+  /// Optional. Type of the device.
   /// Possible string values are:
   /// - "DEVICE_TYPE_UNSPECIFIED" : The device type isn't specified.
   /// - "WEB" : A desktop web browser, such as, Chrome, Firefox, Safari, or
@@ -2483,9 +2379,7 @@ class DeviceInfo {
   /// - "OTHER" : Other devices types.
   core.String deviceType;
 
-  /// Optional.
-  ///
-  /// A device-specific ID. The ID must be a unique identifier that
+  /// Optional. A device-specific ID. The ID must be a unique identifier that
   /// distinguishes the device from other devices.
   core.String id;
 
@@ -2538,22 +2432,16 @@ class Empty {
 ///
 /// Histogram facets to be specified in SearchJobsRequest.
 class HistogramFacets {
-  /// Optional.
-  ///
-  /// Specifies compensation field-based histogram requests.
+  /// Optional. Specifies compensation field-based histogram requests.
   /// Duplicate values of CompensationHistogramRequest.type are not allowed.
   core.List<CompensationHistogramRequest> compensationHistogramFacets;
 
-  /// Optional.
-  ///
-  /// Specifies the custom attributes histogram requests.
+  /// Optional. Specifies the custom attributes histogram requests.
   /// Duplicate values of CustomAttributeHistogramRequest.key are not
   /// allowed.
   core.List<CustomAttributeHistogramRequest> customAttributeHistogramFacets;
 
-  /// Optional.
-  ///
-  /// Specifies the simple type of histogram facets, for example,
+  /// Optional. Specifies the simple type of histogram facets, for example,
   /// `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc.
   core.List<core.String> simpleHistogramFacets;
 
@@ -2778,20 +2666,15 @@ class Job {
   /// Output only. Display name of the company listing the job.
   core.String companyDisplayName;
 
-  /// Required.
-  ///
-  /// The resource name of the company listing the job, such as
+  /// Required. The resource name of the company listing the job, such as
   /// "projects/api-test-project/companies/foo".
   core.String companyName;
 
-  /// Optional.
-  ///
-  /// Job compensation information.
+  /// Optional. Job compensation information.
   CompensationInfo compensationInfo;
 
-  /// Optional.
-  ///
-  /// A map of fields to hold both filterable and non-filterable custom job
+  /// Optional. A map of fields to hold both filterable and non-filterable
+  /// custom job
   /// attributes that are not covered by the provided structured fields.
   ///
   /// The keys of the map are strings up to 64 bytes and must match the
@@ -2805,14 +2688,12 @@ class Job {
   /// is 50KB.
   core.Map<core.String, CustomAttribute> customAttributes;
 
-  /// Optional.
-  ///
-  /// The desired education degrees for the job, such as Bachelors, Masters.
+  /// Optional. The desired education degrees for the job, such as Bachelors,
+  /// Masters.
   core.List<core.String> degreeTypes;
 
-  /// Optional.
-  ///
-  /// The department or functional area within the company with the open
+  /// Optional. The department or functional area within the company with the
+  /// open
   /// position.
   ///
   /// The maximum number of allowed characters is 255.
@@ -2821,9 +2702,8 @@ class Job {
   /// Output only. Derived details about the job posting.
   JobDerivedInfo derivedInfo;
 
-  /// Required.
-  ///
-  /// The description of the job, which typically includes a multi-paragraph
+  /// Required. The description of the job, which typically includes a
+  /// multi-paragraph
   /// description of the company and related information. Separate fields are
   /// provided on the job object for responsibilities,
   /// qualifications, and other job characteristics. Use of
@@ -2835,35 +2715,27 @@ class Job {
   /// The maximum number of allowed characters is 100,000.
   core.String description;
 
-  /// Optional.
-  ///
-  /// The employment type(s) of a job, for example,
+  /// Optional. The employment type(s) of a job, for example,
   /// full time or
   /// part time.
   core.List<core.String> employmentTypes;
 
-  /// Optional.
-  ///
-  /// A description of bonus, commission, and other compensation
+  /// Optional. A description of bonus, commission, and other compensation
   /// incentives associated with the job not including salary or pay.
   ///
   /// The maximum number of allowed characters is 10,000.
   core.String incentives;
 
-  /// Optional.
-  ///
-  /// The benefits included with the job.
+  /// Optional. The benefits included with the job.
   core.List<core.String> jobBenefits;
 
-  /// Optional.
-  ///
-  /// The end timestamp of the job. Typically this field is used for contracting
+  /// Optional. The end timestamp of the job. Typically this field is used for
+  /// contracting
   /// engagements. Invalid timestamps are ignored.
   core.String jobEndTime;
 
-  /// Optional.
-  ///
-  /// The experience level associated with the job, such as "Entry Level".
+  /// Optional. The experience level associated with the job, such as "Entry
+  /// Level".
   /// Possible string values are:
   /// - "JOB_LEVEL_UNSPECIFIED" : The default value if the level is not
   /// specified.
@@ -2881,15 +2753,12 @@ class Job {
   /// positions.
   core.String jobLevel;
 
-  /// Optional.
-  ///
-  /// The start timestamp of the job in UTC time zone. Typically this field
+  /// Optional. The start timestamp of the job in UTC time zone. Typically this
+  /// field
   /// is used for contracting engagements. Invalid timestamps are ignored.
   core.String jobStartTime;
 
-  /// Optional.
-  ///
-  /// The language of the posting. This field is distinct from
+  /// Optional. The language of the posting. This field is distinct from
   /// any requirements for fluency that are associated with the job.
   ///
   /// Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn".
@@ -2954,17 +2823,15 @@ class Job {
   /// update time. Otherwise the expiration date isn't updated.
   core.String postingExpireTime;
 
-  /// Optional.
-  ///
-  /// The timestamp this job posting was most recently published. The default
+  /// Optional. The timestamp this job posting was most recently published. The
+  /// default
   /// value is the time the request arrives at the server. Invalid timestamps
   /// are
   /// ignored.
   core.String postingPublishTime;
 
-  /// Optional.
-  ///
-  /// The job PostingRegion (for example, state, country) throughout which
+  /// Optional. The job PostingRegion (for example, state, country) throughout
+  /// which
   /// the job is available. If this field is set, a
   /// LocationFilter in a search query within the job region
   /// finds this job posting if an exact location match isn't specified.
@@ -2997,14 +2864,10 @@ class Job {
   /// Output only. The timestamp when this job posting was last updated.
   core.String postingUpdateTime;
 
-  /// Optional.
-  ///
-  /// Options for job processing.
+  /// Optional. Options for job processing.
   ProcessingOptions processingOptions;
 
-  /// Optional.
-  ///
-  /// A promotion value of the job, as determined by the client.
+  /// Optional. A promotion value of the job, as determined by the client.
   /// The value determines the sort order of the jobs returned when searching
   /// for
   /// jobs using the featured jobs search call, with higher promotional values
@@ -3014,9 +2877,7 @@ class Job {
   /// Default value is 0, and negative values are treated as 0.
   core.int promotionValue;
 
-  /// Optional.
-  ///
-  /// A description of the qualifications required to perform the
+  /// Optional. A description of the qualifications required to perform the
   /// job. The use of this field is recommended
   /// as an alternative to using the more general description field.
   ///
@@ -3026,9 +2887,8 @@ class Job {
   /// The maximum number of allowed characters is 10,000.
   core.String qualifications;
 
-  /// Required.
-  ///
-  /// The requisition ID, also referred to as the posting ID, assigned by the
+  /// Required. The requisition ID, also referred to as the posting ID, assigned
+  /// by the
   /// client to identify a job. This field is intended to be used by clients
   /// for client identification and tracking of postings. A job is not allowed
   /// to be created if there is another job with the same [company_name],
@@ -3037,9 +2897,7 @@ class Job {
   /// The maximum number of allowed characters is 255.
   core.String requisitionId;
 
-  /// Optional.
-  ///
-  /// A description of job responsibilities. The use of this field is
+  /// Optional. A description of job responsibilities. The use of this field is
   /// recommended as an alternative to using the more general description
   /// field.
   ///
@@ -3049,14 +2907,12 @@ class Job {
   /// The maximum number of allowed characters is 10,000.
   core.String responsibilities;
 
-  /// Required.
-  ///
-  /// The title of the job, such as "Software Engineer"
+  /// Required. The title of the job, such as "Software Engineer"
   ///
   /// The maximum number of allowed characters is 500.
   core.String title;
 
-  /// Optional.
+  /// Deprecated. The job is only visible to the owner.
   ///
   /// The visibility of the job.
   ///
@@ -3314,18 +3170,14 @@ class JobDerivedInfo {
 /// An event issued when a job seeker interacts with the application that
 /// implements Cloud Talent Solution.
 class JobEvent {
-  /// Required.
-  ///
-  /// The job name(s) associated with this event.
+  /// Required. The job name(s) associated with this event.
   /// For example, if this is an impression event,
   /// this field contains the identifiers of all jobs shown to the job seeker.
   /// If this was a view event, this field contains the
   /// identifier of the viewed job.
   core.List<core.String> jobs;
 
-  /// Required.
-  ///
-  /// The type of the event (see JobEventType).
+  /// Required. The type of the event (see JobEventType).
   /// Possible string values are:
   /// - "JOB_EVENT_TYPE_UNSPECIFIED" : The event is unspecified by other
   /// provided values.
@@ -3434,9 +3286,8 @@ class JobEvent {
 ///
 /// The query required to perform a search query.
 class JobQuery {
-  /// Optional.
-  ///
-  ///  Allows filtering jobs by commute time with different travel methods (for
+  /// Optional. Allows filtering jobs by commute time with different travel
+  /// methods (for
   ///  example, driving or public transit). Note: This only works with COMMUTE
   ///  MODE. When specified, [JobQuery.location_filters] is
   ///  ignored.
@@ -3444,9 +3295,7 @@ class JobQuery {
   ///  Currently we don't support sorting by commute time.
   CommuteFilter commuteFilter;
 
-  /// Optional.
-  ///
-  /// This filter specifies the exact company display
+  /// Optional. This filter specifies the exact company display
   /// name of the jobs to search against.
   ///
   /// If a value isn't specified, jobs within the search results are
@@ -3458,9 +3307,7 @@ class JobQuery {
   /// At most 20 company display name filters are allowed.
   core.List<core.String> companyDisplayNames;
 
-  /// Optional.
-  ///
-  /// This filter specifies the company entities to search against.
+  /// Optional. This filter specifies the company entities to search against.
   ///
   /// If a value isn't specified, jobs are searched for against all
   /// companies.
@@ -3474,18 +3321,14 @@ class JobQuery {
   /// At most 20 company filters are allowed.
   core.List<core.String> companyNames;
 
-  /// Optional.
-  ///
-  /// This search filter is applied only to
+  /// Optional. This search filter is applied only to
   /// Job.compensation_info. For example, if the filter is specified
   /// as "Hourly job with per-hour compensation > $15", only jobs meeting
   /// these criteria are searched. If a filter isn't defined, all open jobs
   /// are searched.
   CompensationFilter compensationFilter;
 
-  /// Optional.
-  ///
-  /// This filter specifies a structured syntax to match against the
+  /// Optional. This filter specifies a structured syntax to match against the
   /// Job.custom_attributes marked as `filterable`.
   ///
   /// The syntax for this expression is a subset of SQL syntax.
@@ -3504,25 +3347,22 @@ class JobQuery {
   /// nesting (for example, "((A AND B AND C) OR NOT D) AND E"), a maximum of
   /// 100
   /// comparisons or functions are allowed in the expression. The expression
-  /// must be < 3000 bytes in length.
+  /// must be < 6000 bytes in length.
   ///
   /// Sample Query:
   /// `(LOWER(driving_license)="class \"a\"" OR EMPTY(driving_license)) AND
   /// driving_years > 10`
   core.String customAttributeFilter;
 
-  /// Optional.
-  ///
-  /// This flag controls the spell-check feature. If false, the
+  /// Optional. This flag controls the spell-check feature. If false, the
   /// service attempts to correct a misspelled query,
   /// for example, "enginee" is corrected to "engineer".
   ///
   /// Defaults to false: a spell check is performed.
   core.bool disableSpellCheck;
 
-  /// Optional.
-  ///
-  /// The employment type filter specifies the employment type of jobs to
+  /// Optional. The employment type filter specifies the employment type of jobs
+  /// to
   /// search against, such as EmploymentType.FULL_TIME.
   ///
   /// If a value is not specified, jobs in the search results includes any
@@ -3532,9 +3372,8 @@ class JobQuery {
   /// any of the specified employment types.
   core.List<core.String> employmentTypes;
 
-  /// Optional.
-  ///
-  /// The category filter specifies the categories of jobs to search against.
+  /// Optional. The category filter specifies the categories of jobs to search
+  /// against.
   /// See Category for more information.
   ///
   /// If a value is not specified, jobs from any category are searched against.
@@ -3543,9 +3382,7 @@ class JobQuery {
   /// categories are searched against.
   core.List<core.String> jobCategories;
 
-  /// Optional.
-  ///
-  /// This filter specifies the locale of jobs to search against,
+  /// Optional. This filter specifies the locale of jobs to search against,
   /// for example, "en-US".
   ///
   /// If a value isn't specified, the search results can contain jobs in any
@@ -3559,9 +3396,7 @@ class JobQuery {
   /// At most 10 language code filters are allowed.
   core.List<core.String> languageCodes;
 
-  /// Optional.
-  ///
-  /// The location filter specifies geo-regions containing the jobs to
+  /// Optional. The location filter specifies geo-regions containing the jobs to
   /// search against. See LocationFilter for more information.
   ///
   /// If a location value isn't specified, jobs fitting the other search
@@ -3575,19 +3410,28 @@ class JobQuery {
   /// At most 5 location filters are allowed.
   core.List<LocationFilter> locationFilters;
 
-  /// Optional.
-  ///
-  /// Jobs published within a range specified by this filter are searched
+  /// Optional. Jobs published within a range specified by this filter are
+  /// searched
   /// against.
   TimestampRange publishTimeRange;
 
-  /// Optional.
-  ///
-  /// The query string that matches against the job title, description, and
+  /// Optional. The query string that matches against the job title,
+  /// description, and
   /// location fields.
   ///
   /// The maximum number of allowed characters is 255.
   core.String query;
+
+  /// The language code of query. For example, "en-US". This field helps to
+  /// better interpret the query.
+  ///
+  /// If a value isn't specified, the query language code is automatically
+  /// detected, which may not be accurate.
+  ///
+  /// Language code should be in BCP-47 format, such as "en-US" or "sr-Latn".
+  /// For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+  core.String queryLanguageCode;
 
   JobQuery();
 
@@ -3633,6 +3477,9 @@ class JobQuery {
     if (_json.containsKey("query")) {
       query = _json["query"];
     }
+    if (_json.containsKey("queryLanguageCode")) {
+      queryLanguageCode = _json["queryLanguageCode"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3674,6 +3521,9 @@ class JobQuery {
     }
     if (query != null) {
       _json["query"] = query;
+    }
+    if (queryLanguageCode != null) {
+      _json["queryLanguageCode"] = queryLanguageCode;
     }
     return _json;
   }
@@ -3895,28 +3745,22 @@ class Location {
 ///
 /// Geographic region of the search.
 class LocationFilter {
-  /// Optional.
-  ///
-  /// The address name, such as "Mountain View" or "Bay Area".
+  /// Optional. The address name, such as "Mountain View" or "Bay Area".
   core.String address;
 
-  /// Optional.
-  ///
-  ///
-  /// The distance_in_miles is applied when the location being searched for is
+  /// Optional. The distance_in_miles is applied when the location being
+  /// searched for is
   /// identified as a city or smaller. When the location being searched for is a
   /// state or larger, this field is ignored.
   core.double distanceInMiles;
 
-  /// Optional.
-  ///
-  /// The latitude and longitude of the geographic center from which to
+  /// Optional. The latitude and longitude of the geographic center from which
+  /// to
   /// search. This field's ignored if `address` is provided.
   LatLng latLng;
 
-  /// Optional.
-  ///
-  /// CLDR region code of the country/region of the address. This is used
+  /// Optional. CLDR region code of the country/region of the address. This is
+  /// used
   /// to address ambiguity of the user-input location, for example, "Liverpool"
   /// against "Liverpool, NY, US" or "Liverpool, UK".
   ///
@@ -3928,9 +3772,7 @@ class LocationFilter {
   /// for details. Example: "CH" for Switzerland.
   core.String regionCode;
 
-  /// Optional.
-  ///
-  /// Allows the client to return jobs without a
+  /// Optional. Allows the client to return jobs without a
   /// set location, specifically, telecommuting jobs (telecommuting is
   /// considered
   /// by the service as a special location.
@@ -4064,6 +3906,43 @@ class MatchingJob {
   }
 }
 
+/// Message representing input to a Mendel server for debug forcing.
+/// See go/mendel-debug-forcing for more details.
+/// Next ID: 2
+class MendelDebugInput {
+  /// When a request spans multiple servers, a MendelDebugInput may travel with
+  /// the request and take effect in all the servers. This field is a map of
+  /// namespaces to NamespacedMendelDebugInput protos. In a single server, up to
+  /// two NamespacedMendelDebugInput protos are applied:
+  /// 1. NamespacedMendelDebugInput with the global namespace (key == "").
+  /// 2. NamespacedMendelDebugInput with the server's namespace.
+  /// When both NamespacedMendelDebugInput protos are present, they are merged.
+  /// See go/mendel-debug-forcing for more details.
+  core.Map<core.String, NamespacedDebugInput> namespacedDebugInput;
+
+  MendelDebugInput();
+
+  MendelDebugInput.fromJson(core.Map _json) {
+    if (_json.containsKey("namespacedDebugInput")) {
+      namespacedDebugInput = commons.mapMap<core.Map, NamespacedDebugInput>(
+          _json["namespacedDebugInput"].cast<core.String, core.Map>(),
+          (core.Map item) => new NamespacedDebugInput.fromJson(item));
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (namespacedDebugInput != null) {
+      _json["namespacedDebugInput"] = commons
+          .mapMap<NamespacedDebugInput, core.Map<core.String, core.Object>>(
+              namespacedDebugInput,
+              (NamespacedDebugInput item) => (item).toJson());
+    }
+    return _json;
+  }
+}
+
 /// Represents an amount of money with its currency type.
 class Money {
   /// The 3-letter currency code defined in ISO 4217.
@@ -4111,23 +3990,215 @@ class Money {
   }
 }
 
+/// Next ID: 15
+class NamespacedDebugInput {
+  /// Set of experiment names to be absolutely forced.
+  /// These experiments will be forced without evaluating the conditions.
+  core.List<core.String> absolutelyForcedExpNames;
+
+  /// Set of experiment tags to be absolutely forced.
+  /// The experiments with these tags will be forced without evaluating the
+  /// conditions.
+  core.List<core.String> absolutelyForcedExpTags;
+
+  /// Set of experiment ids to be absolutely forced.
+  /// These ids will be forced without evaluating the conditions.
+  core.List<core.int> absolutelyForcedExps;
+
+  /// Set of experiment names to be conditionally forced.
+  /// These experiments will be forced only if their conditions and their
+  /// parent domain's conditions are true.
+  core.List<core.String> conditionallyForcedExpNames;
+
+  /// Set of experiment tags to be conditionally forced.
+  /// The experiments with these tags will be forced only if their conditions
+  /// and their parent domain's conditions are true.
+  core.List<core.String> conditionallyForcedExpTags;
+
+  /// Set of experiment ids to be conditionally forced.
+  /// These ids will be forced only if their conditions and their parent
+  /// domain's conditions are true.
+  core.List<core.int> conditionallyForcedExps;
+
+  /// If true, disable automatic enrollment selection (at all diversion
+  /// points). Automatic enrollment selection means experiment selection
+  /// process based on the experiment's automatic enrollment condition. This
+  /// does not disable selection of forced experiments.
+  core.bool disableAutomaticEnrollmentSelection;
+
+  /// Set of experiment names to be disabled.
+  /// If an experiment is disabled, it is never selected nor forced.
+  /// If an aggregate experiment is disabled, its partitions are disabled
+  /// together. If an experiment with an enrollment is disabled, the enrollment
+  /// is disabled together. If a name corresponds to a domain, the domain
+  /// itself and all descendant experiments and domains are disabled together.
+  core.List<core.String> disableExpNames;
+
+  /// Set of experiment tags to be disabled. All experiments that are tagged
+  /// with one or more of these tags are disabled.
+  /// If an experiment is disabled, it is never selected nor forced.
+  /// If an aggregate experiment is disabled, its partitions are disabled
+  /// together. If an experiment with an enrollment is disabled, the enrollment
+  /// is disabled together.
+  core.List<core.String> disableExpTags;
+
+  /// Set of experiment ids to be disabled.
+  /// If an experiment is disabled, it is never selected nor forced.
+  /// If an aggregate experiment is disabled, its partitions are disabled
+  /// together. If an experiment with an enrollment is disabled, the enrollment
+  /// is disabled together. If an ID corresponds to a domain, the domain itself
+  /// and all descendant experiments and domains are disabled together.
+  core.List<core.int> disableExps;
+
+  /// If true, disable manual enrollment selection (at all diversion points).
+  /// Manual enrollment selection means experiment selection process based on
+  /// the request's manual enrollment states (a.k.a. opt-in experiments).
+  /// This does not disable selection of forced experiments.
+  core.bool disableManualEnrollmentSelection;
+
+  /// If true, disable organic experiment selection (at all diversion points).
+  /// Organic selection means experiment selection process based on traffic
+  /// allocation and diversion condition evaluation.
+  /// This does not disable selection of forced experiments.
+  ///
+  /// This is useful in cases when it is not known whether experiment selection
+  /// behavior is responsible for a error or breakage. Disabling organic
+  /// selection may help to isolate the cause of a given problem.
+  core.bool disableOrganicSelection;
+
+  /// Flags to force in a particular experiment state.
+  /// Map from flag name to flag value.
+  core.Map<core.String, core.String> forcedFlags;
+
+  /// Rollouts to force in a particular experiment state.
+  /// Map from rollout name to rollout value.
+  core.Map<core.String, core.bool> forcedRollouts;
+
+  NamespacedDebugInput();
+
+  NamespacedDebugInput.fromJson(core.Map _json) {
+    if (_json.containsKey("absolutelyForcedExpNames")) {
+      absolutelyForcedExpNames =
+          (_json["absolutelyForcedExpNames"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("absolutelyForcedExpTags")) {
+      absolutelyForcedExpTags =
+          (_json["absolutelyForcedExpTags"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("absolutelyForcedExps")) {
+      absolutelyForcedExps =
+          (_json["absolutelyForcedExps"] as core.List).cast<core.int>();
+    }
+    if (_json.containsKey("conditionallyForcedExpNames")) {
+      conditionallyForcedExpNames =
+          (_json["conditionallyForcedExpNames"] as core.List)
+              .cast<core.String>();
+    }
+    if (_json.containsKey("conditionallyForcedExpTags")) {
+      conditionallyForcedExpTags =
+          (_json["conditionallyForcedExpTags"] as core.List)
+              .cast<core.String>();
+    }
+    if (_json.containsKey("conditionallyForcedExps")) {
+      conditionallyForcedExps =
+          (_json["conditionallyForcedExps"] as core.List).cast<core.int>();
+    }
+    if (_json.containsKey("disableAutomaticEnrollmentSelection")) {
+      disableAutomaticEnrollmentSelection =
+          _json["disableAutomaticEnrollmentSelection"];
+    }
+    if (_json.containsKey("disableExpNames")) {
+      disableExpNames =
+          (_json["disableExpNames"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("disableExpTags")) {
+      disableExpTags =
+          (_json["disableExpTags"] as core.List).cast<core.String>();
+    }
+    if (_json.containsKey("disableExps")) {
+      disableExps = (_json["disableExps"] as core.List).cast<core.int>();
+    }
+    if (_json.containsKey("disableManualEnrollmentSelection")) {
+      disableManualEnrollmentSelection =
+          _json["disableManualEnrollmentSelection"];
+    }
+    if (_json.containsKey("disableOrganicSelection")) {
+      disableOrganicSelection = _json["disableOrganicSelection"];
+    }
+    if (_json.containsKey("forcedFlags")) {
+      forcedFlags =
+          (_json["forcedFlags"] as core.Map).cast<core.String, core.String>();
+    }
+    if (_json.containsKey("forcedRollouts")) {
+      forcedRollouts =
+          (_json["forcedRollouts"] as core.Map).cast<core.String, core.bool>();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (absolutelyForcedExpNames != null) {
+      _json["absolutelyForcedExpNames"] = absolutelyForcedExpNames;
+    }
+    if (absolutelyForcedExpTags != null) {
+      _json["absolutelyForcedExpTags"] = absolutelyForcedExpTags;
+    }
+    if (absolutelyForcedExps != null) {
+      _json["absolutelyForcedExps"] = absolutelyForcedExps;
+    }
+    if (conditionallyForcedExpNames != null) {
+      _json["conditionallyForcedExpNames"] = conditionallyForcedExpNames;
+    }
+    if (conditionallyForcedExpTags != null) {
+      _json["conditionallyForcedExpTags"] = conditionallyForcedExpTags;
+    }
+    if (conditionallyForcedExps != null) {
+      _json["conditionallyForcedExps"] = conditionallyForcedExps;
+    }
+    if (disableAutomaticEnrollmentSelection != null) {
+      _json["disableAutomaticEnrollmentSelection"] =
+          disableAutomaticEnrollmentSelection;
+    }
+    if (disableExpNames != null) {
+      _json["disableExpNames"] = disableExpNames;
+    }
+    if (disableExpTags != null) {
+      _json["disableExpTags"] = disableExpTags;
+    }
+    if (disableExps != null) {
+      _json["disableExps"] = disableExps;
+    }
+    if (disableManualEnrollmentSelection != null) {
+      _json["disableManualEnrollmentSelection"] =
+          disableManualEnrollmentSelection;
+    }
+    if (disableOrganicSelection != null) {
+      _json["disableOrganicSelection"] = disableOrganicSelection;
+    }
+    if (forcedFlags != null) {
+      _json["forcedFlags"] = forcedFlags;
+    }
+    if (forcedRollouts != null) {
+      _json["forcedRollouts"] = forcedRollouts;
+    }
+    return _json;
+  }
+}
+
 /// Input only.
 ///
 /// Use this field to specify bucketing option for the histogram search
 /// response.
 class NumericBucketingOption {
-  /// Required.
-  ///
-  /// Two adjacent values form a histogram bucket. Values should be in
+  /// Required. Two adjacent values form a histogram bucket. Values should be in
   /// ascending order. For example, if [5, 10, 15] are provided, four buckets
   /// are
   /// created: (-inf, 5), 5, 10), [10, 15), [15, inf). At most 20
   /// [buckets_bound is supported.
   core.List<core.double> bucketBounds;
 
-  /// Optional.
-  ///
-  /// If set to true, the histogram result includes minimum/maximum
+  /// Optional. If set to true, the histogram result includes minimum/maximum
   /// value of the numeric field.
   core.bool requiresMinMax;
 
@@ -4218,7 +4289,7 @@ class NumericBucketingResult {
 ///
 /// Advice on address input / editing:
 ///  - Use an i18n-ready address widget such as
-///    https://github.com/googlei18n/libaddressinput)
+///    https://github.com/google/libaddressinput)
 /// - Users should not be presented with UI elements for input or editing of
 ///   fields outside countries where that field is used.
 ///
@@ -4403,15 +4474,11 @@ class PostalAddress {
 ///
 /// Options for job processing.
 class ProcessingOptions {
-  /// Optional.
-  ///
-  /// If set to `true`, the service does not attempt to resolve a
+  /// Optional. If set to `true`, the service does not attempt to resolve a
   /// more precise address for the job.
   core.bool disableStreetAddressResolution;
 
-  /// Optional.
-  ///
-  /// Option for job HTML content sanitization. Applied fields are:
+  /// Optional. Option for job HTML content sanitization. Applied fields are:
   ///
   /// * description
   /// * applicationInfo.instruction
@@ -4461,15 +4528,13 @@ class ProcessingOptions {
 /// conducting the job search. This information is used to improve the
 /// performance of the service.
 class RequestMetadata {
-  /// Optional.
-  ///
-  /// The type of device used by the job seeker at the time of the call to the
+  /// Optional. The type of device used by the job seeker at the time of the
+  /// call to the
   /// service.
   DeviceInfo deviceInfo;
 
-  /// Required.
-  ///
-  /// The client-defined scope or source of the service call, which typically
+  /// Required. The client-defined scope or source of the service call, which
+  /// typically
   /// is the domain on
   /// which the service has been implemented and is currently being run.
   ///
@@ -4485,9 +4550,8 @@ class RequestMetadata {
   /// The maximum number of allowed characters is 255.
   core.String domain;
 
-  /// Required.
-  ///
-  /// A unique session identification string. A session is defined as the
+  /// Required. A unique session identification string. A session is defined as
+  /// the
   /// duration of an end user's interaction with the service over a certain
   /// period.
   /// Obfuscate this field for privacy concerns before
@@ -4500,9 +4564,8 @@ class RequestMetadata {
   /// The maximum number of allowed characters is 255.
   core.String sessionId;
 
-  /// Required.
-  ///
-  /// A unique user identification string, as determined by the client.
+  /// Required. A unique user identification string, as determined by the
+  /// client.
   /// To have the strongest positive impact on search quality
   /// make sure the client-level is unique.
   /// Obfuscate this field for privacy concerns before
@@ -4581,9 +4644,8 @@ class ResponseMetadata {
 ///
 /// The Request body of the `SearchJobs` call.
 class SearchJobsRequest {
-  /// Optional.
-  ///
-  /// Controls whether to disable exact keyword match on Job.job_title,
+  /// Optional. Controls whether to disable exact keyword match on
+  /// Job.job_title,
   /// Job.description, Job.company_display_name, Job.locations,
   /// Job.qualifications. When disable keyword match is turned off, a
   /// keyword match returns jobs that do not match given category filters when
@@ -4604,9 +4666,8 @@ class SearchJobsRequest {
   /// Defaults to false.
   core.bool disableKeywordMatch;
 
-  /// Optional.
-  ///
-  /// Controls whether highly similar jobs are returned next to each other in
+  /// Optional. Controls whether highly similar jobs are returned next to each
+  /// other in
   /// the search results. Jobs are identified as highly similar based on
   /// their titles, job categories, and locations. Highly similar results are
   /// clustered so that only one representative job of the cluster is
@@ -4629,28 +4690,22 @@ class SearchJobsRequest {
   /// results.
   core.String diversificationLevel;
 
-  /// Optional.
-  ///
-  /// Controls whether to broaden the search when it produces sparse results.
+  /// Optional. Controls whether to broaden the search when it produces sparse
+  /// results.
   /// Broadened queries append results to the end of the matching results
   /// list.
   ///
   /// Defaults to false.
   core.bool enableBroadening;
 
-  /// Optional.
-  ///
-  /// Histogram requests for jobs matching JobQuery.
+  /// Optional. Histogram requests for jobs matching JobQuery.
   HistogramFacets histogramFacets;
 
-  /// Optional.
-  ///
-  /// Query used to search against jobs, such as keyword, location filters, etc.
+  /// Optional. Query used to search against jobs, such as keyword, location
+  /// filters, etc.
   JobQuery jobQuery;
 
-  /// Optional.
-  ///
-  /// The desired job attributes returned for jobs in the
+  /// Optional. The desired job attributes returned for jobs in the
   /// search response. Defaults to JobView.SMALL if no value is specified.
   /// Possible string values are:
   /// - "JOB_VIEW_UNSPECIFIED" : Default value.
@@ -4669,11 +4724,12 @@ class SearchJobsRequest {
   /// results.
   core.String jobView;
 
-  /// Optional.
-  ///
-  /// An integer that specifies the current offset (that is, starting result
+  /// Optional. An integer that specifies the current offset (that is, starting
+  /// result
   /// location, amongst the jobs deemed by the API as relevant) in search
   /// results. This field is only considered if page_token is unset.
+  ///
+  /// The maximum allowed value is 5000. Otherwise an error is thrown.
   ///
   /// For example, 0 means to  return results starting from the first matching
   /// job, and 10 means to return from the 11th job. This can be used for
@@ -4681,9 +4737,8 @@ class SearchJobsRequest {
   /// from the second page).
   core.int offset;
 
-  /// Optional.
-  ///
-  /// The criteria determining how search results are sorted. Default is
+  /// Optional. The criteria determining how search results are sorted. Default
+  /// is
   /// "relevance desc".
   ///
   /// Supported options are:
@@ -4715,30 +4770,24 @@ class SearchJobsRequest {
   /// search results.
   core.String orderBy;
 
-  /// Optional.
-  ///
-  /// A limit on the number of jobs returned in the search results.
+  /// Optional. A limit on the number of jobs returned in the search results.
   /// Increasing this value above the default value of 10 can increase search
   /// response time. The value can be between 1 and 100.
   core.int pageSize;
 
-  /// Optional.
-  ///
-  /// The token specifying the current offset within
+  /// Optional. The token specifying the current offset within
   /// search results. See SearchJobsResponse.next_page_token for
   /// an explanation of how to obtain the next set of query results.
   core.String pageToken;
 
-  /// Required.
-  ///
-  /// The meta information collected about the job searcher, used to improve the
+  /// Required. The meta information collected about the job searcher, used to
+  /// improve the
   /// search quality of the service. The identifiers (such as `user_id`) are
   /// provided by users, and must be unique and consistent.
   RequestMetadata requestMetadata;
 
-  /// Optional.
-  ///
-  /// Controls if the search job request requires the return of a precise
+  /// Optional. Controls if the search job request requires the return of a
+  /// precise
   /// count of the first 300 results. Setting this to `true` ensures
   /// consistency in the number of results per page. Best practice is to set
   /// this
@@ -4750,14 +4799,13 @@ class SearchJobsRequest {
   /// Defaults to false.
   core.bool requirePreciseResultSize;
 
-  /// Optional.
-  ///
-  /// Mode of a search.
+  /// Optional. Mode of a search.
   ///
   /// Defaults to SearchMode.JOB_SEARCH.
   /// Possible string values are:
   /// - "SEARCH_MODE_UNSPECIFIED" : The mode of the search method isn't
-  /// specified.
+  /// specified. The default search
+  /// behavior is identical to JOB_SEARCH search behavior.
   /// - "JOB_SEARCH" : The job search matches against all jobs, and featured
   /// jobs
   /// (jobs with promotionValue > 0) are not specially handled.
@@ -5106,9 +5154,8 @@ class TimestampRange {
 ///
 /// Request for updating a specified company.
 class UpdateCompanyRequest {
-  /// Required.
-  ///
-  /// The company resource to replace the current resource in the system.
+  /// Required. The company resource to replace the current resource in the
+  /// system.
   Company company;
 
   /// Optional but strongly recommended for the best service
@@ -5149,9 +5196,7 @@ class UpdateCompanyRequest {
 ///
 /// Update job request.
 class UpdateJobRequest {
-  /// Required.
-  ///
-  /// The Job to be updated.
+  /// Required. The Job to be updated.
   Job job;
 
   /// Optional but strongly recommended to be provided for the best service

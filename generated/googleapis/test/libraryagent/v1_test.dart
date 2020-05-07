@@ -75,14 +75,14 @@ checkGoogleExampleLibraryagentV1Book(api.GoogleExampleLibraryagentV1Book o) {
   buildCounterGoogleExampleLibraryagentV1Book--;
 }
 
-buildUnnamed4658() {
+buildUnnamed5345() {
   var o = new core.List<api.GoogleExampleLibraryagentV1Book>();
   o.add(buildGoogleExampleLibraryagentV1Book());
   o.add(buildGoogleExampleLibraryagentV1Book());
   return o;
 }
 
-checkUnnamed4658(core.List<api.GoogleExampleLibraryagentV1Book> o) {
+checkUnnamed5345(core.List<api.GoogleExampleLibraryagentV1Book> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleExampleLibraryagentV1Book(o[0]);
   checkGoogleExampleLibraryagentV1Book(o[1]);
@@ -93,7 +93,7 @@ buildGoogleExampleLibraryagentV1ListBooksResponse() {
   var o = new api.GoogleExampleLibraryagentV1ListBooksResponse();
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListBooksResponse < 3) {
-    o.books = buildUnnamed4658();
+    o.books = buildUnnamed5345();
     o.nextPageToken = "foo";
   }
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse--;
@@ -104,20 +104,20 @@ checkGoogleExampleLibraryagentV1ListBooksResponse(
     api.GoogleExampleLibraryagentV1ListBooksResponse o) {
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListBooksResponse < 3) {
-    checkUnnamed4658(o.books);
+    checkUnnamed5345(o.books);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleExampleLibraryagentV1ListBooksResponse--;
 }
 
-buildUnnamed4659() {
+buildUnnamed5346() {
   var o = new core.List<api.GoogleExampleLibraryagentV1Shelf>();
   o.add(buildGoogleExampleLibraryagentV1Shelf());
   o.add(buildGoogleExampleLibraryagentV1Shelf());
   return o;
 }
 
-checkUnnamed4659(core.List<api.GoogleExampleLibraryagentV1Shelf> o) {
+checkUnnamed5346(core.List<api.GoogleExampleLibraryagentV1Shelf> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleExampleLibraryagentV1Shelf(o[0]);
   checkGoogleExampleLibraryagentV1Shelf(o[1]);
@@ -129,7 +129,7 @@ buildGoogleExampleLibraryagentV1ListShelvesResponse() {
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListShelvesResponse < 3) {
     o.nextPageToken = "foo";
-    o.shelves = buildUnnamed4659();
+    o.shelves = buildUnnamed5346();
   }
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse--;
   return o;
@@ -140,7 +140,7 @@ checkGoogleExampleLibraryagentV1ListShelvesResponse(
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse++;
   if (buildCounterGoogleExampleLibraryagentV1ListShelvesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed4659(o.shelves);
+    checkUnnamed5346(o.shelves);
   }
   buildCounterGoogleExampleLibraryagentV1ListShelvesResponse--;
 }
@@ -257,8 +257,8 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.ShelvesResourceApi res = new api.LibraryagentApi(mock).shelves;
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -290,10 +290,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -305,8 +305,8 @@ main() {
       }), true);
       res
           .list(
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleExampleLibraryagentV1ListShelvesResponse(response);
@@ -424,8 +424,8 @@ main() {
       api.ShelvesBooksResourceApi res =
           new api.LibraryagentApi(mock).shelves.books;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -458,10 +458,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -473,8 +473,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleExampleLibraryagentV1ListBooksResponse(response);

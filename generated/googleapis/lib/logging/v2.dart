@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.logging.v2;
 
@@ -16,10 +16,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client logging/v2';
 
-/// Writes log entries and manages your Stackdriver Logging configuration. The
-/// table entries below are presented in alphabetical order, not in order of
-/// common use. For explanations of the concepts found in the table entries,
-/// read the Stackdriver Logging documentation.
+/// Writes log entries and manages your Cloud Logging configuration. The table
+/// entries below are presented in alphabetical order, not in order of common
+/// use. For explanations of the concepts found in the table entries, read the
+/// documentation at https://cloud.google.com/logging/docs.
 class LoggingApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -48,6 +48,7 @@ class LoggingApi {
   EntriesResourceApi get entries => new EntriesResourceApi(_requester);
   ExclusionsResourceApi get exclusions => new ExclusionsResourceApi(_requester);
   FoldersResourceApi get folders => new FoldersResourceApi(_requester);
+  LocationsResourceApi get locations => new LocationsResourceApi(_requester);
   LogsResourceApi get logs => new LogsResourceApi(_requester);
   MonitoredResourceDescriptorsResourceApi get monitoredResourceDescriptors =>
       new MonitoredResourceDescriptorsResourceApi(_requester);
@@ -55,6 +56,7 @@ class LoggingApi {
       new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   SinksResourceApi get sinks => new SinksResourceApi(_requester);
+  V2ResourceApi get v2 => new V2ResourceApi(_requester);
 
   LoggingApi(http.Client client,
       {core.String rootUrl = "https://logging.googleapis.com/",
@@ -66,14 +68,74 @@ class LoggingApi {
 class BillingAccountsResourceApi {
   final commons.ApiRequester _requester;
 
+  BillingAccountsBucketsResourceApi get buckets =>
+      new BillingAccountsBucketsResourceApi(_requester);
   BillingAccountsExclusionsResourceApi get exclusions =>
       new BillingAccountsExclusionsResourceApi(_requester);
+  BillingAccountsLocationsResourceApi get locations =>
+      new BillingAccountsLocationsResourceApi(_requester);
   BillingAccountsLogsResourceApi get logs =>
       new BillingAccountsLogsResourceApi(_requester);
   BillingAccountsSinksResourceApi get sinks =>
       new BillingAccountsSinksResourceApi(_requester);
 
   BillingAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class BillingAccountsBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsBucketsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a bucket (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the bucket:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// Value must have pattern "^billingAccounts/[^/]+/buckets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
 }
 
 class BillingAccountsExclusionsResourceApi {
@@ -317,7 +379,7 @@ class BillingAccountsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -368,6 +430,162 @@ class BillingAccountsExclusionsResourceApi {
   }
 }
 
+class BillingAccountsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsBucketsResourceApi get buckets =>
+      new BillingAccountsLocationsBucketsResourceApi(_requester);
+
+  BillingAccountsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class BillingAccountsLocationsBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsBucketsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists buckets (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose buckets are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
+  /// Note: The locations portion of the resource must be specified, but
+  /// supplying the character - in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern "^billingAccounts/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBucketsResponse.fromJson(data));
+  }
+
+  /// Updates a bucket. This method replaces the following fields in the
+  /// existing bucket with values from the new bucket: retention_periodIf the
+  /// retention period is decreased and the bucket is locked,
+  /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
+  /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
+  /// may not be modified after it is created. This method is in Beta.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
+  /// requires permission "resourcemanager.projects.updateLiens" to set the
+  /// locked property
+  /// Value must have pattern
+  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=retention_days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> patch(LogBucket request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+}
+
 class BillingAccountsLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -376,7 +594,8 @@ class BillingAccountsLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -1245,7 +1464,7 @@ class ExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -1301,6 +1520,8 @@ class FoldersResourceApi {
 
   FoldersExclusionsResourceApi get exclusions =>
       new FoldersExclusionsResourceApi(_requester);
+  FoldersLocationsResourceApi get locations =>
+      new FoldersLocationsResourceApi(_requester);
   FoldersLogsResourceApi get logs => new FoldersLogsResourceApi(_requester);
   FoldersSinksResourceApi get sinks => new FoldersSinksResourceApi(_requester);
 
@@ -1548,7 +1769,7 @@ class FoldersExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -1599,6 +1820,210 @@ class FoldersExclusionsResourceApi {
   }
 }
 
+class FoldersLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsBucketsResourceApi get buckets =>
+      new FoldersLocationsBucketsResourceApi(_requester);
+
+  FoldersLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class FoldersLocationsBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsBucketsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a bucket (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the bucket:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+
+  /// Lists buckets (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose buckets are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
+  /// Note: The locations portion of the resource must be specified, but
+  /// supplying the character - in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern "^folders/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBucketsResponse.fromJson(data));
+  }
+
+  /// Updates a bucket. This method replaces the following fields in the
+  /// existing bucket with values from the new bucket: retention_periodIf the
+  /// retention period is decreased and the bucket is locked,
+  /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
+  /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
+  /// may not be modified after it is created. This method is in Beta.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
+  /// requires permission "resourcemanager.projects.updateLiens" to set the
+  /// locked property
+  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=retention_days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> patch(LogBucket request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+}
+
 class FoldersLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1606,7 +2031,8 @@ class FoldersLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -2136,6 +2562,209 @@ class FoldersSinksResourceApi {
   }
 }
 
+class LocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  LocationsBucketsResourceApi get buckets =>
+      new LocationsBucketsResourceApi(_requester);
+
+  LocationsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class LocationsBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  LocationsBucketsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a bucket (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the bucket:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+
+  /// Lists buckets (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose buckets are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
+  /// Note: The locations portion of the resource must be specified, but
+  /// supplying the character - in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBucketsResponse.fromJson(data));
+  }
+
+  /// Updates a bucket. This method replaces the following fields in the
+  /// existing bucket with values from the new bucket: retention_periodIf the
+  /// retention period is decreased and the bucket is locked,
+  /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
+  /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
+  /// may not be modified after it is created. This method is in Beta.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
+  /// requires permission "resourcemanager.projects.updateLiens" to set the
+  /// locked property
+  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=retention_days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> patch(LogBucket request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+}
+
 class LogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2143,7 +2772,8 @@ class LogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -2326,12 +2956,144 @@ class OrganizationsResourceApi {
 
   OrganizationsExclusionsResourceApi get exclusions =>
       new OrganizationsExclusionsResourceApi(_requester);
+  OrganizationsLocationsResourceApi get locations =>
+      new OrganizationsLocationsResourceApi(_requester);
   OrganizationsLogsResourceApi get logs =>
       new OrganizationsLogsResourceApi(_requester);
   OrganizationsSinksResourceApi get sinks =>
       new OrganizationsSinksResourceApi(_requester);
 
   OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
+  /// the Logs Router can currently only be configured for GCP organizations.
+  /// Once configured, it applies to all projects and folders in the GCP
+  /// organization.See Enabling CMEK for Logs Router for more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve CMEK settings.
+  /// "projects/[PROJECT_ID]/cmekSettings"
+  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+  /// "folders/[FOLDER_ID]/cmekSettings"
+  /// Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> getCmekSettings(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/cmekSettings';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CmekSettings.fromJson(data));
+  }
+
+  /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
+  /// for the Logs Router can currently only be configured for GCP
+  /// organizations. Once configured, it applies to all projects and folders in
+  /// the GCP organization.UpdateCmekSettings will fail if 1) kms_key_name is
+  /// invalid, or 2) the associated service account does not have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
+  /// 3) access to the key is disabled.See Enabling CMEK for Logs Router for
+  /// more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the CMEK settings to update.
+  /// "projects/[PROJECT_ID]/cmekSettings"
+  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+  /// "folders/[FOLDER_ID]/cmekSettings"
+  /// Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask identifying which fields from
+  /// cmek_settings should be updated. A field will be overwritten if and only
+  /// if it is in the update mask. Output only fields cannot be updated.See
+  /// FieldMask for more information.Example: "updateMask=kmsKeyName"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> updateCmekSettings(
+      CmekSettings request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/cmekSettings';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CmekSettings.fromJson(data));
+  }
 }
 
 class OrganizationsExclusionsResourceApi {
@@ -2575,7 +3337,7 @@ class OrganizationsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -2626,6 +3388,212 @@ class OrganizationsExclusionsResourceApi {
   }
 }
 
+class OrganizationsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsBucketsResourceApi get buckets =>
+      new OrganizationsLocationsBucketsResourceApi(_requester);
+
+  OrganizationsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsBucketsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a bucket (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the bucket:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+
+  /// Lists buckets (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose buckets are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
+  /// Note: The locations portion of the resource must be specified, but
+  /// supplying the character - in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBucketsResponse.fromJson(data));
+  }
+
+  /// Updates a bucket. This method replaces the following fields in the
+  /// existing bucket with values from the new bucket: retention_periodIf the
+  /// retention period is decreased and the bucket is locked,
+  /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
+  /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
+  /// may not be modified after it is created. This method is in Beta.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
+  /// requires permission "resourcemanager.projects.updateLiens" to set the
+  /// locked property
+  /// Value must have pattern
+  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=retention_days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> patch(LogBucket request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+}
+
 class OrganizationsLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2634,7 +3602,8 @@ class OrganizationsLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -3170,6 +4139,8 @@ class ProjectsResourceApi {
 
   ProjectsExclusionsResourceApi get exclusions =>
       new ProjectsExclusionsResourceApi(_requester);
+  ProjectsLocationsResourceApi get locations =>
+      new ProjectsLocationsResourceApi(_requester);
   ProjectsLogsResourceApi get logs => new ProjectsLogsResourceApi(_requester);
   ProjectsMetricsResourceApi get metrics =>
       new ProjectsMetricsResourceApi(_requester);
@@ -3420,7 +4391,7 @@ class ProjectsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
   ///
-  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
   /// corresponding fields in the LogExclusion included in this request. Fields
   /// not mentioned in update_mask are not changed and are ignored in the
@@ -3471,6 +4442,210 @@ class ProjectsExclusionsResourceApi {
   }
 }
 
+class ProjectsLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsResourceApi get buckets =>
+      new ProjectsLocationsBucketsResourceApi(_requester);
+
+  ProjectsLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsBucketsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBucketsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets a bucket (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the bucket:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> get(core.String name, {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+
+  /// Lists buckets (Beta).
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose buckets are to be listed:
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
+  /// Note: The locations portion of the resource must be specified, but
+  /// supplying the character - in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBucketsResponse.fromJson(data));
+  }
+
+  /// Updates a bucket. This method replaces the following fields in the
+  /// existing bucket with values from the new bucket: retention_periodIf the
+  /// retention period is decreased and the bucket is locked,
+  /// FAILED_PRECONDITION will be returned.If the bucket has a LifecycleState of
+  /// DELETE_REQUESTED, FAILED_PRECONDITION will be returned.A buckets region
+  /// may not be modified after it is created. This method is in Beta.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the bucket to update.
+  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
+  /// Example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
+  /// requires permission "resourcemanager.projects.updateLiens" to set the
+  /// locked property
+  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  ///
+  /// [updateMask] - Required. Field mask that specifies the fields in bucket
+  /// that need an update. A bucket field will be overwritten if, and only if,
+  /// it is in the update mask. name and output only fields cannot be
+  /// updated.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMaskExample:
+  /// updateMask=retention_days.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogBucket].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogBucket> patch(LogBucket request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogBucket.fromJson(data));
+  }
+}
+
 class ProjectsLogsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -3478,7 +4653,8 @@ class ProjectsLogsResourceApi {
 
   /// Deletes all the log entries in a log. The log reappears if it receives new
   /// entries. Log entries written shortly before the delete operation might not
-  /// be deleted.
+  /// be deleted. Entries received after the delete operation with a timestamp
+  /// before the operation will be deleted.
   ///
   /// Request parameters:
   ///
@@ -3606,7 +4782,8 @@ class ProjectsMetricsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The resource name of the project in which to create the metric:
+  /// [parent] - Required. The resource name of the project in which to create
+  /// the metric:
   /// "projects/[PROJECT_ID]"
   /// The new metric must be provided in the request.
   /// Value must have pattern "^projects/[^/]+$".
@@ -3656,7 +4833,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [metricName] - The resource name of the metric to delete:
+  /// [metricName] - Required. The resource name of the metric to delete:
   /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
   ///
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
@@ -3701,7 +4878,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [metricName] - The resource name of the desired metric:
+  /// [metricName] - Required. The resource name of the desired metric:
   /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
   ///
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
@@ -3810,7 +4987,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [metricName] - The resource name of the metric to update:
+  /// [metricName] - Required. The resource name of the metric to update:
   /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
   /// The updated metric must be provided in the request and it's name field
   /// must be the same as [METRIC_ID] If the metric does not exist in
@@ -4597,6 +5774,185 @@ class SinksResourceApi {
   }
 }
 
+class V2ResourceApi {
+  final commons.ApiRequester _requester;
+
+  V2ResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the Logs Router CMEK settings for the given resource.Note: CMEK for
+  /// the Logs Router can currently only be configured for GCP organizations.
+  /// Once configured, it applies to all projects and folders in the GCP
+  /// organization.See Enabling CMEK for Logs Router for more information.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource for which to retrieve CMEK settings.
+  /// "projects/[PROJECT_ID]/cmekSettings"
+  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+  /// "folders/[FOLDER_ID]/cmekSettings"
+  /// Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> getCmekSettings(core.String name,
+      {core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/cmekSettings';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CmekSettings.fromJson(data));
+  }
+
+  /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
+  /// for the Logs Router can currently only be configured for GCP
+  /// organizations. Once configured, it applies to all projects and folders in
+  /// the GCP organization.UpdateCmekSettings will fail if 1) kms_key_name is
+  /// invalid, or 2) the associated service account does not have the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key, or
+  /// 3) access to the key is disabled.See Enabling CMEK for Logs Router for
+  /// more information.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name for the CMEK settings to update.
+  /// "projects/[PROJECT_ID]/cmekSettings"
+  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+  /// "folders/[FOLDER_ID]/cmekSettings"
+  /// Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router
+  /// can currently only be configured for GCP organizations. Once configured,
+  /// it applies to all projects and folders in the GCP organization.
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [updateMask] - Optional. Field mask identifying which fields from
+  /// cmek_settings should be updated. A field will be overwritten if and only
+  /// if it is in the update mask. Output only fields cannot be updated.See
+  /// FieldMask for more information.Example: "updateMask=kmsKeyName"
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekSettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekSettings> updateCmekSettings(
+      CmekSettings request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url;
+    var _queryParams = new core.Map<core.String, core.List<core.String>>();
+    var _uploadMedia;
+    var _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body;
+
+    if (request != null) {
+      _body = convert.json.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/cmekSettings';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CmekSettings.fromJson(data));
+  }
+}
+
+/// Options that change functionality of a sink exporting data to BigQuery.
+class BigQueryOptions {
+  /// Optional. Whether to use BigQuery's partition tables. By default, Logging
+  /// creates dated tables based on the log entries' timestamps, e.g.
+  /// syslog_20170523. With partitioned tables the date suffix is no longer
+  /// present and special query syntax has to be used instead. In both cases,
+  /// tables are sharded based on UTC timezone.
+  core.bool usePartitionedTables;
+
+  /// Output only. True if new timestamp column based partitioning is in use,
+  /// false if legacy ingestion-time partitioning is in use. All new sinks will
+  /// have this field set true and will use timestamp column based partitioning.
+  /// If use_partitioned_tables is false, this value has no meaning and will be
+  /// false. Legacy sinks using partitioned tables will have this field set to
+  /// false.
+  core.bool usesTimestampColumnPartitioning;
+
+  BigQueryOptions();
+
+  BigQueryOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("usePartitionedTables")) {
+      usePartitionedTables = _json["usePartitionedTables"];
+    }
+    if (_json.containsKey("usesTimestampColumnPartitioning")) {
+      usesTimestampColumnPartitioning =
+          _json["usesTimestampColumnPartitioning"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (usePartitionedTables != null) {
+      _json["usePartitionedTables"] = usePartitionedTables;
+    }
+    if (usesTimestampColumnPartitioning != null) {
+      _json["usesTimestampColumnPartitioning"] =
+          usesTimestampColumnPartitioning;
+    }
+    return _json;
+  }
+}
+
 /// BucketOptions describes the bucket boundaries used to create a histogram for
 /// the distribution. The buckets can be in a linear sequence, an exponential
 /// sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -4646,6 +6002,70 @@ class BucketOptions {
     }
     if (linearBuckets != null) {
       _json["linearBuckets"] = (linearBuckets).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Describes the customer-managed encryption key (CMEK) settings associated
+/// with a project, folder, organization, billing account, or flexible
+/// resource.Note: CMEK for the Logs Router can currently only be configured for
+/// GCP organizations. Once configured, it applies to all projects and folders
+/// in the GCP organization.See Enabling CMEK for Logs Router for more
+/// information.
+class CmekSettings {
+  /// The resource name for the configured Cloud KMS key.KMS key name format:
+  /// "projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For
+  /// example:
+  /// "projects/my-project-id/locations/my-region/keyRings/key-ring-name/cryptoKeys/key-name"To
+  /// enable CMEK for the Logs Router, set this field to a valid kms_key_name
+  /// for which the associated service account has the required
+  /// roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The
+  /// Cloud KMS key used by the Log Router can be updated by changing the
+  /// kms_key_name to a new valid key name. Encryption operations that are in
+  /// progress will be completed with the key that was in use when they started.
+  /// Decryption operations will be completed using the key that was used at the
+  /// time of encryption unless access to that key has been revoked.To disable
+  /// CMEK for the Logs Router, set this field to an empty string.See Enabling
+  /// CMEK for Logs Router for more information.
+  core.String kmsKeyName;
+
+  /// Output only. The resource name of the CMEK settings.
+  core.String name;
+
+  /// Output only. The service account that will be used by the Logs Router to
+  /// access your Cloud KMS key.Before enabling CMEK for Logs Router, you must
+  /// first assign the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the
+  /// service account that the Logs Router will use to access your Cloud KMS
+  /// key. Use GetCmekSettings to obtain the service account ID.See Enabling
+  /// CMEK for Logs Router for more information.
+  core.String serviceAccountId;
+
+  CmekSettings();
+
+  CmekSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsKeyName")) {
+      kmsKeyName = _json["kmsKeyName"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("serviceAccountId")) {
+      serviceAccountId = _json["serviceAccountId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kmsKeyName != null) {
+      _json["kmsKeyName"] = kmsKeyName;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (serviceAccountId != null) {
+      _json["serviceAccountId"] = serviceAccountId;
     }
     return _json;
   }
@@ -5002,6 +6422,42 @@ class Linear {
   }
 }
 
+/// The response from ListBuckets (Beta).
+class ListBucketsResponse {
+  /// A list of buckets.
+  core.List<LogBucket> buckets;
+
+  /// If there might be more results than appear in this response, then
+  /// nextPageToken is included. To get the next set of results, call the same
+  /// method again using the value of nextPageToken as pageToken.
+  core.String nextPageToken;
+
+  ListBucketsResponse();
+
+  ListBucketsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("buckets")) {
+      buckets = (_json["buckets"] as core.List)
+          .map<LogBucket>((value) => new LogBucket.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buckets != null) {
+      _json["buckets"] = buckets.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Result returned from ListExclusions.
 class ListExclusionsResponse {
   /// A list of exclusions.
@@ -5042,7 +6498,7 @@ class ListExclusionsResponse {
 /// The parameters to ListLogEntries.
 class ListLogEntriesRequest {
   /// Optional. A filter that chooses which log entries to return. See Advanced
-  /// Logs Filters. Only log entries that match the filter are returned. An
+  /// Logs Queries. Only log entries that match the filter are returned. An
   /// empty filter matches all log entries in the resources listed in
   /// resource_names. Referencing a parent resource that is not listed in
   /// resource_names will cause the filter to return no results. The maximum
@@ -5068,9 +6524,9 @@ class ListLogEntriesRequest {
   /// parameters should be identical to those in the previous call.
   core.String pageToken;
 
-  /// Deprecated. Use resource_names instead. One or more project identifiers or
-  /// project numbers from which to retrieve log entries. Example:
-  /// "my-project-1A".
+  /// Optional. Deprecated. Use resource_names instead. One or more project
+  /// identifiers or project numbers from which to retrieve log entries.
+  /// Example: "my-project-1A".
   core.List<core.String> projectIds;
 
   /// Required. Names of one or more parent resources from which to retrieve log
@@ -5212,8 +6668,8 @@ class ListLogMetricsResponse {
 
 /// Result returned from ListLogs.
 class ListLogsResponse {
-  /// A list of log names. For example, "projects/my-project/syslog" or
-  /// "organizations/123/cloudresourcemanager.googleapis.com%2Factivity".
+  /// A list of log names. For example, "projects/my-project/logs/syslog" or
+  /// "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity".
   core.List<core.String> logNames;
 
   /// If there might be more results than those appearing in this response, then
@@ -5319,6 +6775,88 @@ class ListSinksResponse {
   }
 }
 
+/// Describes a repository of logs (Beta).
+class LogBucket {
+  /// Output only. The creation timestamp of the bucket. This is not set for any
+  /// of the default buckets.
+  core.String createTime;
+
+  /// Describes this bucket.
+  core.String description;
+
+  /// Output only. The bucket lifecycle state.
+  /// Possible string values are:
+  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state. This is only
+  /// used/useful for distinguishing unset values.
+  /// - "ACTIVE" : The normal and active state.
+  /// - "DELETE_REQUESTED" : The bucket has been marked for deletion by the
+  /// user.
+  core.String lifecycleState;
+
+  /// The resource name of the bucket. For example:
+  /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id The
+  /// supported locations are:  "global"  "us-central1"For the location of
+  /// global it is unspecified where logs are actually stored. Once a bucket has
+  /// been created, the location can not be changed.
+  core.String name;
+
+  /// Logs will be retained by default for this amount of time, after which they
+  /// will automatically be deleted. The minimum retention period is 1 day. If
+  /// this value is set to zero at bucket creation time, the default time of 30
+  /// days will be used.
+  core.int retentionDays;
+
+  /// Output only. The last update timestamp of the bucket.
+  core.String updateTime;
+
+  LogBucket();
+
+  LogBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("lifecycleState")) {
+      lifecycleState = _json["lifecycleState"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("retentionDays")) {
+      retentionDays = _json["retentionDays"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (lifecycleState != null) {
+      _json["lifecycleState"] = lifecycleState;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (retentionDays != null) {
+      _json["retentionDays"] = retentionDays;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
 /// An individual entry in a log.
 class LogEntry {
   /// Optional. Information about the HTTP request associated with this log
@@ -5327,10 +6865,12 @@ class LogEntry {
 
   /// Optional. A unique identifier for the log entry. If you provide a value,
   /// then Logging considers other log entries in the same project, with the
-  /// same timestamp, and with the same insert_id to be duplicates which can be
-  /// removed. If omitted in new log entries, then Logging assigns its own
-  /// unique identifier. The insert_id is also used to order log entries that
-  /// have the same timestamp value.
+  /// same timestamp, and with the same insert_id to be duplicates which are
+  /// removed in a single query result. However, there are no guarantees of
+  /// de-duplication in the export of logs.If the insert_id is omitted when
+  /// writing a log entry, the Logging API  assigns its own unique identifier in
+  /// this field.In queries, the insert_id is also used to order log entries
+  /// that have the same log_name and timestamp values.
   core.String insertId;
 
   /// The log entry payload, represented as a structure that is expressed as a
@@ -5349,10 +6889,10 @@ class LogEntry {
   /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
   /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
   /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
-  /// A project number may optionally be used in place of PROJECT_ID. The
-  /// project number is translated to its corresponding PROJECT_ID internally
-  /// and the log_name field will contain PROJECT_ID in queries and
-  /// exports.[LOG_ID] must be URL-encoded within log_name. Example:
+  /// A project number may be used in place of PROJECT_ID. The project number is
+  /// translated to its corresponding PROJECT_ID internally and the log_name
+  /// field will contain PROJECT_ID in queries and exports.[LOG_ID] must be
+  /// URL-encoded within log_name. Example:
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
   /// [LOG_ID] must be less than 512 characters long and can only include the
   /// following characters: upper and lower case alphanumeric characters,
@@ -5363,7 +6903,7 @@ class LogEntry {
   /// with a leading slash will never return any results.
   core.String logName;
 
-  /// Deprecated. Output only. Additional metadata about the monitored
+  /// Output only. Deprecated. Additional metadata about the monitored
   /// resource.Only k8s_container, k8s_pod, and k8s_node MonitoredResources have
   /// this field populated for GKE versions older than 1.12.6. For GKE versions
   /// 1.12.6 and above, the metadata field has been deprecated. The Kubernetes
@@ -5420,7 +6960,7 @@ class LogEntry {
   /// Optional. The span ID within the trace associated with the log entry.For
   /// Trace spans, this is the same format that the Trace API v2 uses: a
   /// 16-character hexadecimal encoding of an 8-byte array, such as
-  /// <code>"000000000000004a"</code>.
+  /// 000000000000004a.
   core.String spanId;
 
   /// The log entry payload, represented as a Unicode string (UTF-8).
@@ -5431,11 +6971,10 @@ class LogEntry {
   /// retention period. If this field is omitted in a new log entry, then
   /// Logging assigns it the current time. Timestamps have nanosecond accuracy,
   /// but trailing zeros in the fractional seconds might be omitted when the
-  /// timestamp is displayed.Incoming log entries should have timestamps that
-  /// are no more than the logs retention period in the past, and no more than
-  /// 24 hours in the future. Log entries outside those time boundaries will not
-  /// be available when calling entries.list, but those log entries can still be
-  /// exported with LogSinks.
+  /// timestamp is displayed.Incoming log entries must have timestamps that
+  /// don't exceed the logs retention period in the past, and that don't exceed
+  /// 24 hours in the future. Log entries outside those time boundaries aren't
+  /// ingested by Logging.
   core.String timestamp;
 
   /// Optional. Resource name of the trace associated with the log entry, if
@@ -5673,10 +7212,11 @@ class LogEntrySourceLocation {
 }
 
 /// Specifies a set of log entries that are not to be stored in Logging. If your
-/// project receives a large volume of logs, you might be able to use exclusions
-/// to reduce your chargeable logs. Exclusions are processed after log sinks, so
-/// you can export log entries before they are excluded. Audit log entries and
-/// log entries from Amazon Web Services are never excluded.
+/// GCP resource receives a large volume of logs, you can use exclusions to
+/// reduce your chargeable logs. Exclusions are processed after log sinks, so
+/// you can export log entries before they are excluded. Note that
+/// organization-level and folder-level exclusions don't apply to child
+/// resources, and that you can't exclude audit log entries.
 class LogExclusion {
   /// Output only. The creation timestamp of the exclusion.This field may not be
   /// present for older exclusions.
@@ -5692,15 +7232,15 @@ class LogExclusion {
 
   /// Required. An advanced logs filter that matches the log entries to be
   /// excluded. By using the sample function, you can exclude less than 100% of
-  /// the matching log entries. For example, the following filter matches 99% of
-  /// low-severity log entries from load
-  /// balancers:"resource.type=http_load_balancer severity<ERROR
-  /// sample(insertId, 0.99)"
+  /// the matching log entries. For example, the following query matches 99% of
+  /// low-severity log entries from Google Cloud Storage
+  /// buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
   core.String filter;
 
   /// Required. A client-assigned identifier, such as "load-balancer-exclusion".
   /// Identifiers are limited to 100 characters and can include only letters,
-  /// digits, underscores, hyphens, and periods.
+  /// digits, underscores, hyphens, and periods. First character has to be
+  /// alphanumeric.
   core.String name;
 
   /// Output only. The last update timestamp of the exclusion.This field may not
@@ -5993,9 +7533,16 @@ class LogMetric {
 /// exported. The sink must be created within a project, organization, billing
 /// account, or folder.
 class LogSink {
+  /// Optional. Options that affect sinks exporting data to BigQuery.
+  BigQueryOptions bigqueryOptions;
+
   /// Output only. The creation timestamp of the sink.This field may not be
   /// present for older sinks.
   core.String createTime;
+
+  /// Optional. A description of this sink. The maximum length of the
+  /// description is 8000 characters.
+  core.String description;
 
   /// Required. The export destination:
   /// "storage.googleapis.com/[GCS_BUCKET]"
@@ -6005,6 +7552,10 @@ class LogSink {
   /// permission to write to the destination or else the log entries are not
   /// exported. For more information, see Exporting Logs with Sinks.
   core.String destination;
+
+  /// Optional. If set to True, then this sink is disabled and it does not
+  /// export any log entries.
+  core.bool disabled;
 
   /// Optional. An advanced logs filter. The only exported log entries are those
   /// that are in the resource owning the sink and that match the filter. For
@@ -6030,6 +7581,7 @@ class LogSink {
   /// Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
   /// characters and can include only the following characters: upper and
   /// lower-case alphanumeric characters, underscores, hyphens, and periods.
+  /// First character has to be alphanumeric.
   core.String name;
 
   /// Deprecated. The log entry format to use for this sink's exported log
@@ -6058,11 +7610,20 @@ class LogSink {
   LogSink();
 
   LogSink.fromJson(core.Map _json) {
+    if (_json.containsKey("bigqueryOptions")) {
+      bigqueryOptions = new BigQueryOptions.fromJson(_json["bigqueryOptions"]);
+    }
     if (_json.containsKey("createTime")) {
       createTime = _json["createTime"];
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("destination")) {
       destination = _json["destination"];
+    }
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
     }
     if (_json.containsKey("filter")) {
       filter = _json["filter"];
@@ -6087,11 +7648,20 @@ class LogSink {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (bigqueryOptions != null) {
+      _json["bigqueryOptions"] = (bigqueryOptions).toJson();
+    }
     if (createTime != null) {
       _json["createTime"] = createTime;
     }
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (destination != null) {
       _json["destination"] = destination;
+    }
+    if (disabled != null) {
+      _json["disabled"] = disabled;
     }
     if (filter != null) {
       _json["filter"] = filter;
@@ -6138,6 +7708,10 @@ class MetricDescriptor {
   /// Optional. The launch stage of the metric definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use these features, you must sign up in advance and sign a
   /// Trusted Tester agreement (which includes confidentiality provisions).
@@ -6181,6 +7755,12 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
+  /// Read-only. If present, then a time series, which is identified partially
+  /// by a metric type and a MonitoredResourceDescriptor, that is associated
+  /// with this metric type can only be associated with one of the monitored
+  /// resource types listed here.
+  core.List<core.String> monitoredResourceTypes;
+
   /// The resource name of the metric descriptor.
   core.String name;
 
@@ -6193,9 +7773,21 @@ class MetricDescriptor {
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable if
-  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are
-  /// a subset of The Unified Code for Units of Measure
+  /// The units in which the metric value is reported. It is only applicable if
+  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
+  /// representation of the stored metric values.Different systems may scale the
+  /// values to be more easily displayed (so a value of 0.02KBy might be
+  /// displayed as 20By, and a value of 3523KBy might be displayed as 3.5MBy).
+  /// However, if the unit is KBy, then the value of the metric is always in
+  /// thousands of bytes, no matter how it may be displayed..If you want a
+  /// custom metric to record the exact number of CPU-seconds used by a job, you
+  /// can create an INT64 CUMULATIVE metric whose unit is s{CPU} (or
+  /// equivalently 1s{CPU} or just s). If the job uses 12,005 CPU-seconds, then
+  /// the value is written as 12005.Alternatively, if you want a custom metric
+  /// to record data in a more granular way, you can create a DOUBLE CUMULATIVE
+  /// metric whose unit is ks{CPU}, and then write the value 12.005 (which is
+  /// 12005/1000), or use Kis{CPU} and write 11.723 (which is 12005/1024).The
+  /// supported units are a subset of The Unified Code for Units of Measure
   /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
   /// bit bit
   /// By byte
@@ -6203,29 +7795,33 @@ class MetricDescriptor {
   /// min minute
   /// h hour
   /// d dayPrefixes (PREFIX)
-  /// k kilo (10**3)
-  /// M mega (10**6)
-  /// G giga (10**9)
-  /// T tera (10**12)
-  /// P peta (10**15)
-  /// E exa (10**18)
-  /// Z zetta (10**21)
-  /// Y yotta (10**24)
-  /// m milli (10**-3)
-  /// u micro (10**-6)
-  /// n nano (10**-9)
-  /// p pico (10**-12)
-  /// f femto (10**-15)
-  /// a atto (10**-18)
-  /// z zepto (10**-21)
-  /// y yocto (10**-24)
-  /// Ki kibi (2**10)
-  /// Mi mebi (2**20)
-  /// Gi gibi (2**30)
-  /// Ti tebi (2**40)GrammarThe grammar also includes these connectors:
-  /// / division (as an infix operator, e.g. 1/s).
-  /// . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
-  /// is as follows:
+  /// k kilo (10^3)
+  /// M mega (10^6)
+  /// G giga (10^9)
+  /// T tera (10^12)
+  /// P peta (10^15)
+  /// E exa (10^18)
+  /// Z zetta (10^21)
+  /// Y yotta (10^24)
+  /// m milli (10^-3)
+  /// u micro (10^-6)
+  /// n nano (10^-9)
+  /// p pico (10^-12)
+  /// f femto (10^-15)
+  /// a atto (10^-18)
+  /// z zepto (10^-21)
+  /// y yocto (10^-24)
+  /// Ki kibi (2^10)
+  /// Mi mebi (2^20)
+  /// Gi gibi (2^30)
+  /// Ti tebi (2^40)
+  /// Pi pebi (2^50)GrammarThe grammar also includes these connectors:
+  /// / division or ratio (as an infix operator). For examples,  kBy/{email} or
+  /// MiBy/10ms (although you should almost never  have /s in a metric unit;
+  /// rates should always be computed at  query time from the underlying
+  /// cumulative or delta value).
+  /// . multiplication or composition (as an infix operator). For  examples,
+  /// GBy.d or k{watt}.h.The grammar for a unit is as follows:
   /// Expression = Component { "." Component } { "/" Component } ;
   ///
   /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ]
@@ -6235,14 +7831,25 @@ class MetricDescriptor {
   ///
   /// Annotation = "{" NAME "}" ;
   /// Notes:
-  /// Annotation is just a comment if it follows a UNIT and is  equivalent to 1
-  /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s
-  /// == By/s.
+  /// Annotation is just a comment if it follows a UNIT. If the annotation  is
+  /// used alone, then the unit is equivalent to 1. For examples,  {request}/s
+  /// == 1/s, By{transmitted}/s == By/s.
   /// NAME is a sequence of non-blank printable ASCII characters not  containing
-  /// '{' or '}'.
-  /// 1 represents dimensionless value 1, such as in 1/s.
-  /// % represents dimensionless value 1/100, and annotates values giving  a
-  /// percentage.
+  /// { or }.
+  /// 1 represents a unitary dimensionless  unit
+  /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such  as in
+  /// 1/s. It is typically used when none of the basic units are  appropriate.
+  /// For example, "new users per day" can be represented as  1/d or
+  /// {new-users}/d (and a metric value 5 would mean "5 new  users).
+  /// Alternatively, "thousands of page views per day" would be  represented as
+  /// 1000/d or k1/d or k{page_views}/d (and a metric  value of 5.3 would mean
+  /// "5300 page views per day").
+  /// % represents dimensionless value of 1/100, and annotates values giving  a
+  /// percentage (so the metric values are typically in the range of 0..100,
+  /// and a metric value 3 means "3 percent").
+  /// 10^2.% indicates a metric contains a ratio, typically in the range  0..1,
+  /// that will be multiplied by 100 and displayed as a percentage  (so a metric
+  /// value 0.03 means "3 percent").
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some
@@ -6282,6 +7889,10 @@ class MetricDescriptor {
     if (_json.containsKey("metricKind")) {
       metricKind = _json["metricKind"];
     }
+    if (_json.containsKey("monitoredResourceTypes")) {
+      monitoredResourceTypes =
+          (_json["monitoredResourceTypes"] as core.List).cast<core.String>();
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -6317,6 +7928,9 @@ class MetricDescriptor {
     if (metricKind != null) {
       _json["metricKind"] = metricKind;
     }
+    if (monitoredResourceTypes != null) {
+      _json["monitoredResourceTypes"] = monitoredResourceTypes;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -6340,10 +7954,13 @@ class MetricDescriptorMetadata {
   /// loss due to errors.
   core.String ingestDelay;
 
-  /// Deprecated. Please use the MetricDescriptor.launch_stage instead. The
-  /// launch stage of the metric definition.
+  /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use these features, you must sign up in advance and sign a
   /// Trusted Tester agreement (which includes confidentiality provisions).
@@ -6481,6 +8098,10 @@ class MonitoredResourceDescriptor {
   /// Optional. The launch stage of the monitored resource definition.
   /// Possible string values are:
   /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
   /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
   /// testers. To use these features, you must sign up in advance and sign a
   /// Trusted Tester agreement (which includes confidentiality provisions).
@@ -7074,10 +8695,10 @@ class WriteLogEntriesRequest {
   /// [LOG_ID] must be URL-encoded. For example:
   /// "projects/my-project-id/logs/syslog"
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
-  /// The permission <code>logging.logEntries.create</code> is needed on each
-  /// project, organization, billing account, or folder that is receiving new
-  /// log entries, whether the resource is specified in <code>logName</code> or
-  /// in an individual log entry.
+  /// The permission logging.logEntries.create is needed on each project,
+  /// organization, billing account, or folder that is receiving new log
+  /// entries, whether the resource is specified in logName or in an individual
+  /// log entry.
   core.String logName;
 
   /// Optional. Whether valid entries should be written even if some other
@@ -7145,7 +8766,7 @@ class WriteLogEntriesRequest {
   }
 }
 
-/// Result returned from WriteLogEntries. empty
+/// Result returned from WriteLogEntries.
 class WriteLogEntriesResponse {
   WriteLogEntriesResponse();
 

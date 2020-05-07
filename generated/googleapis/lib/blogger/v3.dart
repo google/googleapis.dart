@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.blogger.v3;
 
@@ -16,7 +16,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client blogger/v3';
 
-/// API for access to the data within Blogger.
+/// The Blogger API provides access to posts, comments and pages of a
+///     Blogger blog.
 class BloggerApi {
   /// Manage your Blogger account
   static const BloggerScope = "https://www.googleapis.com/auth/blogger";
@@ -39,8 +40,8 @@ class BloggerApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
   BloggerApi(http.Client client,
-      {core.String rootUrl = "https://www.googleapis.com/",
-      core.String servicePath = "blogger/v3/"})
+      {core.String rootUrl = "https://blogger.googleapis.com/",
+      core.String servicePath = ""})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -50,16 +51,15 @@ class BlogUserInfosResourceApi {
 
   BlogUserInfosResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets one blog and user info pair by blogId and userId.
+  /// Gets one blog and user info pair by blog id and user id.
   ///
   /// Request parameters:
   ///
-  /// [userId] - ID of the user whose blogs are to be fetched. Either the word
-  /// 'self' (sans quote marks) or the user's profile identifier.
+  /// [userId] - null
   ///
-  /// [blogId] - The ID of the blog to get.
+  /// [blogId] - null
   ///
-  /// [maxPosts] - Maximum number of posts to pull back with the blog.
+  /// [maxPosts] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -93,7 +93,7 @@ class BlogUserInfosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId');
@@ -113,20 +113,20 @@ class BlogsResourceApi {
 
   BlogsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets one blog by ID.
+  /// Gets a blog by id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the blog to get.
+  /// [blogId] - null
   ///
-  /// [maxPosts] - Maximum number of posts to pull back with the blog.
-  ///
-  /// [view] - Access level with which to view the blog. Note that some fields
-  /// require elevated access.
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail.
-  /// - "AUTHOR" : Author level detail.
-  /// - "READER" : Reader level detail.
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
+  ///
+  /// [maxPosts] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -139,7 +139,7 @@ class BlogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Blog> get(core.String blogId,
-      {core.int maxPosts, core.String view, core.String $fields}) {
+      {core.String view, core.int maxPosts, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -150,17 +150,17 @@ class BlogsResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (maxPosts != null) {
-      _queryParams["maxPosts"] = ["${maxPosts}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (maxPosts != null) {
+      _queryParams["maxPosts"] = ["${maxPosts}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId');
+    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -171,18 +171,18 @@ class BlogsResourceApi {
     return _response.then((data) => new Blog.fromJson(data));
   }
 
-  /// Retrieve a Blog by URL.
+  /// Gets a blog by url.
   ///
   /// Request parameters:
   ///
-  /// [url] - The URL of the blog to retrieve.
+  /// [url] - null
   ///
-  /// [view] - Access level with which to view the blog. Note that some fields
-  /// require elevated access.
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail.
-  /// - "AUTHOR" : Author level detail.
-  /// - "READER" : Reader level detail.
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -214,7 +214,7 @@ class BlogsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/byurl';
+    _url = 'v3/blogs/byurl';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -225,29 +225,24 @@ class BlogsResourceApi {
     return _response.then((data) => new Blog.fromJson(data));
   }
 
-  /// Retrieves a list of blogs, possibly filtered.
+  /// Lists blogs by user.
   ///
   /// Request parameters:
   ///
-  /// [userId] - ID of the user whose blogs are to be fetched. Either the word
-  /// 'self' (sans quote marks) or the user's profile identifier.
+  /// [userId] - null
   ///
-  /// [fetchUserInfo] - Whether the response is a list of blogs with per-user
-  /// information instead of just blogs.
-  ///
-  /// [role] - User access types for blogs to include in the results, e.g.
-  /// AUTHOR will return blogs where the user has author level access. If no
-  /// roles are specified, defaults to ADMIN and AUTHOR roles.
-  ///
-  /// [status] - Blog statuses to include in the result (default: Live blogs
-  /// only). Note that ADMIN access is required to view deleted blogs.
-  ///
-  /// [view] - Access level with which to view the blogs. Note that some fields
-  /// require elevated access.
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail.
-  /// - "AUTHOR" : Author level detail.
-  /// - "READER" : Reader level detail.
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
+  ///
+  /// [role] - null
+  ///
+  /// [status] - Default value of status is LIVE.
+  ///
+  /// [fetchUserInfo] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -260,10 +255,10 @@ class BlogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BlogList> listByUser(core.String userId,
-      {core.bool fetchUserInfo,
+      {core.String view,
       core.List<core.String> role,
       core.List<core.String> status,
-      core.String view,
+      core.bool fetchUserInfo,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -275,8 +270,8 @@ class BlogsResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-    if (fetchUserInfo != null) {
-      _queryParams["fetchUserInfo"] = ["${fetchUserInfo}"];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (role != null) {
       _queryParams["role"] = role;
@@ -284,14 +279,14 @@ class BlogsResourceApi {
     if (status != null) {
       _queryParams["status"] = status;
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (fetchUserInfo != null) {
+      _queryParams["fetchUserInfo"] = ["${fetchUserInfo}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
+    _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -308,15 +303,15 @@ class CommentsResourceApi {
 
   CommentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Marks a comment as not spam.
+  /// Marks a comment as not spam by blog id, post id and comment id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [commentId] - The ID of the comment to mark as not spam.
+  /// [commentId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -351,7 +346,7 @@ class CommentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -368,15 +363,15 @@ class CommentsResourceApi {
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /// Delete a comment by ID.
+  /// Deletes a comment by blog id, post id and comment id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [commentId] - The ID of the comment to delete.
+  /// [commentId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -411,7 +406,7 @@ class CommentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -427,24 +422,22 @@ class CommentsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Gets one comment by ID.
+  /// Gets a comment by id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to containing the comment.
+  /// [blogId] - null
   ///
-  /// [postId] - ID of the post to fetch posts from.
+  /// [postId] - null
   ///
-  /// [commentId] - The ID of the comment to get.
+  /// [commentId] - null
   ///
-  /// [view] - Access level for the requested comment (default: READER). Note
-  /// that some comments will require elevated permissions, for example comments
-  /// where the parent posts which is in a draft state, or comments that are
-  /// pending moderation.
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Admin level detail
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -482,7 +475,7 @@ class CommentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -498,34 +491,37 @@ class CommentsResourceApi {
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /// Retrieves the comments for a post, possibly filtered.
+  /// Lists comments.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch comments from.
+  /// [blogId] - null
   ///
-  /// [postId] - ID of the post to fetch posts from.
+  /// [postId] - null
   ///
-  /// [endDate] - Latest date of comment to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [fetchBodies] - null
   ///
-  /// [fetchBodies] - Whether the body content of the comments is included.
+  /// [maxResults] - null
   ///
-  /// [maxResults] - Maximum number of comments to include in the result.
+  /// [view] - null
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
   ///
-  /// [pageToken] - Continuation token if request is paged.
+  /// [endDate] - null
   ///
-  /// [startDate] - Earliest date of comment to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [startDate] - null
+  ///
+  /// [pageToken] - null
   ///
   /// [status] - null
-  ///
-  /// [view] - Access level with which to view the returned result. Note that
-  /// some fields require elevated access.
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "LIVE" : A LIVE.
+  /// - "EMPTIED" : A EMPTIED.
+  /// - "PENDING" : A PENDING.
+  /// - "SPAM" : A SPAM.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -538,13 +534,13 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentList> list(core.String blogId, core.String postId,
-      {core.DateTime endDate,
-      core.bool fetchBodies,
+      {core.bool fetchBodies,
       core.int maxResults,
-      core.String pageToken,
-      core.DateTime startDate,
-      core.List<core.String> status,
       core.String view,
+      core.String endDate,
+      core.String startDate,
+      core.String pageToken,
+      core.String status,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -559,32 +555,32 @@ class CommentsResourceApi {
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
     }
-    if (endDate != null) {
-      _queryParams["endDate"] = [(endDate).toIso8601String()];
-    }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
+    }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (startDate != null) {
-      _queryParams["startDate"] = [(startDate).toIso8601String()];
-    }
     if (status != null) {
-      _queryParams["status"] = status;
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
+      _queryParams["status"] = [status];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -599,25 +595,23 @@ class CommentsResourceApi {
     return _response.then((data) => new CommentList.fromJson(data));
   }
 
-  /// Retrieves the comments for a blog, across all posts, possibly filtered.
+  /// Lists comments by blog.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch comments from.
+  /// [blogId] - null
   ///
-  /// [endDate] - Latest date of comment to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [endDate] - null
   ///
-  /// [fetchBodies] - Whether the body content of the comments is included.
+  /// [startDate] - null
   ///
-  /// [maxResults] - Maximum number of comments to include in the result.
-  ///
-  /// [pageToken] - Continuation token if request is paged.
-  ///
-  /// [startDate] - Earliest date of comment to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [pageToken] - null
   ///
   /// [status] - null
+  ///
+  /// [fetchBodies] - null
+  ///
+  /// [maxResults] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -630,12 +624,12 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentList> listByBlog(core.String blogId,
-      {core.DateTime endDate,
+      {core.String endDate,
+      core.String startDate,
+      core.String pageToken,
+      core.List<core.String> status,
       core.bool fetchBodies,
       core.int maxResults,
-      core.String pageToken,
-      core.DateTime startDate,
-      core.List<core.String> status,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -648,7 +642,16 @@ class CommentsResourceApi {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
     if (endDate != null) {
-      _queryParams["endDate"] = [(endDate).toIso8601String()];
+      _queryParams["endDate"] = [endDate];
+    }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (status != null) {
+      _queryParams["status"] = status;
     }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
@@ -656,20 +659,11 @@ class CommentsResourceApi {
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams["startDate"] = [(startDate).toIso8601String()];
-    }
-    if (status != null) {
-      _queryParams["status"] = status;
-    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
+    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -680,15 +674,15 @@ class CommentsResourceApi {
     return _response.then((data) => new CommentList.fromJson(data));
   }
 
-  /// Marks a comment as spam.
+  /// Marks a comment as spam by blog id, post id and comment id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [commentId] - The ID of the comment to mark as spam.
+  /// [commentId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -723,7 +717,7 @@ class CommentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -740,15 +734,15 @@ class CommentsResourceApi {
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /// Removes the content of a comment.
+  /// Removes the content of a comment by blog id, post id and comment id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [commentId] - The ID of the comment to delete content from.
+  /// [commentId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -783,7 +777,7 @@ class CommentsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -806,11 +800,11 @@ class PageViewsResourceApi {
 
   PageViewsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Retrieve pageview stats for a Blog.
+  /// Gets page views by blog id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the blog to get.
+  /// [blogId] - null
   ///
   /// [range] - null
   ///
@@ -843,7 +837,8 @@ class PageViewsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
+    _url =
+        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -860,13 +855,13 @@ class PagesResourceApi {
 
   PagesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Delete a page by ID.
+  /// Deletes a page by blog id and page id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [pageId] - The ID of the Page.
+  /// [pageId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -897,7 +892,7 @@ class PagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -911,19 +906,20 @@ class PagesResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Gets one blog page by ID.
+  /// Gets a page by blog id and page id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog containing the page.
+  /// [blogId] - null
   ///
-  /// [pageId] - The ID of the page to get.
+  /// [pageId] - null
   ///
   /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -957,7 +953,7 @@ class PagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -971,15 +967,15 @@ class PagesResourceApi {
     return _response.then((data) => new Page.fromJson(data));
   }
 
-  /// Add a page.
+  /// Inserts a page.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to add the page to.
+  /// [blogId] - null
   ///
-  /// [isDraft] - Whether to create the page as a draft (default: false).
+  /// [isDraft] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1013,7 +1009,7 @@ class PagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
+    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1024,26 +1020,26 @@ class PagesResourceApi {
     return _response.then((data) => new Page.fromJson(data));
   }
 
-  /// Retrieves the pages for a blog, optionally including non-LIVE statuses.
+  /// Lists pages.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch Pages from.
-  ///
-  /// [fetchBodies] - Whether to retrieve the Page bodies.
-  ///
-  /// [maxResults] - Maximum number of Pages to fetch.
-  ///
-  /// [pageToken] - Continuation token if the request is paged.
+  /// [blogId] - null
   ///
   /// [status] - null
   ///
-  /// [view] - Access level with which to view the returned result. Note that
-  /// some fields require elevated access.
+  /// [fetchBodies] - null
+  ///
+  /// [maxResults] - null
+  ///
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
+  ///
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1056,11 +1052,11 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PageList> list(core.String blogId,
-      {core.bool fetchBodies,
+      {core.List<core.String> status,
+      core.bool fetchBodies,
       core.int maxResults,
-      core.String pageToken,
-      core.List<core.String> status,
       core.String view,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1072,26 +1068,26 @@ class PagesResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
+    if (status != null) {
+      _queryParams["status"] = status;
+    }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
     if (maxResults != null) {
       _queryParams["maxResults"] = ["${maxResults}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (status != null) {
-      _queryParams["status"] = status;
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
+    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1102,21 +1098,19 @@ class PagesResourceApi {
     return _response.then((data) => new PageList.fromJson(data));
   }
 
-  /// Update a page. This method supports patch semantics.
+  /// Patches a page.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [pageId] - The ID of the Page.
+  /// [pageId] - null
   ///
-  /// [publish_1] - Whether a publish action should be performed when the page
-  /// is updated (default: false).
+  /// [revert_1] - null
   ///
-  /// [revert_1] - Whether a revert action should be performed when the page is
-  /// updated (default: false).
+  /// [publish_1] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1129,7 +1123,7 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Page> patch(Page request, core.String blogId, core.String pageId,
-      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
+      {core.bool revert_1, core.bool publish_1, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1146,17 +1140,17 @@ class PagesResourceApi {
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
     }
-    if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
-    }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
+    }
+    if (publish_1 != null) {
+      _queryParams["publish"] = ["${publish_1}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -1170,13 +1164,13 @@ class PagesResourceApi {
     return _response.then((data) => new Page.fromJson(data));
   }
 
-  /// Publishes a draft page.
+  /// Publishes a page.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the blog.
+  /// [blogId] - null
   ///
-  /// [pageId] - The ID of the page.
+  /// [pageId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1207,7 +1201,7 @@ class PagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -1222,13 +1216,13 @@ class PagesResourceApi {
     return _response.then((data) => new Page.fromJson(data));
   }
 
-  /// Revert a published or scheduled page to draft state.
+  /// Reverts a published or scheduled page to draft state.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the blog.
+  /// [blogId] - null
   ///
-  /// [pageId] - The ID of the page.
+  /// [pageId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1259,7 +1253,7 @@ class PagesResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -1274,21 +1268,19 @@ class PagesResourceApi {
     return _response.then((data) => new Page.fromJson(data));
   }
 
-  /// Update a page.
+  /// Updates a page by blog id and page id.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [pageId] - The ID of the Page.
+  /// [pageId] - null
   ///
-  /// [publish_1] - Whether a publish action should be performed when the page
-  /// is updated (default: false).
+  /// [revert_1] - null
   ///
-  /// [revert_1] - Whether a revert action should be performed when the page is
-  /// updated (default: false).
+  /// [publish_1] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1302,7 +1294,7 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> update(
       Page request, core.String blogId, core.String pageId,
-      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
+      {core.bool revert_1, core.bool publish_1, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -1319,17 +1311,17 @@ class PagesResourceApi {
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
     }
-    if (publish_1 != null) {
-      _queryParams["publish"] = ["${publish_1}"];
-    }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
+    }
+    if (publish_1 != null) {
+      _queryParams["publish"] = ["${publish_1}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -1349,21 +1341,17 @@ class PostUserInfosResourceApi {
 
   PostUserInfosResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets one post and user info pair, by post ID and user ID. The post user
-  /// info contains per-user information about the post, such as access rights,
-  /// specific to the user.
+  /// Gets one post and user info pair, by post_id and user_id.
   ///
   /// Request parameters:
   ///
-  /// [userId] - ID of the user for the per-user information to be fetched.
-  /// Either the word 'self' (sans quote marks) or the user's profile
-  /// identifier.
+  /// [userId] - null
   ///
-  /// [blogId] - The ID of the blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the post to get.
+  /// [postId] - null
   ///
-  /// [maxComments] - Maximum number of comments to pull back on a post.
+  /// [maxComments] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1401,7 +1389,7 @@ class PostUserInfosResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1417,46 +1405,40 @@ class PostUserInfosResourceApi {
     return _response.then((data) => new PostUserInfo.fromJson(data));
   }
 
-  /// Retrieves a list of post and post user info pairs, possibly filtered. The
-  /// post user info contains per-user information about the post, such as
-  /// access rights, specific to the user.
+  /// Lists post and user info pairs.
   ///
   /// Request parameters:
   ///
-  /// [userId] - ID of the user for the per-user information to be fetched.
-  /// Either the word 'self' (sans quote marks) or the user's profile
-  /// identifier.
+  /// [userId] - null
   ///
-  /// [blogId] - ID of the blog to fetch posts from.
-  ///
-  /// [endDate] - Latest post date to fetch, a date-time with RFC 3339
-  /// formatting.
-  ///
-  /// [fetchBodies] - Whether the body content of posts is included. Default is
-  /// false.
-  ///
-  /// [labels] - Comma-separated list of labels to search for.
-  ///
-  /// [maxResults] - Maximum number of posts to fetch.
-  ///
-  /// [orderBy] - Sort order applied to search results. Default is published.
-  /// Possible string values are:
-  /// - "published" : Order by the date the post was published
-  /// - "updated" : Order by the date the post was last updated
-  ///
-  /// [pageToken] - Continuation token if the request is paged.
-  ///
-  /// [startDate] - Earliest post date to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [blogId] - null
   ///
   /// [status] - null
   ///
-  /// [view] - Access level with which to view the returned result. Note that
-  /// some fields require elevated access.
+  /// [fetchBodies] - null
+  ///
+  /// [maxResults] - null
+  ///
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
+  ///
+  /// [labels] - null
+  ///
+  /// [endDate] - null
+  ///
+  /// [orderBy] - null
+  /// Possible string values are:
+  /// - "ORDER_BY_UNSPECIFIED" : A ORDER_BY_UNSPECIFIED.
+  /// - "PUBLISHED" : A PUBLISHED.
+  /// - "UPDATED" : A UPDATED.
+  ///
+  /// [startDate] - null
+  ///
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1469,15 +1451,15 @@ class PostUserInfosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostUserInfosList> list(core.String userId, core.String blogId,
-      {core.DateTime endDate,
+      {core.List<core.String> status,
       core.bool fetchBodies,
-      core.String labels,
       core.int maxResults,
-      core.String orderBy,
-      core.String pageToken,
-      core.DateTime startDate,
-      core.List<core.String> status,
       core.String view,
+      core.String labels,
+      core.String endDate,
+      core.String orderBy,
+      core.String startDate,
+      core.String pageToken,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1492,38 +1474,38 @@ class PostUserInfosResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (endDate != null) {
-      _queryParams["endDate"] = [(endDate).toIso8601String()];
+    if (status != null) {
+      _queryParams["status"] = status;
     }
     if (fetchBodies != null) {
       _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (labels != null) {
       _queryParams["labels"] = [labels];
     }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams["startDate"] = [(startDate).toIso8601String()];
-    }
-    if (status != null) {
-      _queryParams["status"] = status;
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' +
+    _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1544,13 +1526,13 @@ class PostsResourceApi {
 
   PostsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Delete a post by ID.
+  /// Deletes a post by blog id and post id.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1581,7 +1563,7 @@ class PostsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -1595,29 +1577,26 @@ class PostsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Get a post by ID.
+  /// Gets a post by blog id and post id
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch the post from.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the post
+  /// [postId] - null
   ///
-  /// [fetchBody] - Whether the body content of the post is included (default:
-  /// true). This should be set to false when the post bodies are not required,
-  /// to help minimize traffic.
-  ///
-  /// [fetchImages] - Whether image URL metadata for each post is included
-  /// (default: false).
-  ///
-  /// [maxComments] - Maximum number of comments to pull back on a post.
-  ///
-  /// [view] - Access level with which to view the returned result. Note that
-  /// some fields require elevated access.
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
+  ///
+  /// [fetchImages] - null
+  ///
+  /// [maxComments] - null
+  ///
+  /// [fetchBody] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1630,10 +1609,10 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> get(core.String blogId, core.String postId,
-      {core.bool fetchBody,
+      {core.String view,
       core.bool fetchImages,
       core.int maxComments,
-      core.String view,
+      core.bool fetchBody,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1648,8 +1627,8 @@ class PostsResourceApi {
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
     }
-    if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (fetchImages != null) {
       _queryParams["fetchImages"] = ["${fetchImages}"];
@@ -1657,14 +1636,14 @@ class PostsResourceApi {
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if (fetchBody != null) {
+      _queryParams["fetchBody"] = ["${fetchBody}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -1678,22 +1657,22 @@ class PostsResourceApi {
     return _response.then((data) => new Post.fromJson(data));
   }
 
-  /// Retrieve a Post by Path.
+  /// Gets a post by path.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch the post from.
+  /// [blogId] - null
   ///
-  /// [path] - Path of the Post to retrieve.
+  /// [path] - null
   ///
-  /// [maxComments] - Maximum number of comments to pull back on a post.
+  /// [maxComments] - null
   ///
-  /// [view] - Access level with which to view the returned result. Note that
-  /// some fields require elevated access.
+  /// [view] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1731,8 +1710,9 @@ class PostsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/bypath';
+    _url = 'v3/blogs/' +
+        commons.Escaper.ecapeVariable('$blogId') +
+        '/posts/bypath';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1743,21 +1723,19 @@ class PostsResourceApi {
     return _response.then((data) => new Post.fromJson(data));
   }
 
-  /// Add a post.
+  /// Inserts a post.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to add the post to.
+  /// [blogId] - null
   ///
-  /// [fetchBody] - Whether the body content of the post is included with the
-  /// result (default: true).
+  /// [fetchImages] - null
   ///
-  /// [fetchImages] - Whether image URL metadata for each post is included in
-  /// the returned result (default: false).
+  /// [fetchBody] - null
   ///
-  /// [isDraft] - Whether to create the post as a draft (default: false).
+  /// [isDraft] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1770,8 +1748,8 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> insert(Post request, core.String blogId,
-      {core.bool fetchBody,
-      core.bool fetchImages,
+      {core.bool fetchImages,
+      core.bool fetchBody,
       core.bool isDraft,
       core.String $fields}) {
     var _url;
@@ -1787,11 +1765,11 @@ class PostsResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (fetchBody != null) {
-      _queryParams["fetchBody"] = ["${fetchBody}"];
-    }
     if (fetchImages != null) {
       _queryParams["fetchImages"] = ["${fetchImages}"];
+    }
+    if (fetchBody != null) {
+      _queryParams["fetchBody"] = ["${fetchBody}"];
     }
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
@@ -1800,7 +1778,7 @@ class PostsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
+    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -1811,43 +1789,40 @@ class PostsResourceApi {
     return _response.then((data) => new Post.fromJson(data));
   }
 
-  /// Retrieves a list of posts, possibly filtered.
+  /// Lists posts.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch posts from.
+  /// [blogId] - null
   ///
-  /// [endDate] - Latest post date to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [pageToken] - null
   ///
-  /// [fetchBodies] - Whether the body content of posts is included (default:
-  /// true). This should be set to false when the post bodies are not required,
-  /// to help minimize traffic.
+  /// [status] - null
   ///
-  /// [fetchImages] - Whether image URL metadata for each post is included.
+  /// [fetchBodies] - null
   ///
-  /// [labels] - Comma-separated list of labels to search for.
+  /// [maxResults] - null
   ///
-  /// [maxResults] - Maximum number of posts to fetch.
+  /// [fetchImages] - null
   ///
-  /// [orderBy] - Sort search results
+  /// [view] - null
   /// Possible string values are:
-  /// - "published" : Order by the date the post was published
-  /// - "updated" : Order by the date the post was last updated
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "READER" : A READER.
+  /// - "AUTHOR" : A AUTHOR.
+  /// - "ADMIN" : A ADMIN.
   ///
-  /// [pageToken] - Continuation token if the request is paged.
+  /// [labels] - null
   ///
-  /// [startDate] - Earliest post date to fetch, a date-time with RFC 3339
-  /// formatting.
+  /// [endDate] - null
   ///
-  /// [status] - Statuses to include in the results.
-  ///
-  /// [view] - Access level with which to view the returned result. Note that
-  /// some fields require escalated access.
+  /// [orderBy] - null
   /// Possible string values are:
-  /// - "ADMIN" : Admin level detail
-  /// - "AUTHOR" : Author level detail
-  /// - "READER" : Reader level detail
+  /// - "ORDER_BY_UNSPECIFIED" : A ORDER_BY_UNSPECIFIED.
+  /// - "PUBLISHED" : A PUBLISHED.
+  /// - "UPDATED" : A UPDATED.
+  ///
+  /// [startDate] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1860,16 +1835,16 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostList> list(core.String blogId,
-      {core.DateTime endDate,
-      core.bool fetchBodies,
-      core.bool fetchImages,
-      core.String labels,
-      core.int maxResults,
-      core.String orderBy,
-      core.String pageToken,
-      core.DateTime startDate,
+      {core.String pageToken,
       core.List<core.String> status,
+      core.bool fetchBodies,
+      core.int maxResults,
+      core.bool fetchImages,
       core.String view,
+      core.String labels,
+      core.String endDate,
+      core.String orderBy,
+      core.String startDate,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1881,41 +1856,41 @@ class PostsResourceApi {
     if (blogId == null) {
       throw new core.ArgumentError("Parameter blogId is required.");
     }
-    if (endDate != null) {
-      _queryParams["endDate"] = [(endDate).toIso8601String()];
-    }
-    if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
-    }
-    if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
-    }
-    if (labels != null) {
-      _queryParams["labels"] = [labels];
-    }
-    if (maxResults != null) {
-      _queryParams["maxResults"] = ["${maxResults}"];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (startDate != null) {
-      _queryParams["startDate"] = [(startDate).toIso8601String()];
     }
     if (status != null) {
       _queryParams["status"] = status;
     }
+    if (fetchBodies != null) {
+      _queryParams["fetchBodies"] = ["${fetchBodies}"];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (fetchImages != null) {
+      _queryParams["fetchImages"] = ["${fetchImages}"];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (labels != null) {
+      _queryParams["labels"] = [labels];
+    }
+    if (endDate != null) {
+      _queryParams["endDate"] = [endDate];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (startDate != null) {
+      _queryParams["startDate"] = [startDate];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
+    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1926,30 +1901,25 @@ class PostsResourceApi {
     return _response.then((data) => new PostList.fromJson(data));
   }
 
-  /// Update a post. This method supports patch semantics.
+  /// Patches a post.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [fetchBody] - Whether the body content of the post is included with the
-  /// result (default: true).
+  /// [fetchBody] - null
   ///
-  /// [fetchImages] - Whether image URL metadata for each post is included in
-  /// the returned result (default: false).
+  /// [publish_1] - null
   ///
-  /// [maxComments] - Maximum number of comments to retrieve with the returned
-  /// post.
+  /// [revert_1] - null
   ///
-  /// [publish_1] - Whether a publish action should be performed when the post
-  /// is updated (default: false).
+  /// [fetchImages] - null
   ///
-  /// [revert_1] - Whether a revert action should be performed when the post is
-  /// updated (default: false).
+  /// [maxComments] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1963,10 +1933,10 @@ class PostsResourceApi {
   /// this method will complete with the same error.
   async.Future<Post> patch(Post request, core.String blogId, core.String postId,
       {core.bool fetchBody,
-      core.bool fetchImages,
-      core.int maxComments,
       core.bool publish_1,
       core.bool revert_1,
+      core.bool fetchImages,
+      core.int maxComments,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -1987,23 +1957,23 @@ class PostsResourceApi {
     if (fetchBody != null) {
       _queryParams["fetchBody"] = ["${fetchBody}"];
     }
-    if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
-    }
-    if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
-    }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
     }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
+    if (fetchImages != null) {
+      _queryParams["fetchImages"] = ["${fetchImages}"];
+    }
+    if (maxComments != null) {
+      _queryParams["maxComments"] = ["${maxComments}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -2017,19 +1987,15 @@ class PostsResourceApi {
     return _response.then((data) => new Post.fromJson(data));
   }
 
-  /// Publishes a draft post, optionally at the specific time of the given
-  /// publishDate parameter.
+  /// Publishes a post.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [publishDate] - Optional date and time to schedule the publishing of the
-  /// Blog. If no publishDate parameter is given, the post is either published
-  /// at the a previously saved schedule date (if present), or the current time.
-  /// If a future date is given, the post will be scheduled to be published.
+  /// [publishDate] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2042,7 +2008,7 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> publish(core.String blogId, core.String postId,
-      {core.DateTime publishDate, core.String $fields}) {
+      {core.String publishDate, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2057,13 +2023,13 @@ class PostsResourceApi {
       throw new core.ArgumentError("Parameter postId is required.");
     }
     if (publishDate != null) {
-      _queryParams["publishDate"] = [(publishDate).toIso8601String()];
+      _queryParams["publishDate"] = [publishDate];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -2078,13 +2044,13 @@ class PostsResourceApi {
     return _response.then((data) => new Post.fromJson(data));
   }
 
-  /// Revert a published or scheduled post to draft state.
+  /// Reverts a published or scheduled post to draft state.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2115,7 +2081,7 @@ class PostsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -2130,22 +2096,21 @@ class PostsResourceApi {
     return _response.then((data) => new Post.fromJson(data));
   }
 
-  /// Search for a post.
+  /// Searches for posts matching given query terms in the specified blog.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - ID of the blog to fetch the post from.
+  /// [blogId] - null
   ///
-  /// [q] - Query terms to search this blog for matching posts.
+  /// [q] - null
   ///
-  /// [fetchBodies] - Whether the body content of posts is included (default:
-  /// true). This should be set to false when the post bodies are not required,
-  /// to help minimize traffic.
-  ///
-  /// [orderBy] - Sort search results
+  /// [orderBy] - null
   /// Possible string values are:
-  /// - "published" : Order by the date the post was published
-  /// - "updated" : Order by the date the post was last updated
+  /// - "ORDER_BY_UNSPECIFIED" : A ORDER_BY_UNSPECIFIED.
+  /// - "PUBLISHED" : A PUBLISHED.
+  /// - "UPDATED" : A UPDATED.
+  ///
+  /// [fetchBodies] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2158,7 +2123,7 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostList> search(core.String blogId, core.String q,
-      {core.bool fetchBodies, core.String orderBy, core.String $fields}) {
+      {core.String orderBy, core.bool fetchBodies, core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
     var _uploadMedia;
@@ -2173,18 +2138,19 @@ class PostsResourceApi {
       throw new core.ArgumentError("Parameter q is required.");
     }
     _queryParams["q"] = [q];
-    if (fetchBodies != null) {
-      _queryParams["fetchBodies"] = ["${fetchBodies}"];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if (fetchBodies != null) {
+      _queryParams["fetchBodies"] = ["${fetchBodies}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url =
-        'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts/search';
+    _url = 'v3/blogs/' +
+        commons.Escaper.ecapeVariable('$blogId') +
+        '/posts/search';
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2195,30 +2161,25 @@ class PostsResourceApi {
     return _response.then((data) => new PostList.fromJson(data));
   }
 
-  /// Update a post.
+  /// Updates a post by blog id and post id.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [blogId] - The ID of the Blog.
+  /// [blogId] - null
   ///
-  /// [postId] - The ID of the Post.
+  /// [postId] - null
   ///
-  /// [fetchBody] - Whether the body content of the post is included with the
-  /// result (default: true).
+  /// [fetchBody] - null
   ///
-  /// [fetchImages] - Whether image URL metadata for each post is included in
-  /// the returned result (default: false).
+  /// [publish_1] - null
   ///
-  /// [maxComments] - Maximum number of comments to retrieve with the returned
-  /// post.
+  /// [revert_1] - null
   ///
-  /// [publish_1] - Whether a publish action should be performed when the post
-  /// is updated (default: false).
+  /// [fetchImages] - null
   ///
-  /// [revert_1] - Whether a revert action should be performed when the post is
-  /// updated (default: false).
+  /// [maxComments] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2233,10 +2194,10 @@ class PostsResourceApi {
   async.Future<Post> update(
       Post request, core.String blogId, core.String postId,
       {core.bool fetchBody,
-      core.bool fetchImages,
-      core.int maxComments,
       core.bool publish_1,
       core.bool revert_1,
+      core.bool fetchImages,
+      core.int maxComments,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -2257,23 +2218,23 @@ class PostsResourceApi {
     if (fetchBody != null) {
       _queryParams["fetchBody"] = ["${fetchBody}"];
     }
-    if (fetchImages != null) {
-      _queryParams["fetchImages"] = ["${fetchImages}"];
-    }
-    if (maxComments != null) {
-      _queryParams["maxComments"] = ["${maxComments}"];
-    }
     if (publish_1 != null) {
       _queryParams["publish"] = ["${publish_1}"];
     }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
+    if (fetchImages != null) {
+      _queryParams["fetchImages"] = ["${fetchImages}"];
+    }
+    if (maxComments != null) {
+      _queryParams["maxComments"] = ["${maxComments}"];
+    }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'blogs/' +
+    _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -2293,11 +2254,11 @@ class UsersResourceApi {
 
   UsersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets one user by ID.
+  /// Gets one user by user_id.
   ///
   /// Request parameters:
   ///
-  /// [userId] - The ID of the user to get.
+  /// [userId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2324,7 +2285,7 @@ class UsersResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userId');
+    _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -2453,7 +2414,7 @@ class BlogPosts {
 }
 
 class Blog {
-  /// The JSON custom meta-data for the Blog
+  /// The JSON custom meta-data for the Blog.
   core.String customMetaData;
 
   /// The description of this blog. This is displayed underneath the title.
@@ -2462,7 +2423,7 @@ class Blog {
   /// The identifier for this resource.
   core.String id;
 
-  /// The kind of this entry. Always blogger#blog
+  /// The kind of this entry. Always blogger#blog.
   core.String kind;
 
   /// The locale this Blog is set to.
@@ -2478,16 +2439,19 @@ class Blog {
   BlogPosts posts;
 
   /// RFC 3339 date-time when this blog was published.
-  core.DateTime published;
+  core.String published;
 
   /// The API REST URL to fetch this resource from.
   core.String selfLink;
 
   /// The status of the blog.
+  /// Possible string values are:
+  /// - "LIVE"
+  /// - "DELETED"
   core.String status;
 
   /// RFC 3339 date-time when this blog was last updated.
-  core.DateTime updated;
+  core.String updated;
 
   /// The URL where this blog is published.
   core.String url;
@@ -2520,7 +2484,7 @@ class Blog {
       posts = new BlogPosts.fromJson(_json["posts"]);
     }
     if (_json.containsKey("published")) {
-      published = core.DateTime.parse(_json["published"]);
+      published = _json["published"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -2529,7 +2493,7 @@ class Blog {
       status = _json["status"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -2564,7 +2528,7 @@ class Blog {
       _json["posts"] = (posts).toJson();
     }
     if (published != null) {
-      _json["published"] = (published).toIso8601String();
+      _json["published"] = published;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -2573,7 +2537,7 @@ class Blog {
       _json["status"] = status;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (url != null) {
       _json["url"] = url;
@@ -2583,13 +2547,13 @@ class Blog {
 }
 
 class BlogList {
-  /// Admin level list of blog per-user information
+  /// Admin level list of blog per-user information.
   core.List<BlogUserInfo> blogUserInfos;
 
   /// The list of Blogs this user has Authorship or Admin rights over.
   core.List<Blog> items;
 
-  /// The kind of this entity. Always blogger#blogList
+  /// The kind of this entity. Always blogger#blogList.
   core.String kind;
 
   BlogList();
@@ -2628,23 +2592,28 @@ class BlogList {
 }
 
 class BlogPerUserInfo {
-  /// ID of the Blog resource
+  /// ID of the Blog resource.
   core.String blogId;
 
   /// True if the user has Admin level access to the blog.
   core.bool hasAdminAccess;
 
-  /// The kind of this entity. Always blogger#blogPerUserInfo
+  /// The kind of this entity. Always blogger#blogPerUserInfo.
   core.String kind;
 
-  /// The Photo Album Key for the user when adding photos to the blog
+  /// The Photo Album Key for the user when adding photos to the blog.
   core.String photosAlbumKey;
 
   /// Access permissions that the user has for the blog (ADMIN, AUTHOR, or
   /// READER).
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED"
+  /// - "READER"
+  /// - "AUTHOR"
+  /// - "ADMIN"
   core.String role;
 
-  /// ID of the User
+  /// ID of the User.
   core.String userId;
 
   BlogPerUserInfo();
@@ -2702,7 +2671,7 @@ class BlogUserInfo {
   /// Information about a User for the Blog.
   BlogPerUserInfo blogUserInfo;
 
-  /// The kind of this entity. Always blogger#blogUserInfo
+  /// The kind of this entity. Always blogger#blogUserInfo.
   core.String kind;
 
   BlogUserInfo();
@@ -2735,9 +2704,9 @@ class BlogUserInfo {
   }
 }
 
-/// The comment creator's avatar.
+/// The creator's avatar.
 class CommentAuthorImage {
-  /// The comment creator's avatar URL.
+  /// The creator's avatar URL.
   core.String url;
 
   CommentAuthorImage();
@@ -2763,13 +2732,13 @@ class CommentAuthor {
   /// The display name.
   core.String displayName;
 
-  /// The identifier of the Comment creator.
+  /// The identifier of the creator.
   core.String id;
 
-  /// The comment creator's avatar.
+  /// The creator's avatar.
   CommentAuthorImage image;
 
-  /// The URL of the Comment creator's Profile page.
+  /// The URL of the creator's Profile page.
   core.String url;
 
   CommentAuthor();
@@ -2893,23 +2862,28 @@ class Comment {
   /// Data about the comment this is in reply to.
   CommentInReplyTo inReplyTo;
 
-  /// The kind of this entry. Always blogger#comment
+  /// The kind of this entry. Always blogger#comment.
   core.String kind;
 
   /// Data about the post containing this comment.
   CommentPost post;
 
   /// RFC 3339 date-time when this comment was published.
-  core.DateTime published;
+  core.String published;
 
   /// The API REST URL to fetch this resource from.
   core.String selfLink;
 
-  /// The status of the comment (only populated for admin users)
+  /// The status of the comment (only populated for admin users).
+  /// Possible string values are:
+  /// - "LIVE"
+  /// - "EMPTIED"
+  /// - "PENDING"
+  /// - "SPAM"
   core.String status;
 
   /// RFC 3339 date-time when this comment was last updated.
-  core.DateTime updated;
+  core.String updated;
 
   Comment();
 
@@ -2936,7 +2910,7 @@ class Comment {
       post = new CommentPost.fromJson(_json["post"]);
     }
     if (_json.containsKey("published")) {
-      published = core.DateTime.parse(_json["published"]);
+      published = _json["published"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -2945,7 +2919,7 @@ class Comment {
       status = _json["status"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
   }
 
@@ -2974,7 +2948,7 @@ class Comment {
       _json["post"] = (post).toJson();
     }
     if (published != null) {
-      _json["published"] = (published).toIso8601String();
+      _json["published"] = published;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -2983,7 +2957,7 @@ class Comment {
       _json["status"] = status;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     return _json;
   }
@@ -2996,7 +2970,7 @@ class CommentList {
   /// The List of Comments for a Post.
   core.List<Comment> items;
 
-  /// The kind of this entry. Always blogger#commentList
+  /// The kind of this entry. Always blogger#commentList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -3049,9 +3023,9 @@ class CommentList {
   }
 }
 
-/// The page author's avatar.
+/// The creator's avatar.
 class PageAuthorImage {
-  /// The page author's avatar URL.
+  /// The creator's avatar URL.
   core.String url;
 
   PageAuthorImage();
@@ -3077,13 +3051,13 @@ class PageAuthor {
   /// The display name.
   core.String displayName;
 
-  /// The identifier of the Page creator.
+  /// The identifier of the creator.
   core.String id;
 
-  /// The page author's avatar.
+  /// The creator's avatar.
   PageAuthorImage image;
 
-  /// The URL of the Page creator's Profile page.
+  /// The URL of the creator's Profile page.
   core.String url;
 
   PageAuthor();
@@ -3161,16 +3135,19 @@ class Page {
   /// The identifier for this resource.
   core.String id;
 
-  /// The kind of this entity. Always blogger#page
+  /// The kind of this entity. Always blogger#page.
   core.String kind;
 
   /// RFC 3339 date-time when this Page was published.
-  core.DateTime published;
+  core.String published;
 
   /// The API REST URL to fetch this resource from.
   core.String selfLink;
 
   /// The status of the page for admin resources (either LIVE or DRAFT).
+  /// Possible string values are:
+  /// - "LIVE"
+  /// - "DRAFT"
   core.String status;
 
   /// The title of this entity. This is the name displayed in the Admin user
@@ -3178,7 +3155,7 @@ class Page {
   core.String title;
 
   /// RFC 3339 date-time when this Page was last updated.
-  core.DateTime updated;
+  core.String updated;
 
   /// The URL that this Page is displayed at.
   core.String url;
@@ -3205,7 +3182,7 @@ class Page {
       kind = _json["kind"];
     }
     if (_json.containsKey("published")) {
-      published = core.DateTime.parse(_json["published"]);
+      published = _json["published"];
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
@@ -3217,7 +3194,7 @@ class Page {
       title = _json["title"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -3246,7 +3223,7 @@ class Page {
       _json["kind"] = kind;
     }
     if (published != null) {
-      _json["published"] = (published).toIso8601String();
+      _json["published"] = published;
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -3258,7 +3235,7 @@ class Page {
       _json["title"] = title;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (url != null) {
       _json["url"] = url;
@@ -3274,7 +3251,7 @@ class PageList {
   /// The list of Pages for a Blog.
   core.List<Page> items;
 
-  /// The kind of this entity. Always blogger#pageList
+  /// The kind of this entity. Always blogger#pageList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -3319,10 +3296,14 @@ class PageList {
 }
 
 class PageviewsCounts {
-  /// Count of page views for the given time range
+  /// Count of page views for the given time range.
   core.String count;
 
-  /// Time range the given count applies to
+  /// Time range the given count applies to.
+  /// Possible string values are:
+  /// - "ALL_TIME"
+  /// - "THIRTY_DAYS"
+  /// - "SEVEN_DAYS"
   core.String timeRange;
 
   PageviewsCounts();
@@ -3350,13 +3331,13 @@ class PageviewsCounts {
 }
 
 class Pageviews {
-  /// Blog Id
+  /// Blog Id.
   core.String blogId;
 
   /// The container of posts in this blog.
   core.List<PageviewsCounts> counts;
 
-  /// The kind of this entry. Always blogger#page_views
+  /// The kind of this entry. Always blogger#page_views.
   core.String kind;
 
   Pageviews();
@@ -3391,9 +3372,9 @@ class Pageviews {
   }
 }
 
-/// The Post author's avatar.
+/// The creator's avatar.
 class PostAuthorImage {
-  /// The Post author's avatar URL.
+  /// The creator's avatar URL.
   core.String url;
 
   PostAuthorImage();
@@ -3419,13 +3400,13 @@ class PostAuthor {
   /// The display name.
   core.String displayName;
 
-  /// The identifier of the Post creator.
+  /// The identifier of the creator.
   core.String id;
 
-  /// The Post author's avatar.
+  /// The creator's avatar.
   PostAuthorImage image;
 
-  /// The URL of the Post creator's Profile page.
+  /// The URL of the creator's Profile page.
   core.String url;
 
   PostAuthor();
@@ -3623,7 +3604,7 @@ class Post {
   /// Display image for the Post.
   core.List<PostImages> images;
 
-  /// The kind of this entity. Always blogger#post
+  /// The kind of this entity. Always blogger#post.
   core.String kind;
 
   /// The list of labels this Post was tagged with.
@@ -3633,9 +3614,13 @@ class Post {
   PostLocation location;
 
   /// RFC 3339 date-time when this Post was published.
-  core.DateTime published;
+  core.String published;
 
   /// Comment control and display setting for readers of this post.
+  /// Possible string values are:
+  /// - "ALLOW"
+  /// - "DONT_ALLOW_SHOW_EXISTING"
+  /// - "DONT_ALLOW_HIDE_EXISTING"
   core.String readerComments;
 
   /// The container of comments on this Post.
@@ -3644,7 +3629,11 @@ class Post {
   /// The API REST URL to fetch this resource from.
   core.String selfLink;
 
-  /// Status of the post. Only set for admin-level requests
+  /// Status of the post. Only set for admin-level requests.
+  /// Possible string values are:
+  /// - "LIVE"
+  /// - "DRAFT"
+  /// - "SCHEDULED"
   core.String status;
 
   /// The title of the Post.
@@ -3654,7 +3643,7 @@ class Post {
   core.String titleLink;
 
   /// RFC 3339 date-time when this Post was last updated.
-  core.DateTime updated;
+  core.String updated;
 
   /// The URL where this Post is displayed.
   core.String url;
@@ -3695,7 +3684,7 @@ class Post {
       location = new PostLocation.fromJson(_json["location"]);
     }
     if (_json.containsKey("published")) {
-      published = core.DateTime.parse(_json["published"]);
+      published = _json["published"];
     }
     if (_json.containsKey("readerComments")) {
       readerComments = _json["readerComments"];
@@ -3716,7 +3705,7 @@ class Post {
       titleLink = _json["titleLink"];
     }
     if (_json.containsKey("updated")) {
-      updated = core.DateTime.parse(_json["updated"]);
+      updated = _json["updated"];
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -3757,7 +3746,7 @@ class Post {
       _json["location"] = (location).toJson();
     }
     if (published != null) {
-      _json["published"] = (published).toIso8601String();
+      _json["published"] = published;
     }
     if (readerComments != null) {
       _json["readerComments"] = readerComments;
@@ -3778,7 +3767,7 @@ class Post {
       _json["titleLink"] = titleLink;
     }
     if (updated != null) {
-      _json["updated"] = (updated).toIso8601String();
+      _json["updated"] = updated;
     }
     if (url != null) {
       _json["url"] = url;
@@ -3794,11 +3783,14 @@ class PostList {
   /// The list of Posts for this Blog.
   core.List<Post> items;
 
-  /// The kind of this entity. Always blogger#postList
+  /// The kind of this entity. Always blogger#postList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
   core.String nextPageToken;
+
+  /// Pagination token to fetch the previous page, if one exists.
+  core.String prevPageToken;
 
   PostList();
 
@@ -3817,6 +3809,9 @@ class PostList {
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
+    if (_json.containsKey("prevPageToken")) {
+      prevPageToken = _json["prevPageToken"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3834,6 +3829,9 @@ class PostList {
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
+    if (prevPageToken != null) {
+      _json["prevPageToken"] = prevPageToken;
+    }
     return _json;
   }
 }
@@ -3845,7 +3843,7 @@ class PostPerUserInfo {
   /// True if the user has Author level access to the post.
   core.bool hasEditAccess;
 
-  /// The kind of this entity. Always blogger#postPerUserInfo
+  /// The kind of this entity. Always blogger#postPerUserInfo.
   core.String kind;
 
   /// ID of the Post resource.
@@ -3897,7 +3895,7 @@ class PostPerUserInfo {
 }
 
 class PostUserInfo {
-  /// The kind of this entity. Always blogger#postUserInfo
+  /// The kind of this entity. Always blogger#postUserInfo.
   core.String kind;
 
   /// The Post resource.
@@ -3940,7 +3938,7 @@ class PostUserInfosList {
   /// The list of Posts with User information for the post, for this Blog.
   core.List<PostUserInfo> items;
 
-  /// The kind of this entity. Always blogger#postList
+  /// The kind of this entity. Always blogger#postList.
   core.String kind;
 
   /// Pagination token to fetch the next page, if one exists.
@@ -4003,13 +4001,13 @@ class UserBlogs {
 
 /// This user's locale
 class UserLocale {
-  /// The user's country setting.
+  /// The country this blog's locale is set to.
   core.String country;
 
-  /// The user's language setting.
+  /// The language this blog is authored in.
   core.String language;
 
-  /// The user's language variant setting.
+  /// The language variant this blog is authored in.
   core.String variant;
 
   UserLocale();
@@ -4050,7 +4048,7 @@ class User {
   UserBlogs blogs;
 
   /// The timestamp of when this profile was created, in seconds since epoch.
-  core.DateTime created;
+  core.String created;
 
   /// The display name.
   core.String displayName;
@@ -4058,7 +4056,7 @@ class User {
   /// The identifier for this User.
   core.String id;
 
-  /// The kind of this entity. Always blogger#user
+  /// The kind of this entity. Always blogger#user.
   core.String kind;
 
   /// This user's locale
@@ -4080,7 +4078,7 @@ class User {
       blogs = new UserBlogs.fromJson(_json["blogs"]);
     }
     if (_json.containsKey("created")) {
-      created = core.DateTime.parse(_json["created"]);
+      created = _json["created"];
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -4112,7 +4110,7 @@ class User {
       _json["blogs"] = (blogs).toJson();
     }
     if (created != null) {
-      _json["created"] = (created).toIso8601String();
+      _json["created"] = created;
     }
     if (displayName != null) {
       _json["displayName"] = displayName;

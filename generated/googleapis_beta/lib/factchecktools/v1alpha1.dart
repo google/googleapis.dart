@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis_beta.factchecktools.v1alpha1;
 
@@ -42,35 +42,35 @@ class ClaimsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [query] - Textual query string. Required unless
+  /// `review_publisher_site_filter` is
+  /// specified.
+  ///
+  /// [pageSize] - The pagination size. We will return up to that many results.
+  /// Defaults to
+  /// 10 if not set.
+  ///
   /// [maxAgeDays] - The maximum age of the returned search results, in days.
   /// Age is determined by either claim date or review date, whichever is newer.
   ///
-  /// [offset] - An integer that specifies the current offset (that is, starting
-  /// result
-  /// location) in search results. This field is only considered if `page_token`
-  /// is unset. For example, 0 means to return results starting from the first
-  /// matching result, and 10 means to return from the 11th result.
+  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
+  /// Can be used to
+  /// restrict results by language, though we do not currently consider the
+  /// region.
+  ///
+  /// [reviewPublisherSiteFilter] - The review publisher site to filter results
+  /// by, e.g. nytimes.com.
   ///
   /// [pageToken] - The pagination token. You may provide the `next_page_token`
   /// returned from a
   /// previous List request, if any, in order to get the next page. All other
   /// fields must have the same values as in the previous request.
   ///
-  /// [reviewPublisherSiteFilter] - The review publisher site to filter results
-  /// by, e.g. nytimes.com.
-  ///
-  /// [pageSize] - The pagination size. We will return up to that many results.
-  /// Defaults to
-  /// 10 if not set.
-  ///
-  /// [query] - Textual query string. Required unless
-  /// `review_publisher_site_filter` is
-  /// specified.
-  ///
-  /// [languageCode] - The BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// Can be used to
-  /// restrict results by language, though we do not currently consider the
-  /// region.
+  /// [offset] - An integer that specifies the current offset (that is, starting
+  /// result
+  /// location) in search results. This field is only considered if `page_token`
+  /// is unset. For example, 0 means to return results starting from the first
+  /// matching result, and 10 means to return from the 11th result.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -86,13 +86,13 @@ class ClaimsResourceApi {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>
       search(
-          {core.int maxAgeDays,
-          core.int offset,
-          core.String pageToken,
-          core.String reviewPublisherSiteFilter,
+          {core.String query,
           core.int pageSize,
-          core.String query,
+          core.int maxAgeDays,
           core.String languageCode,
+          core.String reviewPublisherSiteFilter,
+          core.String pageToken,
+          core.int offset,
           core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -101,26 +101,26 @@ class ClaimsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (maxAgeDays != null) {
-      _queryParams["maxAgeDays"] = ["${maxAgeDays}"];
-    }
-    if (offset != null) {
-      _queryParams["offset"] = ["${offset}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (reviewPublisherSiteFilter != null) {
-      _queryParams["reviewPublisherSiteFilter"] = [reviewPublisherSiteFilter];
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
+    if (maxAgeDays != null) {
+      _queryParams["maxAgeDays"] = ["${maxAgeDays}"];
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if (reviewPublisherSiteFilter != null) {
+      _queryParams["reviewPublisherSiteFilter"] = [reviewPublisherSiteFilter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = ["${offset}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -291,17 +291,17 @@ class PagesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The pagination token. You may provide the `next_page_token`
+  /// returned from a
+  /// previous List request, if any, in order to get the next page. All other
+  /// fields must have the same values as in the previous request.
+  ///
   /// [offset] - An integer that specifies the current offset (that is, starting
   /// result
   /// location) in search results. This field is only considered if `page_token`
   /// is unset, and if the request is not for a specific URL. For example, 0
   /// means to return results starting from the first matching result, and 10
   /// means to return from the 11th result.
-  ///
-  /// [pageToken] - The pagination token. You may provide the `next_page_token`
-  /// returned from a
-  /// previous List request, if any, in order to get the next page. All other
-  /// fields must have the same values as in the previous request.
   ///
   /// [organization] - The organization for which we want to fetch markups for.
   /// For instance,
@@ -331,8 +331,8 @@ class PagesResourceApi {
   async.Future<
           GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>
       list(
-          {core.int offset,
-          core.String pageToken,
+          {core.String pageToken,
+          core.int offset,
           core.String organization,
           core.int pageSize,
           core.String url,
@@ -344,11 +344,11 @@ class PagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body;
 
-    if (offset != null) {
-      _queryParams["offset"] = ["${offset}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (offset != null) {
+      _queryParams["offset"] = ["${offset}"];
     }
     if (organization != null) {
       _queryParams["organization"] = [organization];
@@ -557,6 +557,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /// Corresponds to `ClaimReview.reviewRating.image`.
   core.String imageUrl;
 
+  /// Corresponds to `ClaimReview.reviewRating.ratingExplanation`.
+  core.String ratingExplanation;
+
   /// A numeric rating of this claim, in the range worstRating — bestRating
   /// inclusive.<br>
   /// Corresponds to `ClaimReview.reviewRating.ratingValue`.
@@ -580,6 +583,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     if (_json.containsKey("imageUrl")) {
       imageUrl = _json["imageUrl"];
     }
+    if (_json.containsKey("ratingExplanation")) {
+      ratingExplanation = _json["ratingExplanation"];
+    }
     if (_json.containsKey("ratingValue")) {
       ratingValue = _json["ratingValue"];
     }
@@ -599,6 +605,9 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     }
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
+    }
+    if (ratingExplanation != null) {
+      _json["ratingExplanation"] = ratingExplanation;
     }
     if (ratingValue != null) {
       _json["ratingValue"] = ratingValue;

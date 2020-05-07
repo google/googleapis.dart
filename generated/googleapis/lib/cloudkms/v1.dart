@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: unused_import, unnecessary_cast
 
 library googleapis.cloudkms.v1;
 
@@ -236,7 +236,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the KeyRing to get.
+  /// [name] - Required. The name of the KeyRing to get.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -288,10 +288,14 @@ class ProjectsLocationsKeyRingsResourceApi {
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned.
-  /// Acceptable values are 0 and 1.
-  /// If the value is 0, or the field is omitted, policy format version 1 will
-  /// be
-  /// returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -345,22 +349,26 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// KeyRings, in the format `projects / * /locations / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [filter] - Optional. Only include resources that match the filter in the
-  /// response
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// [pageSize] - Optional. Optional limit on the number of KeyRings to include
+  /// in the
+  /// response.  Further KeyRings can subsequently be obtained by
+  /// including the ListKeyRingsResponse.next_page_token in a subsequent
+  /// request.  If unspecified, the server will pick an appropriate default.
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For
+  /// more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
   /// ListKeyRingsResponse.next_page_token.
   ///
   /// [orderBy] - Optional. Specify how the results should be sorted. If not
   /// specified, the
-  /// results will be sorted in the default order
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
-  ///
-  /// [pageSize] - Optional limit on the number of KeyRings to include in the
-  /// response.  Further KeyRings can subsequently be obtained by
-  /// including the ListKeyRingsResponse.next_page_token in a subsequent
-  /// request.  If unspecified, the server will pick an appropriate default.
+  /// results will be sorted in the default order.  For more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -373,10 +381,10 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListKeyRingsResponse> list(core.String parent,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
       core.String orderBy,
-      core.int pageSize,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -388,6 +396,9 @@ class ProjectsLocationsKeyRingsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -396,9 +407,6 @@ class ProjectsLocationsKeyRingsResourceApi {
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -418,6 +426,9 @@ class ProjectsLocationsKeyRingsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -689,7 +700,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If a CryptoKey is specified, the server will use its
   /// primary version.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/.+$".
+  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/.*$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -737,7 +748,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the CryptoKey to get.
+  /// [name] - Required. The name of the CryptoKey to get.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
@@ -791,10 +802,14 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned.
-  /// Acceptable values are 0 and 1.
-  /// If the value is 0, or the field is omitted, policy format version 1 will
-  /// be
-  /// returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -849,18 +864,26 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
+  /// [filter] - Optional. Only include resources that match the filter in the
+  /// response. For
+  /// more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
+  ///
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
   /// ListCryptoKeysResponse.next_page_token.
   ///
-  /// [pageSize] - Optional limit on the number of CryptoKeys to include in the
+  /// [pageSize] - Optional. Optional limit on the number of CryptoKeys to
+  /// include in the
   /// response.  Further CryptoKeys can subsequently be obtained by
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
   ///
   /// [orderBy] - Optional. Specify how the results should be sorted. If not
   /// specified, the
-  /// results will be sorted in the default order
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// results will be sorted in the default order. For more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [versionView] - The fields of the primary version to include in the
   /// response.
@@ -868,10 +891,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// - "CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED" : A
   /// CRYPTO_KEY_VERSION_VIEW_UNSPECIFIED.
   /// - "FULL" : A FULL.
-  ///
-  /// [filter] - Optional. Only include resources that match the filter in the
-  /// response
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -884,11 +903,11 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
       core.String orderBy,
       core.String versionView,
-      core.String filter,
       core.String $fields}) {
     var _url;
     var _queryParams = new core.Map<core.String, core.List<core.String>>();
@@ -899,6 +918,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -911,9 +933,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (versionView != null) {
       _queryParams["versionView"] = [versionView];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -943,7 +962,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
+  /// [updateMask] - Required. List of fields to be updated in this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -990,6 +1009,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -1114,7 +1136,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the CryptoKey to update.
+  /// [name] - Required. The resource name of the CryptoKey to update.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
@@ -1358,7 +1380,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the CryptoKeyVersion to destroy.
+  /// [name] - Required. The resource name of the CryptoKeyVersion to destroy.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
@@ -1407,7 +1429,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the CryptoKeyVersion to get.
+  /// [name] - Required. The name of the CryptoKeyVersion to get.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
@@ -1454,7 +1476,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the CryptoKeyVersion public key to
+  /// [name] - Required. The name of the CryptoKeyVersion public key to
   /// get.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
@@ -1567,17 +1589,21 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// [orderBy] - Optional. Specify how the results should be sorted. If not
   /// specified, the
-  /// results will be sorted in the default order
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// results will be sorted in the default order. For more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [filter] - Optional. Only include resources that match the filter in the
-  /// response
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// response. For
+  /// more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
   /// ListCryptoKeyVersionsResponse.next_page_token.
   ///
-  /// [pageSize] - Optional limit on the number of CryptoKeyVersions to
+  /// [pageSize] - Optional. Optional limit on the number of CryptoKeyVersions
+  /// to
   /// include in the response. Further CryptoKeyVersions can
   /// subsequently be obtained by including the
   /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
@@ -1668,7 +1694,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
+  /// [updateMask] - Required. List of fields to be updated in this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1726,7 +1752,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name of the CryptoKeyVersion to restore.
+  /// [name] - Required. The resource name of the CryptoKeyVersion to restore.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
@@ -1843,7 +1869,7 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [name] - The name of the ImportJob to get.
+  /// [name] - Required. The name of the ImportJob to get.
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
   ///
@@ -1897,10 +1923,14 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned.
-  /// Acceptable values are 0 and 1.
-  /// If the value is 0, or the field is omitted, policy format version 1 will
-  /// be
-  /// returned.
+  ///
+  /// Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+  /// rejected.
+  ///
+  /// Requests for policies with any conditional bindings must specify version
+  /// 3.
+  /// Policies without any conditional bindings may specify any valid value or
+  /// leave the field unset.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1955,22 +1985,26 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
   /// `projects / * /locations / * /keyRings / * `.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
-  /// [pageToken] - Optional pagination token, returned earlier via
+  /// [pageToken] - Optional. Optional pagination token, returned earlier via
   /// ListImportJobsResponse.next_page_token.
   ///
   /// [orderBy] - Optional. Specify how the results should be sorted. If not
   /// specified, the
-  /// results will be sorted in the default order
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// results will be sorted in the default order. For more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
-  /// [pageSize] - Optional limit on the number of ImportJobs to include in the
+  /// [pageSize] - Optional. Optional limit on the number of ImportJobs to
+  /// include in the
   /// response. Further ImportJobs can subsequently be obtained by
   /// including the ListImportJobsResponse.next_page_token in a subsequent
   /// request. If unspecified, the server will pick an appropriate default.
   ///
   /// [filter] - Optional. Only include resources that match the filter in the
-  /// response
-  /// (https://cloud.google.com/kms/docs/sorting-and-filtering).
+  /// response. For
+  /// more information, see
+  /// [Sorting and filtering list
+  /// results](https://cloud.google.com/kms/docs/sorting-and-filtering).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2029,6 +2063,9 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
 
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
+  ///
+  /// Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and
+  /// PERMISSION_DENIED
   ///
   /// [request] - The metadata request object.
   ///
@@ -2285,7 +2322,7 @@ class AsymmetricSignResponse {
 ///             {
 ///               "log_type": "DATA_READ",
 ///               "exempted_members": [
-///                 "user:foo@gmail.com"
+///                 "user:jose@example.com"
 ///               ]
 ///             },
 ///             {
@@ -2297,7 +2334,7 @@ class AsymmetricSignResponse {
 ///           ]
 ///         },
 ///         {
-///           "service": "fooservice.googleapis.com"
+///           "service": "sampleservice.googleapis.com"
 ///           "audit_log_configs": [
 ///             {
 ///               "log_type": "DATA_READ",
@@ -2305,7 +2342,7 @@ class AsymmetricSignResponse {
 ///             {
 ///               "log_type": "DATA_WRITE",
 ///               "exempted_members": [
-///                 "user:bar@gmail.com"
+///                 "user:aliya@example.com"
 ///               ]
 ///             }
 ///           ]
@@ -2313,9 +2350,9 @@ class AsymmetricSignResponse {
 ///       ]
 ///     }
 ///
-/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
-/// bar@gmail.com from DATA_WRITE logging.
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts jose@example.com from DATA_READ logging, and
+/// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
@@ -2360,7 +2397,7 @@ class AuditConfig {
 ///         {
 ///           "log_type": "DATA_READ",
 ///           "exempted_members": [
-///             "user:foo@gmail.com"
+///             "user:jose@example.com"
 ///           ]
 ///         },
 ///         {
@@ -2370,7 +2407,7 @@ class AuditConfig {
 ///     }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// foo@gmail.com from DATA_READ logging.
+/// jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
@@ -2428,7 +2465,7 @@ class Binding {
   ///    who is authenticated with a Google account or a service account.
   ///
   /// * `user:{emailid}`: An email address that represents a specific Google
-  ///    account. For example, `alice@gmail.com` .
+  ///    account. For example, `alice@example.com` .
   ///
   ///
   /// * `serviceAccount:{emailid}`: An email address that represents a service
@@ -2436,6 +2473,27 @@ class Binding {
   ///
   /// * `group:{emailid}`: An email address that represents a Google group.
   ///    For example, `admins@example.com`.
+  ///
+  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a user that has been recently deleted. For
+  ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  ///    retains the role in the binding.
+  ///
+  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
+  /// (plus
+  /// unique identifier) representing a service account that has been recently
+  ///    deleted. For example,
+  ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+  ///    If the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  ///    role in the binding.
+  ///
+  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
+  ///    identifier) representing a Google group that has been recently
+  /// deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+  /// the group is recovered, this value reverts to `group:{emailid}` and the
+  ///    recovered group retains the role in the binding.
   ///
   ///
   /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
@@ -2515,12 +2573,12 @@ class CryptoKey {
   /// The CryptoKey's primary version can be updated via
   /// UpdateCryptoKeyPrimaryVersion.
   ///
-  /// All keys with purpose
-  /// ENCRYPT_DECRYPT have a
+  /// Keys with purpose
+  /// ENCRYPT_DECRYPT may have a
   /// primary. For other keys, this field will be omitted.
   CryptoKeyVersion primary;
 
-  /// The immutable purpose of this CryptoKey.
+  /// Immutable. The immutable purpose of this CryptoKey.
   /// Possible string values are:
   /// - "CRYPTO_KEY_PURPOSE_UNSPECIFIED" : Not specified.
   /// - "ENCRYPT_DECRYPT" : CryptoKeys with this purpose may be used with
@@ -2657,6 +2715,8 @@ class CryptoKeyVersion {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
   core.String algorithm;
 
   /// Output only. Statement that was generated and signed by the HSM at key
@@ -2678,6 +2738,11 @@ class CryptoKeyVersion {
   /// for destruction. Only present if state is
   /// DESTROY_SCHEDULED.
   core.String destroyTime;
+
+  /// ExternalProtectionLevelOptions stores a group of additional fields for
+  /// configuring a CryptoKeyVersion that are specific to the
+  /// EXTERNAL protection level.
+  ExternalProtectionLevelOptions externalProtectionLevelOptions;
 
   /// Output only. The time this CryptoKeyVersion's key material was
   /// generated.
@@ -2708,6 +2773,7 @@ class CryptoKeyVersion {
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String protectionLevel;
 
   /// The current state of the CryptoKeyVersion.
@@ -2758,6 +2824,11 @@ class CryptoKeyVersion {
     if (_json.containsKey("destroyTime")) {
       destroyTime = _json["destroyTime"];
     }
+    if (_json.containsKey("externalProtectionLevelOptions")) {
+      externalProtectionLevelOptions =
+          new ExternalProtectionLevelOptions.fromJson(
+              _json["externalProtectionLevelOptions"]);
+    }
     if (_json.containsKey("generateTime")) {
       generateTime = _json["generateTime"];
     }
@@ -2798,6 +2869,10 @@ class CryptoKeyVersion {
     }
     if (destroyTime != null) {
       _json["destroyTime"] = destroyTime;
+    }
+    if (externalProtectionLevelOptions != null) {
+      _json["externalProtectionLevelOptions"] =
+          (externalProtectionLevelOptions).toJson();
     }
     if (generateTime != null) {
       _json["generateTime"] = generateTime;
@@ -2867,6 +2942,8 @@ class CryptoKeyVersionTemplate {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
   core.String algorithm;
 
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on
@@ -2875,6 +2952,7 @@ class CryptoKeyVersionTemplate {
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String protectionLevel;
 
   CryptoKeyVersionTemplate();
@@ -2903,7 +2981,7 @@ class CryptoKeyVersionTemplate {
 
 /// Request message for KeyManagementService.Decrypt.
 class DecryptRequest {
-  /// Optional data that must match the data originally supplied in
+  /// Optional. Optional data that must match the data originally supplied in
   /// EncryptRequest.additional_authenticated_data.
   core.String additionalAuthenticatedData;
   core.List<core.int> get additionalAuthenticatedDataAsBytes {
@@ -3062,7 +3140,8 @@ class Digest {
 
 /// Request message for KeyManagementService.Encrypt.
 class EncryptRequest {
-  /// Optional data that, if specified, must also be provided during decryption
+  /// Optional. Optional data that, if specified, must also be provided during
+  /// decryption
   /// through DecryptRequest.additional_authenticated_data.
   ///
   /// The maximum size depends on the key version's
@@ -3136,7 +3215,8 @@ class EncryptResponse {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// The resource name of the CryptoKeyVersion used in encryption.
+  /// The resource name of the CryptoKeyVersion used in encryption. Check
+  /// this field to verify that the intended resource was used for encryption.
   core.String name;
 
   EncryptResponse();
@@ -3163,28 +3243,52 @@ class EncryptResponse {
   }
 }
 
-/// Represents an expression text. Example:
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+/// are documented at https://github.com/google/cel-spec.
 ///
-///     title: "User account presence"
-///     description: "Determines whether the request has a user account"
-///     expression: "size(request.user) > 0"
+/// Example (Comparison):
+///
+///     title: "Summary size limit"
+///     description: "Determines if a summary is less than 100 chars"
+///     expression: "document.summary.size() < 100"
+///
+/// Example (Equality):
+///
+///     title: "Requestor is owner"
+///     description: "Determines if requestor is the document owner"
+///     expression: "document.owner == request.auth.claims.email"
+///
+/// Example (Logic):
+///
+///     title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+///     expression: "document.type != 'private' && document.type != 'internal'"
+///
+/// Example (Data Manipulation):
+///
+///     title: "Notification string"
+///     description: "Create a notification string with a timestamp."
+///     expression: "'New message received at ' + string(document.create_time)"
+///
+/// The exact variables and functions that may be referenced within an
+/// expression
+/// are determined by the service that evaluates it. See the service
+/// documentation for additional information.
 class Expr {
-  /// An optional description of the expression. This is a longer text which
+  /// Optional. Description of the expression. This is a longer text which
   /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
 
-  /// Textual representation of an expression in
-  /// Common Expression Language syntax.
-  ///
-  /// The application context of the containing message determines which
-  /// well-known feature set of CEL is supported.
+  /// Textual representation of an expression in Common Expression Language
+  /// syntax.
   core.String expression;
 
-  /// An optional string indicating the location of the expression for error
+  /// Optional. String indicating the location of the expression for error
   /// reporting, e.g. a file name and a position in the file.
   core.String location;
 
-  /// An optional title for the expression, i.e. a short string describing
+  /// Optional. Title for the expression, i.e. a short string describing
   /// its purpose. This can be used e.g. in UIs which allow to enter the
   /// expression.
   core.String title;
@@ -3220,6 +3324,31 @@ class Expr {
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    return _json;
+  }
+}
+
+/// ExternalProtectionLevelOptions stores a group of additional fields for
+/// configuring a CryptoKeyVersion that are specific to the
+/// EXTERNAL protection level.
+class ExternalProtectionLevelOptions {
+  /// The URI for an external resource that this CryptoKeyVersion represents.
+  core.String externalKeyUri;
+
+  ExternalProtectionLevelOptions();
+
+  ExternalProtectionLevelOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("externalKeyUri")) {
+      externalKeyUri = _json["externalKeyUri"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (externalKeyUri != null) {
+      _json["externalKeyUri"] = externalKeyUri;
     }
     return _json;
   }
@@ -3262,6 +3391,8 @@ class ImportCryptoKeyVersionRequest {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
   core.String algorithm;
 
   /// Required. The name of the ImportJob that was used to
@@ -3283,6 +3414,11 @@ class ImportCryptoKeyVersionRequest {
   ///       using AES-KWP (RFC 5649).
   ///   </li>
   /// </ol>
+  ///
+  /// If importing symmetric key material, it is expected that the unwrapped
+  /// key contains plain bytes. If importing asymmetric key material, it is
+  /// expected that the unwrapped key is in PKCS#8-encoded DER format (the
+  /// PrivateKeyInfo structure from RFC 5208).
   ///
   /// This format is the same as the format produced by PKCS#11 mechanism
   /// CKM_RSA_AES_KEY_WRAP.
@@ -3376,8 +3512,8 @@ class ImportJob {
   /// Output only. The time this ImportJob's key material was generated.
   core.String generateTime;
 
-  /// Required and immutable. The wrapping method to be used for incoming
-  /// key material.
+  /// Required. Immutable. The wrapping method to be used for incoming key
+  /// material.
   /// Possible string values are:
   /// - "IMPORT_METHOD_UNSPECIFIED" : Not specified.
   /// - "RSA_OAEP_3072_SHA1_AES_256" : This ImportMethod represents the
@@ -3400,8 +3536,8 @@ class ImportJob {
   /// `projects / * /locations / * /keyRings / * /importJobs / * `.
   core.String name;
 
-  /// Required and immutable. The protection level of the ImportJob. This
-  /// must match the
+  /// Required. Immutable. The protection level of the ImportJob. This must
+  /// match the
   /// protection_level of the
   /// version_template on the CryptoKey you
   /// attempt to import into.
@@ -3409,6 +3545,7 @@ class ImportJob {
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
   /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
   core.String protectionLevel;
 
   /// Output only. The public key with which to wrap key material prior to
@@ -3876,12 +4013,20 @@ class Location {
 class LocationMetadata {
   /// Indicates whether CryptoKeys with
   /// protection_level
+  /// EXTERNAL can be created in this location.
+  core.bool ekmAvailable;
+
+  /// Indicates whether CryptoKeys with
+  /// protection_level
   /// HSM can be created in this location.
   core.bool hsmAvailable;
 
   LocationMetadata();
 
   LocationMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("ekmAvailable")) {
+      ekmAvailable = _json["ekmAvailable"];
+    }
     if (_json.containsKey("hsmAvailable")) {
       hsmAvailable = _json["hsmAvailable"];
     }
@@ -3890,6 +4035,9 @@ class LocationMetadata {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (ekmAvailable != null) {
+      _json["ekmAvailable"] = ekmAvailable;
+    }
     if (hsmAvailable != null) {
       _json["hsmAvailable"] = hsmAvailable;
     }
@@ -3897,59 +4045,77 @@ class LocationMetadata {
   }
 }
 
-/// Defines an Identity and Access Management (IAM) policy. It is used to
-/// specify access control policies for Cloud Platform resources.
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
 ///
 ///
-/// A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-/// `members` to a `role`, where the members can be user accounts, Google
-/// groups,
-/// Google domains, and service accounts. A `role` is a named list of
-/// permissions
-/// defined by IAM.
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts,
+/// Google groups, and domains (such as G Suite). A `role` is a named list of
+/// permissions; each `role` can be an IAM predefined role or a user-created
+/// custom role.
 ///
-/// **JSON Example**
+/// Optionally, a `binding` can specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both.
+///
+/// **JSON example:**
 ///
 ///     {
 ///       "bindings": [
 ///         {
-///           "role": "roles/owner",
+///           "role": "roles/resourcemanager.organizationAdmin",
 ///           "members": [
 ///             "user:mike@example.com",
 ///             "group:admins@example.com",
 ///             "domain:google.com",
-///             "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+///             "serviceAccount:my-project-id@appspot.gserviceaccount.com"
 ///           ]
 ///         },
 ///         {
-///           "role": "roles/viewer",
-///           "members": ["user:sean@example.com"]
+///           "role": "roles/resourcemanager.organizationViewer",
+///           "members": ["user:eve@example.com"],
+///           "condition": {
+///             "title": "expirable access",
+///             "description": "Does not grant access after Sep 2020",
+/// "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+///           }
 ///         }
-///       ]
+///       ],
+///       "etag": "BwWWja0YfJA=",
+///       "version": 3
 ///     }
 ///
-/// **YAML Example**
+/// **YAML example:**
 ///
 ///     bindings:
 ///     - members:
 ///       - user:mike@example.com
 ///       - group:admins@example.com
 ///       - domain:google.com
-///       - serviceAccount:my-other-app@appspot.gserviceaccount.com
-///       role: roles/owner
+///       - serviceAccount:my-project-id@appspot.gserviceaccount.com
+///       role: roles/resourcemanager.organizationAdmin
 ///     - members:
-///       - user:sean@example.com
-///       role: roles/viewer
-///
+///       - user:eve@example.com
+///       role: roles/resourcemanager.organizationViewer
+///       condition:
+///         title: expirable access
+///         description: Does not grant access after Sep 2020
+///         expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+///     - etag: BwWWja0YfJA=
+///     - version: 3
 ///
 /// For a description of IAM and its features, see the
-/// [IAM developer's guide](https://cloud.google.com/iam/docs).
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
 
-  /// Associates a list of `members` to a `role`.
-  /// `bindings` with no members will result in an error.
+  /// Associates a list of `members` to a `role`. Optionally, may specify a
+  /// `condition` that determines how and when the `bindings` are applied. Each
+  /// of the `bindings` must contain at least one member.
   core.List<Binding> bindings;
 
   /// `etag` is used for optimistic concurrency control as a way to help
@@ -3961,8 +4127,12 @@ class Policy {
   /// ensure that their change will be applied to the same version of the
   /// policy.
   ///
-  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
-  /// policy is overwritten blindly.
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.base64.decode(etag);
@@ -3973,7 +4143,29 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// Deprecated.
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected.
+  ///
+  /// Any operation that affects conditional role bindings must specify version
+  /// `3`. This requirement applies to the following operations:
+  ///
+  /// * Getting a policy that includes a conditional role binding
+  /// * Adding a conditional role binding to a policy
+  /// * Changing a conditional role binding in a policy
+  /// * Removing any role binding, with or without a condition, from a policy
+  ///   that includes conditions
+  ///
+  /// **Important:** If you use IAM Conditions, you must include the `etag`
+  /// field
+  /// whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+  /// you to overwrite a version `3` policy with a version `1` policy, and all
+  /// of
+  /// the conditions in the version `3` policy are lost.
+  ///
+  /// If a policy does not include any conditions, operations on that policy may
+  /// specify any valid version or leave the field unset.
   core.int version;
 
   Policy();
@@ -4053,6 +4245,8 @@ class PublicKey {
   /// digest.
   /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
   /// digest.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
   core.String algorithm;
 
   /// The public key, encoded in PEM format. For more information, see the
@@ -4192,7 +4386,7 @@ class TestIamPermissionsResponse {
 
 /// Request message for KeyManagementService.UpdateCryptoKeyPrimaryVersion.
 class UpdateCryptoKeyPrimaryVersionRequest {
-  /// The id of the child CryptoKeyVersion to use as primary.
+  /// Required. The id of the child CryptoKeyVersion to use as primary.
   core.String cryptoKeyVersionId;
 
   UpdateCryptoKeyPrimaryVersionRequest();
