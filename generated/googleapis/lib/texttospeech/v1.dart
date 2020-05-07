@@ -10,9 +10,12 @@ import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
-
+import 'package:googleapis_auth/auth_io.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
+
+const core.String USER_AGENT = 'dart-api-client texttospeech/v1';
+
 ///
 /// * Simple function to call that takes the credentials, text to syntesise, language, gender, and format. Returns a
 /// * Future<SynthesizeSpeechResponse>, takes in all required parameters
@@ -43,30 +46,30 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///             Chrome and Firefox). The quality of the encoding is considerably higher
 ///             than MP3 while using approximately the same bitrate.
 ///
-Future<SynthesizeSpeechResponse> googleTexttoSpeech(
-      ServiceAccountCredentials credentials,
-      String text,
-      String language,
-      String gender,
-      String format,
-      {List<String> scopes = const [TexttospeechApi.CloudPlatformScope]}) {
-    return clientViaServiceAccount(credentials, scopes).then((httpClient) {
-      var tts = new TexttospeechApi(httpClient);
-      var ttsResource = tts.text;
-      var request = SynthesizeSpeechRequest();
-      var input = SynthesisInput();
-      var audio = AudioConfig();
-      var voice = VoiceSelectionParams();
-      voice.languageCode = language;
-      voice.ssmlGender = gender;
-      audio.audioEncoding = format;
-      request.audioConfig = audio;
-      request.voice = voice;
-      input.text = text;
-      request.input = input;
-      ttsResource.synthesize(request);
-    });
-  }
+async.Future<SynthesizeSpeechResponse> googleTexttoSpeech(
+    ServiceAccountCredentials credentials,
+    core.String text,
+    core.String language,
+    core.String gender,
+    core.String format,
+    {core.List<core.String> scopes = const [TexttospeechApi.CloudPlatformScope]}) {
+  return clientViaServiceAccount(credentials, scopes).then((httpClient) {
+    TexttospeechApi tts = new TexttospeechApi(httpClient);
+    TextResourceApi ttsResource = tts.text;
+    SynthesizeSpeechRequest request = SynthesizeSpeechRequest();
+    SynthesisInput input = SynthesisInput();
+    AudioConfig audio = AudioConfig();
+    VoiceSelectionParams voice = VoiceSelectionParams();
+    voice.languageCode = language;
+    voice.ssmlGender = gender;
+    audio.audioEncoding = format;
+    request.audioConfig = audio;
+    request.voice = voice;
+    input.text = text;
+    request.input = input;
+    ttsResource.synthesize(request);
+  });
+}
 const core.String USER_AGENT = 'dart-api-client texttospeech/v1';
 
 /// Synthesizes natural-sounding speech by applying powerful neural network
